@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -49,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -72,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -96,6 +99,12 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Queue ID.
+        /// </summary>
+        [Input("queueId", required: true)]
+        public string QueueId { get; set; } = null!;
+
         public GetR2BucketEventNotificationArgs()
         {
         }
@@ -115,6 +124,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
+
+        /// <summary>
+        /// Queue ID.
+        /// </summary>
+        [Input("queueId", required: true)]
+        public Input<string> QueueId { get; set; } = null!;
 
         public GetR2BucketEventNotificationInvokeArgs()
         {
@@ -139,9 +154,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of queues associated with the bucket.
+        /// Queue ID.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationQueueResult> Queues;
+        public readonly string QueueId;
+        /// <summary>
+        /// Name of the queue.
+        /// </summary>
+        public readonly string QueueName;
+        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationRuleResult> Rules;
 
         [OutputConstructor]
         private GetR2BucketEventNotificationResult(
@@ -151,12 +171,18 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            ImmutableArray<Outputs.GetR2BucketEventNotificationQueueResult> queues)
+            string queueId,
+
+            string queueName,
+
+            ImmutableArray<Outputs.GetR2BucketEventNotificationRuleResult> rules)
         {
             AccountId = accountId;
             BucketName = bucketName;
             Id = id;
-            Queues = queues;
+            QueueId = queueId;
+            QueueName = queueName;
+            Rules = rules;
         }
     }
 }

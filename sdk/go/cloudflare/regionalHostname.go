@@ -30,7 +30,7 @@ import (
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("foo.example.com"),
 //				RegionKey: pulumi.String("ca"),
-//				Routing:   pulumi.String("routing"),
+//				Routing:   pulumi.String("dns"),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ type RegionalHostname struct {
 	// Identifying key for the region
 	RegionKey pulumi.StringOutput `pulumi:"regionKey"`
 	// Configure which routing method to use for the regional hostname
-	Routing pulumi.StringPtrOutput `pulumi:"routing"`
+	Routing pulumi.StringOutput `pulumi:"routing"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -255,8 +255,8 @@ func (o RegionalHostnameOutput) RegionKey() pulumi.StringOutput {
 }
 
 // Configure which routing method to use for the regional hostname
-func (o RegionalHostnameOutput) Routing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionalHostname) pulumi.StringPtrOutput { return v.Routing }).(pulumi.StringPtrOutput)
+func (o RegionalHostnameOutput) Routing() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.Routing }).(pulumi.StringOutput)
 }
 
 // Identifier.

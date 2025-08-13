@@ -18,6 +18,11 @@ public final class GetImageResult {
      */
     private String accountId;
     /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    private String creator;
+    /**
      * @return Image file name.
      * 
      */
@@ -60,6 +65,13 @@ public final class GetImageResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    public String creator() {
+        return this.creator;
     }
     /**
      * @return Image file name.
@@ -121,6 +133,7 @@ public final class GetImageResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String creator;
         private String filename;
         private String id;
         private String imageId;
@@ -132,6 +145,7 @@ public final class GetImageResult {
         public Builder(GetImageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.creator = defaults.creator;
     	      this.filename = defaults.filename;
     	      this.id = defaults.id;
     	      this.imageId = defaults.imageId;
@@ -147,6 +161,14 @@ public final class GetImageResult {
               throw new MissingRequiredPropertyException("GetImageResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder creator(String creator) {
+            if (creator == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "creator");
+            }
+            this.creator = creator;
             return this;
         }
         @CustomType.Setter
@@ -211,6 +233,7 @@ public final class GetImageResult {
         public GetImageResult build() {
             final var _resultValue = new GetImageResult();
             _resultValue.accountId = accountId;
+            _resultValue.creator = creator;
             _resultValue.filename = filename;
             _resultValue.id = id;
             _resultValue.imageId = imageId;

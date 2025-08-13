@@ -22,15 +22,9 @@ import (
 type ZeroTrustDeviceCustomProfileLocalDomainFallback struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// A description of the fallback domain, displayed in the client UI.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers pulumi.StringArrayOutput                                         `pulumi:"dnsServers"`
-	Domains    ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput `pulumi:"domains"`
-	PolicyId   pulumi.StringOutput                                              `pulumi:"policyId"`
-	// The domain suffix to match when resolving locally.
-	Suffix pulumi.StringOutput `pulumi:"suffix"`
+	AccountId pulumi.StringOutput                                              `pulumi:"accountId"`
+	Domains   ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput `pulumi:"domains"`
+	PolicyId  pulumi.StringOutput                                              `pulumi:"policyId"`
 }
 
 // NewZeroTrustDeviceCustomProfileLocalDomainFallback registers a new resource with the given unique name, arguments, and options.
@@ -78,27 +72,15 @@ func GetZeroTrustDeviceCustomProfileLocalDomainFallback(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDeviceCustomProfileLocalDomainFallback resources.
 type zeroTrustDeviceCustomProfileLocalDomainFallbackState struct {
-	AccountId *string `pulumi:"accountId"`
-	// A description of the fallback domain, displayed in the client UI.
-	Description *string `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers []string                                                `pulumi:"dnsServers"`
-	Domains    []ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain `pulumi:"domains"`
-	PolicyId   *string                                                 `pulumi:"policyId"`
-	// The domain suffix to match when resolving locally.
-	Suffix *string `pulumi:"suffix"`
+	AccountId *string                                                 `pulumi:"accountId"`
+	Domains   []ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain `pulumi:"domains"`
+	PolicyId  *string                                                 `pulumi:"policyId"`
 }
 
 type ZeroTrustDeviceCustomProfileLocalDomainFallbackState struct {
 	AccountId pulumi.StringPtrInput
-	// A description of the fallback domain, displayed in the client UI.
-	Description pulumi.StringPtrInput
-	// A list of IP addresses to handle domain resolution.
-	DnsServers pulumi.StringArrayInput
-	Domains    ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayInput
-	PolicyId   pulumi.StringPtrInput
-	// The domain suffix to match when resolving locally.
-	Suffix pulumi.StringPtrInput
+	Domains   ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayInput
+	PolicyId  pulumi.StringPtrInput
 }
 
 func (ZeroTrustDeviceCustomProfileLocalDomainFallbackState) ElementType() reflect.Type {
@@ -209,16 +191,6 @@ func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) AccountId() pulum
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// A description of the fallback domain, displayed in the client UI.
-func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// A list of IP addresses to handle domain resolution.
-func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) DnsServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
-}
-
 func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) Domains() ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) ZeroTrustDeviceCustomProfileLocalDomainFallbackDomainArrayOutput {
 		return v.Domains
@@ -227,11 +199,6 @@ func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) Domains() ZeroTru
 
 func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
-}
-
-// The domain suffix to match when resolving locally.
-func (o ZeroTrustDeviceCustomProfileLocalDomainFallbackOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfileLocalDomainFallback) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDeviceCustomProfileLocalDomainFallbackArrayOutput struct{ *pulumi.OutputState }

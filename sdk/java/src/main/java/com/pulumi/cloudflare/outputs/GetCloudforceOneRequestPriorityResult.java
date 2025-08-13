@@ -12,62 +12,62 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudforceOneRequestPriorityResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    private String accountIdentifier;
+    private String accountId;
     private String completed;
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     private String content;
     private String created;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     private Integer messageTokens;
     private String priority;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    private String priorityIdentifer;
+    private String priorityId;
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     private String readableId;
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     private String request;
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     private String status;
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     private String summary;
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     private String tlp;
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     private Integer tokens;
@@ -75,17 +75,17 @@ public final class GetCloudforceOneRequestPriorityResult {
 
     private GetCloudforceOneRequestPriorityResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
     public String completed() {
         return this.completed;
     }
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     public String content() {
@@ -95,14 +95,14 @@ public final class GetCloudforceOneRequestPriorityResult {
         return this.created;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     public Integer messageTokens() {
@@ -112,28 +112,28 @@ public final class GetCloudforceOneRequestPriorityResult {
         return this.priority;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public String priorityIdentifer() {
-        return this.priorityIdentifer;
+    public String priorityId() {
+        return this.priorityId;
     }
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     public String readableId() {
         return this.readableId;
     }
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public String request() {
         return this.request;
     }
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -141,14 +141,14 @@ public final class GetCloudforceOneRequestPriorityResult {
         return this.status;
     }
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public String summary() {
         return this.summary;
     }
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -156,7 +156,7 @@ public final class GetCloudforceOneRequestPriorityResult {
         return this.tlp;
     }
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     public Integer tokens() {
@@ -175,14 +175,14 @@ public final class GetCloudforceOneRequestPriorityResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountIdentifier;
+        private String accountId;
         private String completed;
         private String content;
         private String created;
         private String id;
         private Integer messageTokens;
         private String priority;
-        private String priorityIdentifer;
+        private String priorityId;
         private String readableId;
         private String request;
         private String status;
@@ -193,14 +193,14 @@ public final class GetCloudforceOneRequestPriorityResult {
         public Builder() {}
         public Builder(GetCloudforceOneRequestPriorityResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountIdentifier = defaults.accountIdentifier;
+    	      this.accountId = defaults.accountId;
     	      this.completed = defaults.completed;
     	      this.content = defaults.content;
     	      this.created = defaults.created;
     	      this.id = defaults.id;
     	      this.messageTokens = defaults.messageTokens;
     	      this.priority = defaults.priority;
-    	      this.priorityIdentifer = defaults.priorityIdentifer;
+    	      this.priorityId = defaults.priorityId;
     	      this.readableId = defaults.readableId;
     	      this.request = defaults.request;
     	      this.status = defaults.status;
@@ -211,11 +211,11 @@ public final class GetCloudforceOneRequestPriorityResult {
         }
 
         @CustomType.Setter
-        public Builder accountIdentifier(String accountIdentifier) {
-            if (accountIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityResult", "accountIdentifier");
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityResult", "accountId");
             }
-            this.accountIdentifier = accountIdentifier;
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
@@ -267,11 +267,11 @@ public final class GetCloudforceOneRequestPriorityResult {
             return this;
         }
         @CustomType.Setter
-        public Builder priorityIdentifer(String priorityIdentifer) {
-            if (priorityIdentifer == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityResult", "priorityIdentifer");
+        public Builder priorityId(String priorityId) {
+            if (priorityId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityResult", "priorityId");
             }
-            this.priorityIdentifer = priorityIdentifer;
+            this.priorityId = priorityId;
             return this;
         }
         @CustomType.Setter
@@ -332,14 +332,14 @@ public final class GetCloudforceOneRequestPriorityResult {
         }
         public GetCloudforceOneRequestPriorityResult build() {
             final var _resultValue = new GetCloudforceOneRequestPriorityResult();
-            _resultValue.accountIdentifier = accountIdentifier;
+            _resultValue.accountId = accountId;
             _resultValue.completed = completed;
             _resultValue.content = content;
             _resultValue.created = created;
             _resultValue.id = id;
             _resultValue.messageTokens = messageTokens;
             _resultValue.priority = priority;
-            _resultValue.priorityIdentifer = priorityIdentifer;
+            _resultValue.priorityId = priorityId;
             _resultValue.readableId = readableId;
             _resultValue.request = request;
             _resultValue.status = status;

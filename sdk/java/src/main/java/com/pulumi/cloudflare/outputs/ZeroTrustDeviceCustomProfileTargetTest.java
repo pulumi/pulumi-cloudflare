@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDeviceCustomProfileTargetTest {
     /**
-     * @return The id of the DEX test targeting this policy
+     * @return The id of the DEX test targeting this policy.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The name of the DEX test targeting this policy
+     * @return The name of the DEX test targeting this policy.
      * 
      */
     private @Nullable String name;
 
     private ZeroTrustDeviceCustomProfileTargetTest() {}
     /**
-     * @return The id of the DEX test targeting this policy
+     * @return The id of the DEX test targeting this policy.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The name of the DEX test targeting this policy
+     * @return The name of the DEX test targeting this policy.
      * 
      */
     public Optional<String> name() {

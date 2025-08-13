@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetHyperdriveConfigMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigOrigin;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,38 +17,43 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHyperdriveConfigResult {
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String accountId;
     private GetHyperdriveConfigCaching caching;
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     private String createdOn;
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private @Nullable String hyperdriveId;
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String id;
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     private String modifiedOn;
     private GetHyperdriveConfigMtls mtls;
     private String name;
     private GetHyperdriveConfigOrigin origin;
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    private Integer originConnectionLimit;
 
     private GetHyperdriveConfigResult() {}
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String accountId() {
@@ -57,28 +63,28 @@ public final class GetHyperdriveConfigResult {
         return this.caching;
     }
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     public String createdOn() {
         return this.createdOn;
     }
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Optional<String> hyperdriveId() {
         return Optional.ofNullable(this.hyperdriveId);
     }
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     public String modifiedOn() {
@@ -92,6 +98,13 @@ public final class GetHyperdriveConfigResult {
     }
     public GetHyperdriveConfigOrigin origin() {
         return this.origin;
+    }
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    public Integer originConnectionLimit() {
+        return this.originConnectionLimit;
     }
 
     public static Builder builder() {
@@ -112,6 +125,7 @@ public final class GetHyperdriveConfigResult {
         private GetHyperdriveConfigMtls mtls;
         private String name;
         private GetHyperdriveConfigOrigin origin;
+        private Integer originConnectionLimit;
         public Builder() {}
         public Builder(GetHyperdriveConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,6 +138,7 @@ public final class GetHyperdriveConfigResult {
     	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
+    	      this.originConnectionLimit = defaults.originConnectionLimit;
         }
 
         @CustomType.Setter
@@ -196,6 +211,14 @@ public final class GetHyperdriveConfigResult {
             this.origin = origin;
             return this;
         }
+        @CustomType.Setter
+        public Builder originConnectionLimit(Integer originConnectionLimit) {
+            if (originConnectionLimit == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "originConnectionLimit");
+            }
+            this.originConnectionLimit = originConnectionLimit;
+            return this;
+        }
         public GetHyperdriveConfigResult build() {
             final var _resultValue = new GetHyperdriveConfigResult();
             _resultValue.accountId = accountId;
@@ -207,6 +230,7 @@ public final class GetHyperdriveConfigResult {
             _resultValue.mtls = mtls;
             _resultValue.name = name;
             _resultValue.origin = origin;
+            _resultValue.originConnectionLimit = originConnectionLimit;
             return _resultValue;
         }
     }

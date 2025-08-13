@@ -52,7 +52,7 @@ func LookupWaitingRoomEvent(ctx *pulumi.Context, args *LookupWaitingRoomEventArg
 type LookupWaitingRoomEventArgs struct {
 	EventId       *string `pulumi:"eventId"`
 	WaitingRoomId string  `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -96,7 +96,7 @@ type LookupWaitingRoomEventResult struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode string `pulumi:"turnstileMode"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -113,7 +113,7 @@ func LookupWaitingRoomEventOutput(ctx *pulumi.Context, args LookupWaitingRoomEve
 type LookupWaitingRoomEventOutputArgs struct {
 	EventId       pulumi.StringPtrInput `pulumi:"eventId"`
 	WaitingRoomId pulumi.StringInput    `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -234,7 +234,7 @@ func (o LookupWaitingRoomEventResultOutput) WaitingRoomId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupWaitingRoomEventResult) string { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWaitingRoomEventResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomEventResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

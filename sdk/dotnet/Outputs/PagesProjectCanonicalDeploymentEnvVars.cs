@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectCanonicalDeploymentEnvVars
     {
         /// <summary>
-        /// Available values: "plain_text".
+        /// Available values: "plain*text", "secret*text".
         /// </summary>
         public readonly string? Type;
         /// <summary>

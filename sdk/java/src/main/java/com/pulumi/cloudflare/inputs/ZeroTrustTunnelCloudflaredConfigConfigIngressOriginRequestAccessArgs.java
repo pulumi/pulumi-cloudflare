@@ -48,11 +48,11 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAcc
         return Optional.ofNullable(this.required);
     }
 
-    @Import(name="teamName")
-    private @Nullable Output<String> teamName;
+    @Import(name="teamName", required=true)
+    private Output<String> teamName;
 
-    public Optional<Output<String>> teamName() {
-        return Optional.ofNullable(this.teamName);
+    public Output<String> teamName() {
+        return this.teamName;
     }
 
     private ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs() {}
@@ -133,7 +133,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAcc
             return required(Output.of(required));
         }
 
-        public Builder teamName(@Nullable Output<String> teamName) {
+        public Builder teamName(Output<String> teamName) {
             $.teamName = teamName;
             return this;
         }
@@ -145,6 +145,9 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAcc
         public ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs build() {
             if ($.audTags == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs", "audTags");
+            }
+            if ($.teamName == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccessArgs", "teamName");
             }
             return $;
         }

@@ -18,14 +18,14 @@ public final class GetHyperdriveConfigsArgs extends com.pulumi.resources.InvokeA
     public static final GetHyperdriveConfigsArgs Empty = new GetHyperdriveConfigsArgs();
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Output<String> accountId() {
@@ -73,7 +73,7 @@ public final class GetHyperdriveConfigsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetHyperdriveConfigsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 

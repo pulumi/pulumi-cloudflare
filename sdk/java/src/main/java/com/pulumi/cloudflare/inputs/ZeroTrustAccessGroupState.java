@@ -35,13 +35,6 @@ public final class ZeroTrustAccessGroupState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.accountId);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
@@ -117,13 +110,6 @@ public final class ZeroTrustAccessGroupState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.requires);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -143,13 +129,11 @@ public final class ZeroTrustAccessGroupState extends com.pulumi.resources.Resour
 
     private ZeroTrustAccessGroupState(ZeroTrustAccessGroupState $) {
         this.accountId = $.accountId;
-        this.createdAt = $.createdAt;
         this.excludes = $.excludes;
         this.includes = $.includes;
         this.isDefault = $.isDefault;
         this.name = $.name;
         this.requires = $.requires;
-        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -190,15 +174,6 @@ public final class ZeroTrustAccessGroupState extends com.pulumi.resources.Resour
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -334,15 +309,6 @@ public final class ZeroTrustAccessGroupState extends com.pulumi.resources.Resour
          */
         public Builder requires(ZeroTrustAccessGroupRequireArgs... requires) {
             return requires(List.of(requires));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

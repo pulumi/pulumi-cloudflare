@@ -77,7 +77,7 @@ type LookupDnsRecordResult struct {
 	Meta string `pulumi:"meta"`
 	// When the record was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// DNS record name (or @ for the zone apex) in Punycode.
+	// Complete DNS record name, including the zone name, in Punycode.
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority float64 `pulumi:"priority"`
@@ -94,7 +94,7 @@ type LookupDnsRecordResult struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl float64 `pulumi:"ttl"`
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -186,7 +186,7 @@ func (o LookupDnsRecordResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// DNS record name (or @ for the zone apex) in Punycode.
+// Complete DNS record name, including the zone name, in Punycode.
 func (o LookupDnsRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -227,7 +227,7 @@ func (o LookupDnsRecordResultOutput) Ttl() pulumi.Float64Output {
 }
 
 // Record type.
-// Available values: "A".
+// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 func (o LookupDnsRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -140,14 +140,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoRedirectToIdentity;
+    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
 
     /**
      * @return When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
-    public Output<Boolean> autoRedirectToIdentity() {
-        return this.autoRedirectToIdentity;
+    public Output<Optional<Boolean>> autoRedirectToIdentity() {
+        return Codegen.optional(this.autoRedirectToIdentity);
     }
     /**
      * The background color of the App Launcher page.
@@ -168,12 +168,6 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
 
     public Output<Optional<ZeroTrustAccessApplicationCorsHeaders>> corsHeaders() {
         return Codegen.optional(this.corsHeaders);
-    }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
     }
     /**
      * The custom error message shown to a user when they are denied access to the application.
@@ -236,42 +230,42 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="destinations", refs={List.class,ZeroTrustAccessApplicationDestination.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessApplicationDestination>> destinations;
+    private Output<List<ZeroTrustAccessApplicationDestination>> destinations;
 
     /**
      * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessApplicationDestination>>> destinations() {
-        return Codegen.optional(this.destinations);
+    public Output<List<ZeroTrustAccessApplicationDestination>> destinations() {
+        return this.destinations;
     }
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domain;
+    private Output<String> domain;
 
     /**
      * @return The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
-    public Output<Optional<String>> domain() {
-        return Codegen.optional(this.domain);
+    public Output<String> domain() {
+        return this.domain;
     }
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
     @Export(name="enableBindingCookie", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableBindingCookie;
+    private Output</* @Nullable */ Boolean> enableBindingCookie;
 
     /**
      * @return Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
-    public Output<Boolean> enableBindingCookie() {
-        return this.enableBindingCookie;
+    public Output<Optional<Boolean>> enableBindingCookie() {
+        return Codegen.optional(this.enableBindingCookie);
     }
     /**
      * The links in the App Launcher footer.
@@ -320,14 +314,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="landingPageDesign", refs={ZeroTrustAccessApplicationLandingPageDesign.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
 
     /**
      * @return The design of the App Launcher landing page shown to users when they log in.
      * 
      */
-    public Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign() {
-        return this.landingPageDesign;
+    public Output<Optional<ZeroTrustAccessApplicationLandingPageDesign>> landingPageDesign() {
+        return Codegen.optional(this.landingPageDesign);
     }
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
@@ -348,14 +342,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return The name of the application.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -376,14 +370,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="pathCookieAttribute", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> pathCookieAttribute;
+    private Output</* @Nullable */ Boolean> pathCookieAttribute;
 
     /**
      * @return Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    public Output<Boolean> pathCookieAttribute() {
-        return this.pathCookieAttribute;
+    public Output<Optional<Boolean>> pathCookieAttribute() {
+        return Codegen.optional(this.pathCookieAttribute);
     }
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -426,10 +420,10 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.readServiceTokensFromHeader);
     }
     @Export(name="saasApp", refs={ZeroTrustAccessApplicationSaasApp.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationSaasApp> saasApp;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationSaasApp> saasApp;
 
-    public Output<ZeroTrustAccessApplicationSaasApp> saasApp() {
-        return this.saasApp;
+    public Output<Optional<ZeroTrustAccessApplicationSaasApp>> saasApp() {
+        return Codegen.optional(this.saasApp);
     }
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -468,14 +462,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> selfHostedDomains;
+    private Output<List<String>> selfHostedDomains;
 
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<Optional<List<String>>> selfHostedDomains() {
-        return Codegen.optional(this.selfHostedDomains);
+    public Output<List<String>> selfHostedDomains() {
+        return this.selfHostedDomains;
     }
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
@@ -492,14 +486,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.serviceAuth401Redirect);
     }
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     public Output<String> sessionDuration() {
@@ -555,6 +549,7 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
     }
     /**
      * The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -562,16 +557,11 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
 
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

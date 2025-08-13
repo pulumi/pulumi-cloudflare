@@ -13,6 +13,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCustomCertif
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
@@ -186,6 +187,21 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
+     * Setting to define inspection settings
+     * 
+     */
+    @Import(name="inspection")
+    private @Nullable Output<ZeroTrustGatewaySettingsSettingsInspectionArgs> inspection;
+
+    /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewaySettingsSettingsInspectionArgs>> inspection() {
+        return Optional.ofNullable(this.inspection);
+    }
+
+    /**
      * Protocol Detection settings.
      * 
      */
@@ -243,6 +259,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
         this.hostSelector = $.hostSelector;
+        this.inspection = $.inspection;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -482,6 +499,27 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder hostSelector(ZeroTrustGatewaySettingsSettingsHostSelectorArgs hostSelector) {
             return hostSelector(Output.of(hostSelector));
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(@Nullable Output<ZeroTrustGatewaySettingsSettingsInspectionArgs> inspection) {
+            $.inspection = inspection;
+            return this;
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs inspection) {
+            return inspection(Output.of(inspection));
         }
 
         /**

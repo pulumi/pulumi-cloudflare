@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SnippetsMetadataArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +15,18 @@ public final class SnippetsMetadataArgs extends com.pulumi.resources.ResourceArg
     public static final SnippetsMetadataArgs Empty = new SnippetsMetadataArgs();
 
     /**
-     * Main module name of uploaded snippet
+     * Name of the file that contains the main module of the snippet.
      * 
      */
-    @Import(name="mainModule")
-    private @Nullable Output<String> mainModule;
+    @Import(name="mainModule", required=true)
+    private Output<String> mainModule;
 
     /**
-     * @return Main module name of uploaded snippet
+     * @return Name of the file that contains the main module of the snippet.
      * 
      */
-    public Optional<Output<String>> mainModule() {
-        return Optional.ofNullable(this.mainModule);
+    public Output<String> mainModule() {
+        return this.mainModule;
     }
 
     private SnippetsMetadataArgs() {}
@@ -55,18 +54,18 @@ public final class SnippetsMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mainModule Main module name of uploaded snippet
+         * @param mainModule Name of the file that contains the main module of the snippet.
          * 
          * @return builder
          * 
          */
-        public Builder mainModule(@Nullable Output<String> mainModule) {
+        public Builder mainModule(Output<String> mainModule) {
             $.mainModule = mainModule;
             return this;
         }
 
         /**
-         * @param mainModule Main module name of uploaded snippet
+         * @param mainModule Name of the file that contains the main module of the snippet.
          * 
          * @return builder
          * 
@@ -76,6 +75,9 @@ public final class SnippetsMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SnippetsMetadataArgs build() {
+            if ($.mainModule == null) {
+                throw new MissingRequiredPropertyException("SnippetsMetadataArgs", "mainModule");
+            }
             return $;
         }
     }

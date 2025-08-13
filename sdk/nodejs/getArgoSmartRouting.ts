@@ -28,7 +28,7 @@ export function getArgoSmartRouting(args: GetArgoSmartRoutingArgs, opts?: pulumi
  */
 export interface GetArgoSmartRoutingArgs {
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     zoneId: string;
 }
@@ -42,7 +42,7 @@ export interface GetArgoSmartRoutingResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     readonly zoneId: string;
 }
@@ -70,7 +70,7 @@ export function getArgoSmartRoutingOutput(args: GetArgoSmartRoutingOutputArgs, o
  */
 export interface GetArgoSmartRoutingOutputArgs {
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     zoneId: pulumi.Input<string>;
 }

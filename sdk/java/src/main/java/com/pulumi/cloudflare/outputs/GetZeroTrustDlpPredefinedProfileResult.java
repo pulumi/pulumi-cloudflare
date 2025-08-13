@@ -30,7 +30,11 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness;
     /**
      * @return When the profile was created.
@@ -61,7 +65,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     private Boolean openAccess;
     private String profileId;
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     private String type;
@@ -95,7 +99,11 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness() {
         return this.contextAwareness;
     }
@@ -144,7 +152,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
         return this.profileId;
     }
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public String type() {

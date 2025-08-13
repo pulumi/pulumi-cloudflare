@@ -27,9 +27,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCloudforceOneRequestMessage(ctx, "example_cloudforce_one_request_message", &cloudflare.CloudforceOneRequestMessageArgs{
-//				AccountIdentifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				RequestIdentifier: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
-//				Content:           pulumi.String("Can you elaborate on the type of DoS that occurred?"),
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				RequestId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				Content:   pulumi.String("Can you elaborate on the type of DoS that occurred?"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,24 +43,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_identifier>/<request_identifier>'
+// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
 // ```
 type CloudforceOneRequestMessage struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountIdentifier pulumi.StringOutput `pulumi:"accountIdentifier"`
-	// Author of message
+	// Identifier.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Author of message.
 	Author pulumi.StringOutput `pulumi:"author"`
-	// Content of message
+	// Content of message.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
-	// Message creation time
+	// Defines the message creation time.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// Whether the message is a follow-on request
+	// Whether the message is a follow-on request.
 	IsFollowOnRequest pulumi.BoolOutput `pulumi:"isFollowOnRequest"`
-	// UUID
-	RequestIdentifier pulumi.StringOutput `pulumi:"requestIdentifier"`
-	// Message last updated time
+	// UUID.
+	RequestId pulumi.StringOutput `pulumi:"requestId"`
+	// Defines the message last updated time.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 }
 
@@ -71,11 +71,11 @@ func NewCloudforceOneRequestMessage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'AccountIdentifier'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.RequestIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'RequestIdentifier'")
+	if args.RequestId == nil {
+		return nil, errors.New("invalid value for required argument 'RequestId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudforceOneRequestMessage
@@ -100,36 +100,36 @@ func GetCloudforceOneRequestMessage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudforceOneRequestMessage resources.
 type cloudforceOneRequestMessageState struct {
-	// Identifier
-	AccountIdentifier *string `pulumi:"accountIdentifier"`
-	// Author of message
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	// Author of message.
 	Author *string `pulumi:"author"`
-	// Content of message
+	// Content of message.
 	Content *string `pulumi:"content"`
-	// Message creation time
+	// Defines the message creation time.
 	Created *string `pulumi:"created"`
-	// Whether the message is a follow-on request
+	// Whether the message is a follow-on request.
 	IsFollowOnRequest *bool `pulumi:"isFollowOnRequest"`
-	// UUID
-	RequestIdentifier *string `pulumi:"requestIdentifier"`
-	// Message last updated time
+	// UUID.
+	RequestId *string `pulumi:"requestId"`
+	// Defines the message last updated time.
 	Updated *string `pulumi:"updated"`
 }
 
 type CloudforceOneRequestMessageState struct {
-	// Identifier
-	AccountIdentifier pulumi.StringPtrInput
-	// Author of message
+	// Identifier.
+	AccountId pulumi.StringPtrInput
+	// Author of message.
 	Author pulumi.StringPtrInput
-	// Content of message
+	// Content of message.
 	Content pulumi.StringPtrInput
-	// Message creation time
+	// Defines the message creation time.
 	Created pulumi.StringPtrInput
-	// Whether the message is a follow-on request
+	// Whether the message is a follow-on request.
 	IsFollowOnRequest pulumi.BoolPtrInput
-	// UUID
-	RequestIdentifier pulumi.StringPtrInput
-	// Message last updated time
+	// UUID.
+	RequestId pulumi.StringPtrInput
+	// Defines the message last updated time.
 	Updated pulumi.StringPtrInput
 }
 
@@ -138,22 +138,22 @@ func (CloudforceOneRequestMessageState) ElementType() reflect.Type {
 }
 
 type cloudforceOneRequestMessageArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// Content of message
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Content of message.
 	Content *string `pulumi:"content"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
+	// UUID.
+	RequestId string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a CloudforceOneRequestMessage resource.
 type CloudforceOneRequestMessageArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput
-	// Content of message
+	// Identifier.
+	AccountId pulumi.StringInput
+	// Content of message.
 	Content pulumi.StringPtrInput
-	// UUID
-	RequestIdentifier pulumi.StringInput
+	// UUID.
+	RequestId pulumi.StringInput
 }
 
 func (CloudforceOneRequestMessageArgs) ElementType() reflect.Type {
@@ -243,37 +243,37 @@ func (o CloudforceOneRequestMessageOutput) ToCloudforceOneRequestMessageOutputWi
 	return o
 }
 
-// Identifier
-func (o CloudforceOneRequestMessageOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o CloudforceOneRequestMessageOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Author of message
+// Author of message.
 func (o CloudforceOneRequestMessageOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
 }
 
-// Content of message
+// Content of message.
 func (o CloudforceOneRequestMessageOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// Message creation time
+// Defines the message creation time.
 func (o CloudforceOneRequestMessageOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Whether the message is a follow-on request
+// Whether the message is a follow-on request.
 func (o CloudforceOneRequestMessageOutput) IsFollowOnRequest() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.BoolOutput { return v.IsFollowOnRequest }).(pulumi.BoolOutput)
 }
 
-// UUID
-func (o CloudforceOneRequestMessageOutput) RequestIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.RequestIdentifier }).(pulumi.StringOutput)
+// UUID.
+func (o CloudforceOneRequestMessageOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// Message last updated time
+// Defines the message last updated time.
 func (o CloudforceOneRequestMessageOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestMessage) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }

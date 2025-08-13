@@ -495,14 +495,14 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -563,6 +563,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
 
     /**
      * The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Import(name="type")
@@ -570,6 +571,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
 
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -1364,7 +1366,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
          * 
          * @return builder
          * 
@@ -1375,7 +1377,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
          * 
          * @return builder
          * 
@@ -1472,6 +1474,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
 
         /**
          * @param type The application type.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 
@@ -1483,6 +1486,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
 
         /**
          * @param type The application type.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 

@@ -17,29 +17,29 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     public static final CloudforceOneRequestMessageState Empty = new CloudforceOneRequestMessageState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier")
-    private @Nullable Output<String> accountIdentifier;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountIdentifier() {
-        return Optional.ofNullable(this.accountIdentifier);
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Author of message
+     * Author of message.
      * 
      */
     @Import(name="author")
     private @Nullable Output<String> author;
 
     /**
-     * @return Author of message
+     * @return Author of message.
      * 
      */
     public Optional<Output<String>> author() {
@@ -47,14 +47,14 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     }
 
     /**
-     * Content of message
+     * Content of message.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Content of message
+     * @return Content of message.
      * 
      */
     public Optional<Output<String>> content() {
@@ -62,14 +62,14 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     }
 
     /**
-     * Message creation time
+     * Defines the message creation time.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return Message creation time
+     * @return Defines the message creation time.
      * 
      */
     public Optional<Output<String>> created() {
@@ -77,14 +77,14 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     }
 
     /**
-     * Whether the message is a follow-on request
+     * Whether the message is a follow-on request.
      * 
      */
     @Import(name="isFollowOnRequest")
     private @Nullable Output<Boolean> isFollowOnRequest;
 
     /**
-     * @return Whether the message is a follow-on request
+     * @return Whether the message is a follow-on request.
      * 
      */
     public Optional<Output<Boolean>> isFollowOnRequest() {
@@ -92,29 +92,29 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier")
-    private @Nullable Output<String> requestIdentifier;
+    @Import(name="requestId")
+    private @Nullable Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Optional<Output<String>> requestIdentifier() {
-        return Optional.ofNullable(this.requestIdentifier);
+    public Optional<Output<String>> requestId() {
+        return Optional.ofNullable(this.requestId);
     }
 
     /**
-     * Message last updated time
+     * Defines the message last updated time.
      * 
      */
     @Import(name="updated")
     private @Nullable Output<String> updated;
 
     /**
-     * @return Message last updated time
+     * @return Defines the message last updated time.
      * 
      */
     public Optional<Output<String>> updated() {
@@ -124,12 +124,12 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
     private CloudforceOneRequestMessageState() {}
 
     private CloudforceOneRequestMessageState(CloudforceOneRequestMessageState $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.author = $.author;
         this.content = $.content;
         this.created = $.created;
         this.isFollowOnRequest = $.isFollowOnRequest;
-        this.requestIdentifier = $.requestIdentifier;
+        this.requestId = $.requestId;
         this.updated = $.updated;
     }
 
@@ -152,28 +152,28 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(@Nullable Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param author Author of message
+         * @param author Author of message.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param author Author of message
+         * @param author Author of message.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param content Content of message
+         * @param content Content of message.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param content Content of message
+         * @param content Content of message.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param created Message creation time
+         * @param created Defines the message creation time.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param created Message creation time
+         * @param created Defines the message creation time.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param isFollowOnRequest Whether the message is a follow-on request
+         * @param isFollowOnRequest Whether the message is a follow-on request.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param isFollowOnRequest Whether the message is a follow-on request
+         * @param isFollowOnRequest Whether the message is a follow-on request.
          * 
          * @return builder
          * 
@@ -257,28 +257,28 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(@Nullable Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(@Nullable Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         /**
-         * @param updated Message last updated time
+         * @param updated Defines the message last updated time.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class CloudforceOneRequestMessageState extends com.pulumi.resources
         }
 
         /**
-         * @param updated Message last updated time
+         * @param updated Defines the message last updated time.
          * 
          * @return builder
          * 

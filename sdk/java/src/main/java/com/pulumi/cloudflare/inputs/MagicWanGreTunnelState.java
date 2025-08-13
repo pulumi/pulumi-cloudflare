@@ -3,12 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.MagicWanGreTunnelGreTunnelArgs;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
-import com.pulumi.cloudflare.inputs.MagicWanGreTunnelModifiedGreTunnelArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -95,13 +92,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.description);
     }
 
-    @Import(name="greTunnel")
-    private @Nullable Output<MagicWanGreTunnelGreTunnelArgs> greTunnel;
-
-    public Optional<Output<MagicWanGreTunnelGreTunnelArgs>> greTunnel() {
-        return Optional.ofNullable(this.greTunnel);
-    }
-
     @Import(name="healthCheck")
     private @Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck;
 
@@ -122,20 +112,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> interfaceAddress() {
         return Optional.ofNullable(this.interfaceAddress);
-    }
-
-    @Import(name="modified")
-    private @Nullable Output<Boolean> modified;
-
-    public Optional<Output<Boolean>> modified() {
-        return Optional.ofNullable(this.modified);
-    }
-
-    @Import(name="modifiedGreTunnel")
-    private @Nullable Output<MagicWanGreTunnelModifiedGreTunnelArgs> modifiedGreTunnel;
-
-    public Optional<Output<MagicWanGreTunnelModifiedGreTunnelArgs>> modifiedGreTunnel() {
-        return Optional.ofNullable(this.modifiedGreTunnel);
     }
 
     /**
@@ -206,11 +182,8 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
         this.createdOn = $.createdOn;
         this.customerGreEndpoint = $.customerGreEndpoint;
         this.description = $.description;
-        this.greTunnel = $.greTunnel;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
-        this.modified = $.modified;
-        this.modifiedGreTunnel = $.modifiedGreTunnel;
         this.modifiedOn = $.modifiedOn;
         this.mtu = $.mtu;
         this.name = $.name;
@@ -340,15 +313,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
             return description(Output.of(description));
         }
 
-        public Builder greTunnel(@Nullable Output<MagicWanGreTunnelGreTunnelArgs> greTunnel) {
-            $.greTunnel = greTunnel;
-            return this;
-        }
-
-        public Builder greTunnel(MagicWanGreTunnelGreTunnelArgs greTunnel) {
-            return greTunnel(Output.of(greTunnel));
-        }
-
         public Builder healthCheck(@Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck) {
             $.healthCheck = healthCheck;
             return this;
@@ -377,24 +341,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
          */
         public Builder interfaceAddress(String interfaceAddress) {
             return interfaceAddress(Output.of(interfaceAddress));
-        }
-
-        public Builder modified(@Nullable Output<Boolean> modified) {
-            $.modified = modified;
-            return this;
-        }
-
-        public Builder modified(Boolean modified) {
-            return modified(Output.of(modified));
-        }
-
-        public Builder modifiedGreTunnel(@Nullable Output<MagicWanGreTunnelModifiedGreTunnelArgs> modifiedGreTunnel) {
-            $.modifiedGreTunnel = modifiedGreTunnel;
-            return this;
-        }
-
-        public Builder modifiedGreTunnel(MagicWanGreTunnelModifiedGreTunnelArgs modifiedGreTunnel) {
-            return modifiedGreTunnel(Output.of(modifiedGreTunnel));
         }
 
         /**

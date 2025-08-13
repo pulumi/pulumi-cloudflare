@@ -38,7 +38,7 @@ export interface GetWaitingRoomEventsArgs {
     maxItems?: number;
     waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -61,7 +61,7 @@ export interface GetWaitingRoomEventsResult {
     readonly results: outputs.GetWaitingRoomEventsResult[];
     readonly waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -97,7 +97,7 @@ export interface GetWaitingRoomEventsOutputArgs {
     maxItems?: pulumi.Input<number>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

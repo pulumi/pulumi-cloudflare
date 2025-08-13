@@ -64,14 +64,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/list:List")
 public class List extends com.pulumi.resources.CustomResource {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -164,14 +164,14 @@ public class List extends com.pulumi.resources.CustomResource {
         return this.numItems;
     }
     /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     @Export(name="numReferencingFilters", refs={Double.class}, tree="[0]")
     private Output<Double> numReferencingFilters;
 
     /**
-     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * @return The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     public Output<Double> numReferencingFilters() {

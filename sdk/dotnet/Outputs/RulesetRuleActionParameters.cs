@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? OriginCacheControl;
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
         /// </summary>
         public readonly bool? OriginErrorPagePassthru;
         /// <summary>
@@ -143,12 +143,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         /// <summary>
-        /// A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+        /// A phase to skip the execution of. This property is only compatible with products.
+        /// Available values: "current".
+        /// </summary>
+        public readonly string? Phase;
+        /// <summary>
+        /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
         /// </summary>
         public readonly ImmutableArray<string> Phases;
         /// <summary>
         /// Configure the Polish level.
-        /// Available values: "off", "lossless", "lossy".
+        /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         public readonly string? Polish;
         /// <summary>
@@ -180,7 +185,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponseField> ResponseFields;
         /// <summary>
-        /// Turn on or off Rocket Loader
+        /// Turn on or off Rocket Loader.
         /// </summary>
         public readonly bool? RocketLoader;
         /// <summary>
@@ -188,7 +193,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>>? Rules;
         /// <summary>
-        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+        /// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
         /// Available values: "current".
         /// </summary>
         public readonly string? Ruleset;
@@ -301,6 +306,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
+            string? phase,
+
             ImmutableArray<string> phases,
 
             string? polish,
@@ -377,6 +384,7 @@ namespace Pulumi.Cloudflare.Outputs
             OriginCacheControl = originCacheControl;
             OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
+            Phase = phase;
             Phases = phases;
             Polish = polish;
             Products = products;

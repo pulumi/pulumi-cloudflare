@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the ttl for responses with this specific status code
+        /// Set the TTL for responses with this specific status code.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }

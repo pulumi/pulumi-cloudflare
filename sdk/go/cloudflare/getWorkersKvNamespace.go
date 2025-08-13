@@ -49,7 +49,7 @@ func LookupWorkersKvNamespace(ctx *pulumi.Context, args *LookupWorkersKvNamespac
 
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string                       `pulumi:"accountId"`
 	Filter    *GetWorkersKvNamespaceFilter `pulumi:"filter"`
 	// Namespace identifier tag.
@@ -58,7 +58,7 @@ type LookupWorkersKvNamespaceArgs struct {
 
 // A collection of values returned by getWorkersKvNamespace.
 type LookupWorkersKvNamespaceResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// True if new beta namespace, with additional preview features.
 	Beta   bool                         `pulumi:"beta"`
@@ -84,7 +84,7 @@ func LookupWorkersKvNamespaceOutput(ctx *pulumi.Context, args LookupWorkersKvNam
 
 // A collection of arguments for invoking getWorkersKvNamespace.
 type LookupWorkersKvNamespaceOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput                  `pulumi:"accountId"`
 	Filter    GetWorkersKvNamespaceFilterPtrInput `pulumi:"filter"`
 	// Namespace identifier tag.
@@ -110,7 +110,7 @@ func (o LookupWorkersKvNamespaceResultOutput) ToLookupWorkersKvNamespaceResultOu
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersKvNamespaceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespaceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

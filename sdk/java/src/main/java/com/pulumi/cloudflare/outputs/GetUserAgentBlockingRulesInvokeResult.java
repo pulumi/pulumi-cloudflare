@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetUserAgentBlockingRulesResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,11 +22,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     private @Nullable String description;
     /**
-     * @return A string to search for in the description of existing rules.
-     * 
-     */
-    private @Nullable String descriptionSearch;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -36,6 +32,11 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    private @Nullable Boolean paused;
+    /**
      * @return The items returned by the data source
      * 
      */
@@ -44,7 +45,7 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      * @return A string to search for in the user agent values of existing rules.
      * 
      */
-    private @Nullable String uaSearch;
+    private @Nullable String userAgent;
     /**
      * @return Defines an identifier.
      * 
@@ -58,13 +59,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
-    }
-    /**
-     * @return A string to search for in the description of existing rules.
-     * 
-     */
-    public Optional<String> descriptionSearch() {
-        return Optional.ofNullable(this.descriptionSearch);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -81,6 +75,13 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    public Optional<Boolean> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+    /**
      * @return The items returned by the data source
      * 
      */
@@ -91,8 +92,8 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      * @return A string to search for in the user agent values of existing rules.
      * 
      */
-    public Optional<String> uaSearch() {
-        return Optional.ofNullable(this.uaSearch);
+    public Optional<String> userAgent() {
+        return Optional.ofNullable(this.userAgent);
     }
     /**
      * @return Defines an identifier.
@@ -112,21 +113,21 @@ public final class GetUserAgentBlockingRulesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
-        private @Nullable String descriptionSearch;
         private String id;
         private @Nullable Integer maxItems;
+        private @Nullable Boolean paused;
         private List<GetUserAgentBlockingRulesResult> results;
-        private @Nullable String uaSearch;
+        private @Nullable String userAgent;
         private String zoneId;
         public Builder() {}
         public Builder(GetUserAgentBlockingRulesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
-    	      this.descriptionSearch = defaults.descriptionSearch;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
+    	      this.paused = defaults.paused;
     	      this.results = defaults.results;
-    	      this.uaSearch = defaults.uaSearch;
+    	      this.userAgent = defaults.userAgent;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -134,12 +135,6 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         public Builder description(@Nullable String description) {
 
             this.description = description;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder descriptionSearch(@Nullable String descriptionSearch) {
-
-            this.descriptionSearch = descriptionSearch;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +152,12 @@ public final class GetUserAgentBlockingRulesInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder paused(@Nullable Boolean paused) {
+
+            this.paused = paused;
+            return this;
+        }
+        @CustomType.Setter
         public Builder results(List<GetUserAgentBlockingRulesResult> results) {
             if (results == null) {
               throw new MissingRequiredPropertyException("GetUserAgentBlockingRulesInvokeResult", "results");
@@ -168,9 +169,9 @@ public final class GetUserAgentBlockingRulesInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
-        public Builder uaSearch(@Nullable String uaSearch) {
+        public Builder userAgent(@Nullable String userAgent) {
 
-            this.uaSearch = uaSearch;
+            this.userAgent = userAgent;
             return this;
         }
         @CustomType.Setter
@@ -184,11 +185,11 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         public GetUserAgentBlockingRulesInvokeResult build() {
             final var _resultValue = new GetUserAgentBlockingRulesInvokeResult();
             _resultValue.description = description;
-            _resultValue.descriptionSearch = descriptionSearch;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
+            _resultValue.paused = paused;
             _resultValue.results = results;
-            _resultValue.uaSearch = uaSearch;
+            _resultValue.userAgent = userAgent;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

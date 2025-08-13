@@ -12,7 +12,9 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
@@ -20,6 +22,8 @@ export function getAccountApiTokenPermissionGroups(args: GetAccountApiTokenPermi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {
         "accountId": args.accountId,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -31,6 +35,16 @@ export interface GetAccountApiTokenPermissionGroupsArgs {
      * Account identifier tag.
      */
     accountId: string;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: string;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: string;
 }
 
 /**
@@ -42,17 +56,19 @@ export interface GetAccountApiTokenPermissionGroupsResult {
      */
     readonly accountId: string;
     /**
-     * Public ID.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Permission Group Name
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
      */
-    readonly name: string;
+    readonly name?: string;
     /**
-     * Resources to which the Permission Group is scoped
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
      */
-    readonly scopes: string[];
+    readonly scope?: string;
 }
 /**
  * ## Example Usage
@@ -62,7 +78,9 @@ export interface GetAccountApiTokenPermissionGroupsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
@@ -70,6 +88,8 @@ export function getAccountApiTokenPermissionGroupsOutput(args: GetAccountApiToke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups", {
         "accountId": args.accountId,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -81,4 +101,14 @@ export interface GetAccountApiTokenPermissionGroupsOutputArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: pulumi.Input<string>;
 }

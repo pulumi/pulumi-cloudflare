@@ -108,13 +108,17 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         /// </summary>
         public readonly ImmutableArray<string> Usages;
+        /// <summary>
+        /// Name of the Workflow to bind to.
+        /// </summary>
+        public readonly string? WorkflowName;
 
         [OutputConstructor]
         private WorkersScriptBinding(
@@ -166,7 +170,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string type,
 
-            ImmutableArray<string> usages)
+            ImmutableArray<string> usages,
+
+            string? workflowName)
         {
             Algorithm = algorithm;
             BucketName = bucketName;
@@ -193,6 +199,7 @@ namespace Pulumi.Cloudflare.Outputs
             Text = text;
             Type = type;
             Usages = usages;
+            WorkflowName = workflowName;
         }
     }
 }

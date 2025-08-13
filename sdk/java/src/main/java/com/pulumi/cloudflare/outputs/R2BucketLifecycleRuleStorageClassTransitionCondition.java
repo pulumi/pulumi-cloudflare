@@ -16,7 +16,7 @@ public final class R2BucketLifecycleRuleStorageClassTransitionCondition {
     private @Nullable String date;
     private @Nullable Integer maxAge;
     /**
-     * @return Available values: &#34;Age&#34;.
+     * @return Available values: &#34;Age&#34;, &#34;Date&#34;.
      * 
      */
     private String type;
@@ -29,7 +29,7 @@ public final class R2BucketLifecycleRuleStorageClassTransitionCondition {
         return Optional.ofNullable(this.maxAge);
     }
     /**
-     * @return Available values: &#34;Age&#34;.
+     * @return Available values: &#34;Age&#34;, &#34;Date&#34;.
      * 
      */
     public String type() {

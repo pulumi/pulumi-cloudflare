@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetHyperdriveConfigsResultMtlsResult
     {
         /// <summary>
-        /// CA certificate ID
+        /// Define CA certificate ID obtained after uploading CA cert.
         /// </summary>
         public readonly string CaCertificateId;
         /// <summary>
-        /// mTLS certificate ID
+        /// Define mTLS certificate ID obtained after uploading client cert.
         /// </summary>
         public readonly string MtlsCertificateId;
         /// <summary>
-        /// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+        /// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
         /// </summary>
         public readonly string Sslmode;
 

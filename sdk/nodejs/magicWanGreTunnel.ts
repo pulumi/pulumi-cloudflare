@@ -9,31 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     cloudflareGreEndpoint: "203.0.113.1",
- *     customerGreEndpoint: "203.0.113.1",
- *     interfaceAddress: "192.0.2.0/31",
- *     name: "GRE_1",
- *     description: "Tunnel for ISP X",
- *     healthCheck: {
- *         direction: "bidirectional",
- *         enabled: true,
- *         rate: "low",
- *         target: {
- *             saved: "203.0.113.1",
- *         },
- *         type: "request",
- *     },
- *     mtu: 0,
- *     ttl: 0,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -88,14 +63,11 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
      * An optional description of the GRE tunnel.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly greTunnel!: pulumi.Output<outputs.MagicWanGreTunnelGreTunnel>;
     public readonly healthCheck!: pulumi.Output<outputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
     public readonly interfaceAddress!: pulumi.Output<string>;
-    public /*out*/ readonly modified!: pulumi.Output<boolean>;
-    public /*out*/ readonly modifiedGreTunnel!: pulumi.Output<outputs.MagicWanGreTunnelModifiedGreTunnel>;
     /**
      * The date and time the tunnel was last modified.
      */
@@ -131,11 +103,8 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["customerGreEndpoint"] = state ? state.customerGreEndpoint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["greTunnel"] = state ? state.greTunnel : undefined;
             resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["modifiedGreTunnel"] = state ? state.modifiedGreTunnel : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -167,9 +136,6 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["greTunnel"] = undefined /*out*/;
-            resourceInputs["modified"] = undefined /*out*/;
-            resourceInputs["modifiedGreTunnel"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -203,14 +169,11 @@ export interface MagicWanGreTunnelState {
      * An optional description of the GRE tunnel.
      */
     description?: pulumi.Input<string>;
-    greTunnel?: pulumi.Input<inputs.MagicWanGreTunnelGreTunnel>;
     healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
     interfaceAddress?: pulumi.Input<string>;
-    modified?: pulumi.Input<boolean>;
-    modifiedGreTunnel?: pulumi.Input<inputs.MagicWanGreTunnelModifiedGreTunnel>;
     /**
      * The date and time the tunnel was last modified.
      */

@@ -194,7 +194,7 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private Boolean serviceAuth401Redirect;
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     private String sessionDuration;
@@ -216,6 +216,7 @@ public final class GetZeroTrustAccessApplicationResult {
     private List<GetZeroTrustAccessApplicationTargetCriteria> targetCriterias;
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     private String type;
@@ -470,7 +471,7 @@ public final class GetZeroTrustAccessApplicationResult {
         return this.serviceAuth401Redirect;
     }
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     public String sessionDuration() {
@@ -502,6 +503,7 @@ public final class GetZeroTrustAccessApplicationResult {
     }
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public String type() {

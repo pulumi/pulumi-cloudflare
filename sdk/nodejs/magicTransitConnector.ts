@@ -9,21 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleMagicTransitConnector = new cloudflare.MagicTransitConnector("example_magic_transit_connector", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     connectorId: "connector_id",
- *     activated: true,
- *     interruptWindowDurationHours: 0,
- *     interruptWindowHourOfDay: 0,
- *     notes: "notes",
- *     timezone: "timezone",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -58,17 +43,16 @@ export class MagicTransitConnector extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicTransitConnector.__pulumiType;
     }
 
+    /**
+     * Account identifier
+     */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly activated!: pulumi.Output<boolean | undefined>;
-    public readonly connectorId!: pulumi.Output<string>;
-    public /*out*/ readonly device!: pulumi.Output<outputs.MagicTransitConnectorDevice>;
-    public readonly interruptWindowDurationHours!: pulumi.Output<number | undefined>;
-    public readonly interruptWindowHourOfDay!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly lastHeartbeat!: pulumi.Output<string>;
-    public /*out*/ readonly lastSeenVersion!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
-    public readonly notes!: pulumi.Output<string | undefined>;
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly activated!: pulumi.Output<boolean>;
+    public readonly device!: pulumi.Output<outputs.MagicTransitConnectorDevice>;
+    public readonly interruptWindowDurationHours!: pulumi.Output<number>;
+    public readonly interruptWindowHourOfDay!: pulumi.Output<number>;
+    public readonly notes!: pulumi.Output<string>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a MagicTransitConnector resource with the given unique name, arguments, and options.
@@ -85,13 +69,9 @@ export class MagicTransitConnector extends pulumi.CustomResource {
             const state = argsOrState as MagicTransitConnectorState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["activated"] = state ? state.activated : undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["device"] = state ? state.device : undefined;
             resourceInputs["interruptWindowDurationHours"] = state ? state.interruptWindowDurationHours : undefined;
             resourceInputs["interruptWindowHourOfDay"] = state ? state.interruptWindowHourOfDay : undefined;
-            resourceInputs["lastHeartbeat"] = state ? state.lastHeartbeat : undefined;
-            resourceInputs["lastSeenVersion"] = state ? state.lastSeenVersion : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["notes"] = state ? state.notes : undefined;
             resourceInputs["timezone"] = state ? state.timezone : undefined;
         } else {
@@ -99,20 +79,16 @@ export class MagicTransitConnector extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectorId'");
+            if ((!args || args.device === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'device'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["activated"] = args ? args.activated : undefined;
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
+            resourceInputs["device"] = args ? args.device : undefined;
             resourceInputs["interruptWindowDurationHours"] = args ? args.interruptWindowDurationHours : undefined;
             resourceInputs["interruptWindowHourOfDay"] = args ? args.interruptWindowHourOfDay : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["device"] = undefined /*out*/;
-            resourceInputs["lastHeartbeat"] = undefined /*out*/;
-            resourceInputs["lastSeenVersion"] = undefined /*out*/;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitConnector.__pulumiType, name, resourceInputs, opts);
@@ -123,15 +99,14 @@ export class MagicTransitConnector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MagicTransitConnector resources.
  */
 export interface MagicTransitConnectorState {
+    /**
+     * Account identifier
+     */
     accountId?: pulumi.Input<string>;
     activated?: pulumi.Input<boolean>;
-    connectorId?: pulumi.Input<string>;
     device?: pulumi.Input<inputs.MagicTransitConnectorDevice>;
     interruptWindowDurationHours?: pulumi.Input<number>;
     interruptWindowHourOfDay?: pulumi.Input<number>;
-    lastHeartbeat?: pulumi.Input<string>;
-    lastSeenVersion?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
     notes?: pulumi.Input<string>;
     timezone?: pulumi.Input<string>;
 }
@@ -140,9 +115,12 @@ export interface MagicTransitConnectorState {
  * The set of arguments for constructing a MagicTransitConnector resource.
  */
 export interface MagicTransitConnectorArgs {
+    /**
+     * Account identifier
+     */
     accountId: pulumi.Input<string>;
     activated?: pulumi.Input<boolean>;
-    connectorId: pulumi.Input<string>;
+    device: pulumi.Input<inputs.MagicTransitConnectorDevice>;
     interruptWindowDurationHours?: pulumi.Input<number>;
     interruptWindowHourOfDay?: pulumi.Input<number>;
     notes?: pulumi.Input<string>;

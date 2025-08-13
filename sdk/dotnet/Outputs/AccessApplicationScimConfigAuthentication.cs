@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Password;
         /// <summary>
         /// The authentication scheme to use when making SCIM requests to this application.
-        /// Available values: "httpbasic".
+        /// Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
         /// </summary>
         public readonly string Scheme;
         /// <summary>

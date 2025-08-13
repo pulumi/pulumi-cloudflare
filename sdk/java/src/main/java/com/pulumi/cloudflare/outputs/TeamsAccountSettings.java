@@ -13,6 +13,7 @@ import com.pulumi.cloudflare.outputs.TeamsAccountSettingsCustomCertificate;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsHostSelector;
+import com.pulumi.cloudflare.outputs.TeamsAccountSettingsInspection;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsProtocolDetection;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsSandbox;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsTlsDecrypt;
@@ -77,6 +78,11 @@ public final class TeamsAccountSettings {
      * 
      */
     private @Nullable TeamsAccountSettingsHostSelector hostSelector;
+    /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    private @Nullable TeamsAccountSettingsInspection inspection;
     /**
      * @return Protocol Detection settings.
      * 
@@ -169,6 +175,13 @@ public final class TeamsAccountSettings {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public Optional<TeamsAccountSettingsInspection> inspection() {
+        return Optional.ofNullable(this.inspection);
+    }
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -209,6 +222,7 @@ public final class TeamsAccountSettings {
         private @Nullable TeamsAccountSettingsExtendedEmailMatching extendedEmailMatching;
         private @Nullable TeamsAccountSettingsFips fips;
         private @Nullable TeamsAccountSettingsHostSelector hostSelector;
+        private @Nullable TeamsAccountSettingsInspection inspection;
         private @Nullable TeamsAccountSettingsProtocolDetection protocolDetection;
         private @Nullable TeamsAccountSettingsSandbox sandbox;
         private @Nullable TeamsAccountSettingsTlsDecrypt tlsDecrypt;
@@ -225,6 +239,7 @@ public final class TeamsAccountSettings {
     	      this.extendedEmailMatching = defaults.extendedEmailMatching;
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
+    	      this.inspection = defaults.inspection;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -291,6 +306,12 @@ public final class TeamsAccountSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder inspection(@Nullable TeamsAccountSettingsInspection inspection) {
+
+            this.inspection = inspection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(@Nullable TeamsAccountSettingsProtocolDetection protocolDetection) {
 
             this.protocolDetection = protocolDetection;
@@ -320,6 +341,7 @@ public final class TeamsAccountSettings {
             _resultValue.extendedEmailMatching = extendedEmailMatching;
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
+            _resultValue.inspection = inspection;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

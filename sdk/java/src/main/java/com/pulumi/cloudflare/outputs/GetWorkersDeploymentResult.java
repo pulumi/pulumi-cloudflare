@@ -3,7 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetWorkersDeploymentDeployment;
+import com.pulumi.cloudflare.outputs.GetWorkersDeploymentAnnotations;
+import com.pulumi.cloudflare.outputs.GetWorkersDeploymentVersion;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -17,17 +18,27 @@ public final class GetWorkersDeploymentResult {
      * 
      */
     private String accountId;
-    private List<GetWorkersDeploymentDeployment> deployments;
+    private GetWorkersDeploymentAnnotations annotations;
+    private String authorEmail;
+    private String createdOn;
+    private String deploymentId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     private String scriptName;
+    private String source;
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
+    private String strategy;
+    private List<GetWorkersDeploymentVersion> versions;
 
     private GetWorkersDeploymentResult() {}
     /**
@@ -37,22 +48,44 @@ public final class GetWorkersDeploymentResult {
     public String accountId() {
         return this.accountId;
     }
-    public List<GetWorkersDeploymentDeployment> deployments() {
-        return this.deployments;
+    public GetWorkersDeploymentAnnotations annotations() {
+        return this.annotations;
+    }
+    public String authorEmail() {
+        return this.authorEmail;
+    }
+    public String createdOn() {
+        return this.createdOn;
+    }
+    public String deploymentId() {
+        return this.deploymentId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public String scriptName() {
         return this.scriptName;
+    }
+    public String source() {
+        return this.source;
+    }
+    /**
+     * @return Available values: &#34;percentage&#34;.
+     * 
+     */
+    public String strategy() {
+        return this.strategy;
+    }
+    public List<GetWorkersDeploymentVersion> versions() {
+        return this.versions;
     }
 
     public static Builder builder() {
@@ -65,16 +98,28 @@ public final class GetWorkersDeploymentResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private List<GetWorkersDeploymentDeployment> deployments;
+        private GetWorkersDeploymentAnnotations annotations;
+        private String authorEmail;
+        private String createdOn;
+        private String deploymentId;
         private String id;
         private String scriptName;
+        private String source;
+        private String strategy;
+        private List<GetWorkersDeploymentVersion> versions;
         public Builder() {}
         public Builder(GetWorkersDeploymentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.deployments = defaults.deployments;
+    	      this.annotations = defaults.annotations;
+    	      this.authorEmail = defaults.authorEmail;
+    	      this.createdOn = defaults.createdOn;
+    	      this.deploymentId = defaults.deploymentId;
     	      this.id = defaults.id;
     	      this.scriptName = defaults.scriptName;
+    	      this.source = defaults.source;
+    	      this.strategy = defaults.strategy;
+    	      this.versions = defaults.versions;
         }
 
         @CustomType.Setter
@@ -86,15 +131,36 @@ public final class GetWorkersDeploymentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder deployments(List<GetWorkersDeploymentDeployment> deployments) {
-            if (deployments == null) {
-              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "deployments");
+        public Builder annotations(GetWorkersDeploymentAnnotations annotations) {
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "annotations");
             }
-            this.deployments = deployments;
+            this.annotations = annotations;
             return this;
         }
-        public Builder deployments(GetWorkersDeploymentDeployment... deployments) {
-            return deployments(List.of(deployments));
+        @CustomType.Setter
+        public Builder authorEmail(String authorEmail) {
+            if (authorEmail == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "authorEmail");
+            }
+            this.authorEmail = authorEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "createdOn");
+            }
+            this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deploymentId(String deploymentId) {
+            if (deploymentId == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "deploymentId");
+            }
+            this.deploymentId = deploymentId;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -112,12 +178,45 @@ public final class GetWorkersDeploymentResult {
             this.scriptName = scriptName;
             return this;
         }
+        @CustomType.Setter
+        public Builder source(String source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "source");
+            }
+            this.source = source;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder strategy(String strategy) {
+            if (strategy == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "strategy");
+            }
+            this.strategy = strategy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder versions(List<GetWorkersDeploymentVersion> versions) {
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetWorkersDeploymentResult", "versions");
+            }
+            this.versions = versions;
+            return this;
+        }
+        public Builder versions(GetWorkersDeploymentVersion... versions) {
+            return versions(List.of(versions));
+        }
         public GetWorkersDeploymentResult build() {
             final var _resultValue = new GetWorkersDeploymentResult();
             _resultValue.accountId = accountId;
-            _resultValue.deployments = deployments;
+            _resultValue.annotations = annotations;
+            _resultValue.authorEmail = authorEmail;
+            _resultValue.createdOn = createdOn;
+            _resultValue.deploymentId = deploymentId;
             _resultValue.id = id;
             _resultValue.scriptName = scriptName;
+            _resultValue.source = source;
+            _resultValue.strategy = strategy;
+            _resultValue.versions = versions;
             return _resultValue;
         }
     }

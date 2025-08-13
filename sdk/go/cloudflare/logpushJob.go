@@ -30,17 +30,19 @@ type LogpushJob struct {
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
 	// Flag that indicates if the job is enabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete pulumi.StringOutput `pulumi:"lastComplete"`
 	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
@@ -49,16 +51,16 @@ type LogpushJob struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntPtrOutput `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-	MaxUploadIntervalSeconds pulumi.IntOutput `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
-	MaxUploadRecords pulumi.IntOutput `pulumi:"maxUploadRecords"`
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+	MaxUploadIntervalSeconds pulumi.IntPtrOutput `pulumi:"maxUploadIntervalSeconds"`
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
+	MaxUploadRecords pulumi.IntPtrOutput `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
-	OutputOptions LogpushJobOutputOptionsOutput `pulumi:"outputOptions"`
+	OutputOptions LogpushJobOutputOptionsPtrOutput `pulumi:"outputOptions"`
 	// Ownership challenge token to prove destination ownership.
 	OwnershipChallenge pulumi.StringPtrOutput `pulumi:"ownershipChallenge"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -116,13 +118,15 @@ type logpushJobState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage *string `pulumi:"errorMessage"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter *string `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
 	Frequency *string `pulumi:"frequency"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind *string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete *string `pulumi:"lastComplete"`
@@ -132,11 +136,11 @@ type logpushJobState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions *string `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes *int `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds *int `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name *string `pulumi:"name"`
@@ -160,13 +164,15 @@ type LogpushJobState struct {
 	Enabled pulumi.BoolPtrInput
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringPtrInput
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
 	Frequency pulumi.StringPtrInput
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind pulumi.StringPtrInput
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete pulumi.StringPtrInput
@@ -176,11 +182,11 @@ type LogpushJobState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringPtrInput
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntPtrInput
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds pulumi.IntPtrInput
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords pulumi.IntPtrInput
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name pulumi.StringPtrInput
@@ -206,23 +212,25 @@ type logpushJobArgs struct {
 	DestinationConf string `pulumi:"destinationConf"`
 	// Flag that indicates if the job is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter *string `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
 	Frequency *string `pulumi:"frequency"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind *string `pulumi:"kind"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions *string `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes *int `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds *int `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name *string `pulumi:"name"`
@@ -245,23 +253,25 @@ type LogpushJobArgs struct {
 	DestinationConf pulumi.StringInput
 	// Flag that indicates if the job is enabled.
 	Enabled pulumi.BoolPtrInput
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
 	Frequency pulumi.StringPtrInput
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind pulumi.StringPtrInput
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringPtrInput
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntPtrInput
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds pulumi.IntPtrInput
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords pulumi.IntPtrInput
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name pulumi.StringPtrInput
@@ -377,13 +387,18 @@ func (o LogpushJobOutput) DestinationConf() pulumi.StringOutput {
 }
 
 // Flag that indicates if the job is enabled.
-func (o LogpushJobOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o LogpushJobOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 func (o LogpushJobOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+func (o LogpushJobOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -394,10 +409,10 @@ func (o LogpushJobOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-// Available values: "edge".
-func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+// Available values: "", "edge".
+func (o LogpushJobOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
@@ -417,19 +432,19 @@ func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
 }
 
-// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 func (o LogpushJobOutput) MaxUploadBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadBytes }).(pulumi.IntPtrOutput)
 }
 
-// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-func (o LogpushJobOutput) MaxUploadIntervalSeconds() pulumi.IntOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.IntOutput { return v.MaxUploadIntervalSeconds }).(pulumi.IntOutput)
+// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+func (o LogpushJobOutput) MaxUploadIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadIntervalSeconds }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
-func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.IntOutput { return v.MaxUploadRecords }).(pulumi.IntOutput)
+// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
+func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.IntPtrOutput { return v.MaxUploadRecords }).(pulumi.IntPtrOutput)
 }
 
 // Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
@@ -438,8 +453,8 @@ func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
-func (o LogpushJobOutput) OutputOptions() LogpushJobOutputOptionsOutput {
-	return o.ApplyT(func(v *LogpushJob) LogpushJobOutputOptionsOutput { return v.OutputOptions }).(LogpushJobOutputOptionsOutput)
+func (o LogpushJobOutput) OutputOptions() LogpushJobOutputOptionsPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) LogpushJobOutputOptionsPtrOutput { return v.OutputOptions }).(LogpushJobOutputOptionsPtrOutput)
 }
 
 // Ownership challenge token to prove destination ownership.

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiTokenPolicyPermissionGroup {
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     private String id;
@@ -24,14 +24,14 @@ public final class ApiTokenPolicyPermissionGroup {
      */
     private @Nullable ApiTokenPolicyPermissionGroupMeta meta;
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     private @Nullable String name;
 
     private ApiTokenPolicyPermissionGroup() {}
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     public String id() {
@@ -45,7 +45,7 @@ public final class ApiTokenPolicyPermissionGroup {
         return Optional.ofNullable(this.meta);
     }
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     public Optional<String> name() {

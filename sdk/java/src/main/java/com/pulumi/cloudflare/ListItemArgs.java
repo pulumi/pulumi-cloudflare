@@ -20,14 +20,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListItemArgs Empty = new ListItemArgs();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -80,14 +80,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * @return An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -155,7 +155,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+         * @param ip An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+         * @param ip An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
          * 
          * @return builder
          * 

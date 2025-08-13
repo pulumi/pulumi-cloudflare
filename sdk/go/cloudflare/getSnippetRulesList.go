@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupSnippetRulesList(ctx, &cloudflare.LookupSnippetRulesListArgs{
-//				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ZoneId: "9f1839b6152d298aca64c4e906b6d074",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupSnippetRulesList(ctx *pulumi.Context, args *LookupSnippetRulesListArg
 type LookupSnippetRulesListArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupSnippetRulesListResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetSnippetRulesListResult `pulumi:"results"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupSnippetRulesListOutput(ctx *pulumi.Context, args LookupSnippetRulesLi
 type LookupSnippetRulesListOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupSnippetRulesListResultOutput) Results() GetSnippetRulesListResultA
 	return o.ApplyT(func(v LookupSnippetRulesListResult) []GetSnippetRulesListResult { return v.Results }).(GetSnippetRulesListResultArrayOutput)
 }
 
-// Identifier
+// The unique ID of the zone.
 func (o LookupSnippetRulesListResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetRulesListResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

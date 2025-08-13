@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustGatewayPolicyResult {
     private String accountId;
     /**
-     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -56,7 +56,9 @@ public final class GetZeroTrustGatewayPolicyResult {
     private String id;
     private String identity;
     private String name;
+    private Boolean notSharable;
     private Integer precedence;
+    private Boolean readOnly;
     /**
      * @return The API resource UUID.
      * 
@@ -64,16 +66,18 @@ public final class GetZeroTrustGatewayPolicyResult {
     private @Nullable String ruleId;
     private GetZeroTrustGatewayPolicyRuleSettings ruleSettings;
     private GetZeroTrustGatewayPolicySchedule schedule;
+    private String sourceAccount;
     private String traffic;
     private String updatedAt;
     private Integer version;
+    private String warningStatus;
 
     private GetZeroTrustGatewayPolicyResult() {}
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -131,8 +135,14 @@ public final class GetZeroTrustGatewayPolicyResult {
     public String name() {
         return this.name;
     }
+    public Boolean notSharable() {
+        return this.notSharable;
+    }
     public Integer precedence() {
         return this.precedence;
+    }
+    public Boolean readOnly() {
+        return this.readOnly;
     }
     /**
      * @return The API resource UUID.
@@ -147,6 +157,9 @@ public final class GetZeroTrustGatewayPolicyResult {
     public GetZeroTrustGatewayPolicySchedule schedule() {
         return this.schedule;
     }
+    public String sourceAccount() {
+        return this.sourceAccount;
+    }
     public String traffic() {
         return this.traffic;
     }
@@ -155,6 +168,9 @@ public final class GetZeroTrustGatewayPolicyResult {
     }
     public Integer version() {
         return this.version;
+    }
+    public String warningStatus() {
+        return this.warningStatus;
     }
 
     public static Builder builder() {
@@ -178,13 +194,17 @@ public final class GetZeroTrustGatewayPolicyResult {
         private String id;
         private String identity;
         private String name;
+        private Boolean notSharable;
         private Integer precedence;
+        private Boolean readOnly;
         private @Nullable String ruleId;
         private GetZeroTrustGatewayPolicyRuleSettings ruleSettings;
         private GetZeroTrustGatewayPolicySchedule schedule;
+        private String sourceAccount;
         private String traffic;
         private String updatedAt;
         private Integer version;
+        private String warningStatus;
         public Builder() {}
         public Builder(GetZeroTrustGatewayPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -200,13 +220,17 @@ public final class GetZeroTrustGatewayPolicyResult {
     	      this.id = defaults.id;
     	      this.identity = defaults.identity;
     	      this.name = defaults.name;
+    	      this.notSharable = defaults.notSharable;
     	      this.precedence = defaults.precedence;
+    	      this.readOnly = defaults.readOnly;
     	      this.ruleId = defaults.ruleId;
     	      this.ruleSettings = defaults.ruleSettings;
     	      this.schedule = defaults.schedule;
+    	      this.sourceAccount = defaults.sourceAccount;
     	      this.traffic = defaults.traffic;
     	      this.updatedAt = defaults.updatedAt;
     	      this.version = defaults.version;
+    	      this.warningStatus = defaults.warningStatus;
         }
 
         @CustomType.Setter
@@ -309,11 +333,27 @@ public final class GetZeroTrustGatewayPolicyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder notSharable(Boolean notSharable) {
+            if (notSharable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "notSharable");
+            }
+            this.notSharable = notSharable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder precedence(Integer precedence) {
             if (precedence == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "precedence");
             }
             this.precedence = precedence;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder readOnly(Boolean readOnly) {
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "readOnly");
+            }
+            this.readOnly = readOnly;
             return this;
         }
         @CustomType.Setter
@@ -336,6 +376,14 @@ public final class GetZeroTrustGatewayPolicyResult {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "schedule");
             }
             this.schedule = schedule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceAccount(String sourceAccount) {
+            if (sourceAccount == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "sourceAccount");
+            }
+            this.sourceAccount = sourceAccount;
             return this;
         }
         @CustomType.Setter
@@ -362,6 +410,14 @@ public final class GetZeroTrustGatewayPolicyResult {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder warningStatus(String warningStatus) {
+            if (warningStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "warningStatus");
+            }
+            this.warningStatus = warningStatus;
+            return this;
+        }
         public GetZeroTrustGatewayPolicyResult build() {
             final var _resultValue = new GetZeroTrustGatewayPolicyResult();
             _resultValue.accountId = accountId;
@@ -376,13 +432,17 @@ public final class GetZeroTrustGatewayPolicyResult {
             _resultValue.id = id;
             _resultValue.identity = identity;
             _resultValue.name = name;
+            _resultValue.notSharable = notSharable;
             _resultValue.precedence = precedence;
+            _resultValue.readOnly = readOnly;
             _resultValue.ruleId = ruleId;
             _resultValue.ruleSettings = ruleSettings;
             _resultValue.schedule = schedule;
+            _resultValue.sourceAccount = sourceAccount;
             _resultValue.traffic = traffic;
             _resultValue.updatedAt = updatedAt;
             _resultValue.version = version;
+            _resultValue.warningStatus = warningStatus;
             return _resultValue;
         }
     }

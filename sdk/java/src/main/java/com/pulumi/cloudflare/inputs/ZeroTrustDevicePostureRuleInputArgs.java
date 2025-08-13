@@ -80,14 +80,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Common Name that is protected by the certificate
+     * Common Name that is protected by the certificate.
      * 
      */
     @Import(name="cn")
     private @Nullable Output<String> cn;
 
     /**
-     * @return Common Name that is protected by the certificate
+     * @return Common Name that is protected by the certificate.
      * 
      */
     public Optional<Output<String>> cn() {
@@ -95,16 +95,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="complianceStatus")
     private @Nullable Output<String> complianceStatus;
 
     /**
-     * @return Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * @return Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> complianceStatus() {
@@ -127,7 +127,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Count Operator
+     * Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -135,7 +135,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     private @Nullable Output<String> countOperator;
 
     /**
-     * @return Count Operator
+     * @return Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -144,14 +144,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Domain
+     * Domain.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Domain
+     * @return Domain.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -174,14 +174,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Enabled
+     * Enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enabled
+     * @return Enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -189,14 +189,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Whether or not file exists
+     * Whether or not file exists.
      * 
      */
     @Import(name="exists")
     private @Nullable Output<Boolean> exists;
 
     /**
-     * @return Whether or not file exists
+     * @return Whether or not file exists.
      * 
      */
     public Optional<Output<Boolean>> exists() {
@@ -204,14 +204,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * List of values indicating purposes for which the certificate public key can be used
+     * List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     @Import(name="extendedKeyUsages")
     private @Nullable Output<List<String>> extendedKeyUsages;
 
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used
+     * @return List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     public Optional<Output<List<String>>> extendedKeyUsages() {
@@ -318,16 +318,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     @Import(name="operatingSystem")
     private @Nullable Output<String> operatingSystem;
 
     /**
-     * @return Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * @return Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     public Optional<Output<String>> operatingSystem() {
@@ -352,7 +352,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * operator
+     * Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -360,7 +360,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     private @Nullable Output<String> operator;
 
     /**
-     * @return operator
+     * @return Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -369,14 +369,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Os Version
+     * Os Version.
      * 
      */
     @Import(name="os")
     private @Nullable Output<String> os;
 
     /**
-     * @return Os Version
+     * @return Os Version.
      * 
      */
     public Optional<Output<String>> os() {
@@ -384,14 +384,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Operating System Distribution Name (linux only)
+     * Operating System Distribution Name (linux only).
      * 
      */
     @Import(name="osDistroName")
     private @Nullable Output<String> osDistroName;
 
     /**
-     * @return Operating System Distribution Name (linux only)
+     * @return Operating System Distribution Name (linux only).
      * 
      */
     public Optional<Output<String>> osDistroName() {
@@ -399,14 +399,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Version of OS Distribution (linux only)
+     * Version of OS Distribution (linux only).
      * 
      */
     @Import(name="osDistroRevision")
     private @Nullable Output<String> osDistroRevision;
 
     /**
-     * @return Version of OS Distribution (linux only)
+     * @return Version of OS Distribution (linux only).
      * 
      */
     public Optional<Output<String>> osDistroRevision() {
@@ -414,14 +414,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     @Import(name="osVersionExtra")
     private @Nullable Output<String> osVersionExtra;
 
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     public Optional<Output<String>> osVersionExtra() {
@@ -429,14 +429,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * overall
+     * Overall.
      * 
      */
     @Import(name="overall")
     private @Nullable Output<String> overall;
 
     /**
-     * @return overall
+     * @return Overall.
      * 
      */
     public Optional<Output<String>> overall() {
@@ -506,7 +506,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Score Operator
+     * Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -514,7 +514,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     private @Nullable Output<String> scoreOperator;
 
     /**
-     * @return Score Operator
+     * @return Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -523,14 +523,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * SensorConfig
+     * SensorConfig.
      * 
      */
     @Import(name="sensorConfig")
     private @Nullable Output<String> sensorConfig;
 
     /**
-     * @return SensorConfig
+     * @return SensorConfig.
      * 
      */
     public Optional<Output<String>> sensorConfig() {
@@ -570,6 +570,21 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
+     * List of certificate Subject Alternative Names.
+     * 
+     */
+    @Import(name="subjectAlternativeNames")
+    private @Nullable Output<List<String>> subjectAlternativeNames;
+
+    /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    public Optional<Output<List<String>>> subjectAlternativeNames() {
+        return Optional.ofNullable(this.subjectAlternativeNames);
+    }
+
+    /**
      * Signing certificate thumbprint.
      * 
      */
@@ -600,14 +615,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Version of OS
+     * Version of OS.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of OS
+     * @return Version of OS.
      * 
      */
     public Optional<Output<String>> version() {
@@ -615,7 +630,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Version Operator
+     * Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -623,7 +638,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     private @Nullable Output<String> versionOperator;
 
     /**
-     * @return Version Operator
+     * @return Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -670,6 +685,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.state = $.state;
+        this.subjectAlternativeNames = $.subjectAlternativeNames;
         this.thumbprint = $.thumbprint;
         this.totalScore = $.totalScore;
         this.version = $.version;
@@ -789,7 +805,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cn Common Name that is protected by the certificate
+         * @param cn Common Name that is protected by the certificate.
          * 
          * @return builder
          * 
@@ -800,7 +816,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cn Common Name that is protected by the certificate
+         * @param cn Common Name that is protected by the certificate.
          * 
          * @return builder
          * 
@@ -810,8 +826,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param complianceStatus Compliance Status
-         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+         * @param complianceStatus Compliance Status.
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -822,8 +838,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param complianceStatus Compliance Status
-         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+         * @param complianceStatus Compliance Status.
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -854,7 +870,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param countOperator Count Operator
+         * @param countOperator Count Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -866,7 +882,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param countOperator Count Operator
+         * @param countOperator Count Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -877,7 +893,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param domain Domain
+         * @param domain Domain.
          * 
          * @return builder
          * 
@@ -888,7 +904,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param domain Domain
+         * @param domain Domain.
          * 
          * @return builder
          * 
@@ -919,7 +935,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enabled
+         * @param enabled Enabled.
          * 
          * @return builder
          * 
@@ -930,7 +946,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enabled
+         * @param enabled Enabled.
          * 
          * @return builder
          * 
@@ -940,7 +956,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param exists Whether or not file exists
+         * @param exists Whether or not file exists.
          * 
          * @return builder
          * 
@@ -951,7 +967,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param exists Whether or not file exists
+         * @param exists Whether or not file exists.
          * 
          * @return builder
          * 
@@ -961,7 +977,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used.
          * 
          * @return builder
          * 
@@ -972,7 +988,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used.
          * 
          * @return builder
          * 
@@ -982,7 +998,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used.
          * 
          * @return builder
          * 
@@ -1129,8 +1145,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operatingSystem Operating system
-         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+         * @param operatingSystem Operating system.
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
          * 
          * @return builder
          * 
@@ -1141,8 +1157,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operatingSystem Operating system
-         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+         * @param operatingSystem Operating system.
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
          * 
          * @return builder
          * 
@@ -1175,7 +1191,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operator operator
+         * @param operator Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1187,7 +1203,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operator operator
+         * @param operator Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1198,7 +1214,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param os Os Version
+         * @param os Os Version.
          * 
          * @return builder
          * 
@@ -1209,7 +1225,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param os Os Version
+         * @param os Os Version.
          * 
          * @return builder
          * 
@@ -1219,7 +1235,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroName Operating System Distribution Name (linux only)
+         * @param osDistroName Operating System Distribution Name (linux only).
          * 
          * @return builder
          * 
@@ -1230,7 +1246,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroName Operating System Distribution Name (linux only)
+         * @param osDistroName Operating System Distribution Name (linux only).
          * 
          * @return builder
          * 
@@ -1240,7 +1256,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroRevision Version of OS Distribution (linux only)
+         * @param osDistroRevision Version of OS Distribution (linux only).
          * 
          * @return builder
          * 
@@ -1251,7 +1267,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroRevision Version of OS Distribution (linux only)
+         * @param osDistroRevision Version of OS Distribution (linux only).
          * 
          * @return builder
          * 
@@ -1261,7 +1277,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
          * 
          * @return builder
          * 
@@ -1272,7 +1288,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
          * 
          * @return builder
          * 
@@ -1282,7 +1298,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param overall overall
+         * @param overall Overall.
          * 
          * @return builder
          * 
@@ -1293,7 +1309,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param overall overall
+         * @param overall Overall.
          * 
          * @return builder
          * 
@@ -1389,7 +1405,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param scoreOperator Score Operator
+         * @param scoreOperator Score Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1401,7 +1417,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param scoreOperator Score Operator
+         * @param scoreOperator Score Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1412,7 +1428,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sensorConfig SensorConfig
+         * @param sensorConfig SensorConfig.
          * 
          * @return builder
          * 
@@ -1423,7 +1439,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sensorConfig SensorConfig
+         * @param sensorConfig SensorConfig.
          * 
          * @return builder
          * 
@@ -1477,6 +1493,37 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(@Nullable Output<List<String>> subjectAlternativeNames) {
+            $.subjectAlternativeNames = subjectAlternativeNames;
+            return this;
+        }
+
+        /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(List<String> subjectAlternativeNames) {
+            return subjectAlternativeNames(Output.of(subjectAlternativeNames));
+        }
+
+        /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
+            return subjectAlternativeNames(List.of(subjectAlternativeNames));
+        }
+
+        /**
          * @param thumbprint Signing certificate thumbprint.
          * 
          * @return builder
@@ -1519,7 +1566,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param version Version of OS
+         * @param version Version of OS.
          * 
          * @return builder
          * 
@@ -1530,7 +1577,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param version Version of OS
+         * @param version Version of OS.
          * 
          * @return builder
          * 
@@ -1540,7 +1587,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator Version Operator
+         * @param versionOperator Version Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
@@ -1552,7 +1599,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator Version Operator
+         * @param versionOperator Version Operator.
          * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder

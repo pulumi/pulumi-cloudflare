@@ -44,14 +44,14 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the device posture rule.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -125,7 +125,7 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
     }
     /**
      * The type of device posture rule.
-     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -133,7 +133,7 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
 
     /**
      * @return The type of device posture rule.
-     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;serial*number&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public Output<String> type() {

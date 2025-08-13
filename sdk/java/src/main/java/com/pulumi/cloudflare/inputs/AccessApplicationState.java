@@ -167,13 +167,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.corsHeaders);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * The custom error message shown to a user when they are denied access to the application.
      * 
@@ -517,14 +510,14 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -585,6 +578,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
     /**
      * The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Import(name="type")
@@ -592,17 +586,11 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
-    }
-
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
     }
 
     /**
@@ -633,7 +621,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.bgColor = $.bgColor;
         this.corsHeaders = $.corsHeaders;
-        this.createdAt = $.createdAt;
         this.customDenyMessage = $.customDenyMessage;
         this.customDenyUrl = $.customDenyUrl;
         this.customNonIdentityDenyUrl = $.customNonIdentityDenyUrl;
@@ -662,7 +649,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.tags = $.tags;
         this.targetCriterias = $.targetCriterias;
         this.type = $.type;
-        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -890,15 +876,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
         public Builder corsHeaders(AccessApplicationCorsHeadersArgs corsHeaders) {
             return corsHeaders(Output.of(corsHeaders));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -1426,7 +1403,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
          * 
          * @return builder
          * 
@@ -1437,7 +1414,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+         * @param sessionDuration The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
          * 
          * @return builder
          * 
@@ -1534,6 +1511,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
         /**
          * @param type The application type.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 
@@ -1545,21 +1523,13 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
         /**
          * @param type The application type.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

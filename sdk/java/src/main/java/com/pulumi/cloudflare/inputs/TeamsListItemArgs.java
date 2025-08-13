@@ -15,13 +15,6 @@ public final class TeamsListItemArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsListItemArgs Empty = new TeamsListItemArgs();
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * The description of the list item, if present
      * 
@@ -55,7 +48,6 @@ public final class TeamsListItemArgs extends com.pulumi.resources.ResourceArgs {
     private TeamsListItemArgs() {}
 
     private TeamsListItemArgs(TeamsListItemArgs $) {
-        this.createdAt = $.createdAt;
         this.description = $.description;
         this.value = $.value;
     }
@@ -76,15 +68,6 @@ public final class TeamsListItemArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TeamsListItemArgs defaults) {
             $ = new TeamsListItemArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**

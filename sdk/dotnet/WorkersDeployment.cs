@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '&lt;account_id&gt;/&lt;script_name&gt;'
+    /// $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '&lt;account_id&gt;/&lt;script_name&gt;/&lt;deployment_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersDeployment:WorkersDeployment")]
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("annotations")]
-        public Output<Outputs.WorkersDeploymentAnnotations?> Annotations { get; private set; } = null!;
+        public Output<Outputs.WorkersDeploymentAnnotations> Annotations { get; private set; } = null!;
 
         [Output("authorEmail")]
         public Output<string> AuthorEmail { get; private set; } = null!;
@@ -36,11 +36,8 @@ namespace Pulumi.Cloudflare
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
-        [Output("deployments")]
-        public Output<ImmutableArray<Outputs.WorkersDeploymentDeployment>> Deployments { get; private set; } = null!;
-
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Output("scriptName")]
         public Output<string> ScriptName { get; private set; } = null!;
@@ -113,7 +110,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkersDeploymentAnnotationsArgs>? Annotations { get; set; }
 
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -155,16 +152,8 @@ namespace Pulumi.Cloudflare
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
-        [Input("deployments")]
-        private InputList<Inputs.WorkersDeploymentDeploymentGetArgs>? _deployments;
-        public InputList<Inputs.WorkersDeploymentDeploymentGetArgs> Deployments
-        {
-            get => _deployments ?? (_deployments = new InputList<Inputs.WorkersDeploymentDeploymentGetArgs>());
-            set => _deployments = value;
-        }
-
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }

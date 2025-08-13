@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.WorkerScriptObservabilityLogs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -23,6 +24,11 @@ public final class WorkerScriptObservability {
      * 
      */
     private @Nullable Double headSamplingRate;
+    /**
+     * @return Log settings for the Worker.
+     * 
+     */
+    private @Nullable WorkerScriptObservabilityLogs logs;
 
     private WorkerScriptObservability() {}
     /**
@@ -39,6 +45,13 @@ public final class WorkerScriptObservability {
     public Optional<Double> headSamplingRate() {
         return Optional.ofNullable(this.headSamplingRate);
     }
+    /**
+     * @return Log settings for the Worker.
+     * 
+     */
+    public Optional<WorkerScriptObservabilityLogs> logs() {
+        return Optional.ofNullable(this.logs);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -51,11 +64,13 @@ public final class WorkerScriptObservability {
     public static final class Builder {
         private Boolean enabled;
         private @Nullable Double headSamplingRate;
+        private @Nullable WorkerScriptObservabilityLogs logs;
         public Builder() {}
         public Builder(WorkerScriptObservability defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
+    	      this.logs = defaults.logs;
         }
 
         @CustomType.Setter
@@ -72,10 +87,17 @@ public final class WorkerScriptObservability {
             this.headSamplingRate = headSamplingRate;
             return this;
         }
+        @CustomType.Setter
+        public Builder logs(@Nullable WorkerScriptObservabilityLogs logs) {
+
+            this.logs = logs;
+            return this;
+        }
         public WorkerScriptObservability build() {
             final var _resultValue = new WorkerScriptObservability();
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
+            _resultValue.logs = logs;
             return _resultValue;
         }
     }

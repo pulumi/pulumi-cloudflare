@@ -69,9 +69,9 @@ export class TeamsList extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
-    public readonly items!: pulumi.Output<outputs.TeamsListItem[]>;
+    public readonly items!: pulumi.Output<outputs.TeamsListItem[] | undefined>;
     /**
      * The number of items in the list.
      */
@@ -149,7 +149,7 @@ export interface TeamsListState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[]>;
     /**
@@ -178,7 +178,7 @@ export interface TeamsListArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.TeamsListItem>[]>;
     /**

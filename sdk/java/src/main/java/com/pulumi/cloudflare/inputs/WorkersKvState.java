@@ -16,14 +16,14 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
     public static final WorkersKvState Empty = new WorkersKvState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -45,17 +45,9 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyName);
     }
 
-    /**
-     * Arbitrary JSON to be associated with a key/value pair.
-     * 
-     */
     @Import(name="metadata")
     private @Nullable Output<String> metadata;
 
-    /**
-     * @return Arbitrary JSON to be associated with a key/value pair.
-     * 
-     */
     public Optional<Output<String>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
@@ -119,7 +111,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -130,7 +122,7 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -160,23 +152,11 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
             return keyName(Output.of(keyName));
         }
 
-        /**
-         * @param metadata Arbitrary JSON to be associated with a key/value pair.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metadata(@Nullable Output<String> metadata) {
             $.metadata = metadata;
             return this;
         }
 
-        /**
-         * @param metadata Arbitrary JSON to be associated with a key/value pair.
-         * 
-         * @return builder
-         * 
-         */
         public Builder metadata(String metadata) {
             return metadata(Output.of(metadata));
         }

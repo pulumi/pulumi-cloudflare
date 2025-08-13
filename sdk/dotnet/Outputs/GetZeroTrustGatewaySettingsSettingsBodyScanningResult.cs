@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Set the inspection mode to either `deep` or `shallow`.
+        /// Available values: "deep", "shallow".
         /// </summary>
         public readonly string InspectionMode;
 

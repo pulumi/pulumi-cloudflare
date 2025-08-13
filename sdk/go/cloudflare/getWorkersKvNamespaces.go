@@ -50,7 +50,7 @@ func LookupWorkersKvNamespaces(ctx *pulumi.Context, args *LookupWorkersKvNamespa
 
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
@@ -64,7 +64,7 @@ type LookupWorkersKvNamespacesArgs struct {
 
 // A collection of values returned by getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
@@ -91,7 +91,7 @@ func LookupWorkersKvNamespacesOutput(ctx *pulumi.Context, args LookupWorkersKvNa
 
 // A collection of arguments for invoking getWorkersKvNamespaces.
 type LookupWorkersKvNamespacesOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
@@ -122,7 +122,7 @@ func (o LookupWorkersKvNamespacesResultOutput) ToLookupWorkersKvNamespacesResult
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersKvNamespacesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvNamespacesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

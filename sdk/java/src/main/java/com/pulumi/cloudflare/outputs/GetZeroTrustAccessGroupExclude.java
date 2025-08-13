@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeGroup;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeLoginMethod;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeOidc;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessGroupExcludeServiceToken;
@@ -57,7 +59,9 @@ public final class GetZeroTrustAccessGroupExclude {
     private GetZeroTrustAccessGroupExcludeGsuite gsuite;
     private GetZeroTrustAccessGroupExcludeIp ip;
     private GetZeroTrustAccessGroupExcludeIpList ipList;
+    private GetZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken;
     private GetZeroTrustAccessGroupExcludeLoginMethod loginMethod;
+    private GetZeroTrustAccessGroupExcludeOidc oidc;
     private GetZeroTrustAccessGroupExcludeOkta okta;
     private GetZeroTrustAccessGroupExcludeSaml saml;
     private GetZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -125,8 +129,14 @@ public final class GetZeroTrustAccessGroupExclude {
     public GetZeroTrustAccessGroupExcludeIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken() {
+        return this.linkedAppToken;
+    }
     public GetZeroTrustAccessGroupExcludeLoginMethod loginMethod() {
         return this.loginMethod;
+    }
+    public GetZeroTrustAccessGroupExcludeOidc oidc() {
+        return this.oidc;
     }
     public GetZeroTrustAccessGroupExcludeOkta okta() {
         return this.okta;
@@ -165,7 +175,9 @@ public final class GetZeroTrustAccessGroupExclude {
         private GetZeroTrustAccessGroupExcludeGsuite gsuite;
         private GetZeroTrustAccessGroupExcludeIp ip;
         private GetZeroTrustAccessGroupExcludeIpList ipList;
+        private GetZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken;
         private GetZeroTrustAccessGroupExcludeLoginMethod loginMethod;
+        private GetZeroTrustAccessGroupExcludeOidc oidc;
         private GetZeroTrustAccessGroupExcludeOkta okta;
         private GetZeroTrustAccessGroupExcludeSaml saml;
         private GetZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -190,7 +202,9 @@ public final class GetZeroTrustAccessGroupExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -341,11 +355,27 @@ public final class GetZeroTrustAccessGroupExclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(GetZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken) {
+            if (linkedAppToken == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupExclude", "linkedAppToken");
+            }
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(GetZeroTrustAccessGroupExcludeLoginMethod loginMethod) {
             if (loginMethod == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupExclude", "loginMethod");
             }
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(GetZeroTrustAccessGroupExcludeOidc oidc) {
+            if (oidc == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupExclude", "oidc");
+            }
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -392,7 +422,9 @@ public final class GetZeroTrustAccessGroupExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

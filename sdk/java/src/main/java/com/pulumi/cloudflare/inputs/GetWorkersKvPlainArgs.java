@@ -14,14 +14,14 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetWorkersKvPlainArgs Empty = new GetWorkersKvPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -85,7 +85,7 @@ public final class GetWorkersKvPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

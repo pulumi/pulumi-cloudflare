@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Separate cached content based on the visitor’s device type
+        /// Separate cached content based on the visitor’s device type.
         /// </summary>
         [Input("cacheByDeviceType")]
         public Input<bool>? CacheByDeviceType { get; set; }
 
         /// <summary>
-        /// Protect from web cache deception attacks while allowing static assets to be cached
+        /// Protect from web cache deception attacks while allowing static assets to be cached.
         /// </summary>
         [Input("cacheDeceptionArmor")]
         public Input<bool>? CacheDeceptionArmor { get; set; }

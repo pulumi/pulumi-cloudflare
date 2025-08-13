@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -12,31 +13,79 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SnippetRulesRule {
-    private @Nullable String description;
-    private @Nullable Boolean enabled;
-    private @Nullable String expression;
     /**
-     * @return Snippet identifying name
+     * @return An informative description of the rule.
      * 
      */
-    private @Nullable String snippetName;
+    private @Nullable String description;
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
+     * @return The expression defining which traffic will match the rule.
+     * 
+     */
+    private String expression;
+    /**
+     * @return The unique ID of the rule.
+     * 
+     */
+    private @Nullable String id;
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    private @Nullable String lastUpdated;
+    /**
+     * @return The identifying name of the snippet.
+     * 
+     */
+    private String snippetName;
 
     private SnippetRulesRule() {}
+    /**
+     * @return An informative description of the rule.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    public Optional<String> expression() {
-        return Optional.ofNullable(this.expression);
-    }
     /**
-     * @return Snippet identifying name
+     * @return The expression defining which traffic will match the rule.
      * 
      */
-    public Optional<String> snippetName() {
-        return Optional.ofNullable(this.snippetName);
+    public String expression() {
+        return this.expression;
+    }
+    /**
+     * @return The unique ID of the rule.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Optional<String> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
+    }
+    /**
+     * @return The identifying name of the snippet.
+     * 
+     */
+    public String snippetName() {
+        return this.snippetName;
     }
 
     public static Builder builder() {
@@ -50,14 +99,18 @@ public final class SnippetRulesRule {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Boolean enabled;
-        private @Nullable String expression;
-        private @Nullable String snippetName;
+        private String expression;
+        private @Nullable String id;
+        private @Nullable String lastUpdated;
+        private String snippetName;
         public Builder() {}
         public Builder(SnippetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
+    	      this.id = defaults.id;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.snippetName = defaults.snippetName;
         }
 
@@ -74,14 +127,30 @@ public final class SnippetRulesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder expression(@Nullable String expression) {
-
+        public Builder expression(String expression) {
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("SnippetRulesRule", "expression");
+            }
             this.expression = expression;
             return this;
         }
         @CustomType.Setter
-        public Builder snippetName(@Nullable String snippetName) {
+        public Builder id(@Nullable String id) {
 
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastUpdated(@Nullable String lastUpdated) {
+
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder snippetName(String snippetName) {
+            if (snippetName == null) {
+              throw new MissingRequiredPropertyException("SnippetRulesRule", "snippetName");
+            }
             this.snippetName = snippetName;
             return this;
         }
@@ -90,6 +159,8 @@ public final class SnippetRulesRule {
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.expression = expression;
+            _resultValue.id = id;
+            _resultValue.lastUpdated = lastUpdated;
             _resultValue.snippetName = snippetName;
             return _resultValue;
         }

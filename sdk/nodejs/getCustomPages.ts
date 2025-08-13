@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCustomPages = cloudflare.getCustomPages({
- *     identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     identifier: "ratelimit_block",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
@@ -36,7 +36,8 @@ export interface GetCustomPagesArgs {
      */
     accountId?: string;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     identifier: string;
     /**
@@ -53,14 +54,29 @@ export interface GetCustomPagesResult {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     readonly accountId?: string;
+    readonly createdOn: string;
+    readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     readonly identifier: string;
+    readonly modifiedOn: string;
+    readonly previewTarget: string;
+    readonly requiredTokens: string[];
+    /**
+     * The custom page state.
+     * Available values: "default", "customized".
+     */
+    readonly state: string;
+    /**
+     * The URL associated with the custom page.
+     */
+    readonly url: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -74,7 +90,7 @@ export interface GetCustomPagesResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCustomPages = cloudflare.getCustomPages({
- *     identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     identifier: "ratelimit_block",
  *     accountId: "account_id",
  *     zoneId: "zone_id",
  * });
@@ -98,7 +114,8 @@ export interface GetCustomPagesOutputArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     identifier: pulumi.Input<string>;
     /**

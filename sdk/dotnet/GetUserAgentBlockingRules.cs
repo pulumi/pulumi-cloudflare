@@ -26,8 +26,8 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Description = "abusive",
-        ///         DescriptionSearch = "abusive",
-        ///         UaSearch = "Safari",
+        ///         Paused = false,
+        ///         UserAgent = "Safari",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Description = "abusive",
-        ///         DescriptionSearch = "abusive",
-        ///         UaSearch = "Safari",
+        ///         Paused = false,
+        ///         UserAgent = "Safari",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Description = "abusive",
-        ///         DescriptionSearch = "abusive",
-        ///         UaSearch = "Safari",
+        ///         Paused = false,
+        ///         UserAgent = "Safari",
         ///     });
         /// 
         /// });
@@ -97,22 +97,22 @@ namespace Pulumi.Cloudflare
         public string? Description { get; set; }
 
         /// <summary>
-        /// A string to search for in the description of existing rules.
-        /// </summary>
-        [Input("descriptionSearch")]
-        public string? DescriptionSearch { get; set; }
-
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
         /// <summary>
+        /// When true, indicates that the rule is currently paused.
+        /// </summary>
+        [Input("paused")]
+        public bool? Paused { get; set; }
+
+        /// <summary>
         /// A string to search for in the user agent values of existing rules.
         /// </summary>
-        [Input("uaSearch")]
-        public string? UaSearch { get; set; }
+        [Input("userAgent")]
+        public string? UserAgent { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -135,22 +135,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A string to search for in the description of existing rules.
-        /// </summary>
-        [Input("descriptionSearch")]
-        public Input<string>? DescriptionSearch { get; set; }
-
-        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
+        /// When true, indicates that the rule is currently paused.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
+
+        /// <summary>
         /// A string to search for in the user agent values of existing rules.
         /// </summary>
-        [Input("uaSearch")]
-        public Input<string>? UaSearch { get; set; }
+        [Input("userAgent")]
+        public Input<string>? UserAgent { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -173,10 +173,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// A string to search for in the description of existing rules.
-        /// </summary>
-        public readonly string? DescriptionSearch;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -185,13 +181,17 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// When true, indicates that the rule is currently paused.
+        /// </summary>
+        public readonly bool? Paused;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUserAgentBlockingRulesResultResult> Results;
         /// <summary>
         /// A string to search for in the user agent values of existing rules.
         /// </summary>
-        public readonly string? UaSearch;
+        public readonly string? UserAgent;
         /// <summary>
         /// Defines an identifier.
         /// </summary>
@@ -201,24 +201,24 @@ namespace Pulumi.Cloudflare
         private GetUserAgentBlockingRulesResult(
             string? description,
 
-            string? descriptionSearch,
-
             string id,
 
             int? maxItems,
 
+            bool? paused,
+
             ImmutableArray<Outputs.GetUserAgentBlockingRulesResultResult> results,
 
-            string? uaSearch,
+            string? userAgent,
 
             string zoneId)
         {
             Description = description;
-            DescriptionSearch = descriptionSearch;
             Id = id;
             MaxItems = maxItems;
+            Paused = paused;
             Results = results;
-            UaSearch = uaSearch;
+            UserAgent = userAgent;
             ZoneId = zoneId;
         }
     }

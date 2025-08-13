@@ -43,7 +43,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.accountId;
     }
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -51,7 +51,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     private Output<String> action;
 
     /**
-     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -83,14 +83,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return The description of the rule.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The wirefilter expression used for device posture check matching.
@@ -179,20 +179,38 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
+     * The rule cannot be shared via the Orgs API
      * 
      */
+    @Export(name="notSharable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> notSharable;
+
+    /**
+     * @return The rule cannot be shared via the Orgs API
+     * 
+     */
+    public Output<Boolean> notSharable() {
+        return this.notSharable;
+    }
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> precedence;
 
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     public Output<Optional<Integer>> precedence() {
         return Codegen.optional(this.precedence);
+    }
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> readOnly;
+
+    /**
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    public Output<Boolean> readOnly() {
+        return this.readOnly;
     }
     /**
      * Additional settings that modify the rule&#39;s action.
@@ -213,14 +231,28 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="schedule", refs={ZeroTrustGatewayPolicySchedule.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewayPolicySchedule> schedule;
+    private Output<ZeroTrustGatewayPolicySchedule> schedule;
 
     /**
      * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      * 
      */
-    public Output<Optional<ZeroTrustGatewayPolicySchedule>> schedule() {
-        return Codegen.optional(this.schedule);
+    public Output<ZeroTrustGatewayPolicySchedule> schedule() {
+        return this.schedule;
+    }
+    /**
+     * account tag of account that created the rule
+     * 
+     */
+    @Export(name="sourceAccount", refs={String.class}, tree="[0]")
+    private Output<String> sourceAccount;
+
+    /**
+     * @return account tag of account that created the rule
+     * 
+     */
+    public Output<String> sourceAccount() {
+        return this.sourceAccount;
     }
     /**
      * The wirefilter expression used for traffic matching.
@@ -255,6 +287,20 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      */
     public Output<Integer> version() {
         return this.version;
+    }
+    /**
+     * Warning for a misconfigured rule, if any.
+     * 
+     */
+    @Export(name="warningStatus", refs={String.class}, tree="[0]")
+    private Output<String> warningStatus;
+
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    public Output<String> warningStatus() {
+        return this.warningStatus;
     }
 
     /**

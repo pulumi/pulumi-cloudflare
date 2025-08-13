@@ -12,28 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleMagicTransitConnector = new Cloudflare.MagicTransitConnector("example_magic_transit_connector", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         ConnectorId = "connector_id",
-    ///         Activated = true,
-    ///         InterruptWindowDurationHours = 0,
-    ///         InterruptWindowHourOfDay = 0,
-    ///         Notes = "notes",
-    ///         Timezone = "timezone",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -43,38 +21,29 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/magicTransitConnector:MagicTransitConnector")]
     public partial class MagicTransitConnector : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Account identifier
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("activated")]
-        public Output<bool?> Activated { get; private set; } = null!;
-
-        [Output("connectorId")]
-        public Output<string> ConnectorId { get; private set; } = null!;
+        public Output<bool> Activated { get; private set; } = null!;
 
         [Output("device")]
         public Output<Outputs.MagicTransitConnectorDevice> Device { get; private set; } = null!;
 
         [Output("interruptWindowDurationHours")]
-        public Output<double?> InterruptWindowDurationHours { get; private set; } = null!;
+        public Output<double> InterruptWindowDurationHours { get; private set; } = null!;
 
         [Output("interruptWindowHourOfDay")]
-        public Output<double?> InterruptWindowHourOfDay { get; private set; } = null!;
-
-        [Output("lastHeartbeat")]
-        public Output<string> LastHeartbeat { get; private set; } = null!;
-
-        [Output("lastSeenVersion")]
-        public Output<string> LastSeenVersion { get; private set; } = null!;
-
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
+        public Output<double> InterruptWindowHourOfDay { get; private set; } = null!;
 
         [Output("notes")]
-        public Output<string?> Notes { get; private set; } = null!;
+        public Output<string> Notes { get; private set; } = null!;
 
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>
@@ -122,14 +91,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicTransitConnectorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account identifier
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("activated")]
         public Input<bool>? Activated { get; set; }
 
-        [Input("connectorId", required: true)]
-        public Input<string> ConnectorId { get; set; } = null!;
+        [Input("device", required: true)]
+        public Input<Inputs.MagicTransitConnectorDeviceArgs> Device { get; set; } = null!;
 
         [Input("interruptWindowDurationHours")]
         public Input<double>? InterruptWindowDurationHours { get; set; }
@@ -151,14 +123,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class MagicTransitConnectorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Account identifier
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         [Input("activated")]
         public Input<bool>? Activated { get; set; }
-
-        [Input("connectorId")]
-        public Input<string>? ConnectorId { get; set; }
 
         [Input("device")]
         public Input<Inputs.MagicTransitConnectorDeviceGetArgs>? Device { get; set; }
@@ -168,15 +140,6 @@ namespace Pulumi.Cloudflare
 
         [Input("interruptWindowHourOfDay")]
         public Input<double>? InterruptWindowHourOfDay { get; set; }
-
-        [Input("lastHeartbeat")]
-        public Input<string>? LastHeartbeat { get; set; }
-
-        [Input("lastSeenVersion")]
-        public Input<string>? LastSeenVersion { get; set; }
-
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
 
         [Input("notes")]
         public Input<string>? Notes { get; set; }

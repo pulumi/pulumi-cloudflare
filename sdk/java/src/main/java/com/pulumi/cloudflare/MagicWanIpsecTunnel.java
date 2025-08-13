@@ -7,8 +7,6 @@ import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelState;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelHealthCheck;
-import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelIpsecTunnel;
-import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelModifiedIpsecTunnel;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelPskMetadata;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -25,54 +23,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
- * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleMagicWanIpsecTunnel = new MagicWanIpsecTunnel("exampleMagicWanIpsecTunnel", MagicWanIpsecTunnelArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .cloudflareEndpoint("203.0.113.1")
- *             .interfaceAddress("192.0.2.0/31")
- *             .name("IPsec_1")
- *             .customerEndpoint("203.0.113.1")
- *             .description("Tunnel for ISP X")
- *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
- *                 .direction("bidirectional")
- *                 .enabled(true)
- *                 .rate("low")
- *                 .target(MagicWanIpsecTunnelHealthCheckTargetArgs.builder()
- *                     .saved("203.0.113.1")
- *                     .build())
- *                 .type("request")
- *                 .build())
- *             .psk("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy")
- *             .replayProtection(false)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -188,24 +138,6 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
     public Output<String> interfaceAddress() {
         return this.interfaceAddress;
     }
-    @Export(name="ipsecTunnel", refs={MagicWanIpsecTunnelIpsecTunnel.class}, tree="[0]")
-    private Output<MagicWanIpsecTunnelIpsecTunnel> ipsecTunnel;
-
-    public Output<MagicWanIpsecTunnelIpsecTunnel> ipsecTunnel() {
-        return this.ipsecTunnel;
-    }
-    @Export(name="modified", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> modified;
-
-    public Output<Boolean> modified() {
-        return this.modified;
-    }
-    @Export(name="modifiedIpsecTunnel", refs={MagicWanIpsecTunnelModifiedIpsecTunnel.class}, tree="[0]")
-    private Output<MagicWanIpsecTunnelModifiedIpsecTunnel> modifiedIpsecTunnel;
-
-    public Output<MagicWanIpsecTunnelModifiedIpsecTunnel> modifiedIpsecTunnel() {
-        return this.modifiedIpsecTunnel;
-    }
     /**
      * The date and time the tunnel was last modified.
      * 
@@ -318,6 +250,9 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .aliases(List.of(
                 Output.of(Alias.builder().type("cloudflare:index/ipsecTunnel:IpsecTunnel").build())
+            ))
+            .additionalSecretOutputs(List.of(
+                "psk"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

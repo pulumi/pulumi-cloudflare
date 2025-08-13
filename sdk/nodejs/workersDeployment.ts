@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>'
+ * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
  * ```
  */
 export class WorkersDeployment extends pulumi.CustomResource {
@@ -47,12 +47,11 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations | undefined>;
+    public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
     public /*out*/ readonly authorEmail!: pulumi.Output<string>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
-    public /*out*/ readonly deployments!: pulumi.Output<outputs.WorkersDeploymentDeployment[]>;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     public readonly scriptName!: pulumi.Output<string>;
     public /*out*/ readonly source!: pulumi.Output<string>;
@@ -79,7 +78,6 @@ export class WorkersDeployment extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["authorEmail"] = state ? state.authorEmail : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["deployments"] = state ? state.deployments : undefined;
             resourceInputs["scriptName"] = state ? state.scriptName : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
             resourceInputs["strategy"] = state ? state.strategy : undefined;
@@ -105,7 +103,6 @@ export class WorkersDeployment extends pulumi.CustomResource {
             resourceInputs["versions"] = args ? args.versions : undefined;
             resourceInputs["authorEmail"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["deployments"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -124,9 +121,8 @@ export interface WorkersDeploymentState {
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
     authorEmail?: pulumi.Input<string>;
     createdOn?: pulumi.Input<string>;
-    deployments?: pulumi.Input<pulumi.Input<inputs.WorkersDeploymentDeployment>[]>;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName?: pulumi.Input<string>;
     source?: pulumi.Input<string>;
@@ -147,7 +143,7 @@ export interface WorkersDeploymentArgs {
     accountId: pulumi.Input<string>;
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: pulumi.Input<string>;
     /**

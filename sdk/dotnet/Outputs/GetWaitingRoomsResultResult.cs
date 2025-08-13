@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.
         /// 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.
         /// 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.
-        /// 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.
+        /// 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**.
         /// 12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.
         /// 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.
         /// 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.
@@ -77,6 +77,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// 21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.
         /// 22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.
         /// 23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.
+        /// 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget appears.
+        /// 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue.
         /// 
         /// An example cURL to a waiting room could be:
         /// 
@@ -141,7 +143,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// 			"timeUntilEventEndFormatted": "15 minutes",
         /// 			"shuffleAtEventStart": true
         /// 		}
-        /// 	}.
+        /// 	}
         /// </summary>
         public readonly bool JsonResponseEnabled;
         public readonly string ModifiedOn;

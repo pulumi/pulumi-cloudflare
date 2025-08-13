@@ -29,7 +29,7 @@ public final class GetZeroTrustDnsLocationResult {
      */
     private String dnsDestinationIpsId;
     /**
-     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     private String dnsDestinationIpv6BlockId;
@@ -103,7 +103,7 @@ public final class GetZeroTrustDnsLocationResult {
         return this.dnsDestinationIpsId;
     }
     /**
-     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     public String dnsDestinationIpv6BlockId() {

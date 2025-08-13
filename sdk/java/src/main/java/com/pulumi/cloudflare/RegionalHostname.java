@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -44,7 +43,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .hostname("foo.example.com")
  *             .regionKey("ca")
- *             .routing("routing")
+ *             .routing("dns")
  *             .build());
  * 
  *     }
@@ -109,14 +108,14 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="routing", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routing;
+    private Output<String> routing;
 
     /**
      * @return Configure which routing method to use for the regional hostname
      * 
      */
-    public Output<Optional<String>> routing() {
-        return Codegen.optional(this.routing);
+    public Output<String> routing() {
+        return this.routing;
     }
     /**
      * Identifier.

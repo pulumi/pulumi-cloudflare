@@ -17,12 +17,12 @@ public final class ZoneOwner {
      */
     private @Nullable String id;
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The type of owner
+     * @return The type of owner.
      * 
      */
     private @Nullable String type;
@@ -36,14 +36,14 @@ public final class ZoneOwner {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The type of owner
+     * @return The type of owner.
      * 
      */
     public Optional<String> type() {

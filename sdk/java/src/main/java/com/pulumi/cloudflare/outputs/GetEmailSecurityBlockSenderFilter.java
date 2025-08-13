@@ -23,6 +23,7 @@ public final class GetEmailSecurityBlockSenderFilter {
      * 
      */
     private @Nullable String order;
+    private @Nullable String pattern;
     /**
      * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
@@ -54,6 +55,9 @@ public final class GetEmailSecurityBlockSenderFilter {
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    public Optional<String> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
     /**
      * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
@@ -83,6 +87,7 @@ public final class GetEmailSecurityBlockSenderFilter {
     public static final class Builder {
         private @Nullable String direction;
         private @Nullable String order;
+        private @Nullable String pattern;
         private @Nullable String patternType;
         private @Nullable String search;
         public Builder() {}
@@ -90,6 +95,7 @@ public final class GetEmailSecurityBlockSenderFilter {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
     	      this.order = defaults.order;
+    	      this.pattern = defaults.pattern;
     	      this.patternType = defaults.patternType;
     	      this.search = defaults.search;
         }
@@ -104,6 +110,12 @@ public final class GetEmailSecurityBlockSenderFilter {
         public Builder order(@Nullable String order) {
 
             this.order = order;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pattern(@Nullable String pattern) {
+
+            this.pattern = pattern;
             return this;
         }
         @CustomType.Setter
@@ -122,6 +134,7 @@ public final class GetEmailSecurityBlockSenderFilter {
             final var _resultValue = new GetEmailSecurityBlockSenderFilter();
             _resultValue.direction = direction;
             _resultValue.order = order;
+            _resultValue.pattern = pattern;
             _resultValue.patternType = patternType;
             _resultValue.search = search;
             return _resultValue;

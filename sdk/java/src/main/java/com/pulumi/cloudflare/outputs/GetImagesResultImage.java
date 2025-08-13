@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetImagesResultImage {
     /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    private String creator;
+    /**
      * @return Image file name.
      * 
      */
@@ -44,6 +49,13 @@ public final class GetImagesResultImage {
     private List<String> variants;
 
     private GetImagesResultImage() {}
+    /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    public String creator() {
+        return this.creator;
+    }
     /**
      * @return Image file name.
      * 
@@ -96,6 +108,7 @@ public final class GetImagesResultImage {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String creator;
         private String filename;
         private String id;
         private String meta;
@@ -105,6 +118,7 @@ public final class GetImagesResultImage {
         public Builder() {}
         public Builder(GetImagesResultImage defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.creator = defaults.creator;
     	      this.filename = defaults.filename;
     	      this.id = defaults.id;
     	      this.meta = defaults.meta;
@@ -113,6 +127,14 @@ public final class GetImagesResultImage {
     	      this.variants = defaults.variants;
         }
 
+        @CustomType.Setter
+        public Builder creator(String creator) {
+            if (creator == null) {
+              throw new MissingRequiredPropertyException("GetImagesResultImage", "creator");
+            }
+            this.creator = creator;
+            return this;
+        }
         @CustomType.Setter
         public Builder filename(String filename) {
             if (filename == null) {
@@ -166,6 +188,7 @@ public final class GetImagesResultImage {
         }
         public GetImagesResultImage build() {
             final var _resultValue = new GetImagesResultImage();
+            _resultValue.creator = creator;
             _resultValue.filename = filename;
             _resultValue.id = id;
             _resultValue.meta = meta;

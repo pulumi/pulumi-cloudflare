@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKey {
     /**
-     * @return Separate cached content based on the visitor’s device type
+     * @return Separate cached content based on the visitor’s device type.
      * 
      */
     private @Nullable Boolean cacheByDeviceType;
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached
+     * @return Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     private @Nullable Boolean cacheDeceptionArmor;
@@ -35,14 +35,14 @@ public final class RulesetRuleActionParametersCacheKey {
 
     private RulesetRuleActionParametersCacheKey() {}
     /**
-     * @return Separate cached content based on the visitor’s device type
+     * @return Separate cached content based on the visitor’s device type.
      * 
      */
     public Optional<Boolean> cacheByDeviceType() {
         return Optional.ofNullable(this.cacheByDeviceType);
     }
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached
+     * @return Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     public Optional<Boolean> cacheDeceptionArmor() {

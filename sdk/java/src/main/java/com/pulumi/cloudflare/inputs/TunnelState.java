@@ -68,14 +68,22 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
+     * @deprecated
+     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * 
      */
+    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
     @Import(name="connections")
     private @Nullable Output<List<TunnelConnectionArgs>> connections;
 
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
+     * @deprecated
+     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * 
      */
+    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
     public Optional<Output<List<TunnelConnectionArgs>>> connections() {
         return Optional.ofNullable(this.connections);
     }
@@ -341,7 +349,11 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * 
          */
+        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
         public Builder connections(@Nullable Output<List<TunnelConnectionArgs>> connections) {
             $.connections = connections;
             return this;
@@ -352,7 +364,11 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * 
          */
+        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
         public Builder connections(List<TunnelConnectionArgs> connections) {
             return connections(Output.of(connections));
         }
@@ -362,7 +378,11 @@ public final class TunnelState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+         * 
          */
+        @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
         public Builder connections(TunnelConnectionArgs... connections) {
             return connections(List.of(connections));
         }

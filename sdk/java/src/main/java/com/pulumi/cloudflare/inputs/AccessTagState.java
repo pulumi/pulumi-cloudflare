@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,28 +31,6 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of applications that have this tag
-     * 
-     */
-    @Import(name="appCount")
-    private @Nullable Output<Integer> appCount;
-
-    /**
-     * @return The number of applications that have this tag
-     * 
-     */
-    public Optional<Output<Integer>> appCount() {
-        return Optional.ofNullable(this.appCount);
-    }
-
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
-    /**
      * The name of the tag
      * 
      */
@@ -68,21 +45,11 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     private AccessTagState() {}
 
     private AccessTagState(AccessTagState $) {
         this.accountId = $.accountId;
-        this.appCount = $.appCount;
-        this.createdAt = $.createdAt;
         this.name = $.name;
-        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -125,36 +92,6 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCount The number of applications that have this tag
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(@Nullable Output<Integer> appCount) {
-            $.appCount = appCount;
-            return this;
-        }
-
-        /**
-         * @param appCount The number of applications that have this tag
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(Integer appCount) {
-            return appCount(Output.of(appCount));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
-        /**
          * @param name The name of the tag
          * 
          * @return builder
@@ -173,15 +110,6 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         public AccessTagState build() {

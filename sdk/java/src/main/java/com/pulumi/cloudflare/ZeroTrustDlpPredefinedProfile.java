@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfile;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,18 +52,18 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDlpPredefinedProfile = new ZeroTrustDlpPredefinedProfile("exampleZeroTrustDlpPredefinedProfile", ZeroTrustDlpPredefinedProfileArgs.builder()
  *             .accountId("account_id")
  *             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
- *             .entries(ZeroTrustDlpPredefinedProfileEntryArgs.builder()
- *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
- *                 .enabled(true)
- *                 .build())
  *             .aiContextEnabled(true)
- *             .allowedMatchCount(0)
+ *             .allowedMatchCount(5)
  *             .confidenceThreshold("confidence_threshold")
  *             .contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs.builder()
  *                 .enabled(true)
  *                 .skip(ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs.builder()
  *                     .files(true)
  *                     .build())
+ *                 .build())
+ *             .entries(ZeroTrustDlpPredefinedProfileEntryArgs.builder()
+ *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .enabled(true)
  *                 .build())
  *             .ocrEnabled(true)
  *             .build());
@@ -90,27 +90,31 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return this.accountId;
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> aiContextEnabled;
+    private Output<Boolean> aiContextEnabled;
 
-    public Output<Optional<Boolean>> aiContextEnabled() {
-        return Codegen.optional(this.aiContextEnabled);
+    public Output<Boolean> aiContextEnabled() {
+        return this.aiContextEnabled;
     }
     @Export(name="allowedMatchCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> allowedMatchCount;
+    private Output<Integer> allowedMatchCount;
 
-    public Output<Optional<Integer>> allowedMatchCount() {
-        return Codegen.optional(this.allowedMatchCount);
+    public Output<Integer> allowedMatchCount() {
+        return this.allowedMatchCount;
     }
     @Export(name="confidenceThreshold", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidenceThreshold;
+    private Output<String> confidenceThreshold;
 
-    public Output<Optional<String>> confidenceThreshold() {
-        return Codegen.optional(this.confidenceThreshold);
+    public Output<String> confidenceThreshold() {
+        return this.confidenceThreshold;
     }
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={ZeroTrustDlpPredefinedProfileContextAwareness.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDlpPredefinedProfileContextAwareness> contextAwareness;
 
@@ -149,11 +153,17 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
     public Output<String> description() {
         return this.description;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="entries", refs={List.class,ZeroTrustDlpPredefinedProfileEntry.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDlpPredefinedProfileEntry>> entries;
+    private Output</* @Nullable */ List<ZeroTrustDlpPredefinedProfileEntry>> entries;
 
-    public Output<List<ZeroTrustDlpPredefinedProfileEntry>> entries() {
-        return this.entries;
+    public Output<Optional<List<ZeroTrustDlpPredefinedProfileEntry>>> entries() {
+        return Codegen.optional(this.entries);
     }
     /**
      * The name of the profile.
@@ -170,10 +180,10 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ocrEnabled;
+    private Output<Boolean> ocrEnabled;
 
-    public Output<Optional<Boolean>> ocrEnabled() {
-        return Codegen.optional(this.ocrEnabled);
+    public Output<Boolean> ocrEnabled() {
+        return this.ocrEnabled;
     }
     /**
      * Whether this profile can be accessed by anyone.
@@ -196,14 +206,14 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return this.profileId;
     }
     /**
-     * Available values: &#34;custom&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Output<String> type() {

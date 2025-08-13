@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -142,33 +142,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemResult
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Defines a non-negative 32 bit integer.
-        /// </summary>
-        public readonly int Asn;
-        /// <summary>
-        /// Defines an informative summary of the list item.
-        /// </summary>
-        public readonly string Comment;
-        /// <summary>
-        /// The RFC 3339 timestamp of when the item was created.
-        /// </summary>
-        public readonly string CreatedOn;
-        /// <summary>
-        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-        /// </summary>
-        public readonly Outputs.GetListItemHostnameResult Hostname;
-        /// <summary>
-        /// The unique ID of the list.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-        /// </summary>
-        public readonly string Ip;
         /// <summary>
         /// Defines the unique ID of the item in the List.
         /// </summary>
@@ -177,50 +157,21 @@ namespace Pulumi.Cloudflare
         /// The unique ID of the list.
         /// </summary>
         public readonly string ListId;
-        /// <summary>
-        /// The RFC 3339 timestamp of when the item was last modified.
-        /// </summary>
-        public readonly string ModifiedOn;
-        /// <summary>
-        /// The definition of the redirect.
-        /// </summary>
-        public readonly Outputs.GetListItemRedirectResult Redirect;
 
         [OutputConstructor]
         private GetListItemResult(
             string accountId,
 
-            int asn,
-
-            string comment,
-
-            string createdOn,
-
-            Outputs.GetListItemHostnameResult hostname,
-
             string id,
-
-            string ip,
 
             string itemId,
 
-            string listId,
-
-            string modifiedOn,
-
-            Outputs.GetListItemRedirectResult redirect)
+            string listId)
         {
             AccountId = accountId;
-            Asn = asn;
-            Comment = comment;
-            CreatedOn = createdOn;
-            Hostname = hostname;
             Id = id;
-            Ip = ip;
             ItemId = itemId;
             ListId = listId;
-            ModifiedOn = modifiedOn;
-            Redirect = redirect;
         }
     }
 }

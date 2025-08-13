@@ -39,7 +39,7 @@ type ApiToken struct {
 	Policies ApiTokenPolicyArrayOutput `pulumi:"policies"`
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The token value.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
@@ -292,8 +292,8 @@ func (o ApiTokenOutput) Policies() ApiTokenPolicyArrayOutput {
 
 // Status of the token.
 // Available values: "active", "disabled", "expired".
-func (o ApiTokenOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o ApiTokenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The token value.

@@ -17,6 +17,7 @@ public final class TeamsAccountSettingsBodyScanningArgs extends com.pulumi.resou
 
     /**
      * Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     @Import(name="inspectionMode")
@@ -24,6 +25,7 @@ public final class TeamsAccountSettingsBodyScanningArgs extends com.pulumi.resou
 
     /**
      * @return Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     public Optional<Output<String>> inspectionMode() {
@@ -56,6 +58,7 @@ public final class TeamsAccountSettingsBodyScanningArgs extends com.pulumi.resou
 
         /**
          * @param inspectionMode Set the inspection mode to either `deep` or `shallow`.
+         * Available values: &#34;deep&#34;, &#34;shallow&#34;.
          * 
          * @return builder
          * 
@@ -67,6 +70,7 @@ public final class TeamsAccountSettingsBodyScanningArgs extends com.pulumi.resou
 
         /**
          * @param inspectionMode Set the inspection mode to either `deep` or `shallow`.
+         * Available values: &#34;deep&#34;, &#34;shallow&#34;.
          * 
          * @return builder
          * 

@@ -39,14 +39,14 @@ public final class GetWaitingRoomEventsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -96,7 +96,7 @@ public final class GetWaitingRoomEventsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

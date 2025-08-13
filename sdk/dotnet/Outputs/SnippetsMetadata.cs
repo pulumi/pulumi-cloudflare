@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SnippetsMetadata
     {
         /// <summary>
-        /// Main module name of uploaded snippet
+        /// Name of the file that contains the main module of the snippet.
         /// </summary>
-        public readonly string? MainModule;
+        public readonly string MainModule;
 
         [OutputConstructor]
-        private SnippetsMetadata(string? mainModule)
+        private SnippetsMetadata(string mainModule)
         {
             MainModule = mainModule;
         }

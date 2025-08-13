@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleCloudforceOneRequestMessage = new CloudforceOneRequestMessage("exampleCloudforceOneRequestMessage", CloudforceOneRequestMessageArgs.builder()
- *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
- *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .content("Can you elaborate on the type of DoS that occurred?")
  *             .build());
  * 
@@ -56,105 +56,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example &#39;&lt;account_identifier&gt;/&lt;request_identifier&gt;&#39;
+ * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example &#39;&lt;account_id&gt;/&lt;request_id&gt;/&lt;page&gt;/&lt;per_page&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")
 public class CloudforceOneRequestMessage extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Export(name="accountIdentifier", refs={String.class}, tree="[0]")
-    private Output<String> accountIdentifier;
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * Author of message
+     * Author of message.
      * 
      */
     @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
-     * @return Author of message
+     * @return Author of message.
      * 
      */
     public Output<String> author() {
         return this.author;
     }
     /**
-     * Content of message
+     * Content of message.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return Content of message
+     * @return Content of message.
      * 
      */
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
     /**
-     * Message creation time
+     * Defines the message creation time.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return Message creation time
+     * @return Defines the message creation time.
      * 
      */
     public Output<String> created() {
         return this.created;
     }
     /**
-     * Whether the message is a follow-on request
+     * Whether the message is a follow-on request.
      * 
      */
     @Export(name="isFollowOnRequest", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFollowOnRequest;
 
     /**
-     * @return Whether the message is a follow-on request
+     * @return Whether the message is a follow-on request.
      * 
      */
     public Output<Boolean> isFollowOnRequest() {
         return this.isFollowOnRequest;
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Export(name="requestIdentifier", refs={String.class}, tree="[0]")
-    private Output<String> requestIdentifier;
+    @Export(name="requestId", refs={String.class}, tree="[0]")
+    private Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Output<String> requestId() {
+        return this.requestId;
     }
     /**
-     * Message last updated time
+     * Defines the message last updated time.
      * 
      */
     @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**
-     * @return Message last updated time
+     * @return Defines the message last updated time.
      * 
      */
     public Output<String> updated() {

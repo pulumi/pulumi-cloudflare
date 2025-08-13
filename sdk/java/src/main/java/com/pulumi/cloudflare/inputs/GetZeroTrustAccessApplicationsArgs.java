@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,6 +60,21 @@ public final class GetZeroTrustAccessApplicationsArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
+    }
+
+    /**
+     * True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    @Import(name="exact")
+    private @Nullable Output<Boolean> exact;
+
+    /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    public Optional<Output<Boolean>> exact() {
+        return Optional.ofNullable(this.exact);
     }
 
     /**
@@ -127,6 +143,7 @@ public final class GetZeroTrustAccessApplicationsArgs extends com.pulumi.resourc
         this.accountId = $.accountId;
         this.aud = $.aud;
         this.domain = $.domain;
+        this.exact = $.exact;
         this.maxItems = $.maxItems;
         this.name = $.name;
         this.search = $.search;
@@ -212,6 +229,27 @@ public final class GetZeroTrustAccessApplicationsArgs extends com.pulumi.resourc
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param exact True for only exact string matches against passed name/domain query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(@Nullable Output<Boolean> exact) {
+            $.exact = exact;
+            return this;
+        }
+
+        /**
+         * @param exact True for only exact string matches against passed name/domain query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(Boolean exact) {
+            return exact(Output.of(exact));
         }
 
         /**

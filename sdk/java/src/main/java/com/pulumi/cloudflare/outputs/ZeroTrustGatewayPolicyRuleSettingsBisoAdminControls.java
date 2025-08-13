@@ -34,8 +34,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     private @Nullable Boolean dk;
     /**
-     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     private @Nullable String download;
@@ -111,8 +111,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.dk);
     }
     /**
-     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<String> download() {

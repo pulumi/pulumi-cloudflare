@@ -9,6 +9,9 @@ import com.pulumi.cloudflare.inputs.ZoneState;
 import com.pulumi.cloudflare.outputs.ZoneAccount;
 import com.pulumi.cloudflare.outputs.ZoneMeta;
 import com.pulumi.cloudflare.outputs.ZoneOwner;
+import com.pulumi.cloudflare.outputs.ZonePlan;
+import com.pulumi.cloudflare.outputs.ZoneTenant;
+import com.pulumi.cloudflare.outputs.ZoneTenantUnit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +20,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -80,7 +82,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     }
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     @Export(name="activatedOn", refs={String.class}, tree="[0]")
@@ -88,21 +90,37 @@ public class Zone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public Output<String> activatedOn() {
         return this.activatedOn;
     }
     /**
-     * When the zone was created
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    @Export(name="cnameSuffix", refs={String.class}, tree="[0]")
+    private Output<String> cnameSuffix;
+
+    /**
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    public Output<String> cnameSuffix() {
+        return this.cnameSuffix;
+    }
+    /**
+     * When the zone was created.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     public Output<String> createdOn() {
@@ -127,112 +145,112 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.developmentMode;
     }
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      * 
      */
     @Export(name="meta", refs={ZoneMeta.class}, tree="[0]")
     private Output<ZoneMeta> meta;
 
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public Output<ZoneMeta> meta() {
         return this.meta;
     }
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The domain name
+     * The domain name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      * 
      */
     @Export(name="nameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nameServers;
 
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public Output<List<String>> nameServers() {
         return this.nameServers;
     }
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      * 
      */
     @Export(name="originalDnshost", refs={String.class}, tree="[0]")
     private Output<String> originalDnshost;
 
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public Output<String> originalDnshost() {
         return this.originalDnshost;
     }
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      * 
      */
     @Export(name="originalNameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> originalNameServers;
 
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public Output<List<String>> originalNameServers() {
         return this.originalNameServers;
     }
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     @Export(name="originalRegistrar", refs={String.class}, tree="[0]")
     private Output<String> originalRegistrar;
 
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public Output<String> originalRegistrar() {
         return this.originalRegistrar;
     }
     /**
-     * The owner of the zone
+     * The owner of the zone.
      * 
      */
     @Export(name="owner", refs={ZoneOwner.class}, tree="[0]")
     private Output<ZoneOwner> owner;
 
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public Output<ZoneOwner> owner() {
@@ -257,6 +275,42 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.paused;
     }
     /**
+     * Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> permissions;
+
+    /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     */
+    public Output<List<String>> permissions() {
+        return this.permissions;
+    }
+    /**
+     * A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="plan", refs={ZonePlan.class}, tree="[0]")
+    private Output<ZonePlan> plan;
+
+    /**
+     * @return A Zones subscription information.
+     * 
+     */
+    public Output<ZonePlan> plan() {
+        return this.plan;
+    }
+    /**
      * The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
@@ -271,6 +325,34 @@ public class Zone extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    @Export(name="tenant", refs={ZoneTenant.class}, tree="[0]")
+    private Output<ZoneTenant> tenant;
+
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    public Output<ZoneTenant> tenant() {
+        return this.tenant;
+    }
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    @Export(name="tenantUnit", refs={ZoneTenantUnit.class}, tree="[0]")
+    private Output<ZoneTenantUnit> tenantUnit;
+
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    public Output<ZoneTenantUnit> tenantUnit() {
+        return this.tenantUnit;
     }
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
@@ -296,15 +378,15 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vanityNameServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> vanityNameServers;
+    private Output<List<String>> vanityNameServers;
 
     /**
      * @return An array of domains used for custom name servers. This is only
      * available for Business and Enterprise plans.
      * 
      */
-    public Output<Optional<List<String>>> vanityNameServers() {
-        return Codegen.optional(this.vanityNameServers);
+    public Output<List<String>> vanityNameServers() {
+        return this.vanityNameServers;
     }
     /**
      * Verification key for partial zone setup.

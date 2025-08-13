@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult StatusCodeRange;
         /// <summary>
-        /// Set the ttl for responses with this specific status code
+        /// Set the TTL for responses with this specific status code.
         /// </summary>
         public readonly int StatusCodeValue;
         /// <summary>

@@ -24,16 +24,8 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "account_id",
     ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///         Entries = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
-    ///             {
-    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///                 Enabled = true,
-    ///             },
-    ///         },
     ///         AiContextEnabled = true,
-    ///         AllowedMatchCount = 0,
+    ///         AllowedMatchCount = 5,
     ///         ConfidenceThreshold = "confidence_threshold",
     ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs
     ///         {
@@ -41,6 +33,14 @@ namespace Pulumi.Cloudflare
     ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs
     ///             {
     ///                 Files = true,
+    ///             },
+    ///         },
+    ///         Entries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
+    ///             {
+    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 Enabled = true,
     ///             },
     ///         },
     ///         OcrEnabled = true,
@@ -62,13 +62,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
-        public Output<bool?> AiContextEnabled { get; private set; } = null!;
+        public Output<bool> AiContextEnabled { get; private set; } = null!;
 
         [Output("allowedMatchCount")]
-        public Output<int?> AllowedMatchCount { get; private set; } = null!;
+        public Output<int> AllowedMatchCount { get; private set; } = null!;
 
         [Output("confidenceThreshold")]
-        public Output<string?> ConfidenceThreshold { get; private set; } = null!;
+        public Output<string> ConfidenceThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         [Output("ocrEnabled")]
-        public Output<bool?> OcrEnabled { get; private set; } = null!;
+        public Output<bool> OcrEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether this profile can be accessed by anyone.
@@ -110,7 +110,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ProfileId { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -189,8 +189,9 @@ namespace Pulumi.Cloudflare
         [Input("contextAwareness")]
         public Input<Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs>? ContextAwareness { get; set; }
 
-        [Input("entries", required: true)]
+        [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>());
@@ -243,6 +244,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>());
@@ -268,7 +270,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ProfileId { get; set; }
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

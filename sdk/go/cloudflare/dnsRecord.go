@@ -23,7 +23,7 @@ type DnsRecord struct {
 	pulumi.CustomResourceState
 
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
-	Comment pulumi.StringOutput `pulumi:"comment"`
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// When the record comment was last modified. Omitted if there is no comment.
 	CommentModifiedOn pulumi.StringOutput `pulumi:"commentModifiedOn"`
 	// A valid IPv4 address.
@@ -53,7 +53,7 @@ type DnsRecord struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64Output `pulumi:"ttl"`
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -138,7 +138,7 @@ type dnsRecordState struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl *float64 `pulumi:"ttl"`
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type *string `pulumi:"type"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -176,7 +176,7 @@ type DnsRecordState struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64PtrInput
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -206,7 +206,7 @@ type dnsRecordArgs struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl float64 `pulumi:"ttl"`
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -233,7 +233,7 @@ type DnsRecordArgs struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl pulumi.Float64Input
 	// Record type.
-	// Available values: "A".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type pulumi.StringInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -327,8 +327,8 @@ func (o DnsRecordOutput) ToDnsRecordOutputWithContext(ctx context.Context) DnsRe
 }
 
 // Comments or notes about the DNS record. This field has no effect on DNS responses.
-func (o DnsRecordOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
+func (o DnsRecordOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
 // When the record comment was last modified. Omitted if there is no comment.
@@ -402,7 +402,7 @@ func (o DnsRecordOutput) Ttl() pulumi.Float64Output {
 }
 
 // Record type.
-// Available values: "A".
+// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 func (o DnsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

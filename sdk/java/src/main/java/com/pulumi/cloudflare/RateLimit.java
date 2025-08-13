@@ -133,14 +133,14 @@ public class RateLimit extends com.pulumi.resources.CustomResource {
         return this.bypasses;
     }
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     public Output<String> description() {

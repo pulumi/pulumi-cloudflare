@@ -11,50 +11,14 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPage;
- * import com.pulumi.cloudflare.ZeroTrustAccessCustomPageArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustAccessCustomPage = new ZeroTrustAccessCustomPage("exampleZeroTrustAccessCustomPage", ZeroTrustAccessCustomPageArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .customHtml("<html><body><h1>Access Denied</h1></body></html>")
- *             .name("name")
- *             .type("identity_denied")
- *             .appCount(0)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -83,26 +47,6 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountId() {
         return this.accountId;
-    }
-    /**
-     * Number of apps the custom page is assigned to.
-     * 
-     */
-    @Export(name="appCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> appCount;
-
-    /**
-     * @return Number of apps the custom page is assigned to.
-     * 
-     */
-    public Output<Optional<Integer>> appCount() {
-        return Codegen.optional(this.appCount);
-    }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
     }
     /**
      * Custom page HTML.
@@ -161,12 +105,6 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
 
     /**

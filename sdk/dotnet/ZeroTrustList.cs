@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         [Output("items")]
         public Output<ImmutableArray<Outputs.ZeroTrustListItem>> Items { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustListItemArgs>? _items;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         public InputList<Inputs.ZeroTrustListItemArgs> Items
         {
@@ -196,7 +196,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustListItemGetArgs>? _items;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         public InputList<Inputs.ZeroTrustListItemGetArgs> Items
         {

@@ -48,6 +48,10 @@ export interface GetImageResult {
      */
     readonly accountId: string;
     /**
+     * Can set the creator field with an internal user ID.
+     */
+    readonly creator: string;
+    /**
      * Image file name.
      */
     readonly filename: string;

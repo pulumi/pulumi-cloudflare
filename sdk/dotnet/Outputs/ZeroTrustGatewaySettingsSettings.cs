@@ -54,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? HostSelector;
         /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewaySettingsSettingsInspection? Inspection;
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? ProtocolDetection;
@@ -88,6 +92,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? hostSelector,
 
+            Outputs.ZeroTrustGatewaySettingsSettingsInspection? inspection,
+
             Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? protocolDetection,
 
             Outputs.ZeroTrustGatewaySettingsSettingsSandbox? sandbox,
@@ -104,6 +110,7 @@ namespace Pulumi.Cloudflare.Outputs
             ExtendedEmailMatching = extendedEmailMatching;
             Fips = fips;
             HostSelector = hostSelector;
+            Inspection = inspection;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

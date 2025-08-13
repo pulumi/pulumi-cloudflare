@@ -43,14 +43,29 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
+	// Lists the betas that the user is participating in.
+	Betas pulumi.StringArrayOutput `pulumi:"betas"`
 	// The country in which the user lives.
 	Country pulumi.StringPtrOutput `pulumi:"country"`
 	// User's first name
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
+	// Indicates whether user has any business zones
+	HasBusinessZones pulumi.BoolOutput `pulumi:"hasBusinessZones"`
+	// Indicates whether user has any enterprise zones
+	HasEnterpriseZones pulumi.BoolOutput `pulumi:"hasEnterpriseZones"`
+	// Indicates whether user has any pro zones
+	HasProZones pulumi.BoolOutput `pulumi:"hasProZones"`
 	// User's last name
-	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
+	LastName      pulumi.StringPtrOutput      `pulumi:"lastName"`
+	Organizations UserOrganizationArrayOutput `pulumi:"organizations"`
+	// Indicates whether user has been suspended
+	Suspended pulumi.BoolOutput `pulumi:"suspended"`
 	// User's telephone number
 	Telephone pulumi.StringPtrOutput `pulumi:"telephone"`
+	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+	TwoFactorAuthenticationEnabled pulumi.BoolOutput `pulumi:"twoFactorAuthenticationEnabled"`
+	// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+	TwoFactorAuthenticationLocked pulumi.BoolOutput `pulumi:"twoFactorAuthenticationLocked"`
 	// The zipcode or postal code where the user lives.
 	Zipcode pulumi.StringPtrOutput `pulumi:"zipcode"`
 }
@@ -85,27 +100,57 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
+	// Lists the betas that the user is participating in.
+	Betas []string `pulumi:"betas"`
 	// The country in which the user lives.
 	Country *string `pulumi:"country"`
 	// User's first name
 	FirstName *string `pulumi:"firstName"`
+	// Indicates whether user has any business zones
+	HasBusinessZones *bool `pulumi:"hasBusinessZones"`
+	// Indicates whether user has any enterprise zones
+	HasEnterpriseZones *bool `pulumi:"hasEnterpriseZones"`
+	// Indicates whether user has any pro zones
+	HasProZones *bool `pulumi:"hasProZones"`
 	// User's last name
-	LastName *string `pulumi:"lastName"`
+	LastName      *string            `pulumi:"lastName"`
+	Organizations []UserOrganization `pulumi:"organizations"`
+	// Indicates whether user has been suspended
+	Suspended *bool `pulumi:"suspended"`
 	// User's telephone number
 	Telephone *string `pulumi:"telephone"`
+	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+	TwoFactorAuthenticationEnabled *bool `pulumi:"twoFactorAuthenticationEnabled"`
+	// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+	TwoFactorAuthenticationLocked *bool `pulumi:"twoFactorAuthenticationLocked"`
 	// The zipcode or postal code where the user lives.
 	Zipcode *string `pulumi:"zipcode"`
 }
 
 type UserState struct {
+	// Lists the betas that the user is participating in.
+	Betas pulumi.StringArrayInput
 	// The country in which the user lives.
 	Country pulumi.StringPtrInput
 	// User's first name
 	FirstName pulumi.StringPtrInput
+	// Indicates whether user has any business zones
+	HasBusinessZones pulumi.BoolPtrInput
+	// Indicates whether user has any enterprise zones
+	HasEnterpriseZones pulumi.BoolPtrInput
+	// Indicates whether user has any pro zones
+	HasProZones pulumi.BoolPtrInput
 	// User's last name
-	LastName pulumi.StringPtrInput
+	LastName      pulumi.StringPtrInput
+	Organizations UserOrganizationArrayInput
+	// Indicates whether user has been suspended
+	Suspended pulumi.BoolPtrInput
 	// User's telephone number
 	Telephone pulumi.StringPtrInput
+	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+	TwoFactorAuthenticationEnabled pulumi.BoolPtrInput
+	// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+	TwoFactorAuthenticationLocked pulumi.BoolPtrInput
 	// The zipcode or postal code where the user lives.
 	Zipcode pulumi.StringPtrInput
 }
@@ -228,6 +273,11 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// Lists the betas that the user is participating in.
+func (o UserOutput) Betas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.Betas }).(pulumi.StringArrayOutput)
+}
+
 // The country in which the user lives.
 func (o UserOutput) Country() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Country }).(pulumi.StringPtrOutput)
@@ -238,14 +288,48 @@ func (o UserOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FirstName }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether user has any business zones
+func (o UserOutput) HasBusinessZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.HasBusinessZones }).(pulumi.BoolOutput)
+}
+
+// Indicates whether user has any enterprise zones
+func (o UserOutput) HasEnterpriseZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.HasEnterpriseZones }).(pulumi.BoolOutput)
+}
+
+// Indicates whether user has any pro zones
+func (o UserOutput) HasProZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.HasProZones }).(pulumi.BoolOutput)
+}
+
 // User's last name
 func (o UserOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
+func (o UserOutput) Organizations() UserOrganizationArrayOutput {
+	return o.ApplyT(func(v *User) UserOrganizationArrayOutput { return v.Organizations }).(UserOrganizationArrayOutput)
+}
+
+// Indicates whether user has been suspended
+func (o UserOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
+}
+
 // User's telephone number
 func (o UserOutput) Telephone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Telephone }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+func (o UserOutput) TwoFactorAuthenticationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.TwoFactorAuthenticationEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+func (o UserOutput) TwoFactorAuthenticationLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.TwoFactorAuthenticationLocked }).(pulumi.BoolOutput)
 }
 
 // The zipcode or postal code where the user lives.

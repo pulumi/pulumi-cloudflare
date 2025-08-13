@@ -42,9 +42,6 @@ export interface GetZeroTrustGatewaySettingsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Account settings
-     */
     readonly settings: outputs.GetZeroTrustGatewaySettingsSettings;
     readonly updatedAt: string;
 }

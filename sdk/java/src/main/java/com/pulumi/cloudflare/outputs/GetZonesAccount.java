@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZonesAccount {
     /**
-     * @return An account ID
+     * @return Filter by an account ID.
      * 
      */
     private @Nullable String id;
@@ -32,7 +32,7 @@ public final class GetZonesAccount {
 
     private GetZonesAccount() {}
     /**
-     * @return An account ID
+     * @return Filter by an account ID.
      * 
      */
     public Optional<String> id() {

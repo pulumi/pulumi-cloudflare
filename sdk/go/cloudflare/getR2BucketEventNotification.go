@@ -28,6 +28,7 @@ import (
 //			_, err := cloudflare.LookupR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
+//				QueueId:    "queue_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,6 +54,8 @@ type LookupR2BucketEventNotificationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
+	// Queue ID.
+	QueueId string `pulumi:"queueId"`
 }
 
 // A collection of values returned by getR2BucketEventNotification.
@@ -63,8 +66,11 @@ type LookupR2BucketEventNotificationResult struct {
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// List of queues associated with the bucket.
-	Queues []GetR2BucketEventNotificationQueue `pulumi:"queues"`
+	// Queue ID.
+	QueueId string `pulumi:"queueId"`
+	// Name of the queue.
+	QueueName string                             `pulumi:"queueName"`
+	Rules     []GetR2BucketEventNotificationRule `pulumi:"rules"`
 }
 
 func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2BucketEventNotificationOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketEventNotificationResultOutput {
@@ -82,6 +88,8 @@ type LookupR2BucketEventNotificationOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Queue ID.
+	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
 
 func (LookupR2BucketEventNotificationOutputArgs) ElementType() reflect.Type {
@@ -118,9 +126,18 @@ func (o LookupR2BucketEventNotificationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of queues associated with the bucket.
-func (o LookupR2BucketEventNotificationResultOutput) Queues() GetR2BucketEventNotificationQueueArrayOutput {
-	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) []GetR2BucketEventNotificationQueue { return v.Queues }).(GetR2BucketEventNotificationQueueArrayOutput)
+// Queue ID.
+func (o LookupR2BucketEventNotificationResultOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Name of the queue.
+func (o LookupR2BucketEventNotificationResultOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+func (o LookupR2BucketEventNotificationResultOutput) Rules() GetR2BucketEventNotificationRuleArrayOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) []GetR2BucketEventNotificationRule { return v.Rules }).(GetR2BucketEventNotificationRuleArrayOutput)
 }
 
 func init() {

@@ -44,7 +44,7 @@ export interface GetZeroTrustGatewayPolicyArgs {
 export interface GetZeroTrustGatewayPolicyResult {
     readonly accountId: string;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     readonly action: string;
@@ -74,16 +74,20 @@ export interface GetZeroTrustGatewayPolicyResult {
     readonly id: string;
     readonly identity: string;
     readonly name: string;
+    readonly notSharable: boolean;
     readonly precedence: number;
+    readonly readOnly: boolean;
     /**
      * The API resource UUID.
      */
     readonly ruleId?: string;
     readonly ruleSettings: outputs.GetZeroTrustGatewayPolicyRuleSettings;
     readonly schedule: outputs.GetZeroTrustGatewayPolicySchedule;
+    readonly sourceAccount: string;
     readonly traffic: string;
     readonly updatedAt: string;
     readonly version: number;
+    readonly warningStatus: string;
 }
 /**
  * ## Example Usage

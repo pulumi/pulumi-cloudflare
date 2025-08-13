@@ -38,6 +38,7 @@ import * as utilities from "./utilities";
  *     lanAllowMinutes: 30,
  *     lanAllowSubnetSize: 24,
  *     registerInterfaceIpWithDns: true,
+ *     sccmVpnBoundarySupport: false,
  *     serviceModeV2: {
  *         mode: "proxy",
  *         port: 3000,
@@ -86,23 +87,23 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * Whether to allow the user to switch WARP between modes.
      */
-    public readonly allowModeSwitch!: pulumi.Output<boolean | undefined>;
+    public readonly allowModeSwitch!: pulumi.Output<boolean>;
     /**
      * Whether to receive update notifications when a new version of the client is available.
      */
-    public readonly allowUpdates!: pulumi.Output<boolean | undefined>;
+    public readonly allowUpdates!: pulumi.Output<boolean>;
     /**
      * Whether to allow devices to leave the organization.
      */
-    public readonly allowedToLeave!: pulumi.Output<boolean | undefined>;
+    public readonly allowedToLeave!: pulumi.Output<boolean>;
     /**
      * The amount of time in seconds to reconnect after having been disabled.
      */
-    public readonly autoConnect!: pulumi.Output<number | undefined>;
+    public readonly autoConnect!: pulumi.Output<number>;
     /**
      * Turn on the captive portal after the specified amount of time.
      */
-    public readonly captivePortal!: pulumi.Output<number | undefined>;
+    public readonly captivePortal!: pulumi.Output<number>;
     /**
      * Whether the policy is the default policy for an account.
      */
@@ -114,7 +115,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
-    public readonly disableAutoFallback!: pulumi.Output<boolean | undefined>;
+    public readonly disableAutoFallback!: pulumi.Output<boolean>;
     /**
      * Whether the policy will be applied to matching devices.
      */
@@ -122,7 +123,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
-    public readonly excludeOfficeIps!: pulumi.Output<boolean | undefined>;
+    public readonly excludeOfficeIps!: pulumi.Output<boolean>;
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
@@ -142,7 +143,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      */
     public readonly lanAllowSubnetSize!: pulumi.Output<number | undefined>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
     public readonly match!: pulumi.Output<string>;
     /**
@@ -157,21 +158,25 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
-    public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean | undefined>;
+    public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    public readonly sccmVpnBoundarySupport!: pulumi.Output<boolean>;
     public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
-    public readonly supportUrl!: pulumi.Output<string | undefined>;
+    public readonly supportUrl!: pulumi.Output<string>;
     /**
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
-    public readonly switchLocked!: pulumi.Output<boolean | undefined>;
+    public readonly switchLocked!: pulumi.Output<boolean>;
     public /*out*/ readonly targetTests!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileTargetTest[]>;
     /**
      * Determines which tunnel protocol to use.
      */
-    public readonly tunnelProtocol!: pulumi.Output<string | undefined>;
+    public readonly tunnelProtocol!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDeviceCustomProfile resource with the given unique name, arguments, and options.
@@ -208,6 +213,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = state ? state.registerInterfaceIpWithDns : undefined;
+            resourceInputs["sccmVpnBoundarySupport"] = state ? state.sccmVpnBoundarySupport : undefined;
             resourceInputs["serviceModeV2"] = state ? state.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
             resourceInputs["switchLocked"] = state ? state.switchLocked : undefined;
@@ -245,6 +251,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["precedence"] = args ? args.precedence : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = args ? args.registerInterfaceIpWithDns : undefined;
+            resourceInputs["sccmVpnBoundarySupport"] = args ? args.sccmVpnBoundarySupport : undefined;
             resourceInputs["serviceModeV2"] = args ? args.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
             resourceInputs["switchLocked"] = args ? args.switchLocked : undefined;
@@ -326,7 +333,7 @@ export interface ZeroTrustDeviceCustomProfileState {
      */
     lanAllowSubnetSize?: pulumi.Input<number>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
     match?: pulumi.Input<string>;
     /**
@@ -342,6 +349,10 @@ export interface ZeroTrustDeviceCustomProfileState {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -416,7 +427,7 @@ export interface ZeroTrustDeviceCustomProfileArgs {
      */
     lanAllowSubnetSize?: pulumi.Input<number>;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
     match: pulumi.Input<string>;
     /**
@@ -431,6 +442,10 @@ export interface ZeroTrustDeviceCustomProfileArgs {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class HyperdriveConfigOriginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Client ID of the Access token to use when connecting to the origin database.
+        /// Defines the Client ID of the Access token to use when connecting to the origin database.
         /// </summary>
         [Input("accessClientId")]
         public Input<string>? AccessClientId { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _accessClientSecret;
 
         /// <summary>
-        /// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+        /// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
         /// </summary>
         public Input<string>? AccessClientSecret
         {
@@ -35,13 +35,13 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The name of your origin database.
+        /// Set the name of your origin database.
         /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
         /// <summary>
-        /// The host (hostname or IP) of your origin database.
+        /// Defines the host (hostname or IP) of your origin database.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password required to access your origin database. This value is write-only and never returned by the API.
+        /// Set the password needed to access your origin database. The API never returns this write-only value.
         /// </summary>
         public Input<string>? Password
         {
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The port (default: 5432 for Postgres) of your origin database.
+        /// Defines the port (default: 5432 for Postgres) of your origin database.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -76,7 +76,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> Scheme { get; set; } = null!;
 
         /// <summary>
-        /// The user of your origin database.
+        /// Set the user of your origin database.
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;

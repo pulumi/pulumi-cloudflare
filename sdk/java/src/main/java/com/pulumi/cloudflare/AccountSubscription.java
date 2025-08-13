@@ -22,6 +22,12 @@ import javax.annotation.Nullable;
  * &lt;!--Start PulumiCodeChooser --&gt;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example &#39;&lt;account_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/accountSubscription:AccountSubscription")
 public class AccountSubscription extends com.pulumi.resources.CustomResource {
@@ -140,20 +146,6 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
-    }
-    /**
-     * Subscription identifier tag.
-     * 
-     */
-    @Export(name="subscriptionIdentifier", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> subscriptionIdentifier;
-
-    /**
-     * @return Subscription identifier tag.
-     * 
-     */
-    public Output<Optional<String>> subscriptionIdentifier() {
-        return Codegen.optional(this.subscriptionIdentifier);
     }
 
     /**

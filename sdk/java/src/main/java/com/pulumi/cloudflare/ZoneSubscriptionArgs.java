@@ -35,21 +35,6 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Subscription identifier tag.
-     * 
-     */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
-
-    /**
-     * @return Subscription identifier tag.
-     * 
-     */
-    public Output<String> identifier() {
-        return this.identifier;
-    }
-
-    /**
      * The rate plan applied to the subscription.
      * 
      */
@@ -64,12 +49,27 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.ratePlan);
     }
 
+    /**
+     * Subscription identifier tag.
+     * 
+     */
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
+
+    /**
+     * @return Subscription identifier tag.
+     * 
+     */
+    public Output<String> zoneId() {
+        return this.zoneId;
+    }
+
     private ZoneSubscriptionArgs() {}
 
     private ZoneSubscriptionArgs(ZoneSubscriptionArgs $) {
         this.frequency = $.frequency;
-        this.identifier = $.identifier;
         this.ratePlan = $.ratePlan;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -114,27 +114,6 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param identifier Subscription identifier tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder identifier(Output<String> identifier) {
-            $.identifier = identifier;
-            return this;
-        }
-
-        /**
-         * @param identifier Subscription identifier tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
-        }
-
-        /**
          * @param ratePlan The rate plan applied to the subscription.
          * 
          * @return builder
@@ -155,9 +134,30 @@ public final class ZoneSubscriptionArgs extends com.pulumi.resources.ResourceArg
             return ratePlan(Output.of(ratePlan));
         }
 
+        /**
+         * @param zoneId Subscription identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId Subscription identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
+        }
+
         public ZoneSubscriptionArgs build() {
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("ZoneSubscriptionArgs", "identifier");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneSubscriptionArgs", "zoneId");
             }
             return $;
         }

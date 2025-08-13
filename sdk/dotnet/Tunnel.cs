@@ -250,6 +250,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         /// </summary>
+        [Obsolete(@"This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`")]
         public InputList<Inputs.TunnelConnectionGetArgs> Connections
         {
             get => _connections ?? (_connections = new InputList<Inputs.TunnelConnectionGetArgs>());

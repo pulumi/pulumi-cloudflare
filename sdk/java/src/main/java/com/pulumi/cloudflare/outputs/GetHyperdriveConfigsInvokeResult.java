@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHyperdriveConfigsInvokeResult {
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String accountId;
@@ -38,7 +38,7 @@ public final class GetHyperdriveConfigsInvokeResult {
 
     private GetHyperdriveConfigsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String accountId() {

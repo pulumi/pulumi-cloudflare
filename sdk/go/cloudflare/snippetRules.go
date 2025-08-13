@@ -16,14 +16,19 @@ import (
 type SnippetRules struct {
 	pulumi.CustomResourceState
 
+	// An informative description of the rule.
 	Description pulumi.StringOutput `pulumi:"description"`
-	Enabled     pulumi.BoolOutput   `pulumi:"enabled"`
-	Expression  pulumi.StringOutput `pulumi:"expression"`
-	// List of snippet rules
+	// Whether the rule should be executed.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// The expression defining which traffic will match the rule.
+	Expression pulumi.StringOutput `pulumi:"expression"`
+	// The timestamp of when the rule was last modified.
+	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
+	// A list of snippet rules.
 	Rules SnippetRulesRuleArrayOutput `pulumi:"rules"`
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringOutput `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -34,6 +39,9 @@ func NewSnippetRules(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -60,26 +68,36 @@ func GetSnippetRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnippetRules resources.
 type snippetRulesState struct {
+	// An informative description of the rule.
 	Description *string `pulumi:"description"`
-	Enabled     *bool   `pulumi:"enabled"`
-	Expression  *string `pulumi:"expression"`
-	// List of snippet rules
+	// Whether the rule should be executed.
+	Enabled *bool `pulumi:"enabled"`
+	// The expression defining which traffic will match the rule.
+	Expression *string `pulumi:"expression"`
+	// The timestamp of when the rule was last modified.
+	LastUpdated *string `pulumi:"lastUpdated"`
+	// A list of snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName *string `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SnippetRulesState struct {
+	// An informative description of the rule.
 	Description pulumi.StringPtrInput
-	Enabled     pulumi.BoolPtrInput
-	Expression  pulumi.StringPtrInput
-	// List of snippet rules
+	// Whether the rule should be executed.
+	Enabled pulumi.BoolPtrInput
+	// The expression defining which traffic will match the rule.
+	Expression pulumi.StringPtrInput
+	// The timestamp of when the rule was last modified.
+	LastUpdated pulumi.StringPtrInput
+	// A list of snippet rules.
 	Rules SnippetRulesRuleArrayInput
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringPtrInput
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -88,17 +106,17 @@ func (SnippetRulesState) ElementType() reflect.Type {
 }
 
 type snippetRulesArgs struct {
-	// List of snippet rules
+	// A list of snippet rules.
 	Rules []SnippetRulesRule `pulumi:"rules"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a SnippetRules resource.
 type SnippetRulesArgs struct {
-	// List of snippet rules
+	// A list of snippet rules.
 	Rules SnippetRulesRuleArrayInput
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -189,29 +207,37 @@ func (o SnippetRulesOutput) ToSnippetRulesOutputWithContext(ctx context.Context)
 	return o
 }
 
+// An informative description of the rule.
 func (o SnippetRulesOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Whether the rule should be executed.
 func (o SnippetRulesOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The expression defining which traffic will match the rule.
 func (o SnippetRulesOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
 }
 
-// List of snippet rules
+// The timestamp of when the rule was last modified.
+func (o SnippetRulesOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// A list of snippet rules.
 func (o SnippetRulesOutput) Rules() SnippetRulesRuleArrayOutput {
 	return o.ApplyT(func(v *SnippetRules) SnippetRulesRuleArrayOutput { return v.Rules }).(SnippetRulesRuleArrayOutput)
 }
 
-// Snippet identifying name
+// The identifying name of the snippet.
 func (o SnippetRulesOutput) SnippetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.SnippetName }).(pulumi.StringOutput)
 }
 
-// Identifier
+// The unique ID of the zone.
 func (o SnippetRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnippetRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

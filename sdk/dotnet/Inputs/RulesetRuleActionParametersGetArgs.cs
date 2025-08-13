@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? OriginCacheControl { get; set; }
 
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
         /// </summary>
         [Input("originErrorPagePassthru")]
         public Input<bool>? OriginErrorPagePassthru { get; set; }
@@ -229,11 +229,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesGetArgs>? Overrides { get; set; }
 
+        /// <summary>
+        /// A phase to skip the execution of. This property is only compatible with products.
+        /// Available values: "current".
+        /// </summary>
+        [Input("phase")]
+        public Input<string>? Phase { get; set; }
+
         [Input("phases")]
         private InputList<string>? _phases;
 
         /// <summary>
-        /// A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+        /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
         /// </summary>
         public InputList<string> Phases
         {
@@ -243,7 +250,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure the Polish level.
-        /// Available values: "off", "lossless", "lossy".
+        /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
@@ -315,7 +322,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn on or off Rocket Loader
+        /// Turn on or off Rocket Loader.
         /// </summary>
         [Input("rocketLoader")]
         public Input<bool>? RocketLoader { get; set; }
@@ -333,7 +340,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+        /// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
         /// Available values: "current".
         /// </summary>
         [Input("ruleset")]

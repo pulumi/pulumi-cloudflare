@@ -33,14 +33,14 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -96,7 +96,7 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specifies the zone associated with the API call.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specifies the zone associated with the API call.
          * 
          * @return builder
          * 

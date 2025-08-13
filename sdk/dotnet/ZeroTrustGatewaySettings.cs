@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// Account settings
         /// </summary>
         [Output("settings")]
-        public Output<Outputs.ZeroTrustGatewaySettingsSettings> Settings { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustGatewaySettingsSettings?> Settings { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;

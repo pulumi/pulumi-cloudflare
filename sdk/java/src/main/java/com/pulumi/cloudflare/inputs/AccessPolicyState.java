@@ -10,7 +10,6 @@ import com.pulumi.cloudflare.inputs.AccessPolicyRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,21 +34,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * Number of access applications currently using this policy.
-     * 
-     */
-    @Import(name="appCount")
-    private @Nullable Output<Integer> appCount;
-
-    /**
-     * @return Number of access applications currently using this policy.
-     * 
-     */
-    public Optional<Output<Integer>> appCount() {
-        return Optional.ofNullable(this.appCount);
     }
 
     /**
@@ -80,13 +64,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
-    }
-
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
     }
 
     /**
@@ -211,13 +188,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.requires);
     }
 
-    @Import(name="reusable")
-    private @Nullable Output<Boolean> reusable;
-
-    public Optional<Output<Boolean>> reusable() {
-        return Optional.ofNullable(this.reusable);
-    }
-
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
@@ -233,21 +203,12 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sessionDuration);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     private AccessPolicyState() {}
 
     private AccessPolicyState(AccessPolicyState $) {
         this.accountId = $.accountId;
-        this.appCount = $.appCount;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
-        this.createdAt = $.createdAt;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
@@ -256,9 +217,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
         this.requires = $.requires;
-        this.reusable = $.reusable;
         this.sessionDuration = $.sessionDuration;
-        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -298,27 +257,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param appCount Number of access applications currently using this policy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(@Nullable Output<Integer> appCount) {
-            $.appCount = appCount;
-            return this;
-        }
-
-        /**
-         * @param appCount Number of access applications currently using this policy.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(Integer appCount) {
-            return appCount(Output.of(appCount));
         }
 
         /**
@@ -371,15 +309,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -582,15 +511,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
             return requires(List.of(requires));
         }
 
-        public Builder reusable(@Nullable Output<Boolean> reusable) {
-            $.reusable = reusable;
-            return this;
-        }
-
-        public Builder reusable(Boolean reusable) {
-            return reusable(Output.of(reusable));
-        }
-
         /**
          * @param sessionDuration The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
@@ -610,15 +530,6 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sessionDuration(String sessionDuration) {
             return sessionDuration(Output.of(sessionDuration));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         public AccessPolicyState build() {

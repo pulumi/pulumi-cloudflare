@@ -57,7 +57,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    public readonly bindings!: pulumi.Output<outputs.WorkerScriptBinding[] | undefined>;
+    public readonly bindings!: pulumi.Output<outputs.WorkerScriptBinding[]>;
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
@@ -65,15 +65,27 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    public readonly compatibilityDate!: pulumi.Output<string | undefined>;
+    public readonly compatibilityDate!: pulumi.Output<string>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    public readonly compatibilityFlags!: pulumi.Output<string[] | undefined>;
+    public readonly compatibilityFlags!: pulumi.Output<string[]>;
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
      */
-    public readonly content!: pulumi.Output<string>;
+    public readonly content!: pulumi.Output<string | undefined>;
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     */
+    public readonly contentFile!: pulumi.Output<string | undefined>;
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+     */
+    public readonly contentSha256!: pulumi.Output<string | undefined>;
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+     */
+    public readonly contentType!: pulumi.Output<string | undefined>;
     /**
      * When the script was created.
      */
@@ -107,10 +119,6 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly mainModule!: pulumi.Output<string | undefined>;
     /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     */
-    public readonly migrations!: pulumi.Output<outputs.WorkerScriptMigrations | undefined>;
-    /**
      * When the script was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
@@ -121,7 +129,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
-    public readonly placement!: pulumi.Output<outputs.WorkerScriptPlacement | undefined>;
+    public readonly placement!: pulumi.Output<outputs.WorkerScriptPlacement>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -130,7 +138,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    public readonly tailConsumers!: pulumi.Output<outputs.WorkerScriptTailConsumer[] | undefined>;
+    public readonly tailConsumers!: pulumi.Output<outputs.WorkerScriptTailConsumer[]>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard".
@@ -160,6 +168,9 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentFile"] = state ? state.contentFile : undefined;
+            resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["hasAssets"] = state ? state.hasAssets : undefined;
@@ -168,7 +179,6 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["keepBindings"] = state ? state.keepBindings : undefined;
             resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["mainModule"] = state ? state.mainModule : undefined;
-            resourceInputs["migrations"] = state ? state.migrations : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["observability"] = state ? state.observability : undefined;
             resourceInputs["placement"] = state ? state.placement : undefined;
@@ -181,9 +191,6 @@ export class WorkerScript extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.content === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'content'");
-            }
             if ((!args || args.scriptName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
@@ -194,11 +201,13 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentFile"] = args ? args.contentFile : undefined;
+            resourceInputs["contentSha256"] = args ? args.contentSha256 : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
             resourceInputs["keepAssets"] = args ? args.keepAssets : undefined;
             resourceInputs["keepBindings"] = args ? args.keepBindings : undefined;
             resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["mainModule"] = args ? args.mainModule : undefined;
-            resourceInputs["migrations"] = args ? args.migrations : undefined;
             resourceInputs["observability"] = args ? args.observability : undefined;
             resourceInputs["placement"] = args ? args.placement : undefined;
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
@@ -247,9 +256,21 @@ export interface WorkerScriptState {
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
      */
     content?: pulumi.Input<string>;
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     */
+    contentFile?: pulumi.Input<string>;
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+     */
+    contentSha256?: pulumi.Input<string>;
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+     */
+    contentType?: pulumi.Input<string>;
     /**
      * When the script was created.
      */
@@ -282,10 +303,6 @@ export interface WorkerScriptState {
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
-    /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     */
-    migrations?: pulumi.Input<inputs.WorkerScriptMigrations>;
     /**
      * When the script was last modified.
      */
@@ -343,9 +360,21 @@ export interface WorkerScriptArgs {
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
      */
-    content: pulumi.Input<string>;
+    content?: pulumi.Input<string>;
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     */
+    contentFile?: pulumi.Input<string>;
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+     */
+    contentSha256?: pulumi.Input<string>;
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+     */
+    contentType?: pulumi.Input<string>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
      */
@@ -362,10 +391,6 @@ export interface WorkerScriptArgs {
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
-    /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     */
-    migrations?: pulumi.Input<inputs.WorkerScriptMigrations>;
     /**
      * Observability settings for the Worker.
      */

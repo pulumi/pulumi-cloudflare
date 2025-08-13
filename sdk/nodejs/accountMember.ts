@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountMember = new cloudflare.AccountMember("example_account_member", {
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     email: "user@example.com",
  *     roles: ["3536bcfad5faccb999b47003c79917fb"],
  *     status: "accepted",

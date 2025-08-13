@@ -57,7 +57,7 @@ type LookupZeroTrustGatewayPolicyArgs struct {
 // A collection of values returned by getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    string `pulumi:"action"`
 	CreatedAt string `pulumi:"createdAt"`
@@ -71,19 +71,23 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
-	Expiration GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
-	Filters    []string                            `pulumi:"filters"`
-	Id         string                              `pulumi:"id"`
-	Identity   string                              `pulumi:"identity"`
-	Name       string                              `pulumi:"name"`
-	Precedence int                                 `pulumi:"precedence"`
+	Expiration  GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
+	Filters     []string                            `pulumi:"filters"`
+	Id          string                              `pulumi:"id"`
+	Identity    string                              `pulumi:"identity"`
+	Name        string                              `pulumi:"name"`
+	NotSharable bool                                `pulumi:"notSharable"`
+	Precedence  int                                 `pulumi:"precedence"`
+	ReadOnly    bool                                `pulumi:"readOnly"`
 	// The API resource UUID.
-	RuleId       *string                               `pulumi:"ruleId"`
-	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
-	Schedule     GetZeroTrustGatewayPolicySchedule     `pulumi:"schedule"`
-	Traffic      string                                `pulumi:"traffic"`
-	UpdatedAt    string                                `pulumi:"updatedAt"`
-	Version      int                                   `pulumi:"version"`
+	RuleId        *string                               `pulumi:"ruleId"`
+	RuleSettings  GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
+	Schedule      GetZeroTrustGatewayPolicySchedule     `pulumi:"schedule"`
+	SourceAccount string                                `pulumi:"sourceAccount"`
+	Traffic       string                                `pulumi:"traffic"`
+	UpdatedAt     string                                `pulumi:"updatedAt"`
+	Version       int                                   `pulumi:"version"`
+	WarningStatus string                                `pulumi:"warningStatus"`
 }
 
 func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPolicyResultOutput {
@@ -125,7 +129,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 // Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o LookupZeroTrustGatewayPolicyResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Action }).(pulumi.StringOutput)
@@ -177,8 +181,16 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupZeroTrustGatewayPolicyResultOutput) NotSharable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.NotSharable }).(pulumi.BoolOutput)
+}
+
 func (o LookupZeroTrustGatewayPolicyResultOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Precedence }).(pulumi.IntOutput)
+}
+
+func (o LookupZeroTrustGatewayPolicyResultOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
 // The API resource UUID.
@@ -196,6 +208,10 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Schedule() GetZeroTrustGateway
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicySchedule { return v.Schedule }).(GetZeroTrustGatewayPolicyScheduleOutput)
 }
 
+func (o LookupZeroTrustGatewayPolicyResultOutput) SourceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.SourceAccount }).(pulumi.StringOutput)
+}
+
 func (o LookupZeroTrustGatewayPolicyResultOutput) Traffic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Traffic }).(pulumi.StringOutput)
 }
@@ -206,6 +222,10 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) UpdatedAt() pulumi.StringOutpu
 
 func (o LookupZeroTrustGatewayPolicyResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func (o LookupZeroTrustGatewayPolicyResultOutput) WarningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.WarningStatus }).(pulumi.StringOutput)
 }
 
 func init() {

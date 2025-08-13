@@ -6,6 +6,8 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +32,58 @@ public final class TeamsAccountSettingsExtendedEmailMatchingArgs extends com.pul
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    /**
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+
+    /**
+     * Account tag of account that shared this setting
+     * 
+     */
+    @Import(name="sourceAccount")
+    private @Nullable Output<String> sourceAccount;
+
+    /**
+     * @return Account tag of account that shared this setting
+     * 
+     */
+    public Optional<Output<String>> sourceAccount() {
+        return Optional.ofNullable(this.sourceAccount);
+    }
+
+    /**
+     * Version number of the setting
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<Integer> version;
+
+    /**
+     * @return Version number of the setting
+     * 
+     */
+    public Optional<Output<Integer>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private TeamsAccountSettingsExtendedEmailMatchingArgs() {}
 
     private TeamsAccountSettingsExtendedEmailMatchingArgs(TeamsAccountSettingsExtendedEmailMatchingArgs $) {
         this.enabled = $.enabled;
+        this.readOnly = $.readOnly;
+        this.sourceAccount = $.sourceAccount;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -73,6 +123,69 @@ public final class TeamsAccountSettingsExtendedEmailMatchingArgs extends com.pul
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        /**
+         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
+        }
+
+        /**
+         * @param sourceAccount Account tag of account that shared this setting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAccount(@Nullable Output<String> sourceAccount) {
+            $.sourceAccount = sourceAccount;
+            return this;
+        }
+
+        /**
+         * @param sourceAccount Account tag of account that shared this setting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAccount(String sourceAccount) {
+            return sourceAccount(Output.of(sourceAccount));
+        }
+
+        /**
+         * @param version Version number of the setting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<Integer> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Version number of the setting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(Integer version) {
+            return version(Output.of(version));
         }
 
         public TeamsAccountSettingsExtendedEmailMatchingArgs build() {

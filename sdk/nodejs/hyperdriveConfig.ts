@@ -44,21 +44,25 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     public readonly caching!: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     public readonly mtls!: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly origin!: pulumi.Output<outputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    public readonly originConnectionLimit!: pulumi.Output<number | undefined>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -80,6 +84,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["mtls"] = state ? state.mtls : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["originConnectionLimit"] = state ? state.originConnectionLimit : undefined;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -96,6 +101,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["mtls"] = args ? args.mtls : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["originConnectionLimit"] = args ? args.originConnectionLimit : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
@@ -109,21 +115,25 @@ export class HyperdriveConfig extends pulumi.CustomResource {
  */
 export interface HyperdriveConfigState {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId?: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     modifiedOn?: pulumi.Input<string>;
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     name?: pulumi.Input<string>;
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    originConnectionLimit?: pulumi.Input<number>;
 }
 
 /**
@@ -131,11 +141,15 @@ export interface HyperdriveConfigState {
  */
 export interface HyperdriveConfigArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     name: pulumi.Input<string>;
     origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    originConnectionLimit?: pulumi.Input<number>;
 }

@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.MagicTransitConnectorDeviceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,9 +19,17 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
 
     public static final MagicTransitConnectorArgs Empty = new MagicTransitConnectorArgs();
 
+    /**
+     * Account identifier
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Account identifier
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -32,11 +41,11 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.activated);
     }
 
-    @Import(name="connectorId", required=true)
-    private Output<String> connectorId;
+    @Import(name="device", required=true)
+    private Output<MagicTransitConnectorDeviceArgs> device;
 
-    public Output<String> connectorId() {
-        return this.connectorId;
+    public Output<MagicTransitConnectorDeviceArgs> device() {
+        return this.device;
     }
 
     @Import(name="interruptWindowDurationHours")
@@ -72,7 +81,7 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
     private MagicTransitConnectorArgs(MagicTransitConnectorArgs $) {
         this.accountId = $.accountId;
         this.activated = $.activated;
-        this.connectorId = $.connectorId;
+        this.device = $.device;
         this.interruptWindowDurationHours = $.interruptWindowDurationHours;
         this.interruptWindowHourOfDay = $.interruptWindowHourOfDay;
         this.notes = $.notes;
@@ -97,11 +106,23 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
             $ = new MagicTransitConnectorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -115,13 +136,13 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
             return activated(Output.of(activated));
         }
 
-        public Builder connectorId(Output<String> connectorId) {
-            $.connectorId = connectorId;
+        public Builder device(Output<MagicTransitConnectorDeviceArgs> device) {
+            $.device = device;
             return this;
         }
 
-        public Builder connectorId(String connectorId) {
-            return connectorId(Output.of(connectorId));
+        public Builder device(MagicTransitConnectorDeviceArgs device) {
+            return device(Output.of(device));
         }
 
         public Builder interruptWindowDurationHours(@Nullable Output<Double> interruptWindowDurationHours) {
@@ -164,8 +185,8 @@ public final class MagicTransitConnectorArgs extends com.pulumi.resources.Resour
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("MagicTransitConnectorArgs", "accountId");
             }
-            if ($.connectorId == null) {
-                throw new MissingRequiredPropertyException("MagicTransitConnectorArgs", "connectorId");
+            if ($.device == null) {
+                throw new MissingRequiredPropertyException("MagicTransitConnectorArgs", "device");
             }
             return $;
         }

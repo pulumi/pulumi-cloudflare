@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Output("compatibilityDate")]
-        public Output<string?> CompatibilityDate { get; private set; } = null!;
+        public Output<string> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
         /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
@@ -59,10 +59,28 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker.
+        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
         /// </summary>
         [Output("content")]
-        public Output<string> Content { get; private set; } = null!;
+        public Output<string?> Content { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// </summary>
+        [Output("contentFile")]
+        public Output<string?> ContentFile { get; private set; } = null!;
+
+        /// <summary>
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// </summary>
+        [Output("contentSha256")]
+        public Output<string?> ContentSha256 { get; private set; } = null!;
+
+        /// <summary>
+        /// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+        /// </summary>
+        [Output("contentType")]
+        public Output<string?> ContentType { get; private set; } = null!;
 
         /// <summary>
         /// When the script was created.
@@ -113,12 +131,6 @@ namespace Pulumi.Cloudflare
         public Output<string?> MainModule { get; private set; } = null!;
 
         /// <summary>
-        /// Migrations to apply for Durable Objects associated with this Worker.
-        /// </summary>
-        [Output("migrations")]
-        public Output<Outputs.WorkerScriptMigrations?> Migrations { get; private set; } = null!;
-
-        /// <summary>
         /// When the script was last modified.
         /// </summary>
         [Output("modifiedOn")]
@@ -134,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         [Output("placement")]
-        public Output<Outputs.WorkerScriptPlacement?> Placement { get; private set; } = null!;
+        public Output<Outputs.WorkerScriptPlacement> Placement { get; private set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
@@ -257,10 +269,28 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker.
+        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
         /// </summary>
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
+        [Input("content")]
+        public Input<string>? Content { get; set; }
+
+        /// <summary>
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// </summary>
+        [Input("contentFile")]
+        public Input<string>? ContentFile { get; set; }
+
+        /// <summary>
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// </summary>
+        [Input("contentSha256")]
+        public Input<string>? ContentSha256 { get; set; }
+
+        /// <summary>
+        /// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
         /// <summary>
         /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
@@ -291,12 +321,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
-
-        /// <summary>
-        /// Migrations to apply for Durable Objects associated with this Worker.
-        /// </summary>
-        [Input("migrations")]
-        public Input<Inputs.WorkerScriptMigrationsArgs>? Migrations { get; set; }
 
         /// <summary>
         /// Observability settings for the Worker.
@@ -392,10 +416,28 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker.
+        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
+
+        /// <summary>
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// </summary>
+        [Input("contentFile")]
+        public Input<string>? ContentFile { get; set; }
+
+        /// <summary>
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// </summary>
+        [Input("contentSha256")]
+        public Input<string>? ContentSha256 { get; set; }
+
+        /// <summary>
+        /// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+        /// </summary>
+        [Input("contentType")]
+        public Input<string>? ContentType { get; set; }
 
         /// <summary>
         /// When the script was created.
@@ -450,12 +492,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
-
-        /// <summary>
-        /// Migrations to apply for Durable Objects associated with this Worker.
-        /// </summary>
-        [Input("migrations")]
-        public Input<Inputs.WorkerScriptMigrationsGetArgs>? Migrations { get; set; }
 
         /// <summary>
         /// When the script was last modified.

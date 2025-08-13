@@ -8,29 +8,28 @@ import com.pulumi.cloudflare.outputs.TeamsLocationEndpointsDot;
 import com.pulumi.cloudflare.outputs.TeamsLocationEndpointsIpv4;
 import com.pulumi.cloudflare.outputs.TeamsLocationEndpointsIpv6;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsLocationEndpoints {
-    private @Nullable TeamsLocationEndpointsDoh doh;
-    private @Nullable TeamsLocationEndpointsDot dot;
-    private @Nullable TeamsLocationEndpointsIpv4 ipv4;
-    private @Nullable TeamsLocationEndpointsIpv6 ipv6;
+    private TeamsLocationEndpointsDoh doh;
+    private TeamsLocationEndpointsDot dot;
+    private TeamsLocationEndpointsIpv4 ipv4;
+    private TeamsLocationEndpointsIpv6 ipv6;
 
     private TeamsLocationEndpoints() {}
-    public Optional<TeamsLocationEndpointsDoh> doh() {
-        return Optional.ofNullable(this.doh);
+    public TeamsLocationEndpointsDoh doh() {
+        return this.doh;
     }
-    public Optional<TeamsLocationEndpointsDot> dot() {
-        return Optional.ofNullable(this.dot);
+    public TeamsLocationEndpointsDot dot() {
+        return this.dot;
     }
-    public Optional<TeamsLocationEndpointsIpv4> ipv4() {
-        return Optional.ofNullable(this.ipv4);
+    public TeamsLocationEndpointsIpv4 ipv4() {
+        return this.ipv4;
     }
-    public Optional<TeamsLocationEndpointsIpv6> ipv6() {
-        return Optional.ofNullable(this.ipv6);
+    public TeamsLocationEndpointsIpv6 ipv6() {
+        return this.ipv6;
     }
 
     public static Builder builder() {
@@ -42,10 +41,10 @@ public final class TeamsLocationEndpoints {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable TeamsLocationEndpointsDoh doh;
-        private @Nullable TeamsLocationEndpointsDot dot;
-        private @Nullable TeamsLocationEndpointsIpv4 ipv4;
-        private @Nullable TeamsLocationEndpointsIpv6 ipv6;
+        private TeamsLocationEndpointsDoh doh;
+        private TeamsLocationEndpointsDot dot;
+        private TeamsLocationEndpointsIpv4 ipv4;
+        private TeamsLocationEndpointsIpv6 ipv6;
         public Builder() {}
         public Builder(TeamsLocationEndpoints defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,26 +55,34 @@ public final class TeamsLocationEndpoints {
         }
 
         @CustomType.Setter
-        public Builder doh(@Nullable TeamsLocationEndpointsDoh doh) {
-
+        public Builder doh(TeamsLocationEndpointsDoh doh) {
+            if (doh == null) {
+              throw new MissingRequiredPropertyException("TeamsLocationEndpoints", "doh");
+            }
             this.doh = doh;
             return this;
         }
         @CustomType.Setter
-        public Builder dot(@Nullable TeamsLocationEndpointsDot dot) {
-
+        public Builder dot(TeamsLocationEndpointsDot dot) {
+            if (dot == null) {
+              throw new MissingRequiredPropertyException("TeamsLocationEndpoints", "dot");
+            }
             this.dot = dot;
             return this;
         }
         @CustomType.Setter
-        public Builder ipv4(@Nullable TeamsLocationEndpointsIpv4 ipv4) {
-
+        public Builder ipv4(TeamsLocationEndpointsIpv4 ipv4) {
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("TeamsLocationEndpoints", "ipv4");
+            }
             this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
-        public Builder ipv6(@Nullable TeamsLocationEndpointsIpv6 ipv6) {
-
+        public Builder ipv6(TeamsLocationEndpointsIpv6 ipv6) {
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("TeamsLocationEndpoints", "ipv6");
+            }
             this.ipv6 = ipv6;
             return this;
         }

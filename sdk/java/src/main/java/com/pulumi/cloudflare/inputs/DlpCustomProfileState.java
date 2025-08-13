@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.DlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileEntryArgs;
-import com.pulumi.cloudflare.inputs.DlpCustomProfileProfileArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -61,14 +60,22 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="contextAwareness")
     private @Nullable Output<DlpCustomProfileContextAwarenessArgs> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<DlpCustomProfileContextAwarenessArgs>> contextAwareness() {
         return Optional.ofNullable(this.contextAwareness);
     }
@@ -103,9 +110,27 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="entries")
     private @Nullable Output<List<DlpCustomProfileEntryArgs>> entries;
 
+    /**
+     * @return Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<DlpCustomProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -139,13 +164,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.openAccess);
     }
 
-    @Import(name="profiles")
-    private @Nullable Output<List<DlpCustomProfileProfileArgs>> profiles;
-
-    public Optional<Output<List<DlpCustomProfileProfileArgs>>> profiles() {
-        return Optional.ofNullable(this.profiles);
-    }
-
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
@@ -162,14 +180,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Available values: &#34;custom&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -205,7 +223,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
-        this.profiles = $.profiles;
         this.sharedEntries = $.sharedEntries;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
@@ -282,7 +299,11 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(@Nullable Output<DlpCustomProfileContextAwarenessArgs> contextAwareness) {
             $.contextAwareness = contextAwareness;
             return this;
@@ -293,7 +314,11 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(DlpCustomProfileContextAwarenessArgs contextAwareness) {
             return contextAwareness(Output.of(contextAwareness));
         }
@@ -340,15 +365,48 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
             return description(Output.of(description));
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(@Nullable Output<List<DlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(List<DlpCustomProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(DlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }
@@ -392,19 +450,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
             return openAccess(Output.of(openAccess));
         }
 
-        public Builder profiles(@Nullable Output<List<DlpCustomProfileProfileArgs>> profiles) {
-            $.profiles = profiles;
-            return this;
-        }
-
-        public Builder profiles(List<DlpCustomProfileProfileArgs> profiles) {
-            return profiles(Output.of(profiles));
-        }
-
-        public Builder profiles(DlpCustomProfileProfileArgs... profiles) {
-            return profiles(List.of(profiles));
-        }
-
         /**
          * @param sharedEntries Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
          * 
@@ -437,7 +482,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 
@@ -448,7 +493,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 

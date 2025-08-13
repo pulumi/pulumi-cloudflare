@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileState;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileEntry;
-import com.pulumi.cloudflare.outputs.DlpCustomProfileProfile;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileSharedEntry;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -48,10 +47,10 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> aiContextEnabled;
+    private Output<Boolean> aiContextEnabled;
 
-    public Output<Optional<Boolean>> aiContextEnabled() {
-        return Codegen.optional(this.aiContextEnabled);
+    public Output<Boolean> aiContextEnabled() {
+        return this.aiContextEnabled;
     }
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -68,15 +67,19 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return this.allowedMatchCount;
     }
     @Export(name="confidenceThreshold", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidenceThreshold;
+    private Output<String> confidenceThreshold;
 
-    public Output<Optional<String>> confidenceThreshold() {
-        return Codegen.optional(this.confidenceThreshold);
+    public Output<String> confidenceThreshold() {
+        return this.confidenceThreshold;
     }
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={DlpCustomProfileContextAwareness.class}, tree="[0]")
     private Output</* @Nullable */ DlpCustomProfileContextAwareness> contextAwareness;
 
@@ -115,23 +118,37 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="entries", refs={List.class,DlpCustomProfileEntry.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DlpCustomProfileEntry>> entries;
 
+    /**
+     * @return Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     */
     public Output<Optional<List<DlpCustomProfileEntry>>> entries() {
         return Codegen.optional(this.entries);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ocrEnabled;
+    private Output<Boolean> ocrEnabled;
 
-    public Output<Optional<Boolean>> ocrEnabled() {
-        return Codegen.optional(this.ocrEnabled);
+    public Output<Boolean> ocrEnabled() {
+        return this.ocrEnabled;
     }
     /**
      * Whether this profile can be accessed by anyone.
@@ -146,12 +163,6 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> openAccess() {
         return this.openAccess;
-    }
-    @Export(name="profiles", refs={List.class,DlpCustomProfileProfile.class}, tree="[0,1]")
-    private Output<List<DlpCustomProfileProfile>> profiles;
-
-    public Output<List<DlpCustomProfileProfile>> profiles() {
-        return this.profiles;
     }
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -168,14 +179,14 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sharedEntries);
     }
     /**
-     * Available values: &#34;custom&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Output<String> type() {

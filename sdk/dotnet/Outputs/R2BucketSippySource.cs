@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
-        /// Available values: "aws".
+        /// Available values: "aws", "gcs".
         /// </summary>
         public readonly string? CloudProvider;
         /// <summary>

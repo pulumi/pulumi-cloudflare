@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCloudforceOneRequest(ctx, &cloudflare.LookupCloudforceOneRequestArgs{
-//				AccountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-//				RequestIdentifier: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				RequestId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,40 +49,42 @@ func LookupCloudforceOneRequest(ctx *pulumi.Context, args *LookupCloudforceOneRe
 
 // A collection of arguments for invoking getCloudforceOneRequest.
 type LookupCloudforceOneRequestArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// UUID
-	RequestIdentifier *string `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId string                         `pulumi:"accountId"`
+	Filter    *GetCloudforceOneRequestFilter `pulumi:"filter"`
+	// UUID.
+	RequestId *string `pulumi:"requestId"`
 }
 
 // A collection of values returned by getCloudforceOneRequest.
 type LookupCloudforceOneRequestResult struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	Completed         string `pulumi:"completed"`
-	// Request content
-	Content string `pulumi:"content"`
-	Created string `pulumi:"created"`
-	// UUID
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	Completed string `pulumi:"completed"`
+	// Request content.
+	Content string                         `pulumi:"content"`
+	Created string                         `pulumi:"created"`
+	Filter  *GetCloudforceOneRequestFilter `pulumi:"filter"`
+	// UUID.
 	Id string `pulumi:"id"`
-	// Tokens for the request messages
+	// Tokens for the request messages.
 	MessageTokens int    `pulumi:"messageTokens"`
 	Priority      string `pulumi:"priority"`
-	// Readable Request ID
+	// Readable Request ID.
 	ReadableId string `pulumi:"readableId"`
-	// Requested information from request
+	// Requested information from request.
 	Request string `pulumi:"request"`
-	// UUID
-	RequestIdentifier *string `pulumi:"requestIdentifier"`
-	// Request Status
+	// UUID.
+	RequestId *string `pulumi:"requestId"`
+	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status string `pulumi:"status"`
-	// Brief description of the request
+	// Brief description of the request.
 	Summary string `pulumi:"summary"`
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp string `pulumi:"tlp"`
-	// Tokens for the request
+	// Tokens for the request.
 	Tokens  int    `pulumi:"tokens"`
 	Updated string `pulumi:"updated"`
 }
@@ -98,10 +100,11 @@ func LookupCloudforceOneRequestOutput(ctx *pulumi.Context, args LookupCloudforce
 
 // A collection of arguments for invoking getCloudforceOneRequest.
 type LookupCloudforceOneRequestOutputArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
-	// UUID
-	RequestIdentifier pulumi.StringPtrInput `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId pulumi.StringInput                    `pulumi:"accountId"`
+	Filter    GetCloudforceOneRequestFilterPtrInput `pulumi:"filter"`
+	// UUID.
+	RequestId pulumi.StringPtrInput `pulumi:"requestId"`
 }
 
 func (LookupCloudforceOneRequestOutputArgs) ElementType() reflect.Type {
@@ -123,16 +126,16 @@ func (o LookupCloudforceOneRequestResultOutput) ToLookupCloudforceOneRequestResu
 	return o
 }
 
-// Identifier
-func (o LookupCloudforceOneRequestResultOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o LookupCloudforceOneRequestResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudforceOneRequestResultOutput) Completed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Completed }).(pulumi.StringOutput)
 }
 
-// Request content
+// Request content.
 func (o LookupCloudforceOneRequestResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Content }).(pulumi.StringOutput)
 }
@@ -141,12 +144,16 @@ func (o LookupCloudforceOneRequestResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// UUID
+func (o LookupCloudforceOneRequestResultOutput) Filter() GetCloudforceOneRequestFilterPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestResult) *GetCloudforceOneRequestFilter { return v.Filter }).(GetCloudforceOneRequestFilterPtrOutput)
+}
+
+// UUID.
 func (o LookupCloudforceOneRequestResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Tokens for the request messages
+// Tokens for the request messages.
 func (o LookupCloudforceOneRequestResultOutput) MessageTokens() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) int { return v.MessageTokens }).(pulumi.IntOutput)
 }
@@ -155,39 +162,39 @@ func (o LookupCloudforceOneRequestResultOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Priority }).(pulumi.StringOutput)
 }
 
-// Readable Request ID
+// Readable Request ID.
 func (o LookupCloudforceOneRequestResultOutput) ReadableId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.ReadableId }).(pulumi.StringOutput)
 }
 
-// Requested information from request
+// Requested information from request.
 func (o LookupCloudforceOneRequestResultOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Request }).(pulumi.StringOutput)
 }
 
-// UUID
-func (o LookupCloudforceOneRequestResultOutput) RequestIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestResult) *string { return v.RequestIdentifier }).(pulumi.StringPtrOutput)
+// UUID.
+func (o LookupCloudforceOneRequestResultOutput) RequestId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestResult) *string { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
-// Request Status
+// Request Status.
 // Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 func (o LookupCloudforceOneRequestResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Brief description of the request
+// Brief description of the request.
 func (o LookupCloudforceOneRequestResultOutput) Summary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Summary }).(pulumi.StringOutput)
 }
 
-// The CISA defined Traffic Light Protocol (TLP)
+// The CISA defined Traffic Light Protocol (TLP).
 // Available values: "clear", "amber", "amber-strict", "green", "red".
 func (o LookupCloudforceOneRequestResultOutput) Tlp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) string { return v.Tlp }).(pulumi.StringOutput)
 }
 
-// Tokens for the request
+// Tokens for the request.
 func (o LookupCloudforceOneRequestResultOutput) Tokens() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestResult) int { return v.Tokens }).(pulumi.IntOutput)
 }

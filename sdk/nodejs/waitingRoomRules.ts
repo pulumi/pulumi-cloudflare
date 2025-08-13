@@ -59,32 +59,10 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoomRules.__pulumiType;
     }
 
-    /**
-     * The action to take when the expression matches.
-     * Available values: "bypass*waiting*room".
-     */
-    public /*out*/ readonly action!: pulumi.Output<string>;
-    /**
-     * The description of the rule.
-     */
-    public /*out*/ readonly description!: pulumi.Output<string>;
-    /**
-     * When set to true, the rule is enabled.
-     */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
-    /**
-     * Criteria defining when there is a match for the current rule.
-     */
-    public /*out*/ readonly expression!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
-    /**
-     * The version of the rule.
-     */
-    public /*out*/ readonly version!: pulumi.Output<string>;
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -101,13 +79,7 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomRulesState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -124,12 +96,6 @@ export class WaitingRoomRules extends pulumi.CustomResource {
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["action"] = undefined /*out*/;
-            resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["expression"] = undefined /*out*/;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
-            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WaitingRoomRules.__pulumiType, name, resourceInputs, opts);
@@ -140,32 +106,10 @@ export class WaitingRoomRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoomRules resources.
  */
 export interface WaitingRoomRulesState {
-    /**
-     * The action to take when the expression matches.
-     * Available values: "bypass*waiting*room".
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * The description of the rule.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * When set to true, the rule is enabled.
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * Criteria defining when there is a match for the current rule.
-     */
-    expression?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
-    /**
-     * The version of the rule.
-     */
-    version?: pulumi.Input<string>;
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -177,7 +121,7 @@ export interface WaitingRoomRulesArgs {
     rules: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

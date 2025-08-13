@@ -7,6 +7,9 @@ import com.pulumi.cloudflare.outputs.GetZoneAccount;
 import com.pulumi.cloudflare.outputs.GetZoneFilter;
 import com.pulumi.cloudflare.outputs.GetZoneMeta;
 import com.pulumi.cloudflare.outputs.GetZoneOwner;
+import com.pulumi.cloudflare.outputs.GetZonePlan;
+import com.pulumi.cloudflare.outputs.GetZoneTenant;
+import com.pulumi.cloudflare.outputs.GetZoneTenantUnit;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -21,6 +24,7 @@ import javax.annotation.Nullable;
 public final class GetZoneResult {
     private GetZoneAccount account;
     private String activatedOn;
+    private String cnameSuffix;
     private String createdOn;
     private Double developmentMode;
     private @Nullable GetZoneFilter filter;
@@ -34,7 +38,23 @@ public final class GetZoneResult {
     private String originalRegistrar;
     private GetZoneOwner owner;
     private Boolean paused;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    private List<String> permissions;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    private GetZonePlan plan;
     private String status;
+    private GetZoneTenant tenant;
+    private GetZoneTenantUnit tenantUnit;
     private String type;
     private List<String> vanityNameServers;
     private String verificationKey;
@@ -46,6 +66,9 @@ public final class GetZoneResult {
     }
     public String activatedOn() {
         return this.activatedOn;
+    }
+    public String cnameSuffix() {
+        return this.cnameSuffix;
     }
     public String createdOn() {
         return this.createdOn;
@@ -86,8 +109,32 @@ public final class GetZoneResult {
     public Boolean paused() {
         return this.paused;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public List<String> permissions() {
+        return this.permissions;
+    }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public GetZonePlan plan() {
+        return this.plan;
+    }
     public String status() {
         return this.status;
+    }
+    public GetZoneTenant tenant() {
+        return this.tenant;
+    }
+    public GetZoneTenantUnit tenantUnit() {
+        return this.tenantUnit;
     }
     public String type() {
         return this.type;
@@ -113,6 +160,7 @@ public final class GetZoneResult {
     public static final class Builder {
         private GetZoneAccount account;
         private String activatedOn;
+        private String cnameSuffix;
         private String createdOn;
         private Double developmentMode;
         private @Nullable GetZoneFilter filter;
@@ -126,7 +174,11 @@ public final class GetZoneResult {
         private String originalRegistrar;
         private GetZoneOwner owner;
         private Boolean paused;
+        private List<String> permissions;
+        private GetZonePlan plan;
         private String status;
+        private GetZoneTenant tenant;
+        private GetZoneTenantUnit tenantUnit;
         private String type;
         private List<String> vanityNameServers;
         private String verificationKey;
@@ -136,6 +188,7 @@ public final class GetZoneResult {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.activatedOn = defaults.activatedOn;
+    	      this.cnameSuffix = defaults.cnameSuffix;
     	      this.createdOn = defaults.createdOn;
     	      this.developmentMode = defaults.developmentMode;
     	      this.filter = defaults.filter;
@@ -149,7 +202,11 @@ public final class GetZoneResult {
     	      this.originalRegistrar = defaults.originalRegistrar;
     	      this.owner = defaults.owner;
     	      this.paused = defaults.paused;
+    	      this.permissions = defaults.permissions;
+    	      this.plan = defaults.plan;
     	      this.status = defaults.status;
+    	      this.tenant = defaults.tenant;
+    	      this.tenantUnit = defaults.tenantUnit;
     	      this.type = defaults.type;
     	      this.vanityNameServers = defaults.vanityNameServers;
     	      this.verificationKey = defaults.verificationKey;
@@ -170,6 +227,14 @@ public final class GetZoneResult {
               throw new MissingRequiredPropertyException("GetZoneResult", "activatedOn");
             }
             this.activatedOn = activatedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cnameSuffix(String cnameSuffix) {
+            if (cnameSuffix == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "cnameSuffix");
+            }
+            this.cnameSuffix = cnameSuffix;
             return this;
         }
         @CustomType.Setter
@@ -281,11 +346,46 @@ public final class GetZoneResult {
             return this;
         }
         @CustomType.Setter
+        public Builder permissions(List<String> permissions) {
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "permissions");
+            }
+            this.permissions = permissions;
+            return this;
+        }
+        public Builder permissions(String... permissions) {
+            return permissions(List.of(permissions));
+        }
+        @CustomType.Setter
+        public Builder plan(GetZonePlan plan) {
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "plan");
+            }
+            this.plan = plan;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetZoneResult", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenant(GetZoneTenant tenant) {
+            if (tenant == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "tenant");
+            }
+            this.tenant = tenant;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenantUnit(GetZoneTenantUnit tenantUnit) {
+            if (tenantUnit == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "tenantUnit");
+            }
+            this.tenantUnit = tenantUnit;
             return this;
         }
         @CustomType.Setter
@@ -325,6 +425,7 @@ public final class GetZoneResult {
             final var _resultValue = new GetZoneResult();
             _resultValue.account = account;
             _resultValue.activatedOn = activatedOn;
+            _resultValue.cnameSuffix = cnameSuffix;
             _resultValue.createdOn = createdOn;
             _resultValue.developmentMode = developmentMode;
             _resultValue.filter = filter;
@@ -338,7 +439,11 @@ public final class GetZoneResult {
             _resultValue.originalRegistrar = originalRegistrar;
             _resultValue.owner = owner;
             _resultValue.paused = paused;
+            _resultValue.permissions = permissions;
+            _resultValue.plan = plan;
             _resultValue.status = status;
+            _resultValue.tenant = tenant;
+            _resultValue.tenantUnit = tenantUnit;
             _resultValue.type = type;
             _resultValue.vanityNameServers = vanityNameServers;
             _resultValue.verificationKey = verificationKey;

@@ -23,14 +23,14 @@ type ZeroTrustGatewayPolicy struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringOutput `pulumi:"action"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Date of deletion, if any.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The wirefilter expression used for device posture check matching.
 	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// True if the rule is enabled.
@@ -44,18 +44,24 @@ type ZeroTrustGatewayPolicy struct {
 	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
+	// The rule cannot be shared via the Orgs API
+	NotSharable pulumi.BoolOutput   `pulumi:"notSharable"`
+	Precedence  pulumi.IntPtrOutput `pulumi:"precedence"`
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-	Schedule ZeroTrustGatewayPolicySchedulePtrOutput `pulumi:"schedule"`
+	Schedule ZeroTrustGatewayPolicyScheduleOutput `pulumi:"schedule"`
+	// account tag of account that created the rule
+	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
 	// The wirefilter expression used for traffic matching.
 	Traffic   pulumi.StringOutput `pulumi:"traffic"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// version number of the rule
 	Version pulumi.IntOutput `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringOutput `pulumi:"warningStatus"`
 }
 
 // NewZeroTrustGatewayPolicy registers a new resource with the given unique name, arguments, and options.
@@ -104,7 +110,7 @@ func GetZeroTrustGatewayPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
 type zeroTrustGatewayPolicyState struct {
 	AccountId *string `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    *string `pulumi:"action"`
 	CreatedAt *string `pulumi:"createdAt"`
@@ -125,23 +131,29 @@ type zeroTrustGatewayPolicyState struct {
 	Identity *string `pulumi:"identity"`
 	// The name of the rule.
 	Name *string `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence *int `pulumi:"precedence"`
+	// The rule cannot be shared via the Orgs API
+	NotSharable *bool `pulumi:"notSharable"`
+	Precedence  *int  `pulumi:"precedence"`
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly *bool `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *ZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule *ZeroTrustGatewayPolicySchedule `pulumi:"schedule"`
+	// account tag of account that created the rule
+	SourceAccount *string `pulumi:"sourceAccount"`
 	// The wirefilter expression used for traffic matching.
 	Traffic   *string `pulumi:"traffic"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// version number of the rule
 	Version *int `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus *string `pulumi:"warningStatus"`
 }
 
 type ZeroTrustGatewayPolicyState struct {
 	AccountId pulumi.StringPtrInput
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
@@ -162,18 +174,24 @@ type ZeroTrustGatewayPolicyState struct {
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
 	Name pulumi.StringPtrInput
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence pulumi.IntPtrInput
+	// The rule cannot be shared via the Orgs API
+	NotSharable pulumi.BoolPtrInput
+	Precedence  pulumi.IntPtrInput
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly pulumi.BoolPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsPtrInput
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule ZeroTrustGatewayPolicySchedulePtrInput
+	// account tag of account that created the rule
+	SourceAccount pulumi.StringPtrInput
 	// The wirefilter expression used for traffic matching.
 	Traffic   pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 	// version number of the rule
 	Version pulumi.IntPtrInput
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringPtrInput
 }
 
 func (ZeroTrustGatewayPolicyState) ElementType() reflect.Type {
@@ -182,7 +200,7 @@ func (ZeroTrustGatewayPolicyState) ElementType() reflect.Type {
 
 type zeroTrustGatewayPolicyArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
 	// The description of the rule.
@@ -199,10 +217,8 @@ type zeroTrustGatewayPolicyArgs struct {
 	// The wirefilter expression used for identity matching.
 	Identity *string `pulumi:"identity"`
 	// The name of the rule.
-	Name string `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence *int `pulumi:"precedence"`
+	Name       string `pulumi:"name"`
+	Precedence *int   `pulumi:"precedence"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *ZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
@@ -214,7 +230,7 @@ type zeroTrustGatewayPolicyArgs struct {
 // The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
 type ZeroTrustGatewayPolicyArgs struct {
 	AccountId pulumi.StringInput
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
 	// The description of the rule.
@@ -231,9 +247,7 @@ type ZeroTrustGatewayPolicyArgs struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
-	Name pulumi.StringInput
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
+	Name       pulumi.StringInput
 	Precedence pulumi.IntPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsPtrInput
@@ -334,7 +348,7 @@ func (o ZeroTrustGatewayPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 // Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o ZeroTrustGatewayPolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
@@ -350,8 +364,8 @@ func (o ZeroTrustGatewayPolicyOutput) DeletedAt() pulumi.StringOutput {
 }
 
 // The description of the rule.
-func (o ZeroTrustGatewayPolicyOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o ZeroTrustGatewayPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The wirefilter expression used for device posture check matching.
@@ -385,10 +399,18 @@ func (o ZeroTrustGatewayPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-// rules are evaluated in ascending order of this value.
+// The rule cannot be shared via the Orgs API
+func (o ZeroTrustGatewayPolicyOutput) NotSharable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolOutput { return v.NotSharable }).(pulumi.BoolOutput)
+}
+
 func (o ZeroTrustGatewayPolicyOutput) Precedence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
+}
+
+// The rule was shared via the Orgs API and cannot be edited by the current account
+func (o ZeroTrustGatewayPolicyOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
 // Additional settings that modify the rule's action.
@@ -397,8 +419,13 @@ func (o ZeroTrustGatewayPolicyOutput) RuleSettings() ZeroTrustGatewayPolicyRuleS
 }
 
 // The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-func (o ZeroTrustGatewayPolicyOutput) Schedule() ZeroTrustGatewayPolicySchedulePtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicySchedulePtrOutput { return v.Schedule }).(ZeroTrustGatewayPolicySchedulePtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Schedule() ZeroTrustGatewayPolicyScheduleOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyScheduleOutput { return v.Schedule }).(ZeroTrustGatewayPolicyScheduleOutput)
+}
+
+// account tag of account that created the rule
+func (o ZeroTrustGatewayPolicyOutput) SourceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
 // The wirefilter expression used for traffic matching.
@@ -413,6 +440,11 @@ func (o ZeroTrustGatewayPolicyOutput) UpdatedAt() pulumi.StringOutput {
 // version number of the rule
 func (o ZeroTrustGatewayPolicyOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+// Warning for a misconfigured rule, if any.
+func (o ZeroTrustGatewayPolicyOutput) WarningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.WarningStatus }).(pulumi.StringOutput)
 }
 
 type ZeroTrustGatewayPolicyArrayOutput struct{ *pulumi.OutputState }

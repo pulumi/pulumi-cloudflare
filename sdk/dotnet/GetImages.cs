@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleImages = Cloudflare.GetImages.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Creator = "creator",
         ///     });
         /// 
         /// });
@@ -47,6 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleImages = Cloudflare.GetImages.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Creator = "creator",
         ///     });
         /// 
         /// });
@@ -69,6 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleImages = Cloudflare.GetImages.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Creator = "creator",
         ///     });
         /// 
         /// });
@@ -86,6 +89,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+        /// </summary>
+        [Input("creator")]
+        public string? Creator { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -108,6 +117,12 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+        /// </summary>
+        [Input("creator")]
+        public Input<string>? Creator { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -128,6 +143,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+        /// </summary>
+        public readonly string? Creator;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -144,6 +163,8 @@ namespace Pulumi.Cloudflare
         private GetImagesResult(
             string accountId,
 
+            string? creator,
+
             string id,
 
             int? maxItems,
@@ -151,6 +172,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetImagesResultResult> results)
         {
             AccountId = accountId;
+            Creator = creator;
             Id = id;
             MaxItems = maxItems;
             Results = results;

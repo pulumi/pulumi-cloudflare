@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
  *     keyName: "My-Key",
- *     metadata: "{\"someMetadataKey\": \"someMetadataValue\"}",
  *     value: "Some Value",
+ *     metadata: {},
  * });
  * ```
  *
@@ -55,16 +55,13 @@ export class WorkersKv extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     public readonly keyName!: pulumi.Output<string>;
-    /**
-     * Arbitrary JSON to be associated with a key/value pair.
-     */
     public readonly metadata!: pulumi.Output<string | undefined>;
     /**
      * Namespace identifier tag.
@@ -123,16 +120,13 @@ export class WorkersKv extends pulumi.CustomResource {
  */
 export interface WorkersKvState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     keyName?: pulumi.Input<string>;
-    /**
-     * Arbitrary JSON to be associated with a key/value pair.
-     */
     metadata?: pulumi.Input<string>;
     /**
      * Namespace identifier tag.
@@ -149,16 +143,13 @@ export interface WorkersKvState {
  */
 export interface WorkersKvArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     keyName: pulumi.Input<string>;
-    /**
-     * Arbitrary JSON to be associated with a key/value pair.
-     */
     metadata?: pulumi.Input<string>;
     /**
      * Namespace identifier tag.

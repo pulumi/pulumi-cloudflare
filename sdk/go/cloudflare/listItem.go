@@ -42,7 +42,7 @@ import (
 type ListItem struct {
 	pulumi.CustomResourceState
 
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
@@ -52,7 +52,7 @@ type ListItem struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrOutput `pulumi:"hostname"`
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
 	// The unique ID of the list.
 	ListId pulumi.StringOutput `pulumi:"listId"`
@@ -100,7 +100,7 @@ func GetListItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListItem resources.
 type listItemState struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId *string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
@@ -110,7 +110,7 @@ type listItemState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname *ListItemHostname `pulumi:"hostname"`
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	Ip *string `pulumi:"ip"`
 	// The unique ID of the list.
 	ListId *string `pulumi:"listId"`
@@ -123,7 +123,7 @@ type listItemState struct {
 }
 
 type ListItemState struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringPtrInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
@@ -133,7 +133,7 @@ type ListItemState struct {
 	CreatedOn pulumi.StringPtrInput
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrInput
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	Ip pulumi.StringPtrInput
 	// The unique ID of the list.
 	ListId pulumi.StringPtrInput
@@ -150,7 +150,7 @@ func (ListItemState) ElementType() reflect.Type {
 }
 
 type listItemArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
@@ -158,7 +158,7 @@ type listItemArgs struct {
 	Comment *string `pulumi:"comment"`
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname *ListItemHostname `pulumi:"hostname"`
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	Ip *string `pulumi:"ip"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
@@ -168,7 +168,7 @@ type listItemArgs struct {
 
 // The set of arguments for constructing a ListItem resource.
 type ListItemArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
@@ -176,7 +176,7 @@ type ListItemArgs struct {
 	Comment pulumi.StringPtrInput
 	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
 	Hostname ListItemHostnamePtrInput
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 	Ip pulumi.StringPtrInput
 	// The unique ID of the list.
 	ListId pulumi.StringInput
@@ -271,7 +271,7 @@ func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListIte
 	return o
 }
 
-// Defines an identifier.
+// The Account ID for this resource.
 func (o ListItemOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -296,7 +296,7 @@ func (o ListItemOutput) Hostname() ListItemHostnamePtrOutput {
 	return o.ApplyT(func(v *ListItem) ListItemHostnamePtrOutput { return v.Hostname }).(ListItemHostnamePtrOutput)
 }
 
-// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
 func (o ListItemOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Ip }).(pulumi.StringPtrOutput)
 }

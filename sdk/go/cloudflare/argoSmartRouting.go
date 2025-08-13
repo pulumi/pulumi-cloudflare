@@ -50,7 +50,7 @@ type ArgoSmartRouting struct {
 	// Enables Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -93,7 +93,7 @@ type argoSmartRoutingState struct {
 	// Enables Argo Smart Routing.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -101,7 +101,7 @@ type ArgoSmartRoutingState struct {
 	// Enables Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -113,7 +113,7 @@ type argoSmartRoutingArgs struct {
 	// Enables Argo Smart Routing.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -122,7 +122,7 @@ type ArgoSmartRoutingArgs struct {
 	// Enables Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringInput
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId pulumi.StringInput
 }
 
@@ -219,7 +219,7 @@ func (o ArgoSmartRoutingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Specifies the zone associated with the API call.
 func (o ArgoSmartRoutingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

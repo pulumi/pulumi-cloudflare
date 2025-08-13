@@ -31,7 +31,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
 
     /**
      * The type of characteristic.
-     * Available values: &#34;header&#34;, &#34;cookie&#34;.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -39,7 +39,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
 
     /**
      * @return The type of characteristic.
-     * Available values: &#34;header&#34;, &#34;cookie&#34;.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
      * 
      */
     public Output<String> type() {
@@ -94,7 +94,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
 
         /**
          * @param type The type of characteristic.
-         * Available values: &#34;header&#34;, &#34;cookie&#34;.
+         * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class ApiShieldAuthIdCharacteristicArgs extends com.pulumi.resource
 
         /**
          * @param type The type of characteristic.
-         * Available values: &#34;header&#34;, &#34;cookie&#34;.
+         * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
          * 
          * @return builder
          * 

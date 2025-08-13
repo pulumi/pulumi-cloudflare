@@ -62,6 +62,8 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// Available values: "low", "medium", "high", "veryHigh".
 	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness GetZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt string `pulumi:"createdAt"`
@@ -76,7 +78,7 @@ type LookupZeroTrustDlpCustomProfileResult struct {
 	// Whether this profile can be accessed by anyone.
 	OpenAccess bool   `pulumi:"openAccess"`
 	ProfileId  string `pulumi:"profileId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type string `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -135,6 +137,8 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) ConfidenceThreshold() pulum
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupZeroTrustDlpCustomProfileResultOutput) ContextAwareness() GetZeroTrustDlpCustomProfileContextAwarenessOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) GetZeroTrustDlpCustomProfileContextAwareness {
 		return v.ContextAwareness
@@ -178,7 +182,7 @@ func (o LookupZeroTrustDlpCustomProfileResultOutput) ProfileId() pulumi.StringOu
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o LookupZeroTrustDlpCustomProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpCustomProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

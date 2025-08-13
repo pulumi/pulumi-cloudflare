@@ -32,6 +32,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        [Input("pattern")]
+        public Input<string>? Pattern { get; set; }
+
         /// <summary>
         /// Allows searching in multiple properties of a record simultaneously.
         /// This parameter is intended for human users, not automation. Its exact

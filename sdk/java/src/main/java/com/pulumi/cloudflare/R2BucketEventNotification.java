@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.R2BucketEventNotificationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.R2BucketEventNotificationState;
-import com.pulumi.cloudflare.outputs.R2BucketEventNotificationQueue;
 import com.pulumi.cloudflare.outputs.R2BucketEventNotificationRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -114,28 +113,28 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="queueId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> queueId;
+    private Output<String> queueId;
 
     /**
      * @return Queue ID.
      * 
      */
-    public Output<Optional<String>> queueId() {
-        return Codegen.optional(this.queueId);
+    public Output<String> queueId() {
+        return this.queueId;
     }
     /**
-     * List of queues associated with the bucket.
+     * Name of the queue.
      * 
      */
-    @Export(name="queues", refs={List.class,R2BucketEventNotificationQueue.class}, tree="[0,1]")
-    private Output<List<R2BucketEventNotificationQueue>> queues;
+    @Export(name="queueName", refs={String.class}, tree="[0]")
+    private Output<String> queueName;
 
     /**
-     * @return List of queues associated with the bucket.
+     * @return Name of the queue.
      * 
      */
-    public Output<List<R2BucketEventNotificationQueue>> queues() {
-        return this.queues;
+    public Output<String> queueName() {
+        return this.queueName;
     }
     /**
      * Array of rules to drive notifications.

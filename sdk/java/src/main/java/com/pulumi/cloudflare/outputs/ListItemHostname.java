@@ -5,14 +5,29 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ListItemHostname {
+    /**
+     * @return Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * 
+     */
+    private @Nullable Boolean excludeExactHostname;
     private String urlHostname;
 
     private ListItemHostname() {}
+    /**
+     * @return Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * 
+     */
+    public Optional<Boolean> excludeExactHostname() {
+        return Optional.ofNullable(this.excludeExactHostname);
+    }
     public String urlHostname() {
         return this.urlHostname;
     }
@@ -26,13 +41,21 @@ public final class ListItemHostname {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean excludeExactHostname;
         private String urlHostname;
         public Builder() {}
         public Builder(ListItemHostname defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludeExactHostname = defaults.excludeExactHostname;
     	      this.urlHostname = defaults.urlHostname;
         }
 
+        @CustomType.Setter
+        public Builder excludeExactHostname(@Nullable Boolean excludeExactHostname) {
+
+            this.excludeExactHostname = excludeExactHostname;
+            return this;
+        }
         @CustomType.Setter
         public Builder urlHostname(String urlHostname) {
             if (urlHostname == null) {
@@ -43,6 +66,7 @@ public final class ListItemHostname {
         }
         public ListItemHostname build() {
             final var _resultValue = new ListItemHostname();
+            _resultValue.excludeExactHostname = excludeExactHostname;
             _resultValue.urlHostname = urlHostname;
             return _resultValue;
         }

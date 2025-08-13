@@ -27,12 +27,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCloudforceOneRequest(ctx, "example_cloudforce_one_request", &cloudflare.CloudforceOneRequestArgs{
-//				AccountIdentifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Content:           pulumi.String("What regions were most effected by the recent DoS?"),
-//				Priority:          pulumi.String("routine"),
-//				RequestType:       pulumi.String("Victomology"),
-//				Summary:           pulumi.String("DoS attack"),
-//				Tlp:               pulumi.String("clear"),
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Content:     pulumi.String("What regions were most effected by the recent DoS?"),
+//				Priority:    pulumi.String("routine"),
+//				RequestType: pulumi.String("Victomology"),
+//				Summary:     pulumi.String("DoS attack"),
+//				Tlp:         pulumi.String("clear"),
 //			})
 //			if err != nil {
 //				return err
@@ -46,36 +46,36 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_identifier>/<request_identifier>'
+// $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_id>/<request_id>'
 // ```
 type CloudforceOneRequest struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountIdentifier pulumi.StringOutput `pulumi:"accountIdentifier"`
-	Completed         pulumi.StringOutput `pulumi:"completed"`
-	// Request content
+	// Identifier.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	Completed pulumi.StringOutput `pulumi:"completed"`
+	// Request content.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	Created pulumi.StringOutput    `pulumi:"created"`
-	// Tokens for the request messages
+	// Tokens for the request messages.
 	MessageTokens pulumi.IntOutput `pulumi:"messageTokens"`
-	// Priority for analyzing the request
+	// Priority for analyzing the request.
 	Priority pulumi.StringPtrOutput `pulumi:"priority"`
-	// Readable Request ID
+	// Readable Request ID.
 	ReadableId pulumi.StringOutput `pulumi:"readableId"`
-	// Requested information from request
+	// Requested information from request.
 	Request pulumi.StringOutput `pulumi:"request"`
-	// Requested information from request
+	// Requested information from request.
 	RequestType pulumi.StringPtrOutput `pulumi:"requestType"`
-	// Request Status
+	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Brief description of the request
+	// Brief description of the request.
 	Summary pulumi.StringPtrOutput `pulumi:"summary"`
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringPtrOutput `pulumi:"tlp"`
-	// Tokens for the request
+	// Tokens for the request.
 	Tokens  pulumi.IntOutput    `pulumi:"tokens"`
 	Updated pulumi.StringOutput `pulumi:"updated"`
 }
@@ -87,8 +87,8 @@ func NewCloudforceOneRequest(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'AccountIdentifier'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudforceOneRequest
@@ -113,61 +113,61 @@ func GetCloudforceOneRequest(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudforceOneRequest resources.
 type cloudforceOneRequestState struct {
-	// Identifier
-	AccountIdentifier *string `pulumi:"accountIdentifier"`
-	Completed         *string `pulumi:"completed"`
-	// Request content
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	Completed *string `pulumi:"completed"`
+	// Request content.
 	Content *string `pulumi:"content"`
 	Created *string `pulumi:"created"`
-	// Tokens for the request messages
+	// Tokens for the request messages.
 	MessageTokens *int `pulumi:"messageTokens"`
-	// Priority for analyzing the request
+	// Priority for analyzing the request.
 	Priority *string `pulumi:"priority"`
-	// Readable Request ID
+	// Readable Request ID.
 	ReadableId *string `pulumi:"readableId"`
-	// Requested information from request
+	// Requested information from request.
 	Request *string `pulumi:"request"`
-	// Requested information from request
+	// Requested information from request.
 	RequestType *string `pulumi:"requestType"`
-	// Request Status
+	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status *string `pulumi:"status"`
-	// Brief description of the request
+	// Brief description of the request.
 	Summary *string `pulumi:"summary"`
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `pulumi:"tlp"`
-	// Tokens for the request
+	// Tokens for the request.
 	Tokens  *int    `pulumi:"tokens"`
 	Updated *string `pulumi:"updated"`
 }
 
 type CloudforceOneRequestState struct {
-	// Identifier
-	AccountIdentifier pulumi.StringPtrInput
-	Completed         pulumi.StringPtrInput
-	// Request content
+	// Identifier.
+	AccountId pulumi.StringPtrInput
+	Completed pulumi.StringPtrInput
+	// Request content.
 	Content pulumi.StringPtrInput
 	Created pulumi.StringPtrInput
-	// Tokens for the request messages
+	// Tokens for the request messages.
 	MessageTokens pulumi.IntPtrInput
-	// Priority for analyzing the request
+	// Priority for analyzing the request.
 	Priority pulumi.StringPtrInput
-	// Readable Request ID
+	// Readable Request ID.
 	ReadableId pulumi.StringPtrInput
-	// Requested information from request
+	// Requested information from request.
 	Request pulumi.StringPtrInput
-	// Requested information from request
+	// Requested information from request.
 	RequestType pulumi.StringPtrInput
-	// Request Status
+	// Request Status.
 	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 	Status pulumi.StringPtrInput
-	// Brief description of the request
+	// Brief description of the request.
 	Summary pulumi.StringPtrInput
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringPtrInput
-	// Tokens for the request
+	// Tokens for the request.
 	Tokens  pulumi.IntPtrInput
 	Updated pulumi.StringPtrInput
 }
@@ -177,34 +177,34 @@ func (CloudforceOneRequestState) ElementType() reflect.Type {
 }
 
 type cloudforceOneRequestArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// Request content
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Request content.
 	Content *string `pulumi:"content"`
-	// Priority for analyzing the request
+	// Priority for analyzing the request.
 	Priority *string `pulumi:"priority"`
-	// Requested information from request
+	// Requested information from request.
 	RequestType *string `pulumi:"requestType"`
-	// Brief description of the request
+	// Brief description of the request.
 	Summary *string `pulumi:"summary"`
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp *string `pulumi:"tlp"`
 }
 
 // The set of arguments for constructing a CloudforceOneRequest resource.
 type CloudforceOneRequestArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput
-	// Request content
+	// Identifier.
+	AccountId pulumi.StringInput
+	// Request content.
 	Content pulumi.StringPtrInput
-	// Priority for analyzing the request
+	// Priority for analyzing the request.
 	Priority pulumi.StringPtrInput
-	// Requested information from request
+	// Requested information from request.
 	RequestType pulumi.StringPtrInput
-	// Brief description of the request
+	// Brief description of the request.
 	Summary pulumi.StringPtrInput
-	// The CISA defined Traffic Light Protocol (TLP)
+	// The CISA defined Traffic Light Protocol (TLP).
 	// Available values: "clear", "amber", "amber-strict", "green", "red".
 	Tlp pulumi.StringPtrInput
 }
@@ -296,16 +296,16 @@ func (o CloudforceOneRequestOutput) ToCloudforceOneRequestOutputWithContext(ctx 
 	return o
 }
 
-// Identifier
-func (o CloudforceOneRequestOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o CloudforceOneRequestOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 func (o CloudforceOneRequestOutput) Completed() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.Completed }).(pulumi.StringOutput)
 }
 
-// Request content
+// Request content.
 func (o CloudforceOneRequestOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -314,49 +314,49 @@ func (o CloudforceOneRequestOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Tokens for the request messages
+// Tokens for the request messages.
 func (o CloudforceOneRequestOutput) MessageTokens() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.IntOutput { return v.MessageTokens }).(pulumi.IntOutput)
 }
 
-// Priority for analyzing the request
+// Priority for analyzing the request.
 func (o CloudforceOneRequestOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-// Readable Request ID
+// Readable Request ID.
 func (o CloudforceOneRequestOutput) ReadableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.ReadableId }).(pulumi.StringOutput)
 }
 
-// Requested information from request
+// Requested information from request.
 func (o CloudforceOneRequestOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.Request }).(pulumi.StringOutput)
 }
 
-// Requested information from request
+// Requested information from request.
 func (o CloudforceOneRequestOutput) RequestType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.RequestType }).(pulumi.StringPtrOutput)
 }
 
-// Request Status
+// Request Status.
 // Available values: "open", "accepted", "reported", "approved", "completed", "declined".
 func (o CloudforceOneRequestOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Brief description of the request
+// Brief description of the request.
 func (o CloudforceOneRequestOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.Summary }).(pulumi.StringPtrOutput)
 }
 
-// The CISA defined Traffic Light Protocol (TLP)
+// The CISA defined Traffic Light Protocol (TLP).
 // Available values: "clear", "amber", "amber-strict", "green", "red".
 func (o CloudforceOneRequestOutput) Tlp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.StringPtrOutput { return v.Tlp }).(pulumi.StringPtrOutput)
 }
 
-// Tokens for the request
+// Tokens for the request.
 func (o CloudforceOneRequestOutput) Tokens() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudforceOneRequest) pulumi.IntOutput { return v.Tokens }).(pulumi.IntOutput)
 }

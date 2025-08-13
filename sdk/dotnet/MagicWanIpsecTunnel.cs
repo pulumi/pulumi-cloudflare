@@ -12,40 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CloudflareEndpoint = "203.0.113.1",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Name = "IPsec_1",
-    ///         CustomerEndpoint = "203.0.113.1",
-    ///         Description = "Tunnel for ISP X",
-    ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs
-    ///         {
-    ///             Direction = "bidirectional",
-    ///             Enabled = true,
-    ///             Rate = "low",
-    ///             Target = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckTargetArgs
-    ///             {
-    ///                 Saved = "203.0.113.1",
-    ///             },
-    ///             Type = "request",
-    ///         },
-    ///         Psk = "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-    ///         ReplayProtection = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -99,15 +65,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("interfaceAddress")]
         public Output<string> InterfaceAddress { get; private set; } = null!;
-
-        [Output("ipsecTunnel")]
-        public Output<Outputs.MagicWanIpsecTunnelIpsecTunnel> IpsecTunnel { get; private set; } = null!;
-
-        [Output("modified")]
-        public Output<bool> Modified { get; private set; } = null!;
-
-        [Output("modifiedIpsecTunnel")]
-        public Output<Outputs.MagicWanIpsecTunnelModifiedIpsecTunnel> ModifiedIpsecTunnel { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the tunnel was last modified.
@@ -165,6 +122,10 @@ namespace Pulumi.Cloudflare
                 Aliases =
                 {
                     new global::Pulumi.Alias { Type = "cloudflare:index/ipsecTunnel:IpsecTunnel" },
+                },
+                AdditionalSecretOutputs =
+                {
+                    "psk",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -228,11 +189,21 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("psk")]
+        private Input<string>? _psk;
+
         /// <summary>
         /// A randomly generated or provided string for use in the IPsec tunnel.
         /// </summary>
-        [Input("psk")]
-        public Input<string>? Psk { get; set; }
+        public Input<string>? Psk
+        {
+            get => _psk;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _psk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
@@ -293,15 +264,6 @@ namespace Pulumi.Cloudflare
         [Input("interfaceAddress")]
         public Input<string>? InterfaceAddress { get; set; }
 
-        [Input("ipsecTunnel")]
-        public Input<Inputs.MagicWanIpsecTunnelIpsecTunnelGetArgs>? IpsecTunnel { get; set; }
-
-        [Input("modified")]
-        public Input<bool>? Modified { get; set; }
-
-        [Input("modifiedIpsecTunnel")]
-        public Input<Inputs.MagicWanIpsecTunnelModifiedIpsecTunnelGetArgs>? ModifiedIpsecTunnel { get; set; }
-
         /// <summary>
         /// The date and time the tunnel was last modified.
         /// </summary>
@@ -314,11 +276,21 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("psk")]
+        private Input<string>? _psk;
+
         /// <summary>
         /// A randomly generated or provided string for use in the IPsec tunnel.
         /// </summary>
-        [Input("psk")]
-        public Input<string>? Psk { get; set; }
+        public Input<string>? Psk
+        {
+            get => _psk;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _psk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The PSK metadata that includes when the PSK was generated.

@@ -17,18 +17,18 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     public static final CloudforceOneRequestState Empty = new CloudforceOneRequestState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier")
-    private @Nullable Output<String> accountIdentifier;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountIdentifier() {
-        return Optional.ofNullable(this.accountIdentifier);
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     @Import(name="completed")
@@ -39,14 +39,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Request content
+     * Request content.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     public Optional<Output<String>> content() {
@@ -61,14 +61,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      * 
      */
     @Import(name="messageTokens")
     private @Nullable Output<Integer> messageTokens;
 
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     public Optional<Output<Integer>> messageTokens() {
@@ -76,14 +76,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Priority for analyzing the request
+     * Priority for analyzing the request.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
     /**
-     * @return Priority for analyzing the request
+     * @return Priority for analyzing the request.
      * 
      */
     public Optional<Output<String>> priority() {
@@ -91,14 +91,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Readable Request ID
+     * Readable Request ID.
      * 
      */
     @Import(name="readableId")
     private @Nullable Output<String> readableId;
 
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     public Optional<Output<String>> readableId() {
@@ -106,14 +106,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Requested information from request
+     * Requested information from request.
      * 
      */
     @Import(name="request")
     private @Nullable Output<String> request;
 
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public Optional<Output<String>> request() {
@@ -121,14 +121,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Requested information from request
+     * Requested information from request.
      * 
      */
     @Import(name="requestType")
     private @Nullable Output<String> requestType;
 
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public Optional<Output<String>> requestType() {
@@ -136,7 +136,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Request Status
+     * Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -144,7 +144,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     private @Nullable Output<String> status;
 
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -153,14 +153,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Brief description of the request
+     * Brief description of the request.
      * 
      */
     @Import(name="summary")
     private @Nullable Output<String> summary;
 
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public Optional<Output<String>> summary() {
@@ -168,7 +168,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -176,7 +176,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     private @Nullable Output<String> tlp;
 
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -185,14 +185,14 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Tokens for the request
+     * Tokens for the request.
      * 
      */
     @Import(name="tokens")
     private @Nullable Output<Integer> tokens;
 
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     public Optional<Output<Integer>> tokens() {
@@ -209,7 +209,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
     private CloudforceOneRequestState() {}
 
     private CloudforceOneRequestState(CloudforceOneRequestState $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.completed = $.completed;
         this.content = $.content;
         this.created = $.created;
@@ -244,24 +244,24 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(@Nullable Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         public Builder completed(@Nullable Output<String> completed) {
@@ -274,7 +274,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param content Request content
+         * @param content Request content.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param content Request content
+         * @param content Request content.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param messageTokens Tokens for the request messages
+         * @param messageTokens Tokens for the request messages.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param messageTokens Tokens for the request messages
+         * @param messageTokens Tokens for the request messages.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority Priority for analyzing the request
+         * @param priority Priority for analyzing the request.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority Priority for analyzing the request
+         * @param priority Priority for analyzing the request.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param readableId Readable Request ID
+         * @param readableId Readable Request ID.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param readableId Readable Request ID
+         * @param readableId Readable Request ID.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param request Requested information from request
+         * @param request Requested information from request.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param request Requested information from request
+         * @param request Requested information from request.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requestType Requested information from request
+         * @param requestType Requested information from request.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requestType Requested information from request
+         * @param requestType Requested information from request.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status Request Status
+         * @param status Request Status.
          * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
          * 
          * @return builder
@@ -421,7 +421,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param status Request Status
+         * @param status Request Status.
          * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
          * 
          * @return builder
@@ -432,7 +432,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param summary Brief description of the request
+         * @param summary Brief description of the request.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param summary Brief description of the request
+         * @param summary Brief description of the request.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -465,7 +465,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -476,7 +476,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tokens Tokens for the request
+         * @param tokens Tokens for the request.
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class CloudforceOneRequestState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tokens Tokens for the request
+         * @param tokens Tokens for the request.
          * 
          * @return builder
          * 

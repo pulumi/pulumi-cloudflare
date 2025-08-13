@@ -40,14 +40,14 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output<String> comment;
+    private Output</* @Nullable */ String> comment;
 
     /**
      * @return Comments or notes about the DNS record. This field has no effect on DNS responses.
      * 
      */
-    public Output<String> comment() {
-        return this.comment;
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
     }
     /**
      * When the record comment was last modified. Omitted if there is no comment.
@@ -247,7 +247,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
     }
     /**
      * Record type.
-     * Available values: &#34;A&#34;.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -255,7 +255,7 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Record type.
-     * Available values: &#34;A&#34;.
+     * Available values: &#34;A&#34;, &#34;AAAA&#34;, &#34;CNAME&#34;, &#34;MX&#34;, &#34;NS&#34;, &#34;OPENPGPKEY&#34;, &#34;PTR&#34;, &#34;TXT&#34;, &#34;CAA&#34;, &#34;CERT&#34;, &#34;DNSKEY&#34;, &#34;DS&#34;, &#34;HTTPS&#34;, &#34;LOC&#34;, &#34;NAPTR&#34;, &#34;SMIMEA&#34;, &#34;SRV&#34;, &#34;SSHFP&#34;, &#34;SVCB&#34;, &#34;TLSA&#34;, &#34;URI&#34;.
      * 
      */
     public Output<String> type() {

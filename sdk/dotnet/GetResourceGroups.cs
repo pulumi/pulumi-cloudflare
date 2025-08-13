@@ -24,8 +24,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleResourceGroups = Cloudflare.GetResourceGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "NameOfTheResourceGroup",
         ///     });
         /// 
@@ -48,8 +48,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleResourceGroups = Cloudflare.GetResourceGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "NameOfTheResourceGroup",
         ///     });
         /// 
@@ -72,8 +72,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleResourceGroups = Cloudflare.GetResourceGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         Id = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Id = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Name = "NameOfTheResourceGroup",
         ///     });
         /// 

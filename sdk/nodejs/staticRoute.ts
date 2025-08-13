@@ -58,12 +58,10 @@ export class StaticRoute extends pulumi.CustomResource {
      * An optional human provided description of the static route.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly modified!: pulumi.Output<boolean>;
     /**
      * When the route was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedRoute!: pulumi.Output<outputs.StaticRouteModifiedRoute>;
     /**
      * The next-hop IP Address for the static route.
      */
@@ -76,7 +74,6 @@ export class StaticRoute extends pulumi.CustomResource {
      * Priority of the static route.
      */
     public readonly priority!: pulumi.Output<number>;
-    public readonly route!: pulumi.Output<outputs.StaticRouteRoute>;
     /**
      * Used only for ECMP routes.
      */
@@ -105,13 +102,10 @@ export class StaticRoute extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["modifiedRoute"] = state ? state.modifiedRoute : undefined;
             resourceInputs["nexthop"] = state ? state.nexthop : undefined;
             resourceInputs["prefix"] = state ? state.prefix : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["route"] = state ? state.route : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
@@ -133,13 +127,10 @@ export class StaticRoute extends pulumi.CustomResource {
             resourceInputs["nexthop"] = args ? args.nexthop : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["route"] = args ? args.route : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
-            resourceInputs["modifiedRoute"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/staticRoute:StaticRoute" }] };
@@ -164,12 +155,10 @@ export interface StaticRouteState {
      * An optional human provided description of the static route.
      */
     description?: pulumi.Input<string>;
-    modified?: pulumi.Input<boolean>;
     /**
      * When the route was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
-    modifiedRoute?: pulumi.Input<inputs.StaticRouteModifiedRoute>;
     /**
      * The next-hop IP Address for the static route.
      */
@@ -182,7 +171,6 @@ export interface StaticRouteState {
      * Priority of the static route.
      */
     priority?: pulumi.Input<number>;
-    route?: pulumi.Input<inputs.StaticRouteRoute>;
     /**
      * Used only for ECMP routes.
      */
@@ -217,7 +205,6 @@ export interface StaticRouteArgs {
      * Priority of the static route.
      */
     priority: pulumi.Input<number>;
-    route?: pulumi.Input<inputs.StaticRouteRoute>;
     /**
      * Used only for ECMP routes.
      */

@@ -47,7 +47,7 @@ import (
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// True if new beta namespace, with additional preview features.
 	Beta pulumi.BoolOutput `pulumi:"beta"`
@@ -93,7 +93,7 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKvNamespace resources.
 type workersKvNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// True if new beta namespace, with additional preview features.
 	Beta *bool `pulumi:"beta"`
@@ -104,7 +104,7 @@ type workersKvNamespaceState struct {
 }
 
 type WorkersKvNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// True if new beta namespace, with additional preview features.
 	Beta pulumi.BoolPtrInput
@@ -119,7 +119,7 @@ func (WorkersKvNamespaceState) ElementType() reflect.Type {
 }
 
 type workersKvNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A human-readable string name for a Namespace.
 	Title string `pulumi:"title"`
@@ -127,7 +127,7 @@ type workersKvNamespaceArgs struct {
 
 // The set of arguments for constructing a WorkersKvNamespace resource.
 type WorkersKvNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// A human-readable string name for a Namespace.
 	Title pulumi.StringInput
@@ -220,7 +220,7 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

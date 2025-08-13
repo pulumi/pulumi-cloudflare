@@ -61,13 +61,6 @@ public final class ZeroTrustAccessMtlsCertificateState extends com.pulumi.resour
         return Optional.ofNullable(this.certificate);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     @Import(name="expiresOn")
     private @Nullable Output<String> expiresOn;
 
@@ -105,13 +98,6 @@ public final class ZeroTrustAccessMtlsCertificateState extends com.pulumi.resour
         return Optional.ofNullable(this.name);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -133,11 +119,9 @@ public final class ZeroTrustAccessMtlsCertificateState extends com.pulumi.resour
         this.accountId = $.accountId;
         this.associatedHostnames = $.associatedHostnames;
         this.certificate = $.certificate;
-        this.createdAt = $.createdAt;
         this.expiresOn = $.expiresOn;
         this.fingerprint = $.fingerprint;
         this.name = $.name;
-        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -232,15 +216,6 @@ public final class ZeroTrustAccessMtlsCertificateState extends com.pulumi.resour
             return certificate(Output.of(certificate));
         }
 
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
         public Builder expiresOn(@Nullable Output<String> expiresOn) {
             $.expiresOn = expiresOn;
             return this;
@@ -290,15 +265,6 @@ public final class ZeroTrustAccessMtlsCertificateState extends com.pulumi.resour
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

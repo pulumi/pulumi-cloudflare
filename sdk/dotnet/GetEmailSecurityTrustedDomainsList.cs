@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare
         ///         IsRecent = true,
         ///         IsSimilarity = true,
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         Search = "search",
         ///     });
         /// 
@@ -56,6 +57,7 @@ namespace Pulumi.Cloudflare
         ///         IsRecent = true,
         ///         IsSimilarity = true,
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         Search = "search",
         ///     });
         /// 
@@ -83,6 +85,7 @@ namespace Pulumi.Cloudflare
         ///         IsRecent = true,
         ///         IsSimilarity = true,
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         Search = "search",
         ///     });
         /// 
@@ -127,6 +130,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
+
+        [Input("pattern")]
+        public string? Pattern { get; set; }
 
         /// <summary>
         /// Allows searching in multiple properties of a record simultaneously.
@@ -177,6 +183,9 @@ namespace Pulumi.Cloudflare
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        [Input("pattern")]
+        public Input<string>? Pattern { get; set; }
+
         /// <summary>
         /// Allows searching in multiple properties of a record simultaneously.
         /// This parameter is intended for human users, not automation. Its exact
@@ -220,6 +229,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
+        public readonly string? Pattern;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
@@ -248,6 +258,8 @@ namespace Pulumi.Cloudflare
 
             string? order,
 
+            string? pattern,
+
             ImmutableArray<Outputs.GetEmailSecurityTrustedDomainsListResultResult> results,
 
             string? search)
@@ -259,6 +271,7 @@ namespace Pulumi.Cloudflare
             IsSimilarity = isSimilarity;
             MaxItems = maxItems;
             Order = order;
+            Pattern = pattern;
             Results = results;
             Search = search;
         }

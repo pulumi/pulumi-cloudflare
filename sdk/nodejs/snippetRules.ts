@@ -37,19 +37,32 @@ export class SnippetRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnippetRules.__pulumiType;
     }
 
+    /**
+     * An informative description of the rule.
+     */
     public /*out*/ readonly description!: pulumi.Output<string>;
+    /**
+     * Whether the rule should be executed.
+     */
     public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The expression defining which traffic will match the rule.
+     */
     public /*out*/ readonly expression!: pulumi.Output<string>;
     /**
-     * List of snippet rules
+     * The timestamp of when the rule was last modified.
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[] | undefined>;
+    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
-     * Snippet identifying name
+     * A list of snippet rules.
+     */
+    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
+    /**
+     * The identifying name of the snippet.
      */
     public /*out*/ readonly snippetName!: pulumi.Output<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -69,11 +82,15 @@ export class SnippetRules extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["snippetName"] = state ? state.snippetName : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SnippetRulesArgs | undefined;
+            if ((!args || args.rules === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rules'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -82,6 +99,7 @@ export class SnippetRules extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expression"] = undefined /*out*/;
+            resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["snippetName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -93,19 +111,32 @@ export class SnippetRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnippetRules resources.
  */
 export interface SnippetRulesState {
+    /**
+     * An informative description of the rule.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Whether the rule should be executed.
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The expression defining which traffic will match the rule.
+     */
     expression?: pulumi.Input<string>;
     /**
-     * List of snippet rules
+     * The timestamp of when the rule was last modified.
+     */
+    lastUpdated?: pulumi.Input<string>;
+    /**
+     * A list of snippet rules.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     snippetName?: pulumi.Input<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -115,11 +146,11 @@ export interface SnippetRulesState {
  */
 export interface SnippetRulesArgs {
     /**
-     * List of snippet rules
+     * A list of snippet rules.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

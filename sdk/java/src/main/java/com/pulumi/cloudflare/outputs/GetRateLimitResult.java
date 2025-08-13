@@ -29,7 +29,7 @@ public final class GetRateLimitResult {
      */
     private List<GetRateLimitBypass> bypasses;
     /**
-     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     private String description;
@@ -85,7 +85,7 @@ public final class GetRateLimitResult {
         return this.bypasses;
     }
     /**
-     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     public String description() {

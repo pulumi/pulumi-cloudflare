@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupSnippets(ctx, &cloudflare.LookupSnippetsArgs{
-//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
-//				SnippetName: "snippet_name_01",
+//				ZoneId:      "9f1839b6152d298aca64c4e906b6d074",
+//				SnippetName: "my_snippet",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,23 +49,23 @@ func LookupSnippets(ctx *pulumi.Context, args *LookupSnippetsArgs, opts ...pulum
 
 // A collection of arguments for invoking getSnippets.
 type LookupSnippetsArgs struct {
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName string `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getSnippets.
 type LookupSnippetsResult struct {
-	// Creation time of the snippet
+	// The timestamp of when the snippet was created.
 	CreatedOn string `pulumi:"createdOn"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Modification time of the snippet
+	// The timestamp of when the snippet was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName string `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -80,9 +80,9 @@ func LookupSnippetsOutput(ctx *pulumi.Context, args LookupSnippetsOutputArgs, op
 
 // A collection of arguments for invoking getSnippets.
 type LookupSnippetsOutputArgs struct {
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringInput `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -105,7 +105,7 @@ func (o LookupSnippetsResultOutput) ToLookupSnippetsResultOutputWithContext(ctx 
 	return o
 }
 
-// Creation time of the snippet
+// The timestamp of when the snippet was created.
 func (o LookupSnippetsResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
@@ -115,17 +115,17 @@ func (o LookupSnippetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Modification time of the snippet
+// The timestamp of when the snippet was last modified.
 func (o LookupSnippetsResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Snippet identifying name
+// The identifying name of the snippet.
 func (o LookupSnippetsResultOutput) SnippetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetsResult) string { return v.SnippetName }).(pulumi.StringOutput)
 }
 
-// Identifier
+// The unique ID of the zone.
 func (o LookupSnippetsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnippetsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

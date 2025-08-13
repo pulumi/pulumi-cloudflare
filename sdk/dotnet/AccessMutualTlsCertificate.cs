@@ -66,9 +66,6 @@ namespace Pulumi.Cloudflare
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
 
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
 
@@ -83,9 +80,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -211,9 +205,6 @@ namespace Pulumi.Cloudflare
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
 
@@ -228,9 +219,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

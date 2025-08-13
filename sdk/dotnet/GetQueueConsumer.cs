@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -49,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -72,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         ConsumerId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -93,6 +96,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A Resource identifier.
         /// </summary>
+        [Input("consumerId", required: true)]
+        public string ConsumerId { get; set; } = null!;
+
+        /// <summary>
+        /// A Resource identifier.
+        /// </summary>
         [Input("queueId", required: true)]
         public string QueueId { get; set; } = null!;
 
@@ -109,6 +118,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// A Resource identifier.
+        /// </summary>
+        [Input("consumerId", required: true)]
+        public Input<string> ConsumerId { get; set; } = null!;
 
         /// <summary>
         /// A Resource identifier.
@@ -153,7 +168,7 @@ namespace Pulumi.Cloudflare
         public readonly string ScriptName;
         public readonly Outputs.GetQueueConsumerSettingsResult Settings;
         /// <summary>
-        /// Available values: "worker".
+        /// Available values: "worker", "http_pull".
         /// </summary>
         public readonly string Type;
 

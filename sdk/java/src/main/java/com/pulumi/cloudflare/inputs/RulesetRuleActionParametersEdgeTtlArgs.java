@@ -35,7 +35,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     }
 
     /**
-     * edge ttl options
+     * Edge TTL options.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
@@ -43,7 +43,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     private Output<String> mode;
 
     /**
-     * @return edge ttl options
+     * @return Edge TTL options.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
@@ -52,14 +52,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     }
 
     /**
-     * List of single status codes, or status code ranges to apply the selected mode
+     * List of single status codes, or status code ranges to apply the selected mode.
      * 
      */
     @Import(name="statusCodeTtls")
     private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls;
 
     /**
-     * @return List of single status codes, or status code ranges to apply the selected mode
+     * @return List of single status codes, or status code ranges to apply the selected mode.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>>> statusCodeTtls() {
@@ -114,7 +114,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode edge ttl options
+         * @param mode Edge TTL options.
          * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
@@ -126,7 +126,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode edge ttl options
+         * @param mode Edge TTL options.
          * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
@@ -137,7 +137,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode.
          * 
          * @return builder
          * 

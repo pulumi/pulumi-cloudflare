@@ -62,14 +62,15 @@ export class R2Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
-     * Jurisdiction of the bucket
+     * Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: "default", "eu", "fedramp".
      */
     public readonly jurisdiction!: pulumi.Output<string>;
     /**
      * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
@@ -132,7 +133,8 @@ export interface R2BucketState {
      */
     creationDate?: pulumi.Input<string>;
     /**
-     * Jurisdiction of the bucket
+     * Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: "default", "eu", "fedramp".
      */
     jurisdiction?: pulumi.Input<string>;
     /**
@@ -160,7 +162,8 @@ export interface R2BucketArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Jurisdiction of the bucket
+     * Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: "default", "eu", "fedramp".
      */
     jurisdiction?: pulumi.Input<string>;
     /**

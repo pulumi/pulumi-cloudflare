@@ -36,6 +36,12 @@ namespace Pulumi.Cloudflare
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Lists the betas that the user is participating in.
+        /// </summary>
+        [Output("betas")]
+        public Output<ImmutableArray<string>> Betas { get; private set; } = null!;
+
+        /// <summary>
         /// The country in which the user lives.
         /// </summary>
         [Output("country")]
@@ -48,16 +54,55 @@ namespace Pulumi.Cloudflare
         public Output<string?> FirstName { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether user has any business zones
+        /// </summary>
+        [Output("hasBusinessZones")]
+        public Output<bool> HasBusinessZones { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether user has any enterprise zones
+        /// </summary>
+        [Output("hasEnterpriseZones")]
+        public Output<bool> HasEnterpriseZones { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether user has any pro zones
+        /// </summary>
+        [Output("hasProZones")]
+        public Output<bool> HasProZones { get; private set; } = null!;
+
+        /// <summary>
         /// User's last name
         /// </summary>
         [Output("lastName")]
         public Output<string?> LastName { get; private set; } = null!;
+
+        [Output("organizations")]
+        public Output<ImmutableArray<Outputs.UserOrganization>> Organizations { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether user has been suspended
+        /// </summary>
+        [Output("suspended")]
+        public Output<bool> Suspended { get; private set; } = null!;
 
         /// <summary>
         /// User's telephone number
         /// </summary>
         [Output("telephone")]
         public Output<string?> Telephone { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        /// </summary>
+        [Output("twoFactorAuthenticationEnabled")]
+        public Output<bool> TwoFactorAuthenticationEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+        /// </summary>
+        [Output("twoFactorAuthenticationLocked")]
+        public Output<bool> TwoFactorAuthenticationLocked { get; private set; } = null!;
 
         /// <summary>
         /// The zipcode or postal code where the user lives.
@@ -149,6 +194,18 @@ namespace Pulumi.Cloudflare
 
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
+        [Input("betas")]
+        private InputList<string>? _betas;
+
+        /// <summary>
+        /// Lists the betas that the user is participating in.
+        /// </summary>
+        public InputList<string> Betas
+        {
+            get => _betas ?? (_betas = new InputList<string>());
+            set => _betas = value;
+        }
+
         /// <summary>
         /// The country in which the user lives.
         /// </summary>
@@ -162,16 +219,60 @@ namespace Pulumi.Cloudflare
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
+        /// Indicates whether user has any business zones
+        /// </summary>
+        [Input("hasBusinessZones")]
+        public Input<bool>? HasBusinessZones { get; set; }
+
+        /// <summary>
+        /// Indicates whether user has any enterprise zones
+        /// </summary>
+        [Input("hasEnterpriseZones")]
+        public Input<bool>? HasEnterpriseZones { get; set; }
+
+        /// <summary>
+        /// Indicates whether user has any pro zones
+        /// </summary>
+        [Input("hasProZones")]
+        public Input<bool>? HasProZones { get; set; }
+
+        /// <summary>
         /// User's last name
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
+
+        [Input("organizations")]
+        private InputList<Inputs.UserOrganizationGetArgs>? _organizations;
+        public InputList<Inputs.UserOrganizationGetArgs> Organizations
+        {
+            get => _organizations ?? (_organizations = new InputList<Inputs.UserOrganizationGetArgs>());
+            set => _organizations = value;
+        }
+
+        /// <summary>
+        /// Indicates whether user has been suspended
+        /// </summary>
+        [Input("suspended")]
+        public Input<bool>? Suspended { get; set; }
 
         /// <summary>
         /// User's telephone number
         /// </summary>
         [Input("telephone")]
         public Input<string>? Telephone { get; set; }
+
+        /// <summary>
+        /// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        /// </summary>
+        [Input("twoFactorAuthenticationEnabled")]
+        public Input<bool>? TwoFactorAuthenticationEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+        /// </summary>
+        [Input("twoFactorAuthenticationLocked")]
+        public Input<bool>? TwoFactorAuthenticationLocked { get; set; }
 
         /// <summary>
         /// The zipcode or postal code where the user lives.

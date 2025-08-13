@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("hyperdriveId")]
         public string? HyperdriveId { get; set; }
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("hyperdriveId")]
         public Input<string>? HyperdriveId { get; set; }
@@ -127,29 +127,33 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigResult
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         public readonly string AccountId;
         public readonly Outputs.GetHyperdriveConfigCachingResult Caching;
         /// <summary>
-        /// When the Hyperdrive configuration was created.
+        /// Defines the creation time of the Hyperdrive configuration.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         public readonly string? HyperdriveId;
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// When the Hyperdrive configuration was last modified.
+        /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         public readonly string ModifiedOn;
         public readonly Outputs.GetHyperdriveConfigMtlsResult Mtls;
         public readonly string Name;
         public readonly Outputs.GetHyperdriveConfigOriginResult Origin;
+        /// <summary>
+        /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        /// </summary>
+        public readonly int OriginConnectionLimit;
 
         [OutputConstructor]
         private GetHyperdriveConfigResult(
@@ -169,7 +173,9 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            Outputs.GetHyperdriveConfigOriginResult origin)
+            Outputs.GetHyperdriveConfigOriginResult origin,
+
+            int originConnectionLimit)
         {
             AccountId = accountId;
             Caching = caching;
@@ -180,6 +186,7 @@ namespace Pulumi.Cloudflare
             Mtls = mtls;
             Name = name;
             Origin = origin;
+            OriginConnectionLimit = originConnectionLimit;
         }
     }
 }

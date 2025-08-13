@@ -19,13 +19,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Name of the owner
+        /// Name of the owner.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of owner
+        /// The type of owner.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

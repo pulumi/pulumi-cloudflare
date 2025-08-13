@@ -84,7 +84,7 @@ export class TunnelRoute extends pulumi.CustomResource {
     /**
      * UUID of the virtual network.
      */
-    public readonly virtualNetworkId!: pulumi.Output<string | undefined>;
+    public readonly virtualNetworkId!: pulumi.Output<string>;
 
     /**
      * Create a TunnelRoute resource with the given unique name, arguments, and options.

@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-    ///    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
-    ///    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-    ///    lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
@@ -31,12 +28,6 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of access applications currently using this policy.
-        /// </summary>
-        [Output("appCount")]
-        public Output<int> AppCount { get; private set; } = null!;
-
-        /// <summary>
         /// Administrators who can approve a temporary authentication request.
         /// </summary>
         [Output("approvalGroups")]
@@ -47,9 +38,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("approvalRequired")]
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
-
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -100,17 +88,11 @@ namespace Pulumi.Cloudflare
         [Output("requires")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessPolicyRequire>> Requires { get; private set; } = null!;
 
-        [Output("reusable")]
-        public Output<bool> Reusable { get; private set; } = null!;
-
         /// <summary>
         /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -273,12 +255,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Number of access applications currently using this policy.
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
-
         [Input("approvalGroups")]
         private InputList<Inputs.ZeroTrustAccessPolicyApprovalGroupGetArgs>? _approvalGroups;
 
@@ -296,9 +272,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("approvalRequired")]
         public Input<bool>? ApprovalRequired { get; set; }
-
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -367,17 +340,11 @@ namespace Pulumi.Cloudflare
             set => _requires = value;
         }
 
-        [Input("reusable")]
-        public Input<bool>? Reusable { get; set; }
-
         /// <summary>
         /// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessPolicyState()
         {

@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? AddHeaders;
+        public readonly ImmutableDictionary<string, ImmutableArray<string>>? AddHeaders;
         /// <summary>
         /// Set by parent MSP accounts to enable their children to bypass this rule.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsRuleRuleSettings(
-            ImmutableDictionary<string, string>? addHeaders,
+            ImmutableDictionary<string, ImmutableArray<string>>? addHeaders,
 
             bool? allowChildBypass,
 

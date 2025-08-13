@@ -85,7 +85,7 @@ export interface GetDnsRecordResult {
      */
     readonly modifiedOn: string;
     /**
-     * DNS record name (or @ for the zone apex) in Punycode.
+     * Complete DNS record name, including the zone name, in Punycode.
      */
     readonly name: string;
     /**
@@ -118,7 +118,7 @@ export interface GetDnsRecordResult {
     readonly ttl: number;
     /**
      * Record type.
-     * Available values: "A".
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     readonly type: string;
     /**

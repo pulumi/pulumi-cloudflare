@@ -16,14 +16,14 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
     public static final ZeroTrustDeviceCustomProfileTargetTestArgs Empty = new ZeroTrustDeviceCustomProfileTargetTestArgs();
 
     /**
-     * The id of the DEX test targeting this policy
+     * The id of the DEX test targeting this policy.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The id of the DEX test targeting this policy
+     * @return The id of the DEX test targeting this policy.
      * 
      */
     public Optional<Output<String>> id() {
@@ -31,14 +31,14 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
     }
 
     /**
-     * The name of the DEX test targeting this policy
+     * The name of the DEX test targeting this policy.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the DEX test targeting this policy
+     * @return The name of the DEX test targeting this policy.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
         }
 
         /**
-         * @param id The id of the DEX test targeting this policy
+         * @param id The id of the DEX test targeting this policy.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
         }
 
         /**
-         * @param id The id of the DEX test targeting this policy
+         * @param id The id of the DEX test targeting this policy.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the DEX test targeting this policy
+         * @param name The name of the DEX test targeting this policy.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustDeviceCustomProfileTargetTestArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the DEX test targeting this policy
+         * @param name The name of the DEX test targeting this policy.
          * 
          * @return builder
          * 

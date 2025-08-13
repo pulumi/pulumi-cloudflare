@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs();
 
     /**
-     * response status code lower bound
+     * Response status code lower bound.
      * 
      */
     @Import(name="from")
     private @Nullable Output<Integer> from;
 
     /**
-     * @return response status code lower bound
+     * @return Response status code lower bound.
      * 
      */
     public Optional<Output<Integer>> from() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     }
 
     /**
-     * response status code upper bound
+     * Response status code upper bound.
      * 
      */
     @Import(name="to")
     private @Nullable Output<Integer> to;
 
     /**
-     * @return response status code upper bound
+     * @return Response status code upper bound.
      * 
      */
     public Optional<Output<Integer>> to() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from response status code lower bound
+         * @param from Response status code lower bound.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from response status code lower bound
+         * @param from Response status code lower bound.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to response status code upper bound
+         * @param to Response status code upper bound.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to response status code upper bound
+         * @param to Response status code upper bound.
          * 
          * @return builder
          * 

@@ -95,9 +95,9 @@ export class TeamsLocation extends pulumi.CustomResource {
     /**
      * The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      */
-    public readonly dnsDestinationIpsId!: pulumi.Output<string | undefined>;
+    public readonly dnsDestinationIpsId!: pulumi.Output<string>;
     /**
-     * The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      */
     public /*out*/ readonly dnsDestinationIpv6BlockId!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class TeamsLocation extends pulumi.CustomResource {
     /**
      * A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      */
-    public readonly networks!: pulumi.Output<outputs.TeamsLocationNetwork[] | undefined>;
+    public readonly networks!: pulumi.Output<outputs.TeamsLocationNetwork[]>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -209,7 +209,7 @@ export interface TeamsLocationState {
      */
     dnsDestinationIpsId?: pulumi.Input<string>;
     /**
-     * The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      */
     dnsDestinationIpv6BlockId?: pulumi.Input<string>;
     /**

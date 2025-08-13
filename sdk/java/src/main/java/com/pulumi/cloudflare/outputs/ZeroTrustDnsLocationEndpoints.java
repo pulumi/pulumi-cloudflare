@@ -8,29 +8,28 @@ import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpointsDot;
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpointsIpv4;
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpointsIpv6;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDnsLocationEndpoints {
-    private @Nullable ZeroTrustDnsLocationEndpointsDoh doh;
-    private @Nullable ZeroTrustDnsLocationEndpointsDot dot;
-    private @Nullable ZeroTrustDnsLocationEndpointsIpv4 ipv4;
-    private @Nullable ZeroTrustDnsLocationEndpointsIpv6 ipv6;
+    private ZeroTrustDnsLocationEndpointsDoh doh;
+    private ZeroTrustDnsLocationEndpointsDot dot;
+    private ZeroTrustDnsLocationEndpointsIpv4 ipv4;
+    private ZeroTrustDnsLocationEndpointsIpv6 ipv6;
 
     private ZeroTrustDnsLocationEndpoints() {}
-    public Optional<ZeroTrustDnsLocationEndpointsDoh> doh() {
-        return Optional.ofNullable(this.doh);
+    public ZeroTrustDnsLocationEndpointsDoh doh() {
+        return this.doh;
     }
-    public Optional<ZeroTrustDnsLocationEndpointsDot> dot() {
-        return Optional.ofNullable(this.dot);
+    public ZeroTrustDnsLocationEndpointsDot dot() {
+        return this.dot;
     }
-    public Optional<ZeroTrustDnsLocationEndpointsIpv4> ipv4() {
-        return Optional.ofNullable(this.ipv4);
+    public ZeroTrustDnsLocationEndpointsIpv4 ipv4() {
+        return this.ipv4;
     }
-    public Optional<ZeroTrustDnsLocationEndpointsIpv6> ipv6() {
-        return Optional.ofNullable(this.ipv6);
+    public ZeroTrustDnsLocationEndpointsIpv6 ipv6() {
+        return this.ipv6;
     }
 
     public static Builder builder() {
@@ -42,10 +41,10 @@ public final class ZeroTrustDnsLocationEndpoints {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable ZeroTrustDnsLocationEndpointsDoh doh;
-        private @Nullable ZeroTrustDnsLocationEndpointsDot dot;
-        private @Nullable ZeroTrustDnsLocationEndpointsIpv4 ipv4;
-        private @Nullable ZeroTrustDnsLocationEndpointsIpv6 ipv6;
+        private ZeroTrustDnsLocationEndpointsDoh doh;
+        private ZeroTrustDnsLocationEndpointsDot dot;
+        private ZeroTrustDnsLocationEndpointsIpv4 ipv4;
+        private ZeroTrustDnsLocationEndpointsIpv6 ipv6;
         public Builder() {}
         public Builder(ZeroTrustDnsLocationEndpoints defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,26 +55,34 @@ public final class ZeroTrustDnsLocationEndpoints {
         }
 
         @CustomType.Setter
-        public Builder doh(@Nullable ZeroTrustDnsLocationEndpointsDoh doh) {
-
+        public Builder doh(ZeroTrustDnsLocationEndpointsDoh doh) {
+            if (doh == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpoints", "doh");
+            }
             this.doh = doh;
             return this;
         }
         @CustomType.Setter
-        public Builder dot(@Nullable ZeroTrustDnsLocationEndpointsDot dot) {
-
+        public Builder dot(ZeroTrustDnsLocationEndpointsDot dot) {
+            if (dot == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpoints", "dot");
+            }
             this.dot = dot;
             return this;
         }
         @CustomType.Setter
-        public Builder ipv4(@Nullable ZeroTrustDnsLocationEndpointsIpv4 ipv4) {
-
+        public Builder ipv4(ZeroTrustDnsLocationEndpointsIpv4 ipv4) {
+            if (ipv4 == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpoints", "ipv4");
+            }
             this.ipv4 = ipv4;
             return this;
         }
         @CustomType.Setter
-        public Builder ipv6(@Nullable ZeroTrustDnsLocationEndpointsIpv6 ipv6) {
-
+        public Builder ipv6(ZeroTrustDnsLocationEndpointsIpv6 ipv6) {
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpoints", "ipv6");
+            }
             this.ipv6 = ipv6;
             return this;
         }

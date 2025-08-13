@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtl
     {
         /// <summary>
-        /// Set the ttl for responses with this specific status code
+        /// Set the TTL for responses with this specific status code.
         /// </summary>
         public readonly int? StatusCode;
         /// <summary>

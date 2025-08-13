@@ -494,14 +494,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     @Import(name="originErrorPagePassthru")
     private @Nullable Output<Boolean> originErrorPagePassthru;
 
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     public Optional<Output<Boolean>> originErrorPagePassthru() {
@@ -524,14 +524,31 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    @Import(name="phase")
+    private @Nullable Output<String> phase;
+
+    /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    public Optional<Output<String>> phase() {
+        return Optional.ofNullable(this.phase);
+    }
+
+    /**
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     @Import(name="phases")
     private @Nullable Output<List<String>> phases;
 
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     public Optional<Output<List<String>>> phases() {
@@ -540,7 +557,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     @Import(name="polish")
@@ -548,7 +565,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     public Optional<Output<String>> polish() {
@@ -661,14 +678,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Rocket Loader
+     * Turn on or off Rocket Loader.
      * 
      */
     @Import(name="rocketLoader")
     private @Nullable Output<Boolean> rocketLoader;
 
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     public Optional<Output<Boolean>> rocketLoader() {
@@ -691,7 +708,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -699,7 +716,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private @Nullable Output<String> ruleset;
 
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -896,6 +913,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.originCacheControl = $.originCacheControl;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
         this.overrides = $.overrides;
+        this.phase = $.phase;
         this.phases = $.phases;
         this.polish = $.polish;
         this.products = $.products;
@@ -1601,7 +1619,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
          * 
          * @return builder
          * 
@@ -1612,7 +1630,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
          * 
          * @return builder
          * 
@@ -1643,7 +1661,30 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+         * @param phase A phase to skip the execution of. This property is only compatible with products.
+         * Available values: &#34;current&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(@Nullable Output<String> phase) {
+            $.phase = phase;
+            return this;
+        }
+
+        /**
+         * @param phase A phase to skip the execution of. This property is only compatible with products.
+         * Available values: &#34;current&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(String phase) {
+            return phase(Output.of(phase));
+        }
+
+        /**
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
          * 
          * @return builder
          * 
@@ -1654,7 +1695,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
          * 
          * @return builder
          * 
@@ -1664,7 +1705,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
          * 
          * @return builder
          * 
@@ -1675,7 +1716,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
-         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
          * 
@@ -1687,7 +1728,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
-         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
          * 
@@ -1884,7 +1925,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader
+         * @param rocketLoader Turn on or off Rocket Loader.
          * 
          * @return builder
          * 
@@ -1895,7 +1936,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader
+         * @param rocketLoader Turn on or off Rocket Loader.
          * 
          * @return builder
          * 
@@ -1926,7 +1967,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets option.
          * Available values: &#34;current&#34;.
          * 
          * @return builder
@@ -1938,7 +1979,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets option.
          * Available values: &#34;current&#34;.
          * 
          * @return builder

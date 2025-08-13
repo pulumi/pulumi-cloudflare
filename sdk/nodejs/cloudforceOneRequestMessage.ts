@@ -12,8 +12,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestMessage = new cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message", {
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     content: "Can you elaborate on the type of DoS that occurred?",
  * });
  * ```
@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_identifier>/<request_identifier>'
+ * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
  * ```
  */
 export class CloudforceOneRequestMessage extends pulumi.CustomResource {
@@ -53,31 +53,31 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
-    public readonly accountIdentifier!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * Author of message
+     * Author of message.
      */
     public /*out*/ readonly author!: pulumi.Output<string>;
     /**
-     * Content of message
+     * Content of message.
      */
     public readonly content!: pulumi.Output<string | undefined>;
     /**
-     * Message creation time
+     * Defines the message creation time.
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * Whether the message is a follow-on request
+     * Whether the message is a follow-on request.
      */
     public /*out*/ readonly isFollowOnRequest!: pulumi.Output<boolean>;
     /**
-     * UUID
+     * UUID.
      */
-    public readonly requestIdentifier!: pulumi.Output<string>;
+    public readonly requestId!: pulumi.Output<string>;
     /**
-     * Message last updated time
+     * Defines the message last updated time.
      */
     public /*out*/ readonly updated!: pulumi.Output<string>;
 
@@ -94,24 +94,24 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestMessageState | undefined;
-            resourceInputs["accountIdentifier"] = state ? state.accountIdentifier : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["isFollowOnRequest"] = state ? state.isFollowOnRequest : undefined;
-            resourceInputs["requestIdentifier"] = state ? state.requestIdentifier : undefined;
+            resourceInputs["requestId"] = state ? state.requestId : undefined;
             resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as CloudforceOneRequestMessageArgs | undefined;
-            if ((!args || args.accountIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountIdentifier'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.requestIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'requestIdentifier'");
+            if ((!args || args.requestId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'requestId'");
             }
-            resourceInputs["accountIdentifier"] = args ? args.accountIdentifier : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["requestIdentifier"] = args ? args.requestIdentifier : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["isFollowOnRequest"] = undefined /*out*/;
@@ -127,31 +127,31 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
  */
 export interface CloudforceOneRequestMessageState {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Author of message
+     * Author of message.
      */
     author?: pulumi.Input<string>;
     /**
-     * Content of message
+     * Content of message.
      */
     content?: pulumi.Input<string>;
     /**
-     * Message creation time
+     * Defines the message creation time.
      */
     created?: pulumi.Input<string>;
     /**
-     * Whether the message is a follow-on request
+     * Whether the message is a follow-on request.
      */
     isFollowOnRequest?: pulumi.Input<boolean>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
-     * Message last updated time
+     * Defines the message last updated time.
      */
     updated?: pulumi.Input<string>;
 }
@@ -161,15 +161,15 @@ export interface CloudforceOneRequestMessageState {
  */
 export interface CloudforceOneRequestMessageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * Content of message
+     * Content of message.
      */
     content?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier: pulumi.Input<string>;
+    requestId: pulumi.Input<string>;
 }

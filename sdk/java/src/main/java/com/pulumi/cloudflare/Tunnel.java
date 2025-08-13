@@ -117,7 +117,11 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
+     * @deprecated
+     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * 
      */
+    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
     @Export(name="connections", refs={List.class,TunnelConnection.class}, tree="[0,1]")
     private Output<List<TunnelConnection>> connections;
 

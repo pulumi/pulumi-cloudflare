@@ -24,7 +24,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
      * 
      */
     private @Nullable Boolean required;
-    private @Nullable String teamName;
+    private String teamName;
 
     private ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess() {}
     /**
@@ -41,8 +41,8 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
-    public Optional<String> teamName() {
-        return Optional.ofNullable(this.teamName);
+    public String teamName() {
+        return this.teamName;
     }
 
     public static Builder builder() {
@@ -56,7 +56,7 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
     public static final class Builder {
         private List<String> audTags;
         private @Nullable Boolean required;
-        private @Nullable String teamName;
+        private String teamName;
         public Builder() {}
         public Builder(ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,8 +83,10 @@ public final class ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
             return this;
         }
         @CustomType.Setter
-        public Builder teamName(@Nullable String teamName) {
-
+        public Builder teamName(String teamName) {
+            if (teamName == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess", "teamName");
+            }
             this.teamName = teamName;
             return this;
         }

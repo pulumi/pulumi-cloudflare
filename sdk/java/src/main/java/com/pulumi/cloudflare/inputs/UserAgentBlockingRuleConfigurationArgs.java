@@ -16,16 +16,16 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
     public static final UserAgentBlockingRuleConfigurationArgs Empty = new UserAgentBlockingRuleConfigurationArgs();
 
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;.
+     * The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: &#34;ua&#34;.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;.
+     * @return The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: &#34;ua&#34;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -33,14 +33,14 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
     }
 
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * the user agent to exactly match
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return the user agent to exactly match
      * 
      */
     public Optional<Output<String>> value() {
@@ -73,8 +73,8 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;.
+         * @param target The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+         * Available values: &#34;ua&#34;.
          * 
          * @return builder
          * 
@@ -85,8 +85,8 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;.
+         * @param target The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+         * Available values: &#34;ua&#34;.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value the user agent to exactly match
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
+         * @param value the user agent to exactly match
          * 
          * @return builder
          * 

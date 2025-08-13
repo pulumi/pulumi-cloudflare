@@ -73,6 +73,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsHostSelectorGetArgs>? HostSelector { get; set; }
 
         /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        [Input("inspection")]
+        public Input<Inputs.ZeroTrustGatewaySettingsSettingsInspectionGetArgs>? Inspection { get; set; }
+
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         [Input("protocolDetection")]

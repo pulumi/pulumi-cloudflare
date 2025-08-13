@@ -67,18 +67,15 @@ export class AccessServiceToken extends pulumi.CustomResource {
      * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     public readonly duration!: pulumi.Output<string>;
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
-    public /*out*/ readonly lastSeenAt!: pulumi.Output<string>;
     /**
      * The name of the service token.
      */
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -103,12 +100,9 @@ export class AccessServiceToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["lastSeenAt"] = state ? state.lastSeenAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessServiceTokenArgs | undefined;
@@ -121,10 +115,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;
-            resourceInputs["lastSeenAt"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessServiceToken:AccessServiceToken" }] };
@@ -151,18 +142,15 @@ export interface AccessServiceTokenState {
      * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      */
     clientSecret?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string>;
     expiresAt?: pulumi.Input<string>;
-    lastSeenAt?: pulumi.Input<string>;
     /**
      * The name of the service token.
      */
     name?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

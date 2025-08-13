@@ -36,14 +36,14 @@ public final class WaitingRoomSettingsState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -101,7 +101,7 @@ public final class WaitingRoomSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class WaitingRoomSettingsState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

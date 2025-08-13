@@ -16,14 +16,14 @@ public final class GetZonesAccountArgs extends com.pulumi.resources.ResourceArgs
     public static final GetZonesAccountArgs Empty = new GetZonesAccountArgs();
 
     /**
-     * An account ID
+     * Filter by an account ID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return An account ID
+     * @return Filter by an account ID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -87,7 +87,7 @@ public final class GetZonesAccountArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id An account ID
+         * @param id Filter by an account ID.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetZonesAccountArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id An account ID
+         * @param id Filter by an account ID.
          * 
          * @return builder
          * 

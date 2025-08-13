@@ -17,14 +17,14 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
     public static final GetWorkersKvNamespacesPlainArgs Empty = new GetWorkersKvNamespacesPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -108,7 +108,7 @@ public final class GetWorkersKvNamespacesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

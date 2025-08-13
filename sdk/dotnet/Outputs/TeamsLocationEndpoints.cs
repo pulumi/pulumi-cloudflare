@@ -13,20 +13,20 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsLocationEndpoints
     {
-        public readonly Outputs.TeamsLocationEndpointsDoh? Doh;
-        public readonly Outputs.TeamsLocationEndpointsDot? Dot;
-        public readonly Outputs.TeamsLocationEndpointsIpv4? Ipv4;
-        public readonly Outputs.TeamsLocationEndpointsIpv6? Ipv6;
+        public readonly Outputs.TeamsLocationEndpointsDoh Doh;
+        public readonly Outputs.TeamsLocationEndpointsDot Dot;
+        public readonly Outputs.TeamsLocationEndpointsIpv4 Ipv4;
+        public readonly Outputs.TeamsLocationEndpointsIpv6 Ipv6;
 
         [OutputConstructor]
         private TeamsLocationEndpoints(
-            Outputs.TeamsLocationEndpointsDoh? doh,
+            Outputs.TeamsLocationEndpointsDoh doh,
 
-            Outputs.TeamsLocationEndpointsDot? dot,
+            Outputs.TeamsLocationEndpointsDot dot,
 
-            Outputs.TeamsLocationEndpointsIpv4? ipv4,
+            Outputs.TeamsLocationEndpointsIpv4 ipv4,
 
-            Outputs.TeamsLocationEndpointsIpv6? ipv6)
+            Outputs.TeamsLocationEndpointsIpv6 ipv6)
         {
             Doh = doh;
             Dot = dot;

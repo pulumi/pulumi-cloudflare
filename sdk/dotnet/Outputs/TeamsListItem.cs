@@ -13,7 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsListItem
     {
-        public readonly string? CreatedAt;
         /// <summary>
         /// The description of the list item, if present
         /// </summary>
@@ -25,13 +24,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsListItem(
-            string? createdAt,
-
             string? description,
 
             string? value)
         {
-            CreatedAt = createdAt;
             Description = description;
             Value = value;
         }

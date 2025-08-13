@@ -6,6 +6,9 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZonesResultAccount;
 import com.pulumi.cloudflare.outputs.GetZonesResultMeta;
 import com.pulumi.cloudflare.outputs.GetZonesResultOwner;
+import com.pulumi.cloudflare.outputs.GetZonesResultPlan;
+import com.pulumi.cloudflare.outputs.GetZonesResultTenant;
+import com.pulumi.cloudflare.outputs.GetZonesResultTenantUnit;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -17,18 +20,24 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesResult {
     /**
-     * @return The account the zone belongs to
+     * @return The account the zone belongs to.
      * 
      */
     private GetZonesResultAccount account;
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     private String activatedOn;
     /**
-     * @return When the zone was created
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    private String cnameSuffix;
+    /**
+     * @return When the zone was created.
      * 
      */
     private String createdOn;
@@ -45,42 +54,42 @@ public final class GetZonesResult {
      */
     private String id;
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     private GetZonesResultMeta meta;
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     private String modifiedOn;
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     private String name;
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     private List<String> nameServers;
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     private String originalDnshost;
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     private List<String> originalNameServers;
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     private String originalRegistrar;
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     private GetZonesResultOwner owner;
@@ -92,11 +101,39 @@ public final class GetZonesResult {
      */
     private Boolean paused;
     /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    private List<String> permissions;
+    /**
+     * @return A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    private GetZonesResultPlan plan;
+    /**
      * @return The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     private String status;
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    private GetZonesResultTenant tenant;
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    private GetZonesResultTenantUnit tenantUnit;
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
@@ -117,7 +154,7 @@ public final class GetZonesResult {
 
     private GetZonesResult() {}
     /**
-     * @return The account the zone belongs to
+     * @return The account the zone belongs to.
      * 
      */
     public GetZonesResultAccount account() {
@@ -125,14 +162,22 @@ public final class GetZonesResult {
     }
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public String activatedOn() {
         return this.activatedOn;
     }
     /**
-     * @return When the zone was created
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    public String cnameSuffix() {
+        return this.cnameSuffix;
+    }
+    /**
+     * @return When the zone was created.
      * 
      */
     public String createdOn() {
@@ -155,56 +200,56 @@ public final class GetZonesResult {
         return this.id;
     }
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public GetZonesResultMeta meta() {
         return this.meta;
     }
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public String modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public List<String> nameServers() {
         return this.nameServers;
     }
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public String originalDnshost() {
         return this.originalDnshost;
     }
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public List<String> originalNameServers() {
         return this.originalNameServers;
     }
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public String originalRegistrar() {
         return this.originalRegistrar;
     }
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public GetZonesResultOwner owner() {
@@ -220,12 +265,48 @@ public final class GetZonesResult {
         return this.paused;
     }
     /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public List<String> permissions() {
+        return this.permissions;
+    }
+    /**
+     * @return A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public GetZonesResultPlan plan() {
+        return this.plan;
+    }
+    /**
      * @return The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    public GetZonesResultTenant tenant() {
+        return this.tenant;
+    }
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    public GetZonesResultTenantUnit tenantUnit() {
+        return this.tenantUnit;
     }
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
@@ -262,6 +343,7 @@ public final class GetZonesResult {
     public static final class Builder {
         private GetZonesResultAccount account;
         private String activatedOn;
+        private String cnameSuffix;
         private String createdOn;
         private Double developmentMode;
         private String id;
@@ -274,7 +356,11 @@ public final class GetZonesResult {
         private String originalRegistrar;
         private GetZonesResultOwner owner;
         private Boolean paused;
+        private List<String> permissions;
+        private GetZonesResultPlan plan;
         private String status;
+        private GetZonesResultTenant tenant;
+        private GetZonesResultTenantUnit tenantUnit;
         private String type;
         private List<String> vanityNameServers;
         private String verificationKey;
@@ -283,6 +369,7 @@ public final class GetZonesResult {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.activatedOn = defaults.activatedOn;
+    	      this.cnameSuffix = defaults.cnameSuffix;
     	      this.createdOn = defaults.createdOn;
     	      this.developmentMode = defaults.developmentMode;
     	      this.id = defaults.id;
@@ -295,7 +382,11 @@ public final class GetZonesResult {
     	      this.originalRegistrar = defaults.originalRegistrar;
     	      this.owner = defaults.owner;
     	      this.paused = defaults.paused;
+    	      this.permissions = defaults.permissions;
+    	      this.plan = defaults.plan;
     	      this.status = defaults.status;
+    	      this.tenant = defaults.tenant;
+    	      this.tenantUnit = defaults.tenantUnit;
     	      this.type = defaults.type;
     	      this.vanityNameServers = defaults.vanityNameServers;
     	      this.verificationKey = defaults.verificationKey;
@@ -315,6 +406,14 @@ public final class GetZonesResult {
               throw new MissingRequiredPropertyException("GetZonesResult", "activatedOn");
             }
             this.activatedOn = activatedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cnameSuffix(String cnameSuffix) {
+            if (cnameSuffix == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "cnameSuffix");
+            }
+            this.cnameSuffix = cnameSuffix;
             return this;
         }
         @CustomType.Setter
@@ -420,11 +519,46 @@ public final class GetZonesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder permissions(List<String> permissions) {
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "permissions");
+            }
+            this.permissions = permissions;
+            return this;
+        }
+        public Builder permissions(String... permissions) {
+            return permissions(List.of(permissions));
+        }
+        @CustomType.Setter
+        public Builder plan(GetZonesResultPlan plan) {
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "plan");
+            }
+            this.plan = plan;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetZonesResult", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenant(GetZonesResultTenant tenant) {
+            if (tenant == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "tenant");
+            }
+            this.tenant = tenant;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tenantUnit(GetZonesResultTenantUnit tenantUnit) {
+            if (tenantUnit == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "tenantUnit");
+            }
+            this.tenantUnit = tenantUnit;
             return this;
         }
         @CustomType.Setter
@@ -458,6 +592,7 @@ public final class GetZonesResult {
             final var _resultValue = new GetZonesResult();
             _resultValue.account = account;
             _resultValue.activatedOn = activatedOn;
+            _resultValue.cnameSuffix = cnameSuffix;
             _resultValue.createdOn = createdOn;
             _resultValue.developmentMode = developmentMode;
             _resultValue.id = id;
@@ -470,7 +605,11 @@ public final class GetZonesResult {
             _resultValue.originalRegistrar = originalRegistrar;
             _resultValue.owner = owner;
             _resultValue.paused = paused;
+            _resultValue.permissions = permissions;
+            _resultValue.plan = plan;
             _resultValue.status = status;
+            _resultValue.tenant = tenant;
+            _resultValue.tenantUnit = tenantUnit;
             _resultValue.type = type;
             _resultValue.vanityNameServers = vanityNameServers;
             _resultValue.verificationKey = verificationKey;

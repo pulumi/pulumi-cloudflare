@@ -17,29 +17,29 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     public static final CloudforceOneRequestAssetState Empty = new CloudforceOneRequestAssetState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier")
-    private @Nullable Output<String> accountIdentifier;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Optional<Output<String>> accountIdentifier() {
-        return Optional.ofNullable(this.accountIdentifier);
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Asset creation time
+     * Defines the asset creation time.
      * 
      */
     @Import(name="created")
     private @Nullable Output<String> created;
 
     /**
-     * @return Asset creation time
+     * @return Defines the asset creation time.
      * 
      */
     public Optional<Output<String>> created() {
@@ -47,14 +47,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Asset description
+     * Asset description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Asset description
+     * @return Asset description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -62,14 +62,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Asset file type
+     * Asset file type.
      * 
      */
     @Import(name="fileType")
     private @Nullable Output<String> fileType;
 
     /**
-     * @return Asset file type
+     * @return Asset file type.
      * 
      */
     public Optional<Output<String>> fileType() {
@@ -77,14 +77,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Asset name
+     * Asset name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Asset name
+     * @return Asset name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -92,14 +92,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Page number of results
+     * Page number of results.
      * 
      */
     @Import(name="page")
     private @Nullable Output<Integer> page;
 
     /**
-     * @return Page number of results
+     * @return Page number of results.
      * 
      */
     public Optional<Output<Integer>> page() {
@@ -107,14 +107,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * Number of results per page
+     * Number of results per page.
      * 
      */
     @Import(name="perPage")
     private @Nullable Output<Integer> perPage;
 
     /**
-     * @return Number of results per page
+     * @return Number of results per page.
      * 
      */
     public Optional<Output<Integer>> perPage() {
@@ -122,29 +122,29 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier")
-    private @Nullable Output<String> requestIdentifier;
+    @Import(name="requestId")
+    private @Nullable Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Optional<Output<String>> requestIdentifier() {
-        return Optional.ofNullable(this.requestIdentifier);
+    public Optional<Output<String>> requestId() {
+        return Optional.ofNullable(this.requestId);
     }
 
     /**
-     * Asset file to upload
+     * Asset file to upload.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Asset file to upload
+     * @return Asset file to upload.
      * 
      */
     public Optional<Output<String>> source() {
@@ -154,14 +154,14 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
     private CloudforceOneRequestAssetState() {}
 
     private CloudforceOneRequestAssetState(CloudforceOneRequestAssetState $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.created = $.created;
         this.description = $.description;
         this.fileType = $.fileType;
         this.name = $.name;
         this.page = $.page;
         this.perPage = $.perPage;
-        this.requestIdentifier = $.requestIdentifier;
+        this.requestId = $.requestId;
         this.source = $.source;
     }
 
@@ -184,28 +184,28 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(@Nullable Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param created Asset creation time
+         * @param created Defines the asset creation time.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param created Asset creation time
+         * @param created Defines the asset creation time.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Asset description
+         * @param description Asset description.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Asset description
+         * @param description Asset description.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fileType Asset file type
+         * @param fileType Asset file type.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fileType Asset file type
+         * @param fileType Asset file type.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Asset name
+         * @param name Asset name.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Asset name
+         * @param name Asset name.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param page Page number of results
+         * @param page Page number of results.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param page Page number of results
+         * @param page Page number of results.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param perPage Number of results per page
+         * @param perPage Number of results per page.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param perPage Number of results per page
+         * @param perPage Number of results per page.
          * 
          * @return builder
          * 
@@ -331,28 +331,28 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(@Nullable Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(@Nullable Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         /**
-         * @param source Asset file to upload
+         * @param source Asset file to upload.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class CloudforceOneRequestAssetState extends com.pulumi.resources.R
         }
 
         /**
-         * @param source Asset file to upload
+         * @param source Asset file to upload.
          * 
          * @return builder
          * 

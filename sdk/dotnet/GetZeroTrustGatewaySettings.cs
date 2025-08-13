@@ -111,9 +111,6 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Account settings
-        /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsResult Settings;
         public readonly string UpdatedAt;
 

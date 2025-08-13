@@ -53,11 +53,12 @@ type R2Bucket struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Creation timestamp.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
-	// Jurisdiction of the bucket
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
@@ -105,7 +106,8 @@ type r2bucketState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Creation timestamp.
 	CreationDate *string `pulumi:"creationDate"`
-	// Jurisdiction of the bucket
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -122,7 +124,8 @@ type R2BucketState struct {
 	AccountId pulumi.StringPtrInput
 	// Creation timestamp.
 	CreationDate pulumi.StringPtrInput
-	// Jurisdiction of the bucket
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -141,7 +144,8 @@ func (R2BucketState) ElementType() reflect.Type {
 type r2bucketArgs struct {
 	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Jurisdiction of the bucket
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -157,7 +161,8 @@ type r2bucketArgs struct {
 type R2BucketArgs struct {
 	// Account ID.
 	AccountId pulumi.StringInput
-	// Jurisdiction of the bucket
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
 	Jurisdiction pulumi.StringPtrInput
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
@@ -266,15 +271,16 @@ func (o R2BucketOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
 
-// Jurisdiction of the bucket
+// Jurisdiction where objects in this bucket are guaranteed to be stored.
+// Available values: "default", "eu", "fedramp".
 func (o R2BucketOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Location of the bucket.
 // Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
-func (o R2BucketOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2Bucket) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o R2BucketOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Name of the bucket.

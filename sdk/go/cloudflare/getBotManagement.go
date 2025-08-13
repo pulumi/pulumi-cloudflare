@@ -54,8 +54,8 @@ type LookupBotManagementArgs struct {
 
 // A collection of values returned by getBotManagement.
 type LookupBotManagementResult struct {
-	// Enable rule to block AI Scrapers and Crawlers.
-	// Available values: "block", "disabled".
+	// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+	// Available values: "block", "disabled", "only*on*ad_pages".
 	AiBotsProtection string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
@@ -127,8 +127,8 @@ func (o LookupBotManagementResultOutput) ToLookupBotManagementResultOutputWithCo
 	return o
 }
 
-// Enable rule to block AI Scrapers and Crawlers.
-// Available values: "block", "disabled".
+// Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+// Available values: "block", "disabled", "only*on*ad_pages".
 func (o LookupBotManagementResultOutput) AiBotsProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.AiBotsProtection }).(pulumi.StringOutput)
 }

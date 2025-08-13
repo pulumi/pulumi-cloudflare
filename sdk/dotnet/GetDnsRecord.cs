@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// DNS record name (or @ for the zone apex) in Punycode.
+        /// Complete DNS record name, including the zone name, in Punycode.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -203,7 +203,7 @@ namespace Pulumi.Cloudflare
         public readonly double Ttl;
         /// <summary>
         /// Record type.
-        /// Available values: "A".
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         public readonly string Type;
         /// <summary>

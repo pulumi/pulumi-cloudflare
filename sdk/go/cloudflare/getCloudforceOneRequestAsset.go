@@ -26,9 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCloudforceOneRequestAsset(ctx, &cloudflare.LookupCloudforceOneRequestAssetArgs{
-//				AccountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-//				RequestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-//				AssetIdentifer:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				RequestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				AssetId:   "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,32 +50,32 @@ func LookupCloudforceOneRequestAsset(ctx *pulumi.Context, args *LookupCloudforce
 
 // A collection of arguments for invoking getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// UUID
-	AssetIdentifer string `pulumi:"assetIdentifer"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// UUID.
+	AssetId string `pulumi:"assetId"`
+	// UUID.
+	RequestId string `pulumi:"requestId"`
 }
 
 // A collection of values returned by getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetResult struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// UUID
-	AssetIdentifer string `pulumi:"assetIdentifer"`
-	// Asset creation time
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// UUID.
+	AssetId string `pulumi:"assetId"`
+	// Defines the asset creation time.
 	Created string `pulumi:"created"`
-	// Asset description
+	// Asset description.
 	Description string `pulumi:"description"`
-	// Asset file type
+	// Asset file type.
 	FileType string `pulumi:"fileType"`
-	// Asset ID
+	// Asset ID.
 	Id int `pulumi:"id"`
-	// Asset name
+	// Asset name.
 	Name string `pulumi:"name"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
+	// UUID.
+	RequestId string `pulumi:"requestId"`
 }
 
 func LookupCloudforceOneRequestAssetOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestAssetOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestAssetResultOutput {
@@ -89,12 +89,12 @@ func LookupCloudforceOneRequestAssetOutput(ctx *pulumi.Context, args LookupCloud
 
 // A collection of arguments for invoking getCloudforceOneRequestAsset.
 type LookupCloudforceOneRequestAssetOutputArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
-	// UUID
-	AssetIdentifer pulumi.StringInput `pulumi:"assetIdentifer"`
-	// UUID
-	RequestIdentifier pulumi.StringInput `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// UUID.
+	AssetId pulumi.StringInput `pulumi:"assetId"`
+	// UUID.
+	RequestId pulumi.StringInput `pulumi:"requestId"`
 }
 
 func (LookupCloudforceOneRequestAssetOutputArgs) ElementType() reflect.Type {
@@ -116,44 +116,44 @@ func (o LookupCloudforceOneRequestAssetResultOutput) ToLookupCloudforceOneReques
 	return o
 }
 
-// Identifier
-func (o LookupCloudforceOneRequestAssetResultOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o LookupCloudforceOneRequestAssetResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// UUID
-func (o LookupCloudforceOneRequestAssetResultOutput) AssetIdentifer() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AssetIdentifer }).(pulumi.StringOutput)
+// UUID.
+func (o LookupCloudforceOneRequestAssetResultOutput) AssetId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.AssetId }).(pulumi.StringOutput)
 }
 
-// Asset creation time
+// Defines the asset creation time.
 func (o LookupCloudforceOneRequestAssetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Asset description
+// Asset description.
 func (o LookupCloudforceOneRequestAssetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Asset file type
+// Asset file type.
 func (o LookupCloudforceOneRequestAssetResultOutput) FileType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.FileType }).(pulumi.StringOutput)
 }
 
-// Asset ID
+// Asset ID.
 func (o LookupCloudforceOneRequestAssetResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Asset name
+// Asset name.
 func (o LookupCloudforceOneRequestAssetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// UUID
-func (o LookupCloudforceOneRequestAssetResultOutput) RequestIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.RequestIdentifier }).(pulumi.StringOutput)
+// UUID.
+func (o LookupCloudforceOneRequestAssetResultOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestAssetResult) string { return v.RequestId }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCustomPages = new cloudflare.CustomPages("example_custom_pages", {
- *     identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     identifier: "ratelimit_block",
  *     state: "default",
  *     url: "http://www.example.com",
  *     zoneId: "zone_id",
@@ -57,10 +57,16 @@ export class CustomPages extends pulumi.CustomResource {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     public readonly identifier!: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    public /*out*/ readonly previewTarget!: pulumi.Output<string>;
+    public /*out*/ readonly requiredTokens!: pulumi.Output<string[]>;
     /**
      * The custom page state.
      * Available values: "default", "customized".
@@ -89,7 +95,12 @@ export class CustomPages extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CustomPagesState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["previewTarget"] = state ? state.previewTarget : undefined;
+            resourceInputs["requiredTokens"] = state ? state.requiredTokens : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -101,14 +112,16 @@ export class CustomPages extends pulumi.CustomResource {
             if ((!args || args.state === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'url'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["previewTarget"] = undefined /*out*/;
+            resourceInputs["requiredTokens"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CustomPages.__pulumiType, name, resourceInputs, opts);
@@ -123,10 +136,16 @@ export interface CustomPagesState {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     identifier?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
+    previewTarget?: pulumi.Input<string>;
+    requiredTokens?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The custom page state.
      * Available values: "default", "customized".
@@ -151,7 +170,8 @@ export interface CustomPagesArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
      */
     identifier: pulumi.Input<string>;
     /**
@@ -162,7 +182,7 @@ export interface CustomPagesArgs {
     /**
      * The URL associated with the custom page.
      */
-    url: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

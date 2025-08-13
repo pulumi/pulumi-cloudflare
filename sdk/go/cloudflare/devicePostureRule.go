@@ -26,7 +26,7 @@ type DevicePostureRule struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the device posture rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against.
@@ -38,7 +38,7 @@ type DevicePostureRule struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -101,7 +101,7 @@ type devicePostureRuleState struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule *string `pulumi:"schedule"`
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type *string `pulumi:"type"`
 }
 
@@ -120,7 +120,7 @@ type DevicePostureRuleState struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrInput
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type pulumi.StringPtrInput
 }
 
@@ -143,7 +143,7 @@ type devicePostureRuleArgs struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule *string `pulumi:"schedule"`
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type string `pulumi:"type"`
 }
 
@@ -163,7 +163,7 @@ type DevicePostureRuleArgs struct {
 	// Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
 	Schedule pulumi.StringPtrInput
 	// The type of device posture rule.
-	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+	// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 	Type pulumi.StringInput
 }
 
@@ -259,8 +259,8 @@ func (o DevicePostureRuleOutput) AccountId() pulumi.StringOutput {
 }
 
 // The description of the device posture rule.
-func (o DevicePostureRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o DevicePostureRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
@@ -289,7 +289,7 @@ func (o DevicePostureRuleOutput) Schedule() pulumi.StringPtrOutput {
 }
 
 // The type of device posture rule.
-// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+// Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
 func (o DevicePostureRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

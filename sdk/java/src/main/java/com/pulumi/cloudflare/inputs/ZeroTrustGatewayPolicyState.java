@@ -29,7 +29,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -37,7 +37,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     private @Nullable Output<String> action;
 
     /**
-     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -175,20 +175,40 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
+     * The rule cannot be shared via the Orgs API
      * 
      */
+    @Import(name="notSharable")
+    private @Nullable Output<Boolean> notSharable;
+
+    /**
+     * @return The rule cannot be shared via the Orgs API
+     * 
+     */
+    public Optional<Output<Boolean>> notSharable() {
+        return Optional.ofNullable(this.notSharable);
+    }
+
     @Import(name="precedence")
     private @Nullable Output<Integer> precedence;
 
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     public Optional<Output<Integer>> precedence() {
         return Optional.ofNullable(this.precedence);
+    }
+
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    @Import(name="readOnly")
+    private @Nullable Output<Boolean> readOnly;
+
+    /**
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    public Optional<Output<Boolean>> readOnly() {
+        return Optional.ofNullable(this.readOnly);
     }
 
     /**
@@ -219,6 +239,21 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
      */
     public Optional<Output<ZeroTrustGatewayPolicyScheduleArgs>> schedule() {
         return Optional.ofNullable(this.schedule);
+    }
+
+    /**
+     * account tag of account that created the rule
+     * 
+     */
+    @Import(name="sourceAccount")
+    private @Nullable Output<String> sourceAccount;
+
+    /**
+     * @return account tag of account that created the rule
+     * 
+     */
+    public Optional<Output<String>> sourceAccount() {
+        return Optional.ofNullable(this.sourceAccount);
     }
 
     /**
@@ -258,6 +293,21 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * Warning for a misconfigured rule, if any.
+     * 
+     */
+    @Import(name="warningStatus")
+    private @Nullable Output<String> warningStatus;
+
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    public Optional<Output<String>> warningStatus() {
+        return Optional.ofNullable(this.warningStatus);
+    }
+
     private ZeroTrustGatewayPolicyState() {}
 
     private ZeroTrustGatewayPolicyState(ZeroTrustGatewayPolicyState $) {
@@ -272,12 +322,16 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         this.filters = $.filters;
         this.identity = $.identity;
         this.name = $.name;
+        this.notSharable = $.notSharable;
         this.precedence = $.precedence;
+        this.readOnly = $.readOnly;
         this.ruleSettings = $.ruleSettings;
         this.schedule = $.schedule;
+        this.sourceAccount = $.sourceAccount;
         this.traffic = $.traffic;
         this.updatedAt = $.updatedAt;
         this.version = $.version;
+        this.warningStatus = $.warningStatus;
     }
 
     public static Builder builder() {
@@ -308,7 +362,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -320,7 +374,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -520,26 +574,54 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
+         * @param notSharable The rule cannot be shared via the Orgs API
          * 
          * @return builder
          * 
          */
+        public Builder notSharable(@Nullable Output<Boolean> notSharable) {
+            $.notSharable = notSharable;
+            return this;
+        }
+
+        /**
+         * @param notSharable The rule cannot be shared via the Orgs API
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notSharable(Boolean notSharable) {
+            return notSharable(Output.of(notSharable));
+        }
+
         public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
+        public Builder precedence(Integer precedence) {
+            return precedence(Output.of(precedence));
+        }
+
         /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
+         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account
          * 
          * @return builder
          * 
          */
-        public Builder precedence(Integer precedence) {
-            return precedence(Output.of(precedence));
+        public Builder readOnly(@Nullable Output<Boolean> readOnly) {
+            $.readOnly = readOnly;
+            return this;
+        }
+
+        /**
+         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnly(Boolean readOnly) {
+            return readOnly(Output.of(readOnly));
         }
 
         /**
@@ -582,6 +664,27 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
          */
         public Builder schedule(ZeroTrustGatewayPolicyScheduleArgs schedule) {
             return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param sourceAccount account tag of account that created the rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAccount(@Nullable Output<String> sourceAccount) {
+            $.sourceAccount = sourceAccount;
+            return this;
+        }
+
+        /**
+         * @param sourceAccount account tag of account that created the rule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceAccount(String sourceAccount) {
+            return sourceAccount(Output.of(sourceAccount));
         }
 
         /**
@@ -633,6 +736,27 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
          */
         public Builder version(Integer version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param warningStatus Warning for a misconfigured rule, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warningStatus(@Nullable Output<String> warningStatus) {
+            $.warningStatus = warningStatus;
+            return this;
+        }
+
+        /**
+         * @param warningStatus Warning for a misconfigured rule, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warningStatus(String warningStatus) {
+            return warningStatus(Output.of(warningStatus));
         }
 
         public ZeroTrustGatewayPolicyState build() {

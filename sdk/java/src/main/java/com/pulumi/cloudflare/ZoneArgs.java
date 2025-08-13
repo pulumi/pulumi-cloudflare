@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZoneAccountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,18 +27,37 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name
+     * The domain name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+
+    /**
+     * Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
     }
 
     /**
@@ -81,6 +101,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     private ZoneArgs(ZoneArgs $) {
         this.account = $.account;
         this.name = $.name;
+        this.paused = $.paused;
         this.type = $.type;
         this.vanityNameServers = $.vanityNameServers;
     }
@@ -113,7 +134,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
@@ -124,13 +145,38 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param paused Indicates whether the zone is only using Cloudflare DNS services. A
+         * true value means the zone will not receive security or performance
+         * benefits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused Indicates whether the zone is only using Cloudflare DNS services. A
+         * true value means the zone will not receive security or performance
+         * benefits.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
         }
 
         /**

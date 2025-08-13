@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyI
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIp;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeIpList;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeOidc;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeOkta;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeSaml;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken;
@@ -57,7 +59,9 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     private GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite gsuite;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeIp ip;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList;
+    private GetZeroTrustAccessApplicationsResultPolicyIncludeLinkedAppToken linkedAppToken;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod;
+    private GetZeroTrustAccessApplicationsResultPolicyIncludeOidc oidc;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeSaml saml;
     private GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken serviceToken;
@@ -125,8 +129,14 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     public GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList() {
         return this.ipList;
     }
+    public GetZeroTrustAccessApplicationsResultPolicyIncludeLinkedAppToken linkedAppToken() {
+        return this.linkedAppToken;
+    }
     public GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod() {
         return this.loginMethod;
+    }
+    public GetZeroTrustAccessApplicationsResultPolicyIncludeOidc oidc() {
+        return this.oidc;
     }
     public GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta() {
         return this.okta;
@@ -165,7 +175,9 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
         private GetZeroTrustAccessApplicationsResultPolicyIncludeGsuite gsuite;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeIp ip;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeIpList ipList;
+        private GetZeroTrustAccessApplicationsResultPolicyIncludeLinkedAppToken linkedAppToken;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod;
+        private GetZeroTrustAccessApplicationsResultPolicyIncludeOidc oidc;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeOkta okta;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeSaml saml;
         private GetZeroTrustAccessApplicationsResultPolicyIncludeServiceToken serviceToken;
@@ -190,7 +202,9 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -341,11 +355,27 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(GetZeroTrustAccessApplicationsResultPolicyIncludeLinkedAppToken linkedAppToken) {
+            if (linkedAppToken == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyInclude", "linkedAppToken");
+            }
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(GetZeroTrustAccessApplicationsResultPolicyIncludeLoginMethod loginMethod) {
             if (loginMethod == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyInclude", "loginMethod");
             }
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(GetZeroTrustAccessApplicationsResultPolicyIncludeOidc oidc) {
+            if (oidc == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResultPolicyInclude", "oidc");
+            }
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -392,7 +422,9 @@ public final class GetZeroTrustAccessApplicationsResultPolicyInclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

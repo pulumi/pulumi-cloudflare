@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPoliciesResultResult
     {
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         public readonly string Action;
@@ -57,9 +57,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.
+        /// The rule cannot be shared via the Orgs API
         /// </summary>
+        public readonly bool NotSharable;
         public readonly int Precedence;
+        /// <summary>
+        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        public readonly bool ReadOnly;
         /// <summary>
         /// Additional settings that modify the rule's action.
         /// </summary>
@@ -69,6 +74,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult Schedule;
         /// <summary>
+        /// account tag of account that created the rule
+        /// </summary>
+        public readonly string SourceAccount;
+        /// <summary>
         /// The wirefilter expression used for traffic matching.
         /// </summary>
         public readonly string Traffic;
@@ -77,6 +86,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// version number of the rule
         /// </summary>
         public readonly int Version;
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        public readonly string WarningStatus;
 
         [OutputConstructor]
         private GetZeroTrustGatewayPoliciesResultResult(
@@ -102,17 +115,25 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
+            bool notSharable,
+
             int precedence,
+
+            bool readOnly,
 
             Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResult ruleSettings,
 
             Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult schedule,
 
+            string sourceAccount,
+
             string traffic,
 
             string updatedAt,
 
-            int version)
+            int version,
+
+            string warningStatus)
         {
             Action = action;
             CreatedAt = createdAt;
@@ -125,12 +146,16 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Identity = identity;
             Name = name;
+            NotSharable = notSharable;
             Precedence = precedence;
+            ReadOnly = readOnly;
             RuleSettings = ruleSettings;
             Schedule = schedule;
+            SourceAccount = sourceAccount;
             Traffic = traffic;
             UpdatedAt = updatedAt;
             Version = version;
+            WarningStatus = warningStatus;
         }
     }
 }

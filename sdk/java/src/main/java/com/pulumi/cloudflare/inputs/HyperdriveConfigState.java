@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
 import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,14 +20,14 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
     public static final HyperdriveConfigState Empty = new HyperdriveConfigState();
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -41,14 +42,14 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -56,14 +57,14 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -91,6 +92,21 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.origin);
     }
 
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    @Import(name="originConnectionLimit")
+    private @Nullable Output<Integer> originConnectionLimit;
+
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    public Optional<Output<Integer>> originConnectionLimit() {
+        return Optional.ofNullable(this.originConnectionLimit);
+    }
+
     private HyperdriveConfigState() {}
 
     private HyperdriveConfigState(HyperdriveConfigState $) {
@@ -101,6 +117,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         this.mtls = $.mtls;
         this.name = $.name;
         this.origin = $.origin;
+        this.originConnectionLimit = $.originConnectionLimit;
     }
 
     public static Builder builder() {
@@ -122,7 +139,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -133,7 +150,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -152,7 +169,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdOn When the Hyperdrive configuration was created.
+         * @param createdOn Defines the creation time of the Hyperdrive configuration.
          * 
          * @return builder
          * 
@@ -163,7 +180,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param createdOn When the Hyperdrive configuration was created.
+         * @param createdOn Defines the creation time of the Hyperdrive configuration.
          * 
          * @return builder
          * 
@@ -173,7 +190,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param modifiedOn When the Hyperdrive configuration was last modified.
+         * @param modifiedOn Defines the last modified time of the Hyperdrive configuration.
          * 
          * @return builder
          * 
@@ -184,7 +201,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param modifiedOn When the Hyperdrive configuration was last modified.
+         * @param modifiedOn Defines the last modified time of the Hyperdrive configuration.
          * 
          * @return builder
          * 
@@ -218,6 +235,27 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
 
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
+        }
+
+        /**
+         * @param originConnectionLimit The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originConnectionLimit(@Nullable Output<Integer> originConnectionLimit) {
+            $.originConnectionLimit = originConnectionLimit;
+            return this;
+        }
+
+        /**
+         * @param originConnectionLimit The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originConnectionLimit(Integer originConnectionLimit) {
+            return originConnectionLimit(Output.of(originConnectionLimit));
         }
 
         public HyperdriveConfigState build() {

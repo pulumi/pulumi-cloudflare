@@ -30,10 +30,26 @@ public final class WorkersDeploymentAnnotationsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.workersMessage);
     }
 
+    /**
+     * Operation that triggered the creation of the deployment.
+     * 
+     */
+    @Import(name="workersTriggeredBy")
+    private @Nullable Output<String> workersTriggeredBy;
+
+    /**
+     * @return Operation that triggered the creation of the deployment.
+     * 
+     */
+    public Optional<Output<String>> workersTriggeredBy() {
+        return Optional.ofNullable(this.workersTriggeredBy);
+    }
+
     private WorkersDeploymentAnnotationsArgs() {}
 
     private WorkersDeploymentAnnotationsArgs(WorkersDeploymentAnnotationsArgs $) {
         this.workersMessage = $.workersMessage;
+        this.workersTriggeredBy = $.workersTriggeredBy;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class WorkersDeploymentAnnotationsArgs extends com.pulumi.resources
          */
         public Builder workersMessage(String workersMessage) {
             return workersMessage(Output.of(workersMessage));
+        }
+
+        /**
+         * @param workersTriggeredBy Operation that triggered the creation of the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workersTriggeredBy(@Nullable Output<String> workersTriggeredBy) {
+            $.workersTriggeredBy = workersTriggeredBy;
+            return this;
+        }
+
+        /**
+         * @param workersTriggeredBy Operation that triggered the creation of the deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workersTriggeredBy(String workersTriggeredBy) {
+            return workersTriggeredBy(Output.of(workersTriggeredBy));
         }
 
         public WorkersDeploymentAnnotationsArgs build() {

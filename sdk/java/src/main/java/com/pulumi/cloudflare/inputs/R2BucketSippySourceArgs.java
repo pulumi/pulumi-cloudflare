@@ -61,14 +61,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Available values: &#34;aws&#34;.
+     * Available values: &#34;aws&#34;, &#34;gcs&#34;.
      * 
      */
     @Import(name="cloudProvider")
     private @Nullable Output<String> cloudProvider;
 
     /**
-     * @return Available values: &#34;aws&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
      * 
      */
     public Optional<Output<String>> cloudProvider() {
@@ -214,7 +214,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cloudProvider Available values: &#34;aws&#34;.
+         * @param cloudProvider Available values: &#34;aws&#34;, &#34;gcs&#34;.
          * 
          * @return builder
          * 

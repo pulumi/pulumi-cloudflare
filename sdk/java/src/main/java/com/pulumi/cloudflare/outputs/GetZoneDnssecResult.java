@@ -41,6 +41,7 @@ public final class GetZoneDnssecResult {
      */
     private Boolean dnssecMultiSigner;
     private Boolean dnssecPresigned;
+    private Boolean dnssecUseNsec3;
     private String ds;
     private Double flags;
     /**
@@ -101,6 +102,9 @@ public final class GetZoneDnssecResult {
     public Boolean dnssecPresigned() {
         return this.dnssecPresigned;
     }
+    public Boolean dnssecUseNsec3() {
+        return this.dnssecUseNsec3;
+    }
     public String ds() {
         return this.ds;
     }
@@ -152,6 +156,7 @@ public final class GetZoneDnssecResult {
         private String digestType;
         private Boolean dnssecMultiSigner;
         private Boolean dnssecPresigned;
+        private Boolean dnssecUseNsec3;
         private String ds;
         private Double flags;
         private String id;
@@ -170,6 +175,7 @@ public final class GetZoneDnssecResult {
     	      this.digestType = defaults.digestType;
     	      this.dnssecMultiSigner = defaults.dnssecMultiSigner;
     	      this.dnssecPresigned = defaults.dnssecPresigned;
+    	      this.dnssecUseNsec3 = defaults.dnssecUseNsec3;
     	      this.ds = defaults.ds;
     	      this.flags = defaults.flags;
     	      this.id = defaults.id;
@@ -227,6 +233,14 @@ public final class GetZoneDnssecResult {
               throw new MissingRequiredPropertyException("GetZoneDnssecResult", "dnssecPresigned");
             }
             this.dnssecPresigned = dnssecPresigned;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnssecUseNsec3(Boolean dnssecUseNsec3) {
+            if (dnssecUseNsec3 == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "dnssecUseNsec3");
+            }
+            this.dnssecUseNsec3 = dnssecUseNsec3;
             return this;
         }
         @CustomType.Setter
@@ -309,6 +323,7 @@ public final class GetZoneDnssecResult {
             _resultValue.digestType = digestType;
             _resultValue.dnssecMultiSigner = dnssecMultiSigner;
             _resultValue.dnssecPresigned = dnssecPresigned;
+            _resultValue.dnssecUseNsec3 = dnssecUseNsec3;
             _resultValue.ds = ds;
             _resultValue.flags = flags;
             _resultValue.id = id;

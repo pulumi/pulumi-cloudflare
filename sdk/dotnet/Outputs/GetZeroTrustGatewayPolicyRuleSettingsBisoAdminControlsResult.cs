@@ -31,8 +31,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Dk;
         /// <summary>
-        /// Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-        /// Available values: "enabled", "disabled".
+        /// Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         public readonly string Download;
         /// <summary>

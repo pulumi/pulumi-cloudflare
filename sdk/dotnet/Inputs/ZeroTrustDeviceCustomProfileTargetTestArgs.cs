@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDeviceCustomProfileTargetTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The id of the DEX test targeting this policy
+        /// The id of the DEX test targeting this policy.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The name of the DEX test targeting this policy
+        /// The name of the DEX test targeting this policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZoneSubscriptionRatePlanArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,51 @@ import javax.annotation.Nullable;
 public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneSubscriptionState Empty = new ZoneSubscriptionState();
+
+    /**
+     * The monetary unit in which pricing information is displayed.
+     * 
+     */
+    @Import(name="currency")
+    private @Nullable Output<String> currency;
+
+    /**
+     * @return The monetary unit in which pricing information is displayed.
+     * 
+     */
+    public Optional<Output<String>> currency() {
+        return Optional.ofNullable(this.currency);
+    }
+
+    /**
+     * The end of the current period and also when the next billing is due.
+     * 
+     */
+    @Import(name="currentPeriodEnd")
+    private @Nullable Output<String> currentPeriodEnd;
+
+    /**
+     * @return The end of the current period and also when the next billing is due.
+     * 
+     */
+    public Optional<Output<String>> currentPeriodEnd() {
+        return Optional.ofNullable(this.currentPeriodEnd);
+    }
+
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    @Import(name="currentPeriodStart")
+    private @Nullable Output<String> currentPeriodStart;
+
+    /**
+     * @return When the current billing period started. May match initial*period*start if this is the first period.
+     * 
+     */
+    public Optional<Output<String>> currentPeriodStart() {
+        return Optional.ofNullable(this.currentPeriodStart);
+    }
 
     /**
      * How often the subscription is renewed automatically.
@@ -34,18 +80,18 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Subscription identifier tag.
+     * The price of the subscription that will be billed, in US dollars.
      * 
      */
-    @Import(name="identifier")
-    private @Nullable Output<String> identifier;
+    @Import(name="price")
+    private @Nullable Output<Double> price;
 
     /**
-     * @return Subscription identifier tag.
+     * @return The price of the subscription that will be billed, in US dollars.
      * 
      */
-    public Optional<Output<String>> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public Optional<Output<Double>> price() {
+        return Optional.ofNullable(this.price);
     }
 
     /**
@@ -63,12 +109,49 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.ratePlan);
     }
 
+    /**
+     * The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The state that the subscription is in.
+     * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * Subscription identifier tag.
+     * 
+     */
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
+
+    /**
+     * @return Subscription identifier tag.
+     * 
+     */
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
     private ZoneSubscriptionState() {}
 
     private ZoneSubscriptionState(ZoneSubscriptionState $) {
+        this.currency = $.currency;
+        this.currentPeriodEnd = $.currentPeriodEnd;
+        this.currentPeriodStart = $.currentPeriodStart;
         this.frequency = $.frequency;
-        this.identifier = $.identifier;
+        this.price = $.price;
         this.ratePlan = $.ratePlan;
+        this.state = $.state;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -87,6 +170,69 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
 
         public Builder(ZoneSubscriptionState defaults) {
             $ = new ZoneSubscriptionState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param currency The monetary unit in which pricing information is displayed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(@Nullable Output<String> currency) {
+            $.currency = currency;
+            return this;
+        }
+
+        /**
+         * @param currency The monetary unit in which pricing information is displayed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currency(String currency) {
+            return currency(Output.of(currency));
+        }
+
+        /**
+         * @param currentPeriodEnd The end of the current period and also when the next billing is due.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodEnd(@Nullable Output<String> currentPeriodEnd) {
+            $.currentPeriodEnd = currentPeriodEnd;
+            return this;
+        }
+
+        /**
+         * @param currentPeriodEnd The end of the current period and also when the next billing is due.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodEnd(String currentPeriodEnd) {
+            return currentPeriodEnd(Output.of(currentPeriodEnd));
+        }
+
+        /**
+         * @param currentPeriodStart When the current billing period started. May match initial*period*start if this is the first period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodStart(@Nullable Output<String> currentPeriodStart) {
+            $.currentPeriodStart = currentPeriodStart;
+            return this;
+        }
+
+        /**
+         * @param currentPeriodStart When the current billing period started. May match initial*period*start if this is the first period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentPeriodStart(String currentPeriodStart) {
+            return currentPeriodStart(Output.of(currentPeriodStart));
         }
 
         /**
@@ -113,24 +259,24 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param identifier Subscription identifier tag.
+         * @param price The price of the subscription that will be billed, in US dollars.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(@Nullable Output<String> identifier) {
-            $.identifier = identifier;
+        public Builder price(@Nullable Output<Double> price) {
+            $.price = price;
             return this;
         }
 
         /**
-         * @param identifier Subscription identifier tag.
+         * @param price The price of the subscription that will be billed, in US dollars.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
+        public Builder price(Double price) {
+            return price(Output.of(price));
         }
 
         /**
@@ -152,6 +298,50 @@ public final class ZoneSubscriptionState extends com.pulumi.resources.ResourceAr
          */
         public Builder ratePlan(ZoneSubscriptionRatePlanArgs ratePlan) {
             return ratePlan(Output.of(ratePlan));
+        }
+
+        /**
+         * @param state The state that the subscription is in.
+         * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The state that the subscription is in.
+         * Available values: &#34;Trial&#34;, &#34;Provisioned&#34;, &#34;Paid&#34;, &#34;AwaitingPayment&#34;, &#34;Cancelled&#34;, &#34;Failed&#34;, &#34;Expired&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param zoneId Subscription identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        /**
+         * @param zoneId Subscription identifier tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public ZoneSubscriptionState build() {

@@ -26,7 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountApiTokenPermissionGroups(ctx, &cloudflare.GetAccountApiTokenPermissionGroupsArgs{
-//				AccountId: "eb78d65290b24279ba6f44721b3ea3c4",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Name:      pulumi.StringRef("Account%20Settings%20Write"),
+//				Scope:     pulumi.StringRef("com.cloudflare.api.account.zone"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,18 +52,26 @@ func GetAccountApiTokenPermissionGroups(ctx *pulumi.Context, args *GetAccountApi
 type GetAccountApiTokenPermissionGroupsArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name *string `pulumi:"name"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope *string `pulumi:"scope"`
 }
 
 // A collection of values returned by getAccountApiTokenPermissionGroups.
 type GetAccountApiTokenPermissionGroupsResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// Public ID.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Permission Group Name
-	Name string `pulumi:"name"`
-	// Resources to which the Permission Group is scoped
-	Scopes []string `pulumi:"scopes"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name *string `pulumi:"name"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope *string `pulumi:"scope"`
 }
 
 func GetAccountApiTokenPermissionGroupsOutput(ctx *pulumi.Context, args GetAccountApiTokenPermissionGroupsOutputArgs, opts ...pulumi.InvokeOption) GetAccountApiTokenPermissionGroupsResultOutput {
@@ -77,6 +87,12 @@ func GetAccountApiTokenPermissionGroupsOutput(ctx *pulumi.Context, args GetAccou
 type GetAccountApiTokenPermissionGroupsOutputArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
 }
 
 func (GetAccountApiTokenPermissionGroupsOutputArgs) ElementType() reflect.Type {
@@ -103,19 +119,21 @@ func (o GetAccountApiTokenPermissionGroupsResultOutput) AccountId() pulumi.Strin
 	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Public ID.
+// The provider-assigned unique ID for this managed resource.
 func (o GetAccountApiTokenPermissionGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Permission Group Name
-func (o GetAccountApiTokenPermissionGroupsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) string { return v.Name }).(pulumi.StringOutput)
+// Filter by the name of the permission group.
+// The value must be URL-encoded.
+func (o GetAccountApiTokenPermissionGroupsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Resources to which the Permission Group is scoped
-func (o GetAccountApiTokenPermissionGroupsResultOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+// Filter by the scope of the permission group.
+// The value must be URL-encoded.
+func (o GetAccountApiTokenPermissionGroupsResultOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountApiTokenPermissionGroupsResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 func init() {

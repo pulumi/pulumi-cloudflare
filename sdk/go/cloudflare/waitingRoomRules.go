@@ -55,21 +55,9 @@ import (
 type WaitingRoomRules struct {
 	pulumi.CustomResourceState
 
-	// The action to take when the expression matches.
-	// Available values: "bypass*waiting*room".
-	Action pulumi.StringOutput `pulumi:"action"`
-	// The description of the rule.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// When set to true, the rule is enabled.
-	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Criteria defining when there is a match for the current rule.
-	Expression  pulumi.StringOutput             `pulumi:"expression"`
-	LastUpdated pulumi.StringOutput             `pulumi:"lastUpdated"`
-	Rules       WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
-	// The version of the rule.
-	Version       pulumi.StringOutput `pulumi:"version"`
-	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// Identifier
+	Rules         WaitingRoomRulesRuleArrayOutput `pulumi:"rules"`
+	WaitingRoomId pulumi.StringOutput             `pulumi:"waitingRoomId"`
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -112,40 +100,16 @@ func GetWaitingRoomRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoomRules resources.
 type waitingRoomRulesState struct {
-	// The action to take when the expression matches.
-	// Available values: "bypass*waiting*room".
-	Action *string `pulumi:"action"`
-	// The description of the rule.
-	Description *string `pulumi:"description"`
-	// When set to true, the rule is enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// Criteria defining when there is a match for the current rule.
-	Expression  *string                `pulumi:"expression"`
-	LastUpdated *string                `pulumi:"lastUpdated"`
-	Rules       []WaitingRoomRulesRule `pulumi:"rules"`
-	// The version of the rule.
-	Version       *string `pulumi:"version"`
-	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// Identifier
+	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
+	WaitingRoomId *string                `pulumi:"waitingRoomId"`
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomRulesState struct {
-	// The action to take when the expression matches.
-	// Available values: "bypass*waiting*room".
-	Action pulumi.StringPtrInput
-	// The description of the rule.
-	Description pulumi.StringPtrInput
-	// When set to true, the rule is enabled.
-	Enabled pulumi.BoolPtrInput
-	// Criteria defining when there is a match for the current rule.
-	Expression  pulumi.StringPtrInput
-	LastUpdated pulumi.StringPtrInput
-	Rules       WaitingRoomRulesRuleArrayInput
-	// The version of the rule.
-	Version       pulumi.StringPtrInput
+	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -156,7 +120,7 @@ func (WaitingRoomRulesState) ElementType() reflect.Type {
 type waitingRoomRulesArgs struct {
 	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
 	WaitingRoomId string                 `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -164,7 +128,7 @@ type waitingRoomRulesArgs struct {
 type WaitingRoomRulesArgs struct {
 	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -255,45 +219,15 @@ func (o WaitingRoomRulesOutput) ToWaitingRoomRulesOutputWithContext(ctx context.
 	return o
 }
 
-// The action to take when the expression matches.
-// Available values: "bypass*waiting*room".
-func (o WaitingRoomRulesOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
-}
-
-// The description of the rule.
-func (o WaitingRoomRulesOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// When set to true, the rule is enabled.
-func (o WaitingRoomRulesOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Criteria defining when there is a match for the current rule.
-func (o WaitingRoomRulesOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
-}
-
-func (o WaitingRoomRulesOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
 func (o WaitingRoomRulesOutput) Rules() WaitingRoomRulesRuleArrayOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) WaitingRoomRulesRuleArrayOutput { return v.Rules }).(WaitingRoomRulesRuleArrayOutput)
-}
-
-// The version of the rule.
-func (o WaitingRoomRulesOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 func (o WaitingRoomRulesOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WaitingRoomRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

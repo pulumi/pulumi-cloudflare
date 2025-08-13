@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
+        /// Whether the Worker's Preview URLs are available on the workers.dev subdomain.
         /// </summary>
         public readonly bool PreviewsEnabled;
         /// <summary>

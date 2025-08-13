@@ -68,7 +68,7 @@ type LookupZeroTrustDlpDatasetResult struct {
 	Name     string `pulumi:"name"`
 	NumCells int    `pulumi:"numCells"`
 	Secret   bool   `pulumi:"secret"`
-	// Available values: "empty", "uploading", "processing", "failed", "complete".
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status string `pulumi:"status"`
 	// When the dataset was last updated.
 	UpdatedAt string                         `pulumi:"updatedAt"`
@@ -155,7 +155,7 @@ func (o LookupZeroTrustDlpDatasetResultOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) bool { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "empty", "uploading", "processing", "failed", "complete".
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 func (o LookupZeroTrustDlpDatasetResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.Status }).(pulumi.StringOutput)
 }

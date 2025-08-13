@@ -42,6 +42,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
      * 
      */
     private @Nullable String order;
+    private @Nullable String pattern;
     /**
      * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
@@ -99,6 +100,9 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    public Optional<String> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
     /**
      * @return Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
@@ -138,6 +142,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private @Nullable String order;
+        private @Nullable String pattern;
         private @Nullable String patternType;
         private List<GetEmailSecurityBlockSendersResult> results;
         private @Nullable String search;
@@ -149,6 +154,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
+    	      this.pattern = defaults.pattern;
     	      this.patternType = defaults.patternType;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
@@ -189,6 +195,12 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pattern(@Nullable String pattern) {
+
+            this.pattern = pattern;
+            return this;
+        }
+        @CustomType.Setter
         public Builder patternType(@Nullable String patternType) {
 
             this.patternType = patternType;
@@ -218,6 +230,7 @@ public final class GetEmailSecurityBlockSendersInvokeResult {
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
+            _resultValue.pattern = pattern;
             _resultValue.patternType = patternType;
             _resultValue.results = results;
             _resultValue.search = search;

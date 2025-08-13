@@ -69,7 +69,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
         /// </summary>
         [Output("clearanceLevel")]
-        public Output<string?> ClearanceLevel { get; private set; } = null!;
+        public Output<string> ClearanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// When the widget was created.
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         /// Return the Ephemeral ID in /siteverify (ENT only).
         /// </summary>
         [Output("ephemeralId")]
-        public Output<bool?> EphemeralId { get; private set; } = null!;
+        public Output<bool> EphemeralId { get; private set; } = null!;
 
         /// <summary>
         /// Widget Mode
@@ -114,8 +114,8 @@ namespace Pulumi.Cloudflare
         public Output<bool> Offlabel { get; private set; } = null!;
 
         /// <summary>
-        /// Region where this widget can be used.
-        /// Available values: "world".
+        /// Region where this widget can be used. This cannot be changed after creation.
+        /// Available values: "world", "china".
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -155,6 +155,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -235,8 +239,8 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Offlabel { get; set; }
 
         /// <summary>
-        /// Region where this widget can be used.
-        /// Available values: "world".
+        /// Region where this widget can be used. This cannot be changed after creation.
+        /// Available values: "world", "china".
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -318,17 +322,27 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Offlabel { get; set; }
 
         /// <summary>
-        /// Region where this widget can be used.
-        /// Available values: "world".
+        /// Region where this widget can be used. This cannot be changed after creation.
+        /// Available values: "world", "china".
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// Secret key for this widget.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Widget item identifier tag.

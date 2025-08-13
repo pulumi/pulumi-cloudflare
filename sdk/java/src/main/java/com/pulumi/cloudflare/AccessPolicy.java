@@ -16,18 +16,12 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
- *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
- *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
- *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_zero_trust_access_policy&#39; resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -61,20 +55,6 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Number of access applications currently using this policy.
-     * 
-     */
-    @Export(name="appCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> appCount;
-
-    /**
-     * @return Number of access applications currently using this policy.
-     * 
-     */
-    public Output<Integer> appCount() {
-        return this.appCount;
-    }
-    /**
      * Administrators who can approve a temporary authentication request.
      * 
      */
@@ -101,12 +81,6 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> approvalRequired() {
         return Codegen.optional(this.approvalRequired);
-    }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
     }
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -222,12 +196,6 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<AccessPolicyRequire>>> requires() {
         return Codegen.optional(this.requires);
     }
-    @Export(name="reusable", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> reusable;
-
-    public Output<Boolean> reusable() {
-        return this.reusable;
-    }
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
@@ -241,12 +209,6 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> sessionDuration() {
         return this.sessionDuration;
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
 
     /**

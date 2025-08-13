@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.SnippetsMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +18,14 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
     public static final SnippetsState Empty = new SnippetsState();
 
     /**
-     * Creation time of the snippet
+     * The timestamp of when the snippet was created.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return Creation time of the snippet
+     * @return The timestamp of when the snippet was created.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -32,36 +33,44 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      * 
      */
     @Import(name="files")
-    private @Nullable Output<String> files;
+    private @Nullable Output<List<String>> files;
 
     /**
-     * @return Content files of uploaded snippet
+     * @return The list of files belonging to the snippet.
      * 
      */
-    public Optional<Output<String>> files() {
+    public Optional<Output<List<String>>> files() {
         return Optional.ofNullable(this.files);
     }
 
+    /**
+     * Metadata about the snippet.
+     * 
+     */
     @Import(name="metadata")
     private @Nullable Output<SnippetsMetadataArgs> metadata;
 
+    /**
+     * @return Metadata about the snippet.
+     * 
+     */
     public Optional<Output<SnippetsMetadataArgs>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
 
     /**
-     * Modification time of the snippet
+     * The timestamp of when the snippet was last modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return Modification time of the snippet
+     * @return The timestamp of when the snippet was last modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -69,14 +78,14 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      * 
      */
     @Import(name="snippetName")
     private @Nullable Output<String> snippetName;
 
     /**
-     * @return Snippet identifying name
+     * @return The identifying name of the snippet.
      * 
      */
     public Optional<Output<String>> snippetName() {
@@ -84,14 +93,14 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -128,7 +137,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn Creation time of the snippet
+         * @param createdOn The timestamp of when the snippet was created.
          * 
          * @return builder
          * 
@@ -139,7 +148,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn Creation time of the snippet
+         * @param createdOn The timestamp of when the snippet was created.
          * 
          * @return builder
          * 
@@ -149,37 +158,59 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param files Content files of uploaded snippet
+         * @param files The list of files belonging to the snippet.
          * 
          * @return builder
          * 
          */
-        public Builder files(@Nullable Output<String> files) {
+        public Builder files(@Nullable Output<List<String>> files) {
             $.files = files;
             return this;
         }
 
         /**
-         * @param files Content files of uploaded snippet
+         * @param files The list of files belonging to the snippet.
          * 
          * @return builder
          * 
          */
-        public Builder files(String files) {
+        public Builder files(List<String> files) {
             return files(Output.of(files));
         }
 
+        /**
+         * @param files The list of files belonging to the snippet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder files(String... files) {
+            return files(List.of(files));
+        }
+
+        /**
+         * @param metadata Metadata about the snippet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable Output<SnippetsMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata Metadata about the snippet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(SnippetsMetadataArgs metadata) {
             return metadata(Output.of(metadata));
         }
 
         /**
-         * @param modifiedOn Modification time of the snippet
+         * @param modifiedOn The timestamp of when the snippet was last modified.
          * 
          * @return builder
          * 
@@ -190,7 +221,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn Modification time of the snippet
+         * @param modifiedOn The timestamp of when the snippet was last modified.
          * 
          * @return builder
          * 
@@ -200,7 +231,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param snippetName The identifying name of the snippet.
          * 
          * @return builder
          * 
@@ -211,7 +242,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param snippetName The identifying name of the snippet.
          * 
          * @return builder
          * 
@@ -221,7 +252,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -232,7 +263,7 @@ public final class SnippetsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

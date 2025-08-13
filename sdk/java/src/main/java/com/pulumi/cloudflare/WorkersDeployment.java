@@ -7,7 +7,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersDeploymentArgs;
 import com.pulumi.cloudflare.inputs.WorkersDeploymentState;
 import com.pulumi.cloudflare.outputs.WorkersDeploymentAnnotations;
-import com.pulumi.cloudflare.outputs.WorkersDeploymentDeployment;
 import com.pulumi.cloudflare.outputs.WorkersDeploymentVersion;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -15,7 +14,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -27,7 +25,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
+ * $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example &#39;&lt;account_id&gt;/&lt;script_name&gt;/&lt;deployment_id&gt;&#39;
  * ```
  * 
  */
@@ -48,10 +46,10 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="annotations", refs={WorkersDeploymentAnnotations.class}, tree="[0]")
-    private Output</* @Nullable */ WorkersDeploymentAnnotations> annotations;
+    private Output<WorkersDeploymentAnnotations> annotations;
 
-    public Output<Optional<WorkersDeploymentAnnotations>> annotations() {
-        return Codegen.optional(this.annotations);
+    public Output<WorkersDeploymentAnnotations> annotations() {
+        return this.annotations;
     }
     @Export(name="authorEmail", refs={String.class}, tree="[0]")
     private Output<String> authorEmail;
@@ -65,21 +63,15 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
     public Output<String> createdOn() {
         return this.createdOn;
     }
-    @Export(name="deployments", refs={List.class,WorkersDeploymentDeployment.class}, tree="[0,1]")
-    private Output<List<WorkersDeploymentDeployment>> deployments;
-
-    public Output<List<WorkersDeploymentDeployment>> deployments() {
-        return this.deployments;
-    }
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Output<String> scriptName() {

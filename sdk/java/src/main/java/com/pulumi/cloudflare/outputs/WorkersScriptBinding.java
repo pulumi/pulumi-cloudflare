@@ -132,7 +132,7 @@ public final class WorkersScriptBinding {
     private @Nullable String text;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
      * 
      */
     private String type;
@@ -141,6 +141,11 @@ public final class WorkersScriptBinding {
      * 
      */
     private @Nullable List<String> usages;
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    private @Nullable String workflowName;
 
     private WorkersScriptBinding() {}
     /**
@@ -307,7 +312,7 @@ public final class WorkersScriptBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
      * 
      */
     public String type() {
@@ -319,6 +324,13 @@ public final class WorkersScriptBinding {
      */
     public List<String> usages() {
         return this.usages == null ? List.of() : this.usages;
+    }
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    public Optional<String> workflowName() {
+        return Optional.ofNullable(this.workflowName);
     }
 
     public static Builder builder() {
@@ -355,6 +367,7 @@ public final class WorkersScriptBinding {
         private @Nullable String text;
         private String type;
         private @Nullable List<String> usages;
+        private @Nullable String workflowName;
         public Builder() {}
         public Builder(WorkersScriptBinding defaults) {
     	      Objects.requireNonNull(defaults);
@@ -383,6 +396,7 @@ public final class WorkersScriptBinding {
     	      this.text = defaults.text;
     	      this.type = defaults.type;
     	      this.usages = defaults.usages;
+    	      this.workflowName = defaults.workflowName;
         }
 
         @CustomType.Setter
@@ -542,6 +556,12 @@ public final class WorkersScriptBinding {
         public Builder usages(String... usages) {
             return usages(List.of(usages));
         }
+        @CustomType.Setter
+        public Builder workflowName(@Nullable String workflowName) {
+
+            this.workflowName = workflowName;
+            return this;
+        }
         public WorkersScriptBinding build() {
             final var _resultValue = new WorkersScriptBinding();
             _resultValue.algorithm = algorithm;
@@ -569,6 +589,7 @@ public final class WorkersScriptBinding {
             _resultValue.text = text;
             _resultValue.type = type;
             _resultValue.usages = usages;
+            _resultValue.workflowName = workflowName;
             return _resultValue;
         }
     }

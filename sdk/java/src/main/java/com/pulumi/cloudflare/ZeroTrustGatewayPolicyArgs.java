@@ -30,7 +30,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -38,7 +38,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
     private Output<String> action;
 
     /**
-     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -153,19 +153,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return this.name;
     }
 
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     @Import(name="precedence")
     private @Nullable Output<Integer> precedence;
 
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     public Optional<Output<Integer>> precedence() {
         return Optional.ofNullable(this.precedence);
     }
@@ -261,7 +251,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -273,7 +263,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -442,25 +432,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
-        /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
-        /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder precedence(Integer precedence) {
             return precedence(Output.of(precedence));
         }

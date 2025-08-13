@@ -21,7 +21,11 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
+     * @deprecated
+     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * 
      */
+    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
     private List<GetZeroTrustTunnelCloudflaredsResultConnection> connections;
     /**
      * @return Timestamp of when the tunnel established at least one connection to Cloudflare&#39;s edge. If `null`, the tunnel is inactive.
@@ -87,7 +91,11 @@ public final class GetZeroTrustTunnelCloudflaredsResult {
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
+     * @deprecated
+     * This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
+     * 
      */
+    @Deprecated /* This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections` */
     public List<GetZeroTrustTunnelCloudflaredsResultConnection> connections() {
         return this.connections;
     }

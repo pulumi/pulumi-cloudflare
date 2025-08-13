@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +17,14 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetListArgs Empty = new GetListArgs();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -33,15 +35,15 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
      * The unique ID of the list.
      * 
      */
-    @Import(name="listId", required=true)
-    private Output<String> listId;
+    @Import(name="listId")
+    private @Nullable Output<String> listId;
 
     /**
      * @return The unique ID of the list.
      * 
      */
-    public Output<String> listId() {
-        return this.listId;
+    public Optional<Output<String>> listId() {
+        return Optional.ofNullable(this.listId);
     }
 
     private GetListArgs() {}
@@ -70,7 +72,7 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -81,7 +83,7 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -96,7 +98,7 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder listId(Output<String> listId) {
+        public Builder listId(@Nullable Output<String> listId) {
             $.listId = listId;
             return this;
         }
@@ -114,9 +116,6 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
         public GetListArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetListArgs", "accountId");
-            }
-            if ($.listId == null) {
-                throw new MissingRequiredPropertyException("GetListArgs", "listId");
             }
             return $;
         }

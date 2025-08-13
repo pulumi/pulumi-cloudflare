@@ -14,46 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanIpsecTunnel(ctx, "example_magic_wan_ipsec_tunnel", &cloudflare.MagicWanIpsecTunnelArgs{
-//				AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
-//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
-//				Name:               pulumi.String("IPsec_1"),
-//				CustomerEndpoint:   pulumi.String("203.0.113.1"),
-//				Description:        pulumi.String("Tunnel for ISP X"),
-//				HealthCheck: &cloudflare.MagicWanIpsecTunnelHealthCheckArgs{
-//					Direction: pulumi.String("bidirectional"),
-//					Enabled:   pulumi.Bool(true),
-//					Rate:      pulumi.String("low"),
-//					Target: &cloudflare.MagicWanIpsecTunnelHealthCheckTargetArgs{
-//						Saved: pulumi.String("203.0.113.1"),
-//					},
-//					Type: pulumi.String("request"),
-//				},
-//				Psk:              pulumi.String("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"),
-//				ReplayProtection: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -76,10 +36,7 @@ type MagicWanIpsecTunnel struct {
 	Description pulumi.StringPtrOutput               `pulumi:"description"`
 	HealthCheck MagicWanIpsecTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress    pulumi.StringOutput                          `pulumi:"interfaceAddress"`
-	IpsecTunnel         MagicWanIpsecTunnelIpsecTunnelOutput         `pulumi:"ipsecTunnel"`
-	Modified            pulumi.BoolOutput                            `pulumi:"modified"`
-	ModifiedIpsecTunnel MagicWanIpsecTunnelModifiedIpsecTunnelOutput `pulumi:"modifiedIpsecTunnel"`
+	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -117,6 +74,13 @@ func NewMagicWanIpsecTunnel(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	if args.Psk != nil {
+		args.Psk = pulumi.ToSecret(args.Psk).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"psk",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanIpsecTunnel
 	err := ctx.RegisterResource("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel", name, args, &resource, opts...)
@@ -154,10 +118,7 @@ type magicWanIpsecTunnelState struct {
 	Description *string                         `pulumi:"description"`
 	HealthCheck *MagicWanIpsecTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress    *string                                 `pulumi:"interfaceAddress"`
-	IpsecTunnel         *MagicWanIpsecTunnelIpsecTunnel         `pulumi:"ipsecTunnel"`
-	Modified            *bool                                   `pulumi:"modified"`
-	ModifiedIpsecTunnel *MagicWanIpsecTunnelModifiedIpsecTunnel `pulumi:"modifiedIpsecTunnel"`
+	InterfaceAddress *string `pulumi:"interfaceAddress"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -185,10 +146,7 @@ type MagicWanIpsecTunnelState struct {
 	Description pulumi.StringPtrInput
 	HealthCheck MagicWanIpsecTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress    pulumi.StringPtrInput
-	IpsecTunnel         MagicWanIpsecTunnelIpsecTunnelPtrInput
-	Modified            pulumi.BoolPtrInput
-	ModifiedIpsecTunnel MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput
+	InterfaceAddress pulumi.StringPtrInput
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -370,20 +328,6 @@ func (o MagicWanIpsecTunnelOutput) HealthCheck() MagicWanIpsecTunnelHealthCheckO
 // A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 func (o MagicWanIpsecTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
-}
-
-func (o MagicWanIpsecTunnelOutput) IpsecTunnel() MagicWanIpsecTunnelIpsecTunnelOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelIpsecTunnelOutput { return v.IpsecTunnel }).(MagicWanIpsecTunnelIpsecTunnelOutput)
-}
-
-func (o MagicWanIpsecTunnelOutput) Modified() pulumi.BoolOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
-}
-
-func (o MagicWanIpsecTunnelOutput) ModifiedIpsecTunnel() MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-		return v.ModifiedIpsecTunnel
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelOutput)
 }
 
 // The date and time the tunnel was last modified.

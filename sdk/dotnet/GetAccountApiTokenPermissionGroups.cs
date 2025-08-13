@@ -24,7 +24,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -46,7 +48,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -68,7 +72,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountApiTokenPermissionGroups = Cloudflare.GetAccountApiTokenPermissionGroups.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -87,6 +93,20 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public string? Scope { get; set; }
+
         public GetAccountApiTokenPermissionGroupsArgs()
         {
         }
@@ -100,6 +120,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
 
         public GetAccountApiTokenPermissionGroupsInvokeArgs()
         {
@@ -116,17 +150,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Public ID.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Permission Group Name
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// Resources to which the Permission Group is scoped
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
         /// </summary>
-        public readonly ImmutableArray<string> Scopes;
+        public readonly string? Scope;
 
         [OutputConstructor]
         private GetAccountApiTokenPermissionGroupsResult(
@@ -134,14 +170,14 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string name,
+            string? name,
 
-            ImmutableArray<string> scopes)
+            string? scope)
         {
             AccountId = accountId;
             Id = id;
             Name = name;
-            Scopes = scopes;
+            Scope = scope;
         }
     }
 }

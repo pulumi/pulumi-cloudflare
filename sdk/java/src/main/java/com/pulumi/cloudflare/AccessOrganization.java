@@ -88,12 +88,6 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
     public Output<Boolean> autoRedirectToIdentity() {
         return this.autoRedirectToIdentity;
     }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
     @Export(name="customPages", refs={AccessOrganizationCustomPages.class}, tree="[0]")
     private Output</* @Nullable */ AccessOrganizationCustomPages> customPages;
 
@@ -153,12 +147,6 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> uiReadOnlyToggleReason() {
         return Codegen.optional(this.uiReadOnlyToggleReason);
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.

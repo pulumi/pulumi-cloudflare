@@ -16,12 +16,12 @@ public final class GetZoneOwner {
      */
     private String id;
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     private String name;
     /**
-     * @return The type of owner
+     * @return The type of owner.
      * 
      */
     private String type;
@@ -35,14 +35,14 @@ public final class GetZoneOwner {
         return this.id;
     }
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The type of owner
+     * @return The type of owner.
      * 
      */
     public String type() {

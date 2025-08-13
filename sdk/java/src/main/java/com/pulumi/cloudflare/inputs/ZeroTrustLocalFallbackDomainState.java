@@ -24,36 +24,6 @@ public final class ZeroTrustLocalFallbackDomainState extends com.pulumi.resource
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * A description of the fallback domain, displayed in the client UI.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return A description of the fallback domain, displayed in the client UI.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * A list of IP addresses to handle domain resolution.
-     * 
-     */
-    @Import(name="dnsServers")
-    private @Nullable Output<List<String>> dnsServers;
-
-    /**
-     * @return A list of IP addresses to handle domain resolution.
-     * 
-     */
-    public Optional<Output<List<String>>> dnsServers() {
-        return Optional.ofNullable(this.dnsServers);
-    }
-
     @Import(name="domains")
     private @Nullable Output<List<ZeroTrustLocalFallbackDomainDomainArgs>> domains;
 
@@ -68,30 +38,12 @@ public final class ZeroTrustLocalFallbackDomainState extends com.pulumi.resource
         return Optional.ofNullable(this.policyId);
     }
 
-    /**
-     * The domain suffix to match when resolving locally.
-     * 
-     */
-    @Import(name="suffix")
-    private @Nullable Output<String> suffix;
-
-    /**
-     * @return The domain suffix to match when resolving locally.
-     * 
-     */
-    public Optional<Output<String>> suffix() {
-        return Optional.ofNullable(this.suffix);
-    }
-
     private ZeroTrustLocalFallbackDomainState() {}
 
     private ZeroTrustLocalFallbackDomainState(ZeroTrustLocalFallbackDomainState $) {
         this.accountId = $.accountId;
-        this.description = $.description;
-        this.dnsServers = $.dnsServers;
         this.domains = $.domains;
         this.policyId = $.policyId;
-        this.suffix = $.suffix;
     }
 
     public static Builder builder() {
@@ -121,58 +73,6 @@ public final class ZeroTrustLocalFallbackDomainState extends com.pulumi.resource
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param description A description of the fallback domain, displayed in the client UI.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description A description of the fallback domain, displayed in the client UI.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param dnsServers A list of IP addresses to handle domain resolution.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsServers(@Nullable Output<List<String>> dnsServers) {
-            $.dnsServers = dnsServers;
-            return this;
-        }
-
-        /**
-         * @param dnsServers A list of IP addresses to handle domain resolution.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsServers(List<String> dnsServers) {
-            return dnsServers(Output.of(dnsServers));
-        }
-
-        /**
-         * @param dnsServers A list of IP addresses to handle domain resolution.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsServers(String... dnsServers) {
-            return dnsServers(List.of(dnsServers));
-        }
-
         public Builder domains(@Nullable Output<List<ZeroTrustLocalFallbackDomainDomainArgs>> domains) {
             $.domains = domains;
             return this;
@@ -193,27 +93,6 @@ public final class ZeroTrustLocalFallbackDomainState extends com.pulumi.resource
 
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
-        }
-
-        /**
-         * @param suffix The domain suffix to match when resolving locally.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder suffix(@Nullable Output<String> suffix) {
-            $.suffix = suffix;
-            return this;
-        }
-
-        /**
-         * @param suffix The domain suffix to match when resolving locally.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder suffix(String suffix) {
-            return suffix(Output.of(suffix));
         }
 
         public ZeroTrustLocalFallbackDomainState build() {

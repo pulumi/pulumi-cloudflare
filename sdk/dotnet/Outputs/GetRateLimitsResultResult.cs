@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRateLimitsResultBypassResult> Bypasses;
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         public readonly string Description;
         /// <summary>

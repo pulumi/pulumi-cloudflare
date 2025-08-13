@@ -26,6 +26,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("order")]
         public string? Order { get; set; }
 
+        [Input("pattern")]
+        public string? Pattern { get; set; }
+
         /// <summary>
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>

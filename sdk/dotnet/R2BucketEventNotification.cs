@@ -69,13 +69,13 @@ namespace Pulumi.Cloudflare
         /// Queue ID.
         /// </summary>
         [Output("queueId")]
-        public Output<string?> QueueId { get; private set; } = null!;
+        public Output<string> QueueId { get; private set; } = null!;
 
         /// <summary>
-        /// List of queues associated with the bucket.
+        /// Name of the queue.
         /// </summary>
-        [Output("queues")]
-        public Output<ImmutableArray<Outputs.R2BucketEventNotificationQueue>> Queues { get; private set; } = null!;
+        [Output("queueName")]
+        public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
         /// Array of rules to drive notifications.
@@ -150,8 +150,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Queue ID.
         /// </summary>
-        [Input("queueId")]
-        public Input<string>? QueueId { get; set; }
+        [Input("queueId", required: true)]
+        public Input<string> QueueId { get; set; } = null!;
 
         [Input("rules")]
         private InputList<Inputs.R2BucketEventNotificationRuleArgs>? _rules;
@@ -197,17 +197,11 @@ namespace Pulumi.Cloudflare
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
 
-        [Input("queues")]
-        private InputList<Inputs.R2BucketEventNotificationQueueGetArgs>? _queues;
-
         /// <summary>
-        /// List of queues associated with the bucket.
+        /// Name of the queue.
         /// </summary>
-        public InputList<Inputs.R2BucketEventNotificationQueueGetArgs> Queues
-        {
-            get => _queues ?? (_queues = new InputList<Inputs.R2BucketEventNotificationQueueGetArgs>());
-            set => _queues = value;
-        }
+        [Input("queueName")]
+        public Input<string>? QueueName { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.R2BucketEventNotificationRuleGetArgs>? _rules;

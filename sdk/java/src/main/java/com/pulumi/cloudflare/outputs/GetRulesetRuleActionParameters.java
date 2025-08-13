@@ -188,7 +188,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private Boolean originCacheControl;
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     private Boolean originErrorPagePassthru;
@@ -198,13 +198,19 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersOverrides overrides;
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    private String phase;
+    /**
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     private List<String> phases;
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     private String polish;
@@ -244,7 +250,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersResponseField> responseFields;
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     private Boolean rocketLoader;
@@ -254,7 +260,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private Map<String,List<String>> rules;
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -525,7 +531,7 @@ public final class GetRulesetRuleActionParameters {
         return this.originCacheControl;
     }
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     public Boolean originErrorPagePassthru() {
@@ -539,7 +545,15 @@ public final class GetRulesetRuleActionParameters {
         return this.overrides;
     }
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    public String phase() {
+        return this.phase;
+    }
+    /**
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     public List<String> phases() {
@@ -547,7 +561,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     public String polish() {
@@ -603,7 +617,7 @@ public final class GetRulesetRuleActionParameters {
         return this.responseFields;
     }
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     public Boolean rocketLoader() {
@@ -617,7 +631,7 @@ public final class GetRulesetRuleActionParameters {
         return this.rules;
     }
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -738,6 +752,7 @@ public final class GetRulesetRuleActionParameters {
         private Boolean originCacheControl;
         private Boolean originErrorPagePassthru;
         private GetRulesetRuleActionParametersOverrides overrides;
+        private String phase;
         private List<String> phases;
         private String polish;
         private List<String> products;
@@ -795,6 +810,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
     	      this.overrides = defaults.overrides;
+    	      this.phase = defaults.phase;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
@@ -1085,6 +1101,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder phase(String phase) {
+            if (phase == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phase");
+            }
+            this.phase = phase;
+            return this;
+        }
+        @CustomType.Setter
         public Builder phases(List<String> phases) {
             if (phases == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phases");
@@ -1315,6 +1339,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.originCacheControl = originCacheControl;
             _resultValue.originErrorPagePassthru = originErrorPagePassthru;
             _resultValue.overrides = overrides;
+            _resultValue.phase = phase;
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;

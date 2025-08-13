@@ -30,13 +30,13 @@ export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetListArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: string;
     /**
      * The unique ID of the list.
      */
-    listId: string;
+    listId?: string;
 }
 
 /**
@@ -44,7 +44,7 @@ export interface GetListArgs {
  */
 export interface GetListResult {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     readonly accountId: string;
     /**
@@ -67,7 +67,7 @@ export interface GetListResult {
     /**
      * The unique ID of the list.
      */
-    readonly listId: string;
+    readonly listId?: string;
     /**
      * The RFC 3339 timestamp of when the list was last modified.
      */
@@ -81,7 +81,7 @@ export interface GetListResult {
      */
     readonly numItems: number;
     /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
     readonly numReferencingFilters: number;
 }
@@ -111,11 +111,11 @@ export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetListOutputArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: pulumi.Input<string>;
     /**
      * The unique ID of the list.
      */
-    listId: pulumi.Input<string>;
+    listId?: pulumi.Input<string>;
 }

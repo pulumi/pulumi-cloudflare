@@ -80,7 +80,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceResult {
      */
     readonly namespaceName: string;
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      */
     readonly scriptCount: number;
 }

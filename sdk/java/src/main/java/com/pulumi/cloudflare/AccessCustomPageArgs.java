@@ -6,11 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,21 +27,6 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<String> accountId() {
         return this.accountId;
-    }
-
-    /**
-     * Number of apps the custom page is assigned to.
-     * 
-     */
-    @Import(name="appCount")
-    private @Nullable Output<Integer> appCount;
-
-    /**
-     * @return Number of apps the custom page is assigned to.
-     * 
-     */
-    public Optional<Output<Integer>> appCount() {
-        return Optional.ofNullable(this.appCount);
     }
 
     /**
@@ -98,7 +80,6 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
 
     private AccessCustomPageArgs(AccessCustomPageArgs $) {
         this.accountId = $.accountId;
-        this.appCount = $.appCount;
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
@@ -141,27 +122,6 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param appCount Number of apps the custom page is assigned to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(@Nullable Output<Integer> appCount) {
-            $.appCount = appCount;
-            return this;
-        }
-
-        /**
-         * @param appCount Number of apps the custom page is assigned to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(Integer appCount) {
-            return appCount(Output.of(appCount));
         }
 
         /**

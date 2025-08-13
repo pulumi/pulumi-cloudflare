@@ -82,14 +82,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Flag that indicates if the job is enabled.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -104,6 +104,20 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> errorMessage() {
         return this.errorMessage;
+    }
+    /**
+     * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     * 
+     */
+    @Export(name="filter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> filter;
+
+    /**
+     * @return The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     * 
+     */
+    public Output<Optional<String>> filter() {
+        return Codegen.optional(this.filter);
     }
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -126,20 +140,20 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return this.frequency;
     }
     /**
-     * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-     * Available values: &#34;edge&#34;.
+     * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+     * Available values: &#34;&#34;, &#34;edge&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kind;
+    private Output<String> kind;
 
     /**
-     * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-     * Available values: &#34;edge&#34;.
+     * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+     * Available values: &#34;&#34;, &#34;edge&#34;.
      * 
      */
-    public Output<Optional<String>> kind() {
-        return Codegen.optional(this.kind);
+    public Output<String> kind() {
+        return this.kind;
     }
     /**
      * Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn&#39;t run yet then the field will be empty.
@@ -188,46 +202,46 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logpullOptions);
     }
     /**
-     * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+     * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
     @Export(name="maxUploadBytes", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxUploadBytes;
 
     /**
-     * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+     * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
     public Output<Optional<Integer>> maxUploadBytes() {
         return Codegen.optional(this.maxUploadBytes);
     }
     /**
-     * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+     * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
     @Export(name="maxUploadIntervalSeconds", refs={Integer.class}, tree="[0]")
-    private Output<Integer> maxUploadIntervalSeconds;
+    private Output</* @Nullable */ Integer> maxUploadIntervalSeconds;
 
     /**
-     * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+     * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
-    public Output<Integer> maxUploadIntervalSeconds() {
-        return this.maxUploadIntervalSeconds;
+    public Output<Optional<Integer>> maxUploadIntervalSeconds() {
+        return Codegen.optional(this.maxUploadIntervalSeconds);
     }
     /**
-     * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+     * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
     @Export(name="maxUploadRecords", refs={Integer.class}, tree="[0]")
-    private Output<Integer> maxUploadRecords;
+    private Output</* @Nullable */ Integer> maxUploadRecords;
 
     /**
-     * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+     * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
-    public Output<Integer> maxUploadRecords() {
-        return this.maxUploadRecords;
+    public Output<Optional<Integer>> maxUploadRecords() {
+        return Codegen.optional(this.maxUploadRecords);
     }
     /**
      * Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
@@ -248,14 +262,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="outputOptions", refs={LogpushJobOutputOptions.class}, tree="[0]")
-    private Output<LogpushJobOutputOptions> outputOptions;
+    private Output</* @Nullable */ LogpushJobOutputOptions> outputOptions;
 
     /**
      * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
      * 
      */
-    public Output<LogpushJobOutputOptions> outputOptions() {
-        return this.outputOptions;
+    public Output<Optional<LogpushJobOutputOptions>> outputOptions() {
+        return Codegen.optional(this.outputOptions);
     }
     /**
      * Ownership challenge token to prove destination ownership.

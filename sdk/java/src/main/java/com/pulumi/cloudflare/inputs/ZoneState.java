@@ -6,6 +6,9 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZoneAccountArgs;
 import com.pulumi.cloudflare.inputs.ZoneMetaArgs;
 import com.pulumi.cloudflare.inputs.ZoneOwnerArgs;
+import com.pulumi.cloudflare.inputs.ZonePlanArgs;
+import com.pulumi.cloudflare.inputs.ZoneTenantArgs;
+import com.pulumi.cloudflare.inputs.ZoneTenantUnitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -30,7 +33,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     @Import(name="activatedOn")
@@ -38,7 +41,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public Optional<Output<String>> activatedOn() {
@@ -46,14 +49,31 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the zone was created
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    @Import(name="cnameSuffix")
+    private @Nullable Output<String> cnameSuffix;
+
+    /**
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    public Optional<Output<String>> cnameSuffix() {
+        return Optional.ofNullable(this.cnameSuffix);
+    }
+
+    /**
+     * When the zone was created.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -80,14 +100,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      * 
      */
     @Import(name="meta")
     private @Nullable Output<ZoneMetaArgs> meta;
 
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public Optional<Output<ZoneMetaArgs>> meta() {
@@ -95,14 +115,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -110,14 +130,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name
+     * The domain name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -125,14 +145,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      * 
      */
     @Import(name="nameServers")
     private @Nullable Output<List<String>> nameServers;
 
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public Optional<Output<List<String>>> nameServers() {
@@ -140,14 +160,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      * 
      */
     @Import(name="originalDnshost")
     private @Nullable Output<String> originalDnshost;
 
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public Optional<Output<String>> originalDnshost() {
@@ -155,14 +175,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      * 
      */
     @Import(name="originalNameServers")
     private @Nullable Output<List<String>> originalNameServers;
 
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public Optional<Output<List<String>>> originalNameServers() {
@@ -170,14 +190,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     @Import(name="originalRegistrar")
     private @Nullable Output<String> originalRegistrar;
 
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public Optional<Output<String>> originalRegistrar() {
@@ -185,14 +205,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The owner of the zone
+     * The owner of the zone.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<ZoneOwnerArgs> owner;
 
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public Optional<Output<ZoneOwnerArgs>> owner() {
@@ -219,6 +239,52 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="permissions")
+    private @Nullable Output<List<String>> permissions;
+
+    /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<List<String>>> permissions() {
+        return Optional.ofNullable(this.permissions);
+    }
+
+    /**
+     * A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="plan")
+    private @Nullable Output<ZonePlanArgs> plan;
+
+    /**
+     * @return A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<ZonePlanArgs>> plan() {
+        return Optional.ofNullable(this.plan);
+    }
+
+    /**
      * The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
@@ -233,6 +299,36 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    @Import(name="tenant")
+    private @Nullable Output<ZoneTenantArgs> tenant;
+
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    public Optional<Output<ZoneTenantArgs>> tenant() {
+        return Optional.ofNullable(this.tenant);
+    }
+
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    @Import(name="tenantUnit")
+    private @Nullable Output<ZoneTenantUnitArgs> tenantUnit;
+
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    public Optional<Output<ZoneTenantUnitArgs>> tenantUnit() {
+        return Optional.ofNullable(this.tenantUnit);
     }
 
     /**
@@ -291,6 +387,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     private ZoneState(ZoneState $) {
         this.account = $.account;
         this.activatedOn = $.activatedOn;
+        this.cnameSuffix = $.cnameSuffix;
         this.createdOn = $.createdOn;
         this.developmentMode = $.developmentMode;
         this.meta = $.meta;
@@ -302,7 +399,11 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         this.originalRegistrar = $.originalRegistrar;
         this.owner = $.owner;
         this.paused = $.paused;
+        this.permissions = $.permissions;
+        this.plan = $.plan;
         this.status = $.status;
+        this.tenant = $.tenant;
+        this.tenantUnit = $.tenantUnit;
         this.type = $.type;
         this.vanityNameServers = $.vanityNameServers;
         this.verificationKey = $.verificationKey;
@@ -337,7 +438,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param activatedOn The last time proof of ownership was detected and the zone was made
-         * active
+         * active.
          * 
          * @return builder
          * 
@@ -349,7 +450,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param activatedOn The last time proof of ownership was detected and the zone was made
-         * active
+         * active.
          * 
          * @return builder
          * 
@@ -359,7 +460,30 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn When the zone was created
+         * @param cnameSuffix Allows the customer to use a custom apex.
+         * *Tenants Only Configuration*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameSuffix(@Nullable Output<String> cnameSuffix) {
+            $.cnameSuffix = cnameSuffix;
+            return this;
+        }
+
+        /**
+         * @param cnameSuffix Allows the customer to use a custom apex.
+         * *Tenants Only Configuration*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameSuffix(String cnameSuffix) {
+            return cnameSuffix(Output.of(cnameSuffix));
+        }
+
+        /**
+         * @param createdOn When the zone was created.
          * 
          * @return builder
          * 
@@ -370,7 +494,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn When the zone was created
+         * @param createdOn When the zone was created.
          * 
          * @return builder
          * 
@@ -405,7 +529,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Metadata about the zone
+         * @param meta Metadata about the zone.
          * 
          * @return builder
          * 
@@ -416,7 +540,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Metadata about the zone
+         * @param meta Metadata about the zone.
          * 
          * @return builder
          * 
@@ -426,7 +550,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn When the zone was last modified
+         * @param modifiedOn When the zone was last modified.
          * 
          * @return builder
          * 
@@ -437,7 +561,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn When the zone was last modified
+         * @param modifiedOn When the zone was last modified.
          * 
          * @return builder
          * 
@@ -447,7 +571,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
@@ -458,7 +582,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
@@ -468,7 +592,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -479,7 +603,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -489,7 +613,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -499,7 +623,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalDnshost DNS host at the time of switching to Cloudflare
+         * @param originalDnshost DNS host at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -510,7 +634,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalDnshost DNS host at the time of switching to Cloudflare
+         * @param originalDnshost DNS host at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -520,7 +644,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -531,7 +655,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -541,7 +665,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -551,7 +675,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare
+         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -562,7 +686,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare
+         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -572,7 +696,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner The owner of the zone
+         * @param owner The owner of the zone.
          * 
          * @return builder
          * 
@@ -583,7 +707,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner The owner of the zone
+         * @param owner The owner of the zone.
          * 
          * @return builder
          * 
@@ -618,6 +742,78 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(@Nullable Output<List<String>> permissions) {
+            $.permissions = permissions;
+            return this;
+        }
+
+        /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(List<String> permissions) {
+            return permissions(Output.of(permissions));
+        }
+
+        /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(String... permissions) {
+            return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param plan A Zones subscription information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder plan(@Nullable Output<ZonePlanArgs> plan) {
+            $.plan = plan;
+            return this;
+        }
+
+        /**
+         * @param plan A Zones subscription information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder plan(ZonePlanArgs plan) {
+            return plan(Output.of(plan));
+        }
+
+        /**
          * @param status The zone status on Cloudflare.
          * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
@@ -638,6 +834,48 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tenant The root organizational unit that this zone belongs to (such as a tenant or organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenant(@Nullable Output<ZoneTenantArgs> tenant) {
+            $.tenant = tenant;
+            return this;
+        }
+
+        /**
+         * @param tenant The root organizational unit that this zone belongs to (such as a tenant or organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenant(ZoneTenantArgs tenant) {
+            return tenant(Output.of(tenant));
+        }
+
+        /**
+         * @param tenantUnit The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantUnit(@Nullable Output<ZoneTenantUnitArgs> tenantUnit) {
+            $.tenantUnit = tenantUnit;
+            return this;
+        }
+
+        /**
+         * @param tenantUnit The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantUnit(ZoneTenantUnitArgs tenantUnit) {
+            return tenantUnit(Output.of(tenantUnit));
         }
 
         /**

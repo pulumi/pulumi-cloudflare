@@ -28,7 +28,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewImage(ctx, "example_image", &cloudflare.ImageArgs{
 //				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				File:              pulumi.String{},
+//				ImageId:           pulumi.String("id"),
+//				Creator:           pulumi.String("creator"),
+//				File:              nil,
 //				Metadata:          pulumi.String{},
 //				RequireSignedUrls: pulumi.Bool(true),
 //				Url:               pulumi.String("https://example.com/path/to/logo.png"),
@@ -52,10 +54,14 @@ type Image struct {
 
 	// Account identifier tag.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Can set the creator field with an internal user ID.
+	Creator pulumi.StringPtrOutput `pulumi:"creator"`
 	// An image binary data. Only needed when type is uploading a file.
 	File pulumi.StringPtrOutput `pulumi:"file"`
 	// Image file name.
 	Filename pulumi.StringOutput `pulumi:"filename"`
+	// An optional custom unique identifier for your image.
+	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
 	Meta pulumi.StringOutput `pulumi:"meta"`
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
@@ -79,6 +85,9 @@ func NewImage(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.ImageId == nil {
+		return nil, errors.New("invalid value for required argument 'ImageId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
@@ -105,10 +114,14 @@ func GetImage(ctx *pulumi.Context,
 type imageState struct {
 	// Account identifier tag.
 	AccountId *string `pulumi:"accountId"`
+	// Can set the creator field with an internal user ID.
+	Creator *string `pulumi:"creator"`
 	// An image binary data. Only needed when type is uploading a file.
 	File *string `pulumi:"file"`
 	// Image file name.
 	Filename *string `pulumi:"filename"`
+	// An optional custom unique identifier for your image.
+	ImageId *string `pulumi:"imageId"`
 	// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
 	Meta *string `pulumi:"meta"`
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
@@ -126,10 +139,14 @@ type imageState struct {
 type ImageState struct {
 	// Account identifier tag.
 	AccountId pulumi.StringPtrInput
+	// Can set the creator field with an internal user ID.
+	Creator pulumi.StringPtrInput
 	// An image binary data. Only needed when type is uploading a file.
 	File pulumi.StringPtrInput
 	// Image file name.
 	Filename pulumi.StringPtrInput
+	// An optional custom unique identifier for your image.
+	ImageId pulumi.StringPtrInput
 	// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
 	Meta pulumi.StringPtrInput
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
@@ -151,8 +168,12 @@ func (ImageState) ElementType() reflect.Type {
 type imageArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Can set the creator field with an internal user ID.
+	Creator *string `pulumi:"creator"`
 	// An image binary data. Only needed when type is uploading a file.
 	File *string `pulumi:"file"`
+	// An optional custom unique identifier for your image.
+	ImageId string `pulumi:"imageId"`
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
 	Metadata *string `pulumi:"metadata"`
 	// Indicates whether the image requires a signature token for the access.
@@ -165,8 +186,12 @@ type imageArgs struct {
 type ImageArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput
+	// Can set the creator field with an internal user ID.
+	Creator pulumi.StringPtrInput
 	// An image binary data. Only needed when type is uploading a file.
 	File pulumi.StringPtrInput
+	// An optional custom unique identifier for your image.
+	ImageId pulumi.StringInput
 	// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
 	Metadata pulumi.StringPtrInput
 	// Indicates whether the image requires a signature token for the access.
@@ -267,6 +292,11 @@ func (o ImageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Can set the creator field with an internal user ID.
+func (o ImageOutput) Creator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Creator }).(pulumi.StringPtrOutput)
+}
+
 // An image binary data. Only needed when type is uploading a file.
 func (o ImageOutput) File() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.File }).(pulumi.StringPtrOutput)
@@ -275,6 +305,11 @@ func (o ImageOutput) File() pulumi.StringPtrOutput {
 // Image file name.
 func (o ImageOutput) Filename() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Filename }).(pulumi.StringOutput)
+}
+
+// An optional custom unique identifier for your image.
+func (o ImageOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
 // User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.

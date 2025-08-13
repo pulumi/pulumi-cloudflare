@@ -7,10 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
- *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
- *    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
- *    lifecycle option `createBeforeDestroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
+ * ## Example Usage
  *
  * ## Import
  *
@@ -54,10 +51,6 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of access applications currently using this policy.
-     */
-    public /*out*/ readonly appCount!: pulumi.Output<number>;
-    /**
      * Administrators who can approve a temporary authentication request.
      */
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
@@ -65,7 +58,6 @@ export class AccessPolicy extends pulumi.CustomResource {
      * Requires the user to request access from an administrator at the start of each session.
      */
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -99,12 +91,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
-    public /*out*/ readonly reusable!: pulumi.Output<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     public readonly sessionDuration!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -123,10 +113,8 @@ export class AccessPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appCount"] = state ? state.appCount : undefined;
             resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
@@ -135,9 +123,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
-            resourceInputs["reusable"] = state ? state.reusable : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -164,10 +150,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["appCount"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["reusable"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
@@ -185,10 +167,6 @@ export interface AccessPolicyState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of access applications currently using this policy.
-     */
-    appCount?: pulumi.Input<number>;
-    /**
      * Administrators who can approve a temporary authentication request.
      */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
@@ -196,7 +174,6 @@ export interface AccessPolicyState {
      * Requires the user to request access from an administrator at the start of each session.
      */
     approvalRequired?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -230,12 +207,10 @@ export interface AccessPolicyState {
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
-    reusable?: pulumi.Input<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 /**

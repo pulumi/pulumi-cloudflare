@@ -44,14 +44,16 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-    public readonly aiContextEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly aiContextEnabled!: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
     public readonly allowedMatchCount!: pulumi.Output<number>;
-    public readonly confidenceThreshold!: pulumi.Output<string | undefined>;
+    public readonly confidenceThreshold!: pulumi.Output<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness | undefined>;
     /**
@@ -62,20 +64,25 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
      * The description of the profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     public readonly entries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
-    public readonly name!: pulumi.Output<string | undefined>;
-    public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly ocrEnabled!: pulumi.Output<boolean>;
     /**
      * Whether this profile can be accessed by anyone.
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
-    public readonly profiles!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileProfile[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
     public readonly sharedEntries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[] | undefined>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -107,7 +114,6 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ocrEnabled"] = state ? state.ocrEnabled : undefined;
             resourceInputs["openAccess"] = state ? state.openAccess : undefined;
-            resourceInputs["profiles"] = state ? state.profiles : undefined;
             resourceInputs["sharedEntries"] = state ? state.sharedEntries : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -115,6 +121,9 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             const args = argsOrState as ZeroTrustDlpCustomProfileArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["aiContextEnabled"] = args ? args.aiContextEnabled : undefined;
@@ -125,7 +134,6 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["entries"] = args ? args.entries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ocrEnabled"] = args ? args.ocrEnabled : undefined;
-            resourceInputs["profiles"] = args ? args.profiles : undefined;
             resourceInputs["sharedEntries"] = args ? args.sharedEntries : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
@@ -152,6 +160,8 @@ export interface ZeroTrustDlpCustomProfileState {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwareness>;
     /**
@@ -162,6 +172,12 @@ export interface ZeroTrustDlpCustomProfileState {
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
@@ -169,13 +185,12 @@ export interface ZeroTrustDlpCustomProfileState {
      * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
-    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfile>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
     sharedEntries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileSharedEntry>[]>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     type?: pulumi.Input<string>;
     /**
@@ -197,16 +212,23 @@ export interface ZeroTrustDlpCustomProfileArgs {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwareness>;
     /**
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
-    profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfile>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */

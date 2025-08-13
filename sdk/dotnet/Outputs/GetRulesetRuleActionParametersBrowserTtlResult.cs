@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int Default;
         /// <summary>
         /// Determines which browser ttl mode to use.
-        /// Available values: "respect*origin", "bypass*by*default", "override*origin".
+        /// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         /// </summary>
         public readonly string Mode;
 

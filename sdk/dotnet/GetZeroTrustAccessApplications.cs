@@ -28,6 +28,7 @@ namespace Pulumi.Cloudflare
         ///         ZoneId = "zone_id",
         ///         Aud = "aud",
         ///         Domain = "domain",
+        ///         Exact = true,
         ///         Name = "name",
         ///         Search = "search",
         ///     });
@@ -55,6 +56,7 @@ namespace Pulumi.Cloudflare
         ///         ZoneId = "zone_id",
         ///         Aud = "aud",
         ///         Domain = "domain",
+        ///         Exact = true,
         ///         Name = "name",
         ///         Search = "search",
         ///     });
@@ -82,6 +84,7 @@ namespace Pulumi.Cloudflare
         ///         ZoneId = "zone_id",
         ///         Aud = "aud",
         ///         Domain = "domain",
+        ///         Exact = true,
         ///         Name = "name",
         ///         Search = "search",
         ///     });
@@ -113,6 +116,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
+
+        /// <summary>
+        /// True for only exact string matches against passed name/domain query parameters.
+        /// </summary>
+        [Input("exact")]
+        public bool? Exact { get; set; }
 
         /// <summary>
         /// Max items to fetch, default: 1000
@@ -165,6 +174,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Domain { get; set; }
 
         /// <summary>
+        /// True for only exact string matches against passed name/domain query parameters.
+        /// </summary>
+        [Input("exact")]
+        public Input<bool>? Exact { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
@@ -211,6 +226,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Domain;
         /// <summary>
+        /// True for only exact string matches against passed name/domain query parameters.
+        /// </summary>
+        public readonly bool? Exact;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -243,6 +262,8 @@ namespace Pulumi.Cloudflare
 
             string? domain,
 
+            bool? exact,
+
             string id,
 
             int? maxItems,
@@ -258,6 +279,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Aud = aud;
             Domain = domain;
+            Exact = exact;
             Id = id;
             MaxItems = maxItems;
             Name = name;

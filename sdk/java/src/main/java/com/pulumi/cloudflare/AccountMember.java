@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var exampleAccountMember = new AccountMember("exampleAccountMember", AccountMemberArgs.builder()
- *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .email("user}{@literal @}{@code example.com")
  *             .roles("3536bcfad5faccb999b47003c79917fb")
  *             .status("accepted")

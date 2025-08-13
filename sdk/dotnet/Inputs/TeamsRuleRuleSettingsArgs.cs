@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("addHeaders")]
-        private InputMap<string>? _addHeaders;
+        private InputMap<ImmutableArray<string>>? _addHeaders;
 
         /// <summary>
         /// Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         /// </summary>
-        public InputMap<string> AddHeaders
+        public InputMap<ImmutableArray<string>> AddHeaders
         {
-            get => _addHeaders ?? (_addHeaders = new InputMap<string>());
+            get => _addHeaders ?? (_addHeaders = new InputMap<ImmutableArray<string>>());
             set => _addHeaders = value;
         }
 

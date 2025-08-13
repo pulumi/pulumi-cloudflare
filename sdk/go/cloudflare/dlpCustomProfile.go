@@ -24,26 +24,31 @@ import (
 type DlpCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId        pulumi.StringOutput  `pulumi:"accountId"`
-	AiContextEnabled pulumi.BoolPtrOutput `pulumi:"aiContextEnabled"`
+	AccountId        pulumi.StringOutput `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount   pulumi.IntOutput       `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
+	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpCustomProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the profile.
-	Description pulumi.StringPtrOutput           `pulumi:"description"`
-	Entries     DlpCustomProfileEntryArrayOutput `pulumi:"entries"`
-	Name        pulumi.StringPtrOutput           `pulumi:"name"`
-	OcrEnabled  pulumi.BoolPtrOutput             `pulumi:"ocrEnabled"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    DlpCustomProfileEntryArrayOutput `pulumi:"entries"`
+	Name       pulumi.StringOutput              `pulumi:"name"`
+	OcrEnabled pulumi.BoolOutput                `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess pulumi.BoolOutput                  `pulumi:"openAccess"`
-	Profiles   DlpCustomProfileProfileArrayOutput `pulumi:"profiles"`
+	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -58,6 +63,9 @@ func NewDlpCustomProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -94,20 +102,25 @@ type dlpCustomProfileState struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *DlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the profile.
-	Description *string                 `pulumi:"description"`
-	Entries     []DlpCustomProfileEntry `pulumi:"entries"`
-	Name        *string                 `pulumi:"name"`
-	OcrEnabled  *bool                   `pulumi:"ocrEnabled"`
+	Description *string `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    []DlpCustomProfileEntry `pulumi:"entries"`
+	Name       *string                 `pulumi:"name"`
+	OcrEnabled *bool                   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess *bool                     `pulumi:"openAccess"`
-	Profiles   []DlpCustomProfileProfile `pulumi:"profiles"`
+	OpenAccess *bool `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -120,20 +133,25 @@ type DlpCustomProfileState struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpCustomProfileContextAwarenessPtrInput
 	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
-	Entries     DlpCustomProfileEntryArrayInput
-	Name        pulumi.StringPtrInput
-	OcrEnabled  pulumi.BoolPtrInput
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    DlpCustomProfileEntryArrayInput
+	Name       pulumi.StringPtrInput
+	OcrEnabled pulumi.BoolPtrInput
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
-	Profiles   DlpCustomProfileProfileArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -150,13 +168,18 @@ type dlpCustomProfileArgs struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *DlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// The description of the profile.
-	Description *string                   `pulumi:"description"`
-	Entries     []DlpCustomProfileEntry   `pulumi:"entries"`
-	Name        *string                   `pulumi:"name"`
-	OcrEnabled  *bool                     `pulumi:"ocrEnabled"`
-	Profiles    []DlpCustomProfileProfile `pulumi:"profiles"`
+	Description *string `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    []DlpCustomProfileEntry `pulumi:"entries"`
+	Name       string                  `pulumi:"name"`
+	OcrEnabled *bool                   `pulumi:"ocrEnabled"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 }
@@ -169,13 +192,18 @@ type DlpCustomProfileArgs struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpCustomProfileContextAwarenessPtrInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
-	Entries     DlpCustomProfileEntryArrayInput
-	Name        pulumi.StringPtrInput
-	OcrEnabled  pulumi.BoolPtrInput
-	Profiles    DlpCustomProfileProfileArrayInput
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    DlpCustomProfileEntryArrayInput
+	Name       pulumi.StringInput
+	OcrEnabled pulumi.BoolPtrInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
 }
@@ -271,8 +299,8 @@ func (o DlpCustomProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o DlpCustomProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolPtrOutput { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
+func (o DlpCustomProfileOutput) AiContextEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
 // Related DLP policies will trigger when the match count exceeds the number set.
@@ -280,11 +308,13 @@ func (o DlpCustomProfileOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
-func (o DlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringPtrOutput { return v.ConfidenceThreshold }).(pulumi.StringPtrOutput)
+func (o DlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileOutput) ContextAwareness() DlpCustomProfileContextAwarenessPtrOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileContextAwarenessPtrOutput { return v.ContextAwareness }).(DlpCustomProfileContextAwarenessPtrOutput)
 }
@@ -299,16 +329,20 @@ func (o DlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Custom entries from this profile.
+// If this field is omitted, entries owned by this profile will not be changed.
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileOutput) Entries() DlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileEntryArrayOutput { return v.Entries }).(DlpCustomProfileEntryArrayOutput)
 }
 
-func (o DlpCustomProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o DlpCustomProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o DlpCustomProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
+func (o DlpCustomProfileOutput) OcrEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.OcrEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether this profile can be accessed by anyone.
@@ -316,16 +350,12 @@ func (o DlpCustomProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
 }
 
-func (o DlpCustomProfileOutput) Profiles() DlpCustomProfileProfileArrayOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileProfileArrayOutput { return v.Profiles }).(DlpCustomProfileProfileArrayOutput)
-}
-
 // Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 func (o DlpCustomProfileOutput) SharedEntries() DlpCustomProfileSharedEntryArrayOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileSharedEntryArrayOutput { return v.SharedEntries }).(DlpCustomProfileSharedEntryArrayOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o DlpCustomProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

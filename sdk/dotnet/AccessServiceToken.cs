@@ -58,9 +58,6 @@ namespace Pulumi.Cloudflare
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
 
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
         /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
@@ -70,17 +67,11 @@ namespace Pulumi.Cloudflare
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
 
-        [Output("lastSeenAt")]
-        public Output<string> LastSeenAt { get; private set; } = null!;
-
         /// <summary>
         /// The name of the service token.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -202,9 +193,6 @@ namespace Pulumi.Cloudflare
             }
         }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
@@ -214,17 +202,11 @@ namespace Pulumi.Cloudflare
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
-        [Input("lastSeenAt")]
-        public Input<string>? LastSeenAt { get; set; }
-
         /// <summary>
         /// The name of the service token.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

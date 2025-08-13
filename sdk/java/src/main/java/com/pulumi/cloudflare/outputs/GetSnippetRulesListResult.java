@@ -11,27 +11,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSnippetRulesListResult {
+    /**
+     * @return An informative description of the rule.
+     * 
+     */
     private String description;
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The expression defining which traffic will match the rule.
+     * 
+     */
     private String expression;
     /**
-     * @return Snippet identifying name
+     * @return The unique ID of the rule.
+     * 
+     */
+    private String id;
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    private String lastUpdated;
+    /**
+     * @return The identifying name of the snippet.
      * 
      */
     private String snippetName;
 
     private GetSnippetRulesListResult() {}
+    /**
+     * @return An informative description of the rule.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The expression defining which traffic will match the rule.
+     * 
+     */
     public String expression() {
         return this.expression;
     }
     /**
-     * @return Snippet identifying name
+     * @return The unique ID of the rule.
+     * 
+     */
+    public String id() {
+        return this.id;
+    }
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public String lastUpdated() {
+        return this.lastUpdated;
+    }
+    /**
+     * @return The identifying name of the snippet.
      * 
      */
     public String snippetName() {
@@ -50,6 +98,8 @@ public final class GetSnippetRulesListResult {
         private String description;
         private Boolean enabled;
         private String expression;
+        private String id;
+        private String lastUpdated;
         private String snippetName;
         public Builder() {}
         public Builder(GetSnippetRulesListResult defaults) {
@@ -57,6 +107,8 @@ public final class GetSnippetRulesListResult {
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
+    	      this.id = defaults.id;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.snippetName = defaults.snippetName;
         }
 
@@ -85,6 +137,22 @@ public final class GetSnippetRulesListResult {
             return this;
         }
         @CustomType.Setter
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnippetRulesListResult", "id");
+            }
+            this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastUpdated(String lastUpdated) {
+            if (lastUpdated == null) {
+              throw new MissingRequiredPropertyException("GetSnippetRulesListResult", "lastUpdated");
+            }
+            this.lastUpdated = lastUpdated;
+            return this;
+        }
+        @CustomType.Setter
         public Builder snippetName(String snippetName) {
             if (snippetName == null) {
               throw new MissingRequiredPropertyException("GetSnippetRulesListResult", "snippetName");
@@ -97,6 +165,8 @@ public final class GetSnippetRulesListResult {
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.expression = expression;
+            _resultValue.id = id;
+            _resultValue.lastUpdated = lastUpdated;
             _resultValue.snippetName = snippetName;
             return _resultValue;
         }

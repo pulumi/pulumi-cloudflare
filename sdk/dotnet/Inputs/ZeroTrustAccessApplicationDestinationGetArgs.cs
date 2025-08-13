@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// Available values: "public".
+        /// Available values: "public", "private".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

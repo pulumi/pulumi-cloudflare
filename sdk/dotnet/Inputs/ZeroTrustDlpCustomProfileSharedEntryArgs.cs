@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string> EntryId { get; set; } = null!;
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         /// </summary>
         [Input("entryType", required: true)]
         public Input<string> EntryType { get; set; } = null!;

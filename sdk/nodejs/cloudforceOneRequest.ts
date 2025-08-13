@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequest = new cloudflare.CloudforceOneRequest("example_cloudforce_one_request", {
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     content: "What regions were most effected by the recent DoS?",
  *     priority: "routine",
  *     requestType: "Victomology",
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_identifier>/<request_identifier>'
+ * $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '<account_id>/<request_id>'
  * ```
  */
 export class CloudforceOneRequest extends pulumi.CustomResource {
@@ -56,51 +56,51 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
-    public readonly accountIdentifier!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string>;
     public /*out*/ readonly completed!: pulumi.Output<string>;
     /**
-     * Request content
+     * Request content.
      */
     public readonly content!: pulumi.Output<string | undefined>;
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      */
     public /*out*/ readonly messageTokens!: pulumi.Output<number>;
     /**
-     * Priority for analyzing the request
+     * Priority for analyzing the request.
      */
     public readonly priority!: pulumi.Output<string | undefined>;
     /**
-     * Readable Request ID
+     * Readable Request ID.
      */
     public /*out*/ readonly readableId!: pulumi.Output<string>;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     public /*out*/ readonly request!: pulumi.Output<string>;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     public readonly requestType!: pulumi.Output<string | undefined>;
     /**
-     * Request Status
+     * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     public readonly summary!: pulumi.Output<string | undefined>;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     public readonly tlp!: pulumi.Output<string | undefined>;
     /**
-     * Tokens for the request
+     * Tokens for the request.
      */
     public /*out*/ readonly tokens!: pulumi.Output<number>;
     public /*out*/ readonly updated!: pulumi.Output<string>;
@@ -118,7 +118,7 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestState | undefined;
-            resourceInputs["accountIdentifier"] = state ? state.accountIdentifier : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["completed"] = state ? state.completed : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
@@ -134,10 +134,10 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
             resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as CloudforceOneRequestArgs | undefined;
-            if ((!args || args.accountIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountIdentifier'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountIdentifier"] = args ? args.accountIdentifier : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["requestType"] = args ? args.requestType : undefined;
@@ -162,51 +162,51 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
  */
 export interface CloudforceOneRequestState {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     completed?: pulumi.Input<string>;
     /**
-     * Request content
+     * Request content.
      */
     content?: pulumi.Input<string>;
     created?: pulumi.Input<string>;
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      */
     messageTokens?: pulumi.Input<number>;
     /**
-     * Priority for analyzing the request
+     * Priority for analyzing the request.
      */
     priority?: pulumi.Input<string>;
     /**
-     * Readable Request ID
+     * Readable Request ID.
      */
     readableId?: pulumi.Input<string>;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     request?: pulumi.Input<string>;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     requestType?: pulumi.Input<string>;
     /**
-     * Request Status
+     * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     status?: pulumi.Input<string>;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     summary?: pulumi.Input<string>;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     tlp?: pulumi.Input<string>;
     /**
-     * Tokens for the request
+     * Tokens for the request.
      */
     tokens?: pulumi.Input<number>;
     updated?: pulumi.Input<string>;
@@ -217,27 +217,27 @@ export interface CloudforceOneRequestState {
  */
 export interface CloudforceOneRequestArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * Request content
+     * Request content.
      */
     content?: pulumi.Input<string>;
     /**
-     * Priority for analyzing the request
+     * Priority for analyzing the request.
      */
     priority?: pulumi.Input<string>;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     requestType?: pulumi.Input<string>;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     summary?: pulumi.Input<string>;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     tlp?: pulumi.Input<string>;

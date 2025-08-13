@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ListItemHostnameGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+        /// </summary>
+        [Input("excludeExactHostname")]
+        public Input<bool>? ExcludeExactHostname { get; set; }
+
         [Input("urlHostname", required: true)]
         public Input<string> UrlHostname { get; set; } = null!;
 

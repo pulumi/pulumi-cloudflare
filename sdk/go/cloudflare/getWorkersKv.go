@@ -50,7 +50,7 @@ func LookupWorkersKv(ctx *pulumi.Context, args *LookupWorkersKvArgs, opts ...pul
 
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName string `pulumi:"keyName"`
@@ -60,7 +60,7 @@ type LookupWorkersKvArgs struct {
 
 // A collection of values returned by getWorkersKv.
 type LookupWorkersKvResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -81,7 +81,7 @@ func LookupWorkersKvOutput(ctx *pulumi.Context, args LookupWorkersKvOutputArgs, 
 
 // A collection of arguments for invoking getWorkersKv.
 type LookupWorkersKvOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
 	KeyName pulumi.StringInput `pulumi:"keyName"`
@@ -108,7 +108,7 @@ func (o LookupWorkersKvResultOutput) ToLookupWorkersKvResultOutputWithContext(ct
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersKvResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersKvResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

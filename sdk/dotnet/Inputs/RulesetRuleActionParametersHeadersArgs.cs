@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Available values: "remove".
+        /// Available values: "remove", "add", "set".
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;

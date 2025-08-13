@@ -48,7 +48,7 @@ func LookupArgoSmartRouting(ctx *pulumi.Context, args *LookupArgoSmartRoutingArg
 
 // A collection of arguments for invoking getArgoSmartRouting.
 type LookupArgoSmartRoutingArgs struct {
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -56,7 +56,7 @@ type LookupArgoSmartRoutingArgs struct {
 type LookupArgoSmartRoutingResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -71,7 +71,7 @@ func LookupArgoSmartRoutingOutput(ctx *pulumi.Context, args LookupArgoSmartRouti
 
 // A collection of arguments for invoking getArgoSmartRouting.
 type LookupArgoSmartRoutingOutputArgs struct {
-	// Identifier
+	// Specifies the zone associated with the API call.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -99,7 +99,7 @@ func (o LookupArgoSmartRoutingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Specifies the zone associated with the API call.
 func (o LookupArgoSmartRoutingResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

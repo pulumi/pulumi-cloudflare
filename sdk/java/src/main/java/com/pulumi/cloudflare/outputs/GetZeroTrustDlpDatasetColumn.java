@@ -15,7 +15,7 @@ public final class GetZeroTrustDlpDatasetColumn {
     private String headerName;
     private Integer numCells;
     /**
-     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
      * 
      */
     private String uploadStatus;
@@ -31,7 +31,7 @@ public final class GetZeroTrustDlpDatasetColumn {
         return this.numCells;
     }
     /**
-     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
      * 
      */
     public String uploadStatus() {

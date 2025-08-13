@@ -66,9 +66,9 @@ export class ZeroTrustList extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
-    public readonly items!: pulumi.Output<outputs.ZeroTrustListItem[]>;
+    public readonly items!: pulumi.Output<outputs.ZeroTrustListItem[] | undefined>;
     /**
      * The number of items in the list.
      */
@@ -143,7 +143,7 @@ export interface ZeroTrustListState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
     /**
@@ -172,7 +172,7 @@ export interface ZeroTrustListArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The items in the list.
+     * items to add to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
     /**

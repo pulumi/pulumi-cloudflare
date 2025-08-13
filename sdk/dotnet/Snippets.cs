@@ -16,34 +16,37 @@ namespace Pulumi.Cloudflare
     public partial class Snippets : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Creation time of the snippet
+        /// The timestamp of when the snippet was created.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Content files of uploaded snippet
+        /// The list of files belonging to the snippet.
         /// </summary>
         [Output("files")]
-        public Output<string?> Files { get; private set; } = null!;
-
-        [Output("metadata")]
-        public Output<Outputs.SnippetsMetadata?> Metadata { get; private set; } = null!;
+        public Output<ImmutableArray<string>> Files { get; private set; } = null!;
 
         /// <summary>
-        /// Modification time of the snippet
+        /// Metadata about the snippet.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.SnippetsMetadata> Metadata { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp of when the snippet was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Output("snippetName")]
         public Output<string> SnippetName { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -94,23 +97,32 @@ namespace Pulumi.Cloudflare
 
     public sealed class SnippetsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("files", required: true)]
+        private InputList<string>? _files;
+
         /// <summary>
-        /// Content files of uploaded snippet
+        /// The list of files belonging to the snippet.
         /// </summary>
-        [Input("files")]
-        public Input<string>? Files { get; set; }
-
-        [Input("metadata")]
-        public Input<Inputs.SnippetsMetadataArgs>? Metadata { get; set; }
+        public InputList<string> Files
+        {
+            get => _files ?? (_files = new InputList<string>());
+            set => _files = value;
+        }
 
         /// <summary>
-        /// Snippet identifying name
+        /// Metadata about the snippet.
+        /// </summary>
+        [Input("metadata", required: true)]
+        public Input<Inputs.SnippetsMetadataArgs> Metadata { get; set; } = null!;
+
+        /// <summary>
+        /// The identifying name of the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public Input<string> SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -124,34 +136,43 @@ namespace Pulumi.Cloudflare
     public sealed class SnippetsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Creation time of the snippet
+        /// The timestamp of when the snippet was created.
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
-        /// <summary>
-        /// Content files of uploaded snippet
-        /// </summary>
         [Input("files")]
-        public Input<string>? Files { get; set; }
+        private InputList<string>? _files;
 
+        /// <summary>
+        /// The list of files belonging to the snippet.
+        /// </summary>
+        public InputList<string> Files
+        {
+            get => _files ?? (_files = new InputList<string>());
+            set => _files = value;
+        }
+
+        /// <summary>
+        /// Metadata about the snippet.
+        /// </summary>
         [Input("metadata")]
         public Input<Inputs.SnippetsMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Modification time of the snippet
+        /// The timestamp of when the snippet was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Input("snippetName")]
         public Input<string>? SnippetName { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

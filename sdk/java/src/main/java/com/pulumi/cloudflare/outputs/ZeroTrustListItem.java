@@ -11,7 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustListItem {
-    private @Nullable String createdAt;
     /**
      * @return The description of the list item, if present
      * 
@@ -24,9 +23,6 @@ public final class ZeroTrustListItem {
     private @Nullable String value;
 
     private ZeroTrustListItem() {}
-    public Optional<String> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
     /**
      * @return The description of the list item, if present
      * 
@@ -51,23 +47,15 @@ public final class ZeroTrustListItem {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String createdAt;
         private @Nullable String description;
         private @Nullable String value;
         public Builder() {}
         public Builder(ZeroTrustListItem defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
     	      this.value = defaults.value;
         }
 
-        @CustomType.Setter
-        public Builder createdAt(@Nullable String createdAt) {
-
-            this.createdAt = createdAt;
-            return this;
-        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -82,7 +70,6 @@ public final class ZeroTrustListItem {
         }
         public ZeroTrustListItem build() {
             final var _resultValue = new ZeroTrustListItem();
-            _resultValue.createdAt = createdAt;
             _resultValue.description = description;
             _resultValue.value = value;
             return _resultValue;

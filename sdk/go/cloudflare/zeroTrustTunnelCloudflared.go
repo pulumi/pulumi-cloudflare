@@ -57,6 +57,8 @@ type ZeroTrustTunnelCloudflared struct {
 	// Available values: "local", "cloudflare".
 	ConfigSrc pulumi.StringOutput `pulumi:"configSrc"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	//
+	// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 	Connections ZeroTrustTunnelCloudflaredConnectionArrayOutput `pulumi:"connections"`
 	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
 	ConnsActiveAt pulumi.StringOutput `pulumi:"connsActiveAt"`
@@ -139,6 +141,8 @@ type zeroTrustTunnelCloudflaredState struct {
 	// Available values: "local", "cloudflare".
 	ConfigSrc *string `pulumi:"configSrc"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	//
+	// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 	Connections []ZeroTrustTunnelCloudflaredConnection `pulumi:"connections"`
 	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
 	ConnsActiveAt *string `pulumi:"connsActiveAt"`
@@ -173,6 +177,8 @@ type ZeroTrustTunnelCloudflaredState struct {
 	// Available values: "local", "cloudflare".
 	ConfigSrc pulumi.StringPtrInput
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	//
+	// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 	Connections ZeroTrustTunnelCloudflaredConnectionArrayInput
 	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
 	ConnsActiveAt pulumi.StringPtrInput
@@ -331,6 +337,8 @@ func (o ZeroTrustTunnelCloudflaredOutput) ConfigSrc() pulumi.StringOutput {
 }
 
 // The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+//
+// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 func (o ZeroTrustTunnelCloudflaredOutput) Connections() ZeroTrustTunnelCloudflaredConnectionArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflared) ZeroTrustTunnelCloudflaredConnectionArrayOutput {
 		return v.Connections

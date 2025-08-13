@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.WorkersScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptState;
 import com.pulumi.cloudflare.outputs.WorkersScriptAssets;
 import com.pulumi.cloudflare.outputs.WorkersScriptBinding;
-import com.pulumi.cloudflare.outputs.WorkersScriptMigrations;
 import com.pulumi.cloudflare.outputs.WorkersScriptObservability;
 import com.pulumi.cloudflare.outputs.WorkersScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkersScriptTailConsumer;
@@ -72,14 +71,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bindings", refs={List.class,WorkersScriptBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkersScriptBinding>> bindings;
+    private Output<List<WorkersScriptBinding>> bindings;
 
     /**
      * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
-    public Output<Optional<List<WorkersScriptBinding>>> bindings() {
-        return Codegen.optional(this.bindings);
+    public Output<List<WorkersScriptBinding>> bindings() {
+        return this.bindings;
     }
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -100,42 +99,84 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="compatibilityDate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> compatibilityDate;
+    private Output<String> compatibilityDate;
 
     /**
      * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
      */
-    public Output<Optional<String>> compatibilityDate() {
-        return Codegen.optional(this.compatibilityDate);
+    public Output<String> compatibilityDate() {
+        return this.compatibilityDate;
     }
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> compatibilityFlags;
+    private Output<List<String>> compatibilityFlags;
 
     /**
      * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
-    public Output<Optional<List<String>>> compatibilityFlags() {
-        return Codegen.optional(this.compatibilityFlags);
+    public Output<List<String>> compatibilityFlags() {
+        return this.compatibilityFlags;
     }
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
-    private Output<String> content;
+    private Output</* @Nullable */ String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker.
+     * @return Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
-    public Output<String> content() {
-        return this.content;
+    public Output<Optional<String>> content() {
+        return Codegen.optional(this.content);
+    }
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    @Export(name="contentFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentFile;
+
+    /**
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    public Output<Optional<String>> contentFile() {
+        return Codegen.optional(this.contentFile);
+    }
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    @Export(name="contentSha256", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentSha256;
+
+    /**
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    public Output<Optional<String>> contentSha256() {
+        return Codegen.optional(this.contentSha256);
+    }
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    @Export(name="contentType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentType;
+
+    /**
+     * @return Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    public Output<Optional<String>> contentType() {
+        return Codegen.optional(this.contentType);
     }
     /**
      * When the script was created.
@@ -250,20 +291,6 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mainModule);
     }
     /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    @Export(name="migrations", refs={WorkersScriptMigrations.class}, tree="[0]")
-    private Output</* @Nullable */ WorkersScriptMigrations> migrations;
-
-    /**
-     * @return Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    public Output<Optional<WorkersScriptMigrations>> migrations() {
-        return Codegen.optional(this.migrations);
-    }
-    /**
      * When the script was last modified.
      * 
      */
@@ -296,14 +323,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="placement", refs={WorkersScriptPlacement.class}, tree="[0]")
-    private Output</* @Nullable */ WorkersScriptPlacement> placement;
+    private Output<WorkersScriptPlacement> placement;
 
     /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
-    public Output<Optional<WorkersScriptPlacement>> placement() {
-        return Codegen.optional(this.placement);
+    public Output<WorkersScriptPlacement> placement() {
+        return this.placement;
     }
     /**
      * Name of the script, used in URLs and route configuration.
@@ -330,14 +357,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tailConsumers", refs={List.class,WorkersScriptTailConsumer.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkersScriptTailConsumer>> tailConsumers;
+    private Output<List<WorkersScriptTailConsumer>> tailConsumers;
 
     /**
      * @return List of Workers that will consume logs from the attached Worker.
      * 
      */
-    public Output<Optional<List<WorkersScriptTailConsumer>>> tailConsumers() {
-        return Codegen.optional(this.tailConsumers);
+    public Output<List<WorkersScriptTailConsumer>> tailConsumers() {
+        return this.tailConsumers;
     }
     /**
      * Usage model for the Worker invocations.

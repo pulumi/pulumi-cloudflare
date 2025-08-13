@@ -26,8 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupQueueConsumer(ctx, &cloudflare.LookupQueueConsumerArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				QueueId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ConsumerId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,6 +53,8 @@ type LookupQueueConsumerArgs struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`
 	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
+	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
 }
 
@@ -71,7 +74,7 @@ type LookupQueueConsumerResult struct {
 	// Name of a Worker
 	ScriptName string                   `pulumi:"scriptName"`
 	Settings   GetQueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker".
+	// Available values: "worker", "httpPull".
 	Type string `pulumi:"type"`
 }
 
@@ -88,6 +91,8 @@ func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutp
 type LookupQueueConsumerOutputArgs struct {
 	// A Resource identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// A Resource identifier.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
 	// A Resource identifier.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
@@ -149,7 +154,7 @@ func (o LookupQueueConsumerResultOutput) Settings() GetQueueConsumerSettingsOutp
 	return o.ApplyT(func(v LookupQueueConsumerResult) GetQueueConsumerSettings { return v.Settings }).(GetQueueConsumerSettingsOutput)
 }
 
-// Available values: "worker".
+// Available values: "worker", "httpPull".
 func (o LookupQueueConsumerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Type }).(pulumi.StringOutput)
 }

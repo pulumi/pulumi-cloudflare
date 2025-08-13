@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -69,89 +68,11 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/waitingRoomRules:WaitingRoomRules")
 public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
-    /**
-     * The action to take when the expression matches.
-     * Available values: &#34;bypass*waiting*room&#34;.
-     * 
-     */
-    @Export(name="action", refs={String.class}, tree="[0]")
-    private Output<String> action;
-
-    /**
-     * @return The action to take when the expression matches.
-     * Available values: &#34;bypass*waiting*room&#34;.
-     * 
-     */
-    public Output<String> action() {
-        return this.action;
-    }
-    /**
-     * The description of the rule.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return The description of the rule.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-    /**
-     * When set to true, the rule is enabled.
-     * 
-     */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
-
-    /**
-     * @return When set to true, the rule is enabled.
-     * 
-     */
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-    /**
-     * Criteria defining when there is a match for the current rule.
-     * 
-     */
-    @Export(name="expression", refs={String.class}, tree="[0]")
-    private Output<String> expression;
-
-    /**
-     * @return Criteria defining when there is a match for the current rule.
-     * 
-     */
-    public Output<String> expression() {
-        return this.expression;
-    }
-    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
-    private Output<String> lastUpdated;
-
-    public Output<String> lastUpdated() {
-        return this.lastUpdated;
-    }
     @Export(name="rules", refs={List.class,WaitingRoomRulesRule.class}, tree="[0,1]")
     private Output<List<WaitingRoomRulesRule>> rules;
 
     public Output<List<WaitingRoomRulesRule>> rules() {
         return this.rules;
-    }
-    /**
-     * The version of the rule.
-     * 
-     */
-    @Export(name="version", refs={String.class}, tree="[0]")
-    private Output<String> version;
-
-    /**
-     * @return The version of the rule.
-     * 
-     */
-    public Output<String> version() {
-        return this.version;
     }
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;
@@ -160,14 +81,14 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
         return this.waitingRoomId;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

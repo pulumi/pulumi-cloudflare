@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,15 +35,15 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
      * Name of the script to run if the route matches.
      * 
      */
-    @Import(name="script", required=true)
-    private Output<String> script;
+    @Import(name="script")
+    private @Nullable Output<String> script;
 
     /**
      * @return Name of the script to run if the route matches.
      * 
      */
-    public Output<String> script() {
-        return this.script;
+    public Optional<Output<String>> script() {
+        return Optional.ofNullable(this.script);
     }
 
     /**
@@ -112,7 +114,7 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder script(Output<String> script) {
+        public Builder script(@Nullable Output<String> script) {
             $.script = script;
             return this;
         }
@@ -151,9 +153,6 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
         public WorkersRouteArgs build() {
             if ($.pattern == null) {
                 throw new MissingRequiredPropertyException("WorkersRouteArgs", "pattern");
-            }
-            if ($.script == null) {
-                throw new MissingRequiredPropertyException("WorkersRouteArgs", "script");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("WorkersRouteArgs", "zoneId");

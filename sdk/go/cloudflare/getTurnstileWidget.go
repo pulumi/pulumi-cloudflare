@@ -86,8 +86,8 @@ type LookupTurnstileWidgetResult struct {
 	Name string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel bool `pulumi:"offlabel"`
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret string `pulumi:"secret"`
@@ -196,8 +196,8 @@ func (o LookupTurnstileWidgetResultOutput) Offlabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) bool { return v.Offlabel }).(pulumi.BoolOutput)
 }
 
-// Region where this widget can be used.
-// Available values: "world".
+// Region where this widget can be used. This cannot be changed after creation.
+// Available values: "world", "china".
 func (o LookupTurnstileWidgetResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTurnstileWidgetResult) string { return v.Region }).(pulumi.StringOutput)
 }

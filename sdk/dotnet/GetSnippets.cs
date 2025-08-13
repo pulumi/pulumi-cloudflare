@@ -24,8 +24,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         SnippetName = "snippet_name_01",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });
@@ -47,8 +47,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         SnippetName = "snippet_name_01",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });
@@ -70,8 +70,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
-        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         SnippetName = "snippet_name_01",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });
@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public string SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Input("snippetName", required: true)]
         public Input<string> SnippetName { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetSnippetsResult
     {
         /// <summary>
-        /// Creation time of the snippet
+        /// The timestamp of when the snippet was created.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
@@ -135,15 +135,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Modification time of the snippet
+        /// The timestamp of when the snippet was last modified.
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         public readonly string SnippetName;
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         public readonly string ZoneId;
 

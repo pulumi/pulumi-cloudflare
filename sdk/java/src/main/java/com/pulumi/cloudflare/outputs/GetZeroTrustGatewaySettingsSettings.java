@@ -13,6 +13,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsCustomCe
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsFips;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsHostSelector;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsInspection;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetection;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsSandbox;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsTlsDecrypt;
@@ -76,6 +77,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
+    /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    private GetZeroTrustGatewaySettingsSettingsInspection inspection;
     /**
      * @return Protocol Detection settings.
      * 
@@ -168,6 +174,13 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.hostSelector;
     }
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public GetZeroTrustGatewaySettingsSettingsInspection inspection() {
+        return this.inspection;
+    }
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -208,6 +221,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
         private GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching;
         private GetZeroTrustGatewaySettingsSettingsFips fips;
         private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
+        private GetZeroTrustGatewaySettingsSettingsInspection inspection;
         private GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
         private GetZeroTrustGatewaySettingsSettingsSandbox sandbox;
         private GetZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
@@ -224,6 +238,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
     	      this.extendedEmailMatching = defaults.extendedEmailMatching;
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
+    	      this.inspection = defaults.inspection;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -310,6 +325,14 @@ public final class GetZeroTrustGatewaySettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder inspection(GetZeroTrustGatewaySettingsSettingsInspection inspection) {
+            if (inspection == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "inspection");
+            }
+            this.inspection = inspection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection) {
             if (protocolDetection == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "protocolDetection");
@@ -345,6 +368,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
             _resultValue.extendedEmailMatching = extendedEmailMatching;
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
+            _resultValue.inspection = inspection;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

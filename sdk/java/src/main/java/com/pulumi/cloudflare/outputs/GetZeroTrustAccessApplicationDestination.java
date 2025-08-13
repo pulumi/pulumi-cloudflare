@@ -32,7 +32,7 @@ public final class GetZeroTrustAccessApplicationDestination {
      */
     private String portRange;
     /**
-     * @return Available values: &#34;public&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     private String type;
@@ -78,7 +78,7 @@ public final class GetZeroTrustAccessApplicationDestination {
         return this.portRange;
     }
     /**
-     * @return Available values: &#34;public&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     public String type() {

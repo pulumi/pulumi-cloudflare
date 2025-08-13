@@ -367,7 +367,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -375,7 +375,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
      * 
      */
     public Output<String> type() {
@@ -395,6 +395,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<String>>> usages() {
         return Optional.ofNullable(this.usages);
+    }
+
+    /**
+     * Name of the Workflow to bind to.
+     * 
+     */
+    @Import(name="workflowName")
+    private @Nullable Output<String> workflowName;
+
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    public Optional<Output<String>> workflowName() {
+        return Optional.ofNullable(this.workflowName);
     }
 
     private WorkersScriptBindingArgs() {}
@@ -425,6 +440,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         this.text = $.text;
         this.type = $.type;
         this.usages = $.usages;
+        this.workflowName = $.workflowName;
     }
 
     public static Builder builder() {
@@ -932,7 +948,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;.
+         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
          * 
          * @return builder
          * 
@@ -944,7 +960,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;.
+         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
          * 
          * @return builder
          * 
@@ -982,6 +998,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder usages(String... usages) {
             return usages(List.of(usages));
+        }
+
+        /**
+         * @param workflowName Name of the Workflow to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workflowName(@Nullable Output<String> workflowName) {
+            $.workflowName = workflowName;
+            return this;
+        }
+
+        /**
+         * @param workflowName Name of the Workflow to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workflowName(String workflowName) {
+            return workflowName(Output.of(workflowName));
         }
 
         public WorkersScriptBindingArgs build() {

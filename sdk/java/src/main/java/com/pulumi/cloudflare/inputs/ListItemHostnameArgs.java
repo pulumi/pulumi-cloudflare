@@ -6,13 +6,31 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ListItemHostnameArgs Empty = new ListItemHostnameArgs();
+
+    /**
+     * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * 
+     */
+    @Import(name="excludeExactHostname")
+    private @Nullable Output<Boolean> excludeExactHostname;
+
+    /**
+     * @return Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+     * 
+     */
+    public Optional<Output<Boolean>> excludeExactHostname() {
+        return Optional.ofNullable(this.excludeExactHostname);
+    }
 
     @Import(name="urlHostname", required=true)
     private Output<String> urlHostname;
@@ -24,6 +42,7 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
     private ListItemHostnameArgs() {}
 
     private ListItemHostnameArgs(ListItemHostnameArgs $) {
+        this.excludeExactHostname = $.excludeExactHostname;
         this.urlHostname = $.urlHostname;
     }
 
@@ -43,6 +62,27 @@ public final class ListItemHostnameArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(ListItemHostnameArgs defaults) {
             $ = new ListItemHostnameArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExactHostname(@Nullable Output<Boolean> excludeExactHostname) {
+            $.excludeExactHostname = excludeExactHostname;
+            return this;
+        }
+
+        /**
+         * @param excludeExactHostname Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeExactHostname(Boolean excludeExactHostname) {
+            return excludeExactHostname(Output.of(excludeExactHostname));
         }
 
         public Builder urlHostname(Output<String> urlHostname) {

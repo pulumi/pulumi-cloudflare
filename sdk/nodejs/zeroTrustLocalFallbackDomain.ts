@@ -47,20 +47,8 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * A description of the fallback domain, displayed in the client UI.
-     */
-    public /*out*/ readonly description!: pulumi.Output<string>;
-    /**
-     * A list of IP addresses to handle domain resolution.
-     */
-    public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
     public readonly domains!: pulumi.Output<outputs.ZeroTrustLocalFallbackDomainDomain[]>;
     public readonly policyId!: pulumi.Output<string>;
-    /**
-     * The domain suffix to match when resolving locally.
-     */
-    public /*out*/ readonly suffix!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustLocalFallbackDomain resource with the given unique name, arguments, and options.
@@ -79,11 +67,8 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustLocalFallbackDomainState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["domains"] = state ? state.domains : undefined;
             resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["suffix"] = state ? state.suffix : undefined;
         } else {
             const args = argsOrState as ZeroTrustLocalFallbackDomainArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -98,9 +83,6 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["domains"] = args ? args.domains : undefined;
             resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["dnsServers"] = undefined /*out*/;
-            resourceInputs["suffix"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/fallbackDomain:FallbackDomain" }, { type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };
@@ -114,20 +96,8 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
  */
 export interface ZeroTrustLocalFallbackDomainState {
     accountId?: pulumi.Input<string>;
-    /**
-     * A description of the fallback domain, displayed in the client UI.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * A list of IP addresses to handle domain resolution.
-     */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustLocalFallbackDomainDomain>[]>;
     policyId?: pulumi.Input<string>;
-    /**
-     * The domain suffix to match when resolving locally.
-     */
-    suffix?: pulumi.Input<string>;
 }
 
 /**

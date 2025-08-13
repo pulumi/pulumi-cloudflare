@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -81,26 +80,6 @@ public class AccessTag extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * The number of applications that have this tag
-     * 
-     */
-    @Export(name="appCount", refs={Integer.class}, tree="[0]")
-    private Output<Integer> appCount;
-
-    /**
-     * @return The number of applications that have this tag
-     * 
-     */
-    public Output<Integer> appCount() {
-        return this.appCount;
-    }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
-    /**
      * The name of the tag
      * 
      */
@@ -113,12 +92,6 @@ public class AccessTag extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
 
     /**

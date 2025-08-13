@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -199,6 +199,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _usages ?? (_usages = new InputList<string>());
             set => _usages = value;
         }
+
+        /// <summary>
+        /// Name of the Workflow to bind to.
+        /// </summary>
+        [Input("workflowName")]
+        public Input<string>? WorkflowName { get; set; }
 
         public WorkersScriptBindingArgs()
         {

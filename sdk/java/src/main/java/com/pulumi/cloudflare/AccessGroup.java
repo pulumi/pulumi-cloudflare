@@ -106,12 +106,6 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
@@ -181,12 +175,6 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AccessGroupRequire>>> requires() {
         return Codegen.optional(this.requires);
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

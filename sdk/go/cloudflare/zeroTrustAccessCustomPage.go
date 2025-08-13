@@ -14,34 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
-//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
-//				Name:       pulumi.String("name"),
-//				Type:       pulumi.String("identity_denied"),
-//				AppCount:   pulumi.Int(0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -52,9 +24,6 @@ type ZeroTrustAccessCustomPage struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount  pulumi.IntPtrOutput `pulumi:"appCount"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
 	// Custom page name.
@@ -63,8 +32,7 @@ type ZeroTrustAccessCustomPage struct {
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UUID.
-	Uid       pulumi.StringOutput `pulumi:"uid"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewZeroTrustAccessCustomPage registers a new resource with the given unique name, arguments, and options.
@@ -117,9 +85,6 @@ func GetZeroTrustAccessCustomPage(ctx *pulumi.Context,
 type zeroTrustAccessCustomPageState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount  *int    `pulumi:"appCount"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml *string `pulumi:"customHtml"`
 	// Custom page name.
@@ -128,16 +93,12 @@ type zeroTrustAccessCustomPageState struct {
 	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
 	// UUID.
-	Uid       *string `pulumi:"uid"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Uid *string `pulumi:"uid"`
 }
 
 type ZeroTrustAccessCustomPageState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Number of apps the custom page is assigned to.
-	AppCount  pulumi.IntPtrInput
-	CreatedAt pulumi.StringPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringPtrInput
 	// Custom page name.
@@ -146,8 +107,7 @@ type ZeroTrustAccessCustomPageState struct {
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
 	// UUID.
-	Uid       pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Uid pulumi.StringPtrInput
 }
 
 func (ZeroTrustAccessCustomPageState) ElementType() reflect.Type {
@@ -157,8 +117,6 @@ func (ZeroTrustAccessCustomPageState) ElementType() reflect.Type {
 type zeroTrustAccessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount *int `pulumi:"appCount"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// Custom page name.
@@ -172,8 +130,6 @@ type zeroTrustAccessCustomPageArgs struct {
 type ZeroTrustAccessCustomPageArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
-	// Number of apps the custom page is assigned to.
-	AppCount pulumi.IntPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringInput
 	// Custom page name.
@@ -275,15 +231,6 @@ func (o ZeroTrustAccessCustomPageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of apps the custom page is assigned to.
-func (o ZeroTrustAccessCustomPageOutput) AppCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.IntPtrOutput { return v.AppCount }).(pulumi.IntPtrOutput)
-}
-
-func (o ZeroTrustAccessCustomPageOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Custom page HTML.
 func (o ZeroTrustAccessCustomPageOutput) CustomHtml() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.CustomHtml }).(pulumi.StringOutput)
@@ -303,10 +250,6 @@ func (o ZeroTrustAccessCustomPageOutput) Type() pulumi.StringOutput {
 // UUID.
 func (o ZeroTrustAccessCustomPageOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
-}
-
-func (o ZeroTrustAccessCustomPageOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessCustomPageArrayOutput struct{ *pulumi.OutputState }

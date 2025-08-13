@@ -61,7 +61,7 @@ type LookupRateLimitResult struct {
 	Action GetRateLimitAction `pulumi:"action"`
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses []GetRateLimitBypass `pulumi:"bypasses"`
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description string `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled bool `pulumi:"disabled"`
@@ -125,7 +125,7 @@ func (o LookupRateLimitResultOutput) Bypasses() GetRateLimitBypassArrayOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) []GetRateLimitBypass { return v.Bypasses }).(GetRateLimitBypassArrayOutput)
 }
 
-// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+// An informative summary of the rule. This value is sanitized and any tags will be removed.
 func (o LookupRateLimitResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) string { return v.Description }).(pulumi.StringOutput)
 }

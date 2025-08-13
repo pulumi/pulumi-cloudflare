@@ -38,7 +38,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Period in seconds over which the counter is being incremented.
-        /// Available values: 10, 60, 600, 3600.
         /// </summary>
         [Input("period", required: true)]
         public Input<int> Period { get; set; } = null!;

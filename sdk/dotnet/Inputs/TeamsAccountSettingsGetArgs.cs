@@ -73,6 +73,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsAccountSettingsHostSelectorGetArgs>? HostSelector { get; set; }
 
         /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        [Input("inspection")]
+        public Input<Inputs.TeamsAccountSettingsInspectionGetArgs>? Inspection { get; set; }
+
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         [Input("protocolDetection")]

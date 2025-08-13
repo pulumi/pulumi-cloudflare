@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         public readonly string Action;
@@ -152,16 +152,20 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         public readonly string Identity;
         public readonly string Name;
+        public readonly bool NotSharable;
         public readonly int Precedence;
+        public readonly bool ReadOnly;
         /// <summary>
         /// The API resource UUID.
         /// </summary>
         public readonly string? RuleId;
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsResult RuleSettings;
         public readonly Outputs.GetZeroTrustGatewayPolicyScheduleResult Schedule;
+        public readonly string SourceAccount;
         public readonly string Traffic;
         public readonly string UpdatedAt;
         public readonly int Version;
+        public readonly string WarningStatus;
 
         [OutputConstructor]
         private GetZeroTrustGatewayPolicyResult(
@@ -189,7 +193,11 @@ namespace Pulumi.Cloudflare
 
             string name,
 
+            bool notSharable,
+
             int precedence,
+
+            bool readOnly,
 
             string? ruleId,
 
@@ -197,11 +205,15 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetZeroTrustGatewayPolicyScheduleResult schedule,
 
+            string sourceAccount,
+
             string traffic,
 
             string updatedAt,
 
-            int version)
+            int version,
+
+            string warningStatus)
         {
             AccountId = accountId;
             Action = action;
@@ -215,13 +227,17 @@ namespace Pulumi.Cloudflare
             Id = id;
             Identity = identity;
             Name = name;
+            NotSharable = notSharable;
             Precedence = precedence;
+            ReadOnly = readOnly;
             RuleId = ruleId;
             RuleSettings = ruleSettings;
             Schedule = schedule;
+            SourceAccount = sourceAccount;
             Traffic = traffic;
             UpdatedAt = updatedAt;
             Version = version;
+            WarningStatus = warningStatus;
         }
     }
 }

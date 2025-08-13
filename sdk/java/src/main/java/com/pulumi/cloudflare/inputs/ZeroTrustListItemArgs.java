@@ -15,13 +15,6 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
 
     public static final ZeroTrustListItemArgs Empty = new ZeroTrustListItemArgs();
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * The description of the list item, if present
      * 
@@ -55,7 +48,6 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
     private ZeroTrustListItemArgs() {}
 
     private ZeroTrustListItemArgs(ZeroTrustListItemArgs $) {
-        this.createdAt = $.createdAt;
         this.description = $.description;
         this.value = $.value;
     }
@@ -76,15 +68,6 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ZeroTrustListItemArgs defaults) {
             $ = new ZeroTrustListItemArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**

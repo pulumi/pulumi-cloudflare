@@ -12,8 +12,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -50,6 +52,9 @@ import javax.annotation.Nullable;
  *                 .value("198.51.100.4")
  *                 .build())
  *             .urls("shop.example.com/*")
+ *             .description("Prevent multiple login failures to mitigate brute force attacks")
+ *             .paused(false)
+ *             .priority(5.0)
  *             .build());
  * 
  *     }
@@ -96,18 +101,18 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * An informative summary of the rule.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
-     * @return An informative summary of the rule.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The timestamp of when the rule was last modified.
@@ -136,6 +141,20 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> paused() {
         return this.paused;
+    }
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    @Export(name="priority", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> priority;
+
+    /**
+     * @return The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    public Output<Optional<Double>> priority() {
+        return Codegen.optional(this.priority);
     }
     /**
      * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.

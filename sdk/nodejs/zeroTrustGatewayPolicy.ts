@@ -45,7 +45,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     public readonly action!: pulumi.Output<string>;
@@ -57,7 +57,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The wirefilter expression used for device posture check matching.
      */
@@ -84,10 +84,14 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
+     * The rule cannot be shared via the Orgs API
      */
+    public /*out*/ readonly notSharable!: pulumi.Output<boolean>;
     public readonly precedence!: pulumi.Output<number | undefined>;
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     */
+    public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
     /**
      * Additional settings that modify the rule's action.
      */
@@ -95,7 +99,11 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     /**
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
-    public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule | undefined>;
+    public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
+    /**
+     * account tag of account that created the rule
+     */
+    public /*out*/ readonly sourceAccount!: pulumi.Output<string>;
     /**
      * The wirefilter expression used for traffic matching.
      */
@@ -105,6 +113,10 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * version number of the rule
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
+    /**
+     * Warning for a misconfigured rule, if any.
+     */
+    public /*out*/ readonly warningStatus!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustGatewayPolicy resource with the given unique name, arguments, and options.
@@ -130,12 +142,16 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["identity"] = state ? state.identity : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notSharable"] = state ? state.notSharable : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
+            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["ruleSettings"] = state ? state.ruleSettings : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["sourceAccount"] = state ? state.sourceAccount : undefined;
             resourceInputs["traffic"] = state ? state.traffic : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["warningStatus"] = state ? state.warningStatus : undefined;
         } else {
             const args = argsOrState as ZeroTrustGatewayPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -162,8 +178,12 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["traffic"] = args ? args.traffic : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["notSharable"] = undefined /*out*/;
+            resourceInputs["readOnly"] = undefined /*out*/;
+            resourceInputs["sourceAccount"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
+            resourceInputs["warningStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsRule:TeamsRule" }] };
@@ -178,7 +198,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 export interface ZeroTrustGatewayPolicyState {
     accountId?: pulumi.Input<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action?: pulumi.Input<string>;
@@ -217,10 +237,14 @@ export interface ZeroTrustGatewayPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
+     * The rule cannot be shared via the Orgs API
      */
+    notSharable?: pulumi.Input<boolean>;
     precedence?: pulumi.Input<number>;
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     */
+    readOnly?: pulumi.Input<boolean>;
     /**
      * Additional settings that modify the rule's action.
      */
@@ -230,6 +254,10 @@ export interface ZeroTrustGatewayPolicyState {
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
     /**
+     * account tag of account that created the rule
+     */
+    sourceAccount?: pulumi.Input<string>;
+    /**
      * The wirefilter expression used for traffic matching.
      */
     traffic?: pulumi.Input<string>;
@@ -238,6 +266,10 @@ export interface ZeroTrustGatewayPolicyState {
      * version number of the rule
      */
     version?: pulumi.Input<number>;
+    /**
+     * Warning for a misconfigured rule, if any.
+     */
+    warningStatus?: pulumi.Input<string>;
 }
 
 /**
@@ -246,7 +278,7 @@ export interface ZeroTrustGatewayPolicyState {
 export interface ZeroTrustGatewayPolicyArgs {
     accountId: pulumi.Input<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action: pulumi.Input<string>;
@@ -279,10 +311,6 @@ export interface ZeroTrustGatewayPolicyArgs {
      * The name of the rule.
      */
     name: pulumi.Input<string>;
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     */
     precedence?: pulumi.Input<number>;
     /**
      * Additional settings that modify the rule's action.

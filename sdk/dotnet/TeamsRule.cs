@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Output("action")]
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// The description of the rule.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression used for device posture check matching.
@@ -85,11 +85,19 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
+        /// The rule cannot be shared via the Orgs API
         /// </summary>
+        [Output("notSharable")]
+        public Output<bool> NotSharable { get; private set; } = null!;
+
         [Output("precedence")]
         public Output<int?> Precedence { get; private set; } = null!;
+
+        /// <summary>
+        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        [Output("readOnly")]
+        public Output<bool> ReadOnly { get; private set; } = null!;
 
         /// <summary>
         /// Additional settings that modify the rule's action.
@@ -101,7 +109,13 @@ namespace Pulumi.Cloudflare
         /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         /// </summary>
         [Output("schedule")]
-        public Output<Outputs.TeamsRuleSchedule?> Schedule { get; private set; } = null!;
+        public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// account tag of account that created the rule
+        /// </summary>
+        [Output("sourceAccount")]
+        public Output<string> SourceAccount { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression used for traffic matching.
@@ -117,6 +131,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        [Output("warningStatus")]
+        public Output<string> WarningStatus { get; private set; } = null!;
 
 
         /// <summary>
@@ -172,7 +192,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action", required: true)]
@@ -227,10 +247,6 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
-        /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
@@ -264,7 +280,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action")]
@@ -329,11 +345,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
+        /// The rule cannot be shared via the Orgs API
         /// </summary>
+        [Input("notSharable")]
+        public Input<bool>? NotSharable { get; set; }
+
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
+
+        /// <summary>
+        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        [Input("readOnly")]
+        public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
         /// Additional settings that modify the rule's action.
@@ -346,6 +370,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleGetArgs>? Schedule { get; set; }
+
+        /// <summary>
+        /// account tag of account that created the rule
+        /// </summary>
+        [Input("sourceAccount")]
+        public Input<string>? SourceAccount { get; set; }
 
         /// <summary>
         /// The wirefilter expression used for traffic matching.
@@ -361,6 +391,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        [Input("warningStatus")]
+        public Input<string>? WarningStatus { get; set; }
 
         public TeamsRuleState()
         {

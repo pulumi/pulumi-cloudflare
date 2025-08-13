@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetR2BucketEventNotificationQueue;
+import com.pulumi.cloudflare.outputs.GetR2BucketEventNotificationRule;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -28,10 +28,16 @@ public final class GetR2BucketEventNotificationResult {
      */
     private String id;
     /**
-     * @return List of queues associated with the bucket.
+     * @return Queue ID.
      * 
      */
-    private List<GetR2BucketEventNotificationQueue> queues;
+    private String queueId;
+    /**
+     * @return Name of the queue.
+     * 
+     */
+    private String queueName;
+    private List<GetR2BucketEventNotificationRule> rules;
 
     private GetR2BucketEventNotificationResult() {}
     /**
@@ -56,11 +62,21 @@ public final class GetR2BucketEventNotificationResult {
         return this.id;
     }
     /**
-     * @return List of queues associated with the bucket.
+     * @return Queue ID.
      * 
      */
-    public List<GetR2BucketEventNotificationQueue> queues() {
-        return this.queues;
+    public String queueId() {
+        return this.queueId;
+    }
+    /**
+     * @return Name of the queue.
+     * 
+     */
+    public String queueName() {
+        return this.queueName;
+    }
+    public List<GetR2BucketEventNotificationRule> rules() {
+        return this.rules;
     }
 
     public static Builder builder() {
@@ -75,14 +91,18 @@ public final class GetR2BucketEventNotificationResult {
         private String accountId;
         private String bucketName;
         private String id;
-        private List<GetR2BucketEventNotificationQueue> queues;
+        private String queueId;
+        private String queueName;
+        private List<GetR2BucketEventNotificationRule> rules;
         public Builder() {}
         public Builder(GetR2BucketEventNotificationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
     	      this.id = defaults.id;
-    	      this.queues = defaults.queues;
+    	      this.queueId = defaults.queueId;
+    	      this.queueName = defaults.queueName;
+    	      this.rules = defaults.rules;
         }
 
         @CustomType.Setter
@@ -110,22 +130,40 @@ public final class GetR2BucketEventNotificationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder queues(List<GetR2BucketEventNotificationQueue> queues) {
-            if (queues == null) {
-              throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "queues");
+        public Builder queueId(String queueId) {
+            if (queueId == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "queueId");
             }
-            this.queues = queues;
+            this.queueId = queueId;
             return this;
         }
-        public Builder queues(GetR2BucketEventNotificationQueue... queues) {
-            return queues(List.of(queues));
+        @CustomType.Setter
+        public Builder queueName(String queueName) {
+            if (queueName == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "queueName");
+            }
+            this.queueName = queueName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rules(List<GetR2BucketEventNotificationRule> rules) {
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketEventNotificationResult", "rules");
+            }
+            this.rules = rules;
+            return this;
+        }
+        public Builder rules(GetR2BucketEventNotificationRule... rules) {
+            return rules(List.of(rules));
         }
         public GetR2BucketEventNotificationResult build() {
             final var _resultValue = new GetR2BucketEventNotificationResult();
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
             _resultValue.id = id;
-            _resultValue.queues = queues;
+            _resultValue.queueId = queueId;
+            _resultValue.queueName = queueName;
+            _resultValue.rules = rules;
             return _resultValue;
         }
     }

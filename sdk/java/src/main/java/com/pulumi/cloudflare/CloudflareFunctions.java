@@ -98,8 +98,8 @@ import com.pulumi.cloudflare.inputs.GetCertificatePackArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePackPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksPlainArgs;
-import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
-import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
+import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestAssetArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestAssetPlainArgs;
@@ -219,7 +219,11 @@ import com.pulumi.cloudflare.inputs.GetLeakedCredentialCheckRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListArgs;
 import com.pulumi.cloudflare.inputs.GetListItemArgs;
 import com.pulumi.cloudflare.inputs.GetListItemPlainArgs;
+import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+import com.pulumi.cloudflare.inputs.GetListItemsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetListsArgs;
+import com.pulumi.cloudflare.inputs.GetListsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerArgs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerMonitorArgs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerMonitorPlainArgs;
@@ -323,6 +327,8 @@ import com.pulumi.cloudflare.inputs.GetPagesProjectsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetQueueArgs;
 import com.pulumi.cloudflare.inputs.GetQueueConsumerArgs;
 import com.pulumi.cloudflare.inputs.GetQueueConsumerPlainArgs;
+import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+import com.pulumi.cloudflare.inputs.GetQueueConsumersPlainArgs;
 import com.pulumi.cloudflare.inputs.GetQueuePlainArgs;
 import com.pulumi.cloudflare.inputs.GetQueuesArgs;
 import com.pulumi.cloudflare.inputs.GetQueuesPlainArgs;
@@ -362,6 +368,16 @@ import com.pulumi.cloudflare.inputs.GetRulesetArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetPlainArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetsArgs;
@@ -522,6 +538,12 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRuleArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfilePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpDatasetArgs;
@@ -584,6 +606,12 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredVirtualNetworks
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredVirtualNetworksPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredsArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReservePlainArgs;
@@ -653,7 +681,7 @@ import com.pulumi.cloudflare.outputs.GetCallsTurnAppResult;
 import com.pulumi.cloudflare.outputs.GetCallsTurnAppsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePackResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePacksInvokeResult;
-import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestAssetResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestMessageResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestPriorityResult;
@@ -713,7 +741,9 @@ import com.pulumi.cloudflare.outputs.GetKeylessCertificatesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetLeakedCredentialCheckResult;
 import com.pulumi.cloudflare.outputs.GetLeakedCredentialCheckRulesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetListItemResult;
+import com.pulumi.cloudflare.outputs.GetListItemsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
+import com.pulumi.cloudflare.outputs.GetListsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerMonitorResult;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerMonitorsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolResult;
@@ -765,6 +795,7 @@ import com.pulumi.cloudflare.outputs.GetPagesDomainsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetPagesProjectResult;
 import com.pulumi.cloudflare.outputs.GetPagesProjectsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetQueueConsumerResult;
+import com.pulumi.cloudflare.outputs.GetQueueConsumersInvokeResult;
 import com.pulumi.cloudflare.outputs.GetQueueResult;
 import com.pulumi.cloudflare.outputs.GetQueuesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetR2BucketCorsResult;
@@ -785,6 +816,11 @@ import com.pulumi.cloudflare.outputs.GetResourceGroupResult;
 import com.pulumi.cloudflare.outputs.GetResourceGroupsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetRulesetResult;
 import com.pulumi.cloudflare.outputs.GetRulesetsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSchemaValidationOperationSettingsListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSchemaValidationOperationSettingsResult;
+import com.pulumi.cloudflare.outputs.GetSchemaValidationSchemasListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSchemaValidationSchemasResult;
+import com.pulumi.cloudflare.outputs.GetSchemaValidationSettingsResult;
 import com.pulumi.cloudflare.outputs.GetSnippetRulesListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsResult;
@@ -866,6 +902,9 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureIntegrationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureIntegrationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRuleResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRulesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDeviceSettingsResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDatasetResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDatasetsInvokeResult;
@@ -897,6 +936,9 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredTokenResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelWarpConnectorResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelWarpConnectorTokenResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelWarpConnectorsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheVariantsResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnsSettingsResult;
@@ -1588,7 +1630,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1628,7 +1670,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1668,7 +1710,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1708,7 +1750,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1748,7 +1790,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1788,7 +1830,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1828,7 +1870,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccount = CloudflareFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -1868,7 +1910,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroups = CloudflareFunctions.getAccountApiTokenPermissionGroups(GetAccountApiTokenPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -1908,7 +1952,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroups = CloudflareFunctions.getAccountApiTokenPermissionGroups(GetAccountApiTokenPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -1948,7 +1994,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroups = CloudflareFunctions.getAccountApiTokenPermissionGroups(GetAccountApiTokenPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -1988,7 +2036,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroups = CloudflareFunctions.getAccountApiTokenPermissionGroups(GetAccountApiTokenPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2028,7 +2078,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroups = CloudflareFunctions.getAccountApiTokenPermissionGroups(GetAccountApiTokenPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2068,7 +2120,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroupsList = CloudflareFunctions.getAccountApiTokenPermissionGroupsList(GetAccountApiTokenPermissionGroupsListArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2108,7 +2162,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroupsList = CloudflareFunctions.getAccountApiTokenPermissionGroupsList(GetAccountApiTokenPermissionGroupsListArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2148,7 +2204,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroupsList = CloudflareFunctions.getAccountApiTokenPermissionGroupsList(GetAccountApiTokenPermissionGroupsListArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2188,7 +2246,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroupsList = CloudflareFunctions.getAccountApiTokenPermissionGroupsList(GetAccountApiTokenPermissionGroupsListArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2228,7 +2288,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountApiTokenPermissionGroupsList = CloudflareFunctions.getAccountApiTokenPermissionGroupsList(GetAccountApiTokenPermissionGroupsListArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -2923,7 +2985,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMember = CloudflareFunctions.getAccountMember(GetAccountMemberArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .memberId("4536bcfad5faccb111b47003c79917fa")
      *             .build());
      * 
@@ -2964,7 +3026,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMember = CloudflareFunctions.getAccountMember(GetAccountMemberArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .memberId("4536bcfad5faccb111b47003c79917fa")
      *             .build());
      * 
@@ -3005,7 +3067,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMember = CloudflareFunctions.getAccountMember(GetAccountMemberArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .memberId("4536bcfad5faccb111b47003c79917fa")
      *             .build());
      * 
@@ -3046,7 +3108,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMember = CloudflareFunctions.getAccountMember(GetAccountMemberArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .memberId("4536bcfad5faccb111b47003c79917fa")
      *             .build());
      * 
@@ -3087,7 +3149,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMember = CloudflareFunctions.getAccountMember(GetAccountMemberArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .memberId("4536bcfad5faccb111b47003c79917fa")
      *             .build());
      * 
@@ -3128,7 +3190,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMembers = CloudflareFunctions.getAccountMembers(GetAccountMembersArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .order("status")
      *             .status("accepted")
@@ -3171,7 +3233,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMembers = CloudflareFunctions.getAccountMembers(GetAccountMembersArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .order("status")
      *             .status("accepted")
@@ -3214,7 +3276,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMembers = CloudflareFunctions.getAccountMembers(GetAccountMembersArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .order("status")
      *             .status("accepted")
@@ -3257,7 +3319,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMembers = CloudflareFunctions.getAccountMembers(GetAccountMembersArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .order("status")
      *             .status("accepted")
@@ -3300,7 +3362,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountMembers = CloudflareFunctions.getAccountMembers(GetAccountMembersArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .order("status")
      *             .status("accepted")
@@ -3343,8 +3405,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroup = CloudflareFunctions.getAccountPermissionGroup(GetAccountPermissionGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .permissionGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .permissionGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -3384,8 +3446,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroup = CloudflareFunctions.getAccountPermissionGroup(GetAccountPermissionGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .permissionGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .permissionGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -3425,8 +3487,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroup = CloudflareFunctions.getAccountPermissionGroup(GetAccountPermissionGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .permissionGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .permissionGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -3466,8 +3528,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroup = CloudflareFunctions.getAccountPermissionGroup(GetAccountPermissionGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .permissionGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .permissionGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -3507,8 +3569,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroup = CloudflareFunctions.getAccountPermissionGroup(GetAccountPermissionGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .permissionGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .permissionGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -3548,7 +3610,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroups = CloudflareFunctions.getAccountPermissionGroups(GetAccountPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
      *             .label("labelOfThePermissionGroup")
      *             .name("NameOfThePermissionGroup")
@@ -3591,7 +3653,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroups = CloudflareFunctions.getAccountPermissionGroups(GetAccountPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
      *             .label("labelOfThePermissionGroup")
      *             .name("NameOfThePermissionGroup")
@@ -3634,7 +3696,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroups = CloudflareFunctions.getAccountPermissionGroups(GetAccountPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
      *             .label("labelOfThePermissionGroup")
      *             .name("NameOfThePermissionGroup")
@@ -3677,7 +3739,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroups = CloudflareFunctions.getAccountPermissionGroups(GetAccountPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
      *             .label("labelOfThePermissionGroup")
      *             .name("NameOfThePermissionGroup")
@@ -3720,7 +3782,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountPermissionGroups = CloudflareFunctions.getAccountPermissionGroups(GetAccountPermissionGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
      *             .label("labelOfThePermissionGroup")
      *             .name("NameOfThePermissionGroup")
@@ -3763,7 +3825,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRole = CloudflareFunctions.getAccountRole(GetAccountRoleArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .roleId("3536bcfad5faccb999b47003c79917fb")
      *             .build());
      * 
@@ -3804,7 +3866,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRole = CloudflareFunctions.getAccountRole(GetAccountRoleArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .roleId("3536bcfad5faccb999b47003c79917fb")
      *             .build());
      * 
@@ -3845,7 +3907,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRole = CloudflareFunctions.getAccountRole(GetAccountRoleArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .roleId("3536bcfad5faccb999b47003c79917fb")
      *             .build());
      * 
@@ -3886,7 +3948,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRole = CloudflareFunctions.getAccountRole(GetAccountRoleArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .roleId("3536bcfad5faccb999b47003c79917fb")
      *             .build());
      * 
@@ -3927,7 +3989,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRole = CloudflareFunctions.getAccountRole(GetAccountRoleArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .roleId("3536bcfad5faccb999b47003c79917fb")
      *             .build());
      * 
@@ -3968,7 +4030,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRoles = CloudflareFunctions.getAccountRoles(GetAccountRolesArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -4008,7 +4070,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRoles = CloudflareFunctions.getAccountRoles(GetAccountRolesArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -4048,7 +4110,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRoles = CloudflareFunctions.getAccountRoles(GetAccountRolesArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -4088,7 +4150,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRoles = CloudflareFunctions.getAccountRoles(GetAccountRolesArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -4128,7 +4190,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountRoles = CloudflareFunctions.getAccountRoles(GetAccountRolesArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -4368,7 +4430,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountToken = CloudflareFunctions.getAccountToken(GetAccountTokenArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .tokenId("ed17574386854bf78a67040be0a770b0")
      *             .build());
      * 
@@ -4409,7 +4471,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountToken = CloudflareFunctions.getAccountToken(GetAccountTokenArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .tokenId("ed17574386854bf78a67040be0a770b0")
      *             .build());
      * 
@@ -4450,7 +4512,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountToken = CloudflareFunctions.getAccountToken(GetAccountTokenArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .tokenId("ed17574386854bf78a67040be0a770b0")
      *             .build());
      * 
@@ -4491,7 +4553,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountToken = CloudflareFunctions.getAccountToken(GetAccountTokenArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .tokenId("ed17574386854bf78a67040be0a770b0")
      *             .build());
      * 
@@ -4532,7 +4594,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountToken = CloudflareFunctions.getAccountToken(GetAccountTokenArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .tokenId("ed17574386854bf78a67040be0a770b0")
      *             .build());
      * 
@@ -4573,7 +4635,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountTokens = CloudflareFunctions.getAccountTokens(GetAccountTokensArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .build());
      * 
@@ -4614,7 +4676,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountTokens = CloudflareFunctions.getAccountTokens(GetAccountTokensArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .build());
      * 
@@ -4655,7 +4717,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountTokens = CloudflareFunctions.getAccountTokens(GetAccountTokensArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .build());
      * 
@@ -4696,7 +4758,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountTokens = CloudflareFunctions.getAccountTokens(GetAccountTokensArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .build());
      * 
@@ -4737,7 +4799,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleAccountTokens = CloudflareFunctions.getAccountTokens(GetAccountTokensArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("desc")
      *             .build());
      * 
@@ -7295,6 +7357,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7334,6 +7398,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7373,6 +7439,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7412,6 +7480,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7451,6 +7521,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7490,6 +7562,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -7529,6 +7603,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleApiTokenPermissionGroupsList = CloudflareFunctions.getApiTokenPermissionGroupsList(GetApiTokenPermissionGroupsListArgs.builder()
+     *             .name("Account%20Settings%20Write")
+     *             .scope("com.cloudflare.api.account.zone")
      *             .build());
      * 
      *     }
@@ -11068,7 +11144,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11082,7 +11158,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11093,8 +11169,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args) {
-        return getCloudConnectorRulesList(args, InvokeOptions.Empty);
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args) {
+        return getCloudConnectorRules(args, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage
@@ -11108,7 +11184,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11122,7 +11198,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11133,8 +11209,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesListPlain(GetCloudConnectorRulesListPlainArgs args) {
-        return getCloudConnectorRulesListPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetCloudConnectorRulesResult> getCloudConnectorRulesPlain(GetCloudConnectorRulesPlainArgs args) {
+        return getCloudConnectorRulesPlain(args, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage
@@ -11148,7 +11224,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11162,7 +11238,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11173,8 +11249,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11188,7 +11264,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11202,7 +11278,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11213,8 +11289,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11228,7 +11304,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11242,7 +11318,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11253,8 +11329,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesListPlain(GetCloudConnectorRulesListPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetCloudConnectorRulesResult> getCloudConnectorRulesPlain(GetCloudConnectorRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11283,8 +11359,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11324,8 +11400,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11365,8 +11441,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11406,8 +11482,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11447,8 +11523,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11488,9 +11564,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11530,9 +11606,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11572,9 +11648,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11614,9 +11690,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11656,9 +11732,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11698,8 +11774,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11739,8 +11821,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11780,8 +11868,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11821,8 +11915,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11862,8 +11962,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11903,8 +12009,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11944,8 +12050,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11985,8 +12091,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12026,8 +12132,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12067,8 +12173,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12108,7 +12214,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12148,7 +12264,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12188,7 +12314,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12228,7 +12364,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12268,7 +12414,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -13133,7 +13289,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCustomPages = CloudflareFunctions.getCustomPages(GetCustomPagesArgs.builder()
-     *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .identifier("ratelimit_block")
      *             .accountId("account_id")
      *             .zoneId("zone_id")
      *             .build());
@@ -13175,7 +13331,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCustomPages = CloudflareFunctions.getCustomPages(GetCustomPagesArgs.builder()
-     *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .identifier("ratelimit_block")
      *             .accountId("account_id")
      *             .zoneId("zone_id")
      *             .build());
@@ -13217,7 +13373,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCustomPages = CloudflareFunctions.getCustomPages(GetCustomPagesArgs.builder()
-     *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .identifier("ratelimit_block")
      *             .accountId("account_id")
      *             .zoneId("zone_id")
      *             .build());
@@ -13259,7 +13415,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCustomPages = CloudflareFunctions.getCustomPages(GetCustomPagesArgs.builder()
-     *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .identifier("ratelimit_block")
      *             .accountId("account_id")
      *             .zoneId("zone_id")
      *             .build());
@@ -13301,7 +13457,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCustomPages = CloudflareFunctions.getCustomPages(GetCustomPagesArgs.builder()
-     *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .identifier("ratelimit_block")
      *             .accountId("account_id")
      *             .zoneId("zone_id")
      *             .build());
@@ -18873,6 +19029,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .patternType("EMAIL")
      *             .search("search")
      *             .build());
@@ -18917,6 +19074,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .patternType("EMAIL")
      *             .search("search")
      *             .build());
@@ -18961,6 +19119,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .patternType("EMAIL")
      *             .search("search")
      *             .build());
@@ -19005,6 +19164,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .patternType("EMAIL")
      *             .search("search")
      *             .build());
@@ -19049,6 +19209,7 @@ public final class CloudflareFunctions {
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .direction("asc")
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .patternType("EMAIL")
      *             .search("search")
      *             .build());
@@ -19725,6 +19886,7 @@ public final class CloudflareFunctions {
      *             .isRecent(true)
      *             .isSimilarity(true)
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .search("search")
      *             .build());
      * 
@@ -19770,6 +19932,7 @@ public final class CloudflareFunctions {
      *             .isRecent(true)
      *             .isSimilarity(true)
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .search("search")
      *             .build());
      * 
@@ -19815,6 +19978,7 @@ public final class CloudflareFunctions {
      *             .isRecent(true)
      *             .isSimilarity(true)
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .search("search")
      *             .build());
      * 
@@ -19860,6 +20024,7 @@ public final class CloudflareFunctions {
      *             .isRecent(true)
      *             .isSimilarity(true)
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .search("search")
      *             .build());
      * 
@@ -19905,6 +20070,7 @@ public final class CloudflareFunctions {
      *             .isRecent(true)
      *             .isSimilarity(true)
      *             .order("pattern")
+     *             .pattern("pattern")
      *             .search("search")
      *             .build());
      * 
@@ -22226,6 +22392,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleImages = CloudflareFunctions.getImages(GetImagesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .creator("creator")
      *             .build());
      * 
      *     }
@@ -22266,6 +22433,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleImages = CloudflareFunctions.getImages(GetImagesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .creator("creator")
      *             .build());
      * 
      *     }
@@ -22306,6 +22474,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleImages = CloudflareFunctions.getImages(GetImagesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .creator("creator")
      *             .build());
      * 
      *     }
@@ -22346,6 +22515,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleImages = CloudflareFunctions.getImages(GetImagesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .creator("creator")
      *             .build());
      * 
      *     }
@@ -22386,6 +22556,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleImages = CloudflareFunctions.getImages(GetImagesArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .creator("creator")
      *             .build());
      * 
      *     }
@@ -23897,6 +24068,416 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetListItemResult> getListItemPlain(GetListItemPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getListItem:getListItem", TypeShape.of(GetListItemResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleListItems = CloudflareFunctions.getListItems(GetListItemsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListItemsInvokeResult> getListItems(GetListItemsArgs args) {
+        return getListItems(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleListItems = CloudflareFunctions.getListItems(GetListItemsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetListItemsInvokeResult> getListItemsPlain(GetListItemsPlainArgs args) {
+        return getListItemsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleListItems = CloudflareFunctions.getListItems(GetListItemsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListItemsInvokeResult> getListItems(GetListItemsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getListItems:getListItems", TypeShape.of(GetListItemsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleListItems = CloudflareFunctions.getListItems(GetListItemsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListItemsInvokeResult> getListItems(GetListItemsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getListItems:getListItems", TypeShape.of(GetListItemsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListItemsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleListItems = CloudflareFunctions.getListItems(GetListItemsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetListItemsInvokeResult> getListItemsPlain(GetListItemsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getListItems:getListItems", TypeShape.of(GetListItemsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLists = CloudflareFunctions.getLists(GetListsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListsInvokeResult> getLists(GetListsArgs args) {
+        return getLists(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLists = CloudflareFunctions.getLists(GetListsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetListsInvokeResult> getListsPlain(GetListsPlainArgs args) {
+        return getListsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLists = CloudflareFunctions.getLists(GetListsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListsInvokeResult> getLists(GetListsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getLists:getLists", TypeShape.of(GetListsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLists = CloudflareFunctions.getLists(GetListsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListsInvokeResult> getLists(GetListsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getLists:getLists", TypeShape.of(GetListsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetListsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleLists = CloudflareFunctions.getLists(GetListsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetListsInvokeResult> getListsPlain(GetListsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getLists:getLists", TypeShape.of(GetListsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -34946,6 +35527,7 @@ public final class CloudflareFunctions {
      *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -34987,6 +35569,7 @@ public final class CloudflareFunctions {
      *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -35028,6 +35611,7 @@ public final class CloudflareFunctions {
      *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -35069,6 +35653,7 @@ public final class CloudflareFunctions {
      *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -35110,6 +35695,7 @@ public final class CloudflareFunctions {
      *         final var exampleQueueConsumer = CloudflareFunctions.getQueueConsumer(GetQueueConsumerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .consumerId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -35121,6 +35707,211 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetQueueConsumerResult> getQueueConsumerPlain(GetQueueConsumerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getQueueConsumer:getQueueConsumer", TypeShape.of(GetQueueConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumers = CloudflareFunctions.getQueueConsumers(GetQueueConsumersArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQueueConsumersInvokeResult> getQueueConsumers(GetQueueConsumersArgs args) {
+        return getQueueConsumers(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumers = CloudflareFunctions.getQueueConsumers(GetQueueConsumersArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQueueConsumersInvokeResult> getQueueConsumersPlain(GetQueueConsumersPlainArgs args) {
+        return getQueueConsumersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumers = CloudflareFunctions.getQueueConsumers(GetQueueConsumersArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQueueConsumersInvokeResult> getQueueConsumers(GetQueueConsumersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getQueueConsumers:getQueueConsumers", TypeShape.of(GetQueueConsumersInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumers = CloudflareFunctions.getQueueConsumers(GetQueueConsumersArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetQueueConsumersInvokeResult> getQueueConsumers(GetQueueConsumersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getQueueConsumers:getQueueConsumers", TypeShape.of(GetQueueConsumersInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetQueueConsumersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleQueueConsumers = CloudflareFunctions.getQueueConsumers(GetQueueConsumersArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetQueueConsumersInvokeResult> getQueueConsumersPlain(GetQueueConsumersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getQueueConsumers:getQueueConsumers", TypeShape.of(GetQueueConsumersInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -35761,6 +36552,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35802,6 +36594,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35843,6 +36636,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35884,6 +36678,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35925,6 +36720,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -38204,8 +39000,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroup = CloudflareFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .resourceGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .resourceGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -38245,8 +39041,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroup = CloudflareFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .resourceGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .resourceGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -38286,8 +39082,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroup = CloudflareFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .resourceGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .resourceGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -38327,8 +39123,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroup = CloudflareFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .resourceGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .resourceGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -38368,8 +39164,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroup = CloudflareFunctions.getResourceGroup(GetResourceGroupArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .resourceGroupId("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .resourceGroupId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
      *     }
@@ -38409,8 +39205,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroups = CloudflareFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .id("023e105f4ecef8ad9ca31a8372d0c353")
      *             .name("NameOfTheResourceGroup")
      *             .build());
      * 
@@ -38451,8 +39247,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroups = CloudflareFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .id("023e105f4ecef8ad9ca31a8372d0c353")
      *             .name("NameOfTheResourceGroup")
      *             .build());
      * 
@@ -38493,8 +39289,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroups = CloudflareFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .id("023e105f4ecef8ad9ca31a8372d0c353")
      *             .name("NameOfTheResourceGroup")
      *             .build());
      * 
@@ -38535,8 +39331,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroups = CloudflareFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .id("023e105f4ecef8ad9ca31a8372d0c353")
      *             .name("NameOfTheResourceGroup")
      *             .build());
      * 
@@ -38577,8 +39373,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleResourceGroups = CloudflareFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .accountId("eb78d65290b24279ba6f44721b3ea3c4")
-     *             .id("6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .id("023e105f4ecef8ad9ca31a8372d0c353")
      *             .name("NameOfTheResourceGroup")
      *             .build());
      * 
@@ -39185,6 +39981,1026 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettings = CloudflareFunctions.getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsResult> getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs args) {
+        return getSchemaValidationOperationSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettings = CloudflareFunctions.getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationOperationSettingsResult> getSchemaValidationOperationSettingsPlain(GetSchemaValidationOperationSettingsPlainArgs args) {
+        return getSchemaValidationOperationSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettings = CloudflareFunctions.getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsResult> getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings", TypeShape.of(GetSchemaValidationOperationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettings = CloudflareFunctions.getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsResult> getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings", TypeShape.of(GetSchemaValidationOperationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettings = CloudflareFunctions.getSchemaValidationOperationSettings(GetSchemaValidationOperationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationOperationSettingsResult> getSchemaValidationOperationSettingsPlain(GetSchemaValidationOperationSettingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings", TypeShape.of(GetSchemaValidationOperationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettingsList = CloudflareFunctions.getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs args) {
+        return getSchemaValidationOperationSettingsList(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettingsList = CloudflareFunctions.getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaValidationOperationSettingsListPlain(GetSchemaValidationOperationSettingsListPlainArgs args) {
+        return getSchemaValidationOperationSettingsListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettingsList = CloudflareFunctions.getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", TypeShape.of(GetSchemaValidationOperationSettingsListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettingsList = CloudflareFunctions.getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", TypeShape.of(GetSchemaValidationOperationSettingsListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationOperationSettingsListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationOperationSettingsList = CloudflareFunctions.getSchemaValidationOperationSettingsList(GetSchemaValidationOperationSettingsListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaValidationOperationSettingsListPlain(GetSchemaValidationOperationSettingsListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList", TypeShape.of(GetSchemaValidationOperationSettingsListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemas = CloudflareFunctions.getSchemaValidationSchemas(GetSchemaValidationSchemasArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .schemaId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .omitSource(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasResult> getSchemaValidationSchemas(GetSchemaValidationSchemasArgs args) {
+        return getSchemaValidationSchemas(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemas = CloudflareFunctions.getSchemaValidationSchemas(GetSchemaValidationSchemasArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .schemaId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .omitSource(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSchemasResult> getSchemaValidationSchemasPlain(GetSchemaValidationSchemasPlainArgs args) {
+        return getSchemaValidationSchemasPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemas = CloudflareFunctions.getSchemaValidationSchemas(GetSchemaValidationSchemasArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .schemaId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .omitSource(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasResult> getSchemaValidationSchemas(GetSchemaValidationSchemasArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", TypeShape.of(GetSchemaValidationSchemasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemas = CloudflareFunctions.getSchemaValidationSchemas(GetSchemaValidationSchemasArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .schemaId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .omitSource(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasResult> getSchemaValidationSchemas(GetSchemaValidationSchemasArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", TypeShape.of(GetSchemaValidationSchemasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemas = CloudflareFunctions.getSchemaValidationSchemas(GetSchemaValidationSchemasArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .schemaId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .omitSource(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSchemasResult> getSchemaValidationSchemasPlain(GetSchemaValidationSchemasPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas", TypeShape.of(GetSchemaValidationSchemasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemasList = CloudflareFunctions.getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .validationEnabled(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs args) {
+        return getSchemaValidationSchemasList(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemasList = CloudflareFunctions.getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .validationEnabled(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSchemasListPlain(GetSchemaValidationSchemasListPlainArgs args) {
+        return getSchemaValidationSchemasListPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemasList = CloudflareFunctions.getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .validationEnabled(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList", TypeShape.of(GetSchemaValidationSchemasListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemasList = CloudflareFunctions.getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .validationEnabled(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList", TypeShape.of(GetSchemaValidationSchemasListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSchemasList = CloudflareFunctions.getSchemaValidationSchemasList(GetSchemaValidationSchemasListArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .validationEnabled(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSchemasListPlain(GetSchemaValidationSchemasListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList", TypeShape.of(GetSchemaValidationSchemasListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSettings = CloudflareFunctions.getSchemaValidationSettings(GetSchemaValidationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSettingsResult> getSchemaValidationSettings(GetSchemaValidationSettingsArgs args) {
+        return getSchemaValidationSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSettings = CloudflareFunctions.getSchemaValidationSettings(GetSchemaValidationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSettingsResult> getSchemaValidationSettingsPlain(GetSchemaValidationSettingsPlainArgs args) {
+        return getSchemaValidationSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSettings = CloudflareFunctions.getSchemaValidationSettings(GetSchemaValidationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSettingsResult> getSchemaValidationSettings(GetSchemaValidationSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", TypeShape.of(GetSchemaValidationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSettings = CloudflareFunctions.getSchemaValidationSettings(GetSchemaValidationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaValidationSettingsResult> getSchemaValidationSettings(GetSchemaValidationSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", TypeShape.of(GetSchemaValidationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSchemaValidationSettings = CloudflareFunctions.getSchemaValidationSettings(GetSchemaValidationSettingsArgs.builder()
+     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSchemaValidationSettingsResult> getSchemaValidationSettingsPlain(GetSchemaValidationSettingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings", TypeShape.of(GetSchemaValidationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -39200,7 +41016,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39240,7 +41056,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39280,7 +41096,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39320,7 +41136,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39360,7 +41176,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39400,8 +41216,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .snippetName("snippet_name_01")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -39441,8 +41257,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .snippetName("snippet_name_01")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -39482,8 +41298,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .snippetName("snippet_name_01")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -39523,8 +41339,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .snippetName("snippet_name_01")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -39564,8 +41380,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .snippetName("snippet_name_01")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -39605,7 +41421,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39645,7 +41461,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39685,7 +41501,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39725,7 +41541,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -39765,7 +41581,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
      *             .build());
      * 
      *     }
@@ -43756,8 +45572,8 @@ public final class CloudflareFunctions {
      *         final var exampleUserAgentBlockingRules = CloudflareFunctions.getUserAgentBlockingRules(GetUserAgentBlockingRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .description("abusive")
-     *             .descriptionSearch("abusive")
-     *             .uaSearch("Safari")
+     *             .paused(false)
+     *             .userAgent("Safari")
      *             .build());
      * 
      *     }
@@ -43799,8 +45615,8 @@ public final class CloudflareFunctions {
      *         final var exampleUserAgentBlockingRules = CloudflareFunctions.getUserAgentBlockingRules(GetUserAgentBlockingRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .description("abusive")
-     *             .descriptionSearch("abusive")
-     *             .uaSearch("Safari")
+     *             .paused(false)
+     *             .userAgent("Safari")
      *             .build());
      * 
      *     }
@@ -43842,8 +45658,8 @@ public final class CloudflareFunctions {
      *         final var exampleUserAgentBlockingRules = CloudflareFunctions.getUserAgentBlockingRules(GetUserAgentBlockingRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .description("abusive")
-     *             .descriptionSearch("abusive")
-     *             .uaSearch("Safari")
+     *             .paused(false)
+     *             .userAgent("Safari")
      *             .build());
      * 
      *     }
@@ -43885,8 +45701,8 @@ public final class CloudflareFunctions {
      *         final var exampleUserAgentBlockingRules = CloudflareFunctions.getUserAgentBlockingRules(GetUserAgentBlockingRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .description("abusive")
-     *             .descriptionSearch("abusive")
-     *             .uaSearch("Safari")
+     *             .paused(false)
+     *             .userAgent("Safari")
      *             .build());
      * 
      *     }
@@ -43928,8 +45744,8 @@ public final class CloudflareFunctions {
      *         final var exampleUserAgentBlockingRules = CloudflareFunctions.getUserAgentBlockingRules(GetUserAgentBlockingRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .description("abusive")
-     *             .descriptionSearch("abusive")
-     *             .uaSearch("Safari")
+     *             .paused(false)
+     *             .userAgent("Safari")
      *             .build());
      * 
      *     }
@@ -46733,6 +48549,7 @@ public final class CloudflareFunctions {
      *         final var exampleWorkersDeployment = CloudflareFunctions.getWorkersDeployment(GetWorkersDeploymentArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .scriptName("this-is_my_script-01")
+     *             .deploymentId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
      *             .build());
      * 
      *     }
@@ -46774,6 +48591,7 @@ public final class CloudflareFunctions {
      *         final var exampleWorkersDeployment = CloudflareFunctions.getWorkersDeployment(GetWorkersDeploymentArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .scriptName("this-is_my_script-01")
+     *             .deploymentId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
      *             .build());
      * 
      *     }
@@ -46815,6 +48633,7 @@ public final class CloudflareFunctions {
      *         final var exampleWorkersDeployment = CloudflareFunctions.getWorkersDeployment(GetWorkersDeploymentArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .scriptName("this-is_my_script-01")
+     *             .deploymentId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
      *             .build());
      * 
      *     }
@@ -46856,6 +48675,7 @@ public final class CloudflareFunctions {
      *         final var exampleWorkersDeployment = CloudflareFunctions.getWorkersDeployment(GetWorkersDeploymentArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .scriptName("this-is_my_script-01")
+     *             .deploymentId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
      *             .build());
      * 
      *     }
@@ -46897,6 +48717,7 @@ public final class CloudflareFunctions {
      *         final var exampleWorkersDeployment = CloudflareFunctions.getWorkersDeployment(GetWorkersDeploymentArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .scriptName("this-is_my_script-01")
+     *             .deploymentId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
      *             .build());
      * 
      *     }
@@ -49279,6 +51100,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49324,6 +51146,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49369,6 +51192,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49414,6 +51238,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49459,6 +51284,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49504,6 +51330,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -49549,6 +51376,7 @@ public final class CloudflareFunctions {
      *             .zoneId("zone_id")
      *             .aud("aud")
      *             .domain("domain")
+     *             .exact(true)
      *             .name("name")
      *             .search("search")
      *             .build());
@@ -57053,6 +58881,611 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDeviceSettings = CloudflareFunctions.getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs args) {
+        return getZeroTrustDeviceSettings(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDeviceSettings = CloudflareFunctions.getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettingsPlain(GetZeroTrustDeviceSettingsPlainArgs args) {
+        return getZeroTrustDeviceSettingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDeviceSettings = CloudflareFunctions.getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", TypeShape.of(GetZeroTrustDeviceSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDeviceSettings = CloudflareFunctions.getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", TypeShape.of(GetZeroTrustDeviceSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDeviceSettings = CloudflareFunctions.getZeroTrustDeviceSettings(GetZeroTrustDeviceSettingsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettingsPlain(GetZeroTrustDeviceSettingsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings", TypeShape.of(GetZeroTrustDeviceSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args) {
+        return getZeroTrustDexTest(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestResult> getZeroTrustDexTestPlain(GetZeroTrustDexTestPlainArgs args) {
+        return getZeroTrustDexTestPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestResult> getZeroTrustDexTestPlain(GetZeroTrustDexTestPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args) {
+        return getZeroTrustDexTests(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsPlain(GetZeroTrustDexTestsPlainArgs args) {
+        return getZeroTrustDexTestsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsPlain(GetZeroTrustDexTestsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfileArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -63530,6 +65963,661 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnector = CloudflareFunctions.getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs args) {
+        return getZeroTrustTunnelWarpConnector(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnector = CloudflareFunctions.getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConnectorPlain(GetZeroTrustTunnelWarpConnectorPlainArgs args) {
+        return getZeroTrustTunnelWarpConnectorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnector = CloudflareFunctions.getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", TypeShape.of(GetZeroTrustTunnelWarpConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnector = CloudflareFunctions.getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", TypeShape.of(GetZeroTrustTunnelWarpConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnector = CloudflareFunctions.getZeroTrustTunnelWarpConnector(GetZeroTrustTunnelWarpConnectorArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConnectorPlain(GetZeroTrustTunnelWarpConnectorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelWarpConnector:getZeroTrustTunnelWarpConnector", TypeShape.of(GetZeroTrustTunnelWarpConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args) {
+        return getZeroTrustTunnelWarpConnectorToken(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorTokenPlain(GetZeroTrustTunnelWarpConnectorTokenPlainArgs args) {
+        return getZeroTrustTunnelWarpConnectorTokenPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorTokenPlain(GetZeroTrustTunnelWarpConnectorTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectors = CloudflareFunctions.getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .excludePrefix("vpc1-")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .includePrefix("vpc1-")
+     *             .isDeleted(true)
+     *             .name("blog")
+     *             .status("healthy")
+     *             .uuid("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .wasActiveAt("2009-11-10T23:00:00Z")
+     *             .wasInactiveAt("2009-11-10T23:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs args) {
+        return getZeroTrustTunnelWarpConnectors(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectors = CloudflareFunctions.getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .excludePrefix("vpc1-")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .includePrefix("vpc1-")
+     *             .isDeleted(true)
+     *             .name("blog")
+     *             .status("healthy")
+     *             .uuid("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .wasActiveAt("2009-11-10T23:00:00Z")
+     *             .wasInactiveAt("2009-11-10T23:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWarpConnectorsPlain(GetZeroTrustTunnelWarpConnectorsPlainArgs args) {
+        return getZeroTrustTunnelWarpConnectorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectors = CloudflareFunctions.getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .excludePrefix("vpc1-")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .includePrefix("vpc1-")
+     *             .isDeleted(true)
+     *             .name("blog")
+     *             .status("healthy")
+     *             .uuid("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .wasActiveAt("2009-11-10T23:00:00Z")
+     *             .wasInactiveAt("2009-11-10T23:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", TypeShape.of(GetZeroTrustTunnelWarpConnectorsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectors = CloudflareFunctions.getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .excludePrefix("vpc1-")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .includePrefix("vpc1-")
+     *             .isDeleted(true)
+     *             .name("blog")
+     *             .status("healthy")
+     *             .uuid("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .wasActiveAt("2009-11-10T23:00:00Z")
+     *             .wasInactiveAt("2009-11-10T23:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", TypeShape.of(GetZeroTrustTunnelWarpConnectorsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectors = CloudflareFunctions.getZeroTrustTunnelWarpConnectors(GetZeroTrustTunnelWarpConnectorsArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .excludePrefix("vpc1-")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .includePrefix("vpc1-")
+     *             .isDeleted(true)
+     *             .name("blog")
+     *             .status("healthy")
+     *             .uuid("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .wasActiveAt("2009-11-10T23:00:00Z")
+     *             .wasInactiveAt("2009-11-10T23:00:00Z")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWarpConnectorsPlain(GetZeroTrustTunnelWarpConnectorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelWarpConnectors:getZeroTrustTunnelWarpConnectors", TypeShape.of(GetZeroTrustTunnelWarpConnectorsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetZoneArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -65480,7 +68568,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .identifier("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
      *             .build());
      * 
      *     }
@@ -65520,7 +68608,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .identifier("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
      *             .build());
      * 
      *     }
@@ -65560,7 +68648,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .identifier("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
      *             .build());
      * 
      *     }
@@ -65600,7 +68688,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .identifier("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
      *             .build());
      * 
      *     }
@@ -65640,7 +68728,7 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleZoneSubscription = CloudflareFunctions.getZoneSubscription(GetZoneSubscriptionArgs.builder()
-     *             .identifier("506e3185e9c882d175a2d0cb0093d9f2")
+     *             .zoneId("506e3185e9c882d175a2d0cb0093d9f2")
      *             .build());
      * 
      *     }

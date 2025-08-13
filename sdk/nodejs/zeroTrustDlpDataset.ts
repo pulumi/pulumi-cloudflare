@@ -79,7 +79,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
      */
     public readonly secret!: pulumi.Output<boolean | undefined>;
     /**
-     * Available values: "empty", "uploading", "processing", "failed", "complete".
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -183,7 +183,7 @@ export interface ZeroTrustDlpDatasetState {
      */
     secret?: pulumi.Input<boolean>;
     /**
-     * Available values: "empty", "uploading", "processing", "failed", "complete".
+     * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
     status?: pulumi.Input<string>;
     /**

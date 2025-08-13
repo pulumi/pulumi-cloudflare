@@ -13,32 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZoneMeta {
     /**
-     * @return The zone is only configured for CDN
+     * @return The zone is only configured for CDN.
      * 
      */
     private @Nullable Boolean cdnOnly;
     /**
-     * @return Number of Custom Certificates the zone can have
+     * @return Number of Custom Certificates the zone can have.
      * 
      */
     private @Nullable Integer customCertificateQuota;
     /**
-     * @return The zone is only configured for DNS
+     * @return The zone is only configured for DNS.
      * 
      */
     private @Nullable Boolean dnsOnly;
     /**
-     * @return The zone is setup with Foundation DNS
+     * @return The zone is setup with Foundation DNS.
      * 
      */
     private @Nullable Boolean foundationDns;
     /**
-     * @return Number of Page Rules a zone can have
+     * @return Number of Page Rules a zone can have.
      * 
      */
     private @Nullable Integer pageRuleQuota;
     /**
-     * @return The zone has been flagged for phishing
+     * @return The zone has been flagged for phishing.
      * 
      */
     private @Nullable Boolean phishingDetected;
@@ -46,42 +46,42 @@ public final class ZoneMeta {
 
     private ZoneMeta() {}
     /**
-     * @return The zone is only configured for CDN
+     * @return The zone is only configured for CDN.
      * 
      */
     public Optional<Boolean> cdnOnly() {
         return Optional.ofNullable(this.cdnOnly);
     }
     /**
-     * @return Number of Custom Certificates the zone can have
+     * @return Number of Custom Certificates the zone can have.
      * 
      */
     public Optional<Integer> customCertificateQuota() {
         return Optional.ofNullable(this.customCertificateQuota);
     }
     /**
-     * @return The zone is only configured for DNS
+     * @return The zone is only configured for DNS.
      * 
      */
     public Optional<Boolean> dnsOnly() {
         return Optional.ofNullable(this.dnsOnly);
     }
     /**
-     * @return The zone is setup with Foundation DNS
+     * @return The zone is setup with Foundation DNS.
      * 
      */
     public Optional<Boolean> foundationDns() {
         return Optional.ofNullable(this.foundationDns);
     }
     /**
-     * @return Number of Page Rules a zone can have
+     * @return Number of Page Rules a zone can have.
      * 
      */
     public Optional<Integer> pageRuleQuota() {
         return Optional.ofNullable(this.pageRuleQuota);
     }
     /**
-     * @return The zone has been flagged for phishing
+     * @return The zone has been flagged for phishing.
      * 
      */
     public Optional<Boolean> phishingDetected() {
