@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeGroupArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeIpArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeIpListArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeLinkedAppTokenArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeLoginMethodArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationPolicyExcludeServiceTokenArgs;
@@ -178,11 +180,25 @@ public final class AccessApplicationPolicyExcludeArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="linkedAppToken")
+    private @Nullable Output<AccessApplicationPolicyExcludeLinkedAppTokenArgs> linkedAppToken;
+
+    public Optional<Output<AccessApplicationPolicyExcludeLinkedAppTokenArgs>> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
+
     @Import(name="loginMethod")
     private @Nullable Output<AccessApplicationPolicyExcludeLoginMethodArgs> loginMethod;
 
     public Optional<Output<AccessApplicationPolicyExcludeLoginMethodArgs>> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+
+    @Import(name="oidc")
+    private @Nullable Output<AccessApplicationPolicyExcludeOidcArgs> oidc;
+
+    public Optional<Output<AccessApplicationPolicyExcludeOidcArgs>> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
 
     @Import(name="okta")
@@ -227,7 +243,9 @@ public final class AccessApplicationPolicyExcludeArgs extends com.pulumi.resourc
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.linkedAppToken = $.linkedAppToken;
         this.loginMethod = $.loginMethod;
+        this.oidc = $.oidc;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -437,6 +455,15 @@ public final class AccessApplicationPolicyExcludeArgs extends com.pulumi.resourc
             return ipList(Output.of(ipList));
         }
 
+        public Builder linkedAppToken(@Nullable Output<AccessApplicationPolicyExcludeLinkedAppTokenArgs> linkedAppToken) {
+            $.linkedAppToken = linkedAppToken;
+            return this;
+        }
+
+        public Builder linkedAppToken(AccessApplicationPolicyExcludeLinkedAppTokenArgs linkedAppToken) {
+            return linkedAppToken(Output.of(linkedAppToken));
+        }
+
         public Builder loginMethod(@Nullable Output<AccessApplicationPolicyExcludeLoginMethodArgs> loginMethod) {
             $.loginMethod = loginMethod;
             return this;
@@ -444,6 +471,15 @@ public final class AccessApplicationPolicyExcludeArgs extends com.pulumi.resourc
 
         public Builder loginMethod(AccessApplicationPolicyExcludeLoginMethodArgs loginMethod) {
             return loginMethod(Output.of(loginMethod));
+        }
+
+        public Builder oidc(@Nullable Output<AccessApplicationPolicyExcludeOidcArgs> oidc) {
+            $.oidc = oidc;
+            return this;
+        }
+
+        public Builder oidc(AccessApplicationPolicyExcludeOidcArgs oidc) {
+            return oidc(Output.of(oidc));
         }
 
         public Builder okta(@Nullable Output<AccessApplicationPolicyExcludeOktaArgs> okta) {

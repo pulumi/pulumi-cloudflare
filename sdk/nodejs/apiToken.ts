@@ -76,7 +76,7 @@ export class ApiToken extends pulumi.CustomResource {
      * Status of the token.
      * Available values: "active", "disabled", "expired".
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * The token value.
      */

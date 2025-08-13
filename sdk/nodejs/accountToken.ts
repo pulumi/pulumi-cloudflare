@@ -80,7 +80,7 @@ export class AccountToken extends pulumi.CustomResource {
      * Status of the token.
      * Available values: "active", "disabled", "expired".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * The token value.
      */
@@ -127,10 +127,10 @@ export class AccountToken extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notBefore"] = args ? args.notBefore : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["issuedOn"] = undefined /*out*/;
             resourceInputs["lastUsedOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -213,4 +213,9 @@ export interface AccountTokenArgs {
      * List of access policies assigned to the token.
      */
     policies: pulumi.Input<pulumi.Input<inputs.AccountTokenPolicy>[]>;
+    /**
+     * Status of the token.
+     * Available values: "active", "disabled", "expired".
+     */
+    status?: pulumi.Input<string>;
 }

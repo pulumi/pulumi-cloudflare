@@ -31,10 +31,22 @@ public final class GetAccountApiTokenPermissionGroupsListInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    private @Nullable String name;
+    /**
      * @return The items returned by the data source
      * 
      */
     private List<GetAccountApiTokenPermissionGroupsListResult> results;
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    private @Nullable String scope;
 
     private GetAccountApiTokenPermissionGroupsListInvokeResult() {}
     /**
@@ -59,11 +71,27 @@ public final class GetAccountApiTokenPermissionGroupsListInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
      * @return The items returned by the data source
      * 
      */
     public List<GetAccountApiTokenPermissionGroupsListResult> results() {
         return this.results;
+    }
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> scope() {
+        return Optional.ofNullable(this.scope);
     }
 
     public static Builder builder() {
@@ -78,14 +106,18 @@ public final class GetAccountApiTokenPermissionGroupsListInvokeResult {
         private String accountId;
         private String id;
         private @Nullable Integer maxItems;
+        private @Nullable String name;
         private List<GetAccountApiTokenPermissionGroupsListResult> results;
+        private @Nullable String scope;
         public Builder() {}
         public Builder(GetAccountApiTokenPermissionGroupsListInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
+    	      this.name = defaults.name;
     	      this.results = defaults.results;
+    	      this.scope = defaults.scope;
         }
 
         @CustomType.Setter
@@ -111,6 +143,12 @@ public final class GetAccountApiTokenPermissionGroupsListInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder results(List<GetAccountApiTokenPermissionGroupsListResult> results) {
             if (results == null) {
               throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsListInvokeResult", "results");
@@ -121,12 +159,20 @@ public final class GetAccountApiTokenPermissionGroupsListInvokeResult {
         public Builder results(GetAccountApiTokenPermissionGroupsListResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder scope(@Nullable String scope) {
+
+            this.scope = scope;
+            return this;
+        }
         public GetAccountApiTokenPermissionGroupsListInvokeResult build() {
             final var _resultValue = new GetAccountApiTokenPermissionGroupsListInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
+            _resultValue.name = name;
             _resultValue.results = results;
+            _resultValue.scope = scope;
             return _resultValue;
         }
     }

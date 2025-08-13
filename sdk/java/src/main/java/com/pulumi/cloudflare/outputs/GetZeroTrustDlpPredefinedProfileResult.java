@@ -30,7 +30,11 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness;
     /**
      * @return When the profile was created.
@@ -95,7 +99,11 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public GetZeroTrustDlpPredefinedProfileContextAwareness contextAwareness() {
         return this.contextAwareness;
     }

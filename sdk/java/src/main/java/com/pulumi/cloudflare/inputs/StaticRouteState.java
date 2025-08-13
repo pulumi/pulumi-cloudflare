@@ -3,12 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.StaticRouteModifiedRouteArgs;
-import com.pulumi.cloudflare.inputs.StaticRouteRouteArgs;
 import com.pulumi.cloudflare.inputs.StaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -65,13 +62,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
-    @Import(name="modified")
-    private @Nullable Output<Boolean> modified;
-
-    public Optional<Output<Boolean>> modified() {
-        return Optional.ofNullable(this.modified);
-    }
-
     /**
      * When the route was last modified.
      * 
@@ -85,13 +75,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> modifiedOn() {
         return Optional.ofNullable(this.modifiedOn);
-    }
-
-    @Import(name="modifiedRoute")
-    private @Nullable Output<StaticRouteModifiedRouteArgs> modifiedRoute;
-
-    public Optional<Output<StaticRouteModifiedRouteArgs>> modifiedRoute() {
-        return Optional.ofNullable(this.modifiedRoute);
     }
 
     /**
@@ -139,13 +122,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.priority);
     }
 
-    @Import(name="route")
-    private @Nullable Output<StaticRouteRouteArgs> route;
-
-    public Optional<Output<StaticRouteRouteArgs>> route() {
-        return Optional.ofNullable(this.route);
-    }
-
     /**
      * Used only for ECMP routes.
      * 
@@ -182,13 +158,10 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.createdOn = $.createdOn;
         this.description = $.description;
-        this.modified = $.modified;
         this.modifiedOn = $.modifiedOn;
-        this.modifiedRoute = $.modifiedRoute;
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
-        this.route = $.route;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -274,15 +247,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
-        public Builder modified(@Nullable Output<Boolean> modified) {
-            $.modified = modified;
-            return this;
-        }
-
-        public Builder modified(Boolean modified) {
-            return modified(Output.of(modified));
-        }
-
         /**
          * @param modifiedOn When the route was last modified.
          * 
@@ -302,15 +266,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder modifiedOn(String modifiedOn) {
             return modifiedOn(Output.of(modifiedOn));
-        }
-
-        public Builder modifiedRoute(@Nullable Output<StaticRouteModifiedRouteArgs> modifiedRoute) {
-            $.modifiedRoute = modifiedRoute;
-            return this;
-        }
-
-        public Builder modifiedRoute(StaticRouteModifiedRouteArgs modifiedRoute) {
-            return modifiedRoute(Output.of(modifiedRoute));
         }
 
         /**
@@ -374,15 +329,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
-        }
-
-        public Builder route(@Nullable Output<StaticRouteRouteArgs> route) {
-            $.route = route;
-            return this;
-        }
-
-        public Builder route(StaticRouteRouteArgs route) {
-            return route(Output.of(route));
         }
 
         /**

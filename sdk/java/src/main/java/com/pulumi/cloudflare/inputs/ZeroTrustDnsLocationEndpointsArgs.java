@@ -9,41 +9,40 @@ import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv4Args;
 import com.pulumi.cloudflare.inputs.ZeroTrustDnsLocationEndpointsIpv6Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustDnsLocationEndpointsArgs Empty = new ZeroTrustDnsLocationEndpointsArgs();
 
-    @Import(name="doh")
-    private @Nullable Output<ZeroTrustDnsLocationEndpointsDohArgs> doh;
+    @Import(name="doh", required=true)
+    private Output<ZeroTrustDnsLocationEndpointsDohArgs> doh;
 
-    public Optional<Output<ZeroTrustDnsLocationEndpointsDohArgs>> doh() {
-        return Optional.ofNullable(this.doh);
+    public Output<ZeroTrustDnsLocationEndpointsDohArgs> doh() {
+        return this.doh;
     }
 
-    @Import(name="dot")
-    private @Nullable Output<ZeroTrustDnsLocationEndpointsDotArgs> dot;
+    @Import(name="dot", required=true)
+    private Output<ZeroTrustDnsLocationEndpointsDotArgs> dot;
 
-    public Optional<Output<ZeroTrustDnsLocationEndpointsDotArgs>> dot() {
-        return Optional.ofNullable(this.dot);
+    public Output<ZeroTrustDnsLocationEndpointsDotArgs> dot() {
+        return this.dot;
     }
 
-    @Import(name="ipv4")
-    private @Nullable Output<ZeroTrustDnsLocationEndpointsIpv4Args> ipv4;
+    @Import(name="ipv4", required=true)
+    private Output<ZeroTrustDnsLocationEndpointsIpv4Args> ipv4;
 
-    public Optional<Output<ZeroTrustDnsLocationEndpointsIpv4Args>> ipv4() {
-        return Optional.ofNullable(this.ipv4);
+    public Output<ZeroTrustDnsLocationEndpointsIpv4Args> ipv4() {
+        return this.ipv4;
     }
 
-    @Import(name="ipv6")
-    private @Nullable Output<ZeroTrustDnsLocationEndpointsIpv6Args> ipv6;
+    @Import(name="ipv6", required=true)
+    private Output<ZeroTrustDnsLocationEndpointsIpv6Args> ipv6;
 
-    public Optional<Output<ZeroTrustDnsLocationEndpointsIpv6Args>> ipv6() {
-        return Optional.ofNullable(this.ipv6);
+    public Output<ZeroTrustDnsLocationEndpointsIpv6Args> ipv6() {
+        return this.ipv6;
     }
 
     private ZeroTrustDnsLocationEndpointsArgs() {}
@@ -73,7 +72,7 @@ public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resource
             $ = new ZeroTrustDnsLocationEndpointsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder doh(@Nullable Output<ZeroTrustDnsLocationEndpointsDohArgs> doh) {
+        public Builder doh(Output<ZeroTrustDnsLocationEndpointsDohArgs> doh) {
             $.doh = doh;
             return this;
         }
@@ -82,7 +81,7 @@ public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resource
             return doh(Output.of(doh));
         }
 
-        public Builder dot(@Nullable Output<ZeroTrustDnsLocationEndpointsDotArgs> dot) {
+        public Builder dot(Output<ZeroTrustDnsLocationEndpointsDotArgs> dot) {
             $.dot = dot;
             return this;
         }
@@ -91,7 +90,7 @@ public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resource
             return dot(Output.of(dot));
         }
 
-        public Builder ipv4(@Nullable Output<ZeroTrustDnsLocationEndpointsIpv4Args> ipv4) {
+        public Builder ipv4(Output<ZeroTrustDnsLocationEndpointsIpv4Args> ipv4) {
             $.ipv4 = ipv4;
             return this;
         }
@@ -100,7 +99,7 @@ public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resource
             return ipv4(Output.of(ipv4));
         }
 
-        public Builder ipv6(@Nullable Output<ZeroTrustDnsLocationEndpointsIpv6Args> ipv6) {
+        public Builder ipv6(Output<ZeroTrustDnsLocationEndpointsIpv6Args> ipv6) {
             $.ipv6 = ipv6;
             return this;
         }
@@ -110,6 +109,18 @@ public final class ZeroTrustDnsLocationEndpointsArgs extends com.pulumi.resource
         }
 
         public ZeroTrustDnsLocationEndpointsArgs build() {
+            if ($.doh == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsArgs", "doh");
+            }
+            if ($.dot == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsArgs", "dot");
+            }
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsArgs", "ipv4");
+            }
+            if ($.ipv6 == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsArgs", "ipv6");
+            }
             return $;
         }
     }

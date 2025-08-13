@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultOrigin;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -32,6 +33,11 @@ public final class GetHyperdriveConfigsResult {
     private GetHyperdriveConfigsResultMtls mtls;
     private String name;
     private GetHyperdriveConfigsResultOrigin origin;
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    private Integer originConnectionLimit;
 
     private GetHyperdriveConfigsResult() {}
     public GetHyperdriveConfigsResultCaching caching() {
@@ -67,6 +73,13 @@ public final class GetHyperdriveConfigsResult {
     public GetHyperdriveConfigsResultOrigin origin() {
         return this.origin;
     }
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    public Integer originConnectionLimit() {
+        return this.originConnectionLimit;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -84,6 +97,7 @@ public final class GetHyperdriveConfigsResult {
         private GetHyperdriveConfigsResultMtls mtls;
         private String name;
         private GetHyperdriveConfigsResultOrigin origin;
+        private Integer originConnectionLimit;
         public Builder() {}
         public Builder(GetHyperdriveConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,6 +108,7 @@ public final class GetHyperdriveConfigsResult {
     	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
+    	      this.originConnectionLimit = defaults.originConnectionLimit;
         }
 
         @CustomType.Setter
@@ -152,6 +167,14 @@ public final class GetHyperdriveConfigsResult {
             this.origin = origin;
             return this;
         }
+        @CustomType.Setter
+        public Builder originConnectionLimit(Integer originConnectionLimit) {
+            if (originConnectionLimit == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "originConnectionLimit");
+            }
+            this.originConnectionLimit = originConnectionLimit;
+            return this;
+        }
         public GetHyperdriveConfigsResult build() {
             final var _resultValue = new GetHyperdriveConfigsResult();
             _resultValue.caching = caching;
@@ -161,6 +184,7 @@ public final class GetHyperdriveConfigsResult {
             _resultValue.mtls = mtls;
             _resultValue.name = name;
             _resultValue.origin = origin;
+            _resultValue.originConnectionLimit = originConnectionLimit;
             return _resultValue;
         }
     }

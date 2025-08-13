@@ -9,41 +9,40 @@ import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsIpv4Args;
 import com.pulumi.cloudflare.inputs.TeamsLocationEndpointsIpv6Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsLocationEndpointsArgs Empty = new TeamsLocationEndpointsArgs();
 
-    @Import(name="doh")
-    private @Nullable Output<TeamsLocationEndpointsDohArgs> doh;
+    @Import(name="doh", required=true)
+    private Output<TeamsLocationEndpointsDohArgs> doh;
 
-    public Optional<Output<TeamsLocationEndpointsDohArgs>> doh() {
-        return Optional.ofNullable(this.doh);
+    public Output<TeamsLocationEndpointsDohArgs> doh() {
+        return this.doh;
     }
 
-    @Import(name="dot")
-    private @Nullable Output<TeamsLocationEndpointsDotArgs> dot;
+    @Import(name="dot", required=true)
+    private Output<TeamsLocationEndpointsDotArgs> dot;
 
-    public Optional<Output<TeamsLocationEndpointsDotArgs>> dot() {
-        return Optional.ofNullable(this.dot);
+    public Output<TeamsLocationEndpointsDotArgs> dot() {
+        return this.dot;
     }
 
-    @Import(name="ipv4")
-    private @Nullable Output<TeamsLocationEndpointsIpv4Args> ipv4;
+    @Import(name="ipv4", required=true)
+    private Output<TeamsLocationEndpointsIpv4Args> ipv4;
 
-    public Optional<Output<TeamsLocationEndpointsIpv4Args>> ipv4() {
-        return Optional.ofNullable(this.ipv4);
+    public Output<TeamsLocationEndpointsIpv4Args> ipv4() {
+        return this.ipv4;
     }
 
-    @Import(name="ipv6")
-    private @Nullable Output<TeamsLocationEndpointsIpv6Args> ipv6;
+    @Import(name="ipv6", required=true)
+    private Output<TeamsLocationEndpointsIpv6Args> ipv6;
 
-    public Optional<Output<TeamsLocationEndpointsIpv6Args>> ipv6() {
-        return Optional.ofNullable(this.ipv6);
+    public Output<TeamsLocationEndpointsIpv6Args> ipv6() {
+        return this.ipv6;
     }
 
     private TeamsLocationEndpointsArgs() {}
@@ -73,7 +72,7 @@ public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.Resou
             $ = new TeamsLocationEndpointsArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder doh(@Nullable Output<TeamsLocationEndpointsDohArgs> doh) {
+        public Builder doh(Output<TeamsLocationEndpointsDohArgs> doh) {
             $.doh = doh;
             return this;
         }
@@ -82,7 +81,7 @@ public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.Resou
             return doh(Output.of(doh));
         }
 
-        public Builder dot(@Nullable Output<TeamsLocationEndpointsDotArgs> dot) {
+        public Builder dot(Output<TeamsLocationEndpointsDotArgs> dot) {
             $.dot = dot;
             return this;
         }
@@ -91,7 +90,7 @@ public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.Resou
             return dot(Output.of(dot));
         }
 
-        public Builder ipv4(@Nullable Output<TeamsLocationEndpointsIpv4Args> ipv4) {
+        public Builder ipv4(Output<TeamsLocationEndpointsIpv4Args> ipv4) {
             $.ipv4 = ipv4;
             return this;
         }
@@ -100,7 +99,7 @@ public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.Resou
             return ipv4(Output.of(ipv4));
         }
 
-        public Builder ipv6(@Nullable Output<TeamsLocationEndpointsIpv6Args> ipv6) {
+        public Builder ipv6(Output<TeamsLocationEndpointsIpv6Args> ipv6) {
             $.ipv6 = ipv6;
             return this;
         }
@@ -110,6 +109,18 @@ public final class TeamsLocationEndpointsArgs extends com.pulumi.resources.Resou
         }
 
         public TeamsLocationEndpointsArgs build() {
+            if ($.doh == null) {
+                throw new MissingRequiredPropertyException("TeamsLocationEndpointsArgs", "doh");
+            }
+            if ($.dot == null) {
+                throw new MissingRequiredPropertyException("TeamsLocationEndpointsArgs", "dot");
+            }
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("TeamsLocationEndpointsArgs", "ipv4");
+            }
+            if ($.ipv6 == null) {
+                throw new MissingRequiredPropertyException("TeamsLocationEndpointsArgs", "ipv6");
+            }
             return $;
         }
     }

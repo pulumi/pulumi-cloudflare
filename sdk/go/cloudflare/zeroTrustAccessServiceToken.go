@@ -54,14 +54,11 @@ type ZeroTrustAccessServiceToken struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration   pulumi.StringOutput `pulumi:"duration"`
-	ExpiresAt  pulumi.StringOutput `pulumi:"expiresAt"`
-	LastSeenAt pulumi.StringOutput `pulumi:"lastSeenAt"`
+	Duration  pulumi.StringOutput `pulumi:"duration"`
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the service token.
-	Name      pulumi.StringOutput `pulumi:"name"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -115,14 +112,11 @@ type zeroTrustAccessServiceTokenState struct {
 	ClientId *string `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret *string `pulumi:"clientSecret"`
-	CreatedAt    *string `pulumi:"createdAt"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration   *string `pulumi:"duration"`
-	ExpiresAt  *string `pulumi:"expiresAt"`
-	LastSeenAt *string `pulumi:"lastSeenAt"`
+	Duration  *string `pulumi:"duration"`
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the service token.
-	Name      *string `pulumi:"name"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Name *string `pulumi:"name"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -134,14 +128,11 @@ type ZeroTrustAccessServiceTokenState struct {
 	ClientId pulumi.StringPtrInput
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringPtrInput
-	CreatedAt    pulumi.StringPtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
-	Duration   pulumi.StringPtrInput
-	ExpiresAt  pulumi.StringPtrInput
-	LastSeenAt pulumi.StringPtrInput
+	Duration  pulumi.StringPtrInput
+	ExpiresAt pulumi.StringPtrInput
 	// The name of the service token.
-	Name      pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -275,10 +266,6 @@ func (o ZeroTrustAccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-func (o ZeroTrustAccessServiceTokenOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o ZeroTrustAccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
@@ -288,17 +275,9 @@ func (o ZeroTrustAccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-func (o ZeroTrustAccessServiceTokenOutput) LastSeenAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.LastSeenAt }).(pulumi.StringOutput)
-}
-
 // The name of the service token.
 func (o ZeroTrustAccessServiceTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ZeroTrustAccessServiceTokenOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

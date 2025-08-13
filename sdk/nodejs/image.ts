@@ -13,7 +13,9 @@ import * as utilities from "./utilities";
  *
  * const exampleImage = new cloudflare.Image("example_image", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     file: {},
+ *     imageId: "id",
+ *     creator: "creator",
+ *     file: null,
  *     metadata: {},
  *     requireSignedUrls: true,
  *     url: "https://example.com/path/to/logo.png",
@@ -59,6 +61,10 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * Can set the creator field with an internal user ID.
+     */
+    public readonly creator!: pulumi.Output<string | undefined>;
+    /**
      * An image binary data. Only needed when type is uploading a file.
      */
     public readonly file!: pulumi.Output<string | undefined>;
@@ -66,6 +72,10 @@ export class Image extends pulumi.CustomResource {
      * Image file name.
      */
     public /*out*/ readonly filename!: pulumi.Output<string>;
+    /**
+     * An optional custom unique identifier for your image.
+     */
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
      */
@@ -105,8 +115,10 @@ export class Image extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["file"] = state ? state.file : undefined;
             resourceInputs["filename"] = state ? state.filename : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["meta"] = state ? state.meta : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["requireSignedUrls"] = state ? state.requireSignedUrls : undefined;
@@ -118,8 +130,13 @@ export class Image extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.imageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'imageId'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["creator"] = args ? args.creator : undefined;
             resourceInputs["file"] = args ? args.file : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["requireSignedUrls"] = args ? args.requireSignedUrls : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
@@ -142,6 +159,10 @@ export interface ImageState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * Can set the creator field with an internal user ID.
+     */
+    creator?: pulumi.Input<string>;
+    /**
      * An image binary data. Only needed when type is uploading a file.
      */
     file?: pulumi.Input<string>;
@@ -149,6 +170,10 @@ export interface ImageState {
      * Image file name.
      */
     filename?: pulumi.Input<string>;
+    /**
+     * An optional custom unique identifier for your image.
+     */
+    imageId?: pulumi.Input<string>;
     /**
      * User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
      */
@@ -184,9 +209,17 @@ export interface ImageArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Can set the creator field with an internal user ID.
+     */
+    creator?: pulumi.Input<string>;
+    /**
      * An image binary data. Only needed when type is uploading a file.
      */
     file?: pulumi.Input<string>;
+    /**
+     * An optional custom unique identifier for your image.
+     */
+    imageId: pulumi.Input<string>;
     /**
      * User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
      */

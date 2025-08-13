@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * const exampleUserAgentBlockingRules = cloudflare.getUserAgentBlockingRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     description: "abusive",
- *     descriptionSearch: "abusive",
- *     uaSearch: "Safari",
+ *     paused: false,
+ *     userAgent: "Safari",
  * });
  * ```
  */
@@ -25,9 +25,9 @@ export function getUserAgentBlockingRules(args: GetUserAgentBlockingRulesArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules", {
         "description": args.description,
-        "descriptionSearch": args.descriptionSearch,
         "maxItems": args.maxItems,
-        "uaSearch": args.uaSearch,
+        "paused": args.paused,
+        "userAgent": args.userAgent,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -41,17 +41,17 @@ export interface GetUserAgentBlockingRulesArgs {
      */
     description?: string;
     /**
-     * A string to search for in the description of existing rules.
-     */
-    descriptionSearch?: string;
-    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
+     * When true, indicates that the rule is currently paused.
+     */
+    paused?: boolean;
+    /**
      * A string to search for in the user agent values of existing rules.
      */
-    uaSearch?: string;
+    userAgent?: string;
     /**
      * Defines an identifier.
      */
@@ -67,10 +67,6 @@ export interface GetUserAgentBlockingRulesResult {
      */
     readonly description?: string;
     /**
-     * A string to search for in the description of existing rules.
-     */
-    readonly descriptionSearch?: string;
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -79,13 +75,17 @@ export interface GetUserAgentBlockingRulesResult {
      */
     readonly maxItems?: number;
     /**
+     * When true, indicates that the rule is currently paused.
+     */
+    readonly paused?: boolean;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetUserAgentBlockingRulesResult[];
     /**
      * A string to search for in the user agent values of existing rules.
      */
-    readonly uaSearch?: string;
+    readonly userAgent?: string;
     /**
      * Defines an identifier.
      */
@@ -101,8 +101,8 @@ export interface GetUserAgentBlockingRulesResult {
  * const exampleUserAgentBlockingRules = cloudflare.getUserAgentBlockingRules({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     description: "abusive",
- *     descriptionSearch: "abusive",
- *     uaSearch: "Safari",
+ *     paused: false,
+ *     userAgent: "Safari",
  * });
  * ```
  */
@@ -110,9 +110,9 @@ export function getUserAgentBlockingRulesOutput(args: GetUserAgentBlockingRulesO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules", {
         "description": args.description,
-        "descriptionSearch": args.descriptionSearch,
         "maxItems": args.maxItems,
-        "uaSearch": args.uaSearch,
+        "paused": args.paused,
+        "userAgent": args.userAgent,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -126,17 +126,17 @@ export interface GetUserAgentBlockingRulesOutputArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A string to search for in the description of existing rules.
-     */
-    descriptionSearch?: pulumi.Input<string>;
-    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
     /**
+     * When true, indicates that the rule is currently paused.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
      * A string to search for in the user agent values of existing rules.
      */
-    uaSearch?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<string>;
     /**
      * Defines an identifier.
      */

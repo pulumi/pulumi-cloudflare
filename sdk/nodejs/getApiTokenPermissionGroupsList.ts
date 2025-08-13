@@ -13,7 +13,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiTokenPermissionGroupsList = cloudflare.getApiTokenPermissionGroupsList({});
+ * const exampleApiTokenPermissionGroupsList = cloudflare.getApiTokenPermissionGroupsList({
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
+ * });
  * ```
  */
 export function getApiTokenPermissionGroupsList(args?: GetApiTokenPermissionGroupsListArgs, opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsListResult> {
@@ -21,6 +24,8 @@ export function getApiTokenPermissionGroupsList(args?: GetApiTokenPermissionGrou
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList", {
         "maxItems": args.maxItems,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -32,6 +37,16 @@ export interface GetApiTokenPermissionGroupsListArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: string;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: string;
 }
 
 /**
@@ -47,9 +62,19 @@ export interface GetApiTokenPermissionGroupsListResult {
      */
     readonly maxItems?: number;
     /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    readonly name?: string;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetApiTokenPermissionGroupsListResult[];
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    readonly scope?: string;
 }
 /**
  * ## Example Usage
@@ -58,7 +83,10 @@ export interface GetApiTokenPermissionGroupsListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiTokenPermissionGroupsList = cloudflare.getApiTokenPermissionGroupsList({});
+ * const exampleApiTokenPermissionGroupsList = cloudflare.getApiTokenPermissionGroupsList({
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
+ * });
  * ```
  */
 export function getApiTokenPermissionGroupsListOutput(args?: GetApiTokenPermissionGroupsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiTokenPermissionGroupsListResult> {
@@ -66,6 +94,8 @@ export function getApiTokenPermissionGroupsListOutput(args?: GetApiTokenPermissi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getApiTokenPermissionGroupsList:getApiTokenPermissionGroupsList", {
         "maxItems": args.maxItems,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -77,4 +107,14 @@ export interface GetApiTokenPermissionGroupsListOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: pulumi.Input<string>;
 }

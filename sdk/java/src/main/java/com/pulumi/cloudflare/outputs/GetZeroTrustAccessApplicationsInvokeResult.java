@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,11 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
      * 
      */
     private @Nullable String domain;
+    /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    private @Nullable Boolean exact;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,6 +88,13 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
+    }
+    /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    public Optional<Boolean> exact() {
+        return Optional.ofNullable(this.exact);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -138,6 +151,7 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
         private @Nullable String accountId;
         private @Nullable String aud;
         private @Nullable String domain;
+        private @Nullable Boolean exact;
         private String id;
         private @Nullable Integer maxItems;
         private @Nullable String name;
@@ -150,6 +164,7 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.aud = defaults.aud;
     	      this.domain = defaults.domain;
+    	      this.exact = defaults.exact;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
@@ -174,6 +189,12 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
         public Builder domain(@Nullable String domain) {
 
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exact(@Nullable Boolean exact) {
+
+            this.exact = exact;
             return this;
         }
         @CustomType.Setter
@@ -224,6 +245,7 @@ public final class GetZeroTrustAccessApplicationsInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.aud = aud;
             _resultValue.domain = domain;
+            _resultValue.exact = exact;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;

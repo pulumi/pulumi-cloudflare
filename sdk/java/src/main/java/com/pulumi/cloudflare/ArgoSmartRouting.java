@@ -76,14 +76,14 @@ public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public Output<String> zoneId() {

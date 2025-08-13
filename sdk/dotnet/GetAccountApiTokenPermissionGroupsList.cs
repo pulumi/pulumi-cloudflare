@@ -25,6 +25,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -47,6 +49,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -69,6 +73,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleAccountApiTokenPermissionGroupsList = Cloudflare.GetAccountApiTokenPermissionGroupsList.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
         ///     });
         /// 
         /// });
@@ -93,6 +99,20 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public string? Scope { get; set; }
+
         public GetAccountApiTokenPermissionGroupsListArgs()
         {
         }
@@ -112,6 +132,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
 
         public GetAccountApiTokenPermissionGroupsListInvokeArgs()
         {
@@ -136,9 +170,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsListResultResult> Results;
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        public readonly string? Scope;
 
         [OutputConstructor]
         private GetAccountApiTokenPermissionGroupsListResult(
@@ -148,12 +192,18 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
-            ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsListResultResult> results)
+            string? name,
+
+            ImmutableArray<Outputs.GetAccountApiTokenPermissionGroupsListResultResult> results,
+
+            string? scope)
         {
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
+            Name = name;
             Results = results;
+            Scope = scope;
         }
     }
 }

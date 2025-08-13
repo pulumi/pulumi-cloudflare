@@ -493,7 +493,7 @@ class ApiToken(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def status(self) -> pulumi.Output[_builtins.str]:
         """
         Status of the token.
         Available values: "active", "disabled", "expired".

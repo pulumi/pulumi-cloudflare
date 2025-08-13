@@ -22,10 +22,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsAntivirus? Antivirus;
         /// <summary>
-        /// Setting to enable App Control
-        /// </summary>
-        public readonly Outputs.TeamsAccountSettingsAppControlSettings? AppControlSettings;
-        /// <summary>
         /// Block page layout settings.
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsBlockPage? BlockPage;
@@ -58,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsHostSelector? HostSelector;
         /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        public readonly Outputs.TeamsAccountSettingsInspection? Inspection;
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsProtocolDetection? ProtocolDetection;
@@ -76,8 +76,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsAccountSettingsAntivirus? antivirus,
 
-            Outputs.TeamsAccountSettingsAppControlSettings? appControlSettings,
-
             Outputs.TeamsAccountSettingsBlockPage? blockPage,
 
             Outputs.TeamsAccountSettingsBodyScanning? bodyScanning,
@@ -94,6 +92,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsAccountSettingsHostSelector? hostSelector,
 
+            Outputs.TeamsAccountSettingsInspection? inspection,
+
             Outputs.TeamsAccountSettingsProtocolDetection? protocolDetection,
 
             Outputs.TeamsAccountSettingsSandbox? sandbox,
@@ -102,7 +102,6 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ActivityLog = activityLog;
             Antivirus = antivirus;
-            AppControlSettings = appControlSettings;
             BlockPage = blockPage;
             BodyScanning = bodyScanning;
             BrowserIsolation = browserIsolation;
@@ -111,6 +110,7 @@ namespace Pulumi.Cloudflare.Outputs
             ExtendedEmailMatching = extendedEmailMatching;
             Fips = fips;
             HostSelector = hostSelector;
+            Inspection = inspection;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

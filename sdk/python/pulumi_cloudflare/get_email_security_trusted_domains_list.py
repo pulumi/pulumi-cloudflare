@@ -27,7 +27,7 @@ class GetEmailSecurityTrustedDomainsListResult:
     """
     A collection of values returned by getEmailSecurityTrustedDomainsList.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, is_recent=None, is_similarity=None, max_items=None, order=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, id=None, is_recent=None, is_similarity=None, max_items=None, order=None, pattern=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -49,6 +49,9 @@ class GetEmailSecurityTrustedDomainsListResult:
         if order and not isinstance(order, str):
             raise TypeError("Expected argument 'order' to be a str")
         pulumi.set(__self__, "order", order)
+        if pattern and not isinstance(pattern, str):
+            raise TypeError("Expected argument 'pattern' to be a str")
+        pulumi.set(__self__, "pattern", pattern)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -110,6 +113,11 @@ class GetEmailSecurityTrustedDomainsListResult:
 
     @_builtins.property
     @pulumi.getter
+    def pattern(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "pattern")
+
+    @_builtins.property
+    @pulumi.getter
     def results(self) -> Sequence['outputs.GetEmailSecurityTrustedDomainsListResultResult']:
         """
         The items returned by the data source
@@ -141,6 +149,7 @@ class AwaitableGetEmailSecurityTrustedDomainsListResult(GetEmailSecurityTrustedD
             is_similarity=self.is_similarity,
             max_items=self.max_items,
             order=self.order,
+            pattern=self.pattern,
             results=self.results,
             search=self.search)
 
@@ -151,6 +160,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
                                             is_similarity: Optional[_builtins.bool] = None,
                                             max_items: Optional[_builtins.int] = None,
                                             order: Optional[_builtins.str] = None,
+                                            pattern: Optional[_builtins.str] = None,
                                             search: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityTrustedDomainsListResult:
     """
@@ -165,6 +175,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
         is_recent=True,
         is_similarity=True,
         order="pattern",
+        pattern="pattern",
         search="search")
     ```
 
@@ -187,6 +198,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
     __args__['isSimilarity'] = is_similarity
     __args__['maxItems'] = max_items
     __args__['order'] = order
+    __args__['pattern'] = pattern
     __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList', __args__, opts=opts, typ=GetEmailSecurityTrustedDomainsListResult).value
@@ -199,6 +211,7 @@ def get_email_security_trusted_domains_list(account_id: Optional[_builtins.str] 
         is_similarity=pulumi.get(__ret__, 'is_similarity'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
+        pattern=pulumi.get(__ret__, 'pattern'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
 def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -207,6 +220,7 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
                                                    is_similarity: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                                    max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                                    order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                   pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityTrustedDomainsListResult]:
     """
@@ -221,6 +235,7 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
         is_recent=True,
         is_similarity=True,
         order="pattern",
+        pattern="pattern",
         search="search")
     ```
 
@@ -243,6 +258,7 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
     __args__['isSimilarity'] = is_similarity
     __args__['maxItems'] = max_items
     __args__['order'] = order
+    __args__['pattern'] = pattern
     __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getEmailSecurityTrustedDomainsList:getEmailSecurityTrustedDomainsList', __args__, opts=opts, typ=GetEmailSecurityTrustedDomainsListResult)
@@ -254,5 +270,6 @@ def get_email_security_trusted_domains_list_output(account_id: Optional[pulumi.I
         is_similarity=pulumi.get(__response__, 'is_similarity'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
+        pattern=pulumi.get(__response__, 'pattern'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search')))

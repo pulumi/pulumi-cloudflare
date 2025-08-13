@@ -90,7 +90,7 @@ type RateLimit struct {
 	Action RateLimitActionOutput `pulumi:"action"`
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses RateLimitBypassArrayOutput `pulumi:"bypasses"`
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
@@ -153,7 +153,7 @@ type rateLimitState struct {
 	Action *RateLimitAction `pulumi:"action"`
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses []RateLimitBypass `pulumi:"bypasses"`
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description *string `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled *bool `pulumi:"disabled"`
@@ -172,7 +172,7 @@ type RateLimitState struct {
 	Action RateLimitActionPtrInput
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses RateLimitBypassArrayInput
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description pulumi.StringPtrInput
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled pulumi.BoolPtrInput
@@ -314,7 +314,7 @@ func (o RateLimitOutput) Bypasses() RateLimitBypassArrayOutput {
 	return o.ApplyT(func(v *RateLimit) RateLimitBypassArrayOutput { return v.Bypasses }).(RateLimitBypassArrayOutput)
 }
 
-// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+// An informative summary of the rule. This value is sanitized and any tags will be removed.
 func (o RateLimitOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }

@@ -6,8 +6,9 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountApiTokenPermissionGroupsResult {
@@ -17,20 +18,22 @@ public final class GetAccountApiTokenPermissionGroupsResult {
      */
     private String accountId;
     /**
-     * @return Public ID.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Permission Group Name
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return Resources to which the Permission Group is scoped
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
      * 
      */
-    private List<String> scopes;
+    private @Nullable String scope;
 
     private GetAccountApiTokenPermissionGroupsResult() {}
     /**
@@ -41,25 +44,27 @@ public final class GetAccountApiTokenPermissionGroupsResult {
         return this.accountId;
     }
     /**
-     * @return Public ID.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Permission Group Name
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return Resources to which the Permission Group is scoped
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
      * 
      */
-    public List<String> scopes() {
-        return this.scopes;
+    public Optional<String> scope() {
+        return Optional.ofNullable(this.scope);
     }
 
     public static Builder builder() {
@@ -73,15 +78,15 @@ public final class GetAccountApiTokenPermissionGroupsResult {
     public static final class Builder {
         private String accountId;
         private String id;
-        private String name;
-        private List<String> scopes;
+        private @Nullable String name;
+        private @Nullable String scope;
         public Builder() {}
         public Builder(GetAccountApiTokenPermissionGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
-    	      this.scopes = defaults.scopes;
+    	      this.scope = defaults.scope;
         }
 
         @CustomType.Setter
@@ -101,30 +106,23 @@ public final class GetAccountApiTokenPermissionGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder scopes(List<String> scopes) {
-            if (scopes == null) {
-              throw new MissingRequiredPropertyException("GetAccountApiTokenPermissionGroupsResult", "scopes");
-            }
-            this.scopes = scopes;
+        public Builder scope(@Nullable String scope) {
+
+            this.scope = scope;
             return this;
-        }
-        public Builder scopes(String... scopes) {
-            return scopes(List.of(scopes));
         }
         public GetAccountApiTokenPermissionGroupsResult build() {
             final var _resultValue = new GetAccountApiTokenPermissionGroupsResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.name = name;
-            _resultValue.scopes = scopes;
+            _resultValue.scope = scope;
             return _resultValue;
         }
     }

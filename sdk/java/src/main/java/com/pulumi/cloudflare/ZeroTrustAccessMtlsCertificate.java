@@ -111,12 +111,6 @@ public class ZeroTrustAccessMtlsCertificate extends com.pulumi.resources.CustomR
     public Output<String> certificate() {
         return this.certificate;
     }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
     @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
@@ -150,12 +144,6 @@ public class ZeroTrustAccessMtlsCertificate extends com.pulumi.resources.CustomR
      */
     public Output<String> name() {
         return this.name;
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

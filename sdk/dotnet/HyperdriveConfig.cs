@@ -51,6 +51,12 @@ namespace Pulumi.Cloudflare
         [Output("origin")]
         public Output<Outputs.HyperdriveConfigOrigin> Origin { get; private set; } = null!;
 
+        /// <summary>
+        /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        /// </summary>
+        [Output("originConnectionLimit")]
+        public Output<int?> OriginConnectionLimit { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -115,6 +121,12 @@ namespace Pulumi.Cloudflare
         [Input("origin", required: true)]
         public Input<Inputs.HyperdriveConfigOriginArgs> Origin { get; set; } = null!;
 
+        /// <summary>
+        /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        /// </summary>
+        [Input("originConnectionLimit")]
+        public Input<int>? OriginConnectionLimit { get; set; }
+
         public HyperdriveConfigArgs()
         {
         }
@@ -152,6 +164,12 @@ namespace Pulumi.Cloudflare
 
         [Input("origin")]
         public Input<Inputs.HyperdriveConfigOriginGetArgs>? Origin { get; set; }
+
+        /// <summary>
+        /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        /// </summary>
+        [Input("originConnectionLimit")]
+        public Input<int>? OriginConnectionLimit { get; set; }
 
         public HyperdriveConfigState()
         {

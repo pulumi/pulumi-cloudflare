@@ -98,7 +98,7 @@ export class RateLimit extends pulumi.CustomResource {
      */
     public /*out*/ readonly bypasses!: pulumi.Output<outputs.RateLimitBypass[]>;
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface RateLimitState {
      */
     bypasses?: pulumi.Input<pulumi.Input<inputs.RateLimitBypass>[]>;
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     description?: pulumi.Input<string>;
     /**

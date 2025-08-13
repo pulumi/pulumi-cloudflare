@@ -125,7 +125,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string DnsDestinationIpsId;
         /// <summary>
-        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
         /// </summary>
         public readonly string DnsDestinationIpv6BlockId;
         /// <summary>

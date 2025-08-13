@@ -48,7 +48,7 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
     /**
      * Account settings
      */
-    public readonly settings!: pulumi.Output<outputs.ZeroTrustGatewaySettingsSettings>;
+    public readonly settings!: pulumi.Output<outputs.ZeroTrustGatewaySettingsSettings | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**

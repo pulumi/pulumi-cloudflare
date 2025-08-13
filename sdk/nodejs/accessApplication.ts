@@ -77,13 +77,12 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      */
-    public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
+    public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
     /**
      * The background color of the App Launcher page.
      */
     public readonly bgColor!: pulumi.Output<string | undefined>;
     public readonly corsHeaders!: pulumi.Output<outputs.AccessApplicationCorsHeaders | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
@@ -107,11 +106,11 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
-    public readonly domain!: pulumi.Output<string | undefined>;
+    public readonly domain!: pulumi.Output<string>;
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      */
-    public readonly enableBindingCookie!: pulumi.Output<boolean>;
+    public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
     /**
      * The links in the App Launcher footer.
      */
@@ -127,7 +126,7 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * The design of the App Launcher landing page shown to users when they log in.
      */
-    public readonly landingPageDesign!: pulumi.Output<outputs.AccessApplicationLandingPageDesign>;
+    public readonly landingPageDesign!: pulumi.Output<outputs.AccessApplicationLandingPageDesign | undefined>;
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
      */
@@ -135,7 +134,7 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * The name of the application.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
@@ -143,11 +142,11 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
      */
-    public readonly pathCookieAttribute!: pulumi.Output<boolean>;
+    public readonly pathCookieAttribute!: pulumi.Output<boolean | undefined>;
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    public readonly policies!: pulumi.Output<outputs.AccessApplicationPolicy[]>;
+    public readonly policies!: pulumi.Output<outputs.AccessApplicationPolicy[] | undefined>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -158,7 +157,7 @@ export class AccessApplication extends pulumi.CustomResource {
      * }
      */
     public readonly readServiceTokensFromHeader!: pulumi.Output<string | undefined>;
-    public readonly saasApp!: pulumi.Output<outputs.AccessApplicationSaasApp>;
+    public readonly saasApp!: pulumi.Output<outputs.AccessApplicationSaasApp | undefined>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      */
@@ -192,14 +191,13 @@ export class AccessApplication extends pulumi.CustomResource {
     /**
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     public readonly targetCriterias!: pulumi.Output<outputs.AccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     public readonly type!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -231,7 +229,6 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             resourceInputs["bgColor"] = state ? state.bgColor : undefined;
             resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
             resourceInputs["customNonIdentityDenyUrl"] = state ? state.customNonIdentityDenyUrl : undefined;
@@ -260,7 +257,6 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["targetCriterias"] = state ? state.targetCriterias : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
@@ -303,8 +299,6 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["aud"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessApplication:AccessApplication" }] };
@@ -354,7 +348,6 @@ export interface AccessApplicationState {
      */
     bgColor?: pulumi.Input<string>;
     corsHeaders?: pulumi.Input<inputs.AccessApplicationCorsHeaders>;
-    createdAt?: pulumi.Input<string>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
@@ -470,7 +463,6 @@ export interface AccessApplicationState {
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

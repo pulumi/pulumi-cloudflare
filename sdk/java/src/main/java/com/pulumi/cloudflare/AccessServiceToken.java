@@ -109,12 +109,6 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
-    }
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
@@ -135,12 +129,6 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
     public Output<String> expiresAt() {
         return this.expiresAt;
     }
-    @Export(name="lastSeenAt", refs={String.class}, tree="[0]")
-    private Output<String> lastSeenAt;
-
-    public Output<String> lastSeenAt() {
-        return this.lastSeenAt;
-    }
     /**
      * The name of the service token.
      * 
@@ -154,12 +142,6 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

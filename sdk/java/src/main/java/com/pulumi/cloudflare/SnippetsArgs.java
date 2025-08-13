@@ -8,9 +8,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,36 +17,44 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
     public static final SnippetsArgs Empty = new SnippetsArgs();
 
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      * 
      */
-    @Import(name="files")
-    private @Nullable Output<String> files;
+    @Import(name="files", required=true)
+    private Output<List<String>> files;
 
     /**
-     * @return Content files of uploaded snippet
+     * @return The list of files belonging to the snippet.
      * 
      */
-    public Optional<Output<String>> files() {
-        return Optional.ofNullable(this.files);
-    }
-
-    @Import(name="metadata")
-    private @Nullable Output<SnippetsMetadataArgs> metadata;
-
-    public Optional<Output<SnippetsMetadataArgs>> metadata() {
-        return Optional.ofNullable(this.metadata);
+    public Output<List<String>> files() {
+        return this.files;
     }
 
     /**
-     * Snippet identifying name
+     * Metadata about the snippet.
+     * 
+     */
+    @Import(name="metadata", required=true)
+    private Output<SnippetsMetadataArgs> metadata;
+
+    /**
+     * @return Metadata about the snippet.
+     * 
+     */
+    public Output<SnippetsMetadataArgs> metadata() {
+        return this.metadata;
+    }
+
+    /**
+     * The identifying name of the snippet.
      * 
      */
     @Import(name="snippetName", required=true)
     private Output<String> snippetName;
 
     /**
-     * @return Snippet identifying name
+     * @return The identifying name of the snippet.
      * 
      */
     public Output<String> snippetName() {
@@ -55,14 +62,14 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -97,37 +104,59 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param files Content files of uploaded snippet
+         * @param files The list of files belonging to the snippet.
          * 
          * @return builder
          * 
          */
-        public Builder files(@Nullable Output<String> files) {
+        public Builder files(Output<List<String>> files) {
             $.files = files;
             return this;
         }
 
         /**
-         * @param files Content files of uploaded snippet
+         * @param files The list of files belonging to the snippet.
          * 
          * @return builder
          * 
          */
-        public Builder files(String files) {
+        public Builder files(List<String> files) {
             return files(Output.of(files));
         }
 
-        public Builder metadata(@Nullable Output<SnippetsMetadataArgs> metadata) {
+        /**
+         * @param files The list of files belonging to the snippet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder files(String... files) {
+            return files(List.of(files));
+        }
+
+        /**
+         * @param metadata Metadata about the snippet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Output<SnippetsMetadataArgs> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata Metadata about the snippet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(SnippetsMetadataArgs metadata) {
             return metadata(Output.of(metadata));
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param snippetName The identifying name of the snippet.
          * 
          * @return builder
          * 
@@ -138,7 +167,7 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param snippetName The identifying name of the snippet.
          * 
          * @return builder
          * 
@@ -148,7 +177,7 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -159,7 +188,7 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -169,6 +198,12 @@ public final class SnippetsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnippetsArgs build() {
+            if ($.files == null) {
+                throw new MissingRequiredPropertyException("SnippetsArgs", "files");
+            }
+            if ($.metadata == null) {
+                throw new MissingRequiredPropertyException("SnippetsArgs", "metadata");
+            }
             if ($.snippetName == null) {
                 throw new MissingRequiredPropertyException("SnippetsArgs", "snippetName");
             }

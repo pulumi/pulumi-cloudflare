@@ -57,7 +57,7 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -102,7 +102,7 @@ export interface ArgoSmartRoutingState {
      */
     value?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -117,7 +117,7 @@ export interface ArgoSmartRoutingArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .accountId("account_id")
  *             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
  *             .aiContextEnabled(true)
- *             .allowedMatchCount(0)
+ *             .allowedMatchCount(5)
  *             .confidenceThreshold("confidence_threshold")
  *             .contextAwareness(ZeroTrustDlpPredefinedProfileContextAwarenessArgs.builder()
  *                 .enabled(true)
@@ -90,27 +90,31 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return this.accountId;
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> aiContextEnabled;
+    private Output<Boolean> aiContextEnabled;
 
-    public Output<Optional<Boolean>> aiContextEnabled() {
-        return Codegen.optional(this.aiContextEnabled);
+    public Output<Boolean> aiContextEnabled() {
+        return this.aiContextEnabled;
     }
     @Export(name="allowedMatchCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> allowedMatchCount;
+    private Output<Integer> allowedMatchCount;
 
-    public Output<Optional<Integer>> allowedMatchCount() {
-        return Codegen.optional(this.allowedMatchCount);
+    public Output<Integer> allowedMatchCount() {
+        return this.allowedMatchCount;
     }
     @Export(name="confidenceThreshold", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidenceThreshold;
+    private Output<String> confidenceThreshold;
 
-    public Output<Optional<String>> confidenceThreshold() {
-        return Codegen.optional(this.confidenceThreshold);
+    public Output<String> confidenceThreshold() {
+        return this.confidenceThreshold;
     }
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={ZeroTrustDlpPredefinedProfileContextAwareness.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDlpPredefinedProfileContextAwareness> contextAwareness;
 
@@ -176,10 +180,10 @@ public class ZeroTrustDlpPredefinedProfile extends com.pulumi.resources.CustomRe
         return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ocrEnabled;
+    private Output<Boolean> ocrEnabled;
 
-    public Output<Optional<Boolean>> ocrEnabled() {
-        return Codegen.optional(this.ocrEnabled);
+    public Output<Boolean> ocrEnabled() {
+        return this.ocrEnabled;
     }
     /**
      * Whether this profile can be accessed by anyone.

@@ -22,8 +22,7 @@ class ZeroTrustAccessCustomPageArgs:
                  account_id: pulumi.Input[_builtins.str],
                  custom_html: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 type: pulumi.Input[_builtins.str],
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustAccessCustomPage resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -31,14 +30,11 @@ class ZeroTrustAccessCustomPageArgs:
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
                Available values: "identity_denied", "forbidden".
-        :param pulumi.Input[_builtins.int] app_count: Number of apps the custom page is assigned to.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "custom_html", custom_html)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -89,34 +85,18 @@ class ZeroTrustAccessCustomPageArgs:
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
 
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of apps the custom page is assigned to.
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "app_count", value)
-
 
 @pulumi.input_type
 class _ZeroTrustAccessCustomPageState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_html: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 uid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessCustomPage resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
@@ -125,10 +105,6 @@ class _ZeroTrustAccessCustomPageState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if custom_html is not None:
             pulumi.set(__self__, "custom_html", custom_html)
         if name is not None:
@@ -137,8 +113,6 @@ class _ZeroTrustAccessCustomPageState:
             pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -151,27 +125,6 @@ class _ZeroTrustAccessCustomPageState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of apps the custom page is assigned to.
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "app_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -222,15 +175,6 @@ class _ZeroTrustAccessCustomPageState:
     def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
-
 
 @pulumi.type_token("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 class ZeroTrustAccessCustomPage(pulumi.CustomResource):
@@ -239,25 +183,12 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None,
                  custom_html: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            custom_html="<html><body><h1>Access Denied</h1></body></html>",
-            name="name",
-            type="identity_denied",
-            app_count=0)
-        ```
 
         ## Import
 
@@ -268,7 +199,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
@@ -282,18 +212,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            custom_html="<html><body><h1>Access Denied</h1></body></html>",
-            name="name",
-            type="identity_denied",
-            app_count=0)
-        ```
 
         ## Import
 
@@ -317,7 +235,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None,
                  custom_html: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -333,7 +250,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["app_count"] = app_count
             if custom_html is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_html'")
             __props__.__dict__["custom_html"] = custom_html
@@ -343,9 +259,7 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            __props__.__dict__["created_at"] = None
             __props__.__dict__["uid"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCustomPage:AccessCustomPage")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessCustomPage, __self__).__init__(
@@ -359,13 +273,10 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_count: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             custom_html: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessCustomPage':
+            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessCustomPage':
         """
         Get an existing ZeroTrustAccessCustomPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -374,7 +285,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[_builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[_builtins.str] name: Custom page name.
         :param pulumi.Input[_builtins.str] type: Custom page type.
@@ -386,13 +296,10 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         __props__ = _ZeroTrustAccessCustomPageState.__new__(_ZeroTrustAccessCustomPageState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["app_count"] = app_count
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["custom_html"] = custom_html
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
-        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustAccessCustomPage(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -402,19 +309,6 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Number of apps the custom page is assigned to.
-        """
-        return pulumi.get(self, "app_count")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -448,9 +342,4 @@ class ZeroTrustAccessCustomPage(pulumi.CustomResource):
         UUID.
         """
         return pulumi.get(self, "uid")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 

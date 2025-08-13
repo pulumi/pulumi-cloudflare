@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +16,14 @@ public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetListPlainArgs Empty = new GetListPlainArgs();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public String accountId() {
@@ -32,15 +34,15 @@ public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
      * The unique ID of the list.
      * 
      */
-    @Import(name="listId", required=true)
-    private String listId;
+    @Import(name="listId")
+    private @Nullable String listId;
 
     /**
      * @return The unique ID of the list.
      * 
      */
-    public String listId() {
-        return this.listId;
+    public Optional<String> listId() {
+        return Optional.ofNullable(this.listId);
     }
 
     private GetListPlainArgs() {}
@@ -69,7 +71,7 @@ public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -85,7 +87,7 @@ public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder listId(String listId) {
+        public Builder listId(@Nullable String listId) {
             $.listId = listId;
             return this;
         }
@@ -93,9 +95,6 @@ public final class GetListPlainArgs extends com.pulumi.resources.InvokeArgs {
         public GetListPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetListPlainArgs", "accountId");
-            }
-            if ($.listId == null) {
-                throw new MissingRequiredPropertyException("GetListPlainArgs", "listId");
             }
             return $;
         }

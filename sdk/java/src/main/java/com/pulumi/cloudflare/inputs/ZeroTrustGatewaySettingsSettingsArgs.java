@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs;
@@ -14,6 +13,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCustomCertif
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
@@ -56,21 +56,6 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
      */
     public Optional<Output<ZeroTrustGatewaySettingsSettingsAntivirusArgs>> antivirus() {
         return Optional.ofNullable(this.antivirus);
-    }
-
-    /**
-     * Setting to enable App Control
-     * 
-     */
-    @Import(name="appControlSettings")
-    private @Nullable Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs> appControlSettings;
-
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    public Optional<Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs>> appControlSettings() {
-        return Optional.ofNullable(this.appControlSettings);
     }
 
     /**
@@ -202,6 +187,21 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
+     * Setting to define inspection settings
+     * 
+     */
+    @Import(name="inspection")
+    private @Nullable Output<ZeroTrustGatewaySettingsSettingsInspectionArgs> inspection;
+
+    /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewaySettingsSettingsInspectionArgs>> inspection() {
+        return Optional.ofNullable(this.inspection);
+    }
+
+    /**
      * Protocol Detection settings.
      * 
      */
@@ -251,7 +251,6 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     private ZeroTrustGatewaySettingsSettingsArgs(ZeroTrustGatewaySettingsSettingsArgs $) {
         this.activityLog = $.activityLog;
         this.antivirus = $.antivirus;
-        this.appControlSettings = $.appControlSettings;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
         this.browserIsolation = $.browserIsolation;
@@ -260,6 +259,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
         this.hostSelector = $.hostSelector;
+        this.inspection = $.inspection;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -323,27 +323,6 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder antivirus(ZeroTrustGatewaySettingsSettingsAntivirusArgs antivirus) {
             return antivirus(Output.of(antivirus));
-        }
-
-        /**
-         * @param appControlSettings Setting to enable App Control
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appControlSettings(@Nullable Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs> appControlSettings) {
-            $.appControlSettings = appControlSettings;
-            return this;
-        }
-
-        /**
-         * @param appControlSettings Setting to enable App Control
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appControlSettings(ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs appControlSettings) {
-            return appControlSettings(Output.of(appControlSettings));
         }
 
         /**
@@ -520,6 +499,27 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder hostSelector(ZeroTrustGatewaySettingsSettingsHostSelectorArgs hostSelector) {
             return hostSelector(Output.of(hostSelector));
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(@Nullable Output<ZeroTrustGatewaySettingsSettingsInspectionArgs> inspection) {
+            $.inspection = inspection;
+            return this;
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs inspection) {
+            return inspection(Output.of(inspection));
         }
 
         /**

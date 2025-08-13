@@ -105,10 +105,10 @@ namespace Pulumi.Cloudflare
         /// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         /// </summary>
         [Output("dnsDestinationIpsId")]
-        public Output<string?> DnsDestinationIpsId { get; private set; } = null!;
+        public Output<string> DnsDestinationIpsId { get; private set; } = null!;
 
         /// <summary>
-        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
         /// </summary>
         [Output("dnsDestinationIpv6BlockId")]
         public Output<string> DnsDestinationIpv6BlockId { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DnsDestinationIpsId { get; set; }
 
         /// <summary>
-        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
         /// </summary>
         [Input("dnsDestinationIpv6BlockId")]
         public Input<string>? DnsDestinationIpv6BlockId { get; set; }

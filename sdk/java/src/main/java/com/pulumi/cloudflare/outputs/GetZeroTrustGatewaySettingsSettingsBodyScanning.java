@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetZeroTrustGatewaySettingsSettingsBodyScanning {
     /**
      * @return Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     private String inspectionMode;
@@ -19,6 +20,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBodyScanning {
     private GetZeroTrustGatewaySettingsSettingsBodyScanning() {}
     /**
      * @return Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     public String inspectionMode() {

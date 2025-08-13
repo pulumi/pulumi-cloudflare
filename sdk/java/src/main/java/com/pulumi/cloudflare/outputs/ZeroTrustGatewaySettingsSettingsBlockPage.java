@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * @return If mode is customized*block*page: block page background color in #rrggbb format.
+     * @return If mode is customized_block_page: block page background color in #rrggbb format.
      * 
      */
     private @Nullable String backgroundColor;
@@ -23,48 +24,58 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If mode is customized*block*page: block page footer text.
+     * @return If mode is customized_block_page: block page footer text.
      * 
      */
     private @Nullable String footerText;
     /**
-     * @return If mode is customized*block*page: block page header text.
+     * @return If mode is customized_block_page: block page header text.
      * 
      */
     private @Nullable String headerText;
     /**
-     * @return If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     * @return If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return If mode is customized*block*page: full URL to the logo file.
+     * @return If mode is customized_block_page: full URL to the logo file.
      * 
      */
     private @Nullable String logoPath;
     /**
-     * @return If mode is customized*block*page: admin email for users to contact.
+     * @return If mode is customized_block_page: admin email for users to contact.
      * 
      */
     private @Nullable String mailtoAddress;
     /**
-     * @return If mode is customized*block*page: subject line for emails created from block page.
+     * @return If mode is customized_block_page: subject line for emails created from block page.
      * 
      */
     private @Nullable String mailtoSubject;
     /**
      * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     private @Nullable String mode;
     /**
-     * @return If mode is customized*block*page: block page title.
+     * @return If mode is customized_block_page: block page title.
      * 
      */
     private @Nullable String name;
     /**
-     * @return If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    private @Nullable Boolean readOnly;
+    /**
+     * @return Account tag of account that shared this setting
+     * 
+     */
+    private @Nullable String sourceAccount;
+    /**
+     * @return If mode is customized_block_page: suppress detailed info at the bottom of the block page.
      * 
      */
     private @Nullable Boolean suppressFooter;
@@ -73,10 +84,15 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      * 
      */
     private @Nullable String targetUri;
+    /**
+     * @return Version number of the setting
+     * 
+     */
+    private @Nullable Integer version;
 
     private ZeroTrustGatewaySettingsSettingsBlockPage() {}
     /**
-     * @return If mode is customized*block*page: block page background color in #rrggbb format.
+     * @return If mode is customized_block_page: block page background color in #rrggbb format.
      * 
      */
     public Optional<String> backgroundColor() {
@@ -90,42 +106,42 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If mode is customized*block*page: block page footer text.
+     * @return If mode is customized_block_page: block page footer text.
      * 
      */
     public Optional<String> footerText() {
         return Optional.ofNullable(this.footerText);
     }
     /**
-     * @return If mode is customized*block*page: block page header text.
+     * @return If mode is customized_block_page: block page header text.
      * 
      */
     public Optional<String> headerText() {
         return Optional.ofNullable(this.headerText);
     }
     /**
-     * @return If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     * @return If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return If mode is customized*block*page: full URL to the logo file.
+     * @return If mode is customized_block_page: full URL to the logo file.
      * 
      */
     public Optional<String> logoPath() {
         return Optional.ofNullable(this.logoPath);
     }
     /**
-     * @return If mode is customized*block*page: admin email for users to contact.
+     * @return If mode is customized_block_page: admin email for users to contact.
      * 
      */
     public Optional<String> mailtoAddress() {
         return Optional.ofNullable(this.mailtoAddress);
     }
     /**
-     * @return If mode is customized*block*page: subject line for emails created from block page.
+     * @return If mode is customized_block_page: subject line for emails created from block page.
      * 
      */
     public Optional<String> mailtoSubject() {
@@ -133,21 +149,35 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     }
     /**
      * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return If mode is customized*block*page: block page title.
+     * @return If mode is customized_block_page: block page title.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    public Optional<Boolean> readOnly() {
+        return Optional.ofNullable(this.readOnly);
+    }
+    /**
+     * @return Account tag of account that shared this setting
+     * 
+     */
+    public Optional<String> sourceAccount() {
+        return Optional.ofNullable(this.sourceAccount);
+    }
+    /**
+     * @return If mode is customized_block_page: suppress detailed info at the bottom of the block page.
      * 
      */
     public Optional<Boolean> suppressFooter() {
@@ -159,6 +189,13 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     public Optional<String> targetUri() {
         return Optional.ofNullable(this.targetUri);
+    }
+    /**
+     * @return Version number of the setting
+     * 
+     */
+    public Optional<Integer> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -180,8 +217,11 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         private @Nullable String mailtoSubject;
         private @Nullable String mode;
         private @Nullable String name;
+        private @Nullable Boolean readOnly;
+        private @Nullable String sourceAccount;
         private @Nullable Boolean suppressFooter;
         private @Nullable String targetUri;
+        private @Nullable Integer version;
         public Builder() {}
         public Builder(ZeroTrustGatewaySettingsSettingsBlockPage defaults) {
     	      Objects.requireNonNull(defaults);
@@ -195,8 +235,11 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     	      this.mailtoSubject = defaults.mailtoSubject;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
+    	      this.readOnly = defaults.readOnly;
+    	      this.sourceAccount = defaults.sourceAccount;
     	      this.suppressFooter = defaults.suppressFooter;
     	      this.targetUri = defaults.targetUri;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -260,6 +303,18 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
             return this;
         }
         @CustomType.Setter
+        public Builder readOnly(@Nullable Boolean readOnly) {
+
+            this.readOnly = readOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceAccount(@Nullable String sourceAccount) {
+
+            this.sourceAccount = sourceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder suppressFooter(@Nullable Boolean suppressFooter) {
 
             this.suppressFooter = suppressFooter;
@@ -269,6 +324,12 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         public Builder targetUri(@Nullable String targetUri) {
 
             this.targetUri = targetUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder version(@Nullable Integer version) {
+
+            this.version = version;
             return this;
         }
         public ZeroTrustGatewaySettingsSettingsBlockPage build() {
@@ -283,8 +344,11 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
             _resultValue.mailtoSubject = mailtoSubject;
             _resultValue.mode = mode;
             _resultValue.name = name;
+            _resultValue.readOnly = readOnly;
+            _resultValue.sourceAccount = sourceAccount;
             _resultValue.suppressFooter = suppressFooter;
             _resultValue.targetUri = targetUri;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

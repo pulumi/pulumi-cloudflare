@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "foo.example.com",
     ///         RegionKey = "ca",
-    ///         Routing = "routing",
+    ///         Routing = "dns",
     ///     });
     /// 
     /// });
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// Configure which routing method to use for the regional hostname
         /// </summary>
         [Output("routing")]
-        public Output<string?> Routing { get; private set; } = null!;
+        public Output<string> Routing { get; private set; } = null!;
 
         /// <summary>
         /// Identifier.

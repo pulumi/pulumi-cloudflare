@@ -14,14 +14,14 @@ public final class GetArgoSmartRoutingPlainArgs extends com.pulumi.resources.Inv
     public static final GetArgoSmartRoutingPlainArgs Empty = new GetArgoSmartRoutingPlainArgs();
 
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetArgoSmartRoutingPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specifies the zone associated with the API call.
          * 
          * @return builder
          * 

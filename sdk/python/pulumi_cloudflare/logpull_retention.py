@@ -116,6 +116,12 @@ class LogpullRetention(pulumi.CustomResource):
             flag=True)
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] flag: The log retention flag for Logpull API.
@@ -137,6 +143,12 @@ class LogpullRetention(pulumi.CustomResource):
         example_logpull_retention = cloudflare.LogpullRetention("example_logpull_retention",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             flag=True)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.

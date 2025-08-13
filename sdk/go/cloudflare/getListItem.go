@@ -50,7 +50,7 @@ func LookupListItem(ctx *pulumi.Context, args *LookupListItemArgs, opts ...pulum
 
 // A collection of arguments for invoking getListItem.
 type LookupListItemArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// Defines the unique ID of the item in the List.
 	ItemId string `pulumi:"itemId"`
@@ -60,28 +60,14 @@ type LookupListItemArgs struct {
 
 // A collection of values returned by getListItem.
 type LookupListItemResult struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
-	// Defines a non-negative 32 bit integer.
-	Asn int `pulumi:"asn"`
-	// Defines an informative summary of the list item.
-	Comment string `pulumi:"comment"`
-	// The RFC 3339 timestamp of when the item was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-	Hostname GetListItemHostname `pulumi:"hostname"`
-	// The unique ID of the list.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-	Ip string `pulumi:"ip"`
 	// Defines the unique ID of the item in the List.
 	ItemId string `pulumi:"itemId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
-	// The RFC 3339 timestamp of when the item was last modified.
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// The definition of the redirect.
-	Redirect GetListItemRedirect `pulumi:"redirect"`
 }
 
 func LookupListItemOutput(ctx *pulumi.Context, args LookupListItemOutputArgs, opts ...pulumi.InvokeOption) LookupListItemResultOutput {
@@ -95,7 +81,7 @@ func LookupListItemOutput(ctx *pulumi.Context, args LookupListItemOutputArgs, op
 
 // A collection of arguments for invoking getListItem.
 type LookupListItemOutputArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Defines the unique ID of the item in the List.
 	ItemId pulumi.StringInput `pulumi:"itemId"`
@@ -122,39 +108,14 @@ func (o LookupListItemResultOutput) ToLookupListItemResultOutputWithContext(ctx 
 	return o
 }
 
-// Defines an identifier.
+// The Account ID for this resource.
 func (o LookupListItemResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Defines a non-negative 32 bit integer.
-func (o LookupListItemResultOutput) Asn() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupListItemResult) int { return v.Asn }).(pulumi.IntOutput)
-}
-
-// Defines an informative summary of the list item.
-func (o LookupListItemResultOutput) Comment() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.Comment }).(pulumi.StringOutput)
-}
-
-// The RFC 3339 timestamp of when the item was created.
-func (o LookupListItemResultOutput) CreatedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.CreatedOn }).(pulumi.StringOutput)
-}
-
-// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-func (o LookupListItemResultOutput) Hostname() GetListItemHostnameOutput {
-	return o.ApplyT(func(v LookupListItemResult) GetListItemHostname { return v.Hostname }).(GetListItemHostnameOutput)
-}
-
-// The unique ID of the list.
+// The provider-assigned unique ID for this managed resource.
 func (o LookupListItemResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-func (o LookupListItemResultOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
 // Defines the unique ID of the item in the List.
@@ -165,16 +126,6 @@ func (o LookupListItemResultOutput) ItemId() pulumi.StringOutput {
 // The unique ID of the list.
 func (o LookupListItemResultOutput) ListId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.ListId }).(pulumi.StringOutput)
-}
-
-// The RFC 3339 timestamp of when the item was last modified.
-func (o LookupListItemResultOutput) ModifiedOn() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
-}
-
-// The definition of the redirect.
-func (o LookupListItemResultOutput) Redirect() GetListItemRedirectOutput {
-	return o.ApplyT(func(v LookupListItemResult) GetListItemRedirect { return v.Redirect }).(GetListItemRedirectOutput)
 }
 
 func init() {

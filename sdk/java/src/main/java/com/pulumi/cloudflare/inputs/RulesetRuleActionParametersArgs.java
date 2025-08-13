@@ -524,6 +524,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    @Import(name="phase")
+    private @Nullable Output<String> phase;
+
+    /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    public Optional<Output<String>> phase() {
+        return Optional.ofNullable(this.phase);
+    }
+
+    /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
@@ -896,6 +913,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.originCacheControl = $.originCacheControl;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
         this.overrides = $.overrides;
+        this.phase = $.phase;
         this.phases = $.phases;
         this.polish = $.polish;
         this.products = $.products;
@@ -1640,6 +1658,29 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder overrides(RulesetRuleActionParametersOverridesArgs overrides) {
             return overrides(Output.of(overrides));
+        }
+
+        /**
+         * @param phase A phase to skip the execution of. This property is only compatible with products.
+         * Available values: &#34;current&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(@Nullable Output<String> phase) {
+            $.phase = phase;
+            return this;
+        }
+
+        /**
+         * @param phase A phase to skip the execution of. This property is only compatible with products.
+         * Available values: &#34;current&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(String phase) {
+            return phase(Output.of(phase));
         }
 
         /**

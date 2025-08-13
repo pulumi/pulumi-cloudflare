@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the processing status for all quality levels for a video.
-        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the processing status for all quality levels for a video.
-        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.Cloudflare
         public readonly string? Start;
         /// <summary>
         /// Specifies the processing status for all quality levels for a video.
-        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+        /// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         /// </summary>
         public readonly string? Status;
         /// <summary>

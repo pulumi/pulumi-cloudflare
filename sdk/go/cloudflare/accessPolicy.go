@@ -26,13 +26,10 @@ type AccessPolicy struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Number of access applications currently using this policy.
-	AppCount pulumi.IntOutput `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
-	CreatedAt        pulumi.StringOutput  `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -50,10 +47,8 @@ type AccessPolicy struct {
 	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
-	Reusable pulumi.BoolOutput              `pulumi:"reusable"`
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
-	UpdatedAt       pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -68,6 +63,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	}
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
+	}
+	if args.Includes == nil {
+		return nil, errors.New("invalid value for required argument 'Includes'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -103,13 +101,10 @@ func GetAccessPolicy(ctx *pulumi.Context,
 type accessPolicyState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Number of access applications currently using this policy.
-	AppCount *int `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
-	ApprovalRequired *bool   `pulumi:"approvalRequired"`
-	CreatedAt        *string `pulumi:"createdAt"`
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision *string `pulumi:"decision"`
@@ -127,22 +122,17 @@ type accessPolicyState struct {
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	Reusable *bool                 `pulumi:"reusable"`
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	UpdatedAt       *string `pulumi:"updatedAt"`
 }
 
 type AccessPolicyState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Number of access applications currently using this policy.
-	AppCount pulumi.IntPtrInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayInput
 	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
-	CreatedAt        pulumi.StringPtrInput
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringPtrInput
@@ -160,10 +150,8 @@ type AccessPolicyState struct {
 	PurposeJustificationRequired pulumi.BoolPtrInput
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires AccessPolicyRequireArrayInput
-	Reusable pulumi.BoolPtrInput
 	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
-	UpdatedAt       pulumi.StringPtrInput
 }
 
 func (AccessPolicyState) ElementType() reflect.Type {
@@ -319,11 +307,6 @@ func (o AccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of access applications currently using this policy.
-func (o AccessPolicyOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
-}
-
 // Administrators who can approve a temporary authentication request.
 func (o AccessPolicyOutput) ApprovalGroups() AccessPolicyApprovalGroupArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyApprovalGroupArrayOutput { return v.ApprovalGroups }).(AccessPolicyApprovalGroupArrayOutput)
@@ -332,10 +315,6 @@ func (o AccessPolicyOutput) ApprovalGroups() AccessPolicyApprovalGroupArrayOutpu
 // Requires the user to request access from an administrator at the start of each session.
 func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
-}
-
-func (o AccessPolicyOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -379,17 +358,9 @@ func (o AccessPolicyOutput) Requires() AccessPolicyRequireArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyRequireArrayOutput { return v.Requires }).(AccessPolicyRequireArrayOutput)
 }
 
-func (o AccessPolicyOutput) Reusable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolOutput { return v.Reusable }).(pulumi.BoolOutput)
-}
-
 // The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 func (o AccessPolicyOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
-}
-
-func (o AccessPolicyOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type AccessPolicyArrayOutput struct{ *pulumi.OutputState }

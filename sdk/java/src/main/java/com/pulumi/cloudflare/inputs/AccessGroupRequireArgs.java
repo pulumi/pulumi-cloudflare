@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.inputs.AccessGroupRequireGroupArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireGsuiteArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireIpArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireIpListArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupRequireLinkedAppTokenArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireLoginMethodArgs;
+import com.pulumi.cloudflare.inputs.AccessGroupRequireOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireServiceTokenArgs;
@@ -178,11 +180,25 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="linkedAppToken")
+    private @Nullable Output<AccessGroupRequireLinkedAppTokenArgs> linkedAppToken;
+
+    public Optional<Output<AccessGroupRequireLinkedAppTokenArgs>> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
+
     @Import(name="loginMethod")
     private @Nullable Output<AccessGroupRequireLoginMethodArgs> loginMethod;
 
     public Optional<Output<AccessGroupRequireLoginMethodArgs>> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+
+    @Import(name="oidc")
+    private @Nullable Output<AccessGroupRequireOidcArgs> oidc;
+
+    public Optional<Output<AccessGroupRequireOidcArgs>> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
 
     @Import(name="okta")
@@ -227,7 +243,9 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.linkedAppToken = $.linkedAppToken;
         this.loginMethod = $.loginMethod;
+        this.oidc = $.oidc;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -437,6 +455,15 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
             return ipList(Output.of(ipList));
         }
 
+        public Builder linkedAppToken(@Nullable Output<AccessGroupRequireLinkedAppTokenArgs> linkedAppToken) {
+            $.linkedAppToken = linkedAppToken;
+            return this;
+        }
+
+        public Builder linkedAppToken(AccessGroupRequireLinkedAppTokenArgs linkedAppToken) {
+            return linkedAppToken(Output.of(linkedAppToken));
+        }
+
         public Builder loginMethod(@Nullable Output<AccessGroupRequireLoginMethodArgs> loginMethod) {
             $.loginMethod = loginMethod;
             return this;
@@ -444,6 +471,15 @@ public final class AccessGroupRequireArgs extends com.pulumi.resources.ResourceA
 
         public Builder loginMethod(AccessGroupRequireLoginMethodArgs loginMethod) {
             return loginMethod(Output.of(loginMethod));
+        }
+
+        public Builder oidc(@Nullable Output<AccessGroupRequireOidcArgs> oidc) {
+            $.oidc = oidc;
+            return this;
+        }
+
+        public Builder oidc(AccessGroupRequireOidcArgs oidc) {
+            return oidc(Output.of(oidc));
         }
 
         public Builder okta(@Nullable Output<AccessGroupRequireOktaArgs> okta) {

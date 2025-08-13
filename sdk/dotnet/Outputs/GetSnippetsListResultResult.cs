@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetSnippetsListResultResult
     {
         /// <summary>
-        /// Creation time of the snippet
+        /// The timestamp of when the snippet was created.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Modification time of the snippet
+        /// The timestamp of when the snippet was last modified.
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         public readonly string SnippetName;
 

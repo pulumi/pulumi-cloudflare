@@ -6,6 +6,8 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +17,21 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    private Boolean readOnly;
+    /**
+     * @return Account tag of account that shared this setting
+     * 
+     */
+    private String sourceAccount;
+    /**
+     * @return Version number of the setting
+     * 
+     */
+    private Integer version;
 
     private GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching() {}
     /**
@@ -23,6 +40,27 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * 
+     */
+    public Boolean readOnly() {
+        return this.readOnly;
+    }
+    /**
+     * @return Account tag of account that shared this setting
+     * 
+     */
+    public String sourceAccount() {
+        return this.sourceAccount;
+    }
+    /**
+     * @return Version number of the setting
+     * 
+     */
+    public Integer version() {
+        return this.version;
     }
 
     public static Builder builder() {
@@ -35,10 +73,16 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private Boolean readOnly;
+        private String sourceAccount;
+        private Integer version;
         public Builder() {}
         public Builder(GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.readOnly = defaults.readOnly;
+    	      this.sourceAccount = defaults.sourceAccount;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -49,9 +93,36 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder readOnly(Boolean readOnly) {
+            if (readOnly == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching", "readOnly");
+            }
+            this.readOnly = readOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sourceAccount(String sourceAccount) {
+            if (sourceAccount == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching", "sourceAccount");
+            }
+            this.sourceAccount = sourceAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder version(Integer version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching", "version");
+            }
+            this.version = version;
+            return this;
+        }
         public GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching build() {
             final var _resultValue = new GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching();
             _resultValue.enabled = enabled;
+            _resultValue.readOnly = readOnly;
+            _resultValue.sourceAccount = sourceAccount;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

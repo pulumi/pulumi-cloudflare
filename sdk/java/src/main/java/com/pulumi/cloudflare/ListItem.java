@@ -59,14 +59,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/listItem:ListItem")
 public class ListItem extends com.pulumi.resources.CustomResource {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -129,14 +129,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hostname);
     }
     /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ip;
 
     /**
-     * @return An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * @return An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      * 
      */
     public Output<Optional<String>> ip() {

@@ -13,6 +13,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -97,6 +98,20 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
 
     public Output<HyperdriveConfigOrigin> origin() {
         return this.origin;
+    }
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    @Export(name="originConnectionLimit", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> originConnectionLimit;
+
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    public Output<Optional<Integer>> originConnectionLimit() {
+        return Codegen.optional(this.originConnectionLimit);
     }
 
     /**

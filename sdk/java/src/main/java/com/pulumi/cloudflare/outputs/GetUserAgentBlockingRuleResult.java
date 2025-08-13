@@ -3,23 +3,50 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetUserAgentBlockingRuleConfiguration;
+import com.pulumi.cloudflare.outputs.GetUserAgentBlockingRuleFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetUserAgentBlockingRuleResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The configuration object for the current rule.
      * 
      */
-    private String id;
+    private GetUserAgentBlockingRuleConfiguration configuration;
+    /**
+     * @return An informative summary of the rule.
+     * 
+     */
+    private String description;
+    private @Nullable GetUserAgentBlockingRuleFilter filter;
     /**
      * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    private String uaRuleId;
+    private String id;
+    /**
+     * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
+     * 
+     */
+    private String mode;
+    /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    private Boolean paused;
+    /**
+     * @return The unique identifier of the User Agent Blocking rule.
+     * 
+     */
+    private @Nullable String uaRuleId;
     /**
      * @return Defines an identifier.
      * 
@@ -28,18 +55,50 @@ public final class GetUserAgentBlockingRuleResult {
 
     private GetUserAgentBlockingRuleResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The configuration object for the current rule.
+     * 
+     */
+    public GetUserAgentBlockingRuleConfiguration configuration() {
+        return this.configuration;
+    }
+    /**
+     * @return An informative summary of the rule.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    public Optional<GetUserAgentBlockingRuleFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
+     * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
+     * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
+     * 
+     */
+    public String mode() {
+        return this.mode;
+    }
+    /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    public Boolean paused() {
+        return this.paused;
+    }
+    /**
      * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    public String uaRuleId() {
-        return this.uaRuleId;
+    public Optional<String> uaRuleId() {
+        return Optional.ofNullable(this.uaRuleId);
     }
     /**
      * @return Defines an identifier.
@@ -58,17 +117,49 @@ public final class GetUserAgentBlockingRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetUserAgentBlockingRuleConfiguration configuration;
+        private String description;
+        private @Nullable GetUserAgentBlockingRuleFilter filter;
         private String id;
-        private String uaRuleId;
+        private String mode;
+        private Boolean paused;
+        private @Nullable String uaRuleId;
         private String zoneId;
         public Builder() {}
         public Builder(GetUserAgentBlockingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configuration = defaults.configuration;
+    	      this.description = defaults.description;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.mode = defaults.mode;
+    	      this.paused = defaults.paused;
     	      this.uaRuleId = defaults.uaRuleId;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder configuration(GetUserAgentBlockingRuleConfiguration configuration) {
+            if (configuration == null) {
+              throw new MissingRequiredPropertyException("GetUserAgentBlockingRuleResult", "configuration");
+            }
+            this.configuration = configuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUserAgentBlockingRuleResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetUserAgentBlockingRuleFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -78,10 +169,24 @@ public final class GetUserAgentBlockingRuleResult {
             return this;
         }
         @CustomType.Setter
-        public Builder uaRuleId(String uaRuleId) {
-            if (uaRuleId == null) {
-              throw new MissingRequiredPropertyException("GetUserAgentBlockingRuleResult", "uaRuleId");
+        public Builder mode(String mode) {
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetUserAgentBlockingRuleResult", "mode");
             }
+            this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paused(Boolean paused) {
+            if (paused == null) {
+              throw new MissingRequiredPropertyException("GetUserAgentBlockingRuleResult", "paused");
+            }
+            this.paused = paused;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uaRuleId(@Nullable String uaRuleId) {
+
             this.uaRuleId = uaRuleId;
             return this;
         }
@@ -95,7 +200,12 @@ public final class GetUserAgentBlockingRuleResult {
         }
         public GetUserAgentBlockingRuleResult build() {
             final var _resultValue = new GetUserAgentBlockingRuleResult();
+            _resultValue.configuration = configuration;
+            _resultValue.description = description;
+            _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.mode = mode;
+            _resultValue.paused = paused;
             _resultValue.uaRuleId = uaRuleId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

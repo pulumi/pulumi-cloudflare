@@ -24,14 +24,14 @@ public final class ZeroTrustDlpDatasetUploadArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+     * @return Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -81,7 +81,7 @@ public final class ZeroTrustDlpDatasetUploadArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustDlpDatasetUploadArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
+         * @param status Available values: &#34;empty&#34;, &#34;uploading&#34;, &#34;pending&#34;, &#34;processing&#34;, &#34;failed&#34;, &#34;complete&#34;.
          * 
          * @return builder
          * 

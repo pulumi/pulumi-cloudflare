@@ -29,7 +29,7 @@ class WorkersDeploymentArgs:
         """
         The set of arguments for constructing a WorkersDeployment resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -55,7 +55,7 @@ class WorkersDeploymentArgs:
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the script.
+        Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
@@ -101,7 +101,6 @@ class _WorkersDeploymentState:
                  annotations: Optional[pulumi.Input['WorkersDeploymentAnnotationsArgs']] = None,
                  author_email: Optional[pulumi.Input[_builtins.str]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentArgs']]]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  strategy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -109,7 +108,7 @@ class _WorkersDeploymentState:
         """
         Input properties used for looking up and filtering WorkersDeployment resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
         """
         if account_id is not None:
@@ -120,8 +119,6 @@ class _WorkersDeploymentState:
             pulumi.set(__self__, "author_email", author_email)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
-        if deployments is not None:
-            pulumi.set(__self__, "deployments", deployments)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
         if source is not None:
@@ -171,19 +168,10 @@ class _WorkersDeploymentState:
         pulumi.set(self, "created_on", value)
 
     @_builtins.property
-    @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentArgs']]]]:
-        return pulumi.get(self, "deployments")
-
-    @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentArgs']]]]):
-        pulumi.set(self, "deployments", value)
-
-    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the script.
+        Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 
@@ -240,13 +228,13 @@ class WorkersDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>'
+        $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
         """
         ...
@@ -261,7 +249,7 @@ class WorkersDeployment(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>'
+        $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,7 +296,6 @@ class WorkersDeployment(pulumi.CustomResource):
             __props__.__dict__["versions"] = versions
             __props__.__dict__["author_email"] = None
             __props__.__dict__["created_on"] = None
-            __props__.__dict__["deployments"] = None
             __props__.__dict__["source"] = None
         super(WorkersDeployment, __self__).__init__(
             'cloudflare:index/workersDeployment:WorkersDeployment',
@@ -324,7 +311,6 @@ class WorkersDeployment(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Union['WorkersDeploymentAnnotationsArgs', 'WorkersDeploymentAnnotationsArgsDict']]] = None,
             author_email: Optional[pulumi.Input[_builtins.str]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
-            deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersDeploymentDeploymentArgs', 'WorkersDeploymentDeploymentArgsDict']]]]] = None,
             script_name: Optional[pulumi.Input[_builtins.str]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
             strategy: Optional[pulumi.Input[_builtins.str]] = None,
@@ -337,7 +323,7 @@ class WorkersDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] script_name: Name of the script.
+        :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -348,7 +334,6 @@ class WorkersDeployment(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["author_email"] = author_email
         __props__.__dict__["created_on"] = created_on
-        __props__.__dict__["deployments"] = deployments
         __props__.__dict__["script_name"] = script_name
         __props__.__dict__["source"] = source
         __props__.__dict__["strategy"] = strategy
@@ -365,7 +350,7 @@ class WorkersDeployment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output[Optional['outputs.WorkersDeploymentAnnotations']]:
+    def annotations(self) -> pulumi.Output['outputs.WorkersDeploymentAnnotations']:
         return pulumi.get(self, "annotations")
 
     @_builtins.property
@@ -379,15 +364,10 @@ class WorkersDeployment(pulumi.CustomResource):
         return pulumi.get(self, "created_on")
 
     @_builtins.property
-    @pulumi.getter
-    def deployments(self) -> pulumi.Output[Sequence['outputs.WorkersDeploymentDeployment']]:
-        return pulumi.get(self, "deployments")
-
-    @_builtins.property
     @pulumi.getter(name="scriptName")
     def script_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the script.
+        Name of the script, used in URLs and route configuration.
         """
         return pulumi.get(self, "script_name")
 

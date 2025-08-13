@@ -167,13 +167,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.corsHeaders);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * The custom error message shown to a user when they are denied access to the application.
      * 
@@ -600,13 +593,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.type);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -635,7 +621,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.bgColor = $.bgColor;
         this.corsHeaders = $.corsHeaders;
-        this.createdAt = $.createdAt;
         this.customDenyMessage = $.customDenyMessage;
         this.customDenyUrl = $.customDenyUrl;
         this.customNonIdentityDenyUrl = $.customNonIdentityDenyUrl;
@@ -664,7 +649,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.tags = $.tags;
         this.targetCriterias = $.targetCriterias;
         this.type = $.type;
-        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -892,15 +876,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
         public Builder corsHeaders(AccessApplicationCorsHeadersArgs corsHeaders) {
             return corsHeaders(Output.of(corsHeaders));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -1555,15 +1530,6 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder type(String type) {
             return type(Output.of(type));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

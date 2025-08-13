@@ -25,7 +25,7 @@ class ListArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a List resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
@@ -41,7 +41,7 @@ class ListArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -100,7 +100,7 @@ class _ListState:
                  num_referencing_filters: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering List resources.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
@@ -108,7 +108,7 @@ class _ListState:
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the list was last modified.
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[_builtins.float] num_items: The number of items in the list.
-        :param pulumi.Input[_builtins.float] num_referencing_filters: The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        :param pulumi.Input[_builtins.float] num_referencing_filters: The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -131,7 +131,7 @@ class _ListState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -216,7 +216,7 @@ class _ListState:
     @pulumi.getter(name="numReferencingFilters")
     def num_referencing_filters(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         """
         return pulumi.get(self, "num_referencing_filters")
 
@@ -258,7 +258,7 @@ class List(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
@@ -357,7 +357,7 @@ class List(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
@@ -365,7 +365,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the list was last modified.
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[_builtins.float] num_items: The number of items in the list.
-        :param pulumi.Input[_builtins.float] num_referencing_filters: The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        :param pulumi.Input[_builtins.float] num_referencing_filters: The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,7 +385,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -442,7 +442,7 @@ class List(pulumi.CustomResource):
     @pulumi.getter(name="numReferencingFilters")
     def num_referencing_filters(self) -> pulumi.Output[_builtins.float]:
         """
-        The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         """
         return pulumi.get(self, "num_referencing_filters")
 

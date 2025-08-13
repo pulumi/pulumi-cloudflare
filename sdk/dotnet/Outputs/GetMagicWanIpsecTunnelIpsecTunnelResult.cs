@@ -43,6 +43,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string InterfaceAddress;
         /// <summary>
+        /// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        /// </summary>
+        public readonly string InterfaceAddress6;
+        /// <summary>
         /// The date and time the tunnel was last modified.
         /// </summary>
         public readonly string ModifiedOn;
@@ -77,6 +81,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string interfaceAddress,
 
+            string interfaceAddress6,
+
             string modifiedOn,
 
             string name,
@@ -93,6 +99,7 @@ namespace Pulumi.Cloudflare.Outputs
             HealthCheck = healthCheck;
             Id = id;
             InterfaceAddress = interfaceAddress;
+            InterfaceAddress6 = interfaceAddress6;
             ModifiedOn = modifiedOn;
             Name = name;
             PskMetadata = pskMetadata;

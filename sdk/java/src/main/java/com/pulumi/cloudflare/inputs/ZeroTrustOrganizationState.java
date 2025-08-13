@@ -78,13 +78,6 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.autoRedirectToIdentity);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     @Import(name="customPages")
     private @Nullable Output<ZeroTrustOrganizationCustomPagesArgs> customPages;
 
@@ -151,13 +144,6 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.uiReadOnlyToggleReason);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
@@ -210,14 +196,12 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
         this.allowAuthenticateViaWarp = $.allowAuthenticateViaWarp;
         this.authDomain = $.authDomain;
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
-        this.createdAt = $.createdAt;
         this.customPages = $.customPages;
         this.isUiReadOnly = $.isUiReadOnly;
         this.loginDesign = $.loginDesign;
         this.name = $.name;
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
-        this.updatedAt = $.updatedAt;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
         this.warpAuthSessionDuration = $.warpAuthSessionDuration;
         this.zoneId = $.zoneId;
@@ -325,15 +309,6 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
             return autoRedirectToIdentity(Output.of(autoRedirectToIdentity));
         }
 
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
         public Builder customPages(@Nullable Output<ZeroTrustOrganizationCustomPagesArgs> customPages) {
             $.customPages = customPages;
             return this;
@@ -422,15 +397,6 @@ public final class ZeroTrustOrganizationState extends com.pulumi.resources.Resou
          */
         public Builder uiReadOnlyToggleReason(String uiReadOnlyToggleReason) {
             return uiReadOnlyToggleReason(Output.of(uiReadOnlyToggleReason));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

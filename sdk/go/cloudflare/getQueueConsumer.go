@@ -26,8 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupQueueConsumer(ctx, &cloudflare.LookupQueueConsumerArgs{
-//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				QueueId:   "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				QueueId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ConsumerId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,6 +52,8 @@ func LookupQueueConsumer(ctx *pulumi.Context, args *LookupQueueConsumerArgs, opt
 type LookupQueueConsumerArgs struct {
 	// A Resource identifier.
 	AccountId string `pulumi:"accountId"`
+	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
 	// A Resource identifier.
 	QueueId string `pulumi:"queueId"`
 }
@@ -88,6 +91,8 @@ func LookupQueueConsumerOutput(ctx *pulumi.Context, args LookupQueueConsumerOutp
 type LookupQueueConsumerOutputArgs struct {
 	// A Resource identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// A Resource identifier.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
 	// A Resource identifier.
 	QueueId pulumi.StringInput `pulumi:"queueId"`
 }

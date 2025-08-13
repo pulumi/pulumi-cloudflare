@@ -14,24 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDlpCustomProfileEntry
     {
         public readonly bool Enabled;
+        public readonly string? EntryId;
         public readonly string Name;
-        public readonly Outputs.ZeroTrustDlpCustomProfileEntryPattern? Pattern;
-        public readonly ImmutableArray<string> Words;
+        public readonly Outputs.ZeroTrustDlpCustomProfileEntryPattern Pattern;
 
         [OutputConstructor]
         private ZeroTrustDlpCustomProfileEntry(
             bool enabled,
 
+            string? entryId,
+
             string name,
 
-            Outputs.ZeroTrustDlpCustomProfileEntryPattern? pattern,
-
-            ImmutableArray<string> words)
+            Outputs.ZeroTrustDlpCustomProfileEntryPattern pattern)
         {
             Enabled = enabled;
+            EntryId = entryId;
             Name = name;
             Pattern = pattern;
-            Words = words;
         }
     }
 }

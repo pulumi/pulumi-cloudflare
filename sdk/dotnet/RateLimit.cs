@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.RateLimitBypass>> Bypasses { get; private set; } = null!;
 
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

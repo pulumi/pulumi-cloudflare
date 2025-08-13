@@ -18,16 +18,16 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     public static final BotManagementState Empty = new BotManagementState();
 
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     @Import(name="aiBotsProtection")
     private @Nullable Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     public Optional<Output<String>> aiBotsProtection() {
@@ -279,8 +279,8 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
-         * Available values: &#34;block&#34;, &#34;disabled&#34;.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder
          * 
@@ -291,8 +291,8 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers.
-         * Available values: &#34;block&#34;, &#34;disabled&#34;.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+         * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder
          * 

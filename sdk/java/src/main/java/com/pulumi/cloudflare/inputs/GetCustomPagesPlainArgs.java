@@ -31,14 +31,16 @@ public final class GetCustomPagesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     @Import(name="identifier", required=true)
     private String identifier;
 
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     public String identifier() {
@@ -98,7 +100,8 @@ public final class GetCustomPagesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Error Page Types
+         * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
          * 
          * @return builder
          * 

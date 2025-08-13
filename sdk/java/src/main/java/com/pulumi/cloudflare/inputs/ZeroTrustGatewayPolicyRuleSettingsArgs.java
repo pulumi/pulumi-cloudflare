@@ -36,13 +36,13 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
      * 
      */
     @Import(name="addHeaders")
-    private @Nullable Output<Map<String,String>> addHeaders;
+    private @Nullable Output<Map<String,List<String>>> addHeaders;
 
     /**
      * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
-    public Optional<Output<Map<String,String>>> addHeaders() {
+    public Optional<Output<Map<String,List<String>>>> addHeaders() {
         return Optional.ofNullable(this.addHeaders);
     }
 
@@ -460,7 +460,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder addHeaders(@Nullable Output<Map<String,String>> addHeaders) {
+        public Builder addHeaders(@Nullable Output<Map<String,List<String>>> addHeaders) {
             $.addHeaders = addHeaders;
             return this;
         }
@@ -471,7 +471,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder addHeaders(Map<String,String> addHeaders) {
+        public Builder addHeaders(Map<String,List<String>> addHeaders) {
             return addHeaders(Output.of(addHeaders));
         }
 

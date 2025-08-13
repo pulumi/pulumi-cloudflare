@@ -45,22 +45,10 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of applications that have this tag
-        /// </summary>
-        [Output("appCount")]
-        public Output<int> AppCount { get; private set; } = null!;
-
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
-        /// <summary>
         /// The name of the tag
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -139,22 +127,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The number of applications that have this tag
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
-
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// The name of the tag
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessTagState()
         {

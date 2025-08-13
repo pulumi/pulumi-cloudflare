@@ -31,7 +31,7 @@ public final class TeamsRuleRuleSettings {
      * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
-    private @Nullable Map<String,String> addHeaders;
+    private @Nullable Map<String,List<String>> addHeaders;
     /**
      * @return Set by parent MSP accounts to enable their children to bypass this rule.
      * 
@@ -158,7 +158,7 @@ public final class TeamsRuleRuleSettings {
      * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
-    public Map<String,String> addHeaders() {
+    public Map<String,List<String>> addHeaders() {
         return this.addHeaders == null ? Map.of() : this.addHeaders;
     }
     /**
@@ -339,7 +339,7 @@ public final class TeamsRuleRuleSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Map<String,String> addHeaders;
+        private @Nullable Map<String,List<String>> addHeaders;
         private @Nullable Boolean allowChildBypass;
         private @Nullable TeamsRuleRuleSettingsAuditSsh auditSsh;
         private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
@@ -395,7 +395,7 @@ public final class TeamsRuleRuleSettings {
         }
 
         @CustomType.Setter
-        public Builder addHeaders(@Nullable Map<String,String> addHeaders) {
+        public Builder addHeaders(@Nullable Map<String,List<String>> addHeaders) {
 
             this.addHeaders = addHeaders;
             return this;

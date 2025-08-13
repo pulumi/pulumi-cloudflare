@@ -116,7 +116,7 @@ class _RateLimitState:
         Input properties used for looking up and filtering RateLimit resources.
         :param pulumi.Input['RateLimitActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[Sequence[pulumi.Input['RateLimitBypassArgs']]] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] disabled: When true, indicates that the rate limit is currently disabled.
         :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[_builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
@@ -168,7 +168,7 @@ class _RateLimitState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 
@@ -445,7 +445,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RateLimitActionArgs', 'RateLimitActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RateLimitBypassArgs', 'RateLimitBypassArgsDict']]]] bypasses: Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] disabled: When true, indicates that the rate limit is currently disabled.
         :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[_builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
@@ -486,7 +486,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 

@@ -44,7 +44,7 @@ class GetWorkersKvResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -102,7 +102,7 @@ def get_workers_kv(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
@@ -135,7 +135,7 @@ def get_workers_kv_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """

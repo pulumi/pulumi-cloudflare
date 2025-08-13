@@ -18,6 +18,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("workersMessage")]
         public Input<string>? WorkersMessage { get; set; }
 
+        /// <summary>
+        /// Operation that triggered the creation of the deployment.
+        /// </summary>
+        [Input("workersTriggeredBy")]
+        public Input<string>? WorkersTriggeredBy { get; set; }
+
         public WorkersDeploymentAnnotationsArgs()
         {
         }

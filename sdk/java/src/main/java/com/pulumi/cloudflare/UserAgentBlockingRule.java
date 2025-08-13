@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,6 +50,8 @@ import javax.annotation.Nullable;
  *                 .value("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)")
  *                 .build())
  *             .mode("challenge")
+ *             .description("Prevent multiple login failures to mitigate brute force attacks")
+ *             .paused(false)
  *             .build());
  * 
  *     }
@@ -56,6 +59,12 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &#39;&lt;zone_id&gt;/&lt;ua_rule_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
@@ -65,6 +74,20 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
 
     public Output<UserAgentBlockingRuleConfiguration> configuration() {
         return this.configuration;
+    }
+    /**
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The action to apply to a matched request.
@@ -83,18 +106,18 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
         return this.mode;
     }
     /**
-     * The unique identifier of the User Agent Blocking rule.
+     * When true, indicates that the rule is currently paused.
      * 
      */
-    @Export(name="uaRuleId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> uaRuleId;
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> paused;
 
     /**
-     * @return The unique identifier of the User Agent Blocking rule.
+     * @return When true, indicates that the rule is currently paused.
      * 
      */
-    public Output<Optional<String>> uaRuleId() {
-        return Codegen.optional(this.uaRuleId);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
      * Defines an identifier.

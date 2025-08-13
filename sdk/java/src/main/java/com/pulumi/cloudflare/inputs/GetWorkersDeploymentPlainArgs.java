@@ -28,15 +28,22 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
         return this.accountId;
     }
 
+    @Import(name="deploymentId", required=true)
+    private String deploymentId;
+
+    public String deploymentId() {
+        return this.deploymentId;
+    }
+
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Import(name="scriptName", required=true)
     private String scriptName;
 
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public String scriptName() {
@@ -47,6 +54,7 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
 
     private GetWorkersDeploymentPlainArgs(GetWorkersDeploymentPlainArgs $) {
         this.accountId = $.accountId;
+        this.deploymentId = $.deploymentId;
         this.scriptName = $.scriptName;
     }
 
@@ -79,8 +87,13 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
             return this;
         }
 
+        public Builder deploymentId(String deploymentId) {
+            $.deploymentId = deploymentId;
+            return this;
+        }
+
         /**
-         * @param scriptName Name of the script.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -93,6 +106,9 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
         public GetWorkersDeploymentPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersDeploymentPlainArgs", "accountId");
+            }
+            if ($.deploymentId == null) {
+                throw new MissingRequiredPropertyException("GetWorkersDeploymentPlainArgs", "deploymentId");
             }
             if ($.scriptName == null) {
                 throw new MissingRequiredPropertyException("GetWorkersDeploymentPlainArgs", "scriptName");

@@ -136,24 +136,24 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dnsDestinationIpsId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dnsDestinationIpsId;
+    private Output<String> dnsDestinationIpsId;
 
     /**
      * @return The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      * 
      */
-    public Output<Optional<String>> dnsDestinationIpsId() {
-        return Codegen.optional(this.dnsDestinationIpsId);
+    public Output<String> dnsDestinationIpsId() {
+        return this.dnsDestinationIpsId;
     }
     /**
-     * The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     @Export(name="dnsDestinationIpv6BlockId", refs={String.class}, tree="[0]")
     private Output<String> dnsDestinationIpv6BlockId;
 
     /**
-     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     public Output<String> dnsDestinationIpv6BlockId() {
@@ -262,14 +262,14 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networks", refs={List.class,TeamsLocationNetwork.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<TeamsLocationNetwork>> networks;
+    private Output<List<TeamsLocationNetwork>> networks;
 
     /**
      * @return A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      * 
      */
-    public Output<Optional<List<TeamsLocationNetwork>>> networks() {
-        return Codegen.optional(this.networks);
+    public Output<List<TeamsLocationNetwork>> networks() {
+        return this.networks;
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

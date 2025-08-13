@@ -36,14 +36,14 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     public Optional<Output<String>> description() {
@@ -171,7 +171,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+         * @param description An informative summary of the rule. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+         * @param description An informative summary of the rule. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 

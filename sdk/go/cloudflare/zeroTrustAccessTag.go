@@ -49,12 +49,8 @@ type ZeroTrustAccessTag struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The number of applications that have this tag
-	AppCount  pulumi.IntOutput    `pulumi:"appCount"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The name of the tag
-	Name      pulumi.StringOutput `pulumi:"name"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewZeroTrustAccessTag registers a new resource with the given unique name, arguments, and options.
@@ -101,23 +97,15 @@ func GetZeroTrustAccessTag(ctx *pulumi.Context,
 type zeroTrustAccessTagState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The number of applications that have this tag
-	AppCount  *int    `pulumi:"appCount"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// The name of the tag
-	Name      *string `pulumi:"name"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Name *string `pulumi:"name"`
 }
 
 type ZeroTrustAccessTagState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// The number of applications that have this tag
-	AppCount  pulumi.IntPtrInput
-	CreatedAt pulumi.StringPtrInput
 	// The name of the tag
-	Name      pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 }
 
 func (ZeroTrustAccessTagState) ElementType() reflect.Type {
@@ -231,22 +219,9 @@ func (o ZeroTrustAccessTagOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The number of applications that have this tag
-func (o ZeroTrustAccessTagOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
-}
-
-func (o ZeroTrustAccessTagOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // The name of the tag
 func (o ZeroTrustAccessTagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ZeroTrustAccessTagOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessTagArrayOutput struct{ *pulumi.OutputState }

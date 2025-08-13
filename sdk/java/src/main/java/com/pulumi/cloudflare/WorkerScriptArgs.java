@@ -5,7 +5,6 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptBindingArgs;
-import com.pulumi.cloudflare.inputs.WorkerScriptMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptObservabilityArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlacementArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptTailConsumerArgs;
@@ -115,18 +114,63 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
-    @Import(name="content", required=true)
-    private Output<String> content;
+    @Import(name="content")
+    private @Nullable Output<String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker.
+     * @return Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
-    public Output<String> content() {
-        return this.content;
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
+    }
+
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    @Import(name="contentFile")
+    private @Nullable Output<String> contentFile;
+
+    /**
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    public Optional<Output<String>> contentFile() {
+        return Optional.ofNullable(this.contentFile);
+    }
+
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    @Import(name="contentSha256")
+    private @Nullable Output<String> contentSha256;
+
+    /**
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    public Optional<Output<String>> contentSha256() {
+        return Optional.ofNullable(this.contentSha256);
+    }
+
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    @Import(name="contentType")
+    private @Nullable Output<String> contentType;
+
+    /**
+     * @return Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    public Optional<Output<String>> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
 
     /**
@@ -187,21 +231,6 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> mainModule() {
         return Optional.ofNullable(this.mainModule);
-    }
-
-    /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    @Import(name="migrations")
-    private @Nullable Output<WorkerScriptMigrationsArgs> migrations;
-
-    /**
-     * @return Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    public Optional<Output<WorkerScriptMigrationsArgs>> migrations() {
-        return Optional.ofNullable(this.migrations);
     }
 
     /**
@@ -291,11 +320,13 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
+        this.contentFile = $.contentFile;
+        this.contentSha256 = $.contentSha256;
+        this.contentType = $.contentType;
         this.keepAssets = $.keepAssets;
         this.keepBindings = $.keepBindings;
         this.logpush = $.logpush;
         this.mainModule = $.mainModule;
-        this.migrations = $.migrations;
         this.observability = $.observability;
         this.placement = $.placement;
         this.scriptName = $.scriptName;
@@ -468,24 +499,87 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content Module or Service Worker contents of the Worker.
+         * @param content Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder content(Output<String> content) {
+        public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
         /**
-         * @param content Module or Service Worker contents of the Worker.
+         * @param content Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
          * 
          * @return builder
          * 
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentFile(@Nullable Output<String> contentFile) {
+            $.contentFile = contentFile;
+            return this;
+        }
+
+        /**
+         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentFile(String contentFile) {
+            return contentFile(Output.of(contentFile));
+        }
+
+        /**
+         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentSha256(@Nullable Output<String> contentSha256) {
+            $.contentSha256 = contentSha256;
+            return this;
+        }
+
+        /**
+         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentSha256(String contentSha256) {
+            return contentSha256(Output.of(contentSha256));
+        }
+
+        /**
+         * @param contentType Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentType(@Nullable Output<String> contentType) {
+            $.contentType = contentType;
+            return this;
+        }
+
+        /**
+         * @param contentType Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contentType(String contentType) {
+            return contentType(Output.of(contentType));
         }
 
         /**
@@ -580,27 +674,6 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mainModule(String mainModule) {
             return mainModule(Output.of(mainModule));
-        }
-
-        /**
-         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder migrations(@Nullable Output<WorkerScriptMigrationsArgs> migrations) {
-            $.migrations = migrations;
-            return this;
-        }
-
-        /**
-         * @param migrations Migrations to apply for Durable Objects associated with this Worker.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder migrations(WorkerScriptMigrationsArgs migrations) {
-            return migrations(Output.of(migrations));
         }
 
         /**
@@ -723,9 +796,6 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         public WorkerScriptArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WorkerScriptArgs", "accountId");
-            }
-            if ($.content == null) {
-                throw new MissingRequiredPropertyException("WorkerScriptArgs", "content");
             }
             if ($.scriptName == null) {
                 throw new MissingRequiredPropertyException("WorkerScriptArgs", "scriptName");

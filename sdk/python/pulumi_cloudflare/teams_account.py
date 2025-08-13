@@ -235,7 +235,7 @@ class TeamsAccount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> pulumi.Output['outputs.TeamsAccountSettings']:
+    def settings(self) -> pulumi.Output[Optional['outputs.TeamsAccountSettings']]:
         """
         Account settings
         """

@@ -52,6 +52,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &#39;&lt;zone_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/logpullRetention:LogpullRetention")
 public class LogpullRetention extends com.pulumi.resources.CustomResource {

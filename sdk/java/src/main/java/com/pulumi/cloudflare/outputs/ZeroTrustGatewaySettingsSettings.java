@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsActivityLog;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBodyScanning;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation;
@@ -14,6 +13,7 @@ import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsCustomCerti
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsFips;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsHostSelector;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsInspection;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsSandbox;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsTlsDecrypt;
@@ -34,11 +34,6 @@ public final class ZeroTrustGatewaySettingsSettings {
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus;
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    private @Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
     /**
      * @return Block page layout settings.
      * 
@@ -84,6 +79,11 @@ public final class ZeroTrustGatewaySettingsSettings {
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    private @Nullable ZeroTrustGatewaySettingsSettingsInspection inspection;
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -113,13 +113,6 @@ public final class ZeroTrustGatewaySettingsSettings {
      */
     public Optional<ZeroTrustGatewaySettingsSettingsAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
-    }
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    public Optional<ZeroTrustGatewaySettingsSettingsAppControlSettings> appControlSettings() {
-        return Optional.ofNullable(this.appControlSettings);
     }
     /**
      * @return Block page layout settings.
@@ -182,6 +175,13 @@ public final class ZeroTrustGatewaySettingsSettings {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public Optional<ZeroTrustGatewaySettingsSettingsInspection> inspection() {
+        return Optional.ofNullable(this.inspection);
+    }
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -214,7 +214,6 @@ public final class ZeroTrustGatewaySettingsSettings {
     public static final class Builder {
         private @Nullable ZeroTrustGatewaySettingsSettingsActivityLog activityLog;
         private @Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus;
-        private @Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
         private @Nullable ZeroTrustGatewaySettingsSettingsBlockPage blockPage;
         private @Nullable ZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
         private @Nullable ZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
@@ -223,6 +222,7 @@ public final class ZeroTrustGatewaySettingsSettings {
         private @Nullable ZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching;
         private @Nullable ZeroTrustGatewaySettingsSettingsFips fips;
         private @Nullable ZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
+        private @Nullable ZeroTrustGatewaySettingsSettingsInspection inspection;
         private @Nullable ZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
         private @Nullable ZeroTrustGatewaySettingsSettingsSandbox sandbox;
         private @Nullable ZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
@@ -231,7 +231,6 @@ public final class ZeroTrustGatewaySettingsSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activityLog = defaults.activityLog;
     	      this.antivirus = defaults.antivirus;
-    	      this.appControlSettings = defaults.appControlSettings;
     	      this.blockPage = defaults.blockPage;
     	      this.bodyScanning = defaults.bodyScanning;
     	      this.browserIsolation = defaults.browserIsolation;
@@ -240,6 +239,7 @@ public final class ZeroTrustGatewaySettingsSettings {
     	      this.extendedEmailMatching = defaults.extendedEmailMatching;
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
+    	      this.inspection = defaults.inspection;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -255,12 +255,6 @@ public final class ZeroTrustGatewaySettingsSettings {
         public Builder antivirus(@Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus) {
 
             this.antivirus = antivirus;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder appControlSettings(@Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings) {
-
-            this.appControlSettings = appControlSettings;
             return this;
         }
         @CustomType.Setter
@@ -312,6 +306,12 @@ public final class ZeroTrustGatewaySettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder inspection(@Nullable ZeroTrustGatewaySettingsSettingsInspection inspection) {
+
+            this.inspection = inspection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(@Nullable ZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection) {
 
             this.protocolDetection = protocolDetection;
@@ -333,7 +333,6 @@ public final class ZeroTrustGatewaySettingsSettings {
             final var _resultValue = new ZeroTrustGatewaySettingsSettings();
             _resultValue.activityLog = activityLog;
             _resultValue.antivirus = antivirus;
-            _resultValue.appControlSettings = appControlSettings;
             _resultValue.blockPage = blockPage;
             _resultValue.bodyScanning = bodyScanning;
             _resultValue.browserIsolation = browserIsolation;
@@ -342,6 +341,7 @@ public final class ZeroTrustGatewaySettingsSettings {
             _resultValue.extendedEmailMatching = extendedEmailMatching;
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
+            _resultValue.inspection = inspection;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

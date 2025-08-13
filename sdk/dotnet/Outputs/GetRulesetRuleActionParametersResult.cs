@@ -143,6 +143,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersOverridesResult Overrides;
         /// <summary>
+        /// A phase to skip the execution of. This property is only compatible with products.
+        /// Available values: "current".
+        /// </summary>
+        public readonly string Phase;
+        /// <summary>
         /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
         /// </summary>
         public readonly ImmutableArray<string> Phases;
@@ -301,6 +306,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetRulesetRuleActionParametersOverridesResult overrides,
 
+            string phase,
+
             ImmutableArray<string> phases,
 
             string polish,
@@ -377,6 +384,7 @@ namespace Pulumi.Cloudflare.Outputs
             OriginCacheControl = originCacheControl;
             OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
+            Phase = phase;
             Phases = phases;
             Polish = polish;
             Products = products;

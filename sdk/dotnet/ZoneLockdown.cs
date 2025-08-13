@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         /// When true, indicates that the rule is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool?> Paused { get; private set; } = null!;
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
         /// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

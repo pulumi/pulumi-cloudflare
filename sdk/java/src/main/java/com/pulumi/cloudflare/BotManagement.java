@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -66,34 +65,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     @Export(name="aiBotsProtection", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> aiBotsProtection;
+    private Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
-    public Output<Optional<String>> aiBotsProtection() {
-        return Codegen.optional(this.aiBotsProtection);
+    public Output<String> aiBotsProtection() {
+        return this.aiBotsProtection;
     }
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
     @Export(name="autoUpdateModel", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> autoUpdateModel;
+    private Output<Boolean> autoUpdateModel;
 
     /**
      * @return Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      * 
      */
-    public Output<Optional<Boolean>> autoUpdateModel() {
-        return Codegen.optional(this.autoUpdateModel);
+    public Output<Boolean> autoUpdateModel() {
+        return this.autoUpdateModel;
     }
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -101,57 +100,57 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="crawlerProtection", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> crawlerProtection;
+    private Output<String> crawlerProtection;
 
     /**
      * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
-    public Output<Optional<String>> crawlerProtection() {
-        return Codegen.optional(this.crawlerProtection);
+    public Output<String> crawlerProtection() {
+        return this.crawlerProtection;
     }
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      * 
      */
     @Export(name="enableJs", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableJs;
+    private Output<Boolean> enableJs;
 
     /**
      * @return Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      * 
      */
-    public Output<Optional<Boolean>> enableJs() {
-        return Codegen.optional(this.enableJs);
+    public Output<Boolean> enableJs() {
+        return this.enableJs;
     }
     /**
      * Whether to enable Bot Fight Mode.
      * 
      */
     @Export(name="fightMode", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> fightMode;
+    private Output<Boolean> fightMode;
 
     /**
      * @return Whether to enable Bot Fight Mode.
      * 
      */
-    public Output<Optional<Boolean>> fightMode() {
-        return Codegen.optional(this.fightMode);
+    public Output<Boolean> fightMode() {
+        return this.fightMode;
     }
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
     @Export(name="optimizeWordpress", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> optimizeWordpress;
+    private Output<Boolean> optimizeWordpress;
 
     /**
      * @return Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
-    public Output<Optional<Boolean>> optimizeWordpress() {
-        return Codegen.optional(this.optimizeWordpress);
+    public Output<Boolean> optimizeWordpress() {
+        return this.optimizeWordpress;
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -159,15 +158,15 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sbfmDefinitelyAutomated", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sbfmDefinitelyAutomated;
+    private Output<String> sbfmDefinitelyAutomated;
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
-    public Output<Optional<String>> sbfmDefinitelyAutomated() {
-        return Codegen.optional(this.sbfmDefinitelyAutomated);
+    public Output<String> sbfmDefinitelyAutomated() {
+        return this.sbfmDefinitelyAutomated;
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
@@ -175,15 +174,15 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sbfmLikelyAutomated", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sbfmLikelyAutomated;
+    private Output<String> sbfmLikelyAutomated;
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
      * 
      */
-    public Output<Optional<String>> sbfmLikelyAutomated() {
-        return Codegen.optional(this.sbfmLikelyAutomated);
+    public Output<String> sbfmLikelyAutomated() {
+        return this.sbfmLikelyAutomated;
     }
     /**
      * Super Bot Fight Mode (SBFM) to enable static resource protection.
@@ -192,7 +191,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sbfmStaticResourceProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> sbfmStaticResourceProtection;
+    private Output<Boolean> sbfmStaticResourceProtection;
 
     /**
      * @return Super Bot Fight Mode (SBFM) to enable static resource protection.
@@ -200,8 +199,8 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
-    public Output<Optional<Boolean>> sbfmStaticResourceProtection() {
-        return Codegen.optional(this.sbfmStaticResourceProtection);
+    public Output<Boolean> sbfmStaticResourceProtection() {
+        return this.sbfmStaticResourceProtection;
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
@@ -209,15 +208,15 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sbfmVerifiedBots", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sbfmVerifiedBots;
+    private Output<String> sbfmVerifiedBots;
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
-    public Output<Optional<String>> sbfmVerifiedBots() {
-        return Codegen.optional(this.sbfmVerifiedBots);
+    public Output<String> sbfmVerifiedBots() {
+        return this.sbfmVerifiedBots;
     }
     /**
      * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.

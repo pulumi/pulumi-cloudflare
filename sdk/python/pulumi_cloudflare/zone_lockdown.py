@@ -32,7 +32,7 @@ class ZoneLockdownArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
         """
@@ -86,7 +86,7 @@ class ZoneLockdownArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 
@@ -134,7 +134,7 @@ class _ZoneLockdownState:
         Input properties used for looking up and filtering ZoneLockdown resources.
         :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the rule was created.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the rule was last modified.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
@@ -186,7 +186,7 @@ class _ZoneLockdownState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 
@@ -296,7 +296,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
@@ -404,7 +404,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneLockdownConfigurationArgs', 'ZoneLockdownConfigurationArgsDict']]]] configurations: A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
         :param pulumi.Input[_builtins.str] created_on: The timestamp of when the rule was created.
-        :param pulumi.Input[_builtins.str] description: An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] modified_on: The timestamp of when the rule was last modified.
         :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.float] priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
@@ -445,7 +445,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
         return pulumi.get(self, "description")
 
@@ -459,7 +459,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def paused(self) -> pulumi.Output[_builtins.bool]:
         """
         When true, indicates that the rule is currently paused.
         """

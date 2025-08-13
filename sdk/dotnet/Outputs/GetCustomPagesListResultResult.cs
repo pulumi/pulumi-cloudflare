@@ -13,9 +13,48 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetCustomPagesListResultResult
     {
+        public readonly string CreatedOn;
+        public readonly string Description;
+        public readonly string Id;
+        public readonly string ModifiedOn;
+        public readonly string PreviewTarget;
+        public readonly ImmutableArray<string> RequiredTokens;
+        /// <summary>
+        /// The custom page state.
+        /// Available values: "default", "customized".
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// The URL associated with the custom page.
+        /// </summary>
+        public readonly string Url;
+
         [OutputConstructor]
-        private GetCustomPagesListResultResult()
+        private GetCustomPagesListResultResult(
+            string createdOn,
+
+            string description,
+
+            string id,
+
+            string modifiedOn,
+
+            string previewTarget,
+
+            ImmutableArray<string> requiredTokens,
+
+            string state,
+
+            string url)
         {
+            CreatedOn = createdOn;
+            Description = description;
+            Id = id;
+            ModifiedOn = modifiedOn;
+            PreviewTarget = previewTarget;
+            RequiredTokens = requiredTokens;
+            State = state;
+            Url = url;
         }
     }
 }

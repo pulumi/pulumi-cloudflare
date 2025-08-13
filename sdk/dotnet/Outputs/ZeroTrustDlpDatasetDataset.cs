@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? NumCells;
         public readonly bool? Secret;
         /// <summary>
-        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         /// </summary>
         public readonly string? Status;
         /// <summary>

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class ZeroTrustGatewaySettingsSettingsBodyScanning {
     /**
      * @return Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     private @Nullable String inspectionMode;
@@ -20,6 +21,7 @@ public final class ZeroTrustGatewaySettingsSettingsBodyScanning {
     private ZeroTrustGatewaySettingsSettingsBodyScanning() {}
     /**
      * @return Set the inspection mode to either `deep` or `shallow`.
+     * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
     public Optional<String> inspectionMode() {

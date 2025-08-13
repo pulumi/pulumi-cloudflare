@@ -57,52 +57,52 @@ export class BotManagement extends pulumi.CustomResource {
     }
 
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: "block", "disabled".
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Available values: "block", "disabled", "only*on*ad_pages".
      */
-    public readonly aiBotsProtection!: pulumi.Output<string | undefined>;
+    public readonly aiBotsProtection!: pulumi.Output<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
-    public readonly autoUpdateModel!: pulumi.Output<boolean | undefined>;
+    public readonly autoUpdateModel!: pulumi.Output<boolean>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */
-    public readonly crawlerProtection!: pulumi.Output<string | undefined>;
+    public readonly crawlerProtection!: pulumi.Output<string>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
-    public readonly enableJs!: pulumi.Output<boolean | undefined>;
+    public readonly enableJs!: pulumi.Output<boolean>;
     /**
      * Whether to enable Bot Fight Mode.
      */
-    public readonly fightMode!: pulumi.Output<boolean | undefined>;
+    public readonly fightMode!: pulumi.Output<boolean>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
-    public readonly optimizeWordpress!: pulumi.Output<boolean | undefined>;
+    public readonly optimizeWordpress!: pulumi.Output<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    public readonly sbfmDefinitelyAutomated!: pulumi.Output<string | undefined>;
+    public readonly sbfmDefinitelyAutomated!: pulumi.Output<string>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    public readonly sbfmLikelyAutomated!: pulumi.Output<string | undefined>;
+    public readonly sbfmLikelyAutomated!: pulumi.Output<string>;
     /**
      * Super Bot Fight Mode (SBFM) to enable static resource protection.
      * Enable if static resources on your application need bot protection.
      * Note: Static resource protection can also result in legitimate traffic being blocked.
      */
-    public readonly sbfmStaticResourceProtection!: pulumi.Output<boolean | undefined>;
+    public readonly sbfmStaticResourceProtection!: pulumi.Output<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * Available values: "allow", "block".
      */
-    public readonly sbfmVerifiedBots!: pulumi.Output<string | undefined>;
+    public readonly sbfmVerifiedBots!: pulumi.Output<string>;
     /**
      * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
      */
@@ -177,8 +177,8 @@ export class BotManagement extends pulumi.CustomResource {
  */
 export interface BotManagementState {
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: "block", "disabled".
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string>;
     /**
@@ -246,8 +246,8 @@ export interface BotManagementState {
  */
 export interface BotManagementArgs {
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: "block", "disabled".
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Available values: "block", "disabled", "only*on*ad_pages".
      */
     aiBotsProtection?: pulumi.Input<string>;
     /**

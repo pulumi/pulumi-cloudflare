@@ -48,14 +48,14 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items in the list.
+     * items to add to the list.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<TeamsListItemArgs>> items;
 
     /**
-     * @return The items in the list.
+     * @return items to add to the list.
      * 
      */
     public Optional<Output<List<TeamsListItemArgs>>> items() {
@@ -187,7 +187,7 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list.
+         * @param items items to add to the list.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list.
+         * @param items items to add to the list.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class TeamsListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list.
+         * @param items items to add to the list.
          * 
          * @return builder
          * 

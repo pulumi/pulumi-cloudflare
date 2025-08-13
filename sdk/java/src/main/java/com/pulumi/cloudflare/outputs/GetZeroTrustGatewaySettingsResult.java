@@ -18,10 +18,6 @@ public final class GetZeroTrustGatewaySettingsResult {
      * 
      */
     private String id;
-    /**
-     * @return Account settings
-     * 
-     */
     private GetZeroTrustGatewaySettingsSettings settings;
     private String updatedAt;
 
@@ -39,10 +35,6 @@ public final class GetZeroTrustGatewaySettingsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Account settings
-     * 
-     */
     public GetZeroTrustGatewaySettingsSettings settings() {
         return this.settings;
     }

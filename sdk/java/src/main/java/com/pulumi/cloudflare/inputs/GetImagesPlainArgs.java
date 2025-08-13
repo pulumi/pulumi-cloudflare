@@ -32,6 +32,21 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
+     * 
+     */
+    @Import(name="creator")
+    private @Nullable String creator;
+
+    /**
+     * @return Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
+     * 
+     */
+    public Optional<String> creator() {
+        return Optional.ofNullable(this.creator);
+    }
+
+    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -50,6 +65,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetImagesPlainArgs(GetImagesPlainArgs $) {
         this.accountId = $.accountId;
+        this.creator = $.creator;
         this.maxItems = $.maxItems;
     }
 
@@ -79,6 +95,17 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param creator Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(@Nullable String creator) {
+            $.creator = creator;
             return this;
         }
 

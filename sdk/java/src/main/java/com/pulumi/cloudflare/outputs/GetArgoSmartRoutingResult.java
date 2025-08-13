@@ -16,7 +16,7 @@ public final class GetArgoSmartRoutingResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     private String zoneId;
@@ -30,7 +30,7 @@ public final class GetArgoSmartRoutingResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public String zoneId() {

@@ -72,8 +72,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("ipList")]
         public Input<Inputs.AccessPolicyIncludeIpListArgs>? IpList { get; set; }
 
+        [Input("linkedAppToken")]
+        public Input<Inputs.AccessPolicyIncludeLinkedAppTokenArgs>? LinkedAppToken { get; set; }
+
         [Input("loginMethod")]
         public Input<Inputs.AccessPolicyIncludeLoginMethodArgs>? LoginMethod { get; set; }
+
+        [Input("oidc")]
+        public Input<Inputs.AccessPolicyIncludeOidcArgs>? Oidc { get; set; }
 
         [Input("okta")]
         public Input<Inputs.AccessPolicyIncludeOktaArgs>? Okta { get; set; }

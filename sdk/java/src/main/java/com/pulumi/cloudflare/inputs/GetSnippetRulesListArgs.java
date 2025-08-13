@@ -33,14 +33,14 @@ public final class GetSnippetRulesListArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -94,7 +94,7 @@ public final class GetSnippetRulesListArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class GetSnippetRulesListArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

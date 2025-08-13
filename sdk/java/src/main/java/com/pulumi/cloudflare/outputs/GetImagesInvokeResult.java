@@ -21,6 +21,11 @@ public final class GetImagesInvokeResult {
      */
     private String accountId;
     /**
+     * @return Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
+     * 
+     */
+    private @Nullable String creator;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -43,6 +48,13 @@ public final class GetImagesInvokeResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Internal user ID set within the creator field. Setting to empty string &#34;&#34; will return images where creator field is not set
+     * 
+     */
+    public Optional<String> creator() {
+        return Optional.ofNullable(this.creator);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -76,6 +88,7 @@ public final class GetImagesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private @Nullable String creator;
         private String id;
         private @Nullable Integer maxItems;
         private List<GetImagesResult> results;
@@ -83,6 +96,7 @@ public final class GetImagesInvokeResult {
         public Builder(GetImagesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.creator = defaults.creator;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
@@ -94,6 +108,12 @@ public final class GetImagesInvokeResult {
               throw new MissingRequiredPropertyException("GetImagesInvokeResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder creator(@Nullable String creator) {
+
+            this.creator = creator;
             return this;
         }
         @CustomType.Setter
@@ -124,6 +144,7 @@ public final class GetImagesInvokeResult {
         public GetImagesInvokeResult build() {
             final var _resultValue = new GetImagesInvokeResult();
             _resultValue.accountId = accountId;
+            _resultValue.creator = creator;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;

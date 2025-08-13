@@ -26,7 +26,6 @@ class StaticRouteArgs:
                  prefix: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 route: Optional[pulumi.Input['StaticRouteRouteArgs']] = None,
                  scope: Optional[pulumi.Input['StaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
@@ -45,8 +44,6 @@ class StaticRouteArgs:
         pulumi.set(__self__, "priority", priority)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if weight is not None:
@@ -114,15 +111,6 @@ class StaticRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def route(self) -> Optional[pulumi.Input['StaticRouteRouteArgs']]:
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input['StaticRouteRouteArgs']]):
-        pulumi.set(self, "route", value)
-
-    @_builtins.property
-    @pulumi.getter
     def scope(self) -> Optional[pulumi.Input['StaticRouteScopeArgs']]:
         """
         Used only for ECMP routes.
@@ -152,13 +140,10 @@ class _StaticRouteState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified: Optional[pulumi.Input[_builtins.bool]] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_route: Optional[pulumi.Input['StaticRouteModifiedRouteArgs']] = None,
                  nexthop: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route: Optional[pulumi.Input['StaticRouteRouteArgs']] = None,
                  scope: Optional[pulumi.Input['StaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
@@ -179,20 +164,14 @@ class _StaticRouteState:
             pulumi.set(__self__, "created_on", created_on)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if modified is not None:
-            pulumi.set(__self__, "modified", modified)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
-        if modified_route is not None:
-            pulumi.set(__self__, "modified_route", modified_route)
         if nexthop is not None:
             pulumi.set(__self__, "nexthop", nexthop)
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if weight is not None:
@@ -235,15 +214,6 @@ class _StaticRouteState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "modified")
-
-    @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "modified", value)
-
-    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -254,15 +224,6 @@ class _StaticRouteState:
     @modified_on.setter
     def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedRoute")
-    def modified_route(self) -> Optional[pulumi.Input['StaticRouteModifiedRouteArgs']]:
-        return pulumi.get(self, "modified_route")
-
-    @modified_route.setter
-    def modified_route(self, value: Optional[pulumi.Input['StaticRouteModifiedRouteArgs']]):
-        pulumi.set(self, "modified_route", value)
 
     @_builtins.property
     @pulumi.getter
@@ -299,15 +260,6 @@ class _StaticRouteState:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> Optional[pulumi.Input['StaticRouteRouteArgs']]:
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input['StaticRouteRouteArgs']]):
-        pulumi.set(self, "route", value)
 
     @_builtins.property
     @pulumi.getter
@@ -350,7 +302,6 @@ class StaticRoute(pulumi.CustomResource):
                  nexthop: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
                  scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -408,7 +359,6 @@ class StaticRoute(pulumi.CustomResource):
                  nexthop: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
                  scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -434,13 +384,10 @@ class StaticRoute(pulumi.CustomResource):
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
-            __props__.__dict__["route"] = route
             __props__.__dict__["scope"] = scope
             __props__.__dict__["weight"] = weight
             __props__.__dict__["created_on"] = None
-            __props__.__dict__["modified"] = None
             __props__.__dict__["modified_on"] = None
-            __props__.__dict__["modified_route"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/staticRoute:StaticRoute")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(StaticRoute, __self__).__init__(
@@ -456,13 +403,10 @@ class StaticRoute(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
-            modified: Optional[pulumi.Input[_builtins.bool]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-            modified_route: Optional[pulumi.Input[Union['StaticRouteModifiedRouteArgs', 'StaticRouteModifiedRouteArgsDict']]] = None,
             nexthop: Optional[pulumi.Input[_builtins.str]] = None,
             prefix: Optional[pulumi.Input[_builtins.str]] = None,
             priority: Optional[pulumi.Input[_builtins.int]] = None,
-            route: Optional[pulumi.Input[Union['StaticRouteRouteArgs', 'StaticRouteRouteArgsDict']]] = None,
             scope: Optional[pulumi.Input[Union['StaticRouteScopeArgs', 'StaticRouteScopeArgsDict']]] = None,
             weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'StaticRoute':
         """
@@ -489,13 +433,10 @@ class StaticRoute(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
-        __props__.__dict__["modified"] = modified
         __props__.__dict__["modified_on"] = modified_on
-        __props__.__dict__["modified_route"] = modified_route
         __props__.__dict__["nexthop"] = nexthop
         __props__.__dict__["prefix"] = prefix
         __props__.__dict__["priority"] = priority
-        __props__.__dict__["route"] = route
         __props__.__dict__["scope"] = scope
         __props__.__dict__["weight"] = weight
         return StaticRoute(resource_name, opts=opts, __props__=__props__)
@@ -525,22 +466,12 @@ class StaticRoute(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
-    @pulumi.getter
-    def modified(self) -> pulumi.Output[_builtins.bool]:
-        return pulumi.get(self, "modified")
-
-    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[_builtins.str]:
         """
         When the route was last modified.
         """
         return pulumi.get(self, "modified_on")
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedRoute")
-    def modified_route(self) -> pulumi.Output['outputs.StaticRouteModifiedRoute']:
-        return pulumi.get(self, "modified_route")
 
     @_builtins.property
     @pulumi.getter
@@ -565,11 +496,6 @@ class StaticRoute(pulumi.CustomResource):
         Priority of the static route.
         """
         return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> pulumi.Output['outputs.StaticRouteRoute']:
-        return pulumi.get(self, "route")
 
     @_builtins.property
     @pulumi.getter

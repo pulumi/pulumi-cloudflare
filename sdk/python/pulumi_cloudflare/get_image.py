@@ -26,10 +26,13 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, account_id=None, filename=None, id=None, image_id=None, meta=None, require_signed_urls=None, uploaded=None, variants=None):
+    def __init__(__self__, account_id=None, creator=None, filename=None, id=None, image_id=None, meta=None, require_signed_urls=None, uploaded=None, variants=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if creator and not isinstance(creator, str):
+            raise TypeError("Expected argument 'creator' to be a str")
+        pulumi.set(__self__, "creator", creator)
         if filename and not isinstance(filename, str):
             raise TypeError("Expected argument 'filename' to be a str")
         pulumi.set(__self__, "filename", filename)
@@ -59,6 +62,14 @@ class GetImageResult:
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> _builtins.str:
+        """
+        Can set the creator field with an internal user ID.
+        """
+        return pulumi.get(self, "creator")
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +135,7 @@ class AwaitableGetImageResult(GetImageResult):
             yield self
         return GetImageResult(
             account_id=self.account_id,
+            creator=self.creator,
             filename=self.filename,
             id=self.id,
             image_id=self.image_id,
@@ -159,6 +171,7 @@ def get_image(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetImageResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        creator=pulumi.get(__ret__, 'creator'),
         filename=pulumi.get(__ret__, 'filename'),
         id=pulumi.get(__ret__, 'id'),
         image_id=pulumi.get(__ret__, 'image_id'),
@@ -191,6 +204,7 @@ def get_image_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        creator=pulumi.get(__response__, 'creator'),
         filename=pulumi.get(__response__, 'filename'),
         id=pulumi.get(__response__, 'id'),
         image_id=pulumi.get(__response__, 'image_id'),

@@ -17,11 +17,33 @@ namespace Pulumi.Cloudflare.Outputs
         /// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// This setting was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        public readonly bool? ReadOnly;
+        /// <summary>
+        /// Account tag of account that shared this setting
+        /// </summary>
+        public readonly string? SourceAccount;
+        /// <summary>
+        /// Version number of the setting
+        /// </summary>
+        public readonly int? Version;
 
         [OutputConstructor]
-        private ZeroTrustGatewaySettingsSettingsExtendedEmailMatching(bool? enabled)
+        private ZeroTrustGatewaySettingsSettingsExtendedEmailMatching(
+            bool? enabled,
+
+            bool? readOnly,
+
+            string? sourceAccount,
+
+            int? version)
         {
             Enabled = enabled;
+            ReadOnly = readOnly;
+            SourceAccount = sourceAccount;
+            Version = version;
         }
     }
 }

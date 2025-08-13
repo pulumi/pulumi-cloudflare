@@ -653,7 +653,6 @@ class _AccessApplicationState:
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
                  bg_color: Optional[pulumi.Input[_builtins.str]] = None,
                  cors_headers: Optional[pulumi.Input['AccessApplicationCorsHeadersArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_deny_message: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_deny_url: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -682,7 +681,6 @@ class _AccessApplicationState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationTargetCriteriaArgs']]]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessApplication resources.
@@ -750,8 +748,6 @@ class _AccessApplicationState:
             pulumi.set(__self__, "bg_color", bg_color)
         if cors_headers is not None:
             pulumi.set(__self__, "cors_headers", cors_headers)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if custom_deny_message is not None:
             pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
@@ -811,8 +807,6 @@ class _AccessApplicationState:
             pulumi.set(__self__, "target_criterias", target_criterias)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -932,15 +926,6 @@ class _AccessApplicationState:
     @cors_headers.setter
     def cors_headers(self, value: Optional[pulumi.Input['AccessApplicationCorsHeadersArgs']]):
         pulumi.set(self, "cors_headers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customDenyMessage")
@@ -1281,15 +1266,6 @@ class _AccessApplicationState:
         pulumi.set(self, "type", value)
 
     @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1523,8 +1499,6 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessApplication:AccessApplication")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessApplication, __self__).__init__(
@@ -1547,7 +1521,6 @@ class AccessApplication(pulumi.CustomResource):
             auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
             bg_color: Optional[pulumi.Input[_builtins.str]] = None,
             cors_headers: Optional[pulumi.Input[Union['AccessApplicationCorsHeadersArgs', 'AccessApplicationCorsHeadersArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             custom_deny_message: Optional[pulumi.Input[_builtins.str]] = None,
             custom_deny_url: Optional[pulumi.Input[_builtins.str]] = None,
             custom_non_identity_deny_url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1576,7 +1549,6 @@ class AccessApplication(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationTargetCriteriaArgs', 'AccessApplicationTargetCriteriaArgsDict']]]]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessApplication':
         """
         Get an existing AccessApplication resource's state with the given name, id, and optional extra
@@ -1643,7 +1615,6 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["bg_color"] = bg_color
         __props__.__dict__["cors_headers"] = cors_headers
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["custom_deny_message"] = custom_deny_message
         __props__.__dict__["custom_deny_url"] = custom_deny_url
         __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
@@ -1672,7 +1643,6 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target_criterias"] = target_criterias
         __props__.__dict__["type"] = type
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
 
@@ -1734,7 +1704,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="autoRedirectToIdentity")
-    def auto_redirect_to_identity(self) -> pulumi.Output[_builtins.bool]:
+    def auto_redirect_to_identity(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         """
@@ -1752,11 +1722,6 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="corsHeaders")
     def cors_headers(self) -> pulumi.Output[Optional['outputs.AccessApplicationCorsHeaders']]:
         return pulumi.get(self, "cors_headers")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customDenyMessage")
@@ -1800,7 +1765,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def domain(self) -> pulumi.Output[_builtins.str]:
         """
         The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         """
@@ -1808,7 +1773,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableBindingCookie")
-    def enable_binding_cookie(self) -> pulumi.Output[_builtins.bool]:
+    def enable_binding_cookie(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         """
@@ -1840,7 +1805,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="landingPageDesign")
-    def landing_page_design(self) -> pulumi.Output['outputs.AccessApplicationLandingPageDesign']:
+    def landing_page_design(self) -> pulumi.Output[Optional['outputs.AccessApplicationLandingPageDesign']]:
         """
         The design of the App Launcher landing page shown to users when they log in.
         """
@@ -1856,7 +1821,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the application.
         """
@@ -1872,7 +1837,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="pathCookieAttribute")
-    def path_cookie_attribute(self) -> pulumi.Output[_builtins.bool]:
+    def path_cookie_attribute(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         """
@@ -1880,7 +1845,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[Sequence['outputs.AccessApplicationPolicy']]:
+    def policies(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationPolicy']]]:
         """
         The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
@@ -1902,7 +1867,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="saasApp")
-    def saas_app(self) -> pulumi.Output['outputs.AccessApplicationSaasApp']:
+    def saas_app(self) -> pulumi.Output[Optional['outputs.AccessApplicationSaasApp']]:
         return pulumi.get(self, "saas_app")
 
     @_builtins.property
@@ -1964,7 +1929,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         """
@@ -1983,11 +1948,6 @@ class AccessApplication(pulumi.CustomResource):
         Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

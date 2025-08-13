@@ -30,6 +30,7 @@ import (
 //				ZoneId:    pulumi.StringRef("zone_id"),
 //				Aud:       pulumi.StringRef("aud"),
 //				Domain:    pulumi.StringRef("domain"),
+//				Exact:     pulumi.BoolRef(true),
 //				Name:      pulumi.StringRef("name"),
 //				Search:    pulumi.StringRef("search"),
 //			}, nil)
@@ -59,6 +60,8 @@ type LookupZeroTrustAccessApplicationsArgs struct {
 	Aud *string `pulumi:"aud"`
 	// The domain of the app.
 	Domain *string `pulumi:"domain"`
+	// True for only exact string matches against passed name/domain query parameters.
+	Exact *bool `pulumi:"exact"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 	// The name of the app.
@@ -77,6 +80,8 @@ type LookupZeroTrustAccessApplicationsResult struct {
 	Aud *string `pulumi:"aud"`
 	// The domain of the app.
 	Domain *string `pulumi:"domain"`
+	// True for only exact string matches against passed name/domain query parameters.
+	Exact *bool `pulumi:"exact"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -108,6 +113,8 @@ type LookupZeroTrustAccessApplicationsOutputArgs struct {
 	Aud pulumi.StringPtrInput `pulumi:"aud"`
 	// The domain of the app.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// True for only exact string matches against passed name/domain query parameters.
+	Exact pulumi.BoolPtrInput `pulumi:"exact"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The name of the app.
@@ -150,6 +157,11 @@ func (o LookupZeroTrustAccessApplicationsResultOutput) Aud() pulumi.StringPtrOut
 // The domain of the app.
 func (o LookupZeroTrustAccessApplicationsResultOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationsResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// True for only exact string matches against passed name/domain query parameters.
+func (o LookupZeroTrustAccessApplicationsResultOutput) Exact() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationsResult) *bool { return v.Exact }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

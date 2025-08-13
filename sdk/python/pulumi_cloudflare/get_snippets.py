@@ -47,7 +47,7 @@ class GetSnippetsResult:
     @pulumi.getter(name="createdOn")
     def created_on(self) -> _builtins.str:
         """
-        Creation time of the snippet
+        The timestamp of when the snippet was created.
         """
         return pulumi.get(self, "created_on")
 
@@ -63,7 +63,7 @@ class GetSnippetsResult:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
         """
-        Modification time of the snippet
+        The timestamp of when the snippet was last modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -71,7 +71,7 @@ class GetSnippetsResult:
     @pulumi.getter(name="snippetName")
     def snippet_name(self) -> _builtins.str:
         """
-        Snippet identifying name
+        The identifying name of the snippet.
         """
         return pulumi.get(self, "snippet_name")
 
@@ -79,7 +79,7 @@ class GetSnippetsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier
+        The unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -107,13 +107,13 @@ def get_snippets(snippet_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        snippet_name="snippet_name_01")
+    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074",
+        snippet_name="my_snippet")
     ```
 
 
-    :param _builtins.str snippet_name: Snippet identifying name
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str snippet_name: The identifying name of the snippet.
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['snippetName'] = snippet_name
@@ -137,13 +137,13 @@ def get_snippets_output(snippet_name: Optional[pulumi.Input[_builtins.str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        snippet_name="snippet_name_01")
+    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074",
+        snippet_name="my_snippet")
     ```
 
 
-    :param _builtins.str snippet_name: Snippet identifying name
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str snippet_name: The identifying name of the snippet.
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['snippetName'] = snippet_name

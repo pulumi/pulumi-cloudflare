@@ -69,6 +69,10 @@ export interface GetHyperdriveConfigResult {
     readonly mtls: outputs.GetHyperdriveConfigMtls;
     readonly name: string;
     readonly origin: outputs.GetHyperdriveConfigOrigin;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    readonly originConnectionLimit: number;
 }
 /**
  * ## Example Usage

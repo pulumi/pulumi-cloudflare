@@ -30,12 +30,12 @@ class ListItemArgs:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         The set of arguments for constructing a ListItem resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -55,7 +55,7 @@ class ListItemArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -115,7 +115,7 @@ class ListItemArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         """
         return pulumi.get(self, "ip")
 
@@ -151,12 +151,12 @@ class _ListItemState:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         Input properties used for looking up and filtering ListItem resources.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[_builtins.str] operation_id: The unique operation ID of the asynchronous action.
@@ -187,7 +187,7 @@ class _ListItemState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -247,7 +247,7 @@ class _ListItemState:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         """
         return pulumi.get(self, "ip")
 
@@ -333,11 +333,11 @@ class ListItem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[Union['ListItemRedirectArgs', 'ListItemRedirectArgsDict']] redirect: The definition of the redirect.
         """
@@ -432,12 +432,12 @@ class ListItem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         :param pulumi.Input[_builtins.str] list_id: The unique ID of the list.
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the item was last modified.
         :param pulumi.Input[_builtins.str] operation_id: The unique operation ID of the asynchronous action.
@@ -463,7 +463,7 @@ class ListItem(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Defines an identifier.
+        The Account ID for this resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -503,7 +503,7 @@ class ListItem(pulumi.CustomResource):
     @pulumi.getter
     def ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         """
         return pulumi.get(self, "ip")
 

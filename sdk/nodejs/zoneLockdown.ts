@@ -69,7 +69,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -79,7 +79,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * When true, indicates that the rule is currently paused.
      */
-    public readonly paused!: pulumi.Output<boolean | undefined>;
+    public readonly paused!: pulumi.Output<boolean>;
     /**
      * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
      */
@@ -152,7 +152,7 @@ export interface ZoneLockdownState {
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     description?: pulumi.Input<string>;
     /**
@@ -186,7 +186,7 @@ export interface ZoneLockdownArgs {
      */
     configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     description?: pulumi.Input<string>;
     /**

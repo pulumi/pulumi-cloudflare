@@ -36,7 +36,7 @@ class TeamsRuleArgs:
                  traffic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a TeamsRule resource.
-        :param pulumi.Input[_builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] name: The name of the rule.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
@@ -87,7 +87,7 @@ class TeamsRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
         """
-        The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -241,16 +241,19 @@ class _TeamsRuleState:
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identity: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 not_sharable: Optional[pulumi.Input[_builtins.bool]] = None,
                  precedence: Optional[pulumi.Input[_builtins.int]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
                  schedule: Optional[pulumi.Input['TeamsRuleScheduleArgs']] = None,
+                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
                  traffic: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.int]] = None,
                  warning_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsRule resources.
-        :param pulumi.Input[_builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
@@ -261,8 +264,11 @@ class _TeamsRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[_builtins.str] name: The name of the rule.
+        :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API
+        :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input['TeamsRuleScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule
         :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[_builtins.int] version: version number of the rule
         :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
@@ -289,12 +295,18 @@ class _TeamsRuleState:
             pulumi.set(__self__, "identity", identity)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if not_sharable is not None:
+            pulumi.set(__self__, "not_sharable", not_sharable)
         if precedence is not None:
             pulumi.set(__self__, "precedence", precedence)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
         if rule_settings is not None:
             pulumi.set(__self__, "rule_settings", rule_settings)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if source_account is not None:
+            pulumi.set(__self__, "source_account", source_account)
         if traffic is not None:
             pulumi.set(__self__, "traffic", traffic)
         if updated_at is not None:
@@ -317,7 +329,7 @@ class _TeamsRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -433,6 +445,18 @@ class _TeamsRuleState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="notSharable")
+    def not_sharable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        The rule cannot be shared via the Orgs API
+        """
+        return pulumi.get(self, "not_sharable")
+
+    @not_sharable.setter
+    def not_sharable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "not_sharable", value)
+
+    @_builtins.property
     @pulumi.getter
     def precedence(self) -> Optional[pulumi.Input[_builtins.int]]:
         return pulumi.get(self, "precedence")
@@ -440,6 +464,18 @@ class _TeamsRuleState:
     @precedence.setter
     def precedence(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "precedence", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        The rule was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
@@ -464,6 +500,18 @@ class _TeamsRuleState:
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input['TeamsRuleScheduleArgs']]):
         pulumi.set(self, "schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        account tag of account that created the rule
+        """
+        return pulumi.get(self, "source_account")
+
+    @source_account.setter
+    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_account", value)
 
     @_builtins.property
     @pulumi.getter
@@ -547,7 +595,7 @@ class TeamsRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] description: The description of the rule.
         :param pulumi.Input[_builtins.str] device_posture: The wirefilter expression used for device posture check matching.
@@ -635,6 +683,9 @@ class TeamsRule(pulumi.CustomResource):
             __props__.__dict__["traffic"] = traffic
             __props__.__dict__["created_at"] = None
             __props__.__dict__["deleted_at"] = None
+            __props__.__dict__["not_sharable"] = None
+            __props__.__dict__["read_only"] = None
+            __props__.__dict__["source_account"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["version"] = None
             __props__.__dict__["warning_status"] = None
@@ -661,9 +712,12 @@ class TeamsRule(pulumi.CustomResource):
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             identity: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            not_sharable: Optional[pulumi.Input[_builtins.bool]] = None,
             precedence: Optional[pulumi.Input[_builtins.int]] = None,
+            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             rule_settings: Optional[pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']]] = None,
+            source_account: Optional[pulumi.Input[_builtins.str]] = None,
             traffic: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -675,7 +729,7 @@ class TeamsRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
@@ -686,8 +740,11 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[_builtins.str] name: The name of the rule.
+        :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API
+        :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account
         :param pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule
         :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[_builtins.int] version: version number of the rule
         :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
@@ -707,9 +764,12 @@ class TeamsRule(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["identity"] = identity
         __props__.__dict__["name"] = name
+        __props__.__dict__["not_sharable"] = not_sharable
         __props__.__dict__["precedence"] = precedence
+        __props__.__dict__["read_only"] = read_only
         __props__.__dict__["rule_settings"] = rule_settings
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["source_account"] = source_account
         __props__.__dict__["traffic"] = traffic
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["version"] = version
@@ -725,7 +785,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -801,9 +861,25 @@ class TeamsRule(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="notSharable")
+    def not_sharable(self) -> pulumi.Output[_builtins.bool]:
+        """
+        The rule cannot be shared via the Orgs API
+        """
+        return pulumi.get(self, "not_sharable")
+
+    @_builtins.property
     @pulumi.getter
     def precedence(self) -> pulumi.Output[Optional[_builtins.int]]:
         return pulumi.get(self, "precedence")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> pulumi.Output[_builtins.bool]:
+        """
+        The rule was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
 
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
@@ -815,11 +891,19 @@ class TeamsRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output[Optional['outputs.TeamsRuleSchedule']]:
+    def schedule(self) -> pulumi.Output['outputs.TeamsRuleSchedule']:
         """
         The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         """
         return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> pulumi.Output[_builtins.str]:
+        """
+        account tag of account that created the rule
+        """
+        return pulumi.get(self, "source_account")
 
     @_builtins.property
     @pulumi.getter

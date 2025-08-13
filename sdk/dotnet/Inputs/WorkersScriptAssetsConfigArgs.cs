@@ -15,14 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The contents of a _headers file (used to attach custom headers on asset responses)
         /// </summary>
-        [Input("_headers")]
-        public Input<string>? _headers { get; set; }
-
-        /// <summary>
-        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-        /// </summary>
-        [Input("_redirects")]
-        public Input<string>? _redirects { get; set; }
+        [Input("headers")]
+        public Input<string>? Headers { get; set; }
 
         /// <summary>
         /// Determines the redirects and rewrites of requests for HTML content.
@@ -37,6 +31,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("notFoundHandling")]
         public Input<string>? NotFoundHandling { get; set; }
+
+        /// <summary>
+        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        /// </summary>
+        [Input("redirects")]
+        public Input<string>? Redirects { get; set; }
 
         /// <summary>
         /// When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.

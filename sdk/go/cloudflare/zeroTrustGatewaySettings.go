@@ -25,8 +25,8 @@ type ZeroTrustGatewaySettings struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Account settings
-	Settings  ZeroTrustGatewaySettingsSettingsOutput `pulumi:"settings"`
-	UpdatedAt pulumi.StringOutput                    `pulumi:"updatedAt"`
+	Settings  ZeroTrustGatewaySettingsSettingsPtrOutput `pulumi:"settings"`
+	UpdatedAt pulumi.StringOutput                       `pulumi:"updatedAt"`
 }
 
 // NewZeroTrustGatewaySettings registers a new resource with the given unique name, arguments, and options.
@@ -196,8 +196,8 @@ func (o ZeroTrustGatewaySettingsOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Account settings
-func (o ZeroTrustGatewaySettingsOutput) Settings() ZeroTrustGatewaySettingsSettingsOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsSettingsOutput { return v.Settings }).(ZeroTrustGatewaySettingsSettingsOutput)
+func (o ZeroTrustGatewaySettingsOutput) Settings() ZeroTrustGatewaySettingsSettingsPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsSettingsPtrOutput { return v.Settings }).(ZeroTrustGatewaySettingsSettingsPtrOutput)
 }
 
 func (o ZeroTrustGatewaySettingsOutput) UpdatedAt() pulumi.StringOutput {

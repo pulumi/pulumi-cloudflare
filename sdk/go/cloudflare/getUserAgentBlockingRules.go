@@ -26,10 +26,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupUserAgentBlockingRules(ctx, &cloudflare.LookupUserAgentBlockingRulesArgs{
-//				ZoneId:            "023e105f4ecef8ad9ca31a8372d0c353",
-//				Description:       pulumi.StringRef("abusive"),
-//				DescriptionSearch: pulumi.StringRef("abusive"),
-//				UaSearch:          pulumi.StringRef("Safari"),
+//				ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+//				Description: pulumi.StringRef("abusive"),
+//				Paused:      pulumi.BoolRef(false),
+//				UserAgent:   pulumi.StringRef("Safari"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,12 +53,12 @@ func LookupUserAgentBlockingRules(ctx *pulumi.Context, args *LookupUserAgentBloc
 type LookupUserAgentBlockingRulesArgs struct {
 	// A string to search for in the description of existing rules.
 	Description *string `pulumi:"description"`
-	// A string to search for in the description of existing rules.
-	DescriptionSearch *string `pulumi:"descriptionSearch"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// When true, indicates that the rule is currently paused.
+	Paused *bool `pulumi:"paused"`
 	// A string to search for in the user agent values of existing rules.
-	UaSearch *string `pulumi:"uaSearch"`
+	UserAgent *string `pulumi:"userAgent"`
 	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -67,16 +67,16 @@ type LookupUserAgentBlockingRulesArgs struct {
 type LookupUserAgentBlockingRulesResult struct {
 	// A string to search for in the description of existing rules.
 	Description *string `pulumi:"description"`
-	// A string to search for in the description of existing rules.
-	DescriptionSearch *string `pulumi:"descriptionSearch"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// When true, indicates that the rule is currently paused.
+	Paused *bool `pulumi:"paused"`
 	// The items returned by the data source
 	Results []GetUserAgentBlockingRulesResult `pulumi:"results"`
 	// A string to search for in the user agent values of existing rules.
-	UaSearch *string `pulumi:"uaSearch"`
+	UserAgent *string `pulumi:"userAgent"`
 	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -94,12 +94,12 @@ func LookupUserAgentBlockingRulesOutput(ctx *pulumi.Context, args LookupUserAgen
 type LookupUserAgentBlockingRulesOutputArgs struct {
 	// A string to search for in the description of existing rules.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// A string to search for in the description of existing rules.
-	DescriptionSearch pulumi.StringPtrInput `pulumi:"descriptionSearch"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// When true, indicates that the rule is currently paused.
+	Paused pulumi.BoolPtrInput `pulumi:"paused"`
 	// A string to search for in the user agent values of existing rules.
-	UaSearch pulumi.StringPtrInput `pulumi:"uaSearch"`
+	UserAgent pulumi.StringPtrInput `pulumi:"userAgent"`
 	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -128,11 +128,6 @@ func (o LookupUserAgentBlockingRulesResultOutput) Description() pulumi.StringPtr
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A string to search for in the description of existing rules.
-func (o LookupUserAgentBlockingRulesResultOutput) DescriptionSearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.DescriptionSearch }).(pulumi.StringPtrOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o LookupUserAgentBlockingRulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) string { return v.Id }).(pulumi.StringOutput)
@@ -143,14 +138,19 @@ func (o LookupUserAgentBlockingRulesResultOutput) MaxItems() pulumi.IntPtrOutput
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// When true, indicates that the rule is currently paused.
+func (o LookupUserAgentBlockingRulesResultOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
 // The items returned by the data source
 func (o LookupUserAgentBlockingRulesResultOutput) Results() GetUserAgentBlockingRulesResultArrayOutput {
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) []GetUserAgentBlockingRulesResult { return v.Results }).(GetUserAgentBlockingRulesResultArrayOutput)
 }
 
 // A string to search for in the user agent values of existing rules.
-func (o LookupUserAgentBlockingRulesResultOutput) UaSearch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.UaSearch }).(pulumi.StringPtrOutput)
+func (o LookupUserAgentBlockingRulesResultOutput) UserAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.UserAgent }).(pulumi.StringPtrOutput)
 }
 
 // Defines an identifier.

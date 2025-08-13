@@ -29,9 +29,17 @@ namespace Pulumi.Cloudflare
     ///             Value = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
     ///         },
     ///         Mode = "challenge",
+    ///         Description = "Prevent multiple login failures to mitigate brute force attacks",
+    ///         Paused = false,
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '&lt;zone_id&gt;/&lt;ua_rule_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")]
@@ -41,6 +49,12 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.UserAgentBlockingRuleConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The action to apply to a matched request.
         /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
@@ -48,10 +62,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the User Agent Blocking rule.
+        /// When true, indicates that the rule is currently paused.
         /// </summary>
-        [Output("uaRuleId")]
-        public Output<string?> UaRuleId { get; private set; } = null!;
+        [Output("paused")]
+        public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
         /// Defines an identifier.
@@ -109,6 +123,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.UserAgentBlockingRuleConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The action to apply to a matched request.
         /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
@@ -116,10 +136,10 @@ namespace Pulumi.Cloudflare
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the User Agent Blocking rule.
+        /// When true, indicates that the rule is currently paused.
         /// </summary>
-        [Input("uaRuleId")]
-        public Input<string>? UaRuleId { get; set; }
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -139,6 +159,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.UserAgentBlockingRuleConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
+        /// An informative summary of the rule. This value is sanitized and any tags will be removed.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The action to apply to a matched request.
         /// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         /// </summary>
@@ -146,10 +172,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The unique identifier of the User Agent Blocking rule.
+        /// When true, indicates that the rule is currently paused.
         /// </summary>
-        [Input("uaRuleId")]
-        public Input<string>? UaRuleId { get; set; }
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// Defines an identifier.

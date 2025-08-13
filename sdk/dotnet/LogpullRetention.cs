@@ -28,6 +28,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpullRetention:LogpullRetention")]
     public partial class LogpullRetention : global::Pulumi.CustomResource

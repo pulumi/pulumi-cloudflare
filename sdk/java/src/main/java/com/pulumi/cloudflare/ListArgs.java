@@ -17,14 +17,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListArgs Empty = new ListArgs();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -106,7 +106,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 

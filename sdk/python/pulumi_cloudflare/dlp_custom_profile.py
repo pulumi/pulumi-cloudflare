@@ -22,13 +22,13 @@ __all__ = ['DlpCustomProfileArgs', 'DlpCustomProfile']
 class DlpCustomProfileArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 entries: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]],
                  name: pulumi.Input[_builtins.str],
                  ai_context_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[_builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  context_awareness: Optional[pulumi.Input['DlpCustomProfileContextAwarenessArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]] = None,
                  ocr_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]]] = None):
         """
@@ -36,10 +36,11 @@ class DlpCustomProfileArgs:
         :param pulumi.Input[_builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['DlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] description: The description of the profile.
+        :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]] entries: Custom entries from this profile.
+               If this field is omitted, entries owned by this profile will not be changed.
         :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "entries", entries)
         pulumi.set(__self__, "name", name)
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
@@ -48,9 +49,17 @@ class DlpCustomProfileArgs:
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
         if context_awareness is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
+        if context_awareness is not None:
             pulumi.set(__self__, "context_awareness", context_awareness)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if entries is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
+        if entries is not None:
+            pulumi.set(__self__, "entries", entries)
         if ocr_enabled is not None:
             pulumi.set(__self__, "ocr_enabled", ocr_enabled)
         if shared_entries is not None:
@@ -64,15 +73,6 @@ class DlpCustomProfileArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def entries(self) -> pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]:
-        return pulumi.get(self, "entries")
-
-    @entries.setter
-    def entries(self, value: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]):
-        pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter
@@ -115,6 +115,7 @@ class DlpCustomProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> Optional[pulumi.Input['DlpCustomProfileContextAwarenessArgs']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -136,6 +137,20 @@ class DlpCustomProfileArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]]:
+        """
+        Custom entries from this profile.
+        If this field is omitted, entries owned by this profile will not be changed.
+        """
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]]):
+        pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter(name="ocrEnabled")
@@ -182,6 +197,8 @@ class _DlpCustomProfileState:
         :param pulumi.Input['DlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] created_at: When the profile was created.
         :param pulumi.Input[_builtins.str] description: The description of the profile.
+        :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]] entries: Custom entries from this profile.
+               If this field is omitted, entries owned by this profile will not be changed.
         :param pulumi.Input[_builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
@@ -196,11 +213,17 @@ class _DlpCustomProfileState:
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
         if context_awareness is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
+        if context_awareness is not None:
             pulumi.set(__self__, "context_awareness", context_awareness)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if entries is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""entries is deprecated: This attribute is deprecated.""")
         if entries is not None:
             pulumi.set(__self__, "entries", entries)
         if name is not None:
@@ -257,6 +280,7 @@ class _DlpCustomProfileState:
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> Optional[pulumi.Input['DlpCustomProfileContextAwarenessArgs']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -293,7 +317,12 @@ class _DlpCustomProfileState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]]:
+        """
+        Custom entries from this profile.
+        If this field is omitted, entries owned by this profile will not be changed.
+        """
         return pulumi.get(self, "entries")
 
     @entries.setter
@@ -403,6 +432,8 @@ class DlpCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[Union['DlpCustomProfileContextAwarenessArgs', 'DlpCustomProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] description: The description of the profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileEntryArgs', 'DlpCustomProfileEntryArgsDict']]]] entries: Custom entries from this profile.
+               If this field is omitted, entries owned by this profile will not be changed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileSharedEntryArgs', 'DlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         ...
@@ -463,8 +494,6 @@ class DlpCustomProfile(pulumi.CustomResource):
             __props__.__dict__["confidence_threshold"] = confidence_threshold
             __props__.__dict__["context_awareness"] = context_awareness
             __props__.__dict__["description"] = description
-            if entries is None and not opts.urn:
-                raise TypeError("Missing required property 'entries'")
             __props__.__dict__["entries"] = entries
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -512,6 +541,8 @@ class DlpCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['DlpCustomProfileContextAwarenessArgs', 'DlpCustomProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
         :param pulumi.Input[_builtins.str] created_at: When the profile was created.
         :param pulumi.Input[_builtins.str] description: The description of the profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileEntryArgs', 'DlpCustomProfileEntryArgsDict']]]] entries: Custom entries from this profile.
+               If this field is omitted, entries owned by this profile will not be changed.
         :param pulumi.Input[_builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileSharedEntryArgs', 'DlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         :param pulumi.Input[_builtins.str] type: Available values: "custom", "predefined", "integration".
@@ -544,7 +575,7 @@ class DlpCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
-    def ai_context_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ai_context_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "ai_context_enabled")
 
     @_builtins.property
@@ -557,11 +588,12 @@ class DlpCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="confidenceThreshold")
-    def confidence_threshold(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def confidence_threshold(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "confidence_threshold")
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> pulumi.Output[Optional['outputs.DlpCustomProfileContextAwareness']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -586,7 +618,12 @@ class DlpCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def entries(self) -> pulumi.Output[Sequence['outputs.DlpCustomProfileEntry']]:
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def entries(self) -> pulumi.Output[Optional[Sequence['outputs.DlpCustomProfileEntry']]]:
+        """
+        Custom entries from this profile.
+        If this field is omitted, entries owned by this profile will not be changed.
+        """
         return pulumi.get(self, "entries")
 
     @_builtins.property
@@ -596,7 +633,7 @@ class DlpCustomProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ocrEnabled")
-    def ocr_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ocr_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "ocr_enabled")
 
     @_builtins.property

@@ -101,14 +101,14 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * @return An informative summary of the rule. This value is sanitized and any tags will be removed.
      * 
      */
     public Output<Optional<String>> description() {
@@ -133,14 +133,14 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> paused;
+    private Output<Boolean> paused;
 
     /**
      * @return When true, indicates that the rule is currently paused.
      * 
      */
-    public Output<Optional<Boolean>> paused() {
-        return Codegen.optional(this.paused);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
      * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.

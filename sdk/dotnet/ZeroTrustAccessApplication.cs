@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Output("autoRedirectToIdentity")]
-        public Output<bool> AutoRedirectToIdentity { get; private set; } = null!;
+        public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
 
         /// <summary>
         /// The background color of the App Launcher page.
@@ -77,9 +77,6 @@ namespace Pulumi.Cloudflare
 
         [Output("corsHeaders")]
         public Output<Outputs.ZeroTrustAccessApplicationCorsHeaders?> CorsHeaders { get; private set; } = null!;
-
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The custom error message shown to a user when they are denied access to the application.
@@ -115,13 +112,13 @@ namespace Pulumi.Cloudflare
         /// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         /// </summary>
         [Output("domain")]
-        public Output<string?> Domain { get; private set; } = null!;
+        public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
         /// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         /// </summary>
         [Output("enableBindingCookie")]
-        public Output<bool> EnableBindingCookie { get; private set; } = null!;
+        public Output<bool?> EnableBindingCookie { get; private set; } = null!;
 
         /// <summary>
         /// The links in the App Launcher footer.
@@ -145,7 +142,7 @@ namespace Pulumi.Cloudflare
         /// The design of the App Launcher landing page shown to users when they log in.
         /// </summary>
         [Output("landingPageDesign")]
-        public Output<Outputs.ZeroTrustAccessApplicationLandingPageDesign> LandingPageDesign { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustAccessApplicationLandingPageDesign?> LandingPageDesign { get; private set; } = null!;
 
         /// <summary>
         /// The image URL for the logo shown in the App Launcher dashboard.
@@ -157,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// The name of the application.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -169,7 +166,7 @@ namespace Pulumi.Cloudflare
         /// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         /// </summary>
         [Output("pathCookieAttribute")]
-        public Output<bool> PathCookieAttribute { get; private set; } = null!;
+        public Output<bool?> PathCookieAttribute { get; private set; } = null!;
 
         /// <summary>
         /// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -190,7 +187,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> ReadServiceTokensFromHeader { get; private set; } = null!;
 
         [Output("saasApp")]
-        public Output<Outputs.ZeroTrustAccessApplicationSaasApp> SaasApp { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustAccessApplicationSaasApp?> SaasApp { get; private set; } = null!;
 
         /// <summary>
         /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -249,9 +246,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -654,9 +648,6 @@ namespace Pulumi.Cloudflare
         [Input("corsHeaders")]
         public Input<Inputs.ZeroTrustAccessApplicationCorsHeadersGetArgs>? CorsHeaders { get; set; }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         /// <summary>
         /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
@@ -867,9 +858,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

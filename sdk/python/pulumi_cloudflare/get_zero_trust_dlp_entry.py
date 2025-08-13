@@ -138,7 +138,7 @@ class GetZeroTrustDlpEntryResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Available values: "custom", "predefined", "integration", "exact*data", "document*template", "word_list".
+        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         """
         return pulumi.get(self, "type")
 

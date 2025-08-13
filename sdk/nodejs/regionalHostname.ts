@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "foo.example.com",
  *     regionKey: "ca",
- *     routing: "routing",
+ *     routing: "dns",
  * });
  * ```
  *
@@ -68,7 +68,7 @@ export class RegionalHostname extends pulumi.CustomResource {
     /**
      * Configure which routing method to use for the regional hostname
      */
-    public readonly routing!: pulumi.Output<string | undefined>;
+    public readonly routing!: pulumi.Output<string>;
     /**
      * Identifier.
      */

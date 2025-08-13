@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
 import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,6 +92,21 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.origin);
     }
 
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    @Import(name="originConnectionLimit")
+    private @Nullable Output<Integer> originConnectionLimit;
+
+    /**
+     * @return The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     * 
+     */
+    public Optional<Output<Integer>> originConnectionLimit() {
+        return Optional.ofNullable(this.originConnectionLimit);
+    }
+
     private HyperdriveConfigState() {}
 
     private HyperdriveConfigState(HyperdriveConfigState $) {
@@ -101,6 +117,7 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
         this.mtls = $.mtls;
         this.name = $.name;
         this.origin = $.origin;
+        this.originConnectionLimit = $.originConnectionLimit;
     }
 
     public static Builder builder() {
@@ -218,6 +235,27 @@ public final class HyperdriveConfigState extends com.pulumi.resources.ResourceAr
 
         public Builder origin(HyperdriveConfigOriginArgs origin) {
             return origin(Output.of(origin));
+        }
+
+        /**
+         * @param originConnectionLimit The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originConnectionLimit(@Nullable Output<Integer> originConnectionLimit) {
+            $.originConnectionLimit = originConnectionLimit;
+            return this;
+        }
+
+        /**
+         * @param originConnectionLimit The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originConnectionLimit(Integer originConnectionLimit) {
+            return originConnectionLimit(Output.of(originConnectionLimit));
         }
 
         public HyperdriveConfigState build() {

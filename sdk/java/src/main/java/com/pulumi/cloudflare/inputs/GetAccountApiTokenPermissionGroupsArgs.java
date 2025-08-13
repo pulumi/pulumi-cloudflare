@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAccountApiTokenPermissionGroupsArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +31,46 @@ public final class GetAccountApiTokenPermissionGroupsArgs extends com.pulumi.res
         return this.accountId;
     }
 
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable Output<String> scope;
+
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<Output<String>> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
     private GetAccountApiTokenPermissionGroupsArgs() {}
 
     private GetAccountApiTokenPermissionGroupsArgs(GetAccountApiTokenPermissionGroupsArgs $) {
         this.accountId = $.accountId;
+        this.name = $.name;
+        this.scope = $.scope;
     }
 
     public static Builder builder() {
@@ -72,6 +110,52 @@ public final class GetAccountApiTokenPermissionGroupsArgs extends com.pulumi.res
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable Output<String> scope) {
+            $.scope = scope;
+            return this;
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(String scope) {
+            return scope(Output.of(scope));
         }
 
         public GetAccountApiTokenPermissionGroupsArgs build() {

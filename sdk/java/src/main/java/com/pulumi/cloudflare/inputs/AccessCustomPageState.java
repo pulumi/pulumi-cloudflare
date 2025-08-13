@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,28 +28,6 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * Number of apps the custom page is assigned to.
-     * 
-     */
-    @Import(name="appCount")
-    private @Nullable Output<Integer> appCount;
-
-    /**
-     * @return Number of apps the custom page is assigned to.
-     * 
-     */
-    public Optional<Output<Integer>> appCount() {
-        return Optional.ofNullable(this.appCount);
-    }
-
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
     }
 
     /**
@@ -115,24 +92,14 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.uid);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     private AccessCustomPageState() {}
 
     private AccessCustomPageState(AccessCustomPageState $) {
         this.accountId = $.accountId;
-        this.appCount = $.appCount;
-        this.createdAt = $.createdAt;
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
         this.uid = $.uid;
-        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -172,36 +139,6 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param appCount Number of apps the custom page is assigned to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(@Nullable Output<Integer> appCount) {
-            $.appCount = appCount;
-            return this;
-        }
-
-        /**
-         * @param appCount Number of apps the custom page is assigned to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(Integer appCount) {
-            return appCount(Output.of(appCount));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**
@@ -288,15 +225,6 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         public AccessCustomPageState build() {

@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         [Output("items")]
         public Output<ImmutableArray<Outputs.TeamsListItem>> Items { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.TeamsListItemArgs>? _items;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         public InputList<Inputs.TeamsListItemArgs> Items
         {
@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.TeamsListItemGetArgs>? _items;
 
         /// <summary>
-        /// The items in the list.
+        /// items to add to the list.
         /// </summary>
         public InputList<Inputs.TeamsListItemGetArgs> Items
         {

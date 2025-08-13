@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Domain { get; set; }
 
         /// <summary>
+        /// True for only exact string matches against passed name/domain query parameters.
+        /// </summary>
+        [Input("exact")]
+        public bool? Exact { get; set; }
+
+        /// <summary>
         /// The name of the app.
         /// </summary>
         [Input("name")]

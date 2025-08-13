@@ -44,8 +44,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleImage = new Image("exampleImage", ImageArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .file(Map.ofEntries(
- *             ))
+ *             .imageId("id")
+ *             .creator("creator")
+ *             .file(null)
  *             .metadata(Map.ofEntries(
  *             ))
  *             .requireSignedUrls(true)
@@ -82,6 +83,20 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * Can set the creator field with an internal user ID.
+     * 
+     */
+    @Export(name="creator", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> creator;
+
+    /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    public Output<Optional<String>> creator() {
+        return Codegen.optional(this.creator);
+    }
+    /**
      * An image binary data. Only needed when type is uploading a file.
      * 
      */
@@ -108,6 +123,20 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<String> filename() {
         return this.filename;
+    }
+    /**
+     * An optional custom unique identifier for your image.
+     * 
+     */
+    @Export(name="imageId", refs={String.class}, tree="[0]")
+    private Output<String> imageId;
+
+    /**
+     * @return An optional custom unique identifier for your image.
+     * 
+     */
+    public Output<String> imageId() {
+        return this.imageId;
     }
     /**
      * User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.

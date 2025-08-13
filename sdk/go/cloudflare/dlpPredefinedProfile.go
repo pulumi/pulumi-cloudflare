@@ -30,7 +30,7 @@ import (
 //				AccountId:           pulumi.String("account_id"),
 //				ProfileId:           pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				AiContextEnabled:    pulumi.Bool(true),
-//				AllowedMatchCount:   pulumi.Int(0),
+//				AllowedMatchCount:   pulumi.Int(5),
 //				ConfidenceThreshold: pulumi.String("confidence_threshold"),
 //				ContextAwareness: &cloudflare.ZeroTrustDlpPredefinedProfileContextAwarenessArgs{
 //					Enabled: pulumi.Bool(true),
@@ -65,11 +65,13 @@ import (
 type DlpPredefinedProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId           pulumi.StringOutput    `pulumi:"accountId"`
-	AiContextEnabled    pulumi.BoolPtrOutput   `pulumi:"aiContextEnabled"`
-	AllowedMatchCount   pulumi.IntPtrOutput    `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
+	AccountId           pulumi.StringOutput `pulumi:"accountId"`
+	AiContextEnabled    pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
+	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpPredefinedProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -78,8 +80,8 @@ type DlpPredefinedProfile struct {
 	// Deprecated: This attribute is deprecated.
 	Entries DlpPredefinedProfileEntryArrayOutput `pulumi:"entries"`
 	// The name of the profile.
-	Name       pulumi.StringOutput  `pulumi:"name"`
-	OcrEnabled pulumi.BoolPtrOutput `pulumi:"ocrEnabled"`
+	Name       pulumi.StringOutput `pulumi:"name"`
+	OcrEnabled pulumi.BoolOutput   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput   `pulumi:"openAccess"`
 	ProfileId  pulumi.StringOutput `pulumi:"profileId"`
@@ -136,6 +138,8 @@ type dlpPredefinedProfileState struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *DlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -161,6 +165,8 @@ type DlpPredefinedProfileState struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpPredefinedProfileContextAwarenessPtrInput
 	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
@@ -190,6 +196,8 @@ type dlpPredefinedProfileArgs struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *DlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
 	// Deprecated: This attribute is deprecated.
 	Entries    []DlpPredefinedProfileEntry `pulumi:"entries"`
@@ -204,6 +212,8 @@ type DlpPredefinedProfileArgs struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness DlpPredefinedProfileContextAwarenessPtrInput
 	// Deprecated: This attribute is deprecated.
 	Entries    DlpPredefinedProfileEntryArrayInput
@@ -302,19 +312,21 @@ func (o DlpPredefinedProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o DlpPredefinedProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolPtrOutput { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
+func (o DlpPredefinedProfileOutput) AiContextEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolOutput { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
-func (o DlpPredefinedProfileOutput) AllowedMatchCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.IntPtrOutput { return v.AllowedMatchCount }).(pulumi.IntPtrOutput)
+func (o DlpPredefinedProfileOutput) AllowedMatchCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
-func (o DlpPredefinedProfileOutput) ConfidenceThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringPtrOutput { return v.ConfidenceThreshold }).(pulumi.StringPtrOutput)
+func (o DlpPredefinedProfileOutput) ConfidenceThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpPredefinedProfileOutput) ContextAwareness() DlpPredefinedProfileContextAwarenessPtrOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileContextAwarenessPtrOutput { return v.ContextAwareness }).(DlpPredefinedProfileContextAwarenessPtrOutput)
 }
@@ -339,8 +351,8 @@ func (o DlpPredefinedProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o DlpPredefinedProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
+func (o DlpPredefinedProfileOutput) OcrEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolOutput { return v.OcrEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether this profile can be accessed by anyone.

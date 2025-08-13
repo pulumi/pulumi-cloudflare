@@ -26,11 +26,10 @@ class WorkersKvArgs:
                  metadata: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKv resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
-        :param pulumi.Input[_builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "key_name", key_name)
@@ -43,7 +42,7 @@ class WorkersKvArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -90,9 +89,6 @@ class WorkersKvArgs:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Arbitrary JSON to be associated with a key/value pair.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -110,9 +106,8 @@ class _WorkersKvState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKv resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-        :param pulumi.Input[_builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
@@ -131,7 +126,7 @@ class _WorkersKvState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -154,9 +149,6 @@ class _WorkersKvState:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Arbitrary JSON to be associated with a key/value pair.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -211,8 +203,8 @@ class WorkersKv(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
-            metadata="{\\"someMetadataKey\\": \\"someMetadataValue\\"}",
-            value="Some Value")
+            value="Some Value",
+            metadata={})
         ```
 
         ## Import
@@ -223,9 +215,8 @@ class WorkersKv(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-        :param pulumi.Input[_builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
@@ -246,8 +237,8 @@ class WorkersKv(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             namespace_id="0f2ac74b498b48028cb68387c421e279",
             key_name="My-Key",
-            metadata="{\\"someMetadataKey\\": \\"someMetadataValue\\"}",
-            value="Some Value")
+            value="Some Value",
+            metadata={})
         ```
 
         ## Import
@@ -320,9 +311,8 @@ class WorkersKv(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-        :param pulumi.Input[_builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
         :param pulumi.Input[_builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input[_builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
@@ -341,7 +331,7 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -356,9 +346,6 @@ class WorkersKv(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Arbitrary JSON to be associated with a key/value pair.
-        """
         return pulumi.get(self, "metadata")
 
     @_builtins.property

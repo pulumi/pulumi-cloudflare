@@ -17,11 +17,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// Human-readable message about the deployment. Truncated to 100 bytes.
         /// </summary>
         public readonly string? WorkersMessage;
+        /// <summary>
+        /// Operation that triggered the creation of the deployment.
+        /// </summary>
+        public readonly string? WorkersTriggeredBy;
 
         [OutputConstructor]
-        private WorkersDeploymentAnnotations(string? workersMessage)
+        private WorkersDeploymentAnnotations(
+            string? workersMessage,
+
+            string? workersTriggeredBy)
         {
             WorkersMessage = workersMessage;
+            WorkersTriggeredBy = workersTriggeredBy;
         }
     }
 }

@@ -17,14 +17,14 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     public static final WorkersKvNamespaceState Empty = new WorkersKvNamespaceState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -104,7 +104,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

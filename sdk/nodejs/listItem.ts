@@ -49,7 +49,7 @@ export class ListItem extends pulumi.CustomResource {
     }
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -69,7 +69,7 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<outputs.ListItemHostname | undefined>;
     /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
     public readonly ip!: pulumi.Output<string | undefined>;
     /**
@@ -141,7 +141,7 @@ export class ListItem extends pulumi.CustomResource {
  */
 export interface ListItemState {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface ListItemState {
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
     ip?: pulumi.Input<string>;
     /**
@@ -187,7 +187,7 @@ export interface ListItemState {
  */
 export interface ListItemArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -203,7 +203,7 @@ export interface ListItemArgs {
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
     ip?: pulumi.Input<string>;
     /**

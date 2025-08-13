@@ -29,15 +29,22 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         return this.accountId;
     }
 
+    @Import(name="deploymentId", required=true)
+    private Output<String> deploymentId;
+
+    public Output<String> deploymentId() {
+        return this.deploymentId;
+    }
+
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Import(name="scriptName", required=true)
     private Output<String> scriptName;
 
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Output<String> scriptName() {
@@ -48,6 +55,7 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
 
     private GetWorkersDeploymentArgs(GetWorkersDeploymentArgs $) {
         this.accountId = $.accountId;
+        this.deploymentId = $.deploymentId;
         this.scriptName = $.scriptName;
     }
 
@@ -90,8 +98,17 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
             return accountId(Output.of(accountId));
         }
 
+        public Builder deploymentId(Output<String> deploymentId) {
+            $.deploymentId = deploymentId;
+            return this;
+        }
+
+        public Builder deploymentId(String deploymentId) {
+            return deploymentId(Output.of(deploymentId));
+        }
+
         /**
-         * @param scriptName Name of the script.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -102,7 +119,7 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param scriptName Name of the script.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -114,6 +131,9 @@ public final class GetWorkersDeploymentArgs extends com.pulumi.resources.InvokeA
         public GetWorkersDeploymentArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetWorkersDeploymentArgs", "accountId");
+            }
+            if ($.deploymentId == null) {
+                throw new MissingRequiredPropertyException("GetWorkersDeploymentArgs", "deploymentId");
             }
             if ($.scriptName == null) {
                 throw new MissingRequiredPropertyException("GetWorkersDeploymentArgs", "scriptName");

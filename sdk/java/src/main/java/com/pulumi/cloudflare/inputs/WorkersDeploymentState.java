@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkersDeploymentAnnotationsArgs;
-import com.pulumi.cloudflare.inputs.WorkersDeploymentDeploymentArgs;
 import com.pulumi.cloudflare.inputs.WorkersDeploymentVersionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -55,22 +54,15 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.createdOn);
     }
 
-    @Import(name="deployments")
-    private @Nullable Output<List<WorkersDeploymentDeploymentArgs>> deployments;
-
-    public Optional<Output<List<WorkersDeploymentDeploymentArgs>>> deployments() {
-        return Optional.ofNullable(this.deployments);
-    }
-
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Import(name="scriptName")
     private @Nullable Output<String> scriptName;
 
     /**
-     * @return Name of the script.
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Optional<Output<String>> scriptName() {
@@ -113,7 +105,6 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         this.annotations = $.annotations;
         this.authorEmail = $.authorEmail;
         this.createdOn = $.createdOn;
-        this.deployments = $.deployments;
         this.scriptName = $.scriptName;
         this.source = $.source;
         this.strategy = $.strategy;
@@ -186,21 +177,8 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
             return createdOn(Output.of(createdOn));
         }
 
-        public Builder deployments(@Nullable Output<List<WorkersDeploymentDeploymentArgs>> deployments) {
-            $.deployments = deployments;
-            return this;
-        }
-
-        public Builder deployments(List<WorkersDeploymentDeploymentArgs> deployments) {
-            return deployments(Output.of(deployments));
-        }
-
-        public Builder deployments(WorkersDeploymentDeploymentArgs... deployments) {
-            return deployments(List.of(deployments));
-        }
-
         /**
-         * @param scriptName Name of the script.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 
@@ -211,7 +189,7 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scriptName Name of the script.
+         * @param scriptName Name of the script, used in URLs and route configuration.
          * 
          * @return builder
          * 

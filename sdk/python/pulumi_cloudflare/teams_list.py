@@ -32,7 +32,7 @@ class TeamsListArgs:
         :param pulumi.Input[_builtins.str] type: The type of list.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         :param pulumi.Input[_builtins.str] description: The description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: The items in the list.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: items to add to the list.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -92,7 +92,7 @@ class TeamsListArgs:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]]]:
         """
-        The items in the list.
+        items to add to the list.
         """
         return pulumi.get(self, "items")
 
@@ -115,7 +115,7 @@ class _TeamsListState:
         """
         Input properties used for looking up and filtering TeamsList resources.
         :param pulumi.Input[_builtins.str] description: The description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: The items in the list.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]] items: items to add to the list.
         :param pulumi.Input[_builtins.float] list_count: The number of items in the list.
         :param pulumi.Input[_builtins.str] name: The name of the list.
         :param pulumi.Input[_builtins.str] type: The type of list.
@@ -172,7 +172,7 @@ class _TeamsListState:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemArgs']]]]:
         """
-        The items in the list.
+        items to add to the list.
         """
         return pulumi.get(self, "items")
 
@@ -271,7 +271,7 @@ class TeamsList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: items to add to the list.
         :param pulumi.Input[_builtins.str] name: The name of the list.
         :param pulumi.Input[_builtins.str] type: The type of list.
                Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
@@ -378,7 +378,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the list.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: The items in the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TeamsListItemArgs', 'TeamsListItemArgsDict']]]] items: items to add to the list.
         :param pulumi.Input[_builtins.float] list_count: The number of items in the list.
         :param pulumi.Input[_builtins.str] name: The name of the list.
         :param pulumi.Input[_builtins.str] type: The type of list.
@@ -418,9 +418,9 @@ class TeamsList(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> pulumi.Output[Sequence['outputs.TeamsListItem']]:
+    def items(self) -> pulumi.Output[Optional[Sequence['outputs.TeamsListItem']]]:
         """
-        The items in the list.
+        items to add to the list.
         """
         return pulumi.get(self, "items")
 

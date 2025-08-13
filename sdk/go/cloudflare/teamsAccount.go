@@ -27,8 +27,8 @@ type TeamsAccount struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Account settings
-	Settings  TeamsAccountSettingsOutput `pulumi:"settings"`
-	UpdatedAt pulumi.StringOutput        `pulumi:"updatedAt"`
+	Settings  TeamsAccountSettingsPtrOutput `pulumi:"settings"`
+	UpdatedAt pulumi.StringOutput           `pulumi:"updatedAt"`
 }
 
 // NewTeamsAccount registers a new resource with the given unique name, arguments, and options.
@@ -198,8 +198,8 @@ func (o TeamsAccountOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Account settings
-func (o TeamsAccountOutput) Settings() TeamsAccountSettingsOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSettingsOutput { return v.Settings }).(TeamsAccountSettingsOutput)
+func (o TeamsAccountOutput) Settings() TeamsAccountSettingsPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSettingsPtrOutput { return v.Settings }).(TeamsAccountSettingsPtrOutput)
 }
 
 func (o TeamsAccountOutput) UpdatedAt() pulumi.StringOutput {

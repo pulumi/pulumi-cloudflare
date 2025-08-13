@@ -154,8 +154,8 @@ class GetLogpushJobResult:
     @pulumi.getter
     def kind(self) -> _builtins.str:
         """
-        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-        Available values: "edge".
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+        Available values: "", "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -188,7 +188,7 @@ class GetLogpushJobResult:
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> _builtins.int:
         """
-        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
@@ -196,7 +196,7 @@ class GetLogpushJobResult:
     @pulumi.getter(name="maxUploadIntervalSeconds")
     def max_upload_interval_seconds(self) -> _builtins.int:
         """
-        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
@@ -204,7 +204,7 @@ class GetLogpushJobResult:
     @pulumi.getter(name="maxUploadRecords")
     def max_upload_records(self) -> _builtins.int:
         """
-        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 

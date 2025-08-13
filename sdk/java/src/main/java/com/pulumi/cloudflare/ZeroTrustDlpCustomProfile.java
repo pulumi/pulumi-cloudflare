@@ -43,10 +43,10 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return this.accountId;
     }
     @Export(name="aiContextEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> aiContextEnabled;
+    private Output<Boolean> aiContextEnabled;
 
-    public Output<Optional<Boolean>> aiContextEnabled() {
-        return Codegen.optional(this.aiContextEnabled);
+    public Output<Boolean> aiContextEnabled() {
+        return this.aiContextEnabled;
     }
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
@@ -63,15 +63,19 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return this.allowedMatchCount;
     }
     @Export(name="confidenceThreshold", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> confidenceThreshold;
+    private Output<String> confidenceThreshold;
 
-    public Output<Optional<String>> confidenceThreshold() {
-        return Codegen.optional(this.confidenceThreshold);
+    public Output<String> confidenceThreshold() {
+        return this.confidenceThreshold;
     }
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="contextAwareness", refs={ZeroTrustDlpCustomProfileContextAwareness.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
 
@@ -110,11 +114,25 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="entries", refs={List.class,ZeroTrustDlpCustomProfileEntry.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDlpCustomProfileEntry>> entries;
+    private Output</* @Nullable */ List<ZeroTrustDlpCustomProfileEntry>> entries;
 
-    public Output<List<ZeroTrustDlpCustomProfileEntry>> entries() {
-        return this.entries;
+    /**
+     * @return Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     */
+    public Output<Optional<List<ZeroTrustDlpCustomProfileEntry>>> entries() {
+        return Codegen.optional(this.entries);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -123,10 +141,10 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ocrEnabled;
+    private Output<Boolean> ocrEnabled;
 
-    public Output<Optional<Boolean>> ocrEnabled() {
-        return Codegen.optional(this.ocrEnabled);
+    public Output<Boolean> ocrEnabled() {
+        return this.ocrEnabled;
     }
     /**
      * Whether this profile can be accessed by anyone.

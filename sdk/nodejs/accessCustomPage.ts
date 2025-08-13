@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZeroTrustAccessCustomPage = new cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
- *     name: "name",
- *     type: "identity_denied",
- *     appCount: 0,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -62,11 +49,6 @@ export class AccessCustomPage extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of apps the custom page is assigned to.
-     */
-    public readonly appCount!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
      * Custom page HTML.
      */
     public readonly customHtml!: pulumi.Output<string>;
@@ -83,7 +65,6 @@ export class AccessCustomPage extends pulumi.CustomResource {
      * UUID.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a AccessCustomPage resource with the given unique name, arguments, and options.
@@ -102,13 +83,10 @@ export class AccessCustomPage extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessCustomPageState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appCount"] = state ? state.appCount : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customHtml"] = state ? state.customHtml : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AccessCustomPageArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -124,13 +102,10 @@ export class AccessCustomPage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["appCount"] = args ? args.appCount : undefined;
             resourceInputs["customHtml"] = args ? args.customHtml : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCustomPage:AccessCustomPage" }] };
@@ -148,11 +123,6 @@ export interface AccessCustomPageState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of apps the custom page is assigned to.
-     */
-    appCount?: pulumi.Input<number>;
-    createdAt?: pulumi.Input<string>;
-    /**
      * Custom page HTML.
      */
     customHtml?: pulumi.Input<string>;
@@ -169,7 +139,6 @@ export interface AccessCustomPageState {
      * UUID.
      */
     uid?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -180,10 +149,6 @@ export interface AccessCustomPageArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * Number of apps the custom page is assigned to.
-     */
-    appCount?: pulumi.Input<number>;
     /**
      * Custom page HTML.
      */

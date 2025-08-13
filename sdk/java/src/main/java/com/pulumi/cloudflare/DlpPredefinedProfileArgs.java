@@ -52,14 +52,22 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="contextAwareness")
     private @Nullable Output<DlpPredefinedProfileContextAwarenessArgs> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<DlpPredefinedProfileContextAwarenessArgs>> contextAwareness() {
         return Optional.ofNullable(this.contextAwareness);
     }
@@ -169,7 +177,11 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(@Nullable Output<DlpPredefinedProfileContextAwarenessArgs> contextAwareness) {
             $.contextAwareness = contextAwareness;
             return this;
@@ -180,7 +192,11 @@ public final class DlpPredefinedProfileArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(DlpPredefinedProfileContextAwarenessArgs contextAwareness) {
             return contextAwareness(Output.of(contextAwareness));
         }

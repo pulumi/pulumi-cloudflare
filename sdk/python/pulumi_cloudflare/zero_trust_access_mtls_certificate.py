@@ -108,11 +108,9 @@ class _ZeroTrustAccessMtlsCertificateState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_on: Optional[pulumi.Input[_builtins.str]] = None,
                  fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessMtlsCertificate resources.
@@ -129,16 +127,12 @@ class _ZeroTrustAccessMtlsCertificateState:
             pulumi.set(__self__, "associated_hostnames", associated_hostnames)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if expires_on is not None:
             pulumi.set(__self__, "expires_on", expires_on)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -179,15 +173,6 @@ class _ZeroTrustAccessMtlsCertificateState:
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
-
-    @_builtins.property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "expires_on")
@@ -219,15 +204,6 @@ class _ZeroTrustAccessMtlsCertificateState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -354,10 +330,8 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["created_at"] = None
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["fingerprint"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessMtlsCertificate, __self__).__init__(
@@ -373,11 +347,9 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             expires_on: Optional[pulumi.Input[_builtins.str]] = None,
             fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessMtlsCertificate':
         """
         Get an existing ZeroTrustAccessMtlsCertificate resource's state with the given name, id, and optional extra
@@ -400,11 +372,9 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["associated_hostnames"] = associated_hostnames
         __props__.__dict__["certificate"] = certificate
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["expires_on"] = expires_on
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessMtlsCertificate(resource_name, opts=opts, __props__=__props__)
 
@@ -433,11 +403,6 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         return pulumi.get(self, "certificate")
 
     @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "expires_on")
@@ -457,11 +422,6 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         The name of the certificate.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

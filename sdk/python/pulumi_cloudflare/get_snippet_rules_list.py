@@ -69,7 +69,7 @@ class GetSnippetRulesListResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier
+        The unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -96,12 +96,12 @@ def get_snippet_rules_list(max_items: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippet_rules_list = cloudflare.get_snippet_rules_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_snippet_rules_list = cloudflare.get_snippet_rules_list(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items
@@ -124,12 +124,12 @@ def get_snippet_rules_list_output(max_items: Optional[pulumi.Input[Optional[_bui
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippet_rules_list = cloudflare.get_snippet_rules_list(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_snippet_rules_list = cloudflare.get_snippet_rules_list(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items

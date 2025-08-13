@@ -25,7 +25,7 @@ type TeamsRule struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringOutput `pulumi:"action"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -45,12 +45,18 @@ type TeamsRule struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the rule.
-	Name       pulumi.StringOutput `pulumi:"name"`
-	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The rule cannot be shared via the Orgs API
+	NotSharable pulumi.BoolOutput   `pulumi:"notSharable"`
+	Precedence  pulumi.IntPtrOutput `pulumi:"precedence"`
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-	Schedule TeamsRuleSchedulePtrOutput `pulumi:"schedule"`
+	Schedule TeamsRuleScheduleOutput `pulumi:"schedule"`
+	// account tag of account that created the rule
+	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
 	// The wirefilter expression used for traffic matching.
 	Traffic   pulumi.StringOutput `pulumi:"traffic"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -106,7 +112,7 @@ func GetTeamsRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TeamsRule resources.
 type teamsRuleState struct {
 	AccountId *string `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    *string `pulumi:"action"`
 	CreatedAt *string `pulumi:"createdAt"`
@@ -126,12 +132,18 @@ type teamsRuleState struct {
 	// The wirefilter expression used for identity matching.
 	Identity *string `pulumi:"identity"`
 	// The name of the rule.
-	Name       *string `pulumi:"name"`
-	Precedence *int    `pulumi:"precedence"`
+	Name *string `pulumi:"name"`
+	// The rule cannot be shared via the Orgs API
+	NotSharable *bool `pulumi:"notSharable"`
+	Precedence  *int  `pulumi:"precedence"`
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly *bool `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
+	// account tag of account that created the rule
+	SourceAccount *string `pulumi:"sourceAccount"`
 	// The wirefilter expression used for traffic matching.
 	Traffic   *string `pulumi:"traffic"`
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -143,7 +155,7 @@ type teamsRuleState struct {
 
 type TeamsRuleState struct {
 	AccountId pulumi.StringPtrInput
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
@@ -163,12 +175,18 @@ type TeamsRuleState struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
-	Name       pulumi.StringPtrInput
-	Precedence pulumi.IntPtrInput
+	Name pulumi.StringPtrInput
+	// The rule cannot be shared via the Orgs API
+	NotSharable pulumi.BoolPtrInput
+	Precedence  pulumi.IntPtrInput
+	// The rule was shared via the Orgs API and cannot be edited by the current account
+	ReadOnly pulumi.BoolPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule TeamsRuleSchedulePtrInput
+	// account tag of account that created the rule
+	SourceAccount pulumi.StringPtrInput
 	// The wirefilter expression used for traffic matching.
 	Traffic   pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
@@ -184,7 +202,7 @@ func (TeamsRuleState) ElementType() reflect.Type {
 
 type teamsRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
 	// The description of the rule.
@@ -214,7 +232,7 @@ type teamsRuleArgs struct {
 // The set of arguments for constructing a TeamsRule resource.
 type TeamsRuleArgs struct {
 	AccountId pulumi.StringInput
-	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
 	// The description of the rule.
@@ -332,7 +350,7 @@ func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
 // Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o TeamsRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
@@ -383,8 +401,18 @@ func (o TeamsRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The rule cannot be shared via the Orgs API
+func (o TeamsRuleOutput) NotSharable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.NotSharable }).(pulumi.BoolOutput)
+}
+
 func (o TeamsRuleOutput) Precedence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
+}
+
+// The rule was shared via the Orgs API and cannot be edited by the current account
+func (o TeamsRuleOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
 // Additional settings that modify the rule's action.
@@ -393,8 +421,13 @@ func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsOutput {
 }
 
 // The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-func (o TeamsRuleOutput) Schedule() TeamsRuleSchedulePtrOutput {
-	return o.ApplyT(func(v *TeamsRule) TeamsRuleSchedulePtrOutput { return v.Schedule }).(TeamsRuleSchedulePtrOutput)
+func (o TeamsRuleOutput) Schedule() TeamsRuleScheduleOutput {
+	return o.ApplyT(func(v *TeamsRule) TeamsRuleScheduleOutput { return v.Schedule }).(TeamsRuleScheduleOutput)
+}
+
+// account tag of account that created the rule
+func (o TeamsRuleOutput) SourceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
 // The wirefilter expression used for traffic matching.

@@ -141,6 +141,7 @@ class AwaitableGetQueueConsumerResult(GetQueueConsumerResult):
 
 
 def get_queue_consumer(account_id: Optional[_builtins.str] = None,
+                       consumer_id: Optional[_builtins.str] = None,
                        queue_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQueueConsumerResult:
     """
@@ -151,15 +152,18 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_queue_consumer = cloudflare.get_queue_consumer(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        queue_id="023e105f4ecef8ad9ca31a8372d0c353")
+        queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+        consumer_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: A Resource identifier.
+    :param _builtins.str consumer_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['consumerId'] = consumer_id
     __args__['queueId'] = queue_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getQueueConsumer:getQueueConsumer', __args__, opts=opts, typ=GetQueueConsumerResult).value
@@ -175,6 +179,7 @@ def get_queue_consumer(account_id: Optional[_builtins.str] = None,
         settings=pulumi.get(__ret__, 'settings'),
         type=pulumi.get(__ret__, 'type'))
 def get_queue_consumer_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              consumer_id: Optional[pulumi.Input[_builtins.str]] = None,
                               queue_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueueConsumerResult]:
     """
@@ -185,15 +190,18 @@ def get_queue_consumer_output(account_id: Optional[pulumi.Input[_builtins.str]] 
     import pulumi_cloudflare as cloudflare
 
     example_queue_consumer = cloudflare.get_queue_consumer(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        queue_id="023e105f4ecef8ad9ca31a8372d0c353")
+        queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+        consumer_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
     :param _builtins.str account_id: A Resource identifier.
+    :param _builtins.str consumer_id: A Resource identifier.
     :param _builtins.str queue_id: A Resource identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['consumerId'] = consumer_id
     __args__['queueId'] = queue_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getQueueConsumer:getQueueConsumer', __args__, opts=opts, typ=GetQueueConsumerResult)

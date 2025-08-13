@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetUserAgentBlockingRuleResult',
@@ -26,10 +28,25 @@ class GetUserAgentBlockingRuleResult:
     """
     A collection of values returned by getUserAgentBlockingRule.
     """
-    def __init__(__self__, id=None, ua_rule_id=None, zone_id=None):
+    def __init__(__self__, configuration=None, description=None, filter=None, id=None, mode=None, paused=None, ua_rule_id=None, zone_id=None):
+        if configuration and not isinstance(configuration, dict):
+            raise TypeError("Expected argument 'configuration' to be a dict")
+        pulumi.set(__self__, "configuration", configuration)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
+        if paused and not isinstance(paused, bool):
+            raise TypeError("Expected argument 'paused' to be a bool")
+        pulumi.set(__self__, "paused", paused)
         if ua_rule_id and not isinstance(ua_rule_id, str):
             raise TypeError("Expected argument 'ua_rule_id' to be a str")
         pulumi.set(__self__, "ua_rule_id", ua_rule_id)
@@ -39,15 +56,53 @@ class GetUserAgentBlockingRuleResult:
 
     @_builtins.property
     @pulumi.getter
+    def configuration(self) -> 'outputs.GetUserAgentBlockingRuleConfigurationResult':
+        """
+        The configuration object for the current rule.
+        """
+        return pulumi.get(self, "configuration")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        An informative summary of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.GetUserAgentBlockingRuleFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The unique identifier of the User Agent Blocking rule.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The action to apply to a matched request.
+        Available values: "block", "challenge", "js*challenge", "managed*challenge".
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def paused(self) -> _builtins.bool:
+        """
+        When true, indicates that the rule is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @_builtins.property
     @pulumi.getter(name="uaRuleId")
-    def ua_rule_id(self) -> _builtins.str:
+    def ua_rule_id(self) -> Optional[_builtins.str]:
         """
         The unique identifier of the User Agent Blocking rule.
         """
@@ -68,12 +123,18 @@ class AwaitableGetUserAgentBlockingRuleResult(GetUserAgentBlockingRuleResult):
         if False:
             yield self
         return GetUserAgentBlockingRuleResult(
+            configuration=self.configuration,
+            description=self.description,
+            filter=self.filter,
             id=self.id,
+            mode=self.mode,
+            paused=self.paused,
             ua_rule_id=self.ua_rule_id,
             zone_id=self.zone_id)
 
 
-def get_user_agent_blocking_rule(ua_rule_id: Optional[_builtins.str] = None,
+def get_user_agent_blocking_rule(filter: Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict']] = None,
+                                 ua_rule_id: Optional[_builtins.str] = None,
                                  zone_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserAgentBlockingRuleResult:
     """
@@ -92,16 +153,23 @@ def get_user_agent_blocking_rule(ua_rule_id: Optional[_builtins.str] = None,
     :param _builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
+    __args__['filter'] = filter
     __args__['uaRuleId'] = ua_rule_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule', __args__, opts=opts, typ=GetUserAgentBlockingRuleResult).value
 
     return AwaitableGetUserAgentBlockingRuleResult(
+        configuration=pulumi.get(__ret__, 'configuration'),
+        description=pulumi.get(__ret__, 'description'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        mode=pulumi.get(__ret__, 'mode'),
+        paused=pulumi.get(__ret__, 'paused'),
         ua_rule_id=pulumi.get(__ret__, 'ua_rule_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_user_agent_blocking_rule_output(ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_user_agent_blocking_rule_output(filter: Optional[pulumi.Input[Optional[Union['GetUserAgentBlockingRuleFilterArgs', 'GetUserAgentBlockingRuleFilterArgsDict']]]] = None,
+                                        ua_rule_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAgentBlockingRuleResult]:
     """
@@ -120,11 +188,17 @@ def get_user_agent_blocking_rule_output(ua_rule_id: Optional[pulumi.Input[_built
     :param _builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
+    __args__['filter'] = filter
     __args__['uaRuleId'] = ua_rule_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule', __args__, opts=opts, typ=GetUserAgentBlockingRuleResult)
     return __ret__.apply(lambda __response__: GetUserAgentBlockingRuleResult(
+        configuration=pulumi.get(__response__, 'configuration'),
+        description=pulumi.get(__response__, 'description'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        mode=pulumi.get(__response__, 'mode'),
+        paused=pulumi.get(__response__, 'paused'),
         ua_rule_id=pulumi.get(__response__, 'ua_rule_id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

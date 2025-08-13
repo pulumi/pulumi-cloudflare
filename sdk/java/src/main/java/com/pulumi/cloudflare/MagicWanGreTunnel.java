@@ -6,15 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanGreTunnelState;
-import com.pulumi.cloudflare.outputs.MagicWanGreTunnelGreTunnel;
 import com.pulumi.cloudflare.outputs.MagicWanGreTunnelHealthCheck;
-import com.pulumi.cloudflare.outputs.MagicWanGreTunnelModifiedGreTunnel;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -25,54 +22,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanGreTunnel;
- * import com.pulumi.cloudflare.MagicWanGreTunnelArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckArgs;
- * import com.pulumi.cloudflare.inputs.MagicWanGreTunnelHealthCheckTargetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleMagicWanGreTunnel = new MagicWanGreTunnel("exampleMagicWanGreTunnel", MagicWanGreTunnelArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .cloudflareGreEndpoint("203.0.113.1")
- *             .customerGreEndpoint("203.0.113.1")
- *             .interfaceAddress("192.0.2.0/31")
- *             .name("GRE_1")
- *             .description("Tunnel for ISP X")
- *             .healthCheck(MagicWanGreTunnelHealthCheckArgs.builder()
- *                 .direction("bidirectional")
- *                 .enabled(true)
- *                 .rate("low")
- *                 .target(MagicWanGreTunnelHealthCheckTargetArgs.builder()
- *                     .saved("203.0.113.1")
- *                     .build())
- *                 .type("request")
- *                 .build())
- *             .mtu(0)
- *             .ttl(0)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -154,12 +103,6 @@ public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="greTunnel", refs={MagicWanGreTunnelGreTunnel.class}, tree="[0]")
-    private Output<MagicWanGreTunnelGreTunnel> greTunnel;
-
-    public Output<MagicWanGreTunnelGreTunnel> greTunnel() {
-        return this.greTunnel;
-    }
     @Export(name="healthCheck", refs={MagicWanGreTunnelHealthCheck.class}, tree="[0]")
     private Output<MagicWanGreTunnelHealthCheck> healthCheck;
 
@@ -179,18 +122,6 @@ public class MagicWanGreTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> interfaceAddress() {
         return this.interfaceAddress;
-    }
-    @Export(name="modified", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> modified;
-
-    public Output<Boolean> modified() {
-        return this.modified;
-    }
-    @Export(name="modifiedGreTunnel", refs={MagicWanGreTunnelModifiedGreTunnel.class}, tree="[0]")
-    private Output<MagicWanGreTunnelModifiedGreTunnel> modifiedGreTunnel;
-
-    public Output<MagicWanGreTunnelModifiedGreTunnel> modifiedGreTunnel() {
-        return this.modifiedGreTunnel;
     }
     /**
      * The date and time the tunnel was last modified.

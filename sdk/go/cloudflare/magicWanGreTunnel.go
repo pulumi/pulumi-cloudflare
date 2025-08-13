@@ -14,46 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example_magic_wan_gre_tunnel", &cloudflare.MagicWanGreTunnelArgs{
-//				AccountId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
-//				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
-//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
-//				Name:                  pulumi.String("GRE_1"),
-//				Description:           pulumi.String("Tunnel for ISP X"),
-//				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
-//					Direction: pulumi.String("bidirectional"),
-//					Enabled:   pulumi.Bool(true),
-//					Rate:      pulumi.String("low"),
-//					Target: &cloudflare.MagicWanGreTunnelHealthCheckTargetArgs{
-//						Saved: pulumi.String("203.0.113.1"),
-//					},
-//					Type: pulumi.String("request"),
-//				},
-//				Mtu: pulumi.Int(0),
-//				Ttl: pulumi.Int(0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -72,12 +32,9 @@ type MagicWanGreTunnel struct {
 	CustomerGreEndpoint pulumi.StringOutput `pulumi:"customerGreEndpoint"`
 	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrOutput             `pulumi:"description"`
-	GreTunnel   MagicWanGreTunnelGreTunnelOutput   `pulumi:"greTunnel"`
 	HealthCheck MagicWanGreTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress  pulumi.StringOutput                      `pulumi:"interfaceAddress"`
-	Modified          pulumi.BoolOutput                        `pulumi:"modified"`
-	ModifiedGreTunnel MagicWanGreTunnelModifiedGreTunnelOutput `pulumi:"modifiedGreTunnel"`
+	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -149,12 +106,9 @@ type magicWanGreTunnelState struct {
 	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
 	// An optional description of the GRE tunnel.
 	Description *string                       `pulumi:"description"`
-	GreTunnel   *MagicWanGreTunnelGreTunnel   `pulumi:"greTunnel"`
 	HealthCheck *MagicWanGreTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress  *string                             `pulumi:"interfaceAddress"`
-	Modified          *bool                               `pulumi:"modified"`
-	ModifiedGreTunnel *MagicWanGreTunnelModifiedGreTunnel `pulumi:"modifiedGreTunnel"`
+	InterfaceAddress *string `pulumi:"interfaceAddress"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -176,12 +130,9 @@ type MagicWanGreTunnelState struct {
 	CustomerGreEndpoint pulumi.StringPtrInput
 	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrInput
-	GreTunnel   MagicWanGreTunnelGreTunnelPtrInput
 	HealthCheck MagicWanGreTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress  pulumi.StringPtrInput
-	Modified          pulumi.BoolPtrInput
-	ModifiedGreTunnel MagicWanGreTunnelModifiedGreTunnelPtrInput
+	InterfaceAddress pulumi.StringPtrInput
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -349,10 +300,6 @@ func (o MagicWanGreTunnelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o MagicWanGreTunnelOutput) GreTunnel() MagicWanGreTunnelGreTunnelOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelGreTunnelOutput { return v.GreTunnel }).(MagicWanGreTunnelGreTunnelOutput)
-}
-
 func (o MagicWanGreTunnelOutput) HealthCheck() MagicWanGreTunnelHealthCheckOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelHealthCheckOutput { return v.HealthCheck }).(MagicWanGreTunnelHealthCheckOutput)
 }
@@ -360,14 +307,6 @@ func (o MagicWanGreTunnelOutput) HealthCheck() MagicWanGreTunnelHealthCheckOutpu
 // A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 func (o MagicWanGreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
-}
-
-func (o MagicWanGreTunnelOutput) Modified() pulumi.BoolOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
-}
-
-func (o MagicWanGreTunnelOutput) ModifiedGreTunnel() MagicWanGreTunnelModifiedGreTunnelOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelModifiedGreTunnelOutput { return v.ModifiedGreTunnel }).(MagicWanGreTunnelModifiedGreTunnelOutput)
 }
 
 // The date and time the tunnel was last modified.

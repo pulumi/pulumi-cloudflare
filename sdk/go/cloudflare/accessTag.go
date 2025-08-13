@@ -51,12 +51,8 @@ type AccessTag struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The number of applications that have this tag
-	AppCount  pulumi.IntOutput    `pulumi:"appCount"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The name of the tag
-	Name      pulumi.StringOutput `pulumi:"name"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewAccessTag registers a new resource with the given unique name, arguments, and options.
@@ -103,23 +99,15 @@ func GetAccessTag(ctx *pulumi.Context,
 type accessTagState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// The number of applications that have this tag
-	AppCount  *int    `pulumi:"appCount"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// The name of the tag
-	Name      *string `pulumi:"name"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Name *string `pulumi:"name"`
 }
 
 type AccessTagState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// The number of applications that have this tag
-	AppCount  pulumi.IntPtrInput
-	CreatedAt pulumi.StringPtrInput
 	// The name of the tag
-	Name      pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
 }
 
 func (AccessTagState) ElementType() reflect.Type {
@@ -233,22 +221,9 @@ func (o AccessTagOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The number of applications that have this tag
-func (o AccessTagOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
-}
-
-func (o AccessTagOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // The name of the tag
 func (o AccessTagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o AccessTagOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type AccessTagArrayOutput struct{ *pulumi.OutputState }

@@ -12,86 +12,97 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="cloudflare:index/snippets:Snippets")
 public class Snippets extends com.pulumi.resources.CustomResource {
     /**
-     * Creation time of the snippet
+     * The timestamp of when the snippet was created.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return Creation time of the snippet
+     * @return The timestamp of when the snippet was created.
      * 
      */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      * 
      */
-    @Export(name="files", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> files;
+    @Export(name="files", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> files;
 
     /**
-     * @return Content files of uploaded snippet
+     * @return The list of files belonging to the snippet.
      * 
      */
-    public Output<Optional<String>> files() {
-        return Codegen.optional(this.files);
+    public Output<List<String>> files() {
+        return this.files;
     }
+    /**
+     * Metadata about the snippet.
+     * 
+     */
     @Export(name="metadata", refs={SnippetsMetadata.class}, tree="[0]")
-    private Output</* @Nullable */ SnippetsMetadata> metadata;
+    private Output<SnippetsMetadata> metadata;
 
-    public Output<Optional<SnippetsMetadata>> metadata() {
-        return Codegen.optional(this.metadata);
+    /**
+     * @return Metadata about the snippet.
+     * 
+     */
+    public Output<SnippetsMetadata> metadata() {
+        return this.metadata;
     }
     /**
-     * Modification time of the snippet
+     * The timestamp of when the snippet was last modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return Modification time of the snippet
+     * @return The timestamp of when the snippet was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      * 
      */
     @Export(name="snippetName", refs={String.class}, tree="[0]")
     private Output<String> snippetName;
 
     /**
-     * @return Snippet identifying name
+     * @return The identifying name of the snippet.
      * 
      */
     public Output<String> snippetName() {
         return this.snippetName;
     }
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {

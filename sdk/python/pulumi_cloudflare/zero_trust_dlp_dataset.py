@@ -158,7 +158,7 @@ class _ZeroTrustDlpDatasetState:
         :param pulumi.Input[_builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[_builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
-        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         :param pulumi.Input[_builtins.str] updated_at: When the dataset was last updated. This includes name or description changes as well as uploads.
         :param pulumi.Input[_builtins.int] version: The version to use when uploading the dataset.
         """
@@ -322,7 +322,7 @@ class _ZeroTrustDlpDatasetState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 
@@ -517,7 +517,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[_builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
-        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         :param pulumi.Input[_builtins.str] updated_at: When the dataset was last updated. This includes name or description changes as well as uploads.
         :param pulumi.Input[_builtins.int] version: The version to use when uploading the dataset.
         """
@@ -622,7 +622,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 

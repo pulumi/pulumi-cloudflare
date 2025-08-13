@@ -15,19 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        [Input("entryId")]
+        public Input<string>? EntryId { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("pattern")]
-        public Input<Inputs.ZeroTrustDlpCustomProfileEntryPatternArgs>? Pattern { get; set; }
-
-        [Input("words")]
-        private InputList<string>? _words;
-        public InputList<string> Words
-        {
-            get => _words ?? (_words = new InputList<string>());
-            set => _words = value;
-        }
+        [Input("pattern", required: true)]
+        public Input<Inputs.ZeroTrustDlpCustomProfileEntryPatternArgs> Pattern { get; set; } = null!;
 
         public ZeroTrustDlpCustomProfileEntryArgs()
         {

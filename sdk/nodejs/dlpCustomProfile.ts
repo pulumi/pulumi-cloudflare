@@ -47,14 +47,16 @@ export class DlpCustomProfile extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-    public readonly aiContextEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly aiContextEnabled!: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
     public readonly allowedMatchCount!: pulumi.Output<number>;
-    public readonly confidenceThreshold!: pulumi.Output<string | undefined>;
+    public readonly confidenceThreshold!: pulumi.Output<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly contextAwareness!: pulumi.Output<outputs.DlpCustomProfileContextAwareness | undefined>;
     /**
@@ -65,9 +67,15 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      * The description of the profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[]>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[] | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly ocrEnabled!: pulumi.Output<boolean>;
     /**
      * Whether this profile can be accessed by anyone.
      */
@@ -120,9 +128,6 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.entries === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entries'");
-            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -161,6 +166,8 @@ export interface DlpCustomProfileState {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
     /**
@@ -171,6 +178,12 @@ export interface DlpCustomProfileState {
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
     entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
@@ -205,13 +218,21 @@ export interface DlpCustomProfileArgs {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
     /**
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
-    entries: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
     name: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
     /**

@@ -102,6 +102,7 @@ class GetZeroTrustDlpPredefinedProfileResult:
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> 'outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessResult':
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.

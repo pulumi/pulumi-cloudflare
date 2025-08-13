@@ -77,7 +77,7 @@ type LookupDnsRecordResult struct {
 	Meta string `pulumi:"meta"`
 	// When the record was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// DNS record name (or @ for the zone apex) in Punycode.
+	// Complete DNS record name, including the zone name, in Punycode.
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority float64 `pulumi:"priority"`
@@ -186,7 +186,7 @@ func (o LookupDnsRecordResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// DNS record name (or @ for the zone apex) in Punycode.
+// Complete DNS record name, including the zone name, in Punycode.
 func (o LookupDnsRecordResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -54,7 +54,7 @@ export class List extends pulumi.CustomResource {
     }
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -83,7 +83,7 @@ export class List extends pulumi.CustomResource {
      */
     public /*out*/ readonly numItems!: pulumi.Output<number>;
     /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
     public /*out*/ readonly numReferencingFilters!: pulumi.Output<number>;
 
@@ -138,7 +138,7 @@ export class List extends pulumi.CustomResource {
  */
 export interface ListState {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -167,7 +167,7 @@ export interface ListState {
      */
     numItems?: pulumi.Input<number>;
     /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
     numReferencingFilters?: pulumi.Input<number>;
 }
@@ -177,7 +177,7 @@ export interface ListState {
  */
 export interface ListArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: pulumi.Input<string>;
     /**

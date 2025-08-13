@@ -56,15 +56,9 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The number of applications that have this tag
-     */
-    public /*out*/ readonly appCount!: pulumi.Output<number>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
      * The name of the tag
      */
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustAccessTag resource with the given unique name, arguments, and options.
@@ -80,10 +74,7 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessTagState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appCount"] = state ? state.appCount : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessTagArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -94,9 +85,6 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["appCount"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessTag:AccessTag" }] };
@@ -114,15 +102,9 @@ export interface ZeroTrustAccessTagState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The number of applications that have this tag
-     */
-    appCount?: pulumi.Input<number>;
-    createdAt?: pulumi.Input<string>;
-    /**
      * The name of the tag
      */
     name?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 /**

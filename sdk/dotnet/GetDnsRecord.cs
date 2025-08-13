@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// DNS record name (or @ for the zone apex) in Punycode.
+        /// Complete DNS record name, including the zone name, in Punycode.
         /// </summary>
         public readonly string Name;
         /// <summary>

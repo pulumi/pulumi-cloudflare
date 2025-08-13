@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
     public partial class ListItem : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ListItemHostname?> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         /// </summary>
         [Output("ip")]
         public Output<string?> Ip { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ListItemHostnameArgs>? Hostname { get; set; }
 
         /// <summary>
-        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ListItemHostnameGetArgs>? Hostname { get; set; }
 
         /// <summary>
-        /// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }

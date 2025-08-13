@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersKvResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -33,7 +33,7 @@ public final class GetWorkersKvResult {
 
     private GetWorkersKvResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

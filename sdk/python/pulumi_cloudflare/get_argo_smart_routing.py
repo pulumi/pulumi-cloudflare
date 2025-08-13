@@ -46,7 +46,7 @@ class GetArgoSmartRoutingResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier
+        Specifies the zone associated with the API call.
         """
         return pulumi.get(self, "zone_id")
 
@@ -74,7 +74,7 @@ def get_argo_smart_routing(zone_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Specifies the zone associated with the API call.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -97,7 +97,7 @@ def get_argo_smart_routing_output(zone_id: Optional[pulumi.Input[_builtins.str]]
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Specifies the zone associated with the API call.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

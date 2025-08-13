@@ -12,17 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsLocationEndpointsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("doh")]
-        public Input<Inputs.TeamsLocationEndpointsDohGetArgs>? Doh { get; set; }
+        [Input("doh", required: true)]
+        public Input<Inputs.TeamsLocationEndpointsDohGetArgs> Doh { get; set; } = null!;
 
-        [Input("dot")]
-        public Input<Inputs.TeamsLocationEndpointsDotGetArgs>? Dot { get; set; }
+        [Input("dot", required: true)]
+        public Input<Inputs.TeamsLocationEndpointsDotGetArgs> Dot { get; set; } = null!;
 
-        [Input("ipv4")]
-        public Input<Inputs.TeamsLocationEndpointsIpv4GetArgs>? Ipv4 { get; set; }
+        [Input("ipv4", required: true)]
+        public Input<Inputs.TeamsLocationEndpointsIpv4GetArgs> Ipv4 { get; set; } = null!;
 
-        [Input("ipv6")]
-        public Input<Inputs.TeamsLocationEndpointsIpv6GetArgs>? Ipv6 { get; set; }
+        [Input("ipv6", required: true)]
+        public Input<Inputs.TeamsLocationEndpointsIpv6GetArgs> Ipv6 { get; set; } = null!;
 
         public TeamsLocationEndpointsGetArgs()
         {

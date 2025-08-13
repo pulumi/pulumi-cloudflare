@@ -59,7 +59,7 @@ type ZeroTrustList struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items ZeroTrustListItemArrayOutput `pulumi:"items"`
 	// The number of items in the list.
 	ListCount pulumi.Float64Output `pulumi:"listCount"`
@@ -120,7 +120,7 @@ type zeroTrustListState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items []ZeroTrustListItem `pulumi:"items"`
 	// The number of items in the list.
 	ListCount *float64 `pulumi:"listCount"`
@@ -137,7 +137,7 @@ type ZeroTrustListState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
+	// items to add to the list.
 	Items ZeroTrustListItemArrayInput
 	// The number of items in the list.
 	ListCount pulumi.Float64PtrInput
@@ -157,7 +157,7 @@ type zeroTrustListArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items []ZeroTrustListItem `pulumi:"items"`
 	// The name of the list.
 	Name string `pulumi:"name"`
@@ -171,7 +171,7 @@ type ZeroTrustListArgs struct {
 	AccountId pulumi.StringInput
 	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
+	// items to add to the list.
 	Items ZeroTrustListItemArrayInput
 	// The name of the list.
 	Name pulumi.StringInput
@@ -280,7 +280,7 @@ func (o ZeroTrustListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items in the list.
+// items to add to the list.
 func (o ZeroTrustListOutput) Items() ZeroTrustListItemArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustList) ZeroTrustListItemArrayOutput { return v.Items }).(ZeroTrustListItemArrayOutput)
 }

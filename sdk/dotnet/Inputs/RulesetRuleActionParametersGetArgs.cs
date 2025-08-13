@@ -229,6 +229,13 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesGetArgs>? Overrides { get; set; }
 
+        /// <summary>
+        /// A phase to skip the execution of. This property is only compatible with products.
+        /// Available values: "current".
+        /// </summary>
+        [Input("phase")]
+        public Input<string>? Phase { get; set; }
+
         [Input("phases")]
         private InputList<string>? _phases;
 

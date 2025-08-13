@@ -27,7 +27,7 @@ class GetZeroTrustGatewayPolicyResult:
     """
     A collection of values returned by getZeroTrustGatewayPolicy.
     """
-    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, precedence=None, rule_id=None, rule_settings=None, schedule=None, traffic=None, updated_at=None, version=None, warning_status=None):
+    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, not_sharable=None, precedence=None, read_only=None, rule_id=None, rule_settings=None, schedule=None, source_account=None, traffic=None, updated_at=None, version=None, warning_status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -64,9 +64,15 @@ class GetZeroTrustGatewayPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if not_sharable and not isinstance(not_sharable, bool):
+            raise TypeError("Expected argument 'not_sharable' to be a bool")
+        pulumi.set(__self__, "not_sharable", not_sharable)
         if precedence and not isinstance(precedence, int):
             raise TypeError("Expected argument 'precedence' to be a int")
         pulumi.set(__self__, "precedence", precedence)
+        if read_only and not isinstance(read_only, bool):
+            raise TypeError("Expected argument 'read_only' to be a bool")
+        pulumi.set(__self__, "read_only", read_only)
         if rule_id and not isinstance(rule_id, str):
             raise TypeError("Expected argument 'rule_id' to be a str")
         pulumi.set(__self__, "rule_id", rule_id)
@@ -76,6 +82,9 @@ class GetZeroTrustGatewayPolicyResult:
         if schedule and not isinstance(schedule, dict):
             raise TypeError("Expected argument 'schedule' to be a dict")
         pulumi.set(__self__, "schedule", schedule)
+        if source_account and not isinstance(source_account, str):
+            raise TypeError("Expected argument 'source_account' to be a str")
+        pulumi.set(__self__, "source_account", source_account)
         if traffic and not isinstance(traffic, str):
             raise TypeError("Expected argument 'traffic' to be a str")
         pulumi.set(__self__, "traffic", traffic)
@@ -98,7 +107,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def action(self) -> _builtins.str:
         """
-        The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -170,9 +179,19 @@ class GetZeroTrustGatewayPolicyResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="notSharable")
+    def not_sharable(self) -> _builtins.bool:
+        return pulumi.get(self, "not_sharable")
+
+    @_builtins.property
     @pulumi.getter
     def precedence(self) -> _builtins.int:
         return pulumi.get(self, "precedence")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        return pulumi.get(self, "read_only")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -191,6 +210,11 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def schedule(self) -> 'outputs.GetZeroTrustGatewayPolicyScheduleResult':
         return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> _builtins.str:
+        return pulumi.get(self, "source_account")
 
     @_builtins.property
     @pulumi.getter
@@ -231,10 +255,13 @@ class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
             id=self.id,
             identity=self.identity,
             name=self.name,
+            not_sharable=self.not_sharable,
             precedence=self.precedence,
+            read_only=self.read_only,
             rule_id=self.rule_id,
             rule_settings=self.rule_settings,
             schedule=self.schedule,
+            source_account=self.source_account,
             traffic=self.traffic,
             updated_at=self.updated_at,
             version=self.version,
@@ -277,10 +304,13 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         identity=pulumi.get(__ret__, 'identity'),
         name=pulumi.get(__ret__, 'name'),
+        not_sharable=pulumi.get(__ret__, 'not_sharable'),
         precedence=pulumi.get(__ret__, 'precedence'),
+        read_only=pulumi.get(__ret__, 'read_only'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
         rule_settings=pulumi.get(__ret__, 'rule_settings'),
         schedule=pulumi.get(__ret__, 'schedule'),
+        source_account=pulumi.get(__ret__, 'source_account'),
         traffic=pulumi.get(__ret__, 'traffic'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         version=pulumi.get(__ret__, 'version'),
@@ -320,10 +350,13 @@ def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[_buil
         id=pulumi.get(__response__, 'id'),
         identity=pulumi.get(__response__, 'identity'),
         name=pulumi.get(__response__, 'name'),
+        not_sharable=pulumi.get(__response__, 'not_sharable'),
         precedence=pulumi.get(__response__, 'precedence'),
+        read_only=pulumi.get(__response__, 'read_only'),
         rule_id=pulumi.get(__response__, 'rule_id'),
         rule_settings=pulumi.get(__response__, 'rule_settings'),
         schedule=pulumi.get(__response__, 'schedule'),
+        source_account=pulumi.get(__response__, 'source_account'),
         traffic=pulumi.get(__response__, 'traffic'),
         updated_at=pulumi.get(__response__, 'updated_at'),
         version=pulumi.get(__response__, 'version'),

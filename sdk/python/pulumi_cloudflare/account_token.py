@@ -26,7 +26,8 @@ class AccountTokenArgs:
                  policies: pulumi.Input[Sequence[pulumi.Input['AccountTokenPolicyArgs']]],
                  condition: Optional[pulumi.Input['AccountTokenConditionArgs']] = None,
                  expires_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before: Optional[pulumi.Input[_builtins.str]] = None):
+                 not_before: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountToken resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
@@ -34,6 +35,8 @@ class AccountTokenArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccountTokenPolicyArgs']]] policies: List of access policies assigned to the token.
         :param pulumi.Input[_builtins.str] expires_on: The expiration time on or after which the JWT MUST NOT be accepted for processing.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
+        :param pulumi.Input[_builtins.str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -44,6 +47,8 @@ class AccountTokenArgs:
             pulumi.set(__self__, "expires_on", expires_on)
         if not_before is not None:
             pulumi.set(__self__, "not_before", not_before)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -113,6 +118,19 @@ class AccountTokenArgs:
     @not_before.setter
     def not_before(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "not_before", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the token.
+        Available values: "active", "disabled", "expired".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -309,6 +327,7 @@ class AccountToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_before: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -326,6 +345,8 @@ class AccountToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Token name.
         :param pulumi.Input[_builtins.str] not_before: The time before which the token MUST NOT be accepted for processing.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]] policies: List of access policies assigned to the token.
+        :param pulumi.Input[_builtins.str] status: Status of the token.
+               Available values: "active", "disabled", "expired".
         """
         ...
     @overload
@@ -363,6 +384,7 @@ class AccountToken(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  not_before: Optional[pulumi.Input[_builtins.str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccountTokenPolicyArgs', 'AccountTokenPolicyArgsDict']]]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,10 +406,10 @@ class AccountToken(pulumi.CustomResource):
             if policies is None and not opts.urn:
                 raise TypeError("Missing required property 'policies'")
             __props__.__dict__["policies"] = policies
+            __props__.__dict__["status"] = status
             __props__.__dict__["issued_on"] = None
             __props__.__dict__["last_used_on"] = None
             __props__.__dict__["modified_on"] = None
-            __props__.__dict__["status"] = None
             __props__.__dict__["value"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

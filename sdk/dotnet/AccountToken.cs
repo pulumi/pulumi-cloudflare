@@ -174,6 +174,13 @@ namespace Pulumi.Cloudflare
             set => _policies = value;
         }
 
+        /// <summary>
+        /// Status of the token.
+        /// Available values: "active", "disabled", "expired".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         public AccountTokenArgs()
         {
         }

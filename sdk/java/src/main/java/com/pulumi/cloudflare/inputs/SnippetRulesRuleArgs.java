@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -16,40 +17,94 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
 
     public static final SnippetRulesRuleArgs Empty = new SnippetRulesRuleArgs();
 
+    /**
+     * An informative description of the rule.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return An informative description of the rule.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Whether the rule should be executed.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    @Import(name="expression")
-    private @Nullable Output<String> expression;
+    /**
+     * The expression defining which traffic will match the rule.
+     * 
+     */
+    @Import(name="expression", required=true)
+    private Output<String> expression;
 
-    public Optional<Output<String>> expression() {
-        return Optional.ofNullable(this.expression);
+    /**
+     * @return The expression defining which traffic will match the rule.
+     * 
+     */
+    public Output<String> expression() {
+        return this.expression;
     }
 
     /**
-     * Snippet identifying name
+     * The unique ID of the rule.
      * 
      */
-    @Import(name="snippetName")
-    private @Nullable Output<String> snippetName;
+    @Import(name="id")
+    private @Nullable Output<String> id;
 
     /**
-     * @return Snippet identifying name
+     * @return The unique ID of the rule.
      * 
      */
-    public Optional<Output<String>> snippetName() {
-        return Optional.ofNullable(this.snippetName);
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Import(name="lastUpdated")
+    private @Nullable Output<String> lastUpdated;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Optional<Output<String>> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
+    }
+
+    /**
+     * The identifying name of the snippet.
+     * 
+     */
+    @Import(name="snippetName", required=true)
+    private Output<String> snippetName;
+
+    /**
+     * @return The identifying name of the snippet.
+     * 
+     */
+    public Output<String> snippetName() {
+        return this.snippetName;
     }
 
     private SnippetRulesRuleArgs() {}
@@ -58,6 +113,8 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.enabled = $.enabled;
         this.expression = $.expression;
+        this.id = $.id;
+        this.lastUpdated = $.lastUpdated;
         this.snippetName = $.snippetName;
     }
 
@@ -79,46 +136,124 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
             $ = new SnippetRulesRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description An informative description of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description An informative description of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param enabled Whether the rule should be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the rule should be executed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        public Builder expression(@Nullable Output<String> expression) {
+        /**
+         * @param expression The expression defining which traffic will match the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expression(Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression The expression defining which traffic will match the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param id The unique ID of the rule.
          * 
          * @return builder
          * 
          */
-        public Builder snippetName(@Nullable Output<String> snippetName) {
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The unique ID of the rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param lastUpdated The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
+            $.lastUpdated = lastUpdated;
+            return this;
+        }
+
+        /**
+         * @param lastUpdated The timestamp of when the rule was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(String lastUpdated) {
+            return lastUpdated(Output.of(lastUpdated));
+        }
+
+        /**
+         * @param snippetName The identifying name of the snippet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetName(Output<String> snippetName) {
             $.snippetName = snippetName;
             return this;
         }
 
         /**
-         * @param snippetName Snippet identifying name
+         * @param snippetName The identifying name of the snippet.
          * 
          * @return builder
          * 
@@ -128,6 +263,12 @@ public final class SnippetRulesRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SnippetRulesRuleArgs build() {
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("SnippetRulesRuleArgs", "expression");
+            }
+            if ($.snippetName == null) {
+                throw new MissingRequiredPropertyException("SnippetRulesRuleArgs", "snippetName");
+            }
             return $;
         }
     }

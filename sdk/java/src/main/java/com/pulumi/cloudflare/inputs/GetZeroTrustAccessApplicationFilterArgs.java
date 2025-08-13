@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,21 @@ public final class GetZeroTrustAccessApplicationFilterArgs extends com.pulumi.re
     }
 
     /**
+     * True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    @Import(name="exact")
+    private @Nullable Output<Boolean> exact;
+
+    /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    public Optional<Output<Boolean>> exact() {
+        return Optional.ofNullable(this.exact);
+    }
+
+    /**
      * The name of the app.
      * 
      */
@@ -80,6 +96,7 @@ public final class GetZeroTrustAccessApplicationFilterArgs extends com.pulumi.re
     private GetZeroTrustAccessApplicationFilterArgs(GetZeroTrustAccessApplicationFilterArgs $) {
         this.aud = $.aud;
         this.domain = $.domain;
+        this.exact = $.exact;
         this.name = $.name;
         this.search = $.search;
     }
@@ -142,6 +159,27 @@ public final class GetZeroTrustAccessApplicationFilterArgs extends com.pulumi.re
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        /**
+         * @param exact True for only exact string matches against passed name/domain query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(@Nullable Output<Boolean> exact) {
+            $.exact = exact;
+            return this;
+        }
+
+        /**
+         * @param exact True for only exact string matches against passed name/domain query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exact(Boolean exact) {
+            return exact(Output.of(exact));
         }
 
         /**

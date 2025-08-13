@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleCustomPages = new Cloudflare.CustomPages("example_custom_pages", new()
     ///     {
-    ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Identifier = "ratelimit_block",
     ///         State = "default",
     ///         Url = "http://www.example.com",
     ///         ZoneId = "zone_id",
@@ -46,11 +46,27 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         [Output("identifier")]
         public Output<string> Identifier { get; private set; } = null!;
+
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        [Output("previewTarget")]
+        public Output<string> PreviewTarget { get; private set; } = null!;
+
+        [Output("requiredTokens")]
+        public Output<ImmutableArray<string>> RequiredTokens { get; private set; } = null!;
 
         /// <summary>
         /// The custom page state.
@@ -124,7 +140,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
@@ -139,8 +156,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The URL associated with the custom page.
         /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -162,11 +179,32 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        [Input("previewTarget")]
+        public Input<string>? PreviewTarget { get; set; }
+
+        [Input("requiredTokens")]
+        private InputList<string>? _requiredTokens;
+        public InputList<string> RequiredTokens
+        {
+            get => _requiredTokens ?? (_requiredTokens = new InputList<string>());
+            set => _requiredTokens = value;
+        }
 
         /// <summary>
         /// The custom page state.

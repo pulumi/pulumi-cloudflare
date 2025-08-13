@@ -26,8 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkersDeployment(ctx, &cloudflare.LookupWorkersDeploymentArgs{
-//				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
-//				ScriptName: "this-is_my_script-01",
+//				AccountId:    "023e105f4ecef8ad9ca31a8372d0c353",
+//				ScriptName:   "this-is_my_script-01",
+//				DeploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,20 +51,28 @@ func LookupWorkersDeployment(ctx *pulumi.Context, args *LookupWorkersDeploymentA
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentArgs struct {
 	// Identifier.
-	AccountId string `pulumi:"accountId"`
-	// Name of the script.
+	AccountId    string `pulumi:"accountId"`
+	DeploymentId string `pulumi:"deploymentId"`
+	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
 }
 
 // A collection of values returned by getWorkersDeployment.
 type LookupWorkersDeploymentResult struct {
 	// Identifier.
-	AccountId   string                           `pulumi:"accountId"`
-	Deployments []GetWorkersDeploymentDeployment `pulumi:"deployments"`
-	// The provider-assigned unique ID for this managed resource.
+	AccountId    string                          `pulumi:"accountId"`
+	Annotations  GetWorkersDeploymentAnnotations `pulumi:"annotations"`
+	AuthorEmail  string                          `pulumi:"authorEmail"`
+	CreatedOn    string                          `pulumi:"createdOn"`
+	DeploymentId string                          `pulumi:"deploymentId"`
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Name of the script.
+	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
+	Source     string `pulumi:"source"`
+	// Available values: "percentage".
+	Strategy string                        `pulumi:"strategy"`
+	Versions []GetWorkersDeploymentVersion `pulumi:"versions"`
 }
 
 func LookupWorkersDeploymentOutput(ctx *pulumi.Context, args LookupWorkersDeploymentOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersDeploymentResultOutput {
@@ -78,8 +87,9 @@ func LookupWorkersDeploymentOutput(ctx *pulumi.Context, args LookupWorkersDeploy
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentOutputArgs struct {
 	// Identifier.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the script.
+	AccountId    pulumi.StringInput `pulumi:"accountId"`
+	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
 }
 
@@ -107,18 +117,43 @@ func (o LookupWorkersDeploymentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o LookupWorkersDeploymentResultOutput) Deployments() GetWorkersDeploymentDeploymentArrayOutput {
-	return o.ApplyT(func(v LookupWorkersDeploymentResult) []GetWorkersDeploymentDeployment { return v.Deployments }).(GetWorkersDeploymentDeploymentArrayOutput)
+func (o LookupWorkersDeploymentResultOutput) Annotations() GetWorkersDeploymentAnnotationsOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) GetWorkersDeploymentAnnotations { return v.Annotations }).(GetWorkersDeploymentAnnotationsOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+func (o LookupWorkersDeploymentResultOutput) AuthorEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AuthorEmail }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersDeploymentResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersDeploymentResultOutput) DeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.DeploymentId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
 func (o LookupWorkersDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the script.
+// Name of the script, used in URLs and route configuration.
 func (o LookupWorkersDeploymentResultOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersDeploymentResultOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Available values: "percentage".
+func (o LookupWorkersDeploymentResultOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkersDeploymentResultOutput) Versions() GetWorkersDeploymentVersionArrayOutput {
+	return o.ApplyT(func(v LookupWorkersDeploymentResult) []GetWorkersDeploymentVersion { return v.Versions }).(GetWorkersDeploymentVersionArrayOutput)
 }
 
 func init() {

@@ -136,16 +136,16 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-     * Available values: &#34;edge&#34;.
+     * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+     * Available values: &#34;&#34;, &#34;edge&#34;.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-     * Available values: &#34;edge&#34;.
+     * @return The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+     * Available values: &#34;&#34;, &#34;edge&#34;.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -206,14 +206,14 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+     * The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
     @Import(name="maxUploadBytes")
     private @Nullable Output<Integer> maxUploadBytes;
 
     /**
-     * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+     * @return The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
      * 
      */
     public Optional<Output<Integer>> maxUploadBytes() {
@@ -221,14 +221,14 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+     * The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
     @Import(name="maxUploadIntervalSeconds")
     private @Nullable Output<Integer> maxUploadIntervalSeconds;
 
     /**
-     * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+     * @return The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
      * 
      */
     public Optional<Output<Integer>> maxUploadIntervalSeconds() {
@@ -236,14 +236,14 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+     * The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
     @Import(name="maxUploadRecords")
     private @Nullable Output<Integer> maxUploadRecords;
 
     /**
-     * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+     * @return The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
      * 
      */
     public Optional<Output<Integer>> maxUploadRecords() {
@@ -511,8 +511,8 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-         * Available values: &#34;edge&#34;.
+         * @param kind The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+         * Available values: &#34;&#34;, &#34;edge&#34;.
          * 
          * @return builder
          * 
@@ -523,8 +523,8 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-         * Available values: &#34;edge&#34;.
+         * @param kind The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+         * Available values: &#34;&#34;, &#34;edge&#34;.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+         * @param maxUploadBytes The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
          * 
          * @return builder
          * 
@@ -637,7 +637,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+         * @param maxUploadIntervalSeconds The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
          * 
          * @return builder
          * 
@@ -647,7 +647,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadRecords The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+         * @param maxUploadRecords The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxUploadRecords The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+         * @param maxUploadRecords The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
          * 
          * @return builder
          * 

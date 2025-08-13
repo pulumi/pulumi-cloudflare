@@ -33,6 +33,21 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Can set the creator field with an internal user ID.
+     * 
+     */
+    @Import(name="creator")
+    private @Nullable Output<String> creator;
+
+    /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    public Optional<Output<String>> creator() {
+        return Optional.ofNullable(this.creator);
+    }
+
+    /**
      * An image binary data. Only needed when type is uploading a file.
      * 
      */
@@ -45,6 +60,21 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> file() {
         return Optional.ofNullable(this.file);
+    }
+
+    /**
+     * An optional custom unique identifier for your image.
+     * 
+     */
+    @Import(name="imageId", required=true)
+    private Output<String> imageId;
+
+    /**
+     * @return An optional custom unique identifier for your image.
+     * 
+     */
+    public Output<String> imageId() {
+        return this.imageId;
     }
 
     /**
@@ -96,7 +126,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
 
     private ImageArgs(ImageArgs $) {
         this.accountId = $.accountId;
+        this.creator = $.creator;
         this.file = $.file;
+        this.imageId = $.imageId;
         this.metadata = $.metadata;
         this.requireSignedUrls = $.requireSignedUrls;
         this.url = $.url;
@@ -142,6 +174,27 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param creator Can set the creator field with an internal user ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(@Nullable Output<String> creator) {
+            $.creator = creator;
+            return this;
+        }
+
+        /**
+         * @param creator Can set the creator field with an internal user ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(String creator) {
+            return creator(Output.of(creator));
+        }
+
+        /**
          * @param file An image binary data. Only needed when type is uploading a file.
          * 
          * @return builder
@@ -160,6 +213,27 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder file(String file) {
             return file(Output.of(file));
+        }
+
+        /**
+         * @param imageId An optional custom unique identifier for your image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageId(Output<String> imageId) {
+            $.imageId = imageId;
+            return this;
+        }
+
+        /**
+         * @param imageId An optional custom unique identifier for your image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageId(String imageId) {
+            return imageId(Output.of(imageId));
         }
 
         /**
@@ -228,6 +302,9 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         public ImageArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ImageArgs", "accountId");
+            }
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("ImageArgs", "imageId");
             }
             return $;
         }

@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Domain;
         /// <summary>
+        /// True for only exact string matches against passed name/domain query parameters.
+        /// </summary>
+        public readonly bool? Exact;
+        /// <summary>
         /// The name of the app.
         /// </summary>
         public readonly string? Name;
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? domain,
 
+            bool? exact,
+
             string? name,
 
             string? search)
         {
             Aud = aud;
             Domain = domain;
+            Exact = exact;
             Name = name;
             Search = search;
         }

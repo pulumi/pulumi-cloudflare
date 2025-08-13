@@ -38,6 +38,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
+// ```
 type LogpullRetention struct {
 	pulumi.CustomResourceState
 

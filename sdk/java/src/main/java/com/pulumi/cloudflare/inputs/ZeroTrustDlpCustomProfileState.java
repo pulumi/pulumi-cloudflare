@@ -60,14 +60,22 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="contextAwareness")
     private @Nullable Output<ZeroTrustDlpCustomProfileContextAwarenessArgs> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<ZeroTrustDlpCustomProfileContextAwarenessArgs>> contextAwareness() {
         return Optional.ofNullable(this.contextAwareness);
     }
@@ -102,9 +110,27 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="entries")
     private @Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries;
 
+    /**
+     * @return Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<ZeroTrustDlpCustomProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -273,7 +299,11 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(@Nullable Output<ZeroTrustDlpCustomProfileContextAwarenessArgs> contextAwareness) {
             $.contextAwareness = contextAwareness;
             return this;
@@ -284,7 +314,11 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(ZeroTrustDlpCustomProfileContextAwarenessArgs contextAwareness) {
             return contextAwareness(Output.of(contextAwareness));
         }
@@ -331,15 +365,48 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
             return description(Output.of(description));
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(@Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(List<ZeroTrustDlpCustomProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(ZeroTrustDlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

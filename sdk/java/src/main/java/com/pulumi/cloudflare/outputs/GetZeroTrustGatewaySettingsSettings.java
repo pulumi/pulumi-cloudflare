@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsActivityLog;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsAntivirus;
-import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsAppControlSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBodyScanning;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBrowserIsolation;
@@ -14,6 +13,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsCustomCe
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsFips;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsHostSelector;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsInspection;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetection;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsSandbox;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsTlsDecrypt;
@@ -33,11 +33,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsAntivirus antivirus;
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    private GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
     /**
      * @return Block page layout settings.
      * 
@@ -83,6 +78,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
      */
     private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    private GetZeroTrustGatewaySettingsSettingsInspection inspection;
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -112,13 +112,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
      */
     public GetZeroTrustGatewaySettingsSettingsAntivirus antivirus() {
         return this.antivirus;
-    }
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    public GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings() {
-        return this.appControlSettings;
     }
     /**
      * @return Block page layout settings.
@@ -181,6 +174,13 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.hostSelector;
     }
     /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public GetZeroTrustGatewaySettingsSettingsInspection inspection() {
+        return this.inspection;
+    }
+    /**
      * @return Protocol Detection settings.
      * 
      */
@@ -213,7 +213,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
     public static final class Builder {
         private GetZeroTrustGatewaySettingsSettingsActivityLog activityLog;
         private GetZeroTrustGatewaySettingsSettingsAntivirus antivirus;
-        private GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
         private GetZeroTrustGatewaySettingsSettingsBlockPage blockPage;
         private GetZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
         private GetZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
@@ -222,6 +221,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
         private GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching;
         private GetZeroTrustGatewaySettingsSettingsFips fips;
         private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
+        private GetZeroTrustGatewaySettingsSettingsInspection inspection;
         private GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
         private GetZeroTrustGatewaySettingsSettingsSandbox sandbox;
         private GetZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
@@ -230,7 +230,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activityLog = defaults.activityLog;
     	      this.antivirus = defaults.antivirus;
-    	      this.appControlSettings = defaults.appControlSettings;
     	      this.blockPage = defaults.blockPage;
     	      this.bodyScanning = defaults.bodyScanning;
     	      this.browserIsolation = defaults.browserIsolation;
@@ -239,6 +238,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
     	      this.extendedEmailMatching = defaults.extendedEmailMatching;
     	      this.fips = defaults.fips;
     	      this.hostSelector = defaults.hostSelector;
+    	      this.inspection = defaults.inspection;
     	      this.protocolDetection = defaults.protocolDetection;
     	      this.sandbox = defaults.sandbox;
     	      this.tlsDecrypt = defaults.tlsDecrypt;
@@ -258,14 +258,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "antivirus");
             }
             this.antivirus = antivirus;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder appControlSettings(GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings) {
-            if (appControlSettings == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "appControlSettings");
-            }
-            this.appControlSettings = appControlSettings;
             return this;
         }
         @CustomType.Setter
@@ -333,6 +325,14 @@ public final class GetZeroTrustGatewaySettingsSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder inspection(GetZeroTrustGatewaySettingsSettingsInspection inspection) {
+            if (inspection == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "inspection");
+            }
+            this.inspection = inspection;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocolDetection(GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection) {
             if (protocolDetection == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "protocolDetection");
@@ -360,7 +360,6 @@ public final class GetZeroTrustGatewaySettingsSettings {
             final var _resultValue = new GetZeroTrustGatewaySettingsSettings();
             _resultValue.activityLog = activityLog;
             _resultValue.antivirus = antivirus;
-            _resultValue.appControlSettings = appControlSettings;
             _resultValue.blockPage = blockPage;
             _resultValue.bodyScanning = bodyScanning;
             _resultValue.browserIsolation = browserIsolation;
@@ -369,6 +368,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
             _resultValue.extendedEmailMatching = extendedEmailMatching;
             _resultValue.fips = fips;
             _resultValue.hostSelector = hostSelector;
+            _resultValue.inspection = inspection;
             _resultValue.protocolDetection = protocolDetection;
             _resultValue.sandbox = sandbox;
             _resultValue.tlsDecrypt = tlsDecrypt;

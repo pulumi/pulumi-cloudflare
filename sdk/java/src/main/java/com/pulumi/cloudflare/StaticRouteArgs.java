@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.StaticRouteRouteArgs;
 import com.pulumi.cloudflare.inputs.StaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -94,13 +93,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
         return this.priority;
     }
 
-    @Import(name="route")
-    private @Nullable Output<StaticRouteRouteArgs> route;
-
-    public Optional<Output<StaticRouteRouteArgs>> route() {
-        return Optional.ofNullable(this.route);
-    }
-
     /**
      * Used only for ECMP routes.
      * 
@@ -139,7 +131,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
-        this.route = $.route;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -265,15 +256,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
-        }
-
-        public Builder route(@Nullable Output<StaticRouteRouteArgs> route) {
-            $.route = route;
-            return this;
-        }
-
-        public Builder route(StaticRouteRouteArgs route) {
-            return route(Output.of(route));
         }
 
         /**

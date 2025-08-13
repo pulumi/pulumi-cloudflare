@@ -40,13 +40,6 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.activated);
     }
 
-    @Import(name="connectorId")
-    private @Nullable Output<String> connectorId;
-
-    public Optional<Output<String>> connectorId() {
-        return Optional.ofNullable(this.connectorId);
-    }
-
     @Import(name="device")
     private @Nullable Output<MagicTransitConnectorDeviceArgs> device;
 
@@ -68,27 +61,6 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.interruptWindowHourOfDay);
     }
 
-    @Import(name="lastHeartbeat")
-    private @Nullable Output<String> lastHeartbeat;
-
-    public Optional<Output<String>> lastHeartbeat() {
-        return Optional.ofNullable(this.lastHeartbeat);
-    }
-
-    @Import(name="lastSeenVersion")
-    private @Nullable Output<String> lastSeenVersion;
-
-    public Optional<Output<String>> lastSeenVersion() {
-        return Optional.ofNullable(this.lastSeenVersion);
-    }
-
-    @Import(name="lastUpdated")
-    private @Nullable Output<String> lastUpdated;
-
-    public Optional<Output<String>> lastUpdated() {
-        return Optional.ofNullable(this.lastUpdated);
-    }
-
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
@@ -108,13 +80,9 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
     private MagicTransitConnectorState(MagicTransitConnectorState $) {
         this.accountId = $.accountId;
         this.activated = $.activated;
-        this.connectorId = $.connectorId;
         this.device = $.device;
         this.interruptWindowDurationHours = $.interruptWindowDurationHours;
         this.interruptWindowHourOfDay = $.interruptWindowHourOfDay;
-        this.lastHeartbeat = $.lastHeartbeat;
-        this.lastSeenVersion = $.lastSeenVersion;
-        this.lastUpdated = $.lastUpdated;
         this.notes = $.notes;
         this.timezone = $.timezone;
     }
@@ -167,15 +135,6 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
             return activated(Output.of(activated));
         }
 
-        public Builder connectorId(@Nullable Output<String> connectorId) {
-            $.connectorId = connectorId;
-            return this;
-        }
-
-        public Builder connectorId(String connectorId) {
-            return connectorId(Output.of(connectorId));
-        }
-
         public Builder device(@Nullable Output<MagicTransitConnectorDeviceArgs> device) {
             $.device = device;
             return this;
@@ -201,33 +160,6 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
 
         public Builder interruptWindowHourOfDay(Double interruptWindowHourOfDay) {
             return interruptWindowHourOfDay(Output.of(interruptWindowHourOfDay));
-        }
-
-        public Builder lastHeartbeat(@Nullable Output<String> lastHeartbeat) {
-            $.lastHeartbeat = lastHeartbeat;
-            return this;
-        }
-
-        public Builder lastHeartbeat(String lastHeartbeat) {
-            return lastHeartbeat(Output.of(lastHeartbeat));
-        }
-
-        public Builder lastSeenVersion(@Nullable Output<String> lastSeenVersion) {
-            $.lastSeenVersion = lastSeenVersion;
-            return this;
-        }
-
-        public Builder lastSeenVersion(String lastSeenVersion) {
-            return lastSeenVersion(Output.of(lastSeenVersion));
-        }
-
-        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
-            $.lastUpdated = lastUpdated;
-            return this;
-        }
-
-        public Builder lastUpdated(String lastUpdated) {
-            return lastUpdated(Output.of(lastUpdated));
         }
 
         public Builder notes(@Nullable Output<String> notes) {

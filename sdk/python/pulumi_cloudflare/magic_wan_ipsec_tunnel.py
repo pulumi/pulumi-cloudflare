@@ -173,9 +173,6 @@ class _MagicWanIpsecTunnelState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsec_tunnel: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']] = None,
-                 modified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_ipsec_tunnel: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelArgs']] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  psk: Optional[pulumi.Input[_builtins.str]] = None,
@@ -212,12 +209,6 @@ class _MagicWanIpsecTunnelState:
             pulumi.set(__self__, "health_check", health_check)
         if interface_address is not None:
             pulumi.set(__self__, "interface_address", interface_address)
-        if ipsec_tunnel is not None:
-            pulumi.set(__self__, "ipsec_tunnel", ipsec_tunnel)
-        if modified is not None:
-            pulumi.set(__self__, "modified", modified)
-        if modified_ipsec_tunnel is not None:
-            pulumi.set(__self__, "modified_ipsec_tunnel", modified_ipsec_tunnel)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
@@ -323,33 +314,6 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "interface_address", value)
 
     @_builtins.property
-    @pulumi.getter(name="ipsecTunnel")
-    def ipsec_tunnel(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']]:
-        return pulumi.get(self, "ipsec_tunnel")
-
-    @ipsec_tunnel.setter
-    def ipsec_tunnel(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']]):
-        pulumi.set(self, "ipsec_tunnel", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "modified")
-
-    @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "modified", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedIpsecTunnel")
-    def modified_ipsec_tunnel(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelArgs']]:
-        return pulumi.get(self, "modified_ipsec_tunnel")
-
-    @modified_ipsec_tunnel.setter
-    def modified_ipsec_tunnel(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelArgs']]):
-        pulumi.set(self, "modified_ipsec_tunnel", value)
-
-    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -429,30 +393,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            cloudflare_endpoint="203.0.113.1",
-            interface_address="192.0.2.0/31",
-            name="IPsec_1",
-            customer_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check={
-                "direction": "bidirectional",
-                "enabled": True,
-                "rate": "low",
-                "target": {
-                    "saved": "203.0.113.1",
-                },
-                "type": "request",
-            },
-            psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-            replay_protection=False)
-        ```
-
         ## Import
 
         ```sh
@@ -478,30 +418,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            cloudflare_endpoint="203.0.113.1",
-            interface_address="192.0.2.0/31",
-            name="IPsec_1",
-            customer_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check={
-                "direction": "bidirectional",
-                "enabled": True,
-                "rate": "low",
-                "target": {
-                    "saved": "203.0.113.1",
-                },
-                "type": "request",
-            },
-            psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-            replay_protection=False)
-        ```
 
         ## Import
 
@@ -557,17 +473,16 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["psk"] = psk
+            __props__.__dict__["psk"] = None if psk is None else pulumi.Output.secret(psk)
             __props__.__dict__["replay_protection"] = replay_protection
             __props__.__dict__["allow_null_cipher"] = None
             __props__.__dict__["created_on"] = None
-            __props__.__dict__["ipsec_tunnel"] = None
-            __props__.__dict__["modified"] = None
-            __props__.__dict__["modified_ipsec_tunnel"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["psk_metadata"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/ipsecTunnel:IpsecTunnel")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["psk"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MagicWanIpsecTunnel, __self__).__init__(
             'cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel',
             resource_name,
@@ -586,9 +501,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-            ipsec_tunnel: Optional[pulumi.Input[Union['MagicWanIpsecTunnelIpsecTunnelArgs', 'MagicWanIpsecTunnelIpsecTunnelArgsDict']]] = None,
-            modified: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_ipsec_tunnel: Optional[pulumi.Input[Union['MagicWanIpsecTunnelModifiedIpsecTunnelArgs', 'MagicWanIpsecTunnelModifiedIpsecTunnelArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             psk: Optional[pulumi.Input[_builtins.str]] = None,
@@ -626,9 +538,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
-        __props__.__dict__["ipsec_tunnel"] = ipsec_tunnel
-        __props__.__dict__["modified"] = modified
-        __props__.__dict__["modified_ipsec_tunnel"] = modified_ipsec_tunnel
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["psk"] = psk
@@ -696,21 +605,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
-
-    @_builtins.property
-    @pulumi.getter(name="ipsecTunnel")
-    def ipsec_tunnel(self) -> pulumi.Output['outputs.MagicWanIpsecTunnelIpsecTunnel']:
-        return pulumi.get(self, "ipsec_tunnel")
-
-    @_builtins.property
-    @pulumi.getter
-    def modified(self) -> pulumi.Output[_builtins.bool]:
-        return pulumi.get(self, "modified")
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedIpsecTunnel")
-    def modified_ipsec_tunnel(self) -> pulumi.Output['outputs.MagicWanIpsecTunnelModifiedIpsecTunnel']:
-        return pulumi.get(self, "modified_ipsec_tunnel")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

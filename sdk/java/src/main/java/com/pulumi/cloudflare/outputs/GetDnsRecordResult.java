@@ -65,7 +65,7 @@ public final class GetDnsRecordResult {
      */
     private String modifiedOn;
     /**
-     * @return DNS record name (or {@literal @} for the zone apex) in Punycode.
+     * @return Complete DNS record name, including the zone name, in Punycode.
      * 
      */
     private String name;
@@ -184,7 +184,7 @@ public final class GetDnsRecordResult {
         return this.modifiedOn;
     }
     /**
-     * @return DNS record name (or {@literal @} for the zone apex) in Punycode.
+     * @return Complete DNS record name, including the zone name, in Punycode.
      * 
      */
     public String name() {

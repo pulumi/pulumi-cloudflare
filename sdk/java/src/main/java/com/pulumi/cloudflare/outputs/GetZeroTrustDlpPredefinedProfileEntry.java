@@ -29,7 +29,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
     private String profileId;
     private Boolean secret;
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*template&#34;, &#34;word_list&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
      * 
      */
     private String type;
@@ -71,7 +71,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         return this.secret;
     }
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*template&#34;, &#34;word_list&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
      * 
      */
     public String type() {

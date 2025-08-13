@@ -61,7 +61,7 @@ type TeamsList struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items TeamsListItemArrayOutput `pulumi:"items"`
 	// The number of items in the list.
 	ListCount pulumi.Float64Output `pulumi:"listCount"`
@@ -122,7 +122,7 @@ type teamsListState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items []TeamsListItem `pulumi:"items"`
 	// The number of items in the list.
 	ListCount *float64 `pulumi:"listCount"`
@@ -139,7 +139,7 @@ type TeamsListState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
+	// items to add to the list.
 	Items TeamsListItemArrayInput
 	// The number of items in the list.
 	ListCount pulumi.Float64PtrInput
@@ -159,7 +159,7 @@ type teamsListArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items in the list.
+	// items to add to the list.
 	Items []TeamsListItem `pulumi:"items"`
 	// The name of the list.
 	Name string `pulumi:"name"`
@@ -173,7 +173,7 @@ type TeamsListArgs struct {
 	AccountId pulumi.StringInput
 	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items in the list.
+	// items to add to the list.
 	Items TeamsListItemArrayInput
 	// The name of the list.
 	Name pulumi.StringInput
@@ -282,7 +282,7 @@ func (o TeamsListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items in the list.
+// items to add to the list.
 func (o TeamsListOutput) Items() TeamsListItemArrayOutput {
 	return o.ApplyT(func(v *TeamsList) TeamsListItemArrayOutput { return v.Items }).(TeamsListItemArrayOutput)
 }

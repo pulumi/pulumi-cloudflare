@@ -14,36 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicTransitConnector(ctx, "example_magic_transit_connector", &cloudflare.MagicTransitConnectorArgs{
-//				AccountId:                    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				ConnectorId:                  pulumi.String("connector_id"),
-//				Activated:                    pulumi.Bool(true),
-//				InterruptWindowDurationHours: pulumi.Float64(0),
-//				InterruptWindowHourOfDay:     pulumi.Float64(0),
-//				Notes:                        pulumi.String("notes"),
-//				Timezone:                     pulumi.String("timezone"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -54,16 +24,12 @@ type MagicTransitConnector struct {
 
 	// Account identifier
 	AccountId                    pulumi.StringOutput               `pulumi:"accountId"`
-	Activated                    pulumi.BoolPtrOutput              `pulumi:"activated"`
-	ConnectorId                  pulumi.StringOutput               `pulumi:"connectorId"`
+	Activated                    pulumi.BoolOutput                 `pulumi:"activated"`
 	Device                       MagicTransitConnectorDeviceOutput `pulumi:"device"`
-	InterruptWindowDurationHours pulumi.Float64PtrOutput           `pulumi:"interruptWindowDurationHours"`
-	InterruptWindowHourOfDay     pulumi.Float64PtrOutput           `pulumi:"interruptWindowHourOfDay"`
-	LastHeartbeat                pulumi.StringOutput               `pulumi:"lastHeartbeat"`
-	LastSeenVersion              pulumi.StringOutput               `pulumi:"lastSeenVersion"`
-	LastUpdated                  pulumi.StringOutput               `pulumi:"lastUpdated"`
-	Notes                        pulumi.StringPtrOutput            `pulumi:"notes"`
-	Timezone                     pulumi.StringPtrOutput            `pulumi:"timezone"`
+	InterruptWindowDurationHours pulumi.Float64Output              `pulumi:"interruptWindowDurationHours"`
+	InterruptWindowHourOfDay     pulumi.Float64Output              `pulumi:"interruptWindowHourOfDay"`
+	Notes                        pulumi.StringOutput               `pulumi:"notes"`
+	Timezone                     pulumi.StringOutput               `pulumi:"timezone"`
 }
 
 // NewMagicTransitConnector registers a new resource with the given unique name, arguments, and options.
@@ -76,8 +42,8 @@ func NewMagicTransitConnector(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.ConnectorId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectorId'")
+	if args.Device == nil {
+		return nil, errors.New("invalid value for required argument 'Device'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicTransitConnector
@@ -105,13 +71,9 @@ type magicTransitConnectorState struct {
 	// Account identifier
 	AccountId                    *string                      `pulumi:"accountId"`
 	Activated                    *bool                        `pulumi:"activated"`
-	ConnectorId                  *string                      `pulumi:"connectorId"`
 	Device                       *MagicTransitConnectorDevice `pulumi:"device"`
 	InterruptWindowDurationHours *float64                     `pulumi:"interruptWindowDurationHours"`
 	InterruptWindowHourOfDay     *float64                     `pulumi:"interruptWindowHourOfDay"`
-	LastHeartbeat                *string                      `pulumi:"lastHeartbeat"`
-	LastSeenVersion              *string                      `pulumi:"lastSeenVersion"`
-	LastUpdated                  *string                      `pulumi:"lastUpdated"`
 	Notes                        *string                      `pulumi:"notes"`
 	Timezone                     *string                      `pulumi:"timezone"`
 }
@@ -120,13 +82,9 @@ type MagicTransitConnectorState struct {
 	// Account identifier
 	AccountId                    pulumi.StringPtrInput
 	Activated                    pulumi.BoolPtrInput
-	ConnectorId                  pulumi.StringPtrInput
 	Device                       MagicTransitConnectorDevicePtrInput
 	InterruptWindowDurationHours pulumi.Float64PtrInput
 	InterruptWindowHourOfDay     pulumi.Float64PtrInput
-	LastHeartbeat                pulumi.StringPtrInput
-	LastSeenVersion              pulumi.StringPtrInput
-	LastUpdated                  pulumi.StringPtrInput
 	Notes                        pulumi.StringPtrInput
 	Timezone                     pulumi.StringPtrInput
 }
@@ -137,13 +95,13 @@ func (MagicTransitConnectorState) ElementType() reflect.Type {
 
 type magicTransitConnectorArgs struct {
 	// Account identifier
-	AccountId                    string   `pulumi:"accountId"`
-	Activated                    *bool    `pulumi:"activated"`
-	ConnectorId                  string   `pulumi:"connectorId"`
-	InterruptWindowDurationHours *float64 `pulumi:"interruptWindowDurationHours"`
-	InterruptWindowHourOfDay     *float64 `pulumi:"interruptWindowHourOfDay"`
-	Notes                        *string  `pulumi:"notes"`
-	Timezone                     *string  `pulumi:"timezone"`
+	AccountId                    string                      `pulumi:"accountId"`
+	Activated                    *bool                       `pulumi:"activated"`
+	Device                       MagicTransitConnectorDevice `pulumi:"device"`
+	InterruptWindowDurationHours *float64                    `pulumi:"interruptWindowDurationHours"`
+	InterruptWindowHourOfDay     *float64                    `pulumi:"interruptWindowHourOfDay"`
+	Notes                        *string                     `pulumi:"notes"`
+	Timezone                     *string                     `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a MagicTransitConnector resource.
@@ -151,7 +109,7 @@ type MagicTransitConnectorArgs struct {
 	// Account identifier
 	AccountId                    pulumi.StringInput
 	Activated                    pulumi.BoolPtrInput
-	ConnectorId                  pulumi.StringInput
+	Device                       MagicTransitConnectorDeviceInput
 	InterruptWindowDurationHours pulumi.Float64PtrInput
 	InterruptWindowHourOfDay     pulumi.Float64PtrInput
 	Notes                        pulumi.StringPtrInput
@@ -250,44 +208,28 @@ func (o MagicTransitConnectorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o MagicTransitConnectorOutput) Activated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.BoolPtrOutput { return v.Activated }).(pulumi.BoolPtrOutput)
-}
-
-func (o MagicTransitConnectorOutput) ConnectorId() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
+func (o MagicTransitConnectorOutput) Activated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.BoolOutput { return v.Activated }).(pulumi.BoolOutput)
 }
 
 func (o MagicTransitConnectorOutput) Device() MagicTransitConnectorDeviceOutput {
 	return o.ApplyT(func(v *MagicTransitConnector) MagicTransitConnectorDeviceOutput { return v.Device }).(MagicTransitConnectorDeviceOutput)
 }
 
-func (o MagicTransitConnectorOutput) InterruptWindowDurationHours() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.Float64PtrOutput { return v.InterruptWindowDurationHours }).(pulumi.Float64PtrOutput)
+func (o MagicTransitConnectorOutput) InterruptWindowDurationHours() pulumi.Float64Output {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.Float64Output { return v.InterruptWindowDurationHours }).(pulumi.Float64Output)
 }
 
-func (o MagicTransitConnectorOutput) InterruptWindowHourOfDay() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.Float64PtrOutput { return v.InterruptWindowHourOfDay }).(pulumi.Float64PtrOutput)
+func (o MagicTransitConnectorOutput) InterruptWindowHourOfDay() pulumi.Float64Output {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.Float64Output { return v.InterruptWindowHourOfDay }).(pulumi.Float64Output)
 }
 
-func (o MagicTransitConnectorOutput) LastHeartbeat() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.LastHeartbeat }).(pulumi.StringOutput)
+func (o MagicTransitConnectorOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.Notes }).(pulumi.StringOutput)
 }
 
-func (o MagicTransitConnectorOutput) LastSeenVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.LastSeenVersion }).(pulumi.StringOutput)
-}
-
-func (o MagicTransitConnectorOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-func (o MagicTransitConnectorOutput) Notes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicTransitConnectorOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o MagicTransitConnectorOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type MagicTransitConnectorArrayOutput struct{ *pulumi.OutputState }

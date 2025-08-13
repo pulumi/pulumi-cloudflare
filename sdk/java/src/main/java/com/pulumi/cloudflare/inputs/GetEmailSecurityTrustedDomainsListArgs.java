@@ -96,6 +96,13 @@ public final class GetEmailSecurityTrustedDomainsListArgs extends com.pulumi.res
         return Optional.ofNullable(this.order);
     }
 
+    @Import(name="pattern")
+    private @Nullable Output<String> pattern;
+
+    public Optional<Output<String>> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
+
     /**
      * Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
@@ -126,6 +133,7 @@ public final class GetEmailSecurityTrustedDomainsListArgs extends com.pulumi.res
         this.isSimilarity = $.isSimilarity;
         this.maxItems = $.maxItems;
         this.order = $.order;
+        this.pattern = $.pattern;
         this.search = $.search;
     }
 
@@ -251,6 +259,15 @@ public final class GetEmailSecurityTrustedDomainsListArgs extends com.pulumi.res
          */
         public Builder order(String order) {
             return order(Output.of(order));
+        }
+
+        public Builder pattern(@Nullable Output<String> pattern) {
+            $.pattern = pattern;
+            return this;
+        }
+
+        public Builder pattern(String pattern) {
+            return pattern(Output.of(pattern));
         }
 
         /**

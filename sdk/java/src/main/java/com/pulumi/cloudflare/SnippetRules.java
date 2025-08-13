@@ -14,7 +14,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -26,61 +25,99 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
+    /**
+     * An informative description of the rule.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
+    /**
+     * @return An informative description of the rule.
+     * 
+     */
     public Output<String> description() {
         return this.description;
     }
+    /**
+     * Whether the rule should be executed.
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether the rule should be executed.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
+    /**
+     * The expression defining which traffic will match the rule.
+     * 
+     */
     @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
+    /**
+     * @return The expression defining which traffic will match the rule.
+     * 
+     */
     public Output<String> expression() {
         return this.expression;
     }
     /**
-     * List of snippet rules
+     * The timestamp of when the rule was last modified.
+     * 
+     */
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdated;
+
+    /**
+     * @return The timestamp of when the rule was last modified.
+     * 
+     */
+    public Output<String> lastUpdated() {
+        return this.lastUpdated;
+    }
+    /**
+     * A list of snippet rules.
      * 
      */
     @Export(name="rules", refs={List.class,SnippetRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SnippetRulesRule>> rules;
+    private Output<List<SnippetRulesRule>> rules;
 
     /**
-     * @return List of snippet rules
+     * @return A list of snippet rules.
      * 
      */
-    public Output<Optional<List<SnippetRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<SnippetRulesRule>> rules() {
+        return this.rules;
     }
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      * 
      */
     @Export(name="snippetName", refs={String.class}, tree="[0]")
     private Output<String> snippetName;
 
     /**
-     * @return Snippet identifying name
+     * @return The identifying name of the snippet.
      * 
      */
     public Output<String> snippetName() {
         return this.snippetName;
     }
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {

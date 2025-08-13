@@ -24,19 +24,23 @@ class UserAgentBlockingRuleArgs:
                  configuration: pulumi.Input['UserAgentBlockingRuleConfigurationArgs'],
                  mode: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a UserAgentBlockingRule resource.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
-        :param pulumi.Input[_builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "zone_id", zone_id)
-        if ua_rule_id is not None:
-            pulumi.set(__self__, "ua_rule_id", ua_rule_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
 
     @_builtins.property
     @pulumi.getter
@@ -73,38 +77,54 @@ class UserAgentBlockingRuleArgs:
         pulumi.set(self, "zone_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="uaRuleId")
-    def ua_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier of the User Agent Blocking rule.
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
         """
-        return pulumi.get(self, "ua_rule_id")
+        return pulumi.get(self, "description")
 
-    @ua_rule_id.setter
-    def ua_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "ua_rule_id", value)
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When true, indicates that the rule is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "paused", value)
 
 
 @pulumi.input_type
 class _UserAgentBlockingRuleState:
     def __init__(__self__, *,
                  configuration: Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAgentBlockingRule resources.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-        :param pulumi.Input[_builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
-        if ua_rule_id is not None:
-            pulumi.set(__self__, "ua_rule_id", ua_rule_id)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -116,6 +136,18 @@ class _UserAgentBlockingRuleState:
     @configuration.setter
     def configuration(self, value: Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']]):
         pulumi.set(self, "configuration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
@@ -131,16 +163,16 @@ class _UserAgentBlockingRuleState:
         pulumi.set(self, "mode", value)
 
     @_builtins.property
-    @pulumi.getter(name="uaRuleId")
-    def ua_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The unique identifier of the User Agent Blocking rule.
+        When true, indicates that the rule is currently paused.
         """
-        return pulumi.get(self, "ua_rule_id")
+        return pulumi.get(self, "paused")
 
-    @ua_rule_id.setter
-    def ua_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "ua_rule_id", value)
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -162,8 +194,9 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -179,14 +212,23 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 "target": "ua",
                 "value": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
             },
-            mode="challenge")
+            mode="challenge",
+            description="Prevent multiple login failures to mitigate brute force attacks",
+            paused=False)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-        :param pulumi.Input[_builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         ...
@@ -208,7 +250,15 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 "target": "ua",
                 "value": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
             },
-            mode="challenge")
+            mode="challenge",
+            description="Prevent multiple login failures to mitigate brute force attacks",
+            paused=False)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -227,8 +277,9 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -242,10 +293,11 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration
+            __props__.__dict__["description"] = description
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__.__dict__["mode"] = mode
-            __props__.__dict__["ua_rule_id"] = ua_rule_id
+            __props__.__dict__["paused"] = paused
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -260,8 +312,9 @@ class UserAgentBlockingRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             configuration: Optional[pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']]] = None,
+            description: Optional[pulumi.Input[_builtins.str]] = None,
             mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ua_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
+            paused: Optional[pulumi.Input[_builtins.bool]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserAgentBlockingRule':
         """
         Get an existing UserAgentBlockingRule resource's state with the given name, id, and optional extra
@@ -270,9 +323,10 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the rule. This value is sanitized and any tags will be removed.
         :param pulumi.Input[_builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-        :param pulumi.Input[_builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -280,8 +334,9 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         __props__ = _UserAgentBlockingRuleState.__new__(_UserAgentBlockingRuleState)
 
         __props__.__dict__["configuration"] = configuration
+        __props__.__dict__["description"] = description
         __props__.__dict__["mode"] = mode
-        __props__.__dict__["ua_rule_id"] = ua_rule_id
+        __props__.__dict__["paused"] = paused
         __props__.__dict__["zone_id"] = zone_id
         return UserAgentBlockingRule(resource_name, opts=opts, __props__=__props__)
 
@@ -289,6 +344,14 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.UserAgentBlockingRuleConfiguration']:
         return pulumi.get(self, "configuration")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        An informative summary of the rule. This value is sanitized and any tags will be removed.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
@@ -300,12 +363,12 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         return pulumi.get(self, "mode")
 
     @_builtins.property
-    @pulumi.getter(name="uaRuleId")
-    def ua_rule_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter
+    def paused(self) -> pulumi.Output[_builtins.bool]:
         """
-        The unique identifier of the User Agent Blocking rule.
+        When true, indicates that the rule is currently paused.
         """
-        return pulumi.get(self, "ua_rule_id")
+        return pulumi.get(self, "paused")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

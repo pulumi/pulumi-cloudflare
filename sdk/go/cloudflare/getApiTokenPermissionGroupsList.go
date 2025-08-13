@@ -25,7 +25,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupApiTokenPermissionGroupsList(ctx, &cloudflare.LookupApiTokenPermissionGroupsListArgs{}, nil)
+//			_, err := cloudflare.LookupApiTokenPermissionGroupsList(ctx, &cloudflare.LookupApiTokenPermissionGroupsListArgs{
+//				Name:  pulumi.StringRef("Account%20Settings%20Write"),
+//				Scope: pulumi.StringRef("com.cloudflare.api.account.zone"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -48,6 +51,12 @@ func LookupApiTokenPermissionGroupsList(ctx *pulumi.Context, args *LookupApiToke
 type LookupApiTokenPermissionGroupsListArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name *string `pulumi:"name"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope *string `pulumi:"scope"`
 }
 
 // A collection of values returned by getApiTokenPermissionGroupsList.
@@ -56,8 +65,14 @@ type LookupApiTokenPermissionGroupsListResult struct {
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name *string `pulumi:"name"`
 	// The items returned by the data source
 	Results []GetApiTokenPermissionGroupsListResult `pulumi:"results"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope *string `pulumi:"scope"`
 }
 
 func LookupApiTokenPermissionGroupsListOutput(ctx *pulumi.Context, args LookupApiTokenPermissionGroupsListOutputArgs, opts ...pulumi.InvokeOption) LookupApiTokenPermissionGroupsListResultOutput {
@@ -73,6 +88,12 @@ func LookupApiTokenPermissionGroupsListOutput(ctx *pulumi.Context, args LookupAp
 type LookupApiTokenPermissionGroupsListOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter by the name of the permission group.
+	// The value must be URL-encoded.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Filter by the scope of the permission group.
+	// The value must be URL-encoded.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
 }
 
 func (LookupApiTokenPermissionGroupsListOutputArgs) ElementType() reflect.Type {
@@ -104,11 +125,23 @@ func (o LookupApiTokenPermissionGroupsListResultOutput) MaxItems() pulumi.IntPtr
 	return o.ApplyT(func(v LookupApiTokenPermissionGroupsListResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// Filter by the name of the permission group.
+// The value must be URL-encoded.
+func (o LookupApiTokenPermissionGroupsListResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiTokenPermissionGroupsListResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // The items returned by the data source
 func (o LookupApiTokenPermissionGroupsListResultOutput) Results() GetApiTokenPermissionGroupsListResultArrayOutput {
 	return o.ApplyT(func(v LookupApiTokenPermissionGroupsListResult) []GetApiTokenPermissionGroupsListResult {
 		return v.Results
 	}).(GetApiTokenPermissionGroupsListResultArrayOutput)
+}
+
+// Filter by the scope of the permission group.
+// The value must be URL-encoded.
+func (o LookupApiTokenPermissionGroupsListResultOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApiTokenPermissionGroupsListResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 func init() {

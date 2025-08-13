@@ -15,14 +15,14 @@ public final class GetArgoSmartRoutingArgs extends com.pulumi.resources.InvokeAr
     public static final GetArgoSmartRoutingArgs Empty = new GetArgoSmartRoutingArgs();
 
     /**
-     * Identifier
+     * Specifies the zone associated with the API call.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specifies the zone associated with the API call.
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +54,7 @@ public final class GetArgoSmartRoutingArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specifies the zone associated with the API call.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetArgoSmartRoutingArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specifies the zone associated with the API call.
          * 
          * @return builder
          * 

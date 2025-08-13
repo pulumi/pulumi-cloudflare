@@ -30,14 +30,14 @@ public final class ZeroTrustDlpCustomProfileSharedEntryArgs extends com.pulumi.r
     }
 
     /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;.
      * 
      */
     @Import(name="entryType", required=true)
     private Output<String> entryType;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;.
      * 
      */
     public Output<String> entryType() {
@@ -89,7 +89,7 @@ public final class ZeroTrustDlpCustomProfileSharedEntryArgs extends com.pulumi.r
         }
 
         /**
-         * @param entryType Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
+         * @param entryType Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ZeroTrustDlpCustomProfileSharedEntryArgs extends com.pulumi.r
         }
 
         /**
-         * @param entryType Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
+         * @param entryType Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;.
          * 
          * @return builder
          * 

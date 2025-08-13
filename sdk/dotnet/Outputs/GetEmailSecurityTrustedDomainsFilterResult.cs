@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
+        public readonly string? Pattern;
         /// <summary>
         /// Allows searching in multiple properties of a record simultaneously.
         /// This parameter is intended for human users, not automation. Its exact
@@ -43,12 +44,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? order,
 
+            string? pattern,
+
             string? search)
         {
             Direction = direction;
             IsRecent = isRecent;
             IsSimilarity = isSimilarity;
             Order = order;
+            Pattern = pattern;
             Search = search;
         }
     }

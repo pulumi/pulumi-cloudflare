@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsListItemGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         /// <summary>
         /// The description of the list item, if present
         /// </summary>

@@ -16,16 +16,17 @@ import (
 type Snippets struct {
 	pulumi.CustomResourceState
 
-	// Creation time of the snippet
+	// The timestamp of when the snippet was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Content files of uploaded snippet
-	Files    pulumi.StringPtrOutput    `pulumi:"files"`
-	Metadata SnippetsMetadataPtrOutput `pulumi:"metadata"`
-	// Modification time of the snippet
+	// The list of files belonging to the snippet.
+	Files pulumi.StringArrayOutput `pulumi:"files"`
+	// Metadata about the snippet.
+	Metadata SnippetsMetadataOutput `pulumi:"metadata"`
+	// The timestamp of when the snippet was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringOutput `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -36,6 +37,12 @@ func NewSnippets(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Files == nil {
+		return nil, errors.New("invalid value for required argument 'Files'")
+	}
+	if args.Metadata == nil {
+		return nil, errors.New("invalid value for required argument 'Metadata'")
+	}
 	if args.SnippetName == nil {
 		return nil, errors.New("invalid value for required argument 'SnippetName'")
 	}
@@ -65,30 +72,32 @@ func GetSnippets(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snippets resources.
 type snippetsState struct {
-	// Creation time of the snippet
+	// The timestamp of when the snippet was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Content files of uploaded snippet
-	Files    *string           `pulumi:"files"`
+	// The list of files belonging to the snippet.
+	Files []string `pulumi:"files"`
+	// Metadata about the snippet.
 	Metadata *SnippetsMetadata `pulumi:"metadata"`
-	// Modification time of the snippet
+	// The timestamp of when the snippet was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName *string `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SnippetsState struct {
-	// Creation time of the snippet
+	// The timestamp of when the snippet was created.
 	CreatedOn pulumi.StringPtrInput
-	// Content files of uploaded snippet
-	Files    pulumi.StringPtrInput
+	// The list of files belonging to the snippet.
+	Files pulumi.StringArrayInput
+	// Metadata about the snippet.
 	Metadata SnippetsMetadataPtrInput
-	// Modification time of the snippet
+	// The timestamp of when the snippet was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// Snippet identifying name
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringPtrInput
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -97,23 +106,25 @@ func (SnippetsState) ElementType() reflect.Type {
 }
 
 type snippetsArgs struct {
-	// Content files of uploaded snippet
-	Files    *string           `pulumi:"files"`
-	Metadata *SnippetsMetadata `pulumi:"metadata"`
-	// Snippet identifying name
+	// The list of files belonging to the snippet.
+	Files []string `pulumi:"files"`
+	// Metadata about the snippet.
+	Metadata SnippetsMetadata `pulumi:"metadata"`
+	// The identifying name of the snippet.
 	SnippetName string `pulumi:"snippetName"`
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Snippets resource.
 type SnippetsArgs struct {
-	// Content files of uploaded snippet
-	Files    pulumi.StringPtrInput
-	Metadata SnippetsMetadataPtrInput
-	// Snippet identifying name
+	// The list of files belonging to the snippet.
+	Files pulumi.StringArrayInput
+	// Metadata about the snippet.
+	Metadata SnippetsMetadataInput
+	// The identifying name of the snippet.
 	SnippetName pulumi.StringInput
-	// Identifier
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -204,31 +215,32 @@ func (o SnippetsOutput) ToSnippetsOutputWithContext(ctx context.Context) Snippet
 	return o
 }
 
-// Creation time of the snippet
+// The timestamp of when the snippet was created.
 func (o SnippetsOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snippets) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Content files of uploaded snippet
-func (o SnippetsOutput) Files() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Snippets) pulumi.StringPtrOutput { return v.Files }).(pulumi.StringPtrOutput)
+// The list of files belonging to the snippet.
+func (o SnippetsOutput) Files() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Snippets) pulumi.StringArrayOutput { return v.Files }).(pulumi.StringArrayOutput)
 }
 
-func (o SnippetsOutput) Metadata() SnippetsMetadataPtrOutput {
-	return o.ApplyT(func(v *Snippets) SnippetsMetadataPtrOutput { return v.Metadata }).(SnippetsMetadataPtrOutput)
+// Metadata about the snippet.
+func (o SnippetsOutput) Metadata() SnippetsMetadataOutput {
+	return o.ApplyT(func(v *Snippets) SnippetsMetadataOutput { return v.Metadata }).(SnippetsMetadataOutput)
 }
 
-// Modification time of the snippet
+// The timestamp of when the snippet was last modified.
 func (o SnippetsOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snippets) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Snippet identifying name
+// The identifying name of the snippet.
 func (o SnippetsOutput) SnippetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snippets) pulumi.StringOutput { return v.SnippetName }).(pulumi.StringOutput)
 }
 
-// Identifier
+// The unique ID of the zone.
 func (o SnippetsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snippets) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

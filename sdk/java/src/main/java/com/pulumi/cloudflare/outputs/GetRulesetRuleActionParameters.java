@@ -198,6 +198,12 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersOverrides overrides;
     /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    private String phase;
+    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
@@ -539,6 +545,14 @@ public final class GetRulesetRuleActionParameters {
         return this.overrides;
     }
     /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    public String phase() {
+        return this.phase;
+    }
+    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
@@ -738,6 +752,7 @@ public final class GetRulesetRuleActionParameters {
         private Boolean originCacheControl;
         private Boolean originErrorPagePassthru;
         private GetRulesetRuleActionParametersOverrides overrides;
+        private String phase;
         private List<String> phases;
         private String polish;
         private List<String> products;
@@ -795,6 +810,7 @@ public final class GetRulesetRuleActionParameters {
     	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
     	      this.overrides = defaults.overrides;
+    	      this.phase = defaults.phase;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
@@ -1085,6 +1101,14 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder phase(String phase) {
+            if (phase == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phase");
+            }
+            this.phase = phase;
+            return this;
+        }
+        @CustomType.Setter
         public Builder phases(List<String> phases) {
             if (phases == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phases");
@@ -1315,6 +1339,7 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.originCacheControl = originCacheControl;
             _resultValue.originErrorPagePassthru = originErrorPagePassthru;
             _resultValue.overrides = overrides;
+            _resultValue.phase = phase;
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;

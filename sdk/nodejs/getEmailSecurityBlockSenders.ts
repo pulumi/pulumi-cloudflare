@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "pattern",
+ *     pattern: "pattern",
  *     patternType: "EMAIL",
  *     search: "search",
  * });
@@ -29,6 +30,7 @@ export function getEmailSecurityBlockSenders(args: GetEmailSecurityBlockSendersA
         "direction": args.direction,
         "maxItems": args.maxItems,
         "order": args.order,
+        "pattern": args.pattern,
         "patternType": args.patternType,
         "search": args.search,
     }, opts);
@@ -56,6 +58,7 @@ export interface GetEmailSecurityBlockSendersArgs {
      * Available values: "pattern", "createdAt".
      */
     order?: string;
+    pattern?: string;
     /**
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
@@ -95,6 +98,7 @@ export interface GetEmailSecurityBlockSendersResult {
      * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
+    readonly pattern?: string;
     /**
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
@@ -122,6 +126,7 @@ export interface GetEmailSecurityBlockSendersResult {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "asc",
  *     order: "pattern",
+ *     pattern: "pattern",
  *     patternType: "EMAIL",
  *     search: "search",
  * });
@@ -134,6 +139,7 @@ export function getEmailSecurityBlockSendersOutput(args: GetEmailSecurityBlockSe
         "direction": args.direction,
         "maxItems": args.maxItems,
         "order": args.order,
+        "pattern": args.pattern,
         "patternType": args.patternType,
         "search": args.search,
     }, opts);
@@ -161,6 +167,7 @@ export interface GetEmailSecurityBlockSendersOutputArgs {
      * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
     /**
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */

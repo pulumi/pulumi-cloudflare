@@ -23,6 +23,8 @@ namespace Pulumi.Cloudflare
     ///     var exampleImage = new Cloudflare.Image("example_image", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ImageId = "id",
+    ///         Creator = "creator",
     ///         File = null,
     ///         Metadata = null,
     ///         RequireSignedUrls = true,
@@ -48,6 +50,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Can set the creator field with an internal user ID.
+        /// </summary>
+        [Output("creator")]
+        public Output<string?> Creator { get; private set; } = null!;
+
+        /// <summary>
         /// An image binary data. Only needed when type is uploading a file.
         /// </summary>
         [Output("file")]
@@ -58,6 +66,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("filename")]
         public Output<string> Filename { get; private set; } = null!;
+
+        /// <summary>
+        /// An optional custom unique identifier for your image.
+        /// </summary>
+        [Output("imageId")]
+        public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
         /// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
@@ -148,10 +162,22 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Can set the creator field with an internal user ID.
+        /// </summary>
+        [Input("creator")]
+        public Input<string>? Creator { get; set; }
+
+        /// <summary>
         /// An image binary data. Only needed when type is uploading a file.
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }
+
+        /// <summary>
+        /// An optional custom unique identifier for your image.
+        /// </summary>
+        [Input("imageId", required: true)]
+        public Input<string> ImageId { get; set; } = null!;
 
         /// <summary>
         /// User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
@@ -186,6 +212,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Can set the creator field with an internal user ID.
+        /// </summary>
+        [Input("creator")]
+        public Input<string>? Creator { get; set; }
+
+        /// <summary>
         /// An image binary data. Only needed when type is uploading a file.
         /// </summary>
         [Input("file")]
@@ -196,6 +228,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("filename")]
         public Input<string>? Filename { get; set; }
+
+        /// <summary>
+        /// An optional custom unique identifier for your image.
+        /// </summary>
+        [Input("imageId")]
+        public Input<string>? ImageId { get; set; }
 
         /// <summary>
         /// User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.

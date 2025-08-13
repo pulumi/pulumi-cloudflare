@@ -80,6 +80,13 @@ public final class GetEmailSecurityBlockSendersPlainArgs extends com.pulumi.reso
         return Optional.ofNullable(this.order);
     }
 
+    @Import(name="pattern")
+    private @Nullable String pattern;
+
+    public Optional<String> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
+
     /**
      * Available values: &#34;EMAIL&#34;, &#34;DOMAIN&#34;, &#34;IP&#34;, &#34;UNKNOWN&#34;.
      * 
@@ -123,6 +130,7 @@ public final class GetEmailSecurityBlockSendersPlainArgs extends com.pulumi.reso
         this.direction = $.direction;
         this.maxItems = $.maxItems;
         this.order = $.order;
+        this.pattern = $.pattern;
         this.patternType = $.patternType;
         this.search = $.search;
     }
@@ -188,6 +196,11 @@ public final class GetEmailSecurityBlockSendersPlainArgs extends com.pulumi.reso
          */
         public Builder order(@Nullable String order) {
             $.order = order;
+            return this;
+        }
+
+        public Builder pattern(@Nullable String pattern) {
+            $.pattern = pattern;
             return this;
         }
 

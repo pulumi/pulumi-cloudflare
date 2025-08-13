@@ -17,14 +17,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     public static final ListState Empty = new ListState();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -124,14 +124,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     @Import(name="numReferencingFilters")
     private @Nullable Output<Double> numReferencingFilters;
 
     /**
-     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * @return The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     public Optional<Output<Double>> numReferencingFilters() {
@@ -170,7 +170,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numReferencingFilters The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+         * @param numReferencingFilters The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numReferencingFilters The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+         * @param numReferencingFilters The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
          * 
          * @return builder
          * 

@@ -8,11 +8,13 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetListResult {
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     private String accountId;
@@ -41,7 +43,7 @@ public final class GetListResult {
      * @return The unique ID of the list.
      * 
      */
-    private String listId;
+    private @Nullable String listId;
     /**
      * @return The RFC 3339 timestamp of when the list was last modified.
      * 
@@ -58,14 +60,14 @@ public final class GetListResult {
      */
     private Double numItems;
     /**
-     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * @return The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     private Double numReferencingFilters;
 
     private GetListResult() {}
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public String accountId() {
@@ -104,8 +106,8 @@ public final class GetListResult {
      * @return The unique ID of the list.
      * 
      */
-    public String listId() {
-        return this.listId;
+    public Optional<String> listId() {
+        return Optional.ofNullable(this.listId);
     }
     /**
      * @return The RFC 3339 timestamp of when the list was last modified.
@@ -129,7 +131,7 @@ public final class GetListResult {
         return this.numItems;
     }
     /**
-     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * @return The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      * 
      */
     public Double numReferencingFilters() {
@@ -150,7 +152,7 @@ public final class GetListResult {
         private String description;
         private String id;
         private String kind;
-        private String listId;
+        private @Nullable String listId;
         private String modifiedOn;
         private String name;
         private Double numItems;
@@ -211,10 +213,8 @@ public final class GetListResult {
             return this;
         }
         @CustomType.Setter
-        public Builder listId(String listId) {
-            if (listId == null) {
-              throw new MissingRequiredPropertyException("GetListResult", "listId");
-            }
+        public Builder listId(@Nullable String listId) {
+
             this.listId = listId;
             return this;
         }

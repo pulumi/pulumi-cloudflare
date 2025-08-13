@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsActivityLogArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsAntivirusArgs;
-import com.pulumi.cloudflare.inputs.TeamsAccountSettingsAppControlSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBodyScanningArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBrowserIsolationArgs;
@@ -14,6 +13,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountSettingsCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsHostSelectorArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountSettingsInspectionArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsProtocolDetectionArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsTlsDecryptArgs;
@@ -56,21 +56,6 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<TeamsAccountSettingsAntivirusArgs>> antivirus() {
         return Optional.ofNullable(this.antivirus);
-    }
-
-    /**
-     * Setting to enable App Control
-     * 
-     */
-    @Import(name="appControlSettings")
-    private @Nullable Output<TeamsAccountSettingsAppControlSettingsArgs> appControlSettings;
-
-    /**
-     * @return Setting to enable App Control
-     * 
-     */
-    public Optional<Output<TeamsAccountSettingsAppControlSettingsArgs>> appControlSettings() {
-        return Optional.ofNullable(this.appControlSettings);
     }
 
     /**
@@ -202,6 +187,21 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Setting to define inspection settings
+     * 
+     */
+    @Import(name="inspection")
+    private @Nullable Output<TeamsAccountSettingsInspectionArgs> inspection;
+
+    /**
+     * @return Setting to define inspection settings
+     * 
+     */
+    public Optional<Output<TeamsAccountSettingsInspectionArgs>> inspection() {
+        return Optional.ofNullable(this.inspection);
+    }
+
+    /**
      * Protocol Detection settings.
      * 
      */
@@ -251,7 +251,6 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     private TeamsAccountSettingsArgs(TeamsAccountSettingsArgs $) {
         this.activityLog = $.activityLog;
         this.antivirus = $.antivirus;
-        this.appControlSettings = $.appControlSettings;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
         this.browserIsolation = $.browserIsolation;
@@ -260,6 +259,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
         this.hostSelector = $.hostSelector;
+        this.inspection = $.inspection;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -323,27 +323,6 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          */
         public Builder antivirus(TeamsAccountSettingsAntivirusArgs antivirus) {
             return antivirus(Output.of(antivirus));
-        }
-
-        /**
-         * @param appControlSettings Setting to enable App Control
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appControlSettings(@Nullable Output<TeamsAccountSettingsAppControlSettingsArgs> appControlSettings) {
-            $.appControlSettings = appControlSettings;
-            return this;
-        }
-
-        /**
-         * @param appControlSettings Setting to enable App Control
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appControlSettings(TeamsAccountSettingsAppControlSettingsArgs appControlSettings) {
-            return appControlSettings(Output.of(appControlSettings));
         }
 
         /**
@@ -520,6 +499,27 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          */
         public Builder hostSelector(TeamsAccountSettingsHostSelectorArgs hostSelector) {
             return hostSelector(Output.of(hostSelector));
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(@Nullable Output<TeamsAccountSettingsInspectionArgs> inspection) {
+            $.inspection = inspection;
+            return this;
+        }
+
+        /**
+         * @param inspection Setting to define inspection settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspection(TeamsAccountSettingsInspectionArgs inspection) {
+            return inspection(Output.of(inspection));
         }
 
         /**

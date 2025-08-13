@@ -39,9 +39,6 @@ namespace Pulumi.Cloudflare
         [Output("autoRedirectToIdentity")]
         public Output<bool> AutoRedirectToIdentity { get; private set; } = null!;
 
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
         [Output("customPages")]
         public Output<Outputs.ZeroTrustOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
@@ -68,9 +65,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("uiReadOnlyToggleReason")]
         public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
@@ -241,9 +235,6 @@ namespace Pulumi.Cloudflare
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("customPages")]
         public Input<Inputs.ZeroTrustOrganizationCustomPagesGetArgs>? CustomPages { get; set; }
 
@@ -270,9 +261,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("uiReadOnlyToggleReason")]
         public Input<string>? UiReadOnlyToggleReason { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.

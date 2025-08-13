@@ -32,14 +32,14 @@ public final class GetSnippetRulesListPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public String zoneId() {
@@ -83,7 +83,7 @@ public final class GetSnippetRulesListPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

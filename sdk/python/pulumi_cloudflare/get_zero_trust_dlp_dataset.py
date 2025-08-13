@@ -136,7 +136,7 @@ class GetZeroTrustDlpDatasetResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 

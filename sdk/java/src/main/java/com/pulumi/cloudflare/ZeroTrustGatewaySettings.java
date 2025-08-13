@@ -14,6 +14,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -48,14 +49,14 @@ public class ZeroTrustGatewaySettings extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="settings", refs={ZeroTrustGatewaySettingsSettings.class}, tree="[0]")
-    private Output<ZeroTrustGatewaySettingsSettings> settings;
+    private Output</* @Nullable */ ZeroTrustGatewaySettingsSettings> settings;
 
     /**
      * @return Account settings
      * 
      */
-    public Output<ZeroTrustGatewaySettingsSettings> settings() {
-        return this.settings;
+    public Output<Optional<ZeroTrustGatewaySettingsSettings>> settings() {
+        return Codegen.optional(this.settings);
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

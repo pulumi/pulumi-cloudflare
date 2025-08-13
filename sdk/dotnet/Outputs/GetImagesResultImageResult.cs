@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetImagesResultImageResult
     {
         /// <summary>
+        /// Can set the creator field with an internal user ID.
+        /// </summary>
+        public readonly string Creator;
+        /// <summary>
         /// Image file name.
         /// </summary>
         public readonly string Filename;
@@ -40,6 +44,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetImagesResultImageResult(
+            string creator,
+
             string filename,
 
             string id,
@@ -52,6 +58,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> variants)
         {
+            Creator = creator;
             Filename = filename;
             Id = id;
             Meta = meta;
