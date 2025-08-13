@@ -107,6 +107,15 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_image": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "imageId",
+					},
+				},
+				ComputeID: delegateID("imageId"),
+			},
+
 			"cloudflare_ruleset": {
 				Tok: "cloudflare:index/ruleset:Ruleset",
 				PreStateUpgradeHook: func(
