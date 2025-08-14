@@ -14,34 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustAccessCustomPage(ctx, "example_zero_trust_access_custom_page", &cloudflare.ZeroTrustAccessCustomPageArgs{
-//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CustomHtml: pulumi.String("<html><body><h1>Access Denied</h1></body></html>"),
-//				Name:       pulumi.String("name"),
-//				Type:       pulumi.String("identity_denied"),
-//				AppCount:   pulumi.Int(0),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -54,9 +26,6 @@ type AccessCustomPage struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount  pulumi.IntPtrOutput `pulumi:"appCount"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml pulumi.StringOutput `pulumi:"customHtml"`
 	// Custom page name.
@@ -65,8 +34,7 @@ type AccessCustomPage struct {
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UUID.
-	Uid       pulumi.StringOutput `pulumi:"uid"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
 // NewAccessCustomPage registers a new resource with the given unique name, arguments, and options.
@@ -119,9 +87,6 @@ func GetAccessCustomPage(ctx *pulumi.Context,
 type accessCustomPageState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount  *int    `pulumi:"appCount"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml *string `pulumi:"customHtml"`
 	// Custom page name.
@@ -130,16 +95,12 @@ type accessCustomPageState struct {
 	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
 	// UUID.
-	Uid       *string `pulumi:"uid"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Uid *string `pulumi:"uid"`
 }
 
 type AccessCustomPageState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Number of apps the custom page is assigned to.
-	AppCount  pulumi.IntPtrInput
-	CreatedAt pulumi.StringPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringPtrInput
 	// Custom page name.
@@ -148,8 +109,7 @@ type AccessCustomPageState struct {
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
 	// UUID.
-	Uid       pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Uid pulumi.StringPtrInput
 }
 
 func (AccessCustomPageState) ElementType() reflect.Type {
@@ -159,8 +119,6 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 type accessCustomPageArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount *int `pulumi:"appCount"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// Custom page name.
@@ -174,8 +132,6 @@ type accessCustomPageArgs struct {
 type AccessCustomPageArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
-	// Number of apps the custom page is assigned to.
-	AppCount pulumi.IntPtrInput
 	// Custom page HTML.
 	CustomHtml pulumi.StringInput
 	// Custom page name.
@@ -277,15 +233,6 @@ func (o AccessCustomPageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of apps the custom page is assigned to.
-func (o AccessCustomPageOutput) AppCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.IntPtrOutput { return v.AppCount }).(pulumi.IntPtrOutput)
-}
-
-func (o AccessCustomPageOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Custom page HTML.
 func (o AccessCustomPageOutput) CustomHtml() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.CustomHtml }).(pulumi.StringOutput)
@@ -305,10 +252,6 @@ func (o AccessCustomPageOutput) Type() pulumi.StringOutput {
 // UUID.
 func (o AccessCustomPageOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
-}
-
-func (o AccessCustomPageOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type AccessCustomPageArrayOutput struct{ *pulumi.OutputState }

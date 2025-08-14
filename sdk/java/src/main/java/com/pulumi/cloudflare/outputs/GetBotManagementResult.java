@@ -13,8 +13,8 @@ import java.util.Objects;
 @CustomType
 public final class GetBotManagementResult {
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     private String aiBotsProtection;
@@ -97,8 +97,8 @@ public final class GetBotManagementResult {
 
     private GetBotManagementResult() {}
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers.
-     * Available values: &#34;block&#34;, &#34;disabled&#34;.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
     public String aiBotsProtection() {

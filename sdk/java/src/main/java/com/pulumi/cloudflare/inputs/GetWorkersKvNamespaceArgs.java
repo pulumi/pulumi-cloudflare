@@ -18,14 +18,14 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
     public static final GetWorkersKvNamespaceArgs Empty = new GetWorkersKvNamespaceArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -81,7 +81,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetWorkersKvNamespaceArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

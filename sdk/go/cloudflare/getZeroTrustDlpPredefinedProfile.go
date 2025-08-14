@@ -62,6 +62,8 @@ type LookupZeroTrustDlpPredefinedProfileResult struct {
 	// Available values: "low", "medium", "high", "veryHigh".
 	ConfidenceThreshold string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness GetZeroTrustDlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt string `pulumi:"createdAt"`
@@ -135,6 +137,8 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ConfidenceThreshold() p
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ContextAwareness() GetZeroTrustDlpPredefinedProfileContextAwarenessOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) GetZeroTrustDlpPredefinedProfileContextAwareness {
 		return v.ContextAwareness

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,16 +18,33 @@ public final class GetCustomPagesResult {
      * 
      */
     private @Nullable String accountId;
+    private String createdOn;
+    private String description;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     private String identifier;
+    private String modifiedOn;
+    private String previewTarget;
+    private List<String> requiredTokens;
+    /**
+     * @return The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
+     * 
+     */
+    private String state;
+    /**
+     * @return The URL associated with the custom page.
+     * 
+     */
+    private String url;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -41,19 +59,50 @@ public final class GetCustomPagesResult {
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
+    public String createdOn() {
+        return this.createdOn;
+    }
+    public String description() {
+        return this.description;
+    }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     public String identifier() {
         return this.identifier;
+    }
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    public String previewTarget() {
+        return this.previewTarget;
+    }
+    public List<String> requiredTokens() {
+        return this.requiredTokens;
+    }
+    /**
+     * @return The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
+     * 
+     */
+    public String state() {
+        return this.state;
+    }
+    /**
+     * @return The URL associated with the custom page.
+     * 
+     */
+    public String url() {
+        return this.url;
     }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -73,15 +122,29 @@ public final class GetCustomPagesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private String createdOn;
+        private String description;
         private String id;
         private String identifier;
+        private String modifiedOn;
+        private String previewTarget;
+        private List<String> requiredTokens;
+        private String state;
+        private String url;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetCustomPagesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.createdOn = defaults.createdOn;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.previewTarget = defaults.previewTarget;
+    	      this.requiredTokens = defaults.requiredTokens;
+    	      this.state = defaults.state;
+    	      this.url = defaults.url;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -89,6 +152,22 @@ public final class GetCustomPagesResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "createdOn");
+            }
+            this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
@@ -108,6 +187,49 @@ public final class GetCustomPagesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder previewTarget(String previewTarget) {
+            if (previewTarget == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "previewTarget");
+            }
+            this.previewTarget = previewTarget;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requiredTokens(List<String> requiredTokens) {
+            if (requiredTokens == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "requiredTokens");
+            }
+            this.requiredTokens = requiredTokens;
+            return this;
+        }
+        public Builder requiredTokens(String... requiredTokens) {
+            return requiredTokens(List.of(requiredTokens));
+        }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "state");
+            }
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder url(String url) {
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetCustomPagesResult", "url");
+            }
+            this.url = url;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -116,8 +238,15 @@ public final class GetCustomPagesResult {
         public GetCustomPagesResult build() {
             final var _resultValue = new GetCustomPagesResult();
             _resultValue.accountId = accountId;
+            _resultValue.createdOn = createdOn;
+            _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.previewTarget = previewTarget;
+            _resultValue.requiredTokens = requiredTokens;
+            _resultValue.state = state;
+            _resultValue.url = url;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

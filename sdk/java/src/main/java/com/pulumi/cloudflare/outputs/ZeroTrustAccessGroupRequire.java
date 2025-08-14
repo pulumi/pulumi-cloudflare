@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireIpList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireLinkedAppToken;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireLoginMethod;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOidc;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupRequireServiceToken;
@@ -58,7 +60,9 @@ public final class ZeroTrustAccessGroupRequire {
     private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
     private @Nullable ZeroTrustAccessGroupRequireIp ip;
     private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+    private @Nullable ZeroTrustAccessGroupRequireLinkedAppToken linkedAppToken;
     private @Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod;
+    private @Nullable ZeroTrustAccessGroupRequireOidc oidc;
     private @Nullable ZeroTrustAccessGroupRequireOkta okta;
     private @Nullable ZeroTrustAccessGroupRequireSaml saml;
     private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class ZeroTrustAccessGroupRequire {
     public Optional<ZeroTrustAccessGroupRequireIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<ZeroTrustAccessGroupRequireLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<ZeroTrustAccessGroupRequireLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<ZeroTrustAccessGroupRequireOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<ZeroTrustAccessGroupRequireOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class ZeroTrustAccessGroupRequire {
         private @Nullable ZeroTrustAccessGroupRequireGsuite gsuite;
         private @Nullable ZeroTrustAccessGroupRequireIp ip;
         private @Nullable ZeroTrustAccessGroupRequireIpList ipList;
+        private @Nullable ZeroTrustAccessGroupRequireLinkedAppToken linkedAppToken;
         private @Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod;
+        private @Nullable ZeroTrustAccessGroupRequireOidc oidc;
         private @Nullable ZeroTrustAccessGroupRequireOkta okta;
         private @Nullable ZeroTrustAccessGroupRequireSaml saml;
         private @Nullable ZeroTrustAccessGroupRequireServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class ZeroTrustAccessGroupRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class ZeroTrustAccessGroupRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable ZeroTrustAccessGroupRequireLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable ZeroTrustAccessGroupRequireLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable ZeroTrustAccessGroupRequireOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class ZeroTrustAccessGroupRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

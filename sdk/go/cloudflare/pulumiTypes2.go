@@ -13,6 +13,455 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZoneTenantUnit struct {
+	// Identifier
+	Id *string `pulumi:"id"`
+}
+
+// ZoneTenantUnitInput is an input type that accepts ZoneTenantUnitArgs and ZoneTenantUnitOutput values.
+// You can construct a concrete instance of `ZoneTenantUnitInput` via:
+//
+//	ZoneTenantUnitArgs{...}
+type ZoneTenantUnitInput interface {
+	pulumi.Input
+
+	ToZoneTenantUnitOutput() ZoneTenantUnitOutput
+	ToZoneTenantUnitOutputWithContext(context.Context) ZoneTenantUnitOutput
+}
+
+type ZoneTenantUnitArgs struct {
+	// Identifier
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (ZoneTenantUnitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneTenantUnit)(nil)).Elem()
+}
+
+func (i ZoneTenantUnitArgs) ToZoneTenantUnitOutput() ZoneTenantUnitOutput {
+	return i.ToZoneTenantUnitOutputWithContext(context.Background())
+}
+
+func (i ZoneTenantUnitArgs) ToZoneTenantUnitOutputWithContext(ctx context.Context) ZoneTenantUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantUnitOutput)
+}
+
+func (i ZoneTenantUnitArgs) ToZoneTenantUnitPtrOutput() ZoneTenantUnitPtrOutput {
+	return i.ToZoneTenantUnitPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneTenantUnitArgs) ToZoneTenantUnitPtrOutputWithContext(ctx context.Context) ZoneTenantUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantUnitOutput).ToZoneTenantUnitPtrOutputWithContext(ctx)
+}
+
+// ZoneTenantUnitPtrInput is an input type that accepts ZoneTenantUnitArgs, ZoneTenantUnitPtr and ZoneTenantUnitPtrOutput values.
+// You can construct a concrete instance of `ZoneTenantUnitPtrInput` via:
+//
+//	        ZoneTenantUnitArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneTenantUnitPtrInput interface {
+	pulumi.Input
+
+	ToZoneTenantUnitPtrOutput() ZoneTenantUnitPtrOutput
+	ToZoneTenantUnitPtrOutputWithContext(context.Context) ZoneTenantUnitPtrOutput
+}
+
+type zoneTenantUnitPtrType ZoneTenantUnitArgs
+
+func ZoneTenantUnitPtr(v *ZoneTenantUnitArgs) ZoneTenantUnitPtrInput {
+	return (*zoneTenantUnitPtrType)(v)
+}
+
+func (*zoneTenantUnitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneTenantUnit)(nil)).Elem()
+}
+
+func (i *zoneTenantUnitPtrType) ToZoneTenantUnitPtrOutput() ZoneTenantUnitPtrOutput {
+	return i.ToZoneTenantUnitPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneTenantUnitPtrType) ToZoneTenantUnitPtrOutputWithContext(ctx context.Context) ZoneTenantUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantUnitPtrOutput)
+}
+
+type ZoneTenantUnitOutput struct{ *pulumi.OutputState }
+
+func (ZoneTenantUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneTenantUnit)(nil)).Elem()
+}
+
+func (o ZoneTenantUnitOutput) ToZoneTenantUnitOutput() ZoneTenantUnitOutput {
+	return o
+}
+
+func (o ZoneTenantUnitOutput) ToZoneTenantUnitOutputWithContext(ctx context.Context) ZoneTenantUnitOutput {
+	return o
+}
+
+func (o ZoneTenantUnitOutput) ToZoneTenantUnitPtrOutput() ZoneTenantUnitPtrOutput {
+	return o.ToZoneTenantUnitPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneTenantUnitOutput) ToZoneTenantUnitPtrOutputWithContext(ctx context.Context) ZoneTenantUnitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneTenantUnit) *ZoneTenantUnit {
+		return &v
+	}).(ZoneTenantUnitPtrOutput)
+}
+
+// Identifier
+func (o ZoneTenantUnitOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneTenantUnit) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type ZoneTenantUnitPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneTenantUnitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneTenantUnit)(nil)).Elem()
+}
+
+func (o ZoneTenantUnitPtrOutput) ToZoneTenantUnitPtrOutput() ZoneTenantUnitPtrOutput {
+	return o
+}
+
+func (o ZoneTenantUnitPtrOutput) ToZoneTenantUnitPtrOutputWithContext(ctx context.Context) ZoneTenantUnitPtrOutput {
+	return o
+}
+
+func (o ZoneTenantUnitPtrOutput) Elem() ZoneTenantUnitOutput {
+	return o.ApplyT(func(v *ZoneTenantUnit) ZoneTenantUnit {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneTenantUnit
+		return ret
+	}).(ZoneTenantUnitOutput)
+}
+
+// Identifier
+func (o ZoneTenantUnitPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneTenantUnit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleConfiguration struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip", "ip6", "ipRange", "asn", "country".
+	Target string `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value string `pulumi:"value"`
+}
+
+// GetAccessRuleConfigurationInput is an input type that accepts GetAccessRuleConfigurationArgs and GetAccessRuleConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessRuleConfigurationInput` via:
+//
+//	GetAccessRuleConfigurationArgs{...}
+type GetAccessRuleConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput
+	ToGetAccessRuleConfigurationOutputWithContext(context.Context) GetAccessRuleConfigurationOutput
+}
+
+type GetAccessRuleConfigurationArgs struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip", "ip6", "ipRange", "asn", "country".
+	Target pulumi.StringInput `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAccessRuleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessRuleConfigurationArgs) ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput {
+	return i.ToGetAccessRuleConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleConfigurationArgs) ToGetAccessRuleConfigurationOutputWithContext(ctx context.Context) GetAccessRuleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleConfigurationOutput)
+}
+
+type GetAccessRuleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRuleConfigurationOutput) ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRuleConfigurationOutput) ToGetAccessRuleConfigurationOutputWithContext(ctx context.Context) GetAccessRuleConfigurationOutput {
+	return o
+}
+
+// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+// Available values: "ip", "ip6", "ipRange", "asn", "country".
+func (o GetAccessRuleConfigurationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The IP address to match. This address will be compared to the IP address of incoming requests.
+func (o GetAccessRuleConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAccessRuleFilter struct {
+	Configuration *GetAccessRuleFilterConfiguration `pulumi:"configuration"`
+	// Defines the direction used to sort returned rules.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
+	Match string `pulumi:"match"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode *string `pulumi:"mode"`
+	// Defines the string to search for in the notes of existing IP Access rules.
+	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+	Notes *string `pulumi:"notes"`
+	// Defines the field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
+	Order *string `pulumi:"order"`
+}
+
+// GetAccessRuleFilterInput is an input type that accepts GetAccessRuleFilterArgs and GetAccessRuleFilterOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterInput` via:
+//
+//	GetAccessRuleFilterArgs{...}
+type GetAccessRuleFilterInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput
+	ToGetAccessRuleFilterOutputWithContext(context.Context) GetAccessRuleFilterOutput
+}
+
+type GetAccessRuleFilterArgs struct {
+	Configuration GetAccessRuleFilterConfigurationPtrInput `pulumi:"configuration"`
+	// Defines the direction used to sort returned rules.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
+	Match pulumi.StringInput `pulumi:"match"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines the string to search for in the notes of existing IP Access rules.
+	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+	Notes pulumi.StringPtrInput `pulumi:"notes"`
+	// Defines the field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+}
+
+func (GetAccessRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput {
+	return i.ToGetAccessRuleFilterOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterOutputWithContext(ctx context.Context) GetAccessRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterOutput)
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return i.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterOutput).ToGetAccessRuleFilterPtrOutputWithContext(ctx)
+}
+
+// GetAccessRuleFilterPtrInput is an input type that accepts GetAccessRuleFilterArgs, GetAccessRuleFilterPtr and GetAccessRuleFilterPtrOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterPtrInput` via:
+//
+//	        GetAccessRuleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAccessRuleFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput
+	ToGetAccessRuleFilterPtrOutputWithContext(context.Context) GetAccessRuleFilterPtrOutput
+}
+
+type getAccessRuleFilterPtrType GetAccessRuleFilterArgs
+
+func GetAccessRuleFilterPtr(v *GetAccessRuleFilterArgs) GetAccessRuleFilterPtrInput {
+	return (*getAccessRuleFilterPtrType)(v)
+}
+
+func (*getAccessRuleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (i *getAccessRuleFilterPtrType) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return i.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getAccessRuleFilterPtrType) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterPtrOutput)
+}
+
+type GetAccessRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterOutputWithContext(ctx context.Context) GetAccessRuleFilterOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return o.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccessRuleFilter) *GetAccessRuleFilter {
+		return &v
+	}).(GetAccessRuleFilterPtrOutput)
+}
+
+func (o GetAccessRuleFilterOutput) Configuration() GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *GetAccessRuleFilterConfiguration { return v.Configuration }).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+// Defines the direction used to sort returned rules.
+// Available values: "asc", "desc".
+func (o GetAccessRuleFilterOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+// Available values: "any", "all".
+func (o GetAccessRuleFilterOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+func (o GetAccessRuleFilterOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Defines the string to search for in the notes of existing IP Access rules.
+// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+func (o GetAccessRuleFilterOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// Defines the field used to sort returned rules.
+// Available values: "configuration.target", "configuration.value", "mode".
+func (o GetAccessRuleFilterOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterPtrOutput) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterPtrOutput) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterPtrOutput) Elem() GetAccessRuleFilterOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) GetAccessRuleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetAccessRuleFilter
+		return ret
+	}).(GetAccessRuleFilterOutput)
+}
+
+func (o GetAccessRuleFilterPtrOutput) Configuration() GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *GetAccessRuleFilterConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+// Defines the direction used to sort returned rules.
+// Available values: "asc", "desc".
+func (o GetAccessRuleFilterPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+// Available values: "any", "all".
+func (o GetAccessRuleFilterPtrOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Match
+	}).(pulumi.StringPtrOutput)
+}
+
+// The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+func (o GetAccessRuleFilterPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the string to search for in the notes of existing IP Access rules.
+// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+func (o GetAccessRuleFilterPtrOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Notes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the field used to sort returned rules.
+// Available values: "configuration.target", "configuration.value", "mode".
+func (o GetAccessRuleFilterPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAccessRuleFilterConfiguration struct {
 	// Defines the target to search in existing rules.
 	// Available values: "ip", "ipRange", "asn", "country".
@@ -17012,6 +17461,17 @@ func (o GetCustomHostnamesResultSslValidationRecordArrayOutput) Index(i pulumi.I
 }
 
 type GetCustomPagesListResult struct {
+	CreatedOn      string   `pulumi:"createdOn"`
+	Description    string   `pulumi:"description"`
+	Id             string   `pulumi:"id"`
+	ModifiedOn     string   `pulumi:"modifiedOn"`
+	PreviewTarget  string   `pulumi:"previewTarget"`
+	RequiredTokens []string `pulumi:"requiredTokens"`
+	// The custom page state.
+	// Available values: "default", "customized".
+	State string `pulumi:"state"`
+	// The URL associated with the custom page.
+	Url string `pulumi:"url"`
 }
 
 // GetCustomPagesListResultInput is an input type that accepts GetCustomPagesListResultArgs and GetCustomPagesListResultOutput values.
@@ -17026,6 +17486,17 @@ type GetCustomPagesListResultInput interface {
 }
 
 type GetCustomPagesListResultArgs struct {
+	CreatedOn      pulumi.StringInput      `pulumi:"createdOn"`
+	Description    pulumi.StringInput      `pulumi:"description"`
+	Id             pulumi.StringInput      `pulumi:"id"`
+	ModifiedOn     pulumi.StringInput      `pulumi:"modifiedOn"`
+	PreviewTarget  pulumi.StringInput      `pulumi:"previewTarget"`
+	RequiredTokens pulumi.StringArrayInput `pulumi:"requiredTokens"`
+	// The custom page state.
+	// Available values: "default", "customized".
+	State pulumi.StringInput `pulumi:"state"`
+	// The URL associated with the custom page.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetCustomPagesListResultArgs) ElementType() reflect.Type {
@@ -17077,6 +17548,41 @@ func (o GetCustomPagesListResultOutput) ToGetCustomPagesListResultOutput() GetCu
 
 func (o GetCustomPagesListResultOutput) ToGetCustomPagesListResultOutputWithContext(ctx context.Context) GetCustomPagesListResultOutput {
 	return o
+}
+
+func (o GetCustomPagesListResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o GetCustomPagesListResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetCustomPagesListResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetCustomPagesListResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o GetCustomPagesListResultOutput) PreviewTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.PreviewTarget }).(pulumi.StringOutput)
+}
+
+func (o GetCustomPagesListResultOutput) RequiredTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) []string { return v.RequiredTokens }).(pulumi.StringArrayOutput)
+}
+
+// The custom page state.
+// Available values: "default", "customized".
+func (o GetCustomPagesListResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The URL associated with the custom page.
+func (o GetCustomPagesListResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomPagesListResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GetCustomPagesListResultArrayOutput struct{ *pulumi.OutputState }
@@ -20872,7 +21378,7 @@ type GetDnsRecordsResult struct {
 	Meta string `pulumi:"meta"`
 	// When the record was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// DNS record name (or @ for the zone apex) in Punycode.
+	// Complete DNS record name, including the zone name, in Punycode.
 	Name string `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority float64 `pulumi:"priority"`
@@ -20921,7 +21427,7 @@ type GetDnsRecordsResultArgs struct {
 	Meta pulumi.StringInput `pulumi:"meta"`
 	// When the record was last modified.
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
-	// DNS record name (or @ for the zone apex) in Punycode.
+	// Complete DNS record name, including the zone name, in Punycode.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
 	Priority pulumi.Float64Input `pulumi:"priority"`
@@ -21033,7 +21539,7 @@ func (o GetDnsRecordsResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// DNS record name (or @ for the zone apex) in Punycode.
+// Complete DNS record name, including the zone name, in Punycode.
 func (o GetDnsRecordsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24248,7 +24754,8 @@ type GetEmailSecurityBlockSenderFilter struct {
 	Direction *string `pulumi:"direction"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order *string `pulumi:"order"`
+	Order   *string `pulumi:"order"`
+	Pattern *string `pulumi:"pattern"`
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType *string `pulumi:"patternType"`
 	// Allows searching in multiple properties of a record simultaneously.
@@ -24275,7 +24782,8 @@ type GetEmailSecurityBlockSenderFilterArgs struct {
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	Order   pulumi.StringPtrInput `pulumi:"order"`
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 	// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 	PatternType pulumi.StringPtrInput `pulumi:"patternType"`
 	// Allows searching in multiple properties of a record simultaneously.
@@ -24374,6 +24882,10 @@ func (o GetEmailSecurityBlockSenderFilterOutput) Order() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetEmailSecurityBlockSenderFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
+func (o GetEmailSecurityBlockSenderFilterOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityBlockSenderFilter) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
 // Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
 func (o GetEmailSecurityBlockSenderFilterOutput) PatternType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEmailSecurityBlockSenderFilter) *string { return v.PatternType }).(pulumi.StringPtrOutput)
@@ -24430,6 +24942,15 @@ func (o GetEmailSecurityBlockSenderFilterPtrOutput) Order() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetEmailSecurityBlockSenderFilterPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityBlockSenderFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24971,7 +25492,8 @@ type GetEmailSecurityTrustedDomainsFilter struct {
 	IsSimilarity *bool   `pulumi:"isSimilarity"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order *string `pulumi:"order"`
+	Order   *string `pulumi:"order"`
+	Pattern *string `pulumi:"pattern"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
 	// behavior is intentionally left unspecified and is subject to change
@@ -24998,7 +25520,8 @@ type GetEmailSecurityTrustedDomainsFilterArgs struct {
 	IsSimilarity pulumi.BoolPtrInput   `pulumi:"isSimilarity"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	Order   pulumi.StringPtrInput `pulumi:"order"`
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
 	// behavior is intentionally left unspecified and is subject to change
@@ -25103,6 +25626,10 @@ func (o GetEmailSecurityTrustedDomainsFilterOutput) Order() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetEmailSecurityTrustedDomainsFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
 }
 
+func (o GetEmailSecurityTrustedDomainsFilterOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEmailSecurityTrustedDomainsFilter) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
 // Allows searching in multiple properties of a record simultaneously.
 // This parameter is intended for human users, not automation. Its exact
 // behavior is intentionally left unspecified and is subject to change
@@ -25172,6 +25699,15 @@ func (o GetEmailSecurityTrustedDomainsFilterPtrOutput) Order() pulumi.StringPtrO
 			return nil
 		}
 		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetEmailSecurityTrustedDomainsFilterPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetEmailSecurityTrustedDomainsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pattern
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26822,6 +27358,8 @@ type GetHyperdriveConfigsResult struct {
 	Mtls       GetHyperdriveConfigsResultMtls   `pulumi:"mtls"`
 	Name       string                           `pulumi:"name"`
 	Origin     GetHyperdriveConfigsResultOrigin `pulumi:"origin"`
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit int `pulumi:"originConnectionLimit"`
 }
 
 // GetHyperdriveConfigsResultInput is an input type that accepts GetHyperdriveConfigsResultArgs and GetHyperdriveConfigsResultOutput values.
@@ -26846,6 +27384,8 @@ type GetHyperdriveConfigsResultArgs struct {
 	Mtls       GetHyperdriveConfigsResultMtlsInput   `pulumi:"mtls"`
 	Name       pulumi.StringInput                    `pulumi:"name"`
 	Origin     GetHyperdriveConfigsResultOriginInput `pulumi:"origin"`
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit pulumi.IntInput `pulumi:"originConnectionLimit"`
 }
 
 func (GetHyperdriveConfigsResultArgs) ElementType() reflect.Type {
@@ -26928,6 +27468,11 @@ func (o GetHyperdriveConfigsResultOutput) Name() pulumi.StringOutput {
 
 func (o GetHyperdriveConfigsResultOutput) Origin() GetHyperdriveConfigsResultOriginOutput {
 	return o.ApplyT(func(v GetHyperdriveConfigsResult) GetHyperdriveConfigsResultOrigin { return v.Origin }).(GetHyperdriveConfigsResultOriginOutput)
+}
+
+// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+func (o GetHyperdriveConfigsResultOutput) OriginConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHyperdriveConfigsResult) int { return v.OriginConnectionLimit }).(pulumi.IntOutput)
 }
 
 type GetHyperdriveConfigsResultArrayOutput struct{ *pulumi.OutputState }
@@ -27455,6 +28000,8 @@ func (o GetImagesResultArrayOutput) Index(i pulumi.IntInput) GetImagesResultOutp
 }
 
 type GetImagesResultImage struct {
+	// Can set the creator field with an internal user ID.
+	Creator string `pulumi:"creator"`
 	// Image file name.
 	Filename string `pulumi:"filename"`
 	// Image unique identifier.
@@ -27481,6 +28028,8 @@ type GetImagesResultImageInput interface {
 }
 
 type GetImagesResultImageArgs struct {
+	// Can set the creator field with an internal user ID.
+	Creator pulumi.StringInput `pulumi:"creator"`
 	// Image file name.
 	Filename pulumi.StringInput `pulumi:"filename"`
 	// Image unique identifier.
@@ -27544,6 +28093,11 @@ func (o GetImagesResultImageOutput) ToGetImagesResultImageOutput() GetImagesResu
 
 func (o GetImagesResultImageOutput) ToGetImagesResultImageOutputWithContext(ctx context.Context) GetImagesResultImageOutput {
 	return o
+}
+
+// Can set the creator field with an internal user ID.
+func (o GetImagesResultImageOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultImage) string { return v.Creator }).(pulumi.StringOutput)
 }
 
 // Image file name.
@@ -28014,141 +28568,255 @@ func (o GetLeakedCredentialCheckRulesResultArrayOutput) Index(i pulumi.IntInput)
 	}).(GetLeakedCredentialCheckRulesResultOutput)
 }
 
-type GetListItemHostname struct {
-	UrlHostname string `pulumi:"urlHostname"`
+type GetListItemsResult struct {
 }
 
-// GetListItemHostnameInput is an input type that accepts GetListItemHostnameArgs and GetListItemHostnameOutput values.
-// You can construct a concrete instance of `GetListItemHostnameInput` via:
+// GetListItemsResultInput is an input type that accepts GetListItemsResultArgs and GetListItemsResultOutput values.
+// You can construct a concrete instance of `GetListItemsResultInput` via:
 //
-//	GetListItemHostnameArgs{...}
-type GetListItemHostnameInput interface {
+//	GetListItemsResultArgs{...}
+type GetListItemsResultInput interface {
 	pulumi.Input
 
-	ToGetListItemHostnameOutput() GetListItemHostnameOutput
-	ToGetListItemHostnameOutputWithContext(context.Context) GetListItemHostnameOutput
+	ToGetListItemsResultOutput() GetListItemsResultOutput
+	ToGetListItemsResultOutputWithContext(context.Context) GetListItemsResultOutput
 }
 
-type GetListItemHostnameArgs struct {
-	UrlHostname pulumi.StringInput `pulumi:"urlHostname"`
+type GetListItemsResultArgs struct {
 }
 
-func (GetListItemHostnameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListItemHostname)(nil)).Elem()
+func (GetListItemsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResult)(nil)).Elem()
 }
 
-func (i GetListItemHostnameArgs) ToGetListItemHostnameOutput() GetListItemHostnameOutput {
-	return i.ToGetListItemHostnameOutputWithContext(context.Background())
+func (i GetListItemsResultArgs) ToGetListItemsResultOutput() GetListItemsResultOutput {
+	return i.ToGetListItemsResultOutputWithContext(context.Background())
 }
 
-func (i GetListItemHostnameArgs) ToGetListItemHostnameOutputWithContext(ctx context.Context) GetListItemHostnameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetListItemHostnameOutput)
+func (i GetListItemsResultArgs) ToGetListItemsResultOutputWithContext(ctx context.Context) GetListItemsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemsResultOutput)
 }
 
-type GetListItemHostnameOutput struct{ *pulumi.OutputState }
-
-func (GetListItemHostnameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListItemHostname)(nil)).Elem()
-}
-
-func (o GetListItemHostnameOutput) ToGetListItemHostnameOutput() GetListItemHostnameOutput {
-	return o
-}
-
-func (o GetListItemHostnameOutput) ToGetListItemHostnameOutputWithContext(ctx context.Context) GetListItemHostnameOutput {
-	return o
-}
-
-func (o GetListItemHostnameOutput) UrlHostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListItemHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
-}
-
-type GetListItemRedirect struct {
-	IncludeSubdomains   bool   `pulumi:"includeSubdomains"`
-	PreservePathSuffix  bool   `pulumi:"preservePathSuffix"`
-	PreserveQueryString bool   `pulumi:"preserveQueryString"`
-	SourceUrl           string `pulumi:"sourceUrl"`
-	// Available values: 301, 302, 307, 308.
-	StatusCode      int    `pulumi:"statusCode"`
-	SubpathMatching bool   `pulumi:"subpathMatching"`
-	TargetUrl       string `pulumi:"targetUrl"`
-}
-
-// GetListItemRedirectInput is an input type that accepts GetListItemRedirectArgs and GetListItemRedirectOutput values.
-// You can construct a concrete instance of `GetListItemRedirectInput` via:
+// GetListItemsResultArrayInput is an input type that accepts GetListItemsResultArray and GetListItemsResultArrayOutput values.
+// You can construct a concrete instance of `GetListItemsResultArrayInput` via:
 //
-//	GetListItemRedirectArgs{...}
-type GetListItemRedirectInput interface {
+//	GetListItemsResultArray{ GetListItemsResultArgs{...} }
+type GetListItemsResultArrayInput interface {
 	pulumi.Input
 
-	ToGetListItemRedirectOutput() GetListItemRedirectOutput
-	ToGetListItemRedirectOutputWithContext(context.Context) GetListItemRedirectOutput
+	ToGetListItemsResultArrayOutput() GetListItemsResultArrayOutput
+	ToGetListItemsResultArrayOutputWithContext(context.Context) GetListItemsResultArrayOutput
 }
 
-type GetListItemRedirectArgs struct {
-	IncludeSubdomains   pulumi.BoolInput   `pulumi:"includeSubdomains"`
-	PreservePathSuffix  pulumi.BoolInput   `pulumi:"preservePathSuffix"`
-	PreserveQueryString pulumi.BoolInput   `pulumi:"preserveQueryString"`
-	SourceUrl           pulumi.StringInput `pulumi:"sourceUrl"`
-	// Available values: 301, 302, 307, 308.
-	StatusCode      pulumi.IntInput    `pulumi:"statusCode"`
-	SubpathMatching pulumi.BoolInput   `pulumi:"subpathMatching"`
-	TargetUrl       pulumi.StringInput `pulumi:"targetUrl"`
+type GetListItemsResultArray []GetListItemsResultInput
+
+func (GetListItemsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListItemsResult)(nil)).Elem()
 }
 
-func (GetListItemRedirectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListItemRedirect)(nil)).Elem()
+func (i GetListItemsResultArray) ToGetListItemsResultArrayOutput() GetListItemsResultArrayOutput {
+	return i.ToGetListItemsResultArrayOutputWithContext(context.Background())
 }
 
-func (i GetListItemRedirectArgs) ToGetListItemRedirectOutput() GetListItemRedirectOutput {
-	return i.ToGetListItemRedirectOutputWithContext(context.Background())
+func (i GetListItemsResultArray) ToGetListItemsResultArrayOutputWithContext(ctx context.Context) GetListItemsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemsResultArrayOutput)
 }
 
-func (i GetListItemRedirectArgs) ToGetListItemRedirectOutputWithContext(ctx context.Context) GetListItemRedirectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetListItemRedirectOutput)
+type GetListItemsResultOutput struct{ *pulumi.OutputState }
+
+func (GetListItemsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResult)(nil)).Elem()
 }
 
-type GetListItemRedirectOutput struct{ *pulumi.OutputState }
-
-func (GetListItemRedirectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetListItemRedirect)(nil)).Elem()
-}
-
-func (o GetListItemRedirectOutput) ToGetListItemRedirectOutput() GetListItemRedirectOutput {
+func (o GetListItemsResultOutput) ToGetListItemsResultOutput() GetListItemsResultOutput {
 	return o
 }
 
-func (o GetListItemRedirectOutput) ToGetListItemRedirectOutputWithContext(ctx context.Context) GetListItemRedirectOutput {
+func (o GetListItemsResultOutput) ToGetListItemsResultOutputWithContext(ctx context.Context) GetListItemsResultOutput {
 	return o
 }
 
-func (o GetListItemRedirectOutput) IncludeSubdomains() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetListItemRedirect) bool { return v.IncludeSubdomains }).(pulumi.BoolOutput)
+type GetListItemsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListItemsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListItemsResult)(nil)).Elem()
 }
 
-func (o GetListItemRedirectOutput) PreservePathSuffix() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetListItemRedirect) bool { return v.PreservePathSuffix }).(pulumi.BoolOutput)
+func (o GetListItemsResultArrayOutput) ToGetListItemsResultArrayOutput() GetListItemsResultArrayOutput {
+	return o
 }
 
-func (o GetListItemRedirectOutput) PreserveQueryString() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetListItemRedirect) bool { return v.PreserveQueryString }).(pulumi.BoolOutput)
+func (o GetListItemsResultArrayOutput) ToGetListItemsResultArrayOutputWithContext(ctx context.Context) GetListItemsResultArrayOutput {
+	return o
 }
 
-func (o GetListItemRedirectOutput) SourceUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListItemRedirect) string { return v.SourceUrl }).(pulumi.StringOutput)
+func (o GetListItemsResultArrayOutput) Index(i pulumi.IntInput) GetListItemsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListItemsResult {
+		return vs[0].([]GetListItemsResult)[vs[1].(int)]
+	}).(GetListItemsResultOutput)
 }
 
-// Available values: 301, 302, 307, 308.
-func (o GetListItemRedirectOutput) StatusCode() pulumi.IntOutput {
-	return o.ApplyT(func(v GetListItemRedirect) int { return v.StatusCode }).(pulumi.IntOutput)
+type GetListsResult struct {
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// An informative summary of the list.
+	Description string `pulumi:"description"`
+	// The unique ID of the list.
+	Id string `pulumi:"id"`
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
+	Kind string `pulumi:"kind"`
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// An informative name for the list. Use this name in filter and rule expressions.
+	Name string `pulumi:"name"`
+	// The number of items in the list.
+	NumItems float64 `pulumi:"numItems"`
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
+	NumReferencingFilters float64 `pulumi:"numReferencingFilters"`
 }
 
-func (o GetListItemRedirectOutput) SubpathMatching() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetListItemRedirect) bool { return v.SubpathMatching }).(pulumi.BoolOutput)
+// GetListsResultInput is an input type that accepts GetListsResultArgs and GetListsResultOutput values.
+// You can construct a concrete instance of `GetListsResultInput` via:
+//
+//	GetListsResultArgs{...}
+type GetListsResultInput interface {
+	pulumi.Input
+
+	ToGetListsResultOutput() GetListsResultOutput
+	ToGetListsResultOutputWithContext(context.Context) GetListsResultOutput
 }
 
-func (o GetListItemRedirectOutput) TargetUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetListItemRedirect) string { return v.TargetUrl }).(pulumi.StringOutput)
+type GetListsResultArgs struct {
+	// The RFC 3339 timestamp of when the list was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// An informative summary of the list.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique ID of the list.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+	// Available values: "ip", "redirect", "hostname", "asn".
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The RFC 3339 timestamp of when the list was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// An informative name for the list. Use this name in filter and rule expressions.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of items in the list.
+	NumItems pulumi.Float64Input `pulumi:"numItems"`
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
+	NumReferencingFilters pulumi.Float64Input `pulumi:"numReferencingFilters"`
+}
+
+func (GetListsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsResult)(nil)).Elem()
+}
+
+func (i GetListsResultArgs) ToGetListsResultOutput() GetListsResultOutput {
+	return i.ToGetListsResultOutputWithContext(context.Background())
+}
+
+func (i GetListsResultArgs) ToGetListsResultOutputWithContext(ctx context.Context) GetListsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsResultOutput)
+}
+
+// GetListsResultArrayInput is an input type that accepts GetListsResultArray and GetListsResultArrayOutput values.
+// You can construct a concrete instance of `GetListsResultArrayInput` via:
+//
+//	GetListsResultArray{ GetListsResultArgs{...} }
+type GetListsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetListsResultArrayOutput() GetListsResultArrayOutput
+	ToGetListsResultArrayOutputWithContext(context.Context) GetListsResultArrayOutput
+}
+
+type GetListsResultArray []GetListsResultInput
+
+func (GetListsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsResult)(nil)).Elem()
+}
+
+func (i GetListsResultArray) ToGetListsResultArrayOutput() GetListsResultArrayOutput {
+	return i.ToGetListsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetListsResultArray) ToGetListsResultArrayOutputWithContext(ctx context.Context) GetListsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListsResultArrayOutput)
+}
+
+type GetListsResultOutput struct{ *pulumi.OutputState }
+
+func (GetListsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListsResult)(nil)).Elem()
+}
+
+func (o GetListsResultOutput) ToGetListsResultOutput() GetListsResultOutput {
+	return o
+}
+
+func (o GetListsResultOutput) ToGetListsResultOutputWithContext(ctx context.Context) GetListsResultOutput {
+	return o
+}
+
+// The RFC 3339 timestamp of when the list was created.
+func (o GetListsResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// An informative summary of the list.
+func (o GetListsResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique ID of the list.
+func (o GetListsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+// Available values: "ip", "redirect", "hostname", "asn".
+func (o GetListsResultOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The RFC 3339 timestamp of when the list was last modified.
+func (o GetListsResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// An informative name for the list. Use this name in filter and rule expressions.
+func (o GetListsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of items in the list.
+func (o GetListsResultOutput) NumItems() pulumi.Float64Output {
+	return o.ApplyT(func(v GetListsResult) float64 { return v.NumItems }).(pulumi.Float64Output)
+}
+
+// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
+func (o GetListsResultOutput) NumReferencingFilters() pulumi.Float64Output {
+	return o.ApplyT(func(v GetListsResult) float64 { return v.NumReferencingFilters }).(pulumi.Float64Output)
+}
+
+type GetListsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListsResult)(nil)).Elem()
+}
+
+func (o GetListsResultArrayOutput) ToGetListsResultArrayOutput() GetListsResultArrayOutput {
+	return o
+}
+
+func (o GetListsResultArrayOutput) ToGetListsResultArrayOutputWithContext(ctx context.Context) GetListsResultArrayOutput {
+	return o
+}
+
+func (o GetListsResultArrayOutput) Index(i pulumi.IntInput) GetListsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListsResult {
+		return vs[0].([]GetListsResult)[vs[1].(int)]
+	}).(GetListsResultOutput)
 }
 
 type GetLoadBalancerAdaptiveRouting struct {
@@ -32376,8 +33044,8 @@ type GetLogpushJobsResult struct {
 	Frequency string `pulumi:"frequency"`
 	// Unique id of the job.
 	Id int `pulumi:"id"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete string `pulumi:"lastComplete"`
@@ -32387,11 +33055,11 @@ type GetLogpushJobsResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions string `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes int `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds int `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords int `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name string `pulumi:"name"`
@@ -32427,8 +33095,8 @@ type GetLogpushJobsResultArgs struct {
 	Frequency pulumi.StringInput `pulumi:"frequency"`
 	// Unique id of the job.
 	Id pulumi.IntInput `pulumi:"id"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete pulumi.StringInput `pulumi:"lastComplete"`
@@ -32438,11 +33106,11 @@ type GetLogpushJobsResultArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringInput `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes pulumi.IntInput `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds pulumi.IntInput `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords pulumi.IntInput `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -32535,8 +33203,8 @@ func (o GetLogpushJobsResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-// Available values: "edge".
+// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+// Available values: "", "edge".
 func (o GetLogpushJobsResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -32558,17 +33226,17 @@ func (o GetLogpushJobsResultOutput) LogpullOptions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.LogpullOptions }).(pulumi.StringOutput)
 }
 
-// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 func (o GetLogpushJobsResultOutput) MaxUploadBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) int { return v.MaxUploadBytes }).(pulumi.IntOutput)
 }
 
-// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 func (o GetLogpushJobsResultOutput) MaxUploadIntervalSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) int { return v.MaxUploadIntervalSeconds }).(pulumi.IntOutput)
 }
 
-// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 func (o GetLogpushJobsResultOutput) MaxUploadRecords() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) int { return v.MaxUploadRecords }).(pulumi.IntOutput)
 }
@@ -35598,6 +36266,8 @@ type GetMagicWanGreTunnelGreTunnel struct {
 	Id string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress string `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 string `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -35633,6 +36303,8 @@ type GetMagicWanGreTunnelGreTunnelArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringInput `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 pulumi.StringInput `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -35701,6 +36373,11 @@ func (o GetMagicWanGreTunnelGreTunnelOutput) Id() pulumi.StringOutput {
 // A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 func (o GetMagicWanGreTunnelGreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicWanGreTunnelGreTunnel) string { return v.InterfaceAddress }).(pulumi.StringOutput)
+}
+
+// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+func (o GetMagicWanGreTunnelGreTunnelOutput) InterfaceAddress6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMagicWanGreTunnelGreTunnel) string { return v.InterfaceAddress6 }).(pulumi.StringOutput)
 }
 
 // The date and time the tunnel was last modified.
@@ -35899,6 +36576,8 @@ type GetMagicWanIpsecTunnelIpsecTunnel struct {
 	Id string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress string `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 string `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -35936,6 +36615,8 @@ type GetMagicWanIpsecTunnelIpsecTunnelArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringInput `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 pulumi.StringInput `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -36011,6 +36692,11 @@ func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) Id() pulumi.StringOutput {
 // A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) string { return v.InterfaceAddress }).(pulumi.StringOutput)
+}
+
+// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) InterfaceAddress6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) string { return v.InterfaceAddress6 }).(pulumi.StringOutput)
 }
 
 // The date and time the tunnel was last modified.
@@ -46835,6 +47521,248 @@ func (o GetQueueConsumerSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Outp
 	return o.ApplyT(func(v GetQueueConsumerSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
 }
 
+type GetQueueConsumersResult struct {
+	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
+	CreatedOn  string `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId string `pulumi:"queueId"`
+	// Name of a Worker
+	Script string `pulumi:"script"`
+	// Name of a Worker
+	ScriptName string                          `pulumi:"scriptName"`
+	Settings   GetQueueConsumersResultSettings `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type string `pulumi:"type"`
+}
+
+// GetQueueConsumersResultInput is an input type that accepts GetQueueConsumersResultArgs and GetQueueConsumersResultOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultInput` via:
+//
+//	GetQueueConsumersResultArgs{...}
+type GetQueueConsumersResultInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput
+	ToGetQueueConsumersResultOutputWithContext(context.Context) GetQueueConsumersResultOutput
+}
+
+type GetQueueConsumersResultArgs struct {
+	// A Resource identifier.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
+	CreatedOn  pulumi.StringInput `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId pulumi.StringInput `pulumi:"queueId"`
+	// Name of a Worker
+	Script pulumi.StringInput `pulumi:"script"`
+	// Name of a Worker
+	ScriptName pulumi.StringInput                   `pulumi:"scriptName"`
+	Settings   GetQueueConsumersResultSettingsInput `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetQueueConsumersResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
+	return i.ToGetQueueConsumersResultOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultOutput)
+}
+
+// GetQueueConsumersResultArrayInput is an input type that accepts GetQueueConsumersResultArray and GetQueueConsumersResultArrayOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultArrayInput` via:
+//
+//	GetQueueConsumersResultArray{ GetQueueConsumersResultArgs{...} }
+type GetQueueConsumersResultArrayInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput
+	ToGetQueueConsumersResultArrayOutputWithContext(context.Context) GetQueueConsumersResultArrayOutput
+}
+
+type GetQueueConsumersResultArray []GetQueueConsumersResultInput
+
+func (GetQueueConsumersResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
+	return i.ToGetQueueConsumersResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultArrayOutput)
+}
+
+type GetQueueConsumersResultOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
+	return o
+}
+
+// A Resource identifier.
+func (o GetQueueConsumersResultOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+func (o GetQueueConsumersResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// A Resource identifier.
+func (o GetQueueConsumersResultOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueueConsumersResultOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueueConsumersResultOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o GetQueueConsumersResultOutput) Settings() GetQueueConsumersResultSettingsOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) GetQueueConsumersResultSettings { return v.Settings }).(GetQueueConsumersResultSettingsOutput)
+}
+
+// Available values: "worker", "httpPull".
+func (o GetQueueConsumersResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetQueueConsumersResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultArrayOutput) Index(i pulumi.IntInput) GetQueueConsumersResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueueConsumersResult {
+		return vs[0].([]GetQueueConsumersResult)[vs[1].(int)]
+	}).(GetQueueConsumersResultOutput)
+}
+
+type GetQueueConsumersResultSettings struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize float64 `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency float64 `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries float64 `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs float64 `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay float64 `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs float64 `pulumi:"visibilityTimeoutMs"`
+}
+
+// GetQueueConsumersResultSettingsInput is an input type that accepts GetQueueConsumersResultSettingsArgs and GetQueueConsumersResultSettingsOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultSettingsInput` via:
+//
+//	GetQueueConsumersResultSettingsArgs{...}
+type GetQueueConsumersResultSettingsInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput
+	ToGetQueueConsumersResultSettingsOutputWithContext(context.Context) GetQueueConsumersResultSettingsOutput
+}
+
+type GetQueueConsumersResultSettingsArgs struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize pulumi.Float64Input `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency pulumi.Float64Input `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries pulumi.Float64Input `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs pulumi.Float64Input `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay pulumi.Float64Input `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs pulumi.Float64Input `pulumi:"visibilityTimeoutMs"`
+}
+
+func (GetQueueConsumersResultSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
+	return i.ToGetQueueConsumersResultSettingsOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultSettingsOutput)
+}
+
+type GetQueueConsumersResultSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
+	return o
+}
+
+// The maximum number of messages to include in a batch.
+func (o GetQueueConsumersResultSettingsOutput) BatchSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.BatchSize }).(pulumi.Float64Output)
+}
+
+// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+func (o GetQueueConsumersResultSettingsOutput) MaxConcurrency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxConcurrency }).(pulumi.Float64Output)
+}
+
+// The maximum number of retries
+func (o GetQueueConsumersResultSettingsOutput) MaxRetries() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxRetries }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+func (o GetQueueConsumersResultSettingsOutput) MaxWaitTimeMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxWaitTimeMs }).(pulumi.Float64Output)
+}
+
+// The number of seconds to delay before making the message available for another attempt.
+func (o GetQueueConsumersResultSettingsOutput) RetryDelay() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.RetryDelay }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+func (o GetQueueConsumersResultSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
+}
+
 type GetQueueProducer struct {
 	BucketName string `pulumi:"bucketName"`
 	Script     string `pulumi:"script"`
@@ -49474,7 +50402,7 @@ type GetRateLimitsResult struct {
 	Action GetRateLimitsResultAction `pulumi:"action"`
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses []GetRateLimitsResultBypass `pulumi:"bypasses"`
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description string `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled bool `pulumi:"disabled"`
@@ -49504,7 +50432,7 @@ type GetRateLimitsResultArgs struct {
 	Action GetRateLimitsResultActionInput `pulumi:"action"`
 	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
 	Bypasses GetRateLimitsResultBypassArrayInput `pulumi:"bypasses"`
-	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	// An informative summary of the rule. This value is sanitized and any tags will be removed.
 	Description pulumi.StringInput `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
@@ -49579,7 +50507,7 @@ func (o GetRateLimitsResultOutput) Bypasses() GetRateLimitsResultBypassArrayOutp
 	return o.ApplyT(func(v GetRateLimitsResult) []GetRateLimitsResultBypass { return v.Bypasses }).(GetRateLimitsResultBypassArrayOutput)
 }
 
-// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+// An informative summary of the rule. This value is sanitized and any tags will be removed.
 func (o GetRateLimitsResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRateLimitsResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -51669,6 +52597,9 @@ type GetRulesetRuleActionParameters struct {
 	OriginErrorPagePassthru bool `pulumi:"originErrorPagePassthru"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides GetRulesetRuleActionParametersOverrides `pulumi:"overrides"`
+	// A phase to skip the execution of. This property is only compatible with products.
+	// Available values: "current".
+	Phase string `pulumi:"phase"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
 	Phases []string `pulumi:"phases"`
 	// Configure the Polish level.
@@ -51796,6 +52727,9 @@ type GetRulesetRuleActionParametersArgs struct {
 	OriginErrorPagePassthru pulumi.BoolInput `pulumi:"originErrorPagePassthru"`
 	// A set of overrides to apply to the target ruleset.
 	Overrides GetRulesetRuleActionParametersOverridesInput `pulumi:"overrides"`
+	// A phase to skip the execution of. This property is only compatible with products.
+	// Available values: "current".
+	Phase pulumi.StringInput `pulumi:"phase"`
 	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
 	Phases pulumi.StringArrayInput `pulumi:"phases"`
 	// Configure the Polish level.
@@ -52037,6 +52971,12 @@ func (o GetRulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.B
 // A set of overrides to apply to the target ruleset.
 func (o GetRulesetRuleActionParametersOutput) Overrides() GetRulesetRuleActionParametersOverridesOutput {
 	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOverrides { return v.Overrides }).(GetRulesetRuleActionParametersOverridesOutput)
+}
+
+// A phase to skip the execution of. This property is only compatible with products.
+// Available values: "current".
+func (o GetRulesetRuleActionParametersOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Phase }).(pulumi.StringOutput)
 }
 
 // A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -52335,7 +53275,7 @@ type GetRulesetRuleActionParametersBrowserTtl struct {
 	// The TTL (in seconds) if you choose overrideOrigin mode.
 	Default int `pulumi:"default"`
 	// Determines which browser ttl mode to use.
-	// Available values: "respect*origin", "bypass*by*default", "override*origin".
+	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
 	Mode string `pulumi:"mode"`
 }
 
@@ -52354,7 +53294,7 @@ type GetRulesetRuleActionParametersBrowserTtlArgs struct {
 	// The TTL (in seconds) if you choose overrideOrigin mode.
 	Default pulumi.IntInput `pulumi:"default"`
 	// Determines which browser ttl mode to use.
-	// Available values: "respect*origin", "bypass*by*default", "override*origin".
+	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
 	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
@@ -52390,7 +53330,7 @@ func (o GetRulesetRuleActionParametersBrowserTtlOutput) Default() pulumi.IntOutp
 }
 
 // Determines which browser ttl mode to use.
-// Available values: "respect*origin", "bypass*by*default", "override*origin".
+// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
 func (o GetRulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetRuleActionParametersBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -52635,319 +53575,12 @@ func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) Includes() 
 	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
-	// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
-	CheckPresences []string `pulumi:"checkPresences"`
-	// For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
-	Contains map[string][]string `pulumi:"contains"`
-	// Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
-	ExcludeOrigin bool `pulumi:"excludeOrigin"`
-	// Include these headers' names and their values.
-	Includes []string `pulumi:"includes"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs struct {
-	// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
-	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
-	// For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
-	Contains pulumi.StringArrayMapInput `pulumi:"contains"`
-	// Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
-	ExcludeOrigin pulumi.BoolInput `pulumi:"excludeOrigin"`
-	// Include these headers' names and their values.
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHeader)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return o
-}
-
-// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
-}
-
-// For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Contains() pulumi.StringArrayMapOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHeader) map[string][]string { return v.Contains }).(pulumi.StringArrayMapOutput)
-}
-
-// Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) ExcludeOrigin() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHeader) bool { return v.ExcludeOrigin }).(pulumi.BoolOutput)
-}
-
-// Include these headers' names and their values.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHeader) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHost struct {
-	// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
-	Resolved bool `pulumi:"resolved"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs struct {
-	// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
-	Resolved pulumi.BoolInput `pulumi:"resolved"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return o
-}
-
-// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) Resolved() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHost) bool { return v.Resolved }).(pulumi.BoolOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString struct {
-	// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
-	Exclude GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude `pulumi:"exclude"`
-	// A list of query string parameters used to build the cache key.
-	Include GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude `pulumi:"include"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs struct {
-	// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
-	Exclude GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput `pulumi:"exclude"`
-	// A list of query string parameters used to build the cache key.
-	Include GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput `pulumi:"include"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return o
-}
-
-// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Exclude() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
-		return v.Exclude
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput)
-}
-
-// A list of query string parameters used to build the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Include() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
-		return v.Include
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude struct {
-	// Determines whether to exclude all query string parameters from the cache key.
-	All   bool     `pulumi:"all"`
-	Lists []string `pulumi:"lists"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs struct {
-	// Determines whether to exclude all query string parameters from the cache key.
-	All   pulumi.BoolInput        `pulumi:"all"`
-	Lists pulumi.StringArrayInput `pulumi:"lists"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
-	return o
-}
-
-// Determines whether to exclude all query string parameters from the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) All() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude) bool { return v.All }).(pulumi.BoolOutput)
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) Lists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude struct {
-	// Determines whether to include all query string parameters in the cache key.
-	All   bool     `pulumi:"all"`
-	Lists []string `pulumi:"lists"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs struct {
-	// Determines whether to include all query string parameters in the cache key.
-	All   pulumi.BoolInput        `pulumi:"all"`
-	Lists pulumi.StringArrayInput `pulumi:"lists"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return o
-}
-
-// Determines whether to include all query string parameters in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) All() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) bool { return v.All }).(pulumi.BoolOutput)
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) Lists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantUnitInput)(nil)).Elem(), ZoneTenantUnitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantUnitPtrInput)(nil)).Elem(), ZoneTenantUnitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleConfigurationInput)(nil)).Elem(), GetAccessRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterInput)(nil)).Elem(), GetAccessRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterPtrInput)(nil)).Elem(), GetAccessRuleFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterConfigurationInput)(nil)).Elem(), GetAccessRuleFilterConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterConfigurationPtrInput)(nil)).Elem(), GetAccessRuleFilterConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleScopeInput)(nil)).Elem(), GetAccessRuleScopeArgs{})
@@ -53321,8 +53954,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeylessCertificatesResultTunnelInput)(nil)).Elem(), GetKeylessCertificatesResultTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultArrayInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemHostnameInput)(nil)).Elem(), GetListItemHostnameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemRedirectInput)(nil)).Elem(), GetListItemRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultInput)(nil)).Elem(), GetListItemsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultArrayInput)(nil)).Elem(), GetListItemsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsResultInput)(nil)).Elem(), GetListsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListsResultArrayInput)(nil)).Elem(), GetListsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerAdaptiveRoutingInput)(nil)).Elem(), GetLoadBalancerAdaptiveRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerLocationStrategyInput)(nil)).Elem(), GetLoadBalancerLocationStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerMonitorsResultInput)(nil)).Elem(), GetLoadBalancerMonitorsResultArgs{})
@@ -53568,6 +54203,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerTypeInput)(nil)).Elem(), GetQueueConsumerTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerTypeArrayInput)(nil)).Elem(), GetQueueConsumerTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumerSettingsInput)(nil)).Elem(), GetQueueConsumerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultInput)(nil)).Elem(), GetQueueConsumersResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultArrayInput)(nil)).Elem(), GetQueueConsumersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultSettingsInput)(nil)).Elem(), GetQueueConsumersResultSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueProducerInput)(nil)).Elem(), GetQueueProducerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueProducerArrayInput)(nil)).Elem(), GetQueueProducerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueSettingsInput)(nil)).Elem(), GetQueueSettingsArgs{})
@@ -53648,11 +54286,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{})
+	pulumi.RegisterOutputType(ZoneTenantUnitOutput{})
+	pulumi.RegisterOutputType(ZoneTenantUnitPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessRuleFilterConfigurationOutput{})
 	pulumi.RegisterOutputType(GetAccessRuleFilterConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessRuleScopeOutput{})
@@ -54026,8 +54664,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKeylessCertificatesResultTunnelOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultArrayOutput{})
-	pulumi.RegisterOutputType(GetListItemHostnameOutput{})
-	pulumi.RegisterOutputType(GetListItemRedirectOutput{})
+	pulumi.RegisterOutputType(GetListItemsResultOutput{})
+	pulumi.RegisterOutputType(GetListItemsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetListsResultOutput{})
+	pulumi.RegisterOutputType(GetListsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerAdaptiveRoutingOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerLocationStrategyOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerMonitorsResultOutput{})
@@ -54273,6 +54913,9 @@ func init() {
 	pulumi.RegisterOutputType(GetQueueConsumerTypeOutput{})
 	pulumi.RegisterOutputType(GetQueueConsumerTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetQueueConsumerSettingsOutput{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultOutput{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultSettingsOutput{})
 	pulumi.RegisterOutputType(GetQueueProducerOutput{})
 	pulumi.RegisterOutputType(GetQueueProducerArrayOutput{})
 	pulumi.RegisterOutputType(GetQueueSettingsOutput{})
@@ -54353,9 +54996,4 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput{})
 }

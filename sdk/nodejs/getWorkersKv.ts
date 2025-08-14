@@ -32,7 +32,7 @@ export function getWorkersKv(args: GetWorkersKvArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetWorkersKvArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -50,7 +50,7 @@ export interface GetWorkersKvArgs {
  */
 export interface GetWorkersKvResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -94,7 +94,7 @@ export function getWorkersKvOutput(args: GetWorkersKvOutputArgs, opts?: pulumi.I
  */
 export interface GetWorkersKvOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

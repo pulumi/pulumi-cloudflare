@@ -40,17 +40,11 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        [Output("modified")]
-        public Output<bool> Modified { get; private set; } = null!;
-
         /// <summary>
         /// When the route was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
-
-        [Output("modifiedRoute")]
-        public Output<Outputs.StaticRouteModifiedRoute> ModifiedRoute { get; private set; } = null!;
 
         /// <summary>
         /// The next-hop IP Address for the static route.
@@ -69,9 +63,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
-
-        [Output("route")]
-        public Output<Outputs.StaticRouteRoute> Route { get; private set; } = null!;
 
         /// <summary>
         /// Used only for ECMP routes.
@@ -165,9 +156,6 @@ namespace Pulumi.Cloudflare
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
-        [Input("route")]
-        public Input<Inputs.StaticRouteRouteArgs>? Route { get; set; }
-
         /// <summary>
         /// Used only for ECMP routes.
         /// </summary>
@@ -206,17 +194,11 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("modified")]
-        public Input<bool>? Modified { get; set; }
-
         /// <summary>
         /// When the route was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
-
-        [Input("modifiedRoute")]
-        public Input<Inputs.StaticRouteModifiedRouteGetArgs>? ModifiedRoute { get; set; }
 
         /// <summary>
         /// The next-hop IP Address for the static route.
@@ -235,9 +217,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
-
-        [Input("route")]
-        public Input<Inputs.StaticRouteRouteGetArgs>? Route { get; set; }
 
         /// <summary>
         /// Used only for ECMP routes.

@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
+        ///         DeploymentId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
         /// });
@@ -49,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
+        ///         DeploymentId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
         /// });
@@ -72,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ScriptName = "this-is_my_script-01",
+        ///         DeploymentId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         ///     });
         /// 
         /// });
@@ -90,8 +93,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
+        [Input("deploymentId", required: true)]
+        public string DeploymentId { get; set; } = null!;
+
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public string ScriptName { get; set; } = null!;
@@ -110,8 +116,11 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("deploymentId", required: true)]
+        public Input<string> DeploymentId { get; set; } = null!;
+
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
@@ -130,30 +139,57 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string AccountId;
-        public readonly ImmutableArray<Outputs.GetWorkersDeploymentDeploymentResult> Deployments;
+        public readonly Outputs.GetWorkersDeploymentAnnotationsResult Annotations;
+        public readonly string AuthorEmail;
+        public readonly string CreatedOn;
+        public readonly string DeploymentId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the script.
+        /// Name of the script, used in URLs and route configuration.
         /// </summary>
         public readonly string ScriptName;
+        public readonly string Source;
+        /// <summary>
+        /// Available values: "percentage".
+        /// </summary>
+        public readonly string Strategy;
+        public readonly ImmutableArray<Outputs.GetWorkersDeploymentVersionResult> Versions;
 
         [OutputConstructor]
         private GetWorkersDeploymentResult(
             string accountId,
 
-            ImmutableArray<Outputs.GetWorkersDeploymentDeploymentResult> deployments,
+            Outputs.GetWorkersDeploymentAnnotationsResult annotations,
+
+            string authorEmail,
+
+            string createdOn,
+
+            string deploymentId,
 
             string id,
 
-            string scriptName)
+            string scriptName,
+
+            string source,
+
+            string strategy,
+
+            ImmutableArray<Outputs.GetWorkersDeploymentVersionResult> versions)
         {
             AccountId = accountId;
-            Deployments = deployments;
+            Annotations = annotations;
+            AuthorEmail = authorEmail;
+            CreatedOn = createdOn;
+            DeploymentId = deploymentId;
             Id = id;
             ScriptName = scriptName;
+            Source = source;
+            Strategy = strategy;
+            Versions = versions;
         }
     }
 }

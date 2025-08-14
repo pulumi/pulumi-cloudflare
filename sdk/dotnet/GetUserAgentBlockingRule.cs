@@ -84,11 +84,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetUserAgentBlockingRuleArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filter")]
+        public Inputs.GetUserAgentBlockingRuleFilterArgs? Filter { get; set; }
+
         /// <summary>
         /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        [Input("uaRuleId", required: true)]
-        public string UaRuleId { get; set; } = null!;
+        [Input("uaRuleId")]
+        public string? UaRuleId { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -104,11 +107,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetUserAgentBlockingRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("filter")]
+        public Input<Inputs.GetUserAgentBlockingRuleFilterInputArgs>? Filter { get; set; }
+
         /// <summary>
         /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        [Input("uaRuleId", required: true)]
-        public Input<string> UaRuleId { get; set; } = null!;
+        [Input("uaRuleId")]
+        public Input<string>? UaRuleId { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -127,13 +133,31 @@ namespace Pulumi.Cloudflare
     public sealed class GetUserAgentBlockingRuleResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The configuration object for the current rule.
         /// </summary>
-        public readonly string Id;
+        public readonly Outputs.GetUserAgentBlockingRuleConfigurationResult Configuration;
+        /// <summary>
+        /// An informative summary of the rule.
+        /// </summary>
+        public readonly string Description;
+        public readonly Outputs.GetUserAgentBlockingRuleFilterResult? Filter;
         /// <summary>
         /// The unique identifier of the User Agent Blocking rule.
         /// </summary>
-        public readonly string UaRuleId;
+        public readonly string Id;
+        /// <summary>
+        /// The action to apply to a matched request.
+        /// Available values: "block", "challenge", "js*challenge", "managed*challenge".
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
+        /// When true, indicates that the rule is currently paused.
+        /// </summary>
+        public readonly bool Paused;
+        /// <summary>
+        /// The unique identifier of the User Agent Blocking rule.
+        /// </summary>
+        public readonly string? UaRuleId;
         /// <summary>
         /// Defines an identifier.
         /// </summary>
@@ -141,13 +165,28 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetUserAgentBlockingRuleResult(
+            Outputs.GetUserAgentBlockingRuleConfigurationResult configuration,
+
+            string description,
+
+            Outputs.GetUserAgentBlockingRuleFilterResult? filter,
+
             string id,
 
-            string uaRuleId,
+            string mode,
+
+            bool paused,
+
+            string? uaRuleId,
 
             string zoneId)
         {
+            Configuration = configuration;
+            Description = description;
+            Filter = filter;
             Id = id;
+            Mode = mode;
+            Paused = paused;
             UaRuleId = uaRuleId;
             ZoneId = zoneId;
         }

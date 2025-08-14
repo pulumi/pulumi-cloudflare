@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -34,7 +32,7 @@ export function getListItem(args: GetListItemArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetListItemArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: string;
     /**
@@ -52,33 +50,13 @@ export interface GetListItemArgs {
  */
 export interface GetListItemResult {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     readonly accountId: string;
     /**
-     * Defines a non-negative 32 bit integer.
-     */
-    readonly asn: number;
-    /**
-     * Defines an informative summary of the list item.
-     */
-    readonly comment: string;
-    /**
-     * The RFC 3339 timestamp of when the item was created.
-     */
-    readonly createdOn: string;
-    /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-     */
-    readonly hostname: outputs.GetListItemHostname;
-    /**
-     * The unique ID of the list.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-     */
-    readonly ip: string;
     /**
      * Defines the unique ID of the item in the List.
      */
@@ -87,14 +65,6 @@ export interface GetListItemResult {
      * The unique ID of the list.
      */
     readonly listId: string;
-    /**
-     * The RFC 3339 timestamp of when the item was last modified.
-     */
-    readonly modifiedOn: string;
-    /**
-     * The definition of the redirect.
-     */
-    readonly redirect: outputs.GetListItemRedirect;
 }
 /**
  * ## Example Usage
@@ -124,7 +94,7 @@ export function getListItemOutput(args: GetListItemOutputArgs, opts?: pulumi.Inv
  */
 export interface GetListItemOutputArgs {
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Secret { get; set; }
 
         /// <summary>
-        /// Available values: "empty", "uploading", "processing", "failed", "complete".
+        /// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

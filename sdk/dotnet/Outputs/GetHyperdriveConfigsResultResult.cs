@@ -29,6 +29,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetHyperdriveConfigsResultMtlsResult Mtls;
         public readonly string Name;
         public readonly Outputs.GetHyperdriveConfigsResultOriginResult Origin;
+        /// <summary>
+        /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        /// </summary>
+        public readonly int OriginConnectionLimit;
 
         [OutputConstructor]
         private GetHyperdriveConfigsResultResult(
@@ -44,7 +48,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
-            Outputs.GetHyperdriveConfigsResultOriginResult origin)
+            Outputs.GetHyperdriveConfigsResultOriginResult origin,
+
+            int originConnectionLimit)
         {
             Caching = caching;
             CreatedOn = createdOn;
@@ -53,6 +59,7 @@ namespace Pulumi.Cloudflare.Outputs
             Mtls = mtls;
             Name = name;
             Origin = origin;
+            OriginConnectionLimit = originConnectionLimit;
         }
     }
 }

@@ -44,8 +44,9 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .namespaceId("0f2ac74b498b48028cb68387c421e279")
  *             .keyName("My-Key")
- *             .metadata("{\"someMetadataKey\": \"someMetadataValue\"}")
  *             .value("Some Value")
+ *             .metadata(Map.ofEntries(
+ *             ))
  *             .build());
  * 
  *     }
@@ -64,14 +65,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workersKv:WorkersKv")
 public class WorkersKv extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -91,17 +92,9 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
-    /**
-     * Arbitrary JSON to be associated with a key/value pair.
-     * 
-     */
     @Export(name="metadata", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metadata;
 
-    /**
-     * @return Arbitrary JSON to be associated with a key/value pair.
-     * 
-     */
     public Output<Optional<String>> metadata() {
         return Codegen.optional(this.metadata);
     }

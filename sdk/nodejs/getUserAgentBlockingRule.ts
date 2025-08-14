@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -20,6 +22,7 @@ import * as utilities from "./utilities";
 export function getUserAgentBlockingRule(args: GetUserAgentBlockingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetUserAgentBlockingRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", {
+        "filter": args.filter,
         "uaRuleId": args.uaRuleId,
         "zoneId": args.zoneId,
     }, opts);
@@ -29,10 +32,11 @@ export function getUserAgentBlockingRule(args: GetUserAgentBlockingRuleArgs, opt
  * A collection of arguments for invoking getUserAgentBlockingRule.
  */
 export interface GetUserAgentBlockingRuleArgs {
+    filter?: inputs.GetUserAgentBlockingRuleFilter;
     /**
      * The unique identifier of the User Agent Blocking rule.
      */
-    uaRuleId: string;
+    uaRuleId?: string;
     /**
      * Defines an identifier.
      */
@@ -44,13 +48,31 @@ export interface GetUserAgentBlockingRuleArgs {
  */
 export interface GetUserAgentBlockingRuleResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The configuration object for the current rule.
      */
-    readonly id: string;
+    readonly configuration: outputs.GetUserAgentBlockingRuleConfiguration;
+    /**
+     * An informative summary of the rule.
+     */
+    readonly description: string;
+    readonly filter?: outputs.GetUserAgentBlockingRuleFilter;
     /**
      * The unique identifier of the User Agent Blocking rule.
      */
-    readonly uaRuleId: string;
+    readonly id: string;
+    /**
+     * The action to apply to a matched request.
+     * Available values: "block", "challenge", "js*challenge", "managed*challenge".
+     */
+    readonly mode: string;
+    /**
+     * When true, indicates that the rule is currently paused.
+     */
+    readonly paused: boolean;
+    /**
+     * The unique identifier of the User Agent Blocking rule.
+     */
+    readonly uaRuleId?: string;
     /**
      * Defines an identifier.
      */
@@ -72,6 +94,7 @@ export interface GetUserAgentBlockingRuleResult {
 export function getUserAgentBlockingRuleOutput(args: GetUserAgentBlockingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserAgentBlockingRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule", {
+        "filter": args.filter,
         "uaRuleId": args.uaRuleId,
         "zoneId": args.zoneId,
     }, opts);
@@ -81,10 +104,11 @@ export function getUserAgentBlockingRuleOutput(args: GetUserAgentBlockingRuleOut
  * A collection of arguments for invoking getUserAgentBlockingRule.
  */
 export interface GetUserAgentBlockingRuleOutputArgs {
+    filter?: pulumi.Input<inputs.GetUserAgentBlockingRuleFilterArgs>;
     /**
      * The unique identifier of the User Agent Blocking rule.
      */
-    uaRuleId: pulumi.Input<string>;
+    uaRuleId?: pulumi.Input<string>;
     /**
      * Defines an identifier.
      */

@@ -48,10 +48,6 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of access applications currently using this policy.
-     */
-    public /*out*/ readonly appCount!: pulumi.Output<number>;
-    /**
      * Administrators who can approve a temporary authentication request.
      */
     public readonly approvalGroups!: pulumi.Output<outputs.ZeroTrustAccessPolicyApprovalGroup[] | undefined>;
@@ -59,7 +55,6 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
      * Requires the user to request access from an administrator at the start of each session.
      */
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -68,7 +63,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustAccessPolicyExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustAccessPolicyExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -92,13 +87,11 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessPolicyRequire[]>;
-    public /*out*/ readonly reusable!: pulumi.Output<boolean>;
+    public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessPolicyRequire[] | undefined>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     public readonly sessionDuration!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustAccessPolicy resource with the given unique name, arguments, and options.
@@ -114,10 +107,8 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessPolicyState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appCount"] = state ? state.appCount : undefined;
             resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
             resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["decision"] = state ? state.decision : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
@@ -126,9 +117,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
-            resourceInputs["reusable"] = state ? state.reusable : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -136,6 +125,9 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             }
             if ((!args || args.decision === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
+            }
+            if ((!args || args.includes === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'includes'");
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
@@ -152,10 +144,6 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["appCount"] = undefined /*out*/;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["reusable"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };
@@ -173,10 +161,6 @@ export interface ZeroTrustAccessPolicyState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of access applications currently using this policy.
-     */
-    appCount?: pulumi.Input<number>;
-    /**
      * Administrators who can approve a temporary authentication request.
      */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyApprovalGroup>[]>;
@@ -184,7 +168,6 @@ export interface ZeroTrustAccessPolicyState {
      * Requires the user to request access from an administrator at the start of each session.
      */
     approvalRequired?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -218,12 +201,10 @@ export interface ZeroTrustAccessPolicyState {
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyRequire>[]>;
-    reusable?: pulumi.Input<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -254,7 +235,7 @@ export interface ZeroTrustAccessPolicyArgs {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyInclude>[]>;
+    includes: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyInclude>[]>;
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */

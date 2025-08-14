@@ -20,30 +20,15 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
      * The contents of a _headers file (used to attach custom headers on asset responses)
      * 
      */
-    @Import(name="_headers")
-    private @Nullable Output<String> _headers;
+    @Import(name="headers")
+    private @Nullable Output<String> headers;
 
     /**
      * @return The contents of a _headers file (used to attach custom headers on asset responses)
      * 
      */
-    public Optional<Output<String>> _headers() {
-        return Optional.ofNullable(this._headers);
-    }
-
-    /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-     * 
-     */
-    @Import(name="_redirects")
-    private @Nullable Output<String> _redirects;
-
-    /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-     * 
-     */
-    public Optional<Output<String>> _redirects() {
-        return Optional.ofNullable(this._redirects);
+    public Optional<Output<String>> headers() {
+        return Optional.ofNullable(this.headers);
     }
 
     /**
@@ -78,6 +63,21 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> notFoundHandling() {
         return Optional.ofNullable(this.notFoundHandling);
+    }
+
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    @Import(name="redirects")
+    private @Nullable Output<String> redirects;
+
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    public Optional<Output<String>> redirects() {
+        return Optional.ofNullable(this.redirects);
     }
 
     /**
@@ -121,10 +121,10 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
     private WorkersScriptAssetsConfigArgs() {}
 
     private WorkersScriptAssetsConfigArgs(WorkersScriptAssetsConfigArgs $) {
-        this._headers = $._headers;
-        this._redirects = $._redirects;
+        this.headers = $.headers;
         this.htmlHandling = $.htmlHandling;
         this.notFoundHandling = $.notFoundHandling;
+        this.redirects = $.redirects;
         this.runWorkerFirst = $.runWorkerFirst;
         this.serveDirectly = $.serveDirectly;
     }
@@ -148,45 +148,24 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param _headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * @param headers The contents of a _headers file (used to attach custom headers on asset responses)
          * 
          * @return builder
          * 
          */
-        public Builder _headers(@Nullable Output<String> _headers) {
-            $._headers = _headers;
+        public Builder headers(@Nullable Output<String> headers) {
+            $.headers = headers;
             return this;
         }
 
         /**
-         * @param _headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * @param headers The contents of a _headers file (used to attach custom headers on asset responses)
          * 
          * @return builder
          * 
          */
-        public Builder _headers(String _headers) {
-            return _headers(Output.of(_headers));
-        }
-
-        /**
-         * @param _redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder _redirects(@Nullable Output<String> _redirects) {
-            $._redirects = _redirects;
-            return this;
-        }
-
-        /**
-         * @param _redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder _redirects(String _redirects) {
-            return _redirects(Output.of(_redirects));
+        public Builder headers(String headers) {
+            return headers(Output.of(headers));
         }
 
         /**
@@ -233,6 +212,27 @@ public final class WorkersScriptAssetsConfigArgs extends com.pulumi.resources.Re
          */
         public Builder notFoundHandling(String notFoundHandling) {
             return notFoundHandling(Output.of(notFoundHandling));
+        }
+
+        /**
+         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirects(@Nullable Output<String> redirects) {
+            $.redirects = redirects;
+            return this;
+        }
+
+        /**
+         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirects(String redirects) {
+            return redirects(Output.of(redirects));
         }
 
         /**

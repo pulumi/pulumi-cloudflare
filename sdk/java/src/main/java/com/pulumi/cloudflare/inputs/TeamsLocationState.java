@@ -64,14 +64,14 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     @Import(name="dnsDestinationIpv6BlockId")
     private @Nullable Output<String> dnsDestinationIpv6BlockId;
 
     /**
-     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+     * @return The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
      * 
      */
     public Optional<Output<String>> dnsDestinationIpv6BlockId() {
@@ -303,7 +303,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsDestinationIpv6BlockId The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+         * @param dnsDestinationIpv6BlockId The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dnsDestinationIpv6BlockId The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
+         * @param dnsDestinationIpv6BlockId The uuid identifier of the IPv6 block brought to the gateway, so that this location&#39;s IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard Cloudflare IPv6 block.
          * 
          * @return builder
          * 

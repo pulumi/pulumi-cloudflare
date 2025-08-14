@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.inputs.AccessPolicyIncludeGroupArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeIpArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeIpListArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyIncludeLinkedAppTokenArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeLoginMethodArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyIncludeOidcArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeSamlArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeServiceTokenArgs;
@@ -178,11 +180,25 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="linkedAppToken")
+    private @Nullable Output<AccessPolicyIncludeLinkedAppTokenArgs> linkedAppToken;
+
+    public Optional<Output<AccessPolicyIncludeLinkedAppTokenArgs>> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
+
     @Import(name="loginMethod")
     private @Nullable Output<AccessPolicyIncludeLoginMethodArgs> loginMethod;
 
     public Optional<Output<AccessPolicyIncludeLoginMethodArgs>> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+
+    @Import(name="oidc")
+    private @Nullable Output<AccessPolicyIncludeOidcArgs> oidc;
+
+    public Optional<Output<AccessPolicyIncludeOidcArgs>> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
 
     @Import(name="okta")
@@ -227,7 +243,9 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.linkedAppToken = $.linkedAppToken;
         this.loginMethod = $.loginMethod;
+        this.oidc = $.oidc;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -437,6 +455,15 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
             return ipList(Output.of(ipList));
         }
 
+        public Builder linkedAppToken(@Nullable Output<AccessPolicyIncludeLinkedAppTokenArgs> linkedAppToken) {
+            $.linkedAppToken = linkedAppToken;
+            return this;
+        }
+
+        public Builder linkedAppToken(AccessPolicyIncludeLinkedAppTokenArgs linkedAppToken) {
+            return linkedAppToken(Output.of(linkedAppToken));
+        }
+
         public Builder loginMethod(@Nullable Output<AccessPolicyIncludeLoginMethodArgs> loginMethod) {
             $.loginMethod = loginMethod;
             return this;
@@ -444,6 +471,15 @@ public final class AccessPolicyIncludeArgs extends com.pulumi.resources.Resource
 
         public Builder loginMethod(AccessPolicyIncludeLoginMethodArgs loginMethod) {
             return loginMethod(Output.of(loginMethod));
+        }
+
+        public Builder oidc(@Nullable Output<AccessPolicyIncludeOidcArgs> oidc) {
+            $.oidc = oidc;
+            return this;
+        }
+
+        public Builder oidc(AccessPolicyIncludeOidcArgs oidc) {
+            return oidc(Output.of(oidc));
         }
 
         public Builder okta(@Nullable Output<AccessPolicyIncludeOktaArgs> okta) {

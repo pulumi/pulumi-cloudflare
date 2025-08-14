@@ -30,8 +30,8 @@ import (
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				NamespaceId: pulumi.String("0f2ac74b498b48028cb68387c421e279"),
 //				KeyName:     pulumi.String("My-Key"),
-//				Metadata:    pulumi.String("{\"someMetadataKey\": \"someMetadataValue\"}"),
 //				Value:       pulumi.String("Some Value"),
+//				Metadata:    pulumi.String{},
 //			})
 //			if err != nil {
 //				return err
@@ -50,11 +50,10 @@ import (
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName pulumi.StringOutput `pulumi:"keyName"`
-	// Arbitrary JSON to be associated with a key/value pair.
+	KeyName  pulumi.StringOutput    `pulumi:"keyName"`
 	Metadata pulumi.StringPtrOutput `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
@@ -104,11 +103,10 @@ func GetWorkersKv(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersKv resources.
 type workersKvState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName *string `pulumi:"keyName"`
-	// Arbitrary JSON to be associated with a key/value pair.
+	KeyName  *string `pulumi:"keyName"`
 	Metadata *string `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId *string `pulumi:"namespaceId"`
@@ -117,11 +115,10 @@ type workersKvState struct {
 }
 
 type WorkersKvState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName pulumi.StringPtrInput
-	// Arbitrary JSON to be associated with a key/value pair.
+	KeyName  pulumi.StringPtrInput
 	Metadata pulumi.StringPtrInput
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringPtrInput
@@ -134,11 +131,10 @@ func (WorkersKvState) ElementType() reflect.Type {
 }
 
 type workersKvArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName string `pulumi:"keyName"`
-	// Arbitrary JSON to be associated with a key/value pair.
+	KeyName  string  `pulumi:"keyName"`
 	Metadata *string `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
@@ -148,11 +144,10 @@ type workersKvArgs struct {
 
 // The set of arguments for constructing a WorkersKv resource.
 type WorkersKvArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName pulumi.StringInput
-	// Arbitrary JSON to be associated with a key/value pair.
+	KeyName  pulumi.StringInput
 	Metadata pulumi.StringPtrInput
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringInput
@@ -247,7 +242,7 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersKvOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -257,7 +252,6 @@ func (o WorkersKvOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
-// Arbitrary JSON to be associated with a key/value pair.
 func (o WorkersKvOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringPtrOutput { return v.Metadata }).(pulumi.StringPtrOutput)
 }

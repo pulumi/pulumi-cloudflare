@@ -50,6 +50,11 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      */
     private String interfaceAddress;
     /**
+     * @return A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    private String interfaceAddress6;
+    /**
      * @return The date and time the tunnel was last modified.
      * 
      */
@@ -124,6 +129,13 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         return this.interfaceAddress;
     }
     /**
+     * @return A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    public String interfaceAddress6() {
+        return this.interfaceAddress6;
+    }
+    /**
      * @return The date and time the tunnel was last modified.
      * 
      */
@@ -169,6 +181,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         private GetMagicWanIpsecTunnelIpsecTunnelHealthCheck healthCheck;
         private String id;
         private String interfaceAddress;
+        private String interfaceAddress6;
         private String modifiedOn;
         private String name;
         private GetMagicWanIpsecTunnelIpsecTunnelPskMetadata pskMetadata;
@@ -184,6 +197,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
     	      this.healthCheck = defaults.healthCheck;
     	      this.id = defaults.id;
     	      this.interfaceAddress = defaults.interfaceAddress;
+    	      this.interfaceAddress6 = defaults.interfaceAddress6;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.pskMetadata = defaults.pskMetadata;
@@ -255,6 +269,14 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
             return this;
         }
         @CustomType.Setter
+        public Builder interfaceAddress6(String interfaceAddress6) {
+            if (interfaceAddress6 == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "interfaceAddress6");
+            }
+            this.interfaceAddress6 = interfaceAddress6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder modifiedOn(String modifiedOn) {
             if (modifiedOn == null) {
               throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "modifiedOn");
@@ -296,6 +318,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
             _resultValue.healthCheck = healthCheck;
             _resultValue.id = id;
             _resultValue.interfaceAddress = interfaceAddress;
+            _resultValue.interfaceAddress6 = interfaceAddress6;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.pskMetadata = pskMetadata;

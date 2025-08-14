@@ -154,6 +154,21 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
+     * Your OAuth Client Secret
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return Your OAuth Client Secret
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
      * Should Cloudflare try to load authentication contexts from your account
      * 
      */
@@ -429,6 +444,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         this.certsUrl = $.certsUrl;
         this.claims = $.claims;
         this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.conditionalAccessEnabled = $.conditionalAccessEnabled;
         this.directoryId = $.directoryId;
         this.emailAttributeName = $.emailAttributeName;
@@ -674,6 +690,27 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param clientSecret Your OAuth Client Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret Your OAuth Client Secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
         /**

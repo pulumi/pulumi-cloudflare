@@ -229,14 +229,12 @@ class _AccessOrganizationState:
                  allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
                  auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_pages: Optional[pulumi.Input['AccessOrganizationCustomPagesArgs']] = None,
                  is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  login_design: Optional[pulumi.Input['AccessOrganizationLoginDesignArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
                  warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -261,8 +259,6 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "auth_domain", auth_domain)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
         if is_ui_read_only is not None:
@@ -275,8 +271,6 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
             pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
         if warp_auth_session_duration is not None:
@@ -331,15 +325,6 @@ class _AccessOrganizationState:
     @auto_redirect_to_identity.setter
     def auto_redirect_to_identity(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customPages")
@@ -403,15 +388,6 @@ class _AccessOrganizationState:
     @ui_read_only_toggle_reason.setter
     def ui_read_only_toggle_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ui_read_only_toggle_reason", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
@@ -551,8 +527,6 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
             __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessOrganization:AccessOrganization")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessOrganization, __self__).__init__(
@@ -569,14 +543,12 @@ class AccessOrganization(pulumi.CustomResource):
             allow_authenticate_via_warp: Optional[pulumi.Input[_builtins.bool]] = None,
             auth_domain: Optional[pulumi.Input[_builtins.str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             custom_pages: Optional[pulumi.Input[Union['AccessOrganizationCustomPagesArgs', 'AccessOrganizationCustomPagesArgsDict']]] = None,
             is_ui_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             login_design: Optional[pulumi.Input[Union['AccessOrganizationLoginDesignArgs', 'AccessOrganizationLoginDesignArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             session_duration: Optional[pulumi.Input[_builtins.str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             user_seat_expiration_inactive_time: Optional[pulumi.Input[_builtins.str]] = None,
             warp_auth_session_duration: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessOrganization':
@@ -606,14 +578,12 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["allow_authenticate_via_warp"] = allow_authenticate_via_warp
         __props__.__dict__["auth_domain"] = auth_domain
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_design"] = login_design
         __props__.__dict__["name"] = name
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
         __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
         __props__.__dict__["zone_id"] = zone_id
@@ -650,11 +620,6 @@ class AccessOrganization(pulumi.CustomResource):
         When set to `true`, users skip the identity provider selection step during login.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customPages")
@@ -694,11 +659,6 @@ class AccessOrganization(pulumi.CustomResource):
         A description of the reason why the UI read only field is being toggled.
         """
         return pulumi.get(self, "ui_read_only_toggle_reason")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="userSeatExpirationInactiveTime")

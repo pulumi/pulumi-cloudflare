@@ -69,7 +69,6 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
      * The certificate content.
      */
     public readonly certificate!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
     /**
      * The MD5 fingerprint of the certificate.
@@ -79,7 +78,6 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
      * The name of the certificate.
      */
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -101,11 +99,9 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["associatedHostnames"] = state ? state.associatedHostnames : undefined;
             resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessMtlsCertificateArgs | undefined;
@@ -120,10 +116,8 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
             resourceInputs["certificate"] = args ? args.certificate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate" }] };
@@ -148,7 +142,6 @@ export interface ZeroTrustAccessMtlsCertificateState {
      * The certificate content.
      */
     certificate?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     expiresOn?: pulumi.Input<string>;
     /**
      * The MD5 fingerprint of the certificate.
@@ -158,7 +151,6 @@ export interface ZeroTrustAccessMtlsCertificateState {
      * The name of the certificate.
      */
     name?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

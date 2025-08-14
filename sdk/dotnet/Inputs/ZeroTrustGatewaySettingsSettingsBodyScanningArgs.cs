@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Set the inspection mode to either `deep` or `shallow`.
+        /// Available values: "deep", "shallow".
         /// </summary>
         [Input("inspectionMode")]
         public Input<string>? InspectionMode { get; set; }

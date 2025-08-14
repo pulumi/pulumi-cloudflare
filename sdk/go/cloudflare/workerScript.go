@@ -36,8 +36,14 @@ type WorkerScript struct {
 	CompatibilityDate pulumi.StringOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker.
-	Content pulumi.StringOutput `pulumi:"content"`
+	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	Content pulumi.StringPtrOutput `pulumi:"content"`
+	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	ContentFile pulumi.StringPtrOutput `pulumi:"contentFile"`
+	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+	ContentSha256 pulumi.StringPtrOutput `pulumi:"contentSha256"`
+	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// When the script was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Hashed script content, can be used in a If-None-Match header when updating.
@@ -54,8 +60,6 @@ type WorkerScript struct {
 	Logpush pulumi.BoolOutput `pulumi:"logpush"`
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
-	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations WorkerScriptMigrationsOutput `pulumi:"migrations"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Observability settings for the Worker.
@@ -81,9 +85,6 @@ func NewWorkerScript(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Content == nil {
-		return nil, errors.New("invalid value for required argument 'Content'")
 	}
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
@@ -129,8 +130,14 @@ type workerScriptState struct {
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker.
+	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
 	Content *string `pulumi:"content"`
+	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	ContentFile *string `pulumi:"contentFile"`
+	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+	ContentSha256 *string `pulumi:"contentSha256"`
+	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+	ContentType *string `pulumi:"contentType"`
 	// When the script was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// Hashed script content, can be used in a If-None-Match header when updating.
@@ -147,8 +154,6 @@ type workerScriptState struct {
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
-	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
 	// When the script was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Observability settings for the Worker.
@@ -178,8 +183,14 @@ type WorkerScriptState struct {
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// Module or Service Worker contents of the Worker.
+	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
 	Content pulumi.StringPtrInput
+	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	ContentFile pulumi.StringPtrInput
+	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+	ContentSha256 pulumi.StringPtrInput
+	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+	ContentType pulumi.StringPtrInput
 	// When the script was created.
 	CreatedOn pulumi.StringPtrInput
 	// Hashed script content, can be used in a If-None-Match header when updating.
@@ -196,8 +207,6 @@ type WorkerScriptState struct {
 	Logpush pulumi.BoolPtrInput
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
-	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations WorkerScriptMigrationsPtrInput
 	// When the script was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Observability settings for the Worker.
@@ -231,8 +240,14 @@ type workerScriptArgs struct {
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker.
-	Content string `pulumi:"content"`
+	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	Content *string `pulumi:"content"`
+	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	ContentFile *string `pulumi:"contentFile"`
+	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+	ContentSha256 *string `pulumi:"contentSha256"`
+	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+	ContentType *string `pulumi:"contentType"`
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
 	KeepAssets *bool `pulumi:"keepAssets"`
 	// List of binding types to keep from previous_upload.
@@ -241,8 +256,6 @@ type workerScriptArgs struct {
 	Logpush *bool `pulumi:"logpush"`
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
-	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
 	// Observability settings for the Worker.
 	Observability *WorkerScriptObservability `pulumi:"observability"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -270,8 +283,14 @@ type WorkerScriptArgs struct {
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// Module or Service Worker contents of the Worker.
-	Content pulumi.StringInput
+	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	Content pulumi.StringPtrInput
+	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	ContentFile pulumi.StringPtrInput
+	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+	ContentSha256 pulumi.StringPtrInput
+	// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+	ContentType pulumi.StringPtrInput
 	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
 	KeepAssets pulumi.BoolPtrInput
 	// List of binding types to keep from previous_upload.
@@ -280,8 +299,6 @@ type WorkerScriptArgs struct {
 	Logpush pulumi.BoolPtrInput
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
-	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations WorkerScriptMigrationsPtrInput
 	// Observability settings for the Worker.
 	Observability WorkerScriptObservabilityPtrInput
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -412,9 +429,24 @@ func (o WorkerScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
-// Module or Service Worker contents of the Worker.
-func (o WorkerScriptOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+func (o WorkerScriptOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+func (o WorkerScriptOutput) ContentFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.ContentFile }).(pulumi.StringPtrOutput)
+}
+
+// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
+func (o WorkerScriptOutput) ContentSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.ContentSha256 }).(pulumi.StringPtrOutput)
+}
+
+// Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
+func (o WorkerScriptOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
 // When the script was created.
@@ -455,11 +487,6 @@ func (o WorkerScriptOutput) Logpush() pulumi.BoolOutput {
 // Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 func (o WorkerScriptOutput) MainModule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.MainModule }).(pulumi.StringPtrOutput)
-}
-
-// Migrations to apply for Durable Objects associated with this Worker.
-func (o WorkerScriptOutput) Migrations() WorkerScriptMigrationsOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptMigrationsOutput { return v.Migrations }).(WorkerScriptMigrationsOutput)
 }
 
 // When the script was last modified.

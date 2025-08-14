@@ -3,29 +3,39 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetUserAgentBlockingRuleFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetUserAgentBlockingRulePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetUserAgentBlockingRulePlainArgs Empty = new GetUserAgentBlockingRulePlainArgs();
 
+    @Import(name="filter")
+    private @Nullable GetUserAgentBlockingRuleFilter filter;
+
+    public Optional<GetUserAgentBlockingRuleFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
     /**
      * The unique identifier of the User Agent Blocking rule.
      * 
      */
-    @Import(name="uaRuleId", required=true)
-    private String uaRuleId;
+    @Import(name="uaRuleId")
+    private @Nullable String uaRuleId;
 
     /**
      * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    public String uaRuleId() {
-        return this.uaRuleId;
+    public Optional<String> uaRuleId() {
+        return Optional.ofNullable(this.uaRuleId);
     }
 
     /**
@@ -46,6 +56,7 @@ public final class GetUserAgentBlockingRulePlainArgs extends com.pulumi.resource
     private GetUserAgentBlockingRulePlainArgs() {}
 
     private GetUserAgentBlockingRulePlainArgs(GetUserAgentBlockingRulePlainArgs $) {
+        this.filter = $.filter;
         this.uaRuleId = $.uaRuleId;
         this.zoneId = $.zoneId;
     }
@@ -68,13 +79,18 @@ public final class GetUserAgentBlockingRulePlainArgs extends com.pulumi.resource
             $ = new GetUserAgentBlockingRulePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder filter(@Nullable GetUserAgentBlockingRuleFilter filter) {
+            $.filter = filter;
+            return this;
+        }
+
         /**
          * @param uaRuleId The unique identifier of the User Agent Blocking rule.
          * 
          * @return builder
          * 
          */
-        public Builder uaRuleId(String uaRuleId) {
+        public Builder uaRuleId(@Nullable String uaRuleId) {
             $.uaRuleId = uaRuleId;
             return this;
         }
@@ -91,9 +107,6 @@ public final class GetUserAgentBlockingRulePlainArgs extends com.pulumi.resource
         }
 
         public GetUserAgentBlockingRulePlainArgs build() {
-            if ($.uaRuleId == null) {
-                throw new MissingRequiredPropertyException("GetUserAgentBlockingRulePlainArgs", "uaRuleId");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("GetUserAgentBlockingRulePlainArgs", "zoneId");
             }

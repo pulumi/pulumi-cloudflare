@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Determines which browser ttl mode to use.
-        /// Available values: "respect*origin", "bypass*by*default", "override*origin".
+        /// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

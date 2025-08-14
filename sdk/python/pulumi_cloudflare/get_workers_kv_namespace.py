@@ -55,7 +55,7 @@ class GetWorkersKvNamespaceResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -136,7 +136,7 @@ def get_workers_kv_namespace(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
     __args__ = dict()
@@ -170,7 +170,7 @@ def get_workers_kv_namespace_output(account_id: Optional[pulumi.Input[_builtins.
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.str namespace_id: Namespace identifier tag.
     """
     __args__ = dict()

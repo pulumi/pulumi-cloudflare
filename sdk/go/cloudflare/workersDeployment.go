@@ -17,18 +17,17 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>'
+// $ pulumi import cloudflare:index/workersDeployment:WorkersDeployment example '<account_id>/<script_name>/<deployment_id>'
 // ```
 type WorkersDeployment struct {
 	pulumi.CustomResourceState
 
 	// Identifier.
-	AccountId   pulumi.StringOutput                    `pulumi:"accountId"`
-	Annotations WorkersDeploymentAnnotationsPtrOutput  `pulumi:"annotations"`
-	AuthorEmail pulumi.StringOutput                    `pulumi:"authorEmail"`
-	CreatedOn   pulumi.StringOutput                    `pulumi:"createdOn"`
-	Deployments WorkersDeploymentDeploymentArrayOutput `pulumi:"deployments"`
-	// Name of the script.
+	AccountId   pulumi.StringOutput                `pulumi:"accountId"`
+	Annotations WorkersDeploymentAnnotationsOutput `pulumi:"annotations"`
+	AuthorEmail pulumi.StringOutput                `pulumi:"authorEmail"`
+	CreatedOn   pulumi.StringOutput                `pulumi:"createdOn"`
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 	Source     pulumi.StringOutput `pulumi:"source"`
 	// Available values: "percentage".
@@ -83,8 +82,7 @@ type workersDeploymentState struct {
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	AuthorEmail *string                       `pulumi:"authorEmail"`
 	CreatedOn   *string                       `pulumi:"createdOn"`
-	Deployments []WorkersDeploymentDeployment `pulumi:"deployments"`
-	// Name of the script.
+	// Name of the script, used in URLs and route configuration.
 	ScriptName *string `pulumi:"scriptName"`
 	Source     *string `pulumi:"source"`
 	// Available values: "percentage".
@@ -98,8 +96,7 @@ type WorkersDeploymentState struct {
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	AuthorEmail pulumi.StringPtrInput
 	CreatedOn   pulumi.StringPtrInput
-	Deployments WorkersDeploymentDeploymentArrayInput
-	// Name of the script.
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringPtrInput
 	Source     pulumi.StringPtrInput
 	// Available values: "percentage".
@@ -115,7 +112,7 @@ type workersDeploymentArgs struct {
 	// Identifier.
 	AccountId   string                        `pulumi:"accountId"`
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
-	// Name of the script.
+	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
 	// Available values: "percentage".
 	Strategy string                     `pulumi:"strategy"`
@@ -127,7 +124,7 @@ type WorkersDeploymentArgs struct {
 	// Identifier.
 	AccountId   pulumi.StringInput
 	Annotations WorkersDeploymentAnnotationsPtrInput
-	// Name of the script.
+	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput
 	// Available values: "percentage".
 	Strategy pulumi.StringInput
@@ -226,8 +223,8 @@ func (o WorkersDeploymentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsPtrOutput {
-	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentAnnotationsPtrOutput { return v.Annotations }).(WorkersDeploymentAnnotationsPtrOutput)
+func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsOutput {
+	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentAnnotationsOutput { return v.Annotations }).(WorkersDeploymentAnnotationsOutput)
 }
 
 func (o WorkersDeploymentOutput) AuthorEmail() pulumi.StringOutput {
@@ -238,11 +235,7 @@ func (o WorkersDeploymentOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-func (o WorkersDeploymentOutput) Deployments() WorkersDeploymentDeploymentArrayOutput {
-	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentDeploymentArrayOutput { return v.Deployments }).(WorkersDeploymentDeploymentArrayOutput)
-}
-
-// Name of the script.
+// Name of the script, used in URLs and route configuration.
 func (o WorkersDeploymentOutput) ScriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }

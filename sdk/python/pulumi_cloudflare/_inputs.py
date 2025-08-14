@@ -67,8 +67,12 @@ __all__ = [
     'AccessApplicationPolicyExcludeIpArgsDict',
     'AccessApplicationPolicyExcludeIpListArgs',
     'AccessApplicationPolicyExcludeIpListArgsDict',
+    'AccessApplicationPolicyExcludeLinkedAppTokenArgs',
+    'AccessApplicationPolicyExcludeLinkedAppTokenArgsDict',
     'AccessApplicationPolicyExcludeLoginMethodArgs',
     'AccessApplicationPolicyExcludeLoginMethodArgsDict',
+    'AccessApplicationPolicyExcludeOidcArgs',
+    'AccessApplicationPolicyExcludeOidcArgsDict',
     'AccessApplicationPolicyExcludeOktaArgs',
     'AccessApplicationPolicyExcludeOktaArgsDict',
     'AccessApplicationPolicyExcludeSamlArgs',
@@ -113,8 +117,12 @@ __all__ = [
     'AccessApplicationPolicyIncludeIpArgsDict',
     'AccessApplicationPolicyIncludeIpListArgs',
     'AccessApplicationPolicyIncludeIpListArgsDict',
+    'AccessApplicationPolicyIncludeLinkedAppTokenArgs',
+    'AccessApplicationPolicyIncludeLinkedAppTokenArgsDict',
     'AccessApplicationPolicyIncludeLoginMethodArgs',
     'AccessApplicationPolicyIncludeLoginMethodArgsDict',
+    'AccessApplicationPolicyIncludeOidcArgs',
+    'AccessApplicationPolicyIncludeOidcArgsDict',
     'AccessApplicationPolicyIncludeOktaArgs',
     'AccessApplicationPolicyIncludeOktaArgsDict',
     'AccessApplicationPolicyIncludeSamlArgs',
@@ -159,8 +167,12 @@ __all__ = [
     'AccessApplicationPolicyRequireIpArgsDict',
     'AccessApplicationPolicyRequireIpListArgs',
     'AccessApplicationPolicyRequireIpListArgsDict',
+    'AccessApplicationPolicyRequireLinkedAppTokenArgs',
+    'AccessApplicationPolicyRequireLinkedAppTokenArgsDict',
     'AccessApplicationPolicyRequireLoginMethodArgs',
     'AccessApplicationPolicyRequireLoginMethodArgsDict',
+    'AccessApplicationPolicyRequireOidcArgs',
+    'AccessApplicationPolicyRequireOidcArgsDict',
     'AccessApplicationPolicyRequireOktaArgs',
     'AccessApplicationPolicyRequireOktaArgsDict',
     'AccessApplicationPolicyRequireSamlArgs',
@@ -231,8 +243,12 @@ __all__ = [
     'AccessGroupExcludeIpArgsDict',
     'AccessGroupExcludeIpListArgs',
     'AccessGroupExcludeIpListArgsDict',
+    'AccessGroupExcludeLinkedAppTokenArgs',
+    'AccessGroupExcludeLinkedAppTokenArgsDict',
     'AccessGroupExcludeLoginMethodArgs',
     'AccessGroupExcludeLoginMethodArgsDict',
+    'AccessGroupExcludeOidcArgs',
+    'AccessGroupExcludeOidcArgsDict',
     'AccessGroupExcludeOktaArgs',
     'AccessGroupExcludeOktaArgsDict',
     'AccessGroupExcludeSamlArgs',
@@ -277,8 +293,12 @@ __all__ = [
     'AccessGroupIncludeIpArgsDict',
     'AccessGroupIncludeIpListArgs',
     'AccessGroupIncludeIpListArgsDict',
+    'AccessGroupIncludeLinkedAppTokenArgs',
+    'AccessGroupIncludeLinkedAppTokenArgsDict',
     'AccessGroupIncludeLoginMethodArgs',
     'AccessGroupIncludeLoginMethodArgsDict',
+    'AccessGroupIncludeOidcArgs',
+    'AccessGroupIncludeOidcArgsDict',
     'AccessGroupIncludeOktaArgs',
     'AccessGroupIncludeOktaArgsDict',
     'AccessGroupIncludeSamlArgs',
@@ -323,8 +343,12 @@ __all__ = [
     'AccessGroupRequireIpArgsDict',
     'AccessGroupRequireIpListArgs',
     'AccessGroupRequireIpListArgsDict',
+    'AccessGroupRequireLinkedAppTokenArgs',
+    'AccessGroupRequireLinkedAppTokenArgsDict',
     'AccessGroupRequireLoginMethodArgs',
     'AccessGroupRequireLoginMethodArgsDict',
+    'AccessGroupRequireOidcArgs',
+    'AccessGroupRequireOidcArgsDict',
     'AccessGroupRequireOktaArgs',
     'AccessGroupRequireOktaArgsDict',
     'AccessGroupRequireSamlArgs',
@@ -383,8 +407,12 @@ __all__ = [
     'AccessPolicyExcludeIpArgsDict',
     'AccessPolicyExcludeIpListArgs',
     'AccessPolicyExcludeIpListArgsDict',
+    'AccessPolicyExcludeLinkedAppTokenArgs',
+    'AccessPolicyExcludeLinkedAppTokenArgsDict',
     'AccessPolicyExcludeLoginMethodArgs',
     'AccessPolicyExcludeLoginMethodArgsDict',
+    'AccessPolicyExcludeOidcArgs',
+    'AccessPolicyExcludeOidcArgsDict',
     'AccessPolicyExcludeOktaArgs',
     'AccessPolicyExcludeOktaArgsDict',
     'AccessPolicyExcludeSamlArgs',
@@ -429,8 +457,12 @@ __all__ = [
     'AccessPolicyIncludeIpArgsDict',
     'AccessPolicyIncludeIpListArgs',
     'AccessPolicyIncludeIpListArgsDict',
+    'AccessPolicyIncludeLinkedAppTokenArgs',
+    'AccessPolicyIncludeLinkedAppTokenArgsDict',
     'AccessPolicyIncludeLoginMethodArgs',
     'AccessPolicyIncludeLoginMethodArgsDict',
+    'AccessPolicyIncludeOidcArgs',
+    'AccessPolicyIncludeOidcArgsDict',
     'AccessPolicyIncludeOktaArgs',
     'AccessPolicyIncludeOktaArgsDict',
     'AccessPolicyIncludeSamlArgs',
@@ -475,8 +507,12 @@ __all__ = [
     'AccessPolicyRequireIpArgsDict',
     'AccessPolicyRequireIpListArgs',
     'AccessPolicyRequireIpListArgsDict',
+    'AccessPolicyRequireLinkedAppTokenArgs',
+    'AccessPolicyRequireLinkedAppTokenArgsDict',
     'AccessPolicyRequireLoginMethodArgs',
     'AccessPolicyRequireLoginMethodArgsDict',
+    'AccessPolicyRequireOidcArgs',
+    'AccessPolicyRequireOidcArgsDict',
     'AccessPolicyRequireOktaArgs',
     'AccessPolicyRequireOktaArgsDict',
     'AccessPolicyRequireSamlArgs',
@@ -751,52 +787,16 @@ __all__ = [
     'MagicTransitSiteLocationArgsDict',
     'MagicTransitSiteWanStaticAddressingArgs',
     'MagicTransitSiteWanStaticAddressingArgsDict',
-    'MagicWanGreTunnelGreTunnelArgs',
-    'MagicWanGreTunnelGreTunnelArgsDict',
-    'MagicWanGreTunnelGreTunnelHealthCheckArgs',
-    'MagicWanGreTunnelGreTunnelHealthCheckArgsDict',
-    'MagicWanGreTunnelGreTunnelHealthCheckTargetArgs',
-    'MagicWanGreTunnelGreTunnelHealthCheckTargetArgsDict',
     'MagicWanGreTunnelHealthCheckArgs',
     'MagicWanGreTunnelHealthCheckArgsDict',
     'MagicWanGreTunnelHealthCheckTargetArgs',
     'MagicWanGreTunnelHealthCheckTargetArgsDict',
-    'MagicWanGreTunnelModifiedGreTunnelArgs',
-    'MagicWanGreTunnelModifiedGreTunnelArgsDict',
-    'MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs',
-    'MagicWanGreTunnelModifiedGreTunnelHealthCheckArgsDict',
-    'MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs',
-    'MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgsDict',
     'MagicWanIpsecTunnelHealthCheckArgs',
     'MagicWanIpsecTunnelHealthCheckArgsDict',
     'MagicWanIpsecTunnelHealthCheckTargetArgs',
     'MagicWanIpsecTunnelHealthCheckTargetArgsDict',
-    'MagicWanIpsecTunnelIpsecTunnelArgs',
-    'MagicWanIpsecTunnelIpsecTunnelArgsDict',
-    'MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs',
-    'MagicWanIpsecTunnelIpsecTunnelHealthCheckArgsDict',
-    'MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs',
-    'MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgsDict',
-    'MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs',
-    'MagicWanIpsecTunnelIpsecTunnelPskMetadataArgsDict',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelArgs',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelArgsDict',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgsDict',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgsDict',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs',
-    'MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgsDict',
     'MagicWanIpsecTunnelPskMetadataArgs',
     'MagicWanIpsecTunnelPskMetadataArgsDict',
-    'MagicWanStaticRouteModifiedRouteArgs',
-    'MagicWanStaticRouteModifiedRouteArgsDict',
-    'MagicWanStaticRouteModifiedRouteScopeArgs',
-    'MagicWanStaticRouteModifiedRouteScopeArgsDict',
-    'MagicWanStaticRouteRouteArgs',
-    'MagicWanStaticRouteRouteArgsDict',
-    'MagicWanStaticRouteRouteScopeArgs',
-    'MagicWanStaticRouteRouteScopeArgsDict',
     'MagicWanStaticRouteScopeArgs',
     'MagicWanStaticRouteScopeArgsDict',
     'ManagedHeadersManagedRequestHeaderArgs',
@@ -1107,14 +1107,6 @@ __all__ = [
     'SpectrumApplicationEdgeIpsArgsDict',
     'SpectrumApplicationOriginDnsArgs',
     'SpectrumApplicationOriginDnsArgsDict',
-    'StaticRouteModifiedRouteArgs',
-    'StaticRouteModifiedRouteArgsDict',
-    'StaticRouteModifiedRouteScopeArgs',
-    'StaticRouteModifiedRouteScopeArgsDict',
-    'StaticRouteRouteArgs',
-    'StaticRouteRouteArgsDict',
-    'StaticRouteRouteScopeArgs',
-    'StaticRouteRouteScopeArgsDict',
     'StaticRouteScopeArgs',
     'StaticRouteScopeArgsDict',
     'StreamInputArgs',
@@ -1147,8 +1139,6 @@ __all__ = [
     'TeamsAccountSettingsAntivirusArgsDict',
     'TeamsAccountSettingsAntivirusNotificationSettingsArgs',
     'TeamsAccountSettingsAntivirusNotificationSettingsArgsDict',
-    'TeamsAccountSettingsAppControlSettingsArgs',
-    'TeamsAccountSettingsAppControlSettingsArgsDict',
     'TeamsAccountSettingsBlockPageArgs',
     'TeamsAccountSettingsBlockPageArgsDict',
     'TeamsAccountSettingsBodyScanningArgs',
@@ -1165,6 +1155,8 @@ __all__ = [
     'TeamsAccountSettingsFipsArgsDict',
     'TeamsAccountSettingsHostSelectorArgs',
     'TeamsAccountSettingsHostSelectorArgsDict',
+    'TeamsAccountSettingsInspectionArgs',
+    'TeamsAccountSettingsInspectionArgsDict',
     'TeamsAccountSettingsProtocolDetectionArgs',
     'TeamsAccountSettingsProtocolDetectionArgsDict',
     'TeamsAccountSettingsSandboxArgs',
@@ -1269,18 +1261,6 @@ __all__ = [
     'WorkerScriptBindingOutboundArgsDict',
     'WorkerScriptBindingOutboundWorkerArgs',
     'WorkerScriptBindingOutboundWorkerArgsDict',
-    'WorkerScriptMigrationsArgs',
-    'WorkerScriptMigrationsArgsDict',
-    'WorkerScriptMigrationsRenamedClassArgs',
-    'WorkerScriptMigrationsRenamedClassArgsDict',
-    'WorkerScriptMigrationsStepArgs',
-    'WorkerScriptMigrationsStepArgsDict',
-    'WorkerScriptMigrationsStepRenamedClassArgs',
-    'WorkerScriptMigrationsStepRenamedClassArgsDict',
-    'WorkerScriptMigrationsStepTransferredClassArgs',
-    'WorkerScriptMigrationsStepTransferredClassArgsDict',
-    'WorkerScriptMigrationsTransferredClassArgs',
-    'WorkerScriptMigrationsTransferredClassArgsDict',
     'WorkerScriptObservabilityArgs',
     'WorkerScriptObservabilityArgsDict',
     'WorkerScriptObservabilityLogsArgs',
@@ -1293,12 +1273,6 @@ __all__ = [
     'WorkersCronTriggerScheduleArgsDict',
     'WorkersDeploymentAnnotationsArgs',
     'WorkersDeploymentAnnotationsArgsDict',
-    'WorkersDeploymentDeploymentArgs',
-    'WorkersDeploymentDeploymentArgsDict',
-    'WorkersDeploymentDeploymentAnnotationsArgs',
-    'WorkersDeploymentDeploymentAnnotationsArgsDict',
-    'WorkersDeploymentDeploymentVersionArgs',
-    'WorkersDeploymentDeploymentVersionArgsDict',
     'WorkersDeploymentVersionArgs',
     'WorkersDeploymentVersionArgsDict',
     'WorkersScriptAssetsArgs',
@@ -1311,18 +1285,6 @@ __all__ = [
     'WorkersScriptBindingOutboundArgsDict',
     'WorkersScriptBindingOutboundWorkerArgs',
     'WorkersScriptBindingOutboundWorkerArgsDict',
-    'WorkersScriptMigrationsArgs',
-    'WorkersScriptMigrationsArgsDict',
-    'WorkersScriptMigrationsRenamedClassArgs',
-    'WorkersScriptMigrationsRenamedClassArgsDict',
-    'WorkersScriptMigrationsStepArgs',
-    'WorkersScriptMigrationsStepArgsDict',
-    'WorkersScriptMigrationsStepRenamedClassArgs',
-    'WorkersScriptMigrationsStepRenamedClassArgsDict',
-    'WorkersScriptMigrationsStepTransferredClassArgs',
-    'WorkersScriptMigrationsStepTransferredClassArgsDict',
-    'WorkersScriptMigrationsTransferredClassArgs',
-    'WorkersScriptMigrationsTransferredClassArgsDict',
     'WorkersScriptObservabilityArgs',
     'WorkersScriptObservabilityArgsDict',
     'WorkersScriptObservabilityLogsArgs',
@@ -1383,8 +1345,12 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyExcludeIpArgsDict',
     'ZeroTrustAccessApplicationPolicyExcludeIpListArgs',
     'ZeroTrustAccessApplicationPolicyExcludeIpListArgsDict',
+    'ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs',
+    'ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs',
     'ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgsDict',
+    'ZeroTrustAccessApplicationPolicyExcludeOidcArgs',
+    'ZeroTrustAccessApplicationPolicyExcludeOidcArgsDict',
     'ZeroTrustAccessApplicationPolicyExcludeOktaArgs',
     'ZeroTrustAccessApplicationPolicyExcludeOktaArgsDict',
     'ZeroTrustAccessApplicationPolicyExcludeSamlArgs',
@@ -1429,8 +1395,12 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyIncludeIpArgsDict',
     'ZeroTrustAccessApplicationPolicyIncludeIpListArgs',
     'ZeroTrustAccessApplicationPolicyIncludeIpListArgsDict',
+    'ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs',
+    'ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs',
     'ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgsDict',
+    'ZeroTrustAccessApplicationPolicyIncludeOidcArgs',
+    'ZeroTrustAccessApplicationPolicyIncludeOidcArgsDict',
     'ZeroTrustAccessApplicationPolicyIncludeOktaArgs',
     'ZeroTrustAccessApplicationPolicyIncludeOktaArgsDict',
     'ZeroTrustAccessApplicationPolicyIncludeSamlArgs',
@@ -1475,8 +1445,12 @@ __all__ = [
     'ZeroTrustAccessApplicationPolicyRequireIpArgsDict',
     'ZeroTrustAccessApplicationPolicyRequireIpListArgs',
     'ZeroTrustAccessApplicationPolicyRequireIpListArgsDict',
+    'ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs',
+    'ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgsDict',
     'ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs',
     'ZeroTrustAccessApplicationPolicyRequireLoginMethodArgsDict',
+    'ZeroTrustAccessApplicationPolicyRequireOidcArgs',
+    'ZeroTrustAccessApplicationPolicyRequireOidcArgsDict',
     'ZeroTrustAccessApplicationPolicyRequireOktaArgs',
     'ZeroTrustAccessApplicationPolicyRequireOktaArgsDict',
     'ZeroTrustAccessApplicationPolicyRequireSamlArgs',
@@ -1547,8 +1521,12 @@ __all__ = [
     'ZeroTrustAccessGroupExcludeIpArgsDict',
     'ZeroTrustAccessGroupExcludeIpListArgs',
     'ZeroTrustAccessGroupExcludeIpListArgsDict',
+    'ZeroTrustAccessGroupExcludeLinkedAppTokenArgs',
+    'ZeroTrustAccessGroupExcludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessGroupExcludeLoginMethodArgs',
     'ZeroTrustAccessGroupExcludeLoginMethodArgsDict',
+    'ZeroTrustAccessGroupExcludeOidcArgs',
+    'ZeroTrustAccessGroupExcludeOidcArgsDict',
     'ZeroTrustAccessGroupExcludeOktaArgs',
     'ZeroTrustAccessGroupExcludeOktaArgsDict',
     'ZeroTrustAccessGroupExcludeSamlArgs',
@@ -1593,8 +1571,12 @@ __all__ = [
     'ZeroTrustAccessGroupIncludeIpArgsDict',
     'ZeroTrustAccessGroupIncludeIpListArgs',
     'ZeroTrustAccessGroupIncludeIpListArgsDict',
+    'ZeroTrustAccessGroupIncludeLinkedAppTokenArgs',
+    'ZeroTrustAccessGroupIncludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessGroupIncludeLoginMethodArgs',
     'ZeroTrustAccessGroupIncludeLoginMethodArgsDict',
+    'ZeroTrustAccessGroupIncludeOidcArgs',
+    'ZeroTrustAccessGroupIncludeOidcArgsDict',
     'ZeroTrustAccessGroupIncludeOktaArgs',
     'ZeroTrustAccessGroupIncludeOktaArgsDict',
     'ZeroTrustAccessGroupIncludeSamlArgs',
@@ -1639,8 +1621,12 @@ __all__ = [
     'ZeroTrustAccessGroupRequireIpArgsDict',
     'ZeroTrustAccessGroupRequireIpListArgs',
     'ZeroTrustAccessGroupRequireIpListArgsDict',
+    'ZeroTrustAccessGroupRequireLinkedAppTokenArgs',
+    'ZeroTrustAccessGroupRequireLinkedAppTokenArgsDict',
     'ZeroTrustAccessGroupRequireLoginMethodArgs',
     'ZeroTrustAccessGroupRequireLoginMethodArgsDict',
+    'ZeroTrustAccessGroupRequireOidcArgs',
+    'ZeroTrustAccessGroupRequireOidcArgsDict',
     'ZeroTrustAccessGroupRequireOktaArgs',
     'ZeroTrustAccessGroupRequireOktaArgsDict',
     'ZeroTrustAccessGroupRequireSamlArgs',
@@ -1701,8 +1687,12 @@ __all__ = [
     'ZeroTrustAccessPolicyExcludeIpArgsDict',
     'ZeroTrustAccessPolicyExcludeIpListArgs',
     'ZeroTrustAccessPolicyExcludeIpListArgsDict',
+    'ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs',
+    'ZeroTrustAccessPolicyExcludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessPolicyExcludeLoginMethodArgs',
     'ZeroTrustAccessPolicyExcludeLoginMethodArgsDict',
+    'ZeroTrustAccessPolicyExcludeOidcArgs',
+    'ZeroTrustAccessPolicyExcludeOidcArgsDict',
     'ZeroTrustAccessPolicyExcludeOktaArgs',
     'ZeroTrustAccessPolicyExcludeOktaArgsDict',
     'ZeroTrustAccessPolicyExcludeSamlArgs',
@@ -1747,8 +1737,12 @@ __all__ = [
     'ZeroTrustAccessPolicyIncludeIpArgsDict',
     'ZeroTrustAccessPolicyIncludeIpListArgs',
     'ZeroTrustAccessPolicyIncludeIpListArgsDict',
+    'ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs',
+    'ZeroTrustAccessPolicyIncludeLinkedAppTokenArgsDict',
     'ZeroTrustAccessPolicyIncludeLoginMethodArgs',
     'ZeroTrustAccessPolicyIncludeLoginMethodArgsDict',
+    'ZeroTrustAccessPolicyIncludeOidcArgs',
+    'ZeroTrustAccessPolicyIncludeOidcArgsDict',
     'ZeroTrustAccessPolicyIncludeOktaArgs',
     'ZeroTrustAccessPolicyIncludeOktaArgsDict',
     'ZeroTrustAccessPolicyIncludeSamlArgs',
@@ -1793,8 +1787,12 @@ __all__ = [
     'ZeroTrustAccessPolicyRequireIpArgsDict',
     'ZeroTrustAccessPolicyRequireIpListArgs',
     'ZeroTrustAccessPolicyRequireIpListArgsDict',
+    'ZeroTrustAccessPolicyRequireLinkedAppTokenArgs',
+    'ZeroTrustAccessPolicyRequireLinkedAppTokenArgsDict',
     'ZeroTrustAccessPolicyRequireLoginMethodArgs',
     'ZeroTrustAccessPolicyRequireLoginMethodArgsDict',
+    'ZeroTrustAccessPolicyRequireOidcArgs',
+    'ZeroTrustAccessPolicyRequireOidcArgsDict',
     'ZeroTrustAccessPolicyRequireOktaArgs',
     'ZeroTrustAccessPolicyRequireOktaArgsDict',
     'ZeroTrustAccessPolicyRequireSamlArgs',
@@ -1837,6 +1835,10 @@ __all__ = [
     'ZeroTrustDexTestDataArgsDict',
     'ZeroTrustDexTestTargetPolicyArgs',
     'ZeroTrustDexTestTargetPolicyArgsDict',
+    'ZeroTrustDlpCustomEntryConfidenceArgs',
+    'ZeroTrustDlpCustomEntryConfidenceArgsDict',
+    'ZeroTrustDlpCustomEntryPatternArgs',
+    'ZeroTrustDlpCustomEntryPatternArgsDict',
     'ZeroTrustDlpCustomProfileContextAwarenessArgs',
     'ZeroTrustDlpCustomProfileContextAwarenessArgsDict',
     'ZeroTrustDlpCustomProfileContextAwarenessSkipArgs',
@@ -1861,6 +1863,8 @@ __all__ = [
     'ZeroTrustDlpEntryConfidenceArgsDict',
     'ZeroTrustDlpEntryPatternArgs',
     'ZeroTrustDlpEntryPatternArgsDict',
+    'ZeroTrustDlpPredefinedEntryConfidenceArgs',
+    'ZeroTrustDlpPredefinedEntryConfidenceArgsDict',
     'ZeroTrustDlpPredefinedProfileContextAwarenessArgs',
     'ZeroTrustDlpPredefinedProfileContextAwarenessArgsDict',
     'ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs',
@@ -1937,8 +1941,6 @@ __all__ = [
     'ZeroTrustGatewaySettingsSettingsAntivirusArgsDict',
     'ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs',
     'ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgsDict',
-    'ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs',
-    'ZeroTrustGatewaySettingsSettingsAppControlSettingsArgsDict',
     'ZeroTrustGatewaySettingsSettingsBlockPageArgs',
     'ZeroTrustGatewaySettingsSettingsBlockPageArgsDict',
     'ZeroTrustGatewaySettingsSettingsBodyScanningArgs',
@@ -1955,6 +1957,8 @@ __all__ = [
     'ZeroTrustGatewaySettingsSettingsFipsArgsDict',
     'ZeroTrustGatewaySettingsSettingsHostSelectorArgs',
     'ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict',
+    'ZeroTrustGatewaySettingsSettingsInspectionArgs',
+    'ZeroTrustGatewaySettingsSettingsInspectionArgsDict',
     'ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs',
     'ZeroTrustGatewaySettingsSettingsProtocolDetectionArgsDict',
     'ZeroTrustGatewaySettingsSettingsSandboxArgs',
@@ -1987,6 +1991,8 @@ __all__ = [
     'ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgsDict',
     'ZeroTrustTunnelCloudflaredConnectionArgs',
     'ZeroTrustTunnelCloudflaredConnectionArgsDict',
+    'ZeroTrustTunnelWarpConnectorConnectionArgs',
+    'ZeroTrustTunnelWarpConnectorConnectionArgsDict',
     'ZoneAccountArgs',
     'ZoneAccountArgsDict',
     'ZoneCacheVariantsValueArgs',
@@ -2081,6 +2087,8 @@ __all__ = [
     'GetSchemaValidationSchemasFilterArgsDict',
     'GetTurnstileWidgetFilterArgs',
     'GetTurnstileWidgetFilterArgsDict',
+    'GetUserAgentBlockingRuleFilterArgs',
+    'GetUserAgentBlockingRuleFilterArgsDict',
     'GetWebAnalyticsSiteFilterArgs',
     'GetWebAnalyticsSiteFilterArgsDict',
     'GetWorkersCustomDomainFilterArgs',
@@ -2105,6 +2113,8 @@ __all__ = [
     'GetZeroTrustTunnelCloudflaredRouteFilterArgsDict',
     'GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs',
     'GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgsDict',
+    'GetZeroTrustTunnelWarpConnectorFilterArgs',
+    'GetZeroTrustTunnelWarpConnectorFilterArgsDict',
     'GetZoneFilterArgs',
     'GetZoneFilterArgsDict',
     'GetZoneFilterAccountArgs',
@@ -2890,7 +2900,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgsDict']]
@@ -2918,7 +2930,9 @@ class AccessApplicationPolicyExcludeArgs:
                  gsuite: Optional[pulumi.Input['AccessApplicationPolicyExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessApplicationPolicyExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessApplicationPolicyExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessApplicationPolicyExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessApplicationPolicyExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessApplicationPolicyExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessApplicationPolicyExcludeServiceTokenArgs']] = None):
@@ -2962,8 +2976,12 @@ class AccessApplicationPolicyExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -3140,6 +3158,15 @@ class AccessApplicationPolicyExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -3147,6 +3174,15 @@ class AccessApplicationPolicyExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessApplicationPolicyExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessApplicationPolicyExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3812,6 +3848,37 @@ class AccessApplicationPolicyExcludeIpListArgs:
 
 
 if not MYPY:
+    class AccessApplicationPolicyExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessApplicationPolicyExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessApplicationPolicyExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -3840,6 +3907,75 @@ class AccessApplicationPolicyExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessApplicationPolicyExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -4018,7 +4154,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgsDict']]
@@ -4046,7 +4184,9 @@ class AccessApplicationPolicyIncludeArgs:
                  gsuite: Optional[pulumi.Input['AccessApplicationPolicyIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessApplicationPolicyIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessApplicationPolicyIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessApplicationPolicyIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessApplicationPolicyIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessApplicationPolicyIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessApplicationPolicyIncludeServiceTokenArgs']] = None):
@@ -4090,8 +4230,12 @@ class AccessApplicationPolicyIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -4268,6 +4412,15 @@ class AccessApplicationPolicyIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -4275,6 +4428,15 @@ class AccessApplicationPolicyIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessApplicationPolicyIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessApplicationPolicyIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4940,6 +5102,37 @@ class AccessApplicationPolicyIncludeIpListArgs:
 
 
 if not MYPY:
+    class AccessApplicationPolicyIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessApplicationPolicyIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessApplicationPolicyIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -4968,6 +5161,75 @@ class AccessApplicationPolicyIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessApplicationPolicyIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -5146,7 +5408,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessApplicationPolicyRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessApplicationPolicyRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessApplicationPolicyRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessApplicationPolicyRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessApplicationPolicyRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessApplicationPolicyRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgsDict']]
@@ -5174,7 +5438,9 @@ class AccessApplicationPolicyRequireArgs:
                  gsuite: Optional[pulumi.Input['AccessApplicationPolicyRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessApplicationPolicyRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessApplicationPolicyRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessApplicationPolicyRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessApplicationPolicyRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessApplicationPolicyRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessApplicationPolicyRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessApplicationPolicyRequireServiceTokenArgs']] = None):
@@ -5218,8 +5484,12 @@ class AccessApplicationPolicyRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -5396,6 +5666,15 @@ class AccessApplicationPolicyRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -5403,6 +5682,15 @@ class AccessApplicationPolicyRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessApplicationPolicyRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessApplicationPolicyRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -6068,6 +6356,37 @@ class AccessApplicationPolicyRequireIpListArgs:
 
 
 if not MYPY:
+    class AccessApplicationPolicyRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessApplicationPolicyRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessApplicationPolicyRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -6096,6 +6415,75 @@ class AccessApplicationPolicyRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessApplicationPolicyRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessApplicationPolicyRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessApplicationPolicyRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -7699,7 +8087,7 @@ if not MYPY:
         protocol: pulumi.Input[_builtins.str]
         """
         The communication protocol your application secures.
-        Available values: "SSH".
+        Available values: "SSH", "RDP".
         """
         target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]
         """
@@ -7717,7 +8105,7 @@ class AccessApplicationTargetCriteriaArgs:
         """
         :param pulumi.Input[_builtins.int] port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         :param pulumi.Input[_builtins.str] protocol: The communication protocol your application secures.
-               Available values: "SSH".
+               Available values: "SSH", "RDP".
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Contains a map of target attribute keys to target attribute values.
         """
         pulumi.set(__self__, "port", port)
@@ -7741,7 +8129,7 @@ class AccessApplicationTargetCriteriaArgs:
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
         The communication protocol your application secures.
-        Available values: "SSH".
+        Available values: "SSH", "RDP".
         """
         return pulumi.get(self, "protocol")
 
@@ -7788,7 +8176,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessGroupExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessGroupExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessGroupExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessGroupExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessGroupExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessGroupExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessGroupExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessGroupExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessGroupExcludeServiceTokenArgsDict']]
@@ -7816,7 +8206,9 @@ class AccessGroupExcludeArgs:
                  gsuite: Optional[pulumi.Input['AccessGroupExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessGroupExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessGroupExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessGroupExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessGroupExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessGroupExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessGroupExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessGroupExcludeServiceTokenArgs']] = None):
@@ -7860,8 +8252,12 @@ class AccessGroupExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -8038,6 +8434,15 @@ class AccessGroupExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessGroupExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessGroupExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -8045,6 +8450,15 @@ class AccessGroupExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessGroupExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessGroupExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessGroupExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -8710,6 +9124,37 @@ class AccessGroupExcludeIpListArgs:
 
 
 if not MYPY:
+    class AccessGroupExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessGroupExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessGroupExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -8738,6 +9183,75 @@ class AccessGroupExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessGroupExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -8916,7 +9430,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessGroupIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessGroupIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessGroupIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessGroupIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessGroupIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessGroupIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessGroupIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessGroupIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessGroupIncludeServiceTokenArgsDict']]
@@ -8944,7 +9460,9 @@ class AccessGroupIncludeArgs:
                  gsuite: Optional[pulumi.Input['AccessGroupIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessGroupIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessGroupIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessGroupIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessGroupIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessGroupIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessGroupIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessGroupIncludeServiceTokenArgs']] = None):
@@ -8988,8 +9506,12 @@ class AccessGroupIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -9166,6 +9688,15 @@ class AccessGroupIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessGroupIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessGroupIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -9173,6 +9704,15 @@ class AccessGroupIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessGroupIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessGroupIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessGroupIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9838,6 +10378,37 @@ class AccessGroupIncludeIpListArgs:
 
 
 if not MYPY:
+    class AccessGroupIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessGroupIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessGroupIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -9866,6 +10437,75 @@ class AccessGroupIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessGroupIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -10044,7 +10684,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessGroupRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessGroupRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessGroupRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessGroupRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessGroupRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessGroupRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessGroupRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessGroupRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessGroupRequireServiceTokenArgsDict']]
@@ -10072,7 +10714,9 @@ class AccessGroupRequireArgs:
                  gsuite: Optional[pulumi.Input['AccessGroupRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessGroupRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessGroupRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessGroupRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessGroupRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessGroupRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessGroupRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessGroupRequireServiceTokenArgs']] = None):
@@ -10116,8 +10760,12 @@ class AccessGroupRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -10294,6 +10942,15 @@ class AccessGroupRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessGroupRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessGroupRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -10301,6 +10958,15 @@ class AccessGroupRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessGroupRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessGroupRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessGroupRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -10966,6 +11632,37 @@ class AccessGroupRequireIpListArgs:
 
 
 if not MYPY:
+    class AccessGroupRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessGroupRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessGroupRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -10994,6 +11691,75 @@ class AccessGroupRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessGroupRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessGroupRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessGroupRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -11184,6 +11950,10 @@ if not MYPY:
         """
         Your OAuth Client ID
         """
+        client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Your OAuth Client Secret
+        """
         conditional_access_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Should Cloudflare try to load authentication contexts from your account
@@ -11269,6 +12039,7 @@ class AccessIdentityProviderConfigArgs:
                  certs_url: Optional[pulumi.Input[_builtins.str]] = None,
                  claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  conditional_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  email_attribute_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -11297,6 +12068,7 @@ class AccessIdentityProviderConfigArgs:
         :param pulumi.Input[_builtins.str] certs_url: The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] claims: Custom claims
         :param pulumi.Input[_builtins.str] client_id: Your OAuth Client ID
+        :param pulumi.Input[_builtins.str] client_secret: Your OAuth Client Secret
         :param pulumi.Input[_builtins.bool] conditional_access_enabled: Should Cloudflare try to load authentication contexts from your account
         :param pulumi.Input[_builtins.str] directory_id: Your Azure directory uuid
         :param pulumi.Input[_builtins.str] email_attribute_name: The attribute name for email in the SAML response.
@@ -11334,6 +12106,8 @@ class AccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "claims", claims)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if conditional_access_enabled is not None:
             pulumi.set(__self__, "conditional_access_enabled", conditional_access_enabled)
         if directory_id is not None:
@@ -11478,6 +12252,18 @@ class AccessIdentityProviderConfigArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Your OAuth Client Secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionalAccessEnabled")
@@ -12211,7 +12997,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessPolicyExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessPolicyExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessPolicyExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessPolicyExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessPolicyExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessPolicyExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessPolicyExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessPolicyExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessPolicyExcludeServiceTokenArgsDict']]
@@ -12239,7 +13027,9 @@ class AccessPolicyExcludeArgs:
                  gsuite: Optional[pulumi.Input['AccessPolicyExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessPolicyExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessPolicyExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessPolicyExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessPolicyExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessPolicyExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessPolicyExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessPolicyExcludeServiceTokenArgs']] = None):
@@ -12283,8 +13073,12 @@ class AccessPolicyExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -12461,6 +13255,15 @@ class AccessPolicyExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessPolicyExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessPolicyExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -12468,6 +13271,15 @@ class AccessPolicyExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessPolicyExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessPolicyExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessPolicyExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -13133,6 +13945,37 @@ class AccessPolicyExcludeIpListArgs:
 
 
 if not MYPY:
+    class AccessPolicyExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessPolicyExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessPolicyExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -13161,6 +14004,75 @@ class AccessPolicyExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessPolicyExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -13339,7 +14251,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessPolicyIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessPolicyIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessPolicyIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessPolicyIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessPolicyIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessPolicyIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessPolicyIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessPolicyIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessPolicyIncludeServiceTokenArgsDict']]
@@ -13367,7 +14281,9 @@ class AccessPolicyIncludeArgs:
                  gsuite: Optional[pulumi.Input['AccessPolicyIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessPolicyIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessPolicyIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessPolicyIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessPolicyIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessPolicyIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessPolicyIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessPolicyIncludeServiceTokenArgs']] = None):
@@ -13411,8 +14327,12 @@ class AccessPolicyIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -13589,6 +14509,15 @@ class AccessPolicyIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessPolicyIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessPolicyIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -13596,6 +14525,15 @@ class AccessPolicyIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessPolicyIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessPolicyIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessPolicyIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -14261,6 +15199,37 @@ class AccessPolicyIncludeIpListArgs:
 
 
 if not MYPY:
+    class AccessPolicyIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessPolicyIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessPolicyIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -14289,6 +15258,75 @@ class AccessPolicyIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessPolicyIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -14467,7 +15505,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['AccessPolicyRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['AccessPolicyRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['AccessPolicyRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['AccessPolicyRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['AccessPolicyRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['AccessPolicyRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['AccessPolicyRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['AccessPolicyRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['AccessPolicyRequireServiceTokenArgsDict']]
@@ -14495,7 +15535,9 @@ class AccessPolicyRequireArgs:
                  gsuite: Optional[pulumi.Input['AccessPolicyRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['AccessPolicyRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['AccessPolicyRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['AccessPolicyRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['AccessPolicyRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['AccessPolicyRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['AccessPolicyRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['AccessPolicyRequireServiceTokenArgs']] = None):
@@ -14539,8 +15581,12 @@ class AccessPolicyRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -14717,6 +15763,15 @@ class AccessPolicyRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['AccessPolicyRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['AccessPolicyRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -14724,6 +15779,15 @@ class AccessPolicyRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['AccessPolicyRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['AccessPolicyRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['AccessPolicyRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -15389,6 +16453,37 @@ class AccessPolicyRequireIpListArgs:
 
 
 if not MYPY:
+    class AccessPolicyRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    AccessPolicyRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class AccessPolicyRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -15417,6 +16512,75 @@ class AccessPolicyRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class AccessPolicyRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    AccessPolicyRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccessPolicyRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -21101,8 +22265,8 @@ if not MYPY:
     class DlpCustomProfileEntryArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         name: pulumi.Input[_builtins.str]
-        pattern: NotRequired[pulumi.Input['DlpCustomProfileEntryPatternArgsDict']]
-        words: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        pattern: pulumi.Input['DlpCustomProfileEntryPatternArgsDict']
+        entry_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     DlpCustomProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -21111,14 +22275,13 @@ class DlpCustomProfileEntryArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
-                 pattern: Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']] = None,
-                 words: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 pattern: pulumi.Input['DlpCustomProfileEntryPatternArgs'],
+                 entry_id: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
-        if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
-        if words is not None:
-            pulumi.set(__self__, "words", words)
+        pulumi.set(__self__, "pattern", pattern)
+        if entry_id is not None:
+            pulumi.set(__self__, "entry_id", entry_id)
 
     @_builtins.property
     @pulumi.getter
@@ -21140,21 +22303,21 @@ class DlpCustomProfileEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']]:
+    def pattern(self) -> pulumi.Input['DlpCustomProfileEntryPatternArgs']:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input['DlpCustomProfileEntryPatternArgs']]):
+    def pattern(self, value: pulumi.Input['DlpCustomProfileEntryPatternArgs']):
         pulumi.set(self, "pattern", value)
 
     @_builtins.property
-    @pulumi.getter
-    def words(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "words")
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "entry_id")
 
-    @words.setter
-    def words(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "words", value)
+    @entry_id.setter
+    def entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_id", value)
 
 
 if not MYPY:
@@ -21211,7 +22374,7 @@ if not MYPY:
         entry_id: pulumi.Input[_builtins.str]
         entry_type: pulumi.Input[_builtins.str]
         """
-        Available values: "custom", "predefined", "integration", "exact_data".
+        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
 elif False:
     DlpCustomProfileSharedEntryArgsDict: TypeAlias = Mapping[str, Any]
@@ -21223,7 +22386,7 @@ class DlpCustomProfileSharedEntryArgs:
                  entry_id: pulumi.Input[_builtins.str],
                  entry_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] entry_type: Available values: "custom", "predefined", "integration", "exact_data".
+        :param pulumi.Input[_builtins.str] entry_type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "entry_id", entry_id)
@@ -21251,7 +22414,7 @@ class DlpCustomProfileSharedEntryArgs:
     @pulumi.getter(name="entryType")
     def entry_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Available values: "custom", "predefined", "integration", "exact_data".
+        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
         return pulumi.get(self, "entry_type")
 
@@ -24315,14 +25478,24 @@ class KeylessCertificateTunnelArgs:
 if not MYPY:
     class ListItemHostnameArgsDict(TypedDict):
         url_hostname: pulumi.Input[_builtins.str]
+        exclude_exact_hostname: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+        """
 elif False:
     ListItemHostnameArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ListItemHostnameArgs:
     def __init__(__self__, *,
-                 url_hostname: pulumi.Input[_builtins.str]):
+                 url_hostname: pulumi.Input[_builtins.str],
+                 exclude_exact_hostname: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] exclude_exact_hostname: Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+        """
         pulumi.set(__self__, "url_hostname", url_hostname)
+        if exclude_exact_hostname is not None:
+            pulumi.set(__self__, "exclude_exact_hostname", exclude_exact_hostname)
 
     @_builtins.property
     @pulumi.getter(name="urlHostname")
@@ -24332,6 +25505,18 @@ class ListItemHostnameArgs:
     @url_hostname.setter
     def url_hostname(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "url_hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludeExactHostname")
+    def exclude_exact_hostname(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+        """
+        return pulumi.get(self, "exclude_exact_hostname")
+
+    @exclude_exact_hostname.setter
+    def exclude_exact_hostname(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "exclude_exact_hostname", value)
 
 
 if not MYPY:
@@ -27065,404 +28250,6 @@ class MagicTransitSiteWanStaticAddressingArgs:
 
 
 if not MYPY:
-    class MagicWanGreTunnelGreTunnelArgsDict(TypedDict):
-        cloudflare_gre_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the Cloudflare side of the GRE tunnel.
-        """
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was created.
-        """
-        customer_gre_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the customer side of the GRE tunnel.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the GRE tunnel.
-        """
-        health_check: NotRequired[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckArgsDict']]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        interface_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-        mtu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-elif False:
-    MagicWanGreTunnelGreTunnelArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelGreTunnelArgs:
-    def __init__(__self__, *,
-                 cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
-        :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
-        :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        :param pulumi.Input[_builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-        if cloudflare_gre_endpoint is not None:
-            pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if customer_gre_endpoint is not None:
-            pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if interface_address is not None:
-            pulumi.set(__self__, "interface_address", interface_address)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudflareGreEndpoint")
-    def cloudflare_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the Cloudflare side of the GRE tunnel.
-        """
-        return pulumi.get(self, "cloudflare_gre_endpoint")
-
-    @cloudflare_gre_endpoint.setter
-    def cloudflare_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudflare_gre_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customerGreEndpoint")
-    def customer_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the customer side of the GRE tunnel.
-        """
-        return pulumi.get(self, "customer_gre_endpoint")
-
-    @customer_gre_endpoint.setter
-    def customer_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "customer_gre_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the GRE tunnel.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckArgs']]:
-        return pulumi.get(self, "health_check")
-
-    @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckArgs']]):
-        pulumi.set(self, "health_check", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        return pulumi.get(self, "interface_address")
-
-    @interface_address.setter
-    def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "interface_address", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        """
-        return pulumi.get(self, "mtu")
-
-    @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "mtu", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-        return pulumi.get(self, "ttl")
-
-    @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "ttl", value)
-
-
-if not MYPY:
-    class MagicWanGreTunnelGreTunnelHealthCheckArgsDict(TypedDict):
-        direction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        target: NotRequired[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckTargetArgsDict']]
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-elif False:
-    MagicWanGreTunnelGreTunnelHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelGreTunnelHealthCheckArgs:
-    def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckTargetArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] direction: The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-               Available values: "unidirectional", "bidirectional".
-        :param pulumi.Input[_builtins.bool] enabled: Determines whether to run healthchecks for a tunnel.
-        :param pulumi.Input[_builtins.str] rate: How frequent the health check is run. The default value is `mid`.
-               Available values: "low", "mid", "high".
-        :param pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckTargetArgs'] target: The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        :param pulumi.Input[_builtins.str] type: The type of healthcheck to run, reply or request. The default value is `reply`.
-               Available values: "reply", "request".
-        """
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if rate is not None:
-            pulumi.set(__self__, "rate", rate)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "direction", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        return pulumi.get(self, "rate")
-
-    @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "rate", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckTargetArgs']]:
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        return pulumi.get(self, "target")
-
-    @target.setter
-    def target(self, value: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckTargetArgs']]):
-        pulumi.set(self, "target", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class MagicWanGreTunnelGreTunnelHealthCheckTargetArgsDict(TypedDict):
-        effective: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        saved: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-elif False:
-    MagicWanGreTunnelGreTunnelHealthCheckTargetArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelGreTunnelHealthCheckTargetArgs:
-    def __init__(__self__, *,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 saved: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] effective: The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        :param pulumi.Input[_builtins.str] saved: The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        if effective is not None:
-            pulumi.set(__self__, "effective", effective)
-        if saved is not None:
-            pulumi.set(__self__, "saved", saved)
-
-    @_builtins.property
-    @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        return pulumi.get(self, "effective")
-
-    @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "effective", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def saved(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        return pulumi.get(self, "saved")
-
-    @saved.setter
-    def saved(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "saved", value)
-
-
-if not MYPY:
     class MagicWanGreTunnelHealthCheckArgsDict(TypedDict):
         direction: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -27598,404 +28385,6 @@ elif False:
 
 @pulumi.input_type
 class MagicWanGreTunnelHealthCheckTargetArgs:
-    def __init__(__self__, *,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 saved: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] effective: The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        :param pulumi.Input[_builtins.str] saved: The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        if effective is not None:
-            pulumi.set(__self__, "effective", effective)
-        if saved is not None:
-            pulumi.set(__self__, "saved", saved)
-
-    @_builtins.property
-    @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        return pulumi.get(self, "effective")
-
-    @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "effective", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def saved(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        return pulumi.get(self, "saved")
-
-    @saved.setter
-    def saved(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "saved", value)
-
-
-if not MYPY:
-    class MagicWanGreTunnelModifiedGreTunnelArgsDict(TypedDict):
-        cloudflare_gre_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the Cloudflare side of the GRE tunnel.
-        """
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was created.
-        """
-        customer_gre_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the customer side of the GRE tunnel.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description of the GRE tunnel.
-        """
-        health_check: NotRequired[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckArgsDict']]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        interface_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-        mtu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        """
-        ttl: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-elif False:
-    MagicWanGreTunnelModifiedGreTunnelArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelModifiedGreTunnelArgs:
-    def __init__(__self__, *,
-                 cloudflare_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
-        :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
-        :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        :param pulumi.Input[_builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-        if cloudflare_gre_endpoint is not None:
-            pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if customer_gre_endpoint is not None:
-            pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if interface_address is not None:
-            pulumi.set(__self__, "interface_address", interface_address)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudflareGreEndpoint")
-    def cloudflare_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the Cloudflare side of the GRE tunnel.
-        """
-        return pulumi.get(self, "cloudflare_gre_endpoint")
-
-    @cloudflare_gre_endpoint.setter
-    def cloudflare_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudflare_gre_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customerGreEndpoint")
-    def customer_gre_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the customer side of the GRE tunnel.
-        """
-        return pulumi.get(self, "customer_gre_endpoint")
-
-    @customer_gre_endpoint.setter
-    def customer_gre_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "customer_gre_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description of the GRE tunnel.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs']]:
-        return pulumi.get(self, "health_check")
-
-    @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs']]):
-        pulumi.set(self, "health_check", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        return pulumi.get(self, "interface_address")
-
-    @interface_address.setter
-    def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "interface_address", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-        """
-        return pulumi.get(self, "mtu")
-
-    @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "mtu", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Time To Live (TTL) in number of hops of the GRE tunnel.
-        """
-        return pulumi.get(self, "ttl")
-
-    @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "ttl", value)
-
-
-if not MYPY:
-    class MagicWanGreTunnelModifiedGreTunnelHealthCheckArgsDict(TypedDict):
-        direction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        target: NotRequired[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgsDict']]
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-elif False:
-    MagicWanGreTunnelModifiedGreTunnelHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs:
-    def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] direction: The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-               Available values: "unidirectional", "bidirectional".
-        :param pulumi.Input[_builtins.bool] enabled: Determines whether to run healthchecks for a tunnel.
-        :param pulumi.Input[_builtins.str] rate: How frequent the health check is run. The default value is `mid`.
-               Available values: "low", "mid", "high".
-        :param pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs'] target: The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        :param pulumi.Input[_builtins.str] type: The type of healthcheck to run, reply or request. The default value is `reply`.
-               Available values: "reply", "request".
-        """
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if rate is not None:
-            pulumi.set(__self__, "rate", rate)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "direction", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        return pulumi.get(self, "rate")
-
-    @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "rate", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs']]:
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        return pulumi.get(self, "target")
-
-    @target.setter
-    def target(self, value: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs']]):
-        pulumi.set(self, "target", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgsDict(TypedDict):
-        effective: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        saved: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-elif False:
-    MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs:
     def __init__(__self__, *,
                  effective: Optional[pulumi.Input[_builtins.str]] = None,
                  saved: Optional[pulumi.Input[_builtins.str]] = None):
@@ -28207,906 +28596,6 @@ class MagicWanIpsecTunnelHealthCheckTargetArgs:
 
 
 if not MYPY:
-    class MagicWanIpsecTunnelIpsecTunnelArgsDict(TypedDict):
-        allow_null_cipher: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        """
-        cloudflare_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        """
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was created.
-        """
-        customer_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description forthe IPsec tunnel.
-        """
-        health_check: NotRequired[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckArgsDict']]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        interface_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        """
-        psk_metadata: NotRequired[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelPskMetadataArgsDict']]
-        """
-        The PSK metadata that includes when the PSK was generated.
-        """
-        replay_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-elif False:
-    MagicWanIpsecTunnelIpsecTunnelArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelIpsecTunnelArgs:
-    def __init__(__self__, *,
-                 allow_null_cipher: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_metadata: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs']] = None,
-                 replay_protection: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
-        :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
-        :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        :param pulumi.Input['MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs'] psk_metadata: The PSK metadata that includes when the PSK was generated.
-        :param pulumi.Input[_builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-        if allow_null_cipher is not None:
-            pulumi.set(__self__, "allow_null_cipher", allow_null_cipher)
-        if cloudflare_endpoint is not None:
-            pulumi.set(__self__, "cloudflare_endpoint", cloudflare_endpoint)
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if customer_endpoint is not None:
-            pulumi.set(__self__, "customer_endpoint", customer_endpoint)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if interface_address is not None:
-            pulumi.set(__self__, "interface_address", interface_address)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if psk_metadata is not None:
-            pulumi.set(__self__, "psk_metadata", psk_metadata)
-        if replay_protection is not None:
-            pulumi.set(__self__, "replay_protection", replay_protection)
-
-    @_builtins.property
-    @pulumi.getter(name="allowNullCipher")
-    def allow_null_cipher(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        """
-        return pulumi.get(self, "allow_null_cipher")
-
-    @allow_null_cipher.setter
-    def allow_null_cipher(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_null_cipher", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudflareEndpoint")
-    def cloudflare_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        """
-        return pulumi.get(self, "cloudflare_endpoint")
-
-    @cloudflare_endpoint.setter
-    def cloudflare_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudflare_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customerEndpoint")
-    def customer_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        """
-        return pulumi.get(self, "customer_endpoint")
-
-    @customer_endpoint.setter
-    def customer_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "customer_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description forthe IPsec tunnel.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs']]:
-        return pulumi.get(self, "health_check")
-
-    @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs']]):
-        pulumi.set(self, "health_check", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        return pulumi.get(self, "interface_address")
-
-    @interface_address.setter
-    def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "interface_address", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pskMetadata")
-    def psk_metadata(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs']]:
-        """
-        The PSK metadata that includes when the PSK was generated.
-        """
-        return pulumi.get(self, "psk_metadata")
-
-    @psk_metadata.setter
-    def psk_metadata(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs']]):
-        pulumi.set(self, "psk_metadata", value)
-
-    @_builtins.property
-    @pulumi.getter(name="replayProtection")
-    def replay_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-        return pulumi.get(self, "replay_protection")
-
-    @replay_protection.setter
-    def replay_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "replay_protection", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelIpsecTunnelHealthCheckArgsDict(TypedDict):
-        direction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        target: NotRequired[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgsDict']]
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-elif False:
-    MagicWanIpsecTunnelIpsecTunnelHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs:
-    def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] direction: The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-               Available values: "unidirectional", "bidirectional".
-        :param pulumi.Input[_builtins.bool] enabled: Determines whether to run healthchecks for a tunnel.
-        :param pulumi.Input[_builtins.str] rate: How frequent the health check is run. The default value is `mid`.
-               Available values: "low", "mid", "high".
-        :param pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs'] target: The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        :param pulumi.Input[_builtins.str] type: The type of healthcheck to run, reply or request. The default value is `reply`.
-               Available values: "reply", "request".
-        """
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if rate is not None:
-            pulumi.set(__self__, "rate", rate)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "direction", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        return pulumi.get(self, "rate")
-
-    @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "rate", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs']]:
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        return pulumi.get(self, "target")
-
-    @target.setter
-    def target(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs']]):
-        pulumi.set(self, "target", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgsDict(TypedDict):
-        effective: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        saved: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-elif False:
-    MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs:
-    def __init__(__self__, *,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 saved: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] effective: The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        :param pulumi.Input[_builtins.str] saved: The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        if effective is not None:
-            pulumi.set(__self__, "effective", effective)
-        if saved is not None:
-            pulumi.set(__self__, "saved", saved)
-
-    @_builtins.property
-    @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        return pulumi.get(self, "effective")
-
-    @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "effective", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def saved(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        return pulumi.get(self, "saved")
-
-    @saved.setter
-    def saved(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "saved", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelIpsecTunnelPskMetadataArgsDict(TypedDict):
-        last_generated_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-elif False:
-    MagicWanIpsecTunnelIpsecTunnelPskMetadataArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs:
-    def __init__(__self__, *,
-                 last_generated_on: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] last_generated_on: The date and time the tunnel was last modified.
-        """
-        if last_generated_on is not None:
-            pulumi.set(__self__, "last_generated_on", last_generated_on)
-
-    @_builtins.property
-    @pulumi.getter(name="lastGeneratedOn")
-    def last_generated_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "last_generated_on")
-
-    @last_generated_on.setter
-    def last_generated_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_generated_on", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelModifiedIpsecTunnelArgsDict(TypedDict):
-        allow_null_cipher: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        """
-        cloudflare_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        """
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was created.
-        """
-        customer_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional description forthe IPsec tunnel.
-        """
-        health_check: NotRequired[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgsDict']]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        interface_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        """
-        psk_metadata: NotRequired[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgsDict']]
-        """
-        The PSK metadata that includes when the PSK was generated.
-        """
-        replay_protection: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-elif False:
-    MagicWanIpsecTunnelModifiedIpsecTunnelArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelModifiedIpsecTunnelArgs:
-    def __init__(__self__, *,
-                 allow_null_cipher: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloudflare_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs']] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_metadata: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs']] = None,
-                 replay_protection: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        :param pulumi.Input[_builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        :param pulumi.Input[_builtins.str] created_on: The date and time the tunnel was created.
-        :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
-        :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        :param pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs'] psk_metadata: The PSK metadata that includes when the PSK was generated.
-        :param pulumi.Input[_builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-        if allow_null_cipher is not None:
-            pulumi.set(__self__, "allow_null_cipher", allow_null_cipher)
-        if cloudflare_endpoint is not None:
-            pulumi.set(__self__, "cloudflare_endpoint", cloudflare_endpoint)
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if customer_endpoint is not None:
-            pulumi.set(__self__, "customer_endpoint", customer_endpoint)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if interface_address is not None:
-            pulumi.set(__self__, "interface_address", interface_address)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if psk_metadata is not None:
-            pulumi.set(__self__, "psk_metadata", psk_metadata)
-        if replay_protection is not None:
-            pulumi.set(__self__, "replay_protection", replay_protection)
-
-    @_builtins.property
-    @pulumi.getter(name="allowNullCipher")
-    def allow_null_cipher(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-        """
-        return pulumi.get(self, "allow_null_cipher")
-
-    @allow_null_cipher.setter
-    def allow_null_cipher(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_null_cipher", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cloudflareEndpoint")
-    def cloudflare_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the Cloudflare side of the IPsec tunnel.
-        """
-        return pulumi.get(self, "cloudflare_endpoint")
-
-    @cloudflare_endpoint.setter
-    def cloudflare_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cloudflare_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customerEndpoint")
-    def customer_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-        """
-        return pulumi.get(self, "customer_endpoint")
-
-    @customer_endpoint.setter
-    def customer_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "customer_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional description forthe IPsec tunnel.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs']]:
-        return pulumi.get(self, "health_check")
-
-    @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs']]):
-        pulumi.set(self, "health_check", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        """
-        return pulumi.get(self, "interface_address")
-
-    @interface_address.setter
-    def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "interface_address", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pskMetadata")
-    def psk_metadata(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs']]:
-        """
-        The PSK metadata that includes when the PSK was generated.
-        """
-        return pulumi.get(self, "psk_metadata")
-
-    @psk_metadata.setter
-    def psk_metadata(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs']]):
-        pulumi.set(self, "psk_metadata", value)
-
-    @_builtins.property
-    @pulumi.getter(name="replayProtection")
-    def replay_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-        """
-        return pulumi.get(self, "replay_protection")
-
-    @replay_protection.setter
-    def replay_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "replay_protection", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgsDict(TypedDict):
-        direction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        rate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        target: NotRequired[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgsDict']]
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-elif False:
-    MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs:
-    def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] direction: The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-               Available values: "unidirectional", "bidirectional".
-        :param pulumi.Input[_builtins.bool] enabled: Determines whether to run healthchecks for a tunnel.
-        :param pulumi.Input[_builtins.str] rate: How frequent the health check is run. The default value is `mid`.
-               Available values: "low", "mid", "high".
-        :param pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs'] target: The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        :param pulumi.Input[_builtins.str] type: The type of healthcheck to run, reply or request. The default value is `reply`.
-               Available values: "reply", "request".
-        """
-        if direction is not None:
-            pulumi.set(__self__, "direction", direction)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if rate is not None:
-            pulumi.set(__self__, "rate", rate)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-        Available values: "unidirectional", "bidirectional".
-        """
-        return pulumi.get(self, "direction")
-
-    @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "direction", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Determines whether to run healthchecks for a tunnel.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        How frequent the health check is run. The default value is `mid`.
-        Available values: "low", "mid", "high".
-        """
-        return pulumi.get(self, "rate")
-
-    @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "rate", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs']]:
-        """
-        The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-        """
-        return pulumi.get(self, "target")
-
-    @target.setter
-    def target(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs']]):
-        pulumi.set(self, "target", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of healthcheck to run, reply or request. The default value is `reply`.
-        Available values: "reply", "request".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgsDict(TypedDict):
-        effective: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        saved: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-elif False:
-    MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs:
-    def __init__(__self__, *,
-                 effective: Optional[pulumi.Input[_builtins.str]] = None,
-                 saved: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] effective: The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        :param pulumi.Input[_builtins.str] saved: The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        if effective is not None:
-            pulumi.set(__self__, "effective", effective)
-        if saved is not None:
-            pulumi.set(__self__, "saved", saved)
-
-    @_builtins.property
-    @pulumi.getter
-    def effective(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-        """
-        return pulumi.get(self, "effective")
-
-    @effective.setter
-    def effective(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "effective", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def saved(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-        """
-        return pulumi.get(self, "saved")
-
-    @saved.setter
-    def saved(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "saved", value)
-
-
-if not MYPY:
-    class MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgsDict(TypedDict):
-        last_generated_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time the tunnel was last modified.
-        """
-elif False:
-    MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs:
-    def __init__(__self__, *,
-                 last_generated_on: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] last_generated_on: The date and time the tunnel was last modified.
-        """
-        if last_generated_on is not None:
-            pulumi.set(__self__, "last_generated_on", last_generated_on)
-
-    @_builtins.property
-    @pulumi.getter(name="lastGeneratedOn")
-    def last_generated_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The date and time the tunnel was last modified.
-        """
-        return pulumi.get(self, "last_generated_on")
-
-    @last_generated_on.setter
-    def last_generated_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_generated_on", value)
-
-
-if not MYPY:
     class MagicWanIpsecTunnelPskMetadataArgsDict(TypedDict):
         last_generated_on: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -29136,494 +28625,6 @@ class MagicWanIpsecTunnelPskMetadataArgs:
     @last_generated_on.setter
     def last_generated_on(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "last_generated_on", value)
-
-
-if not MYPY:
-    class MagicWanStaticRouteModifiedRouteArgsDict(TypedDict):
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional human provided description of the static route.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was last modified.
-        """
-        nexthop: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The next-hop IP Address for the static route.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the static route.
-        """
-        scope: NotRequired[pulumi.Input['MagicWanStaticRouteModifiedRouteScopeArgsDict']]
-        """
-        Used only for ECMP routes.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-elif False:
-    MagicWanStaticRouteModifiedRouteArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanStaticRouteModifiedRouteArgs:
-    def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 scope: Optional[pulumi.Input['MagicWanStaticRouteModifiedRouteScopeArgs']] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] created_on: When the route was created.
-        :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] modified_on: When the route was last modified.
-        :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
-        :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
-        :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input['MagicWanStaticRouteModifiedRouteScopeArgs'] scope: Used only for ECMP routes.
-        :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
-        """
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if nexthop is not None:
-            pulumi.set(__self__, "nexthop", nexthop)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if scope is not None:
-            pulumi.set(__self__, "scope", scope)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional human provided description of the static route.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nexthop(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The next-hop IP Address for the static route.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nexthop", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Priority of the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input['MagicWanStaticRouteModifiedRouteScopeArgs']]:
-        """
-        Used only for ECMP routes.
-        """
-        return pulumi.get(self, "scope")
-
-    @scope.setter
-    def scope(self, value: Optional[pulumi.Input['MagicWanStaticRouteModifiedRouteScopeArgs']]):
-        pulumi.set(self, "scope", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "weight", value)
-
-
-if not MYPY:
-    class MagicWanStaticRouteModifiedRouteScopeArgsDict(TypedDict):
-        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo names for the ECMP scope.
-        """
-        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo regions for the ECMP scope.
-        """
-elif False:
-    MagicWanStaticRouteModifiedRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanStaticRouteModifiedRouteScopeArgs:
-    def __init__(__self__, *,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_names: List of colo names for the ECMP scope.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_regions: List of colo regions for the ECMP scope.
-        """
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
-
-    @_builtins.property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo names for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @_builtins.property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo regions for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
-
-
-if not MYPY:
-    class MagicWanStaticRouteRouteArgsDict(TypedDict):
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional human provided description of the static route.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was last modified.
-        """
-        nexthop: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The next-hop IP Address for the static route.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the static route.
-        """
-        scope: NotRequired[pulumi.Input['MagicWanStaticRouteRouteScopeArgsDict']]
-        """
-        Used only for ECMP routes.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-elif False:
-    MagicWanStaticRouteRouteArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanStaticRouteRouteArgs:
-    def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 scope: Optional[pulumi.Input['MagicWanStaticRouteRouteScopeArgs']] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] created_on: When the route was created.
-        :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] modified_on: When the route was last modified.
-        :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
-        :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
-        :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input['MagicWanStaticRouteRouteScopeArgs'] scope: Used only for ECMP routes.
-        :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
-        """
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if nexthop is not None:
-            pulumi.set(__self__, "nexthop", nexthop)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if scope is not None:
-            pulumi.set(__self__, "scope", scope)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional human provided description of the static route.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nexthop(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The next-hop IP Address for the static route.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nexthop", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Priority of the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input['MagicWanStaticRouteRouteScopeArgs']]:
-        """
-        Used only for ECMP routes.
-        """
-        return pulumi.get(self, "scope")
-
-    @scope.setter
-    def scope(self, value: Optional[pulumi.Input['MagicWanStaticRouteRouteScopeArgs']]):
-        pulumi.set(self, "scope", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "weight", value)
-
-
-if not MYPY:
-    class MagicWanStaticRouteRouteScopeArgsDict(TypedDict):
-        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo names for the ECMP scope.
-        """
-        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo regions for the ECMP scope.
-        """
-elif False:
-    MagicWanStaticRouteRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MagicWanStaticRouteRouteScopeArgs:
-    def __init__(__self__, *,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_names: List of colo names for the ECMP scope.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_regions: List of colo regions for the ECMP scope.
-        """
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
-
-    @_builtins.property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo names for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @_builtins.property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo regions for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
 
 
 if not MYPY:
@@ -40070,6 +39071,11 @@ if not MYPY:
         """
         A set of overrides to apply to the target ruleset.
         """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A phase to skip the execution of. This property is only compatible with products.
+        Available values: "current".
+        """
         phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -40200,6 +39206,7 @@ class RulesetRuleActionParametersArgs:
                  origin_cache_control: Optional[pulumi.Input[_builtins.bool]] = None,
                  origin_error_page_passthru: Optional[pulumi.Input[_builtins.bool]] = None,
                  overrides: Optional[pulumi.Input['RulesetRuleActionParametersOverridesArgs']] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
                  phases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  polish: Optional[pulumi.Input[_builtins.str]] = None,
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -40256,6 +39263,8 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[_builtins.bool] origin_cache_control: When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
         :param pulumi.Input[_builtins.bool] origin_error_page_passthru: Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
         :param pulumi.Input['RulesetRuleActionParametersOverridesArgs'] overrides: A set of overrides to apply to the target ruleset.
+        :param pulumi.Input[_builtins.str] phase: A phase to skip the execution of. This property is only compatible with products.
+               Available values: "current".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] phases: A list of phases to skip the execution of. This option is incompatible with the rulesets option.
         :param pulumi.Input[_builtins.str] polish: Configure the Polish level.
                Available values: "off", "lossless", "lossy", "webp".
@@ -40347,6 +39356,8 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
         if overrides is not None:
             pulumi.set(__self__, "overrides", overrides)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
         if phases is not None:
             pulumi.set(__self__, "phases", phases)
         if polish is not None:
@@ -40779,6 +39790,19 @@ class RulesetRuleActionParametersArgs:
 
     @_builtins.property
     @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A phase to skip the execution of. This property is only compatible with products.
+        Available values: "current".
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter
     def phases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of phases to skip the execution of. This option is incompatible with the rulesets option.
@@ -41158,7 +40182,7 @@ if not MYPY:
         mode: pulumi.Input[_builtins.str]
         """
         Determines which browser ttl mode to use.
-        Available values: "respect*origin", "bypass*by*default", "override*origin".
+        Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         """
         default: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -41174,7 +40198,7 @@ class RulesetRuleActionParametersBrowserTtlArgs:
                  default: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Determines which browser ttl mode to use.
-               Available values: "respect*origin", "bypass*by*default", "override*origin".
+               Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         :param pulumi.Input[_builtins.int] default: The TTL (in seconds) if you choose override_origin mode.
         """
         pulumi.set(__self__, "mode", mode)
@@ -41186,7 +40210,7 @@ class RulesetRuleActionParametersBrowserTtlArgs:
     def mode(self) -> pulumi.Input[_builtins.str]:
         """
         Determines which browser ttl mode to use.
-        Available values: "respect*origin", "bypass*by*default", "override*origin".
+        Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         """
         return pulumi.get(self, "mode")
 
@@ -43439,12 +42463,29 @@ class RulesetRuleRatelimitArgs:
 
 if not MYPY:
     class SnippetRulesRuleArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        expression: NotRequired[pulumi.Input[_builtins.str]]
-        snippet_name: NotRequired[pulumi.Input[_builtins.str]]
+        expression: pulumi.Input[_builtins.str]
         """
-        Snippet identifying name
+        The expression defining which traffic will match the rule.
+        """
+        snippet_name: pulumi.Input[_builtins.str]
+        """
+        The identifying name of the snippet.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An informative description of the rule.
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the rule should be executed.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The unique ID of the rule.
+        """
+        last_updated: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The timestamp of when the rule was last modified.
         """
 elif False:
     SnippetRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -43452,25 +42493,61 @@ elif False:
 @pulumi.input_type
 class SnippetRulesRuleArgs:
     def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 snippet_name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 snippet_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 last_updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] snippet_name: Snippet identifying name
+        :param pulumi.Input[_builtins.str] expression: The expression defining which traffic will match the rule.
+        :param pulumi.Input[_builtins.str] snippet_name: The identifying name of the snippet.
+        :param pulumi.Input[_builtins.str] description: An informative description of the rule.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the rule should be executed.
+        :param pulumi.Input[_builtins.str] id: The unique ID of the rule.
+        :param pulumi.Input[_builtins.str] last_updated: The timestamp of when the rule was last modified.
         """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "snippet_name", snippet_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if expression is not None:
-            pulumi.set(__self__, "expression", expression)
-        if snippet_name is not None:
-            pulumi.set(__self__, "snippet_name", snippet_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if last_updated is not None:
+            pulumi.set(__self__, "last_updated", last_updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        The expression defining which traffic will match the rule.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snippetName")
+    def snippet_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifying name of the snippet.
+        """
+        return pulumi.get(self, "snippet_name")
+
+    @snippet_name.setter
+    def snippet_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "snippet_name", value)
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An informative description of the rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -43480,6 +42557,9 @@ class SnippetRulesRuleArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the rule should be executed.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -43488,31 +42568,34 @@ class SnippetRulesRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "expression")
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique ID of the rule.
+        """
+        return pulumi.get(self, "id")
 
-    @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "expression", value)
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
 
     @_builtins.property
-    @pulumi.getter(name="snippetName")
-    def snippet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Snippet identifying name
+        The timestamp of when the rule was last modified.
         """
-        return pulumi.get(self, "snippet_name")
+        return pulumi.get(self, "last_updated")
 
-    @snippet_name.setter
-    def snippet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "snippet_name", value)
+    @last_updated.setter
+    def last_updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "last_updated", value)
 
 
 if not MYPY:
     class SnippetsMetadataArgsDict(TypedDict):
-        main_module: NotRequired[pulumi.Input[_builtins.str]]
+        main_module: pulumi.Input[_builtins.str]
         """
-        Main module name of uploaded snippet
+        Name of the file that contains the main module of the snippet.
         """
 elif False:
     SnippetsMetadataArgsDict: TypeAlias = Mapping[str, Any]
@@ -43520,23 +42603,22 @@ elif False:
 @pulumi.input_type
 class SnippetsMetadataArgs:
     def __init__(__self__, *,
-                 main_module: Optional[pulumi.Input[_builtins.str]] = None):
+                 main_module: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] main_module: Main module name of uploaded snippet
+        :param pulumi.Input[_builtins.str] main_module: Name of the file that contains the main module of the snippet.
         """
-        if main_module is not None:
-            pulumi.set(__self__, "main_module", main_module)
+        pulumi.set(__self__, "main_module", main_module)
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
-    def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def main_module(self) -> pulumi.Input[_builtins.str]:
         """
-        Main module name of uploaded snippet
+        Name of the file that contains the main module of the snippet.
         """
         return pulumi.get(self, "main_module")
 
     @main_module.setter
-    def main_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def main_module(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "main_module", value)
 
 
@@ -43746,494 +42828,6 @@ class SpectrumApplicationOriginDnsArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class StaticRouteModifiedRouteArgsDict(TypedDict):
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional human provided description of the static route.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was last modified.
-        """
-        nexthop: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The next-hop IP Address for the static route.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the static route.
-        """
-        scope: NotRequired[pulumi.Input['StaticRouteModifiedRouteScopeArgsDict']]
-        """
-        Used only for ECMP routes.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-elif False:
-    StaticRouteModifiedRouteArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class StaticRouteModifiedRouteArgs:
-    def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 scope: Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] created_on: When the route was created.
-        :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] modified_on: When the route was last modified.
-        :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
-        :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
-        :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input['StaticRouteModifiedRouteScopeArgs'] scope: Used only for ECMP routes.
-        :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
-        """
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if nexthop is not None:
-            pulumi.set(__self__, "nexthop", nexthop)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if scope is not None:
-            pulumi.set(__self__, "scope", scope)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional human provided description of the static route.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nexthop(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The next-hop IP Address for the static route.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nexthop", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Priority of the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']]:
-        """
-        Used only for ECMP routes.
-        """
-        return pulumi.get(self, "scope")
-
-    @scope.setter
-    def scope(self, value: Optional[pulumi.Input['StaticRouteModifiedRouteScopeArgs']]):
-        pulumi.set(self, "scope", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "weight", value)
-
-
-if not MYPY:
-    class StaticRouteModifiedRouteScopeArgsDict(TypedDict):
-        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo names for the ECMP scope.
-        """
-        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo regions for the ECMP scope.
-        """
-elif False:
-    StaticRouteModifiedRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class StaticRouteModifiedRouteScopeArgs:
-    def __init__(__self__, *,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_names: List of colo names for the ECMP scope.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_regions: List of colo regions for the ECMP scope.
-        """
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
-
-    @_builtins.property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo names for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @_builtins.property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo regions for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
-
-
-if not MYPY:
-    class StaticRouteRouteArgsDict(TypedDict):
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was created.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional human provided description of the static route.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Identifier
-        """
-        modified_on: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        When the route was last modified.
-        """
-        nexthop: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The next-hop IP Address for the static route.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the static route.
-        """
-        scope: NotRequired[pulumi.Input['StaticRouteRouteScopeArgsDict']]
-        """
-        Used only for ECMP routes.
-        """
-        weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-elif False:
-    StaticRouteRouteArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class StaticRouteRouteArgs:
-    def __init__(__self__, *,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 scope: Optional[pulumi.Input['StaticRouteRouteScopeArgs']] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] created_on: When the route was created.
-        :param pulumi.Input[_builtins.str] description: An optional human provided description of the static route.
-        :param pulumi.Input[_builtins.str] id: Identifier
-        :param pulumi.Input[_builtins.str] modified_on: When the route was last modified.
-        :param pulumi.Input[_builtins.str] nexthop: The next-hop IP Address for the static route.
-        :param pulumi.Input[_builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
-        :param pulumi.Input[_builtins.int] priority: Priority of the static route.
-        :param pulumi.Input['StaticRouteRouteScopeArgs'] scope: Used only for ECMP routes.
-        :param pulumi.Input[_builtins.int] weight: Optional weight of the ECMP scope - if provided.
-        """
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
-        if nexthop is not None:
-            pulumi.set(__self__, "nexthop", nexthop)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if scope is not None:
-            pulumi.set(__self__, "scope", scope)
-        if weight is not None:
-            pulumi.set(__self__, "weight", weight)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was created.
-        """
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An optional human provided description of the static route.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        When the route was last modified.
-        """
-        return pulumi.get(self, "modified_on")
-
-    @modified_on.setter
-    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "modified_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nexthop(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The next-hop IP Address for the static route.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nexthop", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Priority of the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input['StaticRouteRouteScopeArgs']]:
-        """
-        Used only for ECMP routes.
-        """
-        return pulumi.get(self, "scope")
-
-    @scope.setter
-    def scope(self, value: Optional[pulumi.Input['StaticRouteRouteScopeArgs']]):
-        pulumi.set(self, "scope", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Optional weight of the ECMP scope - if provided.
-        """
-        return pulumi.get(self, "weight")
-
-    @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "weight", value)
-
-
-if not MYPY:
-    class StaticRouteRouteScopeArgsDict(TypedDict):
-        colo_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo names for the ECMP scope.
-        """
-        colo_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of colo regions for the ECMP scope.
-        """
-elif False:
-    StaticRouteRouteScopeArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class StaticRouteRouteScopeArgs:
-    def __init__(__self__, *,
-                 colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_names: List of colo names for the ECMP scope.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] colo_regions: List of colo regions for the ECMP scope.
-        """
-        if colo_names is not None:
-            pulumi.set(__self__, "colo_names", colo_names)
-        if colo_regions is not None:
-            pulumi.set(__self__, "colo_regions", colo_regions)
-
-    @_builtins.property
-    @pulumi.getter(name="coloNames")
-    def colo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo names for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_names")
-
-    @colo_names.setter
-    def colo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_names", value)
-
-    @_builtins.property
-    @pulumi.getter(name="coloRegions")
-    def colo_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of colo regions for the ECMP scope.
-        """
-        return pulumi.get(self, "colo_regions")
-
-    @colo_regions.setter
-    def colo_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "colo_regions", value)
 
 
 if not MYPY:
@@ -44836,7 +43430,7 @@ if not MYPY:
         state: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the processing status for all quality levels for a video.
-        Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+        Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         """
 elif False:
     StreamStatusArgsDict: TypeAlias = Mapping[str, Any]
@@ -44853,7 +43447,7 @@ class StreamStatusArgs:
         :param pulumi.Input[_builtins.str] error_reason_text: Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.
         :param pulumi.Input[_builtins.str] pct_complete: Indicates the size of the entire upload in bytes. The value must be a non-negative integer.
         :param pulumi.Input[_builtins.str] state: Specifies the processing status for all quality levels for a video.
-               Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+               Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         """
         if error_reason_code is not None:
             pulumi.set(__self__, "error_reason_code", error_reason_code)
@@ -44905,7 +43499,7 @@ class StreamStatusArgs:
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the processing status for all quality levels for a video.
-        Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+        Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
         """
         return pulumi.get(self, "state")
 
@@ -45156,10 +43750,6 @@ if not MYPY:
         """
         Anti-virus settings.
         """
-        app_control_settings: NotRequired[pulumi.Input['TeamsAccountSettingsAppControlSettingsArgsDict']]
-        """
-        Setting to enable App Control
-        """
         block_page: NotRequired[pulumi.Input['TeamsAccountSettingsBlockPageArgsDict']]
         """
         Block page layout settings.
@@ -45192,6 +43782,10 @@ if not MYPY:
         """
         Setting to enable host selector in egress policies.
         """
+        inspection: NotRequired[pulumi.Input['TeamsAccountSettingsInspectionArgsDict']]
+        """
+        Setting to define inspection settings
+        """
         protocol_detection: NotRequired[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgsDict']]
         """
         Protocol Detection settings.
@@ -45212,7 +43806,6 @@ class TeamsAccountSettingsArgs:
     def __init__(__self__, *,
                  activity_log: Optional[pulumi.Input['TeamsAccountSettingsActivityLogArgs']] = None,
                  antivirus: Optional[pulumi.Input['TeamsAccountSettingsAntivirusArgs']] = None,
-                 app_control_settings: Optional[pulumi.Input['TeamsAccountSettingsAppControlSettingsArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountSettingsBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['TeamsAccountSettingsBodyScanningArgs']] = None,
                  browser_isolation: Optional[pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs']] = None,
@@ -45221,13 +43814,13 @@ class TeamsAccountSettingsArgs:
                  extended_email_matching: Optional[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']] = None,
                  host_selector: Optional[pulumi.Input['TeamsAccountSettingsHostSelectorArgs']] = None,
+                 inspection: Optional[pulumi.Input['TeamsAccountSettingsInspectionArgs']] = None,
                  protocol_detection: Optional[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs']] = None,
                  sandbox: Optional[pulumi.Input['TeamsAccountSettingsSandboxArgs']] = None,
                  tls_decrypt: Optional[pulumi.Input['TeamsAccountSettingsTlsDecryptArgs']] = None):
         """
         :param pulumi.Input['TeamsAccountSettingsActivityLogArgs'] activity_log: Activity log settings.
         :param pulumi.Input['TeamsAccountSettingsAntivirusArgs'] antivirus: Anti-virus settings.
-        :param pulumi.Input['TeamsAccountSettingsAppControlSettingsArgs'] app_control_settings: Setting to enable App Control
         :param pulumi.Input['TeamsAccountSettingsBlockPageArgs'] block_page: Block page layout settings.
         :param pulumi.Input['TeamsAccountSettingsBodyScanningArgs'] body_scanning: DLP body scanning settings.
         :param pulumi.Input['TeamsAccountSettingsBrowserIsolationArgs'] browser_isolation: Browser isolation settings.
@@ -45236,6 +43829,7 @@ class TeamsAccountSettingsArgs:
         :param pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs'] extended_email_matching: Extended e-mail matching settings.
         :param pulumi.Input['TeamsAccountSettingsFipsArgs'] fips: FIPS settings.
         :param pulumi.Input['TeamsAccountSettingsHostSelectorArgs'] host_selector: Setting to enable host selector in egress policies.
+        :param pulumi.Input['TeamsAccountSettingsInspectionArgs'] inspection: Setting to define inspection settings
         :param pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs'] protocol_detection: Protocol Detection settings.
         :param pulumi.Input['TeamsAccountSettingsSandboxArgs'] sandbox: Sandbox settings.
         :param pulumi.Input['TeamsAccountSettingsTlsDecryptArgs'] tls_decrypt: TLS interception settings.
@@ -45244,8 +43838,6 @@ class TeamsAccountSettingsArgs:
             pulumi.set(__self__, "activity_log", activity_log)
         if antivirus is not None:
             pulumi.set(__self__, "antivirus", antivirus)
-        if app_control_settings is not None:
-            pulumi.set(__self__, "app_control_settings", app_control_settings)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
@@ -45265,6 +43857,8 @@ class TeamsAccountSettingsArgs:
             pulumi.set(__self__, "fips", fips)
         if host_selector is not None:
             pulumi.set(__self__, "host_selector", host_selector)
+        if inspection is not None:
+            pulumi.set(__self__, "inspection", inspection)
         if protocol_detection is not None:
             pulumi.set(__self__, "protocol_detection", protocol_detection)
         if sandbox is not None:
@@ -45295,18 +43889,6 @@ class TeamsAccountSettingsArgs:
     @antivirus.setter
     def antivirus(self, value: Optional[pulumi.Input['TeamsAccountSettingsAntivirusArgs']]):
         pulumi.set(self, "antivirus", value)
-
-    @_builtins.property
-    @pulumi.getter(name="appControlSettings")
-    def app_control_settings(self) -> Optional[pulumi.Input['TeamsAccountSettingsAppControlSettingsArgs']]:
-        """
-        Setting to enable App Control
-        """
-        return pulumi.get(self, "app_control_settings")
-
-    @app_control_settings.setter
-    def app_control_settings(self, value: Optional[pulumi.Input['TeamsAccountSettingsAppControlSettingsArgs']]):
-        pulumi.set(self, "app_control_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="blockPage")
@@ -45404,6 +43986,18 @@ class TeamsAccountSettingsArgs:
     @host_selector.setter
     def host_selector(self, value: Optional[pulumi.Input['TeamsAccountSettingsHostSelectorArgs']]):
         pulumi.set(self, "host_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def inspection(self) -> Optional[pulumi.Input['TeamsAccountSettingsInspectionArgs']]:
+        """
+        Setting to define inspection settings
+        """
+        return pulumi.get(self, "inspection")
+
+    @inspection.setter
+    def inspection(self, value: Optional[pulumi.Input['TeamsAccountSettingsInspectionArgs']]):
+        pulumi.set(self, "inspection", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolDetection")
@@ -45659,42 +44253,10 @@ class TeamsAccountSettingsAntivirusNotificationSettingsArgs:
 
 
 if not MYPY:
-    class TeamsAccountSettingsAppControlSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable App Control
-        """
-elif False:
-    TeamsAccountSettingsAppControlSettingsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class TeamsAccountSettingsAppControlSettingsArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enabled: Enable App Control
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable App Control
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-if not MYPY:
     class TeamsAccountSettingsBlockPageArgsDict(TypedDict):
         background_color: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page background color in #rrggbb format.
+        If mode is customized_block_page: block page background color in #rrggbb format.
         """
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -45702,44 +44264,56 @@ if not MYPY:
         """
         footer_text: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page footer text.
+        If mode is customized_block_page: block page footer text.
         """
         header_text: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page header text.
+        If mode is customized_block_page: block page header text.
         """
         include_context: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
         """
         logo_path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: full URL to the logo file.
+        If mode is customized_block_page: full URL to the logo file.
         """
         mailto_address: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: admin email for users to contact.
+        If mode is customized_block_page: admin email for users to contact.
         """
         mailto_subject: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: subject line for emails created from block page.
+        If mode is customized_block_page: subject line for emails created from block page.
         """
         mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        Available values: "customized*block*page", "redirect_uri".
+        Available values: "customized_block_page", "redirect_uri".
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page title.
+        If mode is customized_block_page: block page title.
+        """
+        read_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        source_account: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Account tag of account that shared this setting
         """
         suppress_footer: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         """
         target_uri: NotRequired[pulumi.Input[_builtins.str]]
         """
         If mode is redirect_uri: URI to which the user should be redirected.
+        """
+        version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number of the setting
         """
 elif False:
     TeamsAccountSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
@@ -45757,22 +44331,28 @@ class TeamsAccountSettingsBlockPageArgs:
                  mailto_subject: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
                  suppress_footer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 target_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] background_color: If mode is customized*block*page: block page background color in #rrggbb format.
+        :param pulumi.Input[_builtins.str] background_color: If mode is customized_block_page: block page background color in #rrggbb format.
         :param pulumi.Input[_builtins.bool] enabled: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
-        :param pulumi.Input[_builtins.str] footer_text: If mode is customized*block*page: block page footer text.
-        :param pulumi.Input[_builtins.str] header_text: If mode is customized*block*page: block page header text.
-        :param pulumi.Input[_builtins.bool] include_context: If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
-        :param pulumi.Input[_builtins.str] logo_path: If mode is customized*block*page: full URL to the logo file.
-        :param pulumi.Input[_builtins.str] mailto_address: If mode is customized*block*page: admin email for users to contact.
-        :param pulumi.Input[_builtins.str] mailto_subject: If mode is customized*block*page: subject line for emails created from block page.
+        :param pulumi.Input[_builtins.str] footer_text: If mode is customized_block_page: block page footer text.
+        :param pulumi.Input[_builtins.str] header_text: If mode is customized_block_page: block page header text.
+        :param pulumi.Input[_builtins.bool] include_context: If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+        :param pulumi.Input[_builtins.str] logo_path: If mode is customized_block_page: full URL to the logo file.
+        :param pulumi.Input[_builtins.str] mailto_address: If mode is customized_block_page: admin email for users to contact.
+        :param pulumi.Input[_builtins.str] mailto_subject: If mode is customized_block_page: subject line for emails created from block page.
         :param pulumi.Input[_builtins.str] mode: Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-               Available values: "customized*block*page", "redirect_uri".
-        :param pulumi.Input[_builtins.str] name: If mode is customized*block*page: block page title.
-        :param pulumi.Input[_builtins.bool] suppress_footer: If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+               Available values: "customized_block_page", "redirect_uri".
+        :param pulumi.Input[_builtins.str] name: If mode is customized_block_page: block page title.
+        :param pulumi.Input[_builtins.bool] read_only: This setting was shared via the Orgs API and cannot be edited by the current account
+        :param pulumi.Input[_builtins.str] source_account: Account tag of account that shared this setting
+        :param pulumi.Input[_builtins.bool] suppress_footer: If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         :param pulumi.Input[_builtins.str] target_uri: If mode is redirect_uri: URI to which the user should be redirected.
+        :param pulumi.Input[_builtins.int] version: Version number of the setting
         """
         if background_color is not None:
             pulumi.set(__self__, "background_color", background_color)
@@ -45794,16 +44374,22 @@ class TeamsAccountSettingsBlockPageArgs:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if source_account is not None:
+            pulumi.set(__self__, "source_account", source_account)
         if suppress_footer is not None:
             pulumi.set(__self__, "suppress_footer", suppress_footer)
         if target_uri is not None:
             pulumi.set(__self__, "target_uri", target_uri)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="backgroundColor")
     def background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page background color in #rrggbb format.
+        If mode is customized_block_page: block page background color in #rrggbb format.
         """
         return pulumi.get(self, "background_color")
 
@@ -45827,7 +44413,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="footerText")
     def footer_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page footer text.
+        If mode is customized_block_page: block page footer text.
         """
         return pulumi.get(self, "footer_text")
 
@@ -45839,7 +44425,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="headerText")
     def header_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page header text.
+        If mode is customized_block_page: block page header text.
         """
         return pulumi.get(self, "header_text")
 
@@ -45851,7 +44437,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="includeContext")
     def include_context(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
         """
         return pulumi.get(self, "include_context")
 
@@ -45863,7 +44449,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="logoPath")
     def logo_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: full URL to the logo file.
+        If mode is customized_block_page: full URL to the logo file.
         """
         return pulumi.get(self, "logo_path")
 
@@ -45875,7 +44461,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoAddress")
     def mailto_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: admin email for users to contact.
+        If mode is customized_block_page: admin email for users to contact.
         """
         return pulumi.get(self, "mailto_address")
 
@@ -45887,7 +44473,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoSubject")
     def mailto_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: subject line for emails created from block page.
+        If mode is customized_block_page: subject line for emails created from block page.
         """
         return pulumi.get(self, "mailto_subject")
 
@@ -45900,7 +44486,7 @@ class TeamsAccountSettingsBlockPageArgs:
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        Available values: "customized*block*page", "redirect_uri".
+        Available values: "customized_block_page", "redirect_uri".
         """
         return pulumi.get(self, "mode")
 
@@ -45912,7 +44498,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page title.
+        If mode is customized_block_page: block page title.
         """
         return pulumi.get(self, "name")
 
@@ -45921,10 +44507,34 @@ class TeamsAccountSettingsBlockPageArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account tag of account that shared this setting
+        """
+        return pulumi.get(self, "source_account")
+
+    @source_account.setter
+    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_account", value)
+
+    @_builtins.property
     @pulumi.getter(name="suppressFooter")
     def suppress_footer(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         """
         return pulumi.get(self, "suppress_footer")
 
@@ -45944,12 +44554,25 @@ class TeamsAccountSettingsBlockPageArgs:
     def target_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "target_uri", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number of the setting
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version", value)
+
 
 if not MYPY:
     class TeamsAccountSettingsBodyScanningArgsDict(TypedDict):
         inspection_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         Set the inspection mode to either `deep` or `shallow`.
+        Available values: "deep", "shallow".
         """
 elif False:
     TeamsAccountSettingsBodyScanningArgsDict: TypeAlias = Mapping[str, Any]
@@ -45960,6 +44583,7 @@ class TeamsAccountSettingsBodyScanningArgs:
                  inspection_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] inspection_mode: Set the inspection mode to either `deep` or `shallow`.
+               Available values: "deep", "shallow".
         """
         if inspection_mode is not None:
             pulumi.set(__self__, "inspection_mode", inspection_mode)
@@ -45969,6 +44593,7 @@ class TeamsAccountSettingsBodyScanningArgs:
     def inspection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Set the inspection mode to either `deep` or `shallow`.
+        Available values: "deep", "shallow".
         """
         return pulumi.get(self, "inspection_mode")
 
@@ -46150,18 +44775,42 @@ if not MYPY:
         """
         Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
         """
+        read_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        source_account: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Account tag of account that shared this setting
+        """
+        version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number of the setting
+        """
 elif False:
     TeamsAccountSettingsExtendedEmailMatchingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsAccountSettingsExtendedEmailMatchingArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        :param pulumi.Input[_builtins.bool] read_only: This setting was shared via the Orgs API and cannot be edited by the current account
+        :param pulumi.Input[_builtins.str] source_account: Account tag of account that shared this setting
+        :param pulumi.Input[_builtins.int] version: Version number of the setting
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if source_account is not None:
+            pulumi.set(__self__, "source_account", source_account)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -46174,6 +44823,42 @@ class TeamsAccountSettingsExtendedEmailMatchingArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account tag of account that shared this setting
+        """
+        return pulumi.get(self, "source_account")
+
+    @source_account.setter
+    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number of the setting
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -46238,6 +44923,47 @@ class TeamsAccountSettingsHostSelectorArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsInspectionArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Defines the mode of inspection the proxy will use.
+        - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+        - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+        Available values: "static", "dynamic".
+        """
+elif False:
+    TeamsAccountSettingsInspectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsInspectionArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: Defines the mode of inspection the proxy will use.
+               - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+               - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+               Available values: "static", "dynamic".
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines the mode of inspection the proxy will use.
+        - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+        - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+        Available values: "static", "dynamic".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
 
 
 if not MYPY:
@@ -46361,7 +45087,6 @@ class TeamsAccountSettingsTlsDecryptArgs:
 
 if not MYPY:
     class TeamsListItemArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
         The description of the list item, if present
@@ -46376,28 +45101,16 @@ elif False:
 @pulumi.input_type
 class TeamsListItemArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the list item, if present
         :param pulumi.Input[_builtins.str] value: The value of the item in a list.
         """
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if value is not None:
             pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -46426,63 +45139,59 @@ class TeamsListItemArgs:
 
 if not MYPY:
     class TeamsLocationEndpointsArgsDict(TypedDict):
-        doh: NotRequired[pulumi.Input['TeamsLocationEndpointsDohArgsDict']]
-        dot: NotRequired[pulumi.Input['TeamsLocationEndpointsDotArgsDict']]
-        ipv4: NotRequired[pulumi.Input['TeamsLocationEndpointsIpv4ArgsDict']]
-        ipv6: NotRequired[pulumi.Input['TeamsLocationEndpointsIpv6ArgsDict']]
+        doh: pulumi.Input['TeamsLocationEndpointsDohArgsDict']
+        dot: pulumi.Input['TeamsLocationEndpointsDotArgsDict']
+        ipv4: pulumi.Input['TeamsLocationEndpointsIpv4ArgsDict']
+        ipv6: pulumi.Input['TeamsLocationEndpointsIpv6ArgsDict']
 elif False:
     TeamsLocationEndpointsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TeamsLocationEndpointsArgs:
     def __init__(__self__, *,
-                 doh: Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']] = None,
-                 dot: Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']] = None,
-                 ipv4: Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']] = None):
-        if doh is not None:
-            pulumi.set(__self__, "doh", doh)
-        if dot is not None:
-            pulumi.set(__self__, "dot", dot)
-        if ipv4 is not None:
-            pulumi.set(__self__, "ipv4", ipv4)
-        if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+                 doh: pulumi.Input['TeamsLocationEndpointsDohArgs'],
+                 dot: pulumi.Input['TeamsLocationEndpointsDotArgs'],
+                 ipv4: pulumi.Input['TeamsLocationEndpointsIpv4Args'],
+                 ipv6: pulumi.Input['TeamsLocationEndpointsIpv6Args']):
+        pulumi.set(__self__, "doh", doh)
+        pulumi.set(__self__, "dot", dot)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
 
     @_builtins.property
     @pulumi.getter
-    def doh(self) -> Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']]:
+    def doh(self) -> pulumi.Input['TeamsLocationEndpointsDohArgs']:
         return pulumi.get(self, "doh")
 
     @doh.setter
-    def doh(self, value: Optional[pulumi.Input['TeamsLocationEndpointsDohArgs']]):
+    def doh(self, value: pulumi.Input['TeamsLocationEndpointsDohArgs']):
         pulumi.set(self, "doh", value)
 
     @_builtins.property
     @pulumi.getter
-    def dot(self) -> Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']]:
+    def dot(self) -> pulumi.Input['TeamsLocationEndpointsDotArgs']:
         return pulumi.get(self, "dot")
 
     @dot.setter
-    def dot(self, value: Optional[pulumi.Input['TeamsLocationEndpointsDotArgs']]):
+    def dot(self, value: pulumi.Input['TeamsLocationEndpointsDotArgs']):
         pulumi.set(self, "dot", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']]:
+    def ipv4(self) -> pulumi.Input['TeamsLocationEndpointsIpv4Args']:
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['TeamsLocationEndpointsIpv4Args']]):
+    def ipv4(self, value: pulumi.Input['TeamsLocationEndpointsIpv4Args']):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']]:
+    def ipv6(self) -> pulumi.Input['TeamsLocationEndpointsIpv6Args']:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['TeamsLocationEndpointsIpv6Args']]):
+    def ipv6(self, value: pulumi.Input['TeamsLocationEndpointsIpv6Args']):
         pulumi.set(self, "ipv6", value)
 
 
@@ -46894,7 +45603,7 @@ class TeamsRuleExpirationArgs:
 
 if not MYPY:
     class TeamsRuleRuleSettingsArgsDict(TypedDict):
-        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]
         """
         Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         """
@@ -47000,7 +45709,7 @@ elif False:
 @pulumi.input_type
 class TeamsRuleRuleSettingsArgs:
     def __init__(__self__, *,
-                 add_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 add_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  allow_child_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  audit_ssh: Optional[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs']] = None,
                  biso_admin_controls: Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']] = None,
@@ -47026,7 +45735,7 @@ class TeamsRuleRuleSettingsArgs:
                  resolve_dns_through_cloudflare: Optional[pulumi.Input[_builtins.bool]] = None,
                  untrusted_cert: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] add_headers: Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] add_headers: Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         :param pulumi.Input[_builtins.bool] allow_child_bypass: Set by parent MSP accounts to enable their children to bypass this rule.
         :param pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs'] audit_ssh: Settings for the Audit SSH action.
         :param pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
@@ -47105,14 +45814,14 @@ class TeamsRuleRuleSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="addHeaders")
-    def add_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def add_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         """
         return pulumi.get(self, "add_headers")
 
     @add_headers.setter
-    def add_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def add_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "add_headers", value)
 
     @_builtins.property
@@ -50409,13 +49118,9 @@ class WorkerScriptAssetsArgs:
 
 if not MYPY:
     class WorkerScriptAssetsConfigArgsDict(TypedDict):
-        _headers: NotRequired[pulumi.Input[_builtins.str]]
+        headers: NotRequired[pulumi.Input[_builtins.str]]
         """
         The contents of a _headers file (used to attach custom headers on asset responses)
-        """
-        _redirects: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         """
         html_handling: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -50426,6 +49131,10 @@ if not MYPY:
         """
         Determines the response when a request does not match a static asset, and there is no Worker script.
         Available values: "none", "404-page", "single-page-application".
+        """
+        redirects: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         """
         run_worker_first: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -50441,30 +49150,30 @@ elif False:
 @pulumi.input_type
 class WorkerScriptAssetsConfigArgs:
     def __init__(__self__, *,
-                 _headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 _redirects: Optional[pulumi.Input[_builtins.str]] = None,
+                 headers: Optional[pulumi.Input[_builtins.str]] = None,
                  html_handling: Optional[pulumi.Input[_builtins.str]] = None,
                  not_found_handling: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirects: Optional[pulumi.Input[_builtins.str]] = None,
                  run_worker_first: Optional[pulumi.Input[_builtins.bool]] = None,
                  serve_directly: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.str] _headers: The contents of a _headers file (used to attach custom headers on asset responses)
-        :param pulumi.Input[_builtins.str] _redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        :param pulumi.Input[_builtins.str] headers: The contents of a _headers file (used to attach custom headers on asset responses)
         :param pulumi.Input[_builtins.str] html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param pulumi.Input[_builtins.str] not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
                Available values: "none", "404-page", "single-page-application".
+        :param pulumi.Input[_builtins.str] redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         :param pulumi.Input[_builtins.bool] run_worker_first: When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
         :param pulumi.Input[_builtins.bool] serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
-        if _headers is not None:
-            pulumi.set(__self__, "_headers", _headers)
-        if _redirects is not None:
-            pulumi.set(__self__, "_redirects", _redirects)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if html_handling is not None:
             pulumi.set(__self__, "html_handling", html_handling)
         if not_found_handling is not None:
             pulumi.set(__self__, "not_found_handling", not_found_handling)
+        if redirects is not None:
+            pulumi.set(__self__, "redirects", redirects)
         if run_worker_first is not None:
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
@@ -50475,27 +49184,15 @@ class WorkerScriptAssetsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def _headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def headers(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The contents of a _headers file (used to attach custom headers on asset responses)
         """
-        return pulumi.get(self, "_headers")
+        return pulumi.get(self, "headers")
 
-    @_headers.setter
-    def _headers(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "_headers", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def _redirects(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-        """
-        return pulumi.get(self, "_redirects")
-
-    @_redirects.setter
-    def _redirects(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "_redirects", value)
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlHandling")
@@ -50522,6 +49219,18 @@ class WorkerScriptAssetsConfigArgs:
     @not_found_handling.setter
     def not_found_handling(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "not_found_handling", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def redirects(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
+        return pulumi.get(self, "redirects")
+
+    @redirects.setter
+    def redirects(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redirects", value)
 
     @_builtins.property
     @pulumi.getter(name="runWorkerFirst")
@@ -50558,7 +49267,7 @@ if not MYPY:
         type: pulumi.Input[_builtins.str]
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         """
         algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -50692,7 +49401,7 @@ class WorkerScriptBindingArgs:
         """
         :param pulumi.Input[_builtins.str] name: A JavaScript variable name for the binding.
         :param pulumi.Input[_builtins.str] type: The kind of resource that the binding provides.
-               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         :param pulumi.Input[_builtins.str] algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param pulumi.Input[_builtins.str] bucket_name: R2 bucket to bind to.
         :param pulumi.Input[_builtins.str] certificate_id: Identifier of the certificate to bind to.
@@ -50787,7 +49496,7 @@ class WorkerScriptBindingArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         """
         return pulumi.get(self, "type")
 
@@ -51190,460 +49899,6 @@ class WorkerScriptBindingOutboundWorkerArgs:
 
 
 if not MYPY:
-    class WorkerScriptMigrationsArgsDict(TypedDict):
-        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        new_tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag to set as the latest migration tag.
-        """
-        old_tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        """
-        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgsDict']]]]
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgsDict']]]]
-        """
-        Migrations to apply in order.
-        """
-        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgsDict']]]]
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-elif False:
-    WorkerScriptMigrationsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsArgs:
-    def __init__(__self__, *,
-                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 old_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]] = None,
-                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: A list of classes to create Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
-        :param pulumi.Input[_builtins.str] new_tag: Tag to set as the latest migration tag.
-        :param pulumi.Input[_builtins.str] old_tag: Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]] steps: Migrations to apply in order.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        if deleted_classes is not None:
-            pulumi.set(__self__, "deleted_classes", deleted_classes)
-        if new_classes is not None:
-            pulumi.set(__self__, "new_classes", new_classes)
-        if new_sqlite_classes is not None:
-            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
-        if new_tag is not None:
-            pulumi.set(__self__, "new_tag", new_tag)
-        if old_tag is not None:
-            pulumi.set(__self__, "old_tag", old_tag)
-        if renamed_classes is not None:
-            pulumi.set(__self__, "renamed_classes", renamed_classes)
-        if steps is not None:
-            pulumi.set(__self__, "steps", steps)
-        if transferred_classes is not None:
-            pulumi.set(__self__, "transferred_classes", transferred_classes)
-
-    @_builtins.property
-    @pulumi.getter(name="deletedClasses")
-    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        return pulumi.get(self, "deleted_classes")
-
-    @deleted_classes.setter
-    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "deleted_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newClasses")
-    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        return pulumi.get(self, "new_classes")
-
-    @new_classes.setter
-    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newSqliteClasses")
-    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        return pulumi.get(self, "new_sqlite_classes")
-
-    @new_sqlite_classes.setter
-    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_sqlite_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newTag")
-    def new_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Tag to set as the latest migration tag.
-        """
-        return pulumi.get(self, "new_tag")
-
-    @new_tag.setter
-    def new_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "new_tag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="oldTag")
-    def old_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        """
-        return pulumi.get(self, "old_tag")
-
-    @old_tag.setter
-    def old_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "old_tag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="renamedClasses")
-    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]:
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        return pulumi.get(self, "renamed_classes")
-
-    @renamed_classes.setter
-    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]):
-        pulumi.set(self, "renamed_classes", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]:
-        """
-        Migrations to apply in order.
-        """
-        return pulumi.get(self, "steps")
-
-    @steps.setter
-    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]):
-        pulumi.set(self, "steps", value)
-
-    @_builtins.property
-    @pulumi.getter(name="transferredClasses")
-    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]:
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        return pulumi.get(self, "transferred_classes")
-
-    @transferred_classes.setter
-    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]):
-        pulumi.set(self, "transferred_classes", value)
-
-
-if not MYPY:
-    class WorkerScriptMigrationsRenamedClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkerScriptMigrationsRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsRenamedClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkerScriptMigrationsStepArgsDict(TypedDict):
-        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgsDict']]]]
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgsDict']]]]
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-elif False:
-    WorkerScriptMigrationsStepArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsStepArgs:
-    def __init__(__self__, *,
-                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]] = None,
-                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: A list of classes to create Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        if deleted_classes is not None:
-            pulumi.set(__self__, "deleted_classes", deleted_classes)
-        if new_classes is not None:
-            pulumi.set(__self__, "new_classes", new_classes)
-        if new_sqlite_classes is not None:
-            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
-        if renamed_classes is not None:
-            pulumi.set(__self__, "renamed_classes", renamed_classes)
-        if transferred_classes is not None:
-            pulumi.set(__self__, "transferred_classes", transferred_classes)
-
-    @_builtins.property
-    @pulumi.getter(name="deletedClasses")
-    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        return pulumi.get(self, "deleted_classes")
-
-    @deleted_classes.setter
-    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "deleted_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newClasses")
-    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        return pulumi.get(self, "new_classes")
-
-    @new_classes.setter
-    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newSqliteClasses")
-    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        return pulumi.get(self, "new_sqlite_classes")
-
-    @new_sqlite_classes.setter
-    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_sqlite_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="renamedClasses")
-    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]:
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        return pulumi.get(self, "renamed_classes")
-
-    @renamed_classes.setter
-    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]):
-        pulumi.set(self, "renamed_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="transferredClasses")
-    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]:
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        return pulumi.get(self, "transferred_classes")
-
-    @transferred_classes.setter
-    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]):
-        pulumi.set(self, "transferred_classes", value)
-
-
-if not MYPY:
-    class WorkerScriptMigrationsStepRenamedClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkerScriptMigrationsStepRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsStepRenamedClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkerScriptMigrationsStepTransferredClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        from_script: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkerScriptMigrationsStepTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsStepTransferredClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if from_script is not None:
-            pulumi.set(__self__, "from_script", from_script)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter(name="fromScript")
-    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_script")
-
-    @from_script.setter
-    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_script", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkerScriptMigrationsTransferredClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        from_script: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkerScriptMigrationsTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkerScriptMigrationsTransferredClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if from_script is not None:
-            pulumi.set(__self__, "from_script", from_script)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter(name="fromScript")
-    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_script")
-
-    @from_script.setter
-    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_script", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
     class WorkerScriptObservabilityArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         """
@@ -51987,18 +50242,26 @@ if not MYPY:
         """
         Human-readable message about the deployment. Truncated to 100 bytes.
         """
+        workers_triggered_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operation that triggered the creation of the deployment.
+        """
 elif False:
     WorkersDeploymentAnnotationsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WorkersDeploymentAnnotationsArgs:
     def __init__(__self__, *,
-                 workers_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 workers_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 workers_triggered_by: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] workers_message: Human-readable message about the deployment. Truncated to 100 bytes.
+        :param pulumi.Input[_builtins.str] workers_triggered_by: Operation that triggered the creation of the deployment.
         """
         if workers_message is not None:
             pulumi.set(__self__, "workers_message", workers_message)
+        if workers_triggered_by is not None:
+            pulumi.set(__self__, "workers_triggered_by", workers_triggered_by)
 
     @_builtins.property
     @pulumi.getter(name="workersMessage")
@@ -52012,183 +50275,17 @@ class WorkersDeploymentAnnotationsArgs:
     def workers_message(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "workers_message", value)
 
-
-if not MYPY:
-    class WorkersDeploymentDeploymentArgsDict(TypedDict):
-        annotations: NotRequired[pulumi.Input['WorkersDeploymentDeploymentAnnotationsArgsDict']]
-        author_email: NotRequired[pulumi.Input[_builtins.str]]
-        created_on: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        source: NotRequired[pulumi.Input[_builtins.str]]
-        strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Available values: "percentage".
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentVersionArgsDict']]]]
-elif False:
-    WorkersDeploymentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersDeploymentDeploymentArgs:
-    def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input['WorkersDeploymentDeploymentAnnotationsArgs']] = None,
-                 author_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_on: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentVersionArgs']]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] strategy: Available values: "percentage".
-        """
-        if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
-        if author_email is not None:
-            pulumi.set(__self__, "author_email", author_email)
-        if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if strategy is not None:
-            pulumi.set(__self__, "strategy", strategy)
-        if versions is not None:
-            pulumi.set(__self__, "versions", versions)
-
     @_builtins.property
-    @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input['WorkersDeploymentDeploymentAnnotationsArgs']]:
-        return pulumi.get(self, "annotations")
-
-    @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input['WorkersDeploymentDeploymentAnnotationsArgs']]):
-        pulumi.set(self, "annotations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="authorEmail")
-    def author_email(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "author_email")
-
-    @author_email.setter
-    def author_email(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "author_email", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdOn")
-    def created_on(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_on")
-
-    @created_on.setter
-    def created_on(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_on", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "source", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="workersTriggeredBy")
+    def workers_triggered_by(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "percentage".
+        Operation that triggered the creation of the deployment.
         """
-        return pulumi.get(self, "strategy")
+        return pulumi.get(self, "workers_triggered_by")
 
-    @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "strategy", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentVersionArgs']]]]:
-        return pulumi.get(self, "versions")
-
-    @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersDeploymentDeploymentVersionArgs']]]]):
-        pulumi.set(self, "versions", value)
-
-
-if not MYPY:
-    class WorkersDeploymentDeploymentAnnotationsArgsDict(TypedDict):
-        workers_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable message about the deployment. Truncated to 100 bytes.
-        """
-elif False:
-    WorkersDeploymentDeploymentAnnotationsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersDeploymentDeploymentAnnotationsArgs:
-    def __init__(__self__, *,
-                 workers_message: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] workers_message: Human-readable message about the deployment. Truncated to 100 bytes.
-        """
-        if workers_message is not None:
-            pulumi.set(__self__, "workers_message", workers_message)
-
-    @_builtins.property
-    @pulumi.getter(name="workersMessage")
-    def workers_message(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable message about the deployment. Truncated to 100 bytes.
-        """
-        return pulumi.get(self, "workers_message")
-
-    @workers_message.setter
-    def workers_message(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "workers_message", value)
-
-
-if not MYPY:
-    class WorkersDeploymentDeploymentVersionArgsDict(TypedDict):
-        percentage: NotRequired[pulumi.Input[_builtins.float]]
-        version_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkersDeploymentDeploymentVersionArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersDeploymentDeploymentVersionArgs:
-    def __init__(__self__, *,
-                 percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
-        if percentage is not None:
-            pulumi.set(__self__, "percentage", percentage)
-        if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
-        return pulumi.get(self, "percentage")
-
-    @percentage.setter
-    def percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "percentage", value)
-
-    @_builtins.property
-    @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "version_id")
-
-    @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "version_id", value)
+    @workers_triggered_by.setter
+    def workers_triggered_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workers_triggered_by", value)
 
 
 if not MYPY:
@@ -52279,13 +50376,9 @@ class WorkersScriptAssetsArgs:
 
 if not MYPY:
     class WorkersScriptAssetsConfigArgsDict(TypedDict):
-        _headers: NotRequired[pulumi.Input[_builtins.str]]
+        headers: NotRequired[pulumi.Input[_builtins.str]]
         """
         The contents of a _headers file (used to attach custom headers on asset responses)
-        """
-        _redirects: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         """
         html_handling: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -52296,6 +50389,10 @@ if not MYPY:
         """
         Determines the response when a request does not match a static asset, and there is no Worker script.
         Available values: "none", "404-page", "single-page-application".
+        """
+        redirects: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         """
         run_worker_first: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -52311,30 +50408,30 @@ elif False:
 @pulumi.input_type
 class WorkersScriptAssetsConfigArgs:
     def __init__(__self__, *,
-                 _headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 _redirects: Optional[pulumi.Input[_builtins.str]] = None,
+                 headers: Optional[pulumi.Input[_builtins.str]] = None,
                  html_handling: Optional[pulumi.Input[_builtins.str]] = None,
                  not_found_handling: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirects: Optional[pulumi.Input[_builtins.str]] = None,
                  run_worker_first: Optional[pulumi.Input[_builtins.bool]] = None,
                  serve_directly: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.str] _headers: The contents of a _headers file (used to attach custom headers on asset responses)
-        :param pulumi.Input[_builtins.str] _redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        :param pulumi.Input[_builtins.str] headers: The contents of a _headers file (used to attach custom headers on asset responses)
         :param pulumi.Input[_builtins.str] html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param pulumi.Input[_builtins.str] not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
                Available values: "none", "404-page", "single-page-application".
+        :param pulumi.Input[_builtins.str] redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         :param pulumi.Input[_builtins.bool] run_worker_first: When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
         :param pulumi.Input[_builtins.bool] serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
-        if _headers is not None:
-            pulumi.set(__self__, "_headers", _headers)
-        if _redirects is not None:
-            pulumi.set(__self__, "_redirects", _redirects)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if html_handling is not None:
             pulumi.set(__self__, "html_handling", html_handling)
         if not_found_handling is not None:
             pulumi.set(__self__, "not_found_handling", not_found_handling)
+        if redirects is not None:
+            pulumi.set(__self__, "redirects", redirects)
         if run_worker_first is not None:
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
@@ -52345,27 +50442,15 @@ class WorkersScriptAssetsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def _headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def headers(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The contents of a _headers file (used to attach custom headers on asset responses)
         """
-        return pulumi.get(self, "_headers")
+        return pulumi.get(self, "headers")
 
-    @_headers.setter
-    def _headers(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "_headers", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def _redirects(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-        """
-        return pulumi.get(self, "_redirects")
-
-    @_redirects.setter
-    def _redirects(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "_redirects", value)
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="htmlHandling")
@@ -52392,6 +50477,18 @@ class WorkersScriptAssetsConfigArgs:
     @not_found_handling.setter
     def not_found_handling(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "not_found_handling", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def redirects(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
+        return pulumi.get(self, "redirects")
+
+    @redirects.setter
+    def redirects(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redirects", value)
 
     @_builtins.property
     @pulumi.getter(name="runWorkerFirst")
@@ -52428,7 +50525,7 @@ if not MYPY:
         type: pulumi.Input[_builtins.str]
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         """
         algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -52562,7 +50659,7 @@ class WorkersScriptBindingArgs:
         """
         :param pulumi.Input[_builtins.str] name: A JavaScript variable name for the binding.
         :param pulumi.Input[_builtins.str] type: The kind of resource that the binding provides.
-               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+               Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         :param pulumi.Input[_builtins.str] algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param pulumi.Input[_builtins.str] bucket_name: R2 bucket to bind to.
         :param pulumi.Input[_builtins.str] certificate_id: Identifier of the certificate to bind to.
@@ -52657,7 +50754,7 @@ class WorkersScriptBindingArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
+        Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
         """
         return pulumi.get(self, "type")
 
@@ -53057,460 +51154,6 @@ class WorkersScriptBindingOutboundWorkerArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsArgsDict(TypedDict):
-        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        new_tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag to set as the latest migration tag.
-        """
-        old_tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        """
-        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgsDict']]]]
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgsDict']]]]
-        """
-        Migrations to apply in order.
-        """
-        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgsDict']]]]
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-elif False:
-    WorkersScriptMigrationsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsArgs:
-    def __init__(__self__, *,
-                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 old_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]] = None,
-                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: A list of classes to create Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
-        :param pulumi.Input[_builtins.str] new_tag: Tag to set as the latest migration tag.
-        :param pulumi.Input[_builtins.str] old_tag: Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]] steps: Migrations to apply in order.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        if deleted_classes is not None:
-            pulumi.set(__self__, "deleted_classes", deleted_classes)
-        if new_classes is not None:
-            pulumi.set(__self__, "new_classes", new_classes)
-        if new_sqlite_classes is not None:
-            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
-        if new_tag is not None:
-            pulumi.set(__self__, "new_tag", new_tag)
-        if old_tag is not None:
-            pulumi.set(__self__, "old_tag", old_tag)
-        if renamed_classes is not None:
-            pulumi.set(__self__, "renamed_classes", renamed_classes)
-        if steps is not None:
-            pulumi.set(__self__, "steps", steps)
-        if transferred_classes is not None:
-            pulumi.set(__self__, "transferred_classes", transferred_classes)
-
-    @_builtins.property
-    @pulumi.getter(name="deletedClasses")
-    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        return pulumi.get(self, "deleted_classes")
-
-    @deleted_classes.setter
-    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "deleted_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newClasses")
-    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        return pulumi.get(self, "new_classes")
-
-    @new_classes.setter
-    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newSqliteClasses")
-    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        return pulumi.get(self, "new_sqlite_classes")
-
-    @new_sqlite_classes.setter
-    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_sqlite_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newTag")
-    def new_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Tag to set as the latest migration tag.
-        """
-        return pulumi.get(self, "new_tag")
-
-    @new_tag.setter
-    def new_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "new_tag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="oldTag")
-    def old_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
-        """
-        return pulumi.get(self, "old_tag")
-
-    @old_tag.setter
-    def old_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "old_tag", value)
-
-    @_builtins.property
-    @pulumi.getter(name="renamedClasses")
-    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]]:
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        return pulumi.get(self, "renamed_classes")
-
-    @renamed_classes.setter
-    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]]):
-        pulumi.set(self, "renamed_classes", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]]:
-        """
-        Migrations to apply in order.
-        """
-        return pulumi.get(self, "steps")
-
-    @steps.setter
-    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]]):
-        pulumi.set(self, "steps", value)
-
-    @_builtins.property
-    @pulumi.getter(name="transferredClasses")
-    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]]:
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        return pulumi.get(self, "transferred_classes")
-
-    @transferred_classes.setter
-    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]]):
-        pulumi.set(self, "transferred_classes", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsRenamedClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkersScriptMigrationsRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsRenamedClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsStepArgsDict(TypedDict):
-        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgsDict']]]]
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgsDict']]]]
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-elif False:
-    WorkersScriptMigrationsStepArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsStepArgs:
-    def __init__(__self__, *,
-                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]] = None,
-                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: A list of classes to delete Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: A list of classes to create Durable Object namespaces from.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: A list of classes to create Durable Object namespaces with SQLite from.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]] renamed_classes: A list of classes with Durable Object namespaces that were renamed.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]] transferred_classes: A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        if deleted_classes is not None:
-            pulumi.set(__self__, "deleted_classes", deleted_classes)
-        if new_classes is not None:
-            pulumi.set(__self__, "new_classes", new_classes)
-        if new_sqlite_classes is not None:
-            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
-        if renamed_classes is not None:
-            pulumi.set(__self__, "renamed_classes", renamed_classes)
-        if transferred_classes is not None:
-            pulumi.set(__self__, "transferred_classes", transferred_classes)
-
-    @_builtins.property
-    @pulumi.getter(name="deletedClasses")
-    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to delete Durable Object namespaces from.
-        """
-        return pulumi.get(self, "deleted_classes")
-
-    @deleted_classes.setter
-    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "deleted_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newClasses")
-    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces from.
-        """
-        return pulumi.get(self, "new_classes")
-
-    @new_classes.setter
-    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="newSqliteClasses")
-    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of classes to create Durable Object namespaces with SQLite from.
-        """
-        return pulumi.get(self, "new_sqlite_classes")
-
-    @new_sqlite_classes.setter
-    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "new_sqlite_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="renamedClasses")
-    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]]:
-        """
-        A list of classes with Durable Object namespaces that were renamed.
-        """
-        return pulumi.get(self, "renamed_classes")
-
-    @renamed_classes.setter
-    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]]):
-        pulumi.set(self, "renamed_classes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="transferredClasses")
-    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]]:
-        """
-        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
-        """
-        return pulumi.get(self, "transferred_classes")
-
-    @transferred_classes.setter
-    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]]):
-        pulumi.set(self, "transferred_classes", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsStepRenamedClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkersScriptMigrationsStepRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsStepRenamedClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsStepTransferredClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        from_script: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkersScriptMigrationsStepTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsStepTransferredClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if from_script is not None:
-            pulumi.set(__self__, "from_script", from_script)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter(name="fromScript")
-    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_script")
-
-    @from_script.setter
-    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_script", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
-
-
-if not MYPY:
-    class WorkersScriptMigrationsTransferredClassArgsDict(TypedDict):
-        from_: NotRequired[pulumi.Input[_builtins.str]]
-        from_script: NotRequired[pulumi.Input[_builtins.str]]
-        to: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    WorkersScriptMigrationsTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersScriptMigrationsTransferredClassArgs:
-    def __init__(__self__, *,
-                 from_: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 to: Optional[pulumi.Input[_builtins.str]] = None):
-        if from_ is not None:
-            pulumi.set(__self__, "from_", from_)
-        if from_script is not None:
-            pulumi.set(__self__, "from_script", from_script)
-        if to is not None:
-            pulumi.set(__self__, "to", to)
-
-    @_builtins.property
-    @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_")
-
-    @from_.setter
-    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_", value)
-
-    @_builtins.property
-    @pulumi.getter(name="fromScript")
-    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "from_script")
-
-    @from_script.setter
-    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "from_script", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "to")
-
-    @to.setter
-    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "to", value)
 
 
 if not MYPY:
@@ -54576,7 +52219,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgsDict']]
@@ -54604,7 +52249,9 @@ class ZeroTrustAccessApplicationPolicyExcludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs']] = None):
@@ -54648,8 +52295,12 @@ class ZeroTrustAccessApplicationPolicyExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -54826,6 +52477,15 @@ class ZeroTrustAccessApplicationPolicyExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -54833,6 +52493,15 @@ class ZeroTrustAccessApplicationPolicyExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -55498,6 +53167,37 @@ class ZeroTrustAccessApplicationPolicyExcludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -55526,6 +53226,75 @@ class ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessApplicationPolicyExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -55704,7 +53473,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeServiceTokenArgsDict']]
@@ -55732,7 +53503,9 @@ class ZeroTrustAccessApplicationPolicyIncludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeServiceTokenArgs']] = None):
@@ -55776,8 +53549,12 @@ class ZeroTrustAccessApplicationPolicyIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -55954,6 +53731,15 @@ class ZeroTrustAccessApplicationPolicyIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -55961,6 +53747,15 @@ class ZeroTrustAccessApplicationPolicyIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -56626,6 +54421,37 @@ class ZeroTrustAccessApplicationPolicyIncludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -56654,6 +54480,75 @@ class ZeroTrustAccessApplicationPolicyIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessApplicationPolicyIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -56832,7 +54727,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireServiceTokenArgsDict']]
@@ -56860,7 +54757,9 @@ class ZeroTrustAccessApplicationPolicyRequireArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireServiceTokenArgs']] = None):
@@ -56904,8 +54803,12 @@ class ZeroTrustAccessApplicationPolicyRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -57082,6 +54985,15 @@ class ZeroTrustAccessApplicationPolicyRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -57089,6 +55001,15 @@ class ZeroTrustAccessApplicationPolicyRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessApplicationPolicyRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -57754,6 +55675,37 @@ class ZeroTrustAccessApplicationPolicyRequireIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessApplicationPolicyRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -57782,6 +55734,75 @@ class ZeroTrustAccessApplicationPolicyRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessApplicationPolicyRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessApplicationPolicyRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessApplicationPolicyRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -59385,7 +57406,7 @@ if not MYPY:
         protocol: pulumi.Input[_builtins.str]
         """
         The communication protocol your application secures.
-        Available values: "SSH".
+        Available values: "SSH", "RDP".
         """
         target_attributes: pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]
         """
@@ -59403,7 +57424,7 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
         """
         :param pulumi.Input[_builtins.int] port: The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
         :param pulumi.Input[_builtins.str] protocol: The communication protocol your application secures.
-               Available values: "SSH".
+               Available values: "SSH", "RDP".
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] target_attributes: Contains a map of target attribute keys to target attribute values.
         """
         pulumi.set(__self__, "port", port)
@@ -59427,7 +57448,7 @@ class ZeroTrustAccessApplicationTargetCriteriaArgs:
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
         The communication protocol your application secures.
-        Available values: "SSH".
+        Available values: "SSH", "RDP".
         """
         return pulumi.get(self, "protocol")
 
@@ -59474,7 +57495,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupExcludeServiceTokenArgsDict']]
@@ -59502,7 +57525,9 @@ class ZeroTrustAccessGroupExcludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeServiceTokenArgs']] = None):
@@ -59546,8 +57571,12 @@ class ZeroTrustAccessGroupExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -59724,6 +57753,15 @@ class ZeroTrustAccessGroupExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -59731,6 +57769,15 @@ class ZeroTrustAccessGroupExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -60396,6 +58443,37 @@ class ZeroTrustAccessGroupExcludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessGroupExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessGroupExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -60424,6 +58502,75 @@ class ZeroTrustAccessGroupExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessGroupExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -60602,7 +58749,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupIncludeServiceTokenArgsDict']]
@@ -60630,7 +58779,9 @@ class ZeroTrustAccessGroupIncludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeServiceTokenArgs']] = None):
@@ -60674,8 +58825,12 @@ class ZeroTrustAccessGroupIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -60852,6 +59007,15 @@ class ZeroTrustAccessGroupIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -60859,6 +59023,15 @@ class ZeroTrustAccessGroupIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -61524,6 +59697,37 @@ class ZeroTrustAccessGroupIncludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessGroupIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessGroupIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -61552,6 +59756,75 @@ class ZeroTrustAccessGroupIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessGroupIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -61730,7 +60003,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessGroupRequireServiceTokenArgsDict']]
@@ -61758,7 +60033,9 @@ class ZeroTrustAccessGroupRequireArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessGroupRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessGroupRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessGroupRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessGroupRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessGroupRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessGroupRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessGroupRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessGroupRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessGroupRequireServiceTokenArgs']] = None):
@@ -61802,8 +60079,12 @@ class ZeroTrustAccessGroupRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -61980,6 +60261,15 @@ class ZeroTrustAccessGroupRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -61987,6 +60277,15 @@ class ZeroTrustAccessGroupRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessGroupRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessGroupRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -62652,6 +60951,37 @@ class ZeroTrustAccessGroupRequireIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessGroupRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessGroupRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessGroupRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -62680,6 +61010,75 @@ class ZeroTrustAccessGroupRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessGroupRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessGroupRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessGroupRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -62870,6 +61269,10 @@ if not MYPY:
         """
         Your OAuth Client ID
         """
+        client_secret: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Your OAuth Client Secret
+        """
         conditional_access_enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Should Cloudflare try to load authentication contexts from your account
@@ -62955,6 +61358,7 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
                  certs_url: Optional[pulumi.Input[_builtins.str]] = None,
                  claims: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  conditional_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  email_attribute_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -62983,6 +61387,7 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
         :param pulumi.Input[_builtins.str] certs_url: The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] claims: Custom claims
         :param pulumi.Input[_builtins.str] client_id: Your OAuth Client ID
+        :param pulumi.Input[_builtins.str] client_secret: Your OAuth Client Secret
         :param pulumi.Input[_builtins.bool] conditional_access_enabled: Should Cloudflare try to load authentication contexts from your account
         :param pulumi.Input[_builtins.str] directory_id: Your Azure directory uuid
         :param pulumi.Input[_builtins.str] email_attribute_name: The attribute name for email in the SAML response.
@@ -63020,6 +61425,8 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "claims", claims)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if conditional_access_enabled is not None:
             pulumi.set(__self__, "conditional_access_enabled", conditional_access_enabled)
         if directory_id is not None:
@@ -63164,6 +61571,18 @@ class ZeroTrustAccessIdentityProviderConfigArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Your OAuth Client Secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="conditionalAccessEnabled")
@@ -63889,7 +62308,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyExcludeServiceTokenArgsDict']]
@@ -63917,7 +62338,9 @@ class ZeroTrustAccessPolicyExcludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeServiceTokenArgs']] = None):
@@ -63961,8 +62384,12 @@ class ZeroTrustAccessPolicyExcludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -64139,6 +62566,15 @@ class ZeroTrustAccessPolicyExcludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -64146,6 +62582,15 @@ class ZeroTrustAccessPolicyExcludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyExcludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -64811,6 +63256,37 @@ class ZeroTrustAccessPolicyExcludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessPolicyExcludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyExcludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessPolicyExcludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -64839,6 +63315,75 @@ class ZeroTrustAccessPolicyExcludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessPolicyExcludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyExcludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyExcludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -65017,7 +63562,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyIncludeServiceTokenArgsDict']]
@@ -65045,7 +63592,9 @@ class ZeroTrustAccessPolicyIncludeArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeServiceTokenArgs']] = None):
@@ -65089,8 +63638,12 @@ class ZeroTrustAccessPolicyIncludeArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -65267,6 +63820,15 @@ class ZeroTrustAccessPolicyIncludeArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -65274,6 +63836,15 @@ class ZeroTrustAccessPolicyIncludeArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyIncludeOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -65939,6 +64510,37 @@ class ZeroTrustAccessPolicyIncludeIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessPolicyIncludeLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyIncludeLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessPolicyIncludeLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -65967,6 +64569,75 @@ class ZeroTrustAccessPolicyIncludeLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessPolicyIncludeOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyIncludeOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyIncludeOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -66145,7 +64816,9 @@ if not MYPY:
         gsuite: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireGsuiteArgsDict']]
         ip: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireIpArgsDict']]
         ip_list: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireIpListArgsDict']]
+        linked_app_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireLinkedAppTokenArgsDict']]
         login_method: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireLoginMethodArgsDict']]
+        oidc: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireOidcArgsDict']]
         okta: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireOktaArgsDict']]
         saml: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgsDict']]
         service_token: NotRequired[pulumi.Input['ZeroTrustAccessPolicyRequireServiceTokenArgsDict']]
@@ -66173,7 +64846,9 @@ class ZeroTrustAccessPolicyRequireArgs:
                  gsuite: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireGsuiteArgs']] = None,
                  ip: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireIpArgs']] = None,
                  ip_list: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireIpListArgs']] = None,
+                 linked_app_token: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLinkedAppTokenArgs']] = None,
                  login_method: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLoginMethodArgs']] = None,
+                 oidc: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireOidcArgs']] = None,
                  okta: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireOktaArgs']] = None,
                  saml: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireSamlArgs']] = None,
                  service_token: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireServiceTokenArgs']] = None):
@@ -66217,8 +64892,12 @@ class ZeroTrustAccessPolicyRequireArgs:
             pulumi.set(__self__, "ip", ip)
         if ip_list is not None:
             pulumi.set(__self__, "ip_list", ip_list)
+        if linked_app_token is not None:
+            pulumi.set(__self__, "linked_app_token", linked_app_token)
         if login_method is not None:
             pulumi.set(__self__, "login_method", login_method)
+        if oidc is not None:
+            pulumi.set(__self__, "oidc", oidc)
         if okta is not None:
             pulumi.set(__self__, "okta", okta)
         if saml is not None:
@@ -66395,6 +65074,15 @@ class ZeroTrustAccessPolicyRequireArgs:
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
+    @pulumi.getter(name="linkedAppToken")
+    def linked_app_token(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLinkedAppTokenArgs']]:
+        return pulumi.get(self, "linked_app_token")
+
+    @linked_app_token.setter
+    def linked_app_token(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLinkedAppTokenArgs']]):
+        pulumi.set(self, "linked_app_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="loginMethod")
     def login_method(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLoginMethodArgs']]:
         return pulumi.get(self, "login_method")
@@ -66402,6 +65090,15 @@ class ZeroTrustAccessPolicyRequireArgs:
     @login_method.setter
     def login_method(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireLoginMethodArgs']]):
         pulumi.set(self, "login_method", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def oidc(self) -> Optional[pulumi.Input['ZeroTrustAccessPolicyRequireOidcArgs']]:
+        return pulumi.get(self, "oidc")
+
+    @oidc.setter
+    def oidc(self, value: Optional[pulumi.Input['ZeroTrustAccessPolicyRequireOidcArgs']]):
+        pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter
@@ -67067,6 +65764,37 @@ class ZeroTrustAccessPolicyRequireIpListArgs:
 
 
 if not MYPY:
+    class ZeroTrustAccessPolicyRequireLinkedAppTokenArgsDict(TypedDict):
+        app_uid: pulumi.Input[_builtins.str]
+        """
+        The ID of an Access OIDC SaaS application
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireLinkedAppTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyRequireLinkedAppTokenArgs:
+    def __init__(__self__, *,
+                 app_uid: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] app_uid: The ID of an Access OIDC SaaS application
+        """
+        pulumi.set(__self__, "app_uid", app_uid)
+
+    @_builtins.property
+    @pulumi.getter(name="appUid")
+    def app_uid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of an Access OIDC SaaS application
+        """
+        return pulumi.get(self, "app_uid")
+
+    @app_uid.setter
+    def app_uid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "app_uid", value)
+
+
+if not MYPY:
     class ZeroTrustAccessPolicyRequireLoginMethodArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
@@ -67095,6 +65823,75 @@ class ZeroTrustAccessPolicyRequireLoginMethodArgs:
     @id.setter
     def id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class ZeroTrustAccessPolicyRequireOidcArgsDict(TypedDict):
+        claim_name: pulumi.Input[_builtins.str]
+        """
+        The name of the OIDC claim.
+        """
+        claim_value: pulumi.Input[_builtins.str]
+        """
+        The OIDC claim value to look for.
+        """
+        identity_provider_id: pulumi.Input[_builtins.str]
+        """
+        The ID of your OIDC identity provider.
+        """
+elif False:
+    ZeroTrustAccessPolicyRequireOidcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustAccessPolicyRequireOidcArgs:
+    def __init__(__self__, *,
+                 claim_name: pulumi.Input[_builtins.str],
+                 claim_value: pulumi.Input[_builtins.str],
+                 identity_provider_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] claim_name: The name of the OIDC claim.
+        :param pulumi.Input[_builtins.str] claim_value: The OIDC claim value to look for.
+        :param pulumi.Input[_builtins.str] identity_provider_id: The ID of your OIDC identity provider.
+        """
+        pulumi.set(__self__, "claim_name", claim_name)
+        pulumi.set(__self__, "claim_value", claim_value)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @_builtins.property
+    @pulumi.getter(name="claimName")
+    def claim_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the OIDC claim.
+        """
+        return pulumi.get(self, "claim_name")
+
+    @claim_name.setter
+    def claim_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="claimValue")
+    def claim_value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The OIDC claim value to look for.
+        """
+        return pulumi.get(self, "claim_value")
+
+    @claim_value.setter
+    def claim_value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "claim_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of your OIDC identity provider.
+        """
+        return pulumi.get(self, "identity_provider_id")
+
+    @identity_provider_id.setter
+    def identity_provider_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identity_provider_id", value)
 
 
 if not MYPY:
@@ -69284,6 +68081,106 @@ class ZeroTrustDexTestTargetPolicyArgs:
 
 
 if not MYPY:
+    class ZeroTrustDlpCustomEntryConfidenceArgsDict(TypedDict):
+        ai_context_available: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether this entry has AI remote service validation.
+        """
+        available: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+elif False:
+    ZeroTrustDlpCustomEntryConfidenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustDlpCustomEntryConfidenceArgs:
+    def __init__(__self__, *,
+                 ai_context_available: Optional[pulumi.Input[_builtins.bool]] = None,
+                 available: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ai_context_available: Indicates whether this entry has AI remote service validation.
+        :param pulumi.Input[_builtins.bool] available: Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+        if ai_context_available is not None:
+            pulumi.set(__self__, "ai_context_available", ai_context_available)
+        if available is not None:
+            pulumi.set(__self__, "available", available)
+
+    @_builtins.property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this entry has AI remote service validation.
+        """
+        return pulumi.get(self, "ai_context_available")
+
+    @ai_context_available.setter
+    def ai_context_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ai_context_available", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "available", value)
+
+
+if not MYPY:
+    class ZeroTrustDlpCustomEntryPatternArgsDict(TypedDict):
+        regex: pulumi.Input[_builtins.str]
+        validation: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Available values: "luhn".
+        """
+elif False:
+    ZeroTrustDlpCustomEntryPatternArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustDlpCustomEntryPatternArgs:
+    def __init__(__self__, *,
+                 regex: pulumi.Input[_builtins.str],
+                 validation: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] validation: Available values: "luhn".
+        """
+        pulumi.set(__self__, "regex", regex)
+        if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
+            pulumi.set(__self__, "validation", validation)
+
+    @_builtins.property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "regex", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def validation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "luhn".
+        """
+        return pulumi.get(self, "validation")
+
+    @validation.setter
+    def validation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "validation", value)
+
+
+if not MYPY:
     class ZeroTrustDlpCustomProfileContextAwarenessArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         """
@@ -69368,8 +68265,8 @@ if not MYPY:
     class ZeroTrustDlpCustomProfileEntryArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         name: pulumi.Input[_builtins.str]
-        pattern: NotRequired[pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgsDict']]
-        words: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        pattern: pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgsDict']
+        entry_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     ZeroTrustDlpCustomProfileEntryArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -69378,14 +68275,13 @@ class ZeroTrustDlpCustomProfileEntryArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
-                 pattern: Optional[pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs']] = None,
-                 words: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 pattern: pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs'],
+                 entry_id: Optional[pulumi.Input[_builtins.str]] = None):
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "name", name)
-        if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
-        if words is not None:
-            pulumi.set(__self__, "words", words)
+        pulumi.set(__self__, "pattern", pattern)
+        if entry_id is not None:
+            pulumi.set(__self__, "entry_id", entry_id)
 
     @_builtins.property
     @pulumi.getter
@@ -69407,21 +68303,21 @@ class ZeroTrustDlpCustomProfileEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def pattern(self) -> Optional[pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs']]:
+    def pattern(self) -> pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs']:
         return pulumi.get(self, "pattern")
 
     @pattern.setter
-    def pattern(self, value: Optional[pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs']]):
+    def pattern(self, value: pulumi.Input['ZeroTrustDlpCustomProfileEntryPatternArgs']):
         pulumi.set(self, "pattern", value)
 
     @_builtins.property
-    @pulumi.getter
-    def words(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        return pulumi.get(self, "words")
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "entry_id")
 
-    @words.setter
-    def words(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "words", value)
+    @entry_id.setter
+    def entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "entry_id", value)
 
 
 if not MYPY:
@@ -69478,7 +68374,7 @@ if not MYPY:
         entry_id: pulumi.Input[_builtins.str]
         entry_type: pulumi.Input[_builtins.str]
         """
-        Available values: "custom", "predefined", "integration", "exact_data".
+        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
 elif False:
     ZeroTrustDlpCustomProfileSharedEntryArgsDict: TypeAlias = Mapping[str, Any]
@@ -69490,7 +68386,7 @@ class ZeroTrustDlpCustomProfileSharedEntryArgs:
                  entry_id: pulumi.Input[_builtins.str],
                  entry_type: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] entry_type: Available values: "custom", "predefined", "integration", "exact_data".
+        :param pulumi.Input[_builtins.str] entry_type: Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "entry_id", entry_id)
@@ -69518,7 +68414,7 @@ class ZeroTrustDlpCustomProfileSharedEntryArgs:
     @pulumi.getter(name="entryType")
     def entry_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Available values: "custom", "predefined", "integration", "exact_data".
+        Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
         """
         return pulumi.get(self, "entry_type")
 
@@ -69534,7 +68430,7 @@ if not MYPY:
         num_cells: NotRequired[pulumi.Input[_builtins.int]]
         upload_status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
 elif False:
     ZeroTrustDlpDatasetColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -69547,7 +68443,7 @@ class ZeroTrustDlpDatasetColumnArgs:
                  num_cells: Optional[pulumi.Input[_builtins.int]] = None,
                  upload_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         if entry_id is not None:
             pulumi.set(__self__, "entry_id", entry_id)
@@ -69589,7 +68485,7 @@ class ZeroTrustDlpDatasetColumnArgs:
     @pulumi.getter(name="uploadStatus")
     def upload_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "upload_status")
 
@@ -69614,7 +68510,7 @@ if not MYPY:
         secret: NotRequired[pulumi.Input[_builtins.bool]]
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         updated_at: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -69641,7 +68537,7 @@ class ZeroTrustDlpDatasetDatasetArgs:
                  uploads: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetUploadArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the dataset.
-        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         :param pulumi.Input[_builtins.str] updated_at: When the dataset was last updated.
         """
         if case_sensitive is not None:
@@ -69757,7 +68653,7 @@ class ZeroTrustDlpDatasetDatasetArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 
@@ -69794,7 +68690,7 @@ if not MYPY:
         num_cells: NotRequired[pulumi.Input[_builtins.int]]
         upload_status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
 elif False:
     ZeroTrustDlpDatasetDatasetColumnArgsDict: TypeAlias = Mapping[str, Any]
@@ -69807,7 +68703,7 @@ class ZeroTrustDlpDatasetDatasetColumnArgs:
                  num_cells: Optional[pulumi.Input[_builtins.int]] = None,
                  upload_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] upload_status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         if entry_id is not None:
             pulumi.set(__self__, "entry_id", entry_id)
@@ -69849,7 +68745,7 @@ class ZeroTrustDlpDatasetDatasetColumnArgs:
     @pulumi.getter(name="uploadStatus")
     def upload_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "upload_status")
 
@@ -69863,7 +68759,7 @@ if not MYPY:
         num_cells: NotRequired[pulumi.Input[_builtins.int]]
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         version: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
@@ -69876,7 +68772,7 @@ class ZeroTrustDlpDatasetDatasetUploadArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         if num_cells is not None:
             pulumi.set(__self__, "num_cells", num_cells)
@@ -69898,7 +68794,7 @@ class ZeroTrustDlpDatasetDatasetUploadArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 
@@ -69921,7 +68817,7 @@ if not MYPY:
         num_cells: NotRequired[pulumi.Input[_builtins.int]]
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         version: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
@@ -69934,7 +68830,7 @@ class ZeroTrustDlpDatasetUploadArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
+        :param pulumi.Input[_builtins.str] status: Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         if num_cells is not None:
             pulumi.set(__self__, "num_cells", num_cells)
@@ -69956,7 +68852,7 @@ class ZeroTrustDlpDatasetUploadArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Available values: "empty", "uploading", "processing", "failed", "complete".
+        Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
         """
         return pulumi.get(self, "status")
 
@@ -70072,6 +68968,58 @@ class ZeroTrustDlpEntryPatternArgs:
     @validation.setter
     def validation(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "validation", value)
+
+
+if not MYPY:
+    class ZeroTrustDlpPredefinedEntryConfidenceArgsDict(TypedDict):
+        ai_context_available: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether this entry has AI remote service validation.
+        """
+        available: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+elif False:
+    ZeroTrustDlpPredefinedEntryConfidenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustDlpPredefinedEntryConfidenceArgs:
+    def __init__(__self__, *,
+                 ai_context_available: Optional[pulumi.Input[_builtins.bool]] = None,
+                 available: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ai_context_available: Indicates whether this entry has AI remote service validation.
+        :param pulumi.Input[_builtins.bool] available: Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+        if ai_context_available is not None:
+            pulumi.set(__self__, "ai_context_available", ai_context_available)
+        if available is not None:
+            pulumi.set(__self__, "available", available)
+
+    @_builtins.property
+    @pulumi.getter(name="aiContextAvailable")
+    def ai_context_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this entry has AI remote service validation.
+        """
+        return pulumi.get(self, "ai_context_available")
+
+    @ai_context_available.setter
+    def ai_context_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ai_context_available", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether this entry has any form of validation that is not an AI remote service.
+        """
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "available", value)
 
 
 if not MYPY:
@@ -70191,63 +69139,59 @@ class ZeroTrustDlpPredefinedProfileEntryArgs:
 
 if not MYPY:
     class ZeroTrustDnsLocationEndpointsArgsDict(TypedDict):
-        doh: NotRequired[pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgsDict']]
-        dot: NotRequired[pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgsDict']]
-        ipv4: NotRequired[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4ArgsDict']]
-        ipv6: NotRequired[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6ArgsDict']]
+        doh: pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgsDict']
+        dot: pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgsDict']
+        ipv4: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4ArgsDict']
+        ipv6: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6ArgsDict']
 elif False:
     ZeroTrustDnsLocationEndpointsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustDnsLocationEndpointsArgs:
     def __init__(__self__, *,
-                 doh: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs']] = None,
-                 dot: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs']] = None,
-                 ipv4: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']] = None):
-        if doh is not None:
-            pulumi.set(__self__, "doh", doh)
-        if dot is not None:
-            pulumi.set(__self__, "dot", dot)
-        if ipv4 is not None:
-            pulumi.set(__self__, "ipv4", ipv4)
-        if ipv6 is not None:
-            pulumi.set(__self__, "ipv6", ipv6)
+                 doh: pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs'],
+                 dot: pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs'],
+                 ipv4: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args'],
+                 ipv6: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']):
+        pulumi.set(__self__, "doh", doh)
+        pulumi.set(__self__, "dot", dot)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
 
     @_builtins.property
     @pulumi.getter
-    def doh(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs']]:
+    def doh(self) -> pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs']:
         return pulumi.get(self, "doh")
 
     @doh.setter
-    def doh(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs']]):
+    def doh(self, value: pulumi.Input['ZeroTrustDnsLocationEndpointsDohArgs']):
         pulumi.set(self, "doh", value)
 
     @_builtins.property
     @pulumi.getter
-    def dot(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs']]:
+    def dot(self) -> pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs']:
         return pulumi.get(self, "dot")
 
     @dot.setter
-    def dot(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs']]):
+    def dot(self, value: pulumi.Input['ZeroTrustDnsLocationEndpointsDotArgs']):
         pulumi.set(self, "dot", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args']]:
+    def ipv4(self) -> pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args']:
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args']]):
+    def ipv4(self, value: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv4Args']):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']]:
+    def ipv6(self) -> pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']]):
+    def ipv6(self, value: pulumi.Input['ZeroTrustDnsLocationEndpointsIpv6Args']):
         pulumi.set(self, "ipv6", value)
 
 
@@ -70864,7 +69808,7 @@ class ZeroTrustGatewayPolicyExpirationArgs:
 
 if not MYPY:
     class ZeroTrustGatewayPolicyRuleSettingsArgsDict(TypedDict):
-        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        add_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]
         """
         Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         """
@@ -70970,7 +69914,7 @@ elif False:
 @pulumi.input_type
 class ZeroTrustGatewayPolicyRuleSettingsArgs:
     def __init__(__self__, *,
-                 add_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 add_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  allow_child_bypass: Optional[pulumi.Input[_builtins.bool]] = None,
                  audit_ssh: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs']] = None,
                  biso_admin_controls: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs']] = None,
@@ -70996,7 +69940,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
                  resolve_dns_through_cloudflare: Optional[pulumi.Input[_builtins.bool]] = None,
                  untrusted_cert: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs']] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] add_headers: Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] add_headers: Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         :param pulumi.Input[_builtins.bool] allow_child_bypass: Set by parent MSP accounts to enable their children to bypass this rule.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs'] audit_ssh: Settings for the Audit SSH action.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
@@ -71075,14 +70019,14 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="addHeaders")
-    def add_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def add_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
         """
         return pulumi.get(self, "add_headers")
 
     @add_headers.setter
-    def add_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def add_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "add_headers", value)
 
     @_builtins.property
@@ -72623,10 +71567,6 @@ if not MYPY:
         """
         Anti-virus settings.
         """
-        app_control_settings: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsAppControlSettingsArgsDict']]
-        """
-        Setting to enable App Control
-        """
         block_page: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsBlockPageArgsDict']]
         """
         Block page layout settings.
@@ -72659,6 +71599,10 @@ if not MYPY:
         """
         Setting to enable host selector in egress policies.
         """
+        inspection: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsInspectionArgsDict']]
+        """
+        Setting to define inspection settings
+        """
         protocol_detection: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgsDict']]
         """
         Protocol Detection settings.
@@ -72679,7 +71623,6 @@ class ZeroTrustGatewaySettingsSettingsArgs:
     def __init__(__self__, *,
                  activity_log: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsActivityLogArgs']] = None,
                  antivirus: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsAntivirusArgs']] = None,
-                 app_control_settings: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs']] = None,
                  block_page: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsBodyScanningArgs']] = None,
                  browser_isolation: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs']] = None,
@@ -72688,13 +71631,13 @@ class ZeroTrustGatewaySettingsSettingsArgs:
                  extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsFipsArgs']] = None,
                  host_selector: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']] = None,
+                 inspection: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsInspectionArgs']] = None,
                  protocol_detection: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs']] = None,
                  sandbox: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsSandboxArgs']] = None,
                  tls_decrypt: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsTlsDecryptArgs']] = None):
         """
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsActivityLogArgs'] activity_log: Activity log settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsAntivirusArgs'] antivirus: Anti-virus settings.
-        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs'] app_control_settings: Setting to enable App Control
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsBlockPageArgs'] block_page: Block page layout settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsBodyScanningArgs'] body_scanning: DLP body scanning settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs'] browser_isolation: Browser isolation settings.
@@ -72703,6 +71646,7 @@ class ZeroTrustGatewaySettingsSettingsArgs:
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs'] extended_email_matching: Extended e-mail matching settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsFipsArgs'] fips: FIPS settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs'] host_selector: Setting to enable host selector in egress policies.
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsInspectionArgs'] inspection: Setting to define inspection settings
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs'] protocol_detection: Protocol Detection settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsSandboxArgs'] sandbox: Sandbox settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsTlsDecryptArgs'] tls_decrypt: TLS interception settings.
@@ -72711,8 +71655,6 @@ class ZeroTrustGatewaySettingsSettingsArgs:
             pulumi.set(__self__, "activity_log", activity_log)
         if antivirus is not None:
             pulumi.set(__self__, "antivirus", antivirus)
-        if app_control_settings is not None:
-            pulumi.set(__self__, "app_control_settings", app_control_settings)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
@@ -72732,6 +71674,8 @@ class ZeroTrustGatewaySettingsSettingsArgs:
             pulumi.set(__self__, "fips", fips)
         if host_selector is not None:
             pulumi.set(__self__, "host_selector", host_selector)
+        if inspection is not None:
+            pulumi.set(__self__, "inspection", inspection)
         if protocol_detection is not None:
             pulumi.set(__self__, "protocol_detection", protocol_detection)
         if sandbox is not None:
@@ -72762,18 +71706,6 @@ class ZeroTrustGatewaySettingsSettingsArgs:
     @antivirus.setter
     def antivirus(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsAntivirusArgs']]):
         pulumi.set(self, "antivirus", value)
-
-    @_builtins.property
-    @pulumi.getter(name="appControlSettings")
-    def app_control_settings(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs']]:
-        """
-        Setting to enable App Control
-        """
-        return pulumi.get(self, "app_control_settings")
-
-    @app_control_settings.setter
-    def app_control_settings(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs']]):
-        pulumi.set(self, "app_control_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="blockPage")
@@ -72871,6 +71803,18 @@ class ZeroTrustGatewaySettingsSettingsArgs:
     @host_selector.setter
     def host_selector(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']]):
         pulumi.set(self, "host_selector", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def inspection(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsInspectionArgs']]:
+        """
+        Setting to define inspection settings
+        """
+        return pulumi.get(self, "inspection")
+
+    @inspection.setter
+    def inspection(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsInspectionArgs']]):
+        pulumi.set(self, "inspection", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolDetection")
@@ -73126,42 +72070,10 @@ class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs:
 
 
 if not MYPY:
-    class ZeroTrustGatewaySettingsSettingsAppControlSettingsArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable App Control
-        """
-elif False:
-    ZeroTrustGatewaySettingsSettingsAppControlSettingsArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs:
-    def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enabled: Enable App Control
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable App Control
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-
-if not MYPY:
     class ZeroTrustGatewaySettingsSettingsBlockPageArgsDict(TypedDict):
         background_color: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page background color in #rrggbb format.
+        If mode is customized_block_page: block page background color in #rrggbb format.
         """
         enabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -73169,44 +72081,56 @@ if not MYPY:
         """
         footer_text: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page footer text.
+        If mode is customized_block_page: block page footer text.
         """
         header_text: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page header text.
+        If mode is customized_block_page: block page header text.
         """
         include_context: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
         """
         logo_path: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: full URL to the logo file.
+        If mode is customized_block_page: full URL to the logo file.
         """
         mailto_address: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: admin email for users to contact.
+        If mode is customized_block_page: admin email for users to contact.
         """
         mailto_subject: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: subject line for emails created from block page.
+        If mode is customized_block_page: subject line for emails created from block page.
         """
         mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        Available values: "customized*block*page", "redirect_uri".
+        Available values: "customized_block_page", "redirect_uri".
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        If mode is customized*block*page: block page title.
+        If mode is customized_block_page: block page title.
+        """
+        read_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        source_account: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Account tag of account that shared this setting
         """
         suppress_footer: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         """
         target_uri: NotRequired[pulumi.Input[_builtins.str]]
         """
         If mode is redirect_uri: URI to which the user should be redirected.
+        """
+        version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number of the setting
         """
 elif False:
     ZeroTrustGatewaySettingsSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
@@ -73224,22 +72148,28 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
                  mailto_subject: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
                  suppress_footer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 target_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 target_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] background_color: If mode is customized*block*page: block page background color in #rrggbb format.
+        :param pulumi.Input[_builtins.str] background_color: If mode is customized_block_page: block page background color in #rrggbb format.
         :param pulumi.Input[_builtins.bool] enabled: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
-        :param pulumi.Input[_builtins.str] footer_text: If mode is customized*block*page: block page footer text.
-        :param pulumi.Input[_builtins.str] header_text: If mode is customized*block*page: block page header text.
-        :param pulumi.Input[_builtins.bool] include_context: If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
-        :param pulumi.Input[_builtins.str] logo_path: If mode is customized*block*page: full URL to the logo file.
-        :param pulumi.Input[_builtins.str] mailto_address: If mode is customized*block*page: admin email for users to contact.
-        :param pulumi.Input[_builtins.str] mailto_subject: If mode is customized*block*page: subject line for emails created from block page.
+        :param pulumi.Input[_builtins.str] footer_text: If mode is customized_block_page: block page footer text.
+        :param pulumi.Input[_builtins.str] header_text: If mode is customized_block_page: block page header text.
+        :param pulumi.Input[_builtins.bool] include_context: If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+        :param pulumi.Input[_builtins.str] logo_path: If mode is customized_block_page: full URL to the logo file.
+        :param pulumi.Input[_builtins.str] mailto_address: If mode is customized_block_page: admin email for users to contact.
+        :param pulumi.Input[_builtins.str] mailto_subject: If mode is customized_block_page: subject line for emails created from block page.
         :param pulumi.Input[_builtins.str] mode: Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-               Available values: "customized*block*page", "redirect_uri".
-        :param pulumi.Input[_builtins.str] name: If mode is customized*block*page: block page title.
-        :param pulumi.Input[_builtins.bool] suppress_footer: If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+               Available values: "customized_block_page", "redirect_uri".
+        :param pulumi.Input[_builtins.str] name: If mode is customized_block_page: block page title.
+        :param pulumi.Input[_builtins.bool] read_only: This setting was shared via the Orgs API and cannot be edited by the current account
+        :param pulumi.Input[_builtins.str] source_account: Account tag of account that shared this setting
+        :param pulumi.Input[_builtins.bool] suppress_footer: If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         :param pulumi.Input[_builtins.str] target_uri: If mode is redirect_uri: URI to which the user should be redirected.
+        :param pulumi.Input[_builtins.int] version: Version number of the setting
         """
         if background_color is not None:
             pulumi.set(__self__, "background_color", background_color)
@@ -73261,16 +72191,22 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if source_account is not None:
+            pulumi.set(__self__, "source_account", source_account)
         if suppress_footer is not None:
             pulumi.set(__self__, "suppress_footer", suppress_footer)
         if target_uri is not None:
             pulumi.set(__self__, "target_uri", target_uri)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="backgroundColor")
     def background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page background color in #rrggbb format.
+        If mode is customized_block_page: block page background color in #rrggbb format.
         """
         return pulumi.get(self, "background_color")
 
@@ -73294,7 +72230,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="footerText")
     def footer_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page footer text.
+        If mode is customized_block_page: block page footer text.
         """
         return pulumi.get(self, "footer_text")
 
@@ -73306,7 +72242,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="headerText")
     def header_text(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page header text.
+        If mode is customized_block_page: block page header text.
         """
         return pulumi.get(self, "header_text")
 
@@ -73318,7 +72254,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="includeContext")
     def include_context(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
         """
         return pulumi.get(self, "include_context")
 
@@ -73330,7 +72266,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="logoPath")
     def logo_path(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: full URL to the logo file.
+        If mode is customized_block_page: full URL to the logo file.
         """
         return pulumi.get(self, "logo_path")
 
@@ -73342,7 +72278,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoAddress")
     def mailto_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: admin email for users to contact.
+        If mode is customized_block_page: admin email for users to contact.
         """
         return pulumi.get(self, "mailto_address")
 
@@ -73354,7 +72290,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoSubject")
     def mailto_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: subject line for emails created from block page.
+        If mode is customized_block_page: subject line for emails created from block page.
         """
         return pulumi.get(self, "mailto_subject")
 
@@ -73367,7 +72303,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        Available values: "customized*block*page", "redirect_uri".
+        Available values: "customized_block_page", "redirect_uri".
         """
         return pulumi.get(self, "mode")
 
@@ -73379,7 +72315,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        If mode is customized*block*page: block page title.
+        If mode is customized_block_page: block page title.
         """
         return pulumi.get(self, "name")
 
@@ -73388,10 +72324,34 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account tag of account that shared this setting
+        """
+        return pulumi.get(self, "source_account")
+
+    @source_account.setter
+    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_account", value)
+
+    @_builtins.property
     @pulumi.getter(name="suppressFooter")
     def suppress_footer(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         """
         return pulumi.get(self, "suppress_footer")
 
@@ -73411,12 +72371,25 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     def target_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "target_uri", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number of the setting
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version", value)
+
 
 if not MYPY:
     class ZeroTrustGatewaySettingsSettingsBodyScanningArgsDict(TypedDict):
         inspection_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         Set the inspection mode to either `deep` or `shallow`.
+        Available values: "deep", "shallow".
         """
 elif False:
     ZeroTrustGatewaySettingsSettingsBodyScanningArgsDict: TypeAlias = Mapping[str, Any]
@@ -73427,6 +72400,7 @@ class ZeroTrustGatewaySettingsSettingsBodyScanningArgs:
                  inspection_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] inspection_mode: Set the inspection mode to either `deep` or `shallow`.
+               Available values: "deep", "shallow".
         """
         if inspection_mode is not None:
             pulumi.set(__self__, "inspection_mode", inspection_mode)
@@ -73436,6 +72410,7 @@ class ZeroTrustGatewaySettingsSettingsBodyScanningArgs:
     def inspection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Set the inspection mode to either `deep` or `shallow`.
+        Available values: "deep", "shallow".
         """
         return pulumi.get(self, "inspection_mode")
 
@@ -73617,18 +72592,42 @@ if not MYPY:
         """
         Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
         """
+        read_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        source_account: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Account tag of account that shared this setting
+        """
+        version: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Version number of the setting
+        """
 elif False:
     ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 source_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        :param pulumi.Input[_builtins.bool] read_only: This setting was shared via the Orgs API and cannot be edited by the current account
+        :param pulumi.Input[_builtins.str] source_account: Account tag of account that shared this setting
+        :param pulumi.Input[_builtins.int] version: Version number of the setting
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if source_account is not None:
+            pulumi.set(__self__, "source_account", source_account)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -73641,6 +72640,42 @@ class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This setting was shared via the Orgs API and cannot be edited by the current account
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceAccount")
+    def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Account tag of account that shared this setting
+        """
+        return pulumi.get(self, "source_account")
+
+    @source_account.setter
+    def source_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "source_account", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Version number of the setting
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "version", value)
 
 
 if not MYPY:
@@ -73705,6 +72740,47 @@ class ZeroTrustGatewaySettingsSettingsHostSelectorArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsSettingsInspectionArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Defines the mode of inspection the proxy will use.
+        - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+        - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+        Available values: "static", "dynamic".
+        """
+elif False:
+    ZeroTrustGatewaySettingsSettingsInspectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewaySettingsSettingsInspectionArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: Defines the mode of inspection the proxy will use.
+               - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+               - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+               Available values: "static", "dynamic".
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Defines the mode of inspection the proxy will use.
+        - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
+        - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+        Available values: "static", "dynamic".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
 
 
 if not MYPY:
@@ -73828,7 +72904,6 @@ class ZeroTrustGatewaySettingsSettingsTlsDecryptArgs:
 
 if not MYPY:
     class ZeroTrustListItemArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
         The description of the list item, if present
@@ -73843,28 +72918,16 @@ elif False:
 @pulumi.input_type
 class ZeroTrustListItemArgs:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The description of the list item, if present
         :param pulumi.Input[_builtins.str] value: The value of the item in a list.
         """
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if value is not None:
             pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -75104,6 +74167,178 @@ elif False:
 
 @pulumi.input_type
 class ZeroTrustTunnelCloudflaredConnectionArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 colo_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_pending_reconnect: Optional[pulumi.Input[_builtins.bool]] = None,
+                 opened_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: UUID of the Cloudflare Tunnel connector.
+        :param pulumi.Input[_builtins.str] client_version: The cloudflared version used to establish this connection.
+        :param pulumi.Input[_builtins.str] colo_name: The Cloudflare data center used for this connection.
+        :param pulumi.Input[_builtins.str] id: UUID of the Cloudflare Tunnel connection.
+        :param pulumi.Input[_builtins.bool] is_pending_reconnect: Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        :param pulumi.Input[_builtins.str] opened_at: Timestamp of when the connection was established.
+        :param pulumi.Input[_builtins.str] origin_ip: The public IP address of the host running cloudflared.
+        :param pulumi.Input[_builtins.str] uuid: UUID of the Cloudflare Tunnel connection.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_version is not None:
+            pulumi.set(__self__, "client_version", client_version)
+        if colo_name is not None:
+            pulumi.set(__self__, "colo_name", colo_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_pending_reconnect is not None:
+            pulumi.set(__self__, "is_pending_reconnect", is_pending_reconnect)
+        if opened_at is not None:
+            pulumi.set(__self__, "opened_at", opened_at)
+        if origin_ip is not None:
+            pulumi.set(__self__, "origin_ip", origin_ip)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Cloudflare Tunnel connector.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientVersion")
+    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The cloudflared version used to establish this connection.
+        """
+        return pulumi.get(self, "client_version")
+
+    @client_version.setter
+    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "client_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="coloName")
+    def colo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Cloudflare data center used for this connection.
+        """
+        return pulumi.get(self, "colo_name")
+
+    @colo_name.setter
+    def colo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "colo_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPendingReconnect")
+    def is_pending_reconnect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        return pulumi.get(self, "is_pending_reconnect")
+
+    @is_pending_reconnect.setter
+    def is_pending_reconnect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_pending_reconnect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openedAt")
+    def opened_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp of when the connection was established.
+        """
+        return pulumi.get(self, "opened_at")
+
+    @opened_at.setter
+    def opened_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "opened_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originIp")
+    def origin_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The public IP address of the host running cloudflared.
+        """
+        return pulumi.get(self, "origin_ip")
+
+    @origin_ip.setter
+    def origin_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class ZeroTrustTunnelWarpConnectorConnectionArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Cloudflare Tunnel connector.
+        """
+        client_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The cloudflared version used to establish this connection.
+        """
+        colo_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Cloudflare data center used for this connection.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+        is_pending_reconnect: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Cloudflare continues to track connections for several minutes after they disconnect. This is an optimization to improve latency and reliability of reconnecting.  If `true`, the connection has disconnected but is still being tracked. If `false`, the connection is actively serving traffic.
+        """
+        opened_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp of when the connection was established.
+        """
+        origin_ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The public IP address of the host running cloudflared.
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Cloudflare Tunnel connection.
+        """
+elif False:
+    ZeroTrustTunnelWarpConnectorConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustTunnelWarpConnectorConnectionArgs:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -79002,6 +78237,7 @@ if not MYPY:
         The field to sort by.
         Available values: "pattern", "created_at".
         """
+        pattern: NotRequired[_builtins.str]
         pattern_type: NotRequired[_builtins.str]
         """
         Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
@@ -79021,6 +78257,7 @@ class GetEmailSecurityBlockSenderFilterArgs:
     def __init__(__self__, *,
                  direction: Optional[_builtins.str] = None,
                  order: Optional[_builtins.str] = None,
+                 pattern: Optional[_builtins.str] = None,
                  pattern_type: Optional[_builtins.str] = None,
                  search: Optional[_builtins.str] = None):
         """
@@ -79038,6 +78275,8 @@ class GetEmailSecurityBlockSenderFilterArgs:
             pulumi.set(__self__, "direction", direction)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
         if pattern_type is not None:
             pulumi.set(__self__, "pattern_type", pattern_type)
         if search is not None:
@@ -79068,6 +78307,15 @@ class GetEmailSecurityBlockSenderFilterArgs:
     @order.setter
     def order(self, value: Optional[_builtins.str]):
         pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="patternType")
@@ -79218,6 +78466,7 @@ if not MYPY:
         The field to sort by.
         Available values: "pattern", "created_at".
         """
+        pattern: NotRequired[_builtins.str]
         search: NotRequired[_builtins.str]
         """
         Allows searching in multiple properties of a record simultaneously.
@@ -79235,6 +78484,7 @@ class GetEmailSecurityTrustedDomainsFilterArgs:
                  is_recent: Optional[_builtins.bool] = None,
                  is_similarity: Optional[_builtins.bool] = None,
                  order: Optional[_builtins.str] = None,
+                 pattern: Optional[_builtins.str] = None,
                  search: Optional[_builtins.str] = None):
         """
         :param _builtins.str direction: The sorting direction.
@@ -79254,6 +78504,8 @@ class GetEmailSecurityTrustedDomainsFilterArgs:
             pulumi.set(__self__, "is_similarity", is_similarity)
         if order is not None:
             pulumi.set(__self__, "order", order)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
         if search is not None:
             pulumi.set(__self__, "search", search)
 
@@ -79300,6 +78552,15 @@ class GetEmailSecurityTrustedDomainsFilterArgs:
     @order.setter
     def order(self, value: Optional[_builtins.str]):
         pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "pattern", value)
 
     @_builtins.property
     @pulumi.getter
@@ -79674,6 +78935,78 @@ class GetTurnstileWidgetFilterArgs:
 
 
 if not MYPY:
+    class GetUserAgentBlockingRuleFilterArgsDict(TypedDict):
+        description: NotRequired[_builtins.str]
+        """
+        A string to search for in the description of existing rules.
+        """
+        paused: NotRequired[_builtins.bool]
+        """
+        When true, indicates that the rule is currently paused.
+        """
+        user_agent: NotRequired[_builtins.str]
+        """
+        A string to search for in the user agent values of existing rules.
+        """
+elif False:
+    GetUserAgentBlockingRuleFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetUserAgentBlockingRuleFilterArgs:
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 paused: Optional[_builtins.bool] = None,
+                 user_agent: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: A string to search for in the description of existing rules.
+        :param _builtins.bool paused: When true, indicates that the rule is currently paused.
+        :param _builtins.str user_agent: A string to search for in the user agent values of existing rules.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if user_agent is not None:
+            pulumi.set(__self__, "user_agent", user_agent)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A string to search for in the description of existing rules.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def paused(self) -> Optional[_builtins.bool]:
+        """
+        When true, indicates that the rule is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "paused", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userAgent")
+    def user_agent(self) -> Optional[_builtins.str]:
+        """
+        A string to search for in the user agent values of existing rules.
+        """
+        return pulumi.get(self, "user_agent")
+
+    @user_agent.setter
+    def user_agent(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "user_agent", value)
+
+
+if not MYPY:
     class GetWebAnalyticsSiteFilterArgsDict(TypedDict):
         order_by: NotRequired[_builtins.str]
         """
@@ -79888,6 +79221,10 @@ if not MYPY:
         """
         The domain of the app.
         """
+        exact: NotRequired[_builtins.bool]
+        """
+        True for only exact string matches against passed name/domain query parameters.
+        """
         name: NotRequired[_builtins.str]
         """
         The name of the app.
@@ -79904,11 +79241,13 @@ class GetZeroTrustAccessApplicationFilterArgs:
     def __init__(__self__, *,
                  aud: Optional[_builtins.str] = None,
                  domain: Optional[_builtins.str] = None,
+                 exact: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None,
                  search: Optional[_builtins.str] = None):
         """
         :param _builtins.str aud: The aud of the app.
         :param _builtins.str domain: The domain of the app.
+        :param _builtins.bool exact: True for only exact string matches against passed name/domain query parameters.
         :param _builtins.str name: The name of the app.
         :param _builtins.str search: Search for apps by other listed query parameters.
         """
@@ -79916,6 +79255,8 @@ class GetZeroTrustAccessApplicationFilterArgs:
             pulumi.set(__self__, "aud", aud)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if search is not None:
@@ -79944,6 +79285,18 @@ class GetZeroTrustAccessApplicationFilterArgs:
     @domain.setter
     def domain(self, value: Optional[_builtins.str]):
         pulumi.set(self, "domain", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[_builtins.bool]:
+        """
+        True for only exact string matches against passed name/domain query parameters.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter
@@ -80992,6 +80345,173 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs:
     @name.setter
     def name(self, value: Optional[_builtins.str]):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class GetZeroTrustTunnelWarpConnectorFilterArgsDict(TypedDict):
+        exclude_prefix: NotRequired[_builtins.str]
+        existed_at: NotRequired[_builtins.str]
+        """
+        If provided, include only resources that were created (and not deleted) before this time. URL encoded.
+        """
+        include_prefix: NotRequired[_builtins.str]
+        is_deleted: NotRequired[_builtins.bool]
+        """
+        If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
+        """
+        name: NotRequired[_builtins.str]
+        """
+        A user-friendly name for the tunnel.
+        """
+        status: NotRequired[_builtins.str]
+        """
+        The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        Available values: "inactive", "degraded", "healthy", "down".
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID of the tunnel.
+        """
+        was_active_at: NotRequired[_builtins.str]
+        was_inactive_at: NotRequired[_builtins.str]
+elif False:
+    GetZeroTrustTunnelWarpConnectorFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetZeroTrustTunnelWarpConnectorFilterArgs:
+    def __init__(__self__, *,
+                 exclude_prefix: Optional[_builtins.str] = None,
+                 existed_at: Optional[_builtins.str] = None,
+                 include_prefix: Optional[_builtins.str] = None,
+                 is_deleted: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None,
+                 was_active_at: Optional[_builtins.str] = None,
+                 was_inactive_at: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str existed_at: If provided, include only resources that were created (and not deleted) before this time. URL encoded.
+        :param _builtins.bool is_deleted: If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
+        :param _builtins.str name: A user-friendly name for the tunnel.
+        :param _builtins.str status: The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+               Available values: "inactive", "degraded", "healthy", "down".
+        :param _builtins.str uuid: UUID of the tunnel.
+        """
+        if exclude_prefix is not None:
+            pulumi.set(__self__, "exclude_prefix", exclude_prefix)
+        if existed_at is not None:
+            pulumi.set(__self__, "existed_at", existed_at)
+        if include_prefix is not None:
+            pulumi.set(__self__, "include_prefix", include_prefix)
+        if is_deleted is not None:
+            pulumi.set(__self__, "is_deleted", is_deleted)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if was_active_at is not None:
+            pulumi.set(__self__, "was_active_at", was_active_at)
+        if was_inactive_at is not None:
+            pulumi.set(__self__, "was_inactive_at", was_inactive_at)
+
+    @_builtins.property
+    @pulumi.getter(name="excludePrefix")
+    def exclude_prefix(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "exclude_prefix")
+
+    @exclude_prefix.setter
+    def exclude_prefix(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "exclude_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="existedAt")
+    def existed_at(self) -> Optional[_builtins.str]:
+        """
+        If provided, include only resources that were created (and not deleted) before this time. URL encoded.
+        """
+        return pulumi.get(self, "existed_at")
+
+    @existed_at.setter
+    def existed_at(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "existed_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includePrefix")
+    def include_prefix(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "include_prefix")
+
+    @include_prefix.setter
+    def include_prefix(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "include_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDeleted")
+    def is_deleted(self) -> Optional[_builtins.bool]:
+        """
+        If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
+        """
+        return pulumi.get(self, "is_deleted")
+
+    @is_deleted.setter
+    def is_deleted(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_deleted", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        A user-friendly name for the tunnel.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        Available values: "inactive", "degraded", "healthy", "down".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID of the tunnel.
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wasActiveAt")
+    def was_active_at(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "was_active_at")
+
+    @was_active_at.setter
+    def was_active_at(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "was_active_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wasInactiveAt")
+    def was_inactive_at(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "was_inactive_at")
+
+    @was_inactive_at.setter
+    def was_inactive_at(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "was_inactive_at", value)
 
 
 if not MYPY:

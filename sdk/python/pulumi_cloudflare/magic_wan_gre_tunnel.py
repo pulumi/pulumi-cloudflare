@@ -169,11 +169,8 @@ class _MagicWanGreTunnelState:
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gre_tunnel: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']] = None,
                  health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 modified: Optional[pulumi.Input[_builtins.bool]] = None,
-                 modified_gre_tunnel: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -201,16 +198,10 @@ class _MagicWanGreTunnelState:
             pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if gre_tunnel is not None:
-            pulumi.set(__self__, "gre_tunnel", gre_tunnel)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
         if interface_address is not None:
             pulumi.set(__self__, "interface_address", interface_address)
-        if modified is not None:
-            pulumi.set(__self__, "modified", modified)
-        if modified_gre_tunnel is not None:
-            pulumi.set(__self__, "modified_gre_tunnel", modified_gre_tunnel)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if mtu is not None:
@@ -281,15 +272,6 @@ class _MagicWanGreTunnelState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter(name="greTunnel")
-    def gre_tunnel(self) -> Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]:
-        return pulumi.get(self, "gre_tunnel")
-
-    @gre_tunnel.setter
-    def gre_tunnel(self, value: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]):
-        pulumi.set(self, "gre_tunnel", value)
-
-    @_builtins.property
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]:
         return pulumi.get(self, "health_check")
@@ -309,24 +291,6 @@ class _MagicWanGreTunnelState:
     @interface_address.setter
     def interface_address(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "interface_address", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def modified(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "modified")
-
-    @modified.setter
-    def modified(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "modified", value)
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedGreTunnel")
-    def modified_gre_tunnel(self) -> Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']]:
-        return pulumi.get(self, "modified_gre_tunnel")
-
-    @modified_gre_tunnel.setter
-    def modified_gre_tunnel(self, value: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']]):
-        pulumi.set(self, "modified_gre_tunnel", value)
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
@@ -396,30 +360,6 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            cloudflare_gre_endpoint="203.0.113.1",
-            customer_gre_endpoint="203.0.113.1",
-            interface_address="192.0.2.0/31",
-            name="GRE_1",
-            description="Tunnel for ISP X",
-            health_check={
-                "direction": "bidirectional",
-                "enabled": True,
-                "rate": "low",
-                "target": {
-                    "saved": "203.0.113.1",
-                },
-                "type": "request",
-            },
-            mtu=0,
-            ttl=0)
-        ```
-
         ## Import
 
         ```sh
@@ -445,30 +385,6 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            cloudflare_gre_endpoint="203.0.113.1",
-            customer_gre_endpoint="203.0.113.1",
-            interface_address="192.0.2.0/31",
-            name="GRE_1",
-            description="Tunnel for ISP X",
-            health_check={
-                "direction": "bidirectional",
-                "enabled": True,
-                "rate": "low",
-                "target": {
-                    "saved": "203.0.113.1",
-                },
-                "type": "request",
-            },
-            mtu=0,
-            ttl=0)
-        ```
 
         ## Import
 
@@ -529,9 +445,6 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["created_on"] = None
-            __props__.__dict__["gre_tunnel"] = None
-            __props__.__dict__["modified"] = None
-            __props__.__dict__["modified_gre_tunnel"] = None
             __props__.__dict__["modified_on"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/greTunnel:GreTunnel")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
@@ -550,11 +463,8 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             customer_gre_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
-            gre_tunnel: Optional[pulumi.Input[Union['MagicWanGreTunnelGreTunnelArgs', 'MagicWanGreTunnelGreTunnelArgsDict']]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[_builtins.str]] = None,
-            modified: Optional[pulumi.Input[_builtins.bool]] = None,
-            modified_gre_tunnel: Optional[pulumi.Input[Union['MagicWanGreTunnelModifiedGreTunnelArgs', 'MagicWanGreTunnelModifiedGreTunnelArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             mtu: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -586,11 +496,8 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["customer_gre_endpoint"] = customer_gre_endpoint
         __props__.__dict__["description"] = description
-        __props__.__dict__["gre_tunnel"] = gre_tunnel
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
-        __props__.__dict__["modified"] = modified
-        __props__.__dict__["modified_gre_tunnel"] = modified_gre_tunnel
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
@@ -638,11 +545,6 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
-    @pulumi.getter(name="greTunnel")
-    def gre_tunnel(self) -> pulumi.Output['outputs.MagicWanGreTunnelGreTunnel']:
-        return pulumi.get(self, "gre_tunnel")
-
-    @_builtins.property
     @pulumi.getter(name="healthCheck")
     def health_check(self) -> pulumi.Output['outputs.MagicWanGreTunnelHealthCheck']:
         return pulumi.get(self, "health_check")
@@ -654,16 +556,6 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
-
-    @_builtins.property
-    @pulumi.getter
-    def modified(self) -> pulumi.Output[_builtins.bool]:
-        return pulumi.get(self, "modified")
-
-    @_builtins.property
-    @pulumi.getter(name="modifiedGreTunnel")
-    def modified_gre_tunnel(self) -> pulumi.Output['outputs.MagicWanGreTunnelModifiedGreTunnel']:
-        return pulumi.get(self, "modified_gre_tunnel")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

@@ -14,49 +14,12 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicTransitConnector;
- * import com.pulumi.cloudflare.MagicTransitConnectorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleMagicTransitConnector = new MagicTransitConnector("exampleMagicTransitConnector", MagicTransitConnectorArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .connectorId("connector_id")
- *             .activated(true)
- *             .interruptWindowDurationHours(0.0)
- *             .interruptWindowHourOfDay(0.0)
- *             .notes("notes")
- *             .timezone("timezone")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -83,16 +46,10 @@ public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="activated", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> activated;
+    private Output<Boolean> activated;
 
-    public Output<Optional<Boolean>> activated() {
-        return Codegen.optional(this.activated);
-    }
-    @Export(name="connectorId", refs={String.class}, tree="[0]")
-    private Output<String> connectorId;
-
-    public Output<String> connectorId() {
-        return this.connectorId;
+    public Output<Boolean> activated() {
+        return this.activated;
     }
     @Export(name="device", refs={MagicTransitConnectorDevice.class}, tree="[0]")
     private Output<MagicTransitConnectorDevice> device;
@@ -101,46 +58,28 @@ public class MagicTransitConnector extends com.pulumi.resources.CustomResource {
         return this.device;
     }
     @Export(name="interruptWindowDurationHours", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> interruptWindowDurationHours;
+    private Output<Double> interruptWindowDurationHours;
 
-    public Output<Optional<Double>> interruptWindowDurationHours() {
-        return Codegen.optional(this.interruptWindowDurationHours);
+    public Output<Double> interruptWindowDurationHours() {
+        return this.interruptWindowDurationHours;
     }
     @Export(name="interruptWindowHourOfDay", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> interruptWindowHourOfDay;
+    private Output<Double> interruptWindowHourOfDay;
 
-    public Output<Optional<Double>> interruptWindowHourOfDay() {
-        return Codegen.optional(this.interruptWindowHourOfDay);
-    }
-    @Export(name="lastHeartbeat", refs={String.class}, tree="[0]")
-    private Output<String> lastHeartbeat;
-
-    public Output<String> lastHeartbeat() {
-        return this.lastHeartbeat;
-    }
-    @Export(name="lastSeenVersion", refs={String.class}, tree="[0]")
-    private Output<String> lastSeenVersion;
-
-    public Output<String> lastSeenVersion() {
-        return this.lastSeenVersion;
-    }
-    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
-    private Output<String> lastUpdated;
-
-    public Output<String> lastUpdated() {
-        return this.lastUpdated;
+    public Output<Double> interruptWindowHourOfDay() {
+        return this.interruptWindowHourOfDay;
     }
     @Export(name="notes", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> notes;
+    private Output<String> notes;
 
-    public Output<Optional<String>> notes() {
-        return Codegen.optional(this.notes);
+    public Output<String> notes() {
+        return this.notes;
     }
     @Export(name="timezone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> timezone;
+    private Output<String> timezone;
 
-    public Output<Optional<String>> timezone() {
-        return Codegen.optional(this.timezone);
+    public Output<String> timezone() {
+        return this.timezone;
     }
 
     /**

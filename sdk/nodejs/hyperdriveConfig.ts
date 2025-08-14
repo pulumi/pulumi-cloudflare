@@ -59,6 +59,10 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     public readonly mtls!: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly origin!: pulumi.Output<outputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    public readonly originConnectionLimit!: pulumi.Output<number | undefined>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -80,6 +84,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["mtls"] = state ? state.mtls : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["originConnectionLimit"] = state ? state.originConnectionLimit : undefined;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -96,6 +101,7 @@ export class HyperdriveConfig extends pulumi.CustomResource {
             resourceInputs["mtls"] = args ? args.mtls : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["originConnectionLimit"] = args ? args.originConnectionLimit : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
@@ -124,6 +130,10 @@ export interface HyperdriveConfigState {
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     name?: pulumi.Input<string>;
     origin?: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    originConnectionLimit?: pulumi.Input<number>;
 }
 
 /**
@@ -138,4 +148,8 @@ export interface HyperdriveConfigArgs {
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
     name: pulumi.Input<string>;
     origin: pulumi.Input<inputs.HyperdriveConfigOrigin>;
+    /**
+     * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+     */
+    originConnectionLimit?: pulumi.Input<number>;
 }

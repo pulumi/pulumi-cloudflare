@@ -61,14 +61,22 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="contextAwareness")
     private @Nullable Output<DlpCustomProfileContextAwarenessArgs> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<DlpCustomProfileContextAwarenessArgs>> contextAwareness() {
         return Optional.ofNullable(this.contextAwareness);
     }
@@ -88,11 +96,29 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.description);
     }
 
-    @Import(name="entries", required=true)
-    private Output<List<DlpCustomProfileEntryArgs>> entries;
+    /**
+     * Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="entries")
+    private @Nullable Output<List<DlpCustomProfileEntryArgs>> entries;
 
-    public Output<List<DlpCustomProfileEntryArgs>> entries() {
-        return this.entries;
+    /**
+     * @return Custom entries from this profile.
+     * If this field is omitted, entries owned by this profile will not be changed.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<List<DlpCustomProfileEntryArgs>>> entries() {
+        return Optional.ofNullable(this.entries);
     }
 
     @Import(name="name", required=true)
@@ -210,7 +236,11 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(@Nullable Output<DlpCustomProfileContextAwarenessArgs> contextAwareness) {
             $.contextAwareness = contextAwareness;
             return this;
@@ -221,7 +251,11 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder contextAwareness(DlpCustomProfileContextAwarenessArgs contextAwareness) {
             return contextAwareness(Output.of(contextAwareness));
         }
@@ -247,15 +281,48 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
             return description(Output.of(description));
         }
 
-        public Builder entries(Output<List<DlpCustomProfileEntryArgs>> entries) {
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder entries(@Nullable Output<List<DlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(List<DlpCustomProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
 
+        /**
+         * @param entries Custom entries from this profile.
+         * If this field is omitted, entries owned by this profile will not be changed.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(DlpCustomProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }
@@ -312,9 +379,6 @@ public final class DlpCustomProfileArgs extends com.pulumi.resources.ResourceArg
         public DlpCustomProfileArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DlpCustomProfileArgs", "accountId");
-            }
-            if ($.entries == null) {
-                throw new MissingRequiredPropertyException("DlpCustomProfileArgs", "entries");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DlpCustomProfileArgs", "name");

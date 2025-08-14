@@ -45,7 +45,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     public readonly action!: pulumi.Output<string>;
@@ -83,7 +83,15 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * The name of the rule.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The rule cannot be shared via the Orgs API
+     */
+    public /*out*/ readonly notSharable!: pulumi.Output<boolean>;
     public readonly precedence!: pulumi.Output<number | undefined>;
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     */
+    public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
     /**
      * Additional settings that modify the rule's action.
      */
@@ -91,7 +99,11 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     /**
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
-    public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule | undefined>;
+    public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
+    /**
+     * account tag of account that created the rule
+     */
+    public /*out*/ readonly sourceAccount!: pulumi.Output<string>;
     /**
      * The wirefilter expression used for traffic matching.
      */
@@ -130,9 +142,12 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["identity"] = state ? state.identity : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notSharable"] = state ? state.notSharable : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
+            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["ruleSettings"] = state ? state.ruleSettings : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["sourceAccount"] = state ? state.sourceAccount : undefined;
             resourceInputs["traffic"] = state ? state.traffic : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
@@ -163,6 +178,9 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["traffic"] = args ? args.traffic : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["notSharable"] = undefined /*out*/;
+            resourceInputs["readOnly"] = undefined /*out*/;
+            resourceInputs["sourceAccount"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
             resourceInputs["warningStatus"] = undefined /*out*/;
@@ -180,7 +198,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 export interface ZeroTrustGatewayPolicyState {
     accountId?: pulumi.Input<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action?: pulumi.Input<string>;
@@ -218,7 +236,15 @@ export interface ZeroTrustGatewayPolicyState {
      * The name of the rule.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The rule cannot be shared via the Orgs API
+     */
+    notSharable?: pulumi.Input<boolean>;
     precedence?: pulumi.Input<number>;
+    /**
+     * The rule was shared via the Orgs API and cannot be edited by the current account
+     */
+    readOnly?: pulumi.Input<boolean>;
     /**
      * Additional settings that modify the rule's action.
      */
@@ -227,6 +253,10 @@ export interface ZeroTrustGatewayPolicyState {
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
+    /**
+     * account tag of account that created the rule
+     */
+    sourceAccount?: pulumi.Input<string>;
     /**
      * The wirefilter expression used for traffic matching.
      */
@@ -248,7 +278,7 @@ export interface ZeroTrustGatewayPolicyState {
 export interface ZeroTrustGatewayPolicyArgs {
     accountId: pulumi.Input<string>;
     /**
-     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action: pulumi.Input<string>;

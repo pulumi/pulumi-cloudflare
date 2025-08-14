@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeGroup
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeGsuiteArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeIpArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeIpListArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeOidcArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeOktaArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeSamlArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationPolicyExcludeServiceTokenArgs;
@@ -178,11 +180,25 @@ public final class ZeroTrustAccessApplicationPolicyExcludeArgs extends com.pulum
         return Optional.ofNullable(this.ipList);
     }
 
+    @Import(name="linkedAppToken")
+    private @Nullable Output<ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs> linkedAppToken;
+
+    public Optional<Output<ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs>> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
+
     @Import(name="loginMethod")
     private @Nullable Output<ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs> loginMethod;
 
     public Optional<Output<ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs>> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+
+    @Import(name="oidc")
+    private @Nullable Output<ZeroTrustAccessApplicationPolicyExcludeOidcArgs> oidc;
+
+    public Optional<Output<ZeroTrustAccessApplicationPolicyExcludeOidcArgs>> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
 
     @Import(name="okta")
@@ -227,7 +243,9 @@ public final class ZeroTrustAccessApplicationPolicyExcludeArgs extends com.pulum
         this.gsuite = $.gsuite;
         this.ip = $.ip;
         this.ipList = $.ipList;
+        this.linkedAppToken = $.linkedAppToken;
         this.loginMethod = $.loginMethod;
+        this.oidc = $.oidc;
         this.okta = $.okta;
         this.saml = $.saml;
         this.serviceToken = $.serviceToken;
@@ -437,6 +455,15 @@ public final class ZeroTrustAccessApplicationPolicyExcludeArgs extends com.pulum
             return ipList(Output.of(ipList));
         }
 
+        public Builder linkedAppToken(@Nullable Output<ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs> linkedAppToken) {
+            $.linkedAppToken = linkedAppToken;
+            return this;
+        }
+
+        public Builder linkedAppToken(ZeroTrustAccessApplicationPolicyExcludeLinkedAppTokenArgs linkedAppToken) {
+            return linkedAppToken(Output.of(linkedAppToken));
+        }
+
         public Builder loginMethod(@Nullable Output<ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs> loginMethod) {
             $.loginMethod = loginMethod;
             return this;
@@ -444,6 +471,15 @@ public final class ZeroTrustAccessApplicationPolicyExcludeArgs extends com.pulum
 
         public Builder loginMethod(ZeroTrustAccessApplicationPolicyExcludeLoginMethodArgs loginMethod) {
             return loginMethod(Output.of(loginMethod));
+        }
+
+        public Builder oidc(@Nullable Output<ZeroTrustAccessApplicationPolicyExcludeOidcArgs> oidc) {
+            $.oidc = oidc;
+            return this;
+        }
+
+        public Builder oidc(ZeroTrustAccessApplicationPolicyExcludeOidcArgs oidc) {
+            return oidc(Output.of(oidc));
         }
 
         public Builder okta(@Nullable Output<ZeroTrustAccessApplicationPolicyExcludeOktaArgs> okta) {

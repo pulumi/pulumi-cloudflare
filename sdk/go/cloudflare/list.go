@@ -49,7 +49,7 @@ import (
 type List struct {
 	pulumi.CustomResourceState
 
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
@@ -64,7 +64,7 @@ type List struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of items in the list.
 	NumItems pulumi.Float64Output `pulumi:"numItems"`
-	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 	NumReferencingFilters pulumi.Float64Output `pulumi:"numReferencingFilters"`
 }
 
@@ -107,7 +107,7 @@ func GetList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering List resources.
 type listState struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId *string `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -122,12 +122,12 @@ type listState struct {
 	Name *string `pulumi:"name"`
 	// The number of items in the list.
 	NumItems *float64 `pulumi:"numItems"`
-	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 	NumReferencingFilters *float64 `pulumi:"numReferencingFilters"`
 }
 
 type ListState struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringPtrInput
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringPtrInput
@@ -142,7 +142,7 @@ type ListState struct {
 	Name pulumi.StringPtrInput
 	// The number of items in the list.
 	NumItems pulumi.Float64PtrInput
-	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 	NumReferencingFilters pulumi.Float64PtrInput
 }
 
@@ -151,7 +151,7 @@ func (ListState) ElementType() reflect.Type {
 }
 
 type listArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
@@ -164,7 +164,7 @@ type listArgs struct {
 
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
@@ -262,7 +262,7 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return o
 }
 
-// Defines an identifier.
+// The Account ID for this resource.
 func (o ListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -298,7 +298,7 @@ func (o ListOutput) NumItems() pulumi.Float64Output {
 	return o.ApplyT(func(v *List) pulumi.Float64Output { return v.NumItems }).(pulumi.Float64Output)
 }
 
-// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 func (o ListOutput) NumReferencingFilters() pulumi.Float64Output {
 	return o.ApplyT(func(v *List) pulumi.Float64Output { return v.NumReferencingFilters }).(pulumi.Float64Output)
 }

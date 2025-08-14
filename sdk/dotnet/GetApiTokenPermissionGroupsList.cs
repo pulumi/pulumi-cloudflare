@@ -22,7 +22,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke();
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     {
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
+        ///     });
         /// 
         /// });
         /// ```
@@ -41,7 +45,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke();
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     {
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
+        ///     });
         /// 
         /// });
         /// ```
@@ -60,7 +68,11 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke();
+        ///     var exampleApiTokenPermissionGroupsList = Cloudflare.GetApiTokenPermissionGroupsList.Invoke(new()
+        ///     {
+        ///         Name = "Account%20Settings%20Write",
+        ///         Scope = "com.cloudflare.api.account.zone",
+        ///     });
         /// 
         /// });
         /// ```
@@ -78,6 +90,20 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public string? Scope { get; set; }
+
         public GetApiTokenPermissionGroupsListArgs()
         {
         }
@@ -91,6 +117,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
 
         public GetApiTokenPermissionGroupsListInvokeArgs()
         {
@@ -111,9 +151,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Filter by the name of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApiTokenPermissionGroupsListResultResult> Results;
+        /// <summary>
+        /// Filter by the scope of the permission group.
+        /// The value must be URL-encoded.
+        /// </summary>
+        public readonly string? Scope;
 
         [OutputConstructor]
         private GetApiTokenPermissionGroupsListResult(
@@ -121,11 +171,17 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
-            ImmutableArray<Outputs.GetApiTokenPermissionGroupsListResultResult> results)
+            string? name,
+
+            ImmutableArray<Outputs.GetApiTokenPermissionGroupsListResultResult> results,
+
+            string? scope)
         {
             Id = id;
             MaxItems = maxItems;
+            Name = name;
             Results = results;
+            Scope = scope;
         }
     }
 }

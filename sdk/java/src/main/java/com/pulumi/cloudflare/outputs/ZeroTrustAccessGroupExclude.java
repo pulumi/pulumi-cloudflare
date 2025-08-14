@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeIpList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeLoginMethod;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeOidc;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessGroupExcludeServiceToken;
@@ -58,7 +60,9 @@ public final class ZeroTrustAccessGroupExclude {
     private @Nullable ZeroTrustAccessGroupExcludeGsuite gsuite;
     private @Nullable ZeroTrustAccessGroupExcludeIp ip;
     private @Nullable ZeroTrustAccessGroupExcludeIpList ipList;
+    private @Nullable ZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken;
     private @Nullable ZeroTrustAccessGroupExcludeLoginMethod loginMethod;
+    private @Nullable ZeroTrustAccessGroupExcludeOidc oidc;
     private @Nullable ZeroTrustAccessGroupExcludeOkta okta;
     private @Nullable ZeroTrustAccessGroupExcludeSaml saml;
     private @Nullable ZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class ZeroTrustAccessGroupExclude {
     public Optional<ZeroTrustAccessGroupExcludeIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<ZeroTrustAccessGroupExcludeLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<ZeroTrustAccessGroupExcludeLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<ZeroTrustAccessGroupExcludeOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<ZeroTrustAccessGroupExcludeOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class ZeroTrustAccessGroupExclude {
         private @Nullable ZeroTrustAccessGroupExcludeGsuite gsuite;
         private @Nullable ZeroTrustAccessGroupExcludeIp ip;
         private @Nullable ZeroTrustAccessGroupExcludeIpList ipList;
+        private @Nullable ZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken;
         private @Nullable ZeroTrustAccessGroupExcludeLoginMethod loginMethod;
+        private @Nullable ZeroTrustAccessGroupExcludeOidc oidc;
         private @Nullable ZeroTrustAccessGroupExcludeOkta okta;
         private @Nullable ZeroTrustAccessGroupExcludeSaml saml;
         private @Nullable ZeroTrustAccessGroupExcludeServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class ZeroTrustAccessGroupExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class ZeroTrustAccessGroupExclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable ZeroTrustAccessGroupExcludeLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable ZeroTrustAccessGroupExcludeLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable ZeroTrustAccessGroupExcludeOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class ZeroTrustAccessGroupExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

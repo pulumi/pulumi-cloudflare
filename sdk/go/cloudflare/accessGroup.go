@@ -73,7 +73,6 @@ type AccessGroup struct {
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes AccessGroupExcludeArrayOutput `pulumi:"excludes"`
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -83,8 +82,7 @@ type AccessGroup struct {
 	// The name of the Access group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  AccessGroupRequireArrayOutput `pulumi:"requires"`
-	UpdatedAt pulumi.StringOutput           `pulumi:"updatedAt"`
+	Requires AccessGroupRequireArrayOutput `pulumi:"requires"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -133,7 +131,6 @@ func GetAccessGroup(ctx *pulumi.Context,
 type accessGroupState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes []AccessGroupExclude `pulumi:"excludes"`
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -143,8 +140,7 @@ type accessGroupState struct {
 	// The name of the Access group.
 	Name *string `pulumi:"name"`
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  []AccessGroupRequire `pulumi:"requires"`
-	UpdatedAt *string              `pulumi:"updatedAt"`
+	Requires []AccessGroupRequire `pulumi:"requires"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -152,7 +148,6 @@ type accessGroupState struct {
 type AccessGroupState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes AccessGroupExcludeArrayInput
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -162,8 +157,7 @@ type AccessGroupState struct {
 	// The name of the Access group.
 	Name pulumi.StringPtrInput
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  AccessGroupRequireArrayInput
-	UpdatedAt pulumi.StringPtrInput
+	Requires AccessGroupRequireArrayInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -299,10 +293,6 @@ func (o AccessGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-func (o AccessGroupOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 func (o AccessGroupOutput) Excludes() AccessGroupExcludeArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupExcludeArrayOutput { return v.Excludes }).(AccessGroupExcludeArrayOutput)
@@ -326,10 +316,6 @@ func (o AccessGroupOutput) Name() pulumi.StringOutput {
 // Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 func (o AccessGroupOutput) Requires() AccessGroupRequireArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupRequireArrayOutput { return v.Requires }).(AccessGroupRequireArrayOutput)
-}
-
-func (o AccessGroupOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

@@ -26,7 +26,7 @@ class GetAccountApiTokenPermissionGroupsResult:
     """
     A collection of values returned by getAccountApiTokenPermissionGroups.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, scopes=None):
+    def __init__(__self__, account_id=None, id=None, name=None, scope=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,9 +36,9 @@ class GetAccountApiTokenPermissionGroupsResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if scopes and not isinstance(scopes, list):
-            raise TypeError("Expected argument 'scopes' to be a list")
-        pulumi.set(__self__, "scopes", scopes)
+        if scope and not isinstance(scope, str):
+            raise TypeError("Expected argument 'scope' to be a str")
+        pulumi.set(__self__, "scope", scope)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -52,25 +52,27 @@ class GetAccountApiTokenPermissionGroupsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Public ID.
+        The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def name(self) -> Optional[_builtins.str]:
         """
-        Permission Group Name
+        Filter by the name of the permission group.
+        The value must be URL-encoded.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Sequence[_builtins.str]:
+    def scope(self) -> Optional[_builtins.str]:
         """
-        Resources to which the Permission Group is scoped
+        Filter by the scope of the permission group.
+        The value must be URL-encoded.
         """
-        return pulumi.get(self, "scopes")
+        return pulumi.get(self, "scope")
 
 
 class AwaitableGetAccountApiTokenPermissionGroupsResult(GetAccountApiTokenPermissionGroupsResult):
@@ -82,10 +84,12 @@ class AwaitableGetAccountApiTokenPermissionGroupsResult(GetAccountApiTokenPermis
             account_id=self.account_id,
             id=self.id,
             name=self.name,
-            scopes=self.scopes)
+            scope=self.scope)
 
 
 def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] = None,
+                                            name: Optional[_builtins.str] = None,
+                                            scope: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountApiTokenPermissionGroupsResult:
     """
     ## Example Usage
@@ -94,14 +98,22 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        name="Account%20Settings%20Write",
+        scope="com.cloudflare.api.account.zone")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
+    :param _builtins.str name: Filter by the name of the permission group.
+           The value must be URL-encoded.
+    :param _builtins.str scope: Filter by the scope of the permission group.
+           The value must be URL-encoded.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['name'] = name
+    __args__['scope'] = scope
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups', __args__, opts=opts, typ=GetAccountApiTokenPermissionGroupsResult).value
 
@@ -109,8 +121,10 @@ def get_account_api_token_permission_groups(account_id: Optional[_builtins.str] 
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        scopes=pulumi.get(__ret__, 'scopes'))
+        scope=pulumi.get(__ret__, 'scope'))
 def get_account_api_token_permission_groups_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                                   scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountApiTokenPermissionGroupsResult]:
     """
     ## Example Usage
@@ -119,18 +133,26 @@ def get_account_api_token_permission_groups_output(account_id: Optional[pulumi.I
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_account_api_token_permission_groups = cloudflare.get_account_api_token_permission_groups(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        name="Account%20Settings%20Write",
+        scope="com.cloudflare.api.account.zone")
     ```
 
 
     :param _builtins.str account_id: Account identifier tag.
+    :param _builtins.str name: Filter by the name of the permission group.
+           The value must be URL-encoded.
+    :param _builtins.str scope: Filter by the scope of the permission group.
+           The value must be URL-encoded.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['name'] = name
+    __args__['scope'] = scope
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountApiTokenPermissionGroups:getAccountApiTokenPermissionGroups', __args__, opts=opts, typ=GetAccountApiTokenPermissionGroupsResult)
     return __ret__.apply(lambda __response__: GetAccountApiTokenPermissionGroupsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        scopes=pulumi.get(__response__, 'scopes')))
+        scope=pulumi.get(__response__, 'scope')))

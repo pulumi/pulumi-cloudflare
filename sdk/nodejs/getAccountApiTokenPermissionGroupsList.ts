@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  *
  * const exampleAccountApiTokenPermissionGroupsList = cloudflare.getAccountApiTokenPermissionGroupsList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
@@ -23,6 +25,8 @@ export function getAccountApiTokenPermissionGroupsList(args: GetAccountApiTokenP
     return pulumi.runtime.invoke("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -38,6 +42,16 @@ export interface GetAccountApiTokenPermissionGroupsListArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: string;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: string;
 }
 
 /**
@@ -57,9 +71,19 @@ export interface GetAccountApiTokenPermissionGroupsListResult {
      */
     readonly maxItems?: number;
     /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    readonly name?: string;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetAccountApiTokenPermissionGroupsListResult[];
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    readonly scope?: string;
 }
 /**
  * ## Example Usage
@@ -70,6 +94,8 @@ export interface GetAccountApiTokenPermissionGroupsListResult {
  *
  * const exampleAccountApiTokenPermissionGroupsList = cloudflare.getAccountApiTokenPermissionGroupsList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "Account%20Settings%20Write",
+ *     scope: "com.cloudflare.api.account.zone",
  * });
  * ```
  */
@@ -78,6 +104,8 @@ export function getAccountApiTokenPermissionGroupsListOutput(args: GetAccountApi
     return pulumi.runtime.invokeOutput("cloudflare:index/getAccountApiTokenPermissionGroupsList:getAccountApiTokenPermissionGroupsList", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "name": args.name,
+        "scope": args.scope,
     }, opts);
 }
 
@@ -93,4 +121,14 @@ export interface GetAccountApiTokenPermissionGroupsListOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     */
+    scope?: pulumi.Input<string>;
 }

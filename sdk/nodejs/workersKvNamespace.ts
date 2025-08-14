@@ -52,7 +52,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -108,7 +108,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
  */
 export interface WorkersKvNamespaceState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface WorkersKvNamespaceState {
  */
 export interface WorkersKvNamespaceArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

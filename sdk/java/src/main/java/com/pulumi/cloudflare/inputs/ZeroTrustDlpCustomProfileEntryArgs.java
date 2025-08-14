@@ -9,7 +9,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,6 +25,13 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
         return this.enabled;
     }
 
+    @Import(name="entryId")
+    private @Nullable Output<String> entryId;
+
+    public Optional<Output<String>> entryId() {
+        return Optional.ofNullable(this.entryId);
+    }
+
     @Import(name="name", required=true)
     private Output<String> name;
 
@@ -33,27 +39,20 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
         return this.name;
     }
 
-    @Import(name="pattern")
-    private @Nullable Output<ZeroTrustDlpCustomProfileEntryPatternArgs> pattern;
+    @Import(name="pattern", required=true)
+    private Output<ZeroTrustDlpCustomProfileEntryPatternArgs> pattern;
 
-    public Optional<Output<ZeroTrustDlpCustomProfileEntryPatternArgs>> pattern() {
-        return Optional.ofNullable(this.pattern);
-    }
-
-    @Import(name="words")
-    private @Nullable Output<List<String>> words;
-
-    public Optional<Output<List<String>>> words() {
-        return Optional.ofNullable(this.words);
+    public Output<ZeroTrustDlpCustomProfileEntryPatternArgs> pattern() {
+        return this.pattern;
     }
 
     private ZeroTrustDlpCustomProfileEntryArgs() {}
 
     private ZeroTrustDlpCustomProfileEntryArgs(ZeroTrustDlpCustomProfileEntryArgs $) {
         this.enabled = $.enabled;
+        this.entryId = $.entryId;
         this.name = $.name;
         this.pattern = $.pattern;
-        this.words = $.words;
     }
 
     public static Builder builder() {
@@ -83,6 +82,15 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
             return enabled(Output.of(enabled));
         }
 
+        public Builder entryId(@Nullable Output<String> entryId) {
+            $.entryId = entryId;
+            return this;
+        }
+
+        public Builder entryId(String entryId) {
+            return entryId(Output.of(entryId));
+        }
+
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
@@ -92,7 +100,7 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
             return name(Output.of(name));
         }
 
-        public Builder pattern(@Nullable Output<ZeroTrustDlpCustomProfileEntryPatternArgs> pattern) {
+        public Builder pattern(Output<ZeroTrustDlpCustomProfileEntryPatternArgs> pattern) {
             $.pattern = pattern;
             return this;
         }
@@ -101,25 +109,15 @@ public final class ZeroTrustDlpCustomProfileEntryArgs extends com.pulumi.resourc
             return pattern(Output.of(pattern));
         }
 
-        public Builder words(@Nullable Output<List<String>> words) {
-            $.words = words;
-            return this;
-        }
-
-        public Builder words(List<String> words) {
-            return words(Output.of(words));
-        }
-
-        public Builder words(String... words) {
-            return words(List.of(words));
-        }
-
         public ZeroTrustDlpCustomProfileEntryArgs build() {
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileEntryArgs", "enabled");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileEntryArgs", "name");
+            }
+            if ($.pattern == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileEntryArgs", "pattern");
             }
             return $;
         }

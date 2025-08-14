@@ -22,20 +22,26 @@ import (
 type ZeroTrustDlpCustomProfile struct {
 	pulumi.CustomResourceState
 
-	AccountId        pulumi.StringOutput  `pulumi:"accountId"`
-	AiContextEnabled pulumi.BoolPtrOutput `pulumi:"aiContextEnabled"`
+	AccountId        pulumi.StringOutput `pulumi:"accountId"`
+	AiContextEnabled pulumi.BoolOutput   `pulumi:"aiContextEnabled"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount   pulumi.IntOutput       `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
+	AllowedMatchCount   pulumi.IntOutput    `pulumi:"allowedMatchCount"`
+	ConfidenceThreshold pulumi.StringOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the profile.
-	Description pulumi.StringPtrOutput                    `pulumi:"description"`
-	Entries     ZeroTrustDlpCustomProfileEntryArrayOutput `pulumi:"entries"`
-	Name        pulumi.StringOutput                       `pulumi:"name"`
-	OcrEnabled  pulumi.BoolPtrOutput                      `pulumi:"ocrEnabled"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    ZeroTrustDlpCustomProfileEntryArrayOutput `pulumi:"entries"`
+	Name       pulumi.StringOutput                       `pulumi:"name"`
+	OcrEnabled pulumi.BoolOutput                         `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -55,9 +61,6 @@ func NewZeroTrustDlpCustomProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Entries == nil {
-		return nil, errors.New("invalid value for required argument 'Entries'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -97,14 +100,20 @@ type zeroTrustDlpCustomProfileState struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the profile.
-	Description *string                          `pulumi:"description"`
-	Entries     []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
-	Name        *string                          `pulumi:"name"`
-	OcrEnabled  *bool                            `pulumi:"ocrEnabled"`
+	Description *string `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
+	Name       *string                          `pulumi:"name"`
+	OcrEnabled *bool                            `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -122,14 +131,20 @@ type ZeroTrustDlpCustomProfileState struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
 	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
-	Entries     ZeroTrustDlpCustomProfileEntryArrayInput
-	Name        pulumi.StringPtrInput
-	OcrEnabled  pulumi.BoolPtrInput
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    ZeroTrustDlpCustomProfileEntryArrayInput
+	Name       pulumi.StringPtrInput
+	OcrEnabled pulumi.BoolPtrInput
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -151,12 +166,18 @@ type zeroTrustDlpCustomProfileArgs struct {
 	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// The description of the profile.
-	Description *string                          `pulumi:"description"`
-	Entries     []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
-	Name        string                           `pulumi:"name"`
-	OcrEnabled  *bool                            `pulumi:"ocrEnabled"`
+	Description *string `pulumi:"description"`
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
+	Name       string                           `pulumi:"name"`
+	OcrEnabled *bool                            `pulumi:"ocrEnabled"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []ZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 }
@@ -169,12 +190,18 @@ type ZeroTrustDlpCustomProfileArgs struct {
 	AllowedMatchCount   pulumi.IntPtrInput
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	//
+	// Deprecated: This attribute is deprecated.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
-	Entries     ZeroTrustDlpCustomProfileEntryArrayInput
-	Name        pulumi.StringInput
-	OcrEnabled  pulumi.BoolPtrInput
+	// Custom entries from this profile.
+	// If this field is omitted, entries owned by this profile will not be changed.
+	//
+	// Deprecated: This attribute is deprecated.
+	Entries    ZeroTrustDlpCustomProfileEntryArrayInput
+	Name       pulumi.StringInput
+	OcrEnabled pulumi.BoolPtrInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayInput
 }
@@ -270,8 +297,8 @@ func (o ZeroTrustDlpCustomProfileOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o ZeroTrustDlpCustomProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolPtrOutput { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDlpCustomProfileOutput) AiContextEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolOutput { return v.AiContextEnabled }).(pulumi.BoolOutput)
 }
 
 // Related DLP policies will trigger when the match count exceeds the number set.
@@ -279,11 +306,13 @@ func (o ZeroTrustDlpCustomProfileOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)
 }
 
-func (o ZeroTrustDlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.ConfidenceThreshold }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.ConfidenceThreshold }).(pulumi.StringOutput)
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
+//
+// Deprecated: This attribute is deprecated.
 func (o ZeroTrustDlpCustomProfileOutput) ContextAwareness() ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
 		return v.ContextAwareness
@@ -300,6 +329,10 @@ func (o ZeroTrustDlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Custom entries from this profile.
+// If this field is omitted, entries owned by this profile will not be changed.
+//
+// Deprecated: This attribute is deprecated.
 func (o ZeroTrustDlpCustomProfileOutput) Entries() ZeroTrustDlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileEntryArrayOutput { return v.Entries }).(ZeroTrustDlpCustomProfileEntryArrayOutput)
 }
@@ -308,8 +341,8 @@ func (o ZeroTrustDlpCustomProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ZeroTrustDlpCustomProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDlpCustomProfileOutput) OcrEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolOutput { return v.OcrEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether this profile can be accessed by anyone.

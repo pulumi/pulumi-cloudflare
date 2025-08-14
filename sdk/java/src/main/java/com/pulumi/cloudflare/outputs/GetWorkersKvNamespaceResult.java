@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersKvNamespaceResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -48,7 +48,7 @@ public final class GetWorkersKvNamespaceResult {
 
     private GetWorkersKvNamespaceResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

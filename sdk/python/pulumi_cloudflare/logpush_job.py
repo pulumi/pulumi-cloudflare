@@ -46,12 +46,12 @@ class LogpushJobArgs:
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
-        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-               Available values: "edge".
+        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+               Available values: "", "edge".
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
+        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
@@ -172,8 +172,8 @@ class LogpushJobArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-        Available values: "edge".
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+        Available values: "", "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -198,7 +198,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
@@ -210,7 +210,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadIntervalSeconds")
     def max_upload_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
@@ -222,7 +222,7 @@ class LogpushJobArgs:
     @pulumi.getter(name="maxUploadRecords")
     def max_upload_records(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -311,14 +311,14 @@ class _LogpushJobState:
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
-        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-               Available values: "edge".
+        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+               Available values: "", "edge".
         :param pulumi.Input[_builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[_builtins.str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
+        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
@@ -458,8 +458,8 @@ class _LogpushJobState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-        Available values: "edge".
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+        Available values: "", "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -508,7 +508,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
@@ -520,7 +520,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadIntervalSeconds")
     def max_upload_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
@@ -532,7 +532,7 @@ class _LogpushJobState:
     @pulumi.getter(name="maxUploadRecords")
     def max_upload_records(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -630,12 +630,12 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
-        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-               Available values: "edge".
+        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+               Available values: "", "edge".
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
+        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
@@ -761,14 +761,14 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[_builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
-        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-               Available values: "edge".
+        :param pulumi.Input[_builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+               Available values: "", "edge".
         :param pulumi.Input[_builtins.str] last_complete: Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
         :param pulumi.Input[_builtins.str] last_error: Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
         :param pulumi.Input[_builtins.str] logpull_options: This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
-        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
-        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        :param pulumi.Input[_builtins.int] max_upload_bytes: The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
+        :param pulumi.Input[_builtins.int] max_upload_interval_seconds: The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
+        :param pulumi.Input[_builtins.int] max_upload_records: The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         :param pulumi.Input[_builtins.str] name: Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
         :param pulumi.Input[Union['LogpushJobOutputOptionsArgs', 'LogpushJobOutputOptionsArgsDict']] output_options: The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         :param pulumi.Input[_builtins.str] ownership_challenge: Ownership challenge token to prove destination ownership.
@@ -825,7 +825,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Flag that indicates if the job is enabled.
         """
@@ -861,8 +861,8 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[_builtins.str]:
         """
-        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
-        Available values: "edge".
+        The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+        Available values: "", "edge".
         """
         return pulumi.get(self, "kind")
 
@@ -895,23 +895,23 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter(name="maxUploadBytes")
     def max_upload_bytes(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+        The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
         """
         return pulumi.get(self, "max_upload_bytes")
 
     @_builtins.property
     @pulumi.getter(name="maxUploadIntervalSeconds")
-    def max_upload_interval_seconds(self) -> pulumi.Output[_builtins.int]:
+    def max_upload_interval_seconds(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+        The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
         """
         return pulumi.get(self, "max_upload_interval_seconds")
 
     @_builtins.property
     @pulumi.getter(name="maxUploadRecords")
-    def max_upload_records(self) -> pulumi.Output[_builtins.int]:
+    def max_upload_records(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+        The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
         """
         return pulumi.get(self, "max_upload_records")
 
@@ -925,7 +925,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="outputOptions")
-    def output_options(self) -> pulumi.Output['outputs.LogpushJobOutputOptions']:
+    def output_options(self) -> pulumi.Output[Optional['outputs.LogpushJobOutputOptions']]:
         """
         The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
         """

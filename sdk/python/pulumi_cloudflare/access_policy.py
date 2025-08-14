@@ -23,11 +23,11 @@ class AccessPolicyArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  decision: pulumi.Input[_builtins.str],
+                 includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
                  name: pulumi.Input[_builtins.str],
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
-                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -38,11 +38,11 @@ class AccessPolicyArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.str] name: The name of the Access policy.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[_builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input[_builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[_builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
@@ -51,6 +51,7 @@ class AccessPolicyArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "decision", decision)
+        pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
@@ -58,8 +59,6 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "approval_required", approval_required)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
-        if includes is not None:
-            pulumi.set(__self__, "includes", includes)
         if isolation_required is not None:
             pulumi.set(__self__, "isolation_required", isolation_required)
         if purpose_justification_prompt is not None:
@@ -95,6 +94,18 @@ class AccessPolicyArgs:
     @decision.setter
     def decision(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "decision", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]):
+        pulumi.set(self, "includes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -143,18 +154,6 @@ class AccessPolicyArgs:
     @excludes.setter
     def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]]:
-        """
-        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
-        """
-        return pulumi.get(self, "includes")
-
-    @includes.setter
-    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]]):
-        pulumi.set(self, "includes", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationRequired")
@@ -221,10 +220,8 @@ class AccessPolicyArgs:
 class _AccessPolicyState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  decision: Optional[pulumi.Input[_builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
@@ -233,13 +230,10 @@ class _AccessPolicyState:
                  purpose_justification_prompt: Optional[pulumi.Input[_builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[_builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
-                 reusable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 session_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -255,14 +249,10 @@ class _AccessPolicyState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if decision is not None:
             pulumi.set(__self__, "decision", decision)
         if excludes is not None:
@@ -279,12 +269,8 @@ class _AccessPolicyState:
             pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
-        if reusable is not None:
-            pulumi.set(__self__, "reusable", reusable)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -297,18 +283,6 @@ class _AccessPolicyState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of access applications currently using this policy.
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "app_count", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalGroups")
@@ -333,15 +307,6 @@ class _AccessPolicyState:
     @approval_required.setter
     def approval_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "approval_required", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -441,15 +406,6 @@ class _AccessPolicyState:
         pulumi.set(self, "requires", value)
 
     @_builtins.property
-    @pulumi.getter
-    def reusable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        return pulumi.get(self, "reusable")
-
-    @reusable.setter
-    def reusable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "reusable", value)
-
-    @_builtins.property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -460,15 +416,6 @@ class _AccessPolicyState:
     @session_duration.setter
     def session_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "session_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
 
 warnings.warn("""cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""", DeprecationWarning)
@@ -581,6 +528,8 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
             __props__.__dict__["excludes"] = excludes
+            if includes is None and not opts.urn:
+                raise TypeError("Missing required property 'includes'")
             __props__.__dict__["includes"] = includes
             __props__.__dict__["isolation_required"] = isolation_required
             if name is None and not opts.urn:
@@ -590,10 +539,6 @@ class AccessPolicy(pulumi.CustomResource):
             __props__.__dict__["purpose_justification_required"] = purpose_justification_required
             __props__.__dict__["requires"] = requires
             __props__.__dict__["session_duration"] = session_duration
-            __props__.__dict__["app_count"] = None
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["reusable"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessPolicy:AccessPolicy")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessPolicy, __self__).__init__(
@@ -607,10 +552,8 @@ class AccessPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_count: Optional[pulumi.Input[_builtins.int]] = None,
             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
             approval_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             decision: Optional[pulumi.Input[_builtins.str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
@@ -619,9 +562,7 @@ class AccessPolicy(pulumi.CustomResource):
             purpose_justification_prompt: Optional[pulumi.Input[_builtins.str]] = None,
             purpose_justification_required: Optional[pulumi.Input[_builtins.bool]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
-            reusable: Optional[pulumi.Input[_builtins.bool]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessPolicy':
+            session_duration: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessPolicy':
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -630,7 +571,6 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[_builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[_builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -649,10 +589,8 @@ class AccessPolicy(pulumi.CustomResource):
         __props__ = _AccessPolicyState.__new__(_AccessPolicyState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["app_count"] = app_count
         __props__.__dict__["approval_groups"] = approval_groups
         __props__.__dict__["approval_required"] = approval_required
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
@@ -661,9 +599,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
         __props__.__dict__["purpose_justification_required"] = purpose_justification_required
         __props__.__dict__["requires"] = requires
-        __props__.__dict__["reusable"] = reusable
         __props__.__dict__["session_duration"] = session_duration
-        __props__.__dict__["updated_at"] = updated_at
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -673,14 +609,6 @@ class AccessPolicy(pulumi.CustomResource):
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Number of access applications currently using this policy.
-        """
-        return pulumi.get(self, "app_count")
 
     @_builtins.property
     @pulumi.getter(name="approvalGroups")
@@ -699,11 +627,6 @@ class AccessPolicy(pulumi.CustomResource):
         return pulumi.get(self, "approval_required")
 
     @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
     @pulumi.getter
     def decision(self) -> pulumi.Output[_builtins.str]:
         """
@@ -714,7 +637,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Sequence['outputs.AccessPolicyExclude']]:
+    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyExclude']]]:
         """
         Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
@@ -762,16 +685,11 @@ class AccessPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Sequence['outputs.AccessPolicyRequire']]:
+    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyRequire']]]:
         """
         Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
-
-    @_builtins.property
-    @pulumi.getter
-    def reusable(self) -> pulumi.Output[_builtins.bool]:
-        return pulumi.get(self, "reusable")
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
@@ -780,9 +698,4 @@ class AccessPolicy(pulumi.CustomResource):
         The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 

@@ -25,7 +25,7 @@ class ArgoSmartRoutingArgs:
         The set of arguments for constructing a ArgoSmartRouting resource.
         :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -47,7 +47,7 @@ class ArgoSmartRoutingArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Specifies the zone associated with the API call.
         """
         return pulumi.get(self, "zone_id")
 
@@ -65,7 +65,7 @@ class _ArgoSmartRoutingState:
         Input properties used for looking up and filtering ArgoSmartRouting resources.
         :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -89,7 +89,7 @@ class _ArgoSmartRoutingState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Specifies the zone associated with the API call.
         """
         return pulumi.get(self, "zone_id")
 
@@ -129,7 +129,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
         ...
     @overload
@@ -208,7 +208,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -231,7 +231,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Specifies the zone associated with the API call.
         """
         return pulumi.get(self, "zone_id")
 

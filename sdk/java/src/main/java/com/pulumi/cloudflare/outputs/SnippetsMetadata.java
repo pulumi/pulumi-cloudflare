@@ -4,26 +4,25 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class SnippetsMetadata {
     /**
-     * @return Main module name of uploaded snippet
+     * @return Name of the file that contains the main module of the snippet.
      * 
      */
-    private @Nullable String mainModule;
+    private String mainModule;
 
     private SnippetsMetadata() {}
     /**
-     * @return Main module name of uploaded snippet
+     * @return Name of the file that contains the main module of the snippet.
      * 
      */
-    public Optional<String> mainModule() {
-        return Optional.ofNullable(this.mainModule);
+    public String mainModule() {
+        return this.mainModule;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class SnippetsMetadata {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String mainModule;
+        private String mainModule;
         public Builder() {}
         public Builder(SnippetsMetadata defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class SnippetsMetadata {
         }
 
         @CustomType.Setter
-        public Builder mainModule(@Nullable String mainModule) {
-
+        public Builder mainModule(String mainModule) {
+            if (mainModule == null) {
+              throw new MissingRequiredPropertyException("SnippetsMetadata", "mainModule");
+            }
             this.mainModule = mainModule;
             return this;
         }

@@ -23,7 +23,7 @@ class WorkersKvNamespaceArgs:
                  title: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WorkersKvNamespace resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -33,7 +33,7 @@ class WorkersKvNamespaceArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -63,7 +63,7 @@ class _WorkersKvNamespaceState:
                  title: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] beta: True if new beta namespace, with additional preview features.
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
@@ -81,7 +81,7 @@ class _WorkersKvNamespaceState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -155,7 +155,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
         """
         ...
@@ -237,7 +237,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] beta: True if new beta namespace, with additional preview features.
         :param pulumi.Input[_builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[_builtins.str] title: A human-readable string name for a Namespace.
@@ -256,7 +256,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

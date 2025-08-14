@@ -51,7 +51,7 @@ export class TeamsAccount extends pulumi.CustomResource {
     /**
      * Account settings
      */
-    public readonly settings!: pulumi.Output<outputs.TeamsAccountSettings>;
+    public readonly settings!: pulumi.Output<outputs.TeamsAccountSettings | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**

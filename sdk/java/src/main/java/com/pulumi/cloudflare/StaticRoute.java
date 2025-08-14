@@ -6,15 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.StaticRouteArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.StaticRouteState;
-import com.pulumi.cloudflare.outputs.StaticRouteModifiedRoute;
-import com.pulumi.cloudflare.outputs.StaticRouteRoute;
 import com.pulumi.cloudflare.outputs.StaticRouteScope;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -82,12 +79,6 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="modified", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> modified;
-
-    public Output<Boolean> modified() {
-        return this.modified;
-    }
     /**
      * When the route was last modified.
      * 
@@ -101,12 +92,6 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
-    }
-    @Export(name="modifiedRoute", refs={StaticRouteModifiedRoute.class}, tree="[0]")
-    private Output<StaticRouteModifiedRoute> modifiedRoute;
-
-    public Output<StaticRouteModifiedRoute> modifiedRoute() {
-        return this.modifiedRoute;
     }
     /**
      * The next-hop IP Address for the static route.
@@ -149,12 +134,6 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> priority() {
         return this.priority;
-    }
-    @Export(name="route", refs={StaticRouteRoute.class}, tree="[0]")
-    private Output<StaticRouteRoute> route;
-
-    public Output<StaticRouteRoute> route() {
-        return this.route;
     }
     /**
      * Used only for ECMP routes.

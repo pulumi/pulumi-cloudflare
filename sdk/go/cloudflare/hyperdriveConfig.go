@@ -32,6 +32,8 @@ type HyperdriveConfig struct {
 	Mtls       HyperdriveConfigMtlsPtrOutput `pulumi:"mtls"`
 	Name       pulumi.StringOutput           `pulumi:"name"`
 	Origin     HyperdriveConfigOriginOutput  `pulumi:"origin"`
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit pulumi.IntPtrOutput `pulumi:"originConnectionLimit"`
 }
 
 // NewHyperdriveConfig registers a new resource with the given unique name, arguments, and options.
@@ -83,6 +85,8 @@ type hyperdriveConfigState struct {
 	Mtls       *HyperdriveConfigMtls   `pulumi:"mtls"`
 	Name       *string                 `pulumi:"name"`
 	Origin     *HyperdriveConfigOrigin `pulumi:"origin"`
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
 }
 
 type HyperdriveConfigState struct {
@@ -96,6 +100,8 @@ type HyperdriveConfigState struct {
 	Mtls       HyperdriveConfigMtlsPtrInput
 	Name       pulumi.StringPtrInput
 	Origin     HyperdriveConfigOriginPtrInput
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit pulumi.IntPtrInput
 }
 
 func (HyperdriveConfigState) ElementType() reflect.Type {
@@ -109,6 +115,8 @@ type hyperdriveConfigArgs struct {
 	Mtls      *HyperdriveConfigMtls    `pulumi:"mtls"`
 	Name      string                   `pulumi:"name"`
 	Origin    HyperdriveConfigOrigin   `pulumi:"origin"`
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit *int `pulumi:"originConnectionLimit"`
 }
 
 // The set of arguments for constructing a HyperdriveConfig resource.
@@ -119,6 +127,8 @@ type HyperdriveConfigArgs struct {
 	Mtls      HyperdriveConfigMtlsPtrInput
 	Name      pulumi.StringInput
 	Origin    HyperdriveConfigOriginInput
+	// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+	OriginConnectionLimit pulumi.IntPtrInput
 }
 
 func (HyperdriveConfigArgs) ElementType() reflect.Type {
@@ -237,6 +247,11 @@ func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {
 
 func (o HyperdriveConfigOutput) Origin() HyperdriveConfigOriginOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigOriginOutput { return v.Origin }).(HyperdriveConfigOriginOutput)
+}
+
+// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+func (o HyperdriveConfigOutput) OriginConnectionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) pulumi.IntPtrOutput { return v.OriginConnectionLimit }).(pulumi.IntPtrOutput)
 }
 
 type HyperdriveConfigArrayOutput struct{ *pulumi.OutputState }

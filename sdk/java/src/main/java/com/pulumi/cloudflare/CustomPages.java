@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -41,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleCustomPages = new CustomPages("exampleCustomPages", CustomPagesArgs.builder()
- *             .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .identifier("ratelimit_block")
  *             .state("default")
  *             .url("http://www.example.com")
  *             .zoneId("zone_id")
@@ -76,19 +77,51 @@ public class CustomPages extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    @Export(name="previewTarget", refs={String.class}, tree="[0]")
+    private Output<String> previewTarget;
+
+    public Output<String> previewTarget() {
+        return this.previewTarget;
+    }
+    @Export(name="requiredTokens", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> requiredTokens;
+
+    public Output<List<String>> requiredTokens() {
+        return this.requiredTokens;
     }
     /**
      * The custom page state.

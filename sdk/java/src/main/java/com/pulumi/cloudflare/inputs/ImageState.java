@@ -33,6 +33,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Can set the creator field with an internal user ID.
+     * 
+     */
+    @Import(name="creator")
+    private @Nullable Output<String> creator;
+
+    /**
+     * @return Can set the creator field with an internal user ID.
+     * 
+     */
+    public Optional<Output<String>> creator() {
+        return Optional.ofNullable(this.creator);
+    }
+
+    /**
      * An image binary data. Only needed when type is uploading a file.
      * 
      */
@@ -60,6 +75,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> filename() {
         return Optional.ofNullable(this.filename);
+    }
+
+    /**
+     * An optional custom unique identifier for your image.
+     * 
+     */
+    @Import(name="imageId")
+    private @Nullable Output<String> imageId;
+
+    /**
+     * @return An optional custom unique identifier for your image.
+     * 
+     */
+    public Optional<Output<String>> imageId() {
+        return Optional.ofNullable(this.imageId);
     }
 
     /**
@@ -156,8 +186,10 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
 
     private ImageState(ImageState $) {
         this.accountId = $.accountId;
+        this.creator = $.creator;
         this.file = $.file;
         this.filename = $.filename;
+        this.imageId = $.imageId;
         this.meta = $.meta;
         this.metadata = $.metadata;
         this.requireSignedUrls = $.requireSignedUrls;
@@ -206,6 +238,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param creator Can set the creator field with an internal user ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(@Nullable Output<String> creator) {
+            $.creator = creator;
+            return this;
+        }
+
+        /**
+         * @param creator Can set the creator field with an internal user ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(String creator) {
+            return creator(Output.of(creator));
+        }
+
+        /**
          * @param file An image binary data. Only needed when type is uploading a file.
          * 
          * @return builder
@@ -245,6 +298,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder filename(String filename) {
             return filename(Output.of(filename));
+        }
+
+        /**
+         * @param imageId An optional custom unique identifier for your image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageId(@Nullable Output<String> imageId) {
+            $.imageId = imageId;
+            return this;
+        }
+
+        /**
+         * @param imageId An optional custom unique identifier for your image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageId(String imageId) {
+            return imageId(Output.of(imageId));
         }
 
         /**

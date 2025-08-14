@@ -80,8 +80,8 @@ type LookupLogpushJobResult struct {
 	Id int `pulumi:"id"`
 	// Unique id of the job.
 	JobId *int `pulumi:"jobId"`
-	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-	// Available values: "edge".
+	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+	// Available values: "", "edge".
 	Kind string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete string `pulumi:"lastComplete"`
@@ -91,11 +91,11 @@ type LookupLogpushJobResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	LogpullOptions string `pulumi:"logpullOptions"`
-	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 	MaxUploadBytes int `pulumi:"maxUploadBytes"`
-	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+	// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 	MaxUploadIntervalSeconds int `pulumi:"maxUploadIntervalSeconds"`
-	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords int `pulumi:"maxUploadRecords"`
 	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name string `pulumi:"name"`
@@ -187,8 +187,8 @@ func (o LookupLogpushJobResultOutput) JobId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) *int { return v.JobId }).(pulumi.IntPtrOutput)
 }
 
-// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
-// Available values: "edge".
+// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs (when supported by the dataset).
+// Available values: "", "edge".
 func (o LookupLogpushJobResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -210,17 +210,17 @@ func (o LookupLogpushJobResultOutput) LogpullOptions() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.LogpullOptions }).(pulumi.StringOutput)
 }
 
-// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
+// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size.
 func (o LookupLogpushJobResultOutput) MaxUploadBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) int { return v.MaxUploadBytes }).(pulumi.IntOutput)
 }
 
-// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this. This parameter is only used for jobs with `edge` as its kind.
+// The maximum interval in seconds for log batches. This setting must be between 30 and 300 seconds (5 minutes), or `0` to disable it. Note that you cannot specify a minimum interval for log batches; this means that log files may be sent in shorter intervals than this.
 func (o LookupLogpushJobResultOutput) MaxUploadIntervalSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) int { return v.MaxUploadIntervalSeconds }).(pulumi.IntOutput)
 }
 
-// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this. This parameter is not available for jobs with `edge` as its kind.
+// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 func (o LookupLogpushJobResultOutput) MaxUploadRecords() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) int { return v.MaxUploadRecords }).(pulumi.IntOutput)
 }

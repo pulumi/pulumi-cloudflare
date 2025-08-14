@@ -140,13 +140,11 @@ class ZeroTrustAccessGroupArgs:
 class _ZeroTrustAccessGroupState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupIncludeArgs']]]] = None,
                  is_default: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireArgs']]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessGroup resources.
@@ -160,8 +158,6 @@ class _ZeroTrustAccessGroupState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
@@ -172,8 +168,6 @@ class _ZeroTrustAccessGroupState:
             pulumi.set(__self__, "name", name)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -188,15 +182,6 @@ class _ZeroTrustAccessGroupState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -257,15 +242,6 @@ class _ZeroTrustAccessGroupState:
     @requires.setter
     def requires(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessGroupRequireArgs']]]]):
         pulumi.set(self, "requires", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -420,8 +396,6 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["requires"] = requires
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessGroup:AccessGroup")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessGroup, __self__).__init__(
@@ -435,13 +409,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupExcludeArgs', 'ZeroTrustAccessGroupExcludeArgsDict']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupIncludeArgs', 'ZeroTrustAccessGroupIncludeArgsDict']]]]] = None,
             is_default: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessGroupRequireArgs', 'ZeroTrustAccessGroupRequireArgsDict']]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessGroup':
         """
         Get an existing ZeroTrustAccessGroup resource's state with the given name, id, and optional extra
@@ -463,13 +435,11 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         __props__ = _ZeroTrustAccessGroupState.__new__(_ZeroTrustAccessGroupState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
         __props__.__dict__["is_default"] = is_default
         __props__.__dict__["name"] = name
         __props__.__dict__["requires"] = requires
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -480,11 +450,6 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
@@ -525,11 +490,6 @@ class ZeroTrustAccessGroup(pulumi.CustomResource):
         Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

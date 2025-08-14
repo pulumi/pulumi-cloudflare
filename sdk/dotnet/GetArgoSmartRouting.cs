@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetArgoSmartRoutingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetArgoSmartRoutingInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         public readonly string ZoneId;
 

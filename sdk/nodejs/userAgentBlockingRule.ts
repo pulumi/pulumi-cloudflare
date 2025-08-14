@@ -20,7 +20,15 @@ import * as utilities from "./utilities";
  *         value: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
  *     },
  *     mode: "challenge",
+ *     description: "Prevent multiple login failures to mitigate brute force attacks",
+ *     paused: false,
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example '<zone_id>/<ua_rule_id>'
  * ```
  */
 export class UserAgentBlockingRule extends pulumi.CustomResource {
@@ -53,14 +61,18 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
 
     public readonly configuration!: pulumi.Output<outputs.UserAgentBlockingRuleConfiguration>;
     /**
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * The unique identifier of the User Agent Blocking rule.
+     * When true, indicates that the rule is currently paused.
      */
-    public readonly uaRuleId!: pulumi.Output<string | undefined>;
+    public readonly paused!: pulumi.Output<boolean>;
     /**
      * Defines an identifier.
      */
@@ -80,8 +92,9 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UserAgentBlockingRuleState | undefined;
             resourceInputs["configuration"] = state ? state.configuration : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["uaRuleId"] = state ? state.uaRuleId : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as UserAgentBlockingRuleArgs | undefined;
@@ -95,8 +108,9 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configuration"] = args ? args.configuration : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["uaRuleId"] = args ? args.uaRuleId : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -110,14 +124,18 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
 export interface UserAgentBlockingRuleState {
     configuration?: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode?: pulumi.Input<string>;
     /**
-     * The unique identifier of the User Agent Blocking rule.
+     * When true, indicates that the rule is currently paused.
      */
-    uaRuleId?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Defines an identifier.
      */
@@ -130,14 +148,18 @@ export interface UserAgentBlockingRuleState {
 export interface UserAgentBlockingRuleArgs {
     configuration: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
+     */
+    description?: pulumi.Input<string>;
+    /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
     mode: pulumi.Input<string>;
     /**
-     * The unique identifier of the User Agent Blocking rule.
+     * When true, indicates that the rule is currently paused.
      */
-    uaRuleId?: pulumi.Input<string>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Defines an identifier.
      */

@@ -64,7 +64,7 @@ type ZeroTrustDlpDataset struct {
 	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
 	// response has no secret and the dataset is uploaded in plaintext.
 	Secret pulumi.BoolPtrOutput `pulumi:"secret"`
-	// Available values: "empty", "uploading", "processing", "failed", "complete".
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// When the dataset was last updated. This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringOutput                  `pulumi:"updatedAt"`
@@ -128,7 +128,7 @@ type zeroTrustDlpDatasetState struct {
 	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
 	// response has no secret and the dataset is uploaded in plaintext.
 	Secret *bool `pulumi:"secret"`
-	// Available values: "empty", "uploading", "processing", "failed", "complete".
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `pulumi:"status"`
 	// When the dataset was last updated. This includes name or description changes as well as uploads.
 	UpdatedAt *string                     `pulumi:"updatedAt"`
@@ -157,7 +157,7 @@ type ZeroTrustDlpDatasetState struct {
 	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
 	// response has no secret and the dataset is uploaded in plaintext.
 	Secret pulumi.BoolPtrInput
-	// Available values: "empty", "uploading", "processing", "failed", "complete".
+	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringPtrInput
 	// When the dataset was last updated. This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringPtrInput
@@ -347,7 +347,7 @@ func (o ZeroTrustDlpDatasetOutput) Secret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.BoolPtrOutput { return v.Secret }).(pulumi.BoolPtrOutput)
 }
 
-// Available values: "empty", "uploading", "processing", "failed", "complete".
+// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 func (o ZeroTrustDlpDatasetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

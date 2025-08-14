@@ -6,15 +6,12 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanStaticRouteArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteState;
-import com.pulumi.cloudflare.outputs.MagicWanStaticRouteModifiedRoute;
-import com.pulumi.cloudflare.outputs.MagicWanStaticRouteRoute;
 import com.pulumi.cloudflare.outputs.MagicWanStaticRouteScope;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -78,12 +75,6 @@ public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="modified", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> modified;
-
-    public Output<Boolean> modified() {
-        return this.modified;
-    }
     /**
      * When the route was last modified.
      * 
@@ -97,12 +88,6 @@ public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
-    }
-    @Export(name="modifiedRoute", refs={MagicWanStaticRouteModifiedRoute.class}, tree="[0]")
-    private Output<MagicWanStaticRouteModifiedRoute> modifiedRoute;
-
-    public Output<MagicWanStaticRouteModifiedRoute> modifiedRoute() {
-        return this.modifiedRoute;
     }
     /**
      * The next-hop IP Address for the static route.
@@ -145,12 +130,6 @@ public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> priority() {
         return this.priority;
-    }
-    @Export(name="route", refs={MagicWanStaticRouteRoute.class}, tree="[0]")
-    private Output<MagicWanStaticRouteRoute> route;
-
-    public Output<MagicWanStaticRouteRoute> route() {
-        return this.route;
     }
     /**
      * Used only for ECMP routes.

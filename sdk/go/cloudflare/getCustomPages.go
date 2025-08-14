@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCustomPages(ctx, &cloudflare.LookupCustomPagesArgs{
-//				Identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Identifier: "ratelimit_block",
 //				AccountId:  pulumi.StringRef("account_id"),
 //				ZoneId:     pulumi.StringRef("zone_id"),
 //			}, nil)
@@ -52,7 +52,8 @@ func LookupCustomPages(ctx *pulumi.Context, args *LookupCustomPagesArgs, opts ..
 type LookupCustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Identifier
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 	Identifier string `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -61,11 +62,22 @@ type LookupCustomPagesArgs struct {
 // A collection of values returned by getCustomPages.
 type LookupCustomPagesResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId *string `pulumi:"accountId"`
-	// The provider-assigned unique ID for this managed resource.
+	AccountId   *string `pulumi:"accountId"`
+	CreatedOn   string  `pulumi:"createdOn"`
+	Description string  `pulumi:"description"`
+	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// Identifier
-	Identifier string `pulumi:"identifier"`
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	Identifier     string   `pulumi:"identifier"`
+	ModifiedOn     string   `pulumi:"modifiedOn"`
+	PreviewTarget  string   `pulumi:"previewTarget"`
+	RequiredTokens []string `pulumi:"requiredTokens"`
+	// The custom page state.
+	// Available values: "default", "customized".
+	State string `pulumi:"state"`
+	// The URL associated with the custom page.
+	Url string `pulumi:"url"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -83,7 +95,8 @@ func LookupCustomPagesOutput(ctx *pulumi.Context, args LookupCustomPagesOutputAr
 type LookupCustomPagesOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Identifier
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -113,14 +126,46 @@ func (o LookupCustomPagesResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+func (o LookupCustomPagesResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomPagesResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
 func (o LookupCustomPagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Error Page Types
+// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 func (o LookupCustomPagesResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomPagesResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomPagesResultOutput) PreviewTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.PreviewTarget }).(pulumi.StringOutput)
+}
+
+func (o LookupCustomPagesResultOutput) RequiredTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) []string { return v.RequiredTokens }).(pulumi.StringArrayOutput)
+}
+
+// The custom page state.
+// Available values: "default", "customized".
+func (o LookupCustomPagesResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The URL associated with the custom page.
+func (o LookupCustomPagesResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

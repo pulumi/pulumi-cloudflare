@@ -27,7 +27,7 @@ class GetZeroTrustAccessApplicationsResult:
     """
     A collection of values returned by getZeroTrustAccessApplications.
     """
-    def __init__(__self__, account_id=None, aud=None, domain=None, id=None, max_items=None, name=None, results=None, search=None, zone_id=None):
+    def __init__(__self__, account_id=None, aud=None, domain=None, exact=None, id=None, max_items=None, name=None, results=None, search=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,9 @@ class GetZeroTrustAccessApplicationsResult:
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
+        if exact and not isinstance(exact, bool):
+            raise TypeError("Expected argument 'exact' to be a bool")
+        pulumi.set(__self__, "exact", exact)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -79,6 +82,14 @@ class GetZeroTrustAccessApplicationsResult:
         The domain of the app.
         """
         return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[_builtins.bool]:
+        """
+        True for only exact string matches against passed name/domain query parameters.
+        """
+        return pulumi.get(self, "exact")
 
     @_builtins.property
     @pulumi.getter
@@ -138,6 +149,7 @@ class AwaitableGetZeroTrustAccessApplicationsResult(GetZeroTrustAccessApplicatio
             account_id=self.account_id,
             aud=self.aud,
             domain=self.domain,
+            exact=self.exact,
             id=self.id,
             max_items=self.max_items,
             name=self.name,
@@ -149,6 +161,7 @@ class AwaitableGetZeroTrustAccessApplicationsResult(GetZeroTrustAccessApplicatio
 def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = None,
                                        aud: Optional[_builtins.str] = None,
                                        domain: Optional[_builtins.str] = None,
+                                       exact: Optional[_builtins.bool] = None,
                                        max_items: Optional[_builtins.int] = None,
                                        name: Optional[_builtins.str] = None,
                                        search: Optional[_builtins.str] = None,
@@ -165,6 +178,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
         zone_id="zone_id",
         aud="aud",
         domain="domain",
+        exact=True,
         name="name",
         search="search")
     ```
@@ -173,6 +187,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str aud: The aud of the app.
     :param _builtins.str domain: The domain of the app.
+    :param _builtins.bool exact: True for only exact string matches against passed name/domain query parameters.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: The name of the app.
     :param _builtins.str search: Search for apps by other listed query parameters.
@@ -182,6 +197,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
     __args__['accountId'] = account_id
     __args__['aud'] = aud
     __args__['domain'] = domain
+    __args__['exact'] = exact
     __args__['maxItems'] = max_items
     __args__['name'] = name
     __args__['search'] = search
@@ -193,6 +209,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
         account_id=pulumi.get(__ret__, 'account_id'),
         aud=pulumi.get(__ret__, 'aud'),
         domain=pulumi.get(__ret__, 'domain'),
+        exact=pulumi.get(__ret__, 'exact'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
@@ -202,6 +219,7 @@ def get_zero_trust_access_applications(account_id: Optional[_builtins.str] = Non
 def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               aud: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               domain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                              exact: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                               search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -218,6 +236,7 @@ def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[
         zone_id="zone_id",
         aud="aud",
         domain="domain",
+        exact=True,
         name="name",
         search="search")
     ```
@@ -226,6 +245,7 @@ def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[
     :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param _builtins.str aud: The aud of the app.
     :param _builtins.str domain: The domain of the app.
+    :param _builtins.bool exact: True for only exact string matches against passed name/domain query parameters.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: The name of the app.
     :param _builtins.str search: Search for apps by other listed query parameters.
@@ -235,6 +255,7 @@ def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[
     __args__['accountId'] = account_id
     __args__['aud'] = aud
     __args__['domain'] = domain
+    __args__['exact'] = exact
     __args__['maxItems'] = max_items
     __args__['name'] = name
     __args__['search'] = search
@@ -245,6 +266,7 @@ def get_zero_trust_access_applications_output(account_id: Optional[pulumi.Input[
         account_id=pulumi.get(__response__, 'account_id'),
         aud=pulumi.get(__response__, 'aud'),
         domain=pulumi.get(__response__, 'domain'),
+        exact=pulumi.get(__response__, 'exact'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),

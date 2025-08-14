@@ -27,7 +27,7 @@ class GetHyperdriveConfigResult:
     """
     A collection of values returned by getHyperdriveConfig.
     """
-    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None):
+    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None, origin_connection_limit=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,6 +55,9 @@ class GetHyperdriveConfigResult:
         if origin and not isinstance(origin, dict):
             raise TypeError("Expected argument 'origin' to be a dict")
         pulumi.set(__self__, "origin", origin)
+        if origin_connection_limit and not isinstance(origin_connection_limit, int):
+            raise TypeError("Expected argument 'origin_connection_limit' to be a int")
+        pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -116,6 +119,14 @@ class GetHyperdriveConfigResult:
     def origin(self) -> 'outputs.GetHyperdriveConfigOriginResult':
         return pulumi.get(self, "origin")
 
+    @_builtins.property
+    @pulumi.getter(name="originConnectionLimit")
+    def origin_connection_limit(self) -> _builtins.int:
+        """
+        The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        """
+        return pulumi.get(self, "origin_connection_limit")
+
 
 class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
     # pylint: disable=using-constant-test
@@ -131,7 +142,8 @@ class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
             modified_on=self.modified_on,
             mtls=self.mtls,
             name=self.name,
-            origin=self.origin)
+            origin=self.origin,
+            origin_connection_limit=self.origin_connection_limit)
 
 
 def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
@@ -167,7 +179,8 @@ def get_hyperdrive_config(account_id: Optional[_builtins.str] = None,
         modified_on=pulumi.get(__ret__, 'modified_on'),
         mtls=pulumi.get(__ret__, 'mtls'),
         name=pulumi.get(__ret__, 'name'),
-        origin=pulumi.get(__ret__, 'origin'))
+        origin=pulumi.get(__ret__, 'origin'),
+        origin_connection_limit=pulumi.get(__ret__, 'origin_connection_limit'))
 def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  hyperdrive_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHyperdriveConfigResult]:
@@ -200,4 +213,5 @@ def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[_builtins.str
         modified_on=pulumi.get(__response__, 'modified_on'),
         mtls=pulumi.get(__response__, 'mtls'),
         name=pulumi.get(__response__, 'name'),
-        origin=pulumi.get(__response__, 'origin')))
+        origin=pulumi.get(__response__, 'origin'),
+        origin_connection_limit=pulumi.get(__response__, 'origin_connection_limit')))

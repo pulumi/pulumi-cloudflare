@@ -93,12 +93,9 @@ class _ZeroTrustAccessServiceTokenState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_seen_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessServiceToken resources.
@@ -115,18 +112,12 @@ class _ZeroTrustAccessServiceTokenState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
-        if last_seen_at is not None:
-            pulumi.set(__self__, "last_seen_at", last_seen_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -167,15 +158,6 @@ class _ZeroTrustAccessServiceTokenState:
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
-
-    @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -197,15 +179,6 @@ class _ZeroTrustAccessServiceTokenState:
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
-    @pulumi.getter(name="lastSeenAt")
-    def last_seen_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "last_seen_at")
-
-    @last_seen_at.setter
-    def last_seen_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_seen_at", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -216,15 +189,6 @@ class _ZeroTrustAccessServiceTokenState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -337,10 +301,7 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
-            __props__.__dict__["created_at"] = None
             __props__.__dict__["expires_at"] = None
-            __props__.__dict__["last_seen_at"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessServiceToken:AccessServiceToken")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
@@ -358,12 +319,9 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
             duration: Optional[pulumi.Input[_builtins.str]] = None,
             expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            last_seen_at: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessServiceToken':
         """
         Get an existing ZeroTrustAccessServiceToken resource's state with the given name, id, and optional extra
@@ -386,12 +344,9 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["duration"] = duration
         __props__.__dict__["expires_at"] = expires_at
-        __props__.__dict__["last_seen_at"] = last_seen_at
         __props__.__dict__["name"] = name
-        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return ZeroTrustAccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
@@ -420,11 +375,6 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         return pulumi.get(self, "client_secret")
 
     @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
     @pulumi.getter
     def duration(self) -> pulumi.Output[_builtins.str]:
         """
@@ -438,22 +388,12 @@ class ZeroTrustAccessServiceToken(pulumi.CustomResource):
         return pulumi.get(self, "expires_at")
 
     @_builtins.property
-    @pulumi.getter(name="lastSeenAt")
-    def last_seen_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "last_seen_at")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the service token.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

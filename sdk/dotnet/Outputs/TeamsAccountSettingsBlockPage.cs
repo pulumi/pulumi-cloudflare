@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsBlockPage
     {
         /// <summary>
-        /// If mode is customized*block*page: block page background color in #rrggbb format.
+        /// If mode is customized_block_page: block page background color in #rrggbb format.
         /// </summary>
         public readonly string? BackgroundColor;
         /// <summary>
@@ -22,46 +22,58 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// If mode is customized*block*page: block page footer text.
+        /// If mode is customized_block_page: block page footer text.
         /// </summary>
         public readonly string? FooterText;
         /// <summary>
-        /// If mode is customized*block*page: block page header text.
+        /// If mode is customized_block_page: block page header text.
         /// </summary>
         public readonly string? HeaderText;
         /// <summary>
-        /// If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        /// If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
         /// </summary>
         public readonly bool? IncludeContext;
         /// <summary>
-        /// If mode is customized*block*page: full URL to the logo file.
+        /// If mode is customized_block_page: full URL to the logo file.
         /// </summary>
         public readonly string? LogoPath;
         /// <summary>
-        /// If mode is customized*block*page: admin email for users to contact.
+        /// If mode is customized_block_page: admin email for users to contact.
         /// </summary>
         public readonly string? MailtoAddress;
         /// <summary>
-        /// If mode is customized*block*page: subject line for emails created from block page.
+        /// If mode is customized_block_page: subject line for emails created from block page.
         /// </summary>
         public readonly string? MailtoSubject;
         /// <summary>
         /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        /// Available values: "customized*block*page", "redirect_uri".
+        /// Available values: "customized_block_page", "redirect_uri".
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// If mode is customized*block*page: block page title.
+        /// If mode is customized_block_page: block page title.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        /// This setting was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        public readonly bool? ReadOnly;
+        /// <summary>
+        /// Account tag of account that shared this setting
+        /// </summary>
+        public readonly string? SourceAccount;
+        /// <summary>
+        /// If mode is customized_block_page: suppress detailed info at the bottom of the block page.
         /// </summary>
         public readonly bool? SuppressFooter;
         /// <summary>
         /// If mode is redirect_uri: URI to which the user should be redirected.
         /// </summary>
         public readonly string? TargetUri;
+        /// <summary>
+        /// Version number of the setting
+        /// </summary>
+        public readonly int? Version;
 
         [OutputConstructor]
         private TeamsAccountSettingsBlockPage(
@@ -85,9 +97,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? name,
 
+            bool? readOnly,
+
+            string? sourceAccount,
+
             bool? suppressFooter,
 
-            string? targetUri)
+            string? targetUri,
+
+            int? version)
         {
             BackgroundColor = backgroundColor;
             Enabled = enabled;
@@ -99,8 +117,11 @@ namespace Pulumi.Cloudflare.Outputs
             MailtoSubject = mailtoSubject;
             Mode = mode;
             Name = name;
+            ReadOnly = readOnly;
+            SourceAccount = sourceAccount;
             SuppressFooter = suppressFooter;
             TargetUri = targetUri;
+            Version = version;
         }
     }
 }

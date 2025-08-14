@@ -45,6 +45,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
      * 
      */
     private @Nullable String order;
+    private @Nullable String pattern;
     /**
      * @return The items returned by the data source
      * 
@@ -103,6 +104,9 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    public Optional<String> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
     /**
      * @return The items returned by the data source
      * 
@@ -137,6 +141,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
         private @Nullable Boolean isSimilarity;
         private @Nullable Integer maxItems;
         private @Nullable String order;
+        private @Nullable String pattern;
         private List<GetEmailSecurityTrustedDomainsListResult> results;
         private @Nullable String search;
         public Builder() {}
@@ -149,6 +154,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     	      this.isSimilarity = defaults.isSimilarity;
     	      this.maxItems = defaults.maxItems;
     	      this.order = defaults.order;
+    	      this.pattern = defaults.pattern;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
         }
@@ -200,6 +206,12 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pattern(@Nullable String pattern) {
+
+            this.pattern = pattern;
+            return this;
+        }
+        @CustomType.Setter
         public Builder results(List<GetEmailSecurityTrustedDomainsListResult> results) {
             if (results == null) {
               throw new MissingRequiredPropertyException("GetEmailSecurityTrustedDomainsListInvokeResult", "results");
@@ -225,6 +237,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
             _resultValue.isSimilarity = isSimilarity;
             _resultValue.maxItems = maxItems;
             _resultValue.order = order;
+            _resultValue.pattern = pattern;
             _resultValue.results = results;
             _resultValue.search = search;
             return _resultValue;

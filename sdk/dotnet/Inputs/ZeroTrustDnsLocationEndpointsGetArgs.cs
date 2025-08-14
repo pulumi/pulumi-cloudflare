@@ -12,17 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDnsLocationEndpointsGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("doh")]
-        public Input<Inputs.ZeroTrustDnsLocationEndpointsDohGetArgs>? Doh { get; set; }
+        [Input("doh", required: true)]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsDohGetArgs> Doh { get; set; } = null!;
 
-        [Input("dot")]
-        public Input<Inputs.ZeroTrustDnsLocationEndpointsDotGetArgs>? Dot { get; set; }
+        [Input("dot", required: true)]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsDotGetArgs> Dot { get; set; } = null!;
 
-        [Input("ipv4")]
-        public Input<Inputs.ZeroTrustDnsLocationEndpointsIpv4GetArgs>? Ipv4 { get; set; }
+        [Input("ipv4", required: true)]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsIpv4GetArgs> Ipv4 { get; set; } = null!;
 
-        [Input("ipv6")]
-        public Input<Inputs.ZeroTrustDnsLocationEndpointsIpv6GetArgs>? Ipv6 { get; set; }
+        [Input("ipv6", required: true)]
+        public Input<Inputs.ZeroTrustDnsLocationEndpointsIpv6GetArgs> Ipv6 { get; set; } = null!;
 
         public ZeroTrustDnsLocationEndpointsGetArgs()
         {

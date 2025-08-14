@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleWorkersDeployment = cloudflare.getWorkersDeployment({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
+ *     deploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
@@ -23,6 +24,7 @@ export function getWorkersDeployment(args: GetWorkersDeploymentArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersDeployment:getWorkersDeployment", {
         "accountId": args.accountId,
+        "deploymentId": args.deploymentId,
         "scriptName": args.scriptName,
     }, opts);
 }
@@ -35,8 +37,9 @@ export interface GetWorkersDeploymentArgs {
      * Identifier.
      */
     accountId: string;
+    deploymentId: string;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: string;
 }
@@ -49,15 +52,24 @@ export interface GetWorkersDeploymentResult {
      * Identifier.
      */
     readonly accountId: string;
-    readonly deployments: outputs.GetWorkersDeploymentDeployment[];
+    readonly annotations: outputs.GetWorkersDeploymentAnnotations;
+    readonly authorEmail: string;
+    readonly createdOn: string;
+    readonly deploymentId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     readonly scriptName: string;
+    readonly source: string;
+    /**
+     * Available values: "percentage".
+     */
+    readonly strategy: string;
+    readonly versions: outputs.GetWorkersDeploymentVersion[];
 }
 /**
  * ## Example Usage
@@ -69,6 +81,7 @@ export interface GetWorkersDeploymentResult {
  * const exampleWorkersDeployment = cloudflare.getWorkersDeployment({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
+ *     deploymentId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
  */
@@ -76,6 +89,7 @@ export function getWorkersDeploymentOutput(args: GetWorkersDeploymentOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersDeployment:getWorkersDeployment", {
         "accountId": args.accountId,
+        "deploymentId": args.deploymentId,
         "scriptName": args.scriptName,
     }, opts);
 }
@@ -88,8 +102,9 @@ export interface GetWorkersDeploymentOutputArgs {
      * Identifier.
      */
     accountId: pulumi.Input<string>;
+    deploymentId: pulumi.Input<string>;
     /**
-     * Name of the script.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: pulumi.Input<string>;
 }

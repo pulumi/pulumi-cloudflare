@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
+        /// Your OAuth Client Secret
+        /// </summary>
+        public readonly string? ClientSecret;
+        /// <summary>
         /// Should Cloudflare try to load authentication contexts from your account
         /// </summary>
         public readonly bool? ConditionalAccessEnabled;
@@ -140,6 +144,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? clientId,
 
+            string? clientSecret,
+
             bool? conditionalAccessEnabled,
 
             string? directoryId,
@@ -185,6 +191,7 @@ namespace Pulumi.Cloudflare.Outputs
             CertsUrl = certsUrl;
             Claims = claims;
             ClientId = clientId;
+            ClientSecret = clientSecret;
             ConditionalAccessEnabled = conditionalAccessEnabled;
             DirectoryId = directoryId;
             EmailAttributeName = emailAttributeName;

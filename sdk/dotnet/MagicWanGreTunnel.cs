@@ -12,40 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleMagicWanGreTunnel = new Cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CloudflareGreEndpoint = "203.0.113.1",
-    ///         CustomerGreEndpoint = "203.0.113.1",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Name = "GRE_1",
-    ///         Description = "Tunnel for ISP X",
-    ///         HealthCheck = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckArgs
-    ///         {
-    ///             Direction = "bidirectional",
-    ///             Enabled = true,
-    ///             Rate = "low",
-    ///             Target = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckTargetArgs
-    ///             {
-    ///                 Saved = "203.0.113.1",
-    ///             },
-    ///             Type = "request",
-    ///         },
-    ///         Mtu = 0,
-    ///         Ttl = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -85,9 +51,6 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        [Output("greTunnel")]
-        public Output<Outputs.MagicWanGreTunnelGreTunnel> GreTunnel { get; private set; } = null!;
-
         [Output("healthCheck")]
         public Output<Outputs.MagicWanGreTunnelHealthCheck> HealthCheck { get; private set; } = null!;
 
@@ -96,12 +59,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("interfaceAddress")]
         public Output<string> InterfaceAddress { get; private set; } = null!;
-
-        [Output("modified")]
-        public Output<bool> Modified { get; private set; } = null!;
-
-        [Output("modifiedGreTunnel")]
-        public Output<Outputs.MagicWanGreTunnelModifiedGreTunnel> ModifiedGreTunnel { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the tunnel was last modified.
@@ -266,9 +223,6 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("greTunnel")]
-        public Input<Inputs.MagicWanGreTunnelGreTunnelGetArgs>? GreTunnel { get; set; }
-
         [Input("healthCheck")]
         public Input<Inputs.MagicWanGreTunnelHealthCheckGetArgs>? HealthCheck { get; set; }
 
@@ -277,12 +231,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("interfaceAddress")]
         public Input<string>? InterfaceAddress { get; set; }
-
-        [Input("modified")]
-        public Input<bool>? Modified { get; set; }
-
-        [Input("modifiedGreTunnel")]
-        public Input<Inputs.MagicWanGreTunnelModifiedGreTunnelGetArgs>? ModifiedGreTunnel { get; set; }
 
         /// <summary>
         /// The date and time the tunnel was last modified.

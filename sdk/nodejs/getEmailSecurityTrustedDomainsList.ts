@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     isRecent: true,
  *     isSimilarity: true,
  *     order: "pattern",
+ *     pattern: "pattern",
  *     search: "search",
  * });
  * ```
@@ -32,6 +33,7 @@ export function getEmailSecurityTrustedDomainsList(args: GetEmailSecurityTrusted
         "isSimilarity": args.isSimilarity,
         "maxItems": args.maxItems,
         "order": args.order,
+        "pattern": args.pattern,
         "search": args.search,
     }, opts);
 }
@@ -60,6 +62,7 @@ export interface GetEmailSecurityTrustedDomainsListArgs {
      * Available values: "pattern", "createdAt".
      */
     order?: string;
+    pattern?: string;
     /**
      * Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
@@ -97,6 +100,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
      * Available values: "pattern", "createdAt".
      */
     readonly order?: string;
+    readonly pattern?: string;
     /**
      * The items returned by the data source
      */
@@ -122,6 +126,7 @@ export interface GetEmailSecurityTrustedDomainsListResult {
  *     isRecent: true,
  *     isSimilarity: true,
  *     order: "pattern",
+ *     pattern: "pattern",
  *     search: "search",
  * });
  * ```
@@ -135,6 +140,7 @@ export function getEmailSecurityTrustedDomainsListOutput(args: GetEmailSecurityT
         "isSimilarity": args.isSimilarity,
         "maxItems": args.maxItems,
         "order": args.order,
+        "pattern": args.pattern,
         "search": args.search,
     }, opts);
 }
@@ -163,6 +169,7 @@ export interface GetEmailSecurityTrustedDomainsListOutputArgs {
      * Available values: "pattern", "createdAt".
      */
     order?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
     /**
      * Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact

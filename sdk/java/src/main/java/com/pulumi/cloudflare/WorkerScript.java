@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.WorkerScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptState;
 import com.pulumi.cloudflare.outputs.WorkerScriptAssets;
 import com.pulumi.cloudflare.outputs.WorkerScriptBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptMigrations;
 import com.pulumi.cloudflare.outputs.WorkerScriptObservability;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkerScriptTailConsumer;
@@ -128,18 +127,60 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return this.compatibilityFlags;
     }
     /**
-     * Module or Service Worker contents of the Worker.
+     * Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
-    private Output<String> content;
+    private Output</* @Nullable */ String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker.
+     * @return Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
      * 
      */
-    public Output<String> content() {
-        return this.content;
+    public Output<Optional<String>> content() {
+        return Codegen.optional(this.content);
+    }
+    /**
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    @Export(name="contentFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentFile;
+
+    /**
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * 
+     */
+    public Output<Optional<String>> contentFile() {
+        return Codegen.optional(this.contentFile);
+    }
+    /**
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    @Export(name="contentSha256", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentSha256;
+
+    /**
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * 
+     */
+    public Output<Optional<String>> contentSha256() {
+        return Codegen.optional(this.contentSha256);
+    }
+    /**
+     * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    @Export(name="contentType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> contentType;
+
+    /**
+     * @return Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. &#34;text/x-python&#34;).
+     * 
+     */
+    public Output<Optional<String>> contentType() {
+        return Codegen.optional(this.contentType);
     }
     /**
      * When the script was created.
@@ -252,20 +293,6 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> mainModule() {
         return Codegen.optional(this.mainModule);
-    }
-    /**
-     * Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    @Export(name="migrations", refs={WorkerScriptMigrations.class}, tree="[0]")
-    private Output<WorkerScriptMigrations> migrations;
-
-    /**
-     * @return Migrations to apply for Durable Objects associated with this Worker.
-     * 
-     */
-    public Output<WorkerScriptMigrations> migrations() {
-        return this.migrations;
     }
     /**
      * When the script was last modified.

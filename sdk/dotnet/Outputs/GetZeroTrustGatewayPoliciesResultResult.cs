@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPoliciesResultResult
     {
         /// <summary>
-        /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         public readonly string Action;
@@ -56,7 +56,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the rule.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The rule cannot be shared via the Orgs API
+        /// </summary>
+        public readonly bool NotSharable;
         public readonly int Precedence;
+        /// <summary>
+        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// </summary>
+        public readonly bool ReadOnly;
         /// <summary>
         /// Additional settings that modify the rule's action.
         /// </summary>
@@ -65,6 +73,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult Schedule;
+        /// <summary>
+        /// account tag of account that created the rule
+        /// </summary>
+        public readonly string SourceAccount;
         /// <summary>
         /// The wirefilter expression used for traffic matching.
         /// </summary>
@@ -103,11 +115,17 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
+            bool notSharable,
+
             int precedence,
+
+            bool readOnly,
 
             Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResult ruleSettings,
 
             Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult schedule,
+
+            string sourceAccount,
 
             string traffic,
 
@@ -128,9 +146,12 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Identity = identity;
             Name = name;
+            NotSharable = notSharable;
             Precedence = precedence;
+            ReadOnly = readOnly;
             RuleSettings = ruleSettings;
             Schedule = schedule;
+            SourceAccount = sourceAccount;
             Traffic = traffic;
             UpdatedAt = updatedAt;
             Version = version;

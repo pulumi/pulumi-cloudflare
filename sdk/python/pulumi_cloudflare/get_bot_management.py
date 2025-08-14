@@ -78,8 +78,8 @@ class GetBotManagementResult:
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> _builtins.str:
         """
-        Enable rule to block AI Scrapers and Crawlers.
-        Available values: "block", "disabled".
+        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
 

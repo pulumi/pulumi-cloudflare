@@ -25,10 +25,12 @@ class HyperdriveConfigArgs:
                  name: pulumi.Input[_builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
                  caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
-                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None):
+                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
+                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -37,6 +39,8 @@ class HyperdriveConfigArgs:
             pulumi.set(__self__, "caching", caching)
         if mtls is not None:
             pulumi.set(__self__, "mtls", mtls)
+        if origin_connection_limit is not None:
+            pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -86,6 +90,18 @@ class HyperdriveConfigArgs:
     def mtls(self, value: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]):
         pulumi.set(self, "mtls", value)
 
+    @_builtins.property
+    @pulumi.getter(name="originConnectionLimit")
+    def origin_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        """
+        return pulumi.get(self, "origin_connection_limit")
+
+    @origin_connection_limit.setter
+    def origin_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "origin_connection_limit", value)
+
 
 @pulumi.input_type
 class _HyperdriveConfigState:
@@ -96,12 +112,14 @@ class _HyperdriveConfigState:
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None):
+                 origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None,
+                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -117,6 +135,8 @@ class _HyperdriveConfigState:
             pulumi.set(__self__, "name", name)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
+        if origin_connection_limit is not None:
+            pulumi.set(__self__, "origin_connection_limit", origin_connection_limit)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -190,6 +210,18 @@ class _HyperdriveConfigState:
     def origin(self, value: Optional[pulumi.Input['HyperdriveConfigOriginArgs']]):
         pulumi.set(self, "origin", value)
 
+    @_builtins.property
+    @pulumi.getter(name="originConnectionLimit")
+    def origin_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        """
+        return pulumi.get(self, "origin_connection_limit")
+
+    @origin_connection_limit.setter
+    def origin_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "origin_connection_limit", value)
+
 
 @pulumi.type_token("cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 class HyperdriveConfig(pulumi.CustomResource):
@@ -202,6 +234,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -215,6 +248,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         ...
     @overload
@@ -251,6 +285,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+                 origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -271,6 +306,7 @@ class HyperdriveConfig(pulumi.CustomResource):
             if origin is None and not opts.urn:
                 raise TypeError("Missing required property 'origin'")
             __props__.__dict__["origin"] = origin
+            __props__.__dict__["origin_connection_limit"] = origin_connection_limit
             __props__.__dict__["created_on"] = None
             __props__.__dict__["modified_on"] = None
         super(HyperdriveConfig, __self__).__init__(
@@ -289,7 +325,8 @@ class HyperdriveConfig(pulumi.CustomResource):
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None) -> 'HyperdriveConfig':
+            origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
+            origin_connection_limit: Optional[pulumi.Input[_builtins.int]] = None) -> 'HyperdriveConfig':
         """
         Get an existing HyperdriveConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -300,6 +337,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Define configurations using a unique string identifier.
         :param pulumi.Input[_builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
         :param pulumi.Input[_builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
+        :param pulumi.Input[_builtins.int] origin_connection_limit: The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -312,6 +350,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         __props__.__dict__["mtls"] = mtls
         __props__.__dict__["name"] = name
         __props__.__dict__["origin"] = origin
+        __props__.__dict__["origin_connection_limit"] = origin_connection_limit
         return HyperdriveConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -357,4 +396,12 @@ class HyperdriveConfig(pulumi.CustomResource):
     @pulumi.getter
     def origin(self) -> pulumi.Output['outputs.HyperdriveConfigOrigin']:
         return pulumi.get(self, "origin")
+
+    @_builtins.property
+    @pulumi.getter(name="originConnectionLimit")
+    def origin_connection_limit(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
+        """
+        return pulumi.get(self, "origin_connection_limit")
 

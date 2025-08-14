@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCustomPages(ctx, "example_custom_pages", &cloudflare.CustomPagesArgs{
-//				Identifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Identifier: pulumi.String("ratelimit_block"),
 //				State:      pulumi.String("default"),
 //				Url:        pulumi.String("http://www.example.com"),
 //				ZoneId:     pulumi.String("zone_id"),
@@ -50,9 +50,15 @@ type CustomPages struct {
 	pulumi.CustomResourceState
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Identifier
-	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	AccountId   pulumi.StringPtrOutput `pulumi:"accountId"`
+	CreatedOn   pulumi.StringOutput    `pulumi:"createdOn"`
+	Description pulumi.StringOutput    `pulumi:"description"`
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	Identifier     pulumi.StringOutput      `pulumi:"identifier"`
+	ModifiedOn     pulumi.StringOutput      `pulumi:"modifiedOn"`
+	PreviewTarget  pulumi.StringOutput      `pulumi:"previewTarget"`
+	RequiredTokens pulumi.StringArrayOutput `pulumi:"requiredTokens"`
 	// The custom page state.
 	// Available values: "default", "customized".
 	State pulumi.StringOutput `pulumi:"state"`
@@ -74,9 +80,6 @@ func NewCustomPages(ctx *pulumi.Context,
 	}
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
-	}
-	if args.Url == nil {
-		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomPages
@@ -102,9 +105,15 @@ func GetCustomPages(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CustomPages resources.
 type customPagesState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId *string `pulumi:"accountId"`
-	// Identifier
-	Identifier *string `pulumi:"identifier"`
+	AccountId   *string `pulumi:"accountId"`
+	CreatedOn   *string `pulumi:"createdOn"`
+	Description *string `pulumi:"description"`
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	Identifier     *string  `pulumi:"identifier"`
+	ModifiedOn     *string  `pulumi:"modifiedOn"`
+	PreviewTarget  *string  `pulumi:"previewTarget"`
+	RequiredTokens []string `pulumi:"requiredTokens"`
 	// The custom page state.
 	// Available values: "default", "customized".
 	State *string `pulumi:"state"`
@@ -116,9 +125,15 @@ type customPagesState struct {
 
 type CustomPagesState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-	AccountId pulumi.StringPtrInput
-	// Identifier
-	Identifier pulumi.StringPtrInput
+	AccountId   pulumi.StringPtrInput
+	CreatedOn   pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	Identifier     pulumi.StringPtrInput
+	ModifiedOn     pulumi.StringPtrInput
+	PreviewTarget  pulumi.StringPtrInput
+	RequiredTokens pulumi.StringArrayInput
 	// The custom page state.
 	// Available values: "default", "customized".
 	State pulumi.StringPtrInput
@@ -135,13 +150,14 @@ func (CustomPagesState) ElementType() reflect.Type {
 type customPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Identifier
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 	Identifier string `pulumi:"identifier"`
 	// The custom page state.
 	// Available values: "default", "customized".
 	State string `pulumi:"state"`
 	// The URL associated with the custom page.
-	Url string `pulumi:"url"`
+	Url *string `pulumi:"url"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -150,13 +166,14 @@ type customPagesArgs struct {
 type CustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Identifier
+	// Error Page Types
+	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 	Identifier pulumi.StringInput
 	// The custom page state.
 	// Available values: "default", "customized".
 	State pulumi.StringInput
 	// The URL associated with the custom page.
-	Url pulumi.StringInput
+	Url pulumi.StringPtrInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -253,9 +270,30 @@ func (o CustomPagesOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+func (o CustomPagesOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o CustomPagesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Error Page Types
+// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
 func (o CustomPagesOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+func (o CustomPagesOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o CustomPagesOutput) PreviewTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.PreviewTarget }).(pulumi.StringOutput)
+}
+
+func (o CustomPagesOutput) RequiredTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringArrayOutput { return v.RequiredTokens }).(pulumi.StringArrayOutput)
 }
 
 // The custom page state.

@@ -75,9 +75,6 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
-
         /// <summary>
         /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         /// </summary>
@@ -107,9 +104,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessGroupRequire>> Requires { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -241,9 +235,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("excludes")]
         private InputList<Inputs.ZeroTrustAccessGroupExcludeGetArgs>? _excludes;
 
@@ -291,9 +282,6 @@ namespace Pulumi.Cloudflare
             get => _requires ?? (_requires = new InputList<Inputs.ZeroTrustAccessGroupRequireGetArgs>());
             set => _requires = value;
         }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

@@ -36,11 +36,10 @@ type ZeroTrustAccessApplication struct {
 	// Audience tag.
 	Aud pulumi.StringOutput `pulumi:"aud"`
 	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
-	AutoRedirectToIdentity pulumi.BoolOutput `pulumi:"autoRedirectToIdentity"`
+	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
 	// The background color of the App Launcher page.
 	BgColor     pulumi.StringPtrOutput                         `pulumi:"bgColor"`
 	CorsHeaders ZeroTrustAccessApplicationCorsHeadersPtrOutput `pulumi:"corsHeaders"`
-	CreatedAt   pulumi.StringOutput                            `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -52,9 +51,9 @@ type ZeroTrustAccessApplication struct {
 	// List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	Destinations ZeroTrustAccessApplicationDestinationArrayOutput `pulumi:"destinations"`
 	// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
-	Domain pulumi.StringPtrOutput `pulumi:"domain"`
+	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
-	EnableBindingCookie pulumi.BoolOutput `pulumi:"enableBindingCookie"`
+	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
 	// The links in the App Launcher footer.
 	FooterLinks ZeroTrustAccessApplicationFooterLinkArrayOutput `pulumi:"footerLinks"`
 	// The background color of the App Launcher header.
@@ -62,15 +61,15 @@ type ZeroTrustAccessApplication struct {
 	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute pulumi.BoolOutput `pulumi:"httpOnlyCookieAttribute"`
 	// The design of the App Launcher landing page shown to users when they log in.
-	LandingPageDesign ZeroTrustAccessApplicationLandingPageDesignOutput `pulumi:"landingPageDesign"`
+	LandingPageDesign ZeroTrustAccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
 	// The image URL for the logo shown in the App Launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// The name of the application.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
-	PathCookieAttribute pulumi.BoolOutput `pulumi:"pathCookieAttribute"`
+	PathCookieAttribute pulumi.BoolPtrOutput `pulumi:"pathCookieAttribute"`
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies ZeroTrustAccessApplicationPolicyArrayOutput `pulumi:"policies"`
 	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
@@ -80,8 +79,8 @@ type ZeroTrustAccessApplication struct {
 	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
 	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
 	// }
-	ReadServiceTokensFromHeader pulumi.StringPtrOutput                  `pulumi:"readServiceTokensFromHeader"`
-	SaasApp                     ZeroTrustAccessApplicationSaasAppOutput `pulumi:"saasApp"`
+	ReadServiceTokensFromHeader pulumi.StringPtrOutput                     `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     ZeroTrustAccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
@@ -103,8 +102,7 @@ type ZeroTrustAccessApplication struct {
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayOutput `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      pulumi.StringPtrOutput `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -164,7 +162,6 @@ type zeroTrustAccessApplicationState struct {
 	// The background color of the App Launcher page.
 	BgColor     *string                                `pulumi:"bgColor"`
 	CorsHeaders *ZeroTrustAccessApplicationCorsHeaders `pulumi:"corsHeaders"`
-	CreatedAt   *string                                `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -227,8 +224,7 @@ type zeroTrustAccessApplicationState struct {
 	TargetCriterias []ZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      *string `pulumi:"type"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Type *string `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -253,7 +249,6 @@ type ZeroTrustAccessApplicationState struct {
 	// The background color of the App Launcher page.
 	BgColor     pulumi.StringPtrInput
 	CorsHeaders ZeroTrustAccessApplicationCorsHeadersPtrInput
-	CreatedAt   pulumi.StringPtrInput
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrInput
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -316,8 +311,7 @@ type ZeroTrustAccessApplicationState struct {
 	TargetCriterias ZeroTrustAccessApplicationTargetCriteriaArrayInput
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Type pulumi.StringPtrInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -620,8 +614,8 @@ func (o ZeroTrustAccessApplicationOutput) Aud() pulumi.StringOutput {
 }
 
 // When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
-func (o ZeroTrustAccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // The background color of the App Launcher page.
@@ -633,10 +627,6 @@ func (o ZeroTrustAccessApplicationOutput) CorsHeaders() ZeroTrustAccessApplicati
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationCorsHeadersPtrOutput {
 		return v.CorsHeaders
 	}).(ZeroTrustAccessApplicationCorsHeadersPtrOutput)
-}
-
-func (o ZeroTrustAccessApplicationOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The custom error message shown to a user when they are denied access to the application.
@@ -667,13 +657,13 @@ func (o ZeroTrustAccessApplicationOutput) Destinations() ZeroTrustAccessApplicat
 }
 
 // The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
-func (o ZeroTrustAccessApplicationOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessApplicationOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
 // Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
-func (o ZeroTrustAccessApplicationOutput) EnableBindingCookie() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolOutput { return v.EnableBindingCookie }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessApplicationOutput) EnableBindingCookie() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolPtrOutput { return v.EnableBindingCookie }).(pulumi.BoolPtrOutput)
 }
 
 // The links in the App Launcher footer.
@@ -694,10 +684,10 @@ func (o ZeroTrustAccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolO
 }
 
 // The design of the App Launcher landing page shown to users when they log in.
-func (o ZeroTrustAccessApplicationOutput) LandingPageDesign() ZeroTrustAccessApplicationLandingPageDesignOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationLandingPageDesignOutput {
+func (o ZeroTrustAccessApplicationOutput) LandingPageDesign() ZeroTrustAccessApplicationLandingPageDesignPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationLandingPageDesignPtrOutput {
 		return v.LandingPageDesign
-	}).(ZeroTrustAccessApplicationLandingPageDesignOutput)
+	}).(ZeroTrustAccessApplicationLandingPageDesignPtrOutput)
 }
 
 // The image URL for the logo shown in the App Launcher dashboard.
@@ -706,8 +696,8 @@ func (o ZeroTrustAccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 }
 
 // The name of the application.
-func (o ZeroTrustAccessApplicationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessApplicationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
@@ -716,8 +706,8 @@ func (o ZeroTrustAccessApplicationOutput) OptionsPreflightBypass() pulumi.BoolPt
 }
 
 // Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
-func (o ZeroTrustAccessApplicationOutput) PathCookieAttribute() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolOutput { return v.PathCookieAttribute }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessApplicationOutput) PathCookieAttribute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.BoolPtrOutput { return v.PathCookieAttribute }).(pulumi.BoolPtrOutput)
 }
 
 // The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
@@ -736,8 +726,8 @@ func (o ZeroTrustAccessApplicationOutput) ReadServiceTokensFromHeader() pulumi.S
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.ReadServiceTokensFromHeader }).(pulumi.StringPtrOutput)
 }
 
-func (o ZeroTrustAccessApplicationOutput) SaasApp() ZeroTrustAccessApplicationSaasAppOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationSaasAppOutput { return v.SaasApp }).(ZeroTrustAccessApplicationSaasAppOutput)
+func (o ZeroTrustAccessApplicationOutput) SaasApp() ZeroTrustAccessApplicationSaasAppPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessApplication) ZeroTrustAccessApplicationSaasAppPtrOutput { return v.SaasApp }).(ZeroTrustAccessApplicationSaasAppPtrOutput)
 }
 
 // Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -792,10 +782,6 @@ func (o ZeroTrustAccessApplicationOutput) TargetCriterias() ZeroTrustAccessAppli
 // Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
 func (o ZeroTrustAccessApplicationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-func (o ZeroTrustAccessApplicationOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessApplication) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

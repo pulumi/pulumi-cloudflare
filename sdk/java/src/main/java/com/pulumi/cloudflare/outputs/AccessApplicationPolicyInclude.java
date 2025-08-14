@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeGroup;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeGsuite;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeIp;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeIpList;
+import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeLoginMethod;
+import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeOidc;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeOkta;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeSaml;
 import com.pulumi.cloudflare.outputs.AccessApplicationPolicyIncludeServiceToken;
@@ -58,7 +60,9 @@ public final class AccessApplicationPolicyInclude {
     private @Nullable AccessApplicationPolicyIncludeGsuite gsuite;
     private @Nullable AccessApplicationPolicyIncludeIp ip;
     private @Nullable AccessApplicationPolicyIncludeIpList ipList;
+    private @Nullable AccessApplicationPolicyIncludeLinkedAppToken linkedAppToken;
     private @Nullable AccessApplicationPolicyIncludeLoginMethod loginMethod;
+    private @Nullable AccessApplicationPolicyIncludeOidc oidc;
     private @Nullable AccessApplicationPolicyIncludeOkta okta;
     private @Nullable AccessApplicationPolicyIncludeSaml saml;
     private @Nullable AccessApplicationPolicyIncludeServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class AccessApplicationPolicyInclude {
     public Optional<AccessApplicationPolicyIncludeIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<AccessApplicationPolicyIncludeLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<AccessApplicationPolicyIncludeLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<AccessApplicationPolicyIncludeOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<AccessApplicationPolicyIncludeOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class AccessApplicationPolicyInclude {
         private @Nullable AccessApplicationPolicyIncludeGsuite gsuite;
         private @Nullable AccessApplicationPolicyIncludeIp ip;
         private @Nullable AccessApplicationPolicyIncludeIpList ipList;
+        private @Nullable AccessApplicationPolicyIncludeLinkedAppToken linkedAppToken;
         private @Nullable AccessApplicationPolicyIncludeLoginMethod loginMethod;
+        private @Nullable AccessApplicationPolicyIncludeOidc oidc;
         private @Nullable AccessApplicationPolicyIncludeOkta okta;
         private @Nullable AccessApplicationPolicyIncludeSaml saml;
         private @Nullable AccessApplicationPolicyIncludeServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class AccessApplicationPolicyInclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class AccessApplicationPolicyInclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable AccessApplicationPolicyIncludeLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable AccessApplicationPolicyIncludeLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable AccessApplicationPolicyIncludeOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class AccessApplicationPolicyInclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

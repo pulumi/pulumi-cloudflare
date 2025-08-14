@@ -184,6 +184,8 @@ from .get_leaked_credential_check import *
 from .get_leaked_credential_check_rules import *
 from .get_list import *
 from .get_list_item import *
+from .get_list_items import *
+from .get_lists import *
 from .get_load_balancer import *
 from .get_load_balancer_monitor import *
 from .get_load_balancer_monitors import *
@@ -236,6 +238,7 @@ from .get_pages_project import *
 from .get_pages_projects import *
 from .get_queue import *
 from .get_queue_consumer import *
+from .get_queue_consumers import *
 from .get_queues import *
 from .get_r2_bucket import *
 from .get_r2_bucket_cors import *
@@ -375,7 +378,9 @@ from .get_zero_trust_tunnel_cloudflared_token import *
 from .get_zero_trust_tunnel_cloudflared_virtual_network import *
 from .get_zero_trust_tunnel_cloudflared_virtual_networks import *
 from .get_zero_trust_tunnel_cloudflareds import *
+from .get_zero_trust_tunnel_warp_connector import *
 from .get_zero_trust_tunnel_warp_connector_token import *
+from .get_zero_trust_tunnel_warp_connectors import *
 from .get_zone import *
 from .get_zone_cache_reserve import *
 from .get_zone_cache_variants import *
@@ -514,9 +519,12 @@ from .zero_trust_device_posture_integration import *
 from .zero_trust_device_posture_rule import *
 from .zero_trust_device_settings import *
 from .zero_trust_dex_test import *
+from .zero_trust_dlp_custom_entry import *
 from .zero_trust_dlp_custom_profile import *
 from .zero_trust_dlp_dataset import *
 from .zero_trust_dlp_entry import *
+from .zero_trust_dlp_integration_entry import *
+from .zero_trust_dlp_predefined_entry import *
 from .zero_trust_dlp_predefined_profile import *
 from .zero_trust_dns_location import *
 from .zero_trust_gateway_certificate import *
@@ -533,6 +541,7 @@ from .zero_trust_tunnel_cloudflared import *
 from .zero_trust_tunnel_cloudflared_config import *
 from .zero_trust_tunnel_cloudflared_route import *
 from .zero_trust_tunnel_cloudflared_virtual_network import *
+from .zero_trust_tunnel_warp_connector import *
 from .zone import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
@@ -2125,6 +2134,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpCustomEntry",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry": "ZeroTrustDlpCustomEntry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustDlpCustomProfile",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2145,6 +2162,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry": "ZeroTrustDlpEntry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpIntegrationEntry",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry": "ZeroTrustDlpIntegrationEntry"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDlpPredefinedEntry",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry": "ZeroTrustDlpPredefinedEntry"
   }
  },
  {
@@ -2273,6 +2306,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork": "ZeroTrustTunnelCloudflaredVirtualNetwork"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustTunnelWarpConnector",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector": "ZeroTrustTunnelWarpConnector"
   }
  },
  {

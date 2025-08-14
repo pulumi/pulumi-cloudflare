@@ -140,14 +140,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoRedirectToIdentity;
+    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
 
     /**
      * @return When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
-    public Output<Boolean> autoRedirectToIdentity() {
-        return this.autoRedirectToIdentity;
+    public Output<Optional<Boolean>> autoRedirectToIdentity() {
+        return Codegen.optional(this.autoRedirectToIdentity);
     }
     /**
      * The background color of the App Launcher page.
@@ -168,12 +168,6 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
 
     public Output<Optional<ZeroTrustAccessApplicationCorsHeaders>> corsHeaders() {
         return Codegen.optional(this.corsHeaders);
-    }
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
-    private Output<String> createdAt;
-
-    public Output<String> createdAt() {
-        return this.createdAt;
     }
     /**
      * The custom error message shown to a user when they are denied access to the application.
@@ -250,28 +244,28 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domain;
+    private Output<String> domain;
 
     /**
      * @return The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
-    public Output<Optional<String>> domain() {
-        return Codegen.optional(this.domain);
+    public Output<String> domain() {
+        return this.domain;
     }
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
     @Export(name="enableBindingCookie", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableBindingCookie;
+    private Output</* @Nullable */ Boolean> enableBindingCookie;
 
     /**
      * @return Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
-    public Output<Boolean> enableBindingCookie() {
-        return this.enableBindingCookie;
+    public Output<Optional<Boolean>> enableBindingCookie() {
+        return Codegen.optional(this.enableBindingCookie);
     }
     /**
      * The links in the App Launcher footer.
@@ -320,14 +314,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="landingPageDesign", refs={ZeroTrustAccessApplicationLandingPageDesign.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
 
     /**
      * @return The design of the App Launcher landing page shown to users when they log in.
      * 
      */
-    public Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign() {
-        return this.landingPageDesign;
+    public Output<Optional<ZeroTrustAccessApplicationLandingPageDesign>> landingPageDesign() {
+        return Codegen.optional(this.landingPageDesign);
     }
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
@@ -348,14 +342,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return The name of the application.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
@@ -376,28 +370,28 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="pathCookieAttribute", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> pathCookieAttribute;
+    private Output</* @Nullable */ Boolean> pathCookieAttribute;
 
     /**
      * @return Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    public Output<Boolean> pathCookieAttribute() {
-        return this.pathCookieAttribute;
+    public Output<Optional<Boolean>> pathCookieAttribute() {
+        return Codegen.optional(this.pathCookieAttribute);
     }
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
     @Export(name="policies", refs={List.class,ZeroTrustAccessApplicationPolicy.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessApplicationPolicy>> policies;
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationPolicy>> policies;
 
     /**
      * @return The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
-    public Output<List<ZeroTrustAccessApplicationPolicy>> policies() {
-        return this.policies;
+    public Output<Optional<List<ZeroTrustAccessApplicationPolicy>>> policies() {
+        return Codegen.optional(this.policies);
     }
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
@@ -426,10 +420,10 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.readServiceTokensFromHeader);
     }
     @Export(name="saasApp", refs={ZeroTrustAccessApplicationSaasApp.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationSaasApp> saasApp;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationSaasApp> saasApp;
 
-    public Output<ZeroTrustAccessApplicationSaasApp> saasApp() {
-        return this.saasApp;
+    public Output<Optional<ZeroTrustAccessApplicationSaasApp>> saasApp() {
+        return Codegen.optional(this.saasApp);
     }
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -538,14 +532,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> tags;
+    private Output</* @Nullable */ List<String>> tags;
 
     /**
      * @return The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
-    public Output<List<String>> tags() {
-        return this.tags;
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     @Export(name="targetCriterias", refs={List.class,ZeroTrustAccessApplicationTargetCriteria.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
@@ -568,12 +562,6 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
-    }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
-    private Output<String> updatedAt;
-
-    public Output<String> updatedAt() {
-        return this.updatedAt;
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

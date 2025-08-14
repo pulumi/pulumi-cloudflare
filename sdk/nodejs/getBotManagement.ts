@@ -40,8 +40,8 @@ export interface GetBotManagementArgs {
  */
 export interface GetBotManagementResult {
     /**
-     * Enable rule to block AI Scrapers and Crawlers.
-     * Available values: "block", "disabled".
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
+     * Available values: "block", "disabled", "only*on*ad_pages".
      */
     readonly aiBotsProtection: string;
     /**

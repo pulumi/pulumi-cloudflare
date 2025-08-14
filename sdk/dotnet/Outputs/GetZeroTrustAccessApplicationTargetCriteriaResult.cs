@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int Port;
         /// <summary>
         /// The communication protocol your application secures.
-        /// Available values: "SSH".
+        /// Available values: "SSH", "RDP".
         /// </summary>
         public readonly string Protocol;
         /// <summary>

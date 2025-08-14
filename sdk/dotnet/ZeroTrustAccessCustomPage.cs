@@ -12,26 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleZeroTrustAccessCustomPage = new Cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Access Denied&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
-    ///         Name = "name",
-    ///         Type = "identity_denied",
-    ///         AppCount = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -46,15 +26,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
-
-        /// <summary>
-        /// Number of apps the custom page is assigned to.
-        /// </summary>
-        [Output("appCount")]
-        public Output<int?> AppCount { get; private set; } = null!;
-
-        [Output("createdAt")]
-        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
         /// Custom page HTML.
@@ -80,9 +51,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
-
-        [Output("updatedAt")]
-        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,12 +109,6 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Number of apps the custom page is assigned to.
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
-
-        /// <summary>
         /// Custom page HTML.
         /// </summary>
         [Input("customHtml", required: true)]
@@ -180,15 +142,6 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Number of apps the custom page is assigned to.
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
-
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// Custom page HTML.
         /// </summary>
         [Input("customHtml")]
@@ -212,9 +165,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessCustomPageState()
         {

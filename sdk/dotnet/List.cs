@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     public partial class List : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<double> NumItems { get; private set; } = null!;
 
         /// <summary>
-        /// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        /// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         /// </summary>
         [Output("numReferencingFilters")]
         public Output<double> NumReferencingFilters { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines an identifier.
+        /// The Account ID for this resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? NumItems { get; set; }
 
         /// <summary>
-        /// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+        /// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         /// </summary>
         [Input("numReferencingFilters")]
         public Input<double>? NumReferencingFilters { get; set; }

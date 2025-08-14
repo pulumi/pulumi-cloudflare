@@ -16,6 +16,12 @@ import * as utilities from "./utilities";
  *     flag: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example '<zone_id>'
+ * ```
  */
 export class LogpullRetention extends pulumi.CustomResource {
     /**

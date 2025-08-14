@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDlpCustomProfileEntry {
     private Boolean enabled;
+    private @Nullable String entryId;
     private String name;
-    private @Nullable ZeroTrustDlpCustomProfileEntryPattern pattern;
-    private @Nullable List<String> words;
+    private ZeroTrustDlpCustomProfileEntryPattern pattern;
 
     private ZeroTrustDlpCustomProfileEntry() {}
     public Boolean enabled() {
         return this.enabled;
     }
+    public Optional<String> entryId() {
+        return Optional.ofNullable(this.entryId);
+    }
     public String name() {
         return this.name;
     }
-    public Optional<ZeroTrustDlpCustomProfileEntryPattern> pattern() {
-        return Optional.ofNullable(this.pattern);
-    }
-    public List<String> words() {
-        return this.words == null ? List.of() : this.words;
+    public ZeroTrustDlpCustomProfileEntryPattern pattern() {
+        return this.pattern;
     }
 
     public static Builder builder() {
@@ -44,16 +43,16 @@ public final class ZeroTrustDlpCustomProfileEntry {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable String entryId;
         private String name;
-        private @Nullable ZeroTrustDlpCustomProfileEntryPattern pattern;
-        private @Nullable List<String> words;
+        private ZeroTrustDlpCustomProfileEntryPattern pattern;
         public Builder() {}
         public Builder(ZeroTrustDlpCustomProfileEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.entryId = defaults.entryId;
     	      this.name = defaults.name;
     	      this.pattern = defaults.pattern;
-    	      this.words = defaults.words;
         }
 
         @CustomType.Setter
@@ -65,6 +64,12 @@ public final class ZeroTrustDlpCustomProfileEntry {
             return this;
         }
         @CustomType.Setter
+        public Builder entryId(@Nullable String entryId) {
+
+            this.entryId = entryId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileEntry", "name");
@@ -73,26 +78,19 @@ public final class ZeroTrustDlpCustomProfileEntry {
             return this;
         }
         @CustomType.Setter
-        public Builder pattern(@Nullable ZeroTrustDlpCustomProfileEntryPattern pattern) {
-
+        public Builder pattern(ZeroTrustDlpCustomProfileEntryPattern pattern) {
+            if (pattern == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileEntry", "pattern");
+            }
             this.pattern = pattern;
             return this;
-        }
-        @CustomType.Setter
-        public Builder words(@Nullable List<String> words) {
-
-            this.words = words;
-            return this;
-        }
-        public Builder words(String... words) {
-            return words(List.of(words));
         }
         public ZeroTrustDlpCustomProfileEntry build() {
             final var _resultValue = new ZeroTrustDlpCustomProfileEntry();
             _resultValue.enabled = enabled;
+            _resultValue.entryId = entryId;
             _resultValue.name = name;
             _resultValue.pattern = pattern;
-            _resultValue.words = words;
             return _resultValue;
         }
     }

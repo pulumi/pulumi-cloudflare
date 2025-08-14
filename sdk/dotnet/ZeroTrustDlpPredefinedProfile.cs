@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "account_id",
     ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
     ///         AiContextEnabled = true,
-    ///         AllowedMatchCount = 0,
+    ///         AllowedMatchCount = 5,
     ///         ConfidenceThreshold = "confidence_threshold",
     ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs
     ///         {
@@ -62,13 +62,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
-        public Output<bool?> AiContextEnabled { get; private set; } = null!;
+        public Output<bool> AiContextEnabled { get; private set; } = null!;
 
         [Output("allowedMatchCount")]
-        public Output<int?> AllowedMatchCount { get; private set; } = null!;
+        public Output<int> AllowedMatchCount { get; private set; } = null!;
 
         [Output("confidenceThreshold")]
-        public Output<string?> ConfidenceThreshold { get; private set; } = null!;
+        public Output<string> ConfidenceThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         [Output("ocrEnabled")]
-        public Output<bool?> OcrEnabled { get; private set; } = null!;
+        public Output<bool> OcrEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether this profile can be accessed by anyone.

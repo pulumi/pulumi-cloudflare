@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *     zoneId: "zone_id",
  *     aud: "aud",
  *     domain: "domain",
+ *     exact: true,
  *     name: "name",
  *     search: "search",
  * });
@@ -30,6 +31,7 @@ export function getZeroTrustAccessApplications(args?: GetZeroTrustAccessApplicat
         "accountId": args.accountId,
         "aud": args.aud,
         "domain": args.domain,
+        "exact": args.exact,
         "maxItems": args.maxItems,
         "name": args.name,
         "search": args.search,
@@ -53,6 +55,10 @@ export interface GetZeroTrustAccessApplicationsArgs {
      * The domain of the app.
      */
     domain?: string;
+    /**
+     * True for only exact string matches against passed name/domain query parameters.
+     */
+    exact?: boolean;
     /**
      * Max items to fetch, default: 1000
      */
@@ -87,6 +93,10 @@ export interface GetZeroTrustAccessApplicationsResult {
      * The domain of the app.
      */
     readonly domain?: string;
+    /**
+     * True for only exact string matches against passed name/domain query parameters.
+     */
+    readonly exact?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -124,6 +134,7 @@ export interface GetZeroTrustAccessApplicationsResult {
  *     zoneId: "zone_id",
  *     aud: "aud",
  *     domain: "domain",
+ *     exact: true,
  *     name: "name",
  *     search: "search",
  * });
@@ -136,6 +147,7 @@ export function getZeroTrustAccessApplicationsOutput(args?: GetZeroTrustAccessAp
         "accountId": args.accountId,
         "aud": args.aud,
         "domain": args.domain,
+        "exact": args.exact,
         "maxItems": args.maxItems,
         "name": args.name,
         "search": args.search,
@@ -159,6 +171,10 @@ export interface GetZeroTrustAccessApplicationsOutputArgs {
      * The domain of the app.
      */
     domain?: pulumi.Input<string>;
+    /**
+     * True for only exact string matches against passed name/domain query parameters.
+     */
+    exact?: pulumi.Input<boolean>;
     /**
      * Max items to fetch, default: 1000
      */

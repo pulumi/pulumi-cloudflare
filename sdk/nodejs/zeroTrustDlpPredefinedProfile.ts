@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *     accountId: "account_id",
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  *     aiContextEnabled: true,
- *     allowedMatchCount: 0,
+ *     allowedMatchCount: 5,
  *     confidenceThreshold: "confidence_threshold",
  *     contextAwareness: {
  *         enabled: true,
@@ -68,11 +68,13 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
-    public readonly aiContextEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly allowedMatchCount!: pulumi.Output<number | undefined>;
-    public readonly confidenceThreshold!: pulumi.Output<string | undefined>;
+    public readonly aiContextEnabled!: pulumi.Output<boolean>;
+    public readonly allowedMatchCount!: pulumi.Output<number>;
+    public readonly confidenceThreshold!: pulumi.Output<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpPredefinedProfileContextAwareness | undefined>;
     /**
@@ -91,7 +93,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
      * The name of the profile.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly ocrEnabled!: pulumi.Output<boolean>;
     /**
      * Whether this profile can be accessed by anyone.
      */
@@ -173,6 +175,8 @@ export interface ZeroTrustDlpPredefinedProfileState {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileContextAwareness>;
     /**
@@ -217,6 +221,8 @@ export interface ZeroTrustDlpPredefinedProfileArgs {
     confidenceThreshold?: pulumi.Input<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileContextAwareness>;
     /**

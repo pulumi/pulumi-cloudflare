@@ -51,6 +51,8 @@ export interface GetZeroTrustDlpCustomProfileResult {
     readonly confidenceThreshold: string;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly contextAwareness: outputs.GetZeroTrustDlpCustomProfileContextAwareness;
     /**

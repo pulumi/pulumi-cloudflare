@@ -13,11 +13,19 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItemHostname
     {
+        /// <summary>
+        /// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+        /// </summary>
+        public readonly bool? ExcludeExactHostname;
         public readonly string UrlHostname;
 
         [OutputConstructor]
-        private ListItemHostname(string urlHostname)
+        private ListItemHostname(
+            bool? excludeExactHostname,
+
+            string urlHostname)
         {
+            ExcludeExactHostname = excludeExactHostname;
             UrlHostname = urlHostname;
         }
     }

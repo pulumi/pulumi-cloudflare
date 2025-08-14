@@ -15,14 +15,14 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetListItemArgs Empty = new GetListItemArgs();
 
     /**
-     * Defines an identifier.
+     * The Account ID for this resource.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Defines an identifier.
+     * @return The Account ID for this resource.
      * 
      */
     public Output<String> accountId() {
@@ -86,7 +86,7 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Defines an identifier.
+         * @param accountId The Account ID for this resource.
          * 
          * @return builder
          * 

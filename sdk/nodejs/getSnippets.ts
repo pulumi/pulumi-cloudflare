@@ -12,8 +12,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleSnippets = cloudflare.getSnippets({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     snippetName: "snippet_name_01",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     snippetName: "my_snippet",
  * });
  * ```
  */
@@ -30,11 +30,11 @@ export function getSnippets(args: GetSnippetsArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetSnippetsArgs {
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     snippetName: string;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: string;
 }
@@ -44,7 +44,7 @@ export interface GetSnippetsArgs {
  */
 export interface GetSnippetsResult {
     /**
-     * Creation time of the snippet
+     * The timestamp of when the snippet was created.
      */
     readonly createdOn: string;
     /**
@@ -52,15 +52,15 @@ export interface GetSnippetsResult {
      */
     readonly id: string;
     /**
-     * Modification time of the snippet
+     * The timestamp of when the snippet was last modified.
      */
     readonly modifiedOn: string;
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     readonly snippetName: string;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     readonly zoneId: string;
 }
@@ -72,8 +72,8 @@ export interface GetSnippetsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleSnippets = cloudflare.getSnippets({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     snippetName: "snippet_name_01",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     snippetName: "my_snippet",
  * });
  * ```
  */
@@ -90,11 +90,11 @@ export function getSnippetsOutput(args: GetSnippetsOutputArgs, opts?: pulumi.Inv
  */
 export interface GetSnippetsOutputArgs {
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     snippetName: pulumi.Input<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

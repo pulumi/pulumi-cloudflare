@@ -22,10 +22,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsAntivirus? Antivirus;
         /// <summary>
-        /// Setting to enable App Control
-        /// </summary>
-        public readonly Outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings? AppControlSettings;
-        /// <summary>
         /// Block page layout settings.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsBlockPage? BlockPage;
@@ -58,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? HostSelector;
         /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewaySettingsSettingsInspection? Inspection;
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? ProtocolDetection;
@@ -76,8 +76,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewaySettingsSettingsAntivirus? antivirus,
 
-            Outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings? appControlSettings,
-
             Outputs.ZeroTrustGatewaySettingsSettingsBlockPage? blockPage,
 
             Outputs.ZeroTrustGatewaySettingsSettingsBodyScanning? bodyScanning,
@@ -94,6 +92,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? hostSelector,
 
+            Outputs.ZeroTrustGatewaySettingsSettingsInspection? inspection,
+
             Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? protocolDetection,
 
             Outputs.ZeroTrustGatewaySettingsSettingsSandbox? sandbox,
@@ -102,7 +102,6 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ActivityLog = activityLog;
             Antivirus = antivirus;
-            AppControlSettings = appControlSettings;
             BlockPage = blockPage;
             BodyScanning = bodyScanning;
             BrowserIsolation = browserIsolation;
@@ -111,6 +110,7 @@ namespace Pulumi.Cloudflare.Outputs
             ExtendedEmailMatching = extendedEmailMatching;
             Fips = fips;
             HostSelector = hostSelector;
+            Inspection = inspection;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

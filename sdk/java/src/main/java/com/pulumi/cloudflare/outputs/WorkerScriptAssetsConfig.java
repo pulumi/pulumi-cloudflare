@@ -16,12 +16,7 @@ public final class WorkerScriptAssetsConfig {
      * @return The contents of a _headers file (used to attach custom headers on asset responses)
      * 
      */
-    private @Nullable String _headers;
-    /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-     * 
-     */
-    private @Nullable String _redirects;
+    private @Nullable String headers;
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
@@ -34,6 +29,11 @@ public final class WorkerScriptAssetsConfig {
      * 
      */
     private @Nullable String notFoundHandling;
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    private @Nullable String redirects;
     /**
      * @return When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
      * 
@@ -54,15 +54,8 @@ public final class WorkerScriptAssetsConfig {
      * @return The contents of a _headers file (used to attach custom headers on asset responses)
      * 
      */
-    public Optional<String> _headers() {
-        return Optional.ofNullable(this._headers);
-    }
-    /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-     * 
-     */
-    public Optional<String> _redirects() {
-        return Optional.ofNullable(this._redirects);
+    public Optional<String> headers() {
+        return Optional.ofNullable(this.headers);
     }
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
@@ -79,6 +72,13 @@ public final class WorkerScriptAssetsConfig {
      */
     public Optional<String> notFoundHandling() {
         return Optional.ofNullable(this.notFoundHandling);
+    }
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    public Optional<String> redirects() {
+        return Optional.ofNullable(this.redirects);
     }
     /**
      * @return When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
@@ -108,33 +108,27 @@ public final class WorkerScriptAssetsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String _headers;
-        private @Nullable String _redirects;
+        private @Nullable String headers;
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
+        private @Nullable String redirects;
         private @Nullable Boolean runWorkerFirst;
         private @Nullable Boolean serveDirectly;
         public Builder() {}
         public Builder(WorkerScriptAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this._headers = defaults._headers;
-    	      this._redirects = defaults._redirects;
+    	      this.headers = defaults.headers;
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
+    	      this.redirects = defaults.redirects;
     	      this.runWorkerFirst = defaults.runWorkerFirst;
     	      this.serveDirectly = defaults.serveDirectly;
         }
 
         @CustomType.Setter
-        public Builder _headers(@Nullable String _headers) {
+        public Builder headers(@Nullable String headers) {
 
-            this._headers = _headers;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder _redirects(@Nullable String _redirects) {
-
-            this._redirects = _redirects;
+            this.headers = headers;
             return this;
         }
         @CustomType.Setter
@@ -147,6 +141,12 @@ public final class WorkerScriptAssetsConfig {
         public Builder notFoundHandling(@Nullable String notFoundHandling) {
 
             this.notFoundHandling = notFoundHandling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder redirects(@Nullable String redirects) {
+
+            this.redirects = redirects;
             return this;
         }
         @CustomType.Setter
@@ -163,10 +163,10 @@ public final class WorkerScriptAssetsConfig {
         }
         public WorkerScriptAssetsConfig build() {
             final var _resultValue = new WorkerScriptAssetsConfig();
-            _resultValue._headers = _headers;
-            _resultValue._redirects = _redirects;
+            _resultValue.headers = headers;
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;
+            _resultValue.redirects = redirects;
             _resultValue.runWorkerFirst = runWorkerFirst;
             _resultValue.serveDirectly = serveDirectly;
             return _resultValue;

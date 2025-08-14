@@ -33,7 +33,7 @@ export function getWorkersKvNamespace(args: GetWorkersKvNamespaceArgs, opts?: pu
  */
 export interface GetWorkersKvNamespaceArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     filter?: inputs.GetWorkersKvNamespaceFilter;
@@ -48,7 +48,7 @@ export interface GetWorkersKvNamespaceArgs {
  */
 export interface GetWorkersKvNamespaceResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -100,7 +100,7 @@ export function getWorkersKvNamespaceOutput(args: GetWorkersKvNamespaceOutputArg
  */
 export interface GetWorkersKvNamespaceOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWorkersKvNamespaceFilterArgs>;

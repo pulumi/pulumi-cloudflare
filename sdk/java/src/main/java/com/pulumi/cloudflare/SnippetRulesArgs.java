@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,29 +17,29 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
     public static final SnippetRulesArgs Empty = new SnippetRulesArgs();
 
     /**
-     * List of snippet rules
+     * A list of snippet rules.
      * 
      */
-    @Import(name="rules")
-    private @Nullable Output<List<SnippetRulesRuleArgs>> rules;
+    @Import(name="rules", required=true)
+    private Output<List<SnippetRulesRuleArgs>> rules;
 
     /**
-     * @return List of snippet rules
+     * @return A list of snippet rules.
      * 
      */
-    public Optional<Output<List<SnippetRulesRuleArgs>>> rules() {
-        return Optional.ofNullable(this.rules);
+    public Output<List<SnippetRulesRuleArgs>> rules() {
+        return this.rules;
     }
 
     /**
-     * Identifier
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -74,18 +72,18 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of snippet rules
+         * @param rules A list of snippet rules.
          * 
          * @return builder
          * 
          */
-        public Builder rules(@Nullable Output<List<SnippetRulesRuleArgs>> rules) {
+        public Builder rules(Output<List<SnippetRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
         /**
-         * @param rules List of snippet rules
+         * @param rules A list of snippet rules.
          * 
          * @return builder
          * 
@@ -95,7 +93,7 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of snippet rules
+         * @param rules A list of snippet rules.
          * 
          * @return builder
          * 
@@ -105,7 +103,7 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -116,7 +114,7 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -126,6 +124,9 @@ public final class SnippetRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnippetRulesArgs build() {
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("SnippetRulesArgs", "rules");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("SnippetRulesArgs", "zoneId");
             }

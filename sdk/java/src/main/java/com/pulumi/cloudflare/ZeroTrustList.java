@@ -98,18 +98,18 @@ public class ZeroTrustList extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The items in the list.
+     * items to add to the list.
      * 
      */
     @Export(name="items", refs={List.class,ZeroTrustListItem.class}, tree="[0,1]")
-    private Output<List<ZeroTrustListItem>> items;
+    private Output</* @Nullable */ List<ZeroTrustListItem>> items;
 
     /**
-     * @return The items in the list.
+     * @return items to add to the list.
      * 
      */
-    public Output<List<ZeroTrustListItem>> items() {
-        return this.items;
+    public Output<Optional<List<ZeroTrustListItem>>> items() {
+        return Codegen.optional(this.items);
     }
     /**
      * The number of items in the list.

@@ -16,6 +16,11 @@ public final class WorkersDeploymentAnnotations {
      * 
      */
     private @Nullable String workersMessage;
+    /**
+     * @return Operation that triggered the creation of the deployment.
+     * 
+     */
+    private @Nullable String workersTriggeredBy;
 
     private WorkersDeploymentAnnotations() {}
     /**
@@ -24,6 +29,13 @@ public final class WorkersDeploymentAnnotations {
      */
     public Optional<String> workersMessage() {
         return Optional.ofNullable(this.workersMessage);
+    }
+    /**
+     * @return Operation that triggered the creation of the deployment.
+     * 
+     */
+    public Optional<String> workersTriggeredBy() {
+        return Optional.ofNullable(this.workersTriggeredBy);
     }
 
     public static Builder builder() {
@@ -36,10 +48,12 @@ public final class WorkersDeploymentAnnotations {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String workersMessage;
+        private @Nullable String workersTriggeredBy;
         public Builder() {}
         public Builder(WorkersDeploymentAnnotations defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.workersMessage = defaults.workersMessage;
+    	      this.workersTriggeredBy = defaults.workersTriggeredBy;
         }
 
         @CustomType.Setter
@@ -48,9 +62,16 @@ public final class WorkersDeploymentAnnotations {
             this.workersMessage = workersMessage;
             return this;
         }
+        @CustomType.Setter
+        public Builder workersTriggeredBy(@Nullable String workersTriggeredBy) {
+
+            this.workersTriggeredBy = workersTriggeredBy;
+            return this;
+        }
         public WorkersDeploymentAnnotations build() {
             final var _resultValue = new WorkersDeploymentAnnotations();
             _resultValue.workersMessage = workersMessage;
+            _resultValue.workersTriggeredBy = workersTriggeredBy;
             return _resultValue;
         }
     }

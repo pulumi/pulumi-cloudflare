@@ -36,8 +36,8 @@ class BotManagementArgs:
         """
         The set of arguments for constructing a BotManagement resource.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-               Available values: "block", "disabled".
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+               Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
@@ -95,8 +95,8 @@ class BotManagementArgs:
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enable rule to block AI Scrapers and Crawlers.
-        Available values: "block", "disabled".
+        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -250,8 +250,8 @@ class _BotManagementState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BotManagement resources.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-               Available values: "block", "disabled".
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+               Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
@@ -305,8 +305,8 @@ class _BotManagementState:
     @pulumi.getter(name="aiBotsProtection")
     def ai_bots_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enable rule to block AI Scrapers and Crawlers.
-        Available values: "block", "disabled".
+        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
 
@@ -519,8 +519,8 @@ class BotManagement(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-               Available values: "block", "disabled".
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+               Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
@@ -649,8 +649,8 @@ class BotManagement(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
-               Available values: "block", "disabled".
+        :param pulumi.Input[_builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+               Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
@@ -693,16 +693,16 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="aiBotsProtection")
-    def ai_bots_protection(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ai_bots_protection(self) -> pulumi.Output[_builtins.str]:
         """
-        Enable rule to block AI Scrapers and Crawlers.
-        Available values: "block", "disabled".
+        Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        Available values: "block", "disabled", "only*on*ad_pages".
         """
         return pulumi.get(self, "ai_bots_protection")
 
     @_builtins.property
     @pulumi.getter(name="autoUpdateModel")
-    def auto_update_model(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def auto_update_model(self) -> pulumi.Output[_builtins.bool]:
         """
         Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         """
@@ -710,7 +710,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
-    def crawler_protection(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def crawler_protection(self) -> pulumi.Output[_builtins.str]:
         """
         Enable rule to punish AI Scrapers and Crawlers via a link maze.
         Available values: "enabled", "disabled".
@@ -719,7 +719,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="enableJs")
-    def enable_js(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_js(self) -> pulumi.Output[_builtins.bool]:
         """
         Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         """
@@ -727,7 +727,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="fightMode")
-    def fight_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def fight_mode(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to enable Bot Fight Mode.
         """
@@ -735,7 +735,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
-    def optimize_wordpress(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def optimize_wordpress(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to optimize Super Bot Fight Mode protections for Wordpress.
         """
@@ -743,7 +743,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sbfmDefinitelyAutomated")
-    def sbfm_definitely_automated(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def sbfm_definitely_automated(self) -> pulumi.Output[_builtins.str]:
         """
         Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -752,7 +752,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sbfmLikelyAutomated")
-    def sbfm_likely_automated(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def sbfm_likely_automated(self) -> pulumi.Output[_builtins.str]:
         """
         Super Bot Fight Mode (SBFM) action to take on likely automated requests.
         Available values: "allow", "block", "managed_challenge".
@@ -761,7 +761,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sbfmStaticResourceProtection")
-    def sbfm_static_resource_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def sbfm_static_resource_protection(self) -> pulumi.Output[_builtins.bool]:
         """
         Super Bot Fight Mode (SBFM) to enable static resource protection.
         Enable if static resources on your application need bot protection.
@@ -771,7 +771,7 @@ class BotManagement(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="sbfmVerifiedBots")
-    def sbfm_verified_bots(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def sbfm_verified_bots(self) -> pulumi.Output[_builtins.str]:
         """
         Super Bot Fight Mode (SBFM) action to take on verified bots requests.
         Available values: "allow", "block".

@@ -47,11 +47,47 @@ public final class GetAccountApiTokenPermissionGroupsListArgs extends com.pulumi
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable Output<String> scope;
+
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<Output<String>> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
     private GetAccountApiTokenPermissionGroupsListArgs() {}
 
     private GetAccountApiTokenPermissionGroupsListArgs(GetAccountApiTokenPermissionGroupsListArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.name = $.name;
+        this.scope = $.scope;
     }
 
     public static Builder builder() {
@@ -112,6 +148,52 @@ public final class GetAccountApiTokenPermissionGroupsListArgs extends com.pulumi
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable Output<String> scope) {
+            $.scope = scope;
+            return this;
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(String scope) {
+            return scope(Output.of(scope));
         }
 
         public GetAccountApiTokenPermissionGroupsListArgs build() {

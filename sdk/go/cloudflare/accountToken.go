@@ -154,6 +154,9 @@ type accountTokenArgs struct {
 	NotBefore *string `pulumi:"notBefore"`
 	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a AccountToken resource.
@@ -169,6 +172,9 @@ type AccountTokenArgs struct {
 	NotBefore pulumi.StringPtrInput
 	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status pulumi.StringPtrInput
 }
 
 func (AccountTokenArgs) ElementType() reflect.Type {

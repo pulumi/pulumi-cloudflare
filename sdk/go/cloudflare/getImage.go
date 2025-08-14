@@ -59,6 +59,8 @@ type LookupImageArgs struct {
 type LookupImageResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Can set the creator field with an internal user ID.
+	Creator string `pulumi:"creator"`
 	// Image file name.
 	Filename string `pulumi:"filename"`
 	// Image unique identifier.
@@ -114,6 +116,11 @@ func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx contex
 // Account identifier tag.
 func (o LookupImageResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Can set the creator field with an internal user ID.
+func (o LookupImageResultOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupImageResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
 // Image file name.

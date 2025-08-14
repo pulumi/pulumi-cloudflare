@@ -27,7 +27,7 @@ class GetEmailSecurityBlockSendersResult:
     """
     A collection of values returned by getEmailSecurityBlockSenders.
     """
-    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, order=None, pattern_type=None, results=None, search=None):
+    def __init__(__self__, account_id=None, direction=None, id=None, max_items=None, order=None, pattern=None, pattern_type=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -43,6 +43,9 @@ class GetEmailSecurityBlockSendersResult:
         if order and not isinstance(order, str):
             raise TypeError("Expected argument 'order' to be a str")
         pulumi.set(__self__, "order", order)
+        if pattern and not isinstance(pattern, str):
+            raise TypeError("Expected argument 'pattern' to be a str")
+        pulumi.set(__self__, "pattern", pattern)
         if pattern_type and not isinstance(pattern_type, str):
             raise TypeError("Expected argument 'pattern_type' to be a str")
         pulumi.set(__self__, "pattern_type", pattern_type)
@@ -96,6 +99,11 @@ class GetEmailSecurityBlockSendersResult:
         return pulumi.get(self, "order")
 
     @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "pattern")
+
+    @_builtins.property
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> Optional[_builtins.str]:
         """
@@ -134,6 +142,7 @@ class AwaitableGetEmailSecurityBlockSendersResult(GetEmailSecurityBlockSendersRe
             id=self.id,
             max_items=self.max_items,
             order=self.order,
+            pattern=self.pattern,
             pattern_type=self.pattern_type,
             results=self.results,
             search=self.search)
@@ -143,6 +152,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
                                      direction: Optional[_builtins.str] = None,
                                      max_items: Optional[_builtins.int] = None,
                                      order: Optional[_builtins.str] = None,
+                                     pattern: Optional[_builtins.str] = None,
                                      pattern_type: Optional[_builtins.str] = None,
                                      search: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEmailSecurityBlockSendersResult:
@@ -156,6 +166,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="pattern",
+        pattern="pattern",
         pattern_type="EMAIL",
         search="search")
     ```
@@ -178,6 +189,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
     __args__['direction'] = direction
     __args__['maxItems'] = max_items
     __args__['order'] = order
+    __args__['pattern'] = pattern
     __args__['patternType'] = pattern_type
     __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -189,6 +201,7 @@ def get_email_security_block_senders(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         order=pulumi.get(__ret__, 'order'),
+        pattern=pulumi.get(__ret__, 'pattern'),
         pattern_type=pulumi.get(__ret__, 'pattern_type'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
@@ -196,6 +209,7 @@ def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[_b
                                             direction: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                             order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                            pattern: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             pattern_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEmailSecurityBlockSendersResult]:
@@ -209,6 +223,7 @@ def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[_b
     example_email_security_block_senders = cloudflare.get_email_security_block_senders(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         direction="asc",
         order="pattern",
+        pattern="pattern",
         pattern_type="EMAIL",
         search="search")
     ```
@@ -231,6 +246,7 @@ def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[_b
     __args__['direction'] = direction
     __args__['maxItems'] = max_items
     __args__['order'] = order
+    __args__['pattern'] = pattern
     __args__['patternType'] = pattern_type
     __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -241,6 +257,7 @@ def get_email_security_block_senders_output(account_id: Optional[pulumi.Input[_b
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
         order=pulumi.get(__response__, 'order'),
+        pattern=pulumi.get(__response__, 'pattern'),
         pattern_type=pulumi.get(__response__, 'pattern_type'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search')))

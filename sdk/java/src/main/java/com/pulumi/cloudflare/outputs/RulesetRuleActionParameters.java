@@ -199,6 +199,12 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable RulesetRuleActionParametersOverrides overrides;
     /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    private @Nullable String phase;
+    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
@@ -540,6 +546,14 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.overrides);
     }
     /**
+     * @return A phase to skip the execution of. This property is only compatible with products.
+     * Available values: &#34;current&#34;.
+     * 
+     */
+    public Optional<String> phase() {
+        return Optional.ofNullable(this.phase);
+    }
+    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
@@ -739,6 +753,7 @@ public final class RulesetRuleActionParameters {
         private @Nullable Boolean originCacheControl;
         private @Nullable Boolean originErrorPagePassthru;
         private @Nullable RulesetRuleActionParametersOverrides overrides;
+        private @Nullable String phase;
         private @Nullable List<String> phases;
         private @Nullable String polish;
         private @Nullable List<String> products;
@@ -796,6 +811,7 @@ public final class RulesetRuleActionParameters {
     	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
     	      this.overrides = defaults.overrides;
+    	      this.phase = defaults.phase;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
@@ -1022,6 +1038,12 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder phase(@Nullable String phase) {
+
+            this.phase = phase;
+            return this;
+        }
+        @CustomType.Setter
         public Builder phases(@Nullable List<String> phases) {
 
             this.phases = phases;
@@ -1208,6 +1230,7 @@ public final class RulesetRuleActionParameters {
             _resultValue.originCacheControl = originCacheControl;
             _resultValue.originErrorPagePassthru = originErrorPagePassthru;
             _resultValue.overrides = overrides;
+            _resultValue.phase = phase;
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;

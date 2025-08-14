@@ -42,6 +42,9 @@ class DlpPredefinedProfileArgs:
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
         if context_awareness is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
+        if context_awareness is not None:
             pulumi.set(__self__, "context_awareness", context_awareness)
         if entries is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
@@ -98,6 +101,7 @@ class DlpPredefinedProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> Optional[pulumi.Input['DlpPredefinedProfileContextAwarenessArgs']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -164,6 +168,9 @@ class _DlpPredefinedProfileState:
         if confidence_threshold is not None:
             pulumi.set(__self__, "confidence_threshold", confidence_threshold)
         if context_awareness is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""context_awareness is deprecated: This attribute is deprecated.""")
+        if context_awareness is not None:
             pulumi.set(__self__, "context_awareness", context_awareness)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -225,6 +232,7 @@ class _DlpPredefinedProfileState:
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> Optional[pulumi.Input['DlpPredefinedProfileContextAwarenessArgs']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -367,7 +375,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
             account_id="account_id",
             profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ai_context_enabled=True,
-            allowed_match_count=0,
+            allowed_match_count=5,
             confidence_threshold="confidence_threshold",
             context_awareness={
                 "enabled": True,
@@ -409,7 +417,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
             account_id="account_id",
             profile_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             ai_context_enabled=True,
-            allowed_match_count=0,
+            allowed_match_count=5,
             confidence_threshold="confidence_threshold",
             context_awareness={
                 "enabled": True,
@@ -549,21 +557,22 @@ class DlpPredefinedProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="aiContextEnabled")
-    def ai_context_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ai_context_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "ai_context_enabled")
 
     @_builtins.property
     @pulumi.getter(name="allowedMatchCount")
-    def allowed_match_count(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def allowed_match_count(self) -> pulumi.Output[_builtins.int]:
         return pulumi.get(self, "allowed_match_count")
 
     @_builtins.property
     @pulumi.getter(name="confidenceThreshold")
-    def confidence_threshold(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def confidence_threshold(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "confidence_threshold")
 
     @_builtins.property
     @pulumi.getter(name="contextAwareness")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def context_awareness(self) -> pulumi.Output[Optional['outputs.DlpPredefinedProfileContextAwareness']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -602,7 +611,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ocrEnabled")
-    def ocr_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ocr_enabled(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "ocr_enabled")
 
     @_builtins.property

@@ -58,26 +58,16 @@ class ZeroTrustAccessTagArgs:
 class _ZeroTrustAccessTagState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessTag resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: The number of applications that have this tag
         :param pulumi.Input[_builtins.str] name: The name of the tag
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -92,27 +82,6 @@ class _ZeroTrustAccessTagState:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of applications that have this tag
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "app_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -123,15 +92,6 @@ class _ZeroTrustAccessTagState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "updated_at", value)
 
 
 @pulumi.type_token("cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag")
@@ -222,9 +182,6 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["app_count"] = None
-            __props__.__dict__["created_at"] = None
-            __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessTag:AccessTag")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustAccessTag, __self__).__init__(
@@ -238,10 +195,7 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_count: Optional[pulumi.Input[_builtins.int]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessTag':
+            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustAccessTag':
         """
         Get an existing ZeroTrustAccessTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -250,7 +204,6 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.int] app_count: The number of applications that have this tag
         :param pulumi.Input[_builtins.str] name: The name of the tag
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -258,10 +211,7 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
         __props__ = _ZeroTrustAccessTagState.__new__(_ZeroTrustAccessTagState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["app_count"] = app_count
-        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["name"] = name
-        __props__.__dict__["updated_at"] = updated_at
         return ZeroTrustAccessTag(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -273,28 +223,10 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        The number of applications that have this tag
-        """
-        return pulumi.get(self, "app_count")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the tag
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> pulumi.Output[_builtins.str]:
-        return pulumi.get(self, "updated_at")
 

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleImages = cloudflare.getImages({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     creator: "creator",
  * });
  * ```
  */
@@ -22,6 +23,7 @@ export function getImages(args: GetImagesArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getImages:getImages", {
         "accountId": args.accountId,
+        "creator": args.creator,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -34,6 +36,10 @@ export interface GetImagesArgs {
      * Account identifier tag.
      */
     accountId: string;
+    /**
+     * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+     */
+    creator?: string;
     /**
      * Max items to fetch, default: 1000
      */
@@ -48,6 +54,10 @@ export interface GetImagesResult {
      * Account identifier tag.
      */
     readonly accountId: string;
+    /**
+     * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+     */
+    readonly creator?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -70,6 +80,7 @@ export interface GetImagesResult {
  *
  * const exampleImages = cloudflare.getImages({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     creator: "creator",
  * });
  * ```
  */
@@ -77,6 +88,7 @@ export function getImagesOutput(args: GetImagesOutputArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getImages:getImages", {
         "accountId": args.accountId,
+        "creator": args.creator,
         "maxItems": args.maxItems,
     }, opts);
 }
@@ -89,6 +101,10 @@ export interface GetImagesOutputArgs {
      * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+     */
+    creator?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */

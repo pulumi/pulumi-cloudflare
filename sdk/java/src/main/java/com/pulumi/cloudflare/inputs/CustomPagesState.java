@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,19 +31,56 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
+    }
+
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    @Import(name="previewTarget")
+    private @Nullable Output<String> previewTarget;
+
+    public Optional<Output<String>> previewTarget() {
+        return Optional.ofNullable(this.previewTarget);
+    }
+
+    @Import(name="requiredTokens")
+    private @Nullable Output<List<String>> requiredTokens;
+
+    public Optional<Output<List<String>>> requiredTokens() {
+        return Optional.ofNullable(this.requiredTokens);
     }
 
     /**
@@ -96,7 +134,12 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
 
     private CustomPagesState(CustomPagesState $) {
         this.accountId = $.accountId;
+        this.createdOn = $.createdOn;
+        this.description = $.description;
         this.identifier = $.identifier;
+        this.modifiedOn = $.modifiedOn;
+        this.previewTarget = $.previewTarget;
+        this.requiredTokens = $.requiredTokens;
         this.state = $.state;
         this.url = $.url;
         this.zoneId = $.zoneId;
@@ -141,8 +184,27 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
         /**
-         * @param identifier Identifier
+         * @param identifier Error Page Types
+         * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
          * 
          * @return builder
          * 
@@ -153,13 +215,45 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Error Page Types
+         * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
          * 
          * @return builder
          * 
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        public Builder previewTarget(@Nullable Output<String> previewTarget) {
+            $.previewTarget = previewTarget;
+            return this;
+        }
+
+        public Builder previewTarget(String previewTarget) {
+            return previewTarget(Output.of(previewTarget));
+        }
+
+        public Builder requiredTokens(@Nullable Output<List<String>> requiredTokens) {
+            $.requiredTokens = requiredTokens;
+            return this;
+        }
+
+        public Builder requiredTokens(List<String> requiredTokens) {
+            return requiredTokens(Output.of(requiredTokens));
+        }
+
+        public Builder requiredTokens(String... requiredTokens) {
+            return requiredTokens(List.of(requiredTokens));
         }
 
         /**

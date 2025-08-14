@@ -171,7 +171,7 @@ class GetDnsRecordResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        DNS record name (or @ for the zone apex) in Punycode.
+        Complete DNS record name, including the zone name, in Punycode.
         """
         return pulumi.get(self, "name")
 

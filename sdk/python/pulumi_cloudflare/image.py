@@ -20,6 +20,8 @@ __all__ = ['ImageArgs', 'Image']
 class ImageArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
+                 image_id: pulumi.Input[_builtins.str],
+                 creator: Optional[pulumi.Input[_builtins.str]] = None,
                  file: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -27,12 +29,17 @@ class ImageArgs:
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
+        :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
         :param pulumi.Input[_builtins.str] metadata: User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the image requires a signature token for the access.
         :param pulumi.Input[_builtins.str] url: A URL to fetch an image from origin. Only needed when type is uploading from a URL.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "image_id", image_id)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
         if file is not None:
             pulumi.set(__self__, "file", file)
         if metadata is not None:
@@ -53,6 +60,30 @@ class ImageArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        An optional custom unique identifier for your image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "image_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Can set the creator field with an internal user ID.
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,8 +138,10 @@ class ImageArgs:
 class _ImageState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 creator: Optional[pulumi.Input[_builtins.str]] = None,
                  file: Optional[pulumi.Input[_builtins.str]] = None,
                  filename: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  meta: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -118,8 +151,10 @@ class _ImageState:
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
         :param pulumi.Input[_builtins.str] filename: Image file name.
+        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] meta: User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
         :param pulumi.Input[_builtins.str] metadata: User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the image requires a signature token for the access.
@@ -129,10 +164,14 @@ class _ImageState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
         if file is not None:
             pulumi.set(__self__, "file", file)
         if filename is not None:
             pulumi.set(__self__, "filename", filename)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
         if meta is not None:
             pulumi.set(__self__, "meta", meta)
         if metadata is not None:
@@ -160,6 +199,18 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Can set the creator field with an internal user ID.
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter
     def file(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         An image binary data. Only needed when type is uploading a file.
@@ -181,6 +232,18 @@ class _ImageState:
     @filename.setter
     def filename(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "filename", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An optional custom unique identifier for your image.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -262,7 +325,9 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 creator: Optional[pulumi.Input[_builtins.str]] = None,
                  file: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -276,7 +341,9 @@ class Image(pulumi.CustomResource):
 
         example_image = cloudflare.Image("example_image",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file={},
+            image_id="id",
+            creator="creator",
+            file=None,
             metadata={},
             require_signed_urls=True,
             url="https://example.com/path/to/logo.png")
@@ -291,7 +358,9 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
+        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] metadata: User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the image requires a signature token for the access.
         :param pulumi.Input[_builtins.str] url: A URL to fetch an image from origin. Only needed when type is uploading from a URL.
@@ -311,7 +380,9 @@ class Image(pulumi.CustomResource):
 
         example_image = cloudflare.Image("example_image",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file={},
+            image_id="id",
+            creator="creator",
+            file=None,
             metadata={},
             require_signed_urls=True,
             url="https://example.com/path/to/logo.png")
@@ -339,7 +410,9 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 creator: Optional[pulumi.Input[_builtins.str]] = None,
                  file: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  metadata: Optional[pulumi.Input[_builtins.str]] = None,
                  require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -355,7 +428,11 @@ class Image(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["creator"] = creator
             __props__.__dict__["file"] = file
+            if image_id is None and not opts.urn:
+                raise TypeError("Missing required property 'image_id'")
+            __props__.__dict__["image_id"] = image_id
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["require_signed_urls"] = require_signed_urls
             __props__.__dict__["url"] = url
@@ -374,8 +451,10 @@ class Image(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            creator: Optional[pulumi.Input[_builtins.str]] = None,
             file: Optional[pulumi.Input[_builtins.str]] = None,
             filename: Optional[pulumi.Input[_builtins.str]] = None,
+            image_id: Optional[pulumi.Input[_builtins.str]] = None,
             meta: Optional[pulumi.Input[_builtins.str]] = None,
             metadata: Optional[pulumi.Input[_builtins.str]] = None,
             require_signed_urls: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -390,8 +469,10 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier tag.
+        :param pulumi.Input[_builtins.str] creator: Can set the creator field with an internal user ID.
         :param pulumi.Input[_builtins.str] file: An image binary data. Only needed when type is uploading a file.
         :param pulumi.Input[_builtins.str] filename: Image file name.
+        :param pulumi.Input[_builtins.str] image_id: An optional custom unique identifier for your image.
         :param pulumi.Input[_builtins.str] meta: User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
         :param pulumi.Input[_builtins.str] metadata: User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
         :param pulumi.Input[_builtins.bool] require_signed_urls: Indicates whether the image requires a signature token for the access.
@@ -404,8 +485,10 @@ class Image(pulumi.CustomResource):
         __props__ = _ImageState.__new__(_ImageState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["creator"] = creator
         __props__.__dict__["file"] = file
         __props__.__dict__["filename"] = filename
+        __props__.__dict__["image_id"] = image_id
         __props__.__dict__["meta"] = meta
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["require_signed_urls"] = require_signed_urls
@@ -424,6 +507,14 @@ class Image(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def creator(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Can set the creator field with an internal user ID.
+        """
+        return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter
     def file(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         An image binary data. Only needed when type is uploading a file.
@@ -437,6 +528,14 @@ class Image(pulumi.CustomResource):
         Image file name.
         """
         return pulumi.get(self, "filename")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        An optional custom unique identifier for your image.
+        """
+        return pulumi.get(self, "image_id")
 
     @_builtins.property
     @pulumi.getter

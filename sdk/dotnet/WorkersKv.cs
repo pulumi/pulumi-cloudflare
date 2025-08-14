@@ -25,8 +25,8 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         NamespaceId = "0f2ac74b498b48028cb68387c421e279",
     ///         KeyName = "My-Key",
-    ///         Metadata = "{\"someMetadataKey\": \"someMetadataValue\"}",
     ///         Value = "Some Value",
+    ///         Metadata = null,
     ///     });
     /// 
     /// });
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     public partial class WorkersKv : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -53,9 +53,6 @@ namespace Pulumi.Cloudflare
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
-        /// <summary>
-        /// Arbitrary JSON to be associated with a key/value pair.
-        /// </summary>
         [Output("metadata")]
         public Output<string?> Metadata { get; private set; } = null!;
 
@@ -118,7 +115,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -129,9 +126,6 @@ namespace Pulumi.Cloudflare
         [Input("keyName", required: true)]
         public Input<string> KeyName { get; set; } = null!;
 
-        /// <summary>
-        /// Arbitrary JSON to be associated with a key/value pair.
-        /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }
 
@@ -156,7 +150,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersKvState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -167,9 +161,6 @@ namespace Pulumi.Cloudflare
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
-        /// <summary>
-        /// Arbitrary JSON to be associated with a key/value pair.
-        /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }
 

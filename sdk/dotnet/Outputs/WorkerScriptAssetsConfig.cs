@@ -16,11 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The contents of a _headers file (used to attach custom headers on asset responses)
         /// </summary>
-        public readonly string? _headers;
-        /// <summary>
-        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
-        /// </summary>
-        public readonly string? _redirects;
+        public readonly string? Headers;
         /// <summary>
         /// Determines the redirects and rewrites of requests for HTML content.
         /// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -32,6 +28,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NotFoundHandling;
         /// <summary>
+        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        /// </summary>
+        public readonly string? Redirects;
+        /// <summary>
         /// When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
         /// </summary>
         public readonly bool? RunWorkerFirst;
@@ -42,22 +42,22 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkerScriptAssetsConfig(
-            string? _headers,
-
-            string? _redirects,
+            string? headers,
 
             string? htmlHandling,
 
             string? notFoundHandling,
 
+            string? redirects,
+
             bool? runWorkerFirst,
 
             bool? serveDirectly)
         {
-            this._headers = _headers;
-            this._redirects = _redirects;
+            Headers = headers;
             HtmlHandling = htmlHandling;
             NotFoundHandling = notFoundHandling;
+            Redirects = redirects;
             RunWorkerFirst = runWorkerFirst;
             ServeDirectly = serveDirectly;
         }

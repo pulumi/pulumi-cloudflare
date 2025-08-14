@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "active", "disabled", "expired".
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The token value.

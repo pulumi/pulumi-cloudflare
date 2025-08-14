@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.AccessGroupExcludeGroup;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeGsuite;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeIp;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeIpList;
+import com.pulumi.cloudflare.outputs.AccessGroupExcludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeLoginMethod;
+import com.pulumi.cloudflare.outputs.AccessGroupExcludeOidc;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeOkta;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeSaml;
 import com.pulumi.cloudflare.outputs.AccessGroupExcludeServiceToken;
@@ -58,7 +60,9 @@ public final class AccessGroupExclude {
     private @Nullable AccessGroupExcludeGsuite gsuite;
     private @Nullable AccessGroupExcludeIp ip;
     private @Nullable AccessGroupExcludeIpList ipList;
+    private @Nullable AccessGroupExcludeLinkedAppToken linkedAppToken;
     private @Nullable AccessGroupExcludeLoginMethod loginMethod;
+    private @Nullable AccessGroupExcludeOidc oidc;
     private @Nullable AccessGroupExcludeOkta okta;
     private @Nullable AccessGroupExcludeSaml saml;
     private @Nullable AccessGroupExcludeServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class AccessGroupExclude {
     public Optional<AccessGroupExcludeIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<AccessGroupExcludeLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<AccessGroupExcludeLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<AccessGroupExcludeOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<AccessGroupExcludeOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class AccessGroupExclude {
         private @Nullable AccessGroupExcludeGsuite gsuite;
         private @Nullable AccessGroupExcludeIp ip;
         private @Nullable AccessGroupExcludeIpList ipList;
+        private @Nullable AccessGroupExcludeLinkedAppToken linkedAppToken;
         private @Nullable AccessGroupExcludeLoginMethod loginMethod;
+        private @Nullable AccessGroupExcludeOidc oidc;
         private @Nullable AccessGroupExcludeOkta okta;
         private @Nullable AccessGroupExcludeSaml saml;
         private @Nullable AccessGroupExcludeServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class AccessGroupExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class AccessGroupExclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable AccessGroupExcludeLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable AccessGroupExcludeLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable AccessGroupExcludeOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class AccessGroupExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

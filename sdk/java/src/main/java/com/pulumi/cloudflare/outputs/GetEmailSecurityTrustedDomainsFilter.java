@@ -26,6 +26,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
      * 
      */
     private @Nullable String order;
+    private @Nullable String pattern;
     /**
      * @return Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
@@ -58,6 +59,9 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
     }
+    public Optional<String> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
     /**
      * @return Allows searching in multiple properties of a record simultaneously.
      * This parameter is intended for human users, not automation. Its exact
@@ -82,6 +86,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
         private @Nullable Boolean isRecent;
         private @Nullable Boolean isSimilarity;
         private @Nullable String order;
+        private @Nullable String pattern;
         private @Nullable String search;
         public Builder() {}
         public Builder(GetEmailSecurityTrustedDomainsFilter defaults) {
@@ -90,6 +95,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
     	      this.isRecent = defaults.isRecent;
     	      this.isSimilarity = defaults.isSimilarity;
     	      this.order = defaults.order;
+    	      this.pattern = defaults.pattern;
     	      this.search = defaults.search;
         }
 
@@ -118,6 +124,12 @@ public final class GetEmailSecurityTrustedDomainsFilter {
             return this;
         }
         @CustomType.Setter
+        public Builder pattern(@Nullable String pattern) {
+
+            this.pattern = pattern;
+            return this;
+        }
+        @CustomType.Setter
         public Builder search(@Nullable String search) {
 
             this.search = search;
@@ -129,6 +141,7 @@ public final class GetEmailSecurityTrustedDomainsFilter {
             _resultValue.isRecent = isRecent;
             _resultValue.isSimilarity = isSimilarity;
             _resultValue.order = order;
+            _resultValue.pattern = pattern;
             _resultValue.search = search;
             return _resultValue;
         }

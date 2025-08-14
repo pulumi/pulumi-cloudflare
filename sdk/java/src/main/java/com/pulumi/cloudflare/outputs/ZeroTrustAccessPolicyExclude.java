@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeGroup;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeGsuite;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeIp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeIpList;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeLinkedAppToken;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeLoginMethod;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeOidc;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeOkta;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeSaml;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessPolicyExcludeServiceToken;
@@ -58,7 +60,9 @@ public final class ZeroTrustAccessPolicyExclude {
     private @Nullable ZeroTrustAccessPolicyExcludeGsuite gsuite;
     private @Nullable ZeroTrustAccessPolicyExcludeIp ip;
     private @Nullable ZeroTrustAccessPolicyExcludeIpList ipList;
+    private @Nullable ZeroTrustAccessPolicyExcludeLinkedAppToken linkedAppToken;
     private @Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod;
+    private @Nullable ZeroTrustAccessPolicyExcludeOidc oidc;
     private @Nullable ZeroTrustAccessPolicyExcludeOkta okta;
     private @Nullable ZeroTrustAccessPolicyExcludeSaml saml;
     private @Nullable ZeroTrustAccessPolicyExcludeServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class ZeroTrustAccessPolicyExclude {
     public Optional<ZeroTrustAccessPolicyExcludeIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<ZeroTrustAccessPolicyExcludeLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<ZeroTrustAccessPolicyExcludeLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<ZeroTrustAccessPolicyExcludeOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<ZeroTrustAccessPolicyExcludeOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class ZeroTrustAccessPolicyExclude {
         private @Nullable ZeroTrustAccessPolicyExcludeGsuite gsuite;
         private @Nullable ZeroTrustAccessPolicyExcludeIp ip;
         private @Nullable ZeroTrustAccessPolicyExcludeIpList ipList;
+        private @Nullable ZeroTrustAccessPolicyExcludeLinkedAppToken linkedAppToken;
         private @Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod;
+        private @Nullable ZeroTrustAccessPolicyExcludeOidc oidc;
         private @Nullable ZeroTrustAccessPolicyExcludeOkta okta;
         private @Nullable ZeroTrustAccessPolicyExcludeSaml saml;
         private @Nullable ZeroTrustAccessPolicyExcludeServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class ZeroTrustAccessPolicyExclude {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class ZeroTrustAccessPolicyExclude {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable ZeroTrustAccessPolicyExcludeLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable ZeroTrustAccessPolicyExcludeLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable ZeroTrustAccessPolicyExcludeOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class ZeroTrustAccessPolicyExclude {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

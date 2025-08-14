@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("aiContextEnabled")]
-        public Output<bool?> AiContextEnabled { get; private set; } = null!;
+        public Output<bool> AiContextEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Related DLP policies will trigger when the match count exceeds the number set.
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
         public Output<int> AllowedMatchCount { get; private set; } = null!;
 
         [Output("confidenceThreshold")]
-        public Output<string?> ConfidenceThreshold { get; private set; } = null!;
+        public Output<string> ConfidenceThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
@@ -54,6 +54,10 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom entries from this profile.
+        /// If this field is omitted, entries owned by this profile will not be changed.
+        /// </summary>
         [Output("entries")]
         public Output<ImmutableArray<Outputs.ZeroTrustDlpCustomProfileEntry>> Entries { get; private set; } = null!;
 
@@ -61,7 +65,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         [Output("ocrEnabled")]
-        public Output<bool?> OcrEnabled { get; private set; } = null!;
+        public Output<bool> OcrEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether this profile can be accessed by anyone.
@@ -164,8 +168,14 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("entries", required: true)]
+        [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs>? _entries;
+
+        /// <summary>
+        /// Custom entries from this profile.
+        /// If this field is omitted, entries owned by this profile will not be changed.
+        /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs>());
@@ -233,6 +243,12 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpCustomProfileEntryGetArgs>? _entries;
+
+        /// <summary>
+        /// Custom entries from this profile.
+        /// If this field is omitted, entries owned by this profile will not be changed.
+        /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpCustomProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpCustomProfileEntryGetArgs>());

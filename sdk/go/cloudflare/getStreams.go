@@ -71,7 +71,7 @@ type LookupStreamsArgs struct {
 	// Lists videos created after the specified date.
 	Start *string `pulumi:"start"`
 	// Specifies the processing status for all quality levels for a video.
-	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
 	Status *string `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type *string `pulumi:"type"`
@@ -100,7 +100,7 @@ type LookupStreamsResult struct {
 	// Lists videos created after the specified date.
 	Start *string `pulumi:"start"`
 	// Specifies the processing status for all quality levels for a video.
-	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
 	Status *string `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type *string `pulumi:"type"`
@@ -134,7 +134,7 @@ type LookupStreamsOutputArgs struct {
 	// Lists videos created after the specified date.
 	Start pulumi.StringPtrInput `pulumi:"start"`
 	// Specifies the processing status for all quality levels for a video.
-	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+	// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -210,7 +210,7 @@ func (o LookupStreamsResultOutput) Start() pulumi.StringPtrOutput {
 }
 
 // Specifies the processing status for all quality levels for a video.
-// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error".
+// Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
 func (o LookupStreamsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

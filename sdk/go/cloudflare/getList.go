@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
+//				ListId:    pulumi.StringRef("2c0fc9fa937b11eaa1b71c4d701ab86e"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,15 +49,15 @@ func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getList.
 type LookupListArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId string `pulumi:"listId"`
+	ListId *string `pulumi:"listId"`
 }
 
 // A collection of values returned by getList.
 type LookupListResult struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId string `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -69,14 +69,14 @@ type LookupListResult struct {
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
 	// The unique ID of the list.
-	ListId string `pulumi:"listId"`
+	ListId *string `pulumi:"listId"`
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// An informative name for the list. Use this name in filter and rule expressions.
 	Name string `pulumi:"name"`
 	// The number of items in the list.
 	NumItems float64 `pulumi:"numItems"`
-	// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 	NumReferencingFilters float64 `pulumi:"numReferencingFilters"`
 }
 
@@ -91,10 +91,10 @@ func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getList.
 type LookupListOutputArgs struct {
-	// Defines an identifier.
+	// The Account ID for this resource.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId pulumi.StringInput `pulumi:"listId"`
+	ListId pulumi.StringPtrInput `pulumi:"listId"`
 }
 
 func (LookupListOutputArgs) ElementType() reflect.Type {
@@ -116,7 +116,7 @@ func (o LookupListResultOutput) ToLookupListResultOutputWithContext(ctx context.
 	return o
 }
 
-// Defines an identifier.
+// The Account ID for this resource.
 func (o LookupListResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -143,8 +143,8 @@ func (o LookupListResultOutput) Kind() pulumi.StringOutput {
 }
 
 // The unique ID of the list.
-func (o LookupListResultOutput) ListId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListResult) string { return v.ListId }).(pulumi.StringOutput)
+func (o LookupListResultOutput) ListId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
 }
 
 // The RFC 3339 timestamp of when the list was last modified.
@@ -162,7 +162,7 @@ func (o LookupListResultOutput) NumItems() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupListResult) float64 { return v.NumItems }).(pulumi.Float64Output)
 }
 
-// The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 func (o LookupListResultOutput) NumReferencingFilters() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupListResult) float64 { return v.NumReferencingFilters }).(pulumi.Float64Output)
 }

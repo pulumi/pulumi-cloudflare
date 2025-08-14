@@ -27,25 +27,25 @@ class GetUserAgentBlockingRulesResult:
     """
     A collection of values returned by getUserAgentBlockingRules.
     """
-    def __init__(__self__, description=None, description_search=None, id=None, max_items=None, results=None, ua_search=None, zone_id=None):
+    def __init__(__self__, description=None, id=None, max_items=None, paused=None, results=None, user_agent=None, zone_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if description_search and not isinstance(description_search, str):
-            raise TypeError("Expected argument 'description_search' to be a str")
-        pulumi.set(__self__, "description_search", description_search)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if paused and not isinstance(paused, bool):
+            raise TypeError("Expected argument 'paused' to be a bool")
+        pulumi.set(__self__, "paused", paused)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
-        if ua_search and not isinstance(ua_search, str):
-            raise TypeError("Expected argument 'ua_search' to be a str")
-        pulumi.set(__self__, "ua_search", ua_search)
+        if user_agent and not isinstance(user_agent, str):
+            raise TypeError("Expected argument 'user_agent' to be a str")
+        pulumi.set(__self__, "user_agent", user_agent)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -57,14 +57,6 @@ class GetUserAgentBlockingRulesResult:
         A string to search for in the description of existing rules.
         """
         return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter(name="descriptionSearch")
-    def description_search(self) -> Optional[_builtins.str]:
-        """
-        A string to search for in the description of existing rules.
-        """
-        return pulumi.get(self, "description_search")
 
     @_builtins.property
     @pulumi.getter
@@ -84,6 +76,14 @@ class GetUserAgentBlockingRulesResult:
 
     @_builtins.property
     @pulumi.getter
+    def paused(self) -> Optional[_builtins.bool]:
+        """
+        When true, indicates that the rule is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @_builtins.property
+    @pulumi.getter
     def results(self) -> Sequence['outputs.GetUserAgentBlockingRulesResultResult']:
         """
         The items returned by the data source
@@ -91,12 +91,12 @@ class GetUserAgentBlockingRulesResult:
         return pulumi.get(self, "results")
 
     @_builtins.property
-    @pulumi.getter(name="uaSearch")
-    def ua_search(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="userAgent")
+    def user_agent(self) -> Optional[_builtins.str]:
         """
         A string to search for in the user agent values of existing rules.
         """
-        return pulumi.get(self, "ua_search")
+        return pulumi.get(self, "user_agent")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -114,18 +114,18 @@ class AwaitableGetUserAgentBlockingRulesResult(GetUserAgentBlockingRulesResult):
             yield self
         return GetUserAgentBlockingRulesResult(
             description=self.description,
-            description_search=self.description_search,
             id=self.id,
             max_items=self.max_items,
+            paused=self.paused,
             results=self.results,
-            ua_search=self.ua_search,
+            user_agent=self.user_agent,
             zone_id=self.zone_id)
 
 
 def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
-                                  description_search: Optional[_builtins.str] = None,
                                   max_items: Optional[_builtins.int] = None,
-                                  ua_search: Optional[_builtins.str] = None,
+                                  paused: Optional[_builtins.bool] = None,
+                                  user_agent: Optional[_builtins.str] = None,
                                   zone_id: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserAgentBlockingRulesResult:
     """
@@ -137,38 +137,38 @@ def get_user_agent_blocking_rules(description: Optional[_builtins.str] = None,
 
     example_user_agent_blocking_rules = cloudflare.get_user_agent_blocking_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         description="abusive",
-        description_search="abusive",
-        ua_search="Safari")
+        paused=False,
+        user_agent="Safari")
     ```
 
 
     :param _builtins.str description: A string to search for in the description of existing rules.
-    :param _builtins.str description_search: A string to search for in the description of existing rules.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str ua_search: A string to search for in the user agent values of existing rules.
+    :param _builtins.bool paused: When true, indicates that the rule is currently paused.
+    :param _builtins.str user_agent: A string to search for in the user agent values of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description
-    __args__['descriptionSearch'] = description_search
     __args__['maxItems'] = max_items
-    __args__['uaSearch'] = ua_search
+    __args__['paused'] = paused
+    __args__['userAgent'] = user_agent
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules', __args__, opts=opts, typ=GetUserAgentBlockingRulesResult).value
 
     return AwaitableGetUserAgentBlockingRulesResult(
         description=pulumi.get(__ret__, 'description'),
-        description_search=pulumi.get(__ret__, 'description_search'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        paused=pulumi.get(__ret__, 'paused'),
         results=pulumi.get(__ret__, 'results'),
-        ua_search=pulumi.get(__ret__, 'ua_search'),
+        user_agent=pulumi.get(__ret__, 'user_agent'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_user_agent_blocking_rules_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         description_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                         ua_search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                         paused: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                                         user_agent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserAgentBlockingRulesResult]:
     """
@@ -180,30 +180,30 @@ def get_user_agent_blocking_rules_output(description: Optional[pulumi.Input[Opti
 
     example_user_agent_blocking_rules = cloudflare.get_user_agent_blocking_rules(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         description="abusive",
-        description_search="abusive",
-        ua_search="Safari")
+        paused=False,
+        user_agent="Safari")
     ```
 
 
     :param _builtins.str description: A string to search for in the description of existing rules.
-    :param _builtins.str description_search: A string to search for in the description of existing rules.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str ua_search: A string to search for in the user agent values of existing rules.
+    :param _builtins.bool paused: When true, indicates that the rule is currently paused.
+    :param _builtins.str user_agent: A string to search for in the user agent values of existing rules.
     :param _builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description
-    __args__['descriptionSearch'] = description_search
     __args__['maxItems'] = max_items
-    __args__['uaSearch'] = ua_search
+    __args__['paused'] = paused
+    __args__['userAgent'] = user_agent
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getUserAgentBlockingRules:getUserAgentBlockingRules', __args__, opts=opts, typ=GetUserAgentBlockingRulesResult)
     return __ret__.apply(lambda __response__: GetUserAgentBlockingRulesResult(
         description=pulumi.get(__response__, 'description'),
-        description_search=pulumi.get(__response__, 'description_search'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        paused=pulumi.get(__response__, 'paused'),
         results=pulumi.get(__response__, 'results'),
-        ua_search=pulumi.get(__response__, 'ua_search'),
+        user_agent=pulumi.get(__response__, 'user_agent'),
         zone_id=pulumi.get(__response__, 'zone_id')))

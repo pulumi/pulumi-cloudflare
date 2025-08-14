@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -33,21 +34,6 @@ public final class GetUserAgentBlockingRulesArgs extends com.pulumi.resources.In
     }
 
     /**
-     * A string to search for in the description of existing rules.
-     * 
-     */
-    @Import(name="descriptionSearch")
-    private @Nullable Output<String> descriptionSearch;
-
-    /**
-     * @return A string to search for in the description of existing rules.
-     * 
-     */
-    public Optional<Output<String>> descriptionSearch() {
-        return Optional.ofNullable(this.descriptionSearch);
-    }
-
-    /**
      * Max items to fetch, default: 1000
      * 
      */
@@ -63,18 +49,33 @@ public final class GetUserAgentBlockingRulesArgs extends com.pulumi.resources.In
     }
 
     /**
+     * When true, indicates that the rule is currently paused.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+
+    /**
      * A string to search for in the user agent values of existing rules.
      * 
      */
-    @Import(name="uaSearch")
-    private @Nullable Output<String> uaSearch;
+    @Import(name="userAgent")
+    private @Nullable Output<String> userAgent;
 
     /**
      * @return A string to search for in the user agent values of existing rules.
      * 
      */
-    public Optional<Output<String>> uaSearch() {
-        return Optional.ofNullable(this.uaSearch);
+    public Optional<Output<String>> userAgent() {
+        return Optional.ofNullable(this.userAgent);
     }
 
     /**
@@ -96,9 +97,9 @@ public final class GetUserAgentBlockingRulesArgs extends com.pulumi.resources.In
 
     private GetUserAgentBlockingRulesArgs(GetUserAgentBlockingRulesArgs $) {
         this.description = $.description;
-        this.descriptionSearch = $.descriptionSearch;
         this.maxItems = $.maxItems;
-        this.uaSearch = $.uaSearch;
+        this.paused = $.paused;
+        this.userAgent = $.userAgent;
         this.zoneId = $.zoneId;
     }
 
@@ -142,27 +143,6 @@ public final class GetUserAgentBlockingRulesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param descriptionSearch A string to search for in the description of existing rules.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder descriptionSearch(@Nullable Output<String> descriptionSearch) {
-            $.descriptionSearch = descriptionSearch;
-            return this;
-        }
-
-        /**
-         * @param descriptionSearch A string to search for in the description of existing rules.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder descriptionSearch(String descriptionSearch) {
-            return descriptionSearch(Output.of(descriptionSearch));
-        }
-
-        /**
          * @param maxItems Max items to fetch, default: 1000
          * 
          * @return builder
@@ -184,24 +164,45 @@ public final class GetUserAgentBlockingRulesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param uaSearch A string to search for in the user agent values of existing rules.
+         * @param paused When true, indicates that the rule is currently paused.
          * 
          * @return builder
          * 
          */
-        public Builder uaSearch(@Nullable Output<String> uaSearch) {
-            $.uaSearch = uaSearch;
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
             return this;
         }
 
         /**
-         * @param uaSearch A string to search for in the user agent values of existing rules.
+         * @param paused When true, indicates that the rule is currently paused.
          * 
          * @return builder
          * 
          */
-        public Builder uaSearch(String uaSearch) {
-            return uaSearch(Output.of(uaSearch));
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
+        }
+
+        /**
+         * @param userAgent A string to search for in the user agent values of existing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgent(@Nullable Output<String> userAgent) {
+            $.userAgent = userAgent;
+            return this;
+        }
+
+        /**
+         * @param userAgent A string to search for in the user agent values of existing rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgent(String userAgent) {
+            return userAgent(Output.of(userAgent));
         }
 
         /**

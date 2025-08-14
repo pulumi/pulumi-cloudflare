@@ -131,6 +131,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
+        /// Can set the creator field with an internal user ID.
+        /// </summary>
+        public readonly string Creator;
+        /// <summary>
         /// Image file name.
         /// </summary>
         public readonly string Filename;
@@ -163,6 +167,8 @@ namespace Pulumi.Cloudflare
         private GetImageResult(
             string accountId,
 
+            string creator,
+
             string filename,
 
             string id,
@@ -178,6 +184,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<string> variants)
         {
             AccountId = accountId;
+            Creator = creator;
             Filename = filename;
             Id = id;
             ImageId = imageId;

@@ -42,56 +42,56 @@ namespace Pulumi.Cloudflare
     public partial class BotManagement : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers.
-        /// Available values: "block", "disabled".
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Output("aiBotsProtection")]
-        public Output<string?> AiBotsProtection { get; private set; } = null!;
+        public Output<string> AiBotsProtection { get; private set; } = null!;
 
         /// <summary>
         /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         /// </summary>
         [Output("autoUpdateModel")]
-        public Output<bool?> AutoUpdateModel { get; private set; } = null!;
+        public Output<bool> AutoUpdateModel { get; private set; } = null!;
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
         [Output("crawlerProtection")]
-        public Output<string?> CrawlerProtection { get; private set; } = null!;
+        public Output<string> CrawlerProtection { get; private set; } = null!;
 
         /// <summary>
         /// Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         /// </summary>
         [Output("enableJs")]
-        public Output<bool?> EnableJs { get; private set; } = null!;
+        public Output<bool> EnableJs { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable Bot Fight Mode.
         /// </summary>
         [Output("fightMode")]
-        public Output<bool?> FightMode { get; private set; } = null!;
+        public Output<bool> FightMode { get; private set; } = null!;
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
         /// </summary>
         [Output("optimizeWordpress")]
-        public Output<bool?> OptimizeWordpress { get; private set; } = null!;
+        public Output<bool> OptimizeWordpress { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
         /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Output("sbfmDefinitelyAutomated")]
-        public Output<string?> SbfmDefinitelyAutomated { get; private set; } = null!;
+        public Output<string> SbfmDefinitelyAutomated { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
         /// Available values: "allow", "block", "managed_challenge".
         /// </summary>
         [Output("sbfmLikelyAutomated")]
-        public Output<string?> SbfmLikelyAutomated { get; private set; } = null!;
+        public Output<string> SbfmLikelyAutomated { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) to enable static resource protection.
@@ -99,14 +99,14 @@ namespace Pulumi.Cloudflare
         /// Note: Static resource protection can also result in legitimate traffic being blocked.
         /// </summary>
         [Output("sbfmStaticResourceProtection")]
-        public Output<bool?> SbfmStaticResourceProtection { get; private set; } = null!;
+        public Output<bool> SbfmStaticResourceProtection { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on verified bots requests.
         /// Available values: "allow", "block".
         /// </summary>
         [Output("sbfmVerifiedBots")]
-        public Output<string?> SbfmVerifiedBots { get; private set; } = null!;
+        public Output<string> SbfmVerifiedBots { get; private set; } = null!;
 
         /// <summary>
         /// A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
@@ -179,8 +179,8 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers.
-        /// Available values: "block", "disabled".
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }
@@ -266,8 +266,8 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers.
-        /// Available values: "block", "disabled".
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
         public Input<string>? AiBotsProtection { get; set; }

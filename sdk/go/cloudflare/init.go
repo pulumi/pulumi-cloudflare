@@ -413,12 +413,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDeviceSettings{}
 	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
 		r = &ZeroTrustDexTest{}
+	case "cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry":
+		r = &ZeroTrustDlpCustomEntry{}
 	case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
 		r = &ZeroTrustDlpCustomProfile{}
 	case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
 		r = &ZeroTrustDlpDataset{}
 	case "cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry":
 		r = &ZeroTrustDlpEntry{}
+	case "cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry":
+		r = &ZeroTrustDlpIntegrationEntry{}
+	case "cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry":
+		r = &ZeroTrustDlpPredefinedEntry{}
 	case "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile":
 		r = &ZeroTrustDlpPredefinedProfile{}
 	case "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation":
@@ -451,6 +457,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustTunnelCloudflaredRoute{}
 	case "cloudflare:index/zeroTrustTunnelCloudflaredVirtualNetwork:ZeroTrustTunnelCloudflaredVirtualNetwork":
 		r = &ZeroTrustTunnelCloudflaredVirtualNetwork{}
+	case "cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector":
+		r = &ZeroTrustTunnelWarpConnector{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
 	case "cloudflare:index/zoneCacheReserve:ZoneCacheReserve":
@@ -1482,6 +1490,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/zeroTrustDlpCustomEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustDlpCustomProfile",
 		&module{version},
 	)
@@ -1493,6 +1506,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDlpEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpIntegrationEntry",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDlpPredefinedEntry",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1573,6 +1596,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustTunnelCloudflaredVirtualNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustTunnelWarpConnector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

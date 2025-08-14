@@ -32,14 +32,16 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Identifier
+     * @return Error Page Types
+     * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
      * 
      */
     public Output<String> identifier() {
@@ -67,15 +69,15 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
      * The URL associated with the custom page.
      * 
      */
-    @Import(name="url", required=true)
-    private Output<String> url;
+    @Import(name="url")
+    private @Nullable Output<String> url;
 
     /**
      * @return The URL associated with the custom page.
      * 
      */
-    public Output<String> url() {
-        return this.url;
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     /**
@@ -143,7 +145,8 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Error Page Types
+         * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
          * 
          * @return builder
          * 
@@ -154,7 +157,8 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Error Page Types
+         * Available values: &#34;waf*block&#34;, &#34;ip*block&#34;, &#34;country*challenge&#34;, &#34;500*errors&#34;, &#34;1000*errors&#34;, &#34;managed*challenge&#34;, &#34;ratelimit_block&#34;.
          * 
          * @return builder
          * 
@@ -192,7 +196,7 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder url(Output<String> url) {
+        public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
@@ -234,9 +238,6 @@ public final class CustomPagesArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.state == null) {
                 throw new MissingRequiredPropertyException("CustomPagesArgs", "state");
-            }
-            if ($.url == null) {
-                throw new MissingRequiredPropertyException("CustomPagesArgs", "url");
             }
             return $;
         }

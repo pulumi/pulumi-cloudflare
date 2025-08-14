@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleSnippetRulesList = cloudflare.getSnippetRulesList({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
@@ -35,7 +35,7 @@ export interface GetSnippetRulesListArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetSnippetRulesListResult {
      */
     readonly results: outputs.GetSnippetRulesListResult[];
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     readonly zoneId: string;
 }
@@ -69,7 +69,7 @@ export interface GetSnippetRulesListResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleSnippetRulesList = cloudflare.getSnippetRulesList({
- *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
@@ -90,7 +90,7 @@ export interface GetSnippetRulesListOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

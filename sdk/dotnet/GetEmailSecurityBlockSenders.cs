@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
         ///         Search = "search",
         ///     });
@@ -53,6 +54,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
         ///         Search = "search",
         ///     });
@@ -79,6 +81,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Direction = "asc",
         ///         Order = "pattern",
+        ///         Pattern = "pattern",
         ///         PatternType = "EMAIL",
         ///         Search = "search",
         ///     });
@@ -118,6 +121,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
+
+        [Input("pattern")]
+        public string? Pattern { get; set; }
 
         /// <summary>
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
@@ -168,6 +174,9 @@ namespace Pulumi.Cloudflare
         [Input("order")]
         public Input<string>? Order { get; set; }
 
+        [Input("pattern")]
+        public Input<string>? Pattern { get; set; }
+
         /// <summary>
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
@@ -215,6 +224,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
+        public readonly string? Pattern;
         /// <summary>
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
@@ -243,6 +253,8 @@ namespace Pulumi.Cloudflare
 
             string? order,
 
+            string? pattern,
+
             string? patternType,
 
             ImmutableArray<Outputs.GetEmailSecurityBlockSendersResultResult> results,
@@ -254,6 +266,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             MaxItems = maxItems;
             Order = order;
+            Pattern = pattern;
             PatternType = patternType;
             Results = results;
             Search = search;

@@ -73,7 +73,6 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
@@ -94,7 +93,6 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
     public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessGroupRequire[] | undefined>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -114,13 +112,11 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessGroupState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
             resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZeroTrustAccessGroupArgs | undefined;
@@ -137,8 +133,6 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessGroup:AccessGroup" }] };
@@ -155,7 +149,6 @@ export interface ZeroTrustAccessGroupState {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
@@ -176,7 +169,6 @@ export interface ZeroTrustAccessGroupState {
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessGroupRequire>[]>;
-    updatedAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

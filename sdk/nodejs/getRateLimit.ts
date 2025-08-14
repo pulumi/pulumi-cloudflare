@@ -54,7 +54,7 @@ export interface GetRateLimitResult {
      */
     readonly bypasses: outputs.GetRateLimitBypass[];
     /**
-     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
     readonly description: string;
     /**

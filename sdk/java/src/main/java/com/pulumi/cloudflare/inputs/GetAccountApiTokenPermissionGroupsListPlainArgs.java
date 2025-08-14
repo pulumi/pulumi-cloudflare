@@ -46,11 +46,47 @@ public final class GetAccountApiTokenPermissionGroupsListPlainArgs extends com.p
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable String scope;
+
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
     private GetAccountApiTokenPermissionGroupsListPlainArgs() {}
 
     private GetAccountApiTokenPermissionGroupsListPlainArgs(GetAccountApiTokenPermissionGroupsListPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.name = $.name;
+        this.scope = $.scope;
     }
 
     public static Builder builder() {
@@ -90,6 +126,30 @@ public final class GetAccountApiTokenPermissionGroupsListPlainArgs extends com.p
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable String scope) {
+            $.scope = scope;
             return this;
         }
 

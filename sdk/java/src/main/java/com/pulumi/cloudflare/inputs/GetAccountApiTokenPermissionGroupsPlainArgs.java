@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAccountApiTokenPermissionGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +30,46 @@ public final class GetAccountApiTokenPermissionGroupsPlainArgs extends com.pulum
         return this.accountId;
     }
 
+    /**
+     * Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return Filter by the name of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    @Import(name="scope")
+    private @Nullable String scope;
+
+    /**
+     * @return Filter by the scope of the permission group.
+     * The value must be URL-encoded.
+     * 
+     */
+    public Optional<String> scope() {
+        return Optional.ofNullable(this.scope);
+    }
+
     private GetAccountApiTokenPermissionGroupsPlainArgs() {}
 
     private GetAccountApiTokenPermissionGroupsPlainArgs(GetAccountApiTokenPermissionGroupsPlainArgs $) {
         this.accountId = $.accountId;
+        this.name = $.name;
+        this.scope = $.scope;
     }
 
     public static Builder builder() {
@@ -60,6 +98,30 @@ public final class GetAccountApiTokenPermissionGroupsPlainArgs extends com.pulum
          */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param name Filter by the name of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param scope Filter by the scope of the permission group.
+         * The value must be URL-encoded.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scope(@Nullable String scope) {
+            $.scope = scope;
             return this;
         }
 

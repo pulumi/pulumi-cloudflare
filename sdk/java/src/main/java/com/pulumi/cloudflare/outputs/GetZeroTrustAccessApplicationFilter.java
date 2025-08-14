@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,6 +22,11 @@ public final class GetZeroTrustAccessApplicationFilter {
      * 
      */
     private @Nullable String domain;
+    /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    private @Nullable Boolean exact;
     /**
      * @return The name of the app.
      * 
@@ -48,6 +54,13 @@ public final class GetZeroTrustAccessApplicationFilter {
         return Optional.ofNullable(this.domain);
     }
     /**
+     * @return True for only exact string matches against passed name/domain query parameters.
+     * 
+     */
+    public Optional<Boolean> exact() {
+        return Optional.ofNullable(this.exact);
+    }
+    /**
      * @return The name of the app.
      * 
      */
@@ -73,6 +86,7 @@ public final class GetZeroTrustAccessApplicationFilter {
     public static final class Builder {
         private @Nullable String aud;
         private @Nullable String domain;
+        private @Nullable Boolean exact;
         private @Nullable String name;
         private @Nullable String search;
         public Builder() {}
@@ -80,6 +94,7 @@ public final class GetZeroTrustAccessApplicationFilter {
     	      Objects.requireNonNull(defaults);
     	      this.aud = defaults.aud;
     	      this.domain = defaults.domain;
+    	      this.exact = defaults.exact;
     	      this.name = defaults.name;
     	      this.search = defaults.search;
         }
@@ -94,6 +109,12 @@ public final class GetZeroTrustAccessApplicationFilter {
         public Builder domain(@Nullable String domain) {
 
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exact(@Nullable Boolean exact) {
+
+            this.exact = exact;
             return this;
         }
         @CustomType.Setter
@@ -112,6 +133,7 @@ public final class GetZeroTrustAccessApplicationFilter {
             final var _resultValue = new GetZeroTrustAccessApplicationFilter();
             _resultValue.aud = aud;
             _resultValue.domain = domain;
+            _resultValue.exact = exact;
             _resultValue.name = name;
             _resultValue.search = search;
             return _resultValue;

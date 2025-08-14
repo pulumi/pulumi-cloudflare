@@ -107,6 +107,15 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_image": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "imageId",
+					},
+				},
+				ComputeID: delegateID("imageId"),
+			},
+
 			"cloudflare_ruleset": {
 				Tok: "cloudflare:index/ruleset:Ruleset",
 				PreStateUpgradeHook: func(
@@ -165,12 +174,12 @@ func Provider() info.Provider {
 							if !v.IsString() {
 								return r
 							}
-							ruleIds := strings.Split(v.StringValue(), ",")
-							ruleIdsArray := []resource.PropertyValue{}
-							for _, ruleId := range ruleIds {
-								ruleIdsArray = append(ruleIdsArray, resource.NewStringProperty(ruleId))
+							ruleIDs := strings.Split(v.StringValue(), ",")
+							ruleIDsArray := []resource.PropertyValue{}
+							for _, ruleID := range ruleIDs {
+								ruleIDsArray = append(ruleIDsArray, resource.NewStringProperty(ruleID))
 							}
-							updatedApRules[k] = resource.NewArrayProperty(ruleIdsArray)
+							updatedApRules[k] = resource.NewArrayProperty(ruleIDsArray)
 						}
 						apCopy["rules"] = resource.NewObjectProperty(updatedApRules)
 						ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)

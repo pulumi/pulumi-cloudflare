@@ -25,12 +25,6 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// Setting to enable App Control
-        /// </summary>
-        [Input("appControlSettings")]
-        public Input<Inputs.ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs>? AppControlSettings { get; set; }
-
-        /// <summary>
         /// Block page layout settings.
         /// </summary>
         [Input("blockPage")]
@@ -77,6 +71,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("hostSelector")]
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs>? HostSelector { get; set; }
+
+        /// <summary>
+        /// Setting to define inspection settings
+        /// </summary>
+        [Input("inspection")]
+        public Input<Inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs>? Inspection { get; set; }
 
         /// <summary>
         /// Protocol Detection settings.

@@ -27,6 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupImages(ctx, &cloudflare.LookupImagesArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Creator:   pulumi.StringRef("creator"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,6 +51,8 @@ func LookupImages(ctx *pulumi.Context, args *LookupImagesArgs, opts ...pulumi.In
 type LookupImagesArgs struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+	Creator *string `pulumi:"creator"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
 }
@@ -58,6 +61,8 @@ type LookupImagesArgs struct {
 type LookupImagesResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
+	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+	Creator *string `pulumi:"creator"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
@@ -79,6 +84,8 @@ func LookupImagesOutput(ctx *pulumi.Context, args LookupImagesOutputArgs, opts .
 type LookupImagesOutputArgs struct {
 	// Account identifier tag.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 }
@@ -105,6 +112,11 @@ func (o LookupImagesResultOutput) ToLookupImagesResultOutputWithContext(ctx cont
 // Account identifier tag.
 func (o LookupImagesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImagesResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set
+func (o LookupImagesResultOutput) Creator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImagesResult) *string { return v.Creator }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -38,24 +38,27 @@ export class Snippets extends pulumi.CustomResource {
     }
 
     /**
-     * Creation time of the snippet
+     * The timestamp of when the snippet was created.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      */
-    public readonly files!: pulumi.Output<string | undefined>;
-    public readonly metadata!: pulumi.Output<outputs.SnippetsMetadata | undefined>;
+    public readonly files!: pulumi.Output<string[]>;
     /**
-     * Modification time of the snippet
+     * Metadata about the snippet.
+     */
+    public readonly metadata!: pulumi.Output<outputs.SnippetsMetadata>;
+    /**
+     * The timestamp of when the snippet was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     public readonly snippetName!: pulumi.Output<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -80,6 +83,12 @@ export class Snippets extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SnippetsArgs | undefined;
+            if ((!args || args.files === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'files'");
+            }
+            if ((!args || args.metadata === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metadata'");
+            }
             if ((!args || args.snippetName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snippetName'");
             }
@@ -103,24 +112,27 @@ export class Snippets extends pulumi.CustomResource {
  */
 export interface SnippetsState {
     /**
-     * Creation time of the snippet
+     * The timestamp of when the snippet was created.
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      */
-    files?: pulumi.Input<string>;
+    files?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Metadata about the snippet.
+     */
     metadata?: pulumi.Input<inputs.SnippetsMetadata>;
     /**
-     * Modification time of the snippet
+     * The timestamp of when the snippet was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * Snippet identifying name
+     * The identifying name of the snippet.
      */
     snippetName?: pulumi.Input<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -130,16 +142,19 @@ export interface SnippetsState {
  */
 export interface SnippetsArgs {
     /**
-     * Content files of uploaded snippet
+     * The list of files belonging to the snippet.
      */
-    files?: pulumi.Input<string>;
-    metadata?: pulumi.Input<inputs.SnippetsMetadata>;
+    files: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Snippet identifying name
+     * Metadata about the snippet.
+     */
+    metadata: pulumi.Input<inputs.SnippetsMetadata>;
+    /**
+     * The identifying name of the snippet.
      */
     snippetName: pulumi.Input<string>;
     /**
-     * Identifier
+     * The unique ID of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

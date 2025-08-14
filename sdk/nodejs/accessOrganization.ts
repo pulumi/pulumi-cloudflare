@@ -56,7 +56,6 @@ export class AccessOrganization extends pulumi.CustomResource {
      * When set to `true`, users skip the identity provider selection step during login.
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
     public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
     public readonly loginDesign!: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
@@ -72,7 +71,6 @@ export class AccessOrganization extends pulumi.CustomResource {
      * A description of the reason why the UI read only field is being toggled.
      */
     public readonly uiReadOnlyToggleReason!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
@@ -106,14 +104,12 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
             resourceInputs["authDomain"] = state ? state.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
             resourceInputs["loginDesign"] = state ? state.loginDesign : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
             resourceInputs["warpAuthSessionDuration"] = state ? state.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -132,8 +128,6 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
             resourceInputs["warpAuthSessionDuration"] = args ? args.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessOrganization:AccessOrganization" }] };
@@ -162,7 +156,6 @@ export interface AccessOrganizationState {
      * When set to `true`, users skip the identity provider selection step during login.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
     customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
     isUiReadOnly?: pulumi.Input<boolean>;
     loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
@@ -178,7 +171,6 @@ export interface AccessOrganizationState {
      * A description of the reason why the UI read only field is being toggled.
      */
     uiReadOnlyToggleReason?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */

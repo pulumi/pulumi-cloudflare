@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Specifies the zone associated with the API call.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

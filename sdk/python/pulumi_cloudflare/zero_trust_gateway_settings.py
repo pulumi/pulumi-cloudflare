@@ -229,7 +229,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> pulumi.Output['outputs.ZeroTrustGatewaySettingsSettings']:
+    def settings(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsSettings']]:
         """
         Account settings
         """

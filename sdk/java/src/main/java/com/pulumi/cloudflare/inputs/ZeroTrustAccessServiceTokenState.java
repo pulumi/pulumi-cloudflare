@@ -60,13 +60,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
         return Optional.ofNullable(this.clientSecret);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
@@ -89,13 +82,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
         return Optional.ofNullable(this.expiresAt);
     }
 
-    @Import(name="lastSeenAt")
-    private @Nullable Output<String> lastSeenAt;
-
-    public Optional<Output<String>> lastSeenAt() {
-        return Optional.ofNullable(this.lastSeenAt);
-    }
-
     /**
      * The name of the service token.
      * 
@@ -109,13 +95,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
     }
 
     /**
@@ -139,12 +118,9 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
         this.accountId = $.accountId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
-        this.createdAt = $.createdAt;
         this.duration = $.duration;
         this.expiresAt = $.expiresAt;
-        this.lastSeenAt = $.lastSeenAt;
         this.name = $.name;
-        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -229,15 +205,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
             return clientSecret(Output.of(clientSecret));
         }
 
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
-        }
-
         /**
          * @param duration The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
          * 
@@ -268,15 +235,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
             return expiresAt(Output.of(expiresAt));
         }
 
-        public Builder lastSeenAt(@Nullable Output<String> lastSeenAt) {
-            $.lastSeenAt = lastSeenAt;
-            return this;
-        }
-
-        public Builder lastSeenAt(String lastSeenAt) {
-            return lastSeenAt(Output.of(lastSeenAt));
-        }
-
         /**
          * @param name The name of the service token.
          * 
@@ -296,15 +254,6 @@ public final class ZeroTrustAccessServiceTokenState extends com.pulumi.resources
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         /**

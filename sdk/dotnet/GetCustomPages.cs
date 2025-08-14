@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
-        ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
-        ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCustomPages = Cloudflare.GetCustomPages.Invoke(new()
         ///     {
-        ///         Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Identifier = "ratelimit_block",
         ///         AccountId = "account_id",
         ///         ZoneId = "zone_id",
         ///     });
@@ -94,7 +94,8 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
@@ -120,7 +121,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
@@ -145,14 +147,29 @@ namespace Pulumi.Cloudflare
         /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
+        public readonly string CreatedOn;
+        public readonly string Description;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Error Page Types
+        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
         /// </summary>
         public readonly string Identifier;
+        public readonly string ModifiedOn;
+        public readonly string PreviewTarget;
+        public readonly ImmutableArray<string> RequiredTokens;
+        /// <summary>
+        /// The custom page state.
+        /// Available values: "default", "customized".
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// The URL associated with the custom page.
+        /// </summary>
+        public readonly string Url;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -162,15 +179,36 @@ namespace Pulumi.Cloudflare
         private GetCustomPagesResult(
             string? accountId,
 
+            string createdOn,
+
+            string description,
+
             string id,
 
             string identifier,
 
+            string modifiedOn,
+
+            string previewTarget,
+
+            ImmutableArray<string> requiredTokens,
+
+            string state,
+
+            string url,
+
             string? zoneId)
         {
             AccountId = accountId;
+            CreatedOn = createdOn;
+            Description = description;
             Id = id;
             Identifier = identifier;
+            ModifiedOn = modifiedOn;
+            PreviewTarget = previewTarget;
+            RequiredTokens = requiredTokens;
+            State = state;
+            Url = url;
             ZoneId = zoneId;
         }
     }

@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "pattern", "created_at".
         /// </summary>
         public readonly string? Order;
+        public readonly string? Pattern;
         /// <summary>
         /// Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
         /// </summary>
@@ -41,12 +42,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? order,
 
+            string? pattern,
+
             string? patternType,
 
             string? search)
         {
             Direction = direction;
             Order = order;
+            Pattern = pattern;
             PatternType = patternType;
             Search = search;
         }

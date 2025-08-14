@@ -15,29 +15,44 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An informative description of the rule.
+        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the rule should be executed.
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The expression defining which traffic will match the rule.
+        /// </summary>
         [Output("expression")]
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
-        /// List of snippet rules
+        /// The timestamp of when the rule was last modified.
+        /// </summary>
+        [Output("lastUpdated")]
+        public Output<string> LastUpdated { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of snippet rules.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SnippetRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Output("snippetName")]
         public Output<string> SnippetName { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -88,11 +103,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class SnippetRulesArgs : global::Pulumi.ResourceArgs
     {
-        [Input("rules")]
+        [Input("rules", required: true)]
         private InputList<Inputs.SnippetRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// List of snippet rules
+        /// A list of snippet rules.
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleArgs> Rules
         {
@@ -101,7 +116,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -114,20 +129,35 @@ namespace Pulumi.Cloudflare
 
     public sealed class SnippetRulesState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An informative description of the rule.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Whether the rule should be executed.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The expression defining which traffic will match the rule.
+        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
+
+        /// <summary>
+        /// The timestamp of when the rule was last modified.
+        /// </summary>
+        [Input("lastUpdated")]
+        public Input<string>? LastUpdated { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.SnippetRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of snippet rules
+        /// A list of snippet rules.
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleGetArgs> Rules
         {
@@ -136,13 +166,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Snippet identifying name
+        /// The identifying name of the snippet.
         /// </summary>
         [Input("snippetName")]
         public Input<string>? SnippetName { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -4,8 +4,6 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
-import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelIpsecTunnelArgs;
-import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelModifiedIpsecTunnelArgs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelPskMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -132,27 +130,6 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.interfaceAddress);
     }
 
-    @Import(name="ipsecTunnel")
-    private @Nullable Output<MagicWanIpsecTunnelIpsecTunnelArgs> ipsecTunnel;
-
-    public Optional<Output<MagicWanIpsecTunnelIpsecTunnelArgs>> ipsecTunnel() {
-        return Optional.ofNullable(this.ipsecTunnel);
-    }
-
-    @Import(name="modified")
-    private @Nullable Output<Boolean> modified;
-
-    public Optional<Output<Boolean>> modified() {
-        return Optional.ofNullable(this.modified);
-    }
-
-    @Import(name="modifiedIpsecTunnel")
-    private @Nullable Output<MagicWanIpsecTunnelModifiedIpsecTunnelArgs> modifiedIpsecTunnel;
-
-    public Optional<Output<MagicWanIpsecTunnelModifiedIpsecTunnelArgs>> modifiedIpsecTunnel() {
-        return Optional.ofNullable(this.modifiedIpsecTunnel);
-    }
-
     /**
      * The date and time the tunnel was last modified.
      * 
@@ -239,9 +216,6 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         this.description = $.description;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
-        this.ipsecTunnel = $.ipsecTunnel;
-        this.modified = $.modified;
-        this.modifiedIpsecTunnel = $.modifiedIpsecTunnel;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.psk = $.psk;
@@ -421,33 +395,6 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
          */
         public Builder interfaceAddress(String interfaceAddress) {
             return interfaceAddress(Output.of(interfaceAddress));
-        }
-
-        public Builder ipsecTunnel(@Nullable Output<MagicWanIpsecTunnelIpsecTunnelArgs> ipsecTunnel) {
-            $.ipsecTunnel = ipsecTunnel;
-            return this;
-        }
-
-        public Builder ipsecTunnel(MagicWanIpsecTunnelIpsecTunnelArgs ipsecTunnel) {
-            return ipsecTunnel(Output.of(ipsecTunnel));
-        }
-
-        public Builder modified(@Nullable Output<Boolean> modified) {
-            $.modified = modified;
-            return this;
-        }
-
-        public Builder modified(Boolean modified) {
-            return modified(Output.of(modified));
-        }
-
-        public Builder modifiedIpsecTunnel(@Nullable Output<MagicWanIpsecTunnelModifiedIpsecTunnelArgs> modifiedIpsecTunnel) {
-            $.modifiedIpsecTunnel = modifiedIpsecTunnel;
-            return this;
-        }
-
-        public Builder modifiedIpsecTunnel(MagicWanIpsecTunnelModifiedIpsecTunnelArgs modifiedIpsecTunnel) {
-            return modifiedIpsecTunnel(Output.of(modifiedIpsecTunnel));
         }
 
         /**

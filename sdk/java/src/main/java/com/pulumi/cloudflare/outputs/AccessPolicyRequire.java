@@ -21,7 +21,9 @@ import com.pulumi.cloudflare.outputs.AccessPolicyRequireGroup;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireGsuite;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireIp;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireIpList;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireLinkedAppToken;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireLoginMethod;
+import com.pulumi.cloudflare.outputs.AccessPolicyRequireOidc;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireOkta;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireSaml;
 import com.pulumi.cloudflare.outputs.AccessPolicyRequireServiceToken;
@@ -58,7 +60,9 @@ public final class AccessPolicyRequire {
     private @Nullable AccessPolicyRequireGsuite gsuite;
     private @Nullable AccessPolicyRequireIp ip;
     private @Nullable AccessPolicyRequireIpList ipList;
+    private @Nullable AccessPolicyRequireLinkedAppToken linkedAppToken;
     private @Nullable AccessPolicyRequireLoginMethod loginMethod;
+    private @Nullable AccessPolicyRequireOidc oidc;
     private @Nullable AccessPolicyRequireOkta okta;
     private @Nullable AccessPolicyRequireSaml saml;
     private @Nullable AccessPolicyRequireServiceToken serviceToken;
@@ -126,8 +130,14 @@ public final class AccessPolicyRequire {
     public Optional<AccessPolicyRequireIpList> ipList() {
         return Optional.ofNullable(this.ipList);
     }
+    public Optional<AccessPolicyRequireLinkedAppToken> linkedAppToken() {
+        return Optional.ofNullable(this.linkedAppToken);
+    }
     public Optional<AccessPolicyRequireLoginMethod> loginMethod() {
         return Optional.ofNullable(this.loginMethod);
+    }
+    public Optional<AccessPolicyRequireOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     public Optional<AccessPolicyRequireOkta> okta() {
         return Optional.ofNullable(this.okta);
@@ -166,7 +176,9 @@ public final class AccessPolicyRequire {
         private @Nullable AccessPolicyRequireGsuite gsuite;
         private @Nullable AccessPolicyRequireIp ip;
         private @Nullable AccessPolicyRequireIpList ipList;
+        private @Nullable AccessPolicyRequireLinkedAppToken linkedAppToken;
         private @Nullable AccessPolicyRequireLoginMethod loginMethod;
+        private @Nullable AccessPolicyRequireOidc oidc;
         private @Nullable AccessPolicyRequireOkta okta;
         private @Nullable AccessPolicyRequireSaml saml;
         private @Nullable AccessPolicyRequireServiceToken serviceToken;
@@ -191,7 +203,9 @@ public final class AccessPolicyRequire {
     	      this.gsuite = defaults.gsuite;
     	      this.ip = defaults.ip;
     	      this.ipList = defaults.ipList;
+    	      this.linkedAppToken = defaults.linkedAppToken;
     	      this.loginMethod = defaults.loginMethod;
+    	      this.oidc = defaults.oidc;
     	      this.okta = defaults.okta;
     	      this.saml = defaults.saml;
     	      this.serviceToken = defaults.serviceToken;
@@ -306,9 +320,21 @@ public final class AccessPolicyRequire {
             return this;
         }
         @CustomType.Setter
+        public Builder linkedAppToken(@Nullable AccessPolicyRequireLinkedAppToken linkedAppToken) {
+
+            this.linkedAppToken = linkedAppToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loginMethod(@Nullable AccessPolicyRequireLoginMethod loginMethod) {
 
             this.loginMethod = loginMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable AccessPolicyRequireOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -349,7 +375,9 @@ public final class AccessPolicyRequire {
             _resultValue.gsuite = gsuite;
             _resultValue.ip = ip;
             _resultValue.ipList = ipList;
+            _resultValue.linkedAppToken = linkedAppToken;
             _resultValue.loginMethod = loginMethod;
+            _resultValue.oidc = oidc;
             _resultValue.okta = okta;
             _resultValue.saml = saml;
             _resultValue.serviceToken = serviceToken;

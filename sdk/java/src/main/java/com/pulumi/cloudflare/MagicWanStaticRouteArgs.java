@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.MagicWanStaticRouteRouteArgs;
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteScopeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -94,13 +93,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         return this.priority;
     }
 
-    @Import(name="route")
-    private @Nullable Output<MagicWanStaticRouteRouteArgs> route;
-
-    public Optional<Output<MagicWanStaticRouteRouteArgs>> route() {
-        return Optional.ofNullable(this.route);
-    }
-
     /**
      * Used only for ECMP routes.
      * 
@@ -139,7 +131,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
-        this.route = $.route;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -265,15 +256,6 @@ public final class MagicWanStaticRouteArgs extends com.pulumi.resources.Resource
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
-        }
-
-        public Builder route(@Nullable Output<MagicWanStaticRouteRouteArgs> route) {
-            $.route = route;
-            return this;
-        }
-
-        public Builder route(MagicWanStaticRouteRouteArgs route) {
-            return route(Output.of(route));
         }
 
         /**

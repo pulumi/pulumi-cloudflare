@@ -31,6 +31,7 @@ import (
 //				IsRecent:     pulumi.BoolRef(true),
 //				IsSimilarity: pulumi.BoolRef(true),
 //				Order:        pulumi.StringRef("pattern"),
+//				Pattern:      pulumi.StringRef("pattern"),
 //				Search:       pulumi.StringRef("search"),
 //			}, nil)
 //			if err != nil {
@@ -64,7 +65,8 @@ type LookupEmailSecurityTrustedDomainsListArgs struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order *string `pulumi:"order"`
+	Order   *string `pulumi:"order"`
+	Pattern *string `pulumi:"pattern"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
 	// behavior is intentionally left unspecified and is subject to change
@@ -87,7 +89,8 @@ type LookupEmailSecurityTrustedDomainsListResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order *string `pulumi:"order"`
+	Order   *string `pulumi:"order"`
+	Pattern *string `pulumi:"pattern"`
 	// The items returned by the data source
 	Results []GetEmailSecurityTrustedDomainsListResult `pulumi:"results"`
 	// Allows searching in multiple properties of a record simultaneously.
@@ -119,7 +122,8 @@ type LookupEmailSecurityTrustedDomainsListOutputArgs struct {
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// The field to sort by.
 	// Available values: "pattern", "createdAt".
-	Order pulumi.StringPtrInput `pulumi:"order"`
+	Order   pulumi.StringPtrInput `pulumi:"order"`
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
 	// Allows searching in multiple properties of a record simultaneously.
 	// This parameter is intended for human users, not automation. Its exact
 	// behavior is intentionally left unspecified and is subject to change
@@ -179,6 +183,10 @@ func (o LookupEmailSecurityTrustedDomainsListResultOutput) MaxItems() pulumi.Int
 // Available values: "pattern", "createdAt".
 func (o LookupEmailSecurityTrustedDomainsListResultOutput) Order() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupEmailSecurityTrustedDomainsListResultOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupEmailSecurityTrustedDomainsListResult) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
 // The items returned by the data source

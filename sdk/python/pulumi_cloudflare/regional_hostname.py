@@ -195,7 +195,7 @@ class RegionalHostname(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="foo.example.com",
             region_key="ca",
-            routing="routing")
+            routing="dns")
         ```
 
         ## Import
@@ -228,7 +228,7 @@ class RegionalHostname(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             hostname="foo.example.com",
             region_key="ca",
-            routing="routing")
+            routing="dns")
         ```
 
         ## Import
@@ -341,7 +341,7 @@ class RegionalHostname(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def routing(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def routing(self) -> pulumi.Output[_builtins.str]:
         """
         Configure which routing method to use for the regional hostname
         """

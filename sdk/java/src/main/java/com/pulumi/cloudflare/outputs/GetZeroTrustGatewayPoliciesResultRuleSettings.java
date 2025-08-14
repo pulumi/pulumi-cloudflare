@@ -30,7 +30,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
-    private Map<String,String> addHeaders;
+    private Map<String,List<String>> addHeaders;
     /**
      * @return Set by parent MSP accounts to enable their children to bypass this rule.
      * 
@@ -157,7 +157,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
      * 
      */
-    public Map<String,String> addHeaders() {
+    public Map<String,List<String>> addHeaders() {
         return this.addHeaders;
     }
     /**
@@ -338,7 +338,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> addHeaders;
+        private Map<String,List<String>> addHeaders;
         private Boolean allowChildBypass;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh auditSsh;
         private GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls bisoAdminControls;
@@ -394,7 +394,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
         }
 
         @CustomType.Setter
-        public Builder addHeaders(Map<String,String> addHeaders) {
+        public Builder addHeaders(Map<String,List<String>> addHeaders) {
             if (addHeaders == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResultRuleSettings", "addHeaders");
             }

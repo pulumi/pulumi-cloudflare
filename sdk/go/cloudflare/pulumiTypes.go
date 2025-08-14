@@ -1235,7 +1235,9 @@ type AccessApplicationPolicyExclude struct {
 	Gsuite             *AccessApplicationPolicyExcludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessApplicationPolicyExcludeIp                 `pulumi:"ip"`
 	IpList             *AccessApplicationPolicyExcludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessApplicationPolicyExcludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessApplicationPolicyExcludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessApplicationPolicyExcludeOidc               `pulumi:"oidc"`
 	Okta               *AccessApplicationPolicyExcludeOkta               `pulumi:"okta"`
 	Saml               *AccessApplicationPolicyExcludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessApplicationPolicyExcludeServiceToken       `pulumi:"serviceToken"`
@@ -1273,7 +1275,9 @@ type AccessApplicationPolicyExcludeArgs struct {
 	Gsuite             AccessApplicationPolicyExcludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessApplicationPolicyExcludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessApplicationPolicyExcludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessApplicationPolicyExcludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessApplicationPolicyExcludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessApplicationPolicyExcludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessApplicationPolicyExcludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessApplicationPolicyExcludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessApplicationPolicyExcludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -1418,10 +1422,20 @@ func (o AccessApplicationPolicyExcludeOutput) IpList() AccessApplicationPolicyEx
 	return o.ApplyT(func(v AccessApplicationPolicyExclude) *AccessApplicationPolicyExcludeIpList { return v.IpList }).(AccessApplicationPolicyExcludeIpListPtrOutput)
 }
 
+func (o AccessApplicationPolicyExcludeOutput) LinkedAppToken() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExclude) *AccessApplicationPolicyExcludeLinkedAppToken {
+		return v.LinkedAppToken
+	}).(AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessApplicationPolicyExcludeOutput) LoginMethod() AccessApplicationPolicyExcludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessApplicationPolicyExclude) *AccessApplicationPolicyExcludeLoginMethod {
 		return v.LoginMethod
 	}).(AccessApplicationPolicyExcludeLoginMethodPtrOutput)
+}
+
+func (o AccessApplicationPolicyExcludeOutput) Oidc() AccessApplicationPolicyExcludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExclude) *AccessApplicationPolicyExcludeOidc { return v.Oidc }).(AccessApplicationPolicyExcludeOidcPtrOutput)
 }
 
 func (o AccessApplicationPolicyExcludeOutput) Okta() AccessApplicationPolicyExcludeOktaPtrOutput {
@@ -4000,6 +4014,143 @@ func (o AccessApplicationPolicyExcludeIpListPtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessApplicationPolicyExcludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessApplicationPolicyExcludeLinkedAppTokenInput is an input type that accepts AccessApplicationPolicyExcludeLinkedAppTokenArgs and AccessApplicationPolicyExcludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyExcludeLinkedAppTokenInput` via:
+//
+//	AccessApplicationPolicyExcludeLinkedAppTokenArgs{...}
+type AccessApplicationPolicyExcludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyExcludeLinkedAppTokenOutput() AccessApplicationPolicyExcludeLinkedAppTokenOutput
+	ToAccessApplicationPolicyExcludeLinkedAppTokenOutputWithContext(context.Context) AccessApplicationPolicyExcludeLinkedAppTokenOutput
+}
+
+type AccessApplicationPolicyExcludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessApplicationPolicyExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyExcludeLinkedAppTokenArgs) ToAccessApplicationPolicyExcludeLinkedAppTokenOutput() AccessApplicationPolicyExcludeLinkedAppTokenOutput {
+	return i.ToAccessApplicationPolicyExcludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyExcludeLinkedAppTokenArgs) ToAccessApplicationPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeLinkedAppTokenOutput)
+}
+
+func (i AccessApplicationPolicyExcludeLinkedAppTokenArgs) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutput() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyExcludeLinkedAppTokenArgs) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeLinkedAppTokenOutput).ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyExcludeLinkedAppTokenPtrInput is an input type that accepts AccessApplicationPolicyExcludeLinkedAppTokenArgs, AccessApplicationPolicyExcludeLinkedAppTokenPtr and AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyExcludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessApplicationPolicyExcludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyExcludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutput() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput
+	ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput
+}
+
+type accessApplicationPolicyExcludeLinkedAppTokenPtrType AccessApplicationPolicyExcludeLinkedAppTokenArgs
+
+func AccessApplicationPolicyExcludeLinkedAppTokenPtr(v *AccessApplicationPolicyExcludeLinkedAppTokenArgs) AccessApplicationPolicyExcludeLinkedAppTokenPtrInput {
+	return (*accessApplicationPolicyExcludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessApplicationPolicyExcludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyExcludeLinkedAppTokenPtrType) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutput() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyExcludeLinkedAppTokenPtrType) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
+type AccessApplicationPolicyExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenOutput() AccessApplicationPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutput() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyExcludeLinkedAppToken) *AccessApplicationPolicyExcludeLinkedAppToken {
+		return &v
+	}).(AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutput() AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput) ToAccessApplicationPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput) Elem() AccessApplicationPolicyExcludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeLinkedAppToken) AccessApplicationPolicyExcludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyExcludeLinkedAppToken
+		return ret
+	}).(AccessApplicationPolicyExcludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessApplicationPolicyExcludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -4134,6 +4285,181 @@ func (o AccessApplicationPolicyExcludeLoginMethodPtrOutput) Id() pulumi.StringPt
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationPolicyExcludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessApplicationPolicyExcludeOidcInput is an input type that accepts AccessApplicationPolicyExcludeOidcArgs and AccessApplicationPolicyExcludeOidcOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyExcludeOidcInput` via:
+//
+//	AccessApplicationPolicyExcludeOidcArgs{...}
+type AccessApplicationPolicyExcludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyExcludeOidcOutput() AccessApplicationPolicyExcludeOidcOutput
+	ToAccessApplicationPolicyExcludeOidcOutputWithContext(context.Context) AccessApplicationPolicyExcludeOidcOutput
+}
+
+type AccessApplicationPolicyExcludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessApplicationPolicyExcludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyExcludeOidcArgs) ToAccessApplicationPolicyExcludeOidcOutput() AccessApplicationPolicyExcludeOidcOutput {
+	return i.ToAccessApplicationPolicyExcludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyExcludeOidcArgs) ToAccessApplicationPolicyExcludeOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeOidcOutput)
+}
+
+func (i AccessApplicationPolicyExcludeOidcArgs) ToAccessApplicationPolicyExcludeOidcPtrOutput() AccessApplicationPolicyExcludeOidcPtrOutput {
+	return i.ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyExcludeOidcArgs) ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeOidcOutput).ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyExcludeOidcPtrInput is an input type that accepts AccessApplicationPolicyExcludeOidcArgs, AccessApplicationPolicyExcludeOidcPtr and AccessApplicationPolicyExcludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyExcludeOidcPtrInput` via:
+//
+//	        AccessApplicationPolicyExcludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyExcludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyExcludeOidcPtrOutput() AccessApplicationPolicyExcludeOidcPtrOutput
+	ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(context.Context) AccessApplicationPolicyExcludeOidcPtrOutput
+}
+
+type accessApplicationPolicyExcludeOidcPtrType AccessApplicationPolicyExcludeOidcArgs
+
+func AccessApplicationPolicyExcludeOidcPtr(v *AccessApplicationPolicyExcludeOidcArgs) AccessApplicationPolicyExcludeOidcPtrInput {
+	return (*accessApplicationPolicyExcludeOidcPtrType)(v)
+}
+
+func (*accessApplicationPolicyExcludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyExcludeOidcPtrType) ToAccessApplicationPolicyExcludeOidcPtrOutput() AccessApplicationPolicyExcludeOidcPtrOutput {
+	return i.ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyExcludeOidcPtrType) ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyExcludeOidcPtrOutput)
+}
+
+type AccessApplicationPolicyExcludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyExcludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyExcludeOidcOutput) ToAccessApplicationPolicyExcludeOidcOutput() AccessApplicationPolicyExcludeOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeOidcOutput) ToAccessApplicationPolicyExcludeOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeOidcOutput) ToAccessApplicationPolicyExcludeOidcPtrOutput() AccessApplicationPolicyExcludeOidcPtrOutput {
+	return o.ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyExcludeOidcOutput) ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyExcludeOidc) *AccessApplicationPolicyExcludeOidc {
+		return &v
+	}).(AccessApplicationPolicyExcludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyExcludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExcludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyExcludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExcludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyExcludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyExcludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyExcludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyExcludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) ToAccessApplicationPolicyExcludeOidcPtrOutput() AccessApplicationPolicyExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) ToAccessApplicationPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) Elem() AccessApplicationPolicyExcludeOidcOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeOidc) AccessApplicationPolicyExcludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyExcludeOidc
+		return ret
+	}).(AccessApplicationPolicyExcludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyExcludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4626,7 +4952,9 @@ type AccessApplicationPolicyInclude struct {
 	Gsuite             *AccessApplicationPolicyIncludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessApplicationPolicyIncludeIp                 `pulumi:"ip"`
 	IpList             *AccessApplicationPolicyIncludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessApplicationPolicyIncludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessApplicationPolicyIncludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessApplicationPolicyIncludeOidc               `pulumi:"oidc"`
 	Okta               *AccessApplicationPolicyIncludeOkta               `pulumi:"okta"`
 	Saml               *AccessApplicationPolicyIncludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessApplicationPolicyIncludeServiceToken       `pulumi:"serviceToken"`
@@ -4664,7 +4992,9 @@ type AccessApplicationPolicyIncludeArgs struct {
 	Gsuite             AccessApplicationPolicyIncludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessApplicationPolicyIncludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessApplicationPolicyIncludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessApplicationPolicyIncludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessApplicationPolicyIncludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessApplicationPolicyIncludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessApplicationPolicyIncludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessApplicationPolicyIncludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessApplicationPolicyIncludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -4809,10 +5139,20 @@ func (o AccessApplicationPolicyIncludeOutput) IpList() AccessApplicationPolicyIn
 	return o.ApplyT(func(v AccessApplicationPolicyInclude) *AccessApplicationPolicyIncludeIpList { return v.IpList }).(AccessApplicationPolicyIncludeIpListPtrOutput)
 }
 
+func (o AccessApplicationPolicyIncludeOutput) LinkedAppToken() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyInclude) *AccessApplicationPolicyIncludeLinkedAppToken {
+		return v.LinkedAppToken
+	}).(AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessApplicationPolicyIncludeOutput) LoginMethod() AccessApplicationPolicyIncludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessApplicationPolicyInclude) *AccessApplicationPolicyIncludeLoginMethod {
 		return v.LoginMethod
 	}).(AccessApplicationPolicyIncludeLoginMethodPtrOutput)
+}
+
+func (o AccessApplicationPolicyIncludeOutput) Oidc() AccessApplicationPolicyIncludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyInclude) *AccessApplicationPolicyIncludeOidc { return v.Oidc }).(AccessApplicationPolicyIncludeOidcPtrOutput)
 }
 
 func (o AccessApplicationPolicyIncludeOutput) Okta() AccessApplicationPolicyIncludeOktaPtrOutput {
@@ -7391,6 +7731,143 @@ func (o AccessApplicationPolicyIncludeIpListPtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessApplicationPolicyIncludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessApplicationPolicyIncludeLinkedAppTokenInput is an input type that accepts AccessApplicationPolicyIncludeLinkedAppTokenArgs and AccessApplicationPolicyIncludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyIncludeLinkedAppTokenInput` via:
+//
+//	AccessApplicationPolicyIncludeLinkedAppTokenArgs{...}
+type AccessApplicationPolicyIncludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyIncludeLinkedAppTokenOutput() AccessApplicationPolicyIncludeLinkedAppTokenOutput
+	ToAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(context.Context) AccessApplicationPolicyIncludeLinkedAppTokenOutput
+}
+
+type AccessApplicationPolicyIncludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessApplicationPolicyIncludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyIncludeLinkedAppTokenArgs) ToAccessApplicationPolicyIncludeLinkedAppTokenOutput() AccessApplicationPolicyIncludeLinkedAppTokenOutput {
+	return i.ToAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyIncludeLinkedAppTokenArgs) ToAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeLinkedAppTokenOutput)
+}
+
+func (i AccessApplicationPolicyIncludeLinkedAppTokenArgs) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutput() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyIncludeLinkedAppTokenArgs) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeLinkedAppTokenOutput).ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyIncludeLinkedAppTokenPtrInput is an input type that accepts AccessApplicationPolicyIncludeLinkedAppTokenArgs, AccessApplicationPolicyIncludeLinkedAppTokenPtr and AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyIncludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessApplicationPolicyIncludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyIncludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutput() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput
+	ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput
+}
+
+type accessApplicationPolicyIncludeLinkedAppTokenPtrType AccessApplicationPolicyIncludeLinkedAppTokenArgs
+
+func AccessApplicationPolicyIncludeLinkedAppTokenPtr(v *AccessApplicationPolicyIncludeLinkedAppTokenArgs) AccessApplicationPolicyIncludeLinkedAppTokenPtrInput {
+	return (*accessApplicationPolicyIncludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessApplicationPolicyIncludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyIncludeLinkedAppTokenPtrType) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutput() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyIncludeLinkedAppTokenPtrType) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
+type AccessApplicationPolicyIncludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyIncludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenOutput() AccessApplicationPolicyIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutput() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyIncludeLinkedAppToken) *AccessApplicationPolicyIncludeLinkedAppToken {
+		return &v
+	}).(AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyIncludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyIncludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutput() AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput) ToAccessApplicationPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput) Elem() AccessApplicationPolicyIncludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeLinkedAppToken) AccessApplicationPolicyIncludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyIncludeLinkedAppToken
+		return ret
+	}).(AccessApplicationPolicyIncludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessApplicationPolicyIncludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -7525,6 +8002,181 @@ func (o AccessApplicationPolicyIncludeLoginMethodPtrOutput) Id() pulumi.StringPt
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationPolicyIncludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessApplicationPolicyIncludeOidcInput is an input type that accepts AccessApplicationPolicyIncludeOidcArgs and AccessApplicationPolicyIncludeOidcOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyIncludeOidcInput` via:
+//
+//	AccessApplicationPolicyIncludeOidcArgs{...}
+type AccessApplicationPolicyIncludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyIncludeOidcOutput() AccessApplicationPolicyIncludeOidcOutput
+	ToAccessApplicationPolicyIncludeOidcOutputWithContext(context.Context) AccessApplicationPolicyIncludeOidcOutput
+}
+
+type AccessApplicationPolicyIncludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessApplicationPolicyIncludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyIncludeOidcArgs) ToAccessApplicationPolicyIncludeOidcOutput() AccessApplicationPolicyIncludeOidcOutput {
+	return i.ToAccessApplicationPolicyIncludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyIncludeOidcArgs) ToAccessApplicationPolicyIncludeOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeOidcOutput)
+}
+
+func (i AccessApplicationPolicyIncludeOidcArgs) ToAccessApplicationPolicyIncludeOidcPtrOutput() AccessApplicationPolicyIncludeOidcPtrOutput {
+	return i.ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyIncludeOidcArgs) ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeOidcOutput).ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyIncludeOidcPtrInput is an input type that accepts AccessApplicationPolicyIncludeOidcArgs, AccessApplicationPolicyIncludeOidcPtr and AccessApplicationPolicyIncludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyIncludeOidcPtrInput` via:
+//
+//	        AccessApplicationPolicyIncludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyIncludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyIncludeOidcPtrOutput() AccessApplicationPolicyIncludeOidcPtrOutput
+	ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(context.Context) AccessApplicationPolicyIncludeOidcPtrOutput
+}
+
+type accessApplicationPolicyIncludeOidcPtrType AccessApplicationPolicyIncludeOidcArgs
+
+func AccessApplicationPolicyIncludeOidcPtr(v *AccessApplicationPolicyIncludeOidcArgs) AccessApplicationPolicyIncludeOidcPtrInput {
+	return (*accessApplicationPolicyIncludeOidcPtrType)(v)
+}
+
+func (*accessApplicationPolicyIncludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyIncludeOidcPtrType) ToAccessApplicationPolicyIncludeOidcPtrOutput() AccessApplicationPolicyIncludeOidcPtrOutput {
+	return i.ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyIncludeOidcPtrType) ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyIncludeOidcPtrOutput)
+}
+
+type AccessApplicationPolicyIncludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyIncludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyIncludeOidcOutput) ToAccessApplicationPolicyIncludeOidcOutput() AccessApplicationPolicyIncludeOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeOidcOutput) ToAccessApplicationPolicyIncludeOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeOidcOutput) ToAccessApplicationPolicyIncludeOidcPtrOutput() AccessApplicationPolicyIncludeOidcPtrOutput {
+	return o.ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyIncludeOidcOutput) ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyIncludeOidc) *AccessApplicationPolicyIncludeOidc {
+		return &v
+	}).(AccessApplicationPolicyIncludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyIncludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyIncludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyIncludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyIncludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyIncludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyIncludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyIncludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyIncludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) ToAccessApplicationPolicyIncludeOidcPtrOutput() AccessApplicationPolicyIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) ToAccessApplicationPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) Elem() AccessApplicationPolicyIncludeOidcOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeOidc) AccessApplicationPolicyIncludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyIncludeOidc
+		return ret
+	}).(AccessApplicationPolicyIncludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyIncludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8017,7 +8669,9 @@ type AccessApplicationPolicyRequire struct {
 	Gsuite             *AccessApplicationPolicyRequireGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessApplicationPolicyRequireIp                 `pulumi:"ip"`
 	IpList             *AccessApplicationPolicyRequireIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessApplicationPolicyRequireLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessApplicationPolicyRequireLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessApplicationPolicyRequireOidc               `pulumi:"oidc"`
 	Okta               *AccessApplicationPolicyRequireOkta               `pulumi:"okta"`
 	Saml               *AccessApplicationPolicyRequireSaml               `pulumi:"saml"`
 	ServiceToken       *AccessApplicationPolicyRequireServiceToken       `pulumi:"serviceToken"`
@@ -8055,7 +8709,9 @@ type AccessApplicationPolicyRequireArgs struct {
 	Gsuite             AccessApplicationPolicyRequireGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessApplicationPolicyRequireIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessApplicationPolicyRequireIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessApplicationPolicyRequireLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessApplicationPolicyRequireLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessApplicationPolicyRequireOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessApplicationPolicyRequireOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessApplicationPolicyRequireSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessApplicationPolicyRequireServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -8200,10 +8856,20 @@ func (o AccessApplicationPolicyRequireOutput) IpList() AccessApplicationPolicyRe
 	return o.ApplyT(func(v AccessApplicationPolicyRequire) *AccessApplicationPolicyRequireIpList { return v.IpList }).(AccessApplicationPolicyRequireIpListPtrOutput)
 }
 
+func (o AccessApplicationPolicyRequireOutput) LinkedAppToken() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequire) *AccessApplicationPolicyRequireLinkedAppToken {
+		return v.LinkedAppToken
+	}).(AccessApplicationPolicyRequireLinkedAppTokenPtrOutput)
+}
+
 func (o AccessApplicationPolicyRequireOutput) LoginMethod() AccessApplicationPolicyRequireLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessApplicationPolicyRequire) *AccessApplicationPolicyRequireLoginMethod {
 		return v.LoginMethod
 	}).(AccessApplicationPolicyRequireLoginMethodPtrOutput)
+}
+
+func (o AccessApplicationPolicyRequireOutput) Oidc() AccessApplicationPolicyRequireOidcPtrOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequire) *AccessApplicationPolicyRequireOidc { return v.Oidc }).(AccessApplicationPolicyRequireOidcPtrOutput)
 }
 
 func (o AccessApplicationPolicyRequireOutput) Okta() AccessApplicationPolicyRequireOktaPtrOutput {
@@ -10782,6 +11448,143 @@ func (o AccessApplicationPolicyRequireIpListPtrOutput) Id() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessApplicationPolicyRequireLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessApplicationPolicyRequireLinkedAppTokenInput is an input type that accepts AccessApplicationPolicyRequireLinkedAppTokenArgs and AccessApplicationPolicyRequireLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyRequireLinkedAppTokenInput` via:
+//
+//	AccessApplicationPolicyRequireLinkedAppTokenArgs{...}
+type AccessApplicationPolicyRequireLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyRequireLinkedAppTokenOutput() AccessApplicationPolicyRequireLinkedAppTokenOutput
+	ToAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(context.Context) AccessApplicationPolicyRequireLinkedAppTokenOutput
+}
+
+type AccessApplicationPolicyRequireLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessApplicationPolicyRequireLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyRequireLinkedAppTokenArgs) ToAccessApplicationPolicyRequireLinkedAppTokenOutput() AccessApplicationPolicyRequireLinkedAppTokenOutput {
+	return i.ToAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyRequireLinkedAppTokenArgs) ToAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireLinkedAppTokenOutput)
+}
+
+func (i AccessApplicationPolicyRequireLinkedAppTokenArgs) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyRequireLinkedAppTokenArgs) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireLinkedAppTokenOutput).ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyRequireLinkedAppTokenPtrInput is an input type that accepts AccessApplicationPolicyRequireLinkedAppTokenArgs, AccessApplicationPolicyRequireLinkedAppTokenPtr and AccessApplicationPolicyRequireLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyRequireLinkedAppTokenPtrInput` via:
+//
+//	        AccessApplicationPolicyRequireLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyRequireLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput
+	ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Context) AccessApplicationPolicyRequireLinkedAppTokenPtrOutput
+}
+
+type accessApplicationPolicyRequireLinkedAppTokenPtrType AccessApplicationPolicyRequireLinkedAppTokenArgs
+
+func AccessApplicationPolicyRequireLinkedAppTokenPtr(v *AccessApplicationPolicyRequireLinkedAppTokenArgs) AccessApplicationPolicyRequireLinkedAppTokenPtrInput {
+	return (*accessApplicationPolicyRequireLinkedAppTokenPtrType)(v)
+}
+
+func (*accessApplicationPolicyRequireLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyRequireLinkedAppTokenPtrType) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyRequireLinkedAppTokenPtrType) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireLinkedAppTokenPtrOutput)
+}
+
+type AccessApplicationPolicyRequireLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyRequireLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenOutput) ToAccessApplicationPolicyRequireLinkedAppTokenOutput() AccessApplicationPolicyRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenOutput) ToAccessApplicationPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenOutput) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenOutput) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyRequireLinkedAppToken) *AccessApplicationPolicyRequireLinkedAppToken {
+		return &v
+	}).(AccessApplicationPolicyRequireLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyRequireLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequireLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyRequireLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutput() AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenPtrOutput) ToAccessApplicationPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireLinkedAppTokenPtrOutput) Elem() AccessApplicationPolicyRequireLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireLinkedAppToken) AccessApplicationPolicyRequireLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyRequireLinkedAppToken
+		return ret
+	}).(AccessApplicationPolicyRequireLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessApplicationPolicyRequireLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessApplicationPolicyRequireLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -10916,6 +11719,181 @@ func (o AccessApplicationPolicyRequireLoginMethodPtrOutput) Id() pulumi.StringPt
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationPolicyRequireOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessApplicationPolicyRequireOidcInput is an input type that accepts AccessApplicationPolicyRequireOidcArgs and AccessApplicationPolicyRequireOidcOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyRequireOidcInput` via:
+//
+//	AccessApplicationPolicyRequireOidcArgs{...}
+type AccessApplicationPolicyRequireOidcInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyRequireOidcOutput() AccessApplicationPolicyRequireOidcOutput
+	ToAccessApplicationPolicyRequireOidcOutputWithContext(context.Context) AccessApplicationPolicyRequireOidcOutput
+}
+
+type AccessApplicationPolicyRequireOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessApplicationPolicyRequireOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyRequireOidc)(nil)).Elem()
+}
+
+func (i AccessApplicationPolicyRequireOidcArgs) ToAccessApplicationPolicyRequireOidcOutput() AccessApplicationPolicyRequireOidcOutput {
+	return i.ToAccessApplicationPolicyRequireOidcOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyRequireOidcArgs) ToAccessApplicationPolicyRequireOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireOidcOutput)
+}
+
+func (i AccessApplicationPolicyRequireOidcArgs) ToAccessApplicationPolicyRequireOidcPtrOutput() AccessApplicationPolicyRequireOidcPtrOutput {
+	return i.ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationPolicyRequireOidcArgs) ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireOidcOutput).ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationPolicyRequireOidcPtrInput is an input type that accepts AccessApplicationPolicyRequireOidcArgs, AccessApplicationPolicyRequireOidcPtr and AccessApplicationPolicyRequireOidcPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationPolicyRequireOidcPtrInput` via:
+//
+//	        AccessApplicationPolicyRequireOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationPolicyRequireOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPolicyRequireOidcPtrOutput() AccessApplicationPolicyRequireOidcPtrOutput
+	ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Context) AccessApplicationPolicyRequireOidcPtrOutput
+}
+
+type accessApplicationPolicyRequireOidcPtrType AccessApplicationPolicyRequireOidcArgs
+
+func AccessApplicationPolicyRequireOidcPtr(v *AccessApplicationPolicyRequireOidcArgs) AccessApplicationPolicyRequireOidcPtrInput {
+	return (*accessApplicationPolicyRequireOidcPtrType)(v)
+}
+
+func (*accessApplicationPolicyRequireOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyRequireOidc)(nil)).Elem()
+}
+
+func (i *accessApplicationPolicyRequireOidcPtrType) ToAccessApplicationPolicyRequireOidcPtrOutput() AccessApplicationPolicyRequireOidcPtrOutput {
+	return i.ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPolicyRequireOidcPtrType) ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPolicyRequireOidcPtrOutput)
+}
+
+type AccessApplicationPolicyRequireOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyRequireOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationPolicyRequireOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyRequireOidcOutput) ToAccessApplicationPolicyRequireOidcOutput() AccessApplicationPolicyRequireOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireOidcOutput) ToAccessApplicationPolicyRequireOidcOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireOidcOutput) ToAccessApplicationPolicyRequireOidcPtrOutput() AccessApplicationPolicyRequireOidcPtrOutput {
+	return o.ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationPolicyRequireOidcOutput) ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationPolicyRequireOidc) *AccessApplicationPolicyRequireOidc {
+		return &v
+	}).(AccessApplicationPolicyRequireOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyRequireOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequireOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyRequireOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequireOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyRequireOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationPolicyRequireOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessApplicationPolicyRequireOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationPolicyRequireOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationPolicyRequireOidc)(nil)).Elem()
+}
+
+func (o AccessApplicationPolicyRequireOidcPtrOutput) ToAccessApplicationPolicyRequireOidcPtrOutput() AccessApplicationPolicyRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireOidcPtrOutput) ToAccessApplicationPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessApplicationPolicyRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPolicyRequireOidcPtrOutput) Elem() AccessApplicationPolicyRequireOidcOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireOidc) AccessApplicationPolicyRequireOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationPolicyRequireOidc
+		return ret
+	}).(AccessApplicationPolicyRequireOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessApplicationPolicyRequireOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessApplicationPolicyRequireOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessApplicationPolicyRequireOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13799,7 +14777,7 @@ type AccessApplicationTargetCriteria struct {
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port int `pulumi:"port"`
 	// The communication protocol your application secures.
-	// Available values: "SSH".
+	// Available values: "SSH", "RDP".
 	Protocol string `pulumi:"protocol"`
 	// Contains a map of target attribute keys to target attribute values.
 	TargetAttributes map[string][]string `pulumi:"targetAttributes"`
@@ -13820,7 +14798,7 @@ type AccessApplicationTargetCriteriaArgs struct {
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The communication protocol your application secures.
-	// Available values: "SSH".
+	// Available values: "SSH", "RDP".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// Contains a map of target attribute keys to target attribute values.
 	TargetAttributes pulumi.StringArrayMapInput `pulumi:"targetAttributes"`
@@ -13883,7 +14861,7 @@ func (o AccessApplicationTargetCriteriaOutput) Port() pulumi.IntOutput {
 }
 
 // The communication protocol your application secures.
-// Available values: "SSH".
+// Available values: "SSH", "RDP".
 func (o AccessApplicationTargetCriteriaOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationTargetCriteria) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -13934,7 +14912,9 @@ type AccessGroupExclude struct {
 	Gsuite             *AccessGroupExcludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessGroupExcludeIp                 `pulumi:"ip"`
 	IpList             *AccessGroupExcludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessGroupExcludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessGroupExcludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessGroupExcludeOidc               `pulumi:"oidc"`
 	Okta               *AccessGroupExcludeOkta               `pulumi:"okta"`
 	Saml               *AccessGroupExcludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessGroupExcludeServiceToken       `pulumi:"serviceToken"`
@@ -13972,7 +14952,9 @@ type AccessGroupExcludeArgs struct {
 	Gsuite             AccessGroupExcludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessGroupExcludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessGroupExcludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessGroupExcludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessGroupExcludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessGroupExcludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessGroupExcludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessGroupExcludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessGroupExcludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -14103,8 +15085,16 @@ func (o AccessGroupExcludeOutput) IpList() AccessGroupExcludeIpListPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeIpList { return v.IpList }).(AccessGroupExcludeIpListPtrOutput)
 }
 
+func (o AccessGroupExcludeOutput) LinkedAppToken() AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeLinkedAppToken { return v.LinkedAppToken }).(AccessGroupExcludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessGroupExcludeOutput) LoginMethod() AccessGroupExcludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeLoginMethod { return v.LoginMethod }).(AccessGroupExcludeLoginMethodPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) Oidc() AccessGroupExcludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeOidc { return v.Oidc }).(AccessGroupExcludeOidcPtrOutput)
 }
 
 func (o AccessGroupExcludeOutput) Okta() AccessGroupExcludeOktaPtrOutput {
@@ -16681,6 +17671,143 @@ func (o AccessGroupExcludeIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessGroupExcludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessGroupExcludeLinkedAppTokenInput is an input type that accepts AccessGroupExcludeLinkedAppTokenArgs and AccessGroupExcludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeLinkedAppTokenInput` via:
+//
+//	AccessGroupExcludeLinkedAppTokenArgs{...}
+type AccessGroupExcludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeLinkedAppTokenOutput() AccessGroupExcludeLinkedAppTokenOutput
+	ToAccessGroupExcludeLinkedAppTokenOutputWithContext(context.Context) AccessGroupExcludeLinkedAppTokenOutput
+}
+
+type AccessGroupExcludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessGroupExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeLinkedAppTokenArgs) ToAccessGroupExcludeLinkedAppTokenOutput() AccessGroupExcludeLinkedAppTokenOutput {
+	return i.ToAccessGroupExcludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeLinkedAppTokenArgs) ToAccessGroupExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeLinkedAppTokenOutput)
+}
+
+func (i AccessGroupExcludeLinkedAppTokenArgs) ToAccessGroupExcludeLinkedAppTokenPtrOutput() AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeLinkedAppTokenArgs) ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeLinkedAppTokenOutput).ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessGroupExcludeLinkedAppTokenPtrInput is an input type that accepts AccessGroupExcludeLinkedAppTokenArgs, AccessGroupExcludeLinkedAppTokenPtr and AccessGroupExcludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessGroupExcludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupExcludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeLinkedAppTokenPtrOutput() AccessGroupExcludeLinkedAppTokenPtrOutput
+	ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessGroupExcludeLinkedAppTokenPtrOutput
+}
+
+type accessGroupExcludeLinkedAppTokenPtrType AccessGroupExcludeLinkedAppTokenArgs
+
+func AccessGroupExcludeLinkedAppTokenPtr(v *AccessGroupExcludeLinkedAppTokenArgs) AccessGroupExcludeLinkedAppTokenPtrInput {
+	return (*accessGroupExcludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessGroupExcludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessGroupExcludeLinkedAppTokenPtrType) ToAccessGroupExcludeLinkedAppTokenPtrOutput() AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupExcludeLinkedAppTokenPtrType) ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeLinkedAppTokenPtrOutput)
+}
+
+type AccessGroupExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeLinkedAppTokenOutput) ToAccessGroupExcludeLinkedAppTokenOutput() AccessGroupExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupExcludeLinkedAppTokenOutput) ToAccessGroupExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupExcludeLinkedAppTokenOutput) ToAccessGroupExcludeLinkedAppTokenPtrOutput() AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return o.ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupExcludeLinkedAppTokenOutput) ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupExcludeLinkedAppToken) *AccessGroupExcludeLinkedAppToken {
+		return &v
+	}).(AccessGroupExcludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessGroupExcludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeLinkedAppTokenPtrOutput) ToAccessGroupExcludeLinkedAppTokenPtrOutput() AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeLinkedAppTokenPtrOutput) ToAccessGroupExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeLinkedAppTokenPtrOutput) Elem() AccessGroupExcludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeLinkedAppToken) AccessGroupExcludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupExcludeLinkedAppToken
+		return ret
+	}).(AccessGroupExcludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupExcludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessGroupExcludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -16815,6 +17942,181 @@ func (o AccessGroupExcludeLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupExcludeOidcInput is an input type that accepts AccessGroupExcludeOidcArgs and AccessGroupExcludeOidcOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeOidcInput` via:
+//
+//	AccessGroupExcludeOidcArgs{...}
+type AccessGroupExcludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeOidcOutput() AccessGroupExcludeOidcOutput
+	ToAccessGroupExcludeOidcOutputWithContext(context.Context) AccessGroupExcludeOidcOutput
+}
+
+type AccessGroupExcludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupExcludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeOidc)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeOidcArgs) ToAccessGroupExcludeOidcOutput() AccessGroupExcludeOidcOutput {
+	return i.ToAccessGroupExcludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeOidcArgs) ToAccessGroupExcludeOidcOutputWithContext(ctx context.Context) AccessGroupExcludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeOidcOutput)
+}
+
+func (i AccessGroupExcludeOidcArgs) ToAccessGroupExcludeOidcPtrOutput() AccessGroupExcludeOidcPtrOutput {
+	return i.ToAccessGroupExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeOidcArgs) ToAccessGroupExcludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeOidcOutput).ToAccessGroupExcludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessGroupExcludeOidcPtrInput is an input type that accepts AccessGroupExcludeOidcArgs, AccessGroupExcludeOidcPtr and AccessGroupExcludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeOidcPtrInput` via:
+//
+//	        AccessGroupExcludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupExcludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeOidcPtrOutput() AccessGroupExcludeOidcPtrOutput
+	ToAccessGroupExcludeOidcPtrOutputWithContext(context.Context) AccessGroupExcludeOidcPtrOutput
+}
+
+type accessGroupExcludeOidcPtrType AccessGroupExcludeOidcArgs
+
+func AccessGroupExcludeOidcPtr(v *AccessGroupExcludeOidcArgs) AccessGroupExcludeOidcPtrInput {
+	return (*accessGroupExcludeOidcPtrType)(v)
+}
+
+func (*accessGroupExcludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeOidc)(nil)).Elem()
+}
+
+func (i *accessGroupExcludeOidcPtrType) ToAccessGroupExcludeOidcPtrOutput() AccessGroupExcludeOidcPtrOutput {
+	return i.ToAccessGroupExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupExcludeOidcPtrType) ToAccessGroupExcludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeOidcPtrOutput)
+}
+
+type AccessGroupExcludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeOidcOutput) ToAccessGroupExcludeOidcOutput() AccessGroupExcludeOidcOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOidcOutput) ToAccessGroupExcludeOidcOutputWithContext(ctx context.Context) AccessGroupExcludeOidcOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOidcOutput) ToAccessGroupExcludeOidcPtrOutput() AccessGroupExcludeOidcPtrOutput {
+	return o.ToAccessGroupExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupExcludeOidcOutput) ToAccessGroupExcludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupExcludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupExcludeOidc) *AccessGroupExcludeOidc {
+		return &v
+	}).(AccessGroupExcludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupExcludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupExcludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupExcludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupExcludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeOidcPtrOutput) ToAccessGroupExcludeOidcPtrOutput() AccessGroupExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOidcPtrOutput) ToAccessGroupExcludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOidcPtrOutput) Elem() AccessGroupExcludeOidcOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeOidc) AccessGroupExcludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupExcludeOidc
+		return ret
+	}).(AccessGroupExcludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupExcludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupExcludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupExcludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17307,7 +18609,9 @@ type AccessGroupInclude struct {
 	Gsuite             *AccessGroupIncludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessGroupIncludeIp                 `pulumi:"ip"`
 	IpList             *AccessGroupIncludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessGroupIncludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessGroupIncludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessGroupIncludeOidc               `pulumi:"oidc"`
 	Okta               *AccessGroupIncludeOkta               `pulumi:"okta"`
 	Saml               *AccessGroupIncludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessGroupIncludeServiceToken       `pulumi:"serviceToken"`
@@ -17345,7 +18649,9 @@ type AccessGroupIncludeArgs struct {
 	Gsuite             AccessGroupIncludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessGroupIncludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessGroupIncludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessGroupIncludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessGroupIncludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessGroupIncludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessGroupIncludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessGroupIncludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessGroupIncludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -17476,8 +18782,16 @@ func (o AccessGroupIncludeOutput) IpList() AccessGroupIncludeIpListPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeIpList { return v.IpList }).(AccessGroupIncludeIpListPtrOutput)
 }
 
+func (o AccessGroupIncludeOutput) LinkedAppToken() AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeLinkedAppToken { return v.LinkedAppToken }).(AccessGroupIncludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessGroupIncludeOutput) LoginMethod() AccessGroupIncludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeLoginMethod { return v.LoginMethod }).(AccessGroupIncludeLoginMethodPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) Oidc() AccessGroupIncludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeOidc { return v.Oidc }).(AccessGroupIncludeOidcPtrOutput)
 }
 
 func (o AccessGroupIncludeOutput) Okta() AccessGroupIncludeOktaPtrOutput {
@@ -20054,6 +21368,143 @@ func (o AccessGroupIncludeIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessGroupIncludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessGroupIncludeLinkedAppTokenInput is an input type that accepts AccessGroupIncludeLinkedAppTokenArgs and AccessGroupIncludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeLinkedAppTokenInput` via:
+//
+//	AccessGroupIncludeLinkedAppTokenArgs{...}
+type AccessGroupIncludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeLinkedAppTokenOutput() AccessGroupIncludeLinkedAppTokenOutput
+	ToAccessGroupIncludeLinkedAppTokenOutputWithContext(context.Context) AccessGroupIncludeLinkedAppTokenOutput
+}
+
+type AccessGroupIncludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessGroupIncludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeLinkedAppTokenArgs) ToAccessGroupIncludeLinkedAppTokenOutput() AccessGroupIncludeLinkedAppTokenOutput {
+	return i.ToAccessGroupIncludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeLinkedAppTokenArgs) ToAccessGroupIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeLinkedAppTokenOutput)
+}
+
+func (i AccessGroupIncludeLinkedAppTokenArgs) ToAccessGroupIncludeLinkedAppTokenPtrOutput() AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeLinkedAppTokenArgs) ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeLinkedAppTokenOutput).ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessGroupIncludeLinkedAppTokenPtrInput is an input type that accepts AccessGroupIncludeLinkedAppTokenArgs, AccessGroupIncludeLinkedAppTokenPtr and AccessGroupIncludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessGroupIncludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupIncludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeLinkedAppTokenPtrOutput() AccessGroupIncludeLinkedAppTokenPtrOutput
+	ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessGroupIncludeLinkedAppTokenPtrOutput
+}
+
+type accessGroupIncludeLinkedAppTokenPtrType AccessGroupIncludeLinkedAppTokenArgs
+
+func AccessGroupIncludeLinkedAppTokenPtr(v *AccessGroupIncludeLinkedAppTokenArgs) AccessGroupIncludeLinkedAppTokenPtrInput {
+	return (*accessGroupIncludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessGroupIncludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessGroupIncludeLinkedAppTokenPtrType) ToAccessGroupIncludeLinkedAppTokenPtrOutput() AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupIncludeLinkedAppTokenPtrType) ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeLinkedAppTokenPtrOutput)
+}
+
+type AccessGroupIncludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeLinkedAppTokenOutput) ToAccessGroupIncludeLinkedAppTokenOutput() AccessGroupIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupIncludeLinkedAppTokenOutput) ToAccessGroupIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupIncludeLinkedAppTokenOutput) ToAccessGroupIncludeLinkedAppTokenPtrOutput() AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return o.ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupIncludeLinkedAppTokenOutput) ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupIncludeLinkedAppToken) *AccessGroupIncludeLinkedAppToken {
+		return &v
+	}).(AccessGroupIncludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupIncludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessGroupIncludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeLinkedAppTokenPtrOutput) ToAccessGroupIncludeLinkedAppTokenPtrOutput() AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeLinkedAppTokenPtrOutput) ToAccessGroupIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeLinkedAppTokenPtrOutput) Elem() AccessGroupIncludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeLinkedAppToken) AccessGroupIncludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupIncludeLinkedAppToken
+		return ret
+	}).(AccessGroupIncludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupIncludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessGroupIncludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -20188,6 +21639,181 @@ func (o AccessGroupIncludeLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupIncludeOidcInput is an input type that accepts AccessGroupIncludeOidcArgs and AccessGroupIncludeOidcOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeOidcInput` via:
+//
+//	AccessGroupIncludeOidcArgs{...}
+type AccessGroupIncludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeOidcOutput() AccessGroupIncludeOidcOutput
+	ToAccessGroupIncludeOidcOutputWithContext(context.Context) AccessGroupIncludeOidcOutput
+}
+
+type AccessGroupIncludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupIncludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeOidc)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeOidcArgs) ToAccessGroupIncludeOidcOutput() AccessGroupIncludeOidcOutput {
+	return i.ToAccessGroupIncludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeOidcArgs) ToAccessGroupIncludeOidcOutputWithContext(ctx context.Context) AccessGroupIncludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeOidcOutput)
+}
+
+func (i AccessGroupIncludeOidcArgs) ToAccessGroupIncludeOidcPtrOutput() AccessGroupIncludeOidcPtrOutput {
+	return i.ToAccessGroupIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeOidcArgs) ToAccessGroupIncludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeOidcOutput).ToAccessGroupIncludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessGroupIncludeOidcPtrInput is an input type that accepts AccessGroupIncludeOidcArgs, AccessGroupIncludeOidcPtr and AccessGroupIncludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeOidcPtrInput` via:
+//
+//	        AccessGroupIncludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupIncludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeOidcPtrOutput() AccessGroupIncludeOidcPtrOutput
+	ToAccessGroupIncludeOidcPtrOutputWithContext(context.Context) AccessGroupIncludeOidcPtrOutput
+}
+
+type accessGroupIncludeOidcPtrType AccessGroupIncludeOidcArgs
+
+func AccessGroupIncludeOidcPtr(v *AccessGroupIncludeOidcArgs) AccessGroupIncludeOidcPtrInput {
+	return (*accessGroupIncludeOidcPtrType)(v)
+}
+
+func (*accessGroupIncludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeOidc)(nil)).Elem()
+}
+
+func (i *accessGroupIncludeOidcPtrType) ToAccessGroupIncludeOidcPtrOutput() AccessGroupIncludeOidcPtrOutput {
+	return i.ToAccessGroupIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupIncludeOidcPtrType) ToAccessGroupIncludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeOidcPtrOutput)
+}
+
+type AccessGroupIncludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeOidcOutput) ToAccessGroupIncludeOidcOutput() AccessGroupIncludeOidcOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOidcOutput) ToAccessGroupIncludeOidcOutputWithContext(ctx context.Context) AccessGroupIncludeOidcOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOidcOutput) ToAccessGroupIncludeOidcPtrOutput() AccessGroupIncludeOidcPtrOutput {
+	return o.ToAccessGroupIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupIncludeOidcOutput) ToAccessGroupIncludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupIncludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupIncludeOidc) *AccessGroupIncludeOidc {
+		return &v
+	}).(AccessGroupIncludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupIncludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupIncludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupIncludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupIncludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeOidcPtrOutput) ToAccessGroupIncludeOidcPtrOutput() AccessGroupIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOidcPtrOutput) ToAccessGroupIncludeOidcPtrOutputWithContext(ctx context.Context) AccessGroupIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOidcPtrOutput) Elem() AccessGroupIncludeOidcOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeOidc) AccessGroupIncludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupIncludeOidc
+		return ret
+	}).(AccessGroupIncludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupIncludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupIncludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupIncludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20680,7 +22306,9 @@ type AccessGroupRequire struct {
 	Gsuite             *AccessGroupRequireGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessGroupRequireIp                 `pulumi:"ip"`
 	IpList             *AccessGroupRequireIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessGroupRequireLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessGroupRequireLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessGroupRequireOidc               `pulumi:"oidc"`
 	Okta               *AccessGroupRequireOkta               `pulumi:"okta"`
 	Saml               *AccessGroupRequireSaml               `pulumi:"saml"`
 	ServiceToken       *AccessGroupRequireServiceToken       `pulumi:"serviceToken"`
@@ -20718,7 +22346,9 @@ type AccessGroupRequireArgs struct {
 	Gsuite             AccessGroupRequireGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessGroupRequireIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessGroupRequireIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessGroupRequireLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessGroupRequireLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessGroupRequireOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessGroupRequireOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessGroupRequireSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessGroupRequireServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -20849,8 +22479,16 @@ func (o AccessGroupRequireOutput) IpList() AccessGroupRequireIpListPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireIpList { return v.IpList }).(AccessGroupRequireIpListPtrOutput)
 }
 
+func (o AccessGroupRequireOutput) LinkedAppToken() AccessGroupRequireLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireLinkedAppToken { return v.LinkedAppToken }).(AccessGroupRequireLinkedAppTokenPtrOutput)
+}
+
 func (o AccessGroupRequireOutput) LoginMethod() AccessGroupRequireLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireLoginMethod { return v.LoginMethod }).(AccessGroupRequireLoginMethodPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) Oidc() AccessGroupRequireOidcPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireOidc { return v.Oidc }).(AccessGroupRequireOidcPtrOutput)
 }
 
 func (o AccessGroupRequireOutput) Okta() AccessGroupRequireOktaPtrOutput {
@@ -23427,6 +25065,143 @@ func (o AccessGroupRequireIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessGroupRequireLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessGroupRequireLinkedAppTokenInput is an input type that accepts AccessGroupRequireLinkedAppTokenArgs and AccessGroupRequireLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessGroupRequireLinkedAppTokenInput` via:
+//
+//	AccessGroupRequireLinkedAppTokenArgs{...}
+type AccessGroupRequireLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireLinkedAppTokenOutput() AccessGroupRequireLinkedAppTokenOutput
+	ToAccessGroupRequireLinkedAppTokenOutputWithContext(context.Context) AccessGroupRequireLinkedAppTokenOutput
+}
+
+type AccessGroupRequireLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessGroupRequireLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessGroupRequireLinkedAppTokenArgs) ToAccessGroupRequireLinkedAppTokenOutput() AccessGroupRequireLinkedAppTokenOutput {
+	return i.ToAccessGroupRequireLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireLinkedAppTokenArgs) ToAccessGroupRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireLinkedAppTokenOutput)
+}
+
+func (i AccessGroupRequireLinkedAppTokenArgs) ToAccessGroupRequireLinkedAppTokenPtrOutput() AccessGroupRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireLinkedAppTokenArgs) ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireLinkedAppTokenOutput).ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessGroupRequireLinkedAppTokenPtrInput is an input type that accepts AccessGroupRequireLinkedAppTokenArgs, AccessGroupRequireLinkedAppTokenPtr and AccessGroupRequireLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessGroupRequireLinkedAppTokenPtrInput` via:
+//
+//	        AccessGroupRequireLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupRequireLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireLinkedAppTokenPtrOutput() AccessGroupRequireLinkedAppTokenPtrOutput
+	ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(context.Context) AccessGroupRequireLinkedAppTokenPtrOutput
+}
+
+type accessGroupRequireLinkedAppTokenPtrType AccessGroupRequireLinkedAppTokenArgs
+
+func AccessGroupRequireLinkedAppTokenPtr(v *AccessGroupRequireLinkedAppTokenArgs) AccessGroupRequireLinkedAppTokenPtrInput {
+	return (*accessGroupRequireLinkedAppTokenPtrType)(v)
+}
+
+func (*accessGroupRequireLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessGroupRequireLinkedAppTokenPtrType) ToAccessGroupRequireLinkedAppTokenPtrOutput() AccessGroupRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupRequireLinkedAppTokenPtrType) ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireLinkedAppTokenPtrOutput)
+}
+
+type AccessGroupRequireLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupRequireLinkedAppTokenOutput) ToAccessGroupRequireLinkedAppTokenOutput() AccessGroupRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupRequireLinkedAppTokenOutput) ToAccessGroupRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessGroupRequireLinkedAppTokenOutput) ToAccessGroupRequireLinkedAppTokenPtrOutput() AccessGroupRequireLinkedAppTokenPtrOutput {
+	return o.ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupRequireLinkedAppTokenOutput) ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupRequireLinkedAppToken) *AccessGroupRequireLinkedAppToken {
+		return &v
+	}).(AccessGroupRequireLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupRequireLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessGroupRequireLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessGroupRequireLinkedAppTokenPtrOutput) ToAccessGroupRequireLinkedAppTokenPtrOutput() AccessGroupRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireLinkedAppTokenPtrOutput) ToAccessGroupRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessGroupRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireLinkedAppTokenPtrOutput) Elem() AccessGroupRequireLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessGroupRequireLinkedAppToken) AccessGroupRequireLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupRequireLinkedAppToken
+		return ret
+	}).(AccessGroupRequireLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessGroupRequireLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessGroupRequireLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -23561,6 +25336,181 @@ func (o AccessGroupRequireLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupRequireOidcInput is an input type that accepts AccessGroupRequireOidcArgs and AccessGroupRequireOidcOutput values.
+// You can construct a concrete instance of `AccessGroupRequireOidcInput` via:
+//
+//	AccessGroupRequireOidcArgs{...}
+type AccessGroupRequireOidcInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireOidcOutput() AccessGroupRequireOidcOutput
+	ToAccessGroupRequireOidcOutputWithContext(context.Context) AccessGroupRequireOidcOutput
+}
+
+type AccessGroupRequireOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupRequireOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireOidc)(nil)).Elem()
+}
+
+func (i AccessGroupRequireOidcArgs) ToAccessGroupRequireOidcOutput() AccessGroupRequireOidcOutput {
+	return i.ToAccessGroupRequireOidcOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireOidcArgs) ToAccessGroupRequireOidcOutputWithContext(ctx context.Context) AccessGroupRequireOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireOidcOutput)
+}
+
+func (i AccessGroupRequireOidcArgs) ToAccessGroupRequireOidcPtrOutput() AccessGroupRequireOidcPtrOutput {
+	return i.ToAccessGroupRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireOidcArgs) ToAccessGroupRequireOidcPtrOutputWithContext(ctx context.Context) AccessGroupRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireOidcOutput).ToAccessGroupRequireOidcPtrOutputWithContext(ctx)
+}
+
+// AccessGroupRequireOidcPtrInput is an input type that accepts AccessGroupRequireOidcArgs, AccessGroupRequireOidcPtr and AccessGroupRequireOidcPtrOutput values.
+// You can construct a concrete instance of `AccessGroupRequireOidcPtrInput` via:
+//
+//	        AccessGroupRequireOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessGroupRequireOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireOidcPtrOutput() AccessGroupRequireOidcPtrOutput
+	ToAccessGroupRequireOidcPtrOutputWithContext(context.Context) AccessGroupRequireOidcPtrOutput
+}
+
+type accessGroupRequireOidcPtrType AccessGroupRequireOidcArgs
+
+func AccessGroupRequireOidcPtr(v *AccessGroupRequireOidcArgs) AccessGroupRequireOidcPtrInput {
+	return (*accessGroupRequireOidcPtrType)(v)
+}
+
+func (*accessGroupRequireOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireOidc)(nil)).Elem()
+}
+
+func (i *accessGroupRequireOidcPtrType) ToAccessGroupRequireOidcPtrOutput() AccessGroupRequireOidcPtrOutput {
+	return i.ToAccessGroupRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupRequireOidcPtrType) ToAccessGroupRequireOidcPtrOutputWithContext(ctx context.Context) AccessGroupRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireOidcPtrOutput)
+}
+
+type AccessGroupRequireOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireOidc)(nil)).Elem()
+}
+
+func (o AccessGroupRequireOidcOutput) ToAccessGroupRequireOidcOutput() AccessGroupRequireOidcOutput {
+	return o
+}
+
+func (o AccessGroupRequireOidcOutput) ToAccessGroupRequireOidcOutputWithContext(ctx context.Context) AccessGroupRequireOidcOutput {
+	return o
+}
+
+func (o AccessGroupRequireOidcOutput) ToAccessGroupRequireOidcPtrOutput() AccessGroupRequireOidcPtrOutput {
+	return o.ToAccessGroupRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupRequireOidcOutput) ToAccessGroupRequireOidcPtrOutputWithContext(ctx context.Context) AccessGroupRequireOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupRequireOidc) *AccessGroupRequireOidc {
+		return &v
+	}).(AccessGroupRequireOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupRequireOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupRequireOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupRequireOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupRequireOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireOidc)(nil)).Elem()
+}
+
+func (o AccessGroupRequireOidcPtrOutput) ToAccessGroupRequireOidcPtrOutput() AccessGroupRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireOidcPtrOutput) ToAccessGroupRequireOidcPtrOutputWithContext(ctx context.Context) AccessGroupRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireOidcPtrOutput) Elem() AccessGroupRequireOidcOutput {
+	return o.ApplyT(func(v *AccessGroupRequireOidc) AccessGroupRequireOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupRequireOidc
+		return ret
+	}).(AccessGroupRequireOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessGroupRequireOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessGroupRequireOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessGroupRequireOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24051,6 +26001,8 @@ type AccessIdentityProviderConfig struct {
 	Claims []string `pulumi:"claims"`
 	// Your OAuth Client ID
 	ClientId *string `pulumi:"clientId"`
+	// Your OAuth Client Secret
+	ClientSecret *string `pulumi:"clientSecret"`
 	// Should Cloudflare try to load authentication contexts from your account
 	ConditionalAccessEnabled *bool `pulumi:"conditionalAccessEnabled"`
 	// Your Azure directory uuid
@@ -24119,6 +26071,8 @@ type AccessIdentityProviderConfigArgs struct {
 	Claims pulumi.StringArrayInput `pulumi:"claims"`
 	// Your OAuth Client ID
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Your OAuth Client Secret
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Should Cloudflare try to load authentication contexts from your account
 	ConditionalAccessEnabled pulumi.BoolPtrInput `pulumi:"conditionalAccessEnabled"`
 	// Your Azure directory uuid
@@ -24277,6 +26231,11 @@ func (o AccessIdentityProviderConfigOutput) Claims() pulumi.StringArrayOutput {
 // Your OAuth Client ID
 func (o AccessIdentityProviderConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Your OAuth Client Secret
+func (o AccessIdentityProviderConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // Should Cloudflare try to load authentication contexts from your account
@@ -24482,6 +26441,16 @@ func (o AccessIdentityProviderConfigPtrOutput) ClientId() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your OAuth Client Secret
+func (o AccessIdentityProviderConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25627,7 +27596,9 @@ type AccessPolicyExclude struct {
 	Gsuite             *AccessPolicyExcludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessPolicyExcludeIp                 `pulumi:"ip"`
 	IpList             *AccessPolicyExcludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessPolicyExcludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessPolicyExcludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessPolicyExcludeOidc               `pulumi:"oidc"`
 	Okta               *AccessPolicyExcludeOkta               `pulumi:"okta"`
 	Saml               *AccessPolicyExcludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessPolicyExcludeServiceToken       `pulumi:"serviceToken"`
@@ -25665,7 +27636,9 @@ type AccessPolicyExcludeArgs struct {
 	Gsuite             AccessPolicyExcludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessPolicyExcludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessPolicyExcludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessPolicyExcludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessPolicyExcludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessPolicyExcludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessPolicyExcludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessPolicyExcludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessPolicyExcludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -25796,8 +27769,16 @@ func (o AccessPolicyExcludeOutput) IpList() AccessPolicyExcludeIpListPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeIpList { return v.IpList }).(AccessPolicyExcludeIpListPtrOutput)
 }
 
+func (o AccessPolicyExcludeOutput) LinkedAppToken() AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeLinkedAppToken { return v.LinkedAppToken }).(AccessPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessPolicyExcludeOutput) LoginMethod() AccessPolicyExcludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeLoginMethod { return v.LoginMethod }).(AccessPolicyExcludeLoginMethodPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Oidc() AccessPolicyExcludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeOidc { return v.Oidc }).(AccessPolicyExcludeOidcPtrOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Okta() AccessPolicyExcludeOktaPtrOutput {
@@ -28374,6 +30355,143 @@ func (o AccessPolicyExcludeIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessPolicyExcludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessPolicyExcludeLinkedAppTokenInput is an input type that accepts AccessPolicyExcludeLinkedAppTokenArgs and AccessPolicyExcludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeLinkedAppTokenInput` via:
+//
+//	AccessPolicyExcludeLinkedAppTokenArgs{...}
+type AccessPolicyExcludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeLinkedAppTokenOutput() AccessPolicyExcludeLinkedAppTokenOutput
+	ToAccessPolicyExcludeLinkedAppTokenOutputWithContext(context.Context) AccessPolicyExcludeLinkedAppTokenOutput
+}
+
+type AccessPolicyExcludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessPolicyExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeLinkedAppTokenArgs) ToAccessPolicyExcludeLinkedAppTokenOutput() AccessPolicyExcludeLinkedAppTokenOutput {
+	return i.ToAccessPolicyExcludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeLinkedAppTokenArgs) ToAccessPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeLinkedAppTokenOutput)
+}
+
+func (i AccessPolicyExcludeLinkedAppTokenArgs) ToAccessPolicyExcludeLinkedAppTokenPtrOutput() AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeLinkedAppTokenArgs) ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeLinkedAppTokenOutput).ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyExcludeLinkedAppTokenPtrInput is an input type that accepts AccessPolicyExcludeLinkedAppTokenArgs, AccessPolicyExcludeLinkedAppTokenPtr and AccessPolicyExcludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessPolicyExcludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyExcludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeLinkedAppTokenPtrOutput() AccessPolicyExcludeLinkedAppTokenPtrOutput
+	ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessPolicyExcludeLinkedAppTokenPtrOutput
+}
+
+type accessPolicyExcludeLinkedAppTokenPtrType AccessPolicyExcludeLinkedAppTokenArgs
+
+func AccessPolicyExcludeLinkedAppTokenPtr(v *AccessPolicyExcludeLinkedAppTokenArgs) AccessPolicyExcludeLinkedAppTokenPtrInput {
+	return (*accessPolicyExcludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessPolicyExcludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessPolicyExcludeLinkedAppTokenPtrType) ToAccessPolicyExcludeLinkedAppTokenPtrOutput() AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyExcludeLinkedAppTokenPtrType) ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
+type AccessPolicyExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenOutput) ToAccessPolicyExcludeLinkedAppTokenOutput() AccessPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenOutput) ToAccessPolicyExcludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenOutput) ToAccessPolicyExcludeLinkedAppTokenPtrOutput() AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenOutput) ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyExcludeLinkedAppToken) *AccessPolicyExcludeLinkedAppToken {
+		return &v
+	}).(AccessPolicyExcludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessPolicyExcludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenPtrOutput) ToAccessPolicyExcludeLinkedAppTokenPtrOutput() AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenPtrOutput) ToAccessPolicyExcludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeLinkedAppTokenPtrOutput) Elem() AccessPolicyExcludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeLinkedAppToken) AccessPolicyExcludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyExcludeLinkedAppToken
+		return ret
+	}).(AccessPolicyExcludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyExcludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessPolicyExcludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -28508,6 +30626,181 @@ func (o AccessPolicyExcludeLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyExcludeOidcInput is an input type that accepts AccessPolicyExcludeOidcArgs and AccessPolicyExcludeOidcOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeOidcInput` via:
+//
+//	AccessPolicyExcludeOidcArgs{...}
+type AccessPolicyExcludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeOidcOutput() AccessPolicyExcludeOidcOutput
+	ToAccessPolicyExcludeOidcOutputWithContext(context.Context) AccessPolicyExcludeOidcOutput
+}
+
+type AccessPolicyExcludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyExcludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeOidcArgs) ToAccessPolicyExcludeOidcOutput() AccessPolicyExcludeOidcOutput {
+	return i.ToAccessPolicyExcludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeOidcArgs) ToAccessPolicyExcludeOidcOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeOidcOutput)
+}
+
+func (i AccessPolicyExcludeOidcArgs) ToAccessPolicyExcludeOidcPtrOutput() AccessPolicyExcludeOidcPtrOutput {
+	return i.ToAccessPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeOidcArgs) ToAccessPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeOidcOutput).ToAccessPolicyExcludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyExcludeOidcPtrInput is an input type that accepts AccessPolicyExcludeOidcArgs, AccessPolicyExcludeOidcPtr and AccessPolicyExcludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeOidcPtrInput` via:
+//
+//	        AccessPolicyExcludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyExcludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeOidcPtrOutput() AccessPolicyExcludeOidcPtrOutput
+	ToAccessPolicyExcludeOidcPtrOutputWithContext(context.Context) AccessPolicyExcludeOidcPtrOutput
+}
+
+type accessPolicyExcludeOidcPtrType AccessPolicyExcludeOidcArgs
+
+func AccessPolicyExcludeOidcPtr(v *AccessPolicyExcludeOidcArgs) AccessPolicyExcludeOidcPtrInput {
+	return (*accessPolicyExcludeOidcPtrType)(v)
+}
+
+func (*accessPolicyExcludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (i *accessPolicyExcludeOidcPtrType) ToAccessPolicyExcludeOidcPtrOutput() AccessPolicyExcludeOidcPtrOutput {
+	return i.ToAccessPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyExcludeOidcPtrType) ToAccessPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeOidcPtrOutput)
+}
+
+type AccessPolicyExcludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeOidcOutput) ToAccessPolicyExcludeOidcOutput() AccessPolicyExcludeOidcOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOidcOutput) ToAccessPolicyExcludeOidcOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOidcOutput) ToAccessPolicyExcludeOidcPtrOutput() AccessPolicyExcludeOidcPtrOutput {
+	return o.ToAccessPolicyExcludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyExcludeOidcOutput) ToAccessPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyExcludeOidc) *AccessPolicyExcludeOidc {
+		return &v
+	}).(AccessPolicyExcludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyExcludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyExcludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyExcludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyExcludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeOidcPtrOutput) ToAccessPolicyExcludeOidcPtrOutput() AccessPolicyExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOidcPtrOutput) ToAccessPolicyExcludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOidcPtrOutput) Elem() AccessPolicyExcludeOidcOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeOidc) AccessPolicyExcludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyExcludeOidc
+		return ret
+	}).(AccessPolicyExcludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyExcludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyExcludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyExcludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29000,7 +31293,9 @@ type AccessPolicyInclude struct {
 	Gsuite             *AccessPolicyIncludeGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessPolicyIncludeIp                 `pulumi:"ip"`
 	IpList             *AccessPolicyIncludeIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessPolicyIncludeLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessPolicyIncludeLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessPolicyIncludeOidc               `pulumi:"oidc"`
 	Okta               *AccessPolicyIncludeOkta               `pulumi:"okta"`
 	Saml               *AccessPolicyIncludeSaml               `pulumi:"saml"`
 	ServiceToken       *AccessPolicyIncludeServiceToken       `pulumi:"serviceToken"`
@@ -29038,7 +31333,9 @@ type AccessPolicyIncludeArgs struct {
 	Gsuite             AccessPolicyIncludeGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessPolicyIncludeIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessPolicyIncludeIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessPolicyIncludeLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessPolicyIncludeLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessPolicyIncludeOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessPolicyIncludeOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessPolicyIncludeSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessPolicyIncludeServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -29169,8 +31466,16 @@ func (o AccessPolicyIncludeOutput) IpList() AccessPolicyIncludeIpListPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeIpList { return v.IpList }).(AccessPolicyIncludeIpListPtrOutput)
 }
 
+func (o AccessPolicyIncludeOutput) LinkedAppToken() AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeLinkedAppToken { return v.LinkedAppToken }).(AccessPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
 func (o AccessPolicyIncludeOutput) LoginMethod() AccessPolicyIncludeLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeLoginMethod { return v.LoginMethod }).(AccessPolicyIncludeLoginMethodPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Oidc() AccessPolicyIncludeOidcPtrOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeOidc { return v.Oidc }).(AccessPolicyIncludeOidcPtrOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Okta() AccessPolicyIncludeOktaPtrOutput {
@@ -31747,6 +34052,143 @@ func (o AccessPolicyIncludeIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessPolicyIncludeLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessPolicyIncludeLinkedAppTokenInput is an input type that accepts AccessPolicyIncludeLinkedAppTokenArgs and AccessPolicyIncludeLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeLinkedAppTokenInput` via:
+//
+//	AccessPolicyIncludeLinkedAppTokenArgs{...}
+type AccessPolicyIncludeLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeLinkedAppTokenOutput() AccessPolicyIncludeLinkedAppTokenOutput
+	ToAccessPolicyIncludeLinkedAppTokenOutputWithContext(context.Context) AccessPolicyIncludeLinkedAppTokenOutput
+}
+
+type AccessPolicyIncludeLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessPolicyIncludeLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeLinkedAppTokenArgs) ToAccessPolicyIncludeLinkedAppTokenOutput() AccessPolicyIncludeLinkedAppTokenOutput {
+	return i.ToAccessPolicyIncludeLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeLinkedAppTokenArgs) ToAccessPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeLinkedAppTokenOutput)
+}
+
+func (i AccessPolicyIncludeLinkedAppTokenArgs) ToAccessPolicyIncludeLinkedAppTokenPtrOutput() AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeLinkedAppTokenArgs) ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeLinkedAppTokenOutput).ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyIncludeLinkedAppTokenPtrInput is an input type that accepts AccessPolicyIncludeLinkedAppTokenArgs, AccessPolicyIncludeLinkedAppTokenPtr and AccessPolicyIncludeLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeLinkedAppTokenPtrInput` via:
+//
+//	        AccessPolicyIncludeLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyIncludeLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeLinkedAppTokenPtrOutput() AccessPolicyIncludeLinkedAppTokenPtrOutput
+	ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Context) AccessPolicyIncludeLinkedAppTokenPtrOutput
+}
+
+type accessPolicyIncludeLinkedAppTokenPtrType AccessPolicyIncludeLinkedAppTokenArgs
+
+func AccessPolicyIncludeLinkedAppTokenPtr(v *AccessPolicyIncludeLinkedAppTokenArgs) AccessPolicyIncludeLinkedAppTokenPtrInput {
+	return (*accessPolicyIncludeLinkedAppTokenPtrType)(v)
+}
+
+func (*accessPolicyIncludeLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessPolicyIncludeLinkedAppTokenPtrType) ToAccessPolicyIncludeLinkedAppTokenPtrOutput() AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyIncludeLinkedAppTokenPtrType) ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
+type AccessPolicyIncludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenOutput) ToAccessPolicyIncludeLinkedAppTokenOutput() AccessPolicyIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenOutput) ToAccessPolicyIncludeLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenOutput) ToAccessPolicyIncludeLinkedAppTokenPtrOutput() AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenOutput) ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIncludeLinkedAppToken) *AccessPolicyIncludeLinkedAppToken {
+		return &v
+	}).(AccessPolicyIncludeLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyIncludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessPolicyIncludeLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenPtrOutput) ToAccessPolicyIncludeLinkedAppTokenPtrOutput() AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenPtrOutput) ToAccessPolicyIncludeLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeLinkedAppTokenPtrOutput) Elem() AccessPolicyIncludeLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeLinkedAppToken) AccessPolicyIncludeLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyIncludeLinkedAppToken
+		return ret
+	}).(AccessPolicyIncludeLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyIncludeLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessPolicyIncludeLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -31881,6 +34323,181 @@ func (o AccessPolicyIncludeLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyIncludeOidcInput is an input type that accepts AccessPolicyIncludeOidcArgs and AccessPolicyIncludeOidcOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeOidcInput` via:
+//
+//	AccessPolicyIncludeOidcArgs{...}
+type AccessPolicyIncludeOidcInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeOidcOutput() AccessPolicyIncludeOidcOutput
+	ToAccessPolicyIncludeOidcOutputWithContext(context.Context) AccessPolicyIncludeOidcOutput
+}
+
+type AccessPolicyIncludeOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyIncludeOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeOidcArgs) ToAccessPolicyIncludeOidcOutput() AccessPolicyIncludeOidcOutput {
+	return i.ToAccessPolicyIncludeOidcOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeOidcArgs) ToAccessPolicyIncludeOidcOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeOidcOutput)
+}
+
+func (i AccessPolicyIncludeOidcArgs) ToAccessPolicyIncludeOidcPtrOutput() AccessPolicyIncludeOidcPtrOutput {
+	return i.ToAccessPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeOidcArgs) ToAccessPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeOidcOutput).ToAccessPolicyIncludeOidcPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyIncludeOidcPtrInput is an input type that accepts AccessPolicyIncludeOidcArgs, AccessPolicyIncludeOidcPtr and AccessPolicyIncludeOidcPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeOidcPtrInput` via:
+//
+//	        AccessPolicyIncludeOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyIncludeOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeOidcPtrOutput() AccessPolicyIncludeOidcPtrOutput
+	ToAccessPolicyIncludeOidcPtrOutputWithContext(context.Context) AccessPolicyIncludeOidcPtrOutput
+}
+
+type accessPolicyIncludeOidcPtrType AccessPolicyIncludeOidcArgs
+
+func AccessPolicyIncludeOidcPtr(v *AccessPolicyIncludeOidcArgs) AccessPolicyIncludeOidcPtrInput {
+	return (*accessPolicyIncludeOidcPtrType)(v)
+}
+
+func (*accessPolicyIncludeOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (i *accessPolicyIncludeOidcPtrType) ToAccessPolicyIncludeOidcPtrOutput() AccessPolicyIncludeOidcPtrOutput {
+	return i.ToAccessPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyIncludeOidcPtrType) ToAccessPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeOidcPtrOutput)
+}
+
+type AccessPolicyIncludeOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeOidcOutput) ToAccessPolicyIncludeOidcOutput() AccessPolicyIncludeOidcOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOidcOutput) ToAccessPolicyIncludeOidcOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOidcOutput) ToAccessPolicyIncludeOidcPtrOutput() AccessPolicyIncludeOidcPtrOutput {
+	return o.ToAccessPolicyIncludeOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyIncludeOidcOutput) ToAccessPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIncludeOidc) *AccessPolicyIncludeOidc {
+		return &v
+	}).(AccessPolicyIncludeOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyIncludeOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyIncludeOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyIncludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyIncludeOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeOidcPtrOutput) ToAccessPolicyIncludeOidcPtrOutput() AccessPolicyIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOidcPtrOutput) ToAccessPolicyIncludeOidcPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOidcPtrOutput) Elem() AccessPolicyIncludeOidcOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeOidc) AccessPolicyIncludeOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyIncludeOidc
+		return ret
+	}).(AccessPolicyIncludeOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyIncludeOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyIncludeOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyIncludeOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32373,7 +34990,9 @@ type AccessPolicyRequire struct {
 	Gsuite             *AccessPolicyRequireGsuite             `pulumi:"gsuite"`
 	Ip                 *AccessPolicyRequireIp                 `pulumi:"ip"`
 	IpList             *AccessPolicyRequireIpList             `pulumi:"ipList"`
+	LinkedAppToken     *AccessPolicyRequireLinkedAppToken     `pulumi:"linkedAppToken"`
 	LoginMethod        *AccessPolicyRequireLoginMethod        `pulumi:"loginMethod"`
+	Oidc               *AccessPolicyRequireOidc               `pulumi:"oidc"`
 	Okta               *AccessPolicyRequireOkta               `pulumi:"okta"`
 	Saml               *AccessPolicyRequireSaml               `pulumi:"saml"`
 	ServiceToken       *AccessPolicyRequireServiceToken       `pulumi:"serviceToken"`
@@ -32411,7 +35030,9 @@ type AccessPolicyRequireArgs struct {
 	Gsuite             AccessPolicyRequireGsuitePtrInput             `pulumi:"gsuite"`
 	Ip                 AccessPolicyRequireIpPtrInput                 `pulumi:"ip"`
 	IpList             AccessPolicyRequireIpListPtrInput             `pulumi:"ipList"`
+	LinkedAppToken     AccessPolicyRequireLinkedAppTokenPtrInput     `pulumi:"linkedAppToken"`
 	LoginMethod        AccessPolicyRequireLoginMethodPtrInput        `pulumi:"loginMethod"`
+	Oidc               AccessPolicyRequireOidcPtrInput               `pulumi:"oidc"`
 	Okta               AccessPolicyRequireOktaPtrInput               `pulumi:"okta"`
 	Saml               AccessPolicyRequireSamlPtrInput               `pulumi:"saml"`
 	ServiceToken       AccessPolicyRequireServiceTokenPtrInput       `pulumi:"serviceToken"`
@@ -32542,8 +35163,16 @@ func (o AccessPolicyRequireOutput) IpList() AccessPolicyRequireIpListPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireIpList { return v.IpList }).(AccessPolicyRequireIpListPtrOutput)
 }
 
+func (o AccessPolicyRequireOutput) LinkedAppToken() AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireLinkedAppToken { return v.LinkedAppToken }).(AccessPolicyRequireLinkedAppTokenPtrOutput)
+}
+
 func (o AccessPolicyRequireOutput) LoginMethod() AccessPolicyRequireLoginMethodPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireLoginMethod { return v.LoginMethod }).(AccessPolicyRequireLoginMethodPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) Oidc() AccessPolicyRequireOidcPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireOidc { return v.Oidc }).(AccessPolicyRequireOidcPtrOutput)
 }
 
 func (o AccessPolicyRequireOutput) Okta() AccessPolicyRequireOktaPtrOutput {
@@ -35120,6 +37749,143 @@ func (o AccessPolicyRequireIpListPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessPolicyRequireLinkedAppToken struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid string `pulumi:"appUid"`
+}
+
+// AccessPolicyRequireLinkedAppTokenInput is an input type that accepts AccessPolicyRequireLinkedAppTokenArgs and AccessPolicyRequireLinkedAppTokenOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireLinkedAppTokenInput` via:
+//
+//	AccessPolicyRequireLinkedAppTokenArgs{...}
+type AccessPolicyRequireLinkedAppTokenInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireLinkedAppTokenOutput() AccessPolicyRequireLinkedAppTokenOutput
+	ToAccessPolicyRequireLinkedAppTokenOutputWithContext(context.Context) AccessPolicyRequireLinkedAppTokenOutput
+}
+
+type AccessPolicyRequireLinkedAppTokenArgs struct {
+	// The ID of an Access OIDC SaaS application
+	AppUid pulumi.StringInput `pulumi:"appUid"`
+}
+
+func (AccessPolicyRequireLinkedAppTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireLinkedAppTokenArgs) ToAccessPolicyRequireLinkedAppTokenOutput() AccessPolicyRequireLinkedAppTokenOutput {
+	return i.ToAccessPolicyRequireLinkedAppTokenOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireLinkedAppTokenArgs) ToAccessPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireLinkedAppTokenOutput)
+}
+
+func (i AccessPolicyRequireLinkedAppTokenArgs) ToAccessPolicyRequireLinkedAppTokenPtrOutput() AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireLinkedAppTokenArgs) ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireLinkedAppTokenOutput).ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyRequireLinkedAppTokenPtrInput is an input type that accepts AccessPolicyRequireLinkedAppTokenArgs, AccessPolicyRequireLinkedAppTokenPtr and AccessPolicyRequireLinkedAppTokenPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireLinkedAppTokenPtrInput` via:
+//
+//	        AccessPolicyRequireLinkedAppTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyRequireLinkedAppTokenPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireLinkedAppTokenPtrOutput() AccessPolicyRequireLinkedAppTokenPtrOutput
+	ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Context) AccessPolicyRequireLinkedAppTokenPtrOutput
+}
+
+type accessPolicyRequireLinkedAppTokenPtrType AccessPolicyRequireLinkedAppTokenArgs
+
+func AccessPolicyRequireLinkedAppTokenPtr(v *AccessPolicyRequireLinkedAppTokenArgs) AccessPolicyRequireLinkedAppTokenPtrInput {
+	return (*accessPolicyRequireLinkedAppTokenPtrType)(v)
+}
+
+func (*accessPolicyRequireLinkedAppTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (i *accessPolicyRequireLinkedAppTokenPtrType) ToAccessPolicyRequireLinkedAppTokenPtrOutput() AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return i.ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyRequireLinkedAppTokenPtrType) ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireLinkedAppTokenPtrOutput)
+}
+
+type AccessPolicyRequireLinkedAppTokenOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireLinkedAppTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireLinkedAppTokenOutput) ToAccessPolicyRequireLinkedAppTokenOutput() AccessPolicyRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyRequireLinkedAppTokenOutput) ToAccessPolicyRequireLinkedAppTokenOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenOutput {
+	return o
+}
+
+func (o AccessPolicyRequireLinkedAppTokenOutput) ToAccessPolicyRequireLinkedAppTokenPtrOutput() AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyRequireLinkedAppTokenOutput) ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyRequireLinkedAppToken) *AccessPolicyRequireLinkedAppToken {
+		return &v
+	}).(AccessPolicyRequireLinkedAppTokenPtrOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyRequireLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
+}
+
+type AccessPolicyRequireLinkedAppTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireLinkedAppTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireLinkedAppToken)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireLinkedAppTokenPtrOutput) ToAccessPolicyRequireLinkedAppTokenPtrOutput() AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireLinkedAppTokenPtrOutput) ToAccessPolicyRequireLinkedAppTokenPtrOutputWithContext(ctx context.Context) AccessPolicyRequireLinkedAppTokenPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireLinkedAppTokenPtrOutput) Elem() AccessPolicyRequireLinkedAppTokenOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireLinkedAppToken) AccessPolicyRequireLinkedAppToken {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyRequireLinkedAppToken
+		return ret
+	}).(AccessPolicyRequireLinkedAppTokenOutput)
+}
+
+// The ID of an Access OIDC SaaS application
+func (o AccessPolicyRequireLinkedAppTokenPtrOutput) AppUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireLinkedAppToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUid
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessPolicyRequireLoginMethod struct {
 	// The ID of an identity provider.
 	Id string `pulumi:"id"`
@@ -35254,6 +38020,181 @@ func (o AccessPolicyRequireLoginMethodPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireOidc struct {
+	// The name of the OIDC claim.
+	ClaimName string `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue string `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyRequireOidcInput is an input type that accepts AccessPolicyRequireOidcArgs and AccessPolicyRequireOidcOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireOidcInput` via:
+//
+//	AccessPolicyRequireOidcArgs{...}
+type AccessPolicyRequireOidcInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireOidcOutput() AccessPolicyRequireOidcOutput
+	ToAccessPolicyRequireOidcOutputWithContext(context.Context) AccessPolicyRequireOidcOutput
+}
+
+type AccessPolicyRequireOidcArgs struct {
+	// The name of the OIDC claim.
+	ClaimName pulumi.StringInput `pulumi:"claimName"`
+	// The OIDC claim value to look for.
+	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
+	// The ID of your OIDC identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyRequireOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireOidc)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireOidcArgs) ToAccessPolicyRequireOidcOutput() AccessPolicyRequireOidcOutput {
+	return i.ToAccessPolicyRequireOidcOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireOidcArgs) ToAccessPolicyRequireOidcOutputWithContext(ctx context.Context) AccessPolicyRequireOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireOidcOutput)
+}
+
+func (i AccessPolicyRequireOidcArgs) ToAccessPolicyRequireOidcPtrOutput() AccessPolicyRequireOidcPtrOutput {
+	return i.ToAccessPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireOidcArgs) ToAccessPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessPolicyRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireOidcOutput).ToAccessPolicyRequireOidcPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyRequireOidcPtrInput is an input type that accepts AccessPolicyRequireOidcArgs, AccessPolicyRequireOidcPtr and AccessPolicyRequireOidcPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireOidcPtrInput` via:
+//
+//	        AccessPolicyRequireOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPolicyRequireOidcPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireOidcPtrOutput() AccessPolicyRequireOidcPtrOutput
+	ToAccessPolicyRequireOidcPtrOutputWithContext(context.Context) AccessPolicyRequireOidcPtrOutput
+}
+
+type accessPolicyRequireOidcPtrType AccessPolicyRequireOidcArgs
+
+func AccessPolicyRequireOidcPtr(v *AccessPolicyRequireOidcArgs) AccessPolicyRequireOidcPtrInput {
+	return (*accessPolicyRequireOidcPtrType)(v)
+}
+
+func (*accessPolicyRequireOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireOidc)(nil)).Elem()
+}
+
+func (i *accessPolicyRequireOidcPtrType) ToAccessPolicyRequireOidcPtrOutput() AccessPolicyRequireOidcPtrOutput {
+	return i.ToAccessPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyRequireOidcPtrType) ToAccessPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessPolicyRequireOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireOidcPtrOutput)
+}
+
+type AccessPolicyRequireOidcOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireOidcOutput) ToAccessPolicyRequireOidcOutput() AccessPolicyRequireOidcOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOidcOutput) ToAccessPolicyRequireOidcOutputWithContext(ctx context.Context) AccessPolicyRequireOidcOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOidcOutput) ToAccessPolicyRequireOidcPtrOutput() AccessPolicyRequireOidcPtrOutput {
+	return o.ToAccessPolicyRequireOidcPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyRequireOidcOutput) ToAccessPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessPolicyRequireOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyRequireOidc) *AccessPolicyRequireOidc {
+		return &v
+	}).(AccessPolicyRequireOidcPtrOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyRequireOidcOutput) ClaimName() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireOidc) string { return v.ClaimName }).(pulumi.StringOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyRequireOidcOutput) ClaimValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyRequireOidcOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyRequireOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireOidc)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireOidcPtrOutput) ToAccessPolicyRequireOidcPtrOutput() AccessPolicyRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOidcPtrOutput) ToAccessPolicyRequireOidcPtrOutputWithContext(ctx context.Context) AccessPolicyRequireOidcPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOidcPtrOutput) Elem() AccessPolicyRequireOidcOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireOidc) AccessPolicyRequireOidc {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyRequireOidc
+		return ret
+	}).(AccessPolicyRequireOidcOutput)
+}
+
+// The name of the OIDC claim.
+func (o AccessPolicyRequireOidcPtrOutput) ClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC claim value to look for.
+func (o AccessPolicyRequireOidcPtrOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClaimValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of your OIDC identity provider.
+func (o AccessPolicyRequireOidcPtrOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityProviderId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -47212,10 +50153,10 @@ func (o DlpCustomProfileContextAwarenessSkipPtrOutput) Files() pulumi.BoolPtrOut
 }
 
 type DlpCustomProfileEntry struct {
-	Enabled bool                          `pulumi:"enabled"`
-	Name    string                        `pulumi:"name"`
-	Pattern *DlpCustomProfileEntryPattern `pulumi:"pattern"`
-	Words   []string                      `pulumi:"words"`
+	Enabled bool                         `pulumi:"enabled"`
+	EntryId *string                      `pulumi:"entryId"`
+	Name    string                       `pulumi:"name"`
+	Pattern DlpCustomProfileEntryPattern `pulumi:"pattern"`
 }
 
 // DlpCustomProfileEntryInput is an input type that accepts DlpCustomProfileEntryArgs and DlpCustomProfileEntryOutput values.
@@ -47230,10 +50171,10 @@ type DlpCustomProfileEntryInput interface {
 }
 
 type DlpCustomProfileEntryArgs struct {
-	Enabled pulumi.BoolInput                     `pulumi:"enabled"`
-	Name    pulumi.StringInput                   `pulumi:"name"`
-	Pattern DlpCustomProfileEntryPatternPtrInput `pulumi:"pattern"`
-	Words   pulumi.StringArrayInput              `pulumi:"words"`
+	Enabled pulumi.BoolInput                  `pulumi:"enabled"`
+	EntryId pulumi.StringPtrInput             `pulumi:"entryId"`
+	Name    pulumi.StringInput                `pulumi:"name"`
+	Pattern DlpCustomProfileEntryPatternInput `pulumi:"pattern"`
 }
 
 func (DlpCustomProfileEntryArgs) ElementType() reflect.Type {
@@ -47291,16 +50232,16 @@ func (o DlpCustomProfileEntryOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v DlpCustomProfileEntry) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+func (o DlpCustomProfileEntryOutput) EntryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DlpCustomProfileEntry) *string { return v.EntryId }).(pulumi.StringPtrOutput)
+}
+
 func (o DlpCustomProfileEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileEntry) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o DlpCustomProfileEntryOutput) Pattern() DlpCustomProfileEntryPatternPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileEntry) *DlpCustomProfileEntryPattern { return v.Pattern }).(DlpCustomProfileEntryPatternPtrOutput)
-}
-
-func (o DlpCustomProfileEntryOutput) Words() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DlpCustomProfileEntry) []string { return v.Words }).(pulumi.StringArrayOutput)
+func (o DlpCustomProfileEntryOutput) Pattern() DlpCustomProfileEntryPatternOutput {
+	return o.ApplyT(func(v DlpCustomProfileEntry) DlpCustomProfileEntryPattern { return v.Pattern }).(DlpCustomProfileEntryPatternOutput)
 }
 
 type DlpCustomProfileEntryArrayOutput struct{ *pulumi.OutputState }
@@ -47362,47 +50303,6 @@ func (i DlpCustomProfileEntryPatternArgs) ToDlpCustomProfileEntryPatternOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileEntryPatternOutput)
 }
 
-func (i DlpCustomProfileEntryPatternArgs) ToDlpCustomProfileEntryPatternPtrOutput() DlpCustomProfileEntryPatternPtrOutput {
-	return i.ToDlpCustomProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileEntryPatternArgs) ToDlpCustomProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileEntryPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileEntryPatternOutput).ToDlpCustomProfileEntryPatternPtrOutputWithContext(ctx)
-}
-
-// DlpCustomProfileEntryPatternPtrInput is an input type that accepts DlpCustomProfileEntryPatternArgs, DlpCustomProfileEntryPatternPtr and DlpCustomProfileEntryPatternPtrOutput values.
-// You can construct a concrete instance of `DlpCustomProfileEntryPatternPtrInput` via:
-//
-//	        DlpCustomProfileEntryPatternArgs{...}
-//
-//	or:
-//
-//	        nil
-type DlpCustomProfileEntryPatternPtrInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileEntryPatternPtrOutput() DlpCustomProfileEntryPatternPtrOutput
-	ToDlpCustomProfileEntryPatternPtrOutputWithContext(context.Context) DlpCustomProfileEntryPatternPtrOutput
-}
-
-type dlpCustomProfileEntryPatternPtrType DlpCustomProfileEntryPatternArgs
-
-func DlpCustomProfileEntryPatternPtr(v *DlpCustomProfileEntryPatternArgs) DlpCustomProfileEntryPatternPtrInput {
-	return (*dlpCustomProfileEntryPatternPtrType)(v)
-}
-
-func (*dlpCustomProfileEntryPatternPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileEntryPattern)(nil)).Elem()
-}
-
-func (i *dlpCustomProfileEntryPatternPtrType) ToDlpCustomProfileEntryPatternPtrOutput() DlpCustomProfileEntryPatternPtrOutput {
-	return i.ToDlpCustomProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (i *dlpCustomProfileEntryPatternPtrType) ToDlpCustomProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileEntryPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileEntryPatternPtrOutput)
-}
-
 type DlpCustomProfileEntryPatternOutput struct{ *pulumi.OutputState }
 
 func (DlpCustomProfileEntryPatternOutput) ElementType() reflect.Type {
@@ -47417,16 +50317,6 @@ func (o DlpCustomProfileEntryPatternOutput) ToDlpCustomProfileEntryPatternOutput
 	return o
 }
 
-func (o DlpCustomProfileEntryPatternOutput) ToDlpCustomProfileEntryPatternPtrOutput() DlpCustomProfileEntryPatternPtrOutput {
-	return o.ToDlpCustomProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (o DlpCustomProfileEntryPatternOutput) ToDlpCustomProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileEntryPatternPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpCustomProfileEntryPattern) *DlpCustomProfileEntryPattern {
-		return &v
-	}).(DlpCustomProfileEntryPatternPtrOutput)
-}
-
 func (o DlpCustomProfileEntryPatternOutput) Regex() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
 }
@@ -47438,55 +50328,10 @@ func (o DlpCustomProfileEntryPatternOutput) Validation() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DlpCustomProfileEntryPattern) *string { return v.Validation }).(pulumi.StringPtrOutput)
 }
 
-type DlpCustomProfileEntryPatternPtrOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileEntryPatternPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileEntryPattern)(nil)).Elem()
-}
-
-func (o DlpCustomProfileEntryPatternPtrOutput) ToDlpCustomProfileEntryPatternPtrOutput() DlpCustomProfileEntryPatternPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileEntryPatternPtrOutput) ToDlpCustomProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileEntryPatternPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileEntryPatternPtrOutput) Elem() DlpCustomProfileEntryPatternOutput {
-	return o.ApplyT(func(v *DlpCustomProfileEntryPattern) DlpCustomProfileEntryPattern {
-		if v != nil {
-			return *v
-		}
-		var ret DlpCustomProfileEntryPattern
-		return ret
-	}).(DlpCustomProfileEntryPatternOutput)
-}
-
-func (o DlpCustomProfileEntryPatternPtrOutput) Regex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileEntryPattern) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Regex
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "luhn".
-//
-// Deprecated: This attribute is deprecated.
-func (o DlpCustomProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileEntryPattern) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Validation
-	}).(pulumi.StringPtrOutput)
-}
-
 type DlpCustomProfileSharedEntry struct {
 	Enabled bool   `pulumi:"enabled"`
 	EntryId string `pulumi:"entryId"`
-	// Available values: "custom", "predefined", "integration", "exactData".
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
 	EntryType string `pulumi:"entryType"`
 }
 
@@ -47504,7 +50349,7 @@ type DlpCustomProfileSharedEntryInput interface {
 type DlpCustomProfileSharedEntryArgs struct {
 	Enabled pulumi.BoolInput   `pulumi:"enabled"`
 	EntryId pulumi.StringInput `pulumi:"entryId"`
-	// Available values: "custom", "predefined", "integration", "exactData".
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
 	EntryType pulumi.StringInput `pulumi:"entryType"`
 }
 
@@ -47567,7 +50412,7 @@ func (o DlpCustomProfileSharedEntryOutput) EntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileSharedEntry) string { return v.EntryId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom", "predefined", "integration", "exactData".
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint".
 func (o DlpCustomProfileSharedEntryOutput) EntryType() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileSharedEntry) string { return v.EntryType }).(pulumi.StringOutput)
 }
@@ -53425,7 +56270,9 @@ func (o KeylessCertificateTunnelPtrOutput) VnetId() pulumi.StringPtrOutput {
 }
 
 type ListItemHostname struct {
-	UrlHostname string `pulumi:"urlHostname"`
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname *bool  `pulumi:"excludeExactHostname"`
+	UrlHostname          string `pulumi:"urlHostname"`
 }
 
 // ListItemHostnameInput is an input type that accepts ListItemHostnameArgs and ListItemHostnameOutput values.
@@ -53440,7 +56287,9 @@ type ListItemHostnameInput interface {
 }
 
 type ListItemHostnameArgs struct {
-	UrlHostname pulumi.StringInput `pulumi:"urlHostname"`
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname pulumi.BoolPtrInput `pulumi:"excludeExactHostname"`
+	UrlHostname          pulumi.StringInput  `pulumi:"urlHostname"`
 }
 
 func (ListItemHostnameArgs) ElementType() reflect.Type {
@@ -53520,6 +56369,11 @@ func (o ListItemHostnameOutput) ToListItemHostnamePtrOutputWithContext(ctx conte
 	}).(ListItemHostnamePtrOutput)
 }
 
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+func (o ListItemHostnameOutput) ExcludeExactHostname() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListItemHostname) *bool { return v.ExcludeExactHostname }).(pulumi.BoolPtrOutput)
+}
+
 func (o ListItemHostnameOutput) UrlHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ListItemHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
 }
@@ -53546,6 +56400,16 @@ func (o ListItemHostnamePtrOutput) Elem() ListItemHostnameOutput {
 		var ret ListItemHostname
 		return ret
 	}).(ListItemHostnameOutput)
+}
+
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+func (o ListItemHostnamePtrOutput) ExcludeExactHostname() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListItemHostname) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExactHostname
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ListItemHostnamePtrOutput) UrlHostname() pulumi.StringPtrOutput {
@@ -59295,712 +62159,6 @@ func (o MagicTransitSiteWanStaticAddressingPtrOutput) SecondaryAddress() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-type MagicWanGreTunnelGreTunnel struct {
-	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
-	Description *string                                `pulumi:"description"`
-	HealthCheck *MagicWanGreTunnelGreTunnelHealthCheck `pulumi:"healthCheck"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-	Mtu *int `pulumi:"mtu"`
-	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-	Name *string `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel.
-	Ttl *int `pulumi:"ttl"`
-}
-
-// MagicWanGreTunnelGreTunnelInput is an input type that accepts MagicWanGreTunnelGreTunnelArgs and MagicWanGreTunnelGreTunnelOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelInput` via:
-//
-//	MagicWanGreTunnelGreTunnelArgs{...}
-type MagicWanGreTunnelGreTunnelInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelOutput() MagicWanGreTunnelGreTunnelOutput
-	ToMagicWanGreTunnelGreTunnelOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelOutput
-}
-
-type MagicWanGreTunnelGreTunnelArgs struct {
-	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint pulumi.StringPtrInput `pulumi:"cloudflareGreEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint pulumi.StringPtrInput `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
-	Description pulumi.StringPtrInput                         `pulumi:"description"`
-	HealthCheck MagicWanGreTunnelGreTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
-	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel.
-	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
-}
-
-func (MagicWanGreTunnelGreTunnelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelGreTunnelArgs) ToMagicWanGreTunnelGreTunnelOutput() MagicWanGreTunnelGreTunnelOutput {
-	return i.ToMagicWanGreTunnelGreTunnelOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelArgs) ToMagicWanGreTunnelGreTunnelOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelOutput)
-}
-
-func (i MagicWanGreTunnelGreTunnelArgs) ToMagicWanGreTunnelGreTunnelPtrOutput() MagicWanGreTunnelGreTunnelPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelArgs) ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelOutput).ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelGreTunnelPtrInput is an input type that accepts MagicWanGreTunnelGreTunnelArgs, MagicWanGreTunnelGreTunnelPtr and MagicWanGreTunnelGreTunnelPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelPtrInput` via:
-//
-//	        MagicWanGreTunnelGreTunnelArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelGreTunnelPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelPtrOutput() MagicWanGreTunnelGreTunnelPtrOutput
-	ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelPtrOutput
-}
-
-type magicWanGreTunnelGreTunnelPtrType MagicWanGreTunnelGreTunnelArgs
-
-func MagicWanGreTunnelGreTunnelPtr(v *MagicWanGreTunnelGreTunnelArgs) MagicWanGreTunnelGreTunnelPtrInput {
-	return (*magicWanGreTunnelGreTunnelPtrType)(v)
-}
-
-func (*magicWanGreTunnelGreTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelGreTunnelPtrType) ToMagicWanGreTunnelGreTunnelPtrOutput() MagicWanGreTunnelGreTunnelPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelGreTunnelPtrType) ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelOutput) ToMagicWanGreTunnelGreTunnelOutput() MagicWanGreTunnelGreTunnelOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelOutput) ToMagicWanGreTunnelGreTunnelOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelOutput) ToMagicWanGreTunnelGreTunnelPtrOutput() MagicWanGreTunnelGreTunnelPtrOutput {
-	return o.ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelGreTunnelOutput) ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelGreTunnel) *MagicWanGreTunnelGreTunnel {
-		return &v
-	}).(MagicWanGreTunnelGreTunnelPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelOutput) CloudflareGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.CloudflareGreEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanGreTunnelGreTunnelOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelOutput) CustomerGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.CustomerGreEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// An optional description of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanGreTunnelGreTunnelOutput) HealthCheck() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *MagicWanGreTunnelGreTunnelHealthCheck { return v.HealthCheck }).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanGreTunnelGreTunnelOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanGreTunnelGreTunnelOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.InterfaceAddress }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanGreTunnelGreTunnelOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-func (o MagicWanGreTunnelGreTunnelOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *int { return v.Mtu }).(pulumi.IntPtrOutput)
-}
-
-// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Time To Live (TTL) in number of hops of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *int { return v.Ttl }).(pulumi.IntPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelPtrOutput) ToMagicWanGreTunnelGreTunnelPtrOutput() MagicWanGreTunnelGreTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelPtrOutput) ToMagicWanGreTunnelGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Elem() MagicWanGreTunnelGreTunnelOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) MagicWanGreTunnelGreTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelGreTunnel
-		return ret
-	}).(MagicWanGreTunnelGreTunnelOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) CloudflareGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudflareGreEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) CustomerGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerGreEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional description of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanGreTunnelGreTunnelPtrOutput) HealthCheck() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *MagicWanGreTunnelGreTunnelHealthCheck {
-		if v == nil {
-			return nil
-		}
-		return v.HealthCheck
-	}).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InterfaceAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Mtu
-	}).(pulumi.IntPtrOutput)
-}
-
-// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time To Live (TTL) in number of hops of the GRE tunnel.
-func (o MagicWanGreTunnelGreTunnelPtrOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Ttl
-	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheck struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction *string `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled *bool `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate *string `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target *MagicWanGreTunnelGreTunnelHealthCheckTarget `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type *string `pulumi:"type"`
-}
-
-// MagicWanGreTunnelGreTunnelHealthCheckInput is an input type that accepts MagicWanGreTunnelGreTunnelHealthCheckArgs and MagicWanGreTunnelGreTunnelHealthCheckOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelHealthCheckInput` via:
-//
-//	MagicWanGreTunnelGreTunnelHealthCheckArgs{...}
-type MagicWanGreTunnelGreTunnelHealthCheckInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelHealthCheckOutput() MagicWanGreTunnelGreTunnelHealthCheckOutput
-	ToMagicWanGreTunnelGreTunnelHealthCheckOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelHealthCheckOutput
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckArgs struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate pulumi.StringPtrInput `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (MagicWanGreTunnelGreTunnelHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckArgs) ToMagicWanGreTunnelGreTunnelHealthCheckOutput() MagicWanGreTunnelGreTunnelHealthCheckOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckArgs) ToMagicWanGreTunnelGreTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckOutput)
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckArgs) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckArgs) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckOutput).ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelGreTunnelHealthCheckPtrInput is an input type that accepts MagicWanGreTunnelGreTunnelHealthCheckArgs, MagicWanGreTunnelGreTunnelHealthCheckPtr and MagicWanGreTunnelGreTunnelHealthCheckPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelHealthCheckPtrInput` via:
-//
-//	        MagicWanGreTunnelGreTunnelHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelGreTunnelHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput
-	ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelHealthCheckPtrOutput
-}
-
-type magicWanGreTunnelGreTunnelHealthCheckPtrType MagicWanGreTunnelGreTunnelHealthCheckArgs
-
-func MagicWanGreTunnelGreTunnelHealthCheckPtr(v *MagicWanGreTunnelGreTunnelHealthCheckArgs) MagicWanGreTunnelGreTunnelHealthCheckPtrInput {
-	return (*magicWanGreTunnelGreTunnelHealthCheckPtrType)(v)
-}
-
-func (*magicWanGreTunnelGreTunnelHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelGreTunnelHealthCheckPtrType) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelGreTunnelHealthCheckPtrType) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) ToMagicWanGreTunnelGreTunnelHealthCheckOutput() MagicWanGreTunnelGreTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) ToMagicWanGreTunnelGreTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o.ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelGreTunnelHealthCheck) *MagicWanGreTunnelGreTunnelHealthCheck {
-		return &v
-	}).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheck) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheck) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheck) *string { return v.Rate }).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) Target() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheck) *MagicWanGreTunnelGreTunnelHealthCheckTarget {
-		return v.Target
-	}).(MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanGreTunnelGreTunnelHealthCheckOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheck) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) ToMagicWanGreTunnelGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Elem() MagicWanGreTunnelGreTunnelHealthCheckOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) MagicWanGreTunnelGreTunnelHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelGreTunnelHealthCheck
-		return ret
-	}).(MagicWanGreTunnelGreTunnelHealthCheckOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Direction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Rate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Target() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) *MagicWanGreTunnelGreTunnelHealthCheckTarget {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanGreTunnelGreTunnelHealthCheckPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckTarget struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective *string `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved *string `pulumi:"saved"`
-}
-
-// MagicWanGreTunnelGreTunnelHealthCheckTargetInput is an input type that accepts MagicWanGreTunnelGreTunnelHealthCheckTargetArgs and MagicWanGreTunnelGreTunnelHealthCheckTargetOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelHealthCheckTargetInput` via:
-//
-//	MagicWanGreTunnelGreTunnelHealthCheckTargetArgs{...}
-type MagicWanGreTunnelGreTunnelHealthCheckTargetInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetOutput
-	ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetOutput
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckTargetArgs struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective pulumi.StringPtrInput `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved pulumi.StringPtrInput `pulumi:"saved"`
-}
-
-func (MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckTargetOutput)
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckTargetOutput).ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput is an input type that accepts MagicWanGreTunnelGreTunnelHealthCheckTargetArgs, MagicWanGreTunnelGreTunnelHealthCheckTargetPtr and MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput` via:
-//
-//	        MagicWanGreTunnelGreTunnelHealthCheckTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput
-	ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput
-}
-
-type magicWanGreTunnelGreTunnelHealthCheckTargetPtrType MagicWanGreTunnelGreTunnelHealthCheckTargetArgs
-
-func MagicWanGreTunnelGreTunnelHealthCheckTargetPtr(v *MagicWanGreTunnelGreTunnelHealthCheckTargetArgs) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput {
-	return (*magicWanGreTunnelGreTunnelHealthCheckTargetPtrType)(v)
-}
-
-func (*magicWanGreTunnelGreTunnelHealthCheckTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelGreTunnelHealthCheckTargetPtrType) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelGreTunnelHealthCheckTargetPtrType) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckTargetOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o.ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelGreTunnelHealthCheckTarget) *MagicWanGreTunnelGreTunnelHealthCheckTarget {
-		return &v
-	}).(MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheckTarget) *string { return v.Effective }).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelGreTunnelHealthCheckTarget) *string { return v.Saved }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) ToMagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) Elem() MagicWanGreTunnelGreTunnelHealthCheckTargetOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheckTarget) MagicWanGreTunnelGreTunnelHealthCheckTarget {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelGreTunnelHealthCheckTarget
-		return ret
-	}).(MagicWanGreTunnelGreTunnelHealthCheckTargetOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Effective
-	}).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Saved
-	}).(pulumi.StringPtrOutput)
-}
-
 type MagicWanGreTunnelHealthCheck struct {
 	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
 	// Available values: "unidirectional", "bidirectional".
@@ -60375,714 +62533,6 @@ func (o MagicWanGreTunnelHealthCheckTargetPtrOutput) Effective() pulumi.StringPt
 // The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
 func (o MagicWanGreTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Saved
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnel struct {
-	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
-	Description *string                                        `pulumi:"description"`
-	HealthCheck *MagicWanGreTunnelModifiedGreTunnelHealthCheck `pulumi:"healthCheck"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-	Mtu *int `pulumi:"mtu"`
-	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-	Name *string `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel.
-	Ttl *int `pulumi:"ttl"`
-}
-
-// MagicWanGreTunnelModifiedGreTunnelInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelArgs and MagicWanGreTunnelModifiedGreTunnelOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelInput` via:
-//
-//	MagicWanGreTunnelModifiedGreTunnelArgs{...}
-type MagicWanGreTunnelModifiedGreTunnelInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelOutput() MagicWanGreTunnelModifiedGreTunnelOutput
-	ToMagicWanGreTunnelModifiedGreTunnelOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelOutput
-}
-
-type MagicWanGreTunnelModifiedGreTunnelArgs struct {
-	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint pulumi.StringPtrInput `pulumi:"cloudflareGreEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint pulumi.StringPtrInput `pulumi:"customerGreEndpoint"`
-	// An optional description of the GRE tunnel.
-	Description pulumi.StringPtrInput                                 `pulumi:"description"`
-	HealthCheck MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
-	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Time To Live (TTL) in number of hops of the GRE tunnel.
-	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
-}
-
-func (MagicWanGreTunnelModifiedGreTunnelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnel)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelArgs) ToMagicWanGreTunnelModifiedGreTunnelOutput() MagicWanGreTunnelModifiedGreTunnelOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelArgs) ToMagicWanGreTunnelModifiedGreTunnelOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelOutput)
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelArgs) ToMagicWanGreTunnelModifiedGreTunnelPtrOutput() MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelArgs) ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelOutput).ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelModifiedGreTunnelPtrInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelArgs, MagicWanGreTunnelModifiedGreTunnelPtr and MagicWanGreTunnelModifiedGreTunnelPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelPtrInput` via:
-//
-//	        MagicWanGreTunnelModifiedGreTunnelArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelModifiedGreTunnelPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelPtrOutput() MagicWanGreTunnelModifiedGreTunnelPtrOutput
-	ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelPtrOutput
-}
-
-type magicWanGreTunnelModifiedGreTunnelPtrType MagicWanGreTunnelModifiedGreTunnelArgs
-
-func MagicWanGreTunnelModifiedGreTunnelPtr(v *MagicWanGreTunnelModifiedGreTunnelArgs) MagicWanGreTunnelModifiedGreTunnelPtrInput {
-	return (*magicWanGreTunnelModifiedGreTunnelPtrType)(v)
-}
-
-func (*magicWanGreTunnelModifiedGreTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnel)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelPtrType) ToMagicWanGreTunnelModifiedGreTunnelPtrOutput() MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelPtrType) ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnel)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) ToMagicWanGreTunnelModifiedGreTunnelOutput() MagicWanGreTunnelModifiedGreTunnelOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) ToMagicWanGreTunnelModifiedGreTunnelOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) ToMagicWanGreTunnelModifiedGreTunnelPtrOutput() MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return o.ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelModifiedGreTunnel) *MagicWanGreTunnelModifiedGreTunnel {
-		return &v
-	}).(MagicWanGreTunnelModifiedGreTunnelPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) CloudflareGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.CloudflareGreEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) CustomerGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.CustomerGreEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// An optional description of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) HealthCheck() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *MagicWanGreTunnelModifiedGreTunnelHealthCheck {
-		return v.HealthCheck
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.InterfaceAddress }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *int { return v.Mtu }).(pulumi.IntPtrOutput)
-}
-
-// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Time To Live (TTL) in number of hops of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *int { return v.Ttl }).(pulumi.IntPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnel)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelPtrOutput() MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Elem() MagicWanGreTunnelModifiedGreTunnelOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) MagicWanGreTunnelModifiedGreTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelModifiedGreTunnel
-		return ret
-	}).(MagicWanGreTunnelModifiedGreTunnelOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) CloudflareGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudflareGreEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) CustomerGreEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerGreEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional description of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) HealthCheck() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *MagicWanGreTunnelModifiedGreTunnelHealthCheck {
-		if v == nil {
-			return nil
-		}
-		return v.HealthCheck
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InterfaceAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Mtu
-	}).(pulumi.IntPtrOutput)
-}
-
-// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time To Live (TTL) in number of hops of the GRE tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Ttl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Ttl
-	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheck struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction *string `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled *bool `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate *string `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type *string `pulumi:"type"`
-}
-
-// MagicWanGreTunnelModifiedGreTunnelHealthCheckInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs and MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelHealthCheckInput` via:
-//
-//	MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs{...}
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate pulumi.StringPtrInput `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput)
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput).ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs, MagicWanGreTunnelModifiedGreTunnelHealthCheckPtr and MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput` via:
-//
-//	        MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput
-}
-
-type magicWanGreTunnelModifiedGreTunnelHealthCheckPtrType MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs
-
-func MagicWanGreTunnelModifiedGreTunnelHealthCheckPtr(v *MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput {
-	return (*magicWanGreTunnelModifiedGreTunnelHealthCheckPtrType)(v)
-}
-
-func (*magicWanGreTunnelModifiedGreTunnelHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelHealthCheckPtrType) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelHealthCheckPtrType) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *MagicWanGreTunnelModifiedGreTunnelHealthCheck {
-		return &v
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string { return v.Rate }).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) Target() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget {
-		return v.Target
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Elem() MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) MagicWanGreTunnelModifiedGreTunnelHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelModifiedGreTunnelHealthCheck
-		return ret
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Direction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Rate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Target() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective *string `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved *string `pulumi:"saved"`
-}
-
-// MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs and MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetInput` via:
-//
-//	MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs{...}
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective pulumi.StringPtrInput `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved pulumi.StringPtrInput `pulumi:"saved"`
-}
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput)
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput).ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(ctx)
-}
-
-// MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput is an input type that accepts MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs, MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtr and MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput` via:
-//
-//	        MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput
-	ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput
-}
-
-type magicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrType MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs
-
-func MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtr(v *MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput {
-	return (*magicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrType)(v)
-}
-
-func (*magicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrType) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrType) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o.ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget {
-		return &v
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) *string { return v.Effective }).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) *string { return v.Saved }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) ToMagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) Elem() MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget
-		return ret
-	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Effective
-	}).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnelHealthCheckTarget) *string {
 		if v == nil {
 			return nil
 		}
@@ -61471,1738 +62921,6 @@ func (o MagicWanIpsecTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-type MagicWanIpsecTunnelIpsecTunnel struct {
-	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher *bool `pulumi:"allowNullCipher"`
-	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint *string `pulumi:"cloudflareEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-	CustomerEndpoint *string `pulumi:"customerEndpoint"`
-	// An optional description forthe IPsec tunnel.
-	Description *string                                    `pulumi:"description"`
-	HealthCheck *MagicWanIpsecTunnelIpsecTunnelHealthCheck `pulumi:"healthCheck"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-	Name *string `pulumi:"name"`
-	// The PSK metadata that includes when the PSK was generated.
-	PskMetadata *MagicWanIpsecTunnelIpsecTunnelPskMetadata `pulumi:"pskMetadata"`
-	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-	ReplayProtection *bool `pulumi:"replayProtection"`
-}
-
-// MagicWanIpsecTunnelIpsecTunnelInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelArgs and MagicWanIpsecTunnelIpsecTunnelOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelInput` via:
-//
-//	MagicWanIpsecTunnelIpsecTunnelArgs{...}
-type MagicWanIpsecTunnelIpsecTunnelInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelOutput() MagicWanIpsecTunnelIpsecTunnelOutput
-	ToMagicWanIpsecTunnelIpsecTunnelOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelOutput
-}
-
-type MagicWanIpsecTunnelIpsecTunnelArgs struct {
-	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher pulumi.BoolPtrInput `pulumi:"allowNullCipher"`
-	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint pulumi.StringPtrInput `pulumi:"cloudflareEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-	CustomerEndpoint pulumi.StringPtrInput `pulumi:"customerEndpoint"`
-	// An optional description forthe IPsec tunnel.
-	Description pulumi.StringPtrInput                             `pulumi:"description"`
-	HealthCheck MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The PSK metadata that includes when the PSK was generated.
-	PskMetadata MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput `pulumi:"pskMetadata"`
-	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-	ReplayProtection pulumi.BoolPtrInput `pulumi:"replayProtection"`
-}
-
-func (MagicWanIpsecTunnelIpsecTunnelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArgs) ToMagicWanIpsecTunnelIpsecTunnelOutput() MagicWanIpsecTunnelIpsecTunnelOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArgs) ToMagicWanIpsecTunnelIpsecTunnelOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelOutput)
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArgs) ToMagicWanIpsecTunnelIpsecTunnelPtrOutput() MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArgs) ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelOutput).ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelIpsecTunnelPtrInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelArgs, MagicWanIpsecTunnelIpsecTunnelPtr and MagicWanIpsecTunnelIpsecTunnelPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelPtrInput` via:
-//
-//	        MagicWanIpsecTunnelIpsecTunnelArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelIpsecTunnelPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelPtrOutput() MagicWanIpsecTunnelIpsecTunnelPtrOutput
-	ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelPtrOutput
-}
-
-type magicWanIpsecTunnelIpsecTunnelPtrType MagicWanIpsecTunnelIpsecTunnelArgs
-
-func MagicWanIpsecTunnelIpsecTunnelPtr(v *MagicWanIpsecTunnelIpsecTunnelArgs) MagicWanIpsecTunnelIpsecTunnelPtrInput {
-	return (*magicWanIpsecTunnelIpsecTunnelPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelIpsecTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelPtrType) ToMagicWanIpsecTunnelIpsecTunnelPtrOutput() MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelPtrType) ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ToMagicWanIpsecTunnelIpsecTunnelOutput() MagicWanIpsecTunnelIpsecTunnelOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ToMagicWanIpsecTunnelIpsecTunnelOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ToMagicWanIpsecTunnelIpsecTunnelPtrOutput() MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return o.ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelIpsecTunnel) *MagicWanIpsecTunnelIpsecTunnel {
-		return &v
-	}).(MagicWanIpsecTunnelIpsecTunnelPtrOutput)
-}
-
-// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) AllowNullCipher() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *bool { return v.AllowNullCipher }).(pulumi.BoolPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) CloudflareEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.CloudflareEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) CustomerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.CustomerEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// An optional description forthe IPsec tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) HealthCheck() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *MagicWanIpsecTunnelIpsecTunnelHealthCheck {
-		return v.HealthCheck
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.InterfaceAddress }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The PSK metadata that includes when the PSK was generated.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) PskMetadata() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *MagicWanIpsecTunnelIpsecTunnelPskMetadata {
-		return v.PskMetadata
-	}).(MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput)
-}
-
-// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-func (o MagicWanIpsecTunnelIpsecTunnelOutput) ReplayProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *bool { return v.ReplayProtection }).(pulumi.BoolPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelPtrOutput() MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) Elem() MagicWanIpsecTunnelIpsecTunnelOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) MagicWanIpsecTunnelIpsecTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelIpsecTunnel
-		return ret
-	}).(MagicWanIpsecTunnelIpsecTunnelOutput)
-}
-
-// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) AllowNullCipher() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowNullCipher
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) CloudflareEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudflareEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) CustomerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional description forthe IPsec tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) HealthCheck() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *MagicWanIpsecTunnelIpsecTunnelHealthCheck {
-		if v == nil {
-			return nil
-		}
-		return v.HealthCheck
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InterfaceAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The PSK metadata that includes when the PSK was generated.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) PskMetadata() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *MagicWanIpsecTunnelIpsecTunnelPskMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.PskMetadata
-	}).(MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput)
-}
-
-// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) ReplayProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ReplayProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheck struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction *string `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled *bool `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate *string `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type *string `pulumi:"type"`
-}
-
-// MagicWanIpsecTunnelIpsecTunnelHealthCheckInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs and MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelHealthCheckInput` via:
-//
-//	MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{...}
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate pulumi.StringPtrInput `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput)
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput).ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs, MagicWanIpsecTunnelIpsecTunnelHealthCheckPtr and MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput` via:
-//
-//	        MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput
-}
-
-type magicWanIpsecTunnelIpsecTunnelHealthCheckPtrType MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs
-
-func MagicWanIpsecTunnelIpsecTunnelHealthCheckPtr(v *MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput {
-	return (*magicWanIpsecTunnelIpsecTunnelHealthCheckPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelIpsecTunnelHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelHealthCheckPtrType) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelHealthCheckPtrType) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *MagicWanIpsecTunnelIpsecTunnelHealthCheck {
-		return &v
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string { return v.Rate }).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) Target() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget {
-		return v.Target
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Elem() MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) MagicWanIpsecTunnelIpsecTunnelHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelIpsecTunnelHealthCheck
-		return ret
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Direction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Rate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Target() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective *string `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved *string `pulumi:"saved"`
-}
-
-// MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs and MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput` via:
-//
-//	MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{...}
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective pulumi.StringPtrInput `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved pulumi.StringPtrInput `pulumi:"saved"`
-}
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput)
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput).ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs, MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtr and MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput` via:
-//
-//	        MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput
-	ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput
-}
-
-type magicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrType MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs
-
-func MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtr(v *MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput {
-	return (*magicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrType) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrType) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget {
-		return &v
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) *string { return v.Effective }).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) *string { return v.Saved }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) Elem() MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget
-		return ret
-	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Effective
-	}).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Saved
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelPskMetadata struct {
-	// The date and time the tunnel was last modified.
-	LastGeneratedOn *string `pulumi:"lastGeneratedOn"`
-}
-
-// MagicWanIpsecTunnelIpsecTunnelPskMetadataInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs and MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelPskMetadataInput` via:
-//
-//	MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs{...}
-type MagicWanIpsecTunnelIpsecTunnelPskMetadataInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput
-	ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput
-}
-
-type MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs struct {
-	// The date and time the tunnel was last modified.
-	LastGeneratedOn pulumi.StringPtrInput `pulumi:"lastGeneratedOn"`
-}
-
-func (MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput)
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput).ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs, MagicWanIpsecTunnelIpsecTunnelPskMetadataPtr and MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput` via:
-//
-//	        MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput
-	ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput
-}
-
-type magicWanIpsecTunnelIpsecTunnelPskMetadataPtrType MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs
-
-func MagicWanIpsecTunnelIpsecTunnelPskMetadataPtr(v *MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput {
-	return (*magicWanIpsecTunnelIpsecTunnelPskMetadataPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelIpsecTunnelPskMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o.ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelIpsecTunnelPskMetadata) *MagicWanIpsecTunnelIpsecTunnelPskMetadata {
-		return &v
-	}).(MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput) LastGeneratedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnelPskMetadata) *string { return v.LastGeneratedOn }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput) Elem() MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelPskMetadata) MagicWanIpsecTunnelIpsecTunnelPskMetadata {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelIpsecTunnelPskMetadata
-		return ret
-	}).(MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput) LastGeneratedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnelPskMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastGeneratedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnel struct {
-	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher *bool `pulumi:"allowNullCipher"`
-	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint *string `pulumi:"cloudflareEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-	CustomerEndpoint *string `pulumi:"customerEndpoint"`
-	// An optional description forthe IPsec tunnel.
-	Description *string                                            `pulumi:"description"`
-	HealthCheck *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck `pulumi:"healthCheck"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-	Name *string `pulumi:"name"`
-	// The PSK metadata that includes when the PSK was generated.
-	PskMetadata *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata `pulumi:"pskMetadata"`
-	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-	ReplayProtection *bool `pulumi:"replayProtection"`
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelArgs and MagicWanIpsecTunnelModifiedIpsecTunnelOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelInput` via:
-//
-//	MagicWanIpsecTunnelModifiedIpsecTunnelArgs{...}
-type MagicWanIpsecTunnelModifiedIpsecTunnelInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelOutput() MagicWanIpsecTunnelModifiedIpsecTunnelOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelOutput
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelArgs struct {
-	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher pulumi.BoolPtrInput `pulumi:"allowNullCipher"`
-	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-	CloudflareEndpoint pulumi.StringPtrInput `pulumi:"cloudflareEndpoint"`
-	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-	CustomerEndpoint pulumi.StringPtrInput `pulumi:"customerEndpoint"`
-	// An optional description forthe IPsec tunnel.
-	Description pulumi.StringPtrInput                                     `pulumi:"description"`
-	HealthCheck MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
-	// The date and time the tunnel was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The PSK metadata that includes when the PSK was generated.
-	PskMetadata MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput `pulumi:"pskMetadata"`
-	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-	ReplayProtection pulumi.BoolPtrInput `pulumi:"replayProtection"`
-}
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnel)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelOutput() MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelOutput)
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelOutput).ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelArgs, MagicWanIpsecTunnelModifiedIpsecTunnelPtr and MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput` via:
-//
-//	        MagicWanIpsecTunnelModifiedIpsecTunnelArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput
-}
-
-type magicWanIpsecTunnelModifiedIpsecTunnelPtrType MagicWanIpsecTunnelModifiedIpsecTunnelArgs
-
-func MagicWanIpsecTunnelModifiedIpsecTunnelPtr(v *MagicWanIpsecTunnelModifiedIpsecTunnelArgs) MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput {
-	return (*magicWanIpsecTunnelModifiedIpsecTunnelPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelModifiedIpsecTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnel)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnel)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelOutput() MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return o.ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelModifiedIpsecTunnel) *MagicWanIpsecTunnelModifiedIpsecTunnel {
-		return &v
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput)
-}
-
-// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) AllowNullCipher() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *bool { return v.AllowNullCipher }).(pulumi.BoolPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) CloudflareEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.CloudflareEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) CustomerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.CustomerEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// An optional description forthe IPsec tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) HealthCheck() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck {
-		return v.HealthCheck
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.InterfaceAddress }).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The PSK metadata that includes when the PSK was generated.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) PskMetadata() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
-		return v.PskMetadata
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput)
-}
-
-// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) ReplayProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *bool { return v.ReplayProtection }).(pulumi.BoolPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnel)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) Elem() MagicWanIpsecTunnelModifiedIpsecTunnelOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) MagicWanIpsecTunnelModifiedIpsecTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelModifiedIpsecTunnel
-		return ret
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelOutput)
-}
-
-// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) AllowNullCipher() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowNullCipher
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The IP address assigned to the Cloudflare side of the IPsec tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) CloudflareEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudflareEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was created.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) CustomerEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional description forthe IPsec tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) HealthCheck() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck {
-		if v == nil {
-			return nil
-		}
-		return v.HealthCheck
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
-}
-
-// Identifier
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) InterfaceAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InterfaceAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The PSK metadata that includes when the PSK was generated.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) PskMetadata() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.PskMetadata
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput)
-}
-
-// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) ReplayProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ReplayProtection
-	}).(pulumi.BoolPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction *string `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled *bool `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate *string `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type *string `pulumi:"type"`
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs and MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckInput` via:
-//
-//	MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs{...}
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs struct {
-	// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-	// Available values: "unidirectional", "bidirectional".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Determines whether to run healthchecks for a tunnel.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// How frequent the health check is run. The default value is `mid`.
-	// Available values: "low", "mid", "high".
-	Rate pulumi.StringPtrInput `pulumi:"rate"`
-	// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-	Target MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput `pulumi:"target"`
-	// The type of healthcheck to run, reply or request. The default value is `reply`.
-	// Available values: "reply", "request".
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput)
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput).ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs, MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtr and MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput` via:
-//
-//	        MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput
-}
-
-type magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrType MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs
-
-func MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtr(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput {
-	return (*magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck {
-		return &v
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string { return v.Rate }).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) Target() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
-		return v.Target
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Elem() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck
-		return ret
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput)
-}
-
-// The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
-// Available values: "unidirectional", "bidirectional".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Direction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Determines whether to run healthchecks for a tunnel.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// How frequent the health check is run. The default value is `mid`.
-// Available values: "low", "mid", "high".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Rate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Rate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Target() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The type of healthcheck to run, reply or request. The default value is `reply`.
-// Available values: "reply", "request".
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective *string `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved *string `pulumi:"saved"`
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs and MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetInput` via:
-//
-//	MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs{...}
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs struct {
-	// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-	Effective pulumi.StringPtrInput `pulumi:"effective"`
-	// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-	Saved pulumi.StringPtrInput `pulumi:"saved"`
-}
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput)
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput).ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs, MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtr and MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput` via:
-//
-//	        MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput
-}
-
-type magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrType MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs
-
-func MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtr(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput {
-	return (*magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
-		return &v
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) *string { return v.Effective }).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) *string { return v.Saved }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) Elem() MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget
-		return ret
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput)
-}
-
-// The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) Effective() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Effective
-	}).(pulumi.StringPtrOutput)
-}
-
-// The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput) Saved() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Saved
-	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata struct {
-	// The date and time the tunnel was last modified.
-	LastGeneratedOn *string `pulumi:"lastGeneratedOn"`
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs and MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataInput` via:
-//
-//	MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{...}
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs struct {
-	// The date and time the tunnel was last modified.
-	LastGeneratedOn pulumi.StringPtrInput `pulumi:"lastGeneratedOn"`
-}
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput)
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput).ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(ctx)
-}
-
-// MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput is an input type that accepts MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs, MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtr and MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput` via:
-//
-//	        MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput
-	ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput
-}
-
-type magicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrType MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs
-
-func MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtr(v *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput {
-	return (*magicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrType)(v)
-}
-
-func (*magicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return i.ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o.ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata) *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
-		return &v
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput) LastGeneratedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata) *string { return v.LastGeneratedOn }).(pulumi.StringPtrOutput)
-}
-
-type MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) Elem() MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata) MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata
-		return ret
-	}).(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput)
-}
-
-// The date and time the tunnel was last modified.
-func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) LastGeneratedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastGeneratedOn
-	}).(pulumi.StringPtrOutput)
-}
-
 type MagicWanIpsecTunnelPskMetadata struct {
 	// The date and time the tunnel was last modified.
 	LastGeneratedOn *string `pulumi:"lastGeneratedOn"`
@@ -63338,896 +63056,6 @@ func (o MagicWanIpsecTunnelPskMetadataPtrOutput) LastGeneratedOn() pulumi.String
 		}
 		return v.LastGeneratedOn
 	}).(pulumi.StringPtrOutput)
-}
-
-type MagicWanStaticRouteModifiedRoute struct {
-	// When the route was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// An optional human provided description of the static route.
-	Description *string `pulumi:"description"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// When the route was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The next-hop IP Address for the static route.
-	Nexthop *string `pulumi:"nexthop"`
-	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix *string `pulumi:"prefix"`
-	// Priority of the static route.
-	Priority *int `pulumi:"priority"`
-	// Used only for ECMP routes.
-	Scope *MagicWanStaticRouteModifiedRouteScope `pulumi:"scope"`
-	// Optional weight of the ECMP scope - if provided.
-	Weight *int `pulumi:"weight"`
-}
-
-// MagicWanStaticRouteModifiedRouteInput is an input type that accepts MagicWanStaticRouteModifiedRouteArgs and MagicWanStaticRouteModifiedRouteOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteModifiedRouteInput` via:
-//
-//	MagicWanStaticRouteModifiedRouteArgs{...}
-type MagicWanStaticRouteModifiedRouteInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteModifiedRouteOutput() MagicWanStaticRouteModifiedRouteOutput
-	ToMagicWanStaticRouteModifiedRouteOutputWithContext(context.Context) MagicWanStaticRouteModifiedRouteOutput
-}
-
-type MagicWanStaticRouteModifiedRouteArgs struct {
-	// When the route was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// An optional human provided description of the static route.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// When the route was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrInput `pulumi:"nexthop"`
-	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Priority of the static route.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// Used only for ECMP routes.
-	Scope MagicWanStaticRouteModifiedRouteScopePtrInput `pulumi:"scope"`
-	// Optional weight of the ECMP scope - if provided.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
-}
-
-func (MagicWanStaticRouteModifiedRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteModifiedRoute)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteModifiedRouteArgs) ToMagicWanStaticRouteModifiedRouteOutput() MagicWanStaticRouteModifiedRouteOutput {
-	return i.ToMagicWanStaticRouteModifiedRouteOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteModifiedRouteArgs) ToMagicWanStaticRouteModifiedRouteOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRouteOutput)
-}
-
-func (i MagicWanStaticRouteModifiedRouteArgs) ToMagicWanStaticRouteModifiedRoutePtrOutput() MagicWanStaticRouteModifiedRoutePtrOutput {
-	return i.ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteModifiedRouteArgs) ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRouteOutput).ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(ctx)
-}
-
-// MagicWanStaticRouteModifiedRoutePtrInput is an input type that accepts MagicWanStaticRouteModifiedRouteArgs, MagicWanStaticRouteModifiedRoutePtr and MagicWanStaticRouteModifiedRoutePtrOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteModifiedRoutePtrInput` via:
-//
-//	        MagicWanStaticRouteModifiedRouteArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanStaticRouteModifiedRoutePtrInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteModifiedRoutePtrOutput() MagicWanStaticRouteModifiedRoutePtrOutput
-	ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(context.Context) MagicWanStaticRouteModifiedRoutePtrOutput
-}
-
-type magicWanStaticRouteModifiedRoutePtrType MagicWanStaticRouteModifiedRouteArgs
-
-func MagicWanStaticRouteModifiedRoutePtr(v *MagicWanStaticRouteModifiedRouteArgs) MagicWanStaticRouteModifiedRoutePtrInput {
-	return (*magicWanStaticRouteModifiedRoutePtrType)(v)
-}
-
-func (*magicWanStaticRouteModifiedRoutePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteModifiedRoute)(nil)).Elem()
-}
-
-func (i *magicWanStaticRouteModifiedRoutePtrType) ToMagicWanStaticRouteModifiedRoutePtrOutput() MagicWanStaticRouteModifiedRoutePtrOutput {
-	return i.ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanStaticRouteModifiedRoutePtrType) ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRoutePtrOutput)
-}
-
-type MagicWanStaticRouteModifiedRouteOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteModifiedRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteModifiedRoute)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteModifiedRouteOutput) ToMagicWanStaticRouteModifiedRouteOutput() MagicWanStaticRouteModifiedRouteOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteOutput) ToMagicWanStaticRouteModifiedRouteOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteOutput) ToMagicWanStaticRouteModifiedRoutePtrOutput() MagicWanStaticRouteModifiedRoutePtrOutput {
-	return o.ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanStaticRouteModifiedRouteOutput) ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRoutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteModifiedRoute) *MagicWanStaticRouteModifiedRoute {
-		return &v
-	}).(MagicWanStaticRouteModifiedRoutePtrOutput)
-}
-
-// When the route was created.
-func (o MagicWanStaticRouteModifiedRouteOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// An optional human provided description of the static route.
-func (o MagicWanStaticRouteModifiedRouteOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Identifier
-func (o MagicWanStaticRouteModifiedRouteOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// When the route was last modified.
-func (o MagicWanStaticRouteModifiedRouteOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// The next-hop IP Address for the static route.
-func (o MagicWanStaticRouteModifiedRouteOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.Nexthop }).(pulumi.StringPtrOutput)
-}
-
-// IP Prefix in Classless Inter-Domain Routing format.
-func (o MagicWanStaticRouteModifiedRouteOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Priority of the static route.
-func (o MagicWanStaticRouteModifiedRouteOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// Used only for ECMP routes.
-func (o MagicWanStaticRouteModifiedRouteOutput) Scope() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *MagicWanStaticRouteModifiedRouteScope { return v.Scope }).(MagicWanStaticRouteModifiedRouteScopePtrOutput)
-}
-
-// Optional weight of the ECMP scope - if provided.
-func (o MagicWanStaticRouteModifiedRouteOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRoute) *int { return v.Weight }).(pulumi.IntPtrOutput)
-}
-
-type MagicWanStaticRouteModifiedRoutePtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteModifiedRoutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteModifiedRoute)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) ToMagicWanStaticRouteModifiedRoutePtrOutput() MagicWanStaticRouteModifiedRoutePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) ToMagicWanStaticRouteModifiedRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRoutePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Elem() MagicWanStaticRouteModifiedRouteOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) MagicWanStaticRouteModifiedRoute {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanStaticRouteModifiedRoute
-		return ret
-	}).(MagicWanStaticRouteModifiedRouteOutput)
-}
-
-// When the route was created.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional human provided description of the static route.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifier
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// When the route was last modified.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The next-hop IP Address for the static route.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Nexthop
-	}).(pulumi.StringPtrOutput)
-}
-
-// IP Prefix in Classless Inter-Domain Routing format.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Priority of the static route.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Priority
-	}).(pulumi.IntPtrOutput)
-}
-
-// Used only for ECMP routes.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Scope() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *MagicWanStaticRouteModifiedRouteScope {
-		if v == nil {
-			return nil
-		}
-		return v.Scope
-	}).(MagicWanStaticRouteModifiedRouteScopePtrOutput)
-}
-
-// Optional weight of the ECMP scope - if provided.
-func (o MagicWanStaticRouteModifiedRoutePtrOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRoute) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Weight
-	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanStaticRouteModifiedRouteScope struct {
-	// List of colo names for the ECMP scope.
-	ColoNames []string `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions []string `pulumi:"coloRegions"`
-}
-
-// MagicWanStaticRouteModifiedRouteScopeInput is an input type that accepts MagicWanStaticRouteModifiedRouteScopeArgs and MagicWanStaticRouteModifiedRouteScopeOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteModifiedRouteScopeInput` via:
-//
-//	MagicWanStaticRouteModifiedRouteScopeArgs{...}
-type MagicWanStaticRouteModifiedRouteScopeInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteModifiedRouteScopeOutput() MagicWanStaticRouteModifiedRouteScopeOutput
-	ToMagicWanStaticRouteModifiedRouteScopeOutputWithContext(context.Context) MagicWanStaticRouteModifiedRouteScopeOutput
-}
-
-type MagicWanStaticRouteModifiedRouteScopeArgs struct {
-	// List of colo names for the ECMP scope.
-	ColoNames pulumi.StringArrayInput `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions pulumi.StringArrayInput `pulumi:"coloRegions"`
-}
-
-func (MagicWanStaticRouteModifiedRouteScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScope)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteModifiedRouteScopeArgs) ToMagicWanStaticRouteModifiedRouteScopeOutput() MagicWanStaticRouteModifiedRouteScopeOutput {
-	return i.ToMagicWanStaticRouteModifiedRouteScopeOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteModifiedRouteScopeArgs) ToMagicWanStaticRouteModifiedRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRouteScopeOutput)
-}
-
-func (i MagicWanStaticRouteModifiedRouteScopeArgs) ToMagicWanStaticRouteModifiedRouteScopePtrOutput() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteModifiedRouteScopeArgs) ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRouteScopeOutput).ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(ctx)
-}
-
-// MagicWanStaticRouteModifiedRouteScopePtrInput is an input type that accepts MagicWanStaticRouteModifiedRouteScopeArgs, MagicWanStaticRouteModifiedRouteScopePtr and MagicWanStaticRouteModifiedRouteScopePtrOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteModifiedRouteScopePtrInput` via:
-//
-//	        MagicWanStaticRouteModifiedRouteScopeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanStaticRouteModifiedRouteScopePtrInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteModifiedRouteScopePtrOutput() MagicWanStaticRouteModifiedRouteScopePtrOutput
-	ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(context.Context) MagicWanStaticRouteModifiedRouteScopePtrOutput
-}
-
-type magicWanStaticRouteModifiedRouteScopePtrType MagicWanStaticRouteModifiedRouteScopeArgs
-
-func MagicWanStaticRouteModifiedRouteScopePtr(v *MagicWanStaticRouteModifiedRouteScopeArgs) MagicWanStaticRouteModifiedRouteScopePtrInput {
-	return (*magicWanStaticRouteModifiedRouteScopePtrType)(v)
-}
-
-func (*magicWanStaticRouteModifiedRouteScopePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteModifiedRouteScope)(nil)).Elem()
-}
-
-func (i *magicWanStaticRouteModifiedRouteScopePtrType) ToMagicWanStaticRouteModifiedRouteScopePtrOutput() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanStaticRouteModifiedRouteScopePtrType) ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteModifiedRouteScopePtrOutput)
-}
-
-type MagicWanStaticRouteModifiedRouteScopeOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteModifiedRouteScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ToMagicWanStaticRouteModifiedRouteScopeOutput() MagicWanStaticRouteModifiedRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ToMagicWanStaticRouteModifiedRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ToMagicWanStaticRouteModifiedRouteScopePtrOutput() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o.ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteModifiedRouteScope) *MagicWanStaticRouteModifiedRouteScope {
-		return &v
-	}).(MagicWanStaticRouteModifiedRouteScopePtrOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRouteScope) []string { return v.ColoNames }).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteModifiedRouteScopeOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteModifiedRouteScope) []string { return v.ColoRegions }).(pulumi.StringArrayOutput)
-}
-
-type MagicWanStaticRouteModifiedRouteScopePtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteModifiedRouteScopePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteModifiedRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopePtrOutput) ToMagicWanStaticRouteModifiedRouteScopePtrOutput() MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopePtrOutput) ToMagicWanStaticRouteModifiedRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteModifiedRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteModifiedRouteScopePtrOutput) Elem() MagicWanStaticRouteModifiedRouteScopeOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRouteScope) MagicWanStaticRouteModifiedRouteScope {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanStaticRouteModifiedRouteScope
-		return ret
-	}).(MagicWanStaticRouteModifiedRouteScopeOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteModifiedRouteScopePtrOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoNames
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteModifiedRouteScopePtrOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteModifiedRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoRegions
-	}).(pulumi.StringArrayOutput)
-}
-
-type MagicWanStaticRouteRoute struct {
-	// When the route was created.
-	CreatedOn *string `pulumi:"createdOn"`
-	// An optional human provided description of the static route.
-	Description *string `pulumi:"description"`
-	// Identifier
-	Id *string `pulumi:"id"`
-	// When the route was last modified.
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The next-hop IP Address for the static route.
-	Nexthop *string `pulumi:"nexthop"`
-	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix *string `pulumi:"prefix"`
-	// Priority of the static route.
-	Priority *int `pulumi:"priority"`
-	// Used only for ECMP routes.
-	Scope *MagicWanStaticRouteRouteScope `pulumi:"scope"`
-	// Optional weight of the ECMP scope - if provided.
-	Weight *int `pulumi:"weight"`
-}
-
-// MagicWanStaticRouteRouteInput is an input type that accepts MagicWanStaticRouteRouteArgs and MagicWanStaticRouteRouteOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteRouteInput` via:
-//
-//	MagicWanStaticRouteRouteArgs{...}
-type MagicWanStaticRouteRouteInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteRouteOutput() MagicWanStaticRouteRouteOutput
-	ToMagicWanStaticRouteRouteOutputWithContext(context.Context) MagicWanStaticRouteRouteOutput
-}
-
-type MagicWanStaticRouteRouteArgs struct {
-	// When the route was created.
-	CreatedOn pulumi.StringPtrInput `pulumi:"createdOn"`
-	// An optional human provided description of the static route.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Identifier
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// When the route was last modified.
-	ModifiedOn pulumi.StringPtrInput `pulumi:"modifiedOn"`
-	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrInput `pulumi:"nexthop"`
-	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Priority of the static route.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// Used only for ECMP routes.
-	Scope MagicWanStaticRouteRouteScopePtrInput `pulumi:"scope"`
-	// Optional weight of the ECMP scope - if provided.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
-}
-
-func (MagicWanStaticRouteRouteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteRouteArgs) ToMagicWanStaticRouteRouteOutput() MagicWanStaticRouteRouteOutput {
-	return i.ToMagicWanStaticRouteRouteOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteRouteArgs) ToMagicWanStaticRouteRouteOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteOutput)
-}
-
-func (i MagicWanStaticRouteRouteArgs) ToMagicWanStaticRouteRoutePtrOutput() MagicWanStaticRouteRoutePtrOutput {
-	return i.ToMagicWanStaticRouteRoutePtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteRouteArgs) ToMagicWanStaticRouteRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteOutput).ToMagicWanStaticRouteRoutePtrOutputWithContext(ctx)
-}
-
-// MagicWanStaticRouteRoutePtrInput is an input type that accepts MagicWanStaticRouteRouteArgs, MagicWanStaticRouteRoutePtr and MagicWanStaticRouteRoutePtrOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteRoutePtrInput` via:
-//
-//	        MagicWanStaticRouteRouteArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanStaticRouteRoutePtrInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteRoutePtrOutput() MagicWanStaticRouteRoutePtrOutput
-	ToMagicWanStaticRouteRoutePtrOutputWithContext(context.Context) MagicWanStaticRouteRoutePtrOutput
-}
-
-type magicWanStaticRouteRoutePtrType MagicWanStaticRouteRouteArgs
-
-func MagicWanStaticRouteRoutePtr(v *MagicWanStaticRouteRouteArgs) MagicWanStaticRouteRoutePtrInput {
-	return (*magicWanStaticRouteRoutePtrType)(v)
-}
-
-func (*magicWanStaticRouteRoutePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (i *magicWanStaticRouteRoutePtrType) ToMagicWanStaticRouteRoutePtrOutput() MagicWanStaticRouteRoutePtrOutput {
-	return i.ToMagicWanStaticRouteRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanStaticRouteRoutePtrType) ToMagicWanStaticRouteRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRoutePtrOutput)
-}
-
-type MagicWanStaticRouteRouteOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteRouteOutput) ToMagicWanStaticRouteRouteOutput() MagicWanStaticRouteRouteOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteOutput) ToMagicWanStaticRouteRouteOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteOutput) ToMagicWanStaticRouteRoutePtrOutput() MagicWanStaticRouteRoutePtrOutput {
-	return o.ToMagicWanStaticRouteRoutePtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanStaticRouteRouteOutput) ToMagicWanStaticRouteRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRoutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteRoute) *MagicWanStaticRouteRoute {
-		return &v
-	}).(MagicWanStaticRouteRoutePtrOutput)
-}
-
-// When the route was created.
-func (o MagicWanStaticRouteRouteOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.CreatedOn }).(pulumi.StringPtrOutput)
-}
-
-// An optional human provided description of the static route.
-func (o MagicWanStaticRouteRouteOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Identifier
-func (o MagicWanStaticRouteRouteOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// When the route was last modified.
-func (o MagicWanStaticRouteRouteOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.ModifiedOn }).(pulumi.StringPtrOutput)
-}
-
-// The next-hop IP Address for the static route.
-func (o MagicWanStaticRouteRouteOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.Nexthop }).(pulumi.StringPtrOutput)
-}
-
-// IP Prefix in Classless Inter-Domain Routing format.
-func (o MagicWanStaticRouteRouteOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Priority of the static route.
-func (o MagicWanStaticRouteRouteOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// Used only for ECMP routes.
-func (o MagicWanStaticRouteRouteOutput) Scope() MagicWanStaticRouteRouteScopePtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *MagicWanStaticRouteRouteScope { return v.Scope }).(MagicWanStaticRouteRouteScopePtrOutput)
-}
-
-// Optional weight of the ECMP scope - if provided.
-func (o MagicWanStaticRouteRouteOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRoute) *int { return v.Weight }).(pulumi.IntPtrOutput)
-}
-
-type MagicWanStaticRouteRoutePtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteRoutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteRoutePtrOutput) ToMagicWanStaticRouteRoutePtrOutput() MagicWanStaticRouteRoutePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRoutePtrOutput) ToMagicWanStaticRouteRoutePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRoutePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRoutePtrOutput) Elem() MagicWanStaticRouteRouteOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) MagicWanStaticRouteRoute {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanStaticRouteRoute
-		return ret
-	}).(MagicWanStaticRouteRouteOutput)
-}
-
-// When the route was created.
-func (o MagicWanStaticRouteRoutePtrOutput) CreatedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// An optional human provided description of the static route.
-func (o MagicWanStaticRouteRoutePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Identifier
-func (o MagicWanStaticRouteRoutePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// When the route was last modified.
-func (o MagicWanStaticRouteRoutePtrOutput) ModifiedOn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedOn
-	}).(pulumi.StringPtrOutput)
-}
-
-// The next-hop IP Address for the static route.
-func (o MagicWanStaticRouteRoutePtrOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Nexthop
-	}).(pulumi.StringPtrOutput)
-}
-
-// IP Prefix in Classless Inter-Domain Routing format.
-func (o MagicWanStaticRouteRoutePtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Priority of the static route.
-func (o MagicWanStaticRouteRoutePtrOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Priority
-	}).(pulumi.IntPtrOutput)
-}
-
-// Used only for ECMP routes.
-func (o MagicWanStaticRouteRoutePtrOutput) Scope() MagicWanStaticRouteRouteScopePtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *MagicWanStaticRouteRouteScope {
-		if v == nil {
-			return nil
-		}
-		return v.Scope
-	}).(MagicWanStaticRouteRouteScopePtrOutput)
-}
-
-// Optional weight of the ECMP scope - if provided.
-func (o MagicWanStaticRouteRoutePtrOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRoute) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Weight
-	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanStaticRouteRouteScope struct {
-	// List of colo names for the ECMP scope.
-	ColoNames []string `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions []string `pulumi:"coloRegions"`
-}
-
-// MagicWanStaticRouteRouteScopeInput is an input type that accepts MagicWanStaticRouteRouteScopeArgs and MagicWanStaticRouteRouteScopeOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteRouteScopeInput` via:
-//
-//	MagicWanStaticRouteRouteScopeArgs{...}
-type MagicWanStaticRouteRouteScopeInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteRouteScopeOutput() MagicWanStaticRouteRouteScopeOutput
-	ToMagicWanStaticRouteRouteScopeOutputWithContext(context.Context) MagicWanStaticRouteRouteScopeOutput
-}
-
-type MagicWanStaticRouteRouteScopeArgs struct {
-	// List of colo names for the ECMP scope.
-	ColoNames pulumi.StringArrayInput `pulumi:"coloNames"`
-	// List of colo regions for the ECMP scope.
-	ColoRegions pulumi.StringArrayInput `pulumi:"coloRegions"`
-}
-
-func (MagicWanStaticRouteRouteScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteRouteScope)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteRouteScopeArgs) ToMagicWanStaticRouteRouteScopeOutput() MagicWanStaticRouteRouteScopeOutput {
-	return i.ToMagicWanStaticRouteRouteScopeOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteRouteScopeArgs) ToMagicWanStaticRouteRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteScopeOutput)
-}
-
-func (i MagicWanStaticRouteRouteScopeArgs) ToMagicWanStaticRouteRouteScopePtrOutput() MagicWanStaticRouteRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteRouteScopeArgs) ToMagicWanStaticRouteRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteScopeOutput).ToMagicWanStaticRouteRouteScopePtrOutputWithContext(ctx)
-}
-
-// MagicWanStaticRouteRouteScopePtrInput is an input type that accepts MagicWanStaticRouteRouteScopeArgs, MagicWanStaticRouteRouteScopePtr and MagicWanStaticRouteRouteScopePtrOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteRouteScopePtrInput` via:
-//
-//	        MagicWanStaticRouteRouteScopeArgs{...}
-//
-//	or:
-//
-//	        nil
-type MagicWanStaticRouteRouteScopePtrInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteRouteScopePtrOutput() MagicWanStaticRouteRouteScopePtrOutput
-	ToMagicWanStaticRouteRouteScopePtrOutputWithContext(context.Context) MagicWanStaticRouteRouteScopePtrOutput
-}
-
-type magicWanStaticRouteRouteScopePtrType MagicWanStaticRouteRouteScopeArgs
-
-func MagicWanStaticRouteRouteScopePtr(v *MagicWanStaticRouteRouteScopeArgs) MagicWanStaticRouteRouteScopePtrInput {
-	return (*magicWanStaticRouteRouteScopePtrType)(v)
-}
-
-func (*magicWanStaticRouteRouteScopePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteRouteScope)(nil)).Elem()
-}
-
-func (i *magicWanStaticRouteRouteScopePtrType) ToMagicWanStaticRouteRouteScopePtrOutput() MagicWanStaticRouteRouteScopePtrOutput {
-	return i.ToMagicWanStaticRouteRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (i *magicWanStaticRouteRouteScopePtrType) ToMagicWanStaticRouteRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteScopePtrOutput)
-}
-
-type MagicWanStaticRouteRouteScopeOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteRouteScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicWanStaticRouteRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteRouteScopeOutput) ToMagicWanStaticRouteRouteScopeOutput() MagicWanStaticRouteRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteScopeOutput) ToMagicWanStaticRouteRouteScopeOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopeOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteScopeOutput) ToMagicWanStaticRouteRouteScopePtrOutput() MagicWanStaticRouteRouteScopePtrOutput {
-	return o.ToMagicWanStaticRouteRouteScopePtrOutputWithContext(context.Background())
-}
-
-func (o MagicWanStaticRouteRouteScopeOutput) ToMagicWanStaticRouteRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanStaticRouteRouteScope) *MagicWanStaticRouteRouteScope {
-		return &v
-	}).(MagicWanStaticRouteRouteScopePtrOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteRouteScopeOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRouteScope) []string { return v.ColoNames }).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteRouteScopeOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MagicWanStaticRouteRouteScope) []string { return v.ColoRegions }).(pulumi.StringArrayOutput)
-}
-
-type MagicWanStaticRouteRouteScopePtrOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteRouteScopePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MagicWanStaticRouteRouteScope)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteRouteScopePtrOutput) ToMagicWanStaticRouteRouteScopePtrOutput() MagicWanStaticRouteRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteScopePtrOutput) ToMagicWanStaticRouteRouteScopePtrOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteScopePtrOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteScopePtrOutput) Elem() MagicWanStaticRouteRouteScopeOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRouteScope) MagicWanStaticRouteRouteScope {
-		if v != nil {
-			return *v
-		}
-		var ret MagicWanStaticRouteRouteScope
-		return ret
-	}).(MagicWanStaticRouteRouteScopeOutput)
-}
-
-// List of colo names for the ECMP scope.
-func (o MagicWanStaticRouteRouteScopePtrOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoNames
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of colo regions for the ECMP scope.
-func (o MagicWanStaticRouteRouteScopePtrOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRouteRouteScope) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ColoRegions
-	}).(pulumi.StringArrayOutput)
 }
 
 type MagicWanStaticRouteScope struct {
@@ -83213,8 +82041,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeIpPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeIpListInput)(nil)).Elem(), AccessApplicationPolicyExcludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeIpListPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeLinkedAppTokenInput)(nil)).Elem(), AccessApplicationPolicyExcludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeLoginMethodInput)(nil)).Elem(), AccessApplicationPolicyExcludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeLoginMethodPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeOidcInput)(nil)).Elem(), AccessApplicationPolicyExcludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeOidcPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeOktaInput)(nil)).Elem(), AccessApplicationPolicyExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeOktaPtrInput)(nil)).Elem(), AccessApplicationPolicyExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyExcludeSamlInput)(nil)).Elem(), AccessApplicationPolicyExcludeSamlArgs{})
@@ -83259,8 +82091,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeIpPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeIpListInput)(nil)).Elem(), AccessApplicationPolicyIncludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeIpListPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeLinkedAppTokenInput)(nil)).Elem(), AccessApplicationPolicyIncludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeLoginMethodInput)(nil)).Elem(), AccessApplicationPolicyIncludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeLoginMethodPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeOidcInput)(nil)).Elem(), AccessApplicationPolicyIncludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeOidcPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeOktaInput)(nil)).Elem(), AccessApplicationPolicyIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeOktaPtrInput)(nil)).Elem(), AccessApplicationPolicyIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyIncludeSamlInput)(nil)).Elem(), AccessApplicationPolicyIncludeSamlArgs{})
@@ -83305,8 +82141,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireIpPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireIpListInput)(nil)).Elem(), AccessApplicationPolicyRequireIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireIpListPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireLinkedAppTokenInput)(nil)).Elem(), AccessApplicationPolicyRequireLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireLinkedAppTokenPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireLoginMethodInput)(nil)).Elem(), AccessApplicationPolicyRequireLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireLoginMethodPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireOidcInput)(nil)).Elem(), AccessApplicationPolicyRequireOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireOidcPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireOktaInput)(nil)).Elem(), AccessApplicationPolicyRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireOktaPtrInput)(nil)).Elem(), AccessApplicationPolicyRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPolicyRequireSamlInput)(nil)).Elem(), AccessApplicationPolicyRequireSamlArgs{})
@@ -83377,8 +82217,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeIpPtrInput)(nil)).Elem(), AccessGroupExcludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeIpListInput)(nil)).Elem(), AccessGroupExcludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeIpListPtrInput)(nil)).Elem(), AccessGroupExcludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeLinkedAppTokenInput)(nil)).Elem(), AccessGroupExcludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessGroupExcludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeLoginMethodInput)(nil)).Elem(), AccessGroupExcludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeLoginMethodPtrInput)(nil)).Elem(), AccessGroupExcludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOidcInput)(nil)).Elem(), AccessGroupExcludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOidcPtrInput)(nil)).Elem(), AccessGroupExcludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOktaInput)(nil)).Elem(), AccessGroupExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOktaPtrInput)(nil)).Elem(), AccessGroupExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeSamlInput)(nil)).Elem(), AccessGroupExcludeSamlArgs{})
@@ -83423,8 +82267,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeIpPtrInput)(nil)).Elem(), AccessGroupIncludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeIpListInput)(nil)).Elem(), AccessGroupIncludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeIpListPtrInput)(nil)).Elem(), AccessGroupIncludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeLinkedAppTokenInput)(nil)).Elem(), AccessGroupIncludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessGroupIncludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeLoginMethodInput)(nil)).Elem(), AccessGroupIncludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeLoginMethodPtrInput)(nil)).Elem(), AccessGroupIncludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOidcInput)(nil)).Elem(), AccessGroupIncludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOidcPtrInput)(nil)).Elem(), AccessGroupIncludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOktaInput)(nil)).Elem(), AccessGroupIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOktaPtrInput)(nil)).Elem(), AccessGroupIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeSamlInput)(nil)).Elem(), AccessGroupIncludeSamlArgs{})
@@ -83469,8 +82317,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireIpPtrInput)(nil)).Elem(), AccessGroupRequireIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireIpListInput)(nil)).Elem(), AccessGroupRequireIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireIpListPtrInput)(nil)).Elem(), AccessGroupRequireIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireLinkedAppTokenInput)(nil)).Elem(), AccessGroupRequireLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireLinkedAppTokenPtrInput)(nil)).Elem(), AccessGroupRequireLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireLoginMethodInput)(nil)).Elem(), AccessGroupRequireLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireLoginMethodPtrInput)(nil)).Elem(), AccessGroupRequireLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOidcInput)(nil)).Elem(), AccessGroupRequireOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOidcPtrInput)(nil)).Elem(), AccessGroupRequireOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOktaInput)(nil)).Elem(), AccessGroupRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOktaPtrInput)(nil)).Elem(), AccessGroupRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireSamlInput)(nil)).Elem(), AccessGroupRequireSamlArgs{})
@@ -83529,8 +82381,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeIpPtrInput)(nil)).Elem(), AccessPolicyExcludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeIpListInput)(nil)).Elem(), AccessPolicyExcludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeIpListPtrInput)(nil)).Elem(), AccessPolicyExcludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeLinkedAppTokenInput)(nil)).Elem(), AccessPolicyExcludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessPolicyExcludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeLoginMethodInput)(nil)).Elem(), AccessPolicyExcludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeLoginMethodPtrInput)(nil)).Elem(), AccessPolicyExcludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOidcInput)(nil)).Elem(), AccessPolicyExcludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOidcPtrInput)(nil)).Elem(), AccessPolicyExcludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOktaInput)(nil)).Elem(), AccessPolicyExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOktaPtrInput)(nil)).Elem(), AccessPolicyExcludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeSamlInput)(nil)).Elem(), AccessPolicyExcludeSamlArgs{})
@@ -83575,8 +82431,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeIpPtrInput)(nil)).Elem(), AccessPolicyIncludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeIpListInput)(nil)).Elem(), AccessPolicyIncludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeIpListPtrInput)(nil)).Elem(), AccessPolicyIncludeIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeLinkedAppTokenInput)(nil)).Elem(), AccessPolicyIncludeLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeLinkedAppTokenPtrInput)(nil)).Elem(), AccessPolicyIncludeLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeLoginMethodInput)(nil)).Elem(), AccessPolicyIncludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeLoginMethodPtrInput)(nil)).Elem(), AccessPolicyIncludeLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOidcInput)(nil)).Elem(), AccessPolicyIncludeOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOidcPtrInput)(nil)).Elem(), AccessPolicyIncludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOktaInput)(nil)).Elem(), AccessPolicyIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOktaPtrInput)(nil)).Elem(), AccessPolicyIncludeOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeSamlInput)(nil)).Elem(), AccessPolicyIncludeSamlArgs{})
@@ -83621,8 +82481,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireIpPtrInput)(nil)).Elem(), AccessPolicyRequireIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireIpListInput)(nil)).Elem(), AccessPolicyRequireIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireIpListPtrInput)(nil)).Elem(), AccessPolicyRequireIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireLinkedAppTokenInput)(nil)).Elem(), AccessPolicyRequireLinkedAppTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireLinkedAppTokenPtrInput)(nil)).Elem(), AccessPolicyRequireLinkedAppTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireLoginMethodInput)(nil)).Elem(), AccessPolicyRequireLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireLoginMethodPtrInput)(nil)).Elem(), AccessPolicyRequireLoginMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOidcInput)(nil)).Elem(), AccessPolicyRequireOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOidcPtrInput)(nil)).Elem(), AccessPolicyRequireOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOktaInput)(nil)).Elem(), AccessPolicyRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOktaPtrInput)(nil)).Elem(), AccessPolicyRequireOktaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireSamlInput)(nil)).Elem(), AccessPolicyRequireSamlArgs{})
@@ -83764,7 +82628,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryInput)(nil)).Elem(), DlpCustomProfileEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryArrayInput)(nil)).Elem(), DlpCustomProfileEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryPatternInput)(nil)).Elem(), DlpCustomProfileEntryPatternArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryPatternPtrInput)(nil)).Elem(), DlpCustomProfileEntryPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileSharedEntryInput)(nil)).Elem(), DlpCustomProfileSharedEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileSharedEntryArrayInput)(nil)).Elem(), DlpCustomProfileSharedEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpPredefinedProfileContextAwarenessInput)(nil)).Elem(), DlpPredefinedProfileContextAwarenessArgs{})
@@ -83897,52 +82760,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteLocationPtrInput)(nil)).Elem(), MagicTransitSiteLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteWanStaticAddressingInput)(nil)).Elem(), MagicTransitSiteWanStaticAddressingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteWanStaticAddressingPtrInput)(nil)).Elem(), MagicTransitSiteWanStaticAddressingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelPtrInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanGreTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelPtrInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelPskMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRoutePtrInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteInput)(nil)).Elem(), MagicWanStaticRouteRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRoutePtrInput)(nil)).Elem(), MagicWanStaticRouteRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteRouteScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArgs{})
@@ -84209,8 +83036,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyExcludeSamlOutput{})
@@ -84255,8 +83086,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyIncludeSamlOutput{})
@@ -84301,8 +83136,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireIpListOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyRequireLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyRequireLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyRequireOidcOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPolicyRequireOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireOktaOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPolicyRequireSamlOutput{})
@@ -84373,8 +83212,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupExcludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeSamlOutput{})
@@ -84419,8 +83262,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupIncludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeSamlOutput{})
@@ -84465,8 +83312,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupRequireIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireIpListOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireOidcOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireOktaOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireSamlOutput{})
@@ -84525,8 +83376,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyExcludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeSamlOutput{})
@@ -84571,8 +83426,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIncludeIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeIpListOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeOidcOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeOktaOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeSamlOutput{})
@@ -84617,8 +83476,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyRequireIpPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireIpListOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireIpListPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireLinkedAppTokenOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireLinkedAppTokenPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireLoginMethodOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireLoginMethodPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireOidcOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireOidcPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireOktaOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireOktaPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireSamlOutput{})
@@ -84760,7 +83623,6 @@ func init() {
 	pulumi.RegisterOutputType(DlpCustomProfileEntryOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileEntryPatternOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileEntryPatternPtrOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileSharedEntryOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileSharedEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpPredefinedProfileContextAwarenessOutput{})
@@ -84893,52 +83755,16 @@ func init() {
 	pulumi.RegisterOutputType(MagicTransitSiteLocationPtrOutput{})
 	pulumi.RegisterOutputType(MagicTransitSiteWanStaticAddressingOutput{})
 	pulumi.RegisterOutputType(MagicTransitSiteWanStaticAddressingPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckTargetOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckTargetPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckTargetOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelHealthCheckTargetPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelHealthCheckOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelModifiedGreTunnelHealthCheckTargetPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckTargetOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckTargetPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelPskMetadataOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelPskMetadataPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRoutePtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteScopeOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteScopePtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteRouteOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteRoutePtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteRouteScopeOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteRouteScopePtrOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteScopeOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteScopePtrOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderOutput{})
