@@ -116,6 +116,7 @@
           ],
           "paused": false,
           "status": "pending",
+          "plan": "free",
           "type": "full",
           "vanityNameServers": [],
           "verificationKey": "",
