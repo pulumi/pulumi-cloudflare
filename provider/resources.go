@@ -216,6 +216,15 @@ func Provider() info.Provider {
 						)
 						delete(state, "accountId")
 					}
+
+					if plan, ok := state["plan"]; ok && plan.IsString() {
+						state["plan"] = resource.NewObjectProperty(
+							resource.PropertyMap{
+								"id": plan,
+							},
+						)
+					}
+
 					return state, nil
 				},
 			},
