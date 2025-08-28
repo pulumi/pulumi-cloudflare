@@ -43,52 +43,52 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpCustomProfile.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly aiContextEnabled!: pulumi.Output<boolean>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly aiContextEnabled: pulumi.Output<boolean>;
     /**
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
-    public readonly allowedMatchCount!: pulumi.Output<number>;
-    public readonly confidenceThreshold!: pulumi.Output<string>;
+    declare public readonly allowedMatchCount: pulumi.Output<number>;
+    declare public readonly confidenceThreshold: pulumi.Output<string>;
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness | undefined>;
+    declare public readonly contextAwareness: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness | undefined>;
     /**
      * When the profile was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the profile.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Custom entries from this profile.
      * If this field is omitted, entries owned by this profile will not be changed.
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly entries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly ocrEnabled!: pulumi.Output<boolean>;
+    declare public readonly entries: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly ocrEnabled: pulumi.Output<boolean>;
     /**
      * Whether this profile can be accessed by anyone.
      */
-    public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly openAccess: pulumi.Output<boolean>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    public readonly sharedEntries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[] | undefined>;
+    declare public readonly sharedEntries: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[] | undefined>;
     /**
      * Available values: "custom", "predefined", "integration".
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * When the profile was lasted updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDlpCustomProfile resource with the given unique name, arguments, and options.
@@ -103,38 +103,38 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpCustomProfileState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["aiContextEnabled"] = state ? state.aiContextEnabled : undefined;
-            resourceInputs["allowedMatchCount"] = state ? state.allowedMatchCount : undefined;
-            resourceInputs["confidenceThreshold"] = state ? state.confidenceThreshold : undefined;
-            resourceInputs["contextAwareness"] = state ? state.contextAwareness : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["entries"] = state ? state.entries : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ocrEnabled"] = state ? state.ocrEnabled : undefined;
-            resourceInputs["openAccess"] = state ? state.openAccess : undefined;
-            resourceInputs["sharedEntries"] = state ? state.sharedEntries : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["aiContextEnabled"] = state?.aiContextEnabled;
+            resourceInputs["allowedMatchCount"] = state?.allowedMatchCount;
+            resourceInputs["confidenceThreshold"] = state?.confidenceThreshold;
+            resourceInputs["contextAwareness"] = state?.contextAwareness;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["entries"] = state?.entries;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ocrEnabled"] = state?.ocrEnabled;
+            resourceInputs["openAccess"] = state?.openAccess;
+            resourceInputs["sharedEntries"] = state?.sharedEntries;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ZeroTrustDlpCustomProfileArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["aiContextEnabled"] = args ? args.aiContextEnabled : undefined;
-            resourceInputs["allowedMatchCount"] = args ? args.allowedMatchCount : undefined;
-            resourceInputs["confidenceThreshold"] = args ? args.confidenceThreshold : undefined;
-            resourceInputs["contextAwareness"] = args ? args.contextAwareness : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["entries"] = args ? args.entries : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ocrEnabled"] = args ? args.ocrEnabled : undefined;
-            resourceInputs["sharedEntries"] = args ? args.sharedEntries : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["aiContextEnabled"] = args?.aiContextEnabled;
+            resourceInputs["allowedMatchCount"] = args?.allowedMatchCount;
+            resourceInputs["confidenceThreshold"] = args?.confidenceThreshold;
+            resourceInputs["contextAwareness"] = args?.contextAwareness;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["entries"] = args?.entries;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ocrEnabled"] = args?.ocrEnabled;
+            resourceInputs["sharedEntries"] = args?.sharedEntries;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

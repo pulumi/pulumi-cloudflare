@@ -46,33 +46,33 @@ export class Ruleset extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * An informative description of the ruleset.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The kind of the ruleset.
      * Available values: "managed", "custom", "root", "zone".
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The human-readable name of the ruleset.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The phase of the ruleset.
      * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
-    public readonly phase!: pulumi.Output<string>;
+    declare public readonly phase: pulumi.Output<string>;
     /**
      * The list of rules in the ruleset.
      */
-    public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.RulesetRule[] | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Ruleset resource with the given unique name, arguments, and options.
@@ -87,31 +87,31 @@ export class Ruleset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RulesetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["phase"] = state ? state.phase : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["phase"] = state?.phase;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as RulesetArgs | undefined;
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.phase === undefined) && !opts.urn) {
+            if (args?.phase === undefined && !opts.urn) {
                 throw new Error("Missing required property 'phase'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["phase"] = args ? args.phase : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["phase"] = args?.phase;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ruleset.__pulumiType, name, resourceInputs, opts);

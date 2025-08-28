@@ -54,19 +54,19 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * True if new beta namespace, with additional preview features.
      */
-    public /*out*/ readonly beta!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly beta: pulumi.Output<boolean>;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
-    public /*out*/ readonly supportsUrlEncoding!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly supportsUrlEncoding: pulumi.Output<boolean>;
     /**
      * A human-readable string name for a Namespace.
      */
-    public readonly title!: pulumi.Output<string>;
+    declare public readonly title: pulumi.Output<string>;
 
     /**
      * Create a WorkersKvNamespace resource with the given unique name, arguments, and options.
@@ -81,20 +81,20 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["beta"] = state ? state.beta : undefined;
-            resourceInputs["supportsUrlEncoding"] = state ? state.supportsUrlEncoding : undefined;
-            resourceInputs["title"] = state ? state.title : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["beta"] = state?.beta;
+            resourceInputs["supportsUrlEncoding"] = state?.supportsUrlEncoding;
+            resourceInputs["title"] = state?.title;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.title === undefined) && !opts.urn) {
+            if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["title"] = args?.title;
             resourceInputs["beta"] = undefined /*out*/;
             resourceInputs["supportsUrlEncoding"] = undefined /*out*/;
         }

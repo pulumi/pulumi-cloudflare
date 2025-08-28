@@ -43,80 +43,80 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayPolicy.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
-    public readonly action!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Date of deletion, if any.
      */
-    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The wirefilter expression used for device posture check matching.
      */
-    public readonly devicePosture!: pulumi.Output<string>;
+    declare public readonly devicePosture: pulumi.Output<string>;
     /**
      * True if the rule is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The expiration time stamp and default duration of a DNS policy. Takes
      * precedence over the policy's `schedule` configuration, if any.
      */
-    public readonly expiration!: pulumi.Output<outputs.ZeroTrustGatewayPolicyExpiration>;
+    declare public readonly expiration: pulumi.Output<outputs.ZeroTrustGatewayPolicyExpiration>;
     /**
      * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
-    public readonly filters!: pulumi.Output<string[] | undefined>;
+    declare public readonly filters: pulumi.Output<string[] | undefined>;
     /**
      * The wirefilter expression used for identity matching.
      */
-    public readonly identity!: pulumi.Output<string>;
+    declare public readonly identity: pulumi.Output<string>;
     /**
      * The name of the rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rule cannot be shared via the Orgs API
      */
-    public /*out*/ readonly notSharable!: pulumi.Output<boolean>;
-    public readonly precedence!: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly notSharable: pulumi.Output<boolean>;
+    declare public readonly precedence: pulumi.Output<number | undefined>;
     /**
      * The rule was shared via the Orgs API and cannot be edited by the current account
      */
-    public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly readOnly: pulumi.Output<boolean>;
     /**
      * Additional settings that modify the rule's action.
      */
-    public readonly ruleSettings!: pulumi.Output<outputs.ZeroTrustGatewayPolicyRuleSettings>;
+    declare public readonly ruleSettings: pulumi.Output<outputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
-    public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
+    declare public readonly schedule: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
     /**
      * account tag of account that created the rule
      */
-    public /*out*/ readonly sourceAccount!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceAccount: pulumi.Output<string>;
     /**
      * The wirefilter expression used for traffic matching.
      */
-    public readonly traffic!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly traffic: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * version number of the rule
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
     /**
      * Warning for a misconfigured rule, if any.
      */
-    public /*out*/ readonly warningStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly warningStatus: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustGatewayPolicy resource with the given unique name, arguments, and options.
@@ -131,51 +131,51 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewayPolicyState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["devicePosture"] = state ? state.devicePosture : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expiration"] = state ? state.expiration : undefined;
-            resourceInputs["filters"] = state ? state.filters : undefined;
-            resourceInputs["identity"] = state ? state.identity : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notSharable"] = state ? state.notSharable : undefined;
-            resourceInputs["precedence"] = state ? state.precedence : undefined;
-            resourceInputs["readOnly"] = state ? state.readOnly : undefined;
-            resourceInputs["ruleSettings"] = state ? state.ruleSettings : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["sourceAccount"] = state ? state.sourceAccount : undefined;
-            resourceInputs["traffic"] = state ? state.traffic : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["warningStatus"] = state ? state.warningStatus : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["devicePosture"] = state?.devicePosture;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expiration"] = state?.expiration;
+            resourceInputs["filters"] = state?.filters;
+            resourceInputs["identity"] = state?.identity;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notSharable"] = state?.notSharable;
+            resourceInputs["precedence"] = state?.precedence;
+            resourceInputs["readOnly"] = state?.readOnly;
+            resourceInputs["ruleSettings"] = state?.ruleSettings;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["sourceAccount"] = state?.sourceAccount;
+            resourceInputs["traffic"] = state?.traffic;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["warningStatus"] = state?.warningStatus;
         } else {
             const args = argsOrState as ZeroTrustGatewayPolicyArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["devicePosture"] = args ? args.devicePosture : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["filters"] = args ? args.filters : undefined;
-            resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["precedence"] = args ? args.precedence : undefined;
-            resourceInputs["ruleSettings"] = args ? args.ruleSettings : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["traffic"] = args ? args.traffic : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["devicePosture"] = args?.devicePosture;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["filters"] = args?.filters;
+            resourceInputs["identity"] = args?.identity;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["precedence"] = args?.precedence;
+            resourceInputs["ruleSettings"] = args?.ruleSettings;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["traffic"] = args?.traffic;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
             resourceInputs["notSharable"] = undefined /*out*/;

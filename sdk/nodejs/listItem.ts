@@ -51,43 +51,43 @@ export class ListItem extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A non-negative 32 bit integer
      */
-    public readonly asn!: pulumi.Output<number | undefined>;
+    declare public readonly asn: pulumi.Output<number | undefined>;
     /**
      * An informative summary of the list item.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The RFC 3339 timestamp of when the item was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
-    public readonly hostname!: pulumi.Output<outputs.ListItemHostname | undefined>;
+    declare public readonly hostname: pulumi.Output<outputs.ListItemHostname | undefined>;
     /**
      * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
      */
-    public readonly ip!: pulumi.Output<string | undefined>;
+    declare public readonly ip: pulumi.Output<string | undefined>;
     /**
      * The unique ID of the list.
      */
-    public readonly listId!: pulumi.Output<string>;
+    declare public readonly listId: pulumi.Output<string>;
     /**
      * The RFC 3339 timestamp of when the item was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The unique operation ID of the asynchronous action.
      */
-    public /*out*/ readonly operationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly operationId: pulumi.Output<string>;
     /**
      * The definition of the redirect.
      */
-    public readonly redirect!: pulumi.Output<outputs.ListItemRedirect | undefined>;
+    declare public readonly redirect: pulumi.Output<outputs.ListItemRedirect | undefined>;
 
     /**
      * Create a ListItem resource with the given unique name, arguments, and options.
@@ -102,31 +102,31 @@ export class ListItem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListItemState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["asn"] = state ? state.asn : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["listId"] = state ? state.listId : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["operationId"] = state ? state.operationId : undefined;
-            resourceInputs["redirect"] = state ? state.redirect : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["asn"] = state?.asn;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["listId"] = state?.listId;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["redirect"] = state?.redirect;
         } else {
             const args = argsOrState as ListItemArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.listId === undefined) && !opts.urn) {
+            if (args?.listId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'listId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["asn"] = args ? args.asn : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
-            resourceInputs["listId"] = args ? args.listId : undefined;
-            resourceInputs["redirect"] = args ? args.redirect : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["asn"] = args?.asn;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["ip"] = args?.ip;
+            resourceInputs["listId"] = args?.listId;
+            resourceInputs["redirect"] = args?.redirect;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;

@@ -24,12 +24,19 @@ class SchemaValidationSettingsArgs:
                  validation_override_mitigation_action: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SchemaValidationSettings resource.
-        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-               conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-               running schema validation Available values: "none", "log", "block".
+        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used
+               Mitigation actions are as follows:
+               
+                 - `"log"` - log request when request does not conform to schema
+                 - `"block"` - deny access to the site when request does not conform to schema
+                 - `"none"` - skip running schema validation
+               Available values: "none", "log", "block".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-               validation entirely for the request - `null` - clears any existing override Available values: "none".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `"none"` - skip running schema validation entirely for the request
+                 - `null` - clears any existing override
+               Available values: "none".
         """
         pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -40,9 +47,13 @@ class SchemaValidationSettingsArgs:
     @pulumi.getter(name="validationDefaultMitigationAction")
     def validation_default_mitigation_action(self) -> pulumi.Input[_builtins.str]:
         """
-        The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        running schema validation Available values: "none", "log", "block".
+        The default mitigation action used
+        Mitigation actions are as follows:
+
+          - `"log"` - log request when request does not conform to schema
+          - `"block"` - deny access to the site when request does not conform to schema
+          - `"none"` - skip running schema validation
+        Available values: "none", "log", "block".
         """
         return pulumi.get(self, "validation_default_mitigation_action")
 
@@ -66,8 +77,11 @@ class SchemaValidationSettingsArgs:
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        validation entirely for the request - `null` - clears any existing override Available values: "none".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `"none"` - skip running schema validation entirely for the request
+          - `null` - clears any existing override
+        Available values: "none".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 
@@ -84,11 +98,18 @@ class _SchemaValidationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SchemaValidationSettings resources.
-        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-               conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-               running schema validation Available values: "none", "log", "block".
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-               validation entirely for the request - `null` - clears any existing override Available values: "none".
+        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used
+               Mitigation actions are as follows:
+               
+                 - `"log"` - log request when request does not conform to schema
+                 - `"block"` - deny access to the site when request does not conform to schema
+                 - `"none"` - skip running schema validation
+               Available values: "none", "log", "block".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `"none"` - skip running schema validation entirely for the request
+                 - `null` - clears any existing override
+               Available values: "none".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if validation_default_mitigation_action is not None:
@@ -102,9 +123,13 @@ class _SchemaValidationSettingsState:
     @pulumi.getter(name="validationDefaultMitigationAction")
     def validation_default_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        running schema validation Available values: "none", "log", "block".
+        The default mitigation action used
+        Mitigation actions are as follows:
+
+          - `"log"` - log request when request does not conform to schema
+          - `"block"` - deny access to the site when request does not conform to schema
+          - `"none"` - skip running schema validation
+        Available values: "none", "log", "block".
         """
         return pulumi.get(self, "validation_default_mitigation_action")
 
@@ -116,8 +141,11 @@ class _SchemaValidationSettingsState:
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        validation entirely for the request - `null` - clears any existing override Available values: "none".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `"none"` - skip running schema validation entirely for the request
+          - `null` - clears any existing override
+        Available values: "none".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 
@@ -163,11 +191,18 @@ class SchemaValidationSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-               conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-               running schema validation Available values: "none", "log", "block".
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-               validation entirely for the request - `null` - clears any existing override Available values: "none".
+        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used
+               Mitigation actions are as follows:
+               
+                 - `"log"` - log request when request does not conform to schema
+                 - `"block"` - deny access to the site when request does not conform to schema
+                 - `"none"` - skip running schema validation
+               Available values: "none", "log", "block".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `"none"` - skip running schema validation entirely for the request
+                 - `null` - clears any existing override
+               Available values: "none".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -243,11 +278,18 @@ class SchemaValidationSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-               conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-               running schema validation Available values: "none", "log", "block".
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-               validation entirely for the request - `null` - clears any existing override Available values: "none".
+        :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used
+               Mitigation actions are as follows:
+               
+                 - `"log"` - log request when request does not conform to schema
+                 - `"block"` - deny access to the site when request does not conform to schema
+                 - `"none"` - skip running schema validation
+               Available values: "none", "log", "block".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `"none"` - skip running schema validation entirely for the request
+                 - `null` - clears any existing override
+               Available values: "none".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -263,9 +305,13 @@ class SchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="validationDefaultMitigationAction")
     def validation_default_mitigation_action(self) -> pulumi.Output[_builtins.str]:
         """
-        The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        running schema validation Available values: "none", "log", "block".
+        The default mitigation action used
+        Mitigation actions are as follows:
+
+          - `"log"` - log request when request does not conform to schema
+          - `"block"` - deny access to the site when request does not conform to schema
+          - `"none"` - skip running schema validation
+        Available values: "none", "log", "block".
         """
         return pulumi.get(self, "validation_default_mitigation_action")
 
@@ -273,8 +319,11 @@ class SchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        validation entirely for the request - `null` - clears any existing override Available values: "none".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `"none"` - skip running schema validation entirely for the request
+          - `null` - clears any existing override
+        Available values: "none".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 

@@ -56,11 +56,11 @@ export class WaitingRoomSettings extends pulumi.CustomResource {
      * Verified search engine crawlers will not be tracked or counted by the waiting room system,
      * and will not appear in waiting room analytics.
      */
-    public readonly searchEngineCrawlerBypass!: pulumi.Output<boolean>;
+    declare public readonly searchEngineCrawlerBypass: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomSettings resource with the given unique name, arguments, and options.
@@ -75,15 +75,15 @@ export class WaitingRoomSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomSettingsState | undefined;
-            resourceInputs["searchEngineCrawlerBypass"] = state ? state.searchEngineCrawlerBypass : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["searchEngineCrawlerBypass"] = state?.searchEngineCrawlerBypass;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as WaitingRoomSettingsArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["searchEngineCrawlerBypass"] = args ? args.searchEngineCrawlerBypass : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["searchEngineCrawlerBypass"] = args?.searchEngineCrawlerBypass;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WaitingRoomSettings.__pulumiType, name, resourceInputs, opts);

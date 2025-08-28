@@ -59,47 +59,47 @@ export class Image extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Can set the creator field with an internal user ID.
      */
-    public readonly creator!: pulumi.Output<string | undefined>;
+    declare public readonly creator: pulumi.Output<string | undefined>;
     /**
      * An image binary data. Only needed when type is uploading a file.
      */
-    public readonly file!: pulumi.Output<string | undefined>;
+    declare public readonly file: pulumi.Output<string | undefined>;
     /**
      * Image file name.
      */
-    public /*out*/ readonly filename!: pulumi.Output<string>;
+    declare public /*out*/ readonly filename: pulumi.Output<string>;
     /**
      * An optional custom unique identifier for your image.
      */
-    public readonly imageId!: pulumi.Output<string>;
+    declare public readonly imageId: pulumi.Output<string>;
     /**
      * User modifiable key-value store. Can be used for keeping references to another system of record for managing images. Metadata must not exceed 1024 bytes.
      */
-    public /*out*/ readonly meta!: pulumi.Output<string>;
+    declare public /*out*/ readonly meta: pulumi.Output<string>;
     /**
      * User modifiable key-value store. Can use used for keeping references to another system of record for managing images.
      */
-    public readonly metadata!: pulumi.Output<string | undefined>;
+    declare public readonly metadata: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the image requires a signature token for the access.
      */
-    public readonly requireSignedUrls!: pulumi.Output<boolean>;
+    declare public readonly requireSignedUrls: pulumi.Output<boolean>;
     /**
      * When the media item was uploaded.
      */
-    public /*out*/ readonly uploaded!: pulumi.Output<string>;
+    declare public /*out*/ readonly uploaded: pulumi.Output<string>;
     /**
      * A URL to fetch an image from origin. Only needed when type is uploading from a URL.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
     /**
      * Object specifying available variants for an image.
      */
-    public /*out*/ readonly variants!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly variants: pulumi.Output<string[]>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -114,32 +114,32 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["filename"] = state ? state.filename : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["requireSignedUrls"] = state ? state.requireSignedUrls : undefined;
-            resourceInputs["uploaded"] = state ? state.uploaded : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["variants"] = state ? state.variants : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["filename"] = state?.filename;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["requireSignedUrls"] = state?.requireSignedUrls;
+            resourceInputs["uploaded"] = state?.uploaded;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["variants"] = state?.variants;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.imageId === undefined) && !opts.urn) {
+            if (args?.imageId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'imageId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["creator"] = args ? args.creator : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["requireSignedUrls"] = args ? args.requireSignedUrls : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["creator"] = args?.creator;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["requireSignedUrls"] = args?.requireSignedUrls;
+            resourceInputs["url"] = args?.url;
             resourceInputs["filename"] = undefined /*out*/;
             resourceInputs["meta"] = undefined /*out*/;
             resourceInputs["uploaded"] = undefined /*out*/;

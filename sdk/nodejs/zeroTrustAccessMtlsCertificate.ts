@@ -60,28 +60,28 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The hostnames of the applications that will use this certificate.
      */
-    public readonly associatedHostnames!: pulumi.Output<string[] | undefined>;
+    declare public readonly associatedHostnames: pulumi.Output<string[] | undefined>;
     /**
      * The certificate content.
      */
-    public readonly certificate!: pulumi.Output<string>;
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * The MD5 fingerprint of the certificate.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The name of the certificate.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustAccessMtlsCertificate resource with the given unique name, arguments, and options.
@@ -96,26 +96,26 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessMtlsCertificateState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["associatedHostnames"] = state ? state.associatedHostnames : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["associatedHostnames"] = state?.associatedHostnames;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessMtlsCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["associatedHostnames"] = args ? args.associatedHostnames : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["associatedHostnames"] = args?.associatedHostnames;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
         }

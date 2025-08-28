@@ -34,16 +34,23 @@ namespace Pulumi.Cloudflare
     public partial class SchemaValidationSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        /// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        /// running schema validation Available values: "none", "log", "block".
+        /// The default mitigation action used
+        /// Mitigation actions are as follows:
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema
+        ///   - `"block"` - deny access to the site when request does not conform to schema
+        ///   - `"none"` - skip running schema validation
+        /// Available values: "none", "log", "block".
         /// </summary>
         [Output("validationDefaultMitigationAction")]
         public Output<string> ValidationDefaultMitigationAction { get; private set; } = null!;
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        /// validation entirely for the request - `null` - clears any existing override Available values: "none".
+        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// 
+        ///   - `"none"` - skip running schema validation entirely for the request
+        ///   - `null` - clears any existing override
+        /// Available values: "none".
         /// </summary>
         [Output("validationOverrideMitigationAction")]
         public Output<string?> ValidationOverrideMitigationAction { get; private set; } = null!;
@@ -101,16 +108,23 @@ namespace Pulumi.Cloudflare
     public sealed class SchemaValidationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        /// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        /// running schema validation Available values: "none", "log", "block".
+        /// The default mitigation action used
+        /// Mitigation actions are as follows:
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema
+        ///   - `"block"` - deny access to the site when request does not conform to schema
+        ///   - `"none"` - skip running schema validation
+        /// Available values: "none", "log", "block".
         /// </summary>
         [Input("validationDefaultMitigationAction", required: true)]
         public Input<string> ValidationDefaultMitigationAction { get; set; } = null!;
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        /// validation entirely for the request - `null` - clears any existing override Available values: "none".
+        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// 
+        ///   - `"none"` - skip running schema validation entirely for the request
+        ///   - `null` - clears any existing override
+        /// Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }
@@ -130,16 +144,23 @@ namespace Pulumi.Cloudflare
     public sealed class SchemaValidationSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-        /// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-        /// running schema validation Available values: "none", "log", "block".
+        /// The default mitigation action used
+        /// Mitigation actions are as follows:
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema
+        ///   - `"block"` - deny access to the site when request does not conform to schema
+        ///   - `"none"` - skip running schema validation
+        /// Available values: "none", "log", "block".
         /// </summary>
         [Input("validationDefaultMitigationAction")]
         public Input<string>? ValidationDefaultMitigationAction { get; set; }
 
         /// <summary>
-        /// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-        /// validation entirely for the request - `null` - clears any existing override Available values: "none".
+        /// When set, this overrides both zone level and operation level mitigation actions.
+        /// 
+        ///   - `"none"` - skip running schema validation entirely for the request
+        ///   - `null` - clears any existing override
+        /// Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }

@@ -46,9 +46,9 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustLocalFallbackDomain.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly domains!: pulumi.Output<outputs.ZeroTrustLocalFallbackDomainDomain[]>;
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly domains: pulumi.Output<outputs.ZeroTrustLocalFallbackDomainDomain[]>;
+    declare public readonly policyId: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustLocalFallbackDomain resource with the given unique name, arguments, and options.
@@ -66,23 +66,23 @@ export class ZeroTrustLocalFallbackDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustLocalFallbackDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["policyId"] = state?.policyId;
         } else {
             const args = argsOrState as ZeroTrustLocalFallbackDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.domains === undefined) && !opts.urn) {
+            if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["domains"] = args?.domains;
+            resourceInputs["policyId"] = args?.policyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/fallbackDomain:FallbackDomain" }, { type: "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain" }] };

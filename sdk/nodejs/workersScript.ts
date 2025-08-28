@@ -46,101 +46,101 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Configuration for assets within a Worker
      */
-    public readonly assets!: pulumi.Output<outputs.WorkersScriptAssets | undefined>;
+    declare public readonly assets: pulumi.Output<outputs.WorkersScriptAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    public readonly bindings!: pulumi.Output<outputs.WorkersScriptBinding[]>;
+    declare public readonly bindings: pulumi.Output<outputs.WorkersScriptBinding[]>;
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
-    public readonly bodyPart!: pulumi.Output<string | undefined>;
+    declare public readonly bodyPart: pulumi.Output<string | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    public readonly compatibilityDate!: pulumi.Output<string>;
+    declare public readonly compatibilityDate: pulumi.Output<string>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    public readonly compatibilityFlags!: pulumi.Output<string[]>;
+    declare public readonly compatibilityFlags: pulumi.Output<string[]>;
     /**
      * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
      */
-    public readonly contentFile!: pulumi.Output<string | undefined>;
+    declare public readonly contentFile: pulumi.Output<string | undefined>;
     /**
      * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      */
-    public readonly contentSha256!: pulumi.Output<string | undefined>;
+    declare public readonly contentSha256: pulumi.Output<string | undefined>;
     /**
      * Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
      */
-    public readonly contentType!: pulumi.Output<string | undefined>;
+    declare public readonly contentType: pulumi.Output<string | undefined>;
     /**
      * When the script was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Hashed script content, can be used in a If-None-Match header when updating.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Whether a Worker contains assets.
      */
-    public /*out*/ readonly hasAssets!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasAssets: pulumi.Output<boolean>;
     /**
      * Whether a Worker contains modules.
      */
-    public /*out*/ readonly hasModules!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasModules: pulumi.Output<boolean>;
     /**
      * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
      */
-    public readonly keepAssets!: pulumi.Output<boolean | undefined>;
+    declare public readonly keepAssets: pulumi.Output<boolean | undefined>;
     /**
      * List of binding types to keep from previous_upload.
      */
-    public readonly keepBindings!: pulumi.Output<string[] | undefined>;
+    declare public readonly keepBindings: pulumi.Output<string[] | undefined>;
     /**
      * Whether Logpush is turned on for the Worker.
      */
-    public readonly logpush!: pulumi.Output<boolean>;
+    declare public readonly logpush: pulumi.Output<boolean>;
     /**
      * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
-    public readonly mainModule!: pulumi.Output<string | undefined>;
+    declare public readonly mainModule: pulumi.Output<string | undefined>;
     /**
      * When the script was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Observability settings for the Worker.
      */
-    public readonly observability!: pulumi.Output<outputs.WorkersScriptObservability | undefined>;
+    declare public readonly observability: pulumi.Output<outputs.WorkersScriptObservability | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
-    public readonly placement!: pulumi.Output<outputs.WorkersScriptPlacement>;
+    declare public readonly placement: pulumi.Output<outputs.WorkersScriptPlacement>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    public readonly scriptName!: pulumi.Output<string>;
-    public /*out*/ readonly startupTimeMs!: pulumi.Output<number>;
+    declare public readonly scriptName: pulumi.Output<string>;
+    declare public /*out*/ readonly startupTimeMs: pulumi.Output<number>;
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    public readonly tailConsumers!: pulumi.Output<outputs.WorkersScriptTailConsumer[]>;
+    declare public readonly tailConsumers: pulumi.Output<outputs.WorkersScriptTailConsumer[]>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard".
      */
-    public readonly usageModel!: pulumi.Output<string>;
+    declare public readonly usageModel: pulumi.Output<string>;
 
     /**
      * Create a WorkersScript resource with the given unique name, arguments, and options.
@@ -155,58 +155,58 @@ export class WorkersScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersScriptState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["assets"] = state ? state.assets : undefined;
-            resourceInputs["bindings"] = state ? state.bindings : undefined;
-            resourceInputs["bodyPart"] = state ? state.bodyPart : undefined;
-            resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
-            resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentFile"] = state ? state.contentFile : undefined;
-            resourceInputs["contentSha256"] = state ? state.contentSha256 : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["hasAssets"] = state ? state.hasAssets : undefined;
-            resourceInputs["hasModules"] = state ? state.hasModules : undefined;
-            resourceInputs["keepAssets"] = state ? state.keepAssets : undefined;
-            resourceInputs["keepBindings"] = state ? state.keepBindings : undefined;
-            resourceInputs["logpush"] = state ? state.logpush : undefined;
-            resourceInputs["mainModule"] = state ? state.mainModule : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["observability"] = state ? state.observability : undefined;
-            resourceInputs["placement"] = state ? state.placement : undefined;
-            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
-            resourceInputs["startupTimeMs"] = state ? state.startupTimeMs : undefined;
-            resourceInputs["tailConsumers"] = state ? state.tailConsumers : undefined;
-            resourceInputs["usageModel"] = state ? state.usageModel : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["assets"] = state?.assets;
+            resourceInputs["bindings"] = state?.bindings;
+            resourceInputs["bodyPart"] = state?.bodyPart;
+            resourceInputs["compatibilityDate"] = state?.compatibilityDate;
+            resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentFile"] = state?.contentFile;
+            resourceInputs["contentSha256"] = state?.contentSha256;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["hasAssets"] = state?.hasAssets;
+            resourceInputs["hasModules"] = state?.hasModules;
+            resourceInputs["keepAssets"] = state?.keepAssets;
+            resourceInputs["keepBindings"] = state?.keepBindings;
+            resourceInputs["logpush"] = state?.logpush;
+            resourceInputs["mainModule"] = state?.mainModule;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["observability"] = state?.observability;
+            resourceInputs["placement"] = state?.placement;
+            resourceInputs["scriptName"] = state?.scriptName;
+            resourceInputs["startupTimeMs"] = state?.startupTimeMs;
+            resourceInputs["tailConsumers"] = state?.tailConsumers;
+            resourceInputs["usageModel"] = state?.usageModel;
         } else {
             const args = argsOrState as WorkersScriptArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.scriptName === undefined) && !opts.urn) {
+            if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["assets"] = args ? args.assets : undefined;
-            resourceInputs["bindings"] = args ? args.bindings : undefined;
-            resourceInputs["bodyPart"] = args ? args.bodyPart : undefined;
-            resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
-            resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentFile"] = args ? args.contentFile : undefined;
-            resourceInputs["contentSha256"] = args ? args.contentSha256 : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["keepAssets"] = args ? args.keepAssets : undefined;
-            resourceInputs["keepBindings"] = args ? args.keepBindings : undefined;
-            resourceInputs["logpush"] = args ? args.logpush : undefined;
-            resourceInputs["mainModule"] = args ? args.mainModule : undefined;
-            resourceInputs["observability"] = args ? args.observability : undefined;
-            resourceInputs["placement"] = args ? args.placement : undefined;
-            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
-            resourceInputs["tailConsumers"] = args ? args.tailConsumers : undefined;
-            resourceInputs["usageModel"] = args ? args.usageModel : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["assets"] = args?.assets;
+            resourceInputs["bindings"] = args?.bindings;
+            resourceInputs["bodyPart"] = args?.bodyPart;
+            resourceInputs["compatibilityDate"] = args?.compatibilityDate;
+            resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentFile"] = args?.contentFile;
+            resourceInputs["contentSha256"] = args?.contentSha256;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["keepAssets"] = args?.keepAssets;
+            resourceInputs["keepBindings"] = args?.keepBindings;
+            resourceInputs["logpush"] = args?.logpush;
+            resourceInputs["mainModule"] = args?.mainModule;
+            resourceInputs["observability"] = args?.observability;
+            resourceInputs["placement"] = args?.placement;
+            resourceInputs["scriptName"] = args?.scriptName;
+            resourceInputs["tailConsumers"] = args?.tailConsumers;
+            resourceInputs["usageModel"] = args?.usageModel;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["hasAssets"] = undefined /*out*/;

@@ -49,15 +49,15 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
     /**
      * Defines ehe ruleset expression to use in matching the password in a request.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Defines the ruleset expression to use in matching the username in a request.
      */
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a LeakedCredentialCheckRule resource with the given unique name, arguments, and options.
@@ -72,17 +72,17 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LeakedCredentialCheckRuleState | undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LeakedCredentialCheckRuleArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LeakedCredentialCheckRule.__pulumiType, name, resourceInputs, opts);

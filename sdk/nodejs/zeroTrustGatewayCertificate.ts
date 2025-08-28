@@ -51,42 +51,42 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayCertificate.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
-    public /*out*/ readonly bindingStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly bindingStatus: pulumi.Output<string>;
     /**
      * The CA certificate
      */
-    public /*out*/ readonly certificate!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificate: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * The SHA256 fingerprint of the certificate.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Use this certificate for Gateway TLS interception
      */
-    public /*out*/ readonly inUse!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly inUse: pulumi.Output<boolean>;
     /**
      * The organization that issued the certificate.
      */
-    public /*out*/ readonly issuerOrg!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuerOrg: pulumi.Output<string>;
     /**
      * The entire issuer field of the certificate.
      */
-    public /*out*/ readonly issuerRaw!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuerRaw: pulumi.Output<string>;
     /**
      * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
-    public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
-    public readonly validityPeriodDays!: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadedOn: pulumi.Output<string>;
+    declare public readonly validityPeriodDays: pulumi.Output<number | undefined>;
 
     /**
      * Create a ZeroTrustGatewayCertificate resource with the given unique name, arguments, and options.
@@ -101,26 +101,26 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewayCertificateState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bindingStatus"] = state ? state.bindingStatus : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["inUse"] = state ? state.inUse : undefined;
-            resourceInputs["issuerOrg"] = state ? state.issuerOrg : undefined;
-            resourceInputs["issuerRaw"] = state ? state.issuerRaw : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
-            resourceInputs["validityPeriodDays"] = state ? state.validityPeriodDays : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bindingStatus"] = state?.bindingStatus;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["inUse"] = state?.inUse;
+            resourceInputs["issuerOrg"] = state?.issuerOrg;
+            resourceInputs["issuerRaw"] = state?.issuerRaw;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uploadedOn"] = state?.uploadedOn;
+            resourceInputs["validityPeriodDays"] = state?.validityPeriodDays;
         } else {
             const args = argsOrState as ZeroTrustGatewayCertificateArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["validityPeriodDays"] = args ? args.validityPeriodDays : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["validityPeriodDays"] = args?.validityPeriodDays;
             resourceInputs["bindingStatus"] = undefined /*out*/;
             resourceInputs["certificate"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

@@ -56,20 +56,20 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly comments!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public /*out*/ readonly directoryId!: pulumi.Output<number>;
-    public /*out*/ readonly directoryNodeId!: pulumi.Output<number>;
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly comments: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public /*out*/ readonly directoryId: pulumi.Output<number>;
+    declare public /*out*/ readonly directoryNodeId: pulumi.Output<number>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly externalDirectoryNodeId!: pulumi.Output<string>;
-    public readonly isEmailRegex!: pulumi.Output<boolean>;
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly provenance!: pulumi.Output<string>;
+    declare public /*out*/ readonly externalDirectoryNodeId: pulumi.Output<string>;
+    declare public readonly isEmailRegex: pulumi.Output<boolean>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly provenance: pulumi.Output<string>;
 
     /**
      * Create a EmailSecurityImpersonationRegistry resource with the given unique name, arguments, and options.
@@ -84,35 +84,35 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailSecurityImpersonationRegistryState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["directoryId"] = state ? state.directoryId : undefined;
-            resourceInputs["directoryNodeId"] = state ? state.directoryNodeId : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["externalDirectoryNodeId"] = state ? state.externalDirectoryNodeId : undefined;
-            resourceInputs["isEmailRegex"] = state ? state.isEmailRegex : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["provenance"] = state ? state.provenance : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["directoryId"] = state?.directoryId;
+            resourceInputs["directoryNodeId"] = state?.directoryNodeId;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["externalDirectoryNodeId"] = state?.externalDirectoryNodeId;
+            resourceInputs["isEmailRegex"] = state?.isEmailRegex;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["provenance"] = state?.provenance;
         } else {
             const args = argsOrState as EmailSecurityImpersonationRegistryArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.isEmailRegex === undefined) && !opts.urn) {
+            if (args?.isEmailRegex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isEmailRegex'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["isEmailRegex"] = args ? args.isEmailRegex : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["isEmailRegex"] = args?.isEmailRegex;
+            resourceInputs["name"] = args?.name;
             resourceInputs["comments"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["directoryId"] = undefined /*out*/;

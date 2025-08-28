@@ -50,9 +50,13 @@ type ApiShieldSchemaValidationSettings struct {
 
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringOutput `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `none` will skip running schema validation entirely for the request
+	//   - `null` indicates that no override is in place
+	//
+	// To clear any override, use the special value `disableOverride` or `null`
+	// Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrOutput `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -96,9 +100,13 @@ func GetApiShieldSchemaValidationSettings(ctx *pulumi.Context,
 type apiShieldSchemaValidationSettingsState struct {
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction *string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `none` will skip running schema validation entirely for the request
+	//   - `null` indicates that no override is in place
+	//
+	// To clear any override, use the special value `disableOverride` or `null`
+	// Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -107,9 +115,13 @@ type apiShieldSchemaValidationSettingsState struct {
 type ApiShieldSchemaValidationSettingsState struct {
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringPtrInput
-	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `none` will skip running schema validation entirely for the request
+	//   - `null` indicates that no override is in place
+	//
+	// To clear any override, use the special value `disableOverride` or `null`
+	// Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -122,9 +134,13 @@ func (ApiShieldSchemaValidationSettingsState) ElementType() reflect.Type {
 type apiShieldSchemaValidationSettingsArgs struct {
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `none` will skip running schema validation entirely for the request
+	//   - `null` indicates that no override is in place
+	//
+	// To clear any override, use the special value `disableOverride` or `null`
+	// Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -134,9 +150,13 @@ type apiShieldSchemaValidationSettingsArgs struct {
 type ApiShieldSchemaValidationSettingsArgs struct {
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction pulumi.StringInput
-	// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `none` will skip running schema validation entirely for the request
+	//   - `null` indicates that no override is in place
+	//
+	// To clear any override, use the special value `disableOverride` or `null`
+	// Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -236,9 +256,13 @@ func (o ApiShieldSchemaValidationSettingsOutput) ValidationDefaultMitigationActi
 	}).(pulumi.StringOutput)
 }
 
-// When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-// special value `disableOverride` or `null` Available values: "none", "disableOverride".
+// When set, this overrides both zone level and operation level mitigation actions.
+//
+//   - `none` will skip running schema validation entirely for the request
+//   - `null` indicates that no override is in place
+//
+// To clear any override, use the special value `disableOverride` or `null`
+// Available values: "none", "disableOverride".
 func (o ApiShieldSchemaValidationSettingsOutput) ValidationOverrideMitigationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaValidationSettings) pulumi.StringPtrOutput {
 		return v.ValidationOverrideMitigationAction

@@ -48,11 +48,11 @@ export class StreamWebhook extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The URL where webhooks will be sent.
      */
-    public readonly notificationUrl!: pulumi.Output<string>;
+    declare public readonly notificationUrl: pulumi.Output<string>;
 
     /**
      * Create a StreamWebhook resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class StreamWebhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamWebhookState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["notificationUrl"] = state ? state.notificationUrl : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["notificationUrl"] = state?.notificationUrl;
         } else {
             const args = argsOrState as StreamWebhookArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.notificationUrl === undefined) && !opts.urn) {
+            if (args?.notificationUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notificationUrl'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["notificationUrl"] = args ? args.notificationUrl : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["notificationUrl"] = args?.notificationUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StreamWebhook.__pulumiType, name, resourceInputs, opts);

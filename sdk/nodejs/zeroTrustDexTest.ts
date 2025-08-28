@@ -67,36 +67,36 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDexTest.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The configuration object which contains the details for the WARP client to conduct the test.
      */
-    public readonly data!: pulumi.Output<outputs.ZeroTrustDexTestData>;
+    declare public readonly data: pulumi.Output<outputs.ZeroTrustDexTestData>;
     /**
      * Additional details about the test.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Determines whether or not the test is active.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * How often the test will run.
      */
-    public readonly interval!: pulumi.Output<string>;
+    declare public readonly interval: pulumi.Output<string>;
     /**
      * The name of the DEX test. Must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * DEX rules targeted by this test
      */
-    public readonly targetPolicies!: pulumi.Output<outputs.ZeroTrustDexTestTargetPolicy[] | undefined>;
-    public readonly targeted!: pulumi.Output<boolean | undefined>;
+    declare public readonly targetPolicies: pulumi.Output<outputs.ZeroTrustDexTestTargetPolicy[] | undefined>;
+    declare public readonly targeted: pulumi.Output<boolean | undefined>;
     /**
      * The unique identifier for the test.
      */
-    public /*out*/ readonly testId!: pulumi.Output<string>;
+    declare public /*out*/ readonly testId: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDexTest resource with the given unique name, arguments, and options.
@@ -111,40 +111,40 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDexTestState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["targetPolicies"] = state ? state.targetPolicies : undefined;
-            resourceInputs["targeted"] = state ? state.targeted : undefined;
-            resourceInputs["testId"] = state ? state.testId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["targetPolicies"] = state?.targetPolicies;
+            resourceInputs["targeted"] = state?.targeted;
+            resourceInputs["testId"] = state?.testId;
         } else {
             const args = argsOrState as ZeroTrustDexTestArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.data === undefined) && !opts.urn) {
+            if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.interval === undefined) && !opts.urn) {
+            if (args?.interval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interval'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["targetPolicies"] = args ? args.targetPolicies : undefined;
-            resourceInputs["targeted"] = args ? args.targeted : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["targetPolicies"] = args?.targetPolicies;
+            resourceInputs["targeted"] = args?.targeted;
             resourceInputs["testId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

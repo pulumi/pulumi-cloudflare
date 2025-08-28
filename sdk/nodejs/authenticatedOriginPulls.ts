@@ -40,70 +40,70 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public /*out*/ readonly certId!: pulumi.Output<string>;
+    declare public /*out*/ readonly certId: pulumi.Output<string>;
     /**
      * Status of the certificate or the association.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    public /*out*/ readonly certStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly certStatus: pulumi.Output<string>;
     /**
      * The time when the certificate was updated.
      */
-    public /*out*/ readonly certUpdatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly certUpdatedAt: pulumi.Output<string>;
     /**
      * The time when the certificate was uploaded.
      */
-    public /*out*/ readonly certUploadedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly certUploadedOn: pulumi.Output<string>;
     /**
      * The hostname certificate.
      */
-    public /*out*/ readonly certificate!: pulumi.Output<string>;
-    public readonly configs!: pulumi.Output<outputs.AuthenticatedOriginPullsConfig[]>;
+    declare public /*out*/ readonly certificate: pulumi.Output<string>;
+    declare public readonly configs: pulumi.Output<outputs.AuthenticatedOriginPullsConfig[]>;
     /**
      * The time when the certificate was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * The date when the certificate expires.
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * The hostname on the origin for which the client certificate uploaded will be used.
      */
-    public readonly hostname!: pulumi.Output<string | undefined>;
+    declare public readonly hostname: pulumi.Output<string | undefined>;
     /**
      * The certificate authority that issued the certificate.
      */
-    public /*out*/ readonly issuer!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuer: pulumi.Output<string>;
     /**
      * The hostname certificate's private key.
      */
-    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateKey: pulumi.Output<string>;
     /**
      * The serial number on the uploaded certificate.
      */
-    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
     /**
      * The type of hash used for the certificate.
      */
-    public /*out*/ readonly signature!: pulumi.Output<string>;
+    declare public /*out*/ readonly signature: pulumi.Output<string>;
     /**
      * Status of the certificate or the association.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The time when the certificate was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a AuthenticatedOriginPulls resource with the given unique name, arguments, and options.
@@ -118,34 +118,34 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsState | undefined;
-            resourceInputs["certId"] = state ? state.certId : undefined;
-            resourceInputs["certStatus"] = state ? state.certStatus : undefined;
-            resourceInputs["certUpdatedAt"] = state ? state.certUpdatedAt : undefined;
-            resourceInputs["certUploadedOn"] = state ? state.certUploadedOn : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
-            resourceInputs["signature"] = state ? state.signature : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certId"] = state?.certId;
+            resourceInputs["certStatus"] = state?.certStatus;
+            resourceInputs["certUpdatedAt"] = state?.certUpdatedAt;
+            resourceInputs["certUploadedOn"] = state?.certUploadedOn;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["serialNumber"] = state?.serialNumber;
+            resourceInputs["signature"] = state?.signature;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsArgs | undefined;
-            if ((!args || args.configs === undefined) && !opts.urn) {
+            if (args?.configs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configs'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["certId"] = undefined /*out*/;
             resourceInputs["certStatus"] = undefined /*out*/;
             resourceInputs["certUpdatedAt"] = undefined /*out*/;

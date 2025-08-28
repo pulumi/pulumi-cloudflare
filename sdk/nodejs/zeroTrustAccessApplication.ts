@@ -46,104 +46,104 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
-    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowAuthenticateViaWarp: pulumi.Output<boolean | undefined>;
     /**
      * Enables loading application content in an iFrame.
      */
-    public readonly allowIframe!: pulumi.Output<boolean | undefined>;
+    declare public readonly allowIframe: pulumi.Output<boolean | undefined>;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
-    public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedIdps: pulumi.Output<string[] | undefined>;
     /**
      * The image URL of the logo shown in the App Launcher header.
      */
-    public readonly appLauncherLogoUrl!: pulumi.Output<string | undefined>;
+    declare public readonly appLauncherLogoUrl: pulumi.Output<string | undefined>;
     /**
      * Displays the application in the App Launcher.
      */
-    public readonly appLauncherVisible!: pulumi.Output<boolean>;
+    declare public readonly appLauncherVisible: pulumi.Output<boolean>;
     /**
      * Audience tag.
      */
-    public /*out*/ readonly aud!: pulumi.Output<string>;
+    declare public /*out*/ readonly aud: pulumi.Output<string>;
     /**
      * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      */
-    public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRedirectToIdentity: pulumi.Output<boolean | undefined>;
     /**
      * The background color of the App Launcher page.
      */
-    public readonly bgColor!: pulumi.Output<string | undefined>;
-    public readonly corsHeaders!: pulumi.Output<outputs.ZeroTrustAccessApplicationCorsHeaders | undefined>;
+    declare public readonly bgColor: pulumi.Output<string | undefined>;
+    declare public readonly corsHeaders: pulumi.Output<outputs.ZeroTrustAccessApplicationCorsHeaders | undefined>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
-    public readonly customDenyMessage!: pulumi.Output<string | undefined>;
+    declare public readonly customDenyMessage: pulumi.Output<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      */
-    public readonly customDenyUrl!: pulumi.Output<string | undefined>;
+    declare public readonly customDenyUrl: pulumi.Output<string | undefined>;
     /**
      * The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      */
-    public readonly customNonIdentityDenyUrl!: pulumi.Output<string | undefined>;
+    declare public readonly customNonIdentityDenyUrl: pulumi.Output<string | undefined>;
     /**
      * The custom pages that will be displayed when applicable for this application
      */
-    public readonly customPages!: pulumi.Output<string[] | undefined>;
+    declare public readonly customPages: pulumi.Output<string[] | undefined>;
     /**
      * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      */
-    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[]>;
+    declare public readonly destinations: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[]>;
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      */
-    public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableBindingCookie: pulumi.Output<boolean | undefined>;
     /**
      * The links in the App Launcher footer.
      */
-    public readonly footerLinks!: pulumi.Output<outputs.ZeroTrustAccessApplicationFooterLink[] | undefined>;
+    declare public readonly footerLinks: pulumi.Output<outputs.ZeroTrustAccessApplicationFooterLink[] | undefined>;
     /**
      * The background color of the App Launcher header.
      */
-    public readonly headerBgColor!: pulumi.Output<string | undefined>;
+    declare public readonly headerBgColor: pulumi.Output<string | undefined>;
     /**
      * Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      */
-    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean>;
+    declare public readonly httpOnlyCookieAttribute: pulumi.Output<boolean>;
     /**
      * The design of the App Launcher landing page shown to users when they log in.
      */
-    public readonly landingPageDesign!: pulumi.Output<outputs.ZeroTrustAccessApplicationLandingPageDesign | undefined>;
+    declare public readonly landingPageDesign: pulumi.Output<outputs.ZeroTrustAccessApplicationLandingPageDesign | undefined>;
     /**
      * The image URL for the logo shown in the App Launcher dashboard.
      */
-    public readonly logoUrl!: pulumi.Output<string | undefined>;
+    declare public readonly logoUrl: pulumi.Output<string | undefined>;
     /**
      * The name of the application.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      */
-    public readonly optionsPreflightBypass!: pulumi.Output<boolean | undefined>;
+    declare public readonly optionsPreflightBypass: pulumi.Output<boolean | undefined>;
     /**
      * Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
      */
-    public readonly pathCookieAttribute!: pulumi.Output<boolean | undefined>;
+    declare public readonly pathCookieAttribute: pulumi.Output<boolean | undefined>;
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[] | undefined>;
+    declare public readonly policies: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[] | undefined>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -153,52 +153,52 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
      * }
      */
-    public readonly readServiceTokensFromHeader!: pulumi.Output<string | undefined>;
-    public readonly saasApp!: pulumi.Output<outputs.ZeroTrustAccessApplicationSaasApp | undefined>;
+    declare public readonly readServiceTokensFromHeader: pulumi.Output<string | undefined>;
+    declare public readonly saasApp: pulumi.Output<outputs.ZeroTrustAccessApplicationSaasApp | undefined>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      */
-    public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
+    declare public readonly sameSiteCookieAttribute: pulumi.Output<string | undefined>;
     /**
      * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
-    public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig | undefined>;
+    declare public readonly scimConfig: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig | undefined>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly selfHostedDomains!: pulumi.Output<string[]>;
+    declare public readonly selfHostedDomains: pulumi.Output<string[]>;
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
      */
-    public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
+    declare public readonly serviceAuth401Redirect: pulumi.Output<boolean | undefined>;
     /**
      * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
-    public readonly sessionDuration!: pulumi.Output<string>;
+    declare public readonly sessionDuration: pulumi.Output<string>;
     /**
      * Determines when to skip the App Launcher landing page.
      */
-    public readonly skipAppLauncherLoginPage!: pulumi.Output<boolean>;
+    declare public readonly skipAppLauncherLoginPage: pulumi.Output<boolean>;
     /**
      * Enables automatic authentication through cloudflared.
      */
-    public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
+    declare public readonly skipInterstitial: pulumi.Output<boolean | undefined>;
     /**
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    declare public readonly targetCriterias: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustAccessApplication resource with the given unique name, arguments, and options.
@@ -213,85 +213,85 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessApplicationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
-            resourceInputs["allowIframe"] = state ? state.allowIframe : undefined;
-            resourceInputs["allowedIdps"] = state ? state.allowedIdps : undefined;
-            resourceInputs["appLauncherLogoUrl"] = state ? state.appLauncherLogoUrl : undefined;
-            resourceInputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
-            resourceInputs["aud"] = state ? state.aud : undefined;
-            resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
-            resourceInputs["bgColor"] = state ? state.bgColor : undefined;
-            resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
-            resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
-            resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
-            resourceInputs["customNonIdentityDenyUrl"] = state ? state.customNonIdentityDenyUrl : undefined;
-            resourceInputs["customPages"] = state ? state.customPages : undefined;
-            resourceInputs["destinations"] = state ? state.destinations : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
-            resourceInputs["footerLinks"] = state ? state.footerLinks : undefined;
-            resourceInputs["headerBgColor"] = state ? state.headerBgColor : undefined;
-            resourceInputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
-            resourceInputs["landingPageDesign"] = state ? state.landingPageDesign : undefined;
-            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["optionsPreflightBypass"] = state ? state.optionsPreflightBypass : undefined;
-            resourceInputs["pathCookieAttribute"] = state ? state.pathCookieAttribute : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["readServiceTokensFromHeader"] = state ? state.readServiceTokensFromHeader : undefined;
-            resourceInputs["saasApp"] = state ? state.saasApp : undefined;
-            resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
-            resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
-            resourceInputs["selfHostedDomains"] = state ? state.selfHostedDomains : undefined;
-            resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["skipAppLauncherLoginPage"] = state ? state.skipAppLauncherLoginPage : undefined;
-            resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["targetCriterias"] = state ? state.targetCriterias : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowAuthenticateViaWarp"] = state?.allowAuthenticateViaWarp;
+            resourceInputs["allowIframe"] = state?.allowIframe;
+            resourceInputs["allowedIdps"] = state?.allowedIdps;
+            resourceInputs["appLauncherLogoUrl"] = state?.appLauncherLogoUrl;
+            resourceInputs["appLauncherVisible"] = state?.appLauncherVisible;
+            resourceInputs["aud"] = state?.aud;
+            resourceInputs["autoRedirectToIdentity"] = state?.autoRedirectToIdentity;
+            resourceInputs["bgColor"] = state?.bgColor;
+            resourceInputs["corsHeaders"] = state?.corsHeaders;
+            resourceInputs["customDenyMessage"] = state?.customDenyMessage;
+            resourceInputs["customDenyUrl"] = state?.customDenyUrl;
+            resourceInputs["customNonIdentityDenyUrl"] = state?.customNonIdentityDenyUrl;
+            resourceInputs["customPages"] = state?.customPages;
+            resourceInputs["destinations"] = state?.destinations;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["enableBindingCookie"] = state?.enableBindingCookie;
+            resourceInputs["footerLinks"] = state?.footerLinks;
+            resourceInputs["headerBgColor"] = state?.headerBgColor;
+            resourceInputs["httpOnlyCookieAttribute"] = state?.httpOnlyCookieAttribute;
+            resourceInputs["landingPageDesign"] = state?.landingPageDesign;
+            resourceInputs["logoUrl"] = state?.logoUrl;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["optionsPreflightBypass"] = state?.optionsPreflightBypass;
+            resourceInputs["pathCookieAttribute"] = state?.pathCookieAttribute;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["readServiceTokensFromHeader"] = state?.readServiceTokensFromHeader;
+            resourceInputs["saasApp"] = state?.saasApp;
+            resourceInputs["sameSiteCookieAttribute"] = state?.sameSiteCookieAttribute;
+            resourceInputs["scimConfig"] = state?.scimConfig;
+            resourceInputs["selfHostedDomains"] = state?.selfHostedDomains;
+            resourceInputs["serviceAuth401Redirect"] = state?.serviceAuth401Redirect;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["skipAppLauncherLoginPage"] = state?.skipAppLauncherLoginPage;
+            resourceInputs["skipInterstitial"] = state?.skipInterstitial;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["targetCriterias"] = state?.targetCriterias;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessApplicationArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
-            resourceInputs["allowIframe"] = args ? args.allowIframe : undefined;
-            resourceInputs["allowedIdps"] = args ? args.allowedIdps : undefined;
-            resourceInputs["appLauncherLogoUrl"] = args ? args.appLauncherLogoUrl : undefined;
-            resourceInputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
-            resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
-            resourceInputs["bgColor"] = args ? args.bgColor : undefined;
-            resourceInputs["corsHeaders"] = args ? args.corsHeaders : undefined;
-            resourceInputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
-            resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
-            resourceInputs["customNonIdentityDenyUrl"] = args ? args.customNonIdentityDenyUrl : undefined;
-            resourceInputs["customPages"] = args ? args.customPages : undefined;
-            resourceInputs["destinations"] = args ? args.destinations : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
-            resourceInputs["footerLinks"] = args ? args.footerLinks : undefined;
-            resourceInputs["headerBgColor"] = args ? args.headerBgColor : undefined;
-            resourceInputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
-            resourceInputs["landingPageDesign"] = args ? args.landingPageDesign : undefined;
-            resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["optionsPreflightBypass"] = args ? args.optionsPreflightBypass : undefined;
-            resourceInputs["pathCookieAttribute"] = args ? args.pathCookieAttribute : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["readServiceTokensFromHeader"] = args ? args.readServiceTokensFromHeader : undefined;
-            resourceInputs["saasApp"] = args ? args.saasApp : undefined;
-            resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
-            resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
-            resourceInputs["selfHostedDomains"] = args ? args.selfHostedDomains : undefined;
-            resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["skipAppLauncherLoginPage"] = args ? args.skipAppLauncherLoginPage : undefined;
-            resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["targetCriterias"] = args ? args.targetCriterias : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowAuthenticateViaWarp"] = args?.allowAuthenticateViaWarp;
+            resourceInputs["allowIframe"] = args?.allowIframe;
+            resourceInputs["allowedIdps"] = args?.allowedIdps;
+            resourceInputs["appLauncherLogoUrl"] = args?.appLauncherLogoUrl;
+            resourceInputs["appLauncherVisible"] = args?.appLauncherVisible;
+            resourceInputs["autoRedirectToIdentity"] = args?.autoRedirectToIdentity;
+            resourceInputs["bgColor"] = args?.bgColor;
+            resourceInputs["corsHeaders"] = args?.corsHeaders;
+            resourceInputs["customDenyMessage"] = args?.customDenyMessage;
+            resourceInputs["customDenyUrl"] = args?.customDenyUrl;
+            resourceInputs["customNonIdentityDenyUrl"] = args?.customNonIdentityDenyUrl;
+            resourceInputs["customPages"] = args?.customPages;
+            resourceInputs["destinations"] = args?.destinations;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["enableBindingCookie"] = args?.enableBindingCookie;
+            resourceInputs["footerLinks"] = args?.footerLinks;
+            resourceInputs["headerBgColor"] = args?.headerBgColor;
+            resourceInputs["httpOnlyCookieAttribute"] = args?.httpOnlyCookieAttribute;
+            resourceInputs["landingPageDesign"] = args?.landingPageDesign;
+            resourceInputs["logoUrl"] = args?.logoUrl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["optionsPreflightBypass"] = args?.optionsPreflightBypass;
+            resourceInputs["pathCookieAttribute"] = args?.pathCookieAttribute;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["readServiceTokensFromHeader"] = args?.readServiceTokensFromHeader;
+            resourceInputs["saasApp"] = args?.saasApp;
+            resourceInputs["sameSiteCookieAttribute"] = args?.sameSiteCookieAttribute;
+            resourceInputs["scimConfig"] = args?.scimConfig;
+            resourceInputs["selfHostedDomains"] = args?.selfHostedDomains;
+            resourceInputs["serviceAuth401Redirect"] = args?.serviceAuth401Redirect;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["skipAppLauncherLoginPage"] = args?.skipAppLauncherLoginPage;
+            resourceInputs["skipInterstitial"] = args?.skipInterstitial;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["targetCriterias"] = args?.targetCriterias;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["aud"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

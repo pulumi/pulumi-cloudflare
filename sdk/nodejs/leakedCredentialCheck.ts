@@ -48,11 +48,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
     /**
      * Determines whether or not Leaked Credential Checks are enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a LeakedCredentialCheck resource with the given unique name, arguments, and options.
@@ -67,15 +67,15 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LeakedCredentialCheckState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LeakedCredentialCheckArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LeakedCredentialCheck.__pulumiType, name, resourceInputs, opts);

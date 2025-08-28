@@ -49,16 +49,18 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     /**
      * UUID.
      */
-    public readonly operationId!: pulumi.Output<string>;
+    declare public readonly operationId: pulumi.Output<string>;
     /**
-     * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored Available values: "review", "ignored".
+     * Mark state of operation in API Discovery
+     *   * `review` - Mark operation as for review
+     *   * `ignored` - Mark operation as ignored
+     * Available values: "review", "ignored".
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldDiscoveryOperation resource with the given unique name, arguments, and options.
@@ -73,20 +75,20 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldDiscoveryOperationState | undefined;
-            resourceInputs["operationId"] = state ? state.operationId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldDiscoveryOperationArgs | undefined;
-            if ((!args || args.operationId === undefined) && !opts.urn) {
+            if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["operationId"] = args ? args.operationId : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["operationId"] = args?.operationId;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldDiscoveryOperation.__pulumiType, name, resourceInputs, opts);
@@ -102,8 +104,10 @@ export interface ApiShieldDiscoveryOperationState {
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored Available values: "review", "ignored".
+     * Mark state of operation in API Discovery
+     *   * `review` - Mark operation as for review
+     *   * `ignored` - Mark operation as ignored
+     * Available values: "review", "ignored".
      */
     state?: pulumi.Input<string>;
     /**
@@ -121,8 +125,10 @@ export interface ApiShieldDiscoveryOperationArgs {
      */
     operationId: pulumi.Input<string>;
     /**
-     * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored Available values: "review", "ignored".
+     * Mark state of operation in API Discovery
+     *   * `review` - Mark operation as for review
+     *   * `ignored` - Mark operation as ignored
+     * Available values: "review", "ignored".
      */
     state?: pulumi.Input<string>;
     /**

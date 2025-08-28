@@ -127,16 +127,20 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<Boolean> secret;
 
     /**
-     * @return Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * @return Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     public Optional<Output<Boolean>> secret() {
@@ -159,14 +163,18 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When the dataset was last updated. This includes name or description changes as well as uploads.
+     * When the dataset was last updated.
+     * 
+     * This includes name or description changes as well as uploads.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the dataset was last updated. This includes name or description changes as well as uploads.
+     * @return When the dataset was last updated.
+     * 
+     * This includes name or description changes as well as uploads.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -378,8 +386,10 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-         * response has no secret and the dataset is uploaded in plaintext.
+         * @param secret Generate a secret dataset.
+         * 
+         * If true, the response will include a secret to use with the EDM encoder.
+         * If false, the response has no secret and the dataset is uploaded in plaintext.
          * 
          * @return builder
          * 
@@ -390,8 +400,10 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-         * response has no secret and the dataset is uploaded in plaintext.
+         * @param secret Generate a secret dataset.
+         * 
+         * If true, the response will include a secret to use with the EDM encoder.
+         * If false, the response has no secret and the dataset is uploaded in plaintext.
          * 
          * @return builder
          * 
@@ -422,7 +434,9 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedAt When the dataset was last updated. This includes name or description changes as well as uploads.
+         * @param updatedAt When the dataset was last updated.
+         * 
+         * This includes name or description changes as well as uploads.
          * 
          * @return builder
          * 
@@ -433,7 +447,9 @@ public final class ZeroTrustDlpDatasetState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedAt When the dataset was last updated. This includes name or description changes as well as uploads.
+         * @param updatedAt When the dataset was last updated.
+         * 
+         * This includes name or description changes as well as uploads.
          * 
          * @return builder
          * 

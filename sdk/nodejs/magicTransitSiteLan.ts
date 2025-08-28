@@ -46,27 +46,27 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
      */
-    public readonly haLink!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string | undefined>;
-    public readonly nat!: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
-    public readonly physport!: pulumi.Output<number>;
-    public readonly routedSubnets!: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[] | undefined>;
+    declare public readonly haLink: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
+    declare public readonly nat: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
+    declare public readonly physport: pulumi.Output<number>;
+    declare public readonly routedSubnets: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[] | undefined>;
     /**
      * Identifier
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
      */
-    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteLanStaticAddressing | undefined>;
+    declare public readonly staticAddressing: pulumi.Output<outputs.MagicTransitSiteLanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    public readonly vlanTag!: pulumi.Output<number | undefined>;
+    declare public readonly vlanTag: pulumi.Output<number | undefined>;
 
     /**
      * Create a MagicTransitSiteLan resource with the given unique name, arguments, and options.
@@ -81,35 +81,35 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicTransitSiteLanState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["haLink"] = state ? state.haLink : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nat"] = state ? state.nat : undefined;
-            resourceInputs["physport"] = state ? state.physport : undefined;
-            resourceInputs["routedSubnets"] = state ? state.routedSubnets : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["staticAddressing"] = state ? state.staticAddressing : undefined;
-            resourceInputs["vlanTag"] = state ? state.vlanTag : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["haLink"] = state?.haLink;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nat"] = state?.nat;
+            resourceInputs["physport"] = state?.physport;
+            resourceInputs["routedSubnets"] = state?.routedSubnets;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["staticAddressing"] = state?.staticAddressing;
+            resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteLanArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.physport === undefined) && !opts.urn) {
+            if (args?.physport === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physport'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["haLink"] = args ? args.haLink : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nat"] = args ? args.nat : undefined;
-            resourceInputs["physport"] = args ? args.physport : undefined;
-            resourceInputs["routedSubnets"] = args ? args.routedSubnets : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["staticAddressing"] = args ? args.staticAddressing : undefined;
-            resourceInputs["vlanTag"] = args ? args.vlanTag : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["haLink"] = args?.haLink;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nat"] = args?.nat;
+            resourceInputs["physport"] = args?.physport;
+            resourceInputs["routedSubnets"] = args?.routedSubnets;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["staticAddressing"] = args?.staticAddressing;
+            resourceInputs["vlanTag"] = args?.vlanTag;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitSiteLan.__pulumiType, name, resourceInputs, opts);

@@ -40,8 +40,8 @@ export class AccountDnsSettings extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly zoneDefaults!: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly zoneDefaults: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults | undefined>;
 
     /**
      * Create a AccountDnsSettings resource with the given unique name, arguments, and options.
@@ -56,15 +56,15 @@ export class AccountDnsSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountDnsSettingsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["zoneDefaults"] = state ? state.zoneDefaults : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["zoneDefaults"] = state?.zoneDefaults;
         } else {
             const args = argsOrState as AccountDnsSettingsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["zoneDefaults"] = args ? args.zoneDefaults : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["zoneDefaults"] = args?.zoneDefaults;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountDnsSettings.__pulumiType, name, resourceInputs, opts);

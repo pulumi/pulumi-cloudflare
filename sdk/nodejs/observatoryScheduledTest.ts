@@ -57,25 +57,25 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
      * The frequency of the test.
      * Available values: "DAILY", "WEEKLY".
      */
-    public /*out*/ readonly frequency!: pulumi.Output<string>;
+    declare public /*out*/ readonly frequency: pulumi.Output<string>;
     /**
      * A test region.
      * Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
      */
-    public /*out*/ readonly region!: pulumi.Output<string>;
+    declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
      * The test schedule.
      */
-    public /*out*/ readonly schedule!: pulumi.Output<outputs.ObservatoryScheduledTestSchedule>;
-    public /*out*/ readonly test!: pulumi.Output<outputs.ObservatoryScheduledTestTest>;
+    declare public /*out*/ readonly schedule: pulumi.Output<outputs.ObservatoryScheduledTestSchedule>;
+    declare public /*out*/ readonly test: pulumi.Output<outputs.ObservatoryScheduledTestTest>;
     /**
      * A URL.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ObservatoryScheduledTest resource with the given unique name, arguments, and options.
@@ -90,22 +90,22 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObservatoryScheduledTestState | undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["test"] = state ? state.test : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["test"] = state?.test;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ObservatoryScheduledTestArgs | undefined;
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["frequency"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["schedule"] = undefined /*out*/;

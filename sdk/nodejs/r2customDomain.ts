@@ -54,37 +54,37 @@ export class R2CustomDomain extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * Name of the custom domain to be added.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Jurisdiction of the bucket
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
      */
-    public readonly minTls!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly status!: pulumi.Output<outputs.R2CustomDomainStatus>;
+    declare public readonly minTls: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<outputs.R2CustomDomainStatus>;
     /**
      * Zone ID of the custom domain.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * Zone that the custom domain resides in.
      */
-    public /*out*/ readonly zoneName!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a R2CustomDomain resource with the given unique name, arguments, and options.
@@ -99,39 +99,39 @@ export class R2CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2CustomDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
-            resourceInputs["minTls"] = state ? state.minTls : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["minTls"] = state?.minTls;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as R2CustomDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
-            resourceInputs["minTls"] = args ? args.minTls : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["minTls"] = args?.minTls;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zoneName"] = undefined /*out*/;
         }

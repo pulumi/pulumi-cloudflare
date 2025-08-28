@@ -46,13 +46,13 @@ export class MagicTransitConnector extends pulumi.CustomResource {
     /**
      * Account identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly activated!: pulumi.Output<boolean>;
-    public readonly device!: pulumi.Output<outputs.MagicTransitConnectorDevice>;
-    public readonly interruptWindowDurationHours!: pulumi.Output<number>;
-    public readonly interruptWindowHourOfDay!: pulumi.Output<number>;
-    public readonly notes!: pulumi.Output<string>;
-    public readonly timezone!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly activated: pulumi.Output<boolean>;
+    declare public readonly device: pulumi.Output<outputs.MagicTransitConnectorDevice>;
+    declare public readonly interruptWindowDurationHours: pulumi.Output<number>;
+    declare public readonly interruptWindowHourOfDay: pulumi.Output<number>;
+    declare public readonly notes: pulumi.Output<string>;
+    declare public readonly timezone: pulumi.Output<string>;
 
     /**
      * Create a MagicTransitConnector resource with the given unique name, arguments, and options.
@@ -67,28 +67,28 @@ export class MagicTransitConnector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicTransitConnectorState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["activated"] = state ? state.activated : undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["interruptWindowDurationHours"] = state ? state.interruptWindowDurationHours : undefined;
-            resourceInputs["interruptWindowHourOfDay"] = state ? state.interruptWindowHourOfDay : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["activated"] = state?.activated;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["interruptWindowDurationHours"] = state?.interruptWindowDurationHours;
+            resourceInputs["interruptWindowHourOfDay"] = state?.interruptWindowHourOfDay;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["timezone"] = state?.timezone;
         } else {
             const args = argsOrState as MagicTransitConnectorArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.device === undefined) && !opts.urn) {
+            if (args?.device === undefined && !opts.urn) {
                 throw new Error("Missing required property 'device'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["activated"] = args ? args.activated : undefined;
-            resourceInputs["device"] = args ? args.device : undefined;
-            resourceInputs["interruptWindowDurationHours"] = args ? args.interruptWindowDurationHours : undefined;
-            resourceInputs["interruptWindowHourOfDay"] = args ? args.interruptWindowHourOfDay : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["activated"] = args?.activated;
+            resourceInputs["device"] = args?.device;
+            resourceInputs["interruptWindowDurationHours"] = args?.interruptWindowDurationHours;
+            resourceInputs["interruptWindowHourOfDay"] = args?.interruptWindowHourOfDay;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["timezone"] = args?.timezone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitConnector.__pulumiType, name, resourceInputs, opts);

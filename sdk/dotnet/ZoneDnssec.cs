@@ -75,19 +75,24 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DnssecMultiSigner { get; private set; } = null!;
 
         /// <summary>
-        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone including signatures from an external provider, without
-        /// requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
-        /// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
-        /// details.
+        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone
+        /// including signatures from an external provider, without requiring
+        /// Cloudflare to sign any records on the fly.
+        /// 
+        /// Note that this feature has some limitations.
+        /// See [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.
         /// </summary>
         [Output("dnssecPresigned")]
         public Output<bool?> DnssecPresigned { get; private set; } = null!;
 
         /// <summary>
-        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
-        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
-        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
-        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone.
+        /// Combined with setting dnssec_presigned to true, this enables the use of
+        /// NSEC3 records when transferring in from an external provider.
+        /// If dnssec_presigned is instead set to false (default), NSEC3 records will be
+        /// generated and signed at request time.
+        /// 
+        /// See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         /// </summary>
         [Output("dnssecUseNsec3")]
         public Output<bool?> DnssecUseNsec3 { get; private set; } = null!;
@@ -129,7 +134,8 @@ namespace Pulumi.Cloudflare
         public Output<string> PublicKey { get; private set; } = null!;
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -196,25 +202,31 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DnssecMultiSigner { get; set; }
 
         /// <summary>
-        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone including signatures from an external provider, without
-        /// requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
-        /// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
-        /// details.
+        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone
+        /// including signatures from an external provider, without requiring
+        /// Cloudflare to sign any records on the fly.
+        /// 
+        /// Note that this feature has some limitations.
+        /// See [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.
         /// </summary>
         [Input("dnssecPresigned")]
         public Input<bool>? DnssecPresigned { get; set; }
 
         /// <summary>
-        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
-        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
-        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
-        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone.
+        /// Combined with setting dnssec_presigned to true, this enables the use of
+        /// NSEC3 records when transferring in from an external provider.
+        /// If dnssec_presigned is instead set to false (default), NSEC3 records will be
+        /// generated and signed at request time.
+        /// 
+        /// See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         /// </summary>
         [Input("dnssecUseNsec3")]
         public Input<bool>? DnssecUseNsec3 { get; set; }
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -267,19 +279,24 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DnssecMultiSigner { get; set; }
 
         /// <summary>
-        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone including signatures from an external provider, without
-        /// requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
-        /// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
-        /// details.
+        /// If true, allows Cloudflare to transfer in a DNSSEC-signed zone
+        /// including signatures from an external provider, without requiring
+        /// Cloudflare to sign any records on the fly.
+        /// 
+        /// Note that this feature has some limitations.
+        /// See [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.
         /// </summary>
         [Input("dnssecPresigned")]
         public Input<bool>? DnssecPresigned { get; set; }
 
         /// <summary>
-        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
-        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
-        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
-        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone.
+        /// Combined with setting dnssec_presigned to true, this enables the use of
+        /// NSEC3 records when transferring in from an external provider.
+        /// If dnssec_presigned is instead set to false (default), NSEC3 records will be
+        /// generated and signed at request time.
+        /// 
+        /// See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         /// </summary>
         [Input("dnssecUseNsec3")]
         public Input<bool>? DnssecUseNsec3 { get; set; }
@@ -321,7 +338,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? PublicKey { get; set; }
 
         /// <summary>
-        /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
+        /// Status of DNSSEC, based on user-desired state and presence of necessary records.
+        /// Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

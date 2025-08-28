@@ -48,18 +48,18 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
      */
-    public readonly destinationConf!: pulumi.Output<string>;
-    public /*out*/ readonly filename!: pulumi.Output<string>;
-    public /*out*/ readonly message!: pulumi.Output<string>;
-    public /*out*/ readonly valid!: pulumi.Output<boolean>;
+    declare public readonly destinationConf: pulumi.Output<string>;
+    declare public /*out*/ readonly filename: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
+    declare public /*out*/ readonly valid: pulumi.Output<boolean>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a LogpushOwnershipChallenge resource with the given unique name, arguments, and options.
@@ -74,20 +74,20 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpushOwnershipChallengeState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
-            resourceInputs["filename"] = state ? state.filename : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["valid"] = state ? state.valid : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["destinationConf"] = state?.destinationConf;
+            resourceInputs["filename"] = state?.filename;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["valid"] = state?.valid;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LogpushOwnershipChallengeArgs | undefined;
-            if ((!args || args.destinationConf === undefined) && !opts.urn) {
+            if (args?.destinationConf === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["destinationConf"] = args?.destinationConf;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["filename"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["valid"] = undefined /*out*/;

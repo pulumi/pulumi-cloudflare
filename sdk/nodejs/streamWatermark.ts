@@ -53,59 +53,59 @@ export class StreamWatermark extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and a time a watermark profile was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null.
      */
-    public /*out*/ readonly downloadedFrom!: pulumi.Output<string>;
+    declare public /*out*/ readonly downloadedFrom: pulumi.Output<string>;
     /**
      * The image file to upload.
      */
-    public readonly file!: pulumi.Output<string>;
+    declare public readonly file: pulumi.Output<string>;
     /**
      * The height of the image in pixels.
      */
-    public /*out*/ readonly height!: pulumi.Output<number>;
+    declare public /*out*/ readonly height: pulumi.Output<number>;
     /**
      * The unique identifier for a watermark profile.
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
+    declare public readonly identifier: pulumi.Output<string | undefined>;
     /**
      * A short description of the watermark profile.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
      */
-    public readonly opacity!: pulumi.Output<number>;
+    declare public readonly opacity: pulumi.Output<number>;
     /**
      * The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm.
      */
-    public readonly padding!: pulumi.Output<number>;
+    declare public readonly padding: pulumi.Output<number>;
     /**
      * The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
      */
-    public readonly position!: pulumi.Output<string>;
+    declare public readonly position: pulumi.Output<string>;
     /**
      * The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video.
      */
-    public readonly scale!: pulumi.Output<number>;
+    declare public readonly scale: pulumi.Output<number>;
     /**
      * The size of the image in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The unique identifier for a watermark profile.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The width of the image in pixels.
      */
-    public /*out*/ readonly width!: pulumi.Output<number>;
+    declare public /*out*/ readonly width: pulumi.Output<number>;
 
     /**
      * Create a StreamWatermark resource with the given unique name, arguments, and options.
@@ -120,36 +120,36 @@ export class StreamWatermark extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamWatermarkState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["downloadedFrom"] = state ? state.downloadedFrom : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["height"] = state ? state.height : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["opacity"] = state ? state.opacity : undefined;
-            resourceInputs["padding"] = state ? state.padding : undefined;
-            resourceInputs["position"] = state ? state.position : undefined;
-            resourceInputs["scale"] = state ? state.scale : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["width"] = state ? state.width : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["downloadedFrom"] = state?.downloadedFrom;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["height"] = state?.height;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["opacity"] = state?.opacity;
+            resourceInputs["padding"] = state?.padding;
+            resourceInputs["position"] = state?.position;
+            resourceInputs["scale"] = state?.scale;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["width"] = state?.width;
         } else {
             const args = argsOrState as StreamWatermarkArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.file === undefined) && !opts.urn) {
+            if (args?.file === undefined && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["opacity"] = args ? args.opacity : undefined;
-            resourceInputs["padding"] = args ? args.padding : undefined;
-            resourceInputs["position"] = args ? args.position : undefined;
-            resourceInputs["scale"] = args ? args.scale : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["opacity"] = args?.opacity;
+            resourceInputs["padding"] = args?.padding;
+            resourceInputs["position"] = args?.position;
+            resourceInputs["scale"] = args?.scale;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["downloadedFrom"] = undefined /*out*/;
             resourceInputs["height"] = undefined /*out*/;

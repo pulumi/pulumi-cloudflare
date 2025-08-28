@@ -54,11 +54,11 @@ export class LogpullRetention extends pulumi.CustomResource {
     /**
      * The log retention flag for Logpull API.
      */
-    public readonly flag!: pulumi.Output<boolean | undefined>;
+    declare public readonly flag: pulumi.Output<boolean | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a LogpullRetention resource with the given unique name, arguments, and options.
@@ -73,15 +73,15 @@ export class LogpullRetention extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpullRetentionState | undefined;
-            resourceInputs["flag"] = state ? state.flag : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["flag"] = state?.flag;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as LogpullRetentionArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["flag"] = args ? args.flag : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["flag"] = args?.flag;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LogpullRetention.__pulumiType, name, resourceInputs, opts);

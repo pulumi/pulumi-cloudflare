@@ -58,105 +58,105 @@ export class Zone extends pulumi.CustomResource {
         return obj['__pulumiType'] === Zone.__pulumiType;
     }
 
-    public readonly account!: pulumi.Output<outputs.ZoneAccount>;
+    declare public readonly account: pulumi.Output<outputs.ZoneAccount>;
     /**
      * The last time proof of ownership was detected and the zone was made
      * active.
      */
-    public /*out*/ readonly activatedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly activatedOn: pulumi.Output<string>;
     /**
      * Allows the customer to use a custom apex.
      * *Tenants Only Configuration*.
      */
-    public /*out*/ readonly cnameSuffix!: pulumi.Output<string>;
+    declare public /*out*/ readonly cnameSuffix: pulumi.Output<string>;
     /**
      * When the zone was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The interval (in seconds) from when development mode expires
      * (positive integer) or last expired (negative integer) for the
      * domain. If development mode has never been enabled, this value is 0.
      */
-    public /*out*/ readonly developmentMode!: pulumi.Output<number>;
+    declare public /*out*/ readonly developmentMode: pulumi.Output<number>;
     /**
      * Metadata about the zone.
      */
-    public /*out*/ readonly meta!: pulumi.Output<outputs.ZoneMeta>;
+    declare public /*out*/ readonly meta: pulumi.Output<outputs.ZoneMeta>;
     /**
      * When the zone was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The domain name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The name servers Cloudflare assigns to a zone.
      */
-    public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly nameServers: pulumi.Output<string[]>;
     /**
      * DNS host at the time of switching to Cloudflare.
      */
-    public /*out*/ readonly originalDnshost!: pulumi.Output<string>;
+    declare public /*out*/ readonly originalDnshost: pulumi.Output<string>;
     /**
      * Original name servers before moving to Cloudflare.
      */
-    public /*out*/ readonly originalNameServers!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly originalNameServers: pulumi.Output<string[]>;
     /**
      * Registrar for the domain at the time of switching to Cloudflare.
      */
-    public /*out*/ readonly originalRegistrar!: pulumi.Output<string>;
+    declare public /*out*/ readonly originalRegistrar: pulumi.Output<string>;
     /**
      * The owner of the zone.
      */
-    public /*out*/ readonly owner!: pulumi.Output<outputs.ZoneOwner>;
+    declare public /*out*/ readonly owner: pulumi.Output<outputs.ZoneOwner>;
     /**
      * Indicates whether the zone is only using Cloudflare DNS services. A
      * true value means the zone will not receive security or performance
      * benefits.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * Legacy permissions based on legacy user membership information.
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly permissions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly permissions: pulumi.Output<string[]>;
     /**
      * A Zones subscription information.
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly plan!: pulumi.Output<outputs.ZonePlan>;
+    declare public /*out*/ readonly plan: pulumi.Output<outputs.ZonePlan>;
     /**
      * The zone status on Cloudflare.
      * Available values: "initializing", "pending", "active", "moved".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The root organizational unit that this zone belongs to (such as a tenant or organization).
      */
-    public /*out*/ readonly tenant!: pulumi.Output<outputs.ZoneTenant>;
+    declare public /*out*/ readonly tenant: pulumi.Output<outputs.ZoneTenant>;
     /**
      * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
      */
-    public /*out*/ readonly tenantUnit!: pulumi.Output<outputs.ZoneTenantUnit>;
+    declare public /*out*/ readonly tenantUnit: pulumi.Output<outputs.ZoneTenantUnit>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
      * Available values: "full", "partial", "secondary", "internal".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * An array of domains used for custom name servers. This is only
      * available for Business and Enterprise plans.
      */
-    public readonly vanityNameServers!: pulumi.Output<string[]>;
+    declare public readonly vanityNameServers: pulumi.Output<string[]>;
     /**
      * Verification key for partial zone setup.
      */
-    public /*out*/ readonly verificationKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly verificationKey: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -171,41 +171,41 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["account"] = state ? state.account : undefined;
-            resourceInputs["activatedOn"] = state ? state.activatedOn : undefined;
-            resourceInputs["cnameSuffix"] = state ? state.cnameSuffix : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["developmentMode"] = state ? state.developmentMode : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nameServers"] = state ? state.nameServers : undefined;
-            resourceInputs["originalDnshost"] = state ? state.originalDnshost : undefined;
-            resourceInputs["originalNameServers"] = state ? state.originalNameServers : undefined;
-            resourceInputs["originalRegistrar"] = state ? state.originalRegistrar : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["plan"] = state ? state.plan : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tenant"] = state ? state.tenant : undefined;
-            resourceInputs["tenantUnit"] = state ? state.tenantUnit : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
-            resourceInputs["verificationKey"] = state ? state.verificationKey : undefined;
+            resourceInputs["account"] = state?.account;
+            resourceInputs["activatedOn"] = state?.activatedOn;
+            resourceInputs["cnameSuffix"] = state?.cnameSuffix;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["developmentMode"] = state?.developmentMode;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nameServers"] = state?.nameServers;
+            resourceInputs["originalDnshost"] = state?.originalDnshost;
+            resourceInputs["originalNameServers"] = state?.originalNameServers;
+            resourceInputs["originalRegistrar"] = state?.originalRegistrar;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["plan"] = state?.plan;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tenant"] = state?.tenant;
+            resourceInputs["tenantUnit"] = state?.tenantUnit;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vanityNameServers"] = state?.vanityNameServers;
+            resourceInputs["verificationKey"] = state?.verificationKey;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            if ((!args || args.account === undefined) && !opts.urn) {
+            if (args?.account === undefined && !opts.urn) {
                 throw new Error("Missing required property 'account'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vanityNameServers"] = args ? args.vanityNameServers : undefined;
+            resourceInputs["account"] = args?.account;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vanityNameServers"] = args?.vanityNameServers;
             resourceInputs["activatedOn"] = undefined /*out*/;
             resourceInputs["cnameSuffix"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;

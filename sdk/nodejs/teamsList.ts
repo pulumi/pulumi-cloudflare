@@ -62,30 +62,30 @@ export class TeamsList extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsList.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description of the list.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * items to add to the list.
      */
-    public readonly items!: pulumi.Output<outputs.TeamsListItem[] | undefined>;
+    declare public readonly items: pulumi.Output<outputs.TeamsListItem[] | undefined>;
     /**
      * The number of items in the list.
      */
-    public /*out*/ readonly listCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly listCount: pulumi.Output<number>;
     /**
      * The name of the list.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The type of list.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
-    public readonly type!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a TeamsList resource with the given unique name, arguments, and options.
@@ -103,30 +103,30 @@ export class TeamsList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsListState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["items"] = state ? state.items : undefined;
-            resourceInputs["listCount"] = state ? state.listCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["items"] = state?.items;
+            resourceInputs["listCount"] = state?.listCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TeamsListArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["items"] = args ? args.items : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["items"] = args?.items;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["listCount"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

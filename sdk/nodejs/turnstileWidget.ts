@@ -65,59 +65,59 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If bot*fight*mode is set to `true`, Cloudflare issues computationally
      * expensive challenges in response to malicious bots (ENT only).
      */
-    public readonly botFightMode!: pulumi.Output<boolean>;
+    declare public readonly botFightMode: pulumi.Output<boolean>;
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
      * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
-    public readonly clearanceLevel!: pulumi.Output<string>;
+    declare public readonly clearanceLevel: pulumi.Output<string>;
     /**
      * When the widget was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
-    public readonly domains!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public readonly domains: pulumi.Output<string[]>;
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
-    public readonly ephemeralId!: pulumi.Output<boolean>;
+    declare public readonly ephemeralId: pulumi.Output<boolean>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * When the widget was modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Human readable widget name. Not unique. Cloudflare suggests that you
      * set this to a meaningful string to make it easier to identify your
      * widget, and where it is used.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Do not show any Cloudflare branding on the widget (ENT only).
      */
-    public readonly offlabel!: pulumi.Output<boolean>;
+    declare public readonly offlabel: pulumi.Output<boolean>;
     /**
      * Region where this widget can be used. This cannot be changed after creation.
      * Available values: "world", "china".
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Secret key for this widget.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * Widget item identifier tag.
      */
-    public /*out*/ readonly sitekey!: pulumi.Output<string>;
+    declare public /*out*/ readonly sitekey: pulumi.Output<string>;
 
     /**
      * Create a TurnstileWidget resource with the given unique name, arguments, and options.
@@ -132,42 +132,42 @@ export class TurnstileWidget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TurnstileWidgetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["botFightMode"] = state ? state.botFightMode : undefined;
-            resourceInputs["clearanceLevel"] = state ? state.clearanceLevel : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["ephemeralId"] = state ? state.ephemeralId : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["offlabel"] = state ? state.offlabel : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["sitekey"] = state ? state.sitekey : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["botFightMode"] = state?.botFightMode;
+            resourceInputs["clearanceLevel"] = state?.clearanceLevel;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["ephemeralId"] = state?.ephemeralId;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["offlabel"] = state?.offlabel;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["sitekey"] = state?.sitekey;
         } else {
             const args = argsOrState as TurnstileWidgetArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.domains === undefined) && !opts.urn) {
+            if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["botFightMode"] = args ? args.botFightMode : undefined;
-            resourceInputs["clearanceLevel"] = args ? args.clearanceLevel : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
-            resourceInputs["ephemeralId"] = args ? args.ephemeralId : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["offlabel"] = args ? args.offlabel : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["botFightMode"] = args?.botFightMode;
+            resourceInputs["clearanceLevel"] = args?.clearanceLevel;
+            resourceInputs["domains"] = args?.domains;
+            resourceInputs["ephemeralId"] = args?.ephemeralId;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["offlabel"] = args?.offlabel;
+            resourceInputs["region"] = args?.region;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;

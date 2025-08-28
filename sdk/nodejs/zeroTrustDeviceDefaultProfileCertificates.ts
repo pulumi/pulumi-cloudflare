@@ -48,8 +48,8 @@ export class ZeroTrustDeviceDefaultProfileCertificates extends pulumi.CustomReso
     /**
      * The current status of the device policy certificate provisioning feature for WARP clients.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDeviceDefaultProfileCertificates resource with the given unique name, arguments, and options.
@@ -64,18 +64,18 @@ export class ZeroTrustDeviceDefaultProfileCertificates extends pulumi.CustomReso
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceDefaultProfileCertificatesState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustDeviceDefaultProfileCertificatesArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDeviceDefaultProfileCertificates.__pulumiType, name, resourceInputs, opts);

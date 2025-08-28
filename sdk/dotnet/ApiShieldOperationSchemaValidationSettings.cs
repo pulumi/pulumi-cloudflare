@@ -40,10 +40,13 @@ namespace Pulumi.Cloudflare
     public partial class ApiShieldOperationSchemaValidationSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `log` log request when request does not conform to schema for this operation
+        ///   - `block` deny access to the site when request does not conform to schema for this operation
+        ///   - `none` will skip mitigation for this operation
+        ///   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
         public Output<string?> MitigationAction { get; private set; } = null!;
@@ -107,10 +110,13 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationSchemaValidationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `log` log request when request does not conform to schema for this operation
+        ///   - `block` deny access to the site when request does not conform to schema for this operation
+        ///   - `none` will skip mitigation for this operation
+        ///   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }
@@ -136,10 +142,13 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationSchemaValidationSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `log` log request when request does not conform to schema for this operation
+        ///   - `block` deny access to the site when request does not conform to schema for this operation
+        ///   - `none` will skip mitigation for this operation
+        ///   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }

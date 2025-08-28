@@ -15,20 +15,26 @@ public final class SchemaValidationOperationSettingsArgs extends com.pulumi.reso
     public static final SchemaValidationOperationSettingsArgs Empty = new SchemaValidationOperationSettingsArgs();
 
     /**
-     * When set, this applies a mitigation action to this operation - `&#34;log&#34;` - log request when request does not conform to
-     * schema for this operation - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this
-     * operation - `&#34;none&#34;` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-     * &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
+     * When set, this applies a mitigation action to this operation
+     * 
+     *   - `&#34;log&#34;` - log request when request does not conform to schema for this operation
+     *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this operation
+     *   - `&#34;none&#34;` - will skip mitigation for this operation
+     *   - `null` - clears any mitigation action
+     *     Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="mitigationAction", required=true)
     private Output<String> mitigationAction;
 
     /**
-     * @return When set, this applies a mitigation action to this operation - `&#34;log&#34;` - log request when request does not conform to
-     * schema for this operation - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this
-     * operation - `&#34;none&#34;` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-     * &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
+     * @return When set, this applies a mitigation action to this operation
+     * 
+     *   - `&#34;log&#34;` - log request when request does not conform to schema for this operation
+     *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this operation
+     *   - `&#34;none&#34;` - will skip mitigation for this operation
+     *   - `null` - clears any mitigation action
+     *     Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
      * 
      */
     public Output<String> mitigationAction() {
@@ -92,10 +98,13 @@ public final class SchemaValidationOperationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mitigationAction When set, this applies a mitigation action to this operation - `&#34;log&#34;` - log request when request does not conform to
-         * schema for this operation - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this
-         * operation - `&#34;none&#34;` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-         * &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
+         * @param mitigationAction When set, this applies a mitigation action to this operation
+         * 
+         *   - `&#34;log&#34;` - log request when request does not conform to schema for this operation
+         *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this operation
+         *   - `&#34;none&#34;` - will skip mitigation for this operation
+         *   - `null` - clears any mitigation action
+         *     Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -106,10 +115,13 @@ public final class SchemaValidationOperationSettingsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param mitigationAction When set, this applies a mitigation action to this operation - `&#34;log&#34;` - log request when request does not conform to
-         * schema for this operation - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this
-         * operation - `&#34;none&#34;` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-         * &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
+         * @param mitigationAction When set, this applies a mitigation action to this operation
+         * 
+         *   - `&#34;log&#34;` - log request when request does not conform to schema for this operation
+         *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema for this operation
+         *   - `&#34;none&#34;` - will skip mitigation for this operation
+         *   - `null` - clears any mitigation action
+         *     Available values: &#34;log&#34;, &#34;block&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 

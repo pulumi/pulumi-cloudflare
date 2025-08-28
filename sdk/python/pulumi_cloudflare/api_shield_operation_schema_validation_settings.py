@@ -26,10 +26,13 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
         The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-               for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-               will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-               Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `log` log request when request does not conform to schema for this operation
+                 - `block` deny access to the site when request does not conform to schema for this operation
+                 - `none` will skip mitigation for this operation
+                 - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+               Available values: "log", "block", "none".
         """
         pulumi.set(__self__, "operation_id", operation_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -64,10 +67,13 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `log` log request when request does not conform to schema for this operation
+          - `block` deny access to the site when request does not conform to schema for this operation
+          - `none` will skip mitigation for this operation
+          - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -84,10 +90,13 @@ class _ApiShieldOperationSchemaValidationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-               for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-               will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-               Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `log` log request when request does not conform to schema for this operation
+                 - `block` deny access to the site when request does not conform to schema for this operation
+                 - `none` will skip mitigation for this operation
+                 - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -102,10 +111,13 @@ class _ApiShieldOperationSchemaValidationSettingsState:
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `log` log request when request does not conform to schema for this operation
+          - `block` deny access to the site when request does not conform to schema for this operation
+          - `none` will skip mitigation for this operation
+          - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -169,10 +181,13 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-               for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-               will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-               Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `log` log request when request does not conform to schema for this operation
+                 - `block` deny access to the site when request does not conform to schema for this operation
+                 - `none` will skip mitigation for this operation
+                 - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -255,10 +270,13 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-               for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-               will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-               Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `log` log request when request does not conform to schema for this operation
+                 - `block` deny access to the site when request does not conform to schema for this operation
+                 - `none` will skip mitigation for this operation
+                 - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -275,10 +293,13 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-        for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-        will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-        Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `log` log request when request does not conform to schema for this operation
+          - `block` deny access to the site when request does not conform to schema for this operation
+          - `none` will skip mitigation for this operation
+          - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 

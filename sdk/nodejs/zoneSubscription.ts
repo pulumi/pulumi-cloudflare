@@ -46,37 +46,37 @@ export class ZoneSubscription extends pulumi.CustomResource {
     /**
      * The monetary unit in which pricing information is displayed.
      */
-    public /*out*/ readonly currency!: pulumi.Output<string>;
+    declare public /*out*/ readonly currency: pulumi.Output<string>;
     /**
      * The end of the current period and also when the next billing is due.
      */
-    public /*out*/ readonly currentPeriodEnd!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentPeriodEnd: pulumi.Output<string>;
     /**
      * When the current billing period started. May match initial*period*start if this is the first period.
      */
-    public /*out*/ readonly currentPeriodStart!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentPeriodStart: pulumi.Output<string>;
     /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
-    public readonly frequency!: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string | undefined>;
     /**
      * The price of the subscription that will be billed, in US dollars.
      */
-    public /*out*/ readonly price!: pulumi.Output<number>;
+    declare public /*out*/ readonly price: pulumi.Output<number>;
     /**
      * The rate plan applied to the subscription.
      */
-    public readonly ratePlan!: pulumi.Output<outputs.ZoneSubscriptionRatePlan | undefined>;
+    declare public readonly ratePlan: pulumi.Output<outputs.ZoneSubscriptionRatePlan | undefined>;
     /**
      * The state that the subscription is in.
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Subscription identifier tag.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneSubscription resource with the given unique name, arguments, and options.
@@ -91,22 +91,22 @@ export class ZoneSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneSubscriptionState | undefined;
-            resourceInputs["currency"] = state ? state.currency : undefined;
-            resourceInputs["currentPeriodEnd"] = state ? state.currentPeriodEnd : undefined;
-            resourceInputs["currentPeriodStart"] = state ? state.currentPeriodStart : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["price"] = state ? state.price : undefined;
-            resourceInputs["ratePlan"] = state ? state.ratePlan : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["currency"] = state?.currency;
+            resourceInputs["currentPeriodEnd"] = state?.currentPeriodEnd;
+            resourceInputs["currentPeriodStart"] = state?.currentPeriodStart;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["price"] = state?.price;
+            resourceInputs["ratePlan"] = state?.ratePlan;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneSubscriptionArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["ratePlan"] = args ? args.ratePlan : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["ratePlan"] = args?.ratePlan;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["currency"] = undefined /*out*/;
             resourceInputs["currentPeriodEnd"] = undefined /*out*/;
             resourceInputs["currentPeriodStart"] = undefined /*out*/;

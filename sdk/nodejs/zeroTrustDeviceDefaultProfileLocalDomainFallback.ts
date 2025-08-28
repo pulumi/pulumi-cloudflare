@@ -43,8 +43,8 @@ export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.Cus
         return obj['__pulumiType'] === ZeroTrustDeviceDefaultProfileLocalDomainFallback.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly domains!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain[]>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly domains: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileLocalDomainFallbackDomain[]>;
 
     /**
      * Create a ZeroTrustDeviceDefaultProfileLocalDomainFallback resource with the given unique name, arguments, and options.
@@ -59,18 +59,18 @@ export class ZeroTrustDeviceDefaultProfileLocalDomainFallback extends pulumi.Cus
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceDefaultProfileLocalDomainFallbackState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["domains"] = state?.domains;
         } else {
             const args = argsOrState as ZeroTrustDeviceDefaultProfileLocalDomainFallbackArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.domains === undefined) && !opts.urn) {
+            if (args?.domains === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domains'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["domains"] = args?.domains;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDeviceDefaultProfileLocalDomainFallback.__pulumiType, name, resourceInputs, opts);

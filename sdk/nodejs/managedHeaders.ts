@@ -66,15 +66,15 @@ export class ManagedHeaders extends pulumi.CustomResource {
     /**
      * The list of Managed Request Transforms.
      */
-    public readonly managedRequestHeaders!: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[]>;
+    declare public readonly managedRequestHeaders: pulumi.Output<outputs.ManagedHeadersManagedRequestHeader[]>;
     /**
      * The list of Managed Response Transforms.
      */
-    public readonly managedResponseHeaders!: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[]>;
+    declare public readonly managedResponseHeaders: pulumi.Output<outputs.ManagedHeadersManagedResponseHeader[]>;
     /**
      * The unique ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ManagedHeaders resource with the given unique name, arguments, and options.
@@ -92,23 +92,23 @@ export class ManagedHeaders extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ManagedHeadersState | undefined;
-            resourceInputs["managedRequestHeaders"] = state ? state.managedRequestHeaders : undefined;
-            resourceInputs["managedResponseHeaders"] = state ? state.managedResponseHeaders : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["managedRequestHeaders"] = state?.managedRequestHeaders;
+            resourceInputs["managedResponseHeaders"] = state?.managedResponseHeaders;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ManagedHeadersArgs | undefined;
-            if ((!args || args.managedRequestHeaders === undefined) && !opts.urn) {
+            if (args?.managedRequestHeaders === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managedRequestHeaders'");
             }
-            if ((!args || args.managedResponseHeaders === undefined) && !opts.urn) {
+            if (args?.managedResponseHeaders === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managedResponseHeaders'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["managedRequestHeaders"] = args ? args.managedRequestHeaders : undefined;
-            resourceInputs["managedResponseHeaders"] = args ? args.managedResponseHeaders : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["managedRequestHeaders"] = args?.managedRequestHeaders;
+            resourceInputs["managedResponseHeaders"] = args?.managedResponseHeaders;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/managedHeaders:ManagedHeaders" }] };

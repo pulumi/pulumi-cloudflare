@@ -60,65 +60,65 @@ export class BotManagement extends pulumi.CustomResource {
      * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: "block", "disabled", "only*on*ad_pages".
      */
-    public readonly aiBotsProtection!: pulumi.Output<string>;
+    declare public readonly aiBotsProtection: pulumi.Output<string>;
     /**
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
-    public readonly autoUpdateModel!: pulumi.Output<boolean>;
+    declare public readonly autoUpdateModel: pulumi.Output<boolean>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */
-    public readonly crawlerProtection!: pulumi.Output<string>;
+    declare public readonly crawlerProtection: pulumi.Output<string>;
     /**
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      */
-    public readonly enableJs!: pulumi.Output<boolean>;
+    declare public readonly enableJs: pulumi.Output<boolean>;
     /**
      * Whether to enable Bot Fight Mode.
      */
-    public readonly fightMode!: pulumi.Output<boolean>;
+    declare public readonly fightMode: pulumi.Output<boolean>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
-    public readonly optimizeWordpress!: pulumi.Output<boolean>;
+    declare public readonly optimizeWordpress: pulumi.Output<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    public readonly sbfmDefinitelyAutomated!: pulumi.Output<string>;
+    declare public readonly sbfmDefinitelyAutomated: pulumi.Output<string>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * Available values: "allow", "block", "managedChallenge".
      */
-    public readonly sbfmLikelyAutomated!: pulumi.Output<string>;
+    declare public readonly sbfmLikelyAutomated: pulumi.Output<string>;
     /**
      * Super Bot Fight Mode (SBFM) to enable static resource protection.
      * Enable if static resources on your application need bot protection.
      * Note: Static resource protection can also result in legitimate traffic being blocked.
      */
-    public readonly sbfmStaticResourceProtection!: pulumi.Output<boolean>;
+    declare public readonly sbfmStaticResourceProtection: pulumi.Output<boolean>;
     /**
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * Available values: "allow", "block".
      */
-    public readonly sbfmVerifiedBots!: pulumi.Output<string>;
+    declare public readonly sbfmVerifiedBots: pulumi.Output<string>;
     /**
      * A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
      */
-    public /*out*/ readonly staleZoneConfiguration!: pulumi.Output<outputs.BotManagementStaleZoneConfiguration>;
+    declare public /*out*/ readonly staleZoneConfiguration: pulumi.Output<outputs.BotManagementStaleZoneConfiguration>;
     /**
      * Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      */
-    public readonly suppressSessionScore!: pulumi.Output<boolean>;
+    declare public readonly suppressSessionScore: pulumi.Output<boolean>;
     /**
      * A read-only field that indicates whether the zone currently is running the latest ML model.
      */
-    public /*out*/ readonly usingLatestModel!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly usingLatestModel: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a BotManagement resource with the given unique name, arguments, and options.
@@ -133,37 +133,37 @@ export class BotManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BotManagementState | undefined;
-            resourceInputs["aiBotsProtection"] = state ? state.aiBotsProtection : undefined;
-            resourceInputs["autoUpdateModel"] = state ? state.autoUpdateModel : undefined;
-            resourceInputs["crawlerProtection"] = state ? state.crawlerProtection : undefined;
-            resourceInputs["enableJs"] = state ? state.enableJs : undefined;
-            resourceInputs["fightMode"] = state ? state.fightMode : undefined;
-            resourceInputs["optimizeWordpress"] = state ? state.optimizeWordpress : undefined;
-            resourceInputs["sbfmDefinitelyAutomated"] = state ? state.sbfmDefinitelyAutomated : undefined;
-            resourceInputs["sbfmLikelyAutomated"] = state ? state.sbfmLikelyAutomated : undefined;
-            resourceInputs["sbfmStaticResourceProtection"] = state ? state.sbfmStaticResourceProtection : undefined;
-            resourceInputs["sbfmVerifiedBots"] = state ? state.sbfmVerifiedBots : undefined;
-            resourceInputs["staleZoneConfiguration"] = state ? state.staleZoneConfiguration : undefined;
-            resourceInputs["suppressSessionScore"] = state ? state.suppressSessionScore : undefined;
-            resourceInputs["usingLatestModel"] = state ? state.usingLatestModel : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["aiBotsProtection"] = state?.aiBotsProtection;
+            resourceInputs["autoUpdateModel"] = state?.autoUpdateModel;
+            resourceInputs["crawlerProtection"] = state?.crawlerProtection;
+            resourceInputs["enableJs"] = state?.enableJs;
+            resourceInputs["fightMode"] = state?.fightMode;
+            resourceInputs["optimizeWordpress"] = state?.optimizeWordpress;
+            resourceInputs["sbfmDefinitelyAutomated"] = state?.sbfmDefinitelyAutomated;
+            resourceInputs["sbfmLikelyAutomated"] = state?.sbfmLikelyAutomated;
+            resourceInputs["sbfmStaticResourceProtection"] = state?.sbfmStaticResourceProtection;
+            resourceInputs["sbfmVerifiedBots"] = state?.sbfmVerifiedBots;
+            resourceInputs["staleZoneConfiguration"] = state?.staleZoneConfiguration;
+            resourceInputs["suppressSessionScore"] = state?.suppressSessionScore;
+            resourceInputs["usingLatestModel"] = state?.usingLatestModel;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as BotManagementArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["aiBotsProtection"] = args ? args.aiBotsProtection : undefined;
-            resourceInputs["autoUpdateModel"] = args ? args.autoUpdateModel : undefined;
-            resourceInputs["crawlerProtection"] = args ? args.crawlerProtection : undefined;
-            resourceInputs["enableJs"] = args ? args.enableJs : undefined;
-            resourceInputs["fightMode"] = args ? args.fightMode : undefined;
-            resourceInputs["optimizeWordpress"] = args ? args.optimizeWordpress : undefined;
-            resourceInputs["sbfmDefinitelyAutomated"] = args ? args.sbfmDefinitelyAutomated : undefined;
-            resourceInputs["sbfmLikelyAutomated"] = args ? args.sbfmLikelyAutomated : undefined;
-            resourceInputs["sbfmStaticResourceProtection"] = args ? args.sbfmStaticResourceProtection : undefined;
-            resourceInputs["sbfmVerifiedBots"] = args ? args.sbfmVerifiedBots : undefined;
-            resourceInputs["suppressSessionScore"] = args ? args.suppressSessionScore : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["aiBotsProtection"] = args?.aiBotsProtection;
+            resourceInputs["autoUpdateModel"] = args?.autoUpdateModel;
+            resourceInputs["crawlerProtection"] = args?.crawlerProtection;
+            resourceInputs["enableJs"] = args?.enableJs;
+            resourceInputs["fightMode"] = args?.fightMode;
+            resourceInputs["optimizeWordpress"] = args?.optimizeWordpress;
+            resourceInputs["sbfmDefinitelyAutomated"] = args?.sbfmDefinitelyAutomated;
+            resourceInputs["sbfmLikelyAutomated"] = args?.sbfmLikelyAutomated;
+            resourceInputs["sbfmStaticResourceProtection"] = args?.sbfmStaticResourceProtection;
+            resourceInputs["sbfmVerifiedBots"] = args?.sbfmVerifiedBots;
+            resourceInputs["suppressSessionScore"] = args?.suppressSessionScore;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["staleZoneConfiguration"] = undefined /*out*/;
             resourceInputs["usingLatestModel"] = undefined /*out*/;
         }

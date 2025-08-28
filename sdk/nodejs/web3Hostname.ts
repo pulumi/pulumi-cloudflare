@@ -54,34 +54,34 @@ export class Web3Hostname extends pulumi.CustomResource {
         return obj['__pulumiType'] === Web3Hostname.__pulumiType;
     }
 
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Specify an optional description of the hostname.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specify the DNSLink value used if the target is ipfs.
      */
-    public readonly dnslink!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly dnslink: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Specify the hostname that points to the target gateway via CNAME.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
     /**
      * Specify the identifier of the hostname.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Web3Hostname resource with the given unique name, arguments, and options.
@@ -96,30 +96,30 @@ export class Web3Hostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Web3HostnameState | undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnslink"] = state ? state.dnslink : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnslink"] = state?.dnslink;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as Web3HostnameArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnslink"] = args ? args.dnslink : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnslink"] = args?.dnslink;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

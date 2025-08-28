@@ -40,68 +40,68 @@ export class StreamLiveInput extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the live input was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Sets the creator ID asssociated with this live input.
      */
-    public readonly defaultCreator!: pulumi.Output<string | undefined>;
+    declare public readonly defaultCreator: pulumi.Output<string | undefined>;
     /**
      * Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
      */
-    public readonly deleteRecordingAfterDays!: pulumi.Output<number | undefined>;
+    declare public readonly deleteRecordingAfterDays: pulumi.Output<number | undefined>;
     /**
      * A unique identifier for a live input.
      */
-    public readonly liveInputIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly liveInputIdentifier: pulumi.Output<string | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing live inputs.
      */
-    public readonly meta!: pulumi.Output<string | undefined>;
+    declare public readonly meta: pulumi.Output<string | undefined>;
     /**
      * The date and time the live input was last modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
      * Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied.
      */
-    public readonly recording!: pulumi.Output<outputs.StreamLiveInputRecording>;
+    declare public readonly recording: pulumi.Output<outputs.StreamLiveInputRecording>;
     /**
      * Details for streaming to an live input using RTMPS.
      */
-    public /*out*/ readonly rtmps!: pulumi.Output<outputs.StreamLiveInputRtmps>;
+    declare public /*out*/ readonly rtmps: pulumi.Output<outputs.StreamLiveInputRtmps>;
     /**
      * Details for playback from an live input using RTMPS.
      */
-    public /*out*/ readonly rtmpsPlayback!: pulumi.Output<outputs.StreamLiveInputRtmpsPlayback>;
+    declare public /*out*/ readonly rtmpsPlayback: pulumi.Output<outputs.StreamLiveInputRtmpsPlayback>;
     /**
      * Details for streaming to a live input using SRT.
      */
-    public /*out*/ readonly srt!: pulumi.Output<outputs.StreamLiveInputSrt>;
+    declare public /*out*/ readonly srt: pulumi.Output<outputs.StreamLiveInputSrt>;
     /**
      * Details for playback from an live input using SRT.
      */
-    public /*out*/ readonly srtPlayback!: pulumi.Output<outputs.StreamLiveInputSrtPlayback>;
+    declare public /*out*/ readonly srtPlayback: pulumi.Output<outputs.StreamLiveInputSrtPlayback>;
     /**
      * The connection status of a live input.
      * Available values: "connected", "reconnected", "reconnecting", "client*disconnect", "ttl*exceeded", "failed*to*connect", "failed*to*reconnect", "new*configuration*accepted".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A unique identifier for a live input.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * Details for streaming to a live input using WebRTC.
      */
-    public /*out*/ readonly webRtc!: pulumi.Output<outputs.StreamLiveInputWebRtc>;
+    declare public /*out*/ readonly webRtc: pulumi.Output<outputs.StreamLiveInputWebRtc>;
     /**
      * Details for playback from a live input using WebRTC.
      */
-    public /*out*/ readonly webRtcPlayback!: pulumi.Output<outputs.StreamLiveInputWebRtcPlayback>;
+    declare public /*out*/ readonly webRtcPlayback: pulumi.Output<outputs.StreamLiveInputWebRtcPlayback>;
 
     /**
      * Create a StreamLiveInput resource with the given unique name, arguments, and options.
@@ -116,33 +116,33 @@ export class StreamLiveInput extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamLiveInputState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["defaultCreator"] = state ? state.defaultCreator : undefined;
-            resourceInputs["deleteRecordingAfterDays"] = state ? state.deleteRecordingAfterDays : undefined;
-            resourceInputs["liveInputIdentifier"] = state ? state.liveInputIdentifier : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["recording"] = state ? state.recording : undefined;
-            resourceInputs["rtmps"] = state ? state.rtmps : undefined;
-            resourceInputs["rtmpsPlayback"] = state ? state.rtmpsPlayback : undefined;
-            resourceInputs["srt"] = state ? state.srt : undefined;
-            resourceInputs["srtPlayback"] = state ? state.srtPlayback : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["webRtc"] = state ? state.webRtc : undefined;
-            resourceInputs["webRtcPlayback"] = state ? state.webRtcPlayback : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["defaultCreator"] = state?.defaultCreator;
+            resourceInputs["deleteRecordingAfterDays"] = state?.deleteRecordingAfterDays;
+            resourceInputs["liveInputIdentifier"] = state?.liveInputIdentifier;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["recording"] = state?.recording;
+            resourceInputs["rtmps"] = state?.rtmps;
+            resourceInputs["rtmpsPlayback"] = state?.rtmpsPlayback;
+            resourceInputs["srt"] = state?.srt;
+            resourceInputs["srtPlayback"] = state?.srtPlayback;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["webRtc"] = state?.webRtc;
+            resourceInputs["webRtcPlayback"] = state?.webRtcPlayback;
         } else {
             const args = argsOrState as StreamLiveInputArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["defaultCreator"] = args ? args.defaultCreator : undefined;
-            resourceInputs["deleteRecordingAfterDays"] = args ? args.deleteRecordingAfterDays : undefined;
-            resourceInputs["liveInputIdentifier"] = args ? args.liveInputIdentifier : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["recording"] = args ? args.recording : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["defaultCreator"] = args?.defaultCreator;
+            resourceInputs["deleteRecordingAfterDays"] = args?.deleteRecordingAfterDays;
+            resourceInputs["liveInputIdentifier"] = args?.liveInputIdentifier;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["recording"] = args?.recording;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["rtmps"] = undefined /*out*/;

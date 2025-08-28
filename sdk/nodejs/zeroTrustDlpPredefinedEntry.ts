@@ -49,16 +49,16 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpPredefinedEntry.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly confidence!: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryConfidence>;
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly entryId!: pulumi.Output<string>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryConfidence>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly entryId: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      */
-    public readonly profileId!: pulumi.Output<string | undefined>;
+    declare public readonly profileId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustDlpPredefinedEntry resource with the given unique name, arguments, and options.
@@ -73,27 +73,27 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpPredefinedEntryState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["confidence"] = state ? state.confidence : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["entryId"] = state ? state.entryId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["profileId"] = state ? state.profileId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["confidence"] = state?.confidence;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["entryId"] = state?.entryId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["profileId"] = state?.profileId;
         } else {
             const args = argsOrState as ZeroTrustDlpPredefinedEntryArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.entryId === undefined) && !opts.urn) {
+            if (args?.entryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["entryId"] = args ? args.entryId : undefined;
-            resourceInputs["profileId"] = args ? args.profileId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["entryId"] = args?.entryId;
+            resourceInputs["profileId"] = args?.profileId;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }

@@ -49,52 +49,52 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Administrators who can approve a temporary authentication request.
      */
-    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
+    declare public readonly approvalGroups: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
-    public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly approvalRequired: pulumi.Output<boolean | undefined>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
      */
-    public readonly decision!: pulumi.Output<string>;
+    declare public readonly decision: pulumi.Output<string>;
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
+    declare public readonly excludes: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
+    declare public readonly includes: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly isolationRequired: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Access policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A custom message that will appear on the purpose justification screen.
      */
-    public readonly purposeJustificationPrompt!: pulumi.Output<string | undefined>;
+    declare public readonly purposeJustificationPrompt: pulumi.Output<string | undefined>;
     /**
      * Require users to enter a justification when they log in to the application.
      */
-    public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
+    declare public readonly purposeJustificationRequired: pulumi.Output<boolean | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
+    declare public readonly requires: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    public readonly sessionDuration!: pulumi.Output<string>;
+    declare public readonly sessionDuration: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -112,44 +112,44 @@ export class AccessPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
-            resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
-            resourceInputs["decision"] = state ? state.decision : undefined;
-            resourceInputs["excludes"] = state ? state.excludes : undefined;
-            resourceInputs["includes"] = state ? state.includes : undefined;
-            resourceInputs["isolationRequired"] = state ? state.isolationRequired : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
-            resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
-            resourceInputs["requires"] = state ? state.requires : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["approvalGroups"] = state?.approvalGroups;
+            resourceInputs["approvalRequired"] = state?.approvalRequired;
+            resourceInputs["decision"] = state?.decision;
+            resourceInputs["excludes"] = state?.excludes;
+            resourceInputs["includes"] = state?.includes;
+            resourceInputs["isolationRequired"] = state?.isolationRequired;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["purposeJustificationPrompt"] = state?.purposeJustificationPrompt;
+            resourceInputs["purposeJustificationRequired"] = state?.purposeJustificationRequired;
+            resourceInputs["requires"] = state?.requires;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.decision === undefined) && !opts.urn) {
+            if (args?.decision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
-            if ((!args || args.includes === undefined) && !opts.urn) {
+            if (args?.includes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'includes'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["approvalGroups"] = args ? args.approvalGroups : undefined;
-            resourceInputs["approvalRequired"] = args ? args.approvalRequired : undefined;
-            resourceInputs["decision"] = args ? args.decision : undefined;
-            resourceInputs["excludes"] = args ? args.excludes : undefined;
-            resourceInputs["includes"] = args ? args.includes : undefined;
-            resourceInputs["isolationRequired"] = args ? args.isolationRequired : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
-            resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
-            resourceInputs["requires"] = args ? args.requires : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["approvalGroups"] = args?.approvalGroups;
+            resourceInputs["approvalRequired"] = args?.approvalRequired;
+            resourceInputs["decision"] = args?.decision;
+            resourceInputs["excludes"] = args?.excludes;
+            resourceInputs["includes"] = args?.includes;
+            resourceInputs["isolationRequired"] = args?.isolationRequired;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["purposeJustificationPrompt"] = args?.purposeJustificationPrompt;
+            resourceInputs["purposeJustificationRequired"] = args?.purposeJustificationRequired;
+            resourceInputs["requires"] = args?.requires;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessPolicy:AccessPolicy" }] };

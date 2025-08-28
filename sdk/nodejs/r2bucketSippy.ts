@@ -40,27 +40,27 @@ export class R2BucketSippy extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * R2 bucket to copy objects to.
      */
-    public readonly destination!: pulumi.Output<outputs.R2BucketSippyDestination | undefined>;
+    declare public readonly destination: pulumi.Output<outputs.R2BucketSippyDestination | undefined>;
     /**
      * State of Sippy for this bucket.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * Jurisdiction of the bucket
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
     /**
      * AWS S3 bucket to copy objects from.
      */
-    public readonly source!: pulumi.Output<outputs.R2BucketSippySource | undefined>;
+    declare public readonly source: pulumi.Output<outputs.R2BucketSippySource | undefined>;
 
     /**
      * Create a R2BucketSippy resource with the given unique name, arguments, and options.
@@ -75,25 +75,25 @@ export class R2BucketSippy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2BucketSippyState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as R2BucketSippyArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["source"] = args?.source;
             resourceInputs["enabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

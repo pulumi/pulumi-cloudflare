@@ -46,27 +46,27 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
      * Available values: "low", "mid", "high".
      */
-    public /*out*/ readonly healthCheckRate!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string | undefined>;
-    public readonly physport!: pulumi.Output<number>;
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly healthCheckRate: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string | undefined>;
+    declare public readonly physport: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * Identifier
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
      */
-    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteWanStaticAddressing | undefined>;
+    declare public readonly staticAddressing: pulumi.Output<outputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */
-    public readonly vlanTag!: pulumi.Output<number | undefined>;
+    declare public readonly vlanTag: pulumi.Output<number | undefined>;
 
     /**
      * Create a MagicTransitSiteWan resource with the given unique name, arguments, and options.
@@ -81,32 +81,32 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicTransitSiteWanState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["healthCheckRate"] = state ? state.healthCheckRate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["physport"] = state ? state.physport : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["staticAddressing"] = state ? state.staticAddressing : undefined;
-            resourceInputs["vlanTag"] = state ? state.vlanTag : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["healthCheckRate"] = state?.healthCheckRate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["physport"] = state?.physport;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["staticAddressing"] = state?.staticAddressing;
+            resourceInputs["vlanTag"] = state?.vlanTag;
         } else {
             const args = argsOrState as MagicTransitSiteWanArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.physport === undefined) && !opts.urn) {
+            if (args?.physport === undefined && !opts.urn) {
                 throw new Error("Missing required property 'physport'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["physport"] = args ? args.physport : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["staticAddressing"] = args ? args.staticAddressing : undefined;
-            resourceInputs["vlanTag"] = args ? args.vlanTag : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["physport"] = args?.physport;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["staticAddressing"] = args?.staticAddressing;
+            resourceInputs["vlanTag"] = args?.vlanTag;
             resourceInputs["healthCheckRate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

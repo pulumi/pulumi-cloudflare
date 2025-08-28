@@ -68,39 +68,39 @@ export class CertificatePack extends pulumi.CustomResource {
      * Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    public readonly certificateAuthority!: pulumi.Output<string>;
+    declare public readonly certificateAuthority: pulumi.Output<string>;
     /**
      * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
      */
-    public readonly cloudflareBranding!: pulumi.Output<boolean | undefined>;
+    declare public readonly cloudflareBranding: pulumi.Output<boolean | undefined>;
     /**
      * Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
      */
-    public readonly hosts!: pulumi.Output<string[]>;
+    declare public readonly hosts: pulumi.Output<string[]>;
     /**
      * Status of certificate pack.
      * Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Type of certificate pack.
      * Available values: "advanced".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Validation Method selected for the order.
      * Available values: "txt", "http", "email".
      */
-    public readonly validationMethod!: pulumi.Output<string>;
+    declare public readonly validationMethod: pulumi.Output<string>;
     /**
      * Validity Days selected for the order.
      * Available values: 14, 30, 90, 365.
      */
-    public readonly validityDays!: pulumi.Output<number>;
+    declare public readonly validityDays: pulumi.Output<number>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CertificatePack resource with the given unique name, arguments, and options.
@@ -115,41 +115,41 @@ export class CertificatePack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificatePackState | undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["cloudflareBranding"] = state ? state.cloudflareBranding : undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["validationMethod"] = state ? state.validationMethod : undefined;
-            resourceInputs["validityDays"] = state ? state.validityDays : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["cloudflareBranding"] = state?.cloudflareBranding;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["validationMethod"] = state?.validationMethod;
+            resourceInputs["validityDays"] = state?.validityDays;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CertificatePackArgs | undefined;
-            if ((!args || args.certificateAuthority === undefined) && !opts.urn) {
+            if (args?.certificateAuthority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthority'");
             }
-            if ((!args || args.hosts === undefined) && !opts.urn) {
+            if (args?.hosts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hosts'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.validationMethod === undefined) && !opts.urn) {
+            if (args?.validationMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationMethod'");
             }
-            if ((!args || args.validityDays === undefined) && !opts.urn) {
+            if (args?.validityDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validityDays'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
-            resourceInputs["cloudflareBranding"] = args ? args.cloudflareBranding : undefined;
-            resourceInputs["hosts"] = args ? args.hosts : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["validationMethod"] = args ? args.validationMethod : undefined;
-            resourceInputs["validityDays"] = args ? args.validityDays : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = args?.certificateAuthority;
+            resourceInputs["cloudflareBranding"] = args?.cloudflareBranding;
+            resourceInputs["hosts"] = args?.hosts;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["validationMethod"] = args?.validationMethod;
+            resourceInputs["validityDays"] = args?.validityDays;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

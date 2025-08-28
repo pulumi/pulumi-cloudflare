@@ -55,23 +55,23 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * When the view was created.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * When the view was last modified.
      */
-    public /*out*/ readonly modifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedTime: pulumi.Output<string>;
     /**
      * The name of the view.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The list of zones linked to this view.
      */
-    public readonly zones!: pulumi.Output<string[]>;
+    declare public readonly zones: pulumi.Output<string[]>;
 
     /**
      * Create a AccountDnsSettingsInternalView resource with the given unique name, arguments, and options.
@@ -86,25 +86,25 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountDnsSettingsInternalViewState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
-            resourceInputs["modifiedTime"] = state ? state.modifiedTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["zones"] = state ? state.zones : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdTime"] = state?.createdTime;
+            resourceInputs["modifiedTime"] = state?.modifiedTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["zones"] = state?.zones;
         } else {
             const args = argsOrState as AccountDnsSettingsInternalViewArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.zones === undefined) && !opts.urn) {
+            if (args?.zones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zones'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zones"] = args ? args.zones : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zones"] = args?.zones;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["modifiedTime"] = undefined /*out*/;
         }

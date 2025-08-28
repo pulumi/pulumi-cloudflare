@@ -57,16 +57,16 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly comments!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly isRegex!: pulumi.Output<boolean>;
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
-    public readonly pattern!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly isRegex: pulumi.Output<boolean>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    declare public readonly pattern: pulumi.Output<string>;
     /**
      * Available values: "EMAIL", "DOMAIN", "IP", "UNKNOWN".
      */
-    public readonly patternType!: pulumi.Output<string>;
+    declare public readonly patternType: pulumi.Output<string>;
 
     /**
      * Create a EmailSecurityBlockSender resource with the given unique name, arguments, and options.
@@ -81,32 +81,32 @@ export class EmailSecurityBlockSender extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailSecurityBlockSenderState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["isRegex"] = state ? state.isRegex : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["pattern"] = state ? state.pattern : undefined;
-            resourceInputs["patternType"] = state ? state.patternType : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["isRegex"] = state?.isRegex;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["pattern"] = state?.pattern;
+            resourceInputs["patternType"] = state?.patternType;
         } else {
             const args = argsOrState as EmailSecurityBlockSenderArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.isRegex === undefined) && !opts.urn) {
+            if (args?.isRegex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'isRegex'");
             }
-            if ((!args || args.pattern === undefined) && !opts.urn) {
+            if (args?.pattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
             }
-            if ((!args || args.patternType === undefined) && !opts.urn) {
+            if (args?.patternType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'patternType'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["isRegex"] = args ? args.isRegex : undefined;
-            resourceInputs["pattern"] = args ? args.pattern : undefined;
-            resourceInputs["patternType"] = args ? args.patternType : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["isRegex"] = args?.isRegex;
+            resourceInputs["pattern"] = args?.pattern;
+            resourceInputs["patternType"] = args?.patternType;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }

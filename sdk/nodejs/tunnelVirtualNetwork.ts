@@ -60,33 +60,33 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Optional remark describing the virtual network.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * Timestamp of when the resource was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
      * If `true`, this virtual network is the default for the account.
      *
      * @deprecated Use the isDefaultNetwork property instead.
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      */
-    public readonly isDefaultNetwork!: pulumi.Output<boolean>;
+    declare public readonly isDefaultNetwork: pulumi.Output<boolean>;
     /**
      * A user-friendly name for the virtual network.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a TunnelVirtualNetwork resource with the given unique name, arguments, and options.
@@ -104,26 +104,26 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelVirtualNetworkState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["isDefaultNetwork"] = state ? state.isDefaultNetwork : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["isDefaultNetwork"] = state?.isDefaultNetwork;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as TunnelVirtualNetworkArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["isDefaultNetwork"] = args ? args.isDefaultNetwork : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["isDefaultNetwork"] = args?.isDefaultNetwork;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
         }

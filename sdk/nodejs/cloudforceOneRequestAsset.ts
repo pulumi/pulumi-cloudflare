@@ -56,39 +56,39 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Defines the asset creation time.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Asset description.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Asset file type.
      */
-    public /*out*/ readonly fileType!: pulumi.Output<string>;
+    declare public /*out*/ readonly fileType: pulumi.Output<string>;
     /**
      * Asset name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Page number of results.
      */
-    public readonly page!: pulumi.Output<number>;
+    declare public readonly page: pulumi.Output<number>;
     /**
      * Number of results per page.
      */
-    public readonly perPage!: pulumi.Output<number>;
+    declare public readonly perPage: pulumi.Output<number>;
     /**
      * UUID.
      */
-    public readonly requestId!: pulumi.Output<string>;
+    declare public readonly requestId: pulumi.Output<string>;
     /**
      * Asset file to upload.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
 
     /**
      * Create a CloudforceOneRequestAsset resource with the given unique name, arguments, and options.
@@ -103,34 +103,34 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestAssetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["fileType"] = state ? state.fileType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["page"] = state ? state.page : undefined;
-            resourceInputs["perPage"] = state ? state.perPage : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["fileType"] = state?.fileType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["page"] = state?.page;
+            resourceInputs["perPage"] = state?.perPage;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["source"] = state?.source;
         } else {
             const args = argsOrState as CloudforceOneRequestAssetArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.page === undefined) && !opts.urn) {
+            if (args?.page === undefined && !opts.urn) {
                 throw new Error("Missing required property 'page'");
             }
-            if ((!args || args.perPage === undefined) && !opts.urn) {
+            if (args?.perPage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'perPage'");
             }
-            if ((!args || args.requestId === undefined) && !opts.urn) {
+            if (args?.requestId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["page"] = args ? args.page : undefined;
-            resourceInputs["perPage"] = args ? args.perPage : undefined;
-            resourceInputs["requestId"] = args ? args.requestId : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["page"] = args?.page;
+            resourceInputs["perPage"] = args?.perPage;
+            resourceInputs["requestId"] = args?.requestId;
+            resourceInputs["source"] = args?.source;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fileType"] = undefined /*out*/;

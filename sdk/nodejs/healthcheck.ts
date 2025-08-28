@@ -46,70 +46,70 @@ export class Healthcheck extends pulumi.CustomResource {
     /**
      * The hostname or IP address of the origin server to run health checks on.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      */
-    public readonly checkRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly checkRegions: pulumi.Output<string[] | undefined>;
     /**
      * The number of consecutive fails required from a health check before changing the health to unhealthy.
      */
-    public readonly consecutiveFails!: pulumi.Output<number>;
+    declare public readonly consecutiveFails: pulumi.Output<number>;
     /**
      * The number of consecutive successes required from a health check before changing the health to healthy.
      */
-    public readonly consecutiveSuccesses!: pulumi.Output<number>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public readonly consecutiveSuccesses: pulumi.Output<number>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * A human-readable description of the health check.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The current failure reason if status is unhealthy.
      */
-    public /*out*/ readonly failureReason!: pulumi.Output<string>;
+    declare public /*out*/ readonly failureReason: pulumi.Output<string>;
     /**
      * Parameters specific to an HTTP or HTTPS health check.
      */
-    public readonly httpConfig!: pulumi.Output<outputs.HealthcheckHttpConfig>;
+    declare public readonly httpConfig: pulumi.Output<outputs.HealthcheckHttpConfig>;
     /**
      * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      */
-    public readonly interval!: pulumi.Output<number>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly interval: pulumi.Output<number>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      */
-    public readonly retries!: pulumi.Output<number>;
+    declare public readonly retries: pulumi.Output<number>;
     /**
      * The current status of the origin server according to the health check.
      * Available values: "unknown", "healthy", "unhealthy", "suspended".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * If suspended, no health checks are sent to the origin.
      */
-    public readonly suspended!: pulumi.Output<boolean>;
+    declare public readonly suspended: pulumi.Output<boolean>;
     /**
      * Parameters specific to TCP health check.
      */
-    public readonly tcpConfig!: pulumi.Output<outputs.HealthcheckTcpConfig>;
+    declare public readonly tcpConfig: pulumi.Output<outputs.HealthcheckTcpConfig>;
     /**
      * The timeout (in seconds) before marking the health check as failed.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Identifier
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Healthcheck resource with the given unique name, arguments, and options.
@@ -124,49 +124,49 @@ export class Healthcheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HealthcheckState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["checkRegions"] = state ? state.checkRegions : undefined;
-            resourceInputs["consecutiveFails"] = state ? state.consecutiveFails : undefined;
-            resourceInputs["consecutiveSuccesses"] = state ? state.consecutiveSuccesses : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["failureReason"] = state ? state.failureReason : undefined;
-            resourceInputs["httpConfig"] = state ? state.httpConfig : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["retries"] = state ? state.retries : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["tcpConfig"] = state ? state.tcpConfig : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["checkRegions"] = state?.checkRegions;
+            resourceInputs["consecutiveFails"] = state?.consecutiveFails;
+            resourceInputs["consecutiveSuccesses"] = state?.consecutiveSuccesses;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["failureReason"] = state?.failureReason;
+            resourceInputs["httpConfig"] = state?.httpConfig;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["retries"] = state?.retries;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["tcpConfig"] = state?.tcpConfig;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as HealthcheckArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["checkRegions"] = args ? args.checkRegions : undefined;
-            resourceInputs["consecutiveFails"] = args ? args.consecutiveFails : undefined;
-            resourceInputs["consecutiveSuccesses"] = args ? args.consecutiveSuccesses : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["httpConfig"] = args ? args.httpConfig : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["retries"] = args ? args.retries : undefined;
-            resourceInputs["suspended"] = args ? args.suspended : undefined;
-            resourceInputs["tcpConfig"] = args ? args.tcpConfig : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["checkRegions"] = args?.checkRegions;
+            resourceInputs["consecutiveFails"] = args?.consecutiveFails;
+            resourceInputs["consecutiveSuccesses"] = args?.consecutiveSuccesses;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["httpConfig"] = args?.httpConfig;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["retries"] = args?.retries;
+            resourceInputs["suspended"] = args?.suspended;
+            resourceInputs["tcpConfig"] = args?.tcpConfig;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["failureReason"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;

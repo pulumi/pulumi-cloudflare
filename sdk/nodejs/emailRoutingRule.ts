@@ -46,33 +46,33 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     /**
      * List actions patterns.
      */
-    public readonly actions!: pulumi.Output<outputs.EmailRoutingRuleAction[]>;
+    declare public readonly actions: pulumi.Output<outputs.EmailRoutingRuleAction[]>;
     /**
      * Routing rule status.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Matching patterns to forward to your actions.
      */
-    public readonly matchers!: pulumi.Output<outputs.EmailRoutingRuleMatcher[]>;
+    declare public readonly matchers: pulumi.Output<outputs.EmailRoutingRuleMatcher[]>;
     /**
      * Routing rule name.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Priority of the routing rule.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly tag!: pulumi.Output<string>;
+    declare public /*out*/ readonly tag: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingRule resource with the given unique name, arguments, and options.
@@ -87,30 +87,30 @@ export class EmailRoutingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailRoutingRuleState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["matchers"] = state ? state.matchers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["matchers"] = state?.matchers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EmailRoutingRuleArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.matchers === undefined) && !opts.urn) {
+            if (args?.matchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["matchers"] = args ? args.matchers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["matchers"] = args?.matchers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["tag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

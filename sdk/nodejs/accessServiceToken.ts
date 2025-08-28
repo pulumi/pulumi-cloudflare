@@ -58,28 +58,28 @@ export class AccessServiceToken extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      */
-    public /*out*/ readonly clientId!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientId: pulumi.Output<string>;
     /**
      * The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
      */
-    public /*out*/ readonly clientSecret!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
-    public readonly duration!: pulumi.Output<string>;
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public readonly duration: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * The name of the service token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessServiceToken resource with the given unique name, arguments, and options.
@@ -97,22 +97,22 @@ export class AccessServiceToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessServiceTokenState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccessServiceTokenArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;

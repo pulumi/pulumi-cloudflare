@@ -46,36 +46,36 @@ export class DevicePostureRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === DevicePostureRule.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The description of the device posture rule.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
-    public readonly expiration!: pulumi.Output<string | undefined>;
+    declare public readonly expiration: pulumi.Output<string | undefined>;
     /**
      * The value to be checked against.
      */
-    public readonly input!: pulumi.Output<outputs.DevicePostureRuleInput | undefined>;
+    declare public readonly input: pulumi.Output<outputs.DevicePostureRuleInput | undefined>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[] | undefined>;
+    declare public readonly matches: pulumi.Output<outputs.DevicePostureRuleMatch[] | undefined>;
     /**
      * The name of the device posture rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
-    public readonly schedule!: pulumi.Output<string | undefined>;
+    declare public readonly schedule: pulumi.Output<string | undefined>;
     /**
      * The type of device posture rule.
      * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a DevicePostureRule resource with the given unique name, arguments, and options.
@@ -93,33 +93,33 @@ export class DevicePostureRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DevicePostureRuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expiration"] = state ? state.expiration : undefined;
-            resourceInputs["input"] = state ? state.input : undefined;
-            resourceInputs["matches"] = state ? state.matches : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expiration"] = state?.expiration;
+            resourceInputs["input"] = state?.input;
+            resourceInputs["matches"] = state?.matches;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DevicePostureRuleArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["input"] = args ? args.input : undefined;
-            resourceInputs["matches"] = args ? args.matches : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expiration"] = args?.expiration;
+            resourceInputs["input"] = args?.input;
+            resourceInputs["matches"] = args?.matches;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureRule:DevicePostureRule" }] };

@@ -142,40 +142,50 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnssecMultiSigner);
     }
     /**
-     * If true, allows Cloudflare to transfer in a DNSSEC-signed zone including signatures from an external provider, without
-     * requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
-     * Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
-     * details.
+     * If true, allows Cloudflare to transfer in a DNSSEC-signed zone
+     * including signatures from an external provider, without requiring
+     * Cloudflare to sign any records on the fly.
+     * 
+     * Note that this feature has some limitations.
+     * See [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.
      * 
      */
     @Export(name="dnssecPresigned", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dnssecPresigned;
 
     /**
-     * @return If true, allows Cloudflare to transfer in a DNSSEC-signed zone including signatures from an external provider, without
-     * requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
-     * Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
-     * details.
+     * @return If true, allows Cloudflare to transfer in a DNSSEC-signed zone
+     * including signatures from an external provider, without requiring
+     * Cloudflare to sign any records on the fly.
+     * 
+     * Note that this feature has some limitations.
+     * See [Cloudflare as Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for details.
      * 
      */
     public Output<Optional<Boolean>> dnssecPresigned() {
         return Codegen.optional(this.dnssecPresigned);
     }
     /**
-     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
-     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
-     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
-     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone.
+     * Combined with setting dnssec_presigned to true, this enables the use of
+     * NSEC3 records when transferring in from an external provider.
+     * If dnssec_presigned is instead set to false (default), NSEC3 records will be
+     * generated and signed at request time.
+     * 
+     * See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
      * 
      */
     @Export(name="dnssecUseNsec3", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dnssecUseNsec3;
 
     /**
-     * @return If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
-     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
-     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
-     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * @return If true, enables the use of NSEC3 together with DNSSEC on the zone.
+     * Combined with setting dnssec_presigned to true, this enables the use of
+     * NSEC3 records when transferring in from an external provider.
+     * If dnssec_presigned is instead set to false (default), NSEC3 records will be
+     * generated and signed at request time.
+     * 
+     * See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
      * 
      */
     public Output<Optional<Boolean>> dnssecUseNsec3() {
@@ -266,14 +276,16 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
         return this.publicKey;
     }
     /**
-     * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
+     * Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
-     * @return Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: &#34;active&#34;, &#34;disabled&#34;.
+     * @return Status of DNSSEC, based on user-desired state and presence of necessary records.
+     * Available values: &#34;active&#34;, &#34;disabled&#34;.
      * 
      */
     public Output<Optional<String>> status() {

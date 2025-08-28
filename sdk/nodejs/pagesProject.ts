@@ -50,44 +50,44 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Configs for the project build process.
      */
-    public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
+    declare public readonly buildConfig: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
     /**
      * Most recent deployment to the repo.
      */
-    public /*out*/ readonly canonicalDeployment!: pulumi.Output<outputs.PagesProjectCanonicalDeployment>;
+    declare public /*out*/ readonly canonicalDeployment: pulumi.Output<outputs.PagesProjectCanonicalDeployment>;
     /**
      * When the project was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Configs for deployments in a project.
      */
-    public readonly deploymentConfigs!: pulumi.Output<outputs.PagesProjectDeploymentConfigs | undefined>;
+    declare public readonly deploymentConfigs: pulumi.Output<outputs.PagesProjectDeploymentConfigs | undefined>;
     /**
      * A list of associated custom domains for the project.
      */
-    public /*out*/ readonly domains!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly domains: pulumi.Output<string[]>;
     /**
      * Most recent deployment to the repo.
      */
-    public /*out*/ readonly latestDeployment!: pulumi.Output<outputs.PagesProjectLatestDeployment>;
+    declare public /*out*/ readonly latestDeployment: pulumi.Output<outputs.PagesProjectLatestDeployment>;
     /**
      * Name of the project.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Production branch of the project. Used to identify production deployments.
      */
-    public readonly productionBranch!: pulumi.Output<string | undefined>;
-    public readonly source!: pulumi.Output<outputs.PagesProjectSource | undefined>;
+    declare public readonly productionBranch: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<outputs.PagesProjectSource | undefined>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
-    public /*out*/ readonly subdomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly subdomain: pulumi.Output<string>;
 
     /**
      * Create a PagesProject resource with the given unique name, arguments, and options.
@@ -102,31 +102,31 @@ export class PagesProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagesProjectState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["buildConfig"] = state ? state.buildConfig : undefined;
-            resourceInputs["canonicalDeployment"] = state ? state.canonicalDeployment : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["deploymentConfigs"] = state ? state.deploymentConfigs : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["latestDeployment"] = state ? state.latestDeployment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["productionBranch"] = state ? state.productionBranch : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["subdomain"] = state ? state.subdomain : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["buildConfig"] = state?.buildConfig;
+            resourceInputs["canonicalDeployment"] = state?.canonicalDeployment;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["deploymentConfigs"] = state?.deploymentConfigs;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["latestDeployment"] = state?.latestDeployment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["productionBranch"] = state?.productionBranch;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["subdomain"] = state?.subdomain;
         } else {
             const args = argsOrState as PagesProjectArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
-            resourceInputs["deploymentConfigs"] = args ? args.deploymentConfigs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["productionBranch"] = args ? args.productionBranch : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["buildConfig"] = args?.buildConfig;
+            resourceInputs["deploymentConfigs"] = args?.deploymentConfigs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["productionBranch"] = args?.productionBranch;
+            resourceInputs["source"] = args?.source;
             resourceInputs["canonicalDeployment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;

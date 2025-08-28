@@ -56,30 +56,30 @@ export class R2Bucket extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Creation timestamp.
      */
-    public /*out*/ readonly creationDate!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
     /**
      * Jurisdiction where objects in this bucket are guaranteed to be stored.
      * Available values: "default", "eu", "fedramp".
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
     /**
      * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
-    public readonly location!: pulumi.Output<string>;
+    declare public readonly location: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Storage class for newly uploaded objects, unless specified otherwise.
      * Available values: "Standard", "InfrequentAccess".
      */
-    public readonly storageClass!: pulumi.Output<string>;
+    declare public readonly storageClass: pulumi.Output<string>;
 
     /**
      * Create a R2Bucket resource with the given unique name, arguments, and options.
@@ -94,25 +94,25 @@ export class R2Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2BucketState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["creationDate"] = state?.creationDate;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["storageClass"] = state?.storageClass;
         } else {
             const args = argsOrState as R2BucketArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["storageClass"] = args?.storageClass;
             resourceInputs["creationDate"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

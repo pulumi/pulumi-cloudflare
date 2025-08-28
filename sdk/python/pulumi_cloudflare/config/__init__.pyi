@@ -16,35 +16,27 @@ from .. import _utilities
 
 apiKey: Optional[str]
 """
-The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-keys are [now considered legacy by
-Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 apiToken: Optional[str]
 """
-The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 apiUserServiceKey: Optional[str]
 """
-A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-`CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
-`api_user_service_key`.
+A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
 """
 
 baseUrl: Optional[str]
 """
-Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
-variable.
+Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
 """
 
 email: Optional[str]
 """
-A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-variable. Required when using `api_key`. Conflicts with `api_token`.
+A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
 """
 
 userAgentOperatorSuffix: Optional[str]

@@ -46,52 +46,52 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
      */
-    public /*out*/ readonly allowNullCipher!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly allowNullCipher: pulumi.Output<boolean>;
     /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
-    public readonly cloudflareEndpoint!: pulumi.Output<string>;
+    declare public readonly cloudflareEndpoint: pulumi.Output<string>;
     /**
      * The date and time the tunnel was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
-    public readonly customerEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly customerEndpoint: pulumi.Output<string | undefined>;
     /**
      * An optional description forthe IPsec tunnel.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly healthCheck!: pulumi.Output<outputs.MagicWanIpsecTunnelHealthCheck>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly healthCheck: pulumi.Output<outputs.MagicWanIpsecTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    public readonly interfaceAddress!: pulumi.Output<string>;
+    declare public readonly interfaceAddress: pulumi.Output<string>;
     /**
      * The date and time the tunnel was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A randomly generated or provided string for use in the IPsec tunnel.
      */
-    public readonly psk!: pulumi.Output<string | undefined>;
+    declare public readonly psk: pulumi.Output<string | undefined>;
     /**
      * The PSK metadata that includes when the PSK was generated.
      */
-    public /*out*/ readonly pskMetadata!: pulumi.Output<outputs.MagicWanIpsecTunnelPskMetadata>;
+    declare public /*out*/ readonly pskMetadata: pulumi.Output<outputs.MagicWanIpsecTunnelPskMetadata>;
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
-    public readonly replayProtection!: pulumi.Output<boolean>;
+    declare public readonly replayProtection: pulumi.Output<boolean>;
 
     /**
      * Create a MagicWanIpsecTunnel resource with the given unique name, arguments, and options.
@@ -106,42 +106,42 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicWanIpsecTunnelState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowNullCipher"] = state ? state.allowNullCipher : undefined;
-            resourceInputs["cloudflareEndpoint"] = state ? state.cloudflareEndpoint : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["customerEndpoint"] = state ? state.customerEndpoint : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
-            resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["psk"] = state ? state.psk : undefined;
-            resourceInputs["pskMetadata"] = state ? state.pskMetadata : undefined;
-            resourceInputs["replayProtection"] = state ? state.replayProtection : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowNullCipher"] = state?.allowNullCipher;
+            resourceInputs["cloudflareEndpoint"] = state?.cloudflareEndpoint;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["customerEndpoint"] = state?.customerEndpoint;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["interfaceAddress"] = state?.interfaceAddress;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["psk"] = state?.psk;
+            resourceInputs["pskMetadata"] = state?.pskMetadata;
+            resourceInputs["replayProtection"] = state?.replayProtection;
         } else {
             const args = argsOrState as MagicWanIpsecTunnelArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.cloudflareEndpoint === undefined) && !opts.urn) {
+            if (args?.cloudflareEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudflareEndpoint'");
             }
-            if ((!args || args.interfaceAddress === undefined) && !opts.urn) {
+            if (args?.interfaceAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interfaceAddress'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["cloudflareEndpoint"] = args ? args.cloudflareEndpoint : undefined;
-            resourceInputs["customerEndpoint"] = args ? args.customerEndpoint : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["cloudflareEndpoint"] = args?.cloudflareEndpoint;
+            resourceInputs["customerEndpoint"] = args?.customerEndpoint;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["interfaceAddress"] = args?.interfaceAddress;
+            resourceInputs["name"] = args?.name;
             resourceInputs["psk"] = args?.psk ? pulumi.secret(args.psk) : undefined;
-            resourceInputs["replayProtection"] = args ? args.replayProtection : undefined;
+            resourceInputs["replayProtection"] = args?.replayProtection;
             resourceInputs["allowNullCipher"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;

@@ -60,32 +60,32 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
      * How often should a secondary zone auto refresh regardless of DNS NOTIFY.
      * Not applicable for primary zones.
      */
-    public readonly autoRefreshSeconds!: pulumi.Output<number>;
+    declare public readonly autoRefreshSeconds: pulumi.Output<number>;
     /**
      * The time for a specific event.
      */
-    public /*out*/ readonly checkedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly checkedTime: pulumi.Output<string>;
     /**
      * The time for a specific event.
      */
-    public /*out*/ readonly createdTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * The time for a specific event.
      */
-    public /*out*/ readonly modifiedTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedTime: pulumi.Output<string>;
     /**
      * Zone name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of peer tags.
      */
-    public readonly peers!: pulumi.Output<string[]>;
+    declare public readonly peers: pulumi.Output<string[]>;
     /**
      * The serial number of the SOA for the given zone.
      */
-    public /*out*/ readonly soaSerial!: pulumi.Output<number>;
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly soaSerial: pulumi.Output<number>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DnsZoneTransfersIncoming resource with the given unique name, arguments, and options.
@@ -100,32 +100,32 @@ export class DnsZoneTransfersIncoming extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneTransfersIncomingState | undefined;
-            resourceInputs["autoRefreshSeconds"] = state ? state.autoRefreshSeconds : undefined;
-            resourceInputs["checkedTime"] = state ? state.checkedTime : undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
-            resourceInputs["modifiedTime"] = state ? state.modifiedTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peers"] = state ? state.peers : undefined;
-            resourceInputs["soaSerial"] = state ? state.soaSerial : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["autoRefreshSeconds"] = state?.autoRefreshSeconds;
+            resourceInputs["checkedTime"] = state?.checkedTime;
+            resourceInputs["createdTime"] = state?.createdTime;
+            resourceInputs["modifiedTime"] = state?.modifiedTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peers"] = state?.peers;
+            resourceInputs["soaSerial"] = state?.soaSerial;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DnsZoneTransfersIncomingArgs | undefined;
-            if ((!args || args.autoRefreshSeconds === undefined) && !opts.urn) {
+            if (args?.autoRefreshSeconds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoRefreshSeconds'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.peers === undefined) && !opts.urn) {
+            if (args?.peers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peers'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["autoRefreshSeconds"] = args ? args.autoRefreshSeconds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peers"] = args ? args.peers : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["autoRefreshSeconds"] = args?.autoRefreshSeconds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peers"] = args?.peers;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["checkedTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["modifiedTime"] = undefined /*out*/;

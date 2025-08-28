@@ -40,31 +40,31 @@ export class SnippetRules extends pulumi.CustomResource {
     /**
      * An informative description of the rule.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Whether the rule should be executed.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * The expression defining which traffic will match the rule.
      */
-    public /*out*/ readonly expression!: pulumi.Output<string>;
+    declare public /*out*/ readonly expression: pulumi.Output<string>;
     /**
      * The timestamp of when the rule was last modified.
      */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * A list of snippet rules.
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
      * The identifying name of the snippet.
      */
-    public /*out*/ readonly snippetName!: pulumi.Output<string>;
+    declare public /*out*/ readonly snippetName: pulumi.Output<string>;
     /**
      * The unique ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SnippetRules resource with the given unique name, arguments, and options.
@@ -79,23 +79,23 @@ export class SnippetRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnippetRulesState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["snippetName"] = state ? state.snippetName : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["snippetName"] = state?.snippetName;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SnippetRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expression"] = undefined /*out*/;

@@ -56,45 +56,45 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     /**
      * Identifier of a Cloudflare account.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
      */
-    public /*out*/ readonly advertised!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly advertised: pulumi.Output<boolean>;
     /**
      * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
      */
-    public /*out*/ readonly advertisedModifiedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly advertisedModifiedAt: pulumi.Output<string>;
     /**
      * Approval state of the prefix (P = pending, V = active).
      */
-    public /*out*/ readonly approved!: pulumi.Output<string>;
+    declare public /*out*/ readonly approved: pulumi.Output<string>;
     /**
      * Autonomous System Number (ASN) the prefix will be advertised under.
      */
-    public readonly asn!: pulumi.Output<number>;
+    declare public readonly asn: pulumi.Output<number>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    public readonly cidr!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Description of the prefix.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Identifier for the uploaded LOA document.
      */
-    public readonly loaDocumentId!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
+    declare public readonly loaDocumentId: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
      */
-    public /*out*/ readonly onDemandEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly onDemandEnabled: pulumi.Output<boolean>;
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
      */
-    public /*out*/ readonly onDemandLocked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly onDemandLocked: pulumi.Output<boolean>;
 
     /**
      * Create a ByoIpPrefix resource with the given unique name, arguments, and options.
@@ -109,37 +109,37 @@ export class ByoIpPrefix extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ByoIpPrefixState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["advertised"] = state ? state.advertised : undefined;
-            resourceInputs["advertisedModifiedAt"] = state ? state.advertisedModifiedAt : undefined;
-            resourceInputs["approved"] = state ? state.approved : undefined;
-            resourceInputs["asn"] = state ? state.asn : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["loaDocumentId"] = state ? state.loaDocumentId : undefined;
-            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
-            resourceInputs["onDemandEnabled"] = state ? state.onDemandEnabled : undefined;
-            resourceInputs["onDemandLocked"] = state ? state.onDemandLocked : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["advertised"] = state?.advertised;
+            resourceInputs["advertisedModifiedAt"] = state?.advertisedModifiedAt;
+            resourceInputs["approved"] = state?.approved;
+            resourceInputs["asn"] = state?.asn;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["loaDocumentId"] = state?.loaDocumentId;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
+            resourceInputs["onDemandEnabled"] = state?.onDemandEnabled;
+            resourceInputs["onDemandLocked"] = state?.onDemandLocked;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.asn === undefined) && !opts.urn) {
+            if (args?.asn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'asn'");
             }
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if ((!args || args.loaDocumentId === undefined) && !opts.urn) {
+            if (args?.loaDocumentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'loaDocumentId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["asn"] = args ? args.asn : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["loaDocumentId"] = args ? args.loaDocumentId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["asn"] = args?.asn;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["loaDocumentId"] = args?.loaDocumentId;
             resourceInputs["advertised"] = undefined /*out*/;
             resourceInputs["advertisedModifiedAt"] = undefined /*out*/;
             resourceInputs["approved"] = undefined /*out*/;

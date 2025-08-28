@@ -54,29 +54,29 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the destination address has been created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The contact email address of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The date and time the destination address was last modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly tag!: pulumi.Output<string>;
+    declare public /*out*/ readonly tag: pulumi.Output<string>;
     /**
      * The date and time the destination address has been verified. Null means not verified yet.
      */
-    public /*out*/ readonly verified!: pulumi.Output<string>;
+    declare public /*out*/ readonly verified: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingAddress resource with the given unique name, arguments, and options.
@@ -91,22 +91,22 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailRoutingAddressState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["verified"] = state ? state.verified : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["verified"] = state?.verified;
         } else {
             const args = argsOrState as EmailRoutingAddressArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["email"] = args?.email;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["tag"] = undefined /*out*/;

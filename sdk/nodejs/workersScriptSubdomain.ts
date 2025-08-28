@@ -50,19 +50,19 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether the Worker should be available on the workers.dev subdomain.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
      */
-    public readonly previewsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly previewsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    public readonly scriptName!: pulumi.Output<string>;
+    declare public readonly scriptName: pulumi.Output<string>;
 
     /**
      * Create a WorkersScriptSubdomain resource with the given unique name, arguments, and options.
@@ -77,25 +77,25 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersScriptSubdomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["previewsEnabled"] = state ? state.previewsEnabled : undefined;
-            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["previewsEnabled"] = state?.previewsEnabled;
+            resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkersScriptSubdomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.scriptName === undefined) && !opts.urn) {
+            if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["previewsEnabled"] = args ? args.previewsEnabled : undefined;
-            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["previewsEnabled"] = args?.previewsEnabled;
+            resourceInputs["scriptName"] = args?.scriptName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersScriptSubdomain.__pulumiType, name, resourceInputs, opts);

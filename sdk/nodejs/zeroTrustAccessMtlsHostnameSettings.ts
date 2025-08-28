@@ -40,24 +40,24 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      */
-    public /*out*/ readonly chinaNetwork!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly chinaNetwork: pulumi.Output<boolean>;
     /**
      * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
      */
-    public /*out*/ readonly clientCertificateForwarding!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly clientCertificateForwarding: pulumi.Output<boolean>;
     /**
      * The hostname that these settings apply to.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
-    public readonly settings!: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
+    declare public readonly settings: pulumi.Output<outputs.ZeroTrustAccessMtlsHostnameSettingsSetting[]>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustAccessMtlsHostnameSettings resource with the given unique name, arguments, and options.
@@ -72,20 +72,20 @@ export class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessMtlsHostnameSettingsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["chinaNetwork"] = state ? state.chinaNetwork : undefined;
-            resourceInputs["clientCertificateForwarding"] = state ? state.clientCertificateForwarding : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["chinaNetwork"] = state?.chinaNetwork;
+            resourceInputs["clientCertificateForwarding"] = state?.clientCertificateForwarding;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["settings"] = state?.settings;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessMtlsHostnameSettingsArgs | undefined;
-            if ((!args || args.settings === undefined) && !opts.urn) {
+            if (args?.settings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'settings'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["settings"] = args?.settings;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["chinaNetwork"] = undefined /*out*/;
             resourceInputs["clientCertificateForwarding"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;

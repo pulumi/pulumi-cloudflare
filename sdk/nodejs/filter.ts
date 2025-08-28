@@ -60,23 +60,23 @@ export class Filter extends pulumi.CustomResource {
     /**
      * An informative summary of the filter.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
-    public readonly expression!: pulumi.Output<string>;
+    declare public readonly expression: pulumi.Output<string>;
     /**
      * When true, indicates that the filter is currently paused.
      */
-    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly paused: pulumi.Output<boolean>;
     /**
      * A short reference tag. Allows you to select related filters.
      */
-    public /*out*/ readonly ref!: pulumi.Output<string>;
+    declare public /*out*/ readonly ref: pulumi.Output<string>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Filter resource with the given unique name, arguments, and options.
@@ -91,21 +91,21 @@ export class Filter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilterState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as FilterArgs | undefined;
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["expression"] = args?.expression;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
             resourceInputs["ref"] = undefined /*out*/;

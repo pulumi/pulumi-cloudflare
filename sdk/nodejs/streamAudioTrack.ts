@@ -51,32 +51,32 @@ export class StreamAudioTrack extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The unique identifier for an additional audio track.
      */
-    public readonly audioIdentifier!: pulumi.Output<string | undefined>;
+    declare public readonly audioIdentifier: pulumi.Output<string | undefined>;
     /**
      * Denotes whether the audio track will be played by default in a player.
      */
-    public readonly default!: pulumi.Output<boolean>;
+    declare public readonly default: pulumi.Output<boolean>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * A string to uniquely identify the track amongst other audio track labels for the specified video.
      */
-    public readonly label!: pulumi.Output<string | undefined>;
+    declare public readonly label: pulumi.Output<string | undefined>;
     /**
      * Specifies the processing status of the video.
      * Available values: "queued", "ready", "error".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a StreamAudioTrack resource with the given unique name, arguments, and options.
@@ -91,26 +91,26 @@ export class StreamAudioTrack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamAudioTrackState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["audioIdentifier"] = state ? state.audioIdentifier : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["audioIdentifier"] = state?.audioIdentifier;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as StreamAudioTrackArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["audioIdentifier"] = args ? args.audioIdentifier : undefined;
-            resourceInputs["default"] = args ? args.default : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["audioIdentifier"] = args?.audioIdentifier;
+            resourceInputs["default"] = args?.default;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["label"] = args?.label;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }

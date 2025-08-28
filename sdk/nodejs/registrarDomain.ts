@@ -51,23 +51,23 @@ export class RegistrarDomain extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Auto-renew controls whether subscription is automatically renewed upon domain expiration.
      */
-    public readonly autoRenew!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
     /**
      * Domain name.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Shows whether a registrar lock is in place for a domain.
      */
-    public readonly locked!: pulumi.Output<boolean | undefined>;
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
      * Privacy option controls redacting WHOIS information.
      */
-    public readonly privacy!: pulumi.Output<boolean | undefined>;
+    declare public readonly privacy: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegistrarDomain resource with the given unique name, arguments, and options.
@@ -82,24 +82,24 @@ export class RegistrarDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistrarDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["privacy"] = state ? state.privacy : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["privacy"] = state?.privacy;
         } else {
             const args = argsOrState as RegistrarDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.domainName === undefined) && !opts.urn) {
+            if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["privacy"] = args ? args.privacy : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["privacy"] = args?.privacy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegistrarDomain.__pulumiType, name, resourceInputs, opts);

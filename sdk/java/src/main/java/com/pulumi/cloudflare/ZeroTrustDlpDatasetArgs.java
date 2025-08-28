@@ -89,16 +89,20 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<Boolean> secret;
 
     /**
-     * @return Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * @return Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     public Optional<Output<Boolean>> secret() {
@@ -230,8 +234,10 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secret Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-         * response has no secret and the dataset is uploaded in plaintext.
+         * @param secret Generate a secret dataset.
+         * 
+         * If true, the response will include a secret to use with the EDM encoder.
+         * If false, the response has no secret and the dataset is uploaded in plaintext.
          * 
          * @return builder
          * 
@@ -242,8 +248,10 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secret Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-         * response has no secret and the dataset is uploaded in plaintext.
+         * @param secret Generate a secret dataset.
+         * 
+         * If true, the response will include a secret to use with the EDM encoder.
+         * If false, the response has no secret and the dataset is uploaded in plaintext.
          * 
          * @return builder
          * 

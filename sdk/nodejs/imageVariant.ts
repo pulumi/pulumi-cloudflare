@@ -46,16 +46,16 @@ export class ImageVariant extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicates whether the variant can access an image without a signature, regardless of image access control.
      */
-    public readonly neverRequireSignedUrls!: pulumi.Output<boolean>;
+    declare public readonly neverRequireSignedUrls: pulumi.Output<boolean>;
     /**
      * Allows you to define image resizing sizes for different use cases.
      */
-    public readonly options!: pulumi.Output<outputs.ImageVariantOptions>;
-    public /*out*/ readonly variant!: pulumi.Output<outputs.ImageVariantVariant>;
+    declare public readonly options: pulumi.Output<outputs.ImageVariantOptions>;
+    declare public /*out*/ readonly variant: pulumi.Output<outputs.ImageVariantVariant>;
 
     /**
      * Create a ImageVariant resource with the given unique name, arguments, and options.
@@ -70,21 +70,21 @@ export class ImageVariant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageVariantState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["neverRequireSignedUrls"] = state ? state.neverRequireSignedUrls : undefined;
-            resourceInputs["options"] = state ? state.options : undefined;
-            resourceInputs["variant"] = state ? state.variant : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["neverRequireSignedUrls"] = state?.neverRequireSignedUrls;
+            resourceInputs["options"] = state?.options;
+            resourceInputs["variant"] = state?.variant;
         } else {
             const args = argsOrState as ImageVariantArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.options === undefined) && !opts.urn) {
+            if (args?.options === undefined && !opts.urn) {
                 throw new Error("Missing required property 'options'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["neverRequireSignedUrls"] = args ? args.neverRequireSignedUrls : undefined;
-            resourceInputs["options"] = args ? args.options : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["neverRequireSignedUrls"] = args?.neverRequireSignedUrls;
+            resourceInputs["options"] = args?.options;
             resourceInputs["variant"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

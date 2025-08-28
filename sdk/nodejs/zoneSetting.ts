@@ -57,32 +57,32 @@ export class ZoneSetting extends pulumi.CustomResource {
     /**
      * Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      */
-    public /*out*/ readonly editable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly editable: pulumi.Output<boolean>;
     /**
      * ssl-recommender enrollment setting.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * last time this setting was modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Setting name
      */
-    public readonly settingId!: pulumi.Output<string>;
+    declare public readonly settingId: pulumi.Output<string>;
     /**
      * Value of the zone setting.
      * Notes: The interval (in seconds) from when development mode expires (positive integer) or last expired (negative integer) for the domain. If development mode has never been enabled, this value is false.
      */
-    public /*out*/ readonly timeRemaining!: pulumi.Output<number>;
+    declare public /*out*/ readonly timeRemaining: pulumi.Output<number>;
     /**
      * Current value of the zone setting.
      */
-    public readonly value!: pulumi.Output<any>;
+    declare public readonly value: pulumi.Output<any>;
     /**
      * Identifier
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneSetting resource with the given unique name, arguments, and options.
@@ -97,28 +97,28 @@ export class ZoneSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneSettingState | undefined;
-            resourceInputs["editable"] = state ? state.editable : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["settingId"] = state ? state.settingId : undefined;
-            resourceInputs["timeRemaining"] = state ? state.timeRemaining : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["editable"] = state?.editable;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["settingId"] = state?.settingId;
+            resourceInputs["timeRemaining"] = state?.timeRemaining;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneSettingArgs | undefined;
-            if ((!args || args.settingId === undefined) && !opts.urn) {
+            if (args?.settingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'settingId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["settingId"] = args ? args.settingId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["settingId"] = args?.settingId;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["editable"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["timeRemaining"] = undefined /*out*/;

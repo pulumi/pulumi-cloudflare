@@ -47,24 +47,24 @@ export class AccessCustomPage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Custom page HTML.
      */
-    public readonly customHtml!: pulumi.Output<string>;
+    declare public readonly customHtml: pulumi.Output<string>;
     /**
      * Custom page name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Custom page type.
      * Available values: "identityDenied", "forbidden".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * UUID.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a AccessCustomPage resource with the given unique name, arguments, and options.
@@ -82,29 +82,29 @@ export class AccessCustomPage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessCustomPageState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["customHtml"] = state ? state.customHtml : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["customHtml"] = state?.customHtml;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as AccessCustomPageArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.customHtml === undefined) && !opts.urn) {
+            if (args?.customHtml === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customHtml'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["customHtml"] = args ? args.customHtml : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["customHtml"] = args?.customHtml;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

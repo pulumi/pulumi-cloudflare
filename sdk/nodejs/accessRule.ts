@@ -61,40 +61,40 @@ export class AccessRule extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The available actions that a rule can apply to a matched request.
      */
-    public /*out*/ readonly allowedModes!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly allowedModes: pulumi.Output<string[]>;
     /**
      * The rule configuration.
      */
-    public readonly configuration!: pulumi.Output<outputs.AccessRuleConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.AccessRuleConfiguration>;
     /**
      * The timestamp of when the rule was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The timestamp of when the rule was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * An informative summary of the rule, typically used as a reminder or explanation.
      */
-    public readonly notes!: pulumi.Output<string | undefined>;
+    declare public readonly notes: pulumi.Output<string | undefined>;
     /**
      * All zones owned by the user will have the rule applied.
      */
-    public /*out*/ readonly scope!: pulumi.Output<outputs.AccessRuleScope>;
+    declare public /*out*/ readonly scope: pulumi.Output<outputs.AccessRuleScope>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -109,28 +109,28 @@ export class AccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowedModes"] = state ? state.allowedModes : undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["notes"] = state ? state.notes : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowedModes"] = state?.allowedModes;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["notes"] = state?.notes;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["notes"] = args?.notes;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["allowedModes"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
