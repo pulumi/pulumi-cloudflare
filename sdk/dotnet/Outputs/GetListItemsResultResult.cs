@@ -13,9 +13,65 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetListItemsResultResult
     {
+        /// <summary>
+        /// Defines a non-negative 32 bit integer.
+        /// </summary>
+        public readonly int Asn;
+        /// <summary>
+        /// Defines	an informative summary of the list item.
+        /// </summary>
+        public readonly string Comment;
+        /// <summary>
+        /// The RFC 3339 timestamp of when the item was created.
+        /// </summary>
+        public readonly string CreatedOn;
+        /// <summary>
+        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        /// </summary>
+        public readonly Outputs.GetListItemsResultHostnameResult Hostname;
+        /// <summary>
+        /// Defines the unique ID of the item in the List.
+        /// </summary>
+        public readonly string Id;
+        /// <summary>
+        /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        /// </summary>
+        public readonly string Ip;
+        /// <summary>
+        /// The RFC 3339 timestamp of when the item was last modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// The definition of the redirect.
+        /// </summary>
+        public readonly Outputs.GetListItemsResultRedirectResult Redirect;
+
         [OutputConstructor]
-        private GetListItemsResultResult()
+        private GetListItemsResultResult(
+            int asn,
+
+            string comment,
+
+            string createdOn,
+
+            Outputs.GetListItemsResultHostnameResult hostname,
+
+            string id,
+
+            string ip,
+
+            string modifiedOn,
+
+            Outputs.GetListItemsResultRedirectResult redirect)
         {
+            Asn = asn;
+            Comment = comment;
+            CreatedOn = createdOn;
+            Hostname = hostname;
+            Id = id;
+            Ip = ip;
+            ModifiedOn = modifiedOn;
+            Redirect = redirect;
         }
     }
 }

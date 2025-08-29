@@ -49,14 +49,14 @@ func LookupLoadBalancerMonitor(ctx *pulumi.Context, args *LookupLoadBalancerMoni
 
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string  `pulumi:"accountId"`
 	MonitorId *string `pulumi:"monitorId"`
 }
 
 // A collection of values returned by getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure bool `pulumi:"allowInsecure"`
@@ -109,7 +109,7 @@ func LookupLoadBalancerMonitorOutput(ctx *pulumi.Context, args LookupLoadBalance
 
 // A collection of arguments for invoking getLoadBalancerMonitor.
 type LookupLoadBalancerMonitorOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput    `pulumi:"accountId"`
 	MonitorId pulumi.StringPtrInput `pulumi:"monitorId"`
 }
@@ -133,7 +133,7 @@ func (o LookupLoadBalancerMonitorResultOutput) ToLookupLoadBalancerMonitorResult
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupLoadBalancerMonitorResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerMonitorResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -87,6 +87,10 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
      * The current number of scripts in this Dispatch Namespace.
      */
     public /*out*/ readonly scriptCount!: pulumi.Output<number>;
+    /**
+     * Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+     */
+    public /*out*/ readonly trustedWorkers!: pulumi.Output<boolean>;
 
     /**
      * Create a WorkersForPlatformsDispatchNamespace resource with the given unique name, arguments, and options.
@@ -110,6 +114,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
             resourceInputs["scriptCount"] = state ? state.scriptCount : undefined;
+            resourceInputs["trustedWorkers"] = state ? state.trustedWorkers : undefined;
         } else {
             const args = argsOrState as WorkersForPlatformsDispatchNamespaceArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -124,6 +129,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
             resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["namespaceName"] = undefined /*out*/;
             resourceInputs["scriptCount"] = undefined /*out*/;
+            resourceInputs["trustedWorkers"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace" }] };
@@ -172,6 +178,10 @@ export interface WorkersForPlatformsDispatchNamespaceState {
      * The current number of scripts in this Dispatch Namespace.
      */
     scriptCount?: pulumi.Input<number>;
+    /**
+     * Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+     */
+    trustedWorkers?: pulumi.Input<boolean>;
 }
 
 /**

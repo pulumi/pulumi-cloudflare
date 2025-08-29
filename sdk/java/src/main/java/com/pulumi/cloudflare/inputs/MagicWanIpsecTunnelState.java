@@ -131,6 +131,21 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    @Import(name="interfaceAddress6")
+    private @Nullable Output<String> interfaceAddress6;
+
+    /**
+     * @return A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    public Optional<Output<String>> interfaceAddress6() {
+        return Optional.ofNullable(this.interfaceAddress6);
+    }
+
+    /**
      * The date and time the tunnel was last modified.
      * 
      */
@@ -216,6 +231,7 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         this.description = $.description;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
+        this.interfaceAddress6 = $.interfaceAddress6;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.psk = $.psk;
@@ -395,6 +411,27 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
          */
         public Builder interfaceAddress(String interfaceAddress) {
             return interfaceAddress(Output.of(interfaceAddress));
+        }
+
+        /**
+         * @param interfaceAddress6 A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceAddress6(@Nullable Output<String> interfaceAddress6) {
+            $.interfaceAddress6 = interfaceAddress6;
+            return this;
+        }
+
+        /**
+         * @param interfaceAddress6 A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceAddress6(String interfaceAddress6) {
+            return interfaceAddress6(Output.of(interfaceAddress6));
         }
 
         /**

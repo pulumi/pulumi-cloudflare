@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +18,14 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
     public static final RulesetRuleActionParametersCacheReserveArgs Empty = new RulesetRuleActionParametersCacheReserveArgs();
 
     /**
-     * Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     @Import(name="eligible", required=true)
     private Output<Boolean> eligible;
 
     /**
-     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * @return Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     public Output<Boolean> eligible() {
@@ -31,18 +33,18 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
     }
 
     /**
-     * The minimum file size eligible for store in cache reserve.
+     * The minimum file size eligible for storage in Cache Reserve.
      * 
      */
-    @Import(name="minimumFileSize", required=true)
-    private Output<Integer> minimumFileSize;
+    @Import(name="minimumFileSize")
+    private @Nullable Output<Integer> minimumFileSize;
 
     /**
-     * @return The minimum file size eligible for store in cache reserve.
+     * @return The minimum file size eligible for storage in Cache Reserve.
      * 
      */
-    public Output<Integer> minimumFileSize() {
-        return this.minimumFileSize;
+    public Optional<Output<Integer>> minimumFileSize() {
+        return Optional.ofNullable(this.minimumFileSize);
     }
 
     private RulesetRuleActionParametersCacheReserveArgs() {}
@@ -71,7 +73,7 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param eligible Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+         * @param eligible Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
          * 
          * @return builder
          * 
@@ -82,7 +84,7 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param eligible Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+         * @param eligible Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
          * 
          * @return builder
          * 
@@ -92,18 +94,18 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param minimumFileSize The minimum file size eligible for store in cache reserve.
+         * @param minimumFileSize The minimum file size eligible for storage in Cache Reserve.
          * 
          * @return builder
          * 
          */
-        public Builder minimumFileSize(Output<Integer> minimumFileSize) {
+        public Builder minimumFileSize(@Nullable Output<Integer> minimumFileSize) {
             $.minimumFileSize = minimumFileSize;
             return this;
         }
 
         /**
-         * @param minimumFileSize The minimum file size eligible for store in cache reserve.
+         * @param minimumFileSize The minimum file size eligible for storage in Cache Reserve.
          * 
          * @return builder
          * 
@@ -115,9 +117,6 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         public RulesetRuleActionParametersCacheReserveArgs build() {
             if ($.eligible == null) {
                 throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserveArgs", "eligible");
-            }
-            if ($.minimumFileSize == null) {
-                throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserveArgs", "minimumFileSize");
             }
             return $;
         }

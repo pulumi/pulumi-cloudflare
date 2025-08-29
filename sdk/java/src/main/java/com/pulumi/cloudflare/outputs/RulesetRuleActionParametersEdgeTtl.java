@@ -16,32 +16,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     private @Nullable Integer default_;
     /**
-     * @return Edge TTL options.
+     * @return The edge TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     private String mode;
     /**
-     * @return List of single status codes, or status code ranges to apply the selected mode.
+     * @return A list of TTLs to apply to specific status codes or status code ranges.
      * 
      */
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
 
     private RulesetRuleActionParametersEdgeTtl() {}
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return Edge TTL options.
+     * @return The edge TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
@@ -49,7 +49,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
         return this.mode;
     }
     /**
-     * @return List of single status codes, or status code ranges to apply the selected mode.
+     * @return A list of TTLs to apply to specific status codes or status code ranges.
      * 
      */
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls() {

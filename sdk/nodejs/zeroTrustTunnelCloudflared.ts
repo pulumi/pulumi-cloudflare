@@ -100,6 +100,8 @@ export class ZeroTrustTunnelCloudflared extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+     *
+     * @deprecated Use the configSrc field instead.
      */
     public /*out*/ readonly remoteConfig!: pulumi.Output<boolean>;
     /**
@@ -225,6 +227,8 @@ export interface ZeroTrustTunnelCloudflaredState {
     name?: pulumi.Input<string>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+     *
+     * @deprecated Use the configSrc field instead.
      */
     remoteConfig?: pulumi.Input<boolean>;
     /**

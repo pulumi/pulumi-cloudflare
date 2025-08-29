@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     domain: "domain",
  *     enabled: true,
  *     zoneId: "zoneId",
+ *     ciphers: ["string"],
  *     minTls: "1.0",
  * });
  * ```
@@ -59,6 +60,10 @@ export class R2CustomDomain extends pulumi.CustomResource {
      * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    public readonly ciphers!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the custom domain to be added.
      */
@@ -101,6 +106,7 @@ export class R2CustomDomain extends pulumi.CustomResource {
             const state = argsOrState as R2CustomDomainState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
@@ -127,6 +133,7 @@ export class R2CustomDomain extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
@@ -152,6 +159,10 @@ export interface R2CustomDomainState {
      * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the custom domain to be added.
      */
@@ -192,6 +203,10 @@ export interface R2CustomDomainArgs {
      * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the custom domain to be added.
      */

@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
         /// Optional remark describing the virtual network.
         /// </summary>
         [Output("comment")]
-        public Output<string?> Comment { get; private set; } = null!;
+        public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
         /// Timestamp of when the resource was created.

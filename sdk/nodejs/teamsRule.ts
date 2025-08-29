@@ -61,9 +61,6 @@ export class TeamsRule extends pulumi.CustomResource {
      * The description of the rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The wirefilter expression used for device posture check matching.
-     */
     public readonly devicePosture!: pulumi.Output<string>;
     /**
      * True if the rule is enabled.
@@ -78,9 +75,6 @@ export class TeamsRule extends pulumi.CustomResource {
      * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     public readonly filters!: pulumi.Output<string[] | undefined>;
-    /**
-     * The wirefilter expression used for identity matching.
-     */
     public readonly identity!: pulumi.Output<string>;
     /**
      * The name of the rule.
@@ -90,7 +84,7 @@ export class TeamsRule extends pulumi.CustomResource {
      * The rule cannot be shared via the Orgs API
      */
     public /*out*/ readonly notSharable!: pulumi.Output<boolean>;
-    public readonly precedence!: pulumi.Output<number | undefined>;
+    public readonly precedence!: pulumi.Output<number>;
     /**
      * The rule was shared via the Orgs API and cannot be edited by the current account
      */
@@ -107,9 +101,6 @@ export class TeamsRule extends pulumi.CustomResource {
      * account tag of account that created the rule
      */
     public /*out*/ readonly sourceAccount!: pulumi.Output<string>;
-    /**
-     * The wirefilter expression used for traffic matching.
-     */
     public readonly traffic!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -217,9 +208,6 @@ export interface TeamsRuleState {
      * The description of the rule.
      */
     description?: pulumi.Input<string>;
-    /**
-     * The wirefilter expression used for device posture check matching.
-     */
     devicePosture?: pulumi.Input<string>;
     /**
      * True if the rule is enabled.
@@ -234,9 +222,6 @@ export interface TeamsRuleState {
      * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The wirefilter expression used for identity matching.
-     */
     identity?: pulumi.Input<string>;
     /**
      * The name of the rule.
@@ -263,9 +248,6 @@ export interface TeamsRuleState {
      * account tag of account that created the rule
      */
     sourceAccount?: pulumi.Input<string>;
-    /**
-     * The wirefilter expression used for traffic matching.
-     */
     traffic?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     /**
@@ -292,9 +274,6 @@ export interface TeamsRuleArgs {
      * The description of the rule.
      */
     description?: pulumi.Input<string>;
-    /**
-     * The wirefilter expression used for device posture check matching.
-     */
     devicePosture?: pulumi.Input<string>;
     /**
      * True if the rule is enabled.
@@ -309,9 +288,6 @@ export interface TeamsRuleArgs {
      * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The wirefilter expression used for identity matching.
-     */
     identity?: pulumi.Input<string>;
     /**
      * The name of the rule.
@@ -326,8 +302,5 @@ export interface TeamsRuleArgs {
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
     schedule?: pulumi.Input<inputs.TeamsRuleSchedule>;
-    /**
-     * The wirefilter expression used for traffic matching.
-     */
     traffic?: pulumi.Input<string>;
 }

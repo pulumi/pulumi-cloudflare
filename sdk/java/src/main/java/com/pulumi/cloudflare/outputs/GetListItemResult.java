@@ -3,8 +3,11 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetListItemHostname;
+import com.pulumi.cloudflare.outputs.GetListItemRedirect;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,10 +19,35 @@ public final class GetListItemResult {
      */
     private String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Defines a non-negative 32 bit integer.
+     * 
+     */
+    private Integer asn;
+    /**
+     * @return Defines an informative summary of the list item.
+     * 
+     */
+    private String comment;
+    /**
+     * @return The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    private String createdOn;
+    /**
+     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * 
+     */
+    private GetListItemHostname hostname;
+    /**
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     private String id;
+    /**
+     * @return An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     * 
+     */
+    private String ip;
     /**
      * @return Defines the unique ID of the item in the List.
      * 
@@ -30,6 +58,16 @@ public final class GetListItemResult {
      * 
      */
     private String listId;
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    private String modifiedOn;
+    /**
+     * @return The definition of the redirect.
+     * 
+     */
+    private GetListItemRedirect redirect;
 
     private GetListItemResult() {}
     /**
@@ -40,11 +78,46 @@ public final class GetListItemResult {
         return this.accountId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Defines a non-negative 32 bit integer.
+     * 
+     */
+    public Integer asn() {
+        return this.asn;
+    }
+    /**
+     * @return Defines an informative summary of the list item.
+     * 
+     */
+    public String comment() {
+        return this.comment;
+    }
+    /**
+     * @return The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    public String createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * @return Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     * 
+     */
+    public GetListItemHostname hostname() {
+        return this.hostname;
+    }
+    /**
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     * 
+     */
+    public String ip() {
+        return this.ip;
     }
     /**
      * @return Defines the unique ID of the item in the List.
@@ -60,6 +133,20 @@ public final class GetListItemResult {
     public String listId() {
         return this.listId;
     }
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * @return The definition of the redirect.
+     * 
+     */
+    public GetListItemRedirect redirect() {
+        return this.redirect;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -71,16 +158,30 @@ public final class GetListItemResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Integer asn;
+        private String comment;
+        private String createdOn;
+        private GetListItemHostname hostname;
         private String id;
+        private String ip;
         private String itemId;
         private String listId;
+        private String modifiedOn;
+        private GetListItemRedirect redirect;
         public Builder() {}
         public Builder(GetListItemResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.asn = defaults.asn;
+    	      this.comment = defaults.comment;
+    	      this.createdOn = defaults.createdOn;
+    	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
+    	      this.ip = defaults.ip;
     	      this.itemId = defaults.itemId;
     	      this.listId = defaults.listId;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.redirect = defaults.redirect;
         }
 
         @CustomType.Setter
@@ -92,11 +193,51 @@ public final class GetListItemResult {
             return this;
         }
         @CustomType.Setter
+        public Builder asn(Integer asn) {
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "asn");
+            }
+            this.asn = asn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder comment(String comment) {
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "comment");
+            }
+            this.comment = comment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdOn(String createdOn) {
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "createdOn");
+            }
+            this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostname(GetListItemHostname hostname) {
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "hostname");
+            }
+            this.hostname = hostname;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetListItemResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ip(String ip) {
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         @CustomType.Setter
@@ -115,12 +256,35 @@ public final class GetListItemResult {
             this.listId = listId;
             return this;
         }
+        @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder redirect(GetListItemRedirect redirect) {
+            if (redirect == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "redirect");
+            }
+            this.redirect = redirect;
+            return this;
+        }
         public GetListItemResult build() {
             final var _resultValue = new GetListItemResult();
             _resultValue.accountId = accountId;
+            _resultValue.asn = asn;
+            _resultValue.comment = comment;
+            _resultValue.createdOn = createdOn;
+            _resultValue.hostname = hostname;
             _resultValue.id = id;
+            _resultValue.ip = ip;
             _resultValue.itemId = itemId;
             _resultValue.listId = listId;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.redirect = redirect;
             return _resultValue;
         }
     }

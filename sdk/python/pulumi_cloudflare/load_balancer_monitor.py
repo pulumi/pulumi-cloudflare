@@ -38,7 +38,7 @@ class LoadBalancerMonitorArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerMonitor resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         :param pulumi.Input[_builtins.int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
@@ -95,7 +95,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -321,7 +321,7 @@ class _LoadBalancerMonitorState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerMonitor resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         :param pulumi.Input[_builtins.int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
@@ -383,7 +383,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -665,7 +665,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         :param pulumi.Input[_builtins.int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
@@ -824,7 +824,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         :param pulumi.Input[_builtins.int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         :param pulumi.Input[_builtins.int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
@@ -872,7 +872,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -886,7 +886,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="consecutiveDown")
-    def consecutive_down(self) -> pulumi.Output[_builtins.int]:
+    def consecutive_down(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         """
@@ -894,7 +894,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="consecutiveUp")
-    def consecutive_up(self) -> pulumi.Output[_builtins.int]:
+    def consecutive_up(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
         """
@@ -907,7 +907,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def description(self) -> pulumi.Output[_builtins.str]:
         """
         Object description.
         """
@@ -915,7 +915,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="expectedBody")
-    def expected_body(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def expected_body(self) -> pulumi.Output[_builtins.str]:
         """
         A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
         """
@@ -923,7 +923,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def expected_codes(self) -> pulumi.Output[_builtins.str]:
         """
         The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
         """
@@ -976,7 +976,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> pulumi.Output[_builtins.int]:
+    def port(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
         """
@@ -984,7 +984,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="probeZone")
-    def probe_zone(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def probe_zone(self) -> pulumi.Output[_builtins.str]:
         """
         Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
         """

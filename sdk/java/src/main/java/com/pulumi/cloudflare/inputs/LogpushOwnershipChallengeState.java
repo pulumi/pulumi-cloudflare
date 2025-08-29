@@ -32,14 +32,14 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
     }
 
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Import(name="destinationConf")
     private @Nullable Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Optional<Output<String>> destinationConf() {
@@ -133,7 +133,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class LogpushOwnershipChallengeState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+         * @param destinationConf Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
          * 
          * @return builder
          * 

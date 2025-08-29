@@ -70,14 +70,14 @@ public class LogpushOwnershipChallenge extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.accountId);
     }
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     @Export(name="destinationConf", refs={String.class}, tree="[0]")
     private Output<String> destinationConf;
 
     /**
-     * @return Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * @return Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      * 
      */
     public Output<String> destinationConf() {

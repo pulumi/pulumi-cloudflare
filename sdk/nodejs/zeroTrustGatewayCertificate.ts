@@ -53,34 +53,34 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
 
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     public /*out*/ readonly bindingStatus!: pulumi.Output<string>;
     /**
-     * The CA certificate
+     * The CA certificate(read only).
      */
     public /*out*/ readonly certificate!: pulumi.Output<string>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
     /**
-     * The SHA256 fingerprint of the certificate.
+     * The SHA256 fingerprint of the certificate(read only).
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * Use this certificate for Gateway TLS interception
+     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      */
     public /*out*/ readonly inUse!: pulumi.Output<boolean>;
     /**
-     * The organization that issued the certificate.
+     * The organization that issued the certificate(read only).
      */
     public /*out*/ readonly issuerOrg!: pulumi.Output<string>;
     /**
-     * The entire issuer field of the certificate.
+     * The entire issuer field of the certificate(read only).
      */
     public /*out*/ readonly issuerRaw!: pulumi.Output<string>;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: "custom", "gatewayManaged".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
@@ -144,34 +144,34 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
 export interface ZeroTrustGatewayCertificateState {
     accountId?: pulumi.Input<string>;
     /**
-     * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * The CA certificate
+     * The CA certificate(read only).
      */
     certificate?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     expiresOn?: pulumi.Input<string>;
     /**
-     * The SHA256 fingerprint of the certificate.
+     * The SHA256 fingerprint of the certificate(read only).
      */
     fingerprint?: pulumi.Input<string>;
     /**
-     * Use this certificate for Gateway TLS interception
+     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      */
     inUse?: pulumi.Input<boolean>;
     /**
-     * The organization that issued the certificate.
+     * The organization that issued the certificate(read only).
      */
     issuerOrg?: pulumi.Input<string>;
     /**
-     * The entire issuer field of the certificate.
+     * The entire issuer field of the certificate(read only).
      */
     issuerRaw?: pulumi.Input<string>;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: "custom", "gatewayManaged".
      */
     type?: pulumi.Input<string>;

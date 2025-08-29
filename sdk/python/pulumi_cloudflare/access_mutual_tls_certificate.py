@@ -394,7 +394,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="associatedHostnames")
-    def associated_hostnames(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def associated_hostnames(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The hostnames of the applications that will use this certificate.
         """

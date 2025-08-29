@@ -57,7 +57,7 @@ type LookupUrlNormalizationSettingsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -106,7 +106,7 @@ func (o LookupUrlNormalizationSettingsResultOutput) Id() pulumi.StringOutput {
 }
 
 // The scope of the URL normalization.
-// Available values: "incoming", "both".
+// Available values: "incoming", "both", "none".
 func (o LookupUrlNormalizationSettingsResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUrlNormalizationSettingsResult) string { return v.Scope }).(pulumi.StringOutput)
 }

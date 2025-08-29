@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersAlgorithm
     {
         /// <summary>
-        /// Name of compression algorithm to enable.
+        /// Name of the compression algorithm to enable.
         /// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
         /// </summary>
         public readonly string? Name;

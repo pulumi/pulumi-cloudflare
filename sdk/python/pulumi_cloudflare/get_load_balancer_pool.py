@@ -97,7 +97,7 @@ class GetLoadBalancerPoolResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -295,7 +295,7 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -342,7 +342,7 @@ def get_load_balancer_pool_output(account_id: Optional[pulumi.Input[_builtins.st
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

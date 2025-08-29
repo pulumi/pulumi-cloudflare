@@ -5,8 +5,9 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersFromValueTargetUrl;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,44 +15,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersFromValue {
     /**
-     * @return Keep the query string of the original request.
+     * @return Whether to keep the query string of the original request.
      * 
      */
     private @Nullable Boolean preserveQueryString;
     /**
-     * @return The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * @return The status code to use for the redirect.
      * 
      */
-    private @Nullable Double statusCode;
+    private @Nullable Integer statusCode;
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
-    private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
+    private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private RulesetRuleActionParametersFromValue() {}
     /**
-     * @return Keep the query string of the original request.
+     * @return Whether to keep the query string of the original request.
      * 
      */
     public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
     /**
-     * @return The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * @return The status code to use for the redirect.
      * 
      */
-    public Optional<Double> statusCode() {
+    public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
-    public Optional<RulesetRuleActionParametersFromValueTargetUrl> targetUrl() {
-        return Optional.ofNullable(this.targetUrl);
+    public RulesetRuleActionParametersFromValueTargetUrl targetUrl() {
+        return this.targetUrl;
     }
 
     public static Builder builder() {
@@ -64,8 +63,8 @@ public final class RulesetRuleActionParametersFromValue {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean preserveQueryString;
-        private @Nullable Double statusCode;
-        private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
+        private @Nullable Integer statusCode;
+        private RulesetRuleActionParametersFromValueTargetUrl targetUrl;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromValue defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,14 +80,16 @@ public final class RulesetRuleActionParametersFromValue {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(@Nullable Double statusCode) {
+        public Builder statusCode(@Nullable Integer statusCode) {
 
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
-        public Builder targetUrl(@Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
-
+        public Builder targetUrl(RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
+            if (targetUrl == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromValue", "targetUrl");
+            }
             this.targetUrl = targetUrl;
             return this;
         }

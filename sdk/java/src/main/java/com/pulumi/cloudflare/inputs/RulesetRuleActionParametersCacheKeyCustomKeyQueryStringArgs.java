@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
     public static final RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs();
 
     /**
-     * A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * Which query string parameters to exclude from the cache key.
      * 
      */
     @Import(name="exclude")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs> exclude;
 
     /**
-     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * @return Which query string parameters to exclude from the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs>> exclude() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
     }
 
     /**
-     * A list of query string parameters used to build the cache key.
+     * Which query string parameters to include in the cache key.
      * 
      */
     @Import(name="include")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs> include;
 
     /**
-     * @return A list of query string parameters used to build the cache key.
+     * @return Which query string parameters to include in the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs>> include() {
@@ -72,7 +72,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param exclude A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+         * @param exclude Which query string parameters to exclude from the cache key.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param exclude A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+         * @param exclude Which query string parameters to exclude from the cache key.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param include A list of query string parameters used to build the cache key.
+         * @param include Which query string parameters to include in the cache key.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param include A list of query string parameters used to build the cache key.
+         * @param include Which query string parameters to include in the cache key.
          * 
          * @return builder
          * 

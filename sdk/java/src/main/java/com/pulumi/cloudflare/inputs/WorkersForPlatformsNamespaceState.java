@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,6 +152,21 @@ public final class WorkersForPlatformsNamespaceState extends com.pulumi.resource
         return Optional.ofNullable(this.scriptCount);
     }
 
+    /**
+     * Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    @Import(name="trustedWorkers")
+    private @Nullable Output<Boolean> trustedWorkers;
+
+    /**
+     * @return Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    public Optional<Output<Boolean>> trustedWorkers() {
+        return Optional.ofNullable(this.trustedWorkers);
+    }
+
     private WorkersForPlatformsNamespaceState() {}
 
     private WorkersForPlatformsNamespaceState(WorkersForPlatformsNamespaceState $) {
@@ -163,6 +179,7 @@ public final class WorkersForPlatformsNamespaceState extends com.pulumi.resource
         this.namespaceId = $.namespaceId;
         this.namespaceName = $.namespaceName;
         this.scriptCount = $.scriptCount;
+        this.trustedWorkers = $.trustedWorkers;
     }
 
     public static Builder builder() {
@@ -370,6 +387,27 @@ public final class WorkersForPlatformsNamespaceState extends com.pulumi.resource
          */
         public Builder scriptCount(Integer scriptCount) {
             return scriptCount(Output.of(scriptCount));
+        }
+
+        /**
+         * @param trustedWorkers Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustedWorkers(@Nullable Output<Boolean> trustedWorkers) {
+            $.trustedWorkers = trustedWorkers;
+            return this;
+        }
+
+        /**
+         * @param trustedWorkers Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trustedWorkers(Boolean trustedWorkers) {
+            return trustedWorkers(Output.of(trustedWorkers));
         }
 
         public WorkersForPlatformsNamespaceState build() {

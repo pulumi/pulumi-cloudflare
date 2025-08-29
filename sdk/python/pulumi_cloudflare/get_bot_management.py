@@ -27,7 +27,7 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
@@ -46,6 +46,9 @@ class GetBotManagementResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_robots_txt_managed and not isinstance(is_robots_txt_managed, bool):
+            raise TypeError("Expected argument 'is_robots_txt_managed' to be a bool")
+        pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
         if optimize_wordpress and not isinstance(optimize_wordpress, bool):
             raise TypeError("Expected argument 'optimize_wordpress' to be a bool")
         pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
@@ -123,6 +126,14 @@ class GetBotManagementResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isRobotsTxtManaged")
+    def is_robots_txt_managed(self) -> _builtins.bool:
+        """
+        Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        """
+        return pulumi.get(self, "is_robots_txt_managed")
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
@@ -214,6 +225,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
             enable_js=self.enable_js,
             fight_mode=self.fight_mode,
             id=self.id,
+            is_robots_txt_managed=self.is_robots_txt_managed,
             optimize_wordpress=self.optimize_wordpress,
             sbfm_definitely_automated=self.sbfm_definitely_automated,
             sbfm_likely_automated=self.sbfm_likely_automated,
@@ -252,6 +264,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         enable_js=pulumi.get(__ret__, 'enable_js'),
         fight_mode=pulumi.get(__ret__, 'fight_mode'),
         id=pulumi.get(__ret__, 'id'),
+        is_robots_txt_managed=pulumi.get(__ret__, 'is_robots_txt_managed'),
         optimize_wordpress=pulumi.get(__ret__, 'optimize_wordpress'),
         sbfm_definitely_automated=pulumi.get(__ret__, 'sbfm_definitely_automated'),
         sbfm_likely_automated=pulumi.get(__ret__, 'sbfm_likely_automated'),
@@ -287,6 +300,7 @@ def get_bot_management_output(zone_id: Optional[pulumi.Input[_builtins.str]] = N
         enable_js=pulumi.get(__response__, 'enable_js'),
         fight_mode=pulumi.get(__response__, 'fight_mode'),
         id=pulumi.get(__response__, 'id'),
+        is_robots_txt_managed=pulumi.get(__response__, 'is_robots_txt_managed'),
         optimize_wordpress=pulumi.get(__response__, 'optimize_wordpress'),
         sbfm_definitely_automated=pulumi.get(__response__, 'sbfm_definitely_automated'),
         sbfm_likely_automated=pulumi.get(__response__, 'sbfm_likely_automated'),

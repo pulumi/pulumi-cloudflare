@@ -6,12 +6,15 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.FilterArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.FilterState;
+import com.pulumi.cloudflare.outputs.FilterBody;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -33,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Filter;
  * import com.pulumi.cloudflare.FilterArgs;
+ * import com.pulumi.cloudflare.inputs.FilterBodyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,7 +52,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleFilter = new Filter("exampleFilter", FilterArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
+ *             .bodies(FilterBodyArgs.builder()
+ *                 .description("Restrict access from these browsers on this address range.")
+ *                 .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
+ *                 .paused(false)
+ *                 .ref("FIL-100")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -66,61 +75,67 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/filter:Filter")
 public class Filter extends com.pulumi.resources.CustomResource {
+    @Export(name="bodies", refs={List.class,FilterBody.class}, tree="[0,1]")
+    private Output<List<FilterBody>> bodies;
+
+    public Output<List<FilterBody>> bodies() {
+        return this.bodies;
+    }
     /**
      * An informative summary of the filter.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return An informative summary of the filter.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     @Export(name="expression", refs={String.class}, tree="[0]")
-    private Output<String> expression;
+    private Output</* @Nullable */ String> expression;
 
     /**
      * @return The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
-    public Output<String> expression() {
-        return this.expression;
+    public Output<Optional<String>> expression() {
+        return Codegen.optional(this.expression);
     }
     /**
      * When true, indicates that the filter is currently paused.
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> paused;
+    private Output</* @Nullable */ Boolean> paused;
 
     /**
      * @return When true, indicates that the filter is currently paused.
      * 
      */
-    public Output<Boolean> paused() {
-        return this.paused;
+    public Output<Optional<Boolean>> paused() {
+        return Codegen.optional(this.paused);
     }
     /**
      * A short reference tag. Allows you to select related filters.
      * 
      */
     @Export(name="ref", refs={String.class}, tree="[0]")
-    private Output<String> ref;
+    private Output</* @Nullable */ String> ref;
 
     /**
      * @return A short reference tag. Allows you to select related filters.
      * 
      */
-    public Output<String> ref() {
-        return this.ref;
+    public Output<Optional<String>> ref() {
+        return Codegen.optional(this.ref);
     }
     /**
      * Defines an identifier.

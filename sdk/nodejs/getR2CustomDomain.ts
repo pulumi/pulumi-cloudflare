@@ -60,6 +60,10 @@ export interface GetR2CustomDomainResult {
      */
     readonly bucketName: string;
     /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    readonly ciphers: string[];
+    /**
      * Name of the custom domain.
      */
     readonly domain: string;

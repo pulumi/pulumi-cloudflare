@@ -52,7 +52,15 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
     }
 
     /**
-     * Enables Argo Smart Routing.
+     * Specifies if the setting is editable.
+     */
+    public /*out*/ readonly editable!: pulumi.Output<boolean>;
+    /**
+     * Specifies the time when the setting was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
@@ -74,6 +82,8 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ArgoSmartRoutingState | undefined;
+            resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -86,6 +96,8 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
             }
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["editable"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ArgoSmartRouting.__pulumiType, name, resourceInputs, opts);
@@ -97,7 +109,15 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
  */
 export interface ArgoSmartRoutingState {
     /**
-     * Enables Argo Smart Routing.
+     * Specifies if the setting is editable.
+     */
+    editable?: pulumi.Input<boolean>;
+    /**
+     * Specifies the time when the setting was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
@@ -112,7 +132,7 @@ export interface ArgoSmartRoutingState {
  */
 export interface ArgoSmartRoutingArgs {
     /**
-     * Enables Argo Smart Routing.
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: "on", "off".
      */
     value: pulumi.Input<string>;

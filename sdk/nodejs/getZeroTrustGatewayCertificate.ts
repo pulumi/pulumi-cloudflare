@@ -42,12 +42,12 @@ export interface GetZeroTrustGatewayCertificateArgs {
 export interface GetZeroTrustGatewayCertificateResult {
     readonly accountId: string;
     /**
-     * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     readonly bindingStatus: string;
     /**
-     * The CA certificate
+     * The CA certificate(read only).
      */
     readonly certificate: string;
     /**
@@ -57,7 +57,7 @@ export interface GetZeroTrustGatewayCertificateResult {
     readonly createdAt: string;
     readonly expiresOn: string;
     /**
-     * The SHA256 fingerprint of the certificate.
+     * The SHA256 fingerprint of the certificate(read only).
      */
     readonly fingerprint: string;
     /**
@@ -65,19 +65,19 @@ export interface GetZeroTrustGatewayCertificateResult {
      */
     readonly id: string;
     /**
-     * Use this certificate for Gateway TLS interception
+     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      */
     readonly inUse: boolean;
     /**
-     * The organization that issued the certificate.
+     * The organization that issued the certificate(read only).
      */
     readonly issuerOrg: string;
     /**
-     * The entire issuer field of the certificate.
+     * The entire issuer field of the certificate(read only).
      */
     readonly issuerRaw: string;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: "custom", "gatewayManaged".
      */
     readonly type: string;

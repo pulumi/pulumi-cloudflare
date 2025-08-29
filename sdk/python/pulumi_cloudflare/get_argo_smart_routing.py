@@ -26,21 +26,55 @@ class GetArgoSmartRoutingResult:
     """
     A collection of values returned by getArgoSmartRouting.
     """
-    def __init__(__self__, id=None, zone_id=None):
+    def __init__(__self__, editable=None, id=None, modified_on=None, value=None, zone_id=None):
+        if editable and not isinstance(editable, bool):
+            raise TypeError("Expected argument 'editable' to be a bool")
+        pulumi.set(__self__, "editable", editable)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if modified_on and not isinstance(modified_on, str):
+            raise TypeError("Expected argument 'modified_on' to be a str")
+        pulumi.set(__self__, "modified_on", modified_on)
+        if value and not isinstance(value, str):
+            raise TypeError("Expected argument 'value' to be a str")
+        pulumi.set(__self__, "value", value)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
 
     @_builtins.property
     @pulumi.getter
+    def editable(self) -> _builtins.bool:
+        """
+        Specifies if the setting is editable.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Specifies the identifier of the Argo Smart Routing setting.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> _builtins.str:
+        """
+        Specifies the time when the setting was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Specifies the enablement value of Argo Smart Routing.
+        Available values: "on", "off".
+        """
+        return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -57,7 +91,10 @@ class AwaitableGetArgoSmartRoutingResult(GetArgoSmartRoutingResult):
         if False:
             yield self
         return GetArgoSmartRoutingResult(
+            editable=self.editable,
             id=self.id,
+            modified_on=self.modified_on,
+            value=self.value,
             zone_id=self.zone_id)
 
 
@@ -82,7 +119,10 @@ def get_argo_smart_routing(zone_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getArgoSmartRouting:getArgoSmartRouting', __args__, opts=opts, typ=GetArgoSmartRoutingResult).value
 
     return AwaitableGetArgoSmartRoutingResult(
+        editable=pulumi.get(__ret__, 'editable'),
         id=pulumi.get(__ret__, 'id'),
+        modified_on=pulumi.get(__ret__, 'modified_on'),
+        value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_argo_smart_routing_output(zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetArgoSmartRoutingResult]:
@@ -104,5 +144,8 @@ def get_argo_smart_routing_output(zone_id: Optional[pulumi.Input[_builtins.str]]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getArgoSmartRouting:getArgoSmartRouting', __args__, opts=opts, typ=GetArgoSmartRoutingResult)
     return __ret__.apply(lambda __response__: GetArgoSmartRoutingResult(
+        editable=pulumi.get(__response__, 'editable'),
         id=pulumi.get(__response__, 'id'),
+        modified_on=pulumi.get(__response__, 'modified_on'),
+        value=pulumi.get(__response__, 'value'),
         zone_id=pulumi.get(__response__, 'zone_id')))

@@ -49,7 +49,7 @@ func LookupLoadBalancerPools(ctx *pulumi.Context, args *LookupLoadBalancerPoolsA
 
 // A collection of arguments for invoking getLoadBalancerPools.
 type LookupLoadBalancerPoolsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -59,7 +59,7 @@ type LookupLoadBalancerPoolsArgs struct {
 
 // A collection of values returned by getLoadBalancerPools.
 type LookupLoadBalancerPoolsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -82,7 +82,7 @@ func LookupLoadBalancerPoolsOutput(ctx *pulumi.Context, args LookupLoadBalancerP
 
 // A collection of arguments for invoking getLoadBalancerPools.
 type LookupLoadBalancerPoolsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -109,7 +109,7 @@ func (o LookupLoadBalancerPoolsResultOutput) ToLookupLoadBalancerPoolsResultOutp
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupLoadBalancerPoolsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerPoolsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

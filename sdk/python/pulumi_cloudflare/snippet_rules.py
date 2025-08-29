@@ -59,85 +59,17 @@ class SnippetRulesArgs:
 @pulumi.input_type
 class _SnippetRulesState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]] = None,
-                 snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnippetRules resources.
-        :param pulumi.Input[_builtins.str] description: An informative description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: Whether the rule should be executed.
-        :param pulumi.Input[_builtins.str] expression: The expression defining which traffic will match the rule.
-        :param pulumi.Input[_builtins.str] last_updated: The timestamp of when the rule was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]] rules: A list of snippet rules.
-        :param pulumi.Input[_builtins.str] snippet_name: The identifying name of the snippet.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if expression is not None:
-            pulumi.set(__self__, "expression", expression)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if snippet_name is not None:
-            pulumi.set(__self__, "snippet_name", snippet_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An informative description of the rule.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the rule should be executed.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The expression defining which traffic will match the rule.
-        """
-        return pulumi.get(self, "expression")
-
-    @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "expression", value)
-
-    @_builtins.property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The timestamp of when the rule was last modified.
-        """
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "last_updated", value)
 
     @_builtins.property
     @pulumi.getter
@@ -150,18 +82,6 @@ class _SnippetRulesState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SnippetRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
-
-    @_builtins.property
-    @pulumi.getter(name="snippetName")
-    def snippet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The identifying name of the snippet.
-        """
-        return pulumi.get(self, "snippet_name")
-
-    @snippet_name.setter
-    def snippet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "snippet_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -234,11 +154,6 @@ class SnippetRules(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["description"] = None
-            __props__.__dict__["enabled"] = None
-            __props__.__dict__["expression"] = None
-            __props__.__dict__["last_updated"] = None
-            __props__.__dict__["snippet_name"] = None
         super(SnippetRules, __self__).__init__(
             'cloudflare:index/snippetRules:SnippetRules',
             resource_name,
@@ -249,12 +164,7 @@ class SnippetRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            expression: Optional[pulumi.Input[_builtins.str]] = None,
-            last_updated: Optional[pulumi.Input[_builtins.str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]]] = None,
-            snippet_name: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SnippetRules':
         """
         Get an existing SnippetRules resource's state with the given name, id, and optional extra
@@ -263,58 +173,16 @@ class SnippetRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: An informative description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: Whether the rule should be executed.
-        :param pulumi.Input[_builtins.str] expression: The expression defining which traffic will match the rule.
-        :param pulumi.Input[_builtins.str] last_updated: The timestamp of when the rule was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: A list of snippet rules.
-        :param pulumi.Input[_builtins.str] snippet_name: The identifying name of the snippet.
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SnippetRulesState.__new__(_SnippetRulesState)
 
-        __props__.__dict__["description"] = description
-        __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["expression"] = expression
-        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["rules"] = rules
-        __props__.__dict__["snippet_name"] = snippet_name
         __props__.__dict__["zone_id"] = zone_id
         return SnippetRules(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        An informative description of the rule.
-        """
-        return pulumi.get(self, "description")
-
-    @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether the rule should be executed.
-        """
-        return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def expression(self) -> pulumi.Output[_builtins.str]:
-        """
-        The expression defining which traffic will match the rule.
-        """
-        return pulumi.get(self, "expression")
-
-    @_builtins.property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> pulumi.Output[_builtins.str]:
-        """
-        The timestamp of when the rule was last modified.
-        """
-        return pulumi.get(self, "last_updated")
 
     @_builtins.property
     @pulumi.getter
@@ -323,14 +191,6 @@ class SnippetRules(pulumi.CustomResource):
         A list of snippet rules.
         """
         return pulumi.get(self, "rules")
-
-    @_builtins.property
-    @pulumi.getter(name="snippetName")
-    def snippet_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The identifying name of the snippet.
-        """
-        return pulumi.get(self, "snippet_name")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

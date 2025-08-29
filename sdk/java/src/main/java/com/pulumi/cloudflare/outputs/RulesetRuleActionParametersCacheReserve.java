@@ -8,34 +8,36 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheReserve {
     /**
-     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * @return Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     private Boolean eligible;
     /**
-     * @return The minimum file size eligible for store in cache reserve.
+     * @return The minimum file size eligible for storage in Cache Reserve.
      * 
      */
-    private Integer minimumFileSize;
+    private @Nullable Integer minimumFileSize;
 
     private RulesetRuleActionParametersCacheReserve() {}
     /**
-     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * @return Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     public Boolean eligible() {
         return this.eligible;
     }
     /**
-     * @return The minimum file size eligible for store in cache reserve.
+     * @return The minimum file size eligible for storage in Cache Reserve.
      * 
      */
-    public Integer minimumFileSize() {
-        return this.minimumFileSize;
+    public Optional<Integer> minimumFileSize() {
+        return Optional.ofNullable(this.minimumFileSize);
     }
 
     public static Builder builder() {
@@ -48,7 +50,7 @@ public final class RulesetRuleActionParametersCacheReserve {
     @CustomType.Builder
     public static final class Builder {
         private Boolean eligible;
-        private Integer minimumFileSize;
+        private @Nullable Integer minimumFileSize;
         public Builder() {}
         public Builder(RulesetRuleActionParametersCacheReserve defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,10 +67,8 @@ public final class RulesetRuleActionParametersCacheReserve {
             return this;
         }
         @CustomType.Setter
-        public Builder minimumFileSize(Integer minimumFileSize) {
-            if (minimumFileSize == null) {
-              throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserve", "minimumFileSize");
-            }
+        public Builder minimumFileSize(@Nullable Integer minimumFileSize) {
+
             this.minimumFileSize = minimumFileSize;
             return this;
         }

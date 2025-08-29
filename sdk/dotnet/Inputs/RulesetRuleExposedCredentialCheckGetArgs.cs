@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleExposedCredentialCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Expression that selects the password used in the credentials check.
+        /// An expression that selects the password used in the credentials check.
         /// </summary>
         [Input("passwordExpression", required: true)]
         public Input<string> PasswordExpression { get; set; } = null!;
 
         /// <summary>
-        /// Expression that selects the user ID used in the credentials check.
+        /// An expression that selects the user ID used in the credentials check.
         /// </summary>
         [Input("usernameExpression", required: true)]
         public Input<string> UsernameExpression { get; set; } = null!;

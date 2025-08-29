@@ -69,7 +69,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.accountId;
     }
     /**
-     * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -77,7 +77,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     private Output<String> bindingStatus;
 
     /**
-     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -85,14 +85,14 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.bindingStatus;
     }
     /**
-     * The CA certificate
+     * The CA certificate(read only).
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
-     * @return The CA certificate
+     * @return The CA certificate(read only).
      * 
      */
     public Output<String> certificate() {
@@ -111,63 +111,63 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
         return this.expiresOn;
     }
     /**
-     * The SHA256 fingerprint of the certificate.
+     * The SHA256 fingerprint of the certificate(read only).
      * 
      */
     @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
-     * @return The SHA256 fingerprint of the certificate.
+     * @return The SHA256 fingerprint of the certificate(read only).
      * 
      */
     public Output<String> fingerprint() {
         return this.fingerprint;
     }
     /**
-     * Use this certificate for Gateway TLS interception
+     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     @Export(name="inUse", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inUse;
 
     /**
-     * @return Use this certificate for Gateway TLS interception
+     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     public Output<Boolean> inUse() {
         return this.inUse;
     }
     /**
-     * The organization that issued the certificate.
+     * The organization that issued the certificate(read only).
      * 
      */
     @Export(name="issuerOrg", refs={String.class}, tree="[0]")
     private Output<String> issuerOrg;
 
     /**
-     * @return The organization that issued the certificate.
+     * @return The organization that issued the certificate(read only).
      * 
      */
     public Output<String> issuerOrg() {
         return this.issuerOrg;
     }
     /**
-     * The entire issuer field of the certificate.
+     * The entire issuer field of the certificate(read only).
      * 
      */
     @Export(name="issuerRaw", refs={String.class}, tree="[0]")
     private Output<String> issuerRaw;
 
     /**
-     * @return The entire issuer field of the certificate.
+     * @return The entire issuer field of the certificate(read only).
      * 
      */
     public Output<String> issuerRaw() {
         return this.issuerRaw;
     }
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
@@ -175,7 +175,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     private Output<String> type;
 
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */

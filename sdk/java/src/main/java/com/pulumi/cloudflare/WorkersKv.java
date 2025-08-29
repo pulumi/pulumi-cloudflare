@@ -92,9 +92,17 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
+    /**
+     * Associates arbitrary JSON data with a key/value pair.
+     * 
+     */
     @Export(name="metadata", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metadata;
 
+    /**
+     * @return Associates arbitrary JSON data with a key/value pair.
+     * 
+     */
     public Output<Optional<String>> metadata() {
         return Codegen.optional(this.metadata);
     }

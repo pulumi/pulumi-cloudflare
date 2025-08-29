@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
     public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -79,13 +79,13 @@ namespace Pulumi.Cloudflare
         /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         /// </summary>
         [Output("consecutiveDown")]
-        public Output<int> ConsecutiveDown { get; private set; } = null!;
+        public Output<int?> ConsecutiveDown { get; private set; } = null!;
 
         /// <summary>
         /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
         /// </summary>
         [Output("consecutiveUp")]
-        public Output<int> ConsecutiveUp { get; private set; } = null!;
+        public Output<int?> ConsecutiveUp { get; private set; } = null!;
 
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -94,19 +94,19 @@ namespace Pulumi.Cloudflare
         /// Object description.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("expectedBody")]
-        public Output<string?> ExpectedBody { get; private set; } = null!;
+        public Output<string> ExpectedBody { get; private set; } = null!;
 
         /// <summary>
         /// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("expectedCodes")]
-        public Output<string?> ExpectedCodes { get; private set; } = null!;
+        public Output<string> ExpectedCodes { get; private set; } = null!;
 
         /// <summary>
         /// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
@@ -145,13 +145,13 @@ namespace Pulumi.Cloudflare
         /// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
         /// </summary>
         [Output("port")]
-        public Output<int> Port { get; private set; } = null!;
+        public Output<int?> Port { get; private set; } = null!;
 
         /// <summary>
         /// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("probeZone")]
-        public Output<string?> ProbeZone { get; private set; } = null!;
+        public Output<string> ProbeZone { get; private set; } = null!;
 
         /// <summary>
         /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
@@ -219,7 +219,7 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -336,7 +336,7 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerMonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

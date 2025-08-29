@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
     public static final RulesetRuleActionParametersUriArgs Empty = new RulesetRuleActionParametersUriArgs();
 
     /**
-     * Path portion rewrite.
+     * A URI path rewrite.
      * 
      */
     @Import(name="path")
     private @Nullable Output<RulesetRuleActionParametersUriPathArgs> path;
 
     /**
-     * @return Path portion rewrite.
+     * @return A URI path rewrite.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersUriPathArgs>> path() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
     }
 
     /**
-     * Query portion rewrite.
+     * A URI query rewrite.
      * 
      */
     @Import(name="query")
     private @Nullable Output<RulesetRuleActionParametersUriQueryArgs> query;
 
     /**
-     * @return Query portion rewrite.
+     * @return A URI query rewrite.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersUriQueryArgs>> query() {
@@ -72,7 +72,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param path Path portion rewrite.
+         * @param path A URI path rewrite.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param path Path portion rewrite.
+         * @param path A URI path rewrite.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param query Query portion rewrite.
+         * @param query A URI query rewrite.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param query Query portion rewrite.
+         * @param query A URI query rewrite.
          * 
          * @return builder
          * 

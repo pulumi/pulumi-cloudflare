@@ -5,7 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
     public static final RulesetRuleActionParametersOriginArgs Empty = new RulesetRuleActionParametersOriginArgs();
 
     /**
-     * Override the resolved hostname.
+     * A resolved host to route to.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Override the resolved hostname.
+     * @return A resolved host to route to.
      * 
      */
     public Optional<Output<String>> host() {
@@ -32,17 +32,17 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
     }
 
     /**
-     * Override the destination port.
+     * A destination port to route to.
      * 
      */
     @Import(name="port")
-    private @Nullable Output<Double> port;
+    private @Nullable Output<Integer> port;
 
     /**
-     * @return Override the destination port.
+     * @return A destination port to route to.
      * 
      */
-    public Optional<Output<Double>> port() {
+    public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
@@ -72,7 +72,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host Override the resolved hostname.
+         * @param host A resolved host to route to.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host Override the resolved hostname.
+         * @param host A resolved host to route to.
          * 
          * @return builder
          * 
@@ -93,23 +93,23 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         /**
-         * @param port Override the destination port.
+         * @param port A destination port to route to.
          * 
          * @return builder
          * 
          */
-        public Builder port(@Nullable Output<Double> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port Override the destination port.
+         * @param port A destination port to route to.
          * 
          * @return builder
          * 
          */
-        public Builder port(Double port) {
+        public Builder port(Integer port) {
             return port(Output.of(port));
         }
 

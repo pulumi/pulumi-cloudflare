@@ -8,30 +8,12 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ManagedHeadersManagedRequestHeaderArgs Empty = new ManagedHeadersManagedRequestHeaderArgs();
-
-    /**
-     * The Managed Transforms that this Managed Transform conflicts with.
-     * 
-     */
-    @Import(name="conflictsWiths")
-    private @Nullable Output<List<String>> conflictsWiths;
-
-    /**
-     * @return The Managed Transforms that this Managed Transform conflicts with.
-     * 
-     */
-    public Optional<Output<List<String>>> conflictsWiths() {
-        return Optional.ofNullable(this.conflictsWiths);
-    }
 
     /**
      * Whether the Managed Transform is enabled.
@@ -46,21 +28,6 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
      */
     public Output<Boolean> enabled() {
         return this.enabled;
-    }
-
-    /**
-     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     * 
-     */
-    @Import(name="hasConflict")
-    private @Nullable Output<Boolean> hasConflict;
-
-    /**
-     * @return Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     * 
-     */
-    public Optional<Output<Boolean>> hasConflict() {
-        return Optional.ofNullable(this.hasConflict);
     }
 
     /**
@@ -81,9 +48,7 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
     private ManagedHeadersManagedRequestHeaderArgs() {}
 
     private ManagedHeadersManagedRequestHeaderArgs(ManagedHeadersManagedRequestHeaderArgs $) {
-        this.conflictsWiths = $.conflictsWiths;
         this.enabled = $.enabled;
-        this.hasConflict = $.hasConflict;
         this.id = $.id;
     }
 
@@ -106,37 +71,6 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
         }
 
         /**
-         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder conflictsWiths(@Nullable Output<List<String>> conflictsWiths) {
-            $.conflictsWiths = conflictsWiths;
-            return this;
-        }
-
-        /**
-         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder conflictsWiths(List<String> conflictsWiths) {
-            return conflictsWiths(Output.of(conflictsWiths));
-        }
-
-        /**
-         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder conflictsWiths(String... conflictsWiths) {
-            return conflictsWiths(List.of(conflictsWiths));
-        }
-
-        /**
          * @param enabled Whether the Managed Transform is enabled.
          * 
          * @return builder
@@ -155,27 +89,6 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
-        }
-
-        /**
-         * @param hasConflict Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hasConflict(@Nullable Output<Boolean> hasConflict) {
-            $.hasConflict = hasConflict;
-            return this;
-        }
-
-        /**
-         * @param hasConflict Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hasConflict(Boolean hasConflict) {
-            return hasConflict(Output.of(hasConflict));
         }
 
         /**

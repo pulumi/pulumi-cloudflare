@@ -54,7 +54,7 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
 
     /**
      * The scope of the URL normalization.
-     * Available values: "incoming", "both".
+     * Available values: "incoming", "both", "none".
      */
     public readonly scope!: pulumi.Output<string>;
     /**
@@ -109,7 +109,7 @@ export class UrlNormalizationSettings extends pulumi.CustomResource {
 export interface UrlNormalizationSettingsState {
     /**
      * The scope of the URL normalization.
-     * Available values: "incoming", "both".
+     * Available values: "incoming", "both", "none".
      */
     scope?: pulumi.Input<string>;
     /**
@@ -129,7 +129,7 @@ export interface UrlNormalizationSettingsState {
 export interface UrlNormalizationSettingsArgs {
     /**
      * The scope of the URL normalization.
-     * Available values: "incoming", "both".
+     * Available values: "incoming", "both", "none".
      */
     scope: pulumi.Input<string>;
     /**

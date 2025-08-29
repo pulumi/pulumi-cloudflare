@@ -5,16 +5,33 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetArgoSmartRoutingResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Specifies if the setting is editable.
+     * 
+     */
+    private Boolean editable;
+    /**
+     * @return Specifies the identifier of the Argo Smart Routing setting.
      * 
      */
     private String id;
+    /**
+     * @return Specifies the time when the setting was last modified.
+     * 
+     */
+    private String modifiedOn;
+    /**
+     * @return Specifies the enablement value of Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
+     * 
+     */
+    private String value;
     /**
      * @return Specifies the zone associated with the API call.
      * 
@@ -23,11 +40,33 @@ public final class GetArgoSmartRoutingResult {
 
     private GetArgoSmartRoutingResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Specifies if the setting is editable.
+     * 
+     */
+    public Boolean editable() {
+        return this.editable;
+    }
+    /**
+     * @return Specifies the identifier of the Argo Smart Routing setting.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Specifies the time when the setting was last modified.
+     * 
+     */
+    public String modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * @return Specifies the enablement value of Argo Smart Routing.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
+     * 
+     */
+    public String value() {
+        return this.value;
     }
     /**
      * @return Specifies the zone associated with the API call.
@@ -46,21 +85,51 @@ public final class GetArgoSmartRoutingResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean editable;
         private String id;
+        private String modifiedOn;
+        private String value;
         private String zoneId;
         public Builder() {}
         public Builder(GetArgoSmartRoutingResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.editable = defaults.editable;
     	      this.id = defaults.id;
+    	      this.modifiedOn = defaults.modifiedOn;
+    	      this.value = defaults.value;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder editable(Boolean editable) {
+            if (editable == null) {
+              throw new MissingRequiredPropertyException("GetArgoSmartRoutingResult", "editable");
+            }
+            this.editable = editable;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetArgoSmartRoutingResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder modifiedOn(String modifiedOn) {
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetArgoSmartRoutingResult", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetArgoSmartRoutingResult", "value");
+            }
+            this.value = value;
             return this;
         }
         @CustomType.Setter
@@ -73,7 +142,10 @@ public final class GetArgoSmartRoutingResult {
         }
         public GetArgoSmartRoutingResult build() {
             final var _resultValue = new GetArgoSmartRoutingResult();
+            _resultValue.editable = editable;
             _resultValue.id = id;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.value = value;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

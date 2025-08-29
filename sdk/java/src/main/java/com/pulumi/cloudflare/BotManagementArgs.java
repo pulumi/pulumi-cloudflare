@@ -97,6 +97,21 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    @Import(name="isRobotsTxtManaged")
+    private @Nullable Output<Boolean> isRobotsTxtManaged;
+
+    /**
+     * @return Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    public Optional<Output<Boolean>> isRobotsTxtManaged() {
+        return Optional.ofNullable(this.isRobotsTxtManaged);
+    }
+
+    /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
@@ -219,6 +234,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         this.crawlerProtection = $.crawlerProtection;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
+        this.isRobotsTxtManaged = $.isRobotsTxtManaged;
         this.optimizeWordpress = $.optimizeWordpress;
         this.sbfmDefinitelyAutomated = $.sbfmDefinitelyAutomated;
         this.sbfmLikelyAutomated = $.sbfmLikelyAutomated;
@@ -353,6 +369,27 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder fightMode(Boolean fightMode) {
             return fightMode(Output.of(fightMode));
+        }
+
+        /**
+         * @param isRobotsTxtManaged Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isRobotsTxtManaged(@Nullable Output<Boolean> isRobotsTxtManaged) {
+            $.isRobotsTxtManaged = isRobotsTxtManaged;
+            return this;
+        }
+
+        /**
+         * @param isRobotsTxtManaged Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isRobotsTxtManaged(Boolean isRobotsTxtManaged) {
+            return isRobotsTxtManaged(Output.of(isRobotsTxtManaged));
         }
 
         /**

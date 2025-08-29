@@ -44,7 +44,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
-    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
+    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
@@ -54,7 +54,7 @@ export class ZeroTrustOrganization extends pulumi.CustomResource {
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
     public readonly customPages!: pulumi.Output<outputs.ZeroTrustOrganizationCustomPages | undefined>;
-    public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
+    public readonly isUiReadOnly!: pulumi.Output<boolean>;
     public readonly loginDesign!: pulumi.Output<outputs.ZeroTrustOrganizationLoginDesign | undefined>;
     /**
      * The name of your Zero Trust organization.

@@ -36,10 +36,6 @@ public final class GetZeroTrustGatewayPolicyResult {
      * 
      */
     private String description;
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     private String devicePosture;
     /**
      * @return True if the rule is enabled.
@@ -101,10 +97,6 @@ public final class GetZeroTrustGatewayPolicyResult {
     public String description() {
         return this.description;
     }
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     public String devicePosture() {
         return this.devicePosture;
     }

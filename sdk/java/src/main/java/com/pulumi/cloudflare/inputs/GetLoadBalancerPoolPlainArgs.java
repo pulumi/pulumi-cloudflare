@@ -17,14 +17,14 @@ public final class GetLoadBalancerPoolPlainArgs extends com.pulumi.resources.Inv
     public static final GetLoadBalancerPoolPlainArgs Empty = new GetLoadBalancerPoolPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -72,7 +72,7 @@ public final class GetLoadBalancerPoolPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

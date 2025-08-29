@@ -14,23 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKey
     {
         /// <summary>
-        /// The cookies to include in building the cache key.
+        /// Which cookies to include in the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie? Cookie;
         /// <summary>
-        /// The header names and values to include in building the cache key.
+        /// Which headers to include in the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader? Header;
         /// <summary>
-        /// Whether to use the original host or the resolved host in the cache key.
+        /// How to use the host in the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost? Host;
         /// <summary>
-        /// Use the presence of parameters in the query string to build the cache key.
+        /// Which query string parameters to include in or exclude from the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString? QueryString;
         /// <summary>
-        /// Characteristics of the request user agent used in building the cache key.
+        /// How to use characteristics of the request user agent in the cache key.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser? User;
 

@@ -3,30 +3,87 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.FilterBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FilterArgs Empty = new FilterArgs();
 
+    @Import(name="bodies", required=true)
+    private Output<List<FilterBodyArgs>> bodies;
+
+    public Output<List<FilterBodyArgs>> bodies() {
+        return this.bodies;
+    }
+
+    /**
+     * An informative summary of the filter.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return An informative summary of the filter.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
-    @Import(name="expression", required=true)
-    private Output<String> expression;
+    @Import(name="expression")
+    private @Nullable Output<String> expression;
 
     /**
      * @return The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
-    public Output<String> expression() {
-        return this.expression;
+    public Optional<Output<String>> expression() {
+        return Optional.ofNullable(this.expression);
+    }
+
+    /**
+     * When true, indicates that the filter is currently paused.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return When true, indicates that the filter is currently paused.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+
+    /**
+     * A short reference tag. Allows you to select related filters.
+     * 
+     */
+    @Import(name="ref")
+    private @Nullable Output<String> ref;
+
+    /**
+     * @return A short reference tag. Allows you to select related filters.
+     * 
+     */
+    public Optional<Output<String>> ref() {
+        return Optional.ofNullable(this.ref);
     }
 
     /**
@@ -47,7 +104,11 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     private FilterArgs() {}
 
     private FilterArgs(FilterArgs $) {
+        this.bodies = $.bodies;
+        this.description = $.description;
         this.expression = $.expression;
+        this.paused = $.paused;
+        this.ref = $.ref;
         this.zoneId = $.zoneId;
     }
 
@@ -69,13 +130,47 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FilterArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder bodies(Output<List<FilterBodyArgs>> bodies) {
+            $.bodies = bodies;
+            return this;
+        }
+
+        public Builder bodies(List<FilterBodyArgs> bodies) {
+            return bodies(Output.of(bodies));
+        }
+
+        public Builder bodies(FilterBodyArgs... bodies) {
+            return bodies(List.of(bodies));
+        }
+
+        /**
+         * @param description An informative summary of the filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description An informative summary of the filter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
         /**
          * @param expression The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
          * 
          * @return builder
          * 
          */
-        public Builder expression(Output<String> expression) {
+        public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
@@ -88,6 +183,48 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
+        }
+
+        /**
+         * @param paused When true, indicates that the filter is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused When true, indicates that the filter is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
+        }
+
+        /**
+         * @param ref A short reference tag. Allows you to select related filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(@Nullable Output<String> ref) {
+            $.ref = ref;
+            return this;
+        }
+
+        /**
+         * @param ref A short reference tag. Allows you to select related filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ref(String ref) {
+            return ref(Output.of(ref));
         }
 
         /**
@@ -112,8 +249,8 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FilterArgs build() {
-            if ($.expression == null) {
-                throw new MissingRequiredPropertyException("FilterArgs", "expression");
+            if ($.bodies == null) {
+                throw new MissingRequiredPropertyException("FilterArgs", "bodies");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("FilterArgs", "zoneId");

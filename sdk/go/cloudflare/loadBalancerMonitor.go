@@ -69,21 +69,21 @@ import (
 type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure pulumi.BoolOutput `pulumi:"allowInsecure"`
 	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
-	ConsecutiveDown pulumi.IntOutput `pulumi:"consecutiveDown"`
+	ConsecutiveDown pulumi.IntPtrOutput `pulumi:"consecutiveDown"`
 	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
-	ConsecutiveUp pulumi.IntOutput    `pulumi:"consecutiveUp"`
+	ConsecutiveUp pulumi.IntPtrOutput `pulumi:"consecutiveUp"`
 	CreatedOn     pulumi.StringOutput `pulumi:"createdOn"`
 	// Object description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
-	ExpectedBody pulumi.StringPtrOutput `pulumi:"expectedBody"`
+	ExpectedBody pulumi.StringOutput `pulumi:"expectedBody"`
 	// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
-	ExpectedCodes pulumi.StringPtrOutput `pulumi:"expectedCodes"`
+	ExpectedCodes pulumi.StringOutput `pulumi:"expectedCodes"`
 	// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
 	FollowRedirects pulumi.BoolOutput `pulumi:"followRedirects"`
 	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
@@ -96,9 +96,9 @@ type LoadBalancerMonitor struct {
 	// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
-	Port pulumi.IntOutput `pulumi:"port"`
+	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
-	ProbeZone pulumi.StringPtrOutput `pulumi:"probeZone"`
+	ProbeZone pulumi.StringOutput `pulumi:"probeZone"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries pulumi.IntOutput `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed.
@@ -141,7 +141,7 @@ func GetLoadBalancerMonitor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerMonitor resources.
 type loadBalancerMonitorState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
@@ -181,7 +181,7 @@ type loadBalancerMonitorState struct {
 }
 
 type LoadBalancerMonitorState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure pulumi.BoolPtrInput
@@ -225,7 +225,7 @@ func (LoadBalancerMonitorState) ElementType() reflect.Type {
 }
 
 type loadBalancerMonitorArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
@@ -264,7 +264,7 @@ type loadBalancerMonitorArgs struct {
 
 // The set of arguments for constructing a LoadBalancerMonitor resource.
 type LoadBalancerMonitorArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
 	AllowInsecure pulumi.BoolPtrInput
@@ -388,7 +388,7 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx co
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -399,13 +399,13 @@ func (o LoadBalancerMonitorOutput) AllowInsecure() pulumi.BoolOutput {
 }
 
 // To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
-func (o LoadBalancerMonitorOutput) ConsecutiveDown() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntOutput { return v.ConsecutiveDown }).(pulumi.IntOutput)
+func (o LoadBalancerMonitorOutput) ConsecutiveDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntPtrOutput { return v.ConsecutiveDown }).(pulumi.IntPtrOutput)
 }
 
 // To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
-func (o LoadBalancerMonitorOutput) ConsecutiveUp() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntOutput { return v.ConsecutiveUp }).(pulumi.IntOutput)
+func (o LoadBalancerMonitorOutput) ConsecutiveUp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntPtrOutput { return v.ConsecutiveUp }).(pulumi.IntPtrOutput)
 }
 
 func (o LoadBalancerMonitorOutput) CreatedOn() pulumi.StringOutput {
@@ -413,18 +413,18 @@ func (o LoadBalancerMonitorOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Object description.
-func (o LoadBalancerMonitorOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o LoadBalancerMonitorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
-func (o LoadBalancerMonitorOutput) ExpectedBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.ExpectedBody }).(pulumi.StringPtrOutput)
+func (o LoadBalancerMonitorOutput) ExpectedBody() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.ExpectedBody }).(pulumi.StringOutput)
 }
 
 // The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
-func (o LoadBalancerMonitorOutput) ExpectedCodes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+func (o LoadBalancerMonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.ExpectedCodes }).(pulumi.StringOutput)
 }
 
 // Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
@@ -457,13 +457,13 @@ func (o LoadBalancerMonitorOutput) Path() pulumi.StringOutput {
 }
 
 // The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
-func (o LoadBalancerMonitorOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+func (o LoadBalancerMonitorOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
-func (o LoadBalancerMonitorOutput) ProbeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringPtrOutput { return v.ProbeZone }).(pulumi.StringPtrOutput)
+func (o LoadBalancerMonitorOutput) ProbeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.StringOutput { return v.ProbeZone }).(pulumi.StringOutput)
 }
 
 // The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.

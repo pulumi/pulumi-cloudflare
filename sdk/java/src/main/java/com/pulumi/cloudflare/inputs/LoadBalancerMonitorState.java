@@ -20,14 +20,14 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
     public static final LoadBalancerMonitorState Empty = new LoadBalancerMonitorState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -333,7 +333,7 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

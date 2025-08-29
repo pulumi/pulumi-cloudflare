@@ -38,9 +38,22 @@ export interface GetArgoSmartRoutingArgs {
  */
 export interface GetArgoSmartRoutingResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Specifies if the setting is editable.
+     */
+    readonly editable: boolean;
+    /**
+     * Specifies the identifier of the Argo Smart Routing setting.
      */
     readonly id: string;
+    /**
+     * Specifies the time when the setting was last modified.
+     */
+    readonly modifiedOn: string;
+    /**
+     * Specifies the enablement value of Argo Smart Routing.
+     * Available values: "on", "off".
+     */
+    readonly value: string;
     /**
      * Specifies the zone associated with the API call.
      */

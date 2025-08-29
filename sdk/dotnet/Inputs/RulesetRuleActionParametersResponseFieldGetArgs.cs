@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersResponseFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the field.
+        /// The name of the response header.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

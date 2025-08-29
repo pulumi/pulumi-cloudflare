@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.FilterBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,13 @@ import javax.annotation.Nullable;
 public final class FilterState extends com.pulumi.resources.ResourceArgs {
 
     public static final FilterState Empty = new FilterState();
+
+    @Import(name="bodies")
+    private @Nullable Output<List<FilterBodyArgs>> bodies;
+
+    public Optional<Output<List<FilterBodyArgs>>> bodies() {
+        return Optional.ofNullable(this.bodies);
+    }
 
     /**
      * An informative summary of the filter.
@@ -94,6 +103,7 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
     private FilterState() {}
 
     private FilterState(FilterState $) {
+        this.bodies = $.bodies;
         this.description = $.description;
         this.expression = $.expression;
         this.paused = $.paused;
@@ -117,6 +127,19 @@ public final class FilterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FilterState defaults) {
             $ = new FilterState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder bodies(@Nullable Output<List<FilterBodyArgs>> bodies) {
+            $.bodies = bodies;
+            return this;
+        }
+
+        public Builder bodies(List<FilterBodyArgs> bodies) {
+            return bodies(Output.of(bodies));
+        }
+
+        public Builder bodies(FilterBodyArgs... bodies) {
+            return bodies(List.of(bodies));
         }
 
         /**

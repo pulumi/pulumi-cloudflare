@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     crawlerProtection: "enabled",
  *     enableJs: true,
  *     fightMode: true,
+ *     isRobotsTxtManaged: true,
  * });
  * ```
  *
@@ -79,6 +80,10 @@ export class BotManagement extends pulumi.CustomResource {
      */
     public readonly fightMode!: pulumi.Output<boolean>;
     /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     */
+    public readonly isRobotsTxtManaged!: pulumi.Output<boolean>;
+    /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
     public readonly optimizeWordpress!: pulumi.Output<boolean>;
@@ -138,6 +143,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["crawlerProtection"] = state ? state.crawlerProtection : undefined;
             resourceInputs["enableJs"] = state ? state.enableJs : undefined;
             resourceInputs["fightMode"] = state ? state.fightMode : undefined;
+            resourceInputs["isRobotsTxtManaged"] = state ? state.isRobotsTxtManaged : undefined;
             resourceInputs["optimizeWordpress"] = state ? state.optimizeWordpress : undefined;
             resourceInputs["sbfmDefinitelyAutomated"] = state ? state.sbfmDefinitelyAutomated : undefined;
             resourceInputs["sbfmLikelyAutomated"] = state ? state.sbfmLikelyAutomated : undefined;
@@ -157,6 +163,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["crawlerProtection"] = args ? args.crawlerProtection : undefined;
             resourceInputs["enableJs"] = args ? args.enableJs : undefined;
             resourceInputs["fightMode"] = args ? args.fightMode : undefined;
+            resourceInputs["isRobotsTxtManaged"] = args ? args.isRobotsTxtManaged : undefined;
             resourceInputs["optimizeWordpress"] = args ? args.optimizeWordpress : undefined;
             resourceInputs["sbfmDefinitelyAutomated"] = args ? args.sbfmDefinitelyAutomated : undefined;
             resourceInputs["sbfmLikelyAutomated"] = args ? args.sbfmLikelyAutomated : undefined;
@@ -198,6 +205,10 @@ export interface BotManagementState {
      * Whether to enable Bot Fight Mode.
      */
     fightMode?: pulumi.Input<boolean>;
+    /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     */
+    isRobotsTxtManaged?: pulumi.Input<boolean>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
@@ -267,6 +278,10 @@ export interface BotManagementArgs {
      * Whether to enable Bot Fight Mode.
      */
     fightMode?: pulumi.Input<boolean>;
+    /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     */
+    isRobotsTxtManaged?: pulumi.Input<boolean>;
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */

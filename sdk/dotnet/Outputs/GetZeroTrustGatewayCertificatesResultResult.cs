@@ -14,18 +14,18 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayCertificatesResultResult
     {
         /// <summary>
-        /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         public readonly string BindingStatus;
         /// <summary>
-        /// The CA certificate
+        /// The CA certificate(read only).
         /// </summary>
         public readonly string Certificate;
         public readonly string CreatedAt;
         public readonly string ExpiresOn;
         /// <summary>
-        /// The SHA256 fingerprint of the certificate.
+        /// The SHA256 fingerprint of the certificate(read only).
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
@@ -33,19 +33,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Use this certificate for Gateway TLS interception
+        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
         /// </summary>
         public readonly bool InUse;
         /// <summary>
-        /// The organization that issued the certificate.
+        /// The organization that issued the certificate(read only).
         /// </summary>
         public readonly string IssuerOrg;
         /// <summary>
-        /// The entire issuer field of the certificate.
+        /// The entire issuer field of the certificate(read only).
         /// </summary>
         public readonly string IssuerRaw;
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         public readonly string Type;

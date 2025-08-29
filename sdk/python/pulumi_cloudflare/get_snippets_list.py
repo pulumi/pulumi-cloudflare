@@ -90,15 +90,7 @@ def get_snippets_list(max_items: Optional[_builtins.int] = None,
                       zone_id: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnippetsListResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_snippets_list = cloudflare.get_snippets_list(zone_id="9f1839b6152d298aca64c4e906b6d074")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The unique ID of the zone.
@@ -118,15 +110,7 @@ def get_snippets_list_output(max_items: Optional[pulumi.Input[Optional[_builtins
                              zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnippetsListResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_snippets_list = cloudflare.get_snippets_list(zone_id="9f1839b6152d298aca64c4e906b6d074")
-    ```
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str zone_id: The unique ID of the zone.

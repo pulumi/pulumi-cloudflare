@@ -25,7 +25,7 @@ class UrlNormalizationSettingsArgs:
         """
         The set of arguments for constructing a UrlNormalizationSettings resource.
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
-               Available values: "incoming", "both".
+               Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
                Available values: "cloudflare", "rfc3986".
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -39,7 +39,7 @@ class UrlNormalizationSettingsArgs:
     def scope(self) -> pulumi.Input[_builtins.str]:
         """
         The scope of the URL normalization.
-        Available values: "incoming", "both".
+        Available values: "incoming", "both", "none".
         """
         return pulumi.get(self, "scope")
 
@@ -82,7 +82,7 @@ class _UrlNormalizationSettingsState:
         """
         Input properties used for looking up and filtering UrlNormalizationSettings resources.
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
-               Available values: "incoming", "both".
+               Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
                Available values: "cloudflare", "rfc3986".
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -99,7 +99,7 @@ class _UrlNormalizationSettingsState:
     def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The scope of the URL normalization.
-        Available values: "incoming", "both".
+        Available values: "incoming", "both", "none".
         """
         return pulumi.get(self, "scope")
 
@@ -165,7 +165,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
-               Available values: "incoming", "both".
+               Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
                Available values: "cloudflare", "rfc3986".
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -252,7 +252,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] scope: The scope of the URL normalization.
-               Available values: "incoming", "both".
+               Available values: "incoming", "both", "none".
         :param pulumi.Input[_builtins.str] type: The type of URL normalization performed by Cloudflare.
                Available values: "cloudflare", "rfc3986".
         :param pulumi.Input[_builtins.str] zone_id: The unique ID of the zone.
@@ -271,7 +271,7 @@ class UrlNormalizationSettings(pulumi.CustomResource):
     def scope(self) -> pulumi.Output[_builtins.str]:
         """
         The scope of the URL normalization.
-        Available values: "incoming", "both".
+        Available values: "incoming", "both", "none".
         """
         return pulumi.get(self, "scope")
 

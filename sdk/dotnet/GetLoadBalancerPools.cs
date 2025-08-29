@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLoadBalancerPoolsResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

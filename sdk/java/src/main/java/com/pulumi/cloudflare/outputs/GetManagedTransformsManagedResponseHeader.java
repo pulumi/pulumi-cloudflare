@@ -7,26 +7,15 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetManagedTransformsManagedResponseHeader {
     /**
-     * @return The Managed Transforms that this Managed Transform conflicts with.
-     * 
-     */
-    private List<String> conflictsWiths;
-    /**
      * @return Whether the Managed Transform is enabled.
      * 
      */
     private Boolean enabled;
-    /**
-     * @return Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     * 
-     */
-    private Boolean hasConflict;
     /**
      * @return The human-readable identifier of the Managed Transform.
      * 
@@ -35,25 +24,11 @@ public final class GetManagedTransformsManagedResponseHeader {
 
     private GetManagedTransformsManagedResponseHeader() {}
     /**
-     * @return The Managed Transforms that this Managed Transform conflicts with.
-     * 
-     */
-    public List<String> conflictsWiths() {
-        return this.conflictsWiths;
-    }
-    /**
      * @return Whether the Managed Transform is enabled.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
-    }
-    /**
-     * @return Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     * 
-     */
-    public Boolean hasConflict() {
-        return this.hasConflict;
     }
     /**
      * @return The human-readable identifier of the Managed Transform.
@@ -72,44 +47,21 @@ public final class GetManagedTransformsManagedResponseHeader {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> conflictsWiths;
         private Boolean enabled;
-        private Boolean hasConflict;
         private String id;
         public Builder() {}
         public Builder(GetManagedTransformsManagedResponseHeader defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.conflictsWiths = defaults.conflictsWiths;
     	      this.enabled = defaults.enabled;
-    	      this.hasConflict = defaults.hasConflict;
     	      this.id = defaults.id;
         }
 
-        @CustomType.Setter
-        public Builder conflictsWiths(List<String> conflictsWiths) {
-            if (conflictsWiths == null) {
-              throw new MissingRequiredPropertyException("GetManagedTransformsManagedResponseHeader", "conflictsWiths");
-            }
-            this.conflictsWiths = conflictsWiths;
-            return this;
-        }
-        public Builder conflictsWiths(String... conflictsWiths) {
-            return conflictsWiths(List.of(conflictsWiths));
-        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
               throw new MissingRequiredPropertyException("GetManagedTransformsManagedResponseHeader", "enabled");
             }
             this.enabled = enabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder hasConflict(Boolean hasConflict) {
-            if (hasConflict == null) {
-              throw new MissingRequiredPropertyException("GetManagedTransformsManagedResponseHeader", "hasConflict");
-            }
-            this.hasConflict = hasConflict;
             return this;
         }
         @CustomType.Setter
@@ -122,9 +74,7 @@ public final class GetManagedTransformsManagedResponseHeader {
         }
         public GetManagedTransformsManagedResponseHeader build() {
             final var _resultValue = new GetManagedTransformsManagedResponseHeader();
-            _resultValue.conflictsWiths = conflictsWiths;
             _resultValue.enabled = enabled;
-            _resultValue.hasConflict = hasConflict;
             _resultValue.id = id;
             return _resultValue;
         }

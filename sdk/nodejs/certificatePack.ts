@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -88,10 +90,18 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     */
+    public /*out*/ readonly validationErrors!: pulumi.Output<outputs.CertificatePackValidationError[]>;
+    /**
      * Validation Method selected for the order.
      * Available values: "txt", "http", "email".
      */
     public readonly validationMethod!: pulumi.Output<string>;
+    /**
+     * Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+     */
+    public /*out*/ readonly validationRecords!: pulumi.Output<outputs.CertificatePackValidationRecord[]>;
     /**
      * Validity Days selected for the order.
      * Available values: 14, 30, 90, 365.
@@ -120,7 +130,9 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["validationErrors"] = state ? state.validationErrors : undefined;
             resourceInputs["validationMethod"] = state ? state.validationMethod : undefined;
+            resourceInputs["validationRecords"] = state ? state.validationRecords : undefined;
             resourceInputs["validityDays"] = state ? state.validityDays : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -151,6 +163,8 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["validityDays"] = args ? args.validityDays : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["validationErrors"] = undefined /*out*/;
+            resourceInputs["validationRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CertificatePack.__pulumiType, name, resourceInputs, opts);
@@ -185,10 +199,18 @@ export interface CertificatePackState {
      */
     type?: pulumi.Input<string>;
     /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     */
+    validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
+    /**
      * Validation Method selected for the order.
      * Available values: "txt", "http", "email".
      */
     validationMethod?: pulumi.Input<string>;
+    /**
+     * Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+     */
+    validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
      * Validity Days selected for the order.
      * Available values: 14, 30, 90, 365.

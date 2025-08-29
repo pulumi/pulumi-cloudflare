@@ -78,7 +78,7 @@ class GetZeroTrustTunnelCloudflaredRoutesResult:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[_builtins.str]:
+    def comment(self) -> _builtins.str:
         """
         Optional remark describing the route.
         """
@@ -214,7 +214,6 @@ def get_zero_trust_tunnel_cloudflared_routes(account_id: Optional[_builtins.str]
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
-        comment="Example comment for this route.",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",
@@ -287,7 +286,6 @@ def get_zero_trust_tunnel_cloudflared_routes_output(account_id: Optional[pulumi.
     import pulumi_cloudflare as cloudflare
 
     example_zero_trust_tunnel_cloudflared_routes = cloudflare.get_zero_trust_tunnel_cloudflared_routes(account_id="699d98642c564d2e855e9661899b7252",
-        comment="Example comment for this route.",
         existed_at="2019-10-12T07%3A20%3A50.52Z",
         is_deleted=True,
         network_subset="172.16.0.0/16",

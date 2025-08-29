@@ -8,9 +8,9 @@ import com.pulumi.cloudflare.outputs.RulesetRuleExposedCredentialCheck;
 import com.pulumi.cloudflare.outputs.RulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,20 +19,15 @@ import javax.annotation.Nullable;
 public final class RulesetRule {
     /**
      * @return The action to perform when the rule matches.
-     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;execute&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*config&#34;, &#34;skip&#34;, &#34;set*cache*settings&#34;, &#34;log*custom*field&#34;, &#34;ddos*dynamic&#34;, &#34;force*connection*close&#34;.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;ddos*dynamic&#34;, &#34;execute&#34;, &#34;force*connection*close&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;log*custom*field&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*cache*settings&#34;, &#34;set*config&#34;, &#34;skip&#34;.
      * 
      */
-    private @Nullable String action;
+    private String action;
     /**
      * @return The parameters configuring the rule&#39;s action.
      * 
      */
     private @Nullable RulesetRuleActionParameters actionParameters;
-    /**
-     * @return The categories of the rule.
-     * 
-     */
-    private @Nullable List<String> categories;
     /**
      * @return An informative description of the rule.
      * 
@@ -44,7 +39,7 @@ public final class RulesetRule {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Configure checks for exposed credentials.
+     * @return Configuration for exposed credential checking.
      * 
      */
     private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
@@ -52,7 +47,7 @@ public final class RulesetRule {
      * @return The expression defining which traffic will match the rule.
      * 
      */
-    private @Nullable String expression;
+    private String expression;
     /**
      * @return The unique ID of the rule.
      * 
@@ -64,12 +59,12 @@ public final class RulesetRule {
      */
     private @Nullable RulesetRuleLogging logging;
     /**
-     * @return An object configuring the rule&#39;s ratelimit behavior.
+     * @return An object configuring the rule&#39;s rate limit behavior.
      * 
      */
     private @Nullable RulesetRuleRatelimit ratelimit;
     /**
-     * @return The reference of the rule (the rule ID by default).
+     * @return The reference of the rule (the rule&#39;s ID by default).
      * 
      */
     private @Nullable String ref;
@@ -77,11 +72,11 @@ public final class RulesetRule {
     private RulesetRule() {}
     /**
      * @return The action to perform when the rule matches.
-     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;execute&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*config&#34;, &#34;skip&#34;, &#34;set*cache*settings&#34;, &#34;log*custom*field&#34;, &#34;ddos*dynamic&#34;, &#34;force*connection*close&#34;.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;ddos*dynamic&#34;, &#34;execute&#34;, &#34;force*connection*close&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;log*custom*field&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*cache*settings&#34;, &#34;set*config&#34;, &#34;skip&#34;.
      * 
      */
-    public Optional<String> action() {
-        return Optional.ofNullable(this.action);
+    public String action() {
+        return this.action;
     }
     /**
      * @return The parameters configuring the rule&#39;s action.
@@ -89,13 +84,6 @@ public final class RulesetRule {
      */
     public Optional<RulesetRuleActionParameters> actionParameters() {
         return Optional.ofNullable(this.actionParameters);
-    }
-    /**
-     * @return The categories of the rule.
-     * 
-     */
-    public List<String> categories() {
-        return this.categories == null ? List.of() : this.categories;
     }
     /**
      * @return An informative description of the rule.
@@ -112,7 +100,7 @@ public final class RulesetRule {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Configure checks for exposed credentials.
+     * @return Configuration for exposed credential checking.
      * 
      */
     public Optional<RulesetRuleExposedCredentialCheck> exposedCredentialCheck() {
@@ -122,8 +110,8 @@ public final class RulesetRule {
      * @return The expression defining which traffic will match the rule.
      * 
      */
-    public Optional<String> expression() {
-        return Optional.ofNullable(this.expression);
+    public String expression() {
+        return this.expression;
     }
     /**
      * @return The unique ID of the rule.
@@ -140,14 +128,14 @@ public final class RulesetRule {
         return Optional.ofNullable(this.logging);
     }
     /**
-     * @return An object configuring the rule&#39;s ratelimit behavior.
+     * @return An object configuring the rule&#39;s rate limit behavior.
      * 
      */
     public Optional<RulesetRuleRatelimit> ratelimit() {
         return Optional.ofNullable(this.ratelimit);
     }
     /**
-     * @return The reference of the rule (the rule ID by default).
+     * @return The reference of the rule (the rule&#39;s ID by default).
      * 
      */
     public Optional<String> ref() {
@@ -163,13 +151,12 @@ public final class RulesetRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String action;
+        private String action;
         private @Nullable RulesetRuleActionParameters actionParameters;
-        private @Nullable List<String> categories;
         private @Nullable String description;
         private @Nullable Boolean enabled;
         private @Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck;
-        private @Nullable String expression;
+        private String expression;
         private @Nullable String id;
         private @Nullable RulesetRuleLogging logging;
         private @Nullable RulesetRuleRatelimit ratelimit;
@@ -179,7 +166,6 @@ public final class RulesetRule {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.actionParameters = defaults.actionParameters;
-    	      this.categories = defaults.categories;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.exposedCredentialCheck = defaults.exposedCredentialCheck;
@@ -191,8 +177,10 @@ public final class RulesetRule {
         }
 
         @CustomType.Setter
-        public Builder action(@Nullable String action) {
-
+        public Builder action(String action) {
+            if (action == null) {
+              throw new MissingRequiredPropertyException("RulesetRule", "action");
+            }
             this.action = action;
             return this;
         }
@@ -201,15 +189,6 @@ public final class RulesetRule {
 
             this.actionParameters = actionParameters;
             return this;
-        }
-        @CustomType.Setter
-        public Builder categories(@Nullable List<String> categories) {
-
-            this.categories = categories;
-            return this;
-        }
-        public Builder categories(String... categories) {
-            return categories(List.of(categories));
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
@@ -230,8 +209,10 @@ public final class RulesetRule {
             return this;
         }
         @CustomType.Setter
-        public Builder expression(@Nullable String expression) {
-
+        public Builder expression(String expression) {
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("RulesetRule", "expression");
+            }
             this.expression = expression;
             return this;
         }
@@ -263,7 +244,6 @@ public final class RulesetRule {
             final var _resultValue = new RulesetRule();
             _resultValue.action = action;
             _resultValue.actionParameters = actionParameters;
-            _resultValue.categories = categories;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.exposedCredentialCheck = exposedCredentialCheck;

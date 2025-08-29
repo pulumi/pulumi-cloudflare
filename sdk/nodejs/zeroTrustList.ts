@@ -64,7 +64,7 @@ export class ZeroTrustList extends pulumi.CustomResource {
     /**
      * The description of the list.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * items to add to the list.
      */

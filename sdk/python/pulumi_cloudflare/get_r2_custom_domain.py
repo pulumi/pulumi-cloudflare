@@ -27,13 +27,16 @@ class GetR2CustomDomainResult:
     """
     A collection of values returned by getR2CustomDomain.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, domain=None, enabled=None, id=None, min_tls=None, status=None, zone_id=None, zone_name=None):
+    def __init__(__self__, account_id=None, bucket_name=None, ciphers=None, domain=None, enabled=None, id=None, min_tls=None, status=None, zone_id=None, zone_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if ciphers and not isinstance(ciphers, list):
+            raise TypeError("Expected argument 'ciphers' to be a list")
+        pulumi.set(__self__, "ciphers", ciphers)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
         pulumi.set(__self__, "domain", domain)
@@ -71,6 +74,14 @@ class GetR2CustomDomainResult:
         Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ciphers(self) -> Sequence[_builtins.str]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
 
     @_builtins.property
     @pulumi.getter
@@ -135,6 +146,7 @@ class AwaitableGetR2CustomDomainResult(GetR2CustomDomainResult):
         return GetR2CustomDomainResult(
             account_id=self.account_id,
             bucket_name=self.bucket_name,
+            ciphers=self.ciphers,
             domain=self.domain,
             enabled=self.enabled,
             id=self.id,
@@ -175,6 +187,7 @@ def get_r2_custom_domain(account_id: Optional[_builtins.str] = None,
     return AwaitableGetR2CustomDomainResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        ciphers=pulumi.get(__ret__, 'ciphers'),
         domain=pulumi.get(__ret__, 'domain'),
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
@@ -212,6 +225,7 @@ def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[_builtins.str]
     return __ret__.apply(lambda __response__: GetR2CustomDomainResult(
         account_id=pulumi.get(__response__, 'account_id'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
+        ciphers=pulumi.get(__response__, 'ciphers'),
         domain=pulumi.get(__response__, 'domain'),
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),

@@ -14,20 +14,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
     /**
-     * @return Determines whether to include all query string parameters in the cache key.
+     * @return Whether to include all query string parameters in the cache key.
      * 
      */
     private @Nullable Boolean all;
+    /**
+     * @return A list of query string parameters to include in the cache key.
+     * 
+     */
     private @Nullable List<String> lists;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude() {}
     /**
-     * @return Determines whether to include all query string parameters in the cache key.
+     * @return Whether to include all query string parameters in the cache key.
      * 
      */
     public Optional<Boolean> all() {
         return Optional.ofNullable(this.all);
     }
+    /**
+     * @return A list of query string parameters to include in the cache key.
+     * 
+     */
     public List<String> lists() {
         return this.lists == null ? List.of() : this.lists;
     }

@@ -27,6 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkersScripts(ctx, &cloudflare.LookupWorkersScriptsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				Tags:      pulumi.StringRef("production:yes,staging:no"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,6 +53,8 @@ type LookupWorkersScriptsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+	Tags *string `pulumi:"tags"`
 }
 
 // A collection of values returned by getWorkersScripts.
@@ -64,6 +67,8 @@ type LookupWorkersScriptsResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetWorkersScriptsResult `pulumi:"results"`
+	// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+	Tags *string `pulumi:"tags"`
 }
 
 func LookupWorkersScriptsOutput(ctx *pulumi.Context, args LookupWorkersScriptsOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersScriptsResultOutput {
@@ -81,6 +86,8 @@ type LookupWorkersScriptsOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+	Tags pulumi.StringPtrInput `pulumi:"tags"`
 }
 
 func (LookupWorkersScriptsOutputArgs) ElementType() reflect.Type {
@@ -120,6 +127,11 @@ func (o LookupWorkersScriptsResultOutput) MaxItems() pulumi.IntPtrOutput {
 // The items returned by the data source
 func (o LookupWorkersScriptsResultOutput) Results() GetWorkersScriptsResultArrayOutput {
 	return o.ApplyT(func(v LookupWorkersScriptsResult) []GetWorkersScriptsResult { return v.Results }).(GetWorkersScriptsResultArrayOutput)
+}
+
+// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+func (o LookupWorkersScriptsResultOutput) Tags() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersScriptsResult) *string { return v.Tags }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _characteristics;
 
         /// <summary>
-        /// Characteristics of the request on which the ratelimiter counter will be incremented.
+        /// Characteristics of the request on which the rate limit counter will be incremented.
         /// </summary>
         public InputList<string> Characteristics
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule's expression.
+        /// An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression.
         /// </summary>
         [Input("countingExpression")]
         public Input<string>? CountingExpression { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? RequestsPerPeriod { get; set; }
 
         /// <summary>
-        /// Defines if ratelimit counting is only done when an origin is reached.
+        /// Whether counting is only performed when an origin is reached.
         /// </summary>
         [Input("requestsToOrigin")]
         public Input<bool>? RequestsToOrigin { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? ScorePerPeriod { get; set; }
 
         /// <summary>
-        /// The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+        /// A response header name provided by the origin, which contains the score to increment rate limit counter with.
         /// </summary>
         [Input("scoreResponseHeaderName")]
         public Input<string>? ScoreResponseHeaderName { get; set; }

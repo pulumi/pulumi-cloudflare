@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? DigestType { get; set; }
 
         /// <summary>
-        /// fingerprint.
+        /// Fingerprint.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// Flags for the CAA record.
         /// </summary>
         [Input("flags")]
-        public Input<double>? Flags { get; set; }
+        public Input<object>? Flags { get; set; }
 
         /// <summary>
         /// Key Tag.
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? Preference { get; set; }
 
         /// <summary>
-        /// priority.
+        /// Priority.
         /// </summary>
         [Input("priority")]
         public Input<double>? Priority { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// target.
+        /// Target.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

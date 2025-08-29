@@ -77,6 +77,8 @@ type LookupWorkersForPlatformsDispatchNamespaceResult struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount int `pulumi:"scriptCount"`
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers bool `pulumi:"trustedWorkers"`
 }
 
 func LookupWorkersForPlatformsDispatchNamespaceOutput(ctx *pulumi.Context, args LookupWorkersForPlatformsDispatchNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupWorkersForPlatformsDispatchNamespaceResultOutput {
@@ -163,6 +165,11 @@ func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) NamespaceName() 
 // The current number of scripts in this Dispatch Namespace.
 func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) ScriptCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) int { return v.ScriptCount }).(pulumi.IntOutput)
+}
+
+// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) TrustedWorkers() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) bool { return v.TrustedWorkers }).(pulumi.BoolOutput)
 }
 
 func init() {

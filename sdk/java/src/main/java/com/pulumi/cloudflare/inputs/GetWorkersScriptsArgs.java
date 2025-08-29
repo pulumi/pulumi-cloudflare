@@ -47,11 +47,27 @@ public final class GetWorkersScriptsArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<String> tags;
+
+    /**
+     * @return Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    public Optional<Output<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private GetWorkersScriptsArgs() {}
 
     private GetWorkersScriptsArgs(GetWorkersScriptsArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -112,6 +128,27 @@ public final class GetWorkersScriptsArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param tags Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String tags) {
+            return tags(Output.of(tags));
         }
 
         public GetWorkersScriptsArgs build() {

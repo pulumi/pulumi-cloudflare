@@ -50,7 +50,7 @@ export class LogpushOwnershipChallenge extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     public readonly destinationConf!: pulumi.Output<string>;
     public /*out*/ readonly filename!: pulumi.Output<string>;
@@ -106,7 +106,7 @@ export interface LogpushOwnershipChallengeState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     destinationConf?: pulumi.Input<string>;
     filename?: pulumi.Input<string>;
@@ -127,7 +127,7 @@ export interface LogpushOwnershipChallengeArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+     * Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
      */
     destinationConf: pulumi.Input<string>;
     /**

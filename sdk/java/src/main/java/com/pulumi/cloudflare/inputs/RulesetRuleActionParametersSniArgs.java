@@ -15,14 +15,14 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
     public static final RulesetRuleActionParametersSniArgs Empty = new RulesetRuleActionParametersSniArgs();
 
     /**
-     * The SNI override.
+     * A value to override the SNI to.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return The SNI override.
+     * @return A value to override the SNI to.
      * 
      */
     public Output<String> value() {
@@ -54,7 +54,7 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param value The SNI override.
+         * @param value A value to override the SNI to.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param value The SNI override.
+         * @param value A value to override the SNI to.
          * 
          * @return builder
          * 

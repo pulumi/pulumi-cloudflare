@@ -34,8 +34,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewFilter(ctx, "example_filter", &cloudflare.FilterArgs{
-//				ZoneId:     pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Expression: pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"),
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Bodies: cloudflare.FilterBodyArray{
+//					&cloudflare.FilterBodyArgs{
+//						Description: pulumi.String("Restrict access from these browsers on this address range."),
+//						Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155"),
+//						Paused:      pulumi.Bool(false),
+//						Ref:         pulumi.String("FIL-100"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -54,14 +61,15 @@ import (
 type Filter struct {
 	pulumi.CustomResourceState
 
+	Bodies FilterBodyArrayOutput `pulumi:"bodies"`
 	// An informative summary of the filter.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-	Expression pulumi.StringOutput `pulumi:"expression"`
+	Expression pulumi.StringPtrOutput `pulumi:"expression"`
 	// When true, indicates that the filter is currently paused.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// A short reference tag. Allows you to select related filters.
-	Ref pulumi.StringOutput `pulumi:"ref"`
+	Ref pulumi.StringPtrOutput `pulumi:"ref"`
 	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -73,8 +81,8 @@ func NewFilter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Expression == nil {
-		return nil, errors.New("invalid value for required argument 'Expression'")
+	if args.Bodies == nil {
+		return nil, errors.New("invalid value for required argument 'Bodies'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -102,6 +110,7 @@ func GetFilter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Filter resources.
 type filterState struct {
+	Bodies []FilterBody `pulumi:"bodies"`
 	// An informative summary of the filter.
 	Description *string `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
@@ -115,6 +124,7 @@ type filterState struct {
 }
 
 type FilterState struct {
+	Bodies FilterBodyArrayInput
 	// An informative summary of the filter.
 	Description pulumi.StringPtrInput
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
@@ -132,16 +142,30 @@ func (FilterState) ElementType() reflect.Type {
 }
 
 type filterArgs struct {
+	Bodies []FilterBody `pulumi:"bodies"`
+	// An informative summary of the filter.
+	Description *string `pulumi:"description"`
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-	Expression string `pulumi:"expression"`
+	Expression *string `pulumi:"expression"`
+	// When true, indicates that the filter is currently paused.
+	Paused *bool `pulumi:"paused"`
+	// A short reference tag. Allows you to select related filters.
+	Ref *string `pulumi:"ref"`
 	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Filter resource.
 type FilterArgs struct {
+	Bodies FilterBodyArrayInput
+	// An informative summary of the filter.
+	Description pulumi.StringPtrInput
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-	Expression pulumi.StringInput
+	Expression pulumi.StringPtrInput
+	// When true, indicates that the filter is currently paused.
+	Paused pulumi.BoolPtrInput
+	// A short reference tag. Allows you to select related filters.
+	Ref pulumi.StringPtrInput
 	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
@@ -233,24 +257,28 @@ func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutpu
 	return o
 }
 
+func (o FilterOutput) Bodies() FilterBodyArrayOutput {
+	return o.ApplyT(func(v *Filter) FilterBodyArrayOutput { return v.Bodies }).(FilterBodyArrayOutput)
+}
+
 // An informative summary of the filter.
-func (o FilterOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o FilterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-func (o FilterOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+func (o FilterOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // When true, indicates that the filter is currently paused.
-func (o FilterOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Filter) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o FilterOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // A short reference tag. Allows you to select related filters.
-func (o FilterOutput) Ref() pulumi.StringOutput {
-	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
+func (o FilterOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Ref }).(pulumi.StringPtrOutput)
 }
 
 // Defines an identifier.

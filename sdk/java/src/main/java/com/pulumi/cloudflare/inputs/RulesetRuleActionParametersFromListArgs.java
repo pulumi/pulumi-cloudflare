@@ -5,10 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,33 +15,33 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersFromListArgs Empty = new RulesetRuleActionParametersFromListArgs();
 
     /**
-     * Expression that evaluates to the list lookup key.
+     * An expression that evaluates to the list lookup key.
      * 
      */
-    @Import(name="key")
-    private @Nullable Output<String> key;
+    @Import(name="key", required=true)
+    private Output<String> key;
 
     /**
-     * @return Expression that evaluates to the list lookup key.
+     * @return An expression that evaluates to the list lookup key.
      * 
      */
-    public Optional<Output<String>> key() {
-        return Optional.ofNullable(this.key);
+    public Output<String> key() {
+        return this.key;
     }
 
     /**
      * The name of the list to match against.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of the list to match against.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     private RulesetRuleActionParametersFromListArgs() {}
@@ -71,18 +70,18 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param key Expression that evaluates to the list lookup key.
+         * @param key An expression that evaluates to the list lookup key.
          * 
          * @return builder
          * 
          */
-        public Builder key(@Nullable Output<String> key) {
+        public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
         /**
-         * @param key Expression that evaluates to the list lookup key.
+         * @param key An expression that evaluates to the list lookup key.
          * 
          * @return builder
          * 
@@ -97,7 +96,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -113,6 +112,12 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         public RulesetRuleActionParametersFromListArgs build() {
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromListArgs", "key");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromListArgs", "name");
+            }
             return $;
         }
     }

@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -60,7 +61,35 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/argoSmartRouting:ArgoSmartRouting")
 public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
     /**
-     * Enables Argo Smart Routing.
+     * Specifies if the setting is editable.
+     * 
+     */
+    @Export(name="editable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> editable;
+
+    /**
+     * @return Specifies if the setting is editable.
+     * 
+     */
+    public Output<Boolean> editable() {
+        return this.editable;
+    }
+    /**
+     * Specifies the time when the setting was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return Specifies the time when the setting was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -68,7 +97,7 @@ public class ArgoSmartRouting extends com.pulumi.resources.CustomResource {
     private Output<String> value;
 
     /**
-     * @return Enables Argo Smart Routing.
+     * @return Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */

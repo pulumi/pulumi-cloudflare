@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
     public static final RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs();
 
     /**
-     * Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      * 
      */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
     /**
-     * @return Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * @return A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      * 
      */
     public Optional<Output<List<String>>> checkPresences() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
     }
 
     /**
-     * Include these cookies&#39; names and their values.
+     * A list of cookies to include in the cache key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return Include these cookies&#39; names and their values.
+     * @return A list of cookies to include in the cache key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -72,7 +72,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+         * @param checkPresences A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+         * @param checkPresences A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+         * @param checkPresences A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param includes Include these cookies&#39; names and their values.
+         * @param includes A list of cookies to include in the cache key.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param includes Include these cookies&#39; names and their values.
+         * @param includes A list of cookies to include in the cache key.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
         }
 
         /**
-         * @param includes Include these cookies&#39; names and their values.
+         * @param includes A list of cookies to include in the cache key.
          * 
          * @return builder
          * 

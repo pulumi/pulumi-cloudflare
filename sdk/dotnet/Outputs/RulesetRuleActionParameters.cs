@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParameters
     {
         /// <summary>
-        /// List of additional ports that caching can be enabled on.
+        /// A list of additional ports that caching should be enabled on.
         /// </summary>
         public readonly ImmutableArray<int> AdditionalCacheablePorts;
         /// <summary>
@@ -22,40 +22,44 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> Algorithms;
         /// <summary>
-        /// Turn on or off Automatic HTTPS Rewrites.
+        /// The name of a custom asset to serve as the response.
+        /// </summary>
+        public readonly string? AssetName;
+        /// <summary>
+        /// Whether to enable Automatic HTTPS Rewrites.
         /// </summary>
         public readonly bool? AutomaticHttpsRewrites;
         /// <summary>
-        /// Select which file extensions to minify automatically.
+        /// Which file extensions to minify automatically.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersAutominify? Autominify;
         /// <summary>
-        /// Turn on or off Browser Integrity Check.
+        /// Whether to enable Browser Integrity Check (BIC).
         /// </summary>
         public readonly bool? Bic;
         /// <summary>
-        /// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+        /// How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersBrowserTtl? BrowserTtl;
         /// <summary>
-        /// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+        /// Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
         /// </summary>
         public readonly bool? Cache;
         /// <summary>
-        /// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+        /// Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
         /// <summary>
-        /// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+        /// Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheReserve? CacheReserve;
         /// <summary>
-        /// Error response content.
+        /// The response content.
         /// </summary>
         public readonly string? Content;
         /// <summary>
-        /// Content-type header to set with the response.
-        /// Available values: "application/json", "text/xml", "text/plain", "text/html".
+        /// The content type header to set with the error response.
+        /// Available values: "application/json", "text/html", "text/plain", "text/xml".
         /// </summary>
         public readonly string? ContentType;
         /// <summary>
@@ -63,47 +67,47 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersCookieField> CookieFields;
         /// <summary>
-        /// Turn off all active Cloudflare Apps.
+        /// Whether to disable Cloudflare Apps.
         /// </summary>
         public readonly bool? DisableApps;
         /// <summary>
-        /// Turn off Real User Monitoring (RUM).
+        /// Whether to disable Real User Monitoring (RUM).
         /// </summary>
         public readonly bool? DisableRum;
         /// <summary>
-        /// Turn off Zaraz.
+        /// Whether to disable Zaraz.
         /// </summary>
         public readonly bool? DisableZaraz;
         /// <summary>
-        /// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+        /// How long the Cloudflare edge network should cache the response.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
         /// <summary>
-        /// Turn on or off Email Obfuscation.
+        /// Whether to enable Email Obfuscation.
         /// </summary>
         public readonly bool? EmailObfuscation;
         /// <summary>
-        /// Turn on or off Cloudflare Fonts.
+        /// Whether to enable Cloudflare Fonts.
         /// </summary>
         public readonly bool? Fonts;
         /// <summary>
-        /// Serve a redirect based on a bulk list lookup.
+        /// A redirect based on a bulk list lookup.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromList? FromList;
         /// <summary>
-        /// Serve a redirect based on the request properties.
+        /// A redirect based on the request properties.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromValue? FromValue;
         /// <summary>
-        /// Map of request headers to modify.
+        /// A map of headers to rewrite.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.RulesetRuleActionParametersHeaders>? Headers;
         /// <summary>
-        /// Rewrite the HTTP Host header.
+        /// A value to rewrite the HTTP host header to.
         /// </summary>
         public readonly string? HostHeader;
         /// <summary>
-        /// Turn on or off the Hotlink Protection.
+        /// Whether to enable Hotlink Protection.
         /// </summary>
         public readonly bool? HotlinkProtection;
         /// <summary>
@@ -111,7 +115,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Increment contains the delta to change the score and can be either positive or negative.
+        /// A delta to change the score by, which can be either positive or negative.
         /// </summary>
         public readonly int? Increment;
         /// <summary>
@@ -119,23 +123,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
         /// <summary>
-        /// Turn on or off Mirage.
+        /// Whether to enable Mirage.
         /// </summary>
         public readonly bool? Mirage;
         /// <summary>
-        /// Turn on or off Opportunistic Encryption.
+        /// Whether to enable Opportunistic Encryption.
         /// </summary>
         public readonly bool? OpportunisticEncryption;
         /// <summary>
-        /// Override the IP/TCP destination.
+        /// An origin to route to.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
         /// <summary>
-        /// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+        /// Whether Cloudflare will aim to strictly adhere to RFC 7234.
         /// </summary>
         public readonly bool? OriginCacheControl;
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+        /// Whether to generate Cloudflare error pages for issues from the origin server.
         /// </summary>
         public readonly bool? OriginErrorPagePassthru;
         /// <summary>
@@ -143,21 +147,18 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         /// <summary>
-        /// A phase to skip the execution of. This property is only compatible with products.
-        /// Available values: "current".
-        /// </summary>
-        public readonly string? Phase;
-        /// <summary>
         /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         public readonly ImmutableArray<string> Phases;
         /// <summary>
-        /// Configure the Polish level.
+        /// The Polish level to configure.
         /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         public readonly string? Polish;
         /// <summary>
         /// A list of legacy security products to skip the execution of.
+        /// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
         /// </summary>
         public readonly ImmutableArray<string> Products;
         /// <summary>
@@ -165,7 +166,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersRawResponseField> RawResponseFields;
         /// <summary>
-        /// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+        /// A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         /// </summary>
         public readonly int? ReadTimeout;
         /// <summary>
@@ -173,7 +174,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersRequestField> RequestFields;
         /// <summary>
-        /// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+        /// Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
         /// </summary>
         public readonly bool? RespectStrongEtags;
         /// <summary>
@@ -185,7 +186,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponseField> ResponseFields;
         /// <summary>
-        /// Turn on or off Rocket Loader.
+        /// Whether to enable Rocket Loader.
         /// </summary>
         public readonly bool? RocketLoader;
         /// <summary>
@@ -202,33 +203,33 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Rulesets;
         /// <summary>
-        /// Configure the Security Level.
+        /// The Security Level to configure.
         /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
         public readonly string? SecurityLevel;
         /// <summary>
-        /// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+        /// When to serve stale content from cache.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersServeStale? ServeStale;
         /// <summary>
-        /// Turn on or off Server Side Excludes.
+        /// Whether to enable Server-Side Excludes.
         /// </summary>
         public readonly bool? ServerSideExcludes;
         /// <summary>
-        /// Override the Server Name Indication (SNI).
+        /// A Server Name Indication (SNI) override.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersSni? Sni;
         /// <summary>
-        /// Configure the SSL level.
+        /// The SSL level to configure.
         /// Available values: "off", "flexible", "full", "strict", "origin_pull".
         /// </summary>
         public readonly string? Ssl;
         /// <summary>
         /// The status code to use for the error.
         /// </summary>
-        public readonly double? StatusCode;
+        public readonly int? StatusCode;
         /// <summary>
-        /// Turn on or off Signed Exchanges (SXG).
+        /// Whether to enable Signed Exchanges (SXG).
         /// </summary>
         public readonly bool? Sxg;
         /// <summary>
@@ -236,7 +237,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersTransformedRequestField> TransformedRequestFields;
         /// <summary>
-        /// URI to rewrite the request to.
+        /// A URI rewrite.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
 
@@ -245,6 +246,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<int> additionalCacheablePorts,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> algorithms,
+
+            string? assetName,
 
             bool? automaticHttpsRewrites,
 
@@ -306,8 +309,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
-            string? phase,
-
             ImmutableArray<string> phases,
 
             string? polish,
@@ -344,7 +345,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? ssl,
 
-            double? statusCode,
+            int? statusCode,
 
             bool? sxg,
 
@@ -354,6 +355,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
+            AssetName = assetName;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             Autominify = autominify;
             Bic = bic;
@@ -384,7 +386,6 @@ namespace Pulumi.Cloudflare.Outputs
             OriginCacheControl = originCacheControl;
             OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
-            Phase = phase;
             Phases = phases;
             Polish = polish;
             Products = products;

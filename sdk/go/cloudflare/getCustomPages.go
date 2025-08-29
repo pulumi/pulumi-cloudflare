@@ -53,7 +53,7 @@ type LookupCustomPagesArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Error Page Types
-	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
 	Identifier string `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -68,7 +68,7 @@ type LookupCustomPagesResult struct {
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// Error Page Types
-	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
 	Identifier     string   `pulumi:"identifier"`
 	ModifiedOn     string   `pulumi:"modifiedOn"`
 	PreviewTarget  string   `pulumi:"previewTarget"`
@@ -96,7 +96,7 @@ type LookupCustomPagesOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Error Page Types
-	// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+	// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -140,7 +140,7 @@ func (o LookupCustomPagesResultOutput) Id() pulumi.StringOutput {
 }
 
 // Error Page Types
-// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
 func (o LookupCustomPagesResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomPagesResult) string { return v.Identifier }).(pulumi.StringOutput)
 }

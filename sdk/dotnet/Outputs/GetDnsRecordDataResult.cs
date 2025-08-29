@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double DigestType;
         /// <summary>
-        /// fingerprint.
+        /// Fingerprint.
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double Preference;
         /// <summary>
-        /// priority.
+        /// Priority.
         /// </summary>
         public readonly double Priority;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Tag;
         /// <summary>
-        /// target.
+        /// Target.
         /// </summary>
         public readonly string Target;
         /// <summary>

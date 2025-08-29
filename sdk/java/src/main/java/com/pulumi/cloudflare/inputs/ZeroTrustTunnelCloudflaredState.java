@@ -181,14 +181,22 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     @Import(name="remoteConfig")
     private @Nullable Output<Boolean> remoteConfig;
 
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     public Optional<Output<Boolean>> remoteConfig() {
         return Optional.ofNullable(this.remoteConfig);
     }
@@ -518,7 +526,11 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the config_src field instead.
+         * 
          */
+        @Deprecated /* Use the config_src field instead. */
         public Builder remoteConfig(@Nullable Output<Boolean> remoteConfig) {
             $.remoteConfig = remoteConfig;
             return this;
@@ -529,7 +541,11 @@ public final class ZeroTrustTunnelCloudflaredState extends com.pulumi.resources.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the config_src field instead.
+         * 
          */
+        @Deprecated /* Use the config_src field instead. */
         public Builder remoteConfig(Boolean remoteConfig) {
             return remoteConfig(Output.of(remoteConfig));
         }

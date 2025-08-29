@@ -79,7 +79,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * The sensitivity level to use for the rule.
+     * The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
@@ -87,7 +87,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     private @Nullable Output<String> sensitivityLevel;
 
     /**
-     * @return The sensitivity level to use for the rule.
+     * @return The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
@@ -208,7 +208,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param sensitivityLevel The sensitivity level to use for the rule.
+         * @param sensitivityLevel The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
          * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
@@ -220,7 +220,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param sensitivityLevel The sensitivity level to use for the rule.
+         * @param sensitivityLevel The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
          * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder

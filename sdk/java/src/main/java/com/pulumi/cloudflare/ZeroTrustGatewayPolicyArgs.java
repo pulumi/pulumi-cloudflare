@@ -61,17 +61,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * The wirefilter expression used for device posture check matching.
-     * 
-     */
     @Import(name="devicePosture")
     private @Nullable Output<String> devicePosture;
 
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     public Optional<Output<String>> devicePosture() {
         return Optional.ofNullable(this.devicePosture);
     }
@@ -123,17 +115,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.filters);
     }
 
-    /**
-     * The wirefilter expression used for identity matching.
-     * 
-     */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
-    /**
-     * @return The wirefilter expression used for identity matching.
-     * 
-     */
     public Optional<Output<String>> identity() {
         return Optional.ofNullable(this.identity);
     }
@@ -190,17 +174,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.schedule);
     }
 
-    /**
-     * The wirefilter expression used for traffic matching.
-     * 
-     */
     @Import(name="traffic")
     private @Nullable Output<String> traffic;
 
-    /**
-     * @return The wirefilter expression used for traffic matching.
-     * 
-     */
     public Optional<Output<String>> traffic() {
         return Optional.ofNullable(this.traffic);
     }
@@ -294,23 +270,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return description(Output.of(description));
         }
 
-        /**
-         * @param devicePosture The wirefilter expression used for device posture check matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder devicePosture(@Nullable Output<String> devicePosture) {
             $.devicePosture = devicePosture;
             return this;
         }
 
-        /**
-         * @param devicePosture The wirefilter expression used for device posture check matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder devicePosture(String devicePosture) {
             return devicePosture(Output.of(devicePosture));
         }
@@ -390,23 +354,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return filters(List.of(filters));
         }
 
-        /**
-         * @param identity The wirefilter expression used for identity matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identity(@Nullable Output<String> identity) {
             $.identity = identity;
             return this;
         }
 
-        /**
-         * @param identity The wirefilter expression used for identity matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identity(String identity) {
             return identity(Output.of(identity));
         }
@@ -483,23 +435,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return schedule(Output.of(schedule));
         }
 
-        /**
-         * @param traffic The wirefilter expression used for traffic matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder traffic(@Nullable Output<String> traffic) {
             $.traffic = traffic;
             return this;
         }
 
-        /**
-         * @param traffic The wirefilter expression used for traffic matching.
-         * 
-         * @return builder
-         * 
-         */
         public Builder traffic(String traffic) {
             return traffic(Output.of(traffic));
         }

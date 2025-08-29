@@ -24,7 +24,7 @@ public final class GetLoadBalancerRuleOverridesSessionAffinityAttributes {
      */
     private List<String> headers;
     /**
-     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
      * 
      */
     private Boolean requireAllHeaders;
@@ -41,7 +41,8 @@ public final class GetLoadBalancerRuleOverridesSessionAffinityAttributes {
      */
     private String secure;
     /**
-     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `&#34;none&#34;`: No failover takes place for sessions pinned to the origin (default). - `&#34;temporary&#34;`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `&#34;sticky&#34;`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+     * Available values: &#34;none&#34;, &#34;temporary&#34;, &#34;sticky&#34;.
      * 
      */
     private String zeroDowntimeFailover;
@@ -62,7 +63,7 @@ public final class GetLoadBalancerRuleOverridesSessionAffinityAttributes {
         return this.headers;
     }
     /**
-     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
      * 
      */
     public Boolean requireAllHeaders() {
@@ -85,7 +86,8 @@ public final class GetLoadBalancerRuleOverridesSessionAffinityAttributes {
         return this.secure;
     }
     /**
-     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+     * @return Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `&#34;none&#34;`: No failover takes place for sessions pinned to the origin (default). - `&#34;temporary&#34;`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `&#34;sticky&#34;`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+     * Available values: &#34;none&#34;, &#34;temporary&#34;, &#34;sticky&#34;.
      * 
      */
     public String zeroDowntimeFailover() {

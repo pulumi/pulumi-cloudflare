@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersFromValueTargetUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An expression to evaluate to get the URL to redirect the request to.
+        /// An expression that evaluates to a URL to redirect the request to.
         /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// The URL to redirect the request to.
+        /// A URL to redirect the request to.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -22,13 +22,15 @@ import (
 type Ruleset struct {
 	pulumi.CustomResourceState
 
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// An informative description of the ruleset.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// The timestamp of when the ruleset was last modified.
+	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The phase of the ruleset.
@@ -36,7 +38,9 @@ type Ruleset struct {
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The version of the ruleset.
+	Version pulumi.StringOutput `pulumi:"version"`
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -79,13 +83,15 @@ func GetRuleset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ruleset resources.
 type rulesetState struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// An informative description of the ruleset.
 	Description *string `pulumi:"description"`
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind *string `pulumi:"kind"`
+	// The timestamp of when the ruleset was last modified.
+	LastUpdated *string `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name *string `pulumi:"name"`
 	// The phase of the ruleset.
@@ -93,18 +99,22 @@ type rulesetState struct {
 	Phase *string `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The version of the ruleset.
+	Version *string `pulumi:"version"`
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RulesetState struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId pulumi.StringPtrInput
 	// An informative description of the ruleset.
 	Description pulumi.StringPtrInput
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringPtrInput
+	// The timestamp of when the ruleset was last modified.
+	LastUpdated pulumi.StringPtrInput
 	// The human-readable name of the ruleset.
 	Name pulumi.StringPtrInput
 	// The phase of the ruleset.
@@ -112,7 +122,9 @@ type RulesetState struct {
 	Phase pulumi.StringPtrInput
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayInput
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The version of the ruleset.
+	Version pulumi.StringPtrInput
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -121,7 +133,7 @@ func (RulesetState) ElementType() reflect.Type {
 }
 
 type rulesetArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// An informative description of the ruleset.
 	Description *string `pulumi:"description"`
@@ -135,13 +147,13 @@ type rulesetArgs struct {
 	Phase string `pulumi:"phase"`
 	// The list of rules in the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Ruleset resource.
 type RulesetArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId pulumi.StringPtrInput
 	// An informative description of the ruleset.
 	Description pulumi.StringPtrInput
@@ -155,7 +167,7 @@ type RulesetArgs struct {
 	Phase pulumi.StringInput
 	// The list of rules in the ruleset.
 	Rules RulesetRuleArrayInput
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -246,7 +258,7 @@ func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOu
 	return o
 }
 
-// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+// The unique ID of the account.
 func (o RulesetOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -260,6 +272,11 @@ func (o RulesetOutput) Description() pulumi.StringOutput {
 // Available values: "managed", "custom", "root", "zone".
 func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the ruleset was last modified.
+func (o RulesetOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the ruleset.
@@ -278,7 +295,12 @@ func (o RulesetOutput) Rules() RulesetRuleArrayOutput {
 	return o.ApplyT(func(v *Ruleset) RulesetRuleArrayOutput { return v.Rules }).(RulesetRuleArrayOutput)
 }
 
-// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+// The version of the ruleset.
+func (o RulesetOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// The unique ID of the zone.
 func (o RulesetOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

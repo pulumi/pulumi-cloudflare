@@ -11,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
@@ -26,62 +25,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
     /**
-     * An informative description of the rule.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return An informative description of the rule.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-    /**
-     * Whether the rule should be executed.
-     * 
-     */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
-
-    /**
-     * @return Whether the rule should be executed.
-     * 
-     */
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-    /**
-     * The expression defining which traffic will match the rule.
-     * 
-     */
-    @Export(name="expression", refs={String.class}, tree="[0]")
-    private Output<String> expression;
-
-    /**
-     * @return The expression defining which traffic will match the rule.
-     * 
-     */
-    public Output<String> expression() {
-        return this.expression;
-    }
-    /**
-     * The timestamp of when the rule was last modified.
-     * 
-     */
-    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
-    private Output<String> lastUpdated;
-
-    /**
-     * @return The timestamp of when the rule was last modified.
-     * 
-     */
-    public Output<String> lastUpdated() {
-        return this.lastUpdated;
-    }
-    /**
      * A list of snippet rules.
      * 
      */
@@ -94,20 +37,6 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
      */
     public Output<List<SnippetRulesRule>> rules() {
         return this.rules;
-    }
-    /**
-     * The identifying name of the snippet.
-     * 
-     */
-    @Export(name="snippetName", refs={String.class}, tree="[0]")
-    private Output<String> snippetName;
-
-    /**
-     * @return The identifying name of the snippet.
-     * 
-     */
-    public Output<String> snippetName() {
-        return this.snippetName;
     }
     /**
      * The unique ID of the zone.

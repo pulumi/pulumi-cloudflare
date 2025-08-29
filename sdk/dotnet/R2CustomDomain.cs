@@ -27,6 +27,10 @@ namespace Pulumi.Cloudflare
     ///         Domain = "domain",
     ///         Enabled = true,
     ///         ZoneId = "zoneId",
+    ///         Ciphers = new[]
+    ///         {
+    ///             "string",
+    ///         },
     ///         MinTls = "1.0",
     ///     });
     /// 
@@ -47,6 +51,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
+
+        /// <summary>
+        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        /// </summary>
+        [Output("ciphers")]
+        public Output<ImmutableArray<string>> Ciphers { get; private set; } = null!;
 
         /// <summary>
         /// Name of the custom domain to be added.
@@ -146,6 +156,18 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        [Input("ciphers")]
+        private InputList<string>? _ciphers;
+
+        /// <summary>
+        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        /// </summary>
+        public InputList<string> Ciphers
+        {
+            get => _ciphers ?? (_ciphers = new InputList<string>());
+            set => _ciphers = value;
+        }
+
         /// <summary>
         /// Name of the custom domain to be added.
         /// </summary>
@@ -196,6 +218,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
+
+        [Input("ciphers")]
+        private InputList<string>? _ciphers;
+
+        /// <summary>
+        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        /// </summary>
+        public InputList<string> Ciphers
+        {
+            get => _ciphers ?? (_ciphers = new InputList<string>());
+            set => _ciphers = value;
+        }
 
         /// <summary>
         /// Name of the custom domain to be added.

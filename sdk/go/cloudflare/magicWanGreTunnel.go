@@ -14,6 +14,47 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example_magic_wan_gre_tunnel", &cloudflare.MagicWanGreTunnelArgs{
+//				AccountId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
+//				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
+//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
+//				Name:                  pulumi.String("GRE_1"),
+//				Description:           pulumi.String("Tunnel for ISP X"),
+//				HealthCheck: &cloudflare.MagicWanGreTunnelHealthCheckArgs{
+//					Direction: pulumi.String("bidirectional"),
+//					Enabled:   pulumi.Bool(true),
+//					Rate:      pulumi.String("low"),
+//					Target: &cloudflare.MagicWanGreTunnelHealthCheckTargetArgs{
+//						Saved: pulumi.String("203.0.113.1"),
+//					},
+//					Type: pulumi.String("request"),
+//				},
+//				InterfaceAddress6: pulumi.String("2606:54c1:7:0:a9fe:12d2:1:200/127"),
+//				Mtu:               pulumi.Int(0),
+//				Ttl:               pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -35,6 +76,8 @@ type MagicWanGreTunnel struct {
 	HealthCheck MagicWanGreTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 pulumi.StringPtrOutput `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -109,6 +152,8 @@ type magicWanGreTunnelState struct {
 	HealthCheck *MagicWanGreTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 *string `pulumi:"interfaceAddress6"`
 	// The date and time the tunnel was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -133,6 +178,8 @@ type MagicWanGreTunnelState struct {
 	HealthCheck MagicWanGreTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringPtrInput
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 pulumi.StringPtrInput
 	// The date and time the tunnel was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -159,6 +206,8 @@ type magicWanGreTunnelArgs struct {
 	HealthCheck *MagicWanGreTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress string `pulumi:"interfaceAddress"`
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 *string `pulumi:"interfaceAddress6"`
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu *int `pulumi:"mtu"`
 	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
@@ -180,6 +229,8 @@ type MagicWanGreTunnelArgs struct {
 	HealthCheck MagicWanGreTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringInput
+	// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+	InterfaceAddress6 pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu pulumi.IntPtrInput
 	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
@@ -307,6 +358,11 @@ func (o MagicWanGreTunnelOutput) HealthCheck() MagicWanGreTunnelHealthCheckOutpu
 // A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 func (o MagicWanGreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
+}
+
+// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+func (o MagicWanGreTunnelOutput) InterfaceAddress6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.InterfaceAddress6 }).(pulumi.StringPtrOutput)
 }
 
 // The date and time the tunnel was last modified.

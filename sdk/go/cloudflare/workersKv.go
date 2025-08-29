@@ -53,7 +53,8 @@ type WorkersKv struct {
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName  pulumi.StringOutput    `pulumi:"keyName"`
+	KeyName pulumi.StringOutput `pulumi:"keyName"`
+	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrOutput `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
@@ -106,7 +107,8 @@ type workersKvState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName  *string `pulumi:"keyName"`
+	KeyName *string `pulumi:"keyName"`
+	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId *string `pulumi:"namespaceId"`
@@ -118,7 +120,8 @@ type WorkersKvState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName  pulumi.StringPtrInput
+	KeyName pulumi.StringPtrInput
+	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrInput
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringPtrInput
@@ -134,7 +137,8 @@ type workersKvArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName  string  `pulumi:"keyName"`
+	KeyName string `pulumi:"keyName"`
+	// Associates arbitrary JSON data with a key/value pair.
 	Metadata *string `pulumi:"metadata"`
 	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
@@ -147,7 +151,8 @@ type WorkersKvArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
 	// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-	KeyName  pulumi.StringInput
+	KeyName pulumi.StringInput
+	// Associates arbitrary JSON data with a key/value pair.
 	Metadata pulumi.StringPtrInput
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringInput
@@ -252,6 +257,7 @@ func (o WorkersKvOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }
 
+// Associates arbitrary JSON data with a key/value pair.
 func (o WorkersKvOutput) Metadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersKv) pulumi.StringPtrOutput { return v.Metadata }).(pulumi.StringPtrOutput)
 }

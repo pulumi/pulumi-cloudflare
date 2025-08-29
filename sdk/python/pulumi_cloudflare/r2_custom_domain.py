@@ -26,6 +26,7 @@ class R2CustomDomainArgs:
                  domain: pulumi.Input[_builtins.str],
                  enabled: pulumi.Input[_builtins.bool],
                  zone_id: pulumi.Input[_builtins.str],
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -35,6 +36,7 @@ class R2CustomDomainArgs:
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[_builtins.str] zone_id: Zone ID of the custom domain.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[_builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
@@ -44,6 +46,8 @@ class R2CustomDomainArgs:
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
         if jurisdiction is not None:
             pulumi.set(__self__, "jurisdiction", jurisdiction)
         if min_tls is not None:
@@ -111,6 +115,18 @@ class R2CustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter
+    def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @ciphers.setter
+    def ciphers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ciphers", value)
+
+    @_builtins.property
+    @pulumi.getter
     def jurisdiction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Jurisdiction of the bucket
@@ -140,6 +156,7 @@ class _R2CustomDomainState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
@@ -151,6 +168,7 @@ class _R2CustomDomainState:
         Input properties used for looking up and filtering R2CustomDomain resources.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -163,6 +181,8 @@ class _R2CustomDomainState:
             pulumi.set(__self__, "account_id", account_id)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -201,6 +221,18 @@ class _R2CustomDomainState:
     @bucket_name.setter
     def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @ciphers.setter
+    def ciphers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ciphers", value)
 
     @_builtins.property
     @pulumi.getter
@@ -293,6 +325,7 @@ class R2CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
@@ -312,6 +345,7 @@ class R2CustomDomain(pulumi.CustomResource):
             domain="domain",
             enabled=True,
             zone_id="zoneId",
+            ciphers=["string"],
             min_tls="1.0")
         ```
 
@@ -319,6 +353,7 @@ class R2CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -345,6 +380,7 @@ class R2CustomDomain(pulumi.CustomResource):
             domain="domain",
             enabled=True,
             zone_id="zoneId",
+            ciphers=["string"],
             min_tls="1.0")
         ```
 
@@ -365,6 +401,7 @@ class R2CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
@@ -385,6 +422,7 @@ class R2CustomDomain(pulumi.CustomResource):
             if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__.__dict__["bucket_name"] = bucket_name
+            __props__.__dict__["ciphers"] = ciphers
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
@@ -410,6 +448,7 @@ class R2CustomDomain(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+            ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             jurisdiction: Optional[pulumi.Input[_builtins.str]] = None,
@@ -426,6 +465,7 @@ class R2CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[_builtins.str] jurisdiction: Jurisdiction of the bucket
@@ -440,6 +480,7 @@ class R2CustomDomain(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["bucket_name"] = bucket_name
+        __props__.__dict__["ciphers"] = ciphers
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["jurisdiction"] = jurisdiction
@@ -464,6 +505,14 @@ class R2CustomDomain(pulumi.CustomResource):
         Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ciphers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
 
     @_builtins.property
     @pulumi.getter

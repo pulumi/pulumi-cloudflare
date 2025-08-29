@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleSnippetsList = cloudflare.getSnippetsList({
- *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
- * });
- * ```
- */
 export function getSnippetsList(args: GetSnippetsListArgs, opts?: pulumi.InvokeOptions): Promise<GetSnippetsListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getSnippetsList:getSnippetsList", {
@@ -61,18 +49,6 @@ export interface GetSnippetsListResult {
      */
     readonly zoneId: string;
 }
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleSnippetsList = cloudflare.getSnippetsList({
- *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
- * });
- * ```
- */
 export function getSnippetsListOutput(args: GetSnippetsListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnippetsListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getSnippetsList:getSnippetsList", {

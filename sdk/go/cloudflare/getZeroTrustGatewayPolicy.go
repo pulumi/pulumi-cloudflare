@@ -64,8 +64,7 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	// Date of deletion, if any.
 	DeletedAt string `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description string `pulumi:"description"`
-	// The wirefilter expression used for device posture check matching.
+	Description   string `pulumi:"description"`
 	DevicePosture string `pulumi:"devicePosture"`
 	// True if the rule is enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -149,7 +148,6 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The wirefilter expression used for device posture check matching.
 func (o LookupZeroTrustGatewayPolicyResultOutput) DevicePosture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.DevicePosture }).(pulumi.StringOutput)
 }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,14 +93,14 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * fingerprint.
+     * Fingerprint.
      * 
      */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
-     * @return fingerprint.
+     * @return Fingerprint.
      * 
      */
     public Optional<Output<String>> fingerprint() {
@@ -111,13 +112,13 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="flags")
-    private @Nullable Output<Double> flags;
+    private @Nullable Output<Object> flags;
 
     /**
      * @return Flags for the CAA record.
      * 
      */
-    public Optional<Output<Double>> flags() {
+    public Optional<Output<Object>> flags() {
         return Optional.ofNullable(this.flags);
     }
 
@@ -351,14 +352,14 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * priority.
+     * Priority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Double> priority;
 
     /**
-     * @return priority.
+     * @return Priority.
      * 
      */
     public Optional<Output<Double>> priority() {
@@ -486,14 +487,14 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * target.
+     * Target.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return target.
+     * @return Target.
      * 
      */
     public Optional<Output<String>> target() {
@@ -725,7 +726,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fingerprint fingerprint.
+         * @param fingerprint Fingerprint.
          * 
          * @return builder
          * 
@@ -736,7 +737,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fingerprint fingerprint.
+         * @param fingerprint Fingerprint.
          * 
          * @return builder
          * 
@@ -751,7 +752,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder flags(@Nullable Output<Double> flags) {
+        public Builder flags(@Nullable Output<Object> flags) {
             $.flags = flags;
             return this;
         }
@@ -762,7 +763,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder flags(Double flags) {
+        public Builder flags(Object flags) {
             return flags(Output.of(flags));
         }
 
@@ -1086,7 +1087,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority priority.
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -1097,7 +1098,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority priority.
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -1275,7 +1276,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target target.
+         * @param target Target.
          * 
          * @return builder
          * 
@@ -1286,7 +1287,7 @@ public final class DnsRecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target target.
+         * @param target Target.
          * 
          * @return builder
          * 

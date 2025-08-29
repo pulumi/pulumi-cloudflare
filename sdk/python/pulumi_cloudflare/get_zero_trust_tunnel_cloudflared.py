@@ -28,13 +28,16 @@ class GetZeroTrustTunnelCloudflaredResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflared.
     """
-    def __init__(__self__, account_id=None, account_tag=None, connections=None, conns_active_at=None, conns_inactive_at=None, created_at=None, deleted_at=None, filter=None, id=None, metadata=None, name=None, remote_config=None, status=None, tun_type=None, tunnel_id=None):
+    def __init__(__self__, account_id=None, account_tag=None, config_src=None, connections=None, conns_active_at=None, conns_inactive_at=None, created_at=None, deleted_at=None, filter=None, id=None, metadata=None, name=None, remote_config=None, status=None, tun_type=None, tunnel_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if account_tag and not isinstance(account_tag, str):
             raise TypeError("Expected argument 'account_tag' to be a str")
         pulumi.set(__self__, "account_tag", account_tag)
+        if config_src and not isinstance(config_src, str):
+            raise TypeError("Expected argument 'config_src' to be a str")
+        pulumi.set(__self__, "config_src", config_src)
         if connections and not isinstance(connections, list):
             raise TypeError("Expected argument 'connections' to be a list")
         pulumi.set(__self__, "connections", connections)
@@ -90,6 +93,15 @@ class GetZeroTrustTunnelCloudflaredResult:
         Cloudflare account ID
         """
         return pulumi.get(self, "account_tag")
+
+    @_builtins.property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> _builtins.str:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "config_src")
 
     @_builtins.property
     @pulumi.getter
@@ -163,6 +175,7 @@ class GetZeroTrustTunnelCloudflaredResult:
 
     @_builtins.property
     @pulumi.getter(name="remoteConfig")
+    @_utilities.deprecated("""Use the config_src field instead.""")
     def remote_config(self) -> _builtins.bool:
         """
         If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
@@ -204,6 +217,7 @@ class AwaitableGetZeroTrustTunnelCloudflaredResult(GetZeroTrustTunnelCloudflared
         return GetZeroTrustTunnelCloudflaredResult(
             account_id=self.account_id,
             account_tag=self.account_tag,
+            config_src=self.config_src,
             connections=self.connections,
             conns_active_at=self.conns_active_at,
             conns_inactive_at=self.conns_inactive_at,
@@ -248,6 +262,7 @@ def get_zero_trust_tunnel_cloudflared(account_id: Optional[_builtins.str] = None
     return AwaitableGetZeroTrustTunnelCloudflaredResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         account_tag=pulumi.get(__ret__, 'account_tag'),
+        config_src=pulumi.get(__ret__, 'config_src'),
         connections=pulumi.get(__ret__, 'connections'),
         conns_active_at=pulumi.get(__ret__, 'conns_active_at'),
         conns_inactive_at=pulumi.get(__ret__, 'conns_inactive_at'),
@@ -289,6 +304,7 @@ def get_zero_trust_tunnel_cloudflared_output(account_id: Optional[pulumi.Input[_
     return __ret__.apply(lambda __response__: GetZeroTrustTunnelCloudflaredResult(
         account_id=pulumi.get(__response__, 'account_id'),
         account_tag=pulumi.get(__response__, 'account_tag'),
+        config_src=pulumi.get(__response__, 'config_src'),
         connections=pulumi.get(__response__, 'connections'),
         conns_active_at=pulumi.get(__response__, 'conns_active_at'),
         conns_inactive_at=pulumi.get(__response__, 'conns_inactive_at'),

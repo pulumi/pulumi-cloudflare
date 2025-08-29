@@ -38,29 +38,9 @@ export class SnippetRules extends pulumi.CustomResource {
     }
 
     /**
-     * An informative description of the rule.
-     */
-    public /*out*/ readonly description!: pulumi.Output<string>;
-    /**
-     * Whether the rule should be executed.
-     */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
-    /**
-     * The expression defining which traffic will match the rule.
-     */
-    public /*out*/ readonly expression!: pulumi.Output<string>;
-    /**
-     * The timestamp of when the rule was last modified.
-     */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
-    /**
      * A list of snippet rules.
      */
     public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
-    /**
-     * The identifying name of the snippet.
-     */
-    public /*out*/ readonly snippetName!: pulumi.Output<string>;
     /**
      * The unique ID of the zone.
      */
@@ -79,12 +59,7 @@ export class SnippetRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnippetRulesState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["snippetName"] = state ? state.snippetName : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SnippetRulesArgs | undefined;
@@ -96,11 +71,6 @@ export class SnippetRules extends pulumi.CustomResource {
             }
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["expression"] = undefined /*out*/;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
-            resourceInputs["snippetName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SnippetRules.__pulumiType, name, resourceInputs, opts);
@@ -112,29 +82,9 @@ export class SnippetRules extends pulumi.CustomResource {
  */
 export interface SnippetRulesState {
     /**
-     * An informative description of the rule.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Whether the rule should be executed.
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * The expression defining which traffic will match the rule.
-     */
-    expression?: pulumi.Input<string>;
-    /**
-     * The timestamp of when the rule was last modified.
-     */
-    lastUpdated?: pulumi.Input<string>;
-    /**
      * A list of snippet rules.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
-    /**
-     * The identifying name of the snippet.
-     */
-    snippetName?: pulumi.Input<string>;
     /**
      * The unique ID of the zone.
      */

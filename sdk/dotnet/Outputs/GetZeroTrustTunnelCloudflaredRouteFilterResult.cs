@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Optional remark describing the route.
         /// </summary>
-        public readonly string? Comment;
+        public readonly string Comment;
         /// <summary>
         /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetZeroTrustTunnelCloudflaredRouteFilterResult(
-            string? comment,
+            string comment,
 
             string? existedAt,
 

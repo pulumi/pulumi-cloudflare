@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the TTL for responses with this specific status code.
+        /// A single status code to apply the TTL to.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
 
         /// <summary>
-        /// The range of status codes used to apply the selected mode.
+        /// A range of status codes to apply the TTL to.
         /// </summary>
         [Input("statusCodeRange")]
         public Input<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>? StatusCodeRange { get; set; }
 
         /// <summary>
-        /// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+        /// The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store".
         /// </summary>
         [Input("value", required: true)]
         public Input<int> Value { get; set; } = null!;

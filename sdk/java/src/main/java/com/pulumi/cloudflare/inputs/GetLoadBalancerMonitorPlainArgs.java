@@ -16,14 +16,14 @@ public final class GetLoadBalancerMonitorPlainArgs extends com.pulumi.resources.
     public static final GetLoadBalancerMonitorPlainArgs Empty = new GetLoadBalancerMonitorPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -63,7 +63,7 @@ public final class GetLoadBalancerMonitorPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

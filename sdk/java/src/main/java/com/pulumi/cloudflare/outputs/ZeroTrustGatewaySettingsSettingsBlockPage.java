@@ -55,7 +55,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     private @Nullable String mailtoSubject;
     /**
      * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     private @Nullable String mode;
@@ -149,7 +149,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     }
     /**
      * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     public Optional<String> mode() {

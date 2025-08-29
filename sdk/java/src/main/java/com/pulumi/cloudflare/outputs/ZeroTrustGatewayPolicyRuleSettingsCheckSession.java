@@ -12,10 +12,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsCheckSession {
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     private @Nullable String duration;
     /**
      * @return Set to true to enable session enforcement.
@@ -24,10 +20,6 @@ public final class ZeroTrustGatewayPolicyRuleSettingsCheckSession {
     private @Nullable Boolean enforce;
 
     private ZeroTrustGatewayPolicyRuleSettingsCheckSession() {}
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }

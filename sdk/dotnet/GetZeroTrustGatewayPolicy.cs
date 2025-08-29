@@ -135,9 +135,6 @@ namespace Pulumi.Cloudflare
         /// The description of the rule.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The wirefilter expression used for device posture check matching.
-        /// </summary>
         public readonly string DevicePosture;
         /// <summary>
         /// True if the rule is enabled.

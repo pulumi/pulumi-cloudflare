@@ -61,7 +61,7 @@ export class CustomPages extends pulumi.CustomResource {
     public /*out*/ readonly description!: pulumi.Output<string>;
     /**
      * Error Page Types
-     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
      */
     public readonly identifier!: pulumi.Output<string>;
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
@@ -140,7 +140,7 @@ export interface CustomPagesState {
     description?: pulumi.Input<string>;
     /**
      * Error Page Types
-     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
      */
     identifier?: pulumi.Input<string>;
     modifiedOn?: pulumi.Input<string>;
@@ -171,7 +171,7 @@ export interface CustomPagesArgs {
     accountId?: pulumi.Input<string>;
     /**
      * Error Page Types
-     * Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimitBlock".
+     * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
      */
     identifier: pulumi.Input<string>;
     /**

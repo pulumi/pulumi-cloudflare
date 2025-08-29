@@ -13,19 +13,20 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersHeadersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Expression for the header value.
+        /// An expression that evaluates to a value for the header.
         /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Available values: "remove", "add", "set".
+        /// The operation to perform on the header.
+        /// Available values: "add", "set", "remove".
         /// </summary>
         [Input("operation", required: true)]
         public Input<string> Operation { get; set; } = null!;
 
         /// <summary>
-        /// Static value for the header.
+        /// A static value for the header.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

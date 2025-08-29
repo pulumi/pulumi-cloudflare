@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public partial class Ruleset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -39,6 +39,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp of when the ruleset was last modified.
+        /// </summary>
+        [Output("lastUpdated")]
+        public Output<string> LastUpdated { get; private set; } = null!;
 
         /// <summary>
         /// The human-readable name of the ruleset.
@@ -60,7 +66,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.RulesetRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// The version of the ruleset.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -112,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -156,7 +168,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -170,7 +182,7 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -187,6 +199,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// The timestamp of when the ruleset was last modified.
+        /// </summary>
+        [Input("lastUpdated")]
+        public Input<string>? LastUpdated { get; set; }
 
         /// <summary>
         /// The human-readable name of the ruleset.
@@ -214,7 +232,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// The version of the ruleset.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

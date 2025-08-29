@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CertificatePackArgs', 'CertificatePack']
 
@@ -146,7 +148,9 @@ class _CertificatePackState:
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
+                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
                  validation_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
                  validity_days: Optional[pulumi.Input[_builtins.int]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -159,8 +163,10 @@ class _CertificatePackState:
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
                Available values: "advanced".
+        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
                Available values: "txt", "http", "email".
+        :param pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]] validation_records: Certificates' validation records. Only present when certificate pack is in "pending*validation" status
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -175,8 +181,12 @@ class _CertificatePackState:
             pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validation_errors is not None:
+            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_method is not None:
             pulumi.set(__self__, "validation_method", validation_method)
+        if validation_records is not None:
+            pulumi.set(__self__, "validation_records", validation_records)
         if validity_days is not None:
             pulumi.set(__self__, "validity_days", validity_days)
         if zone_id is not None:
@@ -246,6 +256,18 @@ class _CertificatePackState:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]:
+        """
+        Domain validation errors that have been received by the certificate authority (CA).
+        """
+        return pulumi.get(self, "validation_errors")
+
+    @validation_errors.setter
+    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]):
+        pulumi.set(self, "validation_errors", value)
+
+    @_builtins.property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -257,6 +279,18 @@ class _CertificatePackState:
     @validation_method.setter
     def validation_method(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "validation_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
+        """
+        Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        """
+        return pulumi.get(self, "validation_records")
+
+    @validation_records.setter
+    def validation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]):
+        pulumi.set(self, "validation_records", value)
 
     @_builtins.property
     @pulumi.getter(name="validityDays")
@@ -431,6 +465,8 @@ class CertificatePack(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["status"] = None
+            __props__.__dict__["validation_errors"] = None
+            __props__.__dict__["validation_records"] = None
         super(CertificatePack, __self__).__init__(
             'cloudflare:index/certificatePack:CertificatePack',
             resource_name,
@@ -446,7 +482,9 @@ class CertificatePack(pulumi.CustomResource):
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
+            validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
             validation_method: Optional[pulumi.Input[_builtins.str]] = None,
+            validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]]] = None,
             validity_days: Optional[pulumi.Input[_builtins.int]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'CertificatePack':
         """
@@ -464,8 +502,10 @@ class CertificatePack(pulumi.CustomResource):
                Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         :param pulumi.Input[_builtins.str] type: Type of certificate pack.
                Available values: "advanced".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]] validation_errors: Domain validation errors that have been received by the certificate authority (CA).
         :param pulumi.Input[_builtins.str] validation_method: Validation Method selected for the order.
                Available values: "txt", "http", "email".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]] validation_records: Certificates' validation records. Only present when certificate pack is in "pending*validation" status
         :param pulumi.Input[_builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
@@ -479,7 +519,9 @@ class CertificatePack(pulumi.CustomResource):
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
+        __props__.__dict__["validation_errors"] = validation_errors
         __props__.__dict__["validation_method"] = validation_method
+        __props__.__dict__["validation_records"] = validation_records
         __props__.__dict__["validity_days"] = validity_days
         __props__.__dict__["zone_id"] = zone_id
         return CertificatePack(resource_name, opts=opts, __props__=__props__)
@@ -528,6 +570,14 @@ class CertificatePack(pulumi.CustomResource):
         return pulumi.get(self, "type")
 
     @_builtins.property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationError']]:
+        """
+        Domain validation errors that have been received by the certificate authority (CA).
+        """
+        return pulumi.get(self, "validation_errors")
+
+    @_builtins.property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> pulumi.Output[_builtins.str]:
         """
@@ -535,6 +585,14 @@ class CertificatePack(pulumi.CustomResource):
         Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
+
+    @_builtins.property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationRecord']]:
+        """
+        Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        """
+        return pulumi.get(self, "validation_records")
 
     @_builtins.property
     @pulumi.getter(name="validityDays")

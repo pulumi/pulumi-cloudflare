@@ -13,13 +13,17 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines whether to include all query string parameters in the cache key.
+        /// Whether to include all query string parameters in the cache key.
         /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("lists")]
         private InputList<string>? _lists;
+
+        /// <summary>
+        /// A list of query string parameters to include in the cache key.
+        /// </summary>
         public InputList<string> Lists
         {
             get => _lists ?? (_lists = new InputList<string>());

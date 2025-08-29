@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersRawResponseField {
     /**
-     * @return The name of the field.
+     * @return The name of the response header.
      * 
      */
     private String name;
@@ -26,7 +26,7 @@ public final class RulesetRuleActionParametersRawResponseField {
 
     private RulesetRuleActionParametersRawResponseField() {}
     /**
-     * @return The name of the field.
+     * @return The name of the response header.
      * 
      */
     public String name() {

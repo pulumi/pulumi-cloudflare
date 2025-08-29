@@ -27,6 +27,12 @@ public final class GetZeroTrustTunnelCloudflaredResult {
      */
     private String accountTag;
     /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    private String configSrc;
+    /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
      * @deprecated
@@ -74,7 +80,11 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     private Boolean remoteConfig;
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -108,6 +118,14 @@ public final class GetZeroTrustTunnelCloudflaredResult {
      */
     public String accountTag() {
         return this.accountTag;
+    }
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    public String configSrc() {
+        return this.configSrc;
     }
     /**
      * @return The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
@@ -175,7 +193,11 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     public Boolean remoteConfig() {
         return this.remoteConfig;
     }
@@ -214,6 +236,7 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     public static final class Builder {
         private String accountId;
         private String accountTag;
+        private String configSrc;
         private List<GetZeroTrustTunnelCloudflaredConnection> connections;
         private String connsActiveAt;
         private String connsInactiveAt;
@@ -232,6 +255,7 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.accountTag = defaults.accountTag;
+    	      this.configSrc = defaults.configSrc;
     	      this.connections = defaults.connections;
     	      this.connsActiveAt = defaults.connsActiveAt;
     	      this.connsInactiveAt = defaults.connsInactiveAt;
@@ -261,6 +285,14 @@ public final class GetZeroTrustTunnelCloudflaredResult {
               throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "accountTag");
             }
             this.accountTag = accountTag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configSrc(String configSrc) {
+            if (configSrc == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredResult", "configSrc");
+            }
+            this.configSrc = configSrc;
             return this;
         }
         @CustomType.Setter
@@ -370,6 +402,7 @@ public final class GetZeroTrustTunnelCloudflaredResult {
             final var _resultValue = new GetZeroTrustTunnelCloudflaredResult();
             _resultValue.accountId = accountId;
             _resultValue.accountTag = accountTag;
+            _resultValue.configSrc = configSrc;
             _resultValue.connections = connections;
             _resultValue.connsActiveAt = connsActiveAt;
             _resultValue.connsInactiveAt = connsInactiveAt;

@@ -101,7 +101,7 @@ class GetListResult:
 
     @_builtins.property
     @pulumi.getter(name="listId")
-    def list_id(self) -> Optional[_builtins.str]:
+    def list_id(self) -> _builtins.str:
         """
         The unique ID of the list.
         """
@@ -194,7 +194,7 @@ def get_list(account_id: Optional[_builtins.str] = None,
         num_items=pulumi.get(__ret__, 'num_items'),
         num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'))
 def get_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    list_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    list_id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListResult]:
     """
     ## Example Usage

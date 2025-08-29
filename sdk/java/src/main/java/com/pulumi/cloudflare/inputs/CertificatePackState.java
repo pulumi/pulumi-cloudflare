@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
+import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -100,6 +102,21 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    @Import(name="validationErrors")
+    private @Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors;
+
+    /**
+     * @return Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    public Optional<Output<List<CertificatePackValidationErrorArgs>>> validationErrors() {
+        return Optional.ofNullable(this.validationErrors);
+    }
+
+    /**
      * Validation Method selected for the order.
      * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
@@ -114,6 +131,21 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> validationMethod() {
         return Optional.ofNullable(this.validationMethod);
+    }
+
+    /**
+     * Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * 
+     */
+    @Import(name="validationRecords")
+    private @Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords;
+
+    /**
+     * @return Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * 
+     */
+    public Optional<Output<List<CertificatePackValidationRecordArgs>>> validationRecords() {
+        return Optional.ofNullable(this.validationRecords);
     }
 
     /**
@@ -156,7 +188,9 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         this.hosts = $.hosts;
         this.status = $.status;
         this.type = $.type;
+        this.validationErrors = $.validationErrors;
         this.validationMethod = $.validationMethod;
+        this.validationRecords = $.validationRecords;
         this.validityDays = $.validityDays;
         this.zoneId = $.zoneId;
     }
@@ -301,6 +335,37 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param validationErrors Domain validation errors that have been received by the certificate authority (CA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationErrors(@Nullable Output<List<CertificatePackValidationErrorArgs>> validationErrors) {
+            $.validationErrors = validationErrors;
+            return this;
+        }
+
+        /**
+         * @param validationErrors Domain validation errors that have been received by the certificate authority (CA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationErrors(List<CertificatePackValidationErrorArgs> validationErrors) {
+            return validationErrors(Output.of(validationErrors));
+        }
+
+        /**
+         * @param validationErrors Domain validation errors that have been received by the certificate authority (CA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationErrors(CertificatePackValidationErrorArgs... validationErrors) {
+            return validationErrors(List.of(validationErrors));
+        }
+
+        /**
          * @param validationMethod Validation Method selected for the order.
          * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
          * 
@@ -321,6 +386,37 @@ public final class CertificatePackState extends com.pulumi.resources.ResourceArg
          */
         public Builder validationMethod(String validationMethod) {
             return validationMethod(Output.of(validationMethod));
+        }
+
+        /**
+         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationRecords(@Nullable Output<List<CertificatePackValidationRecordArgs>> validationRecords) {
+            $.validationRecords = validationRecords;
+            return this;
+        }
+
+        /**
+         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationRecords(List<CertificatePackValidationRecordArgs> validationRecords) {
+            return validationRecords(Output.of(validationRecords));
+        }
+
+        /**
+         * @param validationRecords Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder validationRecords(CertificatePackValidationRecordArgs... validationRecords) {
+            return validationRecords(List.of(validationRecords));
         }
 
         /**

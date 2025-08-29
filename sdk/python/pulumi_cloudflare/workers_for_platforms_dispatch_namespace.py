@@ -66,7 +66,8 @@ class _WorkersForPlatformsDispatchNamespaceState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
                  namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 script_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 script_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 trusted_workers: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering WorkersForPlatformsDispatchNamespace resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -78,6 +79,7 @@ class _WorkersForPlatformsDispatchNamespaceState:
         :param pulumi.Input[_builtins.str] namespace_id: API Resource UUID tag.
         :param pulumi.Input[_builtins.str] namespace_name: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[_builtins.int] script_count: The current number of scripts in this Dispatch Namespace.
+        :param pulumi.Input[_builtins.bool] trusted_workers: Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -97,6 +99,8 @@ class _WorkersForPlatformsDispatchNamespaceState:
             pulumi.set(__self__, "namespace_name", namespace_name)
         if script_count is not None:
             pulumi.set(__self__, "script_count", script_count)
+        if trusted_workers is not None:
+            pulumi.set(__self__, "trusted_workers", trusted_workers)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -206,6 +210,18 @@ class _WorkersForPlatformsDispatchNamespaceState:
     def script_count(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "script_count", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trustedWorkers")
+    def trusted_workers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+        """
+        return pulumi.get(self, "trusted_workers")
+
+    @trusted_workers.setter
+    def trusted_workers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "trusted_workers", value)
+
 
 @pulumi.type_token("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")
 class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
@@ -300,6 +316,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             __props__.__dict__["namespace_id"] = None
             __props__.__dict__["namespace_name"] = None
             __props__.__dict__["script_count"] = None
+            __props__.__dict__["trusted_workers"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(WorkersForPlatformsDispatchNamespace, __self__).__init__(
@@ -320,7 +337,8 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
             namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            script_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'WorkersForPlatformsDispatchNamespace':
+            script_count: Optional[pulumi.Input[_builtins.int]] = None,
+            trusted_workers: Optional[pulumi.Input[_builtins.bool]] = None) -> 'WorkersForPlatformsDispatchNamespace':
         """
         Get an existing WorkersForPlatformsDispatchNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -337,6 +355,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] namespace_id: API Resource UUID tag.
         :param pulumi.Input[_builtins.str] namespace_name: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[_builtins.int] script_count: The current number of scripts in this Dispatch Namespace.
+        :param pulumi.Input[_builtins.bool] trusted_workers: Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,6 +370,7 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["namespace_name"] = namespace_name
         __props__.__dict__["script_count"] = script_count
+        __props__.__dict__["trusted_workers"] = trusted_workers
         return WorkersForPlatformsDispatchNamespace(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -424,4 +444,12 @@ class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
         The current number of scripts in this Dispatch Namespace.
         """
         return pulumi.get(self, "script_count")
+
+    @_builtins.property
+    @pulumi.getter(name="trustedWorkers")
+    def trusted_workers(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+        """
+        return pulumi.get(self, "trusted_workers")
 

@@ -27,11 +27,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
-//				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				AiBotsProtection:  pulumi.String("block"),
-//				CrawlerProtection: pulumi.String("enabled"),
-//				EnableJs:          pulumi.Bool(true),
-//				FightMode:         pulumi.Bool(true),
+//				ZoneId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AiBotsProtection:   pulumi.String("block"),
+//				CrawlerProtection:  pulumi.String("enabled"),
+//				EnableJs:           pulumi.Bool(true),
+//				FightMode:          pulumi.Bool(true),
+//				IsRobotsTxtManaged: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -62,6 +63,8 @@ type BotManagement struct {
 	EnableJs pulumi.BoolOutput `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
 	FightMode pulumi.BoolOutput `pulumi:"fightMode"`
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged pulumi.BoolOutput `pulumi:"isRobotsTxtManaged"`
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolOutput `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -132,6 +135,8 @@ type botManagementState struct {
 	EnableJs *bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
 	FightMode *bool `pulumi:"fightMode"`
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged *bool `pulumi:"isRobotsTxtManaged"`
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress *bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -170,6 +175,8 @@ type BotManagementState struct {
 	EnableJs pulumi.BoolPtrInput
 	// Whether to enable Bot Fight Mode.
 	FightMode pulumi.BoolPtrInput
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged pulumi.BoolPtrInput
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -212,6 +219,8 @@ type botManagementArgs struct {
 	EnableJs *bool `pulumi:"enableJs"`
 	// Whether to enable Bot Fight Mode.
 	FightMode *bool `pulumi:"fightMode"`
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged *bool `pulumi:"isRobotsTxtManaged"`
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress *bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -247,6 +256,8 @@ type BotManagementArgs struct {
 	EnableJs pulumi.BoolPtrInput
 	// Whether to enable Bot Fight Mode.
 	FightMode pulumi.BoolPtrInput
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged pulumi.BoolPtrInput
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress pulumi.BoolPtrInput
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -380,6 +391,11 @@ func (o BotManagementOutput) EnableJs() pulumi.BoolOutput {
 // Whether to enable Bot Fight Mode.
 func (o BotManagementOutput) FightMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.FightMode }).(pulumi.BoolOutput)
+}
+
+// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+func (o BotManagementOutput) IsRobotsTxtManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.IsRobotsTxtManaged }).(pulumi.BoolOutput)
 }
 
 // Whether to optimize Super Bot Fight Mode protections for Wordpress.

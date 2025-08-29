@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicWanIpsecTunnel = new cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     cloudflareEndpoint: "203.0.113.1",
+ *     interfaceAddress: "192.0.2.0/31",
+ *     name: "IPsec_1",
+ *     customerEndpoint: "203.0.113.1",
+ *     description: "Tunnel for ISP X",
+ *     healthCheck: {
+ *         direction: "bidirectional",
+ *         enabled: true,
+ *         rate: "low",
+ *         target: {
+ *             saved: "203.0.113.1",
+ *         },
+ *         type: "request",
+ *     },
+ *     interfaceAddress6: "2606:54c1:7:0:a9fe:12d2:1:200/127",
+ *     psk: "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+ *     replayProtection: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -73,6 +99,10 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      */
     public readonly interfaceAddress!: pulumi.Output<string>;
     /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    public readonly interfaceAddress6!: pulumi.Output<string | undefined>;
+    /**
      * The date and time the tunnel was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
@@ -114,6 +144,7 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
+            resourceInputs["interfaceAddress6"] = state ? state.interfaceAddress6 : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["psk"] = state ? state.psk : undefined;
@@ -139,6 +170,7 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
+            resourceInputs["interfaceAddress6"] = args ? args.interfaceAddress6 : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["psk"] = args?.psk ? pulumi.secret(args.psk) : undefined;
             resourceInputs["replayProtection"] = args ? args.replayProtection : undefined;
@@ -190,6 +222,10 @@ export interface MagicWanIpsecTunnelState {
      */
     interfaceAddress?: pulumi.Input<string>;
     /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    interfaceAddress6?: pulumi.Input<string>;
+    /**
      * The date and time the tunnel was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
@@ -236,6 +272,10 @@ export interface MagicWanIpsecTunnelArgs {
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
     interfaceAddress: pulumi.Input<string>;
+    /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    interfaceAddress6?: pulumi.Input<string>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */

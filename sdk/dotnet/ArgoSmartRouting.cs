@@ -39,7 +39,19 @@ namespace Pulumi.Cloudflare
     public partial class ArgoSmartRouting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enables Argo Smart Routing.
+        /// Specifies if the setting is editable.
+        /// </summary>
+        [Output("editable")]
+        public Output<bool> Editable { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the time when the setting was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the enablement value of Argo Smart Routing.
         /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
@@ -98,7 +110,7 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoSmartRoutingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables Argo Smart Routing.
+        /// Specifies the enablement value of Argo Smart Routing.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value", required: true)]
@@ -119,7 +131,19 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoSmartRoutingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables Argo Smart Routing.
+        /// Specifies if the setting is editable.
+        /// </summary>
+        [Input("editable")]
+        public Input<bool>? Editable { get; set; }
+
+        /// <summary>
+        /// Specifies the time when the setting was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Specifies the enablement value of Argo Smart Routing.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value")]

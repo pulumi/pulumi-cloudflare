@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class RulesetRuleExposedCredentialCheck {
     /**
-     * @return Expression that selects the password used in the credentials check.
+     * @return An expression that selects the password used in the credentials check.
      * 
      */
     private String passwordExpression;
     /**
-     * @return Expression that selects the user ID used in the credentials check.
+     * @return An expression that selects the user ID used in the credentials check.
      * 
      */
     private String usernameExpression;
 
     private RulesetRuleExposedCredentialCheck() {}
     /**
-     * @return Expression that selects the password used in the credentials check.
+     * @return An expression that selects the password used in the credentials check.
      * 
      */
     public String passwordExpression() {
         return this.passwordExpression;
     }
     /**
-     * @return Expression that selects the user ID used in the credentials check.
+     * @return An expression that selects the user ID used in the credentials check.
      * 
      */
     public String usernameExpression() {

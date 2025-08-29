@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
 public class UrlNormalizationSettings extends com.pulumi.resources.CustomResource {
     /**
      * The scope of the URL normalization.
-     * Available values: &#34;incoming&#34;, &#34;both&#34;.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -70,7 +70,7 @@ public class UrlNormalizationSettings extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The scope of the URL normalization.
-     * Available values: &#34;incoming&#34;, &#34;both&#34;.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
      * 
      */
     public Output<String> scope() {

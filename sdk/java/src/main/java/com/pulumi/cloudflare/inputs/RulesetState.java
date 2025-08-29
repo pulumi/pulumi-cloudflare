@@ -18,14 +18,14 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     public static final RulesetState Empty = new RulesetState();
 
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -62,6 +62,21 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> kind() {
         return Optional.ofNullable(this.kind);
+    }
+
+    /**
+     * The timestamp of when the ruleset was last modified.
+     * 
+     */
+    @Import(name="lastUpdated")
+    private @Nullable Output<String> lastUpdated;
+
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    public Optional<Output<String>> lastUpdated() {
+        return Optional.ofNullable(this.lastUpdated);
     }
 
     /**
@@ -112,14 +127,29 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The version of the ruleset.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return The version of the ruleset.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
+    /**
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -132,9 +162,11 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.description = $.description;
         this.kind = $.kind;
+        this.lastUpdated = $.lastUpdated;
         this.name = $.name;
         this.phase = $.phase;
         this.rules = $.rules;
+        this.version = $.version;
         this.zoneId = $.zoneId;
     }
 
@@ -157,7 +189,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -168,7 +200,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -219,6 +251,27 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
+        }
+
+        /**
+         * @param lastUpdated The timestamp of when the ruleset was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(@Nullable Output<String> lastUpdated) {
+            $.lastUpdated = lastUpdated;
+            return this;
+        }
+
+        /**
+         * @param lastUpdated The timestamp of when the ruleset was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdated(String lastUpdated) {
+            return lastUpdated(Output.of(lastUpdated));
         }
 
         /**
@@ -297,7 +350,28 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param version The version of the ruleset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The version of the ruleset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
+        }
+
+        /**
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -308,7 +382,7 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

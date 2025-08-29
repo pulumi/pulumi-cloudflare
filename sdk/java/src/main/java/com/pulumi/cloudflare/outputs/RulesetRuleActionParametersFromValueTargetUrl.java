@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersFromValueTargetUrl {
     /**
-     * @return An expression to evaluate to get the URL to redirect the request to.
+     * @return An expression that evaluates to a URL to redirect the request to.
      * 
      */
     private @Nullable String expression;
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     private @Nullable String value;
 
     private RulesetRuleActionParametersFromValueTargetUrl() {}
     /**
-     * @return An expression to evaluate to get the URL to redirect the request to.
+     * @return An expression that evaluates to a URL to redirect the request to.
      * 
      */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     public Optional<String> value() {

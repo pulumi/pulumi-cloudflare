@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     /**
-     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * @return Which query string parameters to exclude from the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude exclude;
     /**
-     * @return A list of query string parameters used to build the cache key.
+     * @return Which query string parameters to include in the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude include;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryString() {}
     /**
-     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * @return Which query string parameters to exclude from the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude> exclude() {
         return Optional.ofNullable(this.exclude);
     }
     /**
-     * @return A list of query string parameters used to build the cache key.
+     * @return Which query string parameters to include in the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude> include() {

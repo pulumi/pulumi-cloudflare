@@ -23,6 +23,55 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicWanIpsecTunnel;
+ * import com.pulumi.cloudflare.MagicWanIpsecTunnelArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
+ * import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicWanIpsecTunnel = new MagicWanIpsecTunnel("exampleMagicWanIpsecTunnel", MagicWanIpsecTunnelArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .cloudflareEndpoint("203.0.113.1")
+ *             .interfaceAddress("192.0.2.0/31")
+ *             .name("IPsec_1")
+ *             .customerEndpoint("203.0.113.1")
+ *             .description("Tunnel for ISP X")
+ *             .healthCheck(MagicWanIpsecTunnelHealthCheckArgs.builder()
+ *                 .direction("bidirectional")
+ *                 .enabled(true)
+ *                 .rate("low")
+ *                 .target(MagicWanIpsecTunnelHealthCheckTargetArgs.builder()
+ *                     .saved("203.0.113.1")
+ *                     .build())
+ *                 .type("request")
+ *                 .build())
+ *             .interfaceAddress6("2606:54c1:7:0:a9fe:12d2:1:200/127")
+ *             .psk("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy")
+ *             .replayProtection(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -137,6 +186,20 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> interfaceAddress() {
         return this.interfaceAddress;
+    }
+    /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    @Export(name="interfaceAddress6", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> interfaceAddress6;
+
+    /**
+     * @return A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     * 
+     */
+    public Output<Optional<String>> interfaceAddress6() {
+        return Codegen.optional(this.interfaceAddress6);
     }
     /**
      * The date and time the tunnel was last modified.

@@ -57,9 +57,6 @@ export interface GetZeroTrustGatewayPolicyResult {
      * The description of the rule.
      */
     readonly description: string;
-    /**
-     * The wirefilter expression used for device posture check matching.
-     */
     readonly devicePosture: string;
     /**
      * True if the rule is enabled.

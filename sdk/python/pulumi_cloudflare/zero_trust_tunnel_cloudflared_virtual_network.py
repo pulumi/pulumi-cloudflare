@@ -395,7 +395,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def comment(self) -> pulumi.Output[_builtins.str]:
         """
         Optional remark describing the virtual network.
         """

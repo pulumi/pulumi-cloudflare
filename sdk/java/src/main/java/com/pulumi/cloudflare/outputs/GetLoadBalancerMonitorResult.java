@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancerMonitorResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -113,7 +113,7 @@ public final class GetLoadBalancerMonitorResult {
 
     private GetLoadBalancerMonitorResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

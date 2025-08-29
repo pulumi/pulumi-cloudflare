@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -19,7 +21,12 @@ import * as utilities from "./utilities";
  *
  * const exampleFilter = new cloudflare.Filter("example_filter", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+ *     bodies: [{
+ *         description: "Restrict access from these browsers on this address range.",
+ *         expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+ *         paused: false,
+ *         ref: "FIL-100",
+ *     }],
  * });
  * ```
  *
@@ -57,22 +64,23 @@ export class Filter extends pulumi.CustomResource {
         return obj['__pulumiType'] === Filter.__pulumiType;
     }
 
+    public readonly bodies!: pulumi.Output<outputs.FilterBody[]>;
     /**
      * An informative summary of the filter.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
-    public readonly expression!: pulumi.Output<string>;
+    public readonly expression!: pulumi.Output<string | undefined>;
     /**
      * When true, indicates that the filter is currently paused.
      */
-    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * A short reference tag. Allows you to select related filters.
      */
-    public /*out*/ readonly ref!: pulumi.Output<string>;
+    public readonly ref!: pulumi.Output<string | undefined>;
     /**
      * Defines an identifier.
      */
@@ -91,6 +99,7 @@ export class Filter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilterState | undefined;
+            resourceInputs["bodies"] = state ? state.bodies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expression"] = state ? state.expression : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
@@ -98,17 +107,18 @@ export class Filter extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FilterArgs | undefined;
-            if ((!args || args.expression === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'expression'");
+            if ((!args || args.bodies === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bodies'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["bodies"] = args ? args.bodies : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["ref"] = args ? args.ref : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["paused"] = undefined /*out*/;
-            resourceInputs["ref"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Filter.__pulumiType, name, resourceInputs, opts);
@@ -119,6 +129,7 @@ export class Filter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Filter resources.
  */
 export interface FilterState {
+    bodies?: pulumi.Input<pulumi.Input<inputs.FilterBody>[]>;
     /**
      * An informative summary of the filter.
      */
@@ -145,10 +156,23 @@ export interface FilterState {
  * The set of arguments for constructing a Filter resource.
  */
 export interface FilterArgs {
+    bodies: pulumi.Input<pulumi.Input<inputs.FilterBody>[]>;
+    /**
+     * An informative summary of the filter.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
-    expression: pulumi.Input<string>;
+    expression?: pulumi.Input<string>;
+    /**
+     * When true, indicates that the filter is currently paused.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * A short reference tag. Allows you to select related filters.
+     */
+    ref?: pulumi.Input<string>;
     /**
      * Defines an identifier.
      */

@@ -15,13 +15,6 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- */
 @ResourceType(type="cloudflare:index/snippets:Snippets")
 public class Snippets extends com.pulumi.resources.CustomResource {
     /**

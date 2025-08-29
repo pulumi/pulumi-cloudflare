@@ -43,7 +43,7 @@ type LogpushOwnershipChallenge struct {
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
 	Filename        pulumi.StringOutput `pulumi:"filename"`
 	Message         pulumi.StringOutput `pulumi:"message"`
@@ -87,7 +87,7 @@ func GetLogpushOwnershipChallenge(ctx *pulumi.Context,
 type logpushOwnershipChallengeState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf *string `pulumi:"destinationConf"`
 	Filename        *string `pulumi:"filename"`
 	Message         *string `pulumi:"message"`
@@ -99,7 +99,7 @@ type logpushOwnershipChallengeState struct {
 type LogpushOwnershipChallengeState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringPtrInput
 	Filename        pulumi.StringPtrInput
 	Message         pulumi.StringPtrInput
@@ -115,7 +115,7 @@ func (LogpushOwnershipChallengeState) ElementType() reflect.Type {
 type logpushOwnershipChallengeArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -125,7 +125,7 @@ type logpushOwnershipChallengeArgs struct {
 type LogpushOwnershipChallengeArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
@@ -223,7 +223,7 @@ func (o LogpushOwnershipChallengeOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushOwnershipChallenge) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 func (o LogpushOwnershipChallengeOutput) DestinationConf() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushOwnershipChallenge) pulumi.StringOutput { return v.DestinationConf }).(pulumi.StringOutput)
 }

@@ -202,8 +202,7 @@ class Snippets(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
+        Create a Snippets resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] files: The list of files belonging to the snippet.
@@ -218,8 +217,7 @@ class Snippets(pulumi.CustomResource):
                  args: SnippetsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
+        Create a Snippets resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SnippetsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

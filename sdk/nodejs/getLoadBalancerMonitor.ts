@@ -30,7 +30,7 @@ export function getLoadBalancerMonitor(args: GetLoadBalancerMonitorArgs, opts?: 
  */
 export interface GetLoadBalancerMonitorArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     monitorId?: string;
@@ -41,7 +41,7 @@ export interface GetLoadBalancerMonitorArgs {
  */
 export interface GetLoadBalancerMonitorResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -143,7 +143,7 @@ export function getLoadBalancerMonitorOutput(args: GetLoadBalancerMonitorOutputA
  */
 export interface GetLoadBalancerMonitorOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     monitorId?: pulumi.Input<string>;

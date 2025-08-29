@@ -151,6 +151,9 @@ class _TunnelState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if remote_config is not None:
+            warnings.warn("""Use the config_src field instead.""", DeprecationWarning)
+            pulumi.log.warn("""remote_config is deprecated: Use the config_src field instead.""")
+        if remote_config is not None:
             pulumi.set(__self__, "remote_config", remote_config)
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -283,6 +286,7 @@ class _TunnelState:
 
     @_builtins.property
     @pulumi.getter(name="remoteConfig")
+    @_utilities.deprecated("""Use the config_src field instead.""")
     def remote_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
@@ -606,6 +610,7 @@ class Tunnel(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="remoteConfig")
+    @_utilities.deprecated("""Use the config_src field instead.""")
     def remote_config(self) -> pulumi.Output[_builtins.bool]:
         """
         If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.

@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHostArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs();
 
     /**
-     * Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * Whether to use the resolved host in the cache key.
      * 
      */
     @Import(name="resolved")
     private @Nullable Output<Boolean> resolved;
 
     /**
-     * @return Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * @return Whether to use the resolved host in the cache key.
      * 
      */
     public Optional<Output<Boolean>> resolved() {
@@ -55,7 +55,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
         }
 
         /**
-         * @param resolved Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+         * @param resolved Whether to use the resolved host in the cache key.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
         }
 
         /**
-         * @param resolved Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+         * @param resolved Whether to use the resolved host in the cache key.
          * 
          * @return builder
          * 

@@ -53,6 +53,9 @@ namespace Pulumi.Cloudflare
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
 
+        /// <summary>
+        /// Associates arbitrary JSON data with a key/value pair.
+        /// </summary>
         [Output("metadata")]
         public Output<string?> Metadata { get; private set; } = null!;
 
@@ -126,6 +129,9 @@ namespace Pulumi.Cloudflare
         [Input("keyName", required: true)]
         public Input<string> KeyName { get; set; } = null!;
 
+        /// <summary>
+        /// Associates arbitrary JSON data with a key/value pair.
+        /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }
 
@@ -161,6 +167,9 @@ namespace Pulumi.Cloudflare
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
 
+        /// <summary>
+        /// Associates arbitrary JSON data with a key/value pair.
+        /// </summary>
         [Input("metadata")]
         public Input<string>? Metadata { get; set; }
 

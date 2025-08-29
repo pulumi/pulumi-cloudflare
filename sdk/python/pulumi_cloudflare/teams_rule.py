@@ -40,15 +40,12 @@ class TeamsRuleArgs:
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] name: The name of the rule.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
         :param pulumi.Input['TeamsRuleExpirationArgs'] expiration: The expiration time stamp and default duration of a DNS policy. Takes
                precedence over the policy's `schedule` configuration, if any.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-        :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input['TeamsRuleScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-        :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "action", action)
@@ -123,9 +120,6 @@ class TeamsRuleArgs:
     @_builtins.property
     @pulumi.getter(name="devicePosture")
     def device_posture(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for device posture check matching.
-        """
         return pulumi.get(self, "device_posture")
 
     @device_posture.setter
@@ -172,9 +166,6 @@ class TeamsRuleArgs:
     @_builtins.property
     @pulumi.getter
     def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for identity matching.
-        """
         return pulumi.get(self, "identity")
 
     @identity.setter
@@ -217,9 +208,6 @@ class TeamsRuleArgs:
     @_builtins.property
     @pulumi.getter
     def traffic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for traffic matching.
-        """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
@@ -257,19 +245,16 @@ class _TeamsRuleState:
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
         :param pulumi.Input['TeamsRuleExpirationArgs'] expiration: The expiration time stamp and default duration of a DNS policy. Takes
                precedence over the policy's `schedule` configuration, if any.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-        :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[_builtins.str] name: The name of the rule.
         :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API
         :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input['TeamsRuleScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule
-        :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[_builtins.int] version: version number of the rule
         :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
         """
@@ -374,9 +359,6 @@ class _TeamsRuleState:
     @_builtins.property
     @pulumi.getter(name="devicePosture")
     def device_posture(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for device posture check matching.
-        """
         return pulumi.get(self, "device_posture")
 
     @device_posture.setter
@@ -423,9 +405,6 @@ class _TeamsRuleState:
     @_builtins.property
     @pulumi.getter
     def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for identity matching.
-        """
         return pulumi.get(self, "identity")
 
     @identity.setter
@@ -516,9 +495,6 @@ class _TeamsRuleState:
     @_builtins.property
     @pulumi.getter
     def traffic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The wirefilter expression used for traffic matching.
-        """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
@@ -598,16 +574,13 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
         :param pulumi.Input[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']] expiration: The expiration time stamp and default duration of a DNS policy. Takes
                precedence over the policy's `schedule` configuration, if any.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-        :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[_builtins.str] name: The name of the rule.
         :param pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-        :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         """
         ...
     @overload
@@ -733,19 +706,16 @@ class TeamsRule(pulumi.CustomResource):
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
         :param pulumi.Input[Union['TeamsRuleExpirationArgs', 'TeamsRuleExpirationArgsDict']] expiration: The expiration time stamp and default duration of a DNS policy. Takes
                precedence over the policy's `schedule` configuration, if any.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-        :param pulumi.Input[_builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[_builtins.str] name: The name of the rule.
         :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API
         :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account
         :param pulumi.Input[Union['TeamsRuleRuleSettingsArgs', 'TeamsRuleRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input[Union['TeamsRuleScheduleArgs', 'TeamsRuleScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule
-        :param pulumi.Input[_builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[_builtins.int] version: version number of the rule
         :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
         """
@@ -814,9 +784,6 @@ class TeamsRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="devicePosture")
     def device_posture(self) -> pulumi.Output[_builtins.str]:
-        """
-        The wirefilter expression used for device posture check matching.
-        """
         return pulumi.get(self, "device_posture")
 
     @_builtins.property
@@ -847,9 +814,6 @@ class TeamsRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def identity(self) -> pulumi.Output[_builtins.str]:
-        """
-        The wirefilter expression used for identity matching.
-        """
         return pulumi.get(self, "identity")
 
     @_builtins.property
@@ -870,7 +834,7 @@ class TeamsRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def precedence(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def precedence(self) -> pulumi.Output[_builtins.int]:
         return pulumi.get(self, "precedence")
 
     @_builtins.property
@@ -908,9 +872,6 @@ class TeamsRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def traffic(self) -> pulumi.Output[_builtins.str]:
-        """
-        The wirefilter expression used for traffic matching.
-        """
         return pulumi.get(self, "traffic")
 
     @_builtins.property

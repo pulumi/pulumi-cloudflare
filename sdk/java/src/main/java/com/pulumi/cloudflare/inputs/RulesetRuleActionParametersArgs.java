@@ -27,7 +27,6 @@ import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -42,14 +41,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     public static final RulesetRuleActionParametersArgs Empty = new RulesetRuleActionParametersArgs();
 
     /**
-     * List of additional ports that caching can be enabled on.
+     * A list of additional ports that caching should be enabled on.
      * 
      */
     @Import(name="additionalCacheablePorts")
     private @Nullable Output<List<Integer>> additionalCacheablePorts;
 
     /**
-     * @return List of additional ports that caching can be enabled on.
+     * @return A list of additional ports that caching should be enabled on.
      * 
      */
     public Optional<Output<List<Integer>>> additionalCacheablePorts() {
@@ -72,14 +71,29 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Automatic HTTPS Rewrites.
+     * The name of a custom asset to serve as the response.
+     * 
+     */
+    @Import(name="assetName")
+    private @Nullable Output<String> assetName;
+
+    /**
+     * @return The name of a custom asset to serve as the response.
+     * 
+     */
+    public Optional<Output<String>> assetName() {
+        return Optional.ofNullable(this.assetName);
+    }
+
+    /**
+     * Whether to enable Automatic HTTPS Rewrites.
      * 
      */
     @Import(name="automaticHttpsRewrites")
     private @Nullable Output<Boolean> automaticHttpsRewrites;
 
     /**
-     * @return Turn on or off Automatic HTTPS Rewrites.
+     * @return Whether to enable Automatic HTTPS Rewrites.
      * 
      */
     public Optional<Output<Boolean>> automaticHttpsRewrites() {
@@ -87,14 +101,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Select which file extensions to minify automatically.
+     * Which file extensions to minify automatically.
      * 
      */
     @Import(name="autominify")
     private @Nullable Output<RulesetRuleActionParametersAutominifyArgs> autominify;
 
     /**
-     * @return Select which file extensions to minify automatically.
+     * @return Which file extensions to minify automatically.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersAutominifyArgs>> autominify() {
@@ -102,14 +116,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Browser Integrity Check.
+     * Whether to enable Browser Integrity Check (BIC).
      * 
      */
     @Import(name="bic")
     private @Nullable Output<Boolean> bic;
 
     /**
-     * @return Turn on or off Browser Integrity Check.
+     * @return Whether to enable Browser Integrity Check (BIC).
      * 
      */
     public Optional<Output<Boolean>> bic() {
@@ -117,14 +131,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     @Import(name="browserTtl")
     private @Nullable Output<RulesetRuleActionParametersBrowserTtlArgs> browserTtl;
 
     /**
-     * @return Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * @return How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersBrowserTtlArgs>> browserTtl() {
@@ -132,14 +146,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      * 
      */
     @Import(name="cache")
     private @Nullable Output<Boolean> cache;
 
     /**
-     * @return Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * @return Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      * 
      */
     public Optional<Output<Boolean>> cache() {
@@ -147,14 +161,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     @Import(name="cacheKey")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyArgs> cacheKey;
 
     /**
-     * @return Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * @return Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyArgs>> cacheKey() {
@@ -162,14 +176,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     @Import(name="cacheReserve")
     private @Nullable Output<RulesetRuleActionParametersCacheReserveArgs> cacheReserve;
 
     /**
-     * @return Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * @return Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheReserveArgs>> cacheReserve() {
@@ -177,14 +191,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Error response content.
+     * The response content.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Error response content.
+     * @return The response content.
      * 
      */
     public Optional<Output<String>> content() {
@@ -192,16 +206,16 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Content-type header to set with the response.
-     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+     * The content type header to set with the error response.
+     * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return Content-type header to set with the response.
-     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+     * @return The content type header to set with the error response.
+     * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -224,14 +238,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn off all active Cloudflare Apps.
+     * Whether to disable Cloudflare Apps.
      * 
      */
     @Import(name="disableApps")
     private @Nullable Output<Boolean> disableApps;
 
     /**
-     * @return Turn off all active Cloudflare Apps.
+     * @return Whether to disable Cloudflare Apps.
      * 
      */
     public Optional<Output<Boolean>> disableApps() {
@@ -239,14 +253,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn off Real User Monitoring (RUM).
+     * Whether to disable Real User Monitoring (RUM).
      * 
      */
     @Import(name="disableRum")
     private @Nullable Output<Boolean> disableRum;
 
     /**
-     * @return Turn off Real User Monitoring (RUM).
+     * @return Whether to disable Real User Monitoring (RUM).
      * 
      */
     public Optional<Output<Boolean>> disableRum() {
@@ -254,14 +268,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn off Zaraz.
+     * Whether to disable Zaraz.
      * 
      */
     @Import(name="disableZaraz")
     private @Nullable Output<Boolean> disableZaraz;
 
     /**
-     * @return Turn off Zaraz.
+     * @return Whether to disable Zaraz.
      * 
      */
     public Optional<Output<Boolean>> disableZaraz() {
@@ -269,14 +283,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * How long the Cloudflare edge network should cache the response.
      * 
      */
     @Import(name="edgeTtl")
     private @Nullable Output<RulesetRuleActionParametersEdgeTtlArgs> edgeTtl;
 
     /**
-     * @return TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * @return How long the Cloudflare edge network should cache the response.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersEdgeTtlArgs>> edgeTtl() {
@@ -284,14 +298,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Email Obfuscation.
+     * Whether to enable Email Obfuscation.
      * 
      */
     @Import(name="emailObfuscation")
     private @Nullable Output<Boolean> emailObfuscation;
 
     /**
-     * @return Turn on or off Email Obfuscation.
+     * @return Whether to enable Email Obfuscation.
      * 
      */
     public Optional<Output<Boolean>> emailObfuscation() {
@@ -299,14 +313,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Cloudflare Fonts.
+     * Whether to enable Cloudflare Fonts.
      * 
      */
     @Import(name="fonts")
     private @Nullable Output<Boolean> fonts;
 
     /**
-     * @return Turn on or off Cloudflare Fonts.
+     * @return Whether to enable Cloudflare Fonts.
      * 
      */
     public Optional<Output<Boolean>> fonts() {
@@ -314,14 +328,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Serve a redirect based on a bulk list lookup.
+     * A redirect based on a bulk list lookup.
      * 
      */
     @Import(name="fromList")
     private @Nullable Output<RulesetRuleActionParametersFromListArgs> fromList;
 
     /**
-     * @return Serve a redirect based on a bulk list lookup.
+     * @return A redirect based on a bulk list lookup.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersFromListArgs>> fromList() {
@@ -329,14 +343,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Serve a redirect based on the request properties.
+     * A redirect based on the request properties.
      * 
      */
     @Import(name="fromValue")
     private @Nullable Output<RulesetRuleActionParametersFromValueArgs> fromValue;
 
     /**
-     * @return Serve a redirect based on the request properties.
+     * @return A redirect based on the request properties.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersFromValueArgs>> fromValue() {
@@ -344,14 +358,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Map of request headers to modify.
+     * A map of headers to rewrite.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<Map<String,RulesetRuleActionParametersHeadersArgs>> headers;
 
     /**
-     * @return Map of request headers to modify.
+     * @return A map of headers to rewrite.
      * 
      */
     public Optional<Output<Map<String,RulesetRuleActionParametersHeadersArgs>>> headers() {
@@ -359,14 +373,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Rewrite the HTTP Host header.
+     * A value to rewrite the HTTP host header to.
      * 
      */
     @Import(name="hostHeader")
     private @Nullable Output<String> hostHeader;
 
     /**
-     * @return Rewrite the HTTP Host header.
+     * @return A value to rewrite the HTTP host header to.
      * 
      */
     public Optional<Output<String>> hostHeader() {
@@ -374,14 +388,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off the Hotlink Protection.
+     * Whether to enable Hotlink Protection.
      * 
      */
     @Import(name="hotlinkProtection")
     private @Nullable Output<Boolean> hotlinkProtection;
 
     /**
-     * @return Turn on or off the Hotlink Protection.
+     * @return Whether to enable Hotlink Protection.
      * 
      */
     public Optional<Output<Boolean>> hotlinkProtection() {
@@ -404,14 +418,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Increment contains the delta to change the score and can be either positive or negative.
+     * A delta to change the score by, which can be either positive or negative.
      * 
      */
     @Import(name="increment")
     private @Nullable Output<Integer> increment;
 
     /**
-     * @return Increment contains the delta to change the score and can be either positive or negative.
+     * @return A delta to change the score by, which can be either positive or negative.
      * 
      */
     public Optional<Output<Integer>> increment() {
@@ -434,14 +448,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Mirage.
+     * Whether to enable Mirage.
      * 
      */
     @Import(name="mirage")
     private @Nullable Output<Boolean> mirage;
 
     /**
-     * @return Turn on or off Mirage.
+     * @return Whether to enable Mirage.
      * 
      */
     public Optional<Output<Boolean>> mirage() {
@@ -449,14 +463,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Opportunistic Encryption.
+     * Whether to enable Opportunistic Encryption.
      * 
      */
     @Import(name="opportunisticEncryption")
     private @Nullable Output<Boolean> opportunisticEncryption;
 
     /**
-     * @return Turn on or off Opportunistic Encryption.
+     * @return Whether to enable Opportunistic Encryption.
      * 
      */
     public Optional<Output<Boolean>> opportunisticEncryption() {
@@ -464,14 +478,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Override the IP/TCP destination.
+     * An origin to route to.
      * 
      */
     @Import(name="origin")
     private @Nullable Output<RulesetRuleActionParametersOriginArgs> origin;
 
     /**
-     * @return Override the IP/TCP destination.
+     * @return An origin to route to.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersOriginArgs>> origin() {
@@ -479,14 +493,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * Whether Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     @Import(name="originCacheControl")
     private @Nullable Output<Boolean> originCacheControl;
 
     /**
-     * @return When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * @return Whether Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     public Optional<Output<Boolean>> originCacheControl() {
@@ -494,14 +508,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * Whether to generate Cloudflare error pages for issues from the origin server.
      * 
      */
     @Import(name="originErrorPagePassthru")
     private @Nullable Output<Boolean> originErrorPagePassthru;
 
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * @return Whether to generate Cloudflare error pages for issues from the origin server.
      * 
      */
     public Optional<Output<Boolean>> originErrorPagePassthru() {
@@ -524,24 +538,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * A phase to skip the execution of. This property is only compatible with products.
-     * Available values: &#34;current&#34;.
-     * 
-     */
-    @Import(name="phase")
-    private @Nullable Output<String> phase;
-
-    /**
-     * @return A phase to skip the execution of. This property is only compatible with products.
-     * Available values: &#34;current&#34;.
-     * 
-     */
-    public Optional<Output<String>> phase() {
-        return Optional.ofNullable(this.phase);
-    }
-
-    /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     @Import(name="phases")
@@ -549,6 +547,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public Optional<Output<List<String>>> phases() {
@@ -556,7 +555,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Configure the Polish level.
+     * The Polish level to configure.
      * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
@@ -564,7 +563,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private @Nullable Output<String> polish;
 
     /**
-     * @return Configure the Polish level.
+     * @return The Polish level to configure.
      * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
@@ -574,6 +573,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * A list of legacy security products to skip the execution of.
+     * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     @Import(name="products")
@@ -581,6 +581,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return A list of legacy security products to skip the execution of.
+     * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     public Optional<Output<List<String>>> products() {
@@ -603,14 +604,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     @Import(name="readTimeout")
     private @Nullable Output<Integer> readTimeout;
 
     /**
-     * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * @return A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     public Optional<Output<Integer>> readTimeout() {
@@ -633,14 +634,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     @Import(name="respectStrongEtags")
     private @Nullable Output<Boolean> respectStrongEtags;
 
     /**
-     * @return Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * @return Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     public Optional<Output<Boolean>> respectStrongEtags() {
@@ -678,14 +679,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Rocket Loader.
+     * Whether to enable Rocket Loader.
      * 
      */
     @Import(name="rocketLoader")
     private @Nullable Output<Boolean> rocketLoader;
 
     /**
-     * @return Turn on or off Rocket Loader.
+     * @return Whether to enable Rocket Loader.
      * 
      */
     public Optional<Output<Boolean>> rocketLoader() {
@@ -740,7 +741,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Configure the Security Level.
+     * The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
@@ -748,7 +749,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private @Nullable Output<String> securityLevel;
 
     /**
-     * @return Configure the Security Level.
+     * @return The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
@@ -757,14 +758,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * When to serve stale content from cache.
      * 
      */
     @Import(name="serveStale")
     private @Nullable Output<RulesetRuleActionParametersServeStaleArgs> serveStale;
 
     /**
-     * @return Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return When to serve stale content from cache.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersServeStaleArgs>> serveStale() {
@@ -772,14 +773,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Server Side Excludes.
+     * Whether to enable Server-Side Excludes.
      * 
      */
     @Import(name="serverSideExcludes")
     private @Nullable Output<Boolean> serverSideExcludes;
 
     /**
-     * @return Turn on or off Server Side Excludes.
+     * @return Whether to enable Server-Side Excludes.
      * 
      */
     public Optional<Output<Boolean>> serverSideExcludes() {
@@ -787,14 +788,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Override the Server Name Indication (SNI).
+     * A Server Name Indication (SNI) override.
      * 
      */
     @Import(name="sni")
     private @Nullable Output<RulesetRuleActionParametersSniArgs> sni;
 
     /**
-     * @return Override the Server Name Indication (SNI).
+     * @return A Server Name Indication (SNI) override.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersSniArgs>> sni() {
@@ -802,7 +803,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Configure the SSL level.
+     * The SSL level to configure.
      * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
@@ -810,7 +811,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private @Nullable Output<String> ssl;
 
     /**
-     * @return Configure the SSL level.
+     * @return The SSL level to configure.
      * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
@@ -823,25 +824,25 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      * 
      */
     @Import(name="statusCode")
-    private @Nullable Output<Double> statusCode;
+    private @Nullable Output<Integer> statusCode;
 
     /**
      * @return The status code to use for the error.
      * 
      */
-    public Optional<Output<Double>> statusCode() {
+    public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
     /**
-     * Turn on or off Signed Exchanges (SXG).
+     * Whether to enable Signed Exchanges (SXG).
      * 
      */
     @Import(name="sxg")
     private @Nullable Output<Boolean> sxg;
 
     /**
-     * @return Turn on or off Signed Exchanges (SXG).
+     * @return Whether to enable Signed Exchanges (SXG).
      * 
      */
     public Optional<Output<Boolean>> sxg() {
@@ -864,14 +865,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * URI to rewrite the request to.
+     * A URI rewrite.
      * 
      */
     @Import(name="uri")
     private @Nullable Output<RulesetRuleActionParametersUriArgs> uri;
 
     /**
-     * @return URI to rewrite the request to.
+     * @return A URI rewrite.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersUriArgs>> uri() {
@@ -883,6 +884,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
         this.additionalCacheablePorts = $.additionalCacheablePorts;
         this.algorithms = $.algorithms;
+        this.assetName = $.assetName;
         this.automaticHttpsRewrites = $.automaticHttpsRewrites;
         this.autominify = $.autominify;
         this.bic = $.bic;
@@ -913,7 +915,6 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.originCacheControl = $.originCacheControl;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
         this.overrides = $.overrides;
-        this.phase = $.phase;
         this.phases = $.phases;
         this.polish = $.polish;
         this.products = $.products;
@@ -957,7 +958,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalCacheablePorts List of additional ports that caching can be enabled on.
+         * @param additionalCacheablePorts A list of additional ports that caching should be enabled on.
          * 
          * @return builder
          * 
@@ -968,7 +969,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalCacheablePorts List of additional ports that caching can be enabled on.
+         * @param additionalCacheablePorts A list of additional ports that caching should be enabled on.
          * 
          * @return builder
          * 
@@ -978,7 +979,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param additionalCacheablePorts List of additional ports that caching can be enabled on.
+         * @param additionalCacheablePorts A list of additional ports that caching should be enabled on.
          * 
          * @return builder
          * 
@@ -1019,7 +1020,28 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param automaticHttpsRewrites Turn on or off Automatic HTTPS Rewrites.
+         * @param assetName The name of a custom asset to serve as the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetName(@Nullable Output<String> assetName) {
+            $.assetName = assetName;
+            return this;
+        }
+
+        /**
+         * @param assetName The name of a custom asset to serve as the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetName(String assetName) {
+            return assetName(Output.of(assetName));
+        }
+
+        /**
+         * @param automaticHttpsRewrites Whether to enable Automatic HTTPS Rewrites.
          * 
          * @return builder
          * 
@@ -1030,7 +1052,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param automaticHttpsRewrites Turn on or off Automatic HTTPS Rewrites.
+         * @param automaticHttpsRewrites Whether to enable Automatic HTTPS Rewrites.
          * 
          * @return builder
          * 
@@ -1040,7 +1062,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autominify Select which file extensions to minify automatically.
+         * @param autominify Which file extensions to minify automatically.
          * 
          * @return builder
          * 
@@ -1051,7 +1073,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autominify Select which file extensions to minify automatically.
+         * @param autominify Which file extensions to minify automatically.
          * 
          * @return builder
          * 
@@ -1061,7 +1083,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bic Turn on or off Browser Integrity Check.
+         * @param bic Whether to enable Browser Integrity Check (BIC).
          * 
          * @return builder
          * 
@@ -1072,7 +1094,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param bic Turn on or off Browser Integrity Check.
+         * @param bic Whether to enable Browser Integrity Check (BIC).
          * 
          * @return builder
          * 
@@ -1082,7 +1104,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param browserTtl Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+         * @param browserTtl How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
          * 
          * @return builder
          * 
@@ -1093,7 +1115,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param browserTtl Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+         * @param browserTtl How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
          * 
          * @return builder
          * 
@@ -1103,7 +1125,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cache Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+         * @param cache Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
          * 
          * @return builder
          * 
@@ -1114,7 +1136,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cache Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+         * @param cache Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
          * 
          * @return builder
          * 
@@ -1124,7 +1146,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cacheKey Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+         * @param cacheKey Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
          * 
          * @return builder
          * 
@@ -1135,7 +1157,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cacheKey Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+         * @param cacheKey Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
          * 
          * @return builder
          * 
@@ -1145,7 +1167,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cacheReserve Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+         * @param cacheReserve Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
          * 
          * @return builder
          * 
@@ -1156,7 +1178,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cacheReserve Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+         * @param cacheReserve Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
          * 
          * @return builder
          * 
@@ -1166,7 +1188,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content Error response content.
+         * @param content The response content.
          * 
          * @return builder
          * 
@@ -1177,7 +1199,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content Error response content.
+         * @param content The response content.
          * 
          * @return builder
          * 
@@ -1187,8 +1209,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param contentType Content-type header to set with the response.
-         * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+         * @param contentType The content type header to set with the error response.
+         * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
          * 
          * @return builder
          * 
@@ -1199,8 +1221,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param contentType Content-type header to set with the response.
-         * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+         * @param contentType The content type header to set with the error response.
+         * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
          * 
          * @return builder
          * 
@@ -1241,7 +1263,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableApps Turn off all active Cloudflare Apps.
+         * @param disableApps Whether to disable Cloudflare Apps.
          * 
          * @return builder
          * 
@@ -1252,7 +1274,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableApps Turn off all active Cloudflare Apps.
+         * @param disableApps Whether to disable Cloudflare Apps.
          * 
          * @return builder
          * 
@@ -1262,7 +1284,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableRum Turn off Real User Monitoring (RUM).
+         * @param disableRum Whether to disable Real User Monitoring (RUM).
          * 
          * @return builder
          * 
@@ -1273,7 +1295,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableRum Turn off Real User Monitoring (RUM).
+         * @param disableRum Whether to disable Real User Monitoring (RUM).
          * 
          * @return builder
          * 
@@ -1283,7 +1305,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableZaraz Turn off Zaraz.
+         * @param disableZaraz Whether to disable Zaraz.
          * 
          * @return builder
          * 
@@ -1294,7 +1316,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableZaraz Turn off Zaraz.
+         * @param disableZaraz Whether to disable Zaraz.
          * 
          * @return builder
          * 
@@ -1304,7 +1326,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param edgeTtl TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+         * @param edgeTtl How long the Cloudflare edge network should cache the response.
          * 
          * @return builder
          * 
@@ -1315,7 +1337,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param edgeTtl TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+         * @param edgeTtl How long the Cloudflare edge network should cache the response.
          * 
          * @return builder
          * 
@@ -1325,7 +1347,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param emailObfuscation Turn on or off Email Obfuscation.
+         * @param emailObfuscation Whether to enable Email Obfuscation.
          * 
          * @return builder
          * 
@@ -1336,7 +1358,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param emailObfuscation Turn on or off Email Obfuscation.
+         * @param emailObfuscation Whether to enable Email Obfuscation.
          * 
          * @return builder
          * 
@@ -1346,7 +1368,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fonts Turn on or off Cloudflare Fonts.
+         * @param fonts Whether to enable Cloudflare Fonts.
          * 
          * @return builder
          * 
@@ -1357,7 +1379,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fonts Turn on or off Cloudflare Fonts.
+         * @param fonts Whether to enable Cloudflare Fonts.
          * 
          * @return builder
          * 
@@ -1367,7 +1389,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fromList Serve a redirect based on a bulk list lookup.
+         * @param fromList A redirect based on a bulk list lookup.
          * 
          * @return builder
          * 
@@ -1378,7 +1400,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fromList Serve a redirect based on a bulk list lookup.
+         * @param fromList A redirect based on a bulk list lookup.
          * 
          * @return builder
          * 
@@ -1388,7 +1410,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fromValue Serve a redirect based on the request properties.
+         * @param fromValue A redirect based on the request properties.
          * 
          * @return builder
          * 
@@ -1399,7 +1421,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fromValue Serve a redirect based on the request properties.
+         * @param fromValue A redirect based on the request properties.
          * 
          * @return builder
          * 
@@ -1409,7 +1431,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param headers Map of request headers to modify.
+         * @param headers A map of headers to rewrite.
          * 
          * @return builder
          * 
@@ -1420,7 +1442,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param headers Map of request headers to modify.
+         * @param headers A map of headers to rewrite.
          * 
          * @return builder
          * 
@@ -1430,7 +1452,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostHeader Rewrite the HTTP Host header.
+         * @param hostHeader A value to rewrite the HTTP host header to.
          * 
          * @return builder
          * 
@@ -1441,7 +1463,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostHeader Rewrite the HTTP Host header.
+         * @param hostHeader A value to rewrite the HTTP host header to.
          * 
          * @return builder
          * 
@@ -1451,7 +1473,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hotlinkProtection Turn on or off the Hotlink Protection.
+         * @param hotlinkProtection Whether to enable Hotlink Protection.
          * 
          * @return builder
          * 
@@ -1462,7 +1484,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hotlinkProtection Turn on or off the Hotlink Protection.
+         * @param hotlinkProtection Whether to enable Hotlink Protection.
          * 
          * @return builder
          * 
@@ -1493,7 +1515,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param increment Increment contains the delta to change the score and can be either positive or negative.
+         * @param increment A delta to change the score by, which can be either positive or negative.
          * 
          * @return builder
          * 
@@ -1504,7 +1526,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param increment Increment contains the delta to change the score and can be either positive or negative.
+         * @param increment A delta to change the score by, which can be either positive or negative.
          * 
          * @return builder
          * 
@@ -1535,7 +1557,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mirage Turn on or off Mirage.
+         * @param mirage Whether to enable Mirage.
          * 
          * @return builder
          * 
@@ -1546,7 +1568,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mirage Turn on or off Mirage.
+         * @param mirage Whether to enable Mirage.
          * 
          * @return builder
          * 
@@ -1556,7 +1578,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param opportunisticEncryption Turn on or off Opportunistic Encryption.
+         * @param opportunisticEncryption Whether to enable Opportunistic Encryption.
          * 
          * @return builder
          * 
@@ -1567,7 +1589,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param opportunisticEncryption Turn on or off Opportunistic Encryption.
+         * @param opportunisticEncryption Whether to enable Opportunistic Encryption.
          * 
          * @return builder
          * 
@@ -1577,7 +1599,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param origin Override the IP/TCP destination.
+         * @param origin An origin to route to.
          * 
          * @return builder
          * 
@@ -1588,7 +1610,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param origin Override the IP/TCP destination.
+         * @param origin An origin to route to.
          * 
          * @return builder
          * 
@@ -1598,7 +1620,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originCacheControl When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+         * @param originCacheControl Whether Cloudflare will aim to strictly adhere to RFC 7234.
          * 
          * @return builder
          * 
@@ -1609,7 +1631,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originCacheControl When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+         * @param originCacheControl Whether Cloudflare will aim to strictly adhere to RFC 7234.
          * 
          * @return builder
          * 
@@ -1619,7 +1641,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+         * @param originErrorPagePassthru Whether to generate Cloudflare error pages for issues from the origin server.
          * 
          * @return builder
          * 
@@ -1630,7 +1652,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+         * @param originErrorPagePassthru Whether to generate Cloudflare error pages for issues from the origin server.
          * 
          * @return builder
          * 
@@ -1661,30 +1683,8 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phase A phase to skip the execution of. This property is only compatible with products.
-         * Available values: &#34;current&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phase(@Nullable Output<String> phase) {
-            $.phase = phase;
-            return this;
-        }
-
-        /**
-         * @param phase A phase to skip the execution of. This property is only compatible with products.
-         * Available values: &#34;current&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder phase(String phase) {
-            return phase(Output.of(phase));
-        }
-
-        /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1696,6 +1696,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1706,6 +1707,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+         * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
          * 
          * @return builder
          * 
@@ -1715,7 +1717,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param polish Configure the Polish level.
+         * @param polish The Polish level to configure.
          * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
@@ -1727,7 +1729,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param polish Configure the Polish level.
+         * @param polish The Polish level to configure.
          * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
@@ -1739,6 +1741,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param products A list of legacy security products to skip the execution of.
+         * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
          * 
          * @return builder
          * 
@@ -1750,6 +1753,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param products A list of legacy security products to skip the execution of.
+         * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
          * 
          * @return builder
          * 
@@ -1760,6 +1764,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param products A list of legacy security products to skip the execution of.
+         * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
          * 
          * @return builder
          * 
@@ -1800,7 +1805,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param readTimeout Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+         * @param readTimeout A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
          * 
          * @return builder
          * 
@@ -1811,7 +1816,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param readTimeout Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+         * @param readTimeout A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
          * 
          * @return builder
          * 
@@ -1852,7 +1857,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param respectStrongEtags Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+         * @param respectStrongEtags Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
          * 
          * @return builder
          * 
@@ -1863,7 +1868,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param respectStrongEtags Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+         * @param respectStrongEtags Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
          * 
          * @return builder
          * 
@@ -1925,7 +1930,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader.
+         * @param rocketLoader Whether to enable Rocket Loader.
          * 
          * @return builder
          * 
@@ -1936,7 +1941,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader.
+         * @param rocketLoader Whether to enable Rocket Loader.
          * 
          * @return builder
          * 
@@ -2021,7 +2026,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityLevel Configure the Security Level.
+         * @param securityLevel The Security Level to configure.
          * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
          * 
          * @return builder
@@ -2033,7 +2038,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securityLevel Configure the Security Level.
+         * @param securityLevel The Security Level to configure.
          * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
          * 
          * @return builder
@@ -2044,7 +2049,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serveStale Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+         * @param serveStale When to serve stale content from cache.
          * 
          * @return builder
          * 
@@ -2055,7 +2060,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serveStale Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+         * @param serveStale When to serve stale content from cache.
          * 
          * @return builder
          * 
@@ -2065,7 +2070,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverSideExcludes Turn on or off Server Side Excludes.
+         * @param serverSideExcludes Whether to enable Server-Side Excludes.
          * 
          * @return builder
          * 
@@ -2076,7 +2081,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serverSideExcludes Turn on or off Server Side Excludes.
+         * @param serverSideExcludes Whether to enable Server-Side Excludes.
          * 
          * @return builder
          * 
@@ -2086,7 +2091,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sni Override the Server Name Indication (SNI).
+         * @param sni A Server Name Indication (SNI) override.
          * 
          * @return builder
          * 
@@ -2097,7 +2102,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sni Override the Server Name Indication (SNI).
+         * @param sni A Server Name Indication (SNI) override.
          * 
          * @return builder
          * 
@@ -2107,7 +2112,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ssl Configure the SSL level.
+         * @param ssl The SSL level to configure.
          * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
          * 
          * @return builder
@@ -2119,7 +2124,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ssl Configure the SSL level.
+         * @param ssl The SSL level to configure.
          * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
          * 
          * @return builder
@@ -2135,7 +2140,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder statusCode(@Nullable Output<Double> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
@@ -2146,12 +2151,12 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder statusCode(Double statusCode) {
+        public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
         /**
-         * @param sxg Turn on or off Signed Exchanges (SXG).
+         * @param sxg Whether to enable Signed Exchanges (SXG).
          * 
          * @return builder
          * 
@@ -2162,7 +2167,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param sxg Turn on or off Signed Exchanges (SXG).
+         * @param sxg Whether to enable Signed Exchanges (SXG).
          * 
          * @return builder
          * 
@@ -2203,7 +2208,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uri URI to rewrite the request to.
+         * @param uri A URI rewrite.
          * 
          * @return builder
          * 
@@ -2214,7 +2219,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uri URI to rewrite the request to.
+         * @param uri A URI rewrite.
          * 
          * @return builder
          * 

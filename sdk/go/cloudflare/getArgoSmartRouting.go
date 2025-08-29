@@ -54,8 +54,15 @@ type LookupArgoSmartRoutingArgs struct {
 
 // A collection of values returned by getArgoSmartRouting.
 type LookupArgoSmartRoutingResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Specifies if the setting is editable.
+	Editable bool `pulumi:"editable"`
+	// Specifies the identifier of the Argo Smart Routing setting.
 	Id string `pulumi:"id"`
+	// Specifies the time when the setting was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// Specifies the enablement value of Argo Smart Routing.
+	// Available values: "on", "off".
+	Value string `pulumi:"value"`
 	// Specifies the zone associated with the API call.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -94,9 +101,25 @@ func (o LookupArgoSmartRoutingResultOutput) ToLookupArgoSmartRoutingResultOutput
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Specifies if the setting is editable.
+func (o LookupArgoSmartRoutingResultOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupArgoSmartRoutingResult) bool { return v.Editable }).(pulumi.BoolOutput)
+}
+
+// Specifies the identifier of the Argo Smart Routing setting.
 func (o LookupArgoSmartRoutingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the time when the setting was last modified.
+func (o LookupArgoSmartRoutingResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Specifies the enablement value of Argo Smart Routing.
+// Available values: "on", "off".
+func (o LookupArgoSmartRoutingResultOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArgoSmartRoutingResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
 // Specifies the zone associated with the API call.

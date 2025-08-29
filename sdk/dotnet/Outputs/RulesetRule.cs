@@ -15,17 +15,13 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// The action to perform when the rule matches.
-        /// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+        /// Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
         /// </summary>
-        public readonly string? Action;
+        public readonly string Action;
         /// <summary>
         /// The parameters configuring the rule's action.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
-        /// <summary>
-        /// The categories of the rule.
-        /// </summary>
-        public readonly ImmutableArray<string> Categories;
         /// <summary>
         /// An informative description of the rule.
         /// </summary>
@@ -35,13 +31,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Configure checks for exposed credentials.
+        /// Configuration for exposed credential checking.
         /// </summary>
         public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
         /// <summary>
         /// The expression defining which traffic will match the rule.
         /// </summary>
-        public readonly string? Expression;
+        public readonly string Expression;
         /// <summary>
         /// The unique ID of the rule.
         /// </summary>
@@ -51,21 +47,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
         /// <summary>
-        /// An object configuring the rule's ratelimit behavior.
+        /// An object configuring the rule's rate limit behavior.
         /// </summary>
         public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
         /// <summary>
-        /// The reference of the rule (the rule ID by default).
+        /// The reference of the rule (the rule's ID by default).
         /// </summary>
         public readonly string? Ref;
 
         [OutputConstructor]
         private RulesetRule(
-            string? action,
+            string action,
 
             Outputs.RulesetRuleActionParameters? actionParameters,
-
-            ImmutableArray<string> categories,
 
             string? description,
 
@@ -73,7 +67,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleExposedCredentialCheck? exposedCredentialCheck,
 
-            string? expression,
+            string expression,
 
             string? id,
 
@@ -85,7 +79,6 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Action = action;
             ActionParameters = actionParameters;
-            Categories = categories;
             Description = description;
             Enabled = enabled;
             ExposedCredentialCheck = exposedCredentialCheck;

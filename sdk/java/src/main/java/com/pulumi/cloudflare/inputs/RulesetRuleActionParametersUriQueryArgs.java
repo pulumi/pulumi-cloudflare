@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersUriQueryArgs Empty = new RulesetRuleActionParametersUriQueryArgs();
 
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI query to.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI query to.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
     }
 
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI query to.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI query to.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param expression Expression to evaluate for the replacement value.
+         * @param expression An expression that evaluates to a value to rewrite the URI query to.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param expression Expression to evaluate for the replacement value.
+         * @param expression An expression that evaluates to a value to rewrite the URI query to.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param value Predefined replacement value.
+         * @param value A value to rewrite the URI query to.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
         }
 
         /**
-         * @param value Predefined replacement value.
+         * @param value A value to rewrite the URI query to.
          * 
          * @return builder
          * 

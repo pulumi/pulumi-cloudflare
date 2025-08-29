@@ -16,10 +16,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Whether to generate a log when the rule matches.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
 
         [OutputConstructor]
-        private RulesetRuleLogging(bool enabled)
+        private RulesetRuleLogging(bool? enabled)
         {
             Enabled = enabled;
         }

@@ -146,9 +146,29 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Defines a non-negative 32 bit integer.
+        /// </summary>
+        public readonly int Asn;
+        /// <summary>
+        /// Defines an informative summary of the list item.
+        /// </summary>
+        public readonly string Comment;
+        /// <summary>
+        /// The RFC 3339 timestamp of when the list was created.
+        /// </summary>
+        public readonly string CreatedOn;
+        /// <summary>
+        /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        /// </summary>
+        public readonly Outputs.GetListItemHostnameResult Hostname;
+        /// <summary>
+        /// Defines the unique ID of the item in the List.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        /// </summary>
+        public readonly string Ip;
         /// <summary>
         /// Defines the unique ID of the item in the List.
         /// </summary>
@@ -157,21 +177,50 @@ namespace Pulumi.Cloudflare
         /// The unique ID of the list.
         /// </summary>
         public readonly string ListId;
+        /// <summary>
+        /// The RFC 3339 timestamp of when the list was last modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// The definition of the redirect.
+        /// </summary>
+        public readonly Outputs.GetListItemRedirectResult Redirect;
 
         [OutputConstructor]
         private GetListItemResult(
             string accountId,
 
+            int asn,
+
+            string comment,
+
+            string createdOn,
+
+            Outputs.GetListItemHostnameResult hostname,
+
             string id,
+
+            string ip,
 
             string itemId,
 
-            string listId)
+            string listId,
+
+            string modifiedOn,
+
+            Outputs.GetListItemRedirectResult redirect)
         {
             AccountId = accountId;
+            Asn = asn;
+            Comment = comment;
+            CreatedOn = createdOn;
+            Hostname = hostname;
             Id = id;
+            Ip = ip;
             ItemId = itemId;
             ListId = listId;
+            ModifiedOn = modifiedOn;
+            Redirect = redirect;
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        /// Available values: "customized_block_page", "redirect_uri".
+        /// Available values: "", "customized_block_page", "redirect_uri".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

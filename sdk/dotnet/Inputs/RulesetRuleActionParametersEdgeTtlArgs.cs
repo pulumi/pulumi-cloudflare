@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The TTL (in seconds) if you choose override_origin mode.
+        /// The edge TTL (in seconds) if you choose the "override_origin" mode.
         /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }
 
         /// <summary>
-        /// Edge TTL options.
+        /// The edge TTL mode.
         /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         [Input("mode", required: true)]
@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>? _statusCodeTtls;
 
         /// <summary>
-        /// List of single status codes, or status code ranges to apply the selected mode.
+        /// A list of TTLs to apply to specific status codes or status code ranges.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs> StatusCodeTtls
         {

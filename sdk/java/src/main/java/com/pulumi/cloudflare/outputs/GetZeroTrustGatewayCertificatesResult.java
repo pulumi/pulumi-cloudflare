@@ -12,20 +12,20 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayCertificatesResult {
     /**
-     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     private String bindingStatus;
     /**
-     * @return The CA certificate
+     * @return The CA certificate(read only).
      * 
      */
     private String certificate;
     private String createdAt;
     private String expiresOn;
     /**
-     * @return The SHA256 fingerprint of the certificate.
+     * @return The SHA256 fingerprint of the certificate(read only).
      * 
      */
     private String fingerprint;
@@ -35,22 +35,22 @@ public final class GetZeroTrustGatewayCertificatesResult {
      */
     private String id;
     /**
-     * @return Use this certificate for Gateway TLS interception
+     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     private Boolean inUse;
     /**
-     * @return The organization that issued the certificate.
+     * @return The organization that issued the certificate(read only).
      * 
      */
     private String issuerOrg;
     /**
-     * @return The entire issuer field of the certificate.
+     * @return The entire issuer field of the certificate(read only).
      * 
      */
     private String issuerRaw;
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
@@ -60,7 +60,7 @@ public final class GetZeroTrustGatewayCertificatesResult {
 
     private GetZeroTrustGatewayCertificatesResult() {}
     /**
-     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -68,7 +68,7 @@ public final class GetZeroTrustGatewayCertificatesResult {
         return this.bindingStatus;
     }
     /**
-     * @return The CA certificate
+     * @return The CA certificate(read only).
      * 
      */
     public String certificate() {
@@ -81,7 +81,7 @@ public final class GetZeroTrustGatewayCertificatesResult {
         return this.expiresOn;
     }
     /**
-     * @return The SHA256 fingerprint of the certificate.
+     * @return The SHA256 fingerprint of the certificate(read only).
      * 
      */
     public String fingerprint() {
@@ -95,28 +95,28 @@ public final class GetZeroTrustGatewayCertificatesResult {
         return this.id;
     }
     /**
-     * @return Use this certificate for Gateway TLS interception
+     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     public Boolean inUse() {
         return this.inUse;
     }
     /**
-     * @return The organization that issued the certificate.
+     * @return The organization that issued the certificate(read only).
      * 
      */
     public String issuerOrg() {
         return this.issuerOrg;
     }
     /**
-     * @return The entire issuer field of the certificate.
+     * @return The entire issuer field of the certificate(read only).
      * 
      */
     public String issuerRaw() {
         return this.issuerRaw;
     }
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */

@@ -77,6 +77,7 @@ class _ZeroTrustTunnelWarpConnectorState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  account_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_src: Optional[pulumi.Input[_builtins.str]] = None,
                  connections: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]]] = None,
                  conns_active_at: Optional[pulumi.Input[_builtins.str]] = None,
                  conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -92,6 +93,8 @@ class _ZeroTrustTunnelWarpConnectorState:
         Input properties used for looking up and filtering ZeroTrustTunnelWarpConnector resources.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] account_tag: Cloudflare account ID
+        :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustTunnelWarpConnectorConnectionArgs']]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         :param pulumi.Input[_builtins.str] conns_active_at: Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         :param pulumi.Input[_builtins.str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
@@ -110,6 +113,8 @@ class _ZeroTrustTunnelWarpConnectorState:
             pulumi.set(__self__, "account_id", account_id)
         if account_tag is not None:
             pulumi.set(__self__, "account_tag", account_tag)
+        if config_src is not None:
+            pulumi.set(__self__, "config_src", config_src)
         if connections is not None:
             warnings.warn("""This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""", DeprecationWarning)
             pulumi.log.warn("""connections is deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""")
@@ -127,6 +132,9 @@ class _ZeroTrustTunnelWarpConnectorState:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if remote_config is not None:
+            warnings.warn("""Use the config_src field instead.""", DeprecationWarning)
+            pulumi.log.warn("""remote_config is deprecated: Use the config_src field instead.""")
         if remote_config is not None:
             pulumi.set(__self__, "remote_config", remote_config)
         if status is not None:
@@ -159,6 +167,19 @@ class _ZeroTrustTunnelWarpConnectorState:
     @account_tag.setter
     def account_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "config_src")
+
+    @config_src.setter
+    def config_src(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "config_src", value)
 
     @_builtins.property
     @pulumi.getter
@@ -247,6 +268,7 @@ class _ZeroTrustTunnelWarpConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="remoteConfig")
+    @_utilities.deprecated("""Use the config_src field instead.""")
     def remote_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
@@ -389,6 +411,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["tunnel_secret"] = None if tunnel_secret is None else pulumi.Output.secret(tunnel_secret)
             __props__.__dict__["account_tag"] = None
+            __props__.__dict__["config_src"] = None
             __props__.__dict__["connections"] = None
             __props__.__dict__["conns_active_at"] = None
             __props__.__dict__["conns_inactive_at"] = None
@@ -412,6 +435,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             account_tag: Optional[pulumi.Input[_builtins.str]] = None,
+            config_src: Optional[pulumi.Input[_builtins.str]] = None,
             connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConnectionArgs', 'ZeroTrustTunnelWarpConnectorConnectionArgsDict']]]]] = None,
             conns_active_at: Optional[pulumi.Input[_builtins.str]] = None,
             conns_inactive_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -432,6 +456,8 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Cloudflare account ID
         :param pulumi.Input[_builtins.str] account_tag: Cloudflare account ID
+        :param pulumi.Input[_builtins.str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+               Available values: "local", "cloudflare".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustTunnelWarpConnectorConnectionArgs', 'ZeroTrustTunnelWarpConnectorConnectionArgsDict']]]] connections: The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         :param pulumi.Input[_builtins.str] conns_active_at: Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
         :param pulumi.Input[_builtins.str] conns_inactive_at: Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
@@ -452,6 +478,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["account_tag"] = account_tag
+        __props__.__dict__["config_src"] = config_src
         __props__.__dict__["connections"] = connections
         __props__.__dict__["conns_active_at"] = conns_active_at
         __props__.__dict__["conns_inactive_at"] = conns_inactive_at
@@ -480,6 +507,15 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
         Cloudflare account ID
         """
         return pulumi.get(self, "account_tag")
+
+    @_builtins.property
+    @pulumi.getter(name="configSrc")
+    def config_src(self) -> pulumi.Output[_builtins.str]:
+        """
+        Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        Available values: "local", "cloudflare".
+        """
+        return pulumi.get(self, "config_src")
 
     @_builtins.property
     @pulumi.getter
@@ -540,6 +576,7 @@ class ZeroTrustTunnelWarpConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="remoteConfig")
+    @_utilities.deprecated("""Use the config_src field instead.""")
     def remote_config(self) -> pulumi.Output[_builtins.bool]:
         """
         If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Response status code lower bound.
+        /// The lower bound of the range.
         /// </summary>
         [Input("from")]
         public Input<int>? From { get; set; }
 
         /// <summary>
-        /// Response status code upper bound.
+        /// The upper bound of the range.
         /// </summary>
         [Input("to")]
         public Input<int>? To { get; set; }

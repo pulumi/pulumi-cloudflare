@@ -45,7 +45,7 @@ class GetLoadBalancerMonitorsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -100,7 +100,7 @@ def get_load_balancer_monitors(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -128,7 +128,7 @@ def get_load_balancer_monitors_output(account_id: Optional[pulumi.Input[_builtin
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

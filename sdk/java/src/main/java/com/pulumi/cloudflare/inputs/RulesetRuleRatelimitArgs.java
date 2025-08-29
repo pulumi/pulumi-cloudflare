@@ -20,14 +20,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     public static final RulesetRuleRatelimitArgs Empty = new RulesetRuleRatelimitArgs();
 
     /**
-     * Characteristics of the request on which the ratelimiter counter will be incremented.
+     * Characteristics of the request on which the rate limit counter will be incremented.
      * 
      */
     @Import(name="characteristics", required=true)
     private Output<List<String>> characteristics;
 
     /**
-     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
+     * @return Characteristics of the request on which the rate limit counter will be incremented.
      * 
      */
     public Output<List<String>> characteristics() {
@@ -35,14 +35,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+     * An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
      * 
      */
     @Import(name="countingExpression")
     private @Nullable Output<String> countingExpression;
 
     /**
-     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+     * @return An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
      * 
      */
     public Optional<Output<String>> countingExpression() {
@@ -95,14 +95,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Defines if ratelimit counting is only done when an origin is reached.
+     * Whether counting is only performed when an origin is reached.
      * 
      */
     @Import(name="requestsToOrigin")
     private @Nullable Output<Boolean> requestsToOrigin;
 
     /**
-     * @return Defines if ratelimit counting is only done when an origin is reached.
+     * @return Whether counting is only performed when an origin is reached.
      * 
      */
     public Optional<Output<Boolean>> requestsToOrigin() {
@@ -125,14 +125,14 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * A response header name provided by the origin, which contains the score to increment rate limit counter with.
      * 
      */
     @Import(name="scoreResponseHeaderName")
     private @Nullable Output<String> scoreResponseHeaderName;
 
     /**
-     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * @return A response header name provided by the origin, which contains the score to increment rate limit counter with.
      * 
      */
     public Optional<Output<String>> scoreResponseHeaderName() {
@@ -171,7 +171,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
+         * @param characteristics Characteristics of the request on which the rate limit counter will be incremented.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
+         * @param characteristics Characteristics of the request on which the rate limit counter will be incremented.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param characteristics Characteristics of the request on which the ratelimiter counter will be incremented.
+         * @param characteristics Characteristics of the request on which the rate limit counter will be incremented.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param countingExpression Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+         * @param countingExpression An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param countingExpression Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+         * @param countingExpression An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsToOrigin Defines if ratelimit counting is only done when an origin is reached.
+         * @param requestsToOrigin Whether counting is only performed when an origin is reached.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestsToOrigin Defines if ratelimit counting is only done when an origin is reached.
+         * @param requestsToOrigin Whether counting is only performed when an origin is reached.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scoreResponseHeaderName The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+         * @param scoreResponseHeaderName A response header name provided by the origin, which contains the score to increment rate limit counter with.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param scoreResponseHeaderName The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+         * @param scoreResponseHeaderName A response header name provided by the origin, which contains the score to increment rate limit counter with.
          * 
          * @return builder
          * 

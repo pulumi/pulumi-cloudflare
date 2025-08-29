@@ -73,9 +73,13 @@ type CertificatePack struct {
 	// Type of certificate pack.
 	// Available values: "advanced".
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors CertificatePackValidationErrorArrayOutput `pulumi:"validationErrors"`
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringOutput `pulumi:"validationMethod"`
+	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	ValidationRecords CertificatePackValidationRecordArrayOutput `pulumi:"validationRecords"`
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
@@ -144,9 +148,13 @@ type certificatePackState struct {
 	// Type of certificate pack.
 	// Available values: "advanced".
 	Type *string `pulumi:"type"`
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors []CertificatePackValidationError `pulumi:"validationErrors"`
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod *string `pulumi:"validationMethod"`
+	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays *int `pulumi:"validityDays"`
@@ -168,9 +176,13 @@ type CertificatePackState struct {
 	// Type of certificate pack.
 	// Available values: "advanced".
 	Type pulumi.StringPtrInput
+	// Domain validation errors that have been received by the certificate authority (CA).
+	ValidationErrors CertificatePackValidationErrorArrayInput
 	// Validation Method selected for the order.
 	// Available values: "txt", "http", "email".
 	ValidationMethod pulumi.StringPtrInput
+	// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+	ValidationRecords CertificatePackValidationRecordArrayInput
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntPtrInput
@@ -340,10 +352,20 @@ func (o CertificatePackOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// Domain validation errors that have been received by the certificate authority (CA).
+func (o CertificatePackOutput) ValidationErrors() CertificatePackValidationErrorArrayOutput {
+	return o.ApplyT(func(v *CertificatePack) CertificatePackValidationErrorArrayOutput { return v.ValidationErrors }).(CertificatePackValidationErrorArrayOutput)
+}
+
 // Validation Method selected for the order.
 // Available values: "txt", "http", "email".
 func (o CertificatePackOutput) ValidationMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ValidationMethod }).(pulumi.StringOutput)
+}
+
+// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+func (o CertificatePackOutput) ValidationRecords() CertificatePackValidationRecordArrayOutput {
+	return o.ApplyT(func(v *CertificatePack) CertificatePackValidationRecordArrayOutput { return v.ValidationRecords }).(CertificatePackValidationRecordArrayOutput)
 }
 
 // Validity Days selected for the order.

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -45,6 +46,21 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> bucketName() {
         return this.bucketName;
+    }
+
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    @Import(name="ciphers")
+    private @Nullable Output<List<String>> ciphers;
+
+    /**
+     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    public Optional<Output<List<String>>> ciphers() {
+        return Optional.ofNullable(this.ciphers);
     }
 
     /**
@@ -129,6 +145,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     private R2CustomDomainArgs(R2CustomDomainArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.ciphers = $.ciphers;
         this.domain = $.domain;
         this.enabled = $.enabled;
         this.jurisdiction = $.jurisdiction;
@@ -194,6 +211,37 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder bucketName(String bucketName) {
             return bucketName(Output.of(bucketName));
+        }
+
+        /**
+         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciphers(@Nullable Output<List<String>> ciphers) {
+            $.ciphers = ciphers;
+            return this;
+        }
+
+        /**
+         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciphers(List<String> ciphers) {
+            return ciphers(Output.of(ciphers));
+        }
+
+        /**
+         * @param ciphers An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ciphers(String... ciphers) {
+            return ciphers(List.of(ciphers));
         }
 
         /**

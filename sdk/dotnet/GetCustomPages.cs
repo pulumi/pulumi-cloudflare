@@ -95,7 +95,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Error Page Types
-        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
+        /// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Error Page Types
-        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
+        /// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
         /// </summary>
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// Error Page Types
-        /// Available values: "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit_block".
+        /// Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
         /// </summary>
         public readonly string Identifier;
         public readonly string ModifiedOn;

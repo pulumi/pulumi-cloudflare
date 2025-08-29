@@ -16,17 +16,9 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
 
     public static final TeamsRuleRuleSettingsCheckSessionArgs Empty = new TeamsRuleRuleSettingsCheckSessionArgs();
 
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
@@ -71,23 +63,11 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
             $ = new TeamsRuleRuleSettingsCheckSessionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param duration Configure how fresh the session needs to be to be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
-        /**
-         * @param duration Configure how fresh the session needs to be to be considered valid.
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }

@@ -15,14 +15,14 @@ public final class RulesetRuleActionParametersTransformedRequestFieldArgs extend
     public static final RulesetRuleActionParametersTransformedRequestFieldArgs Empty = new RulesetRuleActionParametersTransformedRequestFieldArgs();
 
     /**
-     * The name of the field.
+     * The name of the header.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return The name of the header.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class RulesetRuleActionParametersTransformedRequestFieldArgs extend
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the header.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class RulesetRuleActionParametersTransformedRequestFieldArgs extend
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the header.
          * 
          * @return builder
          * 

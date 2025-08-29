@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +17,37 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
     public static final ArgoSmartRoutingState Empty = new ArgoSmartRoutingState();
 
     /**
-     * Enables Argo Smart Routing.
+     * Specifies if the setting is editable.
+     * 
+     */
+    @Import(name="editable")
+    private @Nullable Output<Boolean> editable;
+
+    /**
+     * @return Specifies if the setting is editable.
+     * 
+     */
+    public Optional<Output<Boolean>> editable() {
+        return Optional.ofNullable(this.editable);
+    }
+
+    /**
+     * Specifies the time when the setting was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return Specifies the time when the setting was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -24,7 +55,7 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> value;
 
     /**
-     * @return Enables Argo Smart Routing.
+     * @return Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -50,6 +81,8 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
     private ArgoSmartRoutingState() {}
 
     private ArgoSmartRoutingState(ArgoSmartRoutingState $) {
+        this.editable = $.editable;
+        this.modifiedOn = $.modifiedOn;
         this.value = $.value;
         this.zoneId = $.zoneId;
     }
@@ -73,7 +106,49 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Enables Argo Smart Routing.
+         * @param editable Specifies if the setting is editable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editable(@Nullable Output<Boolean> editable) {
+            $.editable = editable;
+            return this;
+        }
+
+        /**
+         * @param editable Specifies if the setting is editable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder editable(Boolean editable) {
+            return editable(Output.of(editable));
+        }
+
+        /**
+         * @param modifiedOn Specifies the time when the setting was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn Specifies the time when the setting was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param value Specifies the enablement value of Argo Smart Routing.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -85,7 +160,7 @@ public final class ArgoSmartRoutingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Enables Argo Smart Routing.
+         * @param value Specifies the enablement value of Argo Smart Routing.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder

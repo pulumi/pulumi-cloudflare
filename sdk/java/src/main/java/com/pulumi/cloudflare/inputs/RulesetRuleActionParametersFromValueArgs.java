@@ -6,8 +6,9 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +19,14 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersFromValueArgs Empty = new RulesetRuleActionParametersFromValueArgs();
 
     /**
-     * Keep the query string of the original request.
+     * Whether to keep the query string of the original request.
      * 
      */
     @Import(name="preserveQueryString")
     private @Nullable Output<Boolean> preserveQueryString;
 
     /**
-     * @return Keep the query string of the original request.
+     * @return Whether to keep the query string of the original request.
      * 
      */
     public Optional<Output<Boolean>> preserveQueryString() {
@@ -33,35 +34,33 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     }
 
     /**
-     * The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * The status code to use for the redirect.
      * 
      */
     @Import(name="statusCode")
-    private @Nullable Output<Double> statusCode;
+    private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * @return The status code to use for the redirect.
      * 
      */
-    public Optional<Output<Double>> statusCode() {
+    public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      * 
      */
-    @Import(name="targetUrl")
-    private @Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
+    @Import(name="targetUrl", required=true)
+    private Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
 
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
-    public Optional<Output<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrl() {
-        return Optional.ofNullable(this.targetUrl);
+    public Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl() {
+        return this.targetUrl;
     }
 
     private RulesetRuleActionParametersFromValueArgs() {}
@@ -91,7 +90,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param preserveQueryString Keep the query string of the original request.
+         * @param preserveQueryString Whether to keep the query string of the original request.
          * 
          * @return builder
          * 
@@ -102,7 +101,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param preserveQueryString Keep the query string of the original request.
+         * @param preserveQueryString Whether to keep the query string of the original request.
          * 
          * @return builder
          * 
@@ -112,41 +111,39 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param statusCode The status code to be used for the redirect.
-         * Available values: 301, 302, 303, 307, 308.
+         * @param statusCode The status code to use for the redirect.
          * 
          * @return builder
          * 
          */
-        public Builder statusCode(@Nullable Output<Double> statusCode) {
+        public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
         /**
-         * @param statusCode The status code to be used for the redirect.
-         * Available values: 301, 302, 303, 307, 308.
+         * @param statusCode The status code to use for the redirect.
          * 
          * @return builder
          * 
          */
-        public Builder statusCode(Double statusCode) {
+        public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
         /**
-         * @param targetUrl The URL to redirect the request to.
+         * @param targetUrl A URL to redirect the request to.
          * 
          * @return builder
          * 
          */
-        public Builder targetUrl(@Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
+        public Builder targetUrl(Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
         /**
-         * @param targetUrl The URL to redirect the request to.
+         * @param targetUrl A URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -156,6 +153,9 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         public RulesetRuleActionParametersFromValueArgs build() {
+            if ($.targetUrl == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromValueArgs", "targetUrl");
+            }
             return $;
         }
     }

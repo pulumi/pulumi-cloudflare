@@ -25,7 +25,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      * @return Optional remark describing the route.
      * 
      */
-    private @Nullable String comment;
+    private String comment;
     /**
      * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
@@ -94,8 +94,8 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
      * @return Optional remark describing the route.
      * 
      */
-    public Optional<String> comment() {
-        return Optional.ofNullable(this.comment);
+    public String comment() {
+        return this.comment;
     }
     /**
      * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -185,7 +185,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private @Nullable String comment;
+        private String comment;
         private @Nullable String existedAt;
         private String id;
         private @Nullable Boolean isDeleted;
@@ -224,8 +224,10 @@ public final class GetZeroTrustTunnelCloudflaredRoutesInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder comment(@Nullable String comment) {
-
+        public Builder comment(String comment) {
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredRoutesInvokeResult", "comment");
+            }
             this.comment = comment;
             return this;
         }

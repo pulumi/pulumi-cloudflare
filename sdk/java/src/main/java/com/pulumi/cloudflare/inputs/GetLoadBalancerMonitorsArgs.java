@@ -18,14 +18,14 @@ public final class GetLoadBalancerMonitorsArgs extends com.pulumi.resources.Invo
     public static final GetLoadBalancerMonitorsArgs Empty = new GetLoadBalancerMonitorsArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -73,7 +73,7 @@ public final class GetLoadBalancerMonitorsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetLoadBalancerMonitorsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

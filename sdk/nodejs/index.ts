@@ -1290,6 +1290,16 @@ export const getSchemaValidationSettings: typeof import("./getSchemaValidationSe
 export const getSchemaValidationSettingsOutput: typeof import("./getSchemaValidationSettings").getSchemaValidationSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getSchemaValidationSettings","getSchemaValidationSettingsOutput"], () => require("./getSchemaValidationSettings"));
 
+export { GetSnippetArgs, GetSnippetResult, GetSnippetOutputArgs } from "./getSnippet";
+export const getSnippet: typeof import("./getSnippet").getSnippet = null as any;
+export const getSnippetOutput: typeof import("./getSnippet").getSnippetOutput = null as any;
+utilities.lazyLoad(exports, ["getSnippet","getSnippetOutput"], () => require("./getSnippet"));
+
+export { GetSnippetListArgs, GetSnippetListResult, GetSnippetListOutputArgs } from "./getSnippetList";
+export const getSnippetList: typeof import("./getSnippetList").getSnippetList = null as any;
+export const getSnippetListOutput: typeof import("./getSnippetList").getSnippetListOutput = null as any;
+utilities.lazyLoad(exports, ["getSnippetList","getSnippetListOutput"], () => require("./getSnippetList"));
+
 export { GetSnippetRulesListArgs, GetSnippetRulesListResult, GetSnippetRulesListOutputArgs } from "./getSnippetRulesList";
 export const getSnippetRulesList: typeof import("./getSnippetRulesList").getSnippetRulesList = null as any;
 export const getSnippetRulesListOutput: typeof import("./getSnippetRulesList").getSnippetRulesListOutput = null as any;
@@ -2223,6 +2233,11 @@ export type SchemaValidationSettings = import("./schemaValidationSettings").Sche
 export const SchemaValidationSettings: typeof import("./schemaValidationSettings").SchemaValidationSettings = null as any;
 utilities.lazyLoad(exports, ["SchemaValidationSettings"], () => require("./schemaValidationSettings"));
 
+export { SnippetArgs, SnippetState } from "./snippet";
+export type Snippet = import("./snippet").Snippet;
+export const Snippet: typeof import("./snippet").Snippet = null as any;
+utilities.lazyLoad(exports, ["Snippet"], () => require("./snippet"));
+
 export { SnippetRulesArgs, SnippetRulesState } from "./snippetRules";
 export type SnippetRules = import("./snippetRules").SnippetRules;
 export const SnippetRules: typeof import("./snippetRules").SnippetRules = null as any;
@@ -2996,6 +3011,8 @@ const _module = {
                 return new SchemaValidationSchemas(name, <any>undefined, { urn })
             case "cloudflare:index/schemaValidationSettings:SchemaValidationSettings":
                 return new SchemaValidationSettings(name, <any>undefined, { urn })
+            case "cloudflare:index/snippet:Snippet":
+                return new Snippet(name, <any>undefined, { urn })
             case "cloudflare:index/snippetRules:SnippetRules":
                 return new SnippetRules(name, <any>undefined, { urn })
             case "cloudflare:index/snippets:Snippets":
@@ -3330,6 +3347,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/schemaValidationOperationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/schemaValidationSchemas", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/schemaValidationSettings", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/snippet", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippetRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/snippets", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)

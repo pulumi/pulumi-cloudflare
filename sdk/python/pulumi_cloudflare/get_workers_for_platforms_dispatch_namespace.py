@@ -26,7 +26,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
     """
     A collection of values returned by getWorkersForPlatformsDispatchNamespace.
     """
-    def __init__(__self__, account_id=None, created_by=None, created_on=None, dispatch_namespace=None, id=None, modified_by=None, modified_on=None, namespace_id=None, namespace_name=None, script_count=None):
+    def __init__(__self__, account_id=None, created_by=None, created_on=None, dispatch_namespace=None, id=None, modified_by=None, modified_on=None, namespace_id=None, namespace_name=None, script_count=None, trusted_workers=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -57,6 +57,9 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
         if script_count and not isinstance(script_count, int):
             raise TypeError("Expected argument 'script_count' to be a int")
         pulumi.set(__self__, "script_count", script_count)
+        if trusted_workers and not isinstance(trusted_workers, bool):
+            raise TypeError("Expected argument 'trusted_workers' to be a bool")
+        pulumi.set(__self__, "trusted_workers", trusted_workers)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -138,6 +141,14 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
         """
         return pulumi.get(self, "script_count")
 
+    @_builtins.property
+    @pulumi.getter(name="trustedWorkers")
+    def trusted_workers(self) -> _builtins.bool:
+        """
+        Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+        """
+        return pulumi.get(self, "trusted_workers")
+
 
 class AwaitableGetWorkersForPlatformsDispatchNamespaceResult(GetWorkersForPlatformsDispatchNamespaceResult):
     # pylint: disable=using-constant-test
@@ -154,7 +165,8 @@ class AwaitableGetWorkersForPlatformsDispatchNamespaceResult(GetWorkersForPlatfo
             modified_on=self.modified_on,
             namespace_id=self.namespace_id,
             namespace_name=self.namespace_name,
-            script_count=self.script_count)
+            script_count=self.script_count,
+            trusted_workers=self.trusted_workers)
 
 
 def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.str] = None,
@@ -191,7 +203,8 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[_builtins.
         modified_on=pulumi.get(__ret__, 'modified_on'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         namespace_name=pulumi.get(__ret__, 'namespace_name'),
-        script_count=pulumi.get(__ret__, 'script_count'))
+        script_count=pulumi.get(__ret__, 'script_count'),
+        trusted_workers=pulumi.get(__ret__, 'trusted_workers'))
 def get_workers_for_platforms_dispatch_namespace_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                         dispatch_namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersForPlatformsDispatchNamespaceResult]:
@@ -225,4 +238,5 @@ def get_workers_for_platforms_dispatch_namespace_output(account_id: Optional[pul
         modified_on=pulumi.get(__response__, 'modified_on'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),
         namespace_name=pulumi.get(__response__, 'namespace_name'),
-        script_count=pulumi.get(__response__, 'script_count')))
+        script_count=pulumi.get(__response__, 'script_count'),
+        trusted_workers=pulumi.get(__response__, 'trusted_workers')))

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersUri {
     /**
-     * @return Path portion rewrite.
+     * @return A URI path rewrite.
      * 
      */
     private @Nullable RulesetRuleActionParametersUriPath path;
     /**
-     * @return Query portion rewrite.
+     * @return A URI query rewrite.
      * 
      */
     private @Nullable RulesetRuleActionParametersUriQuery query;
 
     private RulesetRuleActionParametersUri() {}
     /**
-     * @return Path portion rewrite.
+     * @return A URI path rewrite.
      * 
      */
     public Optional<RulesetRuleActionParametersUriPath> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return Query portion rewrite.
+     * @return A URI query rewrite.
      * 
      */
     public Optional<RulesetRuleActionParametersUriQuery> query() {

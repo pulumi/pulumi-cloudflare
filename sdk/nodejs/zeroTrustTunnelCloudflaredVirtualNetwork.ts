@@ -61,7 +61,7 @@ export class ZeroTrustTunnelCloudflaredVirtualNetwork extends pulumi.CustomResou
     /**
      * Optional remark describing the virtual network.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was created.
      */

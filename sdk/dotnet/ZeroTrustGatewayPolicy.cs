@@ -46,9 +46,6 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// The wirefilter expression used for device posture check matching.
-        /// </summary>
         [Output("devicePosture")]
         public Output<string> DevicePosture { get; private set; } = null!;
 
@@ -71,9 +68,6 @@ namespace Pulumi.Cloudflare
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
 
-        /// <summary>
-        /// The wirefilter expression used for identity matching.
-        /// </summary>
         [Output("identity")]
         public Output<string> Identity { get; private set; } = null!;
 
@@ -90,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> NotSharable { get; private set; } = null!;
 
         [Output("precedence")]
-        public Output<int?> Precedence { get; private set; } = null!;
+        public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
         /// The rule was shared via the Orgs API and cannot be edited by the current account
@@ -116,9 +110,6 @@ namespace Pulumi.Cloudflare
         [Output("sourceAccount")]
         public Output<string> SourceAccount { get; private set; } = null!;
 
-        /// <summary>
-        /// The wirefilter expression used for traffic matching.
-        /// </summary>
         [Output("traffic")]
         public Output<string> Traffic { get; private set; } = null!;
 
@@ -203,9 +194,6 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The wirefilter expression used for device posture check matching.
-        /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
@@ -234,9 +222,6 @@ namespace Pulumi.Cloudflare
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The wirefilter expression used for identity matching.
-        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
@@ -261,9 +246,6 @@ namespace Pulumi.Cloudflare
         [Input("schedule")]
         public Input<Inputs.ZeroTrustGatewayPolicyScheduleArgs>? Schedule { get; set; }
 
-        /// <summary>
-        /// The wirefilter expression used for traffic matching.
-        /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
 
@@ -300,9 +282,6 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The wirefilter expression used for device posture check matching.
-        /// </summary>
         [Input("devicePosture")]
         public Input<string>? DevicePosture { get; set; }
 
@@ -331,9 +310,6 @@ namespace Pulumi.Cloudflare
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The wirefilter expression used for identity matching.
-        /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
 
@@ -376,9 +352,6 @@ namespace Pulumi.Cloudflare
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
 
-        /// <summary>
-        /// The wirefilter expression used for traffic matching.
-        /// </summary>
         [Input("traffic")]
         public Input<string>? Traffic { get; set; }
 

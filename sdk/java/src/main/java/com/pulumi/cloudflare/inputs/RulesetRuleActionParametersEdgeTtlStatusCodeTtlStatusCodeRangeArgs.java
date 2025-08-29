@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs();
 
     /**
-     * Response status code lower bound.
+     * The lower bound of the range.
      * 
      */
     @Import(name="from")
     private @Nullable Output<Integer> from;
 
     /**
-     * @return Response status code lower bound.
+     * @return The lower bound of the range.
      * 
      */
     public Optional<Output<Integer>> from() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
     }
 
     /**
-     * Response status code upper bound.
+     * The upper bound of the range.
      * 
      */
     @Import(name="to")
     private @Nullable Output<Integer> to;
 
     /**
-     * @return Response status code upper bound.
+     * @return The upper bound of the range.
      * 
      */
     public Optional<Output<Integer>> to() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from Response status code lower bound.
+         * @param from The lower bound of the range.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param from Response status code lower bound.
+         * @param from The lower bound of the range.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to Response status code upper bound.
+         * @param to The upper bound of the range.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
         }
 
         /**
-         * @param to Response status code upper bound.
+         * @param to The upper bound of the range.
          * 
          * @return builder
          * 

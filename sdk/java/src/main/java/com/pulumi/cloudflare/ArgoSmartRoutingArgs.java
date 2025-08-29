@@ -15,7 +15,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
     public static final ArgoSmartRoutingArgs Empty = new ArgoSmartRoutingArgs();
 
     /**
-     * Enables Argo Smart Routing.
+     * Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -23,7 +23,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
     private Output<String> value;
 
     /**
-     * @return Enables Argo Smart Routing.
+     * @return Specifies the enablement value of Argo Smart Routing.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -72,7 +72,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value Enables Argo Smart Routing.
+         * @param value Specifies the enablement value of Argo Smart Routing.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class ArgoSmartRoutingArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param value Enables Argo Smart Routing.
+         * @param value Specifies the enablement value of Argo Smart Routing.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder

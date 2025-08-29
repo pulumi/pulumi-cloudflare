@@ -66,6 +66,10 @@ export interface GetBotManagementResult {
      */
     readonly id: string;
     /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     */
+    readonly isRobotsTxtManaged: boolean;
+    /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      */
     readonly optimizeWordpress: boolean;

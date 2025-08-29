@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersScripts = Cloudflare.GetWorkersScripts.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Tags = "production:yes,staging:no",
         ///     });
         /// 
         /// });
@@ -47,6 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersScripts = Cloudflare.GetWorkersScripts.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Tags = "production:yes,staging:no",
         ///     });
         /// 
         /// });
@@ -69,6 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkersScripts = Cloudflare.GetWorkersScripts.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Tags = "production:yes,staging:no",
         ///     });
         /// 
         /// });
@@ -93,6 +96,12 @@ namespace Pulumi.Cloudflare
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
+        /// <summary>
+        /// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+        /// </summary>
+        [Input("tags")]
+        public string? Tags { get; set; }
+
         public GetWorkersScriptsArgs()
         {
         }
@@ -112,6 +121,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
+
+        /// <summary>
+        /// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+        /// </summary>
+        [Input("tags")]
+        public Input<string>? Tags { get; set; }
 
         public GetWorkersScriptsInvokeArgs()
         {
@@ -139,6 +154,10 @@ namespace Pulumi.Cloudflare
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkersScriptsResultResult> Results;
+        /// <summary>
+        /// Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+        /// </summary>
+        public readonly string? Tags;
 
         [OutputConstructor]
         private GetWorkersScriptsResult(
@@ -148,12 +167,15 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
-            ImmutableArray<Outputs.GetWorkersScriptsResultResult> results)
+            ImmutableArray<Outputs.GetWorkersScriptsResultResult> results,
+
+            string? tags)
         {
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
             Results = results;
+            Tags = tags;
         }
     }
 }

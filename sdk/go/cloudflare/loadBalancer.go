@@ -42,7 +42,7 @@ type LoadBalancer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayOutput `pulumi:"networks"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapOutput `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied pulumi.BoolOutput `pulumi:"proxied"`
@@ -52,11 +52,12 @@ type LoadBalancer struct {
 	RegionPools pulumi.StringArrayMapOutput `pulumi:"regionPools"`
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules LoadBalancerRuleArrayOutput `pulumi:"rules"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes LoadBalancerSessionAffinityAttributesOutput `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64Output `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
@@ -128,7 +129,7 @@ type loadBalancerState struct {
 	Name *string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []string `pulumi:"networks"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied *bool `pulumi:"proxied"`
@@ -138,11 +139,12 @@ type loadBalancerState struct {
 	RegionPools map[string][]string `pulumi:"regionPools"`
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules []LoadBalancerRule `pulumi:"rules"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes *LoadBalancerSessionAffinityAttributes `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl *float64 `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
@@ -173,7 +175,7 @@ type LoadBalancerState struct {
 	Name pulumi.StringPtrInput
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayInput
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied pulumi.BoolPtrInput
@@ -183,11 +185,12 @@ type LoadBalancerState struct {
 	RegionPools pulumi.StringArrayMapInput
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules LoadBalancerRuleArrayInput
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringPtrInput
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes LoadBalancerSessionAffinityAttributesPtrInput
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64PtrInput
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringPtrInput
@@ -220,7 +223,7 @@ type loadBalancerArgs struct {
 	Name string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []string `pulumi:"networks"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied *bool `pulumi:"proxied"`
@@ -230,11 +233,12 @@ type loadBalancerArgs struct {
 	RegionPools map[string][]string `pulumi:"regionPools"`
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules []LoadBalancerRule `pulumi:"rules"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes *LoadBalancerSessionAffinityAttributes `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl *float64 `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
@@ -263,7 +267,7 @@ type LoadBalancerArgs struct {
 	Name pulumi.StringInput
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayInput
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied pulumi.BoolPtrInput
@@ -273,11 +277,12 @@ type LoadBalancerArgs struct {
 	RegionPools pulumi.StringArrayMapInput
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules LoadBalancerRuleArrayInput
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringPtrInput
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes LoadBalancerSessionAffinityAttributesPtrInput
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64PtrInput
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringPtrInput
@@ -426,7 +431,7 @@ func (o LoadBalancerOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
-// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 func (o LoadBalancerOutput) PopPools() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayMapOutput { return v.PopPools }).(pulumi.StringArrayMapOutput)
 }
@@ -451,7 +456,8 @@ func (o LoadBalancerOutput) Rules() LoadBalancerRuleArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerRuleArrayOutput { return v.Rules }).(LoadBalancerRuleArrayOutput)
 }
 
-// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+// Available values: "none", "cookie", "ipCookie", "header".
 func (o LoadBalancerOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
 }
@@ -461,7 +467,7 @@ func (o LoadBalancerOutput) SessionAffinityAttributes() LoadBalancerSessionAffin
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerSessionAffinityAttributesOutput { return v.SessionAffinityAttributes }).(LoadBalancerSessionAffinityAttributesOutput)
 }
 
-// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 func (o LoadBalancerOutput) SessionAffinityTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.Float64Output { return v.SessionAffinityTtl }).(pulumi.Float64Output)
 }

@@ -32,7 +32,10 @@ import (
 //				Domain:     pulumi.String("domain"),
 //				Enabled:    pulumi.Bool(true),
 //				ZoneId:     pulumi.String("zoneId"),
-//				MinTls:     pulumi.String("1.0"),
+//				Ciphers: pulumi.StringArray{
+//					pulumi.String("string"),
+//				},
+//				MinTls: pulumi.String("1.0"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,6 +52,8 @@ type R2CustomDomain struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers pulumi.StringArrayOutput `pulumi:"ciphers"`
 	// Name of the custom domain to be added.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -114,6 +119,8 @@ type r2customDomainState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers []string `pulumi:"ciphers"`
 	// Name of the custom domain to be added.
 	Domain *string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -135,6 +142,8 @@ type R2CustomDomainState struct {
 	AccountId pulumi.StringPtrInput
 	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers pulumi.StringArrayInput
 	// Name of the custom domain to be added.
 	Domain pulumi.StringPtrInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -160,6 +169,8 @@ type r2customDomainArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers []string `pulumi:"ciphers"`
 	// Name of the custom domain to be added.
 	Domain string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -179,6 +190,8 @@ type R2CustomDomainArgs struct {
 	AccountId pulumi.StringInput
 	// Name of the bucket.
 	BucketName pulumi.StringInput
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers pulumi.StringArrayInput
 	// Name of the custom domain to be added.
 	Domain pulumi.StringInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
@@ -287,6 +300,11 @@ func (o R2CustomDomainOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket.
 func (o R2CustomDomainOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+func (o R2CustomDomainOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringArrayOutput { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
 
 // Name of the custom domain to be added.

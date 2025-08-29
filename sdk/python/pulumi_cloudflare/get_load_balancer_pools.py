@@ -48,7 +48,7 @@ class GetLoadBalancerPoolsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -114,7 +114,7 @@ def get_load_balancer_pools(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
@@ -147,7 +147,7 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[_builtins.s
     ```
 
 
-    :param _builtins.str account_id: Identifier
+    :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
