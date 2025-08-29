@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *             .crawlerProtection("enabled")
  *             .enableJs(true)
  *             .fightMode(true)
+ *             .isRobotsTxtManaged(true)
  *             .build());
  * 
  *     }
@@ -137,6 +138,20 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> fightMode() {
         return this.fightMode;
+    }
+    /**
+     * Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    @Export(name="isRobotsTxtManaged", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isRobotsTxtManaged;
+
+    /**
+     * @return Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    public Output<Boolean> isRobotsTxtManaged() {
+        return this.isRobotsTxtManaged;
     }
     /**
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.

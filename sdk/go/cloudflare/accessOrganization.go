@@ -20,13 +20,13 @@ type AccessOrganization struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
+	AllowAuthenticateViaWarp pulumi.BoolOutput `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrOutput `pulumi:"authDomain"`
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolOutput                      `pulumi:"autoRedirectToIdentity"`
 	CustomPages            AccessOrganizationCustomPagesPtrOutput `pulumi:"customPages"`
-	IsUiReadOnly           pulumi.BoolPtrOutput                   `pulumi:"isUiReadOnly"`
+	IsUiReadOnly           pulumi.BoolOutput                      `pulumi:"isUiReadOnly"`
 	LoginDesign            AccessOrganizationLoginDesignPtrOutput `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
@@ -279,8 +279,8 @@ func (o AccessOrganizationOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-func (o AccessOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
+func (o AccessOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
 }
 
 // The unique subdomain assigned to your Zero Trust organization.
@@ -297,8 +297,8 @@ func (o AccessOrganizationOutput) CustomPages() AccessOrganizationCustomPagesPtr
 	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationCustomPagesPtrOutput { return v.CustomPages }).(AccessOrganizationCustomPagesPtrOutput)
 }
 
-func (o AccessOrganizationOutput) IsUiReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.IsUiReadOnly }).(pulumi.BoolPtrOutput)
+func (o AccessOrganizationOutput) IsUiReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.IsUiReadOnly }).(pulumi.BoolOutput)
 }
 
 func (o AccessOrganizationOutput) LoginDesign() AccessOrganizationLoginDesignPtrOutput {

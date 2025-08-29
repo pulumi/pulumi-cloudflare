@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -192,6 +193,20 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      */
     public Output<Integer> scriptCount() {
         return this.scriptCount;
+    }
+    /**
+     * Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    @Export(name="trustedWorkers", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> trustedWorkers;
+
+    /**
+     * @return Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    public Output<Boolean> trustedWorkers() {
+        return this.trustedWorkers;
     }
 
     /**

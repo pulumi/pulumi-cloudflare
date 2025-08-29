@@ -44,7 +44,7 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -57,6 +57,10 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
+     * The timestamp of when the ruleset was last modified.
+     */
+    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    /**
      * The human-readable name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
@@ -68,9 +72,13 @@ export class Ruleset extends pulumi.CustomResource {
     /**
      * The list of rules in the ruleset.
      */
-    public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
+    public readonly rules!: pulumi.Output<outputs.RulesetRule[]>;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The version of the ruleset.
+     */
+    public /*out*/ readonly version!: pulumi.Output<string>;
+    /**
+     * The unique ID of the zone.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -90,9 +98,11 @@ export class Ruleset extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["phase"] = state ? state.phase : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RulesetArgs | undefined;
@@ -112,6 +122,8 @@ export class Ruleset extends pulumi.CustomResource {
             resourceInputs["phase"] = args ? args.phase : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["lastUpdated"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Ruleset.__pulumiType, name, resourceInputs, opts);
@@ -123,7 +135,7 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -135,6 +147,10 @@ export interface RulesetState {
      * Available values: "managed", "custom", "root", "zone".
      */
     kind?: pulumi.Input<string>;
+    /**
+     * The timestamp of when the ruleset was last modified.
+     */
+    lastUpdated?: pulumi.Input<string>;
     /**
      * The human-readable name of the ruleset.
      */
@@ -149,7 +165,11 @@ export interface RulesetState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The version of the ruleset.
+     */
+    version?: pulumi.Input<string>;
+    /**
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -159,7 +179,7 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -185,7 +205,7 @@ export interface RulesetArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }

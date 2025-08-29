@@ -83,14 +83,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")
 public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -115,28 +115,28 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="consecutiveDown", refs={Integer.class}, tree="[0]")
-    private Output<Integer> consecutiveDown;
+    private Output</* @Nullable */ Integer> consecutiveDown;
 
     /**
      * @return To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
      * 
      */
-    public Output<Integer> consecutiveDown() {
-        return this.consecutiveDown;
+    public Output<Optional<Integer>> consecutiveDown() {
+        return Codegen.optional(this.consecutiveDown);
     }
     /**
      * To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      * 
      */
     @Export(name="consecutiveUp", refs={Integer.class}, tree="[0]")
-    private Output<Integer> consecutiveUp;
+    private Output</* @Nullable */ Integer> consecutiveUp;
 
     /**
      * @return To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      * 
      */
-    public Output<Integer> consecutiveUp() {
-        return this.consecutiveUp;
+    public Output<Optional<Integer>> consecutiveUp() {
+        return Codegen.optional(this.consecutiveUp);
     }
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
@@ -149,42 +149,42 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return Object description.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="expectedBody", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expectedBody;
+    private Output<String> expectedBody;
 
     /**
      * @return A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<String>> expectedBody() {
-        return Codegen.optional(this.expectedBody);
+    public Output<String> expectedBody() {
+        return this.expectedBody;
     }
     /**
      * The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="expectedCodes", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expectedCodes;
+    private Output<String> expectedCodes;
 
     /**
      * @return The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<String>> expectedCodes() {
-        return Codegen.optional(this.expectedCodes);
+    public Output<String> expectedCodes() {
+        return this.expectedCodes;
     }
     /**
      * Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
@@ -267,28 +267,28 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output<Integer> port;
+    private Output</* @Nullable */ Integer> port;
 
     /**
      * @return The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Output<Optional<Integer>> port() {
+        return Codegen.optional(this.port);
     }
     /**
      * Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
     @Export(name="probeZone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> probeZone;
+    private Output<String> probeZone;
 
     /**
      * @return Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      * 
      */
-    public Output<Optional<String>> probeZone() {
-        return Codegen.optional(this.probeZone);
+    public Output<String> probeZone() {
+        return this.probeZone;
     }
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.

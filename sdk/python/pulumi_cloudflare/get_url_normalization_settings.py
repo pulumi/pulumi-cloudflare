@@ -53,7 +53,7 @@ class GetUrlNormalizationSettingsResult:
     def scope(self) -> _builtins.str:
         """
         The scope of the URL normalization.
-        Available values: "incoming", "both".
+        Available values: "incoming", "both", "none".
         """
         return pulumi.get(self, "scope")
 

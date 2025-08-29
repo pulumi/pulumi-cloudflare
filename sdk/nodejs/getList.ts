@@ -36,7 +36,7 @@ export interface GetListArgs {
     /**
      * The unique ID of the list.
      */
-    listId?: string;
+    listId: string;
 }
 
 /**
@@ -67,7 +67,7 @@ export interface GetListResult {
     /**
      * The unique ID of the list.
      */
-    readonly listId?: string;
+    readonly listId: string;
     /**
      * The RFC 3339 timestamp of when the list was last modified.
      */
@@ -117,5 +117,5 @@ export interface GetListOutputArgs {
     /**
      * The unique ID of the list.
      */
-    listId?: pulumi.Input<string>;
+    listId: pulumi.Input<string>;
 }

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersBrowserTtlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The TTL (in seconds) if you choose override_origin mode.
+        /// The browser TTL (in seconds) if you choose the "override_origin" mode.
         /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }
 
         /// <summary>
-        /// Determines which browser ttl mode to use.
+        /// The browser TTL mode.
         /// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
         /// </summary>
         [Input("mode", required: true)]

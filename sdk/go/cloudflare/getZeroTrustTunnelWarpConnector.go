@@ -62,6 +62,9 @@ type LookupZeroTrustTunnelWarpConnectorResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Cloudflare account ID
 	AccountTag string `pulumi:"accountTag"`
+	// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+	// Available values: "local", "cloudflare".
+	ConfigSrc string `pulumi:"configSrc"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
 	//
 	// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -82,6 +85,8 @@ type LookupZeroTrustTunnelWarpConnectorResult struct {
 	// A user-friendly name for a tunnel.
 	Name string `pulumi:"name"`
 	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	//
+	// Deprecated: Use the configSrc field instead.
 	RemoteConfig bool `pulumi:"remoteConfig"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
 	// Available values: "inactive", "degraded", "healthy", "down".
@@ -140,6 +145,12 @@ func (o LookupZeroTrustTunnelWarpConnectorResultOutput) AccountTag() pulumi.Stri
 	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorResult) string { return v.AccountTag }).(pulumi.StringOutput)
 }
 
+// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+// Available values: "local", "cloudflare".
+func (o LookupZeroTrustTunnelWarpConnectorResultOutput) ConfigSrc() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorResult) string { return v.ConfigSrc }).(pulumi.StringOutput)
+}
+
 // The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
 //
 // Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -191,6 +202,8 @@ func (o LookupZeroTrustTunnelWarpConnectorResultOutput) Name() pulumi.StringOutp
 }
 
 // If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+//
+// Deprecated: Use the configSrc field instead.
 func (o LookupZeroTrustTunnelWarpConnectorResultOutput) RemoteConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelWarpConnectorResult) bool { return v.RemoteConfig }).(pulumi.BoolOutput)
 }

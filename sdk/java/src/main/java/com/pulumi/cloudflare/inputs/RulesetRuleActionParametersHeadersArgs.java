@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
     public static final RulesetRuleActionParametersHeadersArgs Empty = new RulesetRuleActionParametersHeadersArgs();
 
     /**
-     * Expression for the header value.
+     * An expression that evaluates to a value for the header.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return Expression for the header value.
+     * @return An expression that evaluates to a value for the header.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -32,14 +32,16 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
     }
 
     /**
-     * Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+     * The operation to perform on the header.
+     * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
      * 
      */
     @Import(name="operation", required=true)
     private Output<String> operation;
 
     /**
-     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+     * @return The operation to perform on the header.
+     * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
      * 
      */
     public Output<String> operation() {
@@ -47,14 +49,14 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
     }
 
     /**
-     * Static value for the header.
+     * A static value for the header.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Static value for the header.
+     * @return A static value for the header.
      * 
      */
     public Optional<Output<String>> value() {
@@ -88,7 +90,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param expression Expression for the header value.
+         * @param expression An expression that evaluates to a value for the header.
          * 
          * @return builder
          * 
@@ -99,7 +101,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param expression Expression for the header value.
+         * @param expression An expression that evaluates to a value for the header.
          * 
          * @return builder
          * 
@@ -109,7 +111,8 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param operation Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+         * @param operation The operation to perform on the header.
+         * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +123,8 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param operation Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+         * @param operation The operation to perform on the header.
+         * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
          * 
          * @return builder
          * 
@@ -130,7 +134,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param value Static value for the header.
+         * @param value A static value for the header.
          * 
          * @return builder
          * 
@@ -141,7 +145,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param value Static value for the header.
+         * @param value A static value for the header.
          * 
          * @return builder
          * 

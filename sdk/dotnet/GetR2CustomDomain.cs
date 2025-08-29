@@ -150,6 +150,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
+        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        /// </summary>
+        public readonly ImmutableArray<string> Ciphers;
+        /// <summary>
         /// Name of the custom domain.
         /// </summary>
         public readonly string Domain;
@@ -182,6 +186,8 @@ namespace Pulumi.Cloudflare
 
             string bucketName,
 
+            ImmutableArray<string> ciphers,
+
             string domain,
 
             bool enabled,
@@ -198,6 +204,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             BucketName = bucketName;
+            Ciphers = ciphers;
             Domain = domain;
             Enabled = enabled;
             Id = id;

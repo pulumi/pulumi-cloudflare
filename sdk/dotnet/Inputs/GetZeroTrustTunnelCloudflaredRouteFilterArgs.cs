@@ -15,8 +15,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Optional remark describing the route.
         /// </summary>
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
+        [Input("comment", required: true)]
+        public Input<string> Comment { get; set; } = null!;
 
         /// <summary>
         /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.

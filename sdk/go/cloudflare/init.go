@@ -275,6 +275,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SchemaValidationSchemas{}
 	case "cloudflare:index/schemaValidationSettings:SchemaValidationSettings":
 		r = &SchemaValidationSettings{}
+	case "cloudflare:index/snippet:Snippet":
+		r = &Snippet{}
 	case "cloudflare:index/snippetRules:SnippetRules":
 		r = &SnippetRules{}
 	case "cloudflare:index/snippets:Snippets":
@@ -1141,6 +1143,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/schemaValidationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/snippet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

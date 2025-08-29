@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         /// </summary>
         [Output("allowAuthenticateViaWarp")]
-        public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
+        public Output<bool> AllowAuthenticateViaWarp { get; private set; } = null!;
 
         /// <summary>
         /// The unique subdomain assigned to your Zero Trust organization.
@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
         [Output("isUiReadOnly")]
-        public Output<bool?> IsUiReadOnly { get; private set; } = null!;
+        public Output<bool> IsUiReadOnly { get; private set; } = null!;
 
         [Output("loginDesign")]
         public Output<Outputs.ZeroTrustOrganizationLoginDesign?> LoginDesign { get; private set; } = null!;

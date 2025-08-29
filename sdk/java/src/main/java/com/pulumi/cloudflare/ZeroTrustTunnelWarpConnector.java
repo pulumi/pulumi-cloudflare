@@ -92,6 +92,22 @@ public class ZeroTrustTunnelWarpConnector extends com.pulumi.resources.CustomRes
         return this.accountTag;
     }
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    @Export(name="configSrc", refs={String.class}, tree="[0]")
+    private Output<String> configSrc;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    public Output<String> configSrc() {
+        return this.configSrc;
+    }
+    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
      * @deprecated
@@ -196,7 +212,11 @@ public class ZeroTrustTunnelWarpConnector extends com.pulumi.resources.CustomRes
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     @Export(name="remoteConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteConfig;
 

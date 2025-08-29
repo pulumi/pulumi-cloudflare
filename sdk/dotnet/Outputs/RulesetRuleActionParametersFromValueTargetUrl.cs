@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersFromValueTargetUrl
     {
         /// <summary>
-        /// An expression to evaluate to get the URL to redirect the request to.
+        /// An expression that evaluates to a URL to redirect the request to.
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// The URL to redirect the request to.
+        /// A URL to redirect the request to.
         /// </summary>
         public readonly string? Value;
 

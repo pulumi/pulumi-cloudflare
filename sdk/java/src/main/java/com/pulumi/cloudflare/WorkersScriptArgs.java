@@ -54,14 +54,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * List of bindings attached to a Worker. You can find more about bindings on our docs:
+     * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
     @Import(name="bindings")
     private @Nullable Output<List<WorkersScriptBindingArgs>> bindings;
 
     /**
-     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * @return List of bindings attached to a Worker. You can find more about bindings on our docs:
+     * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
     public Optional<Output<List<WorkersScriptBindingArgs>>> bindings() {
@@ -69,14 +71,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+     * event). Indicates a `service worker syntax` Worker.
      * 
      */
     @Import(name="bodyPart")
     private @Nullable Output<String> bodyPart;
 
     /**
-     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+     * event). Indicates a `service worker syntax` Worker.
      * 
      */
     public Optional<Output<String>> bodyPart() {
@@ -84,14 +88,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+     * will not affect this Worker.
      * 
      */
     @Import(name="compatibilityDate")
     private @Nullable Output<String> compatibilityDate;
 
     /**
-     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+     * will not affect this Worker.
      * 
      */
     public Optional<Output<String>> compatibilityDate() {
@@ -99,14 +105,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+     * of specific changes not included in a `compatibility_date`.
      * 
      */
     @Import(name="compatibilityFlags")
     private @Nullable Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+     * of specific changes not included in a `compatibility_date`.
      * 
      */
     public Optional<Output<List<String>>> compatibilityFlags() {
@@ -129,14 +137,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+     * `content_file` must be specified. Must be paired with `content_sha256`.
      * 
      */
     @Import(name="contentFile")
     private @Nullable Output<String> contentFile;
 
     /**
-     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+     * `content_file` must be specified. Must be paired with `content_sha256`.
      * 
      */
     public Optional<Output<String>> contentFile() {
@@ -144,14 +154,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+     * `content_file` is specified.
      * 
      */
     @Import(name="contentSha256")
     private @Nullable Output<String> contentSha256;
 
     /**
-     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+     * `content_file` is specified.
      * 
      */
     public Optional<Output<String>> contentSha256() {
@@ -219,14 +231,16 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+     * Indicates a `module syntax` Worker.
      * 
      */
     @Import(name="mainModule")
     private @Nullable Output<String> mainModule;
 
     /**
-     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+     * Indicates a `module syntax` Worker.
      * 
      */
     public Optional<Output<String>> mainModule() {
@@ -294,16 +308,14 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * Usage model for the Worker invocations. Available values: &#34;standard&#34;.
      * 
      */
     @Import(name="usageModel")
     private @Nullable Output<String> usageModel;
 
     /**
-     * @return Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * @return Usage model for the Worker invocations. Available values: &#34;standard&#34;.
      * 
      */
     public Optional<Output<String>> usageModel() {
@@ -395,7 +407,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs:
+         * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
          * 
          * @return builder
          * 
@@ -406,7 +419,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs:
+         * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
          * 
          * @return builder
          * 
@@ -416,7 +430,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+         * @param bindings List of bindings attached to a Worker. You can find more about bindings on our docs:
+         * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
          * 
          * @return builder
          * 
@@ -426,7 +441,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+         * event). Indicates a `service worker syntax` Worker.
          * 
          * @return builder
          * 
@@ -437,7 +453,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+         * @param bodyPart Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+         * event). Indicates a `service worker syntax` Worker.
          * 
          * @return builder
          * 
@@ -447,7 +464,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+         * will not affect this Worker.
          * 
          * @return builder
          * 
@@ -458,7 +476,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+         * @param compatibilityDate Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+         * will not affect this Worker.
          * 
          * @return builder
          * 
@@ -468,7 +487,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+         * of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -479,7 +499,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+         * of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -489,7 +510,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+         * of specific changes not included in a `compatibility_date`.
          * 
          * @return builder
          * 
@@ -520,7 +542,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+         * `content_file` must be specified. Must be paired with `content_sha256`.
          * 
          * @return builder
          * 
@@ -531,7 +554,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+         * @param contentFile Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+         * `content_file` must be specified. Must be paired with `content_sha256`.
          * 
          * @return builder
          * 
@@ -541,7 +565,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+         * `content_file` is specified.
          * 
          * @return builder
          * 
@@ -552,7 +577,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+         * @param contentSha256 SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+         * `content_file` is specified.
          * 
          * @return builder
          * 
@@ -656,7 +682,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+         * Indicates a `module syntax` Worker.
          * 
          * @return builder
          * 
@@ -667,7 +694,8 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+         * @param mainModule Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+         * Indicates a `module syntax` Worker.
          * 
          * @return builder
          * 
@@ -771,8 +799,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usageModel Usage model for the Worker invocations.
-         * Available values: &#34;standard&#34;.
+         * @param usageModel Usage model for the Worker invocations. Available values: &#34;standard&#34;.
          * 
          * @return builder
          * 
@@ -783,8 +810,7 @@ public final class WorkersScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usageModel Usage model for the Worker invocations.
-         * Available values: &#34;standard&#34;.
+         * @param usageModel Usage model for the Worker invocations. Available values: &#34;standard&#34;.
          * 
          * @return builder
          * 

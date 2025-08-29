@@ -64,7 +64,7 @@ export class ZeroTrustAccessMtlsCertificate extends pulumi.CustomResource {
     /**
      * The hostnames of the applications that will use this certificate.
      */
-    public readonly associatedHostnames!: pulumi.Output<string[] | undefined>;
+    public readonly associatedHostnames!: pulumi.Output<string[]>;
     /**
      * The certificate content.
      */

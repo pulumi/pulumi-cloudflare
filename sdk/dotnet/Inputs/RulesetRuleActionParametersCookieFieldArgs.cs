@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCookieFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the field.
+        /// The name of the cookie.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

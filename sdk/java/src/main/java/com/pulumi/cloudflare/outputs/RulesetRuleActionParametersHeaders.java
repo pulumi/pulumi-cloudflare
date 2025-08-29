@@ -13,38 +13,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersHeaders {
     /**
-     * @return Expression for the header value.
+     * @return An expression that evaluates to a value for the header.
      * 
      */
     private @Nullable String expression;
     /**
-     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+     * @return The operation to perform on the header.
+     * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
      * 
      */
     private String operation;
     /**
-     * @return Static value for the header.
+     * @return A static value for the header.
      * 
      */
     private @Nullable String value;
 
     private RulesetRuleActionParametersHeaders() {}
     /**
-     * @return Expression for the header value.
+     * @return An expression that evaluates to a value for the header.
      * 
      */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
+     * @return The operation to perform on the header.
+     * Available values: &#34;add&#34;, &#34;set&#34;, &#34;remove&#34;.
      * 
      */
     public String operation() {
         return this.operation;
     }
     /**
-     * @return Static value for the header.
+     * @return A static value for the header.
      * 
      */
     public Optional<String> value() {

@@ -25,7 +25,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -33,7 +33,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     private @Nullable Output<String> bindingStatus;
 
     /**
-     * @return The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -42,14 +42,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The CA certificate
+     * The CA certificate(read only).
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The CA certificate
+     * @return The CA certificate(read only).
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -71,14 +71,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The SHA256 fingerprint of the certificate.
+     * The SHA256 fingerprint of the certificate(read only).
      * 
      */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
-     * @return The SHA256 fingerprint of the certificate.
+     * @return The SHA256 fingerprint of the certificate(read only).
      * 
      */
     public Optional<Output<String>> fingerprint() {
@@ -86,14 +86,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * Use this certificate for Gateway TLS interception
+     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     @Import(name="inUse")
     private @Nullable Output<Boolean> inUse;
 
     /**
-     * @return Use this certificate for Gateway TLS interception
+     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
      * 
      */
     public Optional<Output<Boolean>> inUse() {
@@ -101,14 +101,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The organization that issued the certificate.
+     * The organization that issued the certificate(read only).
      * 
      */
     @Import(name="issuerOrg")
     private @Nullable Output<String> issuerOrg;
 
     /**
-     * @return The organization that issued the certificate.
+     * @return The organization that issued the certificate(read only).
      * 
      */
     public Optional<Output<String>> issuerOrg() {
@@ -116,14 +116,14 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The entire issuer field of the certificate.
+     * The entire issuer field of the certificate(read only).
      * 
      */
     @Import(name="issuerRaw")
     private @Nullable Output<String> issuerRaw;
 
     /**
-     * @return The entire issuer field of the certificate.
+     * @return The entire issuer field of the certificate(read only).
      * 
      */
     public Optional<Output<String>> issuerRaw() {
@@ -131,7 +131,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     }
 
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
@@ -139,7 +139,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
@@ -214,7 +214,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+         * @param bindingStatus The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
          * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
          * 
          * @return builder
@@ -226,7 +226,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param bindingStatus The deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+         * @param bindingStatus The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
          * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
          * 
          * @return builder
@@ -237,7 +237,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param certificate The CA certificate
+         * @param certificate The CA certificate(read only).
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param certificate The CA certificate
+         * @param certificate The CA certificate(read only).
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param fingerprint The SHA256 fingerprint of the certificate.
+         * @param fingerprint The SHA256 fingerprint of the certificate(read only).
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param fingerprint The SHA256 fingerprint of the certificate.
+         * @param fingerprint The SHA256 fingerprint of the certificate(read only).
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param inUse Use this certificate for Gateway TLS interception
+         * @param inUse Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param inUse Use this certificate for Gateway TLS interception
+         * @param inUse Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param issuerOrg The organization that issued the certificate.
+         * @param issuerOrg The organization that issued the certificate(read only).
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param issuerOrg The organization that issued the certificate.
+         * @param issuerOrg The organization that issued the certificate(read only).
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param issuerRaw The entire issuer field of the certificate.
+         * @param issuerRaw The entire issuer field of the certificate(read only).
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param issuerRaw The entire issuer field of the certificate.
+         * @param issuerRaw The entire issuer field of the certificate(read only).
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
          * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
          * 
          * @return builder
@@ -372,7 +372,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         }
 
         /**
-         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+         * @param type The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
          * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
          * 
          * @return builder

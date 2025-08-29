@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersFromList
     {
         /// <summary>
-        /// Expression that evaluates to the list lookup key.
+        /// An expression that evaluates to the list lookup key.
         /// </summary>
-        public readonly string? Key;
+        public readonly string Key;
         /// <summary>
         /// The name of the list to match against.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
 
         [OutputConstructor]
         private RulesetRuleActionParametersFromList(
-            string? key,
+            string key,
 
-            string? name)
+            string name)
         {
             Key = key;
             Name = name;

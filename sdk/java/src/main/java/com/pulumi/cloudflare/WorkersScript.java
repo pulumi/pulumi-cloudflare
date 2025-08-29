@@ -24,6 +24,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * !&gt; This resource is no longer recommended. Please use the `cloudflare_worker`, `cloudflare_worker_version`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -67,56 +69,64 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.assets);
     }
     /**
-     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * List of bindings attached to a Worker. You can find more about bindings on our docs:
+     * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
     @Export(name="bindings", refs={List.class,WorkersScriptBinding.class}, tree="[0,1]")
     private Output<List<WorkersScriptBinding>> bindings;
 
     /**
-     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * @return List of bindings attached to a Worker. You can find more about bindings on our docs:
+     * https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
     public Output<List<WorkersScriptBinding>> bindings() {
         return this.bindings;
     }
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+     * event). Indicates a `service worker syntax` Worker.
      * 
      */
     @Export(name="bodyPart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bodyPart;
 
     /**
-     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+     * event). Indicates a `service worker syntax` Worker.
      * 
      */
     public Output<Optional<String>> bodyPart() {
         return Codegen.optional(this.bodyPart);
     }
     /**
-     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+     * will not affect this Worker.
      * 
      */
     @Export(name="compatibilityDate", refs={String.class}, tree="[0]")
     private Output<String> compatibilityDate;
 
     /**
-     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+     * will not affect this Worker.
      * 
      */
     public Output<String> compatibilityDate() {
         return this.compatibilityDate;
     }
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+     * of specific changes not included in a `compatibility_date`.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+     * of specific changes not included in a `compatibility_date`.
      * 
      */
     public Output<List<String>> compatibilityFlags() {
@@ -137,28 +147,32 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.content);
     }
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+     * `content_file` must be specified. Must be paired with `content_sha256`.
      * 
      */
     @Export(name="contentFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentFile;
 
     /**
-     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+     * `content_file` must be specified. Must be paired with `content_sha256`.
      * 
      */
     public Output<Optional<String>> contentFile() {
         return Codegen.optional(this.contentFile);
     }
     /**
-     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+     * `content_file` is specified.
      * 
      */
     @Export(name="contentSha256", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentSha256;
 
     /**
-     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+     * `content_file` is specified.
      * 
      */
     public Output<Optional<String>> contentSha256() {
@@ -277,14 +291,16 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.logpush;
     }
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+     * Indicates a `module syntax` Worker.
      * 
      */
     @Export(name="mainModule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mainModule;
 
     /**
-     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+     * Indicates a `module syntax` Worker.
      * 
      */
     public Output<Optional<String>> mainModule() {
@@ -367,16 +383,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.tailConsumers;
     }
     /**
-     * Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * Usage model for the Worker invocations. Available values: &#34;standard&#34;.
      * 
      */
     @Export(name="usageModel", refs={String.class}, tree="[0]")
     private Output<String> usageModel;
 
     /**
-     * @return Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * @return Usage model for the Worker invocations. Available values: &#34;standard&#34;.
      * 
      */
     public Output<String> usageModel() {

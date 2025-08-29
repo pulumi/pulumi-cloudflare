@@ -47,7 +47,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? MailtoSubject;
         /// <summary>
         /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        /// Available values: "customized_block_page", "redirect_uri".
+        /// Available values: "", "customized_block_page", "redirect_uri".
         /// </summary>
         public readonly string? Mode;
         /// <summary>

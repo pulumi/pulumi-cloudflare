@@ -13,33 +13,47 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FilterArgs', 'Filter']
 
 @pulumi.input_type
 class FilterArgs:
     def __init__(__self__, *,
-                 expression: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 bodies: pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]],
+                 zone_id: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 expression: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ref: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Filter resource.
-        :param pulumi.Input[_builtins.str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the filter.
+        :param pulumi.Input[_builtins.str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the filter is currently paused.
+        :param pulumi.Input[_builtins.str] ref: A short reference tag. Allows you to select related filters.
         """
-        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "bodies", bodies)
         pulumi.set(__self__, "zone_id", zone_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> pulumi.Input[_builtins.str]:
-        """
-        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
-        """
-        return pulumi.get(self, "expression")
+    def bodies(self) -> pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]]:
+        return pulumi.get(self, "bodies")
 
-    @expression.setter
-    def expression(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "expression", value)
+    @bodies.setter
+    def bodies(self, value: pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]]):
+        pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -53,10 +67,59 @@ class FilterArgs:
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An informative summary of the filter.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When true, indicates that the filter is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "paused", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A short reference tag. Allows you to select related filters.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ref", value)
+
 
 @pulumi.input_type
 class _FilterState:
     def __init__(__self__, *,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  expression: Optional[pulumi.Input[_builtins.str]] = None,
                  paused: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -70,6 +133,8 @@ class _FilterState:
         :param pulumi.Input[_builtins.str] ref: A short reference tag. Allows you to select related filters.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
+        if bodies is not None:
+            pulumi.set(__self__, "bodies", bodies)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expression is not None:
@@ -80,6 +145,15 @@ class _FilterState:
             pulumi.set(__self__, "ref", ref)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bodies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]]]:
+        return pulumi.get(self, "bodies")
+
+    @bodies.setter
+    def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FilterBodyArgs']]]]):
+        pulumi.set(self, "bodies", value)
 
     @_builtins.property
     @pulumi.getter
@@ -148,7 +222,11 @@ class Filter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilterBodyArgs', 'FilterBodyArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  expression: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ref: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -166,7 +244,12 @@ class Filter(pulumi.CustomResource):
 
         example_filter = cloudflare.Filter("example_filter",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+            bodies=[{
+                "description": "Restrict access from these browsers on this address range.",
+                "expression": "(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155",
+                "paused": False,
+                "ref": "FIL-100",
+            }])
         ```
 
         ## Import
@@ -177,7 +260,10 @@ class Filter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: An informative summary of the filter.
         :param pulumi.Input[_builtins.str] expression: The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+        :param pulumi.Input[_builtins.bool] paused: When true, indicates that the filter is currently paused.
+        :param pulumi.Input[_builtins.str] ref: A short reference tag. Allows you to select related filters.
         :param pulumi.Input[_builtins.str] zone_id: Defines an identifier.
         """
         ...
@@ -201,7 +287,12 @@ class Filter(pulumi.CustomResource):
 
         example_filter = cloudflare.Filter("example_filter",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155")
+            bodies=[{
+                "description": "Restrict access from these browsers on this address range.",
+                "expression": "(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.addr ne 172.16.22.155",
+                "paused": False,
+                "ref": "FIL-100",
+            }])
         ```
 
         ## Import
@@ -225,7 +316,11 @@ class Filter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilterBodyArgs', 'FilterBodyArgsDict']]]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
                  expression: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ref: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -236,15 +331,16 @@ class Filter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FilterArgs.__new__(FilterArgs)
 
-            if expression is None and not opts.urn:
-                raise TypeError("Missing required property 'expression'")
+            if bodies is None and not opts.urn:
+                raise TypeError("Missing required property 'bodies'")
+            __props__.__dict__["bodies"] = bodies
+            __props__.__dict__["description"] = description
             __props__.__dict__["expression"] = expression
+            __props__.__dict__["paused"] = paused
+            __props__.__dict__["ref"] = ref
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["description"] = None
-            __props__.__dict__["paused"] = None
-            __props__.__dict__["ref"] = None
         super(Filter, __self__).__init__(
             'cloudflare:index/filter:Filter',
             resource_name,
@@ -255,6 +351,7 @@ class Filter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FilterBodyArgs', 'FilterBodyArgsDict']]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             expression: Optional[pulumi.Input[_builtins.str]] = None,
             paused: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -277,6 +374,7 @@ class Filter(pulumi.CustomResource):
 
         __props__ = _FilterState.__new__(_FilterState)
 
+        __props__.__dict__["bodies"] = bodies
         __props__.__dict__["description"] = description
         __props__.__dict__["expression"] = expression
         __props__.__dict__["paused"] = paused
@@ -286,7 +384,12 @@ class Filter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> pulumi.Output[_builtins.str]:
+    def bodies(self) -> pulumi.Output[Sequence['outputs.FilterBody']]:
+        return pulumi.get(self, "bodies")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         An informative summary of the filter.
         """
@@ -294,7 +397,7 @@ class Filter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> pulumi.Output[_builtins.str]:
+    def expression(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         """
@@ -302,7 +405,7 @@ class Filter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> pulumi.Output[_builtins.bool]:
+    def paused(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         When true, indicates that the filter is currently paused.
         """
@@ -310,7 +413,7 @@ class Filter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ref(self) -> pulumi.Output[_builtins.str]:
+    def ref(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A short reference tag. Allows you to select related filters.
         """

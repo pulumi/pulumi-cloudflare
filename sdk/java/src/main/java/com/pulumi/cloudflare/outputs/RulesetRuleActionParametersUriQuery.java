@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersUriQuery {
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI query to.
      * 
      */
     private @Nullable String expression;
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI query to.
      * 
      */
     private @Nullable String value;
 
     private RulesetRuleActionParametersUriQuery() {}
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI query to.
      * 
      */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI query to.
      * 
      */
     public Optional<String> value() {

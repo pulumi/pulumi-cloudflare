@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _checkPresences;
 
         /// <summary>
-        /// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+        /// A list of headers to check for the presence of. The presence of these headers is included in the cache key.
         /// </summary>
         public InputList<string> CheckPresences
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<ImmutableArray<string>>? _contains;
 
         /// <summary>
-        /// For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+        /// A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
         /// </summary>
         public InputMap<ImmutableArray<string>> Contains
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+        /// Whether to exclude the origin header in the cache key.
         /// </summary>
         [Input("excludeOrigin")]
         public Input<bool>? ExcludeOrigin { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _includes;
 
         /// <summary>
-        /// Include these headers' names and their values.
+        /// A list of headers to include in the cache key.
         /// </summary>
         public InputList<string> Includes
         {

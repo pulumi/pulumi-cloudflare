@@ -29,7 +29,16 @@ namespace Pulumi.Cloudflare
     ///     var exampleFilter = new Cloudflare.Filter("example_filter", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+    ///         Bodies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.FilterBodyArgs
+    ///             {
+    ///                 Description = "Restrict access from these browsers on this address range.",
+    ///                 Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155",
+    ///                 Paused = false,
+    ///                 Ref = "FIL-100",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -44,29 +53,32 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
     public partial class Filter : global::Pulumi.CustomResource
     {
+        [Output("bodies")]
+        public Output<ImmutableArray<Outputs.FilterBody>> Bodies { get; private set; } = null!;
+
         /// <summary>
         /// An informative summary of the filter.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
         [Output("expression")]
-        public Output<string> Expression { get; private set; } = null!;
+        public Output<string?> Expression { get; private set; } = null!;
 
         /// <summary>
         /// When true, indicates that the filter is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool> Paused { get; private set; } = null!;
+        public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
         /// A short reference tag. Allows you to select related filters.
         /// </summary>
         [Output("ref")]
-        public Output<string> Ref { get; private set; } = null!;
+        public Output<string?> Ref { get; private set; } = null!;
 
         /// <summary>
         /// Defines an identifier.
@@ -120,11 +132,37 @@ namespace Pulumi.Cloudflare
 
     public sealed class FilterArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bodies", required: true)]
+        private InputList<Inputs.FilterBodyArgs>? _bodies;
+        public InputList<Inputs.FilterBodyArgs> Bodies
+        {
+            get => _bodies ?? (_bodies = new InputList<Inputs.FilterBodyArgs>());
+            set => _bodies = value;
+        }
+
+        /// <summary>
+        /// An informative summary of the filter.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
         /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        /// <summary>
+        /// When true, indicates that the filter is currently paused.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
+
+        /// <summary>
+        /// A short reference tag. Allows you to select related filters.
+        /// </summary>
+        [Input("ref")]
+        public Input<string>? Ref { get; set; }
 
         /// <summary>
         /// Defines an identifier.
@@ -140,6 +178,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class FilterState : global::Pulumi.ResourceArgs
     {
+        [Input("bodies")]
+        private InputList<Inputs.FilterBodyGetArgs>? _bodies;
+        public InputList<Inputs.FilterBodyGetArgs> Bodies
+        {
+            get => _bodies ?? (_bodies = new InputList<Inputs.FilterBodyGetArgs>());
+            set => _bodies = value;
+        }
+
         /// <summary>
         /// An informative summary of the filter.
         /// </summary>

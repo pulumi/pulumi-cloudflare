@@ -108,14 +108,14 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      * 
      */
     @Import(name="search")
     private @Nullable String search;
 
     /**
-     * @return Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * @return Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      * 
      */
     public Optional<String> search() {
@@ -169,6 +169,21 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Provides a fast, exact string match on the `name` key in the `meta` field.
+     * 
+     */
+    @Import(name="videoName")
+    private @Nullable String videoName;
+
+    /**
+     * @return Provides a fast, exact string match on the `name` key in the `meta` field.
+     * 
+     */
+    public Optional<String> videoName() {
+        return Optional.ofNullable(this.videoName);
+    }
+
     private GetStreamsPlainArgs() {}
 
     private GetStreamsPlainArgs(GetStreamsPlainArgs $) {
@@ -182,6 +197,7 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.start = $.start;
         this.status = $.status;
         this.type = $.type;
+        this.videoName = $.videoName;
     }
 
     public static Builder builder() {
@@ -269,7 +285,7 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param search Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+         * @param search Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
          * 
          * @return builder
          * 
@@ -310,6 +326,17 @@ public final class GetStreamsPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder type(@Nullable String type) {
             $.type = type;
+            return this;
+        }
+
+        /**
+         * @param videoName Provides a fast, exact string match on the `name` key in the `meta` field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder videoName(@Nullable String videoName) {
+            $.videoName = videoName;
             return this;
         }
 

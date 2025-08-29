@@ -32,16 +32,14 @@ import (
 //					Name: pulumi.String("ssh.example.com"),
 //					Type: pulumi.String("CNAME"),
 //				},
-//				IpFirewall:       pulumi.Bool(true),
 //				Protocol:         pulumi.String("tcp/22"),
-//				ProxyProtocol:    pulumi.String("off"),
-//				Tls:              pulumi.String("full"),
 //				TrafficType:      pulumi.String("direct"),
 //				ArgoSmartRouting: pulumi.Bool(true),
 //				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{
 //					Connectivity: pulumi.String("all"),
 //					Type:         pulumi.String("dynamic"),
 //				},
+//				IpFirewall: pulumi.Bool(false),
 //				OriginDirects: pulumi.StringArray{
 //					pulumi.String("tcp://127.0.0.1:8080"),
 //				},
@@ -50,7 +48,9 @@ import (
 //					Ttl:  pulumi.Int(600),
 //					Type: pulumi.String(""),
 //				},
-//				OriginPort: pulumi.Any(22),
+//				OriginPort:    pulumi.Any(22),
+//				ProxyProtocol: pulumi.String("off"),
+//				Tls:           pulumi.String("off"),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ type SpectrumApplication struct {
 	EdgeIps SpectrumApplicationEdgeIpsOutput `pulumi:"edgeIps"`
 	// Enables IP Access Rules for this application.
 	// Notes: Only available for TCP applications.
-	IpFirewall pulumi.BoolPtrOutput `pulumi:"ipFirewall"`
+	IpFirewall pulumi.BoolOutput `pulumi:"ipFirewall"`
 	// When the Application was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
@@ -97,7 +97,7 @@ type SpectrumApplication struct {
 	ProxyProtocol pulumi.StringOutput `pulumi:"proxyProtocol"`
 	// The type of TLS termination associated with the application.
 	// Available values: "off", "flexible", "full", "strict".
-	Tls pulumi.StringPtrOutput `pulumi:"tls"`
+	Tls pulumi.StringOutput `pulumi:"tls"`
 	// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
 	// Available values: "direct", "http", "https".
 	TrafficType pulumi.StringOutput `pulumi:"trafficType"`
@@ -398,8 +398,8 @@ func (o SpectrumApplicationOutput) EdgeIps() SpectrumApplicationEdgeIpsOutput {
 
 // Enables IP Access Rules for this application.
 // Notes: Only available for TCP applications.
-func (o SpectrumApplicationOutput) IpFirewall() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SpectrumApplication) pulumi.BoolPtrOutput { return v.IpFirewall }).(pulumi.BoolPtrOutput)
+func (o SpectrumApplicationOutput) IpFirewall() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.BoolOutput { return v.IpFirewall }).(pulumi.BoolOutput)
 }
 
 // When the Application was last modified.
@@ -436,8 +436,8 @@ func (o SpectrumApplicationOutput) ProxyProtocol() pulumi.StringOutput {
 
 // The type of TLS termination associated with the application.
 // Available values: "off", "flexible", "full", "strict".
-func (o SpectrumApplicationOutput) Tls() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.Tls }).(pulumi.StringPtrOutput)
+func (o SpectrumApplicationOutput) Tls() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.Tls }).(pulumi.StringOutput)
 }
 
 // Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.

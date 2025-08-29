@@ -92,17 +92,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * The wirefilter expression used for device posture check matching.
-     * 
-     */
     @Export(name="devicePosture", refs={String.class}, tree="[0]")
     private Output<String> devicePosture;
 
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     public Output<String> devicePosture() {
         return this.devicePosture;
     }
@@ -150,17 +142,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     public Output<Optional<List<String>>> filters() {
         return Codegen.optional(this.filters);
     }
-    /**
-     * The wirefilter expression used for identity matching.
-     * 
-     */
     @Export(name="identity", refs={String.class}, tree="[0]")
     private Output<String> identity;
 
-    /**
-     * @return The wirefilter expression used for identity matching.
-     * 
-     */
     public Output<String> identity() {
         return this.identity;
     }
@@ -193,10 +177,10 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.notSharable;
     }
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> precedence;
+    private Output<Integer> precedence;
 
-    public Output<Optional<Integer>> precedence() {
-        return Codegen.optional(this.precedence);
+    public Output<Integer> precedence() {
+        return this.precedence;
     }
     /**
      * The rule was shared via the Orgs API and cannot be edited by the current account
@@ -254,17 +238,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     public Output<String> sourceAccount() {
         return this.sourceAccount;
     }
-    /**
-     * The wirefilter expression used for traffic matching.
-     * 
-     */
     @Export(name="traffic", refs={String.class}, tree="[0]")
     private Output<String> traffic;
 
-    /**
-     * @return The wirefilter expression used for traffic matching.
-     * 
-     */
     public Output<String> traffic() {
         return this.traffic;
     }

@@ -47,7 +47,11 @@ import (
 type ArgoSmartRouting struct {
 	pulumi.CustomResourceState
 
-	// Enables Argo Smart Routing.
+	// Specifies if the setting is editable.
+	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// Specifies the time when the setting was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
 	// Specifies the zone associated with the API call.
@@ -90,7 +94,11 @@ func GetArgoSmartRouting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ArgoSmartRouting resources.
 type argoSmartRoutingState struct {
-	// Enables Argo Smart Routing.
+	// Specifies if the setting is editable.
+	Editable *bool `pulumi:"editable"`
+	// Specifies the time when the setting was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
 	// Specifies the zone associated with the API call.
@@ -98,7 +106,11 @@ type argoSmartRoutingState struct {
 }
 
 type ArgoSmartRoutingState struct {
-	// Enables Argo Smart Routing.
+	// Specifies if the setting is editable.
+	Editable pulumi.BoolPtrInput
+	// Specifies the time when the setting was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
 	// Specifies the zone associated with the API call.
@@ -110,7 +122,7 @@ func (ArgoSmartRoutingState) ElementType() reflect.Type {
 }
 
 type argoSmartRoutingArgs struct {
-	// Enables Argo Smart Routing.
+	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
 	// Specifies the zone associated with the API call.
@@ -119,7 +131,7 @@ type argoSmartRoutingArgs struct {
 
 // The set of arguments for constructing a ArgoSmartRouting resource.
 type ArgoSmartRoutingArgs struct {
-	// Enables Argo Smart Routing.
+	// Specifies the enablement value of Argo Smart Routing.
 	// Available values: "on", "off".
 	Value pulumi.StringInput
 	// Specifies the zone associated with the API call.
@@ -213,7 +225,17 @@ func (o ArgoSmartRoutingOutput) ToArgoSmartRoutingOutputWithContext(ctx context.
 	return o
 }
 
-// Enables Argo Smart Routing.
+// Specifies if the setting is editable.
+func (o ArgoSmartRoutingOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
+}
+
+// Specifies the time when the setting was last modified.
+func (o ArgoSmartRoutingOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Specifies the enablement value of Argo Smart Routing.
 // Available values: "on", "off".
 func (o ArgoSmartRoutingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoSmartRouting) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)

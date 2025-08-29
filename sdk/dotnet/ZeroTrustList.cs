@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// The description of the list.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// items to add to the list.

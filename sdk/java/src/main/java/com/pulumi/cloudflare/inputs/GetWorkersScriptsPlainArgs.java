@@ -46,11 +46,27 @@ public final class GetWorkersScriptsPlainArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable String tags;
+
+    /**
+     * @return Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    public Optional<String> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private GetWorkersScriptsPlainArgs() {}
 
     private GetWorkersScriptsPlainArgs(GetWorkersScriptsPlainArgs $) {
         this.accountId = $.accountId;
         this.maxItems = $.maxItems;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -90,6 +106,17 @@ public final class GetWorkersScriptsPlainArgs extends com.pulumi.resources.Invok
          */
         public Builder maxItems(@Nullable Integer maxItems) {
             $.maxItems = maxItems;
+            return this;
+        }
+
+        /**
+         * @param tags Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable String tags) {
+            $.tags = tags;
             return this;
         }
 

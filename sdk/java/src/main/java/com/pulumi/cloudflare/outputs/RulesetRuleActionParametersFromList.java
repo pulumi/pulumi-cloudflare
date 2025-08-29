@@ -4,38 +4,37 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersFromList {
     /**
-     * @return Expression that evaluates to the list lookup key.
+     * @return An expression that evaluates to the list lookup key.
      * 
      */
-    private @Nullable String key;
+    private String key;
     /**
      * @return The name of the list to match against.
      * 
      */
-    private @Nullable String name;
+    private String name;
 
     private RulesetRuleActionParametersFromList() {}
     /**
-     * @return Expression that evaluates to the list lookup key.
+     * @return An expression that evaluates to the list lookup key.
      * 
      */
-    public Optional<String> key() {
-        return Optional.ofNullable(this.key);
+    public String key() {
+        return this.key;
     }
     /**
      * @return The name of the list to match against.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class RulesetRuleActionParametersFromList {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String key;
-        private @Nullable String name;
+        private String key;
+        private String name;
         public Builder() {}
         public Builder(RulesetRuleActionParametersFromList defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class RulesetRuleActionParametersFromList {
         }
 
         @CustomType.Setter
-        public Builder key(@Nullable String key) {
-
+        public Builder key(String key) {
+            if (key == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromList", "key");
+            }
             this.key = key;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersFromList", "name");
+            }
             this.name = name;
             return this;
         }

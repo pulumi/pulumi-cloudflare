@@ -64,7 +64,7 @@ export class TunnelRoute extends pulumi.CustomResource {
     /**
      * Optional remark describing the route.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was created.
      */

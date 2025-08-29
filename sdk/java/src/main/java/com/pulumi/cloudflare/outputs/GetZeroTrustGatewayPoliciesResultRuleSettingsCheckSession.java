@@ -11,10 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession {
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     private String duration;
     /**
      * @return Set to true to enable session enforcement.
@@ -23,10 +19,6 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession {
     private Boolean enforce;
 
     private GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession() {}
-    /**
-     * @return Configure how fresh the session needs to be to be considered valid.
-     * 
-     */
     public String duration() {
         return this.duration;
     }

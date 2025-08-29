@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -48,6 +49,7 @@ import javax.annotation.Nullable;
  *             .domain("domain")
  *             .enabled(true)
  *             .zoneId("zoneId")
+ *             .ciphers("string")
  *             .minTls("1.0")
  *             .build());
  * 
@@ -87,6 +89,20 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bucketName() {
         return this.bucketName;
+    }
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    @Export(name="ciphers", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> ciphers;
+
+    /**
+     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    public Output<Optional<List<String>>> ciphers() {
+        return Codegen.optional(this.ciphers);
     }
     /**
      * Name of the custom domain to be added.

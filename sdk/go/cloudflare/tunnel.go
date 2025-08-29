@@ -75,6 +75,8 @@ type Tunnel struct {
 	// A user-friendly name for a tunnel.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	//
+	// Deprecated: Use the configSrc field instead.
 	RemoteConfig pulumi.BoolOutput `pulumi:"remoteConfig"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
 	// Available values: "inactive", "degraded", "healthy", "down".
@@ -159,6 +161,8 @@ type tunnelState struct {
 	// A user-friendly name for a tunnel.
 	Name *string `pulumi:"name"`
 	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	//
+	// Deprecated: Use the configSrc field instead.
 	RemoteConfig *bool `pulumi:"remoteConfig"`
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
 	// Available values: "inactive", "degraded", "healthy", "down".
@@ -195,6 +199,8 @@ type TunnelState struct {
 	// A user-friendly name for a tunnel.
 	Name pulumi.StringPtrInput
 	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+	//
+	// Deprecated: Use the configSrc field instead.
 	RemoteConfig pulumi.BoolPtrInput
 	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
 	// Available values: "inactive", "degraded", "healthy", "down".
@@ -376,6 +382,8 @@ func (o TunnelOutput) Name() pulumi.StringOutput {
 }
 
 // If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+//
+// Deprecated: Use the configSrc field instead.
 func (o TunnelOutput) RemoteConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tunnel) pulumi.BoolOutput { return v.RemoteConfig }).(pulumi.BoolOutput)
 }

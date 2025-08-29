@@ -51,14 +51,14 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="allowAuthenticateViaWarp", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowAuthenticateViaWarp;
+    private Output<Boolean> allowAuthenticateViaWarp;
 
     /**
      * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      * 
      */
-    public Output<Optional<Boolean>> allowAuthenticateViaWarp() {
-        return Codegen.optional(this.allowAuthenticateViaWarp);
+    public Output<Boolean> allowAuthenticateViaWarp() {
+        return this.allowAuthenticateViaWarp;
     }
     /**
      * The unique subdomain assigned to your Zero Trust organization.
@@ -95,10 +95,10 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customPages);
     }
     @Export(name="isUiReadOnly", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isUiReadOnly;
+    private Output<Boolean> isUiReadOnly;
 
-    public Output<Optional<Boolean>> isUiReadOnly() {
-        return Codegen.optional(this.isUiReadOnly);
+    public Output<Boolean> isUiReadOnly() {
+        return this.isUiReadOnly;
     }
     @Export(name="loginDesign", refs={AccessOrganizationLoginDesign.class}, tree="[0]")
     private Output</* @Nullable */ AccessOrganizationLoginDesign> loginDesign;

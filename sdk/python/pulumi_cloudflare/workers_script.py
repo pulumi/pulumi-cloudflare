@@ -45,23 +45,29 @@ class WorkersScriptArgs:
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs:
+               https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+               event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+               will not affect this Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+               of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
-        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
-        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+               `content_file` must be specified. Must be paired with `content_sha256`.
+        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+               `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
-        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+               Indicates a `module syntax` Worker.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
-        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
-               Available values: "standard".
+        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations. Available values: "standard".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "script_name", script_name)
@@ -140,7 +146,8 @@ class WorkersScriptArgs:
     @pulumi.getter
     def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]]:
         """
-        List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        List of bindings attached to a Worker. You can find more about bindings on our docs:
+        https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
@@ -152,7 +159,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="bodyPart")
     def body_part(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+        event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
 
@@ -164,7 +172,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="compatibilityDate")
     def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+        will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
@@ -176,7 +185,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+        of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -200,7 +210,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="contentFile")
     def content_file(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+        `content_file` must be specified. Must be paired with `content_sha256`.
         """
         return pulumi.get(self, "content_file")
 
@@ -212,7 +223,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="contentSha256")
     def content_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+        `content_file` is specified.
         """
         return pulumi.get(self, "content_sha256")
 
@@ -272,7 +284,8 @@ class WorkersScriptArgs:
     @pulumi.getter(name="mainModule")
     def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+        Indicates a `module syntax` Worker.
         """
         return pulumi.get(self, "main_module")
 
@@ -320,8 +333,7 @@ class WorkersScriptArgs:
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Usage model for the Worker invocations.
-        Available values: "standard".
+        Usage model for the Worker invocations. Available values: "standard".
         """
         return pulumi.get(self, "usage_model")
 
@@ -362,13 +374,19 @@ class _WorkersScriptState:
         Input properties used for looking up and filtering WorkersScript resources.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input['WorkersScriptAssetsArgs'] assets: Configuration for assets within a Worker
-        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs:
+               https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+               event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+               will not affect this Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+               of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
-        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
-        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+               `content_file` must be specified. Must be paired with `content_sha256`.
+        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+               `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
@@ -377,14 +395,14 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
-        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+               Indicates a `module syntax` Worker.
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
-        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
-               Available values: "standard".
+        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations. Available values: "standard".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -465,7 +483,8 @@ class _WorkersScriptState:
     @pulumi.getter
     def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptBindingArgs']]]]:
         """
-        List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        List of bindings attached to a Worker. You can find more about bindings on our docs:
+        https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
@@ -477,7 +496,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="bodyPart")
     def body_part(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+        event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
 
@@ -489,7 +509,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="compatibilityDate")
     def compatibility_date(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+        will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
@@ -501,7 +522,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+        of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -525,7 +547,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="contentFile")
     def content_file(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+        `content_file` must be specified. Must be paired with `content_sha256`.
         """
         return pulumi.get(self, "content_file")
 
@@ -537,7 +560,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="contentSha256")
     def content_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+        `content_file` is specified.
         """
         return pulumi.get(self, "content_sha256")
 
@@ -645,7 +669,8 @@ class _WorkersScriptState:
     @pulumi.getter(name="mainModule")
     def main_module(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+        Indicates a `module syntax` Worker.
         """
         return pulumi.get(self, "main_module")
 
@@ -726,8 +751,7 @@ class _WorkersScriptState:
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Usage model for the Worker invocations.
-        Available values: "standard".
+        Usage model for the Worker invocations. Available values: "standard".
         """
         return pulumi.get(self, "usage_model")
 
@@ -763,7 +787,7 @@ class WorkersScript(pulumi.CustomResource):
                  usage_model: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        !> This resource is no longer recommended. Please use the `cloudflare_worker`, `cloudflare_worker_version`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -775,24 +799,30 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs:
+               https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+               event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+               will not affect this Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+               of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
-        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
-        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+               `content_file` must be specified. Must be paired with `content_sha256`.
+        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+               `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
-        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+               Indicates a `module syntax` Worker.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
-        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
-               Available values: "standard".
+        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations. Available values: "standard".
         """
         ...
     @overload
@@ -801,7 +831,7 @@ class WorkersScript(pulumi.CustomResource):
                  args: WorkersScriptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        !> This resource is no longer recommended. Please use the `cloudflare_worker`, `cloudflare_worker_version`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
         ## Import
 
@@ -927,13 +957,19 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['WorkersScriptAssetsArgs', 'WorkersScriptAssetsArgsDict']] assets: Configuration for assets within a Worker
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
-        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptBindingArgs', 'WorkersScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs:
+               https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        :param pulumi.Input[_builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+               event). Indicates a `service worker syntax` Worker.
+        :param pulumi.Input[_builtins.str] compatibility_date: Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+               will not affect this Worker.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compatibility_flags: Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+               of specific changes not included in a `compatibility_date`.
         :param pulumi.Input[_builtins.str] content: Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
-        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
-        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        :param pulumi.Input[_builtins.str] content_file: Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+               `content_file` must be specified. Must be paired with `content_sha256`.
+        :param pulumi.Input[_builtins.str] content_sha256: SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+               `content_file` is specified.
         :param pulumi.Input[_builtins.str] content_type: Content-Type of the Worker. Required if uploading a non-JavaScript Worker (e.g. "text/x-python").
         :param pulumi.Input[_builtins.str] created_on: When the script was created.
         :param pulumi.Input[_builtins.str] etag: Hashed script content, can be used in a If-None-Match header when updating.
@@ -942,14 +978,14 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] keep_assets: Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keep_bindings: List of binding types to keep from previous_upload.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
-        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input[_builtins.str] main_module: Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+               Indicates a `module syntax` Worker.
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptTailConsumerArgs', 'WorkersScriptTailConsumerArgsDict']]]] tail_consumers: List of Workers that will consume logs from the attached Worker.
-        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations.
-               Available values: "standard".
+        :param pulumi.Input[_builtins.str] usage_model: Usage model for the Worker invocations. Available values: "standard".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1002,7 +1038,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter
     def bindings(self) -> pulumi.Output[Sequence['outputs.WorkersScriptBinding']]:
         """
-        List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        List of bindings attached to a Worker. You can find more about bindings on our docs:
+        https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
         return pulumi.get(self, "bindings")
 
@@ -1010,7 +1047,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="bodyPart")
     def body_part(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
+        event). Indicates a `service worker syntax` Worker.
         """
         return pulumi.get(self, "body_part")
 
@@ -1018,7 +1056,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="compatibilityDate")
     def compatibility_date(self) -> pulumi.Output[_builtins.str]:
         """
-        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
+        will not affect this Worker.
         """
         return pulumi.get(self, "compatibility_date")
 
@@ -1026,7 +1065,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
+        of specific changes not included in a `compatibility_date`.
         """
         return pulumi.get(self, "compatibility_flags")
 
@@ -1042,7 +1082,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="contentFile")
     def content_file(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
+        `content_file` must be specified. Must be paired with `content_sha256`.
         """
         return pulumi.get(self, "content_file")
 
@@ -1050,7 +1091,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="contentSha256")
     def content_sha256(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
+        `content_file` is specified.
         """
         return pulumi.get(self, "content_sha256")
 
@@ -1122,7 +1164,8 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="mainModule")
     def main_module(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
+        Indicates a `module syntax` Worker.
         """
         return pulumi.get(self, "main_module")
 
@@ -1175,8 +1218,7 @@ class WorkersScript(pulumi.CustomResource):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> pulumi.Output[_builtins.str]:
         """
-        Usage model for the Worker invocations.
-        Available values: "standard".
+        Usage model for the Worker invocations. Available values: "standard".
         """
         return pulumi.get(self, "usage_model")
 

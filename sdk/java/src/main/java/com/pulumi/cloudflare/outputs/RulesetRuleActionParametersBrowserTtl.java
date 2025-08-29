@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersBrowserTtl {
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     private @Nullable Integer default_;
     /**
-     * @return Determines which browser ttl mode to use.
+     * @return The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */
@@ -27,14 +27,14 @@ public final class RulesetRuleActionParametersBrowserTtl {
 
     private RulesetRuleActionParametersBrowserTtl() {}
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return Determines which browser ttl mode to use.
+     * @return The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */

@@ -28,10 +28,7 @@ namespace Pulumi.Cloudflare
     ///             Name = "ssh.example.com",
     ///             Type = "CNAME",
     ///         },
-    ///         IpFirewall = true,
     ///         Protocol = "tcp/22",
-    ///         ProxyProtocol = "off",
-    ///         Tls = "full",
     ///         TrafficType = "direct",
     ///         ArgoSmartRouting = true,
     ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
@@ -39,6 +36,7 @@ namespace Pulumi.Cloudflare
     ///             Connectivity = "all",
     ///             Type = "dynamic",
     ///         },
+    ///         IpFirewall = false,
     ///         OriginDirects = new[]
     ///         {
     ///             "tcp://127.0.0.1:8080",
@@ -50,6 +48,8 @@ namespace Pulumi.Cloudflare
     ///             Type = "",
     ///         },
     ///         OriginPort = 22,
+    ///         ProxyProtocol = "off",
+    ///         Tls = "off",
     ///     });
     /// 
     /// });
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         /// Notes: Only available for TCP applications.
         /// </summary>
         [Output("ipFirewall")]
-        public Output<bool?> IpFirewall { get; private set; } = null!;
+        public Output<bool> IpFirewall { get; private set; } = null!;
 
         /// <summary>
         /// When the Application was last modified.
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "off", "flexible", "full", "strict".
         /// </summary>
         [Output("tls")]
-        public Output<string?> Tls { get; private set; } = null!;
+        public Output<string> Tls { get; private set; } = null!;
 
         /// <summary>
         /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.

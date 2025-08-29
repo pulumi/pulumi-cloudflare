@@ -37,7 +37,7 @@ class LoadBalancerPoolArgs:
                  origin_steering: Optional[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']] = None):
         """
         The set of arguments for constructing a LoadBalancerPool resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[_builtins.str] name: A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
@@ -82,7 +82,7 @@ class LoadBalancerPoolArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -270,7 +270,7 @@ class _LoadBalancerPoolState:
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerPool resources.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.str] disabled_at: This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
@@ -328,7 +328,7 @@ class _LoadBalancerPoolState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -567,7 +567,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
@@ -694,7 +694,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: Identifier
+        :param pulumi.Input[_builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_regions: A list of regions from which to run health checks. Null means every Cloudflare data center.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the pool.
         :param pulumi.Input[_builtins.str] disabled_at: This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
@@ -739,7 +739,7 @@ class LoadBalancerPool(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

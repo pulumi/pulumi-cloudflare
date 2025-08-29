@@ -57,7 +57,7 @@ public final class GetStreamsInvokeResult {
      */
     private List<GetStreamsResult> results;
     /**
-     * @return Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * @return Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      * 
      */
     private @Nullable String search;
@@ -77,6 +77,11 @@ public final class GetStreamsInvokeResult {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Provides a fast, exact string match on the `name` key in the `meta` field.
+     * 
+     */
+    private @Nullable String videoName;
 
     private GetStreamsInvokeResult() {}
     /**
@@ -136,7 +141,7 @@ public final class GetStreamsInvokeResult {
         return this.results;
     }
     /**
-     * @return Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * @return Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      * 
      */
     public Optional<String> search() {
@@ -164,6 +169,13 @@ public final class GetStreamsInvokeResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Provides a fast, exact string match on the `name` key in the `meta` field.
+     * 
+     */
+    public Optional<String> videoName() {
+        return Optional.ofNullable(this.videoName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -186,6 +198,7 @@ public final class GetStreamsInvokeResult {
         private @Nullable String start;
         private @Nullable String status;
         private @Nullable String type;
+        private @Nullable String videoName;
         public Builder() {}
         public Builder(GetStreamsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -201,6 +214,7 @@ public final class GetStreamsInvokeResult {
     	      this.start = defaults.start;
     	      this.status = defaults.status;
     	      this.type = defaults.type;
+    	      this.videoName = defaults.videoName;
         }
 
         @CustomType.Setter
@@ -288,6 +302,12 @@ public final class GetStreamsInvokeResult {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder videoName(@Nullable String videoName) {
+
+            this.videoName = videoName;
+            return this;
+        }
         public GetStreamsInvokeResult build() {
             final var _resultValue = new GetStreamsInvokeResult();
             _resultValue.accountId = accountId;
@@ -302,6 +322,7 @@ public final class GetStreamsInvokeResult {
             _resultValue.start = start;
             _resultValue.status = status;
             _resultValue.type = type;
+            _resultValue.videoName = videoName;
             return _resultValue;
         }
     }

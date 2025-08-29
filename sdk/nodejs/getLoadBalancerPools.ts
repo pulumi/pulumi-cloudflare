@@ -33,7 +33,7 @@ export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulu
  */
 export interface GetLoadBalancerPoolsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -51,7 +51,7 @@ export interface GetLoadBalancerPoolsArgs {
  */
 export interface GetLoadBalancerPoolsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -98,7 +98,7 @@ export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs,
  */
 export interface GetLoadBalancerPoolsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

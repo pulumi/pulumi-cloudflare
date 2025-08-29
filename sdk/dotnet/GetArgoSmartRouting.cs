@@ -112,9 +112,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetArgoSmartRoutingResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Specifies if the setting is editable.
+        /// </summary>
+        public readonly bool Editable;
+        /// <summary>
+        /// Specifies the identifier of the Argo Smart Routing setting.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Specifies the time when the setting was last modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// Specifies the enablement value of Argo Smart Routing.
+        /// Available values: "on", "off".
+        /// </summary>
+        public readonly string Value;
         /// <summary>
         /// Specifies the zone associated with the API call.
         /// </summary>
@@ -122,11 +135,20 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetArgoSmartRoutingResult(
+            bool editable,
+
             string id,
+
+            string modifiedOn,
+
+            string value,
 
             string zoneId)
         {
+            Editable = editable;
             Id = id;
+            ModifiedOn = modifiedOn;
+            Value = value;
             ZoneId = zoneId;
         }
     }

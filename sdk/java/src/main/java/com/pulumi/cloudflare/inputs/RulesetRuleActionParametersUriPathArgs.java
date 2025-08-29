@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
     public static final RulesetRuleActionParametersUriPathArgs Empty = new RulesetRuleActionParametersUriPathArgs();
 
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI path to.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI path to.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
     }
 
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI path to.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI path to.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param expression Expression to evaluate for the replacement value.
+         * @param expression An expression that evaluates to a value to rewrite the URI path to.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param expression Expression to evaluate for the replacement value.
+         * @param expression An expression that evaluates to a value to rewrite the URI path to.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param value Predefined replacement value.
+         * @param value A value to rewrite the URI path to.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersUriPathArgs extends com.pulumi.res
         }
 
         /**
-         * @param value Predefined replacement value.
+         * @param value A value to rewrite the URI path to.
          * 
          * @return builder
          * 

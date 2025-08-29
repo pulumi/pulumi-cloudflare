@@ -14,28 +14,16 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The action to perform when the rule matches.
-        /// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+        /// Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
         /// </summary>
-        [Input("action")]
-        public Input<string>? Action { get; set; }
+        [Input("action", required: true)]
+        public Input<string> Action { get; set; } = null!;
 
         /// <summary>
         /// The parameters configuring the rule's action.
         /// </summary>
         [Input("actionParameters")]
         public Input<Inputs.RulesetRuleActionParametersGetArgs>? ActionParameters { get; set; }
-
-        [Input("categories")]
-        private InputList<string>? _categories;
-
-        /// <summary>
-        /// The categories of the rule.
-        /// </summary>
-        public InputList<string> Categories
-        {
-            get => _categories ?? (_categories = new InputList<string>());
-            set => _categories = value;
-        }
 
         /// <summary>
         /// An informative description of the rule.
@@ -50,7 +38,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Configure checks for exposed credentials.
+        /// Configuration for exposed credential checking.
         /// </summary>
         [Input("exposedCredentialCheck")]
         public Input<Inputs.RulesetRuleExposedCredentialCheckGetArgs>? ExposedCredentialCheck { get; set; }
@@ -58,8 +46,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The expression defining which traffic will match the rule.
         /// </summary>
-        [Input("expression")]
-        public Input<string>? Expression { get; set; }
+        [Input("expression", required: true)]
+        public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
         /// The unique ID of the rule.
@@ -74,13 +62,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.RulesetRuleLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
-        /// An object configuring the rule's ratelimit behavior.
+        /// An object configuring the rule's rate limit behavior.
         /// </summary>
         [Input("ratelimit")]
         public Input<Inputs.RulesetRuleRatelimitGetArgs>? Ratelimit { get; set; }
 
         /// <summary>
-        /// The reference of the rule (the rule ID by default).
+        /// The reference of the rule (the rule's ID by default).
         /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }

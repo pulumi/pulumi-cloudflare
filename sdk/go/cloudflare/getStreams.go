@@ -33,6 +33,7 @@ import (
 //				Start:     pulumi.StringRef("2014-01-02T02:20:00Z"),
 //				Status:    pulumi.StringRef("inprogress"),
 //				Type:      pulumi.StringRef("live"),
+//				VideoName: pulumi.StringRef("puppy.mp4"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -66,7 +67,7 @@ type LookupStreamsArgs struct {
 	IncludeCounts *bool `pulumi:"includeCounts"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 	Search *string `pulumi:"search"`
 	// Lists videos created after the specified date.
 	Start *string `pulumi:"start"`
@@ -75,6 +76,8 @@ type LookupStreamsArgs struct {
 	Status *string `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type *string `pulumi:"type"`
+	// Provides a fast, exact string match on the `name` key in the `meta` field.
+	VideoName *string `pulumi:"videoName"`
 }
 
 // A collection of values returned by getStreams.
@@ -95,7 +98,7 @@ type LookupStreamsResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetStreamsResult `pulumi:"results"`
-	// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 	Search *string `pulumi:"search"`
 	// Lists videos created after the specified date.
 	Start *string `pulumi:"start"`
@@ -104,6 +107,8 @@ type LookupStreamsResult struct {
 	Status *string `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type *string `pulumi:"type"`
+	// Provides a fast, exact string match on the `name` key in the `meta` field.
+	VideoName *string `pulumi:"videoName"`
 }
 
 func LookupStreamsOutput(ctx *pulumi.Context, args LookupStreamsOutputArgs, opts ...pulumi.InvokeOption) LookupStreamsResultOutput {
@@ -129,7 +134,7 @@ type LookupStreamsOutputArgs struct {
 	IncludeCounts pulumi.BoolPtrInput `pulumi:"includeCounts"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+	// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 	// Lists videos created after the specified date.
 	Start pulumi.StringPtrInput `pulumi:"start"`
@@ -138,6 +143,8 @@ type LookupStreamsOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Specifies whether the video is `vod` or `live`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Provides a fast, exact string match on the `name` key in the `meta` field.
+	VideoName pulumi.StringPtrInput `pulumi:"videoName"`
 }
 
 func (LookupStreamsOutputArgs) ElementType() reflect.Type {
@@ -199,7 +206,7 @@ func (o LookupStreamsResultOutput) Results() GetStreamsResultArrayOutput {
 	return o.ApplyT(func(v LookupStreamsResult) []GetStreamsResult { return v.Results }).(GetStreamsResultArrayOutput)
 }
 
-// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
 func (o LookupStreamsResultOutput) Search() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
@@ -218,6 +225,11 @@ func (o LookupStreamsResultOutput) Status() pulumi.StringPtrOutput {
 // Specifies whether the video is `vod` or `live`.
 func (o LookupStreamsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStreamsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Provides a fast, exact string match on the `name` key in the `meta` field.
+func (o LookupStreamsResultOutput) VideoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupStreamsResult) *string { return v.VideoName }).(pulumi.StringPtrOutput)
 }
 
 func init() {

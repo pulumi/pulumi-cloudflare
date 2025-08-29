@@ -19,16 +19,14 @@ import * as utilities from "./utilities";
  *         name: "ssh.example.com",
  *         type: "CNAME",
  *     },
- *     ipFirewall: true,
  *     protocol: "tcp/22",
- *     proxyProtocol: "off",
- *     tls: "full",
  *     trafficType: "direct",
  *     argoSmartRouting: true,
  *     edgeIps: {
  *         connectivity: "all",
  *         type: "dynamic",
  *     },
+ *     ipFirewall: false,
  *     originDirects: ["tcp://127.0.0.1:8080"],
  *     originDns: {
  *         name: "origin.example.com",
@@ -36,6 +34,8 @@ import * as utilities from "./utilities";
  *         type: "",
  *     },
  *     originPort: 22,
+ *     proxyProtocol: "off",
+ *     tls: "off",
  * });
  * ```
  *
@@ -94,7 +94,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * Enables IP Access Rules for this application.
      * Notes: Only available for TCP applications.
      */
-    public readonly ipFirewall!: pulumi.Output<boolean | undefined>;
+    public readonly ipFirewall!: pulumi.Output<boolean>;
     /**
      * When the Application was last modified.
      */
@@ -125,7 +125,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * The type of TLS termination associated with the application.
      * Available values: "off", "flexible", "full", "strict".
      */
-    public readonly tls!: pulumi.Output<string | undefined>;
+    public readonly tls!: pulumi.Output<string>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
      * Available values: "direct", "http", "https".

@@ -56,6 +56,11 @@ export interface GetZeroTrustTunnelCloudflaredResult {
      */
     readonly accountTag: string;
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    readonly configSrc: string;
+    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -92,6 +97,8 @@ export interface GetZeroTrustTunnelCloudflaredResult {
     readonly name: string;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+     *
+     * @deprecated Use the configSrc field instead.
      */
     readonly remoteConfig: boolean;
     /**

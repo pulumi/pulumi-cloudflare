@@ -38,7 +38,7 @@ public final class GetDnsRecordsResultData {
      */
     private Double digestType;
     /**
-     * @return fingerprint.
+     * @return Fingerprint.
      * 
      */
     private String fingerprint;
@@ -125,7 +125,7 @@ public final class GetDnsRecordsResultData {
      */
     private Double preference;
     /**
-     * @return priority.
+     * @return Priority.
      * 
      */
     private Double priority;
@@ -170,7 +170,7 @@ public final class GetDnsRecordsResultData {
      */
     private String tag;
     /**
-     * @return target.
+     * @return Target.
      * 
      */
     private String target;
@@ -232,7 +232,7 @@ public final class GetDnsRecordsResultData {
         return this.digestType;
     }
     /**
-     * @return fingerprint.
+     * @return Fingerprint.
      * 
      */
     public String fingerprint() {
@@ -353,7 +353,7 @@ public final class GetDnsRecordsResultData {
         return this.preference;
     }
     /**
-     * @return priority.
+     * @return Priority.
      * 
      */
     public Double priority() {
@@ -416,7 +416,7 @@ public final class GetDnsRecordsResultData {
         return this.tag;
     }
     /**
-     * @return target.
+     * @return Target.
      * 
      */
     public String target() {

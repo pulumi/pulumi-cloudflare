@@ -13,31 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cookies to include in building the cache key.
+        /// Which cookies to include in the cache key.
         /// </summary>
         [Input("cookie")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieGetArgs>? Cookie { get; set; }
 
         /// <summary>
-        /// The header names and values to include in building the cache key.
+        /// Which headers to include in the cache key.
         /// </summary>
         [Input("header")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderGetArgs>? Header { get; set; }
 
         /// <summary>
-        /// Whether to use the original host or the resolved host in the cache key.
+        /// How to use the host in the cache key.
         /// </summary>
         [Input("host")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostGetArgs>? Host { get; set; }
 
         /// <summary>
-        /// Use the presence of parameters in the query string to build the cache key.
+        /// Which query string parameters to include in or exclude from the cache key.
         /// </summary>
         [Input("queryString")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringGetArgs>? QueryString { get; set; }
 
         /// <summary>
-        /// Characteristics of the request user agent used in building the cache key.
+        /// How to use characteristics of the request user agent in the cache key.
         /// </summary>
         [Input("user")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserGetArgs>? User { get; set; }

@@ -62,6 +62,11 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly accountTag!: pulumi.Output<string>;
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    public /*out*/ readonly configSrc!: pulumi.Output<string>;
+    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
@@ -93,6 +98,8 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+     *
+     * @deprecated Use the configSrc field instead.
      */
     public /*out*/ readonly remoteConfig!: pulumi.Output<boolean>;
     /**
@@ -125,6 +132,7 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             const state = argsOrState as ZeroTrustTunnelWarpConnectorState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["accountTag"] = state ? state.accountTag : undefined;
+            resourceInputs["configSrc"] = state ? state.configSrc : undefined;
             resourceInputs["connections"] = state ? state.connections : undefined;
             resourceInputs["connsActiveAt"] = state ? state.connsActiveAt : undefined;
             resourceInputs["connsInactiveAt"] = state ? state.connsInactiveAt : undefined;
@@ -148,6 +156,7 @@ export class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tunnelSecret"] = args?.tunnelSecret ? pulumi.secret(args.tunnelSecret) : undefined;
             resourceInputs["accountTag"] = undefined /*out*/;
+            resourceInputs["configSrc"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["connsActiveAt"] = undefined /*out*/;
             resourceInputs["connsInactiveAt"] = undefined /*out*/;
@@ -177,6 +186,11 @@ export interface ZeroTrustTunnelWarpConnectorState {
      * Cloudflare account ID
      */
     accountTag?: pulumi.Input<string>;
+    /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: "local", "cloudflare".
+     */
+    configSrc?: pulumi.Input<string>;
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
@@ -209,6 +223,8 @@ export interface ZeroTrustTunnelWarpConnectorState {
     name?: pulumi.Input<string>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+     *
+     * @deprecated Use the configSrc field instead.
      */
     remoteConfig?: pulumi.Input<boolean>;
     /**

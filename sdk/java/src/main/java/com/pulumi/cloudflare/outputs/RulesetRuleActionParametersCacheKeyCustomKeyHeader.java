@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * @return Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * @return A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      * 
      */
     private @Nullable List<String> checkPresences;
     /**
-     * @return For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * @return A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      * 
      */
     private @Nullable Map<String,List<String>> contains;
     /**
-     * @return Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * @return Whether to exclude the origin header in the cache key.
      * 
      */
     private @Nullable Boolean excludeOrigin;
     /**
-     * @return Include these headers&#39; names and their values.
+     * @return A list of headers to include in the cache key.
      * 
      */
     private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHeader() {}
     /**
-     * @return Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * @return A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      * 
      */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
     /**
-     * @return For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * @return A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      * 
      */
     public Map<String,List<String>> contains() {
         return this.contains == null ? Map.of() : this.contains;
     }
     /**
-     * @return Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * @return Whether to exclude the origin header in the cache key.
      * 
      */
     public Optional<Boolean> excludeOrigin() {
         return Optional.ofNullable(this.excludeOrigin);
     }
     /**
-     * @return Include these headers&#39; names and their values.
+     * @return A list of headers to include in the cache key.
      * 
      */
     public List<String> includes() {

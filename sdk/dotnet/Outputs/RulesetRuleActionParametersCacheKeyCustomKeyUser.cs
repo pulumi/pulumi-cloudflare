@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyUser
     {
         /// <summary>
-        /// Use the user agent's device type in the cache key.
+        /// Whether to use the user agent's device type in the cache key.
         /// </summary>
         public readonly bool? DeviceType;
         /// <summary>
-        /// Use the user agents's country in the cache key.
+        /// Whether to use the user agents's country in the cache key.
         /// </summary>
         public readonly bool? Geo;
         /// <summary>
-        /// Use the user agent's language in the cache key.
+        /// Whether to use the user agent's language in the cache key.
         /// </summary>
         public readonly bool? Lang;
 

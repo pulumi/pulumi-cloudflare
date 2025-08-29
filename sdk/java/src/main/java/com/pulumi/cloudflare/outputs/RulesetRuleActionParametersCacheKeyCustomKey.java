@@ -16,62 +16,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKey {
     /**
-     * @return The cookies to include in building the cache key.
+     * @return Which cookies to include in the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
     /**
-     * @return The header names and values to include in building the cache key.
+     * @return Which headers to include in the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
     /**
-     * @return Whether to use the original host or the resolved host in the cache key.
+     * @return How to use the host in the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host;
     /**
-     * @return Use the presence of parameters in the query string to build the cache key.
+     * @return Which query string parameters to include in or exclude from the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
     /**
-     * @return Characteristics of the request user agent used in building the cache key.
+     * @return How to use characteristics of the request user agent in the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private RulesetRuleActionParametersCacheKeyCustomKey() {}
     /**
-     * @return The cookies to include in building the cache key.
+     * @return Which cookies to include in the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookie() {
         return Optional.ofNullable(this.cookie);
     }
     /**
-     * @return The header names and values to include in building the cache key.
+     * @return Which headers to include in the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHeader> header() {
         return Optional.ofNullable(this.header);
     }
     /**
-     * @return Whether to use the original host or the resolved host in the cache key.
+     * @return How to use the host in the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHost> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Use the presence of parameters in the query string to build the cache key.
+     * @return Which query string parameters to include in or exclude from the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryString() {
         return Optional.ofNullable(this.queryString);
     }
     /**
-     * @return Characteristics of the request user agent used in building the cache key.
+     * @return How to use characteristics of the request user agent in the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyUser> user() {

@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSessionResult
     {
-        /// <summary>
-        /// Configure how fresh the session needs to be to be considered valid.
-        /// </summary>
         public readonly string Duration;
         /// <summary>
         /// Set to true to enable session enforcement.

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
+import java.lang.Object;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,7 +39,7 @@ public final class RecordData {
      */
     private @Nullable Double digestType;
     /**
-     * @return fingerprint.
+     * @return Fingerprint.
      * 
      */
     private @Nullable String fingerprint;
@@ -46,7 +47,7 @@ public final class RecordData {
      * @return Flags for the CAA record.
      * 
      */
-    private @Nullable Double flags;
+    private @Nullable Object flags;
     /**
      * @return Key Tag.
      * 
@@ -125,7 +126,7 @@ public final class RecordData {
      */
     private @Nullable Double preference;
     /**
-     * @return priority.
+     * @return Priority.
      * 
      */
     private @Nullable Double priority;
@@ -170,7 +171,7 @@ public final class RecordData {
      */
     private @Nullable String tag;
     /**
-     * @return target.
+     * @return Target.
      * 
      */
     private @Nullable String target;
@@ -232,7 +233,7 @@ public final class RecordData {
         return Optional.ofNullable(this.digestType);
     }
     /**
-     * @return fingerprint.
+     * @return Fingerprint.
      * 
      */
     public Optional<String> fingerprint() {
@@ -242,7 +243,7 @@ public final class RecordData {
      * @return Flags for the CAA record.
      * 
      */
-    public Optional<Double> flags() {
+    public Optional<Object> flags() {
         return Optional.ofNullable(this.flags);
     }
     /**
@@ -353,7 +354,7 @@ public final class RecordData {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return priority.
+     * @return Priority.
      * 
      */
     public Optional<Double> priority() {
@@ -416,7 +417,7 @@ public final class RecordData {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return target.
+     * @return Target.
      * 
      */
     public Optional<String> target() {
@@ -466,7 +467,7 @@ public final class RecordData {
         private @Nullable String digest;
         private @Nullable Double digestType;
         private @Nullable String fingerprint;
-        private @Nullable Double flags;
+        private @Nullable Object flags;
         private @Nullable Double keyTag;
         private @Nullable Double latDegrees;
         private @Nullable String latDirection;
@@ -574,7 +575,7 @@ public final class RecordData {
             return this;
         }
         @CustomType.Setter
-        public Builder flags(@Nullable Double flags) {
+        public Builder flags(@Nullable Object flags) {
 
             this.flags = flags;
             return this;

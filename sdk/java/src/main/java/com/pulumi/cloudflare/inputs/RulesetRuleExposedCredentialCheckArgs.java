@@ -15,14 +15,14 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
     public static final RulesetRuleExposedCredentialCheckArgs Empty = new RulesetRuleExposedCredentialCheckArgs();
 
     /**
-     * Expression that selects the password used in the credentials check.
+     * An expression that selects the password used in the credentials check.
      * 
      */
     @Import(name="passwordExpression", required=true)
     private Output<String> passwordExpression;
 
     /**
-     * @return Expression that selects the password used in the credentials check.
+     * @return An expression that selects the password used in the credentials check.
      * 
      */
     public Output<String> passwordExpression() {
@@ -30,14 +30,14 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
     }
 
     /**
-     * Expression that selects the user ID used in the credentials check.
+     * An expression that selects the user ID used in the credentials check.
      * 
      */
     @Import(name="usernameExpression", required=true)
     private Output<String> usernameExpression;
 
     /**
-     * @return Expression that selects the user ID used in the credentials check.
+     * @return An expression that selects the user ID used in the credentials check.
      * 
      */
     public Output<String> usernameExpression() {
@@ -70,7 +70,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param passwordExpression Expression that selects the password used in the credentials check.
+         * @param passwordExpression An expression that selects the password used in the credentials check.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param passwordExpression Expression that selects the password used in the credentials check.
+         * @param passwordExpression An expression that selects the password used in the credentials check.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param usernameExpression Expression that selects the user ID used in the credentials check.
+         * @param usernameExpression An expression that selects the user ID used in the credentials check.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
         }
 
         /**
-         * @param usernameExpression Expression that selects the user ID used in the credentials check.
+         * @param usernameExpression An expression that selects the user ID used in the credentials check.
          * 
          * @return builder
          * 

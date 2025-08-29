@@ -62,6 +62,9 @@ export class WorkersKv extends pulumi.CustomResource {
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     public readonly keyName!: pulumi.Output<string>;
+    /**
+     * Associates arbitrary JSON data with a key/value pair.
+     */
     public readonly metadata!: pulumi.Output<string | undefined>;
     /**
      * Namespace identifier tag.
@@ -127,6 +130,9 @@ export interface WorkersKvState {
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     keyName?: pulumi.Input<string>;
+    /**
+     * Associates arbitrary JSON data with a key/value pair.
+     */
     metadata?: pulumi.Input<string>;
     /**
      * Namespace identifier tag.
@@ -150,6 +156,9 @@ export interface WorkersKvArgs {
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
     keyName: pulumi.Input<string>;
+    /**
+     * Associates arbitrary JSON data with a key/value pair.
+     */
     metadata?: pulumi.Input<string>;
     /**
      * Namespace identifier tag.

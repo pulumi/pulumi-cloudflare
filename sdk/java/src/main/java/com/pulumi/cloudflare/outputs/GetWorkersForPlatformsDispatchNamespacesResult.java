@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -46,6 +47,11 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
      * 
      */
     private Integer scriptCount;
+    /**
+     * @return Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    private Boolean trustedWorkers;
 
     private GetWorkersForPlatformsDispatchNamespacesResult() {}
     /**
@@ -97,6 +103,13 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
     public Integer scriptCount() {
         return this.scriptCount;
     }
+    /**
+     * @return Whether the Workers in the namespace are executed in a &#34;trusted&#34; manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are &#34;untrusted&#34;.
+     * 
+     */
+    public Boolean trustedWorkers() {
+        return this.trustedWorkers;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -114,6 +127,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
         private String namespaceId;
         private String namespaceName;
         private Integer scriptCount;
+        private Boolean trustedWorkers;
         public Builder() {}
         public Builder(GetWorkersForPlatformsDispatchNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,6 +138,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
     	      this.namespaceId = defaults.namespaceId;
     	      this.namespaceName = defaults.namespaceName;
     	      this.scriptCount = defaults.scriptCount;
+    	      this.trustedWorkers = defaults.trustedWorkers;
         }
 
         @CustomType.Setter
@@ -182,6 +197,14 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
             this.scriptCount = scriptCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder trustedWorkers(Boolean trustedWorkers) {
+            if (trustedWorkers == null) {
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsDispatchNamespacesResult", "trustedWorkers");
+            }
+            this.trustedWorkers = trustedWorkers;
+            return this;
+        }
         public GetWorkersForPlatformsDispatchNamespacesResult build() {
             final var _resultValue = new GetWorkersForPlatformsDispatchNamespacesResult();
             _resultValue.createdBy = createdBy;
@@ -191,6 +214,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
             _resultValue.namespaceId = namespaceId;
             _resultValue.namespaceName = namespaceName;
             _resultValue.scriptCount = scriptCount;
+            _resultValue.trustedWorkers = trustedWorkers;
             return _resultValue;
         }
     }

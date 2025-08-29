@@ -63,7 +63,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
     }
 
     /**
-     * The sensitivity level to use for rules in the category.
+     * The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
     private @Nullable Output<String> sensitivityLevel;
 
     /**
-     * @return The sensitivity level to use for rules in the category.
+     * @return The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
@@ -170,7 +170,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * @param sensitivityLevel The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
          * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder
@@ -182,7 +182,7 @@ public final class RulesetRuleActionParametersOverridesCategoryArgs extends com.
         }
 
         /**
-         * @param sensitivityLevel The sensitivity level to use for rules in the category.
+         * @param sensitivityLevel The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
          * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
          * 
          * @return builder

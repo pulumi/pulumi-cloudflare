@@ -42,14 +42,14 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Output("bindingStatus")]
         public Output<string> BindingStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The CA certificate
+        /// The CA certificate(read only).
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
@@ -61,31 +61,31 @@ namespace Pulumi.Cloudflare
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// The SHA256 fingerprint of the certificate.
+        /// The SHA256 fingerprint of the certificate(read only).
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Use this certificate for Gateway TLS interception
+        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
         /// </summary>
         [Output("inUse")]
         public Output<bool> InUse { get; private set; } = null!;
 
         /// <summary>
-        /// The organization that issued the certificate.
+        /// The organization that issued the certificate(read only).
         /// </summary>
         [Output("issuerOrg")]
         public Output<string> IssuerOrg { get; private set; } = null!;
 
         /// <summary>
-        /// The entire issuer field of the certificate.
+        /// The entire issuer field of the certificate(read only).
         /// </summary>
         [Output("issuerRaw")]
         public Output<string> IssuerRaw { get; private set; } = null!;
 
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Output("type")]
@@ -164,14 +164,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Input("bindingStatus")]
         public Input<string>? BindingStatus { get; set; }
 
         /// <summary>
-        /// The CA certificate
+        /// The CA certificate(read only).
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
@@ -183,31 +183,31 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// The SHA256 fingerprint of the certificate.
+        /// The SHA256 fingerprint of the certificate(read only).
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// Use this certificate for Gateway TLS interception
+        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
         /// </summary>
         [Input("inUse")]
         public Input<bool>? InUse { get; set; }
 
         /// <summary>
-        /// The organization that issued the certificate.
+        /// The organization that issued the certificate(read only).
         /// </summary>
         [Input("issuerOrg")]
         public Input<string>? IssuerOrg { get; set; }
 
         /// <summary>
-        /// The entire issuer field of the certificate.
+        /// The entire issuer field of the certificate(read only).
         /// </summary>
         [Input("issuerRaw")]
         public Input<string>? IssuerRaw { get; set; }
 
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Input("type")]

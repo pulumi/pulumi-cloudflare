@@ -599,7 +599,7 @@ class AccessOrganization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="allowAuthenticateViaWarp")
-    def allow_authenticate_via_warp(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def allow_authenticate_via_warp(self) -> pulumi.Output[_builtins.bool]:
         """
         When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
@@ -628,7 +628,7 @@ class AccessOrganization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="isUiReadOnly")
-    def is_ui_read_only(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def is_ui_read_only(self) -> pulumi.Output[_builtins.bool]:
         return pulumi.get(self, "is_ui_read_only")
 
     @_builtins.property

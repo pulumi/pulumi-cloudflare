@@ -19,14 +19,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesetArgs Empty = new RulesetArgs();
 
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -113,14 +113,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -158,7 +158,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

@@ -49,7 +49,7 @@ type UrlNormalizationSettings struct {
 	pulumi.CustomResourceState
 
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -98,7 +98,7 @@ func GetUrlNormalizationSettings(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UrlNormalizationSettings resources.
 type urlNormalizationSettingsState struct {
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope *string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -109,7 +109,7 @@ type urlNormalizationSettingsState struct {
 
 type UrlNormalizationSettingsState struct {
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope pulumi.StringPtrInput
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -124,7 +124,7 @@ func (UrlNormalizationSettingsState) ElementType() reflect.Type {
 
 type urlNormalizationSettingsArgs struct {
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope string `pulumi:"scope"`
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -136,7 +136,7 @@ type urlNormalizationSettingsArgs struct {
 // The set of arguments for constructing a UrlNormalizationSettings resource.
 type UrlNormalizationSettingsArgs struct {
 	// The scope of the URL normalization.
-	// Available values: "incoming", "both".
+	// Available values: "incoming", "both", "none".
 	Scope pulumi.StringInput
 	// The type of URL normalization performed by Cloudflare.
 	// Available values: "cloudflare", "rfc3986".
@@ -233,7 +233,7 @@ func (o UrlNormalizationSettingsOutput) ToUrlNormalizationSettingsOutputWithCont
 }
 
 // The scope of the URL normalization.
-// Available values: "incoming", "both".
+// Available values: "incoming", "both", "none".
 func (o UrlNormalizationSettingsOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlNormalizationSettings) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }

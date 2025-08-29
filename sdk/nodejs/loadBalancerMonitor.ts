@@ -70,7 +70,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -80,24 +80,24 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
      */
-    public readonly consecutiveDown!: pulumi.Output<number>;
+    public readonly consecutiveDown!: pulumi.Output<number | undefined>;
     /**
      * To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      */
-    public readonly consecutiveUp!: pulumi.Output<number>;
+    public readonly consecutiveUp!: pulumi.Output<number | undefined>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * Object description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly expectedBody!: pulumi.Output<string | undefined>;
+    public readonly expectedBody!: pulumi.Output<string>;
     /**
      * The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly expectedCodes!: pulumi.Output<string | undefined>;
+    public readonly expectedCodes!: pulumi.Output<string>;
     /**
      * Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
      */
@@ -122,11 +122,11 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
      */
-    public readonly port!: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly probeZone!: pulumi.Output<string | undefined>;
+    public readonly probeZone!: pulumi.Output<string>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      */
@@ -208,7 +208,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
  */
 export interface LoadBalancerMonitorState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface LoadBalancerMonitorState {
  */
 export interface LoadBalancerMonitorArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare
     ///         CrawlerProtection = "enabled",
     ///         EnableJs = true,
     ///         FightMode = true,
+    ///         IsRobotsTxtManaged = true,
     ///     });
     /// 
     /// });
@@ -72,6 +73,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("fightMode")]
         public Output<bool> FightMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        /// </summary>
+        [Output("isRobotsTxtManaged")]
+        public Output<bool> IsRobotsTxtManaged { get; private set; } = null!;
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
@@ -211,6 +218,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FightMode { get; set; }
 
         /// <summary>
+        /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        /// </summary>
+        [Input("isRobotsTxtManaged")]
+        public Input<bool>? IsRobotsTxtManaged { get; set; }
+
+        /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
         /// </summary>
         [Input("optimizeWordpress")]
@@ -296,6 +309,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("fightMode")]
         public Input<bool>? FightMode { get; set; }
+
+        /// <summary>
+        /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        /// </summary>
+        [Input("isRobotsTxtManaged")]
+        public Input<bool>? IsRobotsTxtManaged { get; set; }
 
         /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.

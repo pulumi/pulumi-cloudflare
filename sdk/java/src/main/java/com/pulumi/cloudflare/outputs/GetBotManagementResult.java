@@ -45,6 +45,11 @@ public final class GetBotManagementResult {
      */
     private String id;
     /**
+     * @return Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    private Boolean isRobotsTxtManaged;
+    /**
      * @return Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
@@ -141,6 +146,13 @@ public final class GetBotManagementResult {
         return this.id;
     }
     /**
+     * @return Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+     * 
+     */
+    public Boolean isRobotsTxtManaged() {
+        return this.isRobotsTxtManaged;
+    }
+    /**
      * @return Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
@@ -224,6 +236,7 @@ public final class GetBotManagementResult {
         private Boolean enableJs;
         private Boolean fightMode;
         private String id;
+        private Boolean isRobotsTxtManaged;
         private Boolean optimizeWordpress;
         private String sbfmDefinitelyAutomated;
         private String sbfmLikelyAutomated;
@@ -242,6 +255,7 @@ public final class GetBotManagementResult {
     	      this.enableJs = defaults.enableJs;
     	      this.fightMode = defaults.fightMode;
     	      this.id = defaults.id;
+    	      this.isRobotsTxtManaged = defaults.isRobotsTxtManaged;
     	      this.optimizeWordpress = defaults.optimizeWordpress;
     	      this.sbfmDefinitelyAutomated = defaults.sbfmDefinitelyAutomated;
     	      this.sbfmLikelyAutomated = defaults.sbfmLikelyAutomated;
@@ -299,6 +313,14 @@ public final class GetBotManagementResult {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isRobotsTxtManaged(Boolean isRobotsTxtManaged) {
+            if (isRobotsTxtManaged == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "isRobotsTxtManaged");
+            }
+            this.isRobotsTxtManaged = isRobotsTxtManaged;
             return this;
         }
         @CustomType.Setter
@@ -381,6 +403,7 @@ public final class GetBotManagementResult {
             _resultValue.enableJs = enableJs;
             _resultValue.fightMode = fightMode;
             _resultValue.id = id;
+            _resultValue.isRobotsTxtManaged = isRobotsTxtManaged;
             _resultValue.optimizeWordpress = optimizeWordpress;
             _resultValue.sbfmDefinitelyAutomated = sbfmDefinitelyAutomated;
             _resultValue.sbfmLikelyAutomated = sbfmLikelyAutomated;

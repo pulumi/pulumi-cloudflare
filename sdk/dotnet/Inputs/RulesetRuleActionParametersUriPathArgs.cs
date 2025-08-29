@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersUriPathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Expression to evaluate for the replacement value.
+        /// An expression that evaluates to a value to rewrite the URI path to.
         /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Predefined replacement value.
+        /// A value to rewrite the URI path to.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

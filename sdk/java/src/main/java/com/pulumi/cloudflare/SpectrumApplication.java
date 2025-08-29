@@ -55,16 +55,14 @@ import javax.annotation.Nullable;
  *                 .name("ssh.example.com")
  *                 .type("CNAME")
  *                 .build())
- *             .ipFirewall(true)
  *             .protocol("tcp/22")
- *             .proxyProtocol("off")
- *             .tls("full")
  *             .trafficType("direct")
  *             .argoSmartRouting(true)
  *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()
  *                 .connectivity("all")
  *                 .type("dynamic")
  *                 .build())
+ *             .ipFirewall(false)
  *             .originDirects("tcp://127.0.0.1:8080")
  *             .originDns(SpectrumApplicationOriginDnsArgs.builder()
  *                 .name("origin.example.com")
@@ -72,6 +70,8 @@ import javax.annotation.Nullable;
  *                 .type("")
  *                 .build())
  *             .originPort(22)
+ *             .proxyProtocol("off")
+ *             .tls("off")
  *             .build());
  * 
  *     }
@@ -153,15 +153,15 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipFirewall", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ipFirewall;
+    private Output<Boolean> ipFirewall;
 
     /**
      * @return Enables IP Access Rules for this application.
      * Notes: Only available for TCP applications.
      * 
      */
-    public Output<Optional<Boolean>> ipFirewall() {
-        return Codegen.optional(this.ipFirewall);
+    public Output<Boolean> ipFirewall() {
+        return this.ipFirewall;
     }
     /**
      * When the Application was last modified.
@@ -257,15 +257,15 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tls", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tls;
+    private Output<String> tls;
 
     /**
      * @return The type of TLS termination associated with the application.
      * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
-    public Output<Optional<String>> tls() {
-        return Codegen.optional(this.tls);
+    public Output<String> tls() {
+        return this.tls;
     }
     /**
      * Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.

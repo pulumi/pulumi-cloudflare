@@ -25,7 +25,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
-        ///         Comment = "Example comment for this route.",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
@@ -59,7 +58,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
-        ///         Comment = "Example comment for this route.",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
@@ -93,7 +91,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleZeroTrustTunnelCloudflaredRoutes = Cloudflare.GetZeroTrustTunnelCloudflaredRoutes.Invoke(new()
         ///     {
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
-        ///         Comment = "Example comment for this route.",
         ///         ExistedAt = "2019-10-12T07%3A20%3A50.52Z",
         ///         IsDeleted = true,
         ///         NetworkSubset = "172.16.0.0/16",
@@ -286,7 +283,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Optional remark describing the route.
         /// </summary>
-        public readonly string? Comment;
+        public readonly string Comment;
         /// <summary>
         /// If provided, include only resources that were created (and not deleted) before this time. URL encoded.
         /// </summary>
@@ -336,7 +333,7 @@ namespace Pulumi.Cloudflare
         private GetZeroTrustTunnelCloudflaredRoutesResult(
             string accountId,
 
-            string? comment,
+            string comment,
 
             string? existedAt,
 

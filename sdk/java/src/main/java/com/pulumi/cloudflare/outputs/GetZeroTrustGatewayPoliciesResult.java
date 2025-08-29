@@ -33,10 +33,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String description;
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     private String devicePosture;
     /**
      * @return True if the rule is enabled.
@@ -59,10 +55,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String id;
-    /**
-     * @return The wirefilter expression used for identity matching.
-     * 
-     */
     private String identity;
     /**
      * @return The name of the rule.
@@ -95,10 +87,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String sourceAccount;
-    /**
-     * @return The wirefilter expression used for traffic matching.
-     * 
-     */
     private String traffic;
     private String updatedAt;
     /**
@@ -138,10 +126,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String description() {
         return this.description;
     }
-    /**
-     * @return The wirefilter expression used for device posture check matching.
-     * 
-     */
     public String devicePosture() {
         return this.devicePosture;
     }
@@ -174,10 +158,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The wirefilter expression used for identity matching.
-     * 
-     */
     public String identity() {
         return this.identity;
     }
@@ -226,10 +206,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String sourceAccount() {
         return this.sourceAccount;
     }
-    /**
-     * @return The wirefilter expression used for traffic matching.
-     * 
-     */
     public String traffic() {
         return this.traffic;
     }

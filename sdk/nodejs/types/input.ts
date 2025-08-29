@@ -3460,6 +3460,36 @@ export interface BotManagementStaleZoneConfiguration {
     suppressSessionScore?: pulumi.Input<boolean>;
 }
 
+export interface CertificatePackValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: pulumi.Input<string>;
+}
+
+export interface CertificatePackValidationRecord {
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to complete domain validation.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
+     */
+    httpBody?: pulumi.Input<string>;
+    /**
+     * The url that will be checked during domain validation.
+     */
+    httpUrl?: pulumi.Input<string>;
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record during domain validation .
+     */
+    txtName?: pulumi.Input<string>;
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain validation.
+     */
+    txtValue?: pulumi.Input<string>;
+}
+
 export interface CloudConnectorRulesRule {
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
@@ -4010,13 +4040,13 @@ export interface DnsRecordData {
      */
     digestType?: pulumi.Input<number>;
     /**
-     * fingerprint.
+     * Fingerprint.
      */
     fingerprint?: pulumi.Input<string>;
     /**
      * Flags for the CAA record.
      */
-    flags?: pulumi.Input<number>;
+    flags?: any;
     /**
      * Key Tag.
      */
@@ -4080,7 +4110,7 @@ export interface DnsRecordData {
      */
     preference?: pulumi.Input<number>;
     /**
-     * priority.
+     * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -4116,7 +4146,7 @@ export interface DnsRecordData {
      */
     tag?: pulumi.Input<string>;
     /**
-     * target.
+     * Target.
      */
     target?: pulumi.Input<string>;
     /**
@@ -4333,6 +4363,29 @@ export interface EmailSecurityTrustedDomainsBody {
      */
     isSimilarity: pulumi.Input<boolean>;
     pattern: pulumi.Input<string>;
+}
+
+export interface FilterBody {
+    /**
+     * An informative summary of the filter.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the filter.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * When true, indicates that the filter is currently paused.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * A short reference tag. Allows you to select related filters.
+     */
+    ref?: pulumi.Input<string>;
 }
 
 export interface FirewallRuleAction {
@@ -7007,7 +7060,7 @@ export interface LoadBalancerRuleOverrides {
      */
     locationStrategy?: pulumi.Input<inputs.LoadBalancerRuleOverridesLocationStrategy>;
     /**
-     * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+     * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
     popPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
@@ -7019,7 +7072,8 @@ export interface LoadBalancerRuleOverrides {
      */
     regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+     * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+     * Available values: "none", "cookie", "ipCookie", "header".
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
@@ -7027,7 +7081,7 @@ export interface LoadBalancerRuleOverrides {
      */
     sessionAffinityAttributes?: pulumi.Input<inputs.LoadBalancerRuleOverridesSessionAffinityAttributes>;
     /**
-     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
      */
     sessionAffinityTtl?: pulumi.Input<number>;
     /**
@@ -7079,7 +7133,7 @@ export interface LoadBalancerRuleOverridesSessionAffinityAttributes {
      */
     headers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+     * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
      */
     requireAllHeaders?: pulumi.Input<boolean>;
     /**
@@ -7093,7 +7147,8 @@ export interface LoadBalancerRuleOverridesSessionAffinityAttributes {
      */
     secure?: pulumi.Input<string>;
     /**
-     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+     * Available values: "none", "temporary", "sticky".
      */
     zeroDowntimeFailover?: pulumi.Input<string>;
 }
@@ -7108,7 +7163,7 @@ export interface LoadBalancerSessionAffinityAttributes {
      */
     headers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+     * When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
      */
     requireAllHeaders?: pulumi.Input<boolean>;
     /**
@@ -7122,7 +7177,8 @@ export interface LoadBalancerSessionAffinityAttributes {
      */
     secure?: pulumi.Input<string>;
     /**
-     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+     * Available values: "none", "temporary", "sticky".
      */
     zeroDowntimeFailover?: pulumi.Input<string>;
 }
@@ -7436,17 +7492,9 @@ export interface MagicWanStaticRouteScope {
 
 export interface ManagedHeadersManagedRequestHeader {
     /**
-     * The Managed Transforms that this Managed Transform conflicts with.
-     */
-    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Whether the Managed Transform is enabled.
      */
     enabled: pulumi.Input<boolean>;
-    /**
-     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     */
-    hasConflict?: pulumi.Input<boolean>;
     /**
      * The human-readable identifier of the Managed Transform.
      */
@@ -7455,17 +7503,9 @@ export interface ManagedHeadersManagedRequestHeader {
 
 export interface ManagedHeadersManagedResponseHeader {
     /**
-     * The Managed Transforms that this Managed Transform conflicts with.
-     */
-    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Whether the Managed Transform is enabled.
      */
     enabled: pulumi.Input<boolean>;
-    /**
-     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     */
-    hasConflict?: pulumi.Input<boolean>;
     /**
      * The human-readable identifier of the Managed Transform.
      */
@@ -7474,17 +7514,9 @@ export interface ManagedHeadersManagedResponseHeader {
 
 export interface ManagedTransformsManagedRequestHeader {
     /**
-     * The Managed Transforms that this Managed Transform conflicts with.
-     */
-    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Whether the Managed Transform is enabled.
      */
     enabled: pulumi.Input<boolean>;
-    /**
-     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     */
-    hasConflict?: pulumi.Input<boolean>;
     /**
      * The human-readable identifier of the Managed Transform.
      */
@@ -7493,17 +7525,9 @@ export interface ManagedTransformsManagedRequestHeader {
 
 export interface ManagedTransformsManagedResponseHeader {
     /**
-     * The Managed Transforms that this Managed Transform conflicts with.
-     */
-    conflictsWiths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Whether the Managed Transform is enabled.
      */
     enabled: pulumi.Input<boolean>;
-    /**
-     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-     */
-    hasConflict?: pulumi.Input<boolean>;
     /**
      * The human-readable identifier of the Managed Transform.
      */
@@ -9186,13 +9210,13 @@ export interface RecordData {
      */
     digestType?: pulumi.Input<number>;
     /**
-     * fingerprint.
+     * Fingerprint.
      */
     fingerprint?: pulumi.Input<string>;
     /**
      * Flags for the CAA record.
      */
-    flags?: pulumi.Input<number>;
+    flags?: any;
     /**
      * Key Tag.
      */
@@ -9256,7 +9280,7 @@ export interface RecordData {
      */
     preference?: pulumi.Input<number>;
     /**
-     * priority.
+     * Priority.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -9292,7 +9316,7 @@ export interface RecordData {
      */
     tag?: pulumi.Input<string>;
     /**
-     * target.
+     * Target.
      */
     target?: pulumi.Input<string>;
     /**
@@ -9339,17 +9363,13 @@ export interface RiskBehaviorBehaviors {
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
      */
-    action?: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * The parameters configuring the rule's action.
      */
     actionParameters?: pulumi.Input<inputs.RulesetRuleActionParameters>;
-    /**
-     * The categories of the rule.
-     */
-    categories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An informative description of the rule.
      */
@@ -9359,13 +9379,13 @@ export interface RulesetRule {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Configure checks for exposed credentials.
+     * Configuration for exposed credential checking.
      */
     exposedCredentialCheck?: pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>;
     /**
      * The expression defining which traffic will match the rule.
      */
-    expression?: pulumi.Input<string>;
+    expression: pulumi.Input<string>;
     /**
      * The unique ID of the rule.
      */
@@ -9375,18 +9395,18 @@ export interface RulesetRule {
      */
     logging?: pulumi.Input<inputs.RulesetRuleLogging>;
     /**
-     * An object configuring the rule's ratelimit behavior.
+     * An object configuring the rule's rate limit behavior.
      */
     ratelimit?: pulumi.Input<inputs.RulesetRuleRatelimit>;
     /**
-     * The reference of the rule (the rule ID by default).
+     * The reference of the rule (the rule's ID by default).
      */
     ref?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParameters {
     /**
-     * List of additional ports that caching can be enabled on.
+     * A list of additional ports that caching should be enabled on.
      */
     additionalCacheablePorts?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -9394,40 +9414,44 @@ export interface RulesetRuleActionParameters {
      */
     algorithms?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersAlgorithm>[]>;
     /**
-     * Turn on or off Automatic HTTPS Rewrites.
+     * The name of a custom asset to serve as the response.
+     */
+    assetName?: pulumi.Input<string>;
+    /**
+     * Whether to enable Automatic HTTPS Rewrites.
      */
     automaticHttpsRewrites?: pulumi.Input<boolean>;
     /**
-     * Select which file extensions to minify automatically.
+     * Which file extensions to minify automatically.
      */
     autominify?: pulumi.Input<inputs.RulesetRuleActionParametersAutominify>;
     /**
-     * Turn on or off Browser Integrity Check.
+     * Whether to enable Browser Integrity Check (BIC).
      */
     bic?: pulumi.Input<boolean>;
     /**
-     * Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      */
     browserTtl?: pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>;
     /**
-     * Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      */
     cache?: pulumi.Input<boolean>;
     /**
-     * Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      */
     cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     /**
-     * Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      */
     cacheReserve?: pulumi.Input<inputs.RulesetRuleActionParametersCacheReserve>;
     /**
-     * Error response content.
+     * The response content.
      */
     content?: pulumi.Input<string>;
     /**
-     * Content-type header to set with the response.
-     * Available values: "application/json", "text/xml", "text/plain", "text/html".
+     * The content type header to set with the error response.
+     * Available values: "application/json", "text/html", "text/plain", "text/xml".
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -9435,47 +9459,47 @@ export interface RulesetRuleActionParameters {
      */
     cookieFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersCookieField>[]>;
     /**
-     * Turn off all active Cloudflare Apps.
+     * Whether to disable Cloudflare Apps.
      */
     disableApps?: pulumi.Input<boolean>;
     /**
-     * Turn off Real User Monitoring (RUM).
+     * Whether to disable Real User Monitoring (RUM).
      */
     disableRum?: pulumi.Input<boolean>;
     /**
-     * Turn off Zaraz.
+     * Whether to disable Zaraz.
      */
     disableZaraz?: pulumi.Input<boolean>;
     /**
-     * TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * How long the Cloudflare edge network should cache the response.
      */
     edgeTtl?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
     /**
-     * Turn on or off Email Obfuscation.
+     * Whether to enable Email Obfuscation.
      */
     emailObfuscation?: pulumi.Input<boolean>;
     /**
-     * Turn on or off Cloudflare Fonts.
+     * Whether to enable Cloudflare Fonts.
      */
     fonts?: pulumi.Input<boolean>;
     /**
-     * Serve a redirect based on a bulk list lookup.
+     * A redirect based on a bulk list lookup.
      */
     fromList?: pulumi.Input<inputs.RulesetRuleActionParametersFromList>;
     /**
-     * Serve a redirect based on the request properties.
+     * A redirect based on the request properties.
      */
     fromValue?: pulumi.Input<inputs.RulesetRuleActionParametersFromValue>;
     /**
-     * Map of request headers to modify.
+     * A map of headers to rewrite.
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<inputs.RulesetRuleActionParametersHeaders>}>;
     /**
-     * Rewrite the HTTP Host header.
+     * A value to rewrite the HTTP host header to.
      */
     hostHeader?: pulumi.Input<string>;
     /**
-     * Turn on or off the Hotlink Protection.
+     * Whether to enable Hotlink Protection.
      */
     hotlinkProtection?: pulumi.Input<boolean>;
     /**
@@ -9483,7 +9507,7 @@ export interface RulesetRuleActionParameters {
      */
     id?: pulumi.Input<string>;
     /**
-     * Increment contains the delta to change the score and can be either positive or negative.
+     * A delta to change the score by, which can be either positive or negative.
      */
     increment?: pulumi.Input<number>;
     /**
@@ -9491,23 +9515,23 @@ export interface RulesetRuleActionParameters {
      */
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
     /**
-     * Turn on or off Mirage.
+     * Whether to enable Mirage.
      */
     mirage?: pulumi.Input<boolean>;
     /**
-     * Turn on or off Opportunistic Encryption.
+     * Whether to enable Opportunistic Encryption.
      */
     opportunisticEncryption?: pulumi.Input<boolean>;
     /**
-     * Override the IP/TCP destination.
+     * An origin to route to.
      */
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
     /**
-     * When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * Whether Cloudflare will aim to strictly adhere to RFC 7234.
      */
     originCacheControl?: pulumi.Input<boolean>;
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * Whether to generate Cloudflare error pages for issues from the origin server.
      */
     originErrorPagePassthru?: pulumi.Input<boolean>;
     /**
@@ -9515,21 +9539,18 @@ export interface RulesetRuleActionParameters {
      */
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     /**
-     * A phase to skip the execution of. This property is only compatible with products.
-     * Available values: "current".
-     */
-    phase?: pulumi.Input<string>;
-    /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configure the Polish level.
+     * The Polish level to configure.
      * Available values: "off", "lossless", "lossy", "webp".
      */
     polish?: pulumi.Input<string>;
     /**
      * A list of legacy security products to skip the execution of.
+     * Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -9537,7 +9558,7 @@ export interface RulesetRuleActionParameters {
      */
     rawResponseFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersRawResponseField>[]>;
     /**
-     * Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      */
     readTimeout?: pulumi.Input<number>;
     /**
@@ -9545,7 +9566,7 @@ export interface RulesetRuleActionParameters {
      */
     requestFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersRequestField>[]>;
     /**
-     * Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      */
     respectStrongEtags?: pulumi.Input<boolean>;
     /**
@@ -9557,7 +9578,7 @@ export interface RulesetRuleActionParameters {
      */
     responseFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponseField>[]>;
     /**
-     * Turn on or off Rocket Loader.
+     * Whether to enable Rocket Loader.
      */
     rocketLoader?: pulumi.Input<boolean>;
     /**
@@ -9574,24 +9595,24 @@ export interface RulesetRuleActionParameters {
      */
     rulesets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configure the Security Level.
+     * The Security Level to configure.
      * Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
      */
     securityLevel?: pulumi.Input<string>;
     /**
-     * Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * When to serve stale content from cache.
      */
     serveStale?: pulumi.Input<inputs.RulesetRuleActionParametersServeStale>;
     /**
-     * Turn on or off Server Side Excludes.
+     * Whether to enable Server-Side Excludes.
      */
     serverSideExcludes?: pulumi.Input<boolean>;
     /**
-     * Override the Server Name Indication (SNI).
+     * A Server Name Indication (SNI) override.
      */
     sni?: pulumi.Input<inputs.RulesetRuleActionParametersSni>;
     /**
-     * Configure the SSL level.
+     * The SSL level to configure.
      * Available values: "off", "flexible", "full", "strict", "originPull".
      */
     ssl?: pulumi.Input<string>;
@@ -9600,7 +9621,7 @@ export interface RulesetRuleActionParameters {
      */
     statusCode?: pulumi.Input<number>;
     /**
-     * Turn on or off Signed Exchanges (SXG).
+     * Whether to enable Signed Exchanges (SXG).
      */
     sxg?: pulumi.Input<boolean>;
     /**
@@ -9608,14 +9629,14 @@ export interface RulesetRuleActionParameters {
      */
     transformedRequestFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersTransformedRequestField>[]>;
     /**
-     * URI to rewrite the request to.
+     * A URI rewrite.
      */
     uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
     /**
-     * Name of compression algorithm to enable.
+     * Name of the compression algorithm to enable.
      * Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
      */
     name?: pulumi.Input<string>;
@@ -9623,26 +9644,26 @@ export interface RulesetRuleActionParametersAlgorithm {
 
 export interface RulesetRuleActionParametersAutominify {
     /**
-     * Minify CSS files.
+     * Whether to minify CSS files.
      */
     css?: pulumi.Input<boolean>;
     /**
-     * Minify HTML files.
+     * Whether to minify HTML files.
      */
     html?: pulumi.Input<boolean>;
     /**
-     * Minify JS files.
+     * Whether to minify JavaScript files.
      */
     js?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersBrowserTtl {
     /**
-     * The TTL (in seconds) if you choose overrideOrigin mode.
+     * The browser TTL (in seconds) if you choose the "overrideOrigin" mode.
      */
     default?: pulumi.Input<number>;
     /**
-     * Determines which browser ttl mode to use.
+     * The browser TTL mode.
      * Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
      */
     mode: pulumi.Input<string>;
@@ -9650,234 +9671,240 @@ export interface RulesetRuleActionParametersBrowserTtl {
 
 export interface RulesetRuleActionParametersCacheKey {
     /**
-     * Separate cached content based on the visitor’s device type.
+     * Whether to separate cached content based on the visitor's device type.
      */
     cacheByDeviceType?: pulumi.Input<boolean>;
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached.
+     * Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      */
     cacheDeceptionArmor?: pulumi.Input<boolean>;
     /**
-     * Customize which components of the request are included or excluded from the cache key.
+     * Which components of the request are included or excluded from the cache key.
      */
     customKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>;
     /**
-     * Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
+     * Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      */
     ignoreQueryStringsOrder?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKey {
     /**
-     * The cookies to include in building the cache key.
+     * Which cookies to include in the cache key.
      */
     cookie?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>;
     /**
-     * The header names and values to include in building the cache key.
+     * Which headers to include in the cache key.
      */
     header?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>;
     /**
-     * Whether to use the original host or the resolved host in the cache key.
+     * How to use the host in the cache key.
      */
     host?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>;
     /**
-     * Use the presence of parameters in the query string to build the cache key.
+     * Which query string parameters to include in or exclude from the cache key.
      */
     queryString?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>;
     /**
-     * Characteristics of the request user agent used in building the cache key.
+     * How to use characteristics of the request user agent in the cache key.
      */
     user?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
     /**
-     * Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Include these cookies' names and their values.
+     * A list of cookies to include in the cache key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      */
     contains?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * Whether to exclude the origin header in the cache key.
      */
     excludeOrigin?: pulumi.Input<boolean>;
     /**
-     * Include these headers' names and their values.
+     * A list of headers to include in the cache key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
     /**
-     * Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * Whether to use the resolved host in the cache key.
      */
     resolved?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     /**
-     * A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * Which query string parameters to exclude from the cache key.
      */
     exclude?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude>;
     /**
-     * A list of query string parameters used to build the cache key.
+     * Which query string parameters to include in the cache key.
      */
     include?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
     /**
-     * Determines whether to exclude all query string parameters from the cache key.
+     * Whether to exclude all query string parameters from the cache key.
      */
     all?: pulumi.Input<boolean>;
+    /**
+     * A list of query string parameters to exclude from the cache key.
+     */
     lists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
     /**
-     * Determines whether to include all query string parameters in the cache key.
+     * Whether to include all query string parameters in the cache key.
      */
     all?: pulumi.Input<boolean>;
+    /**
+     * A list of query string parameters to include in the cache key.
+     */
     lists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
     /**
-     * Use the user agent's device type in the cache key.
+     * Whether to use the user agent's device type in the cache key.
      */
     deviceType?: pulumi.Input<boolean>;
     /**
-     * Use the user agents's country in the cache key.
+     * Whether to use the user agents's country in the cache key.
      */
     geo?: pulumi.Input<boolean>;
     /**
-     * Use the user agent's language in the cache key.
+     * Whether to use the user agent's language in the cache key.
      */
     lang?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersCacheReserve {
     /**
-     * Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      */
     eligible: pulumi.Input<boolean>;
     /**
-     * The minimum file size eligible for store in cache reserve.
+     * The minimum file size eligible for storage in Cache Reserve.
      */
-    minimumFileSize: pulumi.Input<number>;
+    minimumFileSize?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersCookieField {
     /**
-     * The name of the field.
+     * The name of the cookie.
      */
     name: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtl {
     /**
-     * The TTL (in seconds) if you choose overrideOrigin mode.
+     * The edge TTL (in seconds) if you choose the "overrideOrigin" mode.
      */
     default?: pulumi.Input<number>;
     /**
-     * Edge TTL options.
+     * The edge TTL mode.
      * Available values: "respect*origin", "bypass*by*default", "override*origin".
      */
     mode: pulumi.Input<string>;
     /**
-     * List of single status codes, or status code ranges to apply the selected mode.
+     * A list of TTLs to apply to specific status codes or status code ranges.
      */
     statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * Set the TTL for responses with this specific status code.
+     * A single status code to apply the TTL to.
      */
     statusCode?: pulumi.Input<number>;
     /**
-     * The range of status codes used to apply the selected mode.
+     * A range of status codes to apply the TTL to.
      */
     statusCodeRange?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange>;
     /**
-     * Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+     * The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store".
      */
     value: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * Response status code lower bound.
+     * The lower bound of the range.
      */
     from?: pulumi.Input<number>;
     /**
-     * Response status code upper bound.
+     * The upper bound of the range.
      */
     to?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersFromList {
     /**
-     * Expression that evaluates to the list lookup key.
+     * An expression that evaluates to the list lookup key.
      */
-    key?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The name of the list to match against.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersFromValue {
     /**
-     * Keep the query string of the original request.
+     * Whether to keep the query string of the original request.
      */
     preserveQueryString?: pulumi.Input<boolean>;
     /**
-     * The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * The status code to use for the redirect.
      */
     statusCode?: pulumi.Input<number>;
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      */
-    targetUrl?: pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>;
+    targetUrl: pulumi.Input<inputs.RulesetRuleActionParametersFromValueTargetUrl>;
 }
 
 export interface RulesetRuleActionParametersFromValueTargetUrl {
     /**
-     * An expression to evaluate to get the URL to redirect the request to.
+     * An expression that evaluates to a URL to redirect the request to.
      */
     expression?: pulumi.Input<string>;
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersHeaders {
     /**
-     * Expression for the header value.
+     * An expression that evaluates to a value for the header.
      */
     expression?: pulumi.Input<string>;
     /**
-     * Available values: "remove", "add", "set".
+     * The operation to perform on the header.
+     * Available values: "add", "set", "remove".
      */
     operation: pulumi.Input<string>;
     /**
-     * Static value for the header.
+     * A static value for the header.
      */
     value?: pulumi.Input<string>;
 }
@@ -9891,11 +9918,11 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOrigin {
     /**
-     * Override the resolved hostname.
+     * A resolved host to route to.
      */
     host?: pulumi.Input<string>;
     /**
-     * Override the destination port.
+     * A destination port to route to.
      */
     port?: pulumi.Input<number>;
 }
@@ -9938,7 +9965,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The sensitivity level to use for rules in the category.
+     * The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: "default", "medium", "low", "eoff".
      */
     sensitivityLevel?: pulumi.Input<string>;
@@ -9962,7 +9989,7 @@ export interface RulesetRuleActionParametersOverridesRule {
      */
     scoreThreshold?: pulumi.Input<number>;
     /**
-     * The sensitivity level to use for the rule.
+     * The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
      * Available values: "default", "medium", "low", "eoff".
      */
     sensitivityLevel?: pulumi.Input<string>;
@@ -9970,7 +9997,7 @@ export interface RulesetRuleActionParametersOverridesRule {
 
 export interface RulesetRuleActionParametersRawResponseField {
     /**
-     * The name of the field.
+     * The name of the response header.
      */
     name: pulumi.Input<string>;
     /**
@@ -9981,7 +10008,7 @@ export interface RulesetRuleActionParametersRawResponseField {
 
 export interface RulesetRuleActionParametersRequestField {
     /**
-     * The name of the field.
+     * The name of the header.
      */
     name: pulumi.Input<string>;
 }
@@ -10003,7 +10030,7 @@ export interface RulesetRuleActionParametersResponse {
 
 export interface RulesetRuleActionParametersResponseField {
     /**
-     * The name of the field.
+     * The name of the response header.
      */
     name: pulumi.Input<string>;
     /**
@@ -10014,65 +10041,65 @@ export interface RulesetRuleActionParametersResponseField {
 
 export interface RulesetRuleActionParametersServeStale {
     /**
-     * Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      */
-    disableStaleWhileUpdating: pulumi.Input<boolean>;
+    disableStaleWhileUpdating?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersSni {
     /**
-     * The SNI override.
+     * A value to override the SNI to.
      */
     value: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersTransformedRequestField {
     /**
-     * The name of the field.
+     * The name of the header.
      */
     name: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUri {
     /**
-     * Path portion rewrite.
+     * A URI path rewrite.
      */
     path?: pulumi.Input<inputs.RulesetRuleActionParametersUriPath>;
     /**
-     * Query portion rewrite.
+     * A URI query rewrite.
      */
     query?: pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>;
 }
 
 export interface RulesetRuleActionParametersUriPath {
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI path to.
      */
     expression?: pulumi.Input<string>;
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI path to.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI query to.
      */
     expression?: pulumi.Input<string>;
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI query to.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleExposedCredentialCheck {
     /**
-     * Expression that selects the password used in the credentials check.
+     * An expression that selects the password used in the credentials check.
      */
     passwordExpression: pulumi.Input<string>;
     /**
-     * Expression that selects the user ID used in the credentials check.
+     * An expression that selects the user ID used in the credentials check.
      */
     usernameExpression: pulumi.Input<string>;
 }
@@ -10081,16 +10108,16 @@ export interface RulesetRuleLogging {
     /**
      * Whether to generate a log when the rule matches.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleRatelimit {
     /**
-     * Characteristics of the request on which the ratelimiter counter will be incremented.
+     * Characteristics of the request on which the rate limit counter will be incremented.
      */
     characteristics: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule's expression.
+     * An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression.
      */
     countingExpression?: pulumi.Input<string>;
     /**
@@ -10106,7 +10133,7 @@ export interface RulesetRuleRatelimit {
      */
     requestsPerPeriod?: pulumi.Input<number>;
     /**
-     * Defines if ratelimit counting is only done when an origin is reached.
+     * Whether counting is only performed when an origin is reached.
      */
     requestsToOrigin?: pulumi.Input<boolean>;
     /**
@@ -10114,9 +10141,21 @@ export interface RulesetRuleRatelimit {
      */
     scorePerPeriod?: pulumi.Input<number>;
     /**
-     * The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * A response header name provided by the origin, which contains the score to increment rate limit counter with.
      */
     scoreResponseHeaderName?: pulumi.Input<string>;
+}
+
+export interface SnippetFile {
+    content: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
+export interface SnippetMetadata {
+    /**
+     * Name of the file that contains the main module of the snippet.
+     */
+    mainModule: pulumi.Input<string>;
 }
 
 export interface SnippetRulesRule {
@@ -10529,7 +10568,7 @@ export interface TeamsAccountSettingsBlockPage {
     mailtoSubject?: pulumi.Input<string>;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: "customizedBlockPage", "redirectUri".
+     * Available values: "", "customizedBlockPage", "redirectUri".
      */
     mode?: pulumi.Input<string>;
     /**
@@ -10955,9 +10994,6 @@ export interface TeamsRuleRuleSettingsBlockPage {
 }
 
 export interface TeamsRuleRuleSettingsCheckSession {
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     */
     duration?: pulumi.Input<string>;
     /**
      * Set to true to enable session enforcement.
@@ -15693,9 +15729,6 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
-    /**
-     * Configure how fresh the session needs to be to be considered valid.
-     */
     duration?: pulumi.Input<string>;
     /**
      * Set to true to enable session enforcement.
@@ -16016,7 +16049,7 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     mailtoSubject?: pulumi.Input<string>;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: "customizedBlockPage", "redirectUri".
+     * Available values: "", "customizedBlockPage", "redirectUri".
      */
     mode?: pulumi.Input<string>;
     /**

@@ -22,7 +22,7 @@ import (
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
@@ -97,7 +97,7 @@ func GetLoadBalancerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancerPool resources.
 type loadBalancerPoolState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
@@ -134,7 +134,7 @@ type loadBalancerPoolState struct {
 }
 
 type LoadBalancerPoolState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
@@ -175,7 +175,7 @@ func (LoadBalancerPoolState) ElementType() reflect.Type {
 }
 
 type loadBalancerPoolArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions []string `pulumi:"checkRegions"`
@@ -207,7 +207,7 @@ type loadBalancerPoolArgs struct {
 
 // The set of arguments for constructing a LoadBalancerPool resource.
 type LoadBalancerPoolArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// A list of regions from which to run health checks. Null means every Cloudflare data center.
 	CheckRegions pulumi.StringArrayInput
@@ -324,7 +324,7 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LoadBalancerPoolOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

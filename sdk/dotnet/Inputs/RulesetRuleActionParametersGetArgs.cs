@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<int>? _additionalCacheablePorts;
 
         /// <summary>
-        /// List of additional ports that caching can be enabled on.
+        /// A list of additional ports that caching should be enabled on.
         /// </summary>
         public InputList<int> AdditionalCacheablePorts
         {
@@ -37,56 +37,62 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn on or off Automatic HTTPS Rewrites.
+        /// The name of a custom asset to serve as the response.
+        /// </summary>
+        [Input("assetName")]
+        public Input<string>? AssetName { get; set; }
+
+        /// <summary>
+        /// Whether to enable Automatic HTTPS Rewrites.
         /// </summary>
         [Input("automaticHttpsRewrites")]
         public Input<bool>? AutomaticHttpsRewrites { get; set; }
 
         /// <summary>
-        /// Select which file extensions to minify automatically.
+        /// Which file extensions to minify automatically.
         /// </summary>
         [Input("autominify")]
         public Input<Inputs.RulesetRuleActionParametersAutominifyGetArgs>? Autominify { get; set; }
 
         /// <summary>
-        /// Turn on or off Browser Integrity Check.
+        /// Whether to enable Browser Integrity Check (BIC).
         /// </summary>
         [Input("bic")]
         public Input<bool>? Bic { get; set; }
 
         /// <summary>
-        /// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+        /// How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
         /// </summary>
         [Input("browserTtl")]
         public Input<Inputs.RulesetRuleActionParametersBrowserTtlGetArgs>? BrowserTtl { get; set; }
 
         /// <summary>
-        /// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+        /// Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
         /// </summary>
         [Input("cache")]
         public Input<bool>? Cache { get; set; }
 
         /// <summary>
-        /// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+        /// Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
         /// </summary>
         [Input("cacheKey")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyGetArgs>? CacheKey { get; set; }
 
         /// <summary>
-        /// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+        /// Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
         /// </summary>
         [Input("cacheReserve")]
         public Input<Inputs.RulesetRuleActionParametersCacheReserveGetArgs>? CacheReserve { get; set; }
 
         /// <summary>
-        /// Error response content.
+        /// The response content.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Content-type header to set with the response.
-        /// Available values: "application/json", "text/xml", "text/plain", "text/html".
+        /// The content type header to set with the error response.
+        /// Available values: "application/json", "text/html", "text/plain", "text/xml".
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -104,49 +110,49 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn off all active Cloudflare Apps.
+        /// Whether to disable Cloudflare Apps.
         /// </summary>
         [Input("disableApps")]
         public Input<bool>? DisableApps { get; set; }
 
         /// <summary>
-        /// Turn off Real User Monitoring (RUM).
+        /// Whether to disable Real User Monitoring (RUM).
         /// </summary>
         [Input("disableRum")]
         public Input<bool>? DisableRum { get; set; }
 
         /// <summary>
-        /// Turn off Zaraz.
+        /// Whether to disable Zaraz.
         /// </summary>
         [Input("disableZaraz")]
         public Input<bool>? DisableZaraz { get; set; }
 
         /// <summary>
-        /// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+        /// How long the Cloudflare edge network should cache the response.
         /// </summary>
         [Input("edgeTtl")]
         public Input<Inputs.RulesetRuleActionParametersEdgeTtlGetArgs>? EdgeTtl { get; set; }
 
         /// <summary>
-        /// Turn on or off Email Obfuscation.
+        /// Whether to enable Email Obfuscation.
         /// </summary>
         [Input("emailObfuscation")]
         public Input<bool>? EmailObfuscation { get; set; }
 
         /// <summary>
-        /// Turn on or off Cloudflare Fonts.
+        /// Whether to enable Cloudflare Fonts.
         /// </summary>
         [Input("fonts")]
         public Input<bool>? Fonts { get; set; }
 
         /// <summary>
-        /// Serve a redirect based on a bulk list lookup.
+        /// A redirect based on a bulk list lookup.
         /// </summary>
         [Input("fromList")]
         public Input<Inputs.RulesetRuleActionParametersFromListGetArgs>? FromList { get; set; }
 
         /// <summary>
-        /// Serve a redirect based on the request properties.
+        /// A redirect based on the request properties.
         /// </summary>
         [Input("fromValue")]
         public Input<Inputs.RulesetRuleActionParametersFromValueGetArgs>? FromValue { get; set; }
@@ -155,7 +161,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputMap<Inputs.RulesetRuleActionParametersHeadersGetArgs>? _headers;
 
         /// <summary>
-        /// Map of request headers to modify.
+        /// A map of headers to rewrite.
         /// </summary>
         public InputMap<Inputs.RulesetRuleActionParametersHeadersGetArgs> Headers
         {
@@ -164,13 +170,13 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Rewrite the HTTP Host header.
+        /// A value to rewrite the HTTP host header to.
         /// </summary>
         [Input("hostHeader")]
         public Input<string>? HostHeader { get; set; }
 
         /// <summary>
-        /// Turn on or off the Hotlink Protection.
+        /// Whether to enable Hotlink Protection.
         /// </summary>
         [Input("hotlinkProtection")]
         public Input<bool>? HotlinkProtection { get; set; }
@@ -182,7 +188,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Increment contains the delta to change the score and can be either positive or negative.
+        /// A delta to change the score by, which can be either positive or negative.
         /// </summary>
         [Input("increment")]
         public Input<int>? Increment { get; set; }
@@ -194,31 +200,31 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.RulesetRuleActionParametersMatchedDataGetArgs>? MatchedData { get; set; }
 
         /// <summary>
-        /// Turn on or off Mirage.
+        /// Whether to enable Mirage.
         /// </summary>
         [Input("mirage")]
         public Input<bool>? Mirage { get; set; }
 
         /// <summary>
-        /// Turn on or off Opportunistic Encryption.
+        /// Whether to enable Opportunistic Encryption.
         /// </summary>
         [Input("opportunisticEncryption")]
         public Input<bool>? OpportunisticEncryption { get; set; }
 
         /// <summary>
-        /// Override the IP/TCP destination.
+        /// An origin to route to.
         /// </summary>
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginGetArgs>? Origin { get; set; }
 
         /// <summary>
-        /// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+        /// Whether Cloudflare will aim to strictly adhere to RFC 7234.
         /// </summary>
         [Input("originCacheControl")]
         public Input<bool>? OriginCacheControl { get; set; }
 
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+        /// Whether to generate Cloudflare error pages for issues from the origin server.
         /// </summary>
         [Input("originErrorPagePassthru")]
         public Input<bool>? OriginErrorPagePassthru { get; set; }
@@ -229,18 +235,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesGetArgs>? Overrides { get; set; }
 
-        /// <summary>
-        /// A phase to skip the execution of. This property is only compatible with products.
-        /// Available values: "current".
-        /// </summary>
-        [Input("phase")]
-        public Input<string>? Phase { get; set; }
-
         [Input("phases")]
         private InputList<string>? _phases;
 
         /// <summary>
         /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         public InputList<string> Phases
         {
@@ -249,7 +249,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configure the Polish level.
+        /// The Polish level to configure.
         /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         [Input("polish")]
@@ -260,6 +260,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// A list of legacy security products to skip the execution of.
+        /// Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
         /// </summary>
         public InputList<string> Products
         {
@@ -280,7 +281,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+        /// A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         /// </summary>
         [Input("readTimeout")]
         public Input<int>? ReadTimeout { get; set; }
@@ -298,7 +299,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+        /// Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
         /// </summary>
         [Input("respectStrongEtags")]
         public Input<bool>? RespectStrongEtags { get; set; }
@@ -322,7 +323,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn on or off Rocket Loader.
+        /// Whether to enable Rocket Loader.
         /// </summary>
         [Input("rocketLoader")]
         public Input<bool>? RocketLoader { get; set; }
@@ -359,32 +360,32 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Configure the Security Level.
+        /// The Security Level to configure.
         /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+        /// When to serve stale content from cache.
         /// </summary>
         [Input("serveStale")]
         public Input<Inputs.RulesetRuleActionParametersServeStaleGetArgs>? ServeStale { get; set; }
 
         /// <summary>
-        /// Turn on or off Server Side Excludes.
+        /// Whether to enable Server-Side Excludes.
         /// </summary>
         [Input("serverSideExcludes")]
         public Input<bool>? ServerSideExcludes { get; set; }
 
         /// <summary>
-        /// Override the Server Name Indication (SNI).
+        /// A Server Name Indication (SNI) override.
         /// </summary>
         [Input("sni")]
         public Input<Inputs.RulesetRuleActionParametersSniGetArgs>? Sni { get; set; }
 
         /// <summary>
-        /// Configure the SSL level.
+        /// The SSL level to configure.
         /// Available values: "off", "flexible", "full", "strict", "origin_pull".
         /// </summary>
         [Input("ssl")]
@@ -394,10 +395,10 @@ namespace Pulumi.Cloudflare.Inputs
         /// The status code to use for the error.
         /// </summary>
         [Input("statusCode")]
-        public Input<double>? StatusCode { get; set; }
+        public Input<int>? StatusCode { get; set; }
 
         /// <summary>
-        /// Turn on or off Signed Exchanges (SXG).
+        /// Whether to enable Signed Exchanges (SXG).
         /// </summary>
         [Input("sxg")]
         public Input<bool>? Sxg { get; set; }
@@ -415,7 +416,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// URI to rewrite the request to.
+        /// A URI rewrite.
         /// </summary>
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriGetArgs>? Uri { get; set; }

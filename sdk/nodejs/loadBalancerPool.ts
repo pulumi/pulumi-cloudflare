@@ -44,7 +44,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -181,7 +181,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
  */
 export interface LoadBalancerPoolState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface LoadBalancerPoolState {
  */
 export interface LoadBalancerPoolArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

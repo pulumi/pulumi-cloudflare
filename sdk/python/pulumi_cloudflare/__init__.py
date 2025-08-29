@@ -263,6 +263,8 @@ from .get_schema_validation_operation_settings_list import *
 from .get_schema_validation_schemas import *
 from .get_schema_validation_schemas_list import *
 from .get_schema_validation_settings import *
+from .get_snippet import *
+from .get_snippet_list import *
 from .get_snippet_rules_list import *
 from .get_snippets import *
 from .get_snippets_list import *
@@ -450,6 +452,7 @@ from .ruleset import *
 from .schema_validation_operation_settings import *
 from .schema_validation_schemas import *
 from .schema_validation_settings import *
+from .snippet import *
 from .snippet_rules import *
 from .snippets import *
 from .spectrum_application import *
@@ -1578,6 +1581,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/schemaValidationSettings:SchemaValidationSettings": "SchemaValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/snippet",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/snippet:Snippet": "Snippet"
   }
  },
  {

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,7 +18,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
      * @return Optional remark describing the route.
      * 
      */
-    private @Nullable String comment;
+    private String comment;
     /**
      * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      * 
@@ -64,8 +65,8 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
      * @return Optional remark describing the route.
      * 
      */
-    public Optional<String> comment() {
-        return Optional.ofNullable(this.comment);
+    public String comment() {
+        return this.comment;
     }
     /**
      * @return If provided, include only resources that were created (and not deleted) before this time. URL encoded.
@@ -133,7 +134,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String comment;
+        private String comment;
         private @Nullable String existedAt;
         private @Nullable Boolean isDeleted;
         private @Nullable String networkSubset;
@@ -157,8 +158,10 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilter {
         }
 
         @CustomType.Setter
-        public Builder comment(@Nullable String comment) {
-
+        public Builder comment(String comment) {
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredRouteFilter", "comment");
+            }
             this.comment = comment;
             return this;
         }

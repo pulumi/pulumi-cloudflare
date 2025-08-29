@@ -25,7 +25,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });
@@ -48,7 +47,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });
@@ -71,7 +69,6 @@ namespace Pulumi.Cloudflare
         ///     var exampleSnippets = Cloudflare.GetSnippets.Invoke(new()
         ///     {
         ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///         SnippetName = "my_snippet",
         ///     });
         /// 
         /// });

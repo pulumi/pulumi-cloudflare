@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
     public static final RulesetRuleActionParametersCacheKeyCustomKeyArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyArgs();
 
     /**
-     * The cookies to include in building the cache key.
+     * Which cookies to include in the cache key.
      * 
      */
     @Import(name="cookie")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie;
 
     /**
-     * @return The cookies to include in building the cache key.
+     * @return Which cookies to include in the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookie() {
@@ -35,14 +35,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
     }
 
     /**
-     * The header names and values to include in building the cache key.
+     * Which headers to include in the cache key.
      * 
      */
     @Import(name="header")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header;
 
     /**
-     * @return The header names and values to include in building the cache key.
+     * @return Which headers to include in the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> header() {
@@ -50,14 +50,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
     }
 
     /**
-     * Whether to use the original host or the resolved host in the cache key.
+     * How to use the host in the cache key.
      * 
      */
     @Import(name="host")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host;
 
     /**
-     * @return Whether to use the original host or the resolved host in the cache key.
+     * @return How to use the host in the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> host() {
@@ -65,14 +65,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
     }
 
     /**
-     * Use the presence of parameters in the query string to build the cache key.
+     * Which query string parameters to include in or exclude from the cache key.
      * 
      */
     @Import(name="queryString")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString;
 
     /**
-     * @return Use the presence of parameters in the query string to build the cache key.
+     * @return Which query string parameters to include in or exclude from the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryString() {
@@ -80,14 +80,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
     }
 
     /**
-     * Characteristics of the request user agent used in building the cache key.
+     * How to use characteristics of the request user agent in the cache key.
      * 
      */
     @Import(name="user")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user;
 
     /**
-     * @return Characteristics of the request user agent used in building the cache key.
+     * @return How to use characteristics of the request user agent in the cache key.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> user() {
@@ -123,7 +123,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param cookie The cookies to include in building the cache key.
+         * @param cookie Which cookies to include in the cache key.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param cookie The cookies to include in building the cache key.
+         * @param cookie Which cookies to include in the cache key.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param header The header names and values to include in building the cache key.
+         * @param header Which headers to include in the cache key.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param header The header names and values to include in building the cache key.
+         * @param header Which headers to include in the cache key.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param host Whether to use the original host or the resolved host in the cache key.
+         * @param host How to use the host in the cache key.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param host Whether to use the original host or the resolved host in the cache key.
+         * @param host How to use the host in the cache key.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param queryString Use the presence of parameters in the query string to build the cache key.
+         * @param queryString Which query string parameters to include in or exclude from the cache key.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param queryString Use the presence of parameters in the query string to build the cache key.
+         * @param queryString Which query string parameters to include in or exclude from the cache key.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param user Characteristics of the request user agent used in building the cache key.
+         * @param user How to use characteristics of the request user agent in the cache key.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
         }
 
         /**
-         * @param user Characteristics of the request user agent used in building the cache key.
+         * @param user How to use characteristics of the request user agent in the cache key.
          * 
          * @return builder
          * 

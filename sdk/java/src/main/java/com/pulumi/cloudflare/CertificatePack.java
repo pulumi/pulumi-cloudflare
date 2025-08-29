@@ -6,6 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CertificatePackArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CertificatePackState;
+import com.pulumi.cloudflare.outputs.CertificatePackValidationError;
+import com.pulumi.cloudflare.outputs.CertificatePackValidationRecord;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -152,6 +154,20 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
+     * Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    @Export(name="validationErrors", refs={List.class,CertificatePackValidationError.class}, tree="[0,1]")
+    private Output<List<CertificatePackValidationError>> validationErrors;
+
+    /**
+     * @return Domain validation errors that have been received by the certificate authority (CA).
+     * 
+     */
+    public Output<List<CertificatePackValidationError>> validationErrors() {
+        return this.validationErrors;
+    }
+    /**
      * Validation Method selected for the order.
      * Available values: &#34;txt&#34;, &#34;http&#34;, &#34;email&#34;.
      * 
@@ -166,6 +182,20 @@ public class CertificatePack extends com.pulumi.resources.CustomResource {
      */
     public Output<String> validationMethod() {
         return this.validationMethod;
+    }
+    /**
+     * Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * 
+     */
+    @Export(name="validationRecords", refs={List.class,CertificatePackValidationRecord.class}, tree="[0,1]")
+    private Output<List<CertificatePackValidationRecord>> validationRecords;
+
+    /**
+     * @return Certificates&#39; validation records. Only present when certificate pack is in &#34;pending*validation&#34; status
+     * 
+     */
+    public Output<List<CertificatePackValidationRecord>> validationRecords() {
+        return this.validationRecords;
     }
     /**
      * Validity Days selected for the order.

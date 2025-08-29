@@ -88,14 +88,14 @@ public class ZeroTrustAccessMtlsCertificate extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="associatedHostnames", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> associatedHostnames;
+    private Output<List<String>> associatedHostnames;
 
     /**
      * @return The hostnames of the applications that will use this certificate.
      * 
      */
-    public Output<Optional<List<String>>> associatedHostnames() {
-        return Codegen.optional(this.associatedHostnames);
+    public Output<List<String>> associatedHostnames() {
+        return this.associatedHostnames;
     }
     /**
      * The certificate content.

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class RulesetRuleActionParametersSni {
     /**
-     * @return The SNI override.
+     * @return A value to override the SNI to.
      * 
      */
     private String value;
 
     private RulesetRuleActionParametersSni() {}
     /**
-     * @return The SNI override.
+     * @return A value to override the SNI to.
      * 
      */
     public String value() {

@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKey {
     /**
-     * @return Separate cached content based on the visitor’s device type.
+     * @return Whether to separate cached content based on the visitor&#39;s device type.
      * 
      */
     private @Nullable Boolean cacheByDeviceType;
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached.
+     * @return Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      * 
      */
     private @Nullable Boolean cacheDeceptionArmor;
     /**
-     * @return Customize which components of the request are included or excluded from the cache key.
+     * @return Which components of the request are included or excluded from the cache key.
      * 
      */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey;
     /**
-     * @return Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
+     * @return Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      * 
      */
     private @Nullable Boolean ignoreQueryStringsOrder;
 
     private RulesetRuleActionParametersCacheKey() {}
     /**
-     * @return Separate cached content based on the visitor’s device type.
+     * @return Whether to separate cached content based on the visitor&#39;s device type.
      * 
      */
     public Optional<Boolean> cacheByDeviceType() {
         return Optional.ofNullable(this.cacheByDeviceType);
     }
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached.
+     * @return Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      * 
      */
     public Optional<Boolean> cacheDeceptionArmor() {
         return Optional.ofNullable(this.cacheDeceptionArmor);
     }
     /**
-     * @return Customize which components of the request are included or excluded from the cache key.
+     * @return Which components of the request are included or excluded from the cache key.
      * 
      */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKey> customKey() {
         return Optional.ofNullable(this.customKey);
     }
     /**
-     * @return Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
+     * @return Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      * 
      */
     public Optional<Boolean> ignoreQueryStringsOrder() {

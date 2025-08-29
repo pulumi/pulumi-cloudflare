@@ -141,6 +141,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountTag;
         /// <summary>
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
+        /// </summary>
+        public readonly string ConfigSrc;
+        /// <summary>
         /// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredConnectionResult> Connections;
@@ -198,6 +203,8 @@ namespace Pulumi.Cloudflare
 
             string accountTag,
 
+            string configSrc,
+
             ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredConnectionResult> connections,
 
             string connsActiveAt,
@@ -226,6 +233,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             AccountTag = accountTag;
+            ConfigSrc = configSrc;
             Connections = connections;
             ConnsActiveAt = connsActiveAt;
             ConnsInactiveAt = connsInactiveAt;

@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configure how fresh the session needs to be to be considered valid.
-        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 

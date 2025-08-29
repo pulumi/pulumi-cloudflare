@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancerPoolResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -113,7 +113,7 @@ public final class GetLoadBalancerPoolResult {
 
     private GetLoadBalancerPoolResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

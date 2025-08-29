@@ -15,14 +15,14 @@ public final class RulesetRuleActionParametersCookieFieldArgs extends com.pulumi
     public static final RulesetRuleActionParametersCookieFieldArgs Empty = new RulesetRuleActionParametersCookieFieldArgs();
 
     /**
-     * The name of the field.
+     * The name of the cookie.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return The name of the cookie.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class RulesetRuleActionParametersCookieFieldArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the cookie.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class RulesetRuleActionParametersCookieFieldArgs extends com.pulumi
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the cookie.
          * 
          * @return builder
          * 

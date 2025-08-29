@@ -35,6 +35,11 @@ public final class GetWorkersScriptsInvokeResult {
      * 
      */
     private List<GetWorkersScriptsResult> results;
+    /**
+     * @return Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    private @Nullable String tags;
 
     private GetWorkersScriptsInvokeResult() {}
     /**
@@ -65,6 +70,13 @@ public final class GetWorkersScriptsInvokeResult {
     public List<GetWorkersScriptsResult> results() {
         return this.results;
     }
+    /**
+     * @return Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is &#39;yes&#39; or &#39;no&#39;.
+     * 
+     */
+    public Optional<String> tags() {
+        return Optional.ofNullable(this.tags);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -79,6 +91,7 @@ public final class GetWorkersScriptsInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetWorkersScriptsResult> results;
+        private @Nullable String tags;
         public Builder() {}
         public Builder(GetWorkersScriptsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,6 +99,7 @@ public final class GetWorkersScriptsInvokeResult {
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -121,12 +135,19 @@ public final class GetWorkersScriptsInvokeResult {
         public Builder results(GetWorkersScriptsResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable String tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetWorkersScriptsInvokeResult build() {
             final var _resultValue = new GetWorkersScriptsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

@@ -19,14 +19,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs();
 
     /**
-     * Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      * 
      */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
     /**
-     * @return Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * @return A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      * 
      */
     public Optional<Output<List<String>>> checkPresences() {
@@ -34,14 +34,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     }
 
     /**
-     * For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      * 
      */
     @Import(name="contains")
     private @Nullable Output<Map<String,List<String>>> contains;
 
     /**
-     * @return For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * @return A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      * 
      */
     public Optional<Output<Map<String,List<String>>>> contains() {
@@ -49,14 +49,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     }
 
     /**
-     * Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * Whether to exclude the origin header in the cache key.
      * 
      */
     @Import(name="excludeOrigin")
     private @Nullable Output<Boolean> excludeOrigin;
 
     /**
-     * @return Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * @return Whether to exclude the origin header in the cache key.
      * 
      */
     public Optional<Output<Boolean>> excludeOrigin() {
@@ -64,14 +64,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     }
 
     /**
-     * Include these headers&#39; names and their values.
+     * A list of headers to include in the cache key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return Include these headers&#39; names and their values.
+     * @return A list of headers to include in the cache key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -106,7 +106,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+         * @param checkPresences A list of headers to check for the presence of. The presence of these headers is included in the cache key.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+         * @param checkPresences A list of headers to check for the presence of. The presence of these headers is included in the cache key.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+         * @param checkPresences A list of headers to check for the presence of. The presence of these headers is included in the cache key.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param contains For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+         * @param contains A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param contains For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+         * @param contains A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param excludeOrigin Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+         * @param excludeOrigin Whether to exclude the origin header in the cache key.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param excludeOrigin Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+         * @param excludeOrigin Whether to exclude the origin header in the cache key.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes Include these headers&#39; names and their values.
+         * @param includes A list of headers to include in the cache key.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes Include these headers&#39; names and their values.
+         * @param includes A list of headers to include in the cache key.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes Include these headers&#39; names and their values.
+         * @param includes A list of headers to include in the cache key.
          * 
          * @return builder
          * 

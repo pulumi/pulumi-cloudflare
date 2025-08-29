@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersUri
     {
         /// <summary>
-        /// Path portion rewrite.
+        /// A URI path rewrite.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUriPath? Path;
         /// <summary>
-        /// Query portion rewrite.
+        /// A URI query rewrite.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUriQuery? Query;
 

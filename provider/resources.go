@@ -447,6 +447,9 @@ func Provider() info.Provider {
 			"cloudflare_zero_trust_device_settings": {
 				ComputeID: delegateID("accountId"),
 			},
+			"cloudflare_snippet": {
+				ComputeID: delegateID("snippetName"),
+			},
 		},
 		DataSources: map[string]*info.DataSource{},
 		JavaScript: &tfbridge.JavaScriptInfo{

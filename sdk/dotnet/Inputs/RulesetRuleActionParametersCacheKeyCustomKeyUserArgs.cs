@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use the user agent's device type in the cache key.
+        /// Whether to use the user agent's device type in the cache key.
         /// </summary>
         [Input("deviceType")]
         public Input<bool>? DeviceType { get; set; }
 
         /// <summary>
-        /// Use the user agents's country in the cache key.
+        /// Whether to use the user agents's country in the cache key.
         /// </summary>
         [Input("geo")]
         public Input<bool>? Geo { get; set; }
 
         /// <summary>
-        /// Use the user agent's language in the cache key.
+        /// Whether to use the user agent's language in the cache key.
         /// </summary>
         [Input("lang")]
         public Input<bool>? Lang { get; set; }

@@ -13,6 +13,1337 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetResourceGroupsResultScopeObject struct {
+	// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+	Key string `pulumi:"key"`
+}
+
+// GetResourceGroupsResultScopeObjectInput is an input type that accepts GetResourceGroupsResultScopeObjectArgs and GetResourceGroupsResultScopeObjectOutput values.
+// You can construct a concrete instance of `GetResourceGroupsResultScopeObjectInput` via:
+//
+//	GetResourceGroupsResultScopeObjectArgs{...}
+type GetResourceGroupsResultScopeObjectInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput
+	ToGetResourceGroupsResultScopeObjectOutputWithContext(context.Context) GetResourceGroupsResultScopeObjectOutput
+}
+
+type GetResourceGroupsResultScopeObjectArgs struct {
+	// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetResourceGroupsResultScopeObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsResultScopeObject)(nil)).Elem()
+}
+
+func (i GetResourceGroupsResultScopeObjectArgs) ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput {
+	return i.ToGetResourceGroupsResultScopeObjectOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsResultScopeObjectArgs) ToGetResourceGroupsResultScopeObjectOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsResultScopeObjectOutput)
+}
+
+// GetResourceGroupsResultScopeObjectArrayInput is an input type that accepts GetResourceGroupsResultScopeObjectArray and GetResourceGroupsResultScopeObjectArrayOutput values.
+// You can construct a concrete instance of `GetResourceGroupsResultScopeObjectArrayInput` via:
+//
+//	GetResourceGroupsResultScopeObjectArray{ GetResourceGroupsResultScopeObjectArgs{...} }
+type GetResourceGroupsResultScopeObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput
+	ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(context.Context) GetResourceGroupsResultScopeObjectArrayOutput
+}
+
+type GetResourceGroupsResultScopeObjectArray []GetResourceGroupsResultScopeObjectInput
+
+func (GetResourceGroupsResultScopeObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsResultScopeObject)(nil)).Elem()
+}
+
+func (i GetResourceGroupsResultScopeObjectArray) ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput {
+	return i.ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceGroupsResultScopeObjectArray) ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsResultScopeObjectArrayOutput)
+}
+
+type GetResourceGroupsResultScopeObjectOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsResultScopeObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceGroupsResultScopeObject)(nil)).Elem()
+}
+
+func (o GetResourceGroupsResultScopeObjectOutput) ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput {
+	return o
+}
+
+func (o GetResourceGroupsResultScopeObjectOutput) ToGetResourceGroupsResultScopeObjectOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectOutput {
+	return o
+}
+
+// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
+func (o GetResourceGroupsResultScopeObjectOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceGroupsResultScopeObject) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetResourceGroupsResultScopeObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceGroupsResultScopeObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceGroupsResultScopeObject)(nil)).Elem()
+}
+
+func (o GetResourceGroupsResultScopeObjectArrayOutput) ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsResultScopeObjectArrayOutput) ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectArrayOutput {
+	return o
+}
+
+func (o GetResourceGroupsResultScopeObjectArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsResultScopeObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsResultScopeObject {
+		return vs[0].([]GetResourceGroupsResultScopeObject)[vs[1].(int)]
+	}).(GetResourceGroupsResultScopeObjectOutput)
+}
+
+type GetRulesetRule struct {
+	// The action to perform when the rule matches.
+	// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+	Action string `pulumi:"action"`
+	// The parameters configuring the rule's action.
+	ActionParameters GetRulesetRuleActionParameters `pulumi:"actionParameters"`
+	// The categories of the rule.
+	Categories []string `pulumi:"categories"`
+	// An informative description of the rule.
+	Description string `pulumi:"description"`
+	// Whether the rule should be executed.
+	Enabled bool `pulumi:"enabled"`
+	// Configure checks for exposed credentials.
+	ExposedCredentialCheck GetRulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialCheck"`
+	// The expression defining which traffic will match the rule.
+	Expression string `pulumi:"expression"`
+	// The unique ID of the rule.
+	Id string `pulumi:"id"`
+	// An object configuring the rule's logging behavior.
+	Logging GetRulesetRuleLogging `pulumi:"logging"`
+	// An object configuring the rule's ratelimit behavior.
+	Ratelimit GetRulesetRuleRatelimit `pulumi:"ratelimit"`
+	// The reference of the rule (the rule ID by default).
+	Ref string `pulumi:"ref"`
+}
+
+// GetRulesetRuleInput is an input type that accepts GetRulesetRuleArgs and GetRulesetRuleOutput values.
+// You can construct a concrete instance of `GetRulesetRuleInput` via:
+//
+//	GetRulesetRuleArgs{...}
+type GetRulesetRuleInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleOutput() GetRulesetRuleOutput
+	ToGetRulesetRuleOutputWithContext(context.Context) GetRulesetRuleOutput
+}
+
+type GetRulesetRuleArgs struct {
+	// The action to perform when the rule matches.
+	// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+	Action pulumi.StringInput `pulumi:"action"`
+	// The parameters configuring the rule's action.
+	ActionParameters GetRulesetRuleActionParametersInput `pulumi:"actionParameters"`
+	// The categories of the rule.
+	Categories pulumi.StringArrayInput `pulumi:"categories"`
+	// An informative description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether the rule should be executed.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Configure checks for exposed credentials.
+	ExposedCredentialCheck GetRulesetRuleExposedCredentialCheckInput `pulumi:"exposedCredentialCheck"`
+	// The expression defining which traffic will match the rule.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// The unique ID of the rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// An object configuring the rule's logging behavior.
+	Logging GetRulesetRuleLoggingInput `pulumi:"logging"`
+	// An object configuring the rule's ratelimit behavior.
+	Ratelimit GetRulesetRuleRatelimitInput `pulumi:"ratelimit"`
+	// The reference of the rule (the rule ID by default).
+	Ref pulumi.StringInput `pulumi:"ref"`
+}
+
+func (GetRulesetRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRule)(nil)).Elem()
+}
+
+func (i GetRulesetRuleArgs) ToGetRulesetRuleOutput() GetRulesetRuleOutput {
+	return i.ToGetRulesetRuleOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleArgs) ToGetRulesetRuleOutputWithContext(ctx context.Context) GetRulesetRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleOutput)
+}
+
+// GetRulesetRuleArrayInput is an input type that accepts GetRulesetRuleArray and GetRulesetRuleArrayOutput values.
+// You can construct a concrete instance of `GetRulesetRuleArrayInput` via:
+//
+//	GetRulesetRuleArray{ GetRulesetRuleArgs{...} }
+type GetRulesetRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput
+	ToGetRulesetRuleArrayOutputWithContext(context.Context) GetRulesetRuleArrayOutput
+}
+
+type GetRulesetRuleArray []GetRulesetRuleInput
+
+func (GetRulesetRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRule)(nil)).Elem()
+}
+
+func (i GetRulesetRuleArray) ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput {
+	return i.ToGetRulesetRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleArray) ToGetRulesetRuleArrayOutputWithContext(ctx context.Context) GetRulesetRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleArrayOutput)
+}
+
+type GetRulesetRuleOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRule)(nil)).Elem()
+}
+
+func (o GetRulesetRuleOutput) ToGetRulesetRuleOutput() GetRulesetRuleOutput {
+	return o
+}
+
+func (o GetRulesetRuleOutput) ToGetRulesetRuleOutputWithContext(ctx context.Context) GetRulesetRuleOutput {
+	return o
+}
+
+// The action to perform when the rule matches.
+// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+func (o GetRulesetRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRule) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The parameters configuring the rule's action.
+func (o GetRulesetRuleOutput) ActionParameters() GetRulesetRuleActionParametersOutput {
+	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleActionParameters { return v.ActionParameters }).(GetRulesetRuleActionParametersOutput)
+}
+
+// The categories of the rule.
+func (o GetRulesetRuleOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRule) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// An informative description of the rule.
+func (o GetRulesetRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the rule should be executed.
+func (o GetRulesetRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Configure checks for exposed credentials.
+func (o GetRulesetRuleOutput) ExposedCredentialCheck() GetRulesetRuleExposedCredentialCheckOutput {
+	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleExposedCredentialCheck { return v.ExposedCredentialCheck }).(GetRulesetRuleExposedCredentialCheckOutput)
+}
+
+// The expression defining which traffic will match the rule.
+func (o GetRulesetRuleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// The unique ID of the rule.
+func (o GetRulesetRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An object configuring the rule's logging behavior.
+func (o GetRulesetRuleOutput) Logging() GetRulesetRuleLoggingOutput {
+	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleLogging { return v.Logging }).(GetRulesetRuleLoggingOutput)
+}
+
+// An object configuring the rule's ratelimit behavior.
+func (o GetRulesetRuleOutput) Ratelimit() GetRulesetRuleRatelimitOutput {
+	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleRatelimit { return v.Ratelimit }).(GetRulesetRuleRatelimitOutput)
+}
+
+// The reference of the rule (the rule ID by default).
+func (o GetRulesetRuleOutput) Ref() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRule) string { return v.Ref }).(pulumi.StringOutput)
+}
+
+type GetRulesetRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRule)(nil)).Elem()
+}
+
+func (o GetRulesetRuleArrayOutput) ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleArrayOutput) ToGetRulesetRuleArrayOutputWithContext(ctx context.Context) GetRulesetRuleArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRule {
+		return vs[0].([]GetRulesetRule)[vs[1].(int)]
+	}).(GetRulesetRuleOutput)
+}
+
+type GetRulesetRuleActionParameters struct {
+	// List of additional ports that caching can be enabled on.
+	AdditionalCacheablePorts []int `pulumi:"additionalCacheablePorts"`
+	// Custom order for compression algorithms.
+	Algorithms []GetRulesetRuleActionParametersAlgorithm `pulumi:"algorithms"`
+	// Turn on or off Automatic HTTPS Rewrites.
+	AutomaticHttpsRewrites bool `pulumi:"automaticHttpsRewrites"`
+	// Select which file extensions to minify automatically.
+	Autominify GetRulesetRuleActionParametersAutominify `pulumi:"autominify"`
+	// Turn on or off Browser Integrity Check.
+	Bic bool `pulumi:"bic"`
+	// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+	BrowserTtl GetRulesetRuleActionParametersBrowserTtl `pulumi:"browserTtl"`
+	// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+	Cache bool `pulumi:"cache"`
+	// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+	CacheKey GetRulesetRuleActionParametersCacheKey `pulumi:"cacheKey"`
+	// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+	CacheReserve GetRulesetRuleActionParametersCacheReserve `pulumi:"cacheReserve"`
+	// Error response content.
+	Content string `pulumi:"content"`
+	// Content-type header to set with the response.
+	// Available values: "application/json", "text/xml", "text/plain", "text/html".
+	ContentType string `pulumi:"contentType"`
+	// The cookie fields to log.
+	CookieFields []GetRulesetRuleActionParametersCookieField `pulumi:"cookieFields"`
+	// Turn off all active Cloudflare Apps.
+	DisableApps bool `pulumi:"disableApps"`
+	// Turn off Real User Monitoring (RUM).
+	DisableRum bool `pulumi:"disableRum"`
+	// Turn off Zaraz.
+	DisableZaraz bool `pulumi:"disableZaraz"`
+	// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+	EdgeTtl GetRulesetRuleActionParametersEdgeTtl `pulumi:"edgeTtl"`
+	// Turn on or off Email Obfuscation.
+	EmailObfuscation bool `pulumi:"emailObfuscation"`
+	// Turn on or off Cloudflare Fonts.
+	Fonts bool `pulumi:"fonts"`
+	// Serve a redirect based on a bulk list lookup.
+	FromList GetRulesetRuleActionParametersFromList `pulumi:"fromList"`
+	// Serve a redirect based on the request properties.
+	FromValue GetRulesetRuleActionParametersFromValue `pulumi:"fromValue"`
+	// Map of request headers to modify.
+	Headers map[string]GetRulesetRuleActionParametersHeaders `pulumi:"headers"`
+	// Rewrite the HTTP Host header.
+	HostHeader string `pulumi:"hostHeader"`
+	// Turn on or off the Hotlink Protection.
+	HotlinkProtection bool `pulumi:"hotlinkProtection"`
+	// The ID of the ruleset to execute.
+	Id string `pulumi:"id"`
+	// Increment contains the delta to change the score and can be either positive or negative.
+	Increment int `pulumi:"increment"`
+	// The configuration to use for matched data logging.
+	MatchedData GetRulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
+	// Turn on or off Mirage.
+	Mirage bool `pulumi:"mirage"`
+	// Turn on or off Opportunistic Encryption.
+	OpportunisticEncryption bool `pulumi:"opportunisticEncryption"`
+	// Override the IP/TCP destination.
+	Origin GetRulesetRuleActionParametersOrigin `pulumi:"origin"`
+	// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+	OriginCacheControl bool `pulumi:"originCacheControl"`
+	// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+	OriginErrorPagePassthru bool `pulumi:"originErrorPagePassthru"`
+	// A set of overrides to apply to the target ruleset.
+	Overrides GetRulesetRuleActionParametersOverrides `pulumi:"overrides"`
+	// A phase to skip the execution of. This property is only compatible with products.
+	// Available values: "current".
+	Phase string `pulumi:"phase"`
+	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+	Phases []string `pulumi:"phases"`
+	// Configure the Polish level.
+	// Available values: "off", "lossless", "lossy", "webp".
+	Polish string `pulumi:"polish"`
+	// A list of legacy security products to skip the execution of.
+	Products []string `pulumi:"products"`
+	// The raw response fields to log.
+	RawResponseFields []GetRulesetRuleActionParametersRawResponseField `pulumi:"rawResponseFields"`
+	// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+	ReadTimeout int `pulumi:"readTimeout"`
+	// The raw request fields to log.
+	RequestFields []GetRulesetRuleActionParametersRequestField `pulumi:"requestFields"`
+	// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+	RespectStrongEtags bool `pulumi:"respectStrongEtags"`
+	// The response to show when the block is applied.
+	Response GetRulesetRuleActionParametersResponse `pulumi:"response"`
+	// The transformed response fields to log.
+	ResponseFields []GetRulesetRuleActionParametersResponseField `pulumi:"responseFields"`
+	// Turn on or off Rocket Loader.
+	RocketLoader bool `pulumi:"rocketLoader"`
+	// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
+	Rules map[string][]string `pulumi:"rules"`
+	// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
+	// Available values: "current".
+	Ruleset string `pulumi:"ruleset"`
+	// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
+	Rulesets []string `pulumi:"rulesets"`
+	// Configure the Security Level.
+	// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
+	SecurityLevel string `pulumi:"securityLevel"`
+	// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+	ServeStale GetRulesetRuleActionParametersServeStale `pulumi:"serveStale"`
+	// Turn on or off Server Side Excludes.
+	ServerSideExcludes bool `pulumi:"serverSideExcludes"`
+	// Override the Server Name Indication (SNI).
+	Sni GetRulesetRuleActionParametersSni `pulumi:"sni"`
+	// Configure the SSL level.
+	// Available values: "off", "flexible", "full", "strict", "originPull".
+	Ssl string `pulumi:"ssl"`
+	// The status code to use for the error.
+	StatusCode float64 `pulumi:"statusCode"`
+	// Turn on or off Signed Exchanges (SXG).
+	Sxg bool `pulumi:"sxg"`
+	// The transformed request fields to log.
+	TransformedRequestFields []GetRulesetRuleActionParametersTransformedRequestField `pulumi:"transformedRequestFields"`
+	// URI to rewrite the request to.
+	Uri GetRulesetRuleActionParametersUri `pulumi:"uri"`
+}
+
+// GetRulesetRuleActionParametersInput is an input type that accepts GetRulesetRuleActionParametersArgs and GetRulesetRuleActionParametersOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersInput` via:
+//
+//	GetRulesetRuleActionParametersArgs{...}
+type GetRulesetRuleActionParametersInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput
+	ToGetRulesetRuleActionParametersOutputWithContext(context.Context) GetRulesetRuleActionParametersOutput
+}
+
+type GetRulesetRuleActionParametersArgs struct {
+	// List of additional ports that caching can be enabled on.
+	AdditionalCacheablePorts pulumi.IntArrayInput `pulumi:"additionalCacheablePorts"`
+	// Custom order for compression algorithms.
+	Algorithms GetRulesetRuleActionParametersAlgorithmArrayInput `pulumi:"algorithms"`
+	// Turn on or off Automatic HTTPS Rewrites.
+	AutomaticHttpsRewrites pulumi.BoolInput `pulumi:"automaticHttpsRewrites"`
+	// Select which file extensions to minify automatically.
+	Autominify GetRulesetRuleActionParametersAutominifyInput `pulumi:"autominify"`
+	// Turn on or off Browser Integrity Check.
+	Bic pulumi.BoolInput `pulumi:"bic"`
+	// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+	BrowserTtl GetRulesetRuleActionParametersBrowserTtlInput `pulumi:"browserTtl"`
+	// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+	Cache pulumi.BoolInput `pulumi:"cache"`
+	// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+	CacheKey GetRulesetRuleActionParametersCacheKeyInput `pulumi:"cacheKey"`
+	// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+	CacheReserve GetRulesetRuleActionParametersCacheReserveInput `pulumi:"cacheReserve"`
+	// Error response content.
+	Content pulumi.StringInput `pulumi:"content"`
+	// Content-type header to set with the response.
+	// Available values: "application/json", "text/xml", "text/plain", "text/html".
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The cookie fields to log.
+	CookieFields GetRulesetRuleActionParametersCookieFieldArrayInput `pulumi:"cookieFields"`
+	// Turn off all active Cloudflare Apps.
+	DisableApps pulumi.BoolInput `pulumi:"disableApps"`
+	// Turn off Real User Monitoring (RUM).
+	DisableRum pulumi.BoolInput `pulumi:"disableRum"`
+	// Turn off Zaraz.
+	DisableZaraz pulumi.BoolInput `pulumi:"disableZaraz"`
+	// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+	EdgeTtl GetRulesetRuleActionParametersEdgeTtlInput `pulumi:"edgeTtl"`
+	// Turn on or off Email Obfuscation.
+	EmailObfuscation pulumi.BoolInput `pulumi:"emailObfuscation"`
+	// Turn on or off Cloudflare Fonts.
+	Fonts pulumi.BoolInput `pulumi:"fonts"`
+	// Serve a redirect based on a bulk list lookup.
+	FromList GetRulesetRuleActionParametersFromListInput `pulumi:"fromList"`
+	// Serve a redirect based on the request properties.
+	FromValue GetRulesetRuleActionParametersFromValueInput `pulumi:"fromValue"`
+	// Map of request headers to modify.
+	Headers GetRulesetRuleActionParametersHeadersMapInput `pulumi:"headers"`
+	// Rewrite the HTTP Host header.
+	HostHeader pulumi.StringInput `pulumi:"hostHeader"`
+	// Turn on or off the Hotlink Protection.
+	HotlinkProtection pulumi.BoolInput `pulumi:"hotlinkProtection"`
+	// The ID of the ruleset to execute.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Increment contains the delta to change the score and can be either positive or negative.
+	Increment pulumi.IntInput `pulumi:"increment"`
+	// The configuration to use for matched data logging.
+	MatchedData GetRulesetRuleActionParametersMatchedDataInput `pulumi:"matchedData"`
+	// Turn on or off Mirage.
+	Mirage pulumi.BoolInput `pulumi:"mirage"`
+	// Turn on or off Opportunistic Encryption.
+	OpportunisticEncryption pulumi.BoolInput `pulumi:"opportunisticEncryption"`
+	// Override the IP/TCP destination.
+	Origin GetRulesetRuleActionParametersOriginInput `pulumi:"origin"`
+	// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+	OriginCacheControl pulumi.BoolInput `pulumi:"originCacheControl"`
+	// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+	OriginErrorPagePassthru pulumi.BoolInput `pulumi:"originErrorPagePassthru"`
+	// A set of overrides to apply to the target ruleset.
+	Overrides GetRulesetRuleActionParametersOverridesInput `pulumi:"overrides"`
+	// A phase to skip the execution of. This property is only compatible with products.
+	// Available values: "current".
+	Phase pulumi.StringInput `pulumi:"phase"`
+	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+	Phases pulumi.StringArrayInput `pulumi:"phases"`
+	// Configure the Polish level.
+	// Available values: "off", "lossless", "lossy", "webp".
+	Polish pulumi.StringInput `pulumi:"polish"`
+	// A list of legacy security products to skip the execution of.
+	Products pulumi.StringArrayInput `pulumi:"products"`
+	// The raw response fields to log.
+	RawResponseFields GetRulesetRuleActionParametersRawResponseFieldArrayInput `pulumi:"rawResponseFields"`
+	// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+	ReadTimeout pulumi.IntInput `pulumi:"readTimeout"`
+	// The raw request fields to log.
+	RequestFields GetRulesetRuleActionParametersRequestFieldArrayInput `pulumi:"requestFields"`
+	// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+	RespectStrongEtags pulumi.BoolInput `pulumi:"respectStrongEtags"`
+	// The response to show when the block is applied.
+	Response GetRulesetRuleActionParametersResponseInput `pulumi:"response"`
+	// The transformed response fields to log.
+	ResponseFields GetRulesetRuleActionParametersResponseFieldArrayInput `pulumi:"responseFields"`
+	// Turn on or off Rocket Loader.
+	RocketLoader pulumi.BoolInput `pulumi:"rocketLoader"`
+	// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
+	Rules pulumi.StringArrayMapInput `pulumi:"rules"`
+	// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
+	// Available values: "current".
+	Ruleset pulumi.StringInput `pulumi:"ruleset"`
+	// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
+	Rulesets pulumi.StringArrayInput `pulumi:"rulesets"`
+	// Configure the Security Level.
+	// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
+	SecurityLevel pulumi.StringInput `pulumi:"securityLevel"`
+	// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+	ServeStale GetRulesetRuleActionParametersServeStaleInput `pulumi:"serveStale"`
+	// Turn on or off Server Side Excludes.
+	ServerSideExcludes pulumi.BoolInput `pulumi:"serverSideExcludes"`
+	// Override the Server Name Indication (SNI).
+	Sni GetRulesetRuleActionParametersSniInput `pulumi:"sni"`
+	// Configure the SSL level.
+	// Available values: "off", "flexible", "full", "strict", "originPull".
+	Ssl pulumi.StringInput `pulumi:"ssl"`
+	// The status code to use for the error.
+	StatusCode pulumi.Float64Input `pulumi:"statusCode"`
+	// Turn on or off Signed Exchanges (SXG).
+	Sxg pulumi.BoolInput `pulumi:"sxg"`
+	// The transformed request fields to log.
+	TransformedRequestFields GetRulesetRuleActionParametersTransformedRequestFieldArrayInput `pulumi:"transformedRequestFields"`
+	// URI to rewrite the request to.
+	Uri GetRulesetRuleActionParametersUriInput `pulumi:"uri"`
+}
+
+func (GetRulesetRuleActionParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParameters)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersArgs) ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput {
+	return i.ToGetRulesetRuleActionParametersOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersArgs) ToGetRulesetRuleActionParametersOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersOutput)
+}
+
+type GetRulesetRuleActionParametersOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParameters)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersOutput) ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersOutput) ToGetRulesetRuleActionParametersOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOutput {
+	return o
+}
+
+// List of additional ports that caching can be enabled on.
+func (o GetRulesetRuleActionParametersOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []int { return v.AdditionalCacheablePorts }).(pulumi.IntArrayOutput)
+}
+
+// Custom order for compression algorithms.
+func (o GetRulesetRuleActionParametersOutput) Algorithms() GetRulesetRuleActionParametersAlgorithmArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersAlgorithm { return v.Algorithms }).(GetRulesetRuleActionParametersAlgorithmArrayOutput)
+}
+
+// Turn on or off Automatic HTTPS Rewrites.
+func (o GetRulesetRuleActionParametersOutput) AutomaticHttpsRewrites() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.AutomaticHttpsRewrites }).(pulumi.BoolOutput)
+}
+
+// Select which file extensions to minify automatically.
+func (o GetRulesetRuleActionParametersOutput) Autominify() GetRulesetRuleActionParametersAutominifyOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersAutominify { return v.Autominify }).(GetRulesetRuleActionParametersAutominifyOutput)
+}
+
+// Turn on or off Browser Integrity Check.
+func (o GetRulesetRuleActionParametersOutput) Bic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Bic }).(pulumi.BoolOutput)
+}
+
+// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+func (o GetRulesetRuleActionParametersOutput) BrowserTtl() GetRulesetRuleActionParametersBrowserTtlOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersBrowserTtl { return v.BrowserTtl }).(GetRulesetRuleActionParametersBrowserTtlOutput)
+}
+
+// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+func (o GetRulesetRuleActionParametersOutput) Cache() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Cache }).(pulumi.BoolOutput)
+}
+
+// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+func (o GetRulesetRuleActionParametersOutput) CacheKey() GetRulesetRuleActionParametersCacheKeyOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersCacheKey { return v.CacheKey }).(GetRulesetRuleActionParametersCacheKeyOutput)
+}
+
+// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+func (o GetRulesetRuleActionParametersOutput) CacheReserve() GetRulesetRuleActionParametersCacheReserveOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersCacheReserve {
+		return v.CacheReserve
+	}).(GetRulesetRuleActionParametersCacheReserveOutput)
+}
+
+// Error response content.
+func (o GetRulesetRuleActionParametersOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// Content-type header to set with the response.
+// Available values: "application/json", "text/xml", "text/plain", "text/html".
+func (o GetRulesetRuleActionParametersOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The cookie fields to log.
+func (o GetRulesetRuleActionParametersOutput) CookieFields() GetRulesetRuleActionParametersCookieFieldArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersCookieField {
+		return v.CookieFields
+	}).(GetRulesetRuleActionParametersCookieFieldArrayOutput)
+}
+
+// Turn off all active Cloudflare Apps.
+func (o GetRulesetRuleActionParametersOutput) DisableApps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableApps }).(pulumi.BoolOutput)
+}
+
+// Turn off Real User Monitoring (RUM).
+func (o GetRulesetRuleActionParametersOutput) DisableRum() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableRum }).(pulumi.BoolOutput)
+}
+
+// Turn off Zaraz.
+func (o GetRulesetRuleActionParametersOutput) DisableZaraz() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableZaraz }).(pulumi.BoolOutput)
+}
+
+// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+func (o GetRulesetRuleActionParametersOutput) EdgeTtl() GetRulesetRuleActionParametersEdgeTtlOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersEdgeTtl { return v.EdgeTtl }).(GetRulesetRuleActionParametersEdgeTtlOutput)
+}
+
+// Turn on or off Email Obfuscation.
+func (o GetRulesetRuleActionParametersOutput) EmailObfuscation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.EmailObfuscation }).(pulumi.BoolOutput)
+}
+
+// Turn on or off Cloudflare Fonts.
+func (o GetRulesetRuleActionParametersOutput) Fonts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Fonts }).(pulumi.BoolOutput)
+}
+
+// Serve a redirect based on a bulk list lookup.
+func (o GetRulesetRuleActionParametersOutput) FromList() GetRulesetRuleActionParametersFromListOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersFromList { return v.FromList }).(GetRulesetRuleActionParametersFromListOutput)
+}
+
+// Serve a redirect based on the request properties.
+func (o GetRulesetRuleActionParametersOutput) FromValue() GetRulesetRuleActionParametersFromValueOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersFromValue { return v.FromValue }).(GetRulesetRuleActionParametersFromValueOutput)
+}
+
+// Map of request headers to modify.
+func (o GetRulesetRuleActionParametersOutput) Headers() GetRulesetRuleActionParametersHeadersMapOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) map[string]GetRulesetRuleActionParametersHeaders {
+		return v.Headers
+	}).(GetRulesetRuleActionParametersHeadersMapOutput)
+}
+
+// Rewrite the HTTP Host header.
+func (o GetRulesetRuleActionParametersOutput) HostHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.HostHeader }).(pulumi.StringOutput)
+}
+
+// Turn on or off the Hotlink Protection.
+func (o GetRulesetRuleActionParametersOutput) HotlinkProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.HotlinkProtection }).(pulumi.BoolOutput)
+}
+
+// The ID of the ruleset to execute.
+func (o GetRulesetRuleActionParametersOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Increment contains the delta to change the score and can be either positive or negative.
+func (o GetRulesetRuleActionParametersOutput) Increment() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) int { return v.Increment }).(pulumi.IntOutput)
+}
+
+// The configuration to use for matched data logging.
+func (o GetRulesetRuleActionParametersOutput) MatchedData() GetRulesetRuleActionParametersMatchedDataOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersMatchedData { return v.MatchedData }).(GetRulesetRuleActionParametersMatchedDataOutput)
+}
+
+// Turn on or off Mirage.
+func (o GetRulesetRuleActionParametersOutput) Mirage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Mirage }).(pulumi.BoolOutput)
+}
+
+// Turn on or off Opportunistic Encryption.
+func (o GetRulesetRuleActionParametersOutput) OpportunisticEncryption() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OpportunisticEncryption }).(pulumi.BoolOutput)
+}
+
+// Override the IP/TCP destination.
+func (o GetRulesetRuleActionParametersOutput) Origin() GetRulesetRuleActionParametersOriginOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOrigin { return v.Origin }).(GetRulesetRuleActionParametersOriginOutput)
+}
+
+// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+func (o GetRulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OriginCacheControl }).(pulumi.BoolOutput)
+}
+
+// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+func (o GetRulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OriginErrorPagePassthru }).(pulumi.BoolOutput)
+}
+
+// A set of overrides to apply to the target ruleset.
+func (o GetRulesetRuleActionParametersOutput) Overrides() GetRulesetRuleActionParametersOverridesOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOverrides { return v.Overrides }).(GetRulesetRuleActionParametersOverridesOutput)
+}
+
+// A phase to skip the execution of. This property is only compatible with products.
+// Available values: "current".
+func (o GetRulesetRuleActionParametersOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Phase }).(pulumi.StringOutput)
+}
+
+// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+func (o GetRulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
+}
+
+// Configure the Polish level.
+// Available values: "off", "lossless", "lossy", "webp".
+func (o GetRulesetRuleActionParametersOutput) Polish() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Polish }).(pulumi.StringOutput)
+}
+
+// A list of legacy security products to skip the execution of.
+func (o GetRulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+// The raw response fields to log.
+func (o GetRulesetRuleActionParametersOutput) RawResponseFields() GetRulesetRuleActionParametersRawResponseFieldArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersRawResponseField {
+		return v.RawResponseFields
+	}).(GetRulesetRuleActionParametersRawResponseFieldArrayOutput)
+}
+
+// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+func (o GetRulesetRuleActionParametersOutput) ReadTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) int { return v.ReadTimeout }).(pulumi.IntOutput)
+}
+
+// The raw request fields to log.
+func (o GetRulesetRuleActionParametersOutput) RequestFields() GetRulesetRuleActionParametersRequestFieldArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersRequestField {
+		return v.RequestFields
+	}).(GetRulesetRuleActionParametersRequestFieldArrayOutput)
+}
+
+// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+func (o GetRulesetRuleActionParametersOutput) RespectStrongEtags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.RespectStrongEtags }).(pulumi.BoolOutput)
+}
+
+// The response to show when the block is applied.
+func (o GetRulesetRuleActionParametersOutput) Response() GetRulesetRuleActionParametersResponseOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersResponse { return v.Response }).(GetRulesetRuleActionParametersResponseOutput)
+}
+
+// The transformed response fields to log.
+func (o GetRulesetRuleActionParametersOutput) ResponseFields() GetRulesetRuleActionParametersResponseFieldArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersResponseField {
+		return v.ResponseFields
+	}).(GetRulesetRuleActionParametersResponseFieldArrayOutput)
+}
+
+// Turn on or off Rocket Loader.
+func (o GetRulesetRuleActionParametersOutput) RocketLoader() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.RocketLoader }).(pulumi.BoolOutput)
+}
+
+// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
+func (o GetRulesetRuleActionParametersOutput) Rules() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) map[string][]string { return v.Rules }).(pulumi.StringArrayMapOutput)
+}
+
+// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
+// Available values: "current".
+func (o GetRulesetRuleActionParametersOutput) Ruleset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Ruleset }).(pulumi.StringOutput)
+}
+
+// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
+func (o GetRulesetRuleActionParametersOutput) Rulesets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
+}
+
+// Configure the Security Level.
+// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
+func (o GetRulesetRuleActionParametersOutput) SecurityLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.SecurityLevel }).(pulumi.StringOutput)
+}
+
+// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+func (o GetRulesetRuleActionParametersOutput) ServeStale() GetRulesetRuleActionParametersServeStaleOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersServeStale { return v.ServeStale }).(GetRulesetRuleActionParametersServeStaleOutput)
+}
+
+// Turn on or off Server Side Excludes.
+func (o GetRulesetRuleActionParametersOutput) ServerSideExcludes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.ServerSideExcludes }).(pulumi.BoolOutput)
+}
+
+// Override the Server Name Indication (SNI).
+func (o GetRulesetRuleActionParametersOutput) Sni() GetRulesetRuleActionParametersSniOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersSni { return v.Sni }).(GetRulesetRuleActionParametersSniOutput)
+}
+
+// Configure the SSL level.
+// Available values: "off", "flexible", "full", "strict", "originPull".
+func (o GetRulesetRuleActionParametersOutput) Ssl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Ssl }).(pulumi.StringOutput)
+}
+
+// The status code to use for the error.
+func (o GetRulesetRuleActionParametersOutput) StatusCode() pulumi.Float64Output {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) float64 { return v.StatusCode }).(pulumi.Float64Output)
+}
+
+// Turn on or off Signed Exchanges (SXG).
+func (o GetRulesetRuleActionParametersOutput) Sxg() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Sxg }).(pulumi.BoolOutput)
+}
+
+// The transformed request fields to log.
+func (o GetRulesetRuleActionParametersOutput) TransformedRequestFields() GetRulesetRuleActionParametersTransformedRequestFieldArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersTransformedRequestField {
+		return v.TransformedRequestFields
+	}).(GetRulesetRuleActionParametersTransformedRequestFieldArrayOutput)
+}
+
+// URI to rewrite the request to.
+func (o GetRulesetRuleActionParametersOutput) Uri() GetRulesetRuleActionParametersUriOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersUri { return v.Uri }).(GetRulesetRuleActionParametersUriOutput)
+}
+
+type GetRulesetRuleActionParametersAlgorithm struct {
+	// Name of compression algorithm to enable.
+	// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
+	Name string `pulumi:"name"`
+}
+
+// GetRulesetRuleActionParametersAlgorithmInput is an input type that accepts GetRulesetRuleActionParametersAlgorithmArgs and GetRulesetRuleActionParametersAlgorithmOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersAlgorithmInput` via:
+//
+//	GetRulesetRuleActionParametersAlgorithmArgs{...}
+type GetRulesetRuleActionParametersAlgorithmInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput
+	ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(context.Context) GetRulesetRuleActionParametersAlgorithmOutput
+}
+
+type GetRulesetRuleActionParametersAlgorithmArgs struct {
+	// Name of compression algorithm to enable.
+	// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRulesetRuleActionParametersAlgorithmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersAlgorithmArgs) ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput {
+	return i.ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersAlgorithmArgs) ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAlgorithmOutput)
+}
+
+// GetRulesetRuleActionParametersAlgorithmArrayInput is an input type that accepts GetRulesetRuleActionParametersAlgorithmArray and GetRulesetRuleActionParametersAlgorithmArrayOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersAlgorithmArrayInput` via:
+//
+//	GetRulesetRuleActionParametersAlgorithmArray{ GetRulesetRuleActionParametersAlgorithmArgs{...} }
+type GetRulesetRuleActionParametersAlgorithmArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput
+	ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput
+}
+
+type GetRulesetRuleActionParametersAlgorithmArray []GetRulesetRuleActionParametersAlgorithmInput
+
+func (GetRulesetRuleActionParametersAlgorithmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersAlgorithmArray) ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput {
+	return i.ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersAlgorithmArray) ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAlgorithmArrayOutput)
+}
+
+type GetRulesetRuleActionParametersAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersAlgorithmOutput) ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersAlgorithmOutput) ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmOutput {
+	return o
+}
+
+// Name of compression algorithm to enable.
+// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
+func (o GetRulesetRuleActionParametersAlgorithmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersAlgorithm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRulesetRuleActionParametersAlgorithmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersAlgorithmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersAlgorithmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersAlgorithm {
+		return vs[0].([]GetRulesetRuleActionParametersAlgorithm)[vs[1].(int)]
+	}).(GetRulesetRuleActionParametersAlgorithmOutput)
+}
+
+type GetRulesetRuleActionParametersAutominify struct {
+	// Minify CSS files.
+	Css bool `pulumi:"css"`
+	// Minify HTML files.
+	Html bool `pulumi:"html"`
+	// Minify JS files.
+	Js bool `pulumi:"js"`
+}
+
+// GetRulesetRuleActionParametersAutominifyInput is an input type that accepts GetRulesetRuleActionParametersAutominifyArgs and GetRulesetRuleActionParametersAutominifyOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersAutominifyInput` via:
+//
+//	GetRulesetRuleActionParametersAutominifyArgs{...}
+type GetRulesetRuleActionParametersAutominifyInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput
+	ToGetRulesetRuleActionParametersAutominifyOutputWithContext(context.Context) GetRulesetRuleActionParametersAutominifyOutput
+}
+
+type GetRulesetRuleActionParametersAutominifyArgs struct {
+	// Minify CSS files.
+	Css pulumi.BoolInput `pulumi:"css"`
+	// Minify HTML files.
+	Html pulumi.BoolInput `pulumi:"html"`
+	// Minify JS files.
+	Js pulumi.BoolInput `pulumi:"js"`
+}
+
+func (GetRulesetRuleActionParametersAutominifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersAutominifyArgs) ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput {
+	return i.ToGetRulesetRuleActionParametersAutominifyOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersAutominifyArgs) ToGetRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAutominifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAutominifyOutput)
+}
+
+type GetRulesetRuleActionParametersAutominifyOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersAutominifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersAutominify)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersAutominifyOutput) ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersAutominifyOutput) ToGetRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAutominifyOutput {
+	return o
+}
+
+// Minify CSS files.
+func (o GetRulesetRuleActionParametersAutominifyOutput) Css() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Css }).(pulumi.BoolOutput)
+}
+
+// Minify HTML files.
+func (o GetRulesetRuleActionParametersAutominifyOutput) Html() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Html }).(pulumi.BoolOutput)
+}
+
+// Minify JS files.
+func (o GetRulesetRuleActionParametersAutominifyOutput) Js() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Js }).(pulumi.BoolOutput)
+}
+
+type GetRulesetRuleActionParametersBrowserTtl struct {
+	// The TTL (in seconds) if you choose overrideOrigin mode.
+	Default int `pulumi:"default"`
+	// Determines which browser ttl mode to use.
+	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
+	Mode string `pulumi:"mode"`
+}
+
+// GetRulesetRuleActionParametersBrowserTtlInput is an input type that accepts GetRulesetRuleActionParametersBrowserTtlArgs and GetRulesetRuleActionParametersBrowserTtlOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersBrowserTtlInput` via:
+//
+//	GetRulesetRuleActionParametersBrowserTtlArgs{...}
+type GetRulesetRuleActionParametersBrowserTtlInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput
+	ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersBrowserTtlOutput
+}
+
+type GetRulesetRuleActionParametersBrowserTtlArgs struct {
+	// The TTL (in seconds) if you choose overrideOrigin mode.
+	Default pulumi.IntInput `pulumi:"default"`
+	// Determines which browser ttl mode to use.
+	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetRulesetRuleActionParametersBrowserTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtl)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersBrowserTtlArgs) ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput {
+	return i.ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersBrowserTtlArgs) ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersBrowserTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersBrowserTtlOutput)
+}
+
+type GetRulesetRuleActionParametersBrowserTtlOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersBrowserTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtl)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersBrowserTtlOutput) ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersBrowserTtlOutput) ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersBrowserTtlOutput {
+	return o
+}
+
+// The TTL (in seconds) if you choose overrideOrigin mode.
+func (o GetRulesetRuleActionParametersBrowserTtlOutput) Default() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersBrowserTtl) int { return v.Default }).(pulumi.IntOutput)
+}
+
+// Determines which browser ttl mode to use.
+// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
+func (o GetRulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKey struct {
+	// Separate cached content based on the visitor’s device type.
+	CacheByDeviceType bool `pulumi:"cacheByDeviceType"`
+	// Protect from web cache deception attacks while allowing static assets to be cached.
+	CacheDeceptionArmor bool `pulumi:"cacheDeceptionArmor"`
+	// Customize which components of the request are included or excluded from the cache key.
+	CustomKey GetRulesetRuleActionParametersCacheKeyCustomKey `pulumi:"customKey"`
+	// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
+	IgnoreQueryStringsOrder bool `pulumi:"ignoreQueryStringsOrder"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyArgs and GetRulesetRuleActionParametersCacheKeyOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyArgs{...}
+type GetRulesetRuleActionParametersCacheKeyInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput
+	ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyArgs struct {
+	// Separate cached content based on the visitor’s device type.
+	CacheByDeviceType pulumi.BoolInput `pulumi:"cacheByDeviceType"`
+	// Protect from web cache deception attacks while allowing static assets to be cached.
+	CacheDeceptionArmor pulumi.BoolInput `pulumi:"cacheDeceptionArmor"`
+	// Customize which components of the request are included or excluded from the cache key.
+	CustomKey GetRulesetRuleActionParametersCacheKeyCustomKeyInput `pulumi:"customKey"`
+	// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
+	IgnoreQueryStringsOrder pulumi.BoolInput `pulumi:"ignoreQueryStringsOrder"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKey)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyArgs) ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyArgs) ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKey)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyOutput) ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyOutput) ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyOutput {
+	return o
+}
+
+// Separate cached content based on the visitor’s device type.
+func (o GetRulesetRuleActionParametersCacheKeyOutput) CacheByDeviceType() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.CacheByDeviceType }).(pulumi.BoolOutput)
+}
+
+// Protect from web cache deception attacks while allowing static assets to be cached.
+func (o GetRulesetRuleActionParametersCacheKeyOutput) CacheDeceptionArmor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.CacheDeceptionArmor }).(pulumi.BoolOutput)
+}
+
+// Customize which components of the request are included or excluded from the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyOutput) CustomKey() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) GetRulesetRuleActionParametersCacheKeyCustomKey {
+		return v.CustomKey
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput)
+}
+
+// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
+func (o GetRulesetRuleActionParametersCacheKeyOutput) IgnoreQueryStringsOrder() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.IgnoreQueryStringsOrder }).(pulumi.BoolOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKey struct {
+	// The cookies to include in building the cache key.
+	Cookie GetRulesetRuleActionParametersCacheKeyCustomKeyCookie `pulumi:"cookie"`
+	// The header names and values to include in building the cache key.
+	Header GetRulesetRuleActionParametersCacheKeyCustomKeyHeader `pulumi:"header"`
+	// Whether to use the original host or the resolved host in the cache key.
+	Host GetRulesetRuleActionParametersCacheKeyCustomKeyHost `pulumi:"host"`
+	// Use the presence of parameters in the query string to build the cache key.
+	QueryString GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString `pulumi:"queryString"`
+	// Characteristics of the request user agent used in building the cache key.
+	User GetRulesetRuleActionParametersCacheKeyCustomKeyUser `pulumi:"user"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyArgs struct {
+	// The cookies to include in building the cache key.
+	Cookie GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput `pulumi:"cookie"`
+	// The header names and values to include in building the cache key.
+	Header GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput `pulumi:"header"`
+	// Whether to use the original host or the resolved host in the cache key.
+	Host GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput `pulumi:"host"`
+	// Use the presence of parameters in the query string to build the cache key.
+	QueryString GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput `pulumi:"queryString"`
+	// Characteristics of the request user agent used in building the cache key.
+	User GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput `pulumi:"user"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
+	return o
+}
+
+// The cookies to include in building the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Cookie() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyCookie {
+		return v.Cookie
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
+}
+
+// The header names and values to include in building the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Header() GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyHeader {
+		return v.Header
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput)
+}
+
+// Whether to use the original host or the resolved host in the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Host() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyHost {
+		return v.Host
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
+}
+
+// Use the presence of parameters in the query string to build the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) QueryString() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+		return v.QueryString
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
+}
+
+// Characteristics of the request user agent used in building the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) User() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyUser {
+		return v.User
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyCookie struct {
+	// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+	CheckPresences []string `pulumi:"checkPresences"`
+	// Include these cookies' names and their values.
+	Includes []string `pulumi:"includes"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs struct {
+	// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
+	// Include these cookies' names and their values.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
+	return o
+}
+
+// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
+}
+
+// Include these cookies' names and their values.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
 type GetRulesetRuleActionParametersCacheKeyCustomKeyHeader struct {
 	// Checks for the presence of these header names. The presence of these headers is used in building the cache key.
 	CheckPresences []string `pulumi:"checkPresences"`
@@ -3136,6 +4467,121 @@ func (o GetSchemaValidationSchemasListResultArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSchemaValidationSchemasListResult {
 		return vs[0].([]GetSchemaValidationSchemasListResult)[vs[1].(int)]
 	}).(GetSchemaValidationSchemasListResultOutput)
+}
+
+type GetSnippetListResult struct {
+	// The timestamp of when the snippet was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The timestamp of when the snippet was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// The identifying name of the snippet.
+	SnippetName string `pulumi:"snippetName"`
+}
+
+// GetSnippetListResultInput is an input type that accepts GetSnippetListResultArgs and GetSnippetListResultOutput values.
+// You can construct a concrete instance of `GetSnippetListResultInput` via:
+//
+//	GetSnippetListResultArgs{...}
+type GetSnippetListResultInput interface {
+	pulumi.Input
+
+	ToGetSnippetListResultOutput() GetSnippetListResultOutput
+	ToGetSnippetListResultOutputWithContext(context.Context) GetSnippetListResultOutput
+}
+
+type GetSnippetListResultArgs struct {
+	// The timestamp of when the snippet was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// The timestamp of when the snippet was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// The identifying name of the snippet.
+	SnippetName pulumi.StringInput `pulumi:"snippetName"`
+}
+
+func (GetSnippetListResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnippetListResult)(nil)).Elem()
+}
+
+func (i GetSnippetListResultArgs) ToGetSnippetListResultOutput() GetSnippetListResultOutput {
+	return i.ToGetSnippetListResultOutputWithContext(context.Background())
+}
+
+func (i GetSnippetListResultArgs) ToGetSnippetListResultOutputWithContext(ctx context.Context) GetSnippetListResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnippetListResultOutput)
+}
+
+// GetSnippetListResultArrayInput is an input type that accepts GetSnippetListResultArray and GetSnippetListResultArrayOutput values.
+// You can construct a concrete instance of `GetSnippetListResultArrayInput` via:
+//
+//	GetSnippetListResultArray{ GetSnippetListResultArgs{...} }
+type GetSnippetListResultArrayInput interface {
+	pulumi.Input
+
+	ToGetSnippetListResultArrayOutput() GetSnippetListResultArrayOutput
+	ToGetSnippetListResultArrayOutputWithContext(context.Context) GetSnippetListResultArrayOutput
+}
+
+type GetSnippetListResultArray []GetSnippetListResultInput
+
+func (GetSnippetListResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnippetListResult)(nil)).Elem()
+}
+
+func (i GetSnippetListResultArray) ToGetSnippetListResultArrayOutput() GetSnippetListResultArrayOutput {
+	return i.ToGetSnippetListResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetSnippetListResultArray) ToGetSnippetListResultArrayOutputWithContext(ctx context.Context) GetSnippetListResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSnippetListResultArrayOutput)
+}
+
+type GetSnippetListResultOutput struct{ *pulumi.OutputState }
+
+func (GetSnippetListResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSnippetListResult)(nil)).Elem()
+}
+
+func (o GetSnippetListResultOutput) ToGetSnippetListResultOutput() GetSnippetListResultOutput {
+	return o
+}
+
+func (o GetSnippetListResultOutput) ToGetSnippetListResultOutputWithContext(ctx context.Context) GetSnippetListResultOutput {
+	return o
+}
+
+// The timestamp of when the snippet was created.
+func (o GetSnippetListResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnippetListResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the snippet was last modified.
+func (o GetSnippetListResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnippetListResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The identifying name of the snippet.
+func (o GetSnippetListResultOutput) SnippetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSnippetListResult) string { return v.SnippetName }).(pulumi.StringOutput)
+}
+
+type GetSnippetListResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSnippetListResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSnippetListResult)(nil)).Elem()
+}
+
+func (o GetSnippetListResultArrayOutput) ToGetSnippetListResultArrayOutput() GetSnippetListResultArrayOutput {
+	return o
+}
+
+func (o GetSnippetListResultArrayOutput) ToGetSnippetListResultArrayOutputWithContext(ctx context.Context) GetSnippetListResultArrayOutput {
+	return o
+}
+
+func (o GetSnippetListResultArrayOutput) Index(i pulumi.IntInput) GetSnippetListResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSnippetListResult {
+		return vs[0].([]GetSnippetListResult)[vs[1].(int)]
+	}).(GetSnippetListResultOutput)
 }
 
 type GetSnippetRulesListResult struct {
@@ -9010,6 +10456,8 @@ type GetWorkersForPlatformsDispatchNamespacesResult struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount int `pulumi:"scriptCount"`
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers bool `pulumi:"trustedWorkers"`
 }
 
 // GetWorkersForPlatformsDispatchNamespacesResultInput is an input type that accepts GetWorkersForPlatformsDispatchNamespacesResultArgs and GetWorkersForPlatformsDispatchNamespacesResultOutput values.
@@ -9038,6 +10486,8 @@ type GetWorkersForPlatformsDispatchNamespacesResultArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount pulumi.IntInput `pulumi:"scriptCount"`
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers pulumi.BoolInput `pulumi:"trustedWorkers"`
 }
 
 func (GetWorkersForPlatformsDispatchNamespacesResultArgs) ElementType() reflect.Type {
@@ -9124,6 +10574,11 @@ func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) NamespaceName() pu
 // The current number of scripts in this Dispatch Namespace.
 func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) ScriptCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWorkersForPlatformsDispatchNamespacesResult) int { return v.ScriptCount }).(pulumi.IntOutput)
+}
+
+// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) TrustedWorkers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkersForPlatformsDispatchNamespacesResult) bool { return v.TrustedWorkers }).(pulumi.BoolOutput)
 }
 
 type GetWorkersForPlatformsDispatchNamespacesResultArrayOutput struct{ *pulumi.OutputState }
@@ -38601,1613 +40056,19 @@ func (o GetZeroTrustAccessIdentityProviderConfigOutput) TokenUrl() pulumi.String
 	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderConfig) string { return v.TokenUrl }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttribute struct {
-	// attribute name from the IDP
-	AttributeName string `pulumi:"attributeName"`
-	// header that will be added on the request to the origin
-	HeaderName string `pulumi:"headerName"`
-}
-
-// GetZeroTrustAccessIdentityProviderConfigHeaderAttributeInput is an input type that accepts GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs and GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProviderConfigHeaderAttributeInput` via:
-//
-//	GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs{...}
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput
-	ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutputWithContext(context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput
-}
-
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs struct {
-	// attribute name from the IDP
-	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// header that will be added on the request to the origin
-	HeaderName pulumi.StringInput `pulumi:"headerName"`
-}
-
-func (GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput)
-}
-
-// GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayInput is an input type that accepts GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray and GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayInput` via:
-//
-//	GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray{ GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs{...} }
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput
-	ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutputWithContext(context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput
-}
-
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray []GetZeroTrustAccessIdentityProviderConfigHeaderAttributeInput
-
-func (GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProviderConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput {
-	return o
-}
-
-// attribute name from the IDP
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput) AttributeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderConfigHeaderAttribute) string { return v.AttributeName }).(pulumi.StringOutput)
-}
-
-// header that will be added on the request to the origin
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput) HeaderName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderConfigHeaderAttribute) string { return v.HeaderName }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProviderConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput) ToGetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessIdentityProviderConfigHeaderAttribute {
-		return vs[0].([]GetZeroTrustAccessIdentityProviderConfigHeaderAttribute)[vs[1].(int)]
-	}).(GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderFilter struct {
-	// Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
-	ScimEnabled *string `pulumi:"scimEnabled"`
-}
-
-// GetZeroTrustAccessIdentityProviderFilterInput is an input type that accepts GetZeroTrustAccessIdentityProviderFilterArgs and GetZeroTrustAccessIdentityProviderFilterOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProviderFilterInput` via:
-//
-//	GetZeroTrustAccessIdentityProviderFilterArgs{...}
-type GetZeroTrustAccessIdentityProviderFilterInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProviderFilterOutput() GetZeroTrustAccessIdentityProviderFilterOutput
-	ToGetZeroTrustAccessIdentityProviderFilterOutputWithContext(context.Context) GetZeroTrustAccessIdentityProviderFilterOutput
-}
-
-type GetZeroTrustAccessIdentityProviderFilterArgs struct {
-	// Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
-	ScimEnabled pulumi.StringPtrInput `pulumi:"scimEnabled"`
-}
-
-func (GetZeroTrustAccessIdentityProviderFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderFilter)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProviderFilterArgs) ToGetZeroTrustAccessIdentityProviderFilterOutput() GetZeroTrustAccessIdentityProviderFilterOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderFilterOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProviderFilterArgs) ToGetZeroTrustAccessIdentityProviderFilterOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderFilterOutput)
-}
-
-func (i GetZeroTrustAccessIdentityProviderFilterArgs) ToGetZeroTrustAccessIdentityProviderFilterPtrOutput() GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProviderFilterArgs) ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderFilterOutput).ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(ctx)
-}
-
-// GetZeroTrustAccessIdentityProviderFilterPtrInput is an input type that accepts GetZeroTrustAccessIdentityProviderFilterArgs, GetZeroTrustAccessIdentityProviderFilterPtr and GetZeroTrustAccessIdentityProviderFilterPtrOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProviderFilterPtrInput` via:
-//
-//	        GetZeroTrustAccessIdentityProviderFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetZeroTrustAccessIdentityProviderFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProviderFilterPtrOutput() GetZeroTrustAccessIdentityProviderFilterPtrOutput
-	ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(context.Context) GetZeroTrustAccessIdentityProviderFilterPtrOutput
-}
-
-type getZeroTrustAccessIdentityProviderFilterPtrType GetZeroTrustAccessIdentityProviderFilterArgs
-
-func GetZeroTrustAccessIdentityProviderFilterPtr(v *GetZeroTrustAccessIdentityProviderFilterArgs) GetZeroTrustAccessIdentityProviderFilterPtrInput {
-	return (*getZeroTrustAccessIdentityProviderFilterPtrType)(v)
-}
-
-func (*getZeroTrustAccessIdentityProviderFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetZeroTrustAccessIdentityProviderFilter)(nil)).Elem()
-}
-
-func (i *getZeroTrustAccessIdentityProviderFilterPtrType) ToGetZeroTrustAccessIdentityProviderFilterPtrOutput() GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getZeroTrustAccessIdentityProviderFilterPtrType) ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderFilterPtrOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderFilterOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProviderFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderFilter)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterOutput) ToGetZeroTrustAccessIdentityProviderFilterOutput() GetZeroTrustAccessIdentityProviderFilterOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterOutput) ToGetZeroTrustAccessIdentityProviderFilterOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterOutput) ToGetZeroTrustAccessIdentityProviderFilterPtrOutput() GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return o.ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterOutput) ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetZeroTrustAccessIdentityProviderFilter) *GetZeroTrustAccessIdentityProviderFilter {
-		return &v
-	}).(GetZeroTrustAccessIdentityProviderFilterPtrOutput)
-}
-
-// Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
-func (o GetZeroTrustAccessIdentityProviderFilterOutput) ScimEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderFilter) *string { return v.ScimEnabled }).(pulumi.StringPtrOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProviderFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetZeroTrustAccessIdentityProviderFilter)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterPtrOutput) ToGetZeroTrustAccessIdentityProviderFilterPtrOutput() GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterPtrOutput) ToGetZeroTrustAccessIdentityProviderFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderFilterPtrOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderFilterPtrOutput) Elem() GetZeroTrustAccessIdentityProviderFilterOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessIdentityProviderFilter) GetZeroTrustAccessIdentityProviderFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetZeroTrustAccessIdentityProviderFilter
-		return ret
-	}).(GetZeroTrustAccessIdentityProviderFilterOutput)
-}
-
-// Indicates to Access to only retrieve identity providers that have the System for Cross-Domain Identity Management (SCIM) enabled.
-func (o GetZeroTrustAccessIdentityProviderFilterPtrOutput) ScimEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessIdentityProviderFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ScimEnabled
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderScimConfig struct {
-	// A flag to enable or disable SCIM for the identity provider.
-	Enabled bool `pulumi:"enabled"`
-	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-	// Available values: "automatic", "reauth", "no*action".
-	IdentityUpdateBehavior string `pulumi:"identityUpdateBehavior"`
-	// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-	ScimBaseUrl string `pulumi:"scimBaseUrl"`
-	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-	SeatDeprovision bool `pulumi:"seatDeprovision"`
-	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-	Secret string `pulumi:"secret"`
-	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-	UserDeprovision bool `pulumi:"userDeprovision"`
-}
-
-// GetZeroTrustAccessIdentityProviderScimConfigInput is an input type that accepts GetZeroTrustAccessIdentityProviderScimConfigArgs and GetZeroTrustAccessIdentityProviderScimConfigOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProviderScimConfigInput` via:
-//
-//	GetZeroTrustAccessIdentityProviderScimConfigArgs{...}
-type GetZeroTrustAccessIdentityProviderScimConfigInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProviderScimConfigOutput() GetZeroTrustAccessIdentityProviderScimConfigOutput
-	ToGetZeroTrustAccessIdentityProviderScimConfigOutputWithContext(context.Context) GetZeroTrustAccessIdentityProviderScimConfigOutput
-}
-
-type GetZeroTrustAccessIdentityProviderScimConfigArgs struct {
-	// A flag to enable or disable SCIM for the identity provider.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-	// Available values: "automatic", "reauth", "no*action".
-	IdentityUpdateBehavior pulumi.StringInput `pulumi:"identityUpdateBehavior"`
-	// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-	ScimBaseUrl pulumi.StringInput `pulumi:"scimBaseUrl"`
-	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-	SeatDeprovision pulumi.BoolInput `pulumi:"seatDeprovision"`
-	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-	UserDeprovision pulumi.BoolInput `pulumi:"userDeprovision"`
-}
-
-func (GetZeroTrustAccessIdentityProviderScimConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderScimConfig)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProviderScimConfigArgs) ToGetZeroTrustAccessIdentityProviderScimConfigOutput() GetZeroTrustAccessIdentityProviderScimConfigOutput {
-	return i.ToGetZeroTrustAccessIdentityProviderScimConfigOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProviderScimConfigArgs) ToGetZeroTrustAccessIdentityProviderScimConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderScimConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProviderScimConfigOutput)
-}
-
-type GetZeroTrustAccessIdentityProviderScimConfigOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProviderScimConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProviderScimConfig)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) ToGetZeroTrustAccessIdentityProviderScimConfigOutput() GetZeroTrustAccessIdentityProviderScimConfigOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) ToGetZeroTrustAccessIdentityProviderScimConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProviderScimConfigOutput {
-	return o
-}
-
-// A flag to enable or disable SCIM for the identity provider.
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-// Available values: "automatic", "reauth", "no*action".
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) IdentityUpdateBehavior() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) string { return v.IdentityUpdateBehavior }).(pulumi.StringOutput)
-}
-
-// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) ScimBaseUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) string { return v.ScimBaseUrl }).(pulumi.StringOutput)
-}
-
-// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) SeatDeprovision() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) bool { return v.SeatDeprovision }).(pulumi.BoolOutput)
-}
-
-// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) string { return v.Secret }).(pulumi.StringOutput)
-}
-
-// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) UserDeprovision() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProviderScimConfig) bool { return v.UserDeprovision }).(pulumi.BoolOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResult struct {
-	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-	Config GetZeroTrustAccessIdentityProvidersResultConfig `pulumi:"config"`
-	// UUID.
-	Id string `pulumi:"id"`
-	// The name of the identity provider, shown to users on the login page.
-	Name string `pulumi:"name"`
-	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
-	ScimConfig GetZeroTrustAccessIdentityProvidersResultScimConfig `pulumi:"scimConfig"`
-	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
-	Type string `pulumi:"type"`
-}
-
-// GetZeroTrustAccessIdentityProvidersResultInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultArgs and GetZeroTrustAccessIdentityProvidersResultOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultArgs{...}
-type GetZeroTrustAccessIdentityProvidersResultInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultOutput() GetZeroTrustAccessIdentityProvidersResultOutput
-	ToGetZeroTrustAccessIdentityProvidersResultOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultArgs struct {
-	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-	Config GetZeroTrustAccessIdentityProvidersResultConfigInput `pulumi:"config"`
-	// UUID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the identity provider, shown to users on the login page.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
-	ScimConfig GetZeroTrustAccessIdentityProvidersResultScimConfigInput `pulumi:"scimConfig"`
-	// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-	// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetZeroTrustAccessIdentityProvidersResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResult)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultArgs) ToGetZeroTrustAccessIdentityProvidersResultOutput() GetZeroTrustAccessIdentityProvidersResultOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultArgs) ToGetZeroTrustAccessIdentityProvidersResultOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultOutput)
-}
-
-// GetZeroTrustAccessIdentityProvidersResultArrayInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultArray and GetZeroTrustAccessIdentityProvidersResultArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultArrayInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultArray{ GetZeroTrustAccessIdentityProvidersResultArgs{...} }
-type GetZeroTrustAccessIdentityProvidersResultArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultArrayOutput() GetZeroTrustAccessIdentityProvidersResultArrayOutput
-	ToGetZeroTrustAccessIdentityProvidersResultArrayOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultArrayOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultArray []GetZeroTrustAccessIdentityProvidersResultInput
-
-func (GetZeroTrustAccessIdentityProvidersResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProvidersResult)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultArray) ToGetZeroTrustAccessIdentityProvidersResultArrayOutput() GetZeroTrustAccessIdentityProvidersResultArrayOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultArray) ToGetZeroTrustAccessIdentityProvidersResultArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultArrayOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResult)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) ToGetZeroTrustAccessIdentityProvidersResultOutput() GetZeroTrustAccessIdentityProvidersResultOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) ToGetZeroTrustAccessIdentityProvidersResultOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultOutput {
-	return o
-}
-
-// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) Config() GetZeroTrustAccessIdentityProvidersResultConfigOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) GetZeroTrustAccessIdentityProvidersResultConfig {
-		return v.Config
-	}).(GetZeroTrustAccessIdentityProvidersResultConfigOutput)
-}
-
-// UUID.
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the identity provider, shown to users on the login page.
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) ScimConfig() GetZeroTrustAccessIdentityProvidersResultScimConfigOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) GetZeroTrustAccessIdentityProvidersResultScimConfig {
-		return v.ScimConfig
-	}).(GetZeroTrustAccessIdentityProvidersResultScimConfigOutput)
-}
-
-// The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
-// Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
-func (o GetZeroTrustAccessIdentityProvidersResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProvidersResult)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultArrayOutput) ToGetZeroTrustAccessIdentityProvidersResultArrayOutput() GetZeroTrustAccessIdentityProvidersResultArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultArrayOutput) ToGetZeroTrustAccessIdentityProvidersResultArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessIdentityProvidersResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessIdentityProvidersResult {
-		return vs[0].([]GetZeroTrustAccessIdentityProvidersResult)[vs[1].(int)]
-	}).(GetZeroTrustAccessIdentityProvidersResultOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfig struct {
-	// Your companies TLD
-	AppsDomain string `pulumi:"appsDomain"`
-	// A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
-	Attributes []string `pulumi:"attributes"`
-	// The authorizationEndpoint URL of your IdP
-	AuthUrl string `pulumi:"authUrl"`
-	// Your okta authorization server id
-	AuthorizationServerId string `pulumi:"authorizationServerId"`
-	// Your centrify account url
-	CentrifyAccount string `pulumi:"centrifyAccount"`
-	// Your centrify app id
-	CentrifyAppId string `pulumi:"centrifyAppId"`
-	// The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
-	CertsUrl string `pulumi:"certsUrl"`
-	// Custom claims
-	Claims []string `pulumi:"claims"`
-	// Your OAuth Client ID
-	ClientId string `pulumi:"clientId"`
-	// Your OAuth Client Secret
-	ClientSecret string `pulumi:"clientSecret"`
-	// Should Cloudflare try to load authentication contexts from your account
-	ConditionalAccessEnabled bool `pulumi:"conditionalAccessEnabled"`
-	// Your Azure directory uuid
-	DirectoryId string `pulumi:"directoryId"`
-	// The attribute name for email in the SAML response.
-	EmailAttributeName string `pulumi:"emailAttributeName"`
-	// The claim name for email in the idToken response.
-	EmailClaimName string `pulumi:"emailClaimName"`
-	// Add a list of attribute names that will be returned in the response header from the Access callback.
-	HeaderAttributes []GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute `pulumi:"headerAttributes"`
-	// X509 certificate to verify the signature in the SAML authentication response
-	IdpPublicCerts []string `pulumi:"idpPublicCerts"`
-	// IdP Entity ID or Issuer URL
-	IssuerUrl string `pulumi:"issuerUrl"`
-	// Your okta account url
-	OktaAccount string `pulumi:"oktaAccount"`
-	// Your OneLogin account url
-	OneloginAccount string `pulumi:"oneloginAccount"`
-	// Your PingOne environment identifier
-	PingEnvId string `pulumi:"pingEnvId"`
-	// Enable Proof Key for Code Exchange (PKCE)
-	PkceEnabled bool `pulumi:"pkceEnabled"`
-	// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-	// Available values: "login", "selectAccount", "none".
-	Prompt string `pulumi:"prompt"`
-	// OAuth scopes
-	Scopes []string `pulumi:"scopes"`
-	// Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
-	SignRequest bool `pulumi:"signRequest"`
-	// URL to send the SAML authentication requests to
-	SsoTargetUrl string `pulumi:"ssoTargetUrl"`
-	// Should Cloudflare try to load groups from your account
-	SupportGroups bool `pulumi:"supportGroups"`
-	// The tokenEndpoint URL of your IdP
-	TokenUrl string `pulumi:"tokenUrl"`
-}
-
-// GetZeroTrustAccessIdentityProvidersResultConfigInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultConfigArgs and GetZeroTrustAccessIdentityProvidersResultConfigOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultConfigInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultConfigArgs{...}
-type GetZeroTrustAccessIdentityProvidersResultConfigInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultConfigOutput() GetZeroTrustAccessIdentityProvidersResultConfigOutput
-	ToGetZeroTrustAccessIdentityProvidersResultConfigOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultConfigOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigArgs struct {
-	// Your companies TLD
-	AppsDomain pulumi.StringInput `pulumi:"appsDomain"`
-	// A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
-	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
-	// The authorizationEndpoint URL of your IdP
-	AuthUrl pulumi.StringInput `pulumi:"authUrl"`
-	// Your okta authorization server id
-	AuthorizationServerId pulumi.StringInput `pulumi:"authorizationServerId"`
-	// Your centrify account url
-	CentrifyAccount pulumi.StringInput `pulumi:"centrifyAccount"`
-	// Your centrify app id
-	CentrifyAppId pulumi.StringInput `pulumi:"centrifyAppId"`
-	// The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
-	CertsUrl pulumi.StringInput `pulumi:"certsUrl"`
-	// Custom claims
-	Claims pulumi.StringArrayInput `pulumi:"claims"`
-	// Your OAuth Client ID
-	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Your OAuth Client Secret
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// Should Cloudflare try to load authentication contexts from your account
-	ConditionalAccessEnabled pulumi.BoolInput `pulumi:"conditionalAccessEnabled"`
-	// Your Azure directory uuid
-	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
-	// The attribute name for email in the SAML response.
-	EmailAttributeName pulumi.StringInput `pulumi:"emailAttributeName"`
-	// The claim name for email in the idToken response.
-	EmailClaimName pulumi.StringInput `pulumi:"emailClaimName"`
-	// Add a list of attribute names that will be returned in the response header from the Access callback.
-	HeaderAttributes GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayInput `pulumi:"headerAttributes"`
-	// X509 certificate to verify the signature in the SAML authentication response
-	IdpPublicCerts pulumi.StringArrayInput `pulumi:"idpPublicCerts"`
-	// IdP Entity ID or Issuer URL
-	IssuerUrl pulumi.StringInput `pulumi:"issuerUrl"`
-	// Your okta account url
-	OktaAccount pulumi.StringInput `pulumi:"oktaAccount"`
-	// Your OneLogin account url
-	OneloginAccount pulumi.StringInput `pulumi:"oneloginAccount"`
-	// Your PingOne environment identifier
-	PingEnvId pulumi.StringInput `pulumi:"pingEnvId"`
-	// Enable Proof Key for Code Exchange (PKCE)
-	PkceEnabled pulumi.BoolInput `pulumi:"pkceEnabled"`
-	// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-	// Available values: "login", "selectAccount", "none".
-	Prompt pulumi.StringInput `pulumi:"prompt"`
-	// OAuth scopes
-	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
-	SignRequest pulumi.BoolInput `pulumi:"signRequest"`
-	// URL to send the SAML authentication requests to
-	SsoTargetUrl pulumi.StringInput `pulumi:"ssoTargetUrl"`
-	// Should Cloudflare try to load groups from your account
-	SupportGroups pulumi.BoolInput `pulumi:"supportGroups"`
-	// The tokenEndpoint URL of your IdP
-	TokenUrl pulumi.StringInput `pulumi:"tokenUrl"`
-}
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfig)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigArgs) ToGetZeroTrustAccessIdentityProvidersResultConfigOutput() GetZeroTrustAccessIdentityProvidersResultConfigOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultConfigOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigArgs) ToGetZeroTrustAccessIdentityProvidersResultConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultConfigOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfig)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigOutput() GetZeroTrustAccessIdentityProvidersResultConfigOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigOutput {
-	return o
-}
-
-// Your companies TLD
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) AppsDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.AppsDomain }).(pulumi.StringOutput)
-}
-
-// A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) Attributes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) []string { return v.Attributes }).(pulumi.StringArrayOutput)
-}
-
-// The authorizationEndpoint URL of your IdP
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) AuthUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.AuthUrl }).(pulumi.StringOutput)
-}
-
-// Your okta authorization server id
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) AuthorizationServerId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.AuthorizationServerId }).(pulumi.StringOutput)
-}
-
-// Your centrify account url
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) CentrifyAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.CentrifyAccount }).(pulumi.StringOutput)
-}
-
-// Your centrify app id
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) CentrifyAppId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.CentrifyAppId }).(pulumi.StringOutput)
-}
-
-// The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) CertsUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.CertsUrl }).(pulumi.StringOutput)
-}
-
-// Custom claims
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) Claims() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) []string { return v.Claims }).(pulumi.StringArrayOutput)
-}
-
-// Your OAuth Client ID
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// Your OAuth Client Secret
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// Should Cloudflare try to load authentication contexts from your account
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) ConditionalAccessEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) bool { return v.ConditionalAccessEnabled }).(pulumi.BoolOutput)
-}
-
-// Your Azure directory uuid
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) DirectoryId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.DirectoryId }).(pulumi.StringOutput)
-}
-
-// The attribute name for email in the SAML response.
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) EmailAttributeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.EmailAttributeName }).(pulumi.StringOutput)
-}
-
-// The claim name for email in the idToken response.
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) EmailClaimName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.EmailClaimName }).(pulumi.StringOutput)
-}
-
-// Add a list of attribute names that will be returned in the response header from the Access callback.
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) HeaderAttributes() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) []GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute {
-		return v.HeaderAttributes
-	}).(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput)
-}
-
-// X509 certificate to verify the signature in the SAML authentication response
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) IdpPublicCerts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) []string { return v.IdpPublicCerts }).(pulumi.StringArrayOutput)
-}
-
-// IdP Entity ID or Issuer URL
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) IssuerUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.IssuerUrl }).(pulumi.StringOutput)
-}
-
-// Your okta account url
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) OktaAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.OktaAccount }).(pulumi.StringOutput)
-}
-
-// Your OneLogin account url
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) OneloginAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.OneloginAccount }).(pulumi.StringOutput)
-}
-
-// Your PingOne environment identifier
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) PingEnvId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.PingEnvId }).(pulumi.StringOutput)
-}
-
-// Enable Proof Key for Code Exchange (PKCE)
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) PkceEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) bool { return v.PkceEnabled }).(pulumi.BoolOutput)
-}
-
-// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-// Available values: "login", "selectAccount", "none".
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) Prompt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.Prompt }).(pulumi.StringOutput)
-}
-
-// OAuth scopes
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) Scopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) []string { return v.Scopes }).(pulumi.StringArrayOutput)
-}
-
-// Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) SignRequest() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) bool { return v.SignRequest }).(pulumi.BoolOutput)
-}
-
-// URL to send the SAML authentication requests to
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) SsoTargetUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.SsoTargetUrl }).(pulumi.StringOutput)
-}
-
-// Should Cloudflare try to load groups from your account
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) SupportGroups() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) bool { return v.SupportGroups }).(pulumi.BoolOutput)
-}
-
-// The tokenEndpoint URL of your IdP
-func (o GetZeroTrustAccessIdentityProvidersResultConfigOutput) TokenUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfig) string { return v.TokenUrl }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute struct {
-	// attribute name from the IDP
-	AttributeName string `pulumi:"attributeName"`
-	// header that will be added on the request to the origin
-	HeaderName string `pulumi:"headerName"`
-}
-
-// GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs and GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs{...}
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput
-	ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs struct {
-	// attribute name from the IDP
-	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// header that will be added on the request to the origin
-	HeaderName pulumi.StringInput `pulumi:"headerName"`
-}
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput)
-}
-
-// GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray and GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray{ GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs{...} }
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput
-	ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray []GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeInput
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput {
-	return o
-}
-
-// attribute name from the IDP
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput) AttributeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute) string { return v.AttributeName }).(pulumi.StringOutput)
-}
-
-// header that will be added on the request to the origin
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput) HeaderName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute) string { return v.HeaderName }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput() GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput) ToGetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput) Index(i pulumi.IntInput) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute {
-		return vs[0].([]GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttribute)[vs[1].(int)]
-	}).(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultScimConfig struct {
-	// A flag to enable or disable SCIM for the identity provider.
-	Enabled bool `pulumi:"enabled"`
-	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-	// Available values: "automatic", "reauth", "no*action".
-	IdentityUpdateBehavior string `pulumi:"identityUpdateBehavior"`
-	// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-	ScimBaseUrl string `pulumi:"scimBaseUrl"`
-	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-	SeatDeprovision bool `pulumi:"seatDeprovision"`
-	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-	Secret string `pulumi:"secret"`
-	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-	UserDeprovision bool `pulumi:"userDeprovision"`
-}
-
-// GetZeroTrustAccessIdentityProvidersResultScimConfigInput is an input type that accepts GetZeroTrustAccessIdentityProvidersResultScimConfigArgs and GetZeroTrustAccessIdentityProvidersResultScimConfigOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessIdentityProvidersResultScimConfigInput` via:
-//
-//	GetZeroTrustAccessIdentityProvidersResultScimConfigArgs{...}
-type GetZeroTrustAccessIdentityProvidersResultScimConfigInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutput() GetZeroTrustAccessIdentityProvidersResultScimConfigOutput
-	ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutputWithContext(context.Context) GetZeroTrustAccessIdentityProvidersResultScimConfigOutput
-}
-
-type GetZeroTrustAccessIdentityProvidersResultScimConfigArgs struct {
-	// A flag to enable or disable SCIM for the identity provider.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-	// Available values: "automatic", "reauth", "no*action".
-	IdentityUpdateBehavior pulumi.StringInput `pulumi:"identityUpdateBehavior"`
-	// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-	ScimBaseUrl pulumi.StringInput `pulumi:"scimBaseUrl"`
-	// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-	SeatDeprovision pulumi.BoolInput `pulumi:"seatDeprovision"`
-	// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-	Secret pulumi.StringInput `pulumi:"secret"`
-	// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-	UserDeprovision pulumi.BoolInput `pulumi:"userDeprovision"`
-}
-
-func (GetZeroTrustAccessIdentityProvidersResultScimConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultScimConfig)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultScimConfigArgs) ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutput() GetZeroTrustAccessIdentityProvidersResultScimConfigOutput {
-	return i.ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessIdentityProvidersResultScimConfigArgs) ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultScimConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessIdentityProvidersResultScimConfigOutput)
-}
-
-type GetZeroTrustAccessIdentityProvidersResultScimConfigOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultScimConfig)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutput() GetZeroTrustAccessIdentityProvidersResultScimConfigOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) ToGetZeroTrustAccessIdentityProvidersResultScimConfigOutputWithContext(ctx context.Context) GetZeroTrustAccessIdentityProvidersResultScimConfigOutput {
-	return o
-}
-
-// A flag to enable or disable SCIM for the identity provider.
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
-// Available values: "automatic", "reauth", "no*action".
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) IdentityUpdateBehavior() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) string { return v.IdentityUpdateBehavior }).(pulumi.StringOutput)
-}
-
-// The base URL of Cloudflare's SCIM V2.0 API endpoint.
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) ScimBaseUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) string { return v.ScimBaseUrl }).(pulumi.StringOutput)
-}
-
-// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) SeatDeprovision() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) bool { return v.SeatDeprovision }).(pulumi.BoolOutput)
-}
-
-// A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) Secret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) string { return v.Secret }).(pulumi.StringOutput)
-}
-
-// A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
-func (o GetZeroTrustAccessIdentityProvidersResultScimConfigOutput) UserDeprovision() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResultScimConfig) bool { return v.UserDeprovision }).(pulumi.BoolOutput)
-}
-
-type GetZeroTrustAccessInfrastructureTargetFilter struct {
-	// Date and time at which the target was created after (inclusive)
-	CreatedAfter *string `pulumi:"createdAfter"`
-	// Date and time at which the target was created before (inclusive)
-	CreatedBefore *string `pulumi:"createdBefore"`
-	// The sorting direction.
-	// Available values: "asc", "desc".
-	Direction *string `pulumi:"direction"`
-	// Hostname of a target
-	Hostname *string `pulumi:"hostname"`
-	// Partial match to the hostname of a target
-	HostnameContains *string `pulumi:"hostnameContains"`
-	// Filters for targets whose IP addresses look like the specified string.
-	// Supports `*` as a wildcard character
-	IpLike *string `pulumi:"ipLike"`
-	// IPv4 address of the target
-	IpV4 *string `pulumi:"ipV4"`
-	// IPv6 address of the target
-	IpV6 *string `pulumi:"ipV6"`
-	// Filters for targets that have any of the following IP addresses. Specify
-	// `ips` multiple times in query parameter to build list of candidates.
-	Ips []string `pulumi:"ips"`
-	// Defines an IPv4 filter range's ending value (inclusive). Requires
-	// `ipv4Start` to be specified as well.
-	Ipv4End *string `pulumi:"ipv4End"`
-	// Defines an IPv4 filter range's starting value (inclusive). Requires
-	// `ipv4End` to be specified as well.
-	Ipv4Start *string `pulumi:"ipv4Start"`
-	// Defines an IPv6 filter range's ending value (inclusive). Requires
-	// `ipv6Start` to be specified as well.
-	Ipv6End *string `pulumi:"ipv6End"`
-	// Defines an IPv6 filter range's starting value (inclusive). Requires
-	// `ipv6End` to be specified as well.
-	Ipv6Start *string `pulumi:"ipv6Start"`
-	// Date and time at which the target was modified after (inclusive)
-	ModifiedAfter *string `pulumi:"modifiedAfter"`
-	// Date and time at which the target was modified before (inclusive)
-	ModifiedBefore *string `pulumi:"modifiedBefore"`
-	// The field to sort by.
-	// Available values: "hostname", "createdAt".
-	Order *string `pulumi:"order"`
-	// Filters for targets that have any of the following UUIDs. Specify
-	// `targetIds` multiple times in query parameter to build list of
-	// candidates.
-	TargetIds []string `pulumi:"targetIds"`
-	// Private virtual network identifier of the target
-	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
-}
-
-// GetZeroTrustAccessInfrastructureTargetFilterInput is an input type that accepts GetZeroTrustAccessInfrastructureTargetFilterArgs and GetZeroTrustAccessInfrastructureTargetFilterOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessInfrastructureTargetFilterInput` via:
-//
-//	GetZeroTrustAccessInfrastructureTargetFilterArgs{...}
-type GetZeroTrustAccessInfrastructureTargetFilterInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessInfrastructureTargetFilterOutput() GetZeroTrustAccessInfrastructureTargetFilterOutput
-	ToGetZeroTrustAccessInfrastructureTargetFilterOutputWithContext(context.Context) GetZeroTrustAccessInfrastructureTargetFilterOutput
-}
-
-type GetZeroTrustAccessInfrastructureTargetFilterArgs struct {
-	// Date and time at which the target was created after (inclusive)
-	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
-	// Date and time at which the target was created before (inclusive)
-	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
-	// The sorting direction.
-	// Available values: "asc", "desc".
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Hostname of a target
-	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// Partial match to the hostname of a target
-	HostnameContains pulumi.StringPtrInput `pulumi:"hostnameContains"`
-	// Filters for targets whose IP addresses look like the specified string.
-	// Supports `*` as a wildcard character
-	IpLike pulumi.StringPtrInput `pulumi:"ipLike"`
-	// IPv4 address of the target
-	IpV4 pulumi.StringPtrInput `pulumi:"ipV4"`
-	// IPv6 address of the target
-	IpV6 pulumi.StringPtrInput `pulumi:"ipV6"`
-	// Filters for targets that have any of the following IP addresses. Specify
-	// `ips` multiple times in query parameter to build list of candidates.
-	Ips pulumi.StringArrayInput `pulumi:"ips"`
-	// Defines an IPv4 filter range's ending value (inclusive). Requires
-	// `ipv4Start` to be specified as well.
-	Ipv4End pulumi.StringPtrInput `pulumi:"ipv4End"`
-	// Defines an IPv4 filter range's starting value (inclusive). Requires
-	// `ipv4End` to be specified as well.
-	Ipv4Start pulumi.StringPtrInput `pulumi:"ipv4Start"`
-	// Defines an IPv6 filter range's ending value (inclusive). Requires
-	// `ipv6Start` to be specified as well.
-	Ipv6End pulumi.StringPtrInput `pulumi:"ipv6End"`
-	// Defines an IPv6 filter range's starting value (inclusive). Requires
-	// `ipv6End` to be specified as well.
-	Ipv6Start pulumi.StringPtrInput `pulumi:"ipv6Start"`
-	// Date and time at which the target was modified after (inclusive)
-	ModifiedAfter pulumi.StringPtrInput `pulumi:"modifiedAfter"`
-	// Date and time at which the target was modified before (inclusive)
-	ModifiedBefore pulumi.StringPtrInput `pulumi:"modifiedBefore"`
-	// The field to sort by.
-	// Available values: "hostname", "createdAt".
-	Order pulumi.StringPtrInput `pulumi:"order"`
-	// Filters for targets that have any of the following UUIDs. Specify
-	// `targetIds` multiple times in query parameter to build list of
-	// candidates.
-	TargetIds pulumi.StringArrayInput `pulumi:"targetIds"`
-	// Private virtual network identifier of the target
-	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
-}
-
-func (GetZeroTrustAccessInfrastructureTargetFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetFilter)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetFilterArgs) ToGetZeroTrustAccessInfrastructureTargetFilterOutput() GetZeroTrustAccessInfrastructureTargetFilterOutput {
-	return i.ToGetZeroTrustAccessInfrastructureTargetFilterOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetFilterArgs) ToGetZeroTrustAccessInfrastructureTargetFilterOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessInfrastructureTargetFilterOutput)
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetFilterArgs) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutput() GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return i.ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetFilterArgs) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessInfrastructureTargetFilterOutput).ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(ctx)
-}
-
-// GetZeroTrustAccessInfrastructureTargetFilterPtrInput is an input type that accepts GetZeroTrustAccessInfrastructureTargetFilterArgs, GetZeroTrustAccessInfrastructureTargetFilterPtr and GetZeroTrustAccessInfrastructureTargetFilterPtrOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessInfrastructureTargetFilterPtrInput` via:
-//
-//	        GetZeroTrustAccessInfrastructureTargetFilterArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetZeroTrustAccessInfrastructureTargetFilterPtrInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutput() GetZeroTrustAccessInfrastructureTargetFilterPtrOutput
-	ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(context.Context) GetZeroTrustAccessInfrastructureTargetFilterPtrOutput
-}
-
-type getZeroTrustAccessInfrastructureTargetFilterPtrType GetZeroTrustAccessInfrastructureTargetFilterArgs
-
-func GetZeroTrustAccessInfrastructureTargetFilterPtr(v *GetZeroTrustAccessInfrastructureTargetFilterArgs) GetZeroTrustAccessInfrastructureTargetFilterPtrInput {
-	return (*getZeroTrustAccessInfrastructureTargetFilterPtrType)(v)
-}
-
-func (*getZeroTrustAccessInfrastructureTargetFilterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetZeroTrustAccessInfrastructureTargetFilter)(nil)).Elem()
-}
-
-func (i *getZeroTrustAccessInfrastructureTargetFilterPtrType) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutput() GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return i.ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(context.Background())
-}
-
-func (i *getZeroTrustAccessInfrastructureTargetFilterPtrType) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessInfrastructureTargetFilterPtrOutput)
-}
-
-type GetZeroTrustAccessInfrastructureTargetFilterOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessInfrastructureTargetFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetFilter)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ToGetZeroTrustAccessInfrastructureTargetFilterOutput() GetZeroTrustAccessInfrastructureTargetFilterOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ToGetZeroTrustAccessInfrastructureTargetFilterOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutput() GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return o.ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(context.Background())
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetZeroTrustAccessInfrastructureTargetFilter) *GetZeroTrustAccessInfrastructureTargetFilter {
-		return &v
-	}).(GetZeroTrustAccessInfrastructureTargetFilterPtrOutput)
-}
-
-// Date and time at which the target was created after (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) CreatedAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was created before (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) CreatedBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
-}
-
-// The sorting direction.
-// Available values: "asc", "desc".
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Hostname of a target
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Hostname }).(pulumi.StringPtrOutput)
-}
-
-// Partial match to the hostname of a target
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) HostnameContains() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.HostnameContains }).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets whose IP addresses look like the specified string.
-// Supports `*` as a wildcard character
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) IpLike() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.IpLike }).(pulumi.StringPtrOutput)
-}
-
-// IPv4 address of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) IpV4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.IpV4 }).(pulumi.StringPtrOutput)
-}
-
-// IPv6 address of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) IpV6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.IpV6 }).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets that have any of the following IP addresses. Specify
-// `ips` multiple times in query parameter to build list of candidates.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Ips() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) []string { return v.Ips }).(pulumi.StringArrayOutput)
-}
-
-// Defines an IPv4 filter range's ending value (inclusive). Requires
-// `ipv4Start` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Ipv4End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Ipv4End }).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv4 filter range's starting value (inclusive). Requires
-// `ipv4End` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Ipv4Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Ipv4Start }).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv6 filter range's ending value (inclusive). Requires
-// `ipv6Start` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Ipv6End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Ipv6End }).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv6 filter range's starting value (inclusive). Requires
-// `ipv6End` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Ipv6Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Ipv6Start }).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was modified after (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ModifiedAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.ModifiedAfter }).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was modified before (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) ModifiedBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.ModifiedBefore }).(pulumi.StringPtrOutput)
-}
-
-// The field to sort by.
-// Available values: "hostname", "createdAt".
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) Order() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets that have any of the following UUIDs. Specify
-// `targetIds` multiple times in query parameter to build list of
-// candidates.
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) TargetIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
-}
-
-// Private virtual network identifier of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterOutput) VirtualNetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetFilter) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
-}
-
-type GetZeroTrustAccessInfrastructureTargetFilterPtrOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetZeroTrustAccessInfrastructureTargetFilter)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutput() GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) ToGetZeroTrustAccessInfrastructureTargetFilterPtrOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetFilterPtrOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Elem() GetZeroTrustAccessInfrastructureTargetFilterOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) GetZeroTrustAccessInfrastructureTargetFilter {
-		if v != nil {
-			return *v
-		}
-		var ret GetZeroTrustAccessInfrastructureTargetFilter
-		return ret
-	}).(GetZeroTrustAccessInfrastructureTargetFilterOutput)
-}
-
-// Date and time at which the target was created after (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) CreatedAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAfter
-	}).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was created before (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) CreatedBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBefore
-	}).(pulumi.StringPtrOutput)
-}
-
-// The sorting direction.
-// Available values: "asc", "desc".
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Direction
-	}).(pulumi.StringPtrOutput)
-}
-
-// Hostname of a target
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Hostname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Hostname
-	}).(pulumi.StringPtrOutput)
-}
-
-// Partial match to the hostname of a target
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) HostnameContains() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HostnameContains
-	}).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets whose IP addresses look like the specified string.
-// Supports `*` as a wildcard character
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) IpLike() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpLike
-	}).(pulumi.StringPtrOutput)
-}
-
-// IPv4 address of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) IpV4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpV4
-	}).(pulumi.StringPtrOutput)
-}
-
-// IPv6 address of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) IpV6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpV6
-	}).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets that have any of the following IP addresses. Specify
-// `ips` multiple times in query parameter to build list of candidates.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Ips() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Ips
-	}).(pulumi.StringArrayOutput)
-}
-
-// Defines an IPv4 filter range's ending value (inclusive). Requires
-// `ipv4Start` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Ipv4End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4End
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv4 filter range's starting value (inclusive). Requires
-// `ipv4End` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Ipv4Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv4Start
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv6 filter range's ending value (inclusive). Requires
-// `ipv6Start` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Ipv6End() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6End
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines an IPv6 filter range's starting value (inclusive). Requires
-// `ipv6End` to be specified as well.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Ipv6Start() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6Start
-	}).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was modified after (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) ModifiedAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedAfter
-	}).(pulumi.StringPtrOutput)
-}
-
-// Date and time at which the target was modified before (inclusive)
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) ModifiedBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ModifiedBefore
-	}).(pulumi.StringPtrOutput)
-}
-
-// The field to sort by.
-// Available values: "hostname", "createdAt".
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) Order() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Order
-	}).(pulumi.StringPtrOutput)
-}
-
-// Filters for targets that have any of the following UUIDs. Specify
-// `targetIds` multiple times in query parameter to build list of
-// candidates.
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) TargetIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TargetIds
-	}).(pulumi.StringArrayOutput)
-}
-
-// Private virtual network identifier of the target
-func (o GetZeroTrustAccessInfrastructureTargetFilterPtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetZeroTrustAccessInfrastructureTargetFilter) *string {
-		if v == nil {
-			return nil
-		}
-		return v.VirtualNetworkId
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetZeroTrustAccessInfrastructureTargetIp struct {
-	// The target's IPv4 address
-	Ipv4 GetZeroTrustAccessInfrastructureTargetIpIpv4 `pulumi:"ipv4"`
-	// The target's IPv6 address
-	Ipv6 GetZeroTrustAccessInfrastructureTargetIpIpv6 `pulumi:"ipv6"`
-}
-
-// GetZeroTrustAccessInfrastructureTargetIpInput is an input type that accepts GetZeroTrustAccessInfrastructureTargetIpArgs and GetZeroTrustAccessInfrastructureTargetIpOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessInfrastructureTargetIpInput` via:
-//
-//	GetZeroTrustAccessInfrastructureTargetIpArgs{...}
-type GetZeroTrustAccessInfrastructureTargetIpInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessInfrastructureTargetIpOutput() GetZeroTrustAccessInfrastructureTargetIpOutput
-	ToGetZeroTrustAccessInfrastructureTargetIpOutputWithContext(context.Context) GetZeroTrustAccessInfrastructureTargetIpOutput
-}
-
-type GetZeroTrustAccessInfrastructureTargetIpArgs struct {
-	// The target's IPv4 address
-	Ipv4 GetZeroTrustAccessInfrastructureTargetIpIpv4Input `pulumi:"ipv4"`
-	// The target's IPv6 address
-	Ipv6 GetZeroTrustAccessInfrastructureTargetIpIpv6Input `pulumi:"ipv6"`
-}
-
-func (GetZeroTrustAccessInfrastructureTargetIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIp)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetIpArgs) ToGetZeroTrustAccessInfrastructureTargetIpOutput() GetZeroTrustAccessInfrastructureTargetIpOutput {
-	return i.ToGetZeroTrustAccessInfrastructureTargetIpOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetIpArgs) ToGetZeroTrustAccessInfrastructureTargetIpOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessInfrastructureTargetIpOutput)
-}
-
-type GetZeroTrustAccessInfrastructureTargetIpOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessInfrastructureTargetIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIp)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetIpOutput) ToGetZeroTrustAccessInfrastructureTargetIpOutput() GetZeroTrustAccessInfrastructureTargetIpOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetIpOutput) ToGetZeroTrustAccessInfrastructureTargetIpOutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetIpOutput {
-	return o
-}
-
-// The target's IPv4 address
-func (o GetZeroTrustAccessInfrastructureTargetIpOutput) Ipv4() GetZeroTrustAccessInfrastructureTargetIpIpv4Output {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetIp) GetZeroTrustAccessInfrastructureTargetIpIpv4 {
-		return v.Ipv4
-	}).(GetZeroTrustAccessInfrastructureTargetIpIpv4Output)
-}
-
-// The target's IPv6 address
-func (o GetZeroTrustAccessInfrastructureTargetIpOutput) Ipv6() GetZeroTrustAccessInfrastructureTargetIpIpv6Output {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetIp) GetZeroTrustAccessInfrastructureTargetIpIpv6 {
-		return v.Ipv6
-	}).(GetZeroTrustAccessInfrastructureTargetIpIpv6Output)
-}
-
-type GetZeroTrustAccessInfrastructureTargetIpIpv4 struct {
-	// IP address of the target
-	IpAddr string `pulumi:"ipAddr"`
-	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
-	VirtualNetworkId string `pulumi:"virtualNetworkId"`
-}
-
-// GetZeroTrustAccessInfrastructureTargetIpIpv4Input is an input type that accepts GetZeroTrustAccessInfrastructureTargetIpIpv4Args and GetZeroTrustAccessInfrastructureTargetIpIpv4Output values.
-// You can construct a concrete instance of `GetZeroTrustAccessInfrastructureTargetIpIpv4Input` via:
-//
-//	GetZeroTrustAccessInfrastructureTargetIpIpv4Args{...}
-type GetZeroTrustAccessInfrastructureTargetIpIpv4Input interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessInfrastructureTargetIpIpv4Output() GetZeroTrustAccessInfrastructureTargetIpIpv4Output
-	ToGetZeroTrustAccessInfrastructureTargetIpIpv4OutputWithContext(context.Context) GetZeroTrustAccessInfrastructureTargetIpIpv4Output
-}
-
-type GetZeroTrustAccessInfrastructureTargetIpIpv4Args struct {
-	// IP address of the target
-	IpAddr pulumi.StringInput `pulumi:"ipAddr"`
-	// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
-	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
-}
-
-func (GetZeroTrustAccessInfrastructureTargetIpIpv4Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIpIpv4)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetIpIpv4Args) ToGetZeroTrustAccessInfrastructureTargetIpIpv4Output() GetZeroTrustAccessInfrastructureTargetIpIpv4Output {
-	return i.ToGetZeroTrustAccessInfrastructureTargetIpIpv4OutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessInfrastructureTargetIpIpv4Args) ToGetZeroTrustAccessInfrastructureTargetIpIpv4OutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetIpIpv4Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessInfrastructureTargetIpIpv4Output)
-}
-
-type GetZeroTrustAccessInfrastructureTargetIpIpv4Output struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessInfrastructureTargetIpIpv4Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIpIpv4)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetIpIpv4Output) ToGetZeroTrustAccessInfrastructureTargetIpIpv4Output() GetZeroTrustAccessInfrastructureTargetIpIpv4Output {
-	return o
-}
-
-func (o GetZeroTrustAccessInfrastructureTargetIpIpv4Output) ToGetZeroTrustAccessInfrastructureTargetIpIpv4OutputWithContext(ctx context.Context) GetZeroTrustAccessInfrastructureTargetIpIpv4Output {
-	return o
-}
-
-// IP address of the target
-func (o GetZeroTrustAccessInfrastructureTargetIpIpv4Output) IpAddr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetIpIpv4) string { return v.IpAddr }).(pulumi.StringOutput)
-}
-
-// (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
-func (o GetZeroTrustAccessInfrastructureTargetIpIpv4Output) VirtualNetworkId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessInfrastructureTargetIpIpv4) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeObjectInput)(nil)).Elem(), GetResourceGroupsResultScopeObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeObjectArrayInput)(nil)).Elem(), GetResourceGroupsResultScopeObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleInput)(nil)).Elem(), GetRulesetRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleArrayInput)(nil)).Elem(), GetRulesetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersInput)(nil)).Elem(), GetRulesetRuleActionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithmInput)(nil)).Elem(), GetRulesetRuleActionParametersAlgorithmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithmArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersAlgorithmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAutominifyInput)(nil)).Elem(), GetRulesetRuleActionParametersAutominifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersBrowserTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
@@ -40258,6 +40119,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaValidationSchemasFilterPtrInput)(nil)).Elem(), GetSchemaValidationSchemasFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaValidationSchemasListResultInput)(nil)).Elem(), GetSchemaValidationSchemasListResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaValidationSchemasListResultArrayInput)(nil)).Elem(), GetSchemaValidationSchemasListResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnippetListResultInput)(nil)).Elem(), GetSnippetListResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSnippetListResultArrayInput)(nil)).Elem(), GetSnippetListResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnippetRulesListResultInput)(nil)).Elem(), GetSnippetRulesListResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnippetRulesListResultArrayInput)(nil)).Elem(), GetSnippetRulesListResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnippetsListResultInput)(nil)).Elem(), GetSnippetsListResultArgs{})
@@ -40777,21 +40640,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultRequireSamlInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultRequireSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultRequireServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultRequireServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderConfigInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderConfigHeaderAttributeInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderFilterInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderFilterPtrInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProviderScimConfigInput)(nil)).Elem(), GetZeroTrustAccessIdentityProviderScimConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultArrayInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfigInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessIdentityProvidersResultScimConfigInput)(nil)).Elem(), GetZeroTrustAccessIdentityProvidersResultScimConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetFilterInput)(nil)).Elem(), GetZeroTrustAccessInfrastructureTargetFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetFilterPtrInput)(nil)).Elem(), GetZeroTrustAccessInfrastructureTargetFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIpInput)(nil)).Elem(), GetZeroTrustAccessInfrastructureTargetIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessInfrastructureTargetIpIpv4Input)(nil)).Elem(), GetZeroTrustAccessInfrastructureTargetIpIpv4Args{})
+	pulumi.RegisterOutputType(GetResourceGroupsResultScopeObjectOutput{})
+	pulumi.RegisterOutputType(GetResourceGroupsResultScopeObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAlgorithmOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAlgorithmArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAutominifyOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersBrowserTtlOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput{})
@@ -40842,6 +40702,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSchemaValidationSchemasFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetSchemaValidationSchemasListResultOutput{})
 	pulumi.RegisterOutputType(GetSchemaValidationSchemasListResultArrayOutput{})
+	pulumi.RegisterOutputType(GetSnippetListResultOutput{})
+	pulumi.RegisterOutputType(GetSnippetListResultArrayOutput{})
 	pulumi.RegisterOutputType(GetSnippetRulesListResultOutput{})
 	pulumi.RegisterOutputType(GetSnippetRulesListResultArrayOutput{})
 	pulumi.RegisterOutputType(GetSnippetsListResultOutput{})
@@ -41361,19 +41223,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultRequireSamlOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultRequireServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderConfigOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderConfigHeaderAttributeOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderConfigHeaderAttributeArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderFilterOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProviderScimConfigOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultConfigOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultConfigHeaderAttributeArrayOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessIdentityProvidersResultScimConfigOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessInfrastructureTargetFilterOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessInfrastructureTargetFilterPtrOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessInfrastructureTargetIpOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessInfrastructureTargetIpIpv4Output{})
 }

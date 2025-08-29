@@ -13,6 +13,1147 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZoneMeta struct {
+	// The zone is only configured for CDN.
+	CdnOnly *bool `pulumi:"cdnOnly"`
+	// Number of Custom Certificates the zone can have.
+	CustomCertificateQuota *int `pulumi:"customCertificateQuota"`
+	// The zone is only configured for DNS.
+	DnsOnly *bool `pulumi:"dnsOnly"`
+	// The zone is setup with Foundation DNS.
+	FoundationDns *bool `pulumi:"foundationDns"`
+	// Number of Page Rules a zone can have.
+	PageRuleQuota *int `pulumi:"pageRuleQuota"`
+	// The zone has been flagged for phishing.
+	PhishingDetected *bool `pulumi:"phishingDetected"`
+	Step             *int  `pulumi:"step"`
+}
+
+// ZoneMetaInput is an input type that accepts ZoneMetaArgs and ZoneMetaOutput values.
+// You can construct a concrete instance of `ZoneMetaInput` via:
+//
+//	ZoneMetaArgs{...}
+type ZoneMetaInput interface {
+	pulumi.Input
+
+	ToZoneMetaOutput() ZoneMetaOutput
+	ToZoneMetaOutputWithContext(context.Context) ZoneMetaOutput
+}
+
+type ZoneMetaArgs struct {
+	// The zone is only configured for CDN.
+	CdnOnly pulumi.BoolPtrInput `pulumi:"cdnOnly"`
+	// Number of Custom Certificates the zone can have.
+	CustomCertificateQuota pulumi.IntPtrInput `pulumi:"customCertificateQuota"`
+	// The zone is only configured for DNS.
+	DnsOnly pulumi.BoolPtrInput `pulumi:"dnsOnly"`
+	// The zone is setup with Foundation DNS.
+	FoundationDns pulumi.BoolPtrInput `pulumi:"foundationDns"`
+	// Number of Page Rules a zone can have.
+	PageRuleQuota pulumi.IntPtrInput `pulumi:"pageRuleQuota"`
+	// The zone has been flagged for phishing.
+	PhishingDetected pulumi.BoolPtrInput `pulumi:"phishingDetected"`
+	Step             pulumi.IntPtrInput  `pulumi:"step"`
+}
+
+func (ZoneMetaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneMeta)(nil)).Elem()
+}
+
+func (i ZoneMetaArgs) ToZoneMetaOutput() ZoneMetaOutput {
+	return i.ToZoneMetaOutputWithContext(context.Background())
+}
+
+func (i ZoneMetaArgs) ToZoneMetaOutputWithContext(ctx context.Context) ZoneMetaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaOutput)
+}
+
+func (i ZoneMetaArgs) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
+	return i.ToZoneMetaPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneMetaArgs) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaOutput).ToZoneMetaPtrOutputWithContext(ctx)
+}
+
+// ZoneMetaPtrInput is an input type that accepts ZoneMetaArgs, ZoneMetaPtr and ZoneMetaPtrOutput values.
+// You can construct a concrete instance of `ZoneMetaPtrInput` via:
+//
+//	        ZoneMetaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneMetaPtrInput interface {
+	pulumi.Input
+
+	ToZoneMetaPtrOutput() ZoneMetaPtrOutput
+	ToZoneMetaPtrOutputWithContext(context.Context) ZoneMetaPtrOutput
+}
+
+type zoneMetaPtrType ZoneMetaArgs
+
+func ZoneMetaPtr(v *ZoneMetaArgs) ZoneMetaPtrInput {
+	return (*zoneMetaPtrType)(v)
+}
+
+func (*zoneMetaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneMeta)(nil)).Elem()
+}
+
+func (i *zoneMetaPtrType) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
+	return i.ToZoneMetaPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneMetaPtrType) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaPtrOutput)
+}
+
+type ZoneMetaOutput struct{ *pulumi.OutputState }
+
+func (ZoneMetaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneMeta)(nil)).Elem()
+}
+
+func (o ZoneMetaOutput) ToZoneMetaOutput() ZoneMetaOutput {
+	return o
+}
+
+func (o ZoneMetaOutput) ToZoneMetaOutputWithContext(ctx context.Context) ZoneMetaOutput {
+	return o
+}
+
+func (o ZoneMetaOutput) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
+	return o.ToZoneMetaPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneMetaOutput) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneMeta) *ZoneMeta {
+		return &v
+	}).(ZoneMetaPtrOutput)
+}
+
+// The zone is only configured for CDN.
+func (o ZoneMetaOutput) CdnOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *bool { return v.CdnOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Number of Custom Certificates the zone can have.
+func (o ZoneMetaOutput) CustomCertificateQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *int { return v.CustomCertificateQuota }).(pulumi.IntPtrOutput)
+}
+
+// The zone is only configured for DNS.
+func (o ZoneMetaOutput) DnsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *bool { return v.DnsOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The zone is setup with Foundation DNS.
+func (o ZoneMetaOutput) FoundationDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *bool { return v.FoundationDns }).(pulumi.BoolPtrOutput)
+}
+
+// Number of Page Rules a zone can have.
+func (o ZoneMetaOutput) PageRuleQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *int { return v.PageRuleQuota }).(pulumi.IntPtrOutput)
+}
+
+// The zone has been flagged for phishing.
+func (o ZoneMetaOutput) PhishingDetected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *bool { return v.PhishingDetected }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZoneMetaOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneMeta) *int { return v.Step }).(pulumi.IntPtrOutput)
+}
+
+type ZoneMetaPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneMetaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneMeta)(nil)).Elem()
+}
+
+func (o ZoneMetaPtrOutput) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
+	return o
+}
+
+func (o ZoneMetaPtrOutput) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
+	return o
+}
+
+func (o ZoneMetaPtrOutput) Elem() ZoneMetaOutput {
+	return o.ApplyT(func(v *ZoneMeta) ZoneMeta {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneMeta
+		return ret
+	}).(ZoneMetaOutput)
+}
+
+// The zone is only configured for CDN.
+func (o ZoneMetaPtrOutput) CdnOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CdnOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of Custom Certificates the zone can have.
+func (o ZoneMetaPtrOutput) CustomCertificateQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCertificateQuota
+	}).(pulumi.IntPtrOutput)
+}
+
+// The zone is only configured for DNS.
+func (o ZoneMetaPtrOutput) DnsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DnsOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The zone is setup with Foundation DNS.
+func (o ZoneMetaPtrOutput) FoundationDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FoundationDns
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of Page Rules a zone can have.
+func (o ZoneMetaPtrOutput) PageRuleQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PageRuleQuota
+	}).(pulumi.IntPtrOutput)
+}
+
+// The zone has been flagged for phishing.
+func (o ZoneMetaPtrOutput) PhishingDetected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PhishingDetected
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ZoneMetaPtrOutput) Step() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Step
+	}).(pulumi.IntPtrOutput)
+}
+
+type ZoneOwner struct {
+	// Identifier
+	Id *string `pulumi:"id"`
+	// Name of the owner.
+	Name *string `pulumi:"name"`
+	// The type of owner.
+	Type *string `pulumi:"type"`
+}
+
+// ZoneOwnerInput is an input type that accepts ZoneOwnerArgs and ZoneOwnerOutput values.
+// You can construct a concrete instance of `ZoneOwnerInput` via:
+//
+//	ZoneOwnerArgs{...}
+type ZoneOwnerInput interface {
+	pulumi.Input
+
+	ToZoneOwnerOutput() ZoneOwnerOutput
+	ToZoneOwnerOutputWithContext(context.Context) ZoneOwnerOutput
+}
+
+type ZoneOwnerArgs struct {
+	// Identifier
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the owner.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type of owner.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ZoneOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneOwner)(nil)).Elem()
+}
+
+func (i ZoneOwnerArgs) ToZoneOwnerOutput() ZoneOwnerOutput {
+	return i.ToZoneOwnerOutputWithContext(context.Background())
+}
+
+func (i ZoneOwnerArgs) ToZoneOwnerOutputWithContext(ctx context.Context) ZoneOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneOwnerOutput)
+}
+
+func (i ZoneOwnerArgs) ToZoneOwnerPtrOutput() ZoneOwnerPtrOutput {
+	return i.ToZoneOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneOwnerArgs) ToZoneOwnerPtrOutputWithContext(ctx context.Context) ZoneOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneOwnerOutput).ToZoneOwnerPtrOutputWithContext(ctx)
+}
+
+// ZoneOwnerPtrInput is an input type that accepts ZoneOwnerArgs, ZoneOwnerPtr and ZoneOwnerPtrOutput values.
+// You can construct a concrete instance of `ZoneOwnerPtrInput` via:
+//
+//	        ZoneOwnerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneOwnerPtrInput interface {
+	pulumi.Input
+
+	ToZoneOwnerPtrOutput() ZoneOwnerPtrOutput
+	ToZoneOwnerPtrOutputWithContext(context.Context) ZoneOwnerPtrOutput
+}
+
+type zoneOwnerPtrType ZoneOwnerArgs
+
+func ZoneOwnerPtr(v *ZoneOwnerArgs) ZoneOwnerPtrInput {
+	return (*zoneOwnerPtrType)(v)
+}
+
+func (*zoneOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneOwner)(nil)).Elem()
+}
+
+func (i *zoneOwnerPtrType) ToZoneOwnerPtrOutput() ZoneOwnerPtrOutput {
+	return i.ToZoneOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneOwnerPtrType) ToZoneOwnerPtrOutputWithContext(ctx context.Context) ZoneOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneOwnerPtrOutput)
+}
+
+type ZoneOwnerOutput struct{ *pulumi.OutputState }
+
+func (ZoneOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneOwner)(nil)).Elem()
+}
+
+func (o ZoneOwnerOutput) ToZoneOwnerOutput() ZoneOwnerOutput {
+	return o
+}
+
+func (o ZoneOwnerOutput) ToZoneOwnerOutputWithContext(ctx context.Context) ZoneOwnerOutput {
+	return o
+}
+
+func (o ZoneOwnerOutput) ToZoneOwnerPtrOutput() ZoneOwnerPtrOutput {
+	return o.ToZoneOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneOwnerOutput) ToZoneOwnerPtrOutputWithContext(ctx context.Context) ZoneOwnerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneOwner) *ZoneOwner {
+		return &v
+	}).(ZoneOwnerPtrOutput)
+}
+
+// Identifier
+func (o ZoneOwnerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneOwner) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the owner.
+func (o ZoneOwnerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneOwner) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of owner.
+func (o ZoneOwnerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneOwner) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ZoneOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneOwner)(nil)).Elem()
+}
+
+func (o ZoneOwnerPtrOutput) ToZoneOwnerPtrOutput() ZoneOwnerPtrOutput {
+	return o
+}
+
+func (o ZoneOwnerPtrOutput) ToZoneOwnerPtrOutputWithContext(ctx context.Context) ZoneOwnerPtrOutput {
+	return o
+}
+
+func (o ZoneOwnerPtrOutput) Elem() ZoneOwnerOutput {
+	return o.ApplyT(func(v *ZoneOwner) ZoneOwner {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneOwner
+		return ret
+	}).(ZoneOwnerOutput)
+}
+
+// Identifier
+func (o ZoneOwnerPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the owner.
+func (o ZoneOwnerPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of owner.
+func (o ZoneOwnerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZonePlan struct {
+	// States if the subscription can be activated.
+	CanSubscribe *bool `pulumi:"canSubscribe"`
+	// The denomination of the customer.
+	Currency *string `pulumi:"currency"`
+	// If this Zone is managed by another company.
+	ExternallyManaged *bool `pulumi:"externallyManaged"`
+	// How often the customer is billed.
+	Frequency *string `pulumi:"frequency"`
+	// Identifier
+	Id *string `pulumi:"id"`
+	// States if the subscription active.
+	IsSubscribed *bool `pulumi:"isSubscribed"`
+	// If the legacy discount applies to this Zone.
+	LegacyDiscount *bool `pulumi:"legacyDiscount"`
+	// The legacy name of the plan.
+	LegacyId *string `pulumi:"legacyId"`
+	// Name of the owner.
+	Name *string `pulumi:"name"`
+	// How much the customer is paying.
+	Price *float64 `pulumi:"price"`
+}
+
+// ZonePlanInput is an input type that accepts ZonePlanArgs and ZonePlanOutput values.
+// You can construct a concrete instance of `ZonePlanInput` via:
+//
+//	ZonePlanArgs{...}
+type ZonePlanInput interface {
+	pulumi.Input
+
+	ToZonePlanOutput() ZonePlanOutput
+	ToZonePlanOutputWithContext(context.Context) ZonePlanOutput
+}
+
+type ZonePlanArgs struct {
+	// States if the subscription can be activated.
+	CanSubscribe pulumi.BoolPtrInput `pulumi:"canSubscribe"`
+	// The denomination of the customer.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// If this Zone is managed by another company.
+	ExternallyManaged pulumi.BoolPtrInput `pulumi:"externallyManaged"`
+	// How often the customer is billed.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// Identifier
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// States if the subscription active.
+	IsSubscribed pulumi.BoolPtrInput `pulumi:"isSubscribed"`
+	// If the legacy discount applies to this Zone.
+	LegacyDiscount pulumi.BoolPtrInput `pulumi:"legacyDiscount"`
+	// The legacy name of the plan.
+	LegacyId pulumi.StringPtrInput `pulumi:"legacyId"`
+	// Name of the owner.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// How much the customer is paying.
+	Price pulumi.Float64PtrInput `pulumi:"price"`
+}
+
+func (ZonePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZonePlan)(nil)).Elem()
+}
+
+func (i ZonePlanArgs) ToZonePlanOutput() ZonePlanOutput {
+	return i.ToZonePlanOutputWithContext(context.Background())
+}
+
+func (i ZonePlanArgs) ToZonePlanOutputWithContext(ctx context.Context) ZonePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOutput)
+}
+
+func (i ZonePlanArgs) ToZonePlanPtrOutput() ZonePlanPtrOutput {
+	return i.ToZonePlanPtrOutputWithContext(context.Background())
+}
+
+func (i ZonePlanArgs) ToZonePlanPtrOutputWithContext(ctx context.Context) ZonePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanOutput).ToZonePlanPtrOutputWithContext(ctx)
+}
+
+// ZonePlanPtrInput is an input type that accepts ZonePlanArgs, ZonePlanPtr and ZonePlanPtrOutput values.
+// You can construct a concrete instance of `ZonePlanPtrInput` via:
+//
+//	        ZonePlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZonePlanPtrInput interface {
+	pulumi.Input
+
+	ToZonePlanPtrOutput() ZonePlanPtrOutput
+	ToZonePlanPtrOutputWithContext(context.Context) ZonePlanPtrOutput
+}
+
+type zonePlanPtrType ZonePlanArgs
+
+func ZonePlanPtr(v *ZonePlanArgs) ZonePlanPtrInput {
+	return (*zonePlanPtrType)(v)
+}
+
+func (*zonePlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZonePlan)(nil)).Elem()
+}
+
+func (i *zonePlanPtrType) ToZonePlanPtrOutput() ZonePlanPtrOutput {
+	return i.ToZonePlanPtrOutputWithContext(context.Background())
+}
+
+func (i *zonePlanPtrType) ToZonePlanPtrOutputWithContext(ctx context.Context) ZonePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZonePlanPtrOutput)
+}
+
+type ZonePlanOutput struct{ *pulumi.OutputState }
+
+func (ZonePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZonePlan)(nil)).Elem()
+}
+
+func (o ZonePlanOutput) ToZonePlanOutput() ZonePlanOutput {
+	return o
+}
+
+func (o ZonePlanOutput) ToZonePlanOutputWithContext(ctx context.Context) ZonePlanOutput {
+	return o
+}
+
+func (o ZonePlanOutput) ToZonePlanPtrOutput() ZonePlanPtrOutput {
+	return o.ToZonePlanPtrOutputWithContext(context.Background())
+}
+
+func (o ZonePlanOutput) ToZonePlanPtrOutputWithContext(ctx context.Context) ZonePlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZonePlan) *ZonePlan {
+		return &v
+	}).(ZonePlanPtrOutput)
+}
+
+// States if the subscription can be activated.
+func (o ZonePlanOutput) CanSubscribe() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *bool { return v.CanSubscribe }).(pulumi.BoolPtrOutput)
+}
+
+// The denomination of the customer.
+func (o ZonePlanOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// If this Zone is managed by another company.
+func (o ZonePlanOutput) ExternallyManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *bool { return v.ExternallyManaged }).(pulumi.BoolPtrOutput)
+}
+
+// How often the customer is billed.
+func (o ZonePlanOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
+// Identifier
+func (o ZonePlanOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// States if the subscription active.
+func (o ZonePlanOutput) IsSubscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *bool { return v.IsSubscribed }).(pulumi.BoolPtrOutput)
+}
+
+// If the legacy discount applies to this Zone.
+func (o ZonePlanOutput) LegacyDiscount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *bool { return v.LegacyDiscount }).(pulumi.BoolPtrOutput)
+}
+
+// The legacy name of the plan.
+func (o ZonePlanOutput) LegacyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *string { return v.LegacyId }).(pulumi.StringPtrOutput)
+}
+
+// Name of the owner.
+func (o ZonePlanOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZonePlan) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// How much the customer is paying.
+func (o ZonePlanOutput) Price() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZonePlan) *float64 { return v.Price }).(pulumi.Float64PtrOutput)
+}
+
+type ZonePlanPtrOutput struct{ *pulumi.OutputState }
+
+func (ZonePlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZonePlan)(nil)).Elem()
+}
+
+func (o ZonePlanPtrOutput) ToZonePlanPtrOutput() ZonePlanPtrOutput {
+	return o
+}
+
+func (o ZonePlanPtrOutput) ToZonePlanPtrOutputWithContext(ctx context.Context) ZonePlanPtrOutput {
+	return o
+}
+
+func (o ZonePlanPtrOutput) Elem() ZonePlanOutput {
+	return o.ApplyT(func(v *ZonePlan) ZonePlan {
+		if v != nil {
+			return *v
+		}
+		var ret ZonePlan
+		return ret
+	}).(ZonePlanOutput)
+}
+
+// States if the subscription can be activated.
+func (o ZonePlanPtrOutput) CanSubscribe() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CanSubscribe
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The denomination of the customer.
+func (o ZonePlanPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this Zone is managed by another company.
+func (o ZonePlanPtrOutput) ExternallyManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExternallyManaged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How often the customer is billed.
+func (o ZonePlanPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier
+func (o ZonePlanPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// States if the subscription active.
+func (o ZonePlanPtrOutput) IsSubscribed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsSubscribed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the legacy discount applies to this Zone.
+func (o ZonePlanPtrOutput) LegacyDiscount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyDiscount
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The legacy name of the plan.
+func (o ZonePlanPtrOutput) LegacyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the owner.
+func (o ZonePlanPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// How much the customer is paying.
+func (o ZonePlanPtrOutput) Price() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ZonePlan) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Price
+	}).(pulumi.Float64PtrOutput)
+}
+
+type ZoneSubscriptionRatePlan struct {
+	// The currency applied to the rate plan subscription.
+	Currency *string `pulumi:"currency"`
+	// Whether this rate plan is managed externally from Cloudflare.
+	ExternallyManaged *bool `pulumi:"externallyManaged"`
+	// The ID of the rate plan.
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	Id *string `pulumi:"id"`
+	// Whether a rate plan is enterprise-based (or newly adopted term contract).
+	IsContract *bool `pulumi:"isContract"`
+	// The full name of the rate plan.
+	PublicName *string `pulumi:"publicName"`
+	// The scope that this rate plan applies to.
+	Scope *string `pulumi:"scope"`
+	// The list of sets this rate plan applies to.
+	Sets []string `pulumi:"sets"`
+}
+
+// ZoneSubscriptionRatePlanInput is an input type that accepts ZoneSubscriptionRatePlanArgs and ZoneSubscriptionRatePlanOutput values.
+// You can construct a concrete instance of `ZoneSubscriptionRatePlanInput` via:
+//
+//	ZoneSubscriptionRatePlanArgs{...}
+type ZoneSubscriptionRatePlanInput interface {
+	pulumi.Input
+
+	ToZoneSubscriptionRatePlanOutput() ZoneSubscriptionRatePlanOutput
+	ToZoneSubscriptionRatePlanOutputWithContext(context.Context) ZoneSubscriptionRatePlanOutput
+}
+
+type ZoneSubscriptionRatePlanArgs struct {
+	// The currency applied to the rate plan subscription.
+	Currency pulumi.StringPtrInput `pulumi:"currency"`
+	// Whether this rate plan is managed externally from Cloudflare.
+	ExternallyManaged pulumi.BoolPtrInput `pulumi:"externallyManaged"`
+	// The ID of the rate plan.
+	// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether a rate plan is enterprise-based (or newly adopted term contract).
+	IsContract pulumi.BoolPtrInput `pulumi:"isContract"`
+	// The full name of the rate plan.
+	PublicName pulumi.StringPtrInput `pulumi:"publicName"`
+	// The scope that this rate plan applies to.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// The list of sets this rate plan applies to.
+	Sets pulumi.StringArrayInput `pulumi:"sets"`
+}
+
+func (ZoneSubscriptionRatePlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSubscriptionRatePlan)(nil)).Elem()
+}
+
+func (i ZoneSubscriptionRatePlanArgs) ToZoneSubscriptionRatePlanOutput() ZoneSubscriptionRatePlanOutput {
+	return i.ToZoneSubscriptionRatePlanOutputWithContext(context.Background())
+}
+
+func (i ZoneSubscriptionRatePlanArgs) ToZoneSubscriptionRatePlanOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSubscriptionRatePlanOutput)
+}
+
+func (i ZoneSubscriptionRatePlanArgs) ToZoneSubscriptionRatePlanPtrOutput() ZoneSubscriptionRatePlanPtrOutput {
+	return i.ToZoneSubscriptionRatePlanPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneSubscriptionRatePlanArgs) ToZoneSubscriptionRatePlanPtrOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSubscriptionRatePlanOutput).ToZoneSubscriptionRatePlanPtrOutputWithContext(ctx)
+}
+
+// ZoneSubscriptionRatePlanPtrInput is an input type that accepts ZoneSubscriptionRatePlanArgs, ZoneSubscriptionRatePlanPtr and ZoneSubscriptionRatePlanPtrOutput values.
+// You can construct a concrete instance of `ZoneSubscriptionRatePlanPtrInput` via:
+//
+//	        ZoneSubscriptionRatePlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneSubscriptionRatePlanPtrInput interface {
+	pulumi.Input
+
+	ToZoneSubscriptionRatePlanPtrOutput() ZoneSubscriptionRatePlanPtrOutput
+	ToZoneSubscriptionRatePlanPtrOutputWithContext(context.Context) ZoneSubscriptionRatePlanPtrOutput
+}
+
+type zoneSubscriptionRatePlanPtrType ZoneSubscriptionRatePlanArgs
+
+func ZoneSubscriptionRatePlanPtr(v *ZoneSubscriptionRatePlanArgs) ZoneSubscriptionRatePlanPtrInput {
+	return (*zoneSubscriptionRatePlanPtrType)(v)
+}
+
+func (*zoneSubscriptionRatePlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSubscriptionRatePlan)(nil)).Elem()
+}
+
+func (i *zoneSubscriptionRatePlanPtrType) ToZoneSubscriptionRatePlanPtrOutput() ZoneSubscriptionRatePlanPtrOutput {
+	return i.ToZoneSubscriptionRatePlanPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSubscriptionRatePlanPtrType) ToZoneSubscriptionRatePlanPtrOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSubscriptionRatePlanPtrOutput)
+}
+
+type ZoneSubscriptionRatePlanOutput struct{ *pulumi.OutputState }
+
+func (ZoneSubscriptionRatePlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSubscriptionRatePlan)(nil)).Elem()
+}
+
+func (o ZoneSubscriptionRatePlanOutput) ToZoneSubscriptionRatePlanOutput() ZoneSubscriptionRatePlanOutput {
+	return o
+}
+
+func (o ZoneSubscriptionRatePlanOutput) ToZoneSubscriptionRatePlanOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanOutput {
+	return o
+}
+
+func (o ZoneSubscriptionRatePlanOutput) ToZoneSubscriptionRatePlanPtrOutput() ZoneSubscriptionRatePlanPtrOutput {
+	return o.ToZoneSubscriptionRatePlanPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSubscriptionRatePlanOutput) ToZoneSubscriptionRatePlanPtrOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSubscriptionRatePlan) *ZoneSubscriptionRatePlan {
+		return &v
+	}).(ZoneSubscriptionRatePlanPtrOutput)
+}
+
+// The currency applied to the rate plan subscription.
+func (o ZoneSubscriptionRatePlanOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *string { return v.Currency }).(pulumi.StringPtrOutput)
+}
+
+// Whether this rate plan is managed externally from Cloudflare.
+func (o ZoneSubscriptionRatePlanOutput) ExternallyManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *bool { return v.ExternallyManaged }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the rate plan.
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+func (o ZoneSubscriptionRatePlanOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether a rate plan is enterprise-based (or newly adopted term contract).
+func (o ZoneSubscriptionRatePlanOutput) IsContract() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *bool { return v.IsContract }).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the rate plan.
+func (o ZoneSubscriptionRatePlanOutput) PublicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *string { return v.PublicName }).(pulumi.StringPtrOutput)
+}
+
+// The scope that this rate plan applies to.
+func (o ZoneSubscriptionRatePlanOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// The list of sets this rate plan applies to.
+func (o ZoneSubscriptionRatePlanOutput) Sets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneSubscriptionRatePlan) []string { return v.Sets }).(pulumi.StringArrayOutput)
+}
+
+type ZoneSubscriptionRatePlanPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneSubscriptionRatePlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSubscriptionRatePlan)(nil)).Elem()
+}
+
+func (o ZoneSubscriptionRatePlanPtrOutput) ToZoneSubscriptionRatePlanPtrOutput() ZoneSubscriptionRatePlanPtrOutput {
+	return o
+}
+
+func (o ZoneSubscriptionRatePlanPtrOutput) ToZoneSubscriptionRatePlanPtrOutputWithContext(ctx context.Context) ZoneSubscriptionRatePlanPtrOutput {
+	return o
+}
+
+func (o ZoneSubscriptionRatePlanPtrOutput) Elem() ZoneSubscriptionRatePlanOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) ZoneSubscriptionRatePlan {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSubscriptionRatePlan
+		return ret
+	}).(ZoneSubscriptionRatePlanOutput)
+}
+
+// The currency applied to the rate plan subscription.
+func (o ZoneSubscriptionRatePlanPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Currency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether this rate plan is managed externally from Cloudflare.
+func (o ZoneSubscriptionRatePlanPtrOutput) ExternallyManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExternallyManaged
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the rate plan.
+// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+func (o ZoneSubscriptionRatePlanPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether a rate plan is enterprise-based (or newly adopted term contract).
+func (o ZoneSubscriptionRatePlanPtrOutput) IsContract() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsContract
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The full name of the rate plan.
+func (o ZoneSubscriptionRatePlanPtrOutput) PublicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scope that this rate plan applies to.
+func (o ZoneSubscriptionRatePlanPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of sets this rate plan applies to.
+func (o ZoneSubscriptionRatePlanPtrOutput) Sets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneSubscriptionRatePlan) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Sets
+	}).(pulumi.StringArrayOutput)
+}
+
+type ZoneTenant struct {
+	// Identifier
+	Id *string `pulumi:"id"`
+	// The name of the Tenant account.
+	Name *string `pulumi:"name"`
+}
+
+// ZoneTenantInput is an input type that accepts ZoneTenantArgs and ZoneTenantOutput values.
+// You can construct a concrete instance of `ZoneTenantInput` via:
+//
+//	ZoneTenantArgs{...}
+type ZoneTenantInput interface {
+	pulumi.Input
+
+	ToZoneTenantOutput() ZoneTenantOutput
+	ToZoneTenantOutputWithContext(context.Context) ZoneTenantOutput
+}
+
+type ZoneTenantArgs struct {
+	// Identifier
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the Tenant account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ZoneTenantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneTenant)(nil)).Elem()
+}
+
+func (i ZoneTenantArgs) ToZoneTenantOutput() ZoneTenantOutput {
+	return i.ToZoneTenantOutputWithContext(context.Background())
+}
+
+func (i ZoneTenantArgs) ToZoneTenantOutputWithContext(ctx context.Context) ZoneTenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantOutput)
+}
+
+func (i ZoneTenantArgs) ToZoneTenantPtrOutput() ZoneTenantPtrOutput {
+	return i.ToZoneTenantPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneTenantArgs) ToZoneTenantPtrOutputWithContext(ctx context.Context) ZoneTenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantOutput).ToZoneTenantPtrOutputWithContext(ctx)
+}
+
+// ZoneTenantPtrInput is an input type that accepts ZoneTenantArgs, ZoneTenantPtr and ZoneTenantPtrOutput values.
+// You can construct a concrete instance of `ZoneTenantPtrInput` via:
+//
+//	        ZoneTenantArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneTenantPtrInput interface {
+	pulumi.Input
+
+	ToZoneTenantPtrOutput() ZoneTenantPtrOutput
+	ToZoneTenantPtrOutputWithContext(context.Context) ZoneTenantPtrOutput
+}
+
+type zoneTenantPtrType ZoneTenantArgs
+
+func ZoneTenantPtr(v *ZoneTenantArgs) ZoneTenantPtrInput {
+	return (*zoneTenantPtrType)(v)
+}
+
+func (*zoneTenantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneTenant)(nil)).Elem()
+}
+
+func (i *zoneTenantPtrType) ToZoneTenantPtrOutput() ZoneTenantPtrOutput {
+	return i.ToZoneTenantPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneTenantPtrType) ToZoneTenantPtrOutputWithContext(ctx context.Context) ZoneTenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneTenantPtrOutput)
+}
+
+type ZoneTenantOutput struct{ *pulumi.OutputState }
+
+func (ZoneTenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneTenant)(nil)).Elem()
+}
+
+func (o ZoneTenantOutput) ToZoneTenantOutput() ZoneTenantOutput {
+	return o
+}
+
+func (o ZoneTenantOutput) ToZoneTenantOutputWithContext(ctx context.Context) ZoneTenantOutput {
+	return o
+}
+
+func (o ZoneTenantOutput) ToZoneTenantPtrOutput() ZoneTenantPtrOutput {
+	return o.ToZoneTenantPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneTenantOutput) ToZoneTenantPtrOutputWithContext(ctx context.Context) ZoneTenantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneTenant) *ZoneTenant {
+		return &v
+	}).(ZoneTenantPtrOutput)
+}
+
+// Identifier
+func (o ZoneTenantOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneTenant) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Tenant account.
+func (o ZoneTenantOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneTenant) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ZoneTenantPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneTenantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneTenant)(nil)).Elem()
+}
+
+func (o ZoneTenantPtrOutput) ToZoneTenantPtrOutput() ZoneTenantPtrOutput {
+	return o
+}
+
+func (o ZoneTenantPtrOutput) ToZoneTenantPtrOutputWithContext(ctx context.Context) ZoneTenantPtrOutput {
+	return o
+}
+
+func (o ZoneTenantPtrOutput) Elem() ZoneTenantOutput {
+	return o.ApplyT(func(v *ZoneTenant) ZoneTenant {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneTenant
+		return ret
+	}).(ZoneTenantOutput)
+}
+
+// Identifier
+func (o ZoneTenantPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneTenant) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Tenant account.
+func (o ZoneTenantPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneTenant) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZoneTenantUnit struct {
 	// Identifier
 	Id *string `pulumi:"id"`
@@ -19126,7 +20267,7 @@ type GetDnsRecordData struct {
 	Digest string `pulumi:"digest"`
 	// Digest Type.
 	DigestType float64 `pulumi:"digestType"`
-	// fingerprint.
+	// Fingerprint.
 	Fingerprint string `pulumi:"fingerprint"`
 	// Flags for the CAA record.
 	Flags interface{} `pulumi:"flags"`
@@ -19162,7 +20303,7 @@ type GetDnsRecordData struct {
 	PrecisionVert float64 `pulumi:"precisionVert"`
 	// Preference.
 	Preference float64 `pulumi:"preference"`
-	// priority.
+	// Priority.
 	Priority float64 `pulumi:"priority"`
 	// Protocol.
 	Protocol float64 `pulumi:"protocol"`
@@ -19180,7 +20321,7 @@ type GetDnsRecordData struct {
 	Size float64 `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag string `pulumi:"tag"`
-	// target.
+	// Target.
 	Target string `pulumi:"target"`
 	// Type.
 	Type float64 `pulumi:"type"`
@@ -19214,7 +20355,7 @@ type GetDnsRecordDataArgs struct {
 	Digest pulumi.StringInput `pulumi:"digest"`
 	// Digest Type.
 	DigestType pulumi.Float64Input `pulumi:"digestType"`
-	// fingerprint.
+	// Fingerprint.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Flags for the CAA record.
 	Flags pulumi.Input `pulumi:"flags"`
@@ -19250,7 +20391,7 @@ type GetDnsRecordDataArgs struct {
 	PrecisionVert pulumi.Float64Input `pulumi:"precisionVert"`
 	// Preference.
 	Preference pulumi.Float64Input `pulumi:"preference"`
-	// priority.
+	// Priority.
 	Priority pulumi.Float64Input `pulumi:"priority"`
 	// Protocol.
 	Protocol pulumi.Float64Input `pulumi:"protocol"`
@@ -19268,7 +20409,7 @@ type GetDnsRecordDataArgs struct {
 	Size pulumi.Float64Input `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag pulumi.StringInput `pulumi:"tag"`
-	// target.
+	// Target.
 	Target pulumi.StringInput `pulumi:"target"`
 	// Type.
 	Type pulumi.Float64Input `pulumi:"type"`
@@ -19331,7 +20472,7 @@ func (o GetDnsRecordDataOutput) DigestType() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordData) float64 { return v.DigestType }).(pulumi.Float64Output)
 }
 
-// fingerprint.
+// Fingerprint.
 func (o GetDnsRecordDataOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordData) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -19418,7 +20559,7 @@ func (o GetDnsRecordDataOutput) Preference() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordData) float64 { return v.Preference }).(pulumi.Float64Output)
 }
 
-// priority.
+// Priority.
 func (o GetDnsRecordDataOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordData) float64 { return v.Priority }).(pulumi.Float64Output)
 }
@@ -19463,7 +20604,7 @@ func (o GetDnsRecordDataOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordData) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// target.
+// Target.
 func (o GetDnsRecordDataOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordData) string { return v.Target }).(pulumi.StringOutput)
 }
@@ -21616,7 +22757,7 @@ type GetDnsRecordsResultData struct {
 	Digest string `pulumi:"digest"`
 	// Digest Type.
 	DigestType float64 `pulumi:"digestType"`
-	// fingerprint.
+	// Fingerprint.
 	Fingerprint string `pulumi:"fingerprint"`
 	// Flags for the CAA record.
 	Flags interface{} `pulumi:"flags"`
@@ -21652,7 +22793,7 @@ type GetDnsRecordsResultData struct {
 	PrecisionVert float64 `pulumi:"precisionVert"`
 	// Preference.
 	Preference float64 `pulumi:"preference"`
-	// priority.
+	// Priority.
 	Priority float64 `pulumi:"priority"`
 	// Protocol.
 	Protocol float64 `pulumi:"protocol"`
@@ -21670,7 +22811,7 @@ type GetDnsRecordsResultData struct {
 	Size float64 `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag string `pulumi:"tag"`
-	// target.
+	// Target.
 	Target string `pulumi:"target"`
 	// Type.
 	Type float64 `pulumi:"type"`
@@ -21704,7 +22845,7 @@ type GetDnsRecordsResultDataArgs struct {
 	Digest pulumi.StringInput `pulumi:"digest"`
 	// Digest Type.
 	DigestType pulumi.Float64Input `pulumi:"digestType"`
-	// fingerprint.
+	// Fingerprint.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
 	// Flags for the CAA record.
 	Flags pulumi.Input `pulumi:"flags"`
@@ -21740,7 +22881,7 @@ type GetDnsRecordsResultDataArgs struct {
 	PrecisionVert pulumi.Float64Input `pulumi:"precisionVert"`
 	// Preference.
 	Preference pulumi.Float64Input `pulumi:"preference"`
-	// priority.
+	// Priority.
 	Priority pulumi.Float64Input `pulumi:"priority"`
 	// Protocol.
 	Protocol pulumi.Float64Input `pulumi:"protocol"`
@@ -21758,7 +22899,7 @@ type GetDnsRecordsResultDataArgs struct {
 	Size pulumi.Float64Input `pulumi:"size"`
 	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
 	Tag pulumi.StringInput `pulumi:"tag"`
-	// target.
+	// Target.
 	Target pulumi.StringInput `pulumi:"target"`
 	// Type.
 	Type pulumi.Float64Input `pulumi:"type"`
@@ -21821,7 +22962,7 @@ func (o GetDnsRecordsResultDataOutput) DigestType() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordsResultData) float64 { return v.DigestType }).(pulumi.Float64Output)
 }
 
-// fingerprint.
+// Fingerprint.
 func (o GetDnsRecordsResultDataOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResultData) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -21908,7 +23049,7 @@ func (o GetDnsRecordsResultDataOutput) Preference() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordsResultData) float64 { return v.Preference }).(pulumi.Float64Output)
 }
 
-// priority.
+// Priority.
 func (o GetDnsRecordsResultDataOutput) Priority() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsRecordsResultData) float64 { return v.Priority }).(pulumi.Float64Output)
 }
@@ -21953,7 +23094,7 @@ func (o GetDnsRecordsResultDataOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResultData) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// target.
+// Target.
 func (o GetDnsRecordsResultDataOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResultData) string { return v.Target }).(pulumi.StringOutput)
 }
@@ -28568,7 +29709,169 @@ func (o GetLeakedCredentialCheckRulesResultArrayOutput) Index(i pulumi.IntInput)
 	}).(GetLeakedCredentialCheckRulesResultOutput)
 }
 
+type GetListItemHostname struct {
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname bool   `pulumi:"excludeExactHostname"`
+	UrlHostname          string `pulumi:"urlHostname"`
+}
+
+// GetListItemHostnameInput is an input type that accepts GetListItemHostnameArgs and GetListItemHostnameOutput values.
+// You can construct a concrete instance of `GetListItemHostnameInput` via:
+//
+//	GetListItemHostnameArgs{...}
+type GetListItemHostnameInput interface {
+	pulumi.Input
+
+	ToGetListItemHostnameOutput() GetListItemHostnameOutput
+	ToGetListItemHostnameOutputWithContext(context.Context) GetListItemHostnameOutput
+}
+
+type GetListItemHostnameArgs struct {
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname pulumi.BoolInput   `pulumi:"excludeExactHostname"`
+	UrlHostname          pulumi.StringInput `pulumi:"urlHostname"`
+}
+
+func (GetListItemHostnameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemHostname)(nil)).Elem()
+}
+
+func (i GetListItemHostnameArgs) ToGetListItemHostnameOutput() GetListItemHostnameOutput {
+	return i.ToGetListItemHostnameOutputWithContext(context.Background())
+}
+
+func (i GetListItemHostnameArgs) ToGetListItemHostnameOutputWithContext(ctx context.Context) GetListItemHostnameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemHostnameOutput)
+}
+
+type GetListItemHostnameOutput struct{ *pulumi.OutputState }
+
+func (GetListItemHostnameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemHostname)(nil)).Elem()
+}
+
+func (o GetListItemHostnameOutput) ToGetListItemHostnameOutput() GetListItemHostnameOutput {
+	return o
+}
+
+func (o GetListItemHostnameOutput) ToGetListItemHostnameOutputWithContext(ctx context.Context) GetListItemHostnameOutput {
+	return o
+}
+
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+func (o GetListItemHostnameOutput) ExcludeExactHostname() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemHostname) bool { return v.ExcludeExactHostname }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemHostnameOutput) UrlHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
+}
+
+type GetListItemRedirect struct {
+	IncludeSubdomains   bool   `pulumi:"includeSubdomains"`
+	PreservePathSuffix  bool   `pulumi:"preservePathSuffix"`
+	PreserveQueryString bool   `pulumi:"preserveQueryString"`
+	SourceUrl           string `pulumi:"sourceUrl"`
+	// Available values: 301, 302, 307, 308.
+	StatusCode      int    `pulumi:"statusCode"`
+	SubpathMatching bool   `pulumi:"subpathMatching"`
+	TargetUrl       string `pulumi:"targetUrl"`
+}
+
+// GetListItemRedirectInput is an input type that accepts GetListItemRedirectArgs and GetListItemRedirectOutput values.
+// You can construct a concrete instance of `GetListItemRedirectInput` via:
+//
+//	GetListItemRedirectArgs{...}
+type GetListItemRedirectInput interface {
+	pulumi.Input
+
+	ToGetListItemRedirectOutput() GetListItemRedirectOutput
+	ToGetListItemRedirectOutputWithContext(context.Context) GetListItemRedirectOutput
+}
+
+type GetListItemRedirectArgs struct {
+	IncludeSubdomains   pulumi.BoolInput   `pulumi:"includeSubdomains"`
+	PreservePathSuffix  pulumi.BoolInput   `pulumi:"preservePathSuffix"`
+	PreserveQueryString pulumi.BoolInput   `pulumi:"preserveQueryString"`
+	SourceUrl           pulumi.StringInput `pulumi:"sourceUrl"`
+	// Available values: 301, 302, 307, 308.
+	StatusCode      pulumi.IntInput    `pulumi:"statusCode"`
+	SubpathMatching pulumi.BoolInput   `pulumi:"subpathMatching"`
+	TargetUrl       pulumi.StringInput `pulumi:"targetUrl"`
+}
+
+func (GetListItemRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemRedirect)(nil)).Elem()
+}
+
+func (i GetListItemRedirectArgs) ToGetListItemRedirectOutput() GetListItemRedirectOutput {
+	return i.ToGetListItemRedirectOutputWithContext(context.Background())
+}
+
+func (i GetListItemRedirectArgs) ToGetListItemRedirectOutputWithContext(ctx context.Context) GetListItemRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemRedirectOutput)
+}
+
+type GetListItemRedirectOutput struct{ *pulumi.OutputState }
+
+func (GetListItemRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemRedirect)(nil)).Elem()
+}
+
+func (o GetListItemRedirectOutput) ToGetListItemRedirectOutput() GetListItemRedirectOutput {
+	return o
+}
+
+func (o GetListItemRedirectOutput) ToGetListItemRedirectOutputWithContext(ctx context.Context) GetListItemRedirectOutput {
+	return o
+}
+
+func (o GetListItemRedirectOutput) IncludeSubdomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemRedirect) bool { return v.IncludeSubdomains }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemRedirectOutput) PreservePathSuffix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemRedirect) bool { return v.PreservePathSuffix }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemRedirectOutput) PreserveQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemRedirect) bool { return v.PreserveQueryString }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemRedirectOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemRedirect) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+// Available values: 301, 302, 307, 308.
+func (o GetListItemRedirectOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListItemRedirect) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+func (o GetListItemRedirectOutput) SubpathMatching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemRedirect) bool { return v.SubpathMatching }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemRedirectOutput) TargetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemRedirect) string { return v.TargetUrl }).(pulumi.StringOutput)
+}
+
 type GetListItemsResult struct {
+	// Defines a non-negative 32 bit integer.
+	Asn int `pulumi:"asn"`
+	// Defines	an informative summary of the list item.
+	Comment string `pulumi:"comment"`
+	// The RFC 3339 timestamp of when the item was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname GetListItemsResultHostname `pulumi:"hostname"`
+	// Defines the unique ID of the item in the List.
+	Id string `pulumi:"id"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip string `pulumi:"ip"`
+	// The RFC 3339 timestamp of when the item was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// The definition of the redirect.
+	Redirect GetListItemsResultRedirect `pulumi:"redirect"`
 }
 
 // GetListItemsResultInput is an input type that accepts GetListItemsResultArgs and GetListItemsResultOutput values.
@@ -28583,6 +29886,22 @@ type GetListItemsResultInput interface {
 }
 
 type GetListItemsResultArgs struct {
+	// Defines a non-negative 32 bit integer.
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// Defines	an informative summary of the list item.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The RFC 3339 timestamp of when the item was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname GetListItemsResultHostnameInput `pulumi:"hostname"`
+	// Defines the unique ID of the item in the List.
+	Id pulumi.StringInput `pulumi:"id"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The RFC 3339 timestamp of when the item was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// The definition of the redirect.
+	Redirect GetListItemsResultRedirectInput `pulumi:"redirect"`
 }
 
 func (GetListItemsResultArgs) ElementType() reflect.Type {
@@ -28636,6 +29955,46 @@ func (o GetListItemsResultOutput) ToGetListItemsResultOutputWithContext(ctx cont
 	return o
 }
 
+// Defines a non-negative 32 bit integer.
+func (o GetListItemsResultOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListItemsResult) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// Defines	an informative summary of the list item.
+func (o GetListItemsResultOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResult) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The RFC 3339 timestamp of when the item was created.
+func (o GetListItemsResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+func (o GetListItemsResultOutput) Hostname() GetListItemsResultHostnameOutput {
+	return o.ApplyT(func(v GetListItemsResult) GetListItemsResultHostname { return v.Hostname }).(GetListItemsResultHostnameOutput)
+}
+
+// Defines the unique ID of the item in the List.
+func (o GetListItemsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+func (o GetListItemsResultOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResult) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The RFC 3339 timestamp of when the item was last modified.
+func (o GetListItemsResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The definition of the redirect.
+func (o GetListItemsResultOutput) Redirect() GetListItemsResultRedirectOutput {
+	return o.ApplyT(func(v GetListItemsResult) GetListItemsResultRedirect { return v.Redirect }).(GetListItemsResultRedirectOutput)
+}
+
 type GetListItemsResultArrayOutput struct{ *pulumi.OutputState }
 
 func (GetListItemsResultArrayOutput) ElementType() reflect.Type {
@@ -28654,6 +30013,152 @@ func (o GetListItemsResultArrayOutput) Index(i pulumi.IntInput) GetListItemsResu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListItemsResult {
 		return vs[0].([]GetListItemsResult)[vs[1].(int)]
 	}).(GetListItemsResultOutput)
+}
+
+type GetListItemsResultHostname struct {
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname bool   `pulumi:"excludeExactHostname"`
+	UrlHostname          string `pulumi:"urlHostname"`
+}
+
+// GetListItemsResultHostnameInput is an input type that accepts GetListItemsResultHostnameArgs and GetListItemsResultHostnameOutput values.
+// You can construct a concrete instance of `GetListItemsResultHostnameInput` via:
+//
+//	GetListItemsResultHostnameArgs{...}
+type GetListItemsResultHostnameInput interface {
+	pulumi.Input
+
+	ToGetListItemsResultHostnameOutput() GetListItemsResultHostnameOutput
+	ToGetListItemsResultHostnameOutputWithContext(context.Context) GetListItemsResultHostnameOutput
+}
+
+type GetListItemsResultHostnameArgs struct {
+	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+	ExcludeExactHostname pulumi.BoolInput   `pulumi:"excludeExactHostname"`
+	UrlHostname          pulumi.StringInput `pulumi:"urlHostname"`
+}
+
+func (GetListItemsResultHostnameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResultHostname)(nil)).Elem()
+}
+
+func (i GetListItemsResultHostnameArgs) ToGetListItemsResultHostnameOutput() GetListItemsResultHostnameOutput {
+	return i.ToGetListItemsResultHostnameOutputWithContext(context.Background())
+}
+
+func (i GetListItemsResultHostnameArgs) ToGetListItemsResultHostnameOutputWithContext(ctx context.Context) GetListItemsResultHostnameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemsResultHostnameOutput)
+}
+
+type GetListItemsResultHostnameOutput struct{ *pulumi.OutputState }
+
+func (GetListItemsResultHostnameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResultHostname)(nil)).Elem()
+}
+
+func (o GetListItemsResultHostnameOutput) ToGetListItemsResultHostnameOutput() GetListItemsResultHostnameOutput {
+	return o
+}
+
+func (o GetListItemsResultHostnameOutput) ToGetListItemsResultHostnameOutputWithContext(ctx context.Context) GetListItemsResultHostnameOutput {
+	return o
+}
+
+// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
+func (o GetListItemsResultHostnameOutput) ExcludeExactHostname() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemsResultHostname) bool { return v.ExcludeExactHostname }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemsResultHostnameOutput) UrlHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResultHostname) string { return v.UrlHostname }).(pulumi.StringOutput)
+}
+
+type GetListItemsResultRedirect struct {
+	IncludeSubdomains   bool   `pulumi:"includeSubdomains"`
+	PreservePathSuffix  bool   `pulumi:"preservePathSuffix"`
+	PreserveQueryString bool   `pulumi:"preserveQueryString"`
+	SourceUrl           string `pulumi:"sourceUrl"`
+	// Available values: 301, 302, 307, 308.
+	StatusCode      int    `pulumi:"statusCode"`
+	SubpathMatching bool   `pulumi:"subpathMatching"`
+	TargetUrl       string `pulumi:"targetUrl"`
+}
+
+// GetListItemsResultRedirectInput is an input type that accepts GetListItemsResultRedirectArgs and GetListItemsResultRedirectOutput values.
+// You can construct a concrete instance of `GetListItemsResultRedirectInput` via:
+//
+//	GetListItemsResultRedirectArgs{...}
+type GetListItemsResultRedirectInput interface {
+	pulumi.Input
+
+	ToGetListItemsResultRedirectOutput() GetListItemsResultRedirectOutput
+	ToGetListItemsResultRedirectOutputWithContext(context.Context) GetListItemsResultRedirectOutput
+}
+
+type GetListItemsResultRedirectArgs struct {
+	IncludeSubdomains   pulumi.BoolInput   `pulumi:"includeSubdomains"`
+	PreservePathSuffix  pulumi.BoolInput   `pulumi:"preservePathSuffix"`
+	PreserveQueryString pulumi.BoolInput   `pulumi:"preserveQueryString"`
+	SourceUrl           pulumi.StringInput `pulumi:"sourceUrl"`
+	// Available values: 301, 302, 307, 308.
+	StatusCode      pulumi.IntInput    `pulumi:"statusCode"`
+	SubpathMatching pulumi.BoolInput   `pulumi:"subpathMatching"`
+	TargetUrl       pulumi.StringInput `pulumi:"targetUrl"`
+}
+
+func (GetListItemsResultRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResultRedirect)(nil)).Elem()
+}
+
+func (i GetListItemsResultRedirectArgs) ToGetListItemsResultRedirectOutput() GetListItemsResultRedirectOutput {
+	return i.ToGetListItemsResultRedirectOutputWithContext(context.Background())
+}
+
+func (i GetListItemsResultRedirectArgs) ToGetListItemsResultRedirectOutputWithContext(ctx context.Context) GetListItemsResultRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemsResultRedirectOutput)
+}
+
+type GetListItemsResultRedirectOutput struct{ *pulumi.OutputState }
+
+func (GetListItemsResultRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemsResultRedirect)(nil)).Elem()
+}
+
+func (o GetListItemsResultRedirectOutput) ToGetListItemsResultRedirectOutput() GetListItemsResultRedirectOutput {
+	return o
+}
+
+func (o GetListItemsResultRedirectOutput) ToGetListItemsResultRedirectOutputWithContext(ctx context.Context) GetListItemsResultRedirectOutput {
+	return o
+}
+
+func (o GetListItemsResultRedirectOutput) IncludeSubdomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) bool { return v.IncludeSubdomains }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemsResultRedirectOutput) PreservePathSuffix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) bool { return v.PreservePathSuffix }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemsResultRedirectOutput) PreserveQueryString() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) bool { return v.PreserveQueryString }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemsResultRedirectOutput) SourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) string { return v.SourceUrl }).(pulumi.StringOutput)
+}
+
+// Available values: 301, 302, 307, 308.
+func (o GetListItemsResultRedirectOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+func (o GetListItemsResultRedirectOutput) SubpathMatching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) bool { return v.SubpathMatching }).(pulumi.BoolOutput)
+}
+
+func (o GetListItemsResultRedirectOutput) TargetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemsResultRedirect) string { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
 type GetListsResult struct {
@@ -30937,17 +32442,18 @@ type GetLoadBalancerRuleOverrides struct {
 	FallbackPool string `pulumi:"fallbackPool"`
 	// Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
 	LocationStrategy GetLoadBalancerRuleOverridesLocationStrategy `pulumi:"locationStrategy"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Configures pool weights.
 	RandomSteering GetLoadBalancerRuleOverridesRandomSteering `pulumi:"randomSteering"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]string `pulumi:"regionPools"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity string `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancerRuleOverridesSessionAffinityAttributes `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl float64 `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
@@ -30977,17 +32483,18 @@ type GetLoadBalancerRuleOverridesArgs struct {
 	FallbackPool pulumi.StringInput `pulumi:"fallbackPool"`
 	// Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
 	LocationStrategy GetLoadBalancerRuleOverridesLocationStrategyInput `pulumi:"locationStrategy"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// Configures pool weights.
 	RandomSteering GetLoadBalancerRuleOverridesRandomSteeringInput `pulumi:"randomSteering"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools pulumi.StringArrayMapInput `pulumi:"regionPools"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringInput `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancerRuleOverridesSessionAffinityAttributesInput `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64Input `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringInput `pulumi:"steeringPolicy"`
@@ -31050,7 +32557,7 @@ func (o GetLoadBalancerRuleOverridesOutput) LocationStrategy() GetLoadBalancerRu
 	}).(GetLoadBalancerRuleOverridesLocationStrategyOutput)
 }
 
-// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 func (o GetLoadBalancerRuleOverridesOutput) PopPools() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v GetLoadBalancerRuleOverrides) map[string][]string { return v.PopPools }).(pulumi.StringArrayMapOutput)
 }
@@ -31067,7 +32574,8 @@ func (o GetLoadBalancerRuleOverridesOutput) RegionPools() pulumi.StringArrayMapO
 	return o.ApplyT(func(v GetLoadBalancerRuleOverrides) map[string][]string { return v.RegionPools }).(pulumi.StringArrayMapOutput)
 }
 
-// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+// Available values: "none", "cookie", "ipCookie", "header".
 func (o GetLoadBalancerRuleOverridesOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerRuleOverrides) string { return v.SessionAffinity }).(pulumi.StringOutput)
 }
@@ -31079,7 +32587,7 @@ func (o GetLoadBalancerRuleOverridesOutput) SessionAffinityAttributes() GetLoadB
 	}).(GetLoadBalancerRuleOverridesSessionAffinityAttributesOutput)
 }
 
-// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 func (o GetLoadBalancerRuleOverridesOutput) SessionAffinityTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLoadBalancerRuleOverrides) float64 { return v.SessionAffinityTtl }).(pulumi.Float64Output)
 }
@@ -31273,7 +32781,7 @@ type GetLoadBalancerRuleOverridesSessionAffinityAttributes struct {
 	DrainDuration float64 `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []string `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders bool `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -31281,7 +32789,8 @@ type GetLoadBalancerRuleOverridesSessionAffinityAttributes struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure string `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover string `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -31301,7 +32810,7 @@ type GetLoadBalancerRuleOverridesSessionAffinityAttributesArgs struct {
 	DrainDuration pulumi.Float64Input `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers pulumi.StringArrayInput `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders pulumi.BoolInput `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -31309,7 +32818,8 @@ type GetLoadBalancerRuleOverridesSessionAffinityAttributesArgs struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure pulumi.StringInput `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover pulumi.StringInput `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -31349,7 +32859,7 @@ func (o GetLoadBalancerRuleOverridesSessionAffinityAttributesOutput) Headers() p
 	return o.ApplyT(func(v GetLoadBalancerRuleOverridesSessionAffinityAttributes) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
-// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 func (o GetLoadBalancerRuleOverridesSessionAffinityAttributesOutput) RequireAllHeaders() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancerRuleOverridesSessionAffinityAttributes) bool { return v.RequireAllHeaders }).(pulumi.BoolOutput)
 }
@@ -31366,7 +32876,8 @@ func (o GetLoadBalancerRuleOverridesSessionAffinityAttributesOutput) Secure() pu
 	return o.ApplyT(func(v GetLoadBalancerRuleOverridesSessionAffinityAttributes) string { return v.Secure }).(pulumi.StringOutput)
 }
 
-// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+// Available values: "none", "temporary", "sticky".
 func (o GetLoadBalancerRuleOverridesSessionAffinityAttributesOutput) ZeroDowntimeFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerRuleOverridesSessionAffinityAttributes) string { return v.ZeroDowntimeFailover }).(pulumi.StringOutput)
 }
@@ -31376,7 +32887,7 @@ type GetLoadBalancerSessionAffinityAttributes struct {
 	DrainDuration float64 `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []string `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders bool `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -31384,7 +32895,8 @@ type GetLoadBalancerSessionAffinityAttributes struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure string `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover string `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -31404,7 +32916,7 @@ type GetLoadBalancerSessionAffinityAttributesArgs struct {
 	DrainDuration pulumi.Float64Input `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers pulumi.StringArrayInput `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders pulumi.BoolInput `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -31412,7 +32924,8 @@ type GetLoadBalancerSessionAffinityAttributesArgs struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure pulumi.StringInput `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover pulumi.StringInput `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -31452,7 +32965,7 @@ func (o GetLoadBalancerSessionAffinityAttributesOutput) Headers() pulumi.StringA
 	return o.ApplyT(func(v GetLoadBalancerSessionAffinityAttributes) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
-// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 func (o GetLoadBalancerSessionAffinityAttributesOutput) RequireAllHeaders() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancerSessionAffinityAttributes) bool { return v.RequireAllHeaders }).(pulumi.BoolOutput)
 }
@@ -31469,7 +32982,8 @@ func (o GetLoadBalancerSessionAffinityAttributesOutput) Secure() pulumi.StringOu
 	return o.ApplyT(func(v GetLoadBalancerSessionAffinityAttributes) string { return v.Secure }).(pulumi.StringOutput)
 }
 
-// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+// Available values: "none", "temporary", "sticky".
 func (o GetLoadBalancerSessionAffinityAttributesOutput) ZeroDowntimeFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerSessionAffinityAttributes) string { return v.ZeroDowntimeFailover }).(pulumi.StringOutput)
 }
@@ -31496,7 +33010,7 @@ type GetLoadBalancersResult struct {
 	Name string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks []string `pulumi:"networks"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied bool `pulumi:"proxied"`
@@ -31506,11 +33020,12 @@ type GetLoadBalancersResult struct {
 	RegionPools map[string][]string `pulumi:"regionPools"`
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules []GetLoadBalancersResultRule `pulumi:"rules"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity string `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancersResultSessionAffinityAttributes `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl float64 `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
@@ -31552,7 +33067,7 @@ type GetLoadBalancersResultArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// Whether the hostname should be gray clouded (false) or orange clouded (true).
 	Proxied pulumi.BoolInput `pulumi:"proxied"`
@@ -31562,11 +33077,12 @@ type GetLoadBalancersResultArgs struct {
 	RegionPools pulumi.StringArrayMapInput `pulumi:"regionPools"`
 	// BETA Field Not General Access: A list of rules for this load balancer to execute.
 	Rules GetLoadBalancersResultRuleArrayInput `pulumi:"rules"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringInput `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancersResultSessionAffinityAttributesInput `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64Input `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringInput `pulumi:"steeringPolicy"`
@@ -31683,7 +33199,7 @@ func (o GetLoadBalancersResultOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
-// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 func (o GetLoadBalancersResultOutput) PopPools() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) map[string][]string { return v.PopPools }).(pulumi.StringArrayMapOutput)
 }
@@ -31708,7 +33224,8 @@ func (o GetLoadBalancersResultOutput) Rules() GetLoadBalancersResultRuleArrayOut
 	return o.ApplyT(func(v GetLoadBalancersResult) []GetLoadBalancersResultRule { return v.Rules }).(GetLoadBalancersResultRuleArrayOutput)
 }
 
-// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+// Available values: "none", "cookie", "ipCookie", "header".
 func (o GetLoadBalancersResultOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResult) string { return v.SessionAffinity }).(pulumi.StringOutput)
 }
@@ -31720,7 +33237,7 @@ func (o GetLoadBalancersResultOutput) SessionAffinityAttributes() GetLoadBalance
 	}).(GetLoadBalancersResultSessionAffinityAttributesOutput)
 }
 
-// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 func (o GetLoadBalancersResultOutput) SessionAffinityTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLoadBalancersResult) float64 { return v.SessionAffinityTtl }).(pulumi.Float64Output)
 }
@@ -32174,17 +33691,18 @@ type GetLoadBalancersResultRuleOverrides struct {
 	FallbackPool string `pulumi:"fallbackPool"`
 	// Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
 	LocationStrategy GetLoadBalancersResultRuleOverridesLocationStrategy `pulumi:"locationStrategy"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// Configures pool weights.
 	RandomSteering GetLoadBalancersResultRuleOverridesRandomSteering `pulumi:"randomSteering"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]string `pulumi:"regionPools"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity string `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancersResultRuleOverridesSessionAffinityAttributes `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl float64 `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
@@ -32214,17 +33732,18 @@ type GetLoadBalancersResultRuleOverridesArgs struct {
 	FallbackPool pulumi.StringInput `pulumi:"fallbackPool"`
 	// Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
 	LocationStrategy GetLoadBalancersResultRuleOverridesLocationStrategyInput `pulumi:"locationStrategy"`
-	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+	// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// Configures pool weights.
 	RandomSteering GetLoadBalancersResultRuleOverridesRandomSteeringInput `pulumi:"randomSteering"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools pulumi.StringArrayMapInput `pulumi:"regionPools"`
-	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+	// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+	// Available values: "none", "cookie", "ipCookie", "header".
 	SessionAffinity pulumi.StringInput `pulumi:"sessionAffinity"`
 	// Configures attributes for session affinity.
 	SessionAffinityAttributes GetLoadBalancersResultRuleOverridesSessionAffinityAttributesInput `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 	SessionAffinityTtl pulumi.Float64Input `pulumi:"sessionAffinityTtl"`
 	// Steering Policy for this load balancer.
 	SteeringPolicy pulumi.StringInput `pulumi:"steeringPolicy"`
@@ -32287,7 +33806,7 @@ func (o GetLoadBalancersResultRuleOverridesOutput) LocationStrategy() GetLoadBal
 	}).(GetLoadBalancersResultRuleOverridesLocationStrategyOutput)
 }
 
-// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
+// Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 func (o GetLoadBalancersResultRuleOverridesOutput) PopPools() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverrides) map[string][]string { return v.PopPools }).(pulumi.StringArrayMapOutput)
 }
@@ -32304,7 +33823,8 @@ func (o GetLoadBalancersResultRuleOverridesOutput) RegionPools() pulumi.StringAr
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverrides) map[string][]string { return v.RegionPools }).(pulumi.StringArrayMapOutput)
 }
 
-// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are:
+// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+// Available values: "none", "cookie", "ipCookie", "header".
 func (o GetLoadBalancersResultRuleOverridesOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverrides) string { return v.SessionAffinity }).(pulumi.StringOutput)
 }
@@ -32316,7 +33836,7 @@ func (o GetLoadBalancersResultRuleOverridesOutput) SessionAffinityAttributes() G
 	}).(GetLoadBalancersResultRuleOverridesSessionAffinityAttributesOutput)
 }
 
-// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
+// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
 func (o GetLoadBalancersResultRuleOverridesOutput) SessionAffinityTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverrides) float64 { return v.SessionAffinityTtl }).(pulumi.Float64Output)
 }
@@ -32510,7 +34030,7 @@ type GetLoadBalancersResultRuleOverridesSessionAffinityAttributes struct {
 	DrainDuration float64 `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []string `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders bool `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -32518,7 +34038,8 @@ type GetLoadBalancersResultRuleOverridesSessionAffinityAttributes struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure string `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover string `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -32538,7 +34059,7 @@ type GetLoadBalancersResultRuleOverridesSessionAffinityAttributesArgs struct {
 	DrainDuration pulumi.Float64Input `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers pulumi.StringArrayInput `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders pulumi.BoolInput `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -32546,7 +34067,8 @@ type GetLoadBalancersResultRuleOverridesSessionAffinityAttributesArgs struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure pulumi.StringInput `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover pulumi.StringInput `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -32586,7 +34108,7 @@ func (o GetLoadBalancersResultRuleOverridesSessionAffinityAttributesOutput) Head
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverridesSessionAffinityAttributes) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
-// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 func (o GetLoadBalancersResultRuleOverridesSessionAffinityAttributesOutput) RequireAllHeaders() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverridesSessionAffinityAttributes) bool { return v.RequireAllHeaders }).(pulumi.BoolOutput)
 }
@@ -32603,7 +34125,8 @@ func (o GetLoadBalancersResultRuleOverridesSessionAffinityAttributesOutput) Secu
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverridesSessionAffinityAttributes) string { return v.Secure }).(pulumi.StringOutput)
 }
 
-// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+// Available values: "none", "temporary", "sticky".
 func (o GetLoadBalancersResultRuleOverridesSessionAffinityAttributesOutput) ZeroDowntimeFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultRuleOverridesSessionAffinityAttributes) string {
 		return v.ZeroDowntimeFailover
@@ -32615,7 +34138,7 @@ type GetLoadBalancersResultSessionAffinityAttributes struct {
 	DrainDuration float64 `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers []string `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders bool `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -32623,7 +34146,8 @@ type GetLoadBalancersResultSessionAffinityAttributes struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure string `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover string `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -32643,7 +34167,7 @@ type GetLoadBalancersResultSessionAffinityAttributesArgs struct {
 	DrainDuration pulumi.Float64Input `pulumi:"drainDuration"`
 	// Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
 	Headers pulumi.StringArrayInput `pulumi:"headers"`
-	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+	// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 	RequireAllHeaders pulumi.BoolInput `pulumi:"requireAllHeaders"`
 	// Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never".
 	// Available values: "Auto", "Lax", "None", "Strict".
@@ -32651,7 +34175,8 @@ type GetLoadBalancersResultSessionAffinityAttributesArgs struct {
 	// Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled.
 	// Available values: "Auto", "Always", "Never".
 	Secure pulumi.StringInput `pulumi:"secure"`
-	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+	// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+	// Available values: "none", "temporary", "sticky".
 	ZeroDowntimeFailover pulumi.StringInput `pulumi:"zeroDowntimeFailover"`
 }
 
@@ -32691,7 +34216,7 @@ func (o GetLoadBalancersResultSessionAffinityAttributesOutput) Headers() pulumi.
 	return o.ApplyT(func(v GetLoadBalancersResultSessionAffinityAttributes) []string { return v.Headers }).(pulumi.StringArrayOutput)
 }
 
-// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are:
+// When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created.
 func (o GetLoadBalancersResultSessionAffinityAttributesOutput) RequireAllHeaders() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultSessionAffinityAttributes) bool { return v.RequireAllHeaders }).(pulumi.BoolOutput)
 }
@@ -32708,7 +34233,8 @@ func (o GetLoadBalancersResultSessionAffinityAttributesOutput) Secure() pulumi.S
 	return o.ApplyT(func(v GetLoadBalancersResultSessionAffinityAttributes) string { return v.Secure }).(pulumi.StringOutput)
 }
 
-// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are:
+// Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header.
+// Available values: "none", "temporary", "sticky".
 func (o GetLoadBalancersResultSessionAffinityAttributesOutput) ZeroDowntimeFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersResultSessionAffinityAttributes) string { return v.ZeroDowntimeFailover }).(pulumi.StringOutput)
 }
@@ -33029,15 +34555,15 @@ func (o GetLogpushJobOutputOptionsOutput) TimestampFormat() pulumi.StringOutput 
 
 type GetLogpushJobsResult struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset string `pulumi:"dataset"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
 	// Flag that indicates if the job is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+	// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage string `pulumi:"errorMessage"`
-	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
@@ -33049,7 +34575,7 @@ type GetLogpushJobsResult struct {
 	Kind string `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete string `pulumi:"lastComplete"`
-	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
+	// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 	LastError string `pulumi:"lastError"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 	//
@@ -33061,7 +34587,7 @@ type GetLogpushJobsResult struct {
 	MaxUploadIntervalSeconds int `pulumi:"maxUploadIntervalSeconds"`
 	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords int `pulumi:"maxUploadRecords"`
-	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+	// Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name string `pulumi:"name"`
 	// The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
 	OutputOptions GetLogpushJobsResultOutputOptions `pulumi:"outputOptions"`
@@ -33080,15 +34606,15 @@ type GetLogpushJobsResultInput interface {
 
 type GetLogpushJobsResultArgs struct {
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-	// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+	// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset pulumi.StringInput `pulumi:"dataset"`
-	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+	// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf pulumi.StringInput `pulumi:"destinationConf"`
 	// Flag that indicates if the job is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+	// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
-	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+	// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
 	// Deprecated: This attribute is deprecated.
@@ -33100,7 +34626,7 @@ type GetLogpushJobsResultArgs struct {
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete pulumi.StringInput `pulumi:"lastComplete"`
-	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
+	// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 	LastError pulumi.StringInput `pulumi:"lastError"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
 	//
@@ -33112,7 +34638,7 @@ type GetLogpushJobsResultArgs struct {
 	MaxUploadIntervalSeconds pulumi.IntInput `pulumi:"maxUploadIntervalSeconds"`
 	// The maximum number of log lines per batch. This setting must be between 1000 and 1,000,000 lines, or `0` to disable it. Note that you cannot specify a minimum number of log lines per batch; this means that log files may contain many fewer lines than this.
 	MaxUploadRecords pulumi.IntInput `pulumi:"maxUploadRecords"`
-	// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+	// Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
 	OutputOptions GetLogpushJobsResultOutputOptionsInput `pulumi:"outputOptions"`
@@ -33170,12 +34696,12 @@ func (o GetLogpushJobsResultOutput) ToGetLogpushJobsResultOutputWithContext(ctx 
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
-// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
+// Available values: "access*requests", "audit*logs", "audit*logs*v2", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 func (o GetLogpushJobsResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Dataset }).(pulumi.StringOutput)
 }
 
-// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
+// Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included.
 func (o GetLogpushJobsResultOutput) DestinationConf() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.DestinationConf }).(pulumi.StringOutput)
 }
@@ -33185,12 +34711,12 @@ func (o GetLogpushJobsResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+// If not null, the job is currently failing. Failures are usually. repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 func (o GetLogpushJobsResultOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
+// This field is deprecated. Please use `max_upload_*` parameters instead. . The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 // Available values: "high", "low".
 //
 // Deprecated: This attribute is deprecated.
@@ -33214,7 +34740,7 @@ func (o GetLogpushJobsResultOutput) LastComplete() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.LastComplete }).(pulumi.StringOutput)
 }
 
-// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
+// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 func (o GetLogpushJobsResultOutput) LastError() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.LastError }).(pulumi.StringOutput)
 }
@@ -33241,7 +34767,7 @@ func (o GetLogpushJobsResultOutput) MaxUploadRecords() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) int { return v.MaxUploadRecords }).(pulumi.IntOutput)
 }
 
-// Optional human readable job name. Not unique. Cloudflare suggests that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
+// Optional human readable job name. Not unique. Cloudflare suggests. that you set this to a meaningful string, like the domain name, to make it easier to identify your job.
 func (o GetLogpushJobsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -37119,12 +38645,8 @@ func (o GetMagicWanStaticRouteRouteScopeOutput) ColoRegions() pulumi.StringArray
 }
 
 type GetManagedTransformsManagedRequestHeader struct {
-	// The Managed Transforms that this Managed Transform conflicts with.
-	ConflictsWiths []string `pulumi:"conflictsWiths"`
 	// Whether the Managed Transform is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-	HasConflict bool `pulumi:"hasConflict"`
 	// The human-readable identifier of the Managed Transform.
 	Id string `pulumi:"id"`
 }
@@ -37141,12 +38663,8 @@ type GetManagedTransformsManagedRequestHeaderInput interface {
 }
 
 type GetManagedTransformsManagedRequestHeaderArgs struct {
-	// The Managed Transforms that this Managed Transform conflicts with.
-	ConflictsWiths pulumi.StringArrayInput `pulumi:"conflictsWiths"`
 	// Whether the Managed Transform is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-	HasConflict pulumi.BoolInput `pulumi:"hasConflict"`
 	// The human-readable identifier of the Managed Transform.
 	Id pulumi.StringInput `pulumi:"id"`
 }
@@ -37202,19 +38720,9 @@ func (o GetManagedTransformsManagedRequestHeaderOutput) ToGetManagedTransformsMa
 	return o
 }
 
-// The Managed Transforms that this Managed Transform conflicts with.
-func (o GetManagedTransformsManagedRequestHeaderOutput) ConflictsWiths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetManagedTransformsManagedRequestHeader) []string { return v.ConflictsWiths }).(pulumi.StringArrayOutput)
-}
-
 // Whether the Managed Transform is enabled.
 func (o GetManagedTransformsManagedRequestHeaderOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetManagedTransformsManagedRequestHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-func (o GetManagedTransformsManagedRequestHeaderOutput) HasConflict() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetManagedTransformsManagedRequestHeader) bool { return v.HasConflict }).(pulumi.BoolOutput)
 }
 
 // The human-readable identifier of the Managed Transform.
@@ -37243,12 +38751,8 @@ func (o GetManagedTransformsManagedRequestHeaderArrayOutput) Index(i pulumi.IntI
 }
 
 type GetManagedTransformsManagedResponseHeader struct {
-	// The Managed Transforms that this Managed Transform conflicts with.
-	ConflictsWiths []string `pulumi:"conflictsWiths"`
 	// Whether the Managed Transform is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-	HasConflict bool `pulumi:"hasConflict"`
 	// The human-readable identifier of the Managed Transform.
 	Id string `pulumi:"id"`
 }
@@ -37265,12 +38769,8 @@ type GetManagedTransformsManagedResponseHeaderInput interface {
 }
 
 type GetManagedTransformsManagedResponseHeaderArgs struct {
-	// The Managed Transforms that this Managed Transform conflicts with.
-	ConflictsWiths pulumi.StringArrayInput `pulumi:"conflictsWiths"`
 	// Whether the Managed Transform is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-	HasConflict pulumi.BoolInput `pulumi:"hasConflict"`
 	// The human-readable identifier of the Managed Transform.
 	Id pulumi.StringInput `pulumi:"id"`
 }
@@ -37326,19 +38826,9 @@ func (o GetManagedTransformsManagedResponseHeaderOutput) ToGetManagedTransformsM
 	return o
 }
 
-// The Managed Transforms that this Managed Transform conflicts with.
-func (o GetManagedTransformsManagedResponseHeaderOutput) ConflictsWiths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetManagedTransformsManagedResponseHeader) []string { return v.ConflictsWiths }).(pulumi.StringArrayOutput)
-}
-
 // Whether the Managed Transform is enabled.
 func (o GetManagedTransformsManagedResponseHeaderOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetManagedTransformsManagedResponseHeader) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-func (o GetManagedTransformsManagedResponseHeaderOutput) HasConflict() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetManagedTransformsManagedResponseHeader) bool { return v.HasConflict }).(pulumi.BoolOutput)
 }
 
 // The human-readable identifier of the Managed Transform.
@@ -52244,1338 +53734,17 @@ func (o GetResourceGroupsResultScopeArrayOutput) Index(i pulumi.IntInput) GetRes
 	}).(GetResourceGroupsResultScopeOutput)
 }
 
-type GetResourceGroupsResultScopeObject struct {
-	// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
-	Key string `pulumi:"key"`
-}
-
-// GetResourceGroupsResultScopeObjectInput is an input type that accepts GetResourceGroupsResultScopeObjectArgs and GetResourceGroupsResultScopeObjectOutput values.
-// You can construct a concrete instance of `GetResourceGroupsResultScopeObjectInput` via:
-//
-//	GetResourceGroupsResultScopeObjectArgs{...}
-type GetResourceGroupsResultScopeObjectInput interface {
-	pulumi.Input
-
-	ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput
-	ToGetResourceGroupsResultScopeObjectOutputWithContext(context.Context) GetResourceGroupsResultScopeObjectOutput
-}
-
-type GetResourceGroupsResultScopeObjectArgs struct {
-	// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetResourceGroupsResultScopeObjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceGroupsResultScopeObject)(nil)).Elem()
-}
-
-func (i GetResourceGroupsResultScopeObjectArgs) ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput {
-	return i.ToGetResourceGroupsResultScopeObjectOutputWithContext(context.Background())
-}
-
-func (i GetResourceGroupsResultScopeObjectArgs) ToGetResourceGroupsResultScopeObjectOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsResultScopeObjectOutput)
-}
-
-// GetResourceGroupsResultScopeObjectArrayInput is an input type that accepts GetResourceGroupsResultScopeObjectArray and GetResourceGroupsResultScopeObjectArrayOutput values.
-// You can construct a concrete instance of `GetResourceGroupsResultScopeObjectArrayInput` via:
-//
-//	GetResourceGroupsResultScopeObjectArray{ GetResourceGroupsResultScopeObjectArgs{...} }
-type GetResourceGroupsResultScopeObjectArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput
-	ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(context.Context) GetResourceGroupsResultScopeObjectArrayOutput
-}
-
-type GetResourceGroupsResultScopeObjectArray []GetResourceGroupsResultScopeObjectInput
-
-func (GetResourceGroupsResultScopeObjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceGroupsResultScopeObject)(nil)).Elem()
-}
-
-func (i GetResourceGroupsResultScopeObjectArray) ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput {
-	return i.ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceGroupsResultScopeObjectArray) ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceGroupsResultScopeObjectArrayOutput)
-}
-
-type GetResourceGroupsResultScopeObjectOutput struct{ *pulumi.OutputState }
-
-func (GetResourceGroupsResultScopeObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceGroupsResultScopeObject)(nil)).Elem()
-}
-
-func (o GetResourceGroupsResultScopeObjectOutput) ToGetResourceGroupsResultScopeObjectOutput() GetResourceGroupsResultScopeObjectOutput {
-	return o
-}
-
-func (o GetResourceGroupsResultScopeObjectOutput) ToGetResourceGroupsResultScopeObjectOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectOutput {
-	return o
-}
-
-// This is a combination of pre-defined resource name and identifier (like Zone ID etc.)
-func (o GetResourceGroupsResultScopeObjectOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceGroupsResultScopeObject) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetResourceGroupsResultScopeObjectArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceGroupsResultScopeObjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceGroupsResultScopeObject)(nil)).Elem()
-}
-
-func (o GetResourceGroupsResultScopeObjectArrayOutput) ToGetResourceGroupsResultScopeObjectArrayOutput() GetResourceGroupsResultScopeObjectArrayOutput {
-	return o
-}
-
-func (o GetResourceGroupsResultScopeObjectArrayOutput) ToGetResourceGroupsResultScopeObjectArrayOutputWithContext(ctx context.Context) GetResourceGroupsResultScopeObjectArrayOutput {
-	return o
-}
-
-func (o GetResourceGroupsResultScopeObjectArrayOutput) Index(i pulumi.IntInput) GetResourceGroupsResultScopeObjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceGroupsResultScopeObject {
-		return vs[0].([]GetResourceGroupsResultScopeObject)[vs[1].(int)]
-	}).(GetResourceGroupsResultScopeObjectOutput)
-}
-
-type GetRulesetRule struct {
-	// The action to perform when the rule matches.
-	// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
-	Action string `pulumi:"action"`
-	// The parameters configuring the rule's action.
-	ActionParameters GetRulesetRuleActionParameters `pulumi:"actionParameters"`
-	// The categories of the rule.
-	Categories []string `pulumi:"categories"`
-	// An informative description of the rule.
-	Description string `pulumi:"description"`
-	// Whether the rule should be executed.
-	Enabled bool `pulumi:"enabled"`
-	// Configure checks for exposed credentials.
-	ExposedCredentialCheck GetRulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialCheck"`
-	// The expression defining which traffic will match the rule.
-	Expression string `pulumi:"expression"`
-	// The unique ID of the rule.
-	Id string `pulumi:"id"`
-	// An object configuring the rule's logging behavior.
-	Logging GetRulesetRuleLogging `pulumi:"logging"`
-	// An object configuring the rule's ratelimit behavior.
-	Ratelimit GetRulesetRuleRatelimit `pulumi:"ratelimit"`
-	// The reference of the rule (the rule ID by default).
-	Ref string `pulumi:"ref"`
-}
-
-// GetRulesetRuleInput is an input type that accepts GetRulesetRuleArgs and GetRulesetRuleOutput values.
-// You can construct a concrete instance of `GetRulesetRuleInput` via:
-//
-//	GetRulesetRuleArgs{...}
-type GetRulesetRuleInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleOutput() GetRulesetRuleOutput
-	ToGetRulesetRuleOutputWithContext(context.Context) GetRulesetRuleOutput
-}
-
-type GetRulesetRuleArgs struct {
-	// The action to perform when the rule matches.
-	// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
-	Action pulumi.StringInput `pulumi:"action"`
-	// The parameters configuring the rule's action.
-	ActionParameters GetRulesetRuleActionParametersInput `pulumi:"actionParameters"`
-	// The categories of the rule.
-	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// An informative description of the rule.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Whether the rule should be executed.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Configure checks for exposed credentials.
-	ExposedCredentialCheck GetRulesetRuleExposedCredentialCheckInput `pulumi:"exposedCredentialCheck"`
-	// The expression defining which traffic will match the rule.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// The unique ID of the rule.
-	Id pulumi.StringInput `pulumi:"id"`
-	// An object configuring the rule's logging behavior.
-	Logging GetRulesetRuleLoggingInput `pulumi:"logging"`
-	// An object configuring the rule's ratelimit behavior.
-	Ratelimit GetRulesetRuleRatelimitInput `pulumi:"ratelimit"`
-	// The reference of the rule (the rule ID by default).
-	Ref pulumi.StringInput `pulumi:"ref"`
-}
-
-func (GetRulesetRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRule)(nil)).Elem()
-}
-
-func (i GetRulesetRuleArgs) ToGetRulesetRuleOutput() GetRulesetRuleOutput {
-	return i.ToGetRulesetRuleOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleArgs) ToGetRulesetRuleOutputWithContext(ctx context.Context) GetRulesetRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleOutput)
-}
-
-// GetRulesetRuleArrayInput is an input type that accepts GetRulesetRuleArray and GetRulesetRuleArrayOutput values.
-// You can construct a concrete instance of `GetRulesetRuleArrayInput` via:
-//
-//	GetRulesetRuleArray{ GetRulesetRuleArgs{...} }
-type GetRulesetRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput
-	ToGetRulesetRuleArrayOutputWithContext(context.Context) GetRulesetRuleArrayOutput
-}
-
-type GetRulesetRuleArray []GetRulesetRuleInput
-
-func (GetRulesetRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRule)(nil)).Elem()
-}
-
-func (i GetRulesetRuleArray) ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput {
-	return i.ToGetRulesetRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleArray) ToGetRulesetRuleArrayOutputWithContext(ctx context.Context) GetRulesetRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleArrayOutput)
-}
-
-type GetRulesetRuleOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRule)(nil)).Elem()
-}
-
-func (o GetRulesetRuleOutput) ToGetRulesetRuleOutput() GetRulesetRuleOutput {
-	return o
-}
-
-func (o GetRulesetRuleOutput) ToGetRulesetRuleOutputWithContext(ctx context.Context) GetRulesetRuleOutput {
-	return o
-}
-
-// The action to perform when the rule matches.
-// Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
-func (o GetRulesetRuleOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Action }).(pulumi.StringOutput)
-}
-
-// The parameters configuring the rule's action.
-func (o GetRulesetRuleOutput) ActionParameters() GetRulesetRuleActionParametersOutput {
-	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleActionParameters { return v.ActionParameters }).(GetRulesetRuleActionParametersOutput)
-}
-
-// The categories of the rule.
-func (o GetRulesetRuleOutput) Categories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRule) []string { return v.Categories }).(pulumi.StringArrayOutput)
-}
-
-// An informative description of the rule.
-func (o GetRulesetRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Whether the rule should be executed.
-func (o GetRulesetRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRule) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Configure checks for exposed credentials.
-func (o GetRulesetRuleOutput) ExposedCredentialCheck() GetRulesetRuleExposedCredentialCheckOutput {
-	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleExposedCredentialCheck { return v.ExposedCredentialCheck }).(GetRulesetRuleExposedCredentialCheckOutput)
-}
-
-// The expression defining which traffic will match the rule.
-func (o GetRulesetRuleOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// The unique ID of the rule.
-func (o GetRulesetRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// An object configuring the rule's logging behavior.
-func (o GetRulesetRuleOutput) Logging() GetRulesetRuleLoggingOutput {
-	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleLogging { return v.Logging }).(GetRulesetRuleLoggingOutput)
-}
-
-// An object configuring the rule's ratelimit behavior.
-func (o GetRulesetRuleOutput) Ratelimit() GetRulesetRuleRatelimitOutput {
-	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleRatelimit { return v.Ratelimit }).(GetRulesetRuleRatelimitOutput)
-}
-
-// The reference of the rule (the rule ID by default).
-func (o GetRulesetRuleOutput) Ref() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Ref }).(pulumi.StringOutput)
-}
-
-type GetRulesetRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRule)(nil)).Elem()
-}
-
-func (o GetRulesetRuleArrayOutput) ToGetRulesetRuleArrayOutput() GetRulesetRuleArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleArrayOutput) ToGetRulesetRuleArrayOutputWithContext(ctx context.Context) GetRulesetRuleArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRule {
-		return vs[0].([]GetRulesetRule)[vs[1].(int)]
-	}).(GetRulesetRuleOutput)
-}
-
-type GetRulesetRuleActionParameters struct {
-	// List of additional ports that caching can be enabled on.
-	AdditionalCacheablePorts []int `pulumi:"additionalCacheablePorts"`
-	// Custom order for compression algorithms.
-	Algorithms []GetRulesetRuleActionParametersAlgorithm `pulumi:"algorithms"`
-	// Turn on or off Automatic HTTPS Rewrites.
-	AutomaticHttpsRewrites bool `pulumi:"automaticHttpsRewrites"`
-	// Select which file extensions to minify automatically.
-	Autominify GetRulesetRuleActionParametersAutominify `pulumi:"autominify"`
-	// Turn on or off Browser Integrity Check.
-	Bic bool `pulumi:"bic"`
-	// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
-	BrowserTtl GetRulesetRuleActionParametersBrowserTtl `pulumi:"browserTtl"`
-	// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
-	Cache bool `pulumi:"cache"`
-	// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
-	CacheKey GetRulesetRuleActionParametersCacheKey `pulumi:"cacheKey"`
-	// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
-	CacheReserve GetRulesetRuleActionParametersCacheReserve `pulumi:"cacheReserve"`
-	// Error response content.
-	Content string `pulumi:"content"`
-	// Content-type header to set with the response.
-	// Available values: "application/json", "text/xml", "text/plain", "text/html".
-	ContentType string `pulumi:"contentType"`
-	// The cookie fields to log.
-	CookieFields []GetRulesetRuleActionParametersCookieField `pulumi:"cookieFields"`
-	// Turn off all active Cloudflare Apps.
-	DisableApps bool `pulumi:"disableApps"`
-	// Turn off Real User Monitoring (RUM).
-	DisableRum bool `pulumi:"disableRum"`
-	// Turn off Zaraz.
-	DisableZaraz bool `pulumi:"disableZaraz"`
-	// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
-	EdgeTtl GetRulesetRuleActionParametersEdgeTtl `pulumi:"edgeTtl"`
-	// Turn on or off Email Obfuscation.
-	EmailObfuscation bool `pulumi:"emailObfuscation"`
-	// Turn on or off Cloudflare Fonts.
-	Fonts bool `pulumi:"fonts"`
-	// Serve a redirect based on a bulk list lookup.
-	FromList GetRulesetRuleActionParametersFromList `pulumi:"fromList"`
-	// Serve a redirect based on the request properties.
-	FromValue GetRulesetRuleActionParametersFromValue `pulumi:"fromValue"`
-	// Map of request headers to modify.
-	Headers map[string]GetRulesetRuleActionParametersHeaders `pulumi:"headers"`
-	// Rewrite the HTTP Host header.
-	HostHeader string `pulumi:"hostHeader"`
-	// Turn on or off the Hotlink Protection.
-	HotlinkProtection bool `pulumi:"hotlinkProtection"`
-	// The ID of the ruleset to execute.
-	Id string `pulumi:"id"`
-	// Increment contains the delta to change the score and can be either positive or negative.
-	Increment int `pulumi:"increment"`
-	// The configuration to use for matched data logging.
-	MatchedData GetRulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
-	// Turn on or off Mirage.
-	Mirage bool `pulumi:"mirage"`
-	// Turn on or off Opportunistic Encryption.
-	OpportunisticEncryption bool `pulumi:"opportunisticEncryption"`
-	// Override the IP/TCP destination.
-	Origin GetRulesetRuleActionParametersOrigin `pulumi:"origin"`
-	// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
-	OriginCacheControl bool `pulumi:"originCacheControl"`
-	// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
-	OriginErrorPagePassthru bool `pulumi:"originErrorPagePassthru"`
-	// A set of overrides to apply to the target ruleset.
-	Overrides GetRulesetRuleActionParametersOverrides `pulumi:"overrides"`
-	// A phase to skip the execution of. This property is only compatible with products.
-	// Available values: "current".
-	Phase string `pulumi:"phase"`
-	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-	Phases []string `pulumi:"phases"`
-	// Configure the Polish level.
-	// Available values: "off", "lossless", "lossy", "webp".
-	Polish string `pulumi:"polish"`
-	// A list of legacy security products to skip the execution of.
-	Products []string `pulumi:"products"`
-	// The raw response fields to log.
-	RawResponseFields []GetRulesetRuleActionParametersRawResponseField `pulumi:"rawResponseFields"`
-	// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
-	ReadTimeout int `pulumi:"readTimeout"`
-	// The raw request fields to log.
-	RequestFields []GetRulesetRuleActionParametersRequestField `pulumi:"requestFields"`
-	// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
-	RespectStrongEtags bool `pulumi:"respectStrongEtags"`
-	// The response to show when the block is applied.
-	Response GetRulesetRuleActionParametersResponse `pulumi:"response"`
-	// The transformed response fields to log.
-	ResponseFields []GetRulesetRuleActionParametersResponseField `pulumi:"responseFields"`
-	// Turn on or off Rocket Loader.
-	RocketLoader bool `pulumi:"rocketLoader"`
-	// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
-	Rules map[string][]string `pulumi:"rules"`
-	// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
-	// Available values: "current".
-	Ruleset string `pulumi:"ruleset"`
-	// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
-	Rulesets []string `pulumi:"rulesets"`
-	// Configure the Security Level.
-	// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
-	SecurityLevel string `pulumi:"securityLevel"`
-	// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
-	ServeStale GetRulesetRuleActionParametersServeStale `pulumi:"serveStale"`
-	// Turn on or off Server Side Excludes.
-	ServerSideExcludes bool `pulumi:"serverSideExcludes"`
-	// Override the Server Name Indication (SNI).
-	Sni GetRulesetRuleActionParametersSni `pulumi:"sni"`
-	// Configure the SSL level.
-	// Available values: "off", "flexible", "full", "strict", "originPull".
-	Ssl string `pulumi:"ssl"`
-	// The status code to use for the error.
-	StatusCode float64 `pulumi:"statusCode"`
-	// Turn on or off Signed Exchanges (SXG).
-	Sxg bool `pulumi:"sxg"`
-	// The transformed request fields to log.
-	TransformedRequestFields []GetRulesetRuleActionParametersTransformedRequestField `pulumi:"transformedRequestFields"`
-	// URI to rewrite the request to.
-	Uri GetRulesetRuleActionParametersUri `pulumi:"uri"`
-}
-
-// GetRulesetRuleActionParametersInput is an input type that accepts GetRulesetRuleActionParametersArgs and GetRulesetRuleActionParametersOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersInput` via:
-//
-//	GetRulesetRuleActionParametersArgs{...}
-type GetRulesetRuleActionParametersInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput
-	ToGetRulesetRuleActionParametersOutputWithContext(context.Context) GetRulesetRuleActionParametersOutput
-}
-
-type GetRulesetRuleActionParametersArgs struct {
-	// List of additional ports that caching can be enabled on.
-	AdditionalCacheablePorts pulumi.IntArrayInput `pulumi:"additionalCacheablePorts"`
-	// Custom order for compression algorithms.
-	Algorithms GetRulesetRuleActionParametersAlgorithmArrayInput `pulumi:"algorithms"`
-	// Turn on or off Automatic HTTPS Rewrites.
-	AutomaticHttpsRewrites pulumi.BoolInput `pulumi:"automaticHttpsRewrites"`
-	// Select which file extensions to minify automatically.
-	Autominify GetRulesetRuleActionParametersAutominifyInput `pulumi:"autominify"`
-	// Turn on or off Browser Integrity Check.
-	Bic pulumi.BoolInput `pulumi:"bic"`
-	// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
-	BrowserTtl GetRulesetRuleActionParametersBrowserTtlInput `pulumi:"browserTtl"`
-	// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
-	Cache pulumi.BoolInput `pulumi:"cache"`
-	// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
-	CacheKey GetRulesetRuleActionParametersCacheKeyInput `pulumi:"cacheKey"`
-	// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
-	CacheReserve GetRulesetRuleActionParametersCacheReserveInput `pulumi:"cacheReserve"`
-	// Error response content.
-	Content pulumi.StringInput `pulumi:"content"`
-	// Content-type header to set with the response.
-	// Available values: "application/json", "text/xml", "text/plain", "text/html".
-	ContentType pulumi.StringInput `pulumi:"contentType"`
-	// The cookie fields to log.
-	CookieFields GetRulesetRuleActionParametersCookieFieldArrayInput `pulumi:"cookieFields"`
-	// Turn off all active Cloudflare Apps.
-	DisableApps pulumi.BoolInput `pulumi:"disableApps"`
-	// Turn off Real User Monitoring (RUM).
-	DisableRum pulumi.BoolInput `pulumi:"disableRum"`
-	// Turn off Zaraz.
-	DisableZaraz pulumi.BoolInput `pulumi:"disableZaraz"`
-	// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
-	EdgeTtl GetRulesetRuleActionParametersEdgeTtlInput `pulumi:"edgeTtl"`
-	// Turn on or off Email Obfuscation.
-	EmailObfuscation pulumi.BoolInput `pulumi:"emailObfuscation"`
-	// Turn on or off Cloudflare Fonts.
-	Fonts pulumi.BoolInput `pulumi:"fonts"`
-	// Serve a redirect based on a bulk list lookup.
-	FromList GetRulesetRuleActionParametersFromListInput `pulumi:"fromList"`
-	// Serve a redirect based on the request properties.
-	FromValue GetRulesetRuleActionParametersFromValueInput `pulumi:"fromValue"`
-	// Map of request headers to modify.
-	Headers GetRulesetRuleActionParametersHeadersMapInput `pulumi:"headers"`
-	// Rewrite the HTTP Host header.
-	HostHeader pulumi.StringInput `pulumi:"hostHeader"`
-	// Turn on or off the Hotlink Protection.
-	HotlinkProtection pulumi.BoolInput `pulumi:"hotlinkProtection"`
-	// The ID of the ruleset to execute.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Increment contains the delta to change the score and can be either positive or negative.
-	Increment pulumi.IntInput `pulumi:"increment"`
-	// The configuration to use for matched data logging.
-	MatchedData GetRulesetRuleActionParametersMatchedDataInput `pulumi:"matchedData"`
-	// Turn on or off Mirage.
-	Mirage pulumi.BoolInput `pulumi:"mirage"`
-	// Turn on or off Opportunistic Encryption.
-	OpportunisticEncryption pulumi.BoolInput `pulumi:"opportunisticEncryption"`
-	// Override the IP/TCP destination.
-	Origin GetRulesetRuleActionParametersOriginInput `pulumi:"origin"`
-	// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
-	OriginCacheControl pulumi.BoolInput `pulumi:"originCacheControl"`
-	// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
-	OriginErrorPagePassthru pulumi.BoolInput `pulumi:"originErrorPagePassthru"`
-	// A set of overrides to apply to the target ruleset.
-	Overrides GetRulesetRuleActionParametersOverridesInput `pulumi:"overrides"`
-	// A phase to skip the execution of. This property is only compatible with products.
-	// Available values: "current".
-	Phase pulumi.StringInput `pulumi:"phase"`
-	// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-	Phases pulumi.StringArrayInput `pulumi:"phases"`
-	// Configure the Polish level.
-	// Available values: "off", "lossless", "lossy", "webp".
-	Polish pulumi.StringInput `pulumi:"polish"`
-	// A list of legacy security products to skip the execution of.
-	Products pulumi.StringArrayInput `pulumi:"products"`
-	// The raw response fields to log.
-	RawResponseFields GetRulesetRuleActionParametersRawResponseFieldArrayInput `pulumi:"rawResponseFields"`
-	// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
-	ReadTimeout pulumi.IntInput `pulumi:"readTimeout"`
-	// The raw request fields to log.
-	RequestFields GetRulesetRuleActionParametersRequestFieldArrayInput `pulumi:"requestFields"`
-	// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
-	RespectStrongEtags pulumi.BoolInput `pulumi:"respectStrongEtags"`
-	// The response to show when the block is applied.
-	Response GetRulesetRuleActionParametersResponseInput `pulumi:"response"`
-	// The transformed response fields to log.
-	ResponseFields GetRulesetRuleActionParametersResponseFieldArrayInput `pulumi:"responseFields"`
-	// Turn on or off Rocket Loader.
-	RocketLoader pulumi.BoolInput `pulumi:"rocketLoader"`
-	// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
-	Rules pulumi.StringArrayMapInput `pulumi:"rules"`
-	// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
-	// Available values: "current".
-	Ruleset pulumi.StringInput `pulumi:"ruleset"`
-	// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
-	Rulesets pulumi.StringArrayInput `pulumi:"rulesets"`
-	// Configure the Security Level.
-	// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
-	SecurityLevel pulumi.StringInput `pulumi:"securityLevel"`
-	// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
-	ServeStale GetRulesetRuleActionParametersServeStaleInput `pulumi:"serveStale"`
-	// Turn on or off Server Side Excludes.
-	ServerSideExcludes pulumi.BoolInput `pulumi:"serverSideExcludes"`
-	// Override the Server Name Indication (SNI).
-	Sni GetRulesetRuleActionParametersSniInput `pulumi:"sni"`
-	// Configure the SSL level.
-	// Available values: "off", "flexible", "full", "strict", "originPull".
-	Ssl pulumi.StringInput `pulumi:"ssl"`
-	// The status code to use for the error.
-	StatusCode pulumi.Float64Input `pulumi:"statusCode"`
-	// Turn on or off Signed Exchanges (SXG).
-	Sxg pulumi.BoolInput `pulumi:"sxg"`
-	// The transformed request fields to log.
-	TransformedRequestFields GetRulesetRuleActionParametersTransformedRequestFieldArrayInput `pulumi:"transformedRequestFields"`
-	// URI to rewrite the request to.
-	Uri GetRulesetRuleActionParametersUriInput `pulumi:"uri"`
-}
-
-func (GetRulesetRuleActionParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParameters)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersArgs) ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput {
-	return i.ToGetRulesetRuleActionParametersOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersArgs) ToGetRulesetRuleActionParametersOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersOutput)
-}
-
-type GetRulesetRuleActionParametersOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParameters)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersOutput) ToGetRulesetRuleActionParametersOutput() GetRulesetRuleActionParametersOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersOutput) ToGetRulesetRuleActionParametersOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersOutput {
-	return o
-}
-
-// List of additional ports that caching can be enabled on.
-func (o GetRulesetRuleActionParametersOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []int { return v.AdditionalCacheablePorts }).(pulumi.IntArrayOutput)
-}
-
-// Custom order for compression algorithms.
-func (o GetRulesetRuleActionParametersOutput) Algorithms() GetRulesetRuleActionParametersAlgorithmArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersAlgorithm { return v.Algorithms }).(GetRulesetRuleActionParametersAlgorithmArrayOutput)
-}
-
-// Turn on or off Automatic HTTPS Rewrites.
-func (o GetRulesetRuleActionParametersOutput) AutomaticHttpsRewrites() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.AutomaticHttpsRewrites }).(pulumi.BoolOutput)
-}
-
-// Select which file extensions to minify automatically.
-func (o GetRulesetRuleActionParametersOutput) Autominify() GetRulesetRuleActionParametersAutominifyOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersAutominify { return v.Autominify }).(GetRulesetRuleActionParametersAutominifyOutput)
-}
-
-// Turn on or off Browser Integrity Check.
-func (o GetRulesetRuleActionParametersOutput) Bic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Bic }).(pulumi.BoolOutput)
-}
-
-// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
-func (o GetRulesetRuleActionParametersOutput) BrowserTtl() GetRulesetRuleActionParametersBrowserTtlOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersBrowserTtl { return v.BrowserTtl }).(GetRulesetRuleActionParametersBrowserTtlOutput)
-}
-
-// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
-func (o GetRulesetRuleActionParametersOutput) Cache() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Cache }).(pulumi.BoolOutput)
-}
-
-// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
-func (o GetRulesetRuleActionParametersOutput) CacheKey() GetRulesetRuleActionParametersCacheKeyOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersCacheKey { return v.CacheKey }).(GetRulesetRuleActionParametersCacheKeyOutput)
-}
-
-// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
-func (o GetRulesetRuleActionParametersOutput) CacheReserve() GetRulesetRuleActionParametersCacheReserveOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersCacheReserve {
-		return v.CacheReserve
-	}).(GetRulesetRuleActionParametersCacheReserveOutput)
-}
-
-// Error response content.
-func (o GetRulesetRuleActionParametersOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Content }).(pulumi.StringOutput)
-}
-
-// Content-type header to set with the response.
-// Available values: "application/json", "text/xml", "text/plain", "text/html".
-func (o GetRulesetRuleActionParametersOutput) ContentType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.ContentType }).(pulumi.StringOutput)
-}
-
-// The cookie fields to log.
-func (o GetRulesetRuleActionParametersOutput) CookieFields() GetRulesetRuleActionParametersCookieFieldArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersCookieField {
-		return v.CookieFields
-	}).(GetRulesetRuleActionParametersCookieFieldArrayOutput)
-}
-
-// Turn off all active Cloudflare Apps.
-func (o GetRulesetRuleActionParametersOutput) DisableApps() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableApps }).(pulumi.BoolOutput)
-}
-
-// Turn off Real User Monitoring (RUM).
-func (o GetRulesetRuleActionParametersOutput) DisableRum() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableRum }).(pulumi.BoolOutput)
-}
-
-// Turn off Zaraz.
-func (o GetRulesetRuleActionParametersOutput) DisableZaraz() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.DisableZaraz }).(pulumi.BoolOutput)
-}
-
-// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
-func (o GetRulesetRuleActionParametersOutput) EdgeTtl() GetRulesetRuleActionParametersEdgeTtlOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersEdgeTtl { return v.EdgeTtl }).(GetRulesetRuleActionParametersEdgeTtlOutput)
-}
-
-// Turn on or off Email Obfuscation.
-func (o GetRulesetRuleActionParametersOutput) EmailObfuscation() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.EmailObfuscation }).(pulumi.BoolOutput)
-}
-
-// Turn on or off Cloudflare Fonts.
-func (o GetRulesetRuleActionParametersOutput) Fonts() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Fonts }).(pulumi.BoolOutput)
-}
-
-// Serve a redirect based on a bulk list lookup.
-func (o GetRulesetRuleActionParametersOutput) FromList() GetRulesetRuleActionParametersFromListOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersFromList { return v.FromList }).(GetRulesetRuleActionParametersFromListOutput)
-}
-
-// Serve a redirect based on the request properties.
-func (o GetRulesetRuleActionParametersOutput) FromValue() GetRulesetRuleActionParametersFromValueOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersFromValue { return v.FromValue }).(GetRulesetRuleActionParametersFromValueOutput)
-}
-
-// Map of request headers to modify.
-func (o GetRulesetRuleActionParametersOutput) Headers() GetRulesetRuleActionParametersHeadersMapOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) map[string]GetRulesetRuleActionParametersHeaders {
-		return v.Headers
-	}).(GetRulesetRuleActionParametersHeadersMapOutput)
-}
-
-// Rewrite the HTTP Host header.
-func (o GetRulesetRuleActionParametersOutput) HostHeader() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.HostHeader }).(pulumi.StringOutput)
-}
-
-// Turn on or off the Hotlink Protection.
-func (o GetRulesetRuleActionParametersOutput) HotlinkProtection() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.HotlinkProtection }).(pulumi.BoolOutput)
-}
-
-// The ID of the ruleset to execute.
-func (o GetRulesetRuleActionParametersOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Increment contains the delta to change the score and can be either positive or negative.
-func (o GetRulesetRuleActionParametersOutput) Increment() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) int { return v.Increment }).(pulumi.IntOutput)
-}
-
-// The configuration to use for matched data logging.
-func (o GetRulesetRuleActionParametersOutput) MatchedData() GetRulesetRuleActionParametersMatchedDataOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersMatchedData { return v.MatchedData }).(GetRulesetRuleActionParametersMatchedDataOutput)
-}
-
-// Turn on or off Mirage.
-func (o GetRulesetRuleActionParametersOutput) Mirage() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Mirage }).(pulumi.BoolOutput)
-}
-
-// Turn on or off Opportunistic Encryption.
-func (o GetRulesetRuleActionParametersOutput) OpportunisticEncryption() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OpportunisticEncryption }).(pulumi.BoolOutput)
-}
-
-// Override the IP/TCP destination.
-func (o GetRulesetRuleActionParametersOutput) Origin() GetRulesetRuleActionParametersOriginOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOrigin { return v.Origin }).(GetRulesetRuleActionParametersOriginOutput)
-}
-
-// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
-func (o GetRulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OriginCacheControl }).(pulumi.BoolOutput)
-}
-
-// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
-func (o GetRulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.OriginErrorPagePassthru }).(pulumi.BoolOutput)
-}
-
-// A set of overrides to apply to the target ruleset.
-func (o GetRulesetRuleActionParametersOutput) Overrides() GetRulesetRuleActionParametersOverridesOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersOverrides { return v.Overrides }).(GetRulesetRuleActionParametersOverridesOutput)
-}
-
-// A phase to skip the execution of. This property is only compatible with products.
-// Available values: "current".
-func (o GetRulesetRuleActionParametersOutput) Phase() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Phase }).(pulumi.StringOutput)
-}
-
-// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
-func (o GetRulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
-}
-
-// Configure the Polish level.
-// Available values: "off", "lossless", "lossy", "webp".
-func (o GetRulesetRuleActionParametersOutput) Polish() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Polish }).(pulumi.StringOutput)
-}
-
-// A list of legacy security products to skip the execution of.
-func (o GetRulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
-}
-
-// The raw response fields to log.
-func (o GetRulesetRuleActionParametersOutput) RawResponseFields() GetRulesetRuleActionParametersRawResponseFieldArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersRawResponseField {
-		return v.RawResponseFields
-	}).(GetRulesetRuleActionParametersRawResponseFieldArrayOutput)
-}
-
-// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
-func (o GetRulesetRuleActionParametersOutput) ReadTimeout() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) int { return v.ReadTimeout }).(pulumi.IntOutput)
-}
-
-// The raw request fields to log.
-func (o GetRulesetRuleActionParametersOutput) RequestFields() GetRulesetRuleActionParametersRequestFieldArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersRequestField {
-		return v.RequestFields
-	}).(GetRulesetRuleActionParametersRequestFieldArrayOutput)
-}
-
-// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
-func (o GetRulesetRuleActionParametersOutput) RespectStrongEtags() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.RespectStrongEtags }).(pulumi.BoolOutput)
-}
-
-// The response to show when the block is applied.
-func (o GetRulesetRuleActionParametersOutput) Response() GetRulesetRuleActionParametersResponseOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersResponse { return v.Response }).(GetRulesetRuleActionParametersResponseOutput)
-}
-
-// The transformed response fields to log.
-func (o GetRulesetRuleActionParametersOutput) ResponseFields() GetRulesetRuleActionParametersResponseFieldArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersResponseField {
-		return v.ResponseFields
-	}).(GetRulesetRuleActionParametersResponseFieldArrayOutput)
-}
-
-// Turn on or off Rocket Loader.
-func (o GetRulesetRuleActionParametersOutput) RocketLoader() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.RocketLoader }).(pulumi.BoolOutput)
-}
-
-// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
-func (o GetRulesetRuleActionParametersOutput) Rules() pulumi.StringArrayMapOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) map[string][]string { return v.Rules }).(pulumi.StringArrayMapOutput)
-}
-
-// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
-// Available values: "current".
-func (o GetRulesetRuleActionParametersOutput) Ruleset() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Ruleset }).(pulumi.StringOutput)
-}
-
-// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
-func (o GetRulesetRuleActionParametersOutput) Rulesets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
-}
-
-// Configure the Security Level.
-// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
-func (o GetRulesetRuleActionParametersOutput) SecurityLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.SecurityLevel }).(pulumi.StringOutput)
-}
-
-// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
-func (o GetRulesetRuleActionParametersOutput) ServeStale() GetRulesetRuleActionParametersServeStaleOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersServeStale { return v.ServeStale }).(GetRulesetRuleActionParametersServeStaleOutput)
-}
-
-// Turn on or off Server Side Excludes.
-func (o GetRulesetRuleActionParametersOutput) ServerSideExcludes() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.ServerSideExcludes }).(pulumi.BoolOutput)
-}
-
-// Override the Server Name Indication (SNI).
-func (o GetRulesetRuleActionParametersOutput) Sni() GetRulesetRuleActionParametersSniOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersSni { return v.Sni }).(GetRulesetRuleActionParametersSniOutput)
-}
-
-// Configure the SSL level.
-// Available values: "off", "flexible", "full", "strict", "originPull".
-func (o GetRulesetRuleActionParametersOutput) Ssl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) string { return v.Ssl }).(pulumi.StringOutput)
-}
-
-// The status code to use for the error.
-func (o GetRulesetRuleActionParametersOutput) StatusCode() pulumi.Float64Output {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) float64 { return v.StatusCode }).(pulumi.Float64Output)
-}
-
-// Turn on or off Signed Exchanges (SXG).
-func (o GetRulesetRuleActionParametersOutput) Sxg() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) bool { return v.Sxg }).(pulumi.BoolOutput)
-}
-
-// The transformed request fields to log.
-func (o GetRulesetRuleActionParametersOutput) TransformedRequestFields() GetRulesetRuleActionParametersTransformedRequestFieldArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) []GetRulesetRuleActionParametersTransformedRequestField {
-		return v.TransformedRequestFields
-	}).(GetRulesetRuleActionParametersTransformedRequestFieldArrayOutput)
-}
-
-// URI to rewrite the request to.
-func (o GetRulesetRuleActionParametersOutput) Uri() GetRulesetRuleActionParametersUriOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParameters) GetRulesetRuleActionParametersUri { return v.Uri }).(GetRulesetRuleActionParametersUriOutput)
-}
-
-type GetRulesetRuleActionParametersAlgorithm struct {
-	// Name of compression algorithm to enable.
-	// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
-	Name string `pulumi:"name"`
-}
-
-// GetRulesetRuleActionParametersAlgorithmInput is an input type that accepts GetRulesetRuleActionParametersAlgorithmArgs and GetRulesetRuleActionParametersAlgorithmOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersAlgorithmInput` via:
-//
-//	GetRulesetRuleActionParametersAlgorithmArgs{...}
-type GetRulesetRuleActionParametersAlgorithmInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput
-	ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(context.Context) GetRulesetRuleActionParametersAlgorithmOutput
-}
-
-type GetRulesetRuleActionParametersAlgorithmArgs struct {
-	// Name of compression algorithm to enable.
-	// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetRulesetRuleActionParametersAlgorithmArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersAlgorithmArgs) ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput {
-	return i.ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersAlgorithmArgs) ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAlgorithmOutput)
-}
-
-// GetRulesetRuleActionParametersAlgorithmArrayInput is an input type that accepts GetRulesetRuleActionParametersAlgorithmArray and GetRulesetRuleActionParametersAlgorithmArrayOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersAlgorithmArrayInput` via:
-//
-//	GetRulesetRuleActionParametersAlgorithmArray{ GetRulesetRuleActionParametersAlgorithmArgs{...} }
-type GetRulesetRuleActionParametersAlgorithmArrayInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput
-	ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput
-}
-
-type GetRulesetRuleActionParametersAlgorithmArray []GetRulesetRuleActionParametersAlgorithmInput
-
-func (GetRulesetRuleActionParametersAlgorithmArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersAlgorithmArray) ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput {
-	return i.ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersAlgorithmArray) ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAlgorithmArrayOutput)
-}
-
-type GetRulesetRuleActionParametersAlgorithmOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersAlgorithmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersAlgorithmOutput) ToGetRulesetRuleActionParametersAlgorithmOutput() GetRulesetRuleActionParametersAlgorithmOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersAlgorithmOutput) ToGetRulesetRuleActionParametersAlgorithmOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmOutput {
-	return o
-}
-
-// Name of compression algorithm to enable.
-// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
-func (o GetRulesetRuleActionParametersAlgorithmOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersAlgorithm) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetRulesetRuleActionParametersAlgorithmArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersAlgorithmArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersAlgorithm)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) ToGetRulesetRuleActionParametersAlgorithmArrayOutput() GetRulesetRuleActionParametersAlgorithmArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) ToGetRulesetRuleActionParametersAlgorithmArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAlgorithmArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersAlgorithmArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersAlgorithmOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersAlgorithm {
-		return vs[0].([]GetRulesetRuleActionParametersAlgorithm)[vs[1].(int)]
-	}).(GetRulesetRuleActionParametersAlgorithmOutput)
-}
-
-type GetRulesetRuleActionParametersAutominify struct {
-	// Minify CSS files.
-	Css bool `pulumi:"css"`
-	// Minify HTML files.
-	Html bool `pulumi:"html"`
-	// Minify JS files.
-	Js bool `pulumi:"js"`
-}
-
-// GetRulesetRuleActionParametersAutominifyInput is an input type that accepts GetRulesetRuleActionParametersAutominifyArgs and GetRulesetRuleActionParametersAutominifyOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersAutominifyInput` via:
-//
-//	GetRulesetRuleActionParametersAutominifyArgs{...}
-type GetRulesetRuleActionParametersAutominifyInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput
-	ToGetRulesetRuleActionParametersAutominifyOutputWithContext(context.Context) GetRulesetRuleActionParametersAutominifyOutput
-}
-
-type GetRulesetRuleActionParametersAutominifyArgs struct {
-	// Minify CSS files.
-	Css pulumi.BoolInput `pulumi:"css"`
-	// Minify HTML files.
-	Html pulumi.BoolInput `pulumi:"html"`
-	// Minify JS files.
-	Js pulumi.BoolInput `pulumi:"js"`
-}
-
-func (GetRulesetRuleActionParametersAutominifyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersAutominify)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersAutominifyArgs) ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput {
-	return i.ToGetRulesetRuleActionParametersAutominifyOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersAutominifyArgs) ToGetRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAutominifyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersAutominifyOutput)
-}
-
-type GetRulesetRuleActionParametersAutominifyOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersAutominifyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersAutominify)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersAutominifyOutput) ToGetRulesetRuleActionParametersAutominifyOutput() GetRulesetRuleActionParametersAutominifyOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersAutominifyOutput) ToGetRulesetRuleActionParametersAutominifyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersAutominifyOutput {
-	return o
-}
-
-// Minify CSS files.
-func (o GetRulesetRuleActionParametersAutominifyOutput) Css() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Css }).(pulumi.BoolOutput)
-}
-
-// Minify HTML files.
-func (o GetRulesetRuleActionParametersAutominifyOutput) Html() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Html }).(pulumi.BoolOutput)
-}
-
-// Minify JS files.
-func (o GetRulesetRuleActionParametersAutominifyOutput) Js() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersAutominify) bool { return v.Js }).(pulumi.BoolOutput)
-}
-
-type GetRulesetRuleActionParametersBrowserTtl struct {
-	// The TTL (in seconds) if you choose overrideOrigin mode.
-	Default int `pulumi:"default"`
-	// Determines which browser ttl mode to use.
-	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
-	Mode string `pulumi:"mode"`
-}
-
-// GetRulesetRuleActionParametersBrowserTtlInput is an input type that accepts GetRulesetRuleActionParametersBrowserTtlArgs and GetRulesetRuleActionParametersBrowserTtlOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersBrowserTtlInput` via:
-//
-//	GetRulesetRuleActionParametersBrowserTtlArgs{...}
-type GetRulesetRuleActionParametersBrowserTtlInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput
-	ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersBrowserTtlOutput
-}
-
-type GetRulesetRuleActionParametersBrowserTtlArgs struct {
-	// The TTL (in seconds) if you choose overrideOrigin mode.
-	Default pulumi.IntInput `pulumi:"default"`
-	// Determines which browser ttl mode to use.
-	// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
-	Mode pulumi.StringInput `pulumi:"mode"`
-}
-
-func (GetRulesetRuleActionParametersBrowserTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtl)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersBrowserTtlArgs) ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput {
-	return i.ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersBrowserTtlArgs) ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersBrowserTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersBrowserTtlOutput)
-}
-
-type GetRulesetRuleActionParametersBrowserTtlOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersBrowserTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtl)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersBrowserTtlOutput) ToGetRulesetRuleActionParametersBrowserTtlOutput() GetRulesetRuleActionParametersBrowserTtlOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersBrowserTtlOutput) ToGetRulesetRuleActionParametersBrowserTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersBrowserTtlOutput {
-	return o
-}
-
-// The TTL (in seconds) if you choose overrideOrigin mode.
-func (o GetRulesetRuleActionParametersBrowserTtlOutput) Default() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersBrowserTtl) int { return v.Default }).(pulumi.IntOutput)
-}
-
-// Determines which browser ttl mode to use.
-// Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
-func (o GetRulesetRuleActionParametersBrowserTtlOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersBrowserTtl) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKey struct {
-	// Separate cached content based on the visitor’s device type.
-	CacheByDeviceType bool `pulumi:"cacheByDeviceType"`
-	// Protect from web cache deception attacks while allowing static assets to be cached.
-	CacheDeceptionArmor bool `pulumi:"cacheDeceptionArmor"`
-	// Customize which components of the request are included or excluded from the cache key.
-	CustomKey GetRulesetRuleActionParametersCacheKeyCustomKey `pulumi:"customKey"`
-	// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
-	IgnoreQueryStringsOrder bool `pulumi:"ignoreQueryStringsOrder"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyArgs and GetRulesetRuleActionParametersCacheKeyOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyArgs{...}
-type GetRulesetRuleActionParametersCacheKeyInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput
-	ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyArgs struct {
-	// Separate cached content based on the visitor’s device type.
-	CacheByDeviceType pulumi.BoolInput `pulumi:"cacheByDeviceType"`
-	// Protect from web cache deception attacks while allowing static assets to be cached.
-	CacheDeceptionArmor pulumi.BoolInput `pulumi:"cacheDeceptionArmor"`
-	// Customize which components of the request are included or excluded from the cache key.
-	CustomKey GetRulesetRuleActionParametersCacheKeyCustomKeyInput `pulumi:"customKey"`
-	// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
-	IgnoreQueryStringsOrder pulumi.BoolInput `pulumi:"ignoreQueryStringsOrder"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKey)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyArgs) ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyArgs) ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKey)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyOutput) ToGetRulesetRuleActionParametersCacheKeyOutput() GetRulesetRuleActionParametersCacheKeyOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyOutput) ToGetRulesetRuleActionParametersCacheKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyOutput {
-	return o
-}
-
-// Separate cached content based on the visitor’s device type.
-func (o GetRulesetRuleActionParametersCacheKeyOutput) CacheByDeviceType() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.CacheByDeviceType }).(pulumi.BoolOutput)
-}
-
-// Protect from web cache deception attacks while allowing static assets to be cached.
-func (o GetRulesetRuleActionParametersCacheKeyOutput) CacheDeceptionArmor() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.CacheDeceptionArmor }).(pulumi.BoolOutput)
-}
-
-// Customize which components of the request are included or excluded from the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyOutput) CustomKey() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) GetRulesetRuleActionParametersCacheKeyCustomKey {
-		return v.CustomKey
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput)
-}
-
-// Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
-func (o GetRulesetRuleActionParametersCacheKeyOutput) IgnoreQueryStringsOrder() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKey) bool { return v.IgnoreQueryStringsOrder }).(pulumi.BoolOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKey struct {
-	// The cookies to include in building the cache key.
-	Cookie GetRulesetRuleActionParametersCacheKeyCustomKeyCookie `pulumi:"cookie"`
-	// The header names and values to include in building the cache key.
-	Header GetRulesetRuleActionParametersCacheKeyCustomKeyHeader `pulumi:"header"`
-	// Whether to use the original host or the resolved host in the cache key.
-	Host GetRulesetRuleActionParametersCacheKeyCustomKeyHost `pulumi:"host"`
-	// Use the presence of parameters in the query string to build the cache key.
-	QueryString GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString `pulumi:"queryString"`
-	// Characteristics of the request user agent used in building the cache key.
-	User GetRulesetRuleActionParametersCacheKeyCustomKeyUser `pulumi:"user"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyArgs struct {
-	// The cookies to include in building the cache key.
-	Cookie GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput `pulumi:"cookie"`
-	// The header names and values to include in building the cache key.
-	Header GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderInput `pulumi:"header"`
-	// Whether to use the original host or the resolved host in the cache key.
-	Host GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput `pulumi:"host"`
-	// Use the presence of parameters in the query string to build the cache key.
-	QueryString GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput `pulumi:"queryString"`
-	// Characteristics of the request user agent used in building the cache key.
-	User GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput `pulumi:"user"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKey)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyOutput {
-	return o
-}
-
-// The cookies to include in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Cookie() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyCookie {
-		return v.Cookie
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
-}
-
-// The header names and values to include in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Header() GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyHeader {
-		return v.Header
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyHeaderOutput)
-}
-
-// Whether to use the original host or the resolved host in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) Host() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyHost {
-		return v.Host
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
-}
-
-// Use the presence of parameters in the query string to build the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) QueryString() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
-		return v.QueryString
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
-}
-
-// Characteristics of the request user agent used in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyOutput) User() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKey) GetRulesetRuleActionParametersCacheKeyCustomKeyUser {
-		return v.User
-	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyCookie struct {
-	// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
-	CheckPresences []string `pulumi:"checkPresences"`
-	// Include these cookies' names and their values.
-	Includes []string `pulumi:"includes"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs struct {
-	// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
-	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
-	// Include these cookies' names and their values.
-	Includes pulumi.StringArrayInput `pulumi:"includes"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookie)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput {
-	return o
-}
-
-// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) CheckPresences() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
-}
-
-// Include these cookies' names and their values.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput) Includes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneMetaInput)(nil)).Elem(), ZoneMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneMetaPtrInput)(nil)).Elem(), ZoneMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneOwnerInput)(nil)).Elem(), ZoneOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneOwnerPtrInput)(nil)).Elem(), ZoneOwnerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanInput)(nil)).Elem(), ZonePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZonePlanPtrInput)(nil)).Elem(), ZonePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSubscriptionRatePlanInput)(nil)).Elem(), ZoneSubscriptionRatePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSubscriptionRatePlanPtrInput)(nil)).Elem(), ZoneSubscriptionRatePlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantInput)(nil)).Elem(), ZoneTenantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantPtrInput)(nil)).Elem(), ZoneTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantUnitInput)(nil)).Elem(), ZoneTenantUnitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneTenantUnitPtrInput)(nil)).Elem(), ZoneTenantUnitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleConfigurationInput)(nil)).Elem(), GetAccessRuleConfigurationArgs{})
@@ -53954,8 +54123,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeylessCertificatesResultTunnelInput)(nil)).Elem(), GetKeylessCertificatesResultTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultArrayInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemHostnameInput)(nil)).Elem(), GetListItemHostnameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemRedirectInput)(nil)).Elem(), GetListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultInput)(nil)).Elem(), GetListItemsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultArrayInput)(nil)).Elem(), GetListItemsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultHostnameInput)(nil)).Elem(), GetListItemsResultHostnameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultRedirectInput)(nil)).Elem(), GetListItemsResultRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsResultInput)(nil)).Elem(), GetListsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsResultArrayInput)(nil)).Elem(), GetListsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerAdaptiveRoutingInput)(nil)).Elem(), GetLoadBalancerAdaptiveRoutingArgs{})
@@ -54274,18 +54447,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultMetaInput)(nil)).Elem(), GetResourceGroupsResultMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeInput)(nil)).Elem(), GetResourceGroupsResultScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeArrayInput)(nil)).Elem(), GetResourceGroupsResultScopeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeObjectInput)(nil)).Elem(), GetResourceGroupsResultScopeObjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupsResultScopeObjectArrayInput)(nil)).Elem(), GetResourceGroupsResultScopeObjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleInput)(nil)).Elem(), GetRulesetRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleArrayInput)(nil)).Elem(), GetRulesetRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersInput)(nil)).Elem(), GetRulesetRuleActionParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithmInput)(nil)).Elem(), GetRulesetRuleActionParametersAlgorithmArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAlgorithmArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersAlgorithmArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersAutominifyInput)(nil)).Elem(), GetRulesetRuleActionParametersAutominifyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersBrowserTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersBrowserTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyCookieInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyCookieArgs{})
+	pulumi.RegisterOutputType(ZoneMetaOutput{})
+	pulumi.RegisterOutputType(ZoneMetaPtrOutput{})
+	pulumi.RegisterOutputType(ZoneOwnerOutput{})
+	pulumi.RegisterOutputType(ZoneOwnerPtrOutput{})
+	pulumi.RegisterOutputType(ZonePlanOutput{})
+	pulumi.RegisterOutputType(ZonePlanPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSubscriptionRatePlanOutput{})
+	pulumi.RegisterOutputType(ZoneSubscriptionRatePlanPtrOutput{})
+	pulumi.RegisterOutputType(ZoneTenantOutput{})
+	pulumi.RegisterOutputType(ZoneTenantPtrOutput{})
 	pulumi.RegisterOutputType(ZoneTenantUnitOutput{})
 	pulumi.RegisterOutputType(ZoneTenantUnitPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessRuleConfigurationOutput{})
@@ -54664,8 +54835,12 @@ func init() {
 	pulumi.RegisterOutputType(GetKeylessCertificatesResultTunnelOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetListItemHostnameOutput{})
+	pulumi.RegisterOutputType(GetListItemRedirectOutput{})
 	pulumi.RegisterOutputType(GetListItemsResultOutput{})
 	pulumi.RegisterOutputType(GetListItemsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetListItemsResultHostnameOutput{})
+	pulumi.RegisterOutputType(GetListItemsResultRedirectOutput{})
 	pulumi.RegisterOutputType(GetListsResultOutput{})
 	pulumi.RegisterOutputType(GetListsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerAdaptiveRoutingOutput{})
@@ -54984,16 +55159,4 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceGroupsResultMetaOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsResultScopeOutput{})
 	pulumi.RegisterOutputType(GetResourceGroupsResultScopeArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceGroupsResultScopeObjectOutput{})
-	pulumi.RegisterOutputType(GetResourceGroupsResultScopeObjectArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAlgorithmOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAlgorithmArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersAutominifyOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersBrowserTtlOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyCookieOutput{})
 }

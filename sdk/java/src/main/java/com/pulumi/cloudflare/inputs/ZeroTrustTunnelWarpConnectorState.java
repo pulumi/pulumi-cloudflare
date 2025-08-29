@@ -49,6 +49,23 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     }
 
     /**
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    @Import(name="configSrc")
+    private @Nullable Output<String> configSrc;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    public Optional<Output<String>> configSrc() {
+        return Optional.ofNullable(this.configSrc);
+    }
+
+    /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare&#39;s edge.
      * 
      * @deprecated
@@ -164,14 +181,22 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     @Import(name="remoteConfig")
     private @Nullable Output<Boolean> remoteConfig;
 
     /**
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     public Optional<Output<Boolean>> remoteConfig() {
         return Optional.ofNullable(this.remoteConfig);
     }
@@ -230,6 +255,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
     private ZeroTrustTunnelWarpConnectorState(ZeroTrustTunnelWarpConnectorState $) {
         this.accountId = $.accountId;
         this.accountTag = $.accountTag;
+        this.configSrc = $.configSrc;
         this.connections = $.connections;
         this.connsActiveAt = $.connsActiveAt;
         this.connsInactiveAt = $.connsInactiveAt;
@@ -301,6 +327,29 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          */
         public Builder accountTag(String accountTag) {
             return accountTag(Output.of(accountTag));
+        }
+
+        /**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configSrc(@Nullable Output<String> configSrc) {
+            $.configSrc = configSrc;
+            return this;
+        }
+
+        /**
+         * @param configSrc Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configSrc(String configSrc) {
+            return configSrc(Output.of(configSrc));
         }
 
         /**
@@ -477,7 +526,11 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the config_src field instead.
+         * 
          */
+        @Deprecated /* Use the config_src field instead. */
         public Builder remoteConfig(@Nullable Output<Boolean> remoteConfig) {
             $.remoteConfig = remoteConfig;
             return this;
@@ -488,7 +541,11 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the config_src field instead.
+         * 
          */
+        @Deprecated /* Use the config_src field instead. */
         public Builder remoteConfig(Boolean remoteConfig) {
             return remoteConfig(Output.of(remoteConfig));
         }

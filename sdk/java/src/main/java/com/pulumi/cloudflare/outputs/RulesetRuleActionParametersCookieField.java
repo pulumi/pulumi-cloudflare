@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class RulesetRuleActionParametersCookieField {
     /**
-     * @return The name of the field.
+     * @return The name of the cookie.
      * 
      */
     private String name;
 
     private RulesetRuleActionParametersCookieField() {}
     /**
-     * @return The name of the field.
+     * @return The name of the cookie.
      * 
      */
     public String name() {

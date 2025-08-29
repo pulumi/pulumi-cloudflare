@@ -58,7 +58,7 @@ type ZeroTrustList struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the list.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// items to add to the list.
 	Items ZeroTrustListItemArrayOutput `pulumi:"items"`
 	// The number of items in the list.
@@ -276,8 +276,8 @@ func (o ZeroTrustListOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // The description of the list.
-func (o ZeroTrustListOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ZeroTrustListOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // items to add to the list.

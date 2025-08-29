@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
- *     comment: "Example comment for this route.",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
  *     networkSubset: "172.16.0.0/16",
@@ -105,7 +104,7 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
     /**
      * Optional remark describing the route.
      */
-    readonly comment?: string;
+    readonly comment: string;
     /**
      * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
      */
@@ -160,7 +159,6 @@ export interface GetZeroTrustTunnelCloudflaredRoutesResult {
  *
  * const exampleZeroTrustTunnelCloudflaredRoutes = cloudflare.getZeroTrustTunnelCloudflaredRoutes({
  *     accountId: "699d98642c564d2e855e9661899b7252",
- *     comment: "Example comment for this route.",
  *     existedAt: "2019-10-12T07%3A20%3A50.52Z",
  *     isDeleted: true,
  *     networkSubset: "172.16.0.0/16",

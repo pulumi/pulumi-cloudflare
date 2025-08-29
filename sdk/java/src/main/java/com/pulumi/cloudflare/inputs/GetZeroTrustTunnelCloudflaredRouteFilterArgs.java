@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -21,15 +22,15 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilterArgs extends com.pulu
      * Optional remark describing the route.
      * 
      */
-    @Import(name="comment")
-    private @Nullable Output<String> comment;
+    @Import(name="comment", required=true)
+    private Output<String> comment;
 
     /**
      * @return Optional remark describing the route.
      * 
      */
-    public Optional<Output<String>> comment() {
-        return Optional.ofNullable(this.comment);
+    public Output<String> comment() {
+        return this.comment;
     }
 
     /**
@@ -190,7 +191,7 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilterArgs extends com.pulu
          * @return builder
          * 
          */
-        public Builder comment(@Nullable Output<String> comment) {
+        public Builder comment(Output<String> comment) {
             $.comment = comment;
             return this;
         }
@@ -384,6 +385,9 @@ public final class GetZeroTrustTunnelCloudflaredRouteFilterArgs extends com.pulu
         }
 
         public GetZeroTrustTunnelCloudflaredRouteFilterArgs build() {
+            if ($.comment == null) {
+                throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredRouteFilterArgs", "comment");
+            }
             return $;
         }
     }

@@ -27,6 +27,7 @@ class BotManagementArgs:
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
                  sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
                  sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -43,6 +44,7 @@ class BotManagementArgs:
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
+        :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -66,6 +68,8 @@ class BotManagementArgs:
             pulumi.set(__self__, "enable_js", enable_js)
         if fight_mode is not None:
             pulumi.set(__self__, "fight_mode", fight_mode)
+        if is_robots_txt_managed is not None:
+            pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
         if optimize_wordpress is not None:
             pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
@@ -154,6 +158,18 @@ class BotManagementArgs:
         pulumi.set(self, "fight_mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="isRobotsTxtManaged")
+    def is_robots_txt_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        """
+        return pulumi.get(self, "is_robots_txt_managed")
+
+    @is_robots_txt_managed.setter
+    def is_robots_txt_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_robots_txt_managed", value)
+
+    @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
     def optimize_wordpress(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -239,6 +255,7 @@ class _BotManagementState:
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
                  sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
                  sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -257,6 +274,7 @@ class _BotManagementState:
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
+        :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -282,6 +300,8 @@ class _BotManagementState:
             pulumi.set(__self__, "enable_js", enable_js)
         if fight_mode is not None:
             pulumi.set(__self__, "fight_mode", fight_mode)
+        if is_robots_txt_managed is not None:
+            pulumi.set(__self__, "is_robots_txt_managed", is_robots_txt_managed)
         if optimize_wordpress is not None:
             pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
@@ -362,6 +382,18 @@ class _BotManagementState:
     @fight_mode.setter
     def fight_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "fight_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isRobotsTxtManaged")
+    def is_robots_txt_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        """
+        return pulumi.get(self, "is_robots_txt_managed")
+
+    @is_robots_txt_managed.setter
+    def is_robots_txt_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_robots_txt_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")
@@ -488,6 +520,7 @@ class BotManagement(pulumi.CustomResource):
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
                  sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
                  sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -508,7 +541,8 @@ class BotManagement(pulumi.CustomResource):
             ai_bots_protection="block",
             crawler_protection="enabled",
             enable_js=True,
-            fight_mode=True)
+            fight_mode=True,
+            is_robots_txt_managed=True)
         ```
 
         ## Import
@@ -526,6 +560,7 @@ class BotManagement(pulumi.CustomResource):
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
+        :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -557,7 +592,8 @@ class BotManagement(pulumi.CustomResource):
             ai_bots_protection="block",
             crawler_protection="enabled",
             enable_js=True,
-            fight_mode=True)
+            fight_mode=True,
+            is_robots_txt_managed=True)
         ```
 
         ## Import
@@ -586,6 +622,7 @@ class BotManagement(pulumi.CustomResource):
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
                  sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
                  sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -607,6 +644,7 @@ class BotManagement(pulumi.CustomResource):
             __props__.__dict__["crawler_protection"] = crawler_protection
             __props__.__dict__["enable_js"] = enable_js
             __props__.__dict__["fight_mode"] = fight_mode
+            __props__.__dict__["is_robots_txt_managed"] = is_robots_txt_managed
             __props__.__dict__["optimize_wordpress"] = optimize_wordpress
             __props__.__dict__["sbfm_definitely_automated"] = sbfm_definitely_automated
             __props__.__dict__["sbfm_likely_automated"] = sbfm_likely_automated
@@ -633,6 +671,7 @@ class BotManagement(pulumi.CustomResource):
             crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
             enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
             fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
+            is_robots_txt_managed: Optional[pulumi.Input[_builtins.bool]] = None,
             optimize_wordpress: Optional[pulumi.Input[_builtins.bool]] = None,
             sbfm_definitely_automated: Optional[pulumi.Input[_builtins.str]] = None,
             sbfm_likely_automated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -656,6 +695,7 @@ class BotManagement(pulumi.CustomResource):
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
         :param pulumi.Input[_builtins.bool] fight_mode: Whether to enable Bot Fight Mode.
+        :param pulumi.Input[_builtins.bool] is_robots_txt_managed: Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
         :param pulumi.Input[_builtins.bool] optimize_wordpress: Whether to optimize Super Bot Fight Mode protections for Wordpress.
         :param pulumi.Input[_builtins.str] sbfm_definitely_automated: Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
                Available values: "allow", "block", "managed_challenge".
@@ -680,6 +720,7 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["crawler_protection"] = crawler_protection
         __props__.__dict__["enable_js"] = enable_js
         __props__.__dict__["fight_mode"] = fight_mode
+        __props__.__dict__["is_robots_txt_managed"] = is_robots_txt_managed
         __props__.__dict__["optimize_wordpress"] = optimize_wordpress
         __props__.__dict__["sbfm_definitely_automated"] = sbfm_definitely_automated
         __props__.__dict__["sbfm_likely_automated"] = sbfm_likely_automated
@@ -732,6 +773,14 @@ class BotManagement(pulumi.CustomResource):
         Whether to enable Bot Fight Mode.
         """
         return pulumi.get(self, "fight_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="isRobotsTxtManaged")
+    def is_robots_txt_managed(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        """
+        return pulumi.get(self, "is_robots_txt_managed")
 
     @_builtins.property
     @pulumi.getter(name="optimizeWordpress")

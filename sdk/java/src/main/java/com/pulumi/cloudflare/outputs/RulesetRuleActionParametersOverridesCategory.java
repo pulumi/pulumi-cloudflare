@@ -29,7 +29,7 @@ public final class RulesetRuleActionParametersOverridesCategory {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The sensitivity level to use for rules in the category.
+     * @return The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
@@ -58,7 +58,7 @@ public final class RulesetRuleActionParametersOverridesCategory {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The sensitivity level to use for rules in the category.
+     * @return The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -54,9 +56,29 @@ export interface GetListItemResult {
      */
     readonly accountId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Defines a non-negative 32 bit integer.
+     */
+    readonly asn: number;
+    /**
+     * Defines an informative summary of the list item.
+     */
+    readonly comment: string;
+    /**
+     * The RFC 3339 timestamp of when the list was created.
+     */
+    readonly createdOn: string;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     */
+    readonly hostname: outputs.GetListItemHostname;
+    /**
+     * Defines the unique ID of the item in the List.
      */
     readonly id: string;
+    /**
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     */
+    readonly ip: string;
     /**
      * Defines the unique ID of the item in the List.
      */
@@ -65,6 +87,14 @@ export interface GetListItemResult {
      * The unique ID of the list.
      */
     readonly listId: string;
+    /**
+     * The RFC 3339 timestamp of when the list was last modified.
+     */
+    readonly modifiedOn: string;
+    /**
+     * The definition of the redirect.
+     */
+    readonly redirect: outputs.GetListItemRedirect;
 }
 /**
  * ## Example Usage

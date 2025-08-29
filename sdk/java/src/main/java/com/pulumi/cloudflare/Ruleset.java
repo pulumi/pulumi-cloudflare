@@ -32,14 +32,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/ruleset:Ruleset")
 public class Ruleset extends com.pulumi.resources.CustomResource {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -76,6 +76,20 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
+     * The timestamp of when the ruleset was last modified.
+     * 
+     */
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdated;
+
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    public Output<String> lastUpdated() {
+        return this.lastUpdated;
+    }
+    /**
      * The human-readable name of the ruleset.
      * 
      */
@@ -110,24 +124,38 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<RulesetRule>> rules;
+    private Output<List<RulesetRule>> rules;
 
     /**
      * @return The list of rules in the ruleset.
      * 
      */
-    public Output<Optional<List<RulesetRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<RulesetRule>> rules() {
+        return this.rules;
     }
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The version of the ruleset.
+     * 
+     */
+    @Export(name="version", refs={String.class}, tree="[0]")
+    private Output<String> version;
+
+    /**
+     * @return The version of the ruleset.
+     * 
+     */
+    public Output<String> version() {
+        return this.version;
+    }
+    /**
+     * The unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The unique ID of the zone.
      * 
      */
     public Output<Optional<String>> zoneId() {

@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyUserArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyUserArgs();
 
     /**
-     * Use the user agent&#39;s device type in the cache key.
+     * Whether to use the user agent&#39;s device type in the cache key.
      * 
      */
     @Import(name="deviceType")
     private @Nullable Output<Boolean> deviceType;
 
     /**
-     * @return Use the user agent&#39;s device type in the cache key.
+     * @return Whether to use the user agent&#39;s device type in the cache key.
      * 
      */
     public Optional<Output<Boolean>> deviceType() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
     }
 
     /**
-     * Use the user agents&#39;s country in the cache key.
+     * Whether to use the user agents&#39;s country in the cache key.
      * 
      */
     @Import(name="geo")
     private @Nullable Output<Boolean> geo;
 
     /**
-     * @return Use the user agents&#39;s country in the cache key.
+     * @return Whether to use the user agents&#39;s country in the cache key.
      * 
      */
     public Optional<Output<Boolean>> geo() {
@@ -46,14 +46,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
     }
 
     /**
-     * Use the user agent&#39;s language in the cache key.
+     * Whether to use the user agent&#39;s language in the cache key.
      * 
      */
     @Import(name="lang")
     private @Nullable Output<Boolean> lang;
 
     /**
-     * @return Use the user agent&#39;s language in the cache key.
+     * @return Whether to use the user agent&#39;s language in the cache key.
      * 
      */
     public Optional<Output<Boolean>> lang() {
@@ -87,7 +87,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param deviceType Use the user agent&#39;s device type in the cache key.
+         * @param deviceType Whether to use the user agent&#39;s device type in the cache key.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param deviceType Use the user agent&#39;s device type in the cache key.
+         * @param deviceType Whether to use the user agent&#39;s device type in the cache key.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param geo Use the user agents&#39;s country in the cache key.
+         * @param geo Whether to use the user agents&#39;s country in the cache key.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param geo Use the user agents&#39;s country in the cache key.
+         * @param geo Whether to use the user agents&#39;s country in the cache key.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param lang Use the user agent&#39;s language in the cache key.
+         * @param lang Whether to use the user agent&#39;s language in the cache key.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
         }
 
         /**
-         * @param lang Use the user agent&#39;s language in the cache key.
+         * @param lang Whether to use the user agent&#39;s language in the cache key.
          * 
          * @return builder
          * 

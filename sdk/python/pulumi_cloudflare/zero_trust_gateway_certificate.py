@@ -65,14 +65,14 @@ class _ZeroTrustGatewayCertificateState:
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
-        :param pulumi.Input[_builtins.str] binding_status: The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        :param pulumi.Input[_builtins.str] binding_status: The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
                Available values: "pending*deployment", "available", "pending*deletion", "inactive".
-        :param pulumi.Input[_builtins.str] certificate: The CA certificate
-        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate.
-        :param pulumi.Input[_builtins.bool] in_use: Use this certificate for Gateway TLS interception
-        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate.
-        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate.
-        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        :param pulumi.Input[_builtins.str] certificate: The CA certificate(read only).
+        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate(read only).
+        :param pulumi.Input[_builtins.bool] in_use: Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate(read only).
+        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate(read only).
+        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
                Available values: "custom", "gateway_managed".
         """
         if account_id is not None:
@@ -115,7 +115,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="bindingStatus")
     def binding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
@@ -128,7 +128,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The CA certificate
+        The CA certificate(read only).
         """
         return pulumi.get(self, "certificate")
 
@@ -158,7 +158,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The SHA256 fingerprint of the certificate.
+        The SHA256 fingerprint of the certificate(read only).
         """
         return pulumi.get(self, "fingerprint")
 
@@ -170,7 +170,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="inUse")
     def in_use(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Use this certificate for Gateway TLS interception
+        Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
         """
         return pulumi.get(self, "in_use")
 
@@ -182,7 +182,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="issuerOrg")
     def issuer_org(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The organization that issued the certificate.
+        The organization that issued the certificate(read only).
         """
         return pulumi.get(self, "issuer_org")
 
@@ -194,7 +194,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="issuerRaw")
     def issuer_raw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The entire issuer field of the certificate.
+        The entire issuer field of the certificate(read only).
         """
         return pulumi.get(self, "issuer_raw")
 
@@ -206,7 +206,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
         Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
@@ -368,14 +368,14 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] binding_status: The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        :param pulumi.Input[_builtins.str] binding_status: The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
                Available values: "pending*deployment", "available", "pending*deletion", "inactive".
-        :param pulumi.Input[_builtins.str] certificate: The CA certificate
-        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate.
-        :param pulumi.Input[_builtins.bool] in_use: Use this certificate for Gateway TLS interception
-        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate.
-        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate.
-        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        :param pulumi.Input[_builtins.str] certificate: The CA certificate(read only).
+        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate(read only).
+        :param pulumi.Input[_builtins.bool] in_use: Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate(read only).
+        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate(read only).
+        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
                Available values: "custom", "gateway_managed".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -406,7 +406,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="bindingStatus")
     def binding_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
@@ -415,7 +415,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:
         """
-        The CA certificate
+        The CA certificate(read only).
         """
         return pulumi.get(self, "certificate")
 
@@ -433,7 +433,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[_builtins.str]:
         """
-        The SHA256 fingerprint of the certificate.
+        The SHA256 fingerprint of the certificate(read only).
         """
         return pulumi.get(self, "fingerprint")
 
@@ -441,7 +441,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="inUse")
     def in_use(self) -> pulumi.Output[_builtins.bool]:
         """
-        Use this certificate for Gateway TLS interception
+        Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
         """
         return pulumi.get(self, "in_use")
 
@@ -449,7 +449,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="issuerOrg")
     def issuer_org(self) -> pulumi.Output[_builtins.str]:
         """
-        The organization that issued the certificate.
+        The organization that issued the certificate(read only).
         """
         return pulumi.get(self, "issuer_org")
 
@@ -457,7 +457,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="issuerRaw")
     def issuer_raw(self) -> pulumi.Output[_builtins.str]:
         """
-        The entire issuer field of the certificate.
+        The entire issuer field of the certificate(read only).
         """
         return pulumi.get(self, "issuer_raw")
 
@@ -465,7 +465,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+        The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
         Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")

@@ -138,6 +138,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+        /// </summary>
+        public readonly bool IsRobotsTxtManaged;
+        /// <summary>
         /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
         /// </summary>
         public readonly bool OptimizeWordpress;
@@ -193,6 +197,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            bool isRobotsTxtManaged,
+
             bool optimizeWordpress,
 
             string sbfmDefinitelyAutomated,
@@ -217,6 +223,7 @@ namespace Pulumi.Cloudflare
             EnableJs = enableJs;
             FightMode = fightMode;
             Id = id;
+            IsRobotsTxtManaged = isRobotsTxtManaged;
             OptimizeWordpress = optimizeWordpress;
             SbfmDefinitelyAutomated = sbfmDefinitelyAutomated;
             SbfmLikelyAutomated = sbfmLikelyAutomated;

@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
     public static final RulesetRuleActionParametersFromValueTargetUrlArgs Empty = new RulesetRuleActionParametersFromValueTargetUrlArgs();
 
     /**
-     * An expression to evaluate to get the URL to redirect the request to.
+     * An expression that evaluates to a URL to redirect the request to.
      * 
      */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
     /**
-     * @return An expression to evaluate to get the URL to redirect the request to.
+     * @return An expression that evaluates to a URL to redirect the request to.
      * 
      */
     public Optional<Output<String>> expression() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
     }
 
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param expression An expression to evaluate to get the URL to redirect the request to.
+         * @param expression An expression that evaluates to a URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param expression An expression to evaluate to get the URL to redirect the request to.
+         * @param expression An expression that evaluates to a URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value The URL to redirect the request to.
+         * @param value A URL to redirect the request to.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value The URL to redirect the request to.
+         * @param value A URL to redirect the request to.
          * 
          * @return builder
          * 

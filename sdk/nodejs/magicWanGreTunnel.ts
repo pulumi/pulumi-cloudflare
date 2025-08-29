@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     cloudflareGreEndpoint: "203.0.113.1",
+ *     customerGreEndpoint: "203.0.113.1",
+ *     interfaceAddress: "192.0.2.0/31",
+ *     name: "GRE_1",
+ *     description: "Tunnel for ISP X",
+ *     healthCheck: {
+ *         direction: "bidirectional",
+ *         enabled: true,
+ *         rate: "low",
+ *         target: {
+ *             saved: "203.0.113.1",
+ *         },
+ *         type: "request",
+ *     },
+ *     interfaceAddress6: "2606:54c1:7:0:a9fe:12d2:1:200/127",
+ *     mtu: 0,
+ *     ttl: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -69,6 +95,10 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
      */
     public readonly interfaceAddress!: pulumi.Output<string>;
     /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    public readonly interfaceAddress6!: pulumi.Output<string | undefined>;
+    /**
      * The date and time the tunnel was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
@@ -105,6 +135,7 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
+            resourceInputs["interfaceAddress6"] = state ? state.interfaceAddress6 : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -132,6 +163,7 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
+            resourceInputs["interfaceAddress6"] = args ? args.interfaceAddress6 : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
@@ -175,6 +207,10 @@ export interface MagicWanGreTunnelState {
      */
     interfaceAddress?: pulumi.Input<string>;
     /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    interfaceAddress6?: pulumi.Input<string>;
+    /**
      * The date and time the tunnel was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
@@ -217,6 +253,10 @@ export interface MagicWanGreTunnelArgs {
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
     interfaceAddress: pulumi.Input<string>;
+    /**
+     * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+     */
+    interfaceAddress6?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */

@@ -136,9 +136,6 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter(name="devicePosture")
     def device_posture(self) -> _builtins.str:
-        """
-        The wirefilter expression used for device posture check matching.
-        """
         return pulumi.get(self, "device_posture")
 
     @_builtins.property

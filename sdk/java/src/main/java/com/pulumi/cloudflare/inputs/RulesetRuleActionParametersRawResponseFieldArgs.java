@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersRawResponseFieldArgs extends com.p
     public static final RulesetRuleActionParametersRawResponseFieldArgs Empty = new RulesetRuleActionParametersRawResponseFieldArgs();
 
     /**
-     * The name of the field.
+     * The name of the response header.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return The name of the response header.
      * 
      */
     public Output<String> name() {
@@ -73,7 +73,7 @@ public final class RulesetRuleActionParametersRawResponseFieldArgs extends com.p
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the response header.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class RulesetRuleActionParametersRawResponseFieldArgs extends com.p
         }
 
         /**
-         * @param name The name of the field.
+         * @param name The name of the response header.
          * 
          * @return builder
          * 

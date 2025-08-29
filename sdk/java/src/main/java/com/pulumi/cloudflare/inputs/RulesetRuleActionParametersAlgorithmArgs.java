@@ -16,7 +16,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersAlgorithmArgs Empty = new RulesetRuleActionParametersAlgorithmArgs();
 
     /**
-     * Name of compression algorithm to enable.
+     * Name of the compression algorithm to enable.
      * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of compression algorithm to enable.
+     * @return Name of the compression algorithm to enable.
      * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
      * 
      */
@@ -57,7 +57,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of compression algorithm to enable.
+         * @param name Name of the compression algorithm to enable.
          * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of compression algorithm to enable.
+         * @param name Name of the compression algorithm to enable.
          * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
          * 
          * @return builder

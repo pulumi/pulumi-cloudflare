@@ -23,7 +23,7 @@ class ArgoSmartRoutingArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ArgoSmartRouting resource.
-        :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
+        :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
@@ -34,7 +34,7 @@ class ArgoSmartRoutingArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
         """
-        Enables Argo Smart Routing.
+        Specifies the enablement value of Argo Smart Routing.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")
@@ -59,14 +59,22 @@ class ArgoSmartRoutingArgs:
 @pulumi.input_type
 class _ArgoSmartRoutingState:
     def __init__(__self__, *,
+                 editable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ArgoSmartRouting resources.
-        :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
+        :param pulumi.Input[_builtins.bool] editable: Specifies if the setting is editable.
+        :param pulumi.Input[_builtins.str] modified_on: Specifies the time when the setting was last modified.
+        :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
+        if editable is not None:
+            pulumi.set(__self__, "editable", editable)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if value is not None:
             pulumi.set(__self__, "value", value)
         if zone_id is not None:
@@ -74,9 +82,33 @@ class _ArgoSmartRoutingState:
 
     @_builtins.property
     @pulumi.getter
+    def editable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies if the setting is editable.
+        """
+        return pulumi.get(self, "editable")
+
+    @editable.setter
+    def editable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "editable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the time when the setting was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @_builtins.property
+    @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enables Argo Smart Routing.
+        Specifies the enablement value of Argo Smart Routing.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")
@@ -127,7 +159,7 @@ class ArgoSmartRouting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
+        :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
@@ -187,6 +219,8 @@ class ArgoSmartRouting(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["editable"] = None
+            __props__.__dict__["modified_on"] = None
         super(ArgoSmartRouting, __self__).__init__(
             'cloudflare:index/argoSmartRouting:ArgoSmartRouting',
             resource_name,
@@ -197,6 +231,8 @@ class ArgoSmartRouting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            editable: Optional[pulumi.Input[_builtins.bool]] = None,
+            modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             value: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ArgoSmartRouting':
         """
@@ -206,7 +242,9 @@ class ArgoSmartRouting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] value: Enables Argo Smart Routing.
+        :param pulumi.Input[_builtins.bool] editable: Specifies if the setting is editable.
+        :param pulumi.Input[_builtins.str] modified_on: Specifies the time when the setting was last modified.
+        :param pulumi.Input[_builtins.str] value: Specifies the enablement value of Argo Smart Routing.
                Available values: "on", "off".
         :param pulumi.Input[_builtins.str] zone_id: Specifies the zone associated with the API call.
         """
@@ -214,15 +252,33 @@ class ArgoSmartRouting(pulumi.CustomResource):
 
         __props__ = _ArgoSmartRoutingState.__new__(_ArgoSmartRoutingState)
 
+        __props__.__dict__["editable"] = editable
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["value"] = value
         __props__.__dict__["zone_id"] = zone_id
         return ArgoSmartRouting(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
+    def editable(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies if the setting is editable.
+        """
+        return pulumi.get(self, "editable")
+
+    @_builtins.property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the time when the setting was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @_builtins.property
+    @pulumi.getter
     def value(self) -> pulumi.Output[_builtins.str]:
         """
-        Enables Argo Smart Routing.
+        Specifies the enablement value of Argo Smart Routing.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")

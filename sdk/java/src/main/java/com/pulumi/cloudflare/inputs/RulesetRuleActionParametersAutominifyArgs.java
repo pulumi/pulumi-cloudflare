@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
     public static final RulesetRuleActionParametersAutominifyArgs Empty = new RulesetRuleActionParametersAutominifyArgs();
 
     /**
-     * Minify CSS files.
+     * Whether to minify CSS files.
      * 
      */
     @Import(name="css")
     private @Nullable Output<Boolean> css;
 
     /**
-     * @return Minify CSS files.
+     * @return Whether to minify CSS files.
      * 
      */
     public Optional<Output<Boolean>> css() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
     }
 
     /**
-     * Minify HTML files.
+     * Whether to minify HTML files.
      * 
      */
     @Import(name="html")
     private @Nullable Output<Boolean> html;
 
     /**
-     * @return Minify HTML files.
+     * @return Whether to minify HTML files.
      * 
      */
     public Optional<Output<Boolean>> html() {
@@ -46,14 +46,14 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
     }
 
     /**
-     * Minify JS files.
+     * Whether to minify JavaScript files.
      * 
      */
     @Import(name="js")
     private @Nullable Output<Boolean> js;
 
     /**
-     * @return Minify JS files.
+     * @return Whether to minify JavaScript files.
      * 
      */
     public Optional<Output<Boolean>> js() {
@@ -87,7 +87,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param css Minify CSS files.
+         * @param css Whether to minify CSS files.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param css Minify CSS files.
+         * @param css Whether to minify CSS files.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param html Minify HTML files.
+         * @param html Whether to minify HTML files.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param html Minify HTML files.
+         * @param html Whether to minify HTML files.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param js Minify JS files.
+         * @param js Whether to minify JavaScript files.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
         }
 
         /**
-         * @param js Minify JS files.
+         * @param js Whether to minify JavaScript files.
          * 
          * @return builder
          * 

@@ -11,69 +11,12 @@ namespace Pulumi.Cloudflare
 {
     public static class GetSnippetsList
     {
-        /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleSnippetsList = Cloudflare.GetSnippetsList.Invoke(new()
-        ///     {
-        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Task<GetSnippetsListResult> InvokeAsync(GetSnippetsListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnippetsListResult>("cloudflare:index/getSnippetsList:getSnippetsList", args ?? new GetSnippetsListArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleSnippetsList = Cloudflare.GetSnippetsList.Invoke(new()
-        ///     {
-        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetSnippetsListResult> Invoke(GetSnippetsListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetsListResult>("cloudflare:index/getSnippetsList:getSnippetsList", args ?? new GetSnippetsListInvokeArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleSnippetsList = Cloudflare.GetSnippetsList.Invoke(new()
-        ///     {
-        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// </summary>
         public static Output<GetSnippetsListResult> Invoke(GetSnippetsListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnippetsListResult>("cloudflare:index/getSnippetsList:getSnippetsList", args ?? new GetSnippetsListInvokeArgs(), options.WithDefaults());
     }

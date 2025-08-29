@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
     public static final RulesetRuleActionParametersBrowserTtlArgs Empty = new RulesetRuleActionParametersBrowserTtlArgs();
 
     /**
-     * The TTL (in seconds) if you choose override_origin mode.
+     * The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     public Optional<Output<Integer>> default_() {
@@ -33,7 +33,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
     }
 
     /**
-     * Determines which browser ttl mode to use.
+     * The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */
@@ -41,7 +41,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
     private Output<String> mode;
 
     /**
-     * @return Determines which browser ttl mode to use.
+     * @return The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */
@@ -75,7 +75,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param default_ The TTL (in seconds) if you choose override_origin mode.
+         * @param default_ The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param default_ The TTL (in seconds) if you choose override_origin mode.
+         * @param default_ The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param mode Determines which browser ttl mode to use.
+         * @param mode The browser TTL mode.
          * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
          * 
          * @return builder
@@ -108,7 +108,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param mode Determines which browser ttl mode to use.
+         * @param mode The browser TTL mode.
          * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
          * 
          * @return builder

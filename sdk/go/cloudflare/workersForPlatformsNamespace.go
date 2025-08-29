@@ -67,6 +67,8 @@ type WorkersForPlatformsNamespace struct {
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount pulumi.IntOutput `pulumi:"scriptCount"`
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers pulumi.BoolOutput `pulumi:"trustedWorkers"`
 }
 
 // NewWorkersForPlatformsNamespace registers a new resource with the given unique name, arguments, and options.
@@ -126,6 +128,8 @@ type workersForPlatformsNamespaceState struct {
 	NamespaceName *string `pulumi:"namespaceName"`
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount *int `pulumi:"scriptCount"`
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers *bool `pulumi:"trustedWorkers"`
 }
 
 type WorkersForPlatformsNamespaceState struct {
@@ -147,6 +151,8 @@ type WorkersForPlatformsNamespaceState struct {
 	NamespaceName pulumi.StringPtrInput
 	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount pulumi.IntPtrInput
+	// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+	TrustedWorkers pulumi.BoolPtrInput
 }
 
 func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
@@ -298,6 +304,11 @@ func (o WorkersForPlatformsNamespaceOutput) NamespaceName() pulumi.StringOutput 
 // The current number of scripts in this Dispatch Namespace.
 func (o WorkersForPlatformsNamespaceOutput) ScriptCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.IntOutput { return v.ScriptCount }).(pulumi.IntOutput)
+}
+
+// Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
+func (o WorkersForPlatformsNamespaceOutput) TrustedWorkers() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.BoolOutput { return v.TrustedWorkers }).(pulumi.BoolOutput)
 }
 
 type WorkersForPlatformsNamespaceArrayOutput struct{ *pulumi.OutputState }

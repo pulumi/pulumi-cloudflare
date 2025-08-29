@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +16,18 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
     public static final RulesetRuleActionParametersServeStaleArgs Empty = new RulesetRuleActionParametersServeStaleArgs();
 
     /**
-     * Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      * 
      */
-    @Import(name="disableStaleWhileUpdating", required=true)
-    private Output<Boolean> disableStaleWhileUpdating;
+    @Import(name="disableStaleWhileUpdating")
+    private @Nullable Output<Boolean> disableStaleWhileUpdating;
 
     /**
-     * @return Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      * 
      */
-    public Output<Boolean> disableStaleWhileUpdating() {
-        return this.disableStaleWhileUpdating;
+    public Optional<Output<Boolean>> disableStaleWhileUpdating() {
+        return Optional.ofNullable(this.disableStaleWhileUpdating);
     }
 
     private RulesetRuleActionParametersServeStaleArgs() {}
@@ -54,18 +55,18 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
         }
 
         /**
-         * @param disableStaleWhileUpdating Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+         * @param disableStaleWhileUpdating Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
          * 
          * @return builder
          * 
          */
-        public Builder disableStaleWhileUpdating(Output<Boolean> disableStaleWhileUpdating) {
+        public Builder disableStaleWhileUpdating(@Nullable Output<Boolean> disableStaleWhileUpdating) {
             $.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }
 
         /**
-         * @param disableStaleWhileUpdating Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+         * @param disableStaleWhileUpdating Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
          * 
          * @return builder
          * 
@@ -75,9 +76,6 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
         }
 
         public RulesetRuleActionParametersServeStaleArgs build() {
-            if ($.disableStaleWhileUpdating == null) {
-                throw new MissingRequiredPropertyException("RulesetRuleActionParametersServeStaleArgs", "disableStaleWhileUpdating");
-            }
             return $;
         }
     }

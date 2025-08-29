@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -22,6 +23,11 @@ public final class GetR2CustomDomainResult {
      * 
      */
     private String bucketName;
+    /**
+     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    private List<String> ciphers;
     /**
      * @return Name of the custom domain.
      * 
@@ -69,6 +75,13 @@ public final class GetR2CustomDomainResult {
      */
     public String bucketName() {
         return this.bucketName;
+    }
+    /**
+     * @return An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     * 
+     */
+    public List<String> ciphers() {
+        return this.ciphers;
     }
     /**
      * @return Name of the custom domain.
@@ -128,6 +141,7 @@ public final class GetR2CustomDomainResult {
     public static final class Builder {
         private String accountId;
         private String bucketName;
+        private List<String> ciphers;
         private String domain;
         private Boolean enabled;
         private String id;
@@ -140,6 +154,7 @@ public final class GetR2CustomDomainResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.bucketName = defaults.bucketName;
+    	      this.ciphers = defaults.ciphers;
     	      this.domain = defaults.domain;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
@@ -164,6 +179,17 @@ public final class GetR2CustomDomainResult {
             }
             this.bucketName = bucketName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ciphers(List<String> ciphers) {
+            if (ciphers == null) {
+              throw new MissingRequiredPropertyException("GetR2CustomDomainResult", "ciphers");
+            }
+            this.ciphers = ciphers;
+            return this;
+        }
+        public Builder ciphers(String... ciphers) {
+            return ciphers(List.of(ciphers));
         }
         @CustomType.Setter
         public Builder domain(String domain) {
@@ -225,6 +251,7 @@ public final class GetR2CustomDomainResult {
             final var _resultValue = new GetR2CustomDomainResult();
             _resultValue.accountId = accountId;
             _resultValue.bucketName = bucketName;
+            _resultValue.ciphers = ciphers;
             _resultValue.domain = domain;
             _resultValue.enabled = enabled;
             _resultValue.id = id;

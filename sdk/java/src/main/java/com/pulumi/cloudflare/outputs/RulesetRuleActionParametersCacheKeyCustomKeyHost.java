@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHost {
     /**
-     * @return Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * @return Whether to use the resolved host in the cache key.
      * 
      */
     private @Nullable Boolean resolved;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHost() {}
     /**
-     * @return Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * @return Whether to use the resolved host in the cache key.
      * 
      */
     public Optional<Boolean> resolved() {

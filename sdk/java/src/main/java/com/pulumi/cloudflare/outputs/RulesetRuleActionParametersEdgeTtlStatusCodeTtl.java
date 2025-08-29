@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * @return Set the TTL for responses with this specific status code.
+     * @return A single status code to apply the TTL to.
      * 
      */
     private @Nullable Integer statusCode;
     /**
-     * @return The range of status codes used to apply the selected mode.
+     * @return A range of status codes to apply the TTL to.
      * 
      */
     private @Nullable RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
     /**
-     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+     * @return The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
      * 
      */
     private Integer value;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
     /**
-     * @return Set the TTL for responses with this specific status code.
+     * @return A single status code to apply the TTL to.
      * 
      */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return The range of status codes used to apply the selected mode.
+     * @return A range of status codes to apply the TTL to.
      * 
      */
     public Optional<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRange() {
         return Optional.ofNullable(this.statusCodeRange);
     }
     /**
-     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+     * @return The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
      * 
      */
     public Integer value() {

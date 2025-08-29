@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// The scope of the URL normalization.
-        /// Available values: "incoming", "both".
+        /// Available values: "incoming", "both", "none".
         /// </summary>
         public readonly string Scope;
         /// <summary>

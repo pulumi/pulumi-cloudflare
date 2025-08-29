@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
      * Whether to generate a log when the rule matches.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Whether to generate a log when the rule matches.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     private RulesetRuleLoggingArgs() {}
@@ -59,7 +60,7 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -75,9 +76,6 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         public RulesetRuleLoggingArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("RulesetRuleLoggingArgs", "enabled");
-            }
             return $;
         }
     }

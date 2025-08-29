@@ -28,6 +28,7 @@ class MagicWanGreTunnelArgs:
                  name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
@@ -38,6 +39,7 @@ class MagicWanGreTunnelArgs:
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         :param pulumi.Input[_builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
@@ -50,6 +52,8 @@ class MagicWanGreTunnelArgs:
             pulumi.set(__self__, "description", description)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
+        if interface_address6 is not None:
+            pulumi.set(__self__, "interface_address6", interface_address6)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if ttl is not None:
@@ -137,6 +141,18 @@ class MagicWanGreTunnelArgs:
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
+
+    @interface_address6.setter
+    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_address6", value)
+
+    @_builtins.property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -171,6 +187,7 @@ class _MagicWanGreTunnelState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -183,6 +200,7 @@ class _MagicWanGreTunnelState:
         :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
@@ -202,6 +220,8 @@ class _MagicWanGreTunnelState:
             pulumi.set(__self__, "health_check", health_check)
         if interface_address is not None:
             pulumi.set(__self__, "interface_address", interface_address)
+        if interface_address6 is not None:
+            pulumi.set(__self__, "interface_address6", interface_address6)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if mtu is not None:
@@ -293,6 +313,18 @@ class _MagicWanGreTunnelState:
         pulumi.set(self, "interface_address", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
+
+    @interface_address6.setter
+    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_address6", value)
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -353,12 +385,38 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            cloudflare_gre_endpoint="203.0.113.1",
+            customer_gre_endpoint="203.0.113.1",
+            interface_address="192.0.2.0/31",
+            name="GRE_1",
+            description="Tunnel for ISP X",
+            health_check={
+                "direction": "bidirectional",
+                "enabled": True,
+                "rate": "low",
+                "target": {
+                    "saved": "203.0.113.1",
+                },
+                "type": "request",
+            },
+            interface_address6="2606:54c1:7:0:a9fe:12d2:1:200/127",
+            mtu=0,
+            ttl=0)
+        ```
 
         ## Import
 
@@ -373,6 +431,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[_builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
@@ -385,6 +444,31 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            cloudflare_gre_endpoint="203.0.113.1",
+            customer_gre_endpoint="203.0.113.1",
+            interface_address="192.0.2.0/31",
+            name="GRE_1",
+            description="Tunnel for ISP X",
+            health_check={
+                "direction": "bidirectional",
+                "enabled": True,
+                "rate": "low",
+                "target": {
+                    "saved": "203.0.113.1",
+                },
+                "type": "request",
+            },
+            interface_address6="2606:54c1:7:0:a9fe:12d2:1:200/127",
+            mtu=0,
+            ttl=0)
+        ```
 
         ## Import
 
@@ -413,6 +497,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
@@ -439,6 +524,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             if interface_address is None and not opts.urn:
                 raise TypeError("Missing required property 'interface_address'")
             __props__.__dict__["interface_address"] = interface_address
+            __props__.__dict__["interface_address6"] = interface_address6
             __props__.__dict__["mtu"] = mtu
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -465,6 +551,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+            interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             mtu: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -482,6 +569,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[_builtins.str] description: An optional description of the GRE tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[_builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         :param pulumi.Input[_builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
@@ -498,6 +586,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
+        __props__.__dict__["interface_address6"] = interface_address6
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
@@ -556,6 +645,14 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
+
+    @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

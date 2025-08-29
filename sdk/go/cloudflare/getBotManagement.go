@@ -68,6 +68,8 @@ type LookupBotManagementResult struct {
 	FightMode bool `pulumi:"fightMode"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+	IsRobotsTxtManaged bool `pulumi:"isRobotsTxtManaged"`
 	// Whether to optimize Super Bot Fight Mode protections for Wordpress.
 	OptimizeWordpress bool `pulumi:"optimizeWordpress"`
 	// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -157,6 +159,11 @@ func (o LookupBotManagementResultOutput) FightMode() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBotManagementResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+func (o LookupBotManagementResultOutput) IsRobotsTxtManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.IsRobotsTxtManaged }).(pulumi.BoolOutput)
 }
 
 // Whether to optimize Super Bot Fight Mode protections for Wordpress.

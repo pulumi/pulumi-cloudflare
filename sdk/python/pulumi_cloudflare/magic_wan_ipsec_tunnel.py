@@ -28,6 +28,7 @@ class MagicWanIpsecTunnelArgs:
                  customer_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  psk: Optional[pulumi.Input[_builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -38,6 +39,7 @@ class MagicWanIpsecTunnelArgs:
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
         :param pulumi.Input[_builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         """
@@ -51,6 +53,8 @@ class MagicWanIpsecTunnelArgs:
             pulumi.set(__self__, "description", description)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
+        if interface_address6 is not None:
+            pulumi.set(__self__, "interface_address6", interface_address6)
         if psk is not None:
             pulumi.set(__self__, "psk", psk)
         if replay_protection is not None:
@@ -138,6 +142,18 @@ class MagicWanIpsecTunnelArgs:
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
+
+    @interface_address6.setter
+    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_address6", value)
+
+    @_builtins.property
     @pulumi.getter
     def psk(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -173,6 +189,7 @@ class _MagicWanIpsecTunnelState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  psk: Optional[pulumi.Input[_builtins.str]] = None,
@@ -187,6 +204,7 @@ class _MagicWanIpsecTunnelState:
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[_builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
@@ -209,6 +227,8 @@ class _MagicWanIpsecTunnelState:
             pulumi.set(__self__, "health_check", health_check)
         if interface_address is not None:
             pulumi.set(__self__, "interface_address", interface_address)
+        if interface_address6 is not None:
+            pulumi.set(__self__, "interface_address6", interface_address6)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
@@ -314,6 +334,18 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "interface_address", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
+
+    @interface_address6.setter
+    def interface_address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_address6", value)
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -386,12 +418,38 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  psk: Optional[pulumi.Input[_builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            cloudflare_endpoint="203.0.113.1",
+            interface_address="192.0.2.0/31",
+            name="IPsec_1",
+            customer_endpoint="203.0.113.1",
+            description="Tunnel for ISP X",
+            health_check={
+                "direction": "bidirectional",
+                "enabled": True,
+                "rate": "low",
+                "target": {
+                    "saved": "203.0.113.1",
+                },
+                "type": "request",
+            },
+            interface_address6="2606:54c1:7:0:a9fe:12d2:1:200/127",
+            psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+            replay_protection=False)
+        ```
 
         ## Import
 
@@ -406,6 +464,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[_builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
         :param pulumi.Input[_builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
@@ -418,6 +477,31 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_wan_ipsec_tunnel = cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            cloudflare_endpoint="203.0.113.1",
+            interface_address="192.0.2.0/31",
+            name="IPsec_1",
+            customer_endpoint="203.0.113.1",
+            description="Tunnel for ISP X",
+            health_check={
+                "direction": "bidirectional",
+                "enabled": True,
+                "rate": "low",
+                "target": {
+                    "saved": "203.0.113.1",
+                },
+                "type": "request",
+            },
+            interface_address6="2606:54c1:7:0:a9fe:12d2:1:200/127",
+            psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+            replay_protection=False)
+        ```
 
         ## Import
 
@@ -446,6 +530,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  psk: Optional[pulumi.Input[_builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -470,6 +555,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             if interface_address is None and not opts.urn:
                 raise TypeError("Missing required property 'interface_address'")
             __props__.__dict__["interface_address"] = interface_address
+            __props__.__dict__["interface_address6"] = interface_address6
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -501,6 +587,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[_builtins.str]] = None,
+            interface_address6: Optional[pulumi.Input[_builtins.str]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             psk: Optional[pulumi.Input[_builtins.str]] = None,
@@ -520,6 +607,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[_builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[_builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[_builtins.str] interface_address6: A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
         :param pulumi.Input[_builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[_builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[_builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
@@ -538,6 +626,7 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
+        __props__.__dict__["interface_address6"] = interface_address6
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["psk"] = psk
@@ -605,6 +694,14 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
+
+    @_builtins.property
+    @pulumi.getter(name="interfaceAddress6")
+    def interface_address6(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        """
+        return pulumi.get(self, "interface_address6")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

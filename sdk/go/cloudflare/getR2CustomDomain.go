@@ -64,6 +64,8 @@ type LookupR2CustomDomainResult struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers []string `pulumi:"ciphers"`
 	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
 	// Whether this bucket is publicly accessible at the specified custom domain.
@@ -126,6 +128,11 @@ func (o LookupR2CustomDomainResultOutput) AccountId() pulumi.StringOutput {
 // Name of the bucket.
 func (o LookupR2CustomDomainResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+func (o LookupR2CustomDomainResultOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupR2CustomDomainResult) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
 
 // Name of the custom domain.

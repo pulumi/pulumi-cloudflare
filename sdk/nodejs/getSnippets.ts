@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * const exampleSnippets = cloudflare.getSnippets({
  *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
- *     snippetName: "my_snippet",
  * });
  * ```
  */
@@ -73,7 +72,6 @@ export interface GetSnippetsResult {
  *
  * const exampleSnippets = cloudflare.getSnippets({
  *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
- *     snippetName: "my_snippet",
  * });
  * ```
  */

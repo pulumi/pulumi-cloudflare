@@ -14,17 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ManagedTransformsManagedRequestHeader
     {
         /// <summary>
-        /// The Managed Transforms that this Managed Transform conflicts with.
-        /// </summary>
-        public readonly ImmutableArray<string> ConflictsWiths;
-        /// <summary>
         /// Whether the Managed Transform is enabled.
         /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
-        /// </summary>
-        public readonly bool? HasConflict;
         /// <summary>
         /// The human-readable identifier of the Managed Transform.
         /// </summary>
@@ -32,17 +24,11 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ManagedTransformsManagedRequestHeader(
-            ImmutableArray<string> conflictsWiths,
-
             bool enabled,
-
-            bool? hasConflict,
 
             string id)
         {
-            ConflictsWiths = conflictsWiths;
             Enabled = enabled;
-            HasConflict = hasConflict;
             Id = id;
         }
     }

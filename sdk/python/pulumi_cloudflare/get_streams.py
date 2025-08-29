@@ -27,7 +27,7 @@ class GetStreamsResult:
     """
     A collection of values returned by getStreams.
     """
-    def __init__(__self__, account_id=None, asc=None, creator=None, end=None, id=None, include_counts=None, max_items=None, results=None, search=None, start=None, status=None, type=None):
+    def __init__(__self__, account_id=None, asc=None, creator=None, end=None, id=None, include_counts=None, max_items=None, results=None, search=None, start=None, status=None, type=None, video_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -64,6 +64,9 @@ class GetStreamsResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if video_name and not isinstance(video_name, str):
+            raise TypeError("Expected argument 'video_name' to be a str")
+        pulumi.set(__self__, "video_name", video_name)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -133,7 +136,7 @@ class GetStreamsResult:
     @pulumi.getter
     def search(self) -> Optional[_builtins.str]:
         """
-        Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+        Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         """
         return pulumi.get(self, "search")
 
@@ -162,6 +165,14 @@ class GetStreamsResult:
         """
         return pulumi.get(self, "type")
 
+    @_builtins.property
+    @pulumi.getter(name="videoName")
+    def video_name(self) -> Optional[_builtins.str]:
+        """
+        Provides a fast, exact string match on the `name` key in the `meta` field.
+        """
+        return pulumi.get(self, "video_name")
+
 
 class AwaitableGetStreamsResult(GetStreamsResult):
     # pylint: disable=using-constant-test
@@ -180,7 +191,8 @@ class AwaitableGetStreamsResult(GetStreamsResult):
             search=self.search,
             start=self.start,
             status=self.status,
-            type=self.type)
+            type=self.type,
+            video_name=self.video_name)
 
 
 def get_streams(account_id: Optional[_builtins.str] = None,
@@ -193,6 +205,7 @@ def get_streams(account_id: Optional[_builtins.str] = None,
                 start: Optional[_builtins.str] = None,
                 status: Optional[_builtins.str] = None,
                 type: Optional[_builtins.str] = None,
+                video_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetStreamsResult:
     """
     ## Example Usage
@@ -207,7 +220,8 @@ def get_streams(account_id: Optional[_builtins.str] = None,
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
         status="inprogress",
-        type="live")
+        type="live",
+        video_name="puppy.mp4")
     ```
 
 
@@ -217,11 +231,12 @@ def get_streams(account_id: Optional[_builtins.str] = None,
     :param _builtins.str end: Lists videos created before the specified date.
     :param _builtins.bool include_counts: Includes the total number of videos associated with the submitted query parameters.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str search: Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+    :param _builtins.str search: Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
     :param _builtins.str start: Lists videos created after the specified date.
     :param _builtins.str status: Specifies the processing status for all quality levels for a video.
            Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
     :param _builtins.str type: Specifies whether the video is `vod` or `live`.
+    :param _builtins.str video_name: Provides a fast, exact string match on the `name` key in the `meta` field.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -234,6 +249,7 @@ def get_streams(account_id: Optional[_builtins.str] = None,
     __args__['start'] = start
     __args__['status'] = status
     __args__['type'] = type
+    __args__['videoName'] = video_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getStreams:getStreams', __args__, opts=opts, typ=GetStreamsResult).value
 
@@ -249,7 +265,8 @@ def get_streams(account_id: Optional[_builtins.str] = None,
         search=pulumi.get(__ret__, 'search'),
         start=pulumi.get(__ret__, 'start'),
         status=pulumi.get(__ret__, 'status'),
-        type=pulumi.get(__ret__, 'type'))
+        type=pulumi.get(__ret__, 'type'),
+        video_name=pulumi.get(__ret__, 'video_name'))
 def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                        asc: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                        creator: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -260,6 +277,7 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                        start: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       video_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStreamsResult]:
     """
     ## Example Usage
@@ -274,7 +292,8 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
         status="inprogress",
-        type="live")
+        type="live",
+        video_name="puppy.mp4")
     ```
 
 
@@ -284,11 +303,12 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     :param _builtins.str end: Lists videos created before the specified date.
     :param _builtins.bool include_counts: Includes the total number of videos associated with the submitted query parameters.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str search: Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+    :param _builtins.str search: Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
     :param _builtins.str start: Lists videos created after the specified date.
     :param _builtins.str status: Specifies the processing status for all quality levels for a video.
            Available values: "pendingupload", "downloading", "queued", "inprogress", "ready", "error", "live-inprogress".
     :param _builtins.str type: Specifies whether the video is `vod` or `live`.
+    :param _builtins.str video_name: Provides a fast, exact string match on the `name` key in the `meta` field.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -301,6 +321,7 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['start'] = start
     __args__['status'] = status
     __args__['type'] = type
+    __args__['videoName'] = video_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getStreams:getStreams', __args__, opts=opts, typ=GetStreamsResult)
     return __ret__.apply(lambda __response__: GetStreamsResult(
@@ -315,4 +336,5 @@ def get_streams_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
         search=pulumi.get(__response__, 'search'),
         start=pulumi.get(__response__, 'start'),
         status=pulumi.get(__response__, 'status'),
-        type=pulumi.get(__response__, 'type')))
+        type=pulumi.get(__response__, 'type'),
+        video_name=pulumi.get(__response__, 'video_name')))

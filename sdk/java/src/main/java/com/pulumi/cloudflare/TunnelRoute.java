@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -88,14 +87,14 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> comment;
+    private Output<String> comment;
 
     /**
      * @return Optional remark describing the route.
      * 
      */
-    public Output<Optional<String>> comment() {
-        return Codegen.optional(this.comment);
+    public Output<String> comment() {
+        return this.comment;
     }
     /**
      * Timestamp of when the resource was created.

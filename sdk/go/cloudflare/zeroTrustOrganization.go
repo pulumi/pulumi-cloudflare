@@ -18,13 +18,13 @@ type ZeroTrustOrganization struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
+	AllowAuthenticateViaWarp pulumi.BoolOutput `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrOutput `pulumi:"authDomain"`
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolOutput                         `pulumi:"autoRedirectToIdentity"`
 	CustomPages            ZeroTrustOrganizationCustomPagesPtrOutput `pulumi:"customPages"`
-	IsUiReadOnly           pulumi.BoolPtrOutput                      `pulumi:"isUiReadOnly"`
+	IsUiReadOnly           pulumi.BoolOutput                         `pulumi:"isUiReadOnly"`
 	LoginDesign            ZeroTrustOrganizationLoginDesignPtrOutput `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
@@ -277,8 +277,8 @@ func (o ZeroTrustOrganizationOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
-func (o ZeroTrustOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.BoolOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
 }
 
 // The unique subdomain assigned to your Zero Trust organization.
@@ -295,8 +295,8 @@ func (o ZeroTrustOrganizationOutput) CustomPages() ZeroTrustOrganizationCustomPa
 	return o.ApplyT(func(v *ZeroTrustOrganization) ZeroTrustOrganizationCustomPagesPtrOutput { return v.CustomPages }).(ZeroTrustOrganizationCustomPagesPtrOutput)
 }
 
-func (o ZeroTrustOrganizationOutput) IsUiReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.BoolPtrOutput { return v.IsUiReadOnly }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustOrganizationOutput) IsUiReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.BoolOutput { return v.IsUiReadOnly }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustOrganizationOutput) LoginDesign() ZeroTrustOrganizationLoginDesignPtrOutput {

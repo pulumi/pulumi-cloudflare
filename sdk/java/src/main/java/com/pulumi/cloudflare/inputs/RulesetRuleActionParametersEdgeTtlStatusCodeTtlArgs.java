@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs();
 
     /**
-     * Set the TTL for responses with this specific status code.
+     * A single status code to apply the TTL to.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Set the TTL for responses with this specific status code.
+     * @return A single status code to apply the TTL to.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -33,14 +33,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     }
 
     /**
-     * The range of status codes used to apply the selected mode.
+     * A range of status codes to apply the TTL to.
      * 
      */
     @Import(name="statusCodeRange")
     private @Nullable Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRange;
 
     /**
-     * @return The range of status codes used to apply the selected mode.
+     * @return A range of status codes to apply the TTL to.
      * 
      */
     public Optional<Output<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRange() {
@@ -48,14 +48,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     }
 
     /**
-     * Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+     * The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
      * 
      */
     @Import(name="value", required=true)
     private Output<Integer> value;
 
     /**
-     * @return Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+     * @return The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
      * 
      */
     public Output<Integer> value() {
@@ -89,7 +89,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Set the TTL for responses with this specific status code.
+         * @param statusCode A single status code to apply the TTL to.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Set the TTL for responses with this specific status code.
+         * @param statusCode A single status code to apply the TTL to.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCodeRange The range of status codes used to apply the selected mode.
+         * @param statusCodeRange A range of status codes to apply the TTL to.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCodeRange The range of status codes used to apply the selected mode.
+         * @param statusCodeRange A range of status codes to apply the TTL to.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param value Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+         * @param value The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param value Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting Cache-Control header with the value of &#34;no-store&#34;.
+         * @param value The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value &#34;no-cache&#34;. A value of -1 is equivalent to setting the cache control header with the value of &#34;no-store&#34;.
          * 
          * @return builder
          * 

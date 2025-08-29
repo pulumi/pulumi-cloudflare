@@ -378,6 +378,10 @@ import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSchemaValidationSchemasPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsArgs;
 import com.pulumi.cloudflare.inputs.GetSchemaValidationSettingsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetListArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetSnippetPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetRulesListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetSnippetsArgs;
@@ -821,6 +825,8 @@ import com.pulumi.cloudflare.outputs.GetSchemaValidationOperationSettingsResult;
 import com.pulumi.cloudflare.outputs.GetSchemaValidationSchemasListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSchemaValidationSchemasResult;
 import com.pulumi.cloudflare.outputs.GetSchemaValidationSettingsResult;
+import com.pulumi.cloudflare.outputs.GetSnippetListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetSnippetResult;
 import com.pulumi.cloudflare.outputs.GetSnippetRulesListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsListInvokeResult;
 import com.pulumi.cloudflare.outputs.GetSnippetsResult;
@@ -41001,6 +41007,226 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSnippet = CloudflareFunctions.getSnippet(GetSnippetArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnippetResult> getSnippet(GetSnippetArgs args) {
+        return getSnippet(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSnippet = CloudflareFunctions.getSnippet(GetSnippetArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSnippetResult> getSnippetPlain(GetSnippetPlainArgs args) {
+        return getSnippetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSnippet = CloudflareFunctions.getSnippet(GetSnippetArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnippetResult> getSnippet(GetSnippetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippet:getSnippet", TypeShape.of(GetSnippetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSnippet = CloudflareFunctions.getSnippet(GetSnippetArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSnippetResult> getSnippet(GetSnippetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippet:getSnippet", TypeShape.of(GetSnippetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetSnippetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleSnippet = CloudflareFunctions.getSnippet(GetSnippetArgs.builder()
+     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+     *             .snippetName("my_snippet")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSnippetResult> getSnippetPlain(GetSnippetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippet:getSnippet", TypeShape.of(GetSnippetResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetSnippetListInvokeResult> getSnippetList(GetSnippetListArgs args) {
+        return getSnippetList(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetSnippetListInvokeResult> getSnippetListPlain(GetSnippetListPlainArgs args) {
+        return getSnippetListPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetSnippetListInvokeResult> getSnippetList(GetSnippetListArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippetList:getSnippetList", TypeShape.of(GetSnippetListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetSnippetListInvokeResult> getSnippetList(GetSnippetListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getSnippetList:getSnippetList", TypeShape.of(GetSnippetListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetSnippetListInvokeResult> getSnippetListPlain(GetSnippetListPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetList:getSnippetList", TypeShape.of(GetSnippetListInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -41217,7 +41443,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
      *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -41258,7 +41483,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
      *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -41299,7 +41523,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
      *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -41340,7 +41563,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
      *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -41381,7 +41603,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleSnippets = CloudflareFunctions.getSnippets(GetSnippetsArgs.builder()
      *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .snippetName("my_snippet")
      *             .build());
      * 
      *     }
@@ -41394,203 +41615,18 @@ public final class CloudflareFunctions {
     public static CompletableFuture<GetSnippetsResult> getSnippetsPlain(GetSnippetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippets:getSnippets", TypeShape.of(GetSnippetsResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static Output<GetSnippetsListInvokeResult> getSnippetsList(GetSnippetsListArgs args) {
         return getSnippetsList(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetSnippetsListInvokeResult> getSnippetsListPlain(GetSnippetsListPlainArgs args) {
         return getSnippetsListPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static Output<GetSnippetsListInvokeResult> getSnippetsList(GetSnippetsListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getSnippetsList:getSnippetsList", TypeShape.of(GetSnippetsListInvokeResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static Output<GetSnippetsListInvokeResult> getSnippetsList(GetSnippetsListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getSnippetsList:getSnippetsList", TypeShape.of(GetSnippetsListInvokeResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetSnippetsListArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var exampleSnippetsList = CloudflareFunctions.getSnippetsList(GetSnippetsListArgs.builder()
-     *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
     public static CompletableFuture<GetSnippetsListInvokeResult> getSnippetsListPlain(GetSnippetsListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getSnippetsList:getSnippetsList", TypeShape.of(GetSnippetsListInvokeResult.class), args, Utilities.withVersion(options));
     }
@@ -43868,6 +43904,7 @@ public final class CloudflareFunctions {
      *             .start("2014-01-02T02:20:00Z")
      *             .status("inprogress")
      *             .type("live")
+     *             .videoName("puppy.mp4")
      *             .build());
      * 
      *     }
@@ -43914,6 +43951,7 @@ public final class CloudflareFunctions {
      *             .start("2014-01-02T02:20:00Z")
      *             .status("inprogress")
      *             .type("live")
+     *             .videoName("puppy.mp4")
      *             .build());
      * 
      *     }
@@ -43960,6 +43998,7 @@ public final class CloudflareFunctions {
      *             .start("2014-01-02T02:20:00Z")
      *             .status("inprogress")
      *             .type("live")
+     *             .videoName("puppy.mp4")
      *             .build());
      * 
      *     }
@@ -44006,6 +44045,7 @@ public final class CloudflareFunctions {
      *             .start("2014-01-02T02:20:00Z")
      *             .status("inprogress")
      *             .type("live")
+     *             .videoName("puppy.mp4")
      *             .build());
      * 
      *     }
@@ -44052,6 +44092,7 @@ public final class CloudflareFunctions {
      *             .start("2014-01-02T02:20:00Z")
      *             .status("inprogress")
      *             .type("live")
+     *             .videoName("puppy.mp4")
      *             .build());
      * 
      *     }
@@ -50603,6 +50644,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkersScripts = CloudflareFunctions.getWorkersScripts(GetWorkersScriptsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .tags("production:yes,staging:no")
      *             .build());
      * 
      *     }
@@ -50643,6 +50685,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkersScripts = CloudflareFunctions.getWorkersScripts(GetWorkersScriptsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .tags("production:yes,staging:no")
      *             .build());
      * 
      *     }
@@ -50683,6 +50726,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkersScripts = CloudflareFunctions.getWorkersScripts(GetWorkersScriptsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .tags("production:yes,staging:no")
      *             .build());
      * 
      *     }
@@ -50723,6 +50767,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkersScripts = CloudflareFunctions.getWorkersScripts(GetWorkersScriptsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .tags("production:yes,staging:no")
      *             .build());
      * 
      *     }
@@ -50763,6 +50808,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkersScripts = CloudflareFunctions.getWorkersScripts(GetWorkersScriptsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .tags("production:yes,staging:no")
      *             .build());
      * 
      *     }
@@ -64859,7 +64905,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustTunnelCloudflaredRoutes = CloudflareFunctions.getZeroTrustTunnelCloudflaredRoutes(GetZeroTrustTunnelCloudflaredRoutesArgs.builder()
      *             .accountId("699d98642c564d2e855e9661899b7252")
-     *             .comment("Example comment for this route.")
      *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
      *             .isDeleted(true)
      *             .networkSubset("172.16.0.0/16")
@@ -64908,7 +64953,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustTunnelCloudflaredRoutes = CloudflareFunctions.getZeroTrustTunnelCloudflaredRoutes(GetZeroTrustTunnelCloudflaredRoutesArgs.builder()
      *             .accountId("699d98642c564d2e855e9661899b7252")
-     *             .comment("Example comment for this route.")
      *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
      *             .isDeleted(true)
      *             .networkSubset("172.16.0.0/16")
@@ -64957,7 +65001,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustTunnelCloudflaredRoutes = CloudflareFunctions.getZeroTrustTunnelCloudflaredRoutes(GetZeroTrustTunnelCloudflaredRoutesArgs.builder()
      *             .accountId("699d98642c564d2e855e9661899b7252")
-     *             .comment("Example comment for this route.")
      *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
      *             .isDeleted(true)
      *             .networkSubset("172.16.0.0/16")
@@ -65006,7 +65049,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustTunnelCloudflaredRoutes = CloudflareFunctions.getZeroTrustTunnelCloudflaredRoutes(GetZeroTrustTunnelCloudflaredRoutesArgs.builder()
      *             .accountId("699d98642c564d2e855e9661899b7252")
-     *             .comment("Example comment for this route.")
      *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
      *             .isDeleted(true)
      *             .networkSubset("172.16.0.0/16")
@@ -65055,7 +65097,6 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleZeroTrustTunnelCloudflaredRoutes = CloudflareFunctions.getZeroTrustTunnelCloudflaredRoutes(GetZeroTrustTunnelCloudflaredRoutesArgs.builder()
      *             .accountId("699d98642c564d2e855e9661899b7252")
-     *             .comment("Example comment for this route.")
      *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
      *             .isDeleted(true)
      *             .networkSubset("172.16.0.0/16")

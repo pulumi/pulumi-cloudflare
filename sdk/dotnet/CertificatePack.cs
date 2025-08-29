@@ -86,11 +86,23 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
+        /// Domain validation errors that have been received by the certificate authority (CA).
+        /// </summary>
+        [Output("validationErrors")]
+        public Output<ImmutableArray<Outputs.CertificatePackValidationError>> ValidationErrors { get; private set; } = null!;
+
+        /// <summary>
         /// Validation Method selected for the order.
         /// Available values: "txt", "http", "email".
         /// </summary>
         [Output("validationMethod")]
         public Output<string> ValidationMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        /// </summary>
+        [Output("validationRecords")]
+        public Output<ImmutableArray<Outputs.CertificatePackValidationRecord>> ValidationRecords { get; private set; } = null!;
 
         /// <summary>
         /// Validity Days selected for the order.
@@ -250,12 +262,36 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("validationErrors")]
+        private InputList<Inputs.CertificatePackValidationErrorGetArgs>? _validationErrors;
+
+        /// <summary>
+        /// Domain validation errors that have been received by the certificate authority (CA).
+        /// </summary>
+        public InputList<Inputs.CertificatePackValidationErrorGetArgs> ValidationErrors
+        {
+            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CertificatePackValidationErrorGetArgs>());
+            set => _validationErrors = value;
+        }
+
         /// <summary>
         /// Validation Method selected for the order.
         /// Available values: "txt", "http", "email".
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
+
+        [Input("validationRecords")]
+        private InputList<Inputs.CertificatePackValidationRecordGetArgs>? _validationRecords;
+
+        /// <summary>
+        /// Certificates' validation records. Only present when certificate pack is in "pending*validation" status
+        /// </summary>
+        public InputList<Inputs.CertificatePackValidationRecordGetArgs> ValidationRecords
+        {
+            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CertificatePackValidationRecordGetArgs>());
+            set => _validationRecords = value;
+        }
 
         /// <summary>
         /// Validity Days selected for the order.

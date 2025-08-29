@@ -17,7 +17,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * The scope of the URL normalization.
-     * Available values: &#34;incoming&#34;, &#34;both&#34;.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="scope")
@@ -25,7 +25,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * @return The scope of the URL normalization.
-     * Available values: &#34;incoming&#34;, &#34;both&#34;.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -92,7 +92,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param scope The scope of the URL normalization.
-         * Available values: &#34;incoming&#34;, &#34;both&#34;.
+         * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param scope The scope of the URL normalization.
-         * Available values: &#34;incoming&#34;, &#34;both&#34;.
+         * Available values: &#34;incoming&#34;, &#34;both&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 

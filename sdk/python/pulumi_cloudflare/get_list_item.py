@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetListItemResult',
@@ -26,19 +27,40 @@ class GetListItemResult:
     """
     A collection of values returned by getListItem.
     """
-    def __init__(__self__, account_id=None, id=None, item_id=None, list_id=None):
+    def __init__(__self__, account_id=None, asn=None, comment=None, created_on=None, hostname=None, id=None, ip=None, item_id=None, list_id=None, modified_on=None, redirect=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if asn and not isinstance(asn, int):
+            raise TypeError("Expected argument 'asn' to be a int")
+        pulumi.set(__self__, "asn", asn)
+        if comment and not isinstance(comment, str):
+            raise TypeError("Expected argument 'comment' to be a str")
+        pulumi.set(__self__, "comment", comment)
+        if created_on and not isinstance(created_on, str):
+            raise TypeError("Expected argument 'created_on' to be a str")
+        pulumi.set(__self__, "created_on", created_on)
+        if hostname and not isinstance(hostname, dict):
+            raise TypeError("Expected argument 'hostname' to be a dict")
+        pulumi.set(__self__, "hostname", hostname)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip and not isinstance(ip, str):
+            raise TypeError("Expected argument 'ip' to be a str")
+        pulumi.set(__self__, "ip", ip)
         if item_id and not isinstance(item_id, str):
             raise TypeError("Expected argument 'item_id' to be a str")
         pulumi.set(__self__, "item_id", item_id)
         if list_id and not isinstance(list_id, str):
             raise TypeError("Expected argument 'list_id' to be a str")
         pulumi.set(__self__, "list_id", list_id)
+        if modified_on and not isinstance(modified_on, str):
+            raise TypeError("Expected argument 'modified_on' to be a str")
+        pulumi.set(__self__, "modified_on", modified_on)
+        if redirect and not isinstance(redirect, dict):
+            raise TypeError("Expected argument 'redirect' to be a dict")
+        pulumi.set(__self__, "redirect", redirect)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -50,11 +72,51 @@ class GetListItemResult:
 
     @_builtins.property
     @pulumi.getter
+    def asn(self) -> _builtins.int:
+        """
+        Defines a non-negative 32 bit integer.
+        """
+        return pulumi.get(self, "asn")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        Defines an informative summary of the list item.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> _builtins.str:
+        """
+        The RFC 3339 timestamp of when the list was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> 'outputs.GetListItemHostnameResult':
+        """
+        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Defines the unique ID of the item in the List.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        """
+        return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter(name="itemId")
@@ -72,6 +134,22 @@ class GetListItemResult:
         """
         return pulumi.get(self, "list_id")
 
+    @_builtins.property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> _builtins.str:
+        """
+        The RFC 3339 timestamp of when the list was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @_builtins.property
+    @pulumi.getter
+    def redirect(self) -> 'outputs.GetListItemRedirectResult':
+        """
+        The definition of the redirect.
+        """
+        return pulumi.get(self, "redirect")
+
 
 class AwaitableGetListItemResult(GetListItemResult):
     # pylint: disable=using-constant-test
@@ -80,9 +158,16 @@ class AwaitableGetListItemResult(GetListItemResult):
             yield self
         return GetListItemResult(
             account_id=self.account_id,
+            asn=self.asn,
+            comment=self.comment,
+            created_on=self.created_on,
+            hostname=self.hostname,
             id=self.id,
+            ip=self.ip,
             item_id=self.item_id,
-            list_id=self.list_id)
+            list_id=self.list_id,
+            modified_on=self.modified_on,
+            redirect=self.redirect)
 
 
 def get_list_item(account_id: Optional[_builtins.str] = None,
@@ -115,9 +200,16 @@ def get_list_item(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetListItemResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        asn=pulumi.get(__ret__, 'asn'),
+        comment=pulumi.get(__ret__, 'comment'),
+        created_on=pulumi.get(__ret__, 'created_on'),
+        hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
+        ip=pulumi.get(__ret__, 'ip'),
         item_id=pulumi.get(__ret__, 'item_id'),
-        list_id=pulumi.get(__ret__, 'list_id'))
+        list_id=pulumi.get(__ret__, 'list_id'),
+        modified_on=pulumi.get(__ret__, 'modified_on'),
+        redirect=pulumi.get(__ret__, 'redirect'))
 def get_list_item_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                          item_id: Optional[pulumi.Input[_builtins.str]] = None,
                          list_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -147,6 +239,13 @@ def get_list_item_output(account_id: Optional[pulumi.Input[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getListItem:getListItem', __args__, opts=opts, typ=GetListItemResult)
     return __ret__.apply(lambda __response__: GetListItemResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        asn=pulumi.get(__response__, 'asn'),
+        comment=pulumi.get(__response__, 'comment'),
+        created_on=pulumi.get(__response__, 'created_on'),
+        hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
         item_id=pulumi.get(__response__, 'item_id'),
-        list_id=pulumi.get(__response__, 'list_id')))
+        list_id=pulumi.get(__response__, 'list_id'),
+        modified_on=pulumi.get(__response__, 'modified_on'),
+        redirect=pulumi.get(__response__, 'redirect')))

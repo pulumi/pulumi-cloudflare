@@ -53,7 +53,7 @@ type ZeroTrustTunnelCloudflaredRoute struct {
 	// Cloudflare account ID
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Optional remark describing the route.
-	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	Comment pulumi.StringOutput `pulumi:"comment"`
 	// Timestamp of when the resource was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
@@ -268,8 +268,8 @@ func (o ZeroTrustTunnelCloudflaredRouteOutput) AccountId() pulumi.StringOutput {
 }
 
 // Optional remark describing the route.
-func (o ZeroTrustTunnelCloudflaredRouteOutput) Comment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+func (o ZeroTrustTunnelCloudflaredRouteOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
 // Timestamp of when the resource was created.

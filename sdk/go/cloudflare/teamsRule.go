@@ -32,23 +32,21 @@ type TeamsRule struct {
 	// Date of deletion, if any.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The wirefilter expression used for device posture check matching.
-	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
+	Description   pulumi.StringPtrOutput `pulumi:"description"`
+	DevicePosture pulumi.StringOutput    `pulumi:"devicePosture"`
 	// True if the rule is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationOutput `pulumi:"expiration"`
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-	Filters pulumi.StringArrayOutput `pulumi:"filters"`
-	// The wirefilter expression used for identity matching.
-	Identity pulumi.StringOutput `pulumi:"identity"`
+	Filters  pulumi.StringArrayOutput `pulumi:"filters"`
+	Identity pulumi.StringOutput      `pulumi:"identity"`
 	// The name of the rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The rule cannot be shared via the Orgs API
-	NotSharable pulumi.BoolOutput   `pulumi:"notSharable"`
-	Precedence  pulumi.IntPtrOutput `pulumi:"precedence"`
+	NotSharable pulumi.BoolOutput `pulumi:"notSharable"`
+	Precedence  pulumi.IntOutput  `pulumi:"precedence"`
 	// The rule was shared via the Orgs API and cannot be edited by the current account
 	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
@@ -57,9 +55,8 @@ type TeamsRule struct {
 	Schedule TeamsRuleScheduleOutput `pulumi:"schedule"`
 	// account tag of account that created the rule
 	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
-	// The wirefilter expression used for traffic matching.
-	Traffic   pulumi.StringOutput `pulumi:"traffic"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Traffic       pulumi.StringOutput `pulumi:"traffic"`
+	UpdatedAt     pulumi.StringOutput `pulumi:"updatedAt"`
 	// version number of the rule
 	Version pulumi.IntOutput `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
@@ -119,8 +116,7 @@ type teamsRuleState struct {
 	// Date of deletion, if any.
 	DeletedAt *string `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description *string `pulumi:"description"`
-	// The wirefilter expression used for device posture check matching.
+	Description   *string `pulumi:"description"`
 	DevicePosture *string `pulumi:"devicePosture"`
 	// True if the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -128,9 +124,8 @@ type teamsRuleState struct {
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-	Filters []string `pulumi:"filters"`
-	// The wirefilter expression used for identity matching.
-	Identity *string `pulumi:"identity"`
+	Filters  []string `pulumi:"filters"`
+	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
 	Name *string `pulumi:"name"`
 	// The rule cannot be shared via the Orgs API
@@ -144,9 +139,8 @@ type teamsRuleState struct {
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
 	// account tag of account that created the rule
 	SourceAccount *string `pulumi:"sourceAccount"`
-	// The wirefilter expression used for traffic matching.
-	Traffic   *string `pulumi:"traffic"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Traffic       *string `pulumi:"traffic"`
+	UpdatedAt     *string `pulumi:"updatedAt"`
 	// version number of the rule
 	Version *int `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
@@ -162,8 +156,7 @@ type TeamsRuleState struct {
 	// Date of deletion, if any.
 	DeletedAt pulumi.StringPtrInput
 	// The description of the rule.
-	Description pulumi.StringPtrInput
-	// The wirefilter expression used for device posture check matching.
+	Description   pulumi.StringPtrInput
 	DevicePosture pulumi.StringPtrInput
 	// True if the rule is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -171,8 +164,7 @@ type TeamsRuleState struct {
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationPtrInput
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-	Filters pulumi.StringArrayInput
-	// The wirefilter expression used for identity matching.
+	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
 	Name pulumi.StringPtrInput
@@ -187,9 +179,8 @@ type TeamsRuleState struct {
 	Schedule TeamsRuleSchedulePtrInput
 	// account tag of account that created the rule
 	SourceAccount pulumi.StringPtrInput
-	// The wirefilter expression used for traffic matching.
-	Traffic   pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Traffic       pulumi.StringPtrInput
+	UpdatedAt     pulumi.StringPtrInput
 	// version number of the rule
 	Version pulumi.IntPtrInput
 	// Warning for a misconfigured rule, if any.
@@ -206,8 +197,7 @@ type teamsRuleArgs struct {
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
 	// The description of the rule.
-	Description *string `pulumi:"description"`
-	// The wirefilter expression used for device posture check matching.
+	Description   *string `pulumi:"description"`
 	DevicePosture *string `pulumi:"devicePosture"`
 	// True if the rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -215,9 +205,8 @@ type teamsRuleArgs struct {
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-	Filters []string `pulumi:"filters"`
-	// The wirefilter expression used for identity matching.
-	Identity *string `pulumi:"identity"`
+	Filters  []string `pulumi:"filters"`
+	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
 	Name       string `pulumi:"name"`
 	Precedence *int   `pulumi:"precedence"`
@@ -225,8 +214,7 @@ type teamsRuleArgs struct {
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
-	// The wirefilter expression used for traffic matching.
-	Traffic *string `pulumi:"traffic"`
+	Traffic  *string            `pulumi:"traffic"`
 }
 
 // The set of arguments for constructing a TeamsRule resource.
@@ -236,8 +224,7 @@ type TeamsRuleArgs struct {
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
 	// The description of the rule.
-	Description pulumi.StringPtrInput
-	// The wirefilter expression used for device posture check matching.
+	Description   pulumi.StringPtrInput
 	DevicePosture pulumi.StringPtrInput
 	// True if the rule is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -245,8 +232,7 @@ type TeamsRuleArgs struct {
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationPtrInput
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
-	Filters pulumi.StringArrayInput
-	// The wirefilter expression used for identity matching.
+	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
 	Name       pulumi.StringInput
@@ -255,8 +241,7 @@ type TeamsRuleArgs struct {
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule TeamsRuleSchedulePtrInput
-	// The wirefilter expression used for traffic matching.
-	Traffic pulumi.StringPtrInput
+	Traffic  pulumi.StringPtrInput
 }
 
 func (TeamsRuleArgs) ElementType() reflect.Type {
@@ -370,7 +355,6 @@ func (o TeamsRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The wirefilter expression used for device posture check matching.
 func (o TeamsRuleOutput) DevicePosture() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.DevicePosture }).(pulumi.StringOutput)
 }
@@ -391,7 +375,6 @@ func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
 }
 
-// The wirefilter expression used for identity matching.
 func (o TeamsRuleOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
@@ -406,8 +389,8 @@ func (o TeamsRuleOutput) NotSharable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.NotSharable }).(pulumi.BoolOutput)
 }
 
-func (o TeamsRuleOutput) Precedence() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
+func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
 // The rule was shared via the Orgs API and cannot be edited by the current account
@@ -430,7 +413,6 @@ func (o TeamsRuleOutput) SourceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
 
-// The wirefilter expression used for traffic matching.
 func (o TeamsRuleOutput) Traffic() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Traffic }).(pulumi.StringOutput)
 }

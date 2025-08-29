@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleWorkersScripts = cloudflare.getWorkersScripts({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     tags: "production:yes,staging:no",
  * });
  * ```
  */
@@ -23,6 +24,7 @@ export function getWorkersScripts(args: GetWorkersScriptsArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("cloudflare:index/getWorkersScripts:getWorkersScripts", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -38,6 +40,10 @@ export interface GetWorkersScriptsArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    tags?: string;
 }
 
 /**
@@ -60,6 +66,10 @@ export interface GetWorkersScriptsResult {
      * The items returned by the data source
      */
     readonly results: outputs.GetWorkersScriptsResult[];
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    readonly tags?: string;
 }
 /**
  * ## Example Usage
@@ -70,6 +80,7 @@ export interface GetWorkersScriptsResult {
  *
  * const exampleWorkersScripts = cloudflare.getWorkersScripts({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     tags: "production:yes,staging:no",
  * });
  * ```
  */
@@ -78,6 +89,7 @@ export function getWorkersScriptsOutput(args: GetWorkersScriptsOutputArgs, opts?
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersScripts:getWorkersScripts", {
         "accountId": args.accountId,
         "maxItems": args.maxItems,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -93,4 +105,8 @@ export interface GetWorkersScriptsOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+     */
+    tags?: pulumi.Input<string>;
 }

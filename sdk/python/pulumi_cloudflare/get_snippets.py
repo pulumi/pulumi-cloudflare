@@ -107,8 +107,7 @@ def get_snippets(snippet_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074",
-        snippet_name="my_snippet")
+    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 
@@ -137,8 +136,7 @@ def get_snippets_output(snippet_name: Optional[pulumi.Input[_builtins.str]] = No
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074",
-        snippet_name="my_snippet")
+    example_snippets = cloudflare.get_snippets(zone_id="9f1839b6152d298aca64c4e906b6d074")
     ```
 
 

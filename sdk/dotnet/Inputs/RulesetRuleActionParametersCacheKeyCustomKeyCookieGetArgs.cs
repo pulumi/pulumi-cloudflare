@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _checkPresences;
 
         /// <summary>
-        /// Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+        /// A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
         /// </summary>
         public InputList<string> CheckPresences
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _includes;
 
         /// <summary>
-        /// Include these cookies' names and their values.
+        /// A list of cookies to include in the cache key.
         /// </summary>
         public InputList<string> Includes
         {

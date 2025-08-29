@@ -12,6 +12,41 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         CloudflareEndpoint = "203.0.113.1",
+    ///         InterfaceAddress = "192.0.2.0/31",
+    ///         Name = "IPsec_1",
+    ///         CustomerEndpoint = "203.0.113.1",
+    ///         Description = "Tunnel for ISP X",
+    ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs
+    ///         {
+    ///             Direction = "bidirectional",
+    ///             Enabled = true,
+    ///             Rate = "low",
+    ///             Target = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckTargetArgs
+    ///             {
+    ///                 Saved = "203.0.113.1",
+    ///             },
+    ///             Type = "request",
+    ///         },
+    ///         InterfaceAddress6 = "2606:54c1:7:0:a9fe:12d2:1:200/127",
+    ///         Psk = "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
+    ///         ReplayProtection = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -65,6 +100,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("interfaceAddress")]
         public Output<string> InterfaceAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        /// </summary>
+        [Output("interfaceAddress6")]
+        public Output<string?> InterfaceAddress6 { get; private set; } = null!;
 
         /// <summary>
         /// The date and time the tunnel was last modified.
@@ -184,6 +225,12 @@ namespace Pulumi.Cloudflare
         public Input<string> InterfaceAddress { get; set; } = null!;
 
         /// <summary>
+        /// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        /// </summary>
+        [Input("interfaceAddress6")]
+        public Input<string>? InterfaceAddress6 { get; set; }
+
+        /// <summary>
         /// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         /// </summary>
         [Input("name", required: true)]
@@ -263,6 +310,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("interfaceAddress")]
         public Input<string>? InterfaceAddress { get; set; }
+
+        /// <summary>
+        /// A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
+        /// </summary>
+        [Input("interfaceAddress6")]
+        public Input<string>? InterfaceAddress6 { get; set; }
 
         /// <summary>
         /// The date and time the tunnel was last modified.

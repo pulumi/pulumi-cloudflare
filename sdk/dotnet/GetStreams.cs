@@ -31,6 +31,7 @@ namespace Pulumi.Cloudflare
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
         ///         Type = "live",
+        ///         VideoName = "puppy.mp4",
         ///     });
         /// 
         /// });
@@ -59,6 +60,7 @@ namespace Pulumi.Cloudflare
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
         ///         Type = "live",
+        ///         VideoName = "puppy.mp4",
         ///     });
         /// 
         /// });
@@ -87,6 +89,7 @@ namespace Pulumi.Cloudflare
         ///         Start = "2014-01-02T02:20:00Z",
         ///         Status = "inprogress",
         ///         Type = "live",
+        ///         VideoName = "puppy.mp4",
         ///     });
         /// 
         /// });
@@ -136,7 +139,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -159,6 +162,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
+
+        /// <summary>
+        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// </summary>
+        [Input("videoName")]
+        public string? VideoName { get; set; }
 
         public GetStreamsArgs()
         {
@@ -205,7 +214,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -228,6 +237,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// </summary>
+        [Input("videoName")]
+        public Input<string>? VideoName { get; set; }
 
         public GetStreamsInvokeArgs()
         {
@@ -272,7 +287,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStreamsResultResult> Results;
         /// <summary>
-        /// Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         public readonly string? Search;
         /// <summary>
@@ -288,6 +303,10 @@ namespace Pulumi.Cloudflare
         /// Specifies whether the video is `vod` or `live`.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// </summary>
+        public readonly string? VideoName;
 
         [OutputConstructor]
         private GetStreamsResult(
@@ -313,7 +332,9 @@ namespace Pulumi.Cloudflare
 
             string? status,
 
-            string? type)
+            string? type,
+
+            string? videoName)
         {
             AccountId = accountId;
             Asc = asc;
@@ -327,6 +348,7 @@ namespace Pulumi.Cloudflare
             Start = start;
             Status = status;
             Type = type;
+            VideoName = videoName;
         }
     }
 }

@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersFromListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Expression that evaluates to the list lookup key.
+        /// An expression that evaluates to the list lookup key.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// The name of the list to match against.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public RulesetRuleActionParametersFromListArgs()
         {

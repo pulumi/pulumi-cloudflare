@@ -43,7 +43,7 @@ export interface GetUrlNormalizationSettingsResult {
     readonly id: string;
     /**
      * The scope of the URL normalization.
-     * Available values: "incoming", "both".
+     * Available values: "incoming", "both", "none".
      */
     readonly scope: string;
     /**

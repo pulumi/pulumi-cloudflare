@@ -18,23 +18,31 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclud
     public static final RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs();
 
     /**
-     * Determines whether to include all query string parameters in the cache key.
+     * Whether to include all query string parameters in the cache key.
      * 
      */
     @Import(name="all")
     private @Nullable Output<Boolean> all;
 
     /**
-     * @return Determines whether to include all query string parameters in the cache key.
+     * @return Whether to include all query string parameters in the cache key.
      * 
      */
     public Optional<Output<Boolean>> all() {
         return Optional.ofNullable(this.all);
     }
 
+    /**
+     * A list of query string parameters to include in the cache key.
+     * 
+     */
     @Import(name="lists")
     private @Nullable Output<List<String>> lists;
 
+    /**
+     * @return A list of query string parameters to include in the cache key.
+     * 
+     */
     public Optional<Output<List<String>>> lists() {
         return Optional.ofNullable(this.lists);
     }
@@ -65,7 +73,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclud
         }
 
         /**
-         * @param all Determines whether to include all query string parameters in the cache key.
+         * @param all Whether to include all query string parameters in the cache key.
          * 
          * @return builder
          * 
@@ -76,7 +84,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclud
         }
 
         /**
-         * @param all Determines whether to include all query string parameters in the cache key.
+         * @param all Whether to include all query string parameters in the cache key.
          * 
          * @return builder
          * 
@@ -85,15 +93,33 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclud
             return all(Output.of(all));
         }
 
+        /**
+         * @param lists A list of query string parameters to include in the cache key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lists(@Nullable Output<List<String>> lists) {
             $.lists = lists;
             return this;
         }
 
+        /**
+         * @param lists A list of query string parameters to include in the cache key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lists(List<String> lists) {
             return lists(Output.of(lists));
         }
 
+        /**
+         * @param lists A list of query string parameters to include in the cache key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lists(String... lists) {
             return lists(List.of(lists));
         }

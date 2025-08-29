@@ -27,9 +27,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The description of the rule.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The wirefilter expression used for device posture check matching.
-        /// </summary>
         public readonly string DevicePosture;
         /// <summary>
         /// True if the rule is enabled.
@@ -48,9 +45,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The API resource UUID.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The wirefilter expression used for identity matching.
-        /// </summary>
         public readonly string Identity;
         /// <summary>
         /// The name of the rule.
@@ -77,9 +71,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// account tag of account that created the rule
         /// </summary>
         public readonly string SourceAccount;
-        /// <summary>
-        /// The wirefilter expression used for traffic matching.
-        /// </summary>
         public readonly string Traffic;
         public readonly string UpdatedAt;
         /// <summary>

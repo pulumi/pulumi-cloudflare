@@ -45,9 +45,17 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.keyName);
     }
 
+    /**
+     * Associates arbitrary JSON data with a key/value pair.
+     * 
+     */
     @Import(name="metadata")
     private @Nullable Output<String> metadata;
 
+    /**
+     * @return Associates arbitrary JSON data with a key/value pair.
+     * 
+     */
     public Optional<Output<String>> metadata() {
         return Optional.ofNullable(this.metadata);
     }
@@ -152,11 +160,23 @@ public final class WorkersKvState extends com.pulumi.resources.ResourceArgs {
             return keyName(Output.of(keyName));
         }
 
+        /**
+         * @param metadata Associates arbitrary JSON data with a key/value pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(@Nullable Output<String> metadata) {
             $.metadata = metadata;
             return this;
         }
 
+        /**
+         * @param metadata Associates arbitrary JSON data with a key/value pair.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metadata(String metadata) {
             return metadata(Output.of(metadata));
         }

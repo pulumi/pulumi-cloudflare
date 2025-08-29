@@ -139,7 +139,7 @@ public final class TeamsAccountSettingsBlockPageArgs extends com.pulumi.resource
 
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     @Import(name="mode")
@@ -147,7 +147,7 @@ public final class TeamsAccountSettingsBlockPageArgs extends com.pulumi.resource
 
     /**
      * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -452,7 +452,7 @@ public final class TeamsAccountSettingsBlockPageArgs extends com.pulumi.resource
 
         /**
          * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-         * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+         * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class TeamsAccountSettingsBlockPageArgs extends com.pulumi.resource
 
         /**
          * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-         * Available values: &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+         * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
          * 
          * @return builder
          * 

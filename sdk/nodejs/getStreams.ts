@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     start: "2014-01-02T02:20:00Z",
  *     status: "inprogress",
  *     type: "live",
+ *     videoName: "puppy.mp4",
  * });
  * ```
  */
@@ -37,6 +38,7 @@ export function getStreams(args: GetStreamsArgs, opts?: pulumi.InvokeOptions): P
         "start": args.start,
         "status": args.status,
         "type": args.type,
+        "videoName": args.videoName,
     }, opts);
 }
 
@@ -69,7 +71,7 @@ export interface GetStreamsArgs {
      */
     maxItems?: number;
     /**
-     * Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */
     search?: string;
     /**
@@ -85,6 +87,10 @@ export interface GetStreamsArgs {
      * Specifies whether the video is `vod` or `live`.
      */
     type?: string;
+    /**
+     * Provides a fast, exact string match on the `name` key in the `meta` field.
+     */
+    videoName?: string;
 }
 
 /**
@@ -124,7 +130,7 @@ export interface GetStreamsResult {
      */
     readonly results: outputs.GetStreamsResult[];
     /**
-     * Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */
     readonly search?: string;
     /**
@@ -140,6 +146,10 @@ export interface GetStreamsResult {
      * Specifies whether the video is `vod` or `live`.
      */
     readonly type?: string;
+    /**
+     * Provides a fast, exact string match on the `name` key in the `meta` field.
+     */
+    readonly videoName?: string;
 }
 /**
  * ## Example Usage
@@ -156,6 +166,7 @@ export interface GetStreamsResult {
  *     start: "2014-01-02T02:20:00Z",
  *     status: "inprogress",
  *     type: "live",
+ *     videoName: "puppy.mp4",
  * });
  * ```
  */
@@ -172,6 +183,7 @@ export function getStreamsOutput(args: GetStreamsOutputArgs, opts?: pulumi.Invok
         "start": args.start,
         "status": args.status,
         "type": args.type,
+        "videoName": args.videoName,
     }, opts);
 }
 
@@ -204,7 +216,7 @@ export interface GetStreamsOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Searches over the `name` key in the `meta` field. This field can be set with or after the upload request.
+     * Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
      */
     search?: pulumi.Input<string>;
     /**
@@ -220,4 +232,8 @@ export interface GetStreamsOutputArgs {
      * Specifies whether the video is `vod` or `live`.
      */
     type?: pulumi.Input<string>;
+    /**
+     * Provides a fast, exact string match on the `name` key in the `meta` field.
+     */
+    videoName?: pulumi.Input<string>;
 }

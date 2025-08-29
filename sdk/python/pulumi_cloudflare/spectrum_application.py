@@ -503,23 +503,23 @@ class SpectrumApplication(pulumi.CustomResource):
                 "name": "ssh.example.com",
                 "type": "CNAME",
             },
-            ip_firewall=True,
             protocol="tcp/22",
-            proxy_protocol="off",
-            tls="full",
             traffic_type="direct",
             argo_smart_routing=True,
             edge_ips={
                 "connectivity": "all",
                 "type": "dynamic",
             },
+            ip_firewall=False,
             origin_directs=["tcp://127.0.0.1:8080"],
             origin_dns={
                 "name": "origin.example.com",
                 "ttl": 600,
                 "type": "",
             },
-            origin_port=22)
+            origin_port=22,
+            proxy_protocol="off",
+            tls="off")
         ```
 
         ## Import
@@ -568,23 +568,23 @@ class SpectrumApplication(pulumi.CustomResource):
                 "name": "ssh.example.com",
                 "type": "CNAME",
             },
-            ip_firewall=True,
             protocol="tcp/22",
-            proxy_protocol="off",
-            tls="full",
             traffic_type="direct",
             argo_smart_routing=True,
             edge_ips={
                 "connectivity": "all",
                 "type": "dynamic",
             },
+            ip_firewall=False,
             origin_directs=["tcp://127.0.0.1:8080"],
             origin_dns={
                 "name": "origin.example.com",
                 "ttl": 600,
                 "type": "",
             },
-            origin_port=22)
+            origin_port=22,
+            proxy_protocol="off",
+            tls="off")
         ```
 
         ## Import
@@ -756,7 +756,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipFirewall")
-    def ip_firewall(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def ip_firewall(self) -> pulumi.Output[_builtins.bool]:
         """
         Enables IP Access Rules for this application.
         Notes: Only available for TCP applications.
@@ -815,7 +815,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def tls(self) -> pulumi.Output[_builtins.str]:
         """
         The type of TLS termination associated with the application.
         Available values: "off", "flexible", "full", "strict".

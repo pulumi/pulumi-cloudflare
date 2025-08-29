@@ -64,7 +64,7 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     /**
      * Optional remark describing the virtual network.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was created.
      */

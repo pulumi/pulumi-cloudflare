@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The scope of the URL normalization.
-        /// Available values: "incoming", "both".
+        /// Available values: "incoming", "both", "none".
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The scope of the URL normalization.
-        /// Available values: "incoming", "both".
+        /// Available values: "incoming", "both", "none".
         /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The scope of the URL normalization.
-        /// Available values: "incoming", "both".
+        /// Available values: "incoming", "both", "none".
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

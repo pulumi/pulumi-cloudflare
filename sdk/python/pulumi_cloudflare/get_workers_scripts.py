@@ -27,7 +27,7 @@ class GetWorkersScriptsResult:
     """
     A collection of values returned by getWorkersScripts.
     """
-    def __init__(__self__, account_id=None, id=None, max_items=None, results=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, results=None, tags=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetWorkersScriptsResult:
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
+        if tags and not isinstance(tags, str):
+            raise TypeError("Expected argument 'tags' to be a str")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -73,6 +76,14 @@ class GetWorkersScriptsResult:
         """
         return pulumi.get(self, "results")
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[_builtins.str]:
+        """
+        Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
+        """
+        return pulumi.get(self, "tags")
+
 
 class AwaitableGetWorkersScriptsResult(GetWorkersScriptsResult):
     # pylint: disable=using-constant-test
@@ -83,11 +94,13 @@ class AwaitableGetWorkersScriptsResult(GetWorkersScriptsResult):
             account_id=self.account_id,
             id=self.id,
             max_items=self.max_items,
-            results=self.results)
+            results=self.results,
+            tags=self.tags)
 
 
 def get_workers_scripts(account_id: Optional[_builtins.str] = None,
                         max_items: Optional[_builtins.int] = None,
+                        tags: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersScriptsResult:
     """
     ## Example Usage
@@ -96,16 +109,19 @@ def get_workers_scripts(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        tags="production:yes,staging:no")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorkersScripts:getWorkersScripts', __args__, opts=opts, typ=GetWorkersScriptsResult).value
 
@@ -113,9 +129,11 @@ def get_workers_scripts(account_id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
-        results=pulumi.get(__ret__, 'results'))
+        results=pulumi.get(__ret__, 'results'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_workers_scripts_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                               tags: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersScriptsResult]:
     """
     ## Example Usage
@@ -124,20 +142,24 @@ def get_workers_scripts_output(account_id: Optional[pulumi.Input[_builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+    example_workers_scripts = cloudflare.get_workers_scripts(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        tags="production:yes,staging:no")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.str tags: Filter scripts by tags. Format: comma-separated list of tag:allowed pairs where allowed is 'yes' or 'no'.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['maxItems'] = max_items
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersScripts:getWorkersScripts', __args__, opts=opts, typ=GetWorkersScriptsResult)
     return __ret__.apply(lambda __response__: GetWorkersScriptsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         max_items=pulumi.get(__response__, 'max_items'),
-        results=pulumi.get(__response__, 'results')))
+        results=pulumi.get(__response__, 'results'),
+        tags=pulumi.get(__response__, 'tags')))

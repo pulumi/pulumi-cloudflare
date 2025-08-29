@@ -14,9 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude
     {
         /// <summary>
-        /// Determines whether to exclude all query string parameters from the cache key.
+        /// Whether to exclude all query string parameters from the cache key.
         /// </summary>
         public readonly bool? All;
+        /// <summary>
+        /// A list of query string parameters to exclude from the cache key.
+        /// </summary>
         public readonly ImmutableArray<string> Lists;
 
         [OutputConstructor]

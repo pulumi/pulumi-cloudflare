@@ -215,7 +215,11 @@ public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResou
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
+     * @deprecated
+     * Use the config_src field instead.
+     * 
      */
+    @Deprecated /* Use the config_src field instead. */
     @Export(name="remoteConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteConfig;
 
