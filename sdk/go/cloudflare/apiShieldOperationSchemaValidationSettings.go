@@ -48,10 +48,13 @@ import (
 type ApiShieldOperationSchemaValidationSettings struct {
 	pulumi.CustomResourceState
 
-	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `log` log request when request does not conform to schema for this operation
+	//   - `block` deny access to the site when request does not conform to schema for this operation
+	//   - `none` will skip mitigation for this operation
+	//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrOutput `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
@@ -95,10 +98,13 @@ func GetApiShieldOperationSchemaValidationSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.
 type apiShieldOperationSchemaValidationSettingsState struct {
-	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `log` log request when request does not conform to schema for this operation
+	//   - `block` deny access to the site when request does not conform to schema for this operation
+	//   - `none` will skip mitigation for this operation
+	//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+	//     Available values: "log", "block", "none".
 	MitigationAction *string `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
@@ -107,10 +113,13 @@ type apiShieldOperationSchemaValidationSettingsState struct {
 }
 
 type ApiShieldOperationSchemaValidationSettingsState struct {
-	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `log` log request when request does not conform to schema for this operation
+	//   - `block` deny access to the site when request does not conform to schema for this operation
+	//   - `none` will skip mitigation for this operation
+	//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrInput
 	// UUID.
 	OperationId pulumi.StringPtrInput
@@ -123,10 +132,13 @@ func (ApiShieldOperationSchemaValidationSettingsState) ElementType() reflect.Typ
 }
 
 type apiShieldOperationSchemaValidationSettingsArgs struct {
-	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `log` log request when request does not conform to schema for this operation
+	//   - `block` deny access to the site when request does not conform to schema for this operation
+	//   - `none` will skip mitigation for this operation
+	//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+	//     Available values: "log", "block", "none".
 	MitigationAction *string `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId string `pulumi:"operationId"`
@@ -136,10 +148,13 @@ type apiShieldOperationSchemaValidationSettingsArgs struct {
 
 // The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
 type ApiShieldOperationSchemaValidationSettingsArgs struct {
-	// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-	// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `log` log request when request does not conform to schema for this operation
+	//   - `block` deny access to the site when request does not conform to schema for this operation
+	//   - `none` will skip mitigation for this operation
+	//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrInput
 	// UUID.
 	OperationId pulumi.StringInput
@@ -234,10 +249,13 @@ func (o ApiShieldOperationSchemaValidationSettingsOutput) ToApiShieldOperationSc
 	return o
 }
 
-// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+// When set, this applies a mitigation action to this operation
+//
+//   - `log` log request when request does not conform to schema for this operation
+//   - `block` deny access to the site when request does not conform to schema for this operation
+//   - `none` will skip mitigation for this operation
+//   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+//     Available values: "log", "block", "none".
 func (o ApiShieldOperationSchemaValidationSettingsOutput) MitigationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringPtrOutput { return v.MitigationAction }).(pulumi.StringPtrOutput)
 }

@@ -56,53 +56,53 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicNetworkMonitoringRule.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Toggle on if you would like Cloudflare to automatically advertise the IP Prefixes within the rule via Magic Transit when the rule is triggered. Only available for users of Magic Transit.
      */
-    public readonly automaticAdvertisement!: pulumi.Output<boolean | undefined>;
+    declare public readonly automaticAdvertisement: pulumi.Output<boolean | undefined>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    public readonly bandwidth!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
      * The number of bits per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    public /*out*/ readonly bandwidthThreshold!: pulumi.Output<number>;
+    declare public /*out*/ readonly bandwidthThreshold: pulumi.Output<number>;
     /**
      * The amount of time that the rule threshold must be exceeded to send an alert notification. The final value must be equivalent to one of the following 8 values ["1m","5m","10m","15m","20m","30m","45m","60m"].
      * Available values: "1m", "5m", "10m", "15m", "20m", "30m", "45m", "60m".
      */
-    public readonly duration!: pulumi.Output<string>;
+    declare public readonly duration: pulumi.Output<string>;
     /**
      * The name of the rule. Must be unique. Supports characters A-Z, a-z, 0-9, underscore (_), dash (-), period (.), and tilde (~). You can’t have a space in the rule name. Max 256 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of packets per second for the rule. When this value is exceeded for the set duration, an alert notification is sent. Minimum of 1 and no maximum.
      */
-    public readonly packetThreshold!: pulumi.Output<number | undefined>;
+    declare public readonly packetThreshold: pulumi.Output<number | undefined>;
     /**
      * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: "exact", "subnet", "supernet".
      */
-    public /*out*/ readonly prefixMatch!: pulumi.Output<string>;
-    public readonly prefixes!: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly prefixMatch: pulumi.Output<string>;
+    declare public readonly prefixes: pulumi.Output<string[] | undefined>;
     /**
      * MNM rule type.
      * Available values: "threshold", "zscore", "advancedDdos".
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Level of sensitivity set for zscore rules.
      * Available values: "low", "medium", "high".
      */
-    public /*out*/ readonly zscoreSensitivity!: pulumi.Output<string>;
+    declare public /*out*/ readonly zscoreSensitivity: pulumi.Output<string>;
     /**
      * Target of the zscore rule analysis.
      * Available values: "bits", "packets".
      */
-    public /*out*/ readonly zscoreTarget!: pulumi.Output<string>;
+    declare public /*out*/ readonly zscoreTarget: pulumi.Output<string>;
 
     /**
      * Create a MagicNetworkMonitoringRule resource with the given unique name, arguments, and options.
@@ -117,33 +117,33 @@ export class MagicNetworkMonitoringRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicNetworkMonitoringRuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["automaticAdvertisement"] = state ? state.automaticAdvertisement : undefined;
-            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
-            resourceInputs["bandwidthThreshold"] = state ? state.bandwidthThreshold : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["packetThreshold"] = state ? state.packetThreshold : undefined;
-            resourceInputs["prefixMatch"] = state ? state.prefixMatch : undefined;
-            resourceInputs["prefixes"] = state ? state.prefixes : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zscoreSensitivity"] = state ? state.zscoreSensitivity : undefined;
-            resourceInputs["zscoreTarget"] = state ? state.zscoreTarget : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["automaticAdvertisement"] = state?.automaticAdvertisement;
+            resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["bandwidthThreshold"] = state?.bandwidthThreshold;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["packetThreshold"] = state?.packetThreshold;
+            resourceInputs["prefixMatch"] = state?.prefixMatch;
+            resourceInputs["prefixes"] = state?.prefixes;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zscoreSensitivity"] = state?.zscoreSensitivity;
+            resourceInputs["zscoreTarget"] = state?.zscoreTarget;
         } else {
             const args = argsOrState as MagicNetworkMonitoringRuleArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["automaticAdvertisement"] = args ? args.automaticAdvertisement : undefined;
-            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
-            resourceInputs["duration"] = args ? args.duration : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["packetThreshold"] = args ? args.packetThreshold : undefined;
-            resourceInputs["prefixes"] = args ? args.prefixes : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["automaticAdvertisement"] = args?.automaticAdvertisement;
+            resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["duration"] = args?.duration;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["packetThreshold"] = args?.packetThreshold;
+            resourceInputs["prefixes"] = args?.prefixes;
             resourceInputs["bandwidthThreshold"] = undefined /*out*/;
             resourceInputs["prefixMatch"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

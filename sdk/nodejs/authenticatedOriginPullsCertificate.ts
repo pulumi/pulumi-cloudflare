@@ -100,44 +100,44 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     /**
      * The zone's leaf certificate.
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public /*out*/ readonly certificateId!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificateId: pulumi.Output<string>;
     /**
      * Indicates whether zone-level authenticated origin pulls is enabled.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * When the certificate from the authority expires.
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * The certificate authority that issued the certificate.
      */
-    public /*out*/ readonly issuer!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuer: pulumi.Output<string>;
     /**
      * The zone's private key.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * The type of hash used for the certificate.
      */
-    public /*out*/ readonly signature!: pulumi.Output<string>;
+    declare public /*out*/ readonly signature: pulumi.Output<string>;
     /**
      * Status of the certificate activation.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * This is the time the certificate was uploaded.
      */
-    public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadedOn: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a AuthenticatedOriginPullsCertificate resource with the given unique name, arguments, and options.
@@ -152,30 +152,30 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsCertificateState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["signature"] = state ? state.signature : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["signature"] = state?.signature;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["uploadedOn"] = state?.uploadedOn;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["certificate"] = args?.certificate;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;

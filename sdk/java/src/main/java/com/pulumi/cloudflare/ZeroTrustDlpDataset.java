@@ -159,16 +159,20 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
         return this.numCells;
     }
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     @Export(name="secret", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> secret;
 
     /**
-     * @return Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * @return Generate a secret dataset.
+     * 
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      * 
      */
     public Output<Optional<Boolean>> secret() {
@@ -189,14 +193,18 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * When the dataset was last updated. This includes name or description changes as well as uploads.
+     * When the dataset was last updated.
+     * 
+     * This includes name or description changes as well as uploads.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the dataset was last updated. This includes name or description changes as well as uploads.
+     * @return When the dataset was last updated.
+     * 
+     * This includes name or description changes as well as uploads.
      * 
      */
     public Output<String> updatedAt() {

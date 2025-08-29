@@ -76,29 +76,29 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * The Origin CA certificate. Will be newline-encoded.
      */
-    public /*out*/ readonly certificate!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificate: pulumi.Output<string>;
     /**
      * The Certificate Signing Request (CSR). Must be newline-encoded.
      */
-    public readonly csr!: pulumi.Output<string | undefined>;
+    declare public readonly csr: pulumi.Output<string | undefined>;
     /**
      * When the certificate will expire.
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      */
-    public readonly hostnames!: pulumi.Output<string[] | undefined>;
+    declare public readonly hostnames: pulumi.Output<string[] | undefined>;
     /**
      * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
      * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
-    public readonly requestType!: pulumi.Output<string | undefined>;
+    declare public readonly requestType: pulumi.Output<string | undefined>;
     /**
      * The number of days for which the certificate should be valid.
      * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
-    public readonly requestedValidity!: pulumi.Output<number>;
+    declare public readonly requestedValidity: pulumi.Output<number>;
 
     /**
      * Create a OriginCaCertificate resource with the given unique name, arguments, and options.
@@ -113,18 +113,18 @@ export class OriginCaCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OriginCaCertificateState | undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["csr"] = state ? state.csr : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
-            resourceInputs["requestType"] = state ? state.requestType : undefined;
-            resourceInputs["requestedValidity"] = state ? state.requestedValidity : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["csr"] = state?.csr;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["hostnames"] = state?.hostnames;
+            resourceInputs["requestType"] = state?.requestType;
+            resourceInputs["requestedValidity"] = state?.requestedValidity;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
-            resourceInputs["csr"] = args ? args.csr : undefined;
-            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
-            resourceInputs["requestType"] = args ? args.requestType : undefined;
-            resourceInputs["requestedValidity"] = args ? args.requestedValidity : undefined;
+            resourceInputs["csr"] = args?.csr;
+            resourceInputs["hostnames"] = args?.hostnames;
+            resourceInputs["requestType"] = args?.requestType;
+            resourceInputs["requestedValidity"] = args?.requestedValidity;
             resourceInputs["certificate"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
         }

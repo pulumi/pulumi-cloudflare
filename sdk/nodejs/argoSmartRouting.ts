@@ -54,20 +54,20 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
     /**
      * Specifies if the setting is editable.
      */
-    public /*out*/ readonly editable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly editable: pulumi.Output<boolean>;
     /**
      * Specifies the time when the setting was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Specifies the enablement value of Argo Smart Routing.
      * Available values: "on", "off".
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * Specifies the zone associated with the API call.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ArgoSmartRouting resource with the given unique name, arguments, and options.
@@ -82,20 +82,20 @@ export class ArgoSmartRouting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ArgoSmartRoutingState | undefined;
-            resourceInputs["editable"] = state ? state.editable : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["editable"] = state?.editable;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ArgoSmartRoutingArgs | undefined;
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["editable"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

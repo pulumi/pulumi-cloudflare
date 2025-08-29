@@ -40,11 +40,11 @@ export class SnippetRules extends pulumi.CustomResource {
     /**
      * A list of snippet rules.
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
      * The unique ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SnippetRules resource with the given unique name, arguments, and options.
@@ -59,18 +59,18 @@ export class SnippetRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnippetRulesState | undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SnippetRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SnippetRules.__pulumiType, name, resourceInputs, opts);

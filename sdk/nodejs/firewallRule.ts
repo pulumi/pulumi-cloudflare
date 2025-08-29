@@ -75,29 +75,29 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
-    public readonly action!: pulumi.Output<outputs.FirewallRuleAction>;
+    declare public readonly action: pulumi.Output<outputs.FirewallRuleAction>;
     /**
      * An informative summary of the firewall rule.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
-    public readonly filter!: pulumi.Output<outputs.FirewallRuleFilter>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
+    declare public readonly filter: pulumi.Output<outputs.FirewallRuleFilter>;
     /**
      * When true, indicates that the firewall rule is currently paused.
      */
-    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly paused: pulumi.Output<boolean>;
     /**
      * The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      */
-    public /*out*/ readonly priority!: pulumi.Output<number>;
-    public /*out*/ readonly products!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly priority: pulumi.Output<number>;
+    declare public /*out*/ readonly products: pulumi.Output<string[]>;
     /**
      * A short reference tag. Allows you to select related firewall rules.
      */
-    public /*out*/ readonly ref!: pulumi.Output<string>;
+    declare public /*out*/ readonly ref: pulumi.Output<string>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -112,28 +112,28 @@ export class FirewallRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["products"] = state ? state.products : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["products"] = state?.products;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.filter === undefined) && !opts.urn) {
+            if (args?.filter === undefined && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;

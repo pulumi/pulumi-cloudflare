@@ -56,36 +56,36 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     /**
      * The account id
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Timestamp of when the webhook destination was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Timestamp of the last time an attempt to dispatch a notification to this webhook failed.
      */
-    public /*out*/ readonly lastFailure!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastFailure: pulumi.Output<string>;
     /**
      * Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook.
      */
-    public /*out*/ readonly lastSuccess!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastSuccess: pulumi.Output<string>;
     /**
      * The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
      */
-    public readonly secret!: pulumi.Output<string | undefined>;
+    declare public readonly secret: pulumi.Output<string | undefined>;
     /**
      * Type of webhook endpoint.
      * Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The POST endpoint to call when dispatching a notification.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a NotificationPolicyWebhooks resource with the given unique name, arguments, and options.
@@ -100,29 +100,29 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationPolicyWebhooksState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["lastFailure"] = state ? state.lastFailure : undefined;
-            resourceInputs["lastSuccess"] = state ? state.lastSuccess : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["lastFailure"] = state?.lastFailure;
+            resourceInputs["lastSuccess"] = state?.lastSuccess;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as NotificationPolicyWebhooksArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["url"] = args?.url;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastFailure"] = undefined /*out*/;
             resourceInputs["lastSuccess"] = undefined /*out*/;

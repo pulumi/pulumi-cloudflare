@@ -49,27 +49,27 @@ export class R2ManagedDomain extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Bucket ID.
      */
-    public /*out*/ readonly bucketId!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * Domain name of the bucket's r2.dev domain.
      */
-    public /*out*/ readonly domain!: pulumi.Output<string>;
+    declare public /*out*/ readonly domain: pulumi.Output<string>;
     /**
      * Whether to enable public bucket access at the r2.dev domain.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Jurisdiction of the bucket
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
 
     /**
      * Create a R2ManagedDomain resource with the given unique name, arguments, and options.
@@ -84,27 +84,27 @@ export class R2ManagedDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2ManagedDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketId"] = state ? state.bucketId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketId"] = state?.bucketId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
         } else {
             const args = argsOrState as R2ManagedDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
             resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["domain"] = undefined /*out*/;
         }

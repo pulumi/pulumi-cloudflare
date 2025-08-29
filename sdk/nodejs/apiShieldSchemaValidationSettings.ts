@@ -55,17 +55,21 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
     /**
      * The default mitigation action used when there is no mitigation action defined on the operation
      */
-    public readonly validationDefaultMitigationAction!: pulumi.Output<string>;
+    declare public readonly validationDefaultMitigationAction: pulumi.Output<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `none` will skip running schema validation entirely for the request
+     *   - `null` indicates that no override is in place
+     *
+     * To clear any override, use the special value `disableOverride` or `null`
+     * Available values: "none", "disableOverride".
      */
-    public readonly validationOverrideMitigationAction!: pulumi.Output<string | undefined>;
+    declare public readonly validationOverrideMitigationAction: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldSchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -80,20 +84,20 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldSchemaValidationSettingsState | undefined;
-            resourceInputs["validationDefaultMitigationAction"] = state ? state.validationDefaultMitigationAction : undefined;
-            resourceInputs["validationOverrideMitigationAction"] = state ? state.validationOverrideMitigationAction : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["validationDefaultMitigationAction"] = state?.validationDefaultMitigationAction;
+            resourceInputs["validationOverrideMitigationAction"] = state?.validationOverrideMitigationAction;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldSchemaValidationSettingsArgs | undefined;
-            if ((!args || args.validationDefaultMitigationAction === undefined) && !opts.urn) {
+            if (args?.validationDefaultMitigationAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationDefaultMitigationAction'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["validationDefaultMitigationAction"] = args ? args.validationDefaultMitigationAction : undefined;
-            resourceInputs["validationOverrideMitigationAction"] = args ? args.validationOverrideMitigationAction : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["validationDefaultMitigationAction"] = args?.validationDefaultMitigationAction;
+            resourceInputs["validationOverrideMitigationAction"] = args?.validationOverrideMitigationAction;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldSchemaValidationSettings.__pulumiType, name, resourceInputs, opts);
@@ -109,9 +113,13 @@ export interface ApiShieldSchemaValidationSettingsState {
      */
     validationDefaultMitigationAction?: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `none` will skip running schema validation entirely for the request
+     *   - `null` indicates that no override is in place
+     *
+     * To clear any override, use the special value `disableOverride` or `null`
+     * Available values: "none", "disableOverride".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
@@ -129,9 +137,13 @@ export interface ApiShieldSchemaValidationSettingsArgs {
      */
     validationDefaultMitigationAction: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-     * validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-     * special value `disableOverride` or `null` Available values: "none", "disableOverride".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `none` will skip running schema validation entirely for the request
+     *   - `null` indicates that no override is in place
+     *
+     * To clear any override, use the special value `disableOverride` or `null`
+     * Available values: "none", "disableOverride".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**

@@ -59,12 +59,12 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoomRules.__pulumiType;
     }
 
-    public readonly rules!: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
-    public readonly waitingRoomId!: pulumi.Output<string>;
+    declare public readonly rules: pulumi.Output<outputs.WaitingRoomRulesRule[]>;
+    declare public readonly waitingRoomId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomRules resource with the given unique name, arguments, and options.
@@ -79,23 +79,23 @@ export class WaitingRoomRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomRulesState | undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["waitingRoomId"] = state?.waitingRoomId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as WaitingRoomRulesArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.waitingRoomId === undefined) && !opts.urn) {
+            if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["waitingRoomId"] = args?.waitingRoomId;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WaitingRoomRules.__pulumiType, name, resourceInputs, opts);

@@ -115,63 +115,63 @@ export class CustomSsl extends pulumi.CustomResource {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    public readonly bundleMethod!: pulumi.Output<string>;
+    declare public readonly bundleMethod: pulumi.Output<string>;
     /**
      * The zone's SSL certificate or certificate and the intermediate(s).
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * When the certificate from the authority expires.
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      */
-    public readonly geoRestrictions!: pulumi.Output<outputs.CustomSslGeoRestrictions | undefined>;
-    public /*out*/ readonly hosts!: pulumi.Output<string[]>;
+    declare public readonly geoRestrictions: pulumi.Output<outputs.CustomSslGeoRestrictions | undefined>;
+    declare public /*out*/ readonly hosts: pulumi.Output<string[]>;
     /**
      * The certificate authority that issued the certificate.
      */
-    public /*out*/ readonly issuer!: pulumi.Output<string>;
-    public /*out*/ readonly keylessServer!: pulumi.Output<outputs.CustomSslKeylessServer>;
+    declare public /*out*/ readonly issuer: pulumi.Output<string>;
+    declare public /*out*/ readonly keylessServer: pulumi.Output<outputs.CustomSslKeylessServer>;
     /**
      * When the certificate was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
     /**
      * The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
      */
-    public /*out*/ readonly priority!: pulumi.Output<number>;
+    declare public /*out*/ readonly priority: pulumi.Output<number>;
     /**
      * The zone's private key.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * The type of hash used for the certificate.
      */
-    public /*out*/ readonly signature!: pulumi.Output<string>;
+    declare public /*out*/ readonly signature: pulumi.Output<string>;
     /**
      * Status of the zone's custom SSL.
      * Available values: "active", "expired", "deleted", "pending", "initializing".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
      * Available values: "legacy*custom", "sniCustom".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * When the certificate was uploaded to Cloudflare.
      */
-    public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadedOn: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomSsl resource with the given unique name, arguments, and options.
@@ -186,40 +186,40 @@ export class CustomSsl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomSslState | undefined;
-            resourceInputs["bundleMethod"] = state ? state.bundleMethod : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["geoRestrictions"] = state ? state.geoRestrictions : undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["keylessServer"] = state ? state.keylessServer : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["signature"] = state ? state.signature : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bundleMethod"] = state?.bundleMethod;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["geoRestrictions"] = state?.geoRestrictions;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["keylessServer"] = state?.keylessServer;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["signature"] = state?.signature;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uploadedOn"] = state?.uploadedOn;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomSslArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["bundleMethod"] = args ? args.bundleMethod : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["geoRestrictions"] = args ? args.geoRestrictions : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["bundleMethod"] = args?.bundleMethod;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["geoRestrictions"] = args?.geoRestrictions;
+            resourceInputs["policy"] = args?.policy;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;

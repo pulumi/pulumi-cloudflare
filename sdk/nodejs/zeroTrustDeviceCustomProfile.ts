@@ -83,100 +83,100 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceCustomProfile.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Whether to allow the user to switch WARP between modes.
      */
-    public readonly allowModeSwitch!: pulumi.Output<boolean>;
+    declare public readonly allowModeSwitch: pulumi.Output<boolean>;
     /**
      * Whether to receive update notifications when a new version of the client is available.
      */
-    public readonly allowUpdates!: pulumi.Output<boolean>;
+    declare public readonly allowUpdates: pulumi.Output<boolean>;
     /**
      * Whether to allow devices to leave the organization.
      */
-    public readonly allowedToLeave!: pulumi.Output<boolean>;
+    declare public readonly allowedToLeave: pulumi.Output<boolean>;
     /**
      * The amount of time in seconds to reconnect after having been disabled.
      */
-    public readonly autoConnect!: pulumi.Output<number>;
+    declare public readonly autoConnect: pulumi.Output<number>;
     /**
      * Turn on the captive portal after the specified amount of time.
      */
-    public readonly captivePortal!: pulumi.Output<number>;
+    declare public readonly captivePortal: pulumi.Output<number>;
     /**
      * Whether the policy is the default policy for an account.
      */
-    public /*out*/ readonly default!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly default: pulumi.Output<boolean>;
     /**
      * A description of the policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      */
-    public readonly disableAutoFallback!: pulumi.Output<boolean>;
+    declare public readonly disableAutoFallback: pulumi.Output<boolean>;
     /**
      * Whether the policy will be applied to matching devices.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether to add Microsoft IPs to Split Tunnel exclusions.
      */
-    public readonly excludeOfficeIps!: pulumi.Output<boolean>;
+    declare public readonly excludeOfficeIps: pulumi.Output<boolean>;
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[]>;
-    public /*out*/ readonly fallbackDomains!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileFallbackDomain[]>;
-    public /*out*/ readonly gatewayUniqueId!: pulumi.Output<string>;
+    declare public readonly excludes: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[]>;
+    declare public /*out*/ readonly fallbackDomains: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileFallbackDomain[]>;
+    declare public /*out*/ readonly gatewayUniqueId: pulumi.Output<string>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[]>;
+    declare public readonly includes: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[]>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */
-    public readonly lanAllowMinutes!: pulumi.Output<number | undefined>;
+    declare public readonly lanAllowMinutes: pulumi.Output<number | undefined>;
     /**
      * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
      */
-    public readonly lanAllowSubnetSize!: pulumi.Output<number | undefined>;
+    declare public readonly lanAllowSubnetSize: pulumi.Output<number | undefined>;
     /**
      * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
-    public readonly match!: pulumi.Output<string>;
+    declare public readonly match: pulumi.Output<string>;
     /**
      * The name of the device settings profile.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly policyId!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly policyId: pulumi.Output<string>;
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
      */
-    public readonly precedence!: pulumi.Output<number>;
+    declare public readonly precedence: pulumi.Output<number>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
-    public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean>;
+    declare public readonly registerInterfaceIpWithDns: pulumi.Output<boolean>;
     /**
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      */
-    public readonly sccmVpnBoundarySupport!: pulumi.Output<boolean>;
-    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
+    declare public readonly sccmVpnBoundarySupport: pulumi.Output<boolean>;
+    declare public readonly serviceModeV2: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
-    public readonly supportUrl!: pulumi.Output<string>;
+    declare public readonly supportUrl: pulumi.Output<string>;
     /**
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      */
-    public readonly switchLocked!: pulumi.Output<boolean>;
-    public /*out*/ readonly targetTests!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileTargetTest[]>;
+    declare public readonly switchLocked: pulumi.Output<boolean>;
+    declare public /*out*/ readonly targetTests: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileTargetTest[]>;
     /**
      * Determines which tunnel protocol to use.
      */
-    public readonly tunnelProtocol!: pulumi.Output<string>;
+    declare public readonly tunnelProtocol: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDeviceCustomProfile resource with the given unique name, arguments, and options.
@@ -191,71 +191,71 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceCustomProfileState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowModeSwitch"] = state ? state.allowModeSwitch : undefined;
-            resourceInputs["allowUpdates"] = state ? state.allowUpdates : undefined;
-            resourceInputs["allowedToLeave"] = state ? state.allowedToLeave : undefined;
-            resourceInputs["autoConnect"] = state ? state.autoConnect : undefined;
-            resourceInputs["captivePortal"] = state ? state.captivePortal : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableAutoFallback"] = state ? state.disableAutoFallback : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["excludeOfficeIps"] = state ? state.excludeOfficeIps : undefined;
-            resourceInputs["excludes"] = state ? state.excludes : undefined;
-            resourceInputs["fallbackDomains"] = state ? state.fallbackDomains : undefined;
-            resourceInputs["gatewayUniqueId"] = state ? state.gatewayUniqueId : undefined;
-            resourceInputs["includes"] = state ? state.includes : undefined;
-            resourceInputs["lanAllowMinutes"] = state ? state.lanAllowMinutes : undefined;
-            resourceInputs["lanAllowSubnetSize"] = state ? state.lanAllowSubnetSize : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["precedence"] = state ? state.precedence : undefined;
-            resourceInputs["registerInterfaceIpWithDns"] = state ? state.registerInterfaceIpWithDns : undefined;
-            resourceInputs["sccmVpnBoundarySupport"] = state ? state.sccmVpnBoundarySupport : undefined;
-            resourceInputs["serviceModeV2"] = state ? state.serviceModeV2 : undefined;
-            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
-            resourceInputs["switchLocked"] = state ? state.switchLocked : undefined;
-            resourceInputs["targetTests"] = state ? state.targetTests : undefined;
-            resourceInputs["tunnelProtocol"] = state ? state.tunnelProtocol : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowModeSwitch"] = state?.allowModeSwitch;
+            resourceInputs["allowUpdates"] = state?.allowUpdates;
+            resourceInputs["allowedToLeave"] = state?.allowedToLeave;
+            resourceInputs["autoConnect"] = state?.autoConnect;
+            resourceInputs["captivePortal"] = state?.captivePortal;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableAutoFallback"] = state?.disableAutoFallback;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["excludeOfficeIps"] = state?.excludeOfficeIps;
+            resourceInputs["excludes"] = state?.excludes;
+            resourceInputs["fallbackDomains"] = state?.fallbackDomains;
+            resourceInputs["gatewayUniqueId"] = state?.gatewayUniqueId;
+            resourceInputs["includes"] = state?.includes;
+            resourceInputs["lanAllowMinutes"] = state?.lanAllowMinutes;
+            resourceInputs["lanAllowSubnetSize"] = state?.lanAllowSubnetSize;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["precedence"] = state?.precedence;
+            resourceInputs["registerInterfaceIpWithDns"] = state?.registerInterfaceIpWithDns;
+            resourceInputs["sccmVpnBoundarySupport"] = state?.sccmVpnBoundarySupport;
+            resourceInputs["serviceModeV2"] = state?.serviceModeV2;
+            resourceInputs["supportUrl"] = state?.supportUrl;
+            resourceInputs["switchLocked"] = state?.switchLocked;
+            resourceInputs["targetTests"] = state?.targetTests;
+            resourceInputs["tunnelProtocol"] = state?.tunnelProtocol;
         } else {
             const args = argsOrState as ZeroTrustDeviceCustomProfileArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.match === undefined) && !opts.urn) {
+            if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.precedence === undefined) && !opts.urn) {
+            if (args?.precedence === undefined && !opts.urn) {
                 throw new Error("Missing required property 'precedence'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowModeSwitch"] = args ? args.allowModeSwitch : undefined;
-            resourceInputs["allowUpdates"] = args ? args.allowUpdates : undefined;
-            resourceInputs["allowedToLeave"] = args ? args.allowedToLeave : undefined;
-            resourceInputs["autoConnect"] = args ? args.autoConnect : undefined;
-            resourceInputs["captivePortal"] = args ? args.captivePortal : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableAutoFallback"] = args ? args.disableAutoFallback : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["excludeOfficeIps"] = args ? args.excludeOfficeIps : undefined;
-            resourceInputs["excludes"] = args ? args.excludes : undefined;
-            resourceInputs["includes"] = args ? args.includes : undefined;
-            resourceInputs["lanAllowMinutes"] = args ? args.lanAllowMinutes : undefined;
-            resourceInputs["lanAllowSubnetSize"] = args ? args.lanAllowSubnetSize : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["precedence"] = args ? args.precedence : undefined;
-            resourceInputs["registerInterfaceIpWithDns"] = args ? args.registerInterfaceIpWithDns : undefined;
-            resourceInputs["sccmVpnBoundarySupport"] = args ? args.sccmVpnBoundarySupport : undefined;
-            resourceInputs["serviceModeV2"] = args ? args.serviceModeV2 : undefined;
-            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
-            resourceInputs["switchLocked"] = args ? args.switchLocked : undefined;
-            resourceInputs["tunnelProtocol"] = args ? args.tunnelProtocol : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowModeSwitch"] = args?.allowModeSwitch;
+            resourceInputs["allowUpdates"] = args?.allowUpdates;
+            resourceInputs["allowedToLeave"] = args?.allowedToLeave;
+            resourceInputs["autoConnect"] = args?.autoConnect;
+            resourceInputs["captivePortal"] = args?.captivePortal;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableAutoFallback"] = args?.disableAutoFallback;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["excludeOfficeIps"] = args?.excludeOfficeIps;
+            resourceInputs["excludes"] = args?.excludes;
+            resourceInputs["includes"] = args?.includes;
+            resourceInputs["lanAllowMinutes"] = args?.lanAllowMinutes;
+            resourceInputs["lanAllowSubnetSize"] = args?.lanAllowSubnetSize;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["precedence"] = args?.precedence;
+            resourceInputs["registerInterfaceIpWithDns"] = args?.registerInterfaceIpWithDns;
+            resourceInputs["sccmVpnBoundarySupport"] = args?.sccmVpnBoundarySupport;
+            resourceInputs["serviceModeV2"] = args?.serviceModeV2;
+            resourceInputs["supportUrl"] = args?.supportUrl;
+            resourceInputs["switchLocked"] = args?.switchLocked;
+            resourceInputs["tunnelProtocol"] = args?.tunnelProtocol;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["fallbackDomains"] = undefined /*out*/;
             resourceInputs["gatewayUniqueId"] = undefined /*out*/;

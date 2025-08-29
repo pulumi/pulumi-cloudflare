@@ -55,32 +55,32 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpIntegrationEntry.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if secret is true
      */
-    public /*out*/ readonly caseSensitive!: pulumi.Output<boolean>;
-    public /*out*/ readonly confidence!: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryConfidence>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly entryId!: pulumi.Output<string>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly pattern!: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryPattern>;
+    declare public /*out*/ readonly caseSensitive: pulumi.Output<boolean>;
+    declare public /*out*/ readonly confidence: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryConfidence>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly entryId: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly pattern: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryPattern>;
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      */
-    public readonly profileId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly secret!: pulumi.Output<boolean>;
+    declare public readonly profileId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly secret: pulumi.Output<boolean>;
     /**
      * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
-    public /*out*/ readonly variant!: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryVariant>;
-    public /*out*/ readonly wordList!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    declare public /*out*/ readonly variant: pulumi.Output<outputs.ZeroTrustDlpIntegrationEntryVariant>;
+    declare public /*out*/ readonly wordList: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDlpIntegrationEntry resource with the given unique name, arguments, and options.
@@ -95,35 +95,35 @@ export class ZeroTrustDlpIntegrationEntry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpIntegrationEntryState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["caseSensitive"] = state ? state.caseSensitive : undefined;
-            resourceInputs["confidence"] = state ? state.confidence : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["entryId"] = state ? state.entryId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["pattern"] = state ? state.pattern : undefined;
-            resourceInputs["profileId"] = state ? state.profileId : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["variant"] = state ? state.variant : undefined;
-            resourceInputs["wordList"] = state ? state.wordList : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["caseSensitive"] = state?.caseSensitive;
+            resourceInputs["confidence"] = state?.confidence;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["entryId"] = state?.entryId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["pattern"] = state?.pattern;
+            resourceInputs["profileId"] = state?.profileId;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["variant"] = state?.variant;
+            resourceInputs["wordList"] = state?.wordList;
         } else {
             const args = argsOrState as ZeroTrustDlpIntegrationEntryArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.entryId === undefined) && !opts.urn) {
+            if (args?.entryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["entryId"] = args ? args.entryId : undefined;
-            resourceInputs["profileId"] = args ? args.profileId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["entryId"] = args?.entryId;
+            resourceInputs["profileId"] = args?.profileId;
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

@@ -11,35 +11,27 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-// keys are [now considered legacy by
-// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-// instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func GetApiKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiKey")
 }
 
-// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-// Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiToken")
 }
 
-// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
-// `apiUserServiceKey`.
+// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func GetApiUserServiceKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiUserServiceKey")
 }
 
-// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
-// variable.
+// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 func GetBaseUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:baseUrl")
 }
 
-// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-// variable. Required when using `apiKey`. Conflicts with `apiToken`.
+// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
 func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:email")
 }

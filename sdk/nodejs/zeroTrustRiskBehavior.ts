@@ -52,8 +52,8 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustRiskBehavior.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly behaviors!: pulumi.Output<{[key: string]: outputs.ZeroTrustRiskBehaviorBehaviors}>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly behaviors: pulumi.Output<{[key: string]: outputs.ZeroTrustRiskBehaviorBehaviors}>;
 
     /**
      * Create a ZeroTrustRiskBehavior resource with the given unique name, arguments, and options.
@@ -68,18 +68,18 @@ export class ZeroTrustRiskBehavior extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustRiskBehaviorState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["behaviors"] = state ? state.behaviors : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["behaviors"] = state?.behaviors;
         } else {
             const args = argsOrState as ZeroTrustRiskBehaviorArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.behaviors === undefined) && !opts.urn) {
+            if (args?.behaviors === undefined && !opts.urn) {
                 throw new Error("Missing required property 'behaviors'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["behaviors"] = args ? args.behaviors : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["behaviors"] = args?.behaviors;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/riskBehavior:RiskBehavior" }] };

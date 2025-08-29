@@ -61,66 +61,66 @@ export class Tunnel extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Cloudflare account ID
      */
-    public /*out*/ readonly accountTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountTag: pulumi.Output<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    public readonly configSrc!: pulumi.Output<string>;
+    declare public readonly configSrc: pulumi.Output<string>;
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
      *
      * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      */
-    public /*out*/ readonly connections!: pulumi.Output<outputs.TunnelConnection[]>;
+    declare public /*out*/ readonly connections: pulumi.Output<outputs.TunnelConnection[]>;
     /**
      * Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
      */
-    public /*out*/ readonly connsActiveAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly connsActiveAt: pulumi.Output<string>;
     /**
      * Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
      */
-    public /*out*/ readonly connsInactiveAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly connsInactiveAt: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
      * Metadata associated with the tunnel.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<string>;
+    declare public /*out*/ readonly metadata: pulumi.Output<string>;
     /**
      * A user-friendly name for a tunnel.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      *
      * @deprecated Use the configSrc field instead.
      */
-    public /*out*/ readonly remoteConfig!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly remoteConfig: pulumi.Output<boolean>;
     /**
      * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
      * Available values: "inactive", "degraded", "healthy", "down".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The type of tunnel.
      * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
      */
-    public /*out*/ readonly tunType!: pulumi.Output<string>;
+    declare public /*out*/ readonly tunType: pulumi.Output<string>;
     /**
      * Sets the password required to run a locally-managed tunnel. Must be at least 32 bytes and encoded as a base64 string.
      */
-    public readonly tunnelSecret!: pulumi.Output<string | undefined>;
+    declare public readonly tunnelSecret: pulumi.Output<string | undefined>;
 
     /**
      * Create a Tunnel resource with the given unique name, arguments, and options.
@@ -138,31 +138,31 @@ export class Tunnel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["accountTag"] = state ? state.accountTag : undefined;
-            resourceInputs["configSrc"] = state ? state.configSrc : undefined;
-            resourceInputs["connections"] = state ? state.connections : undefined;
-            resourceInputs["connsActiveAt"] = state ? state.connsActiveAt : undefined;
-            resourceInputs["connsInactiveAt"] = state ? state.connsInactiveAt : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["remoteConfig"] = state ? state.remoteConfig : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tunType"] = state ? state.tunType : undefined;
-            resourceInputs["tunnelSecret"] = state ? state.tunnelSecret : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["accountTag"] = state?.accountTag;
+            resourceInputs["configSrc"] = state?.configSrc;
+            resourceInputs["connections"] = state?.connections;
+            resourceInputs["connsActiveAt"] = state?.connsActiveAt;
+            resourceInputs["connsInactiveAt"] = state?.connsInactiveAt;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["remoteConfig"] = state?.remoteConfig;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tunType"] = state?.tunType;
+            resourceInputs["tunnelSecret"] = state?.tunnelSecret;
         } else {
             const args = argsOrState as TunnelArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["configSrc"] = args ? args.configSrc : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["configSrc"] = args?.configSrc;
+            resourceInputs["name"] = args?.name;
             resourceInputs["tunnelSecret"] = args?.tunnelSecret ? pulumi.secret(args.tunnelSecret) : undefined;
             resourceInputs["accountTag"] = undefined /*out*/;
             resourceInputs["connections"] = undefined /*out*/;

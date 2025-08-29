@@ -56,23 +56,23 @@ export class RegionalHostname extends pulumi.CustomResource {
     /**
      * When the regional hostname was created
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * Identifying key for the region
      */
-    public readonly regionKey!: pulumi.Output<string>;
+    declare public readonly regionKey: pulumi.Output<string>;
     /**
      * Configure which routing method to use for the regional hostname
      */
-    public readonly routing!: pulumi.Output<string>;
+    declare public readonly routing: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a RegionalHostname resource with the given unique name, arguments, and options.
@@ -87,26 +87,26 @@ export class RegionalHostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionalHostnameState | undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["regionKey"] = state ? state.regionKey : undefined;
-            resourceInputs["routing"] = state ? state.routing : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["regionKey"] = state?.regionKey;
+            resourceInputs["routing"] = state?.routing;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as RegionalHostnameArgs | undefined;
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.regionKey === undefined) && !opts.urn) {
+            if (args?.regionKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionKey'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["regionKey"] = args ? args.regionKey : undefined;
-            resourceInputs["routing"] = args ? args.routing : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["regionKey"] = args?.regionKey;
+            resourceInputs["routing"] = args?.routing;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

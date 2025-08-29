@@ -48,11 +48,11 @@ export class AuthenticatedOriginPullsSettings extends pulumi.CustomResource {
     /**
      * Indicates whether zone-level authenticated origin pulls is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a AuthenticatedOriginPullsSettings resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class AuthenticatedOriginPullsSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsSettingsState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsSettingsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthenticatedOriginPullsSettings.__pulumiType, name, resourceInputs, opts);

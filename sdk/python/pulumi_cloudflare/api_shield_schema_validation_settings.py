@@ -26,9 +26,13 @@ class ApiShieldSchemaValidationSettingsArgs:
         The set of arguments for constructing a ApiShieldSchemaValidationSettings resource.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-               validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-               special value `disable_override` or `null` Available values: "none", "disable_override".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `none` will skip running schema validation entirely for the request
+                 - `null` indicates that no override is in place
+               
+               To clear any override, use the special value `disable_override` or `null`
+               Available values: "none", "disable_override".
         """
         pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -63,9 +67,13 @@ class ApiShieldSchemaValidationSettingsArgs:
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-        validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-        special value `disable_override` or `null` Available values: "none", "disable_override".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `none` will skip running schema validation entirely for the request
+          - `null` indicates that no override is in place
+
+        To clear any override, use the special value `disable_override` or `null`
+        Available values: "none", "disable_override".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 
@@ -83,9 +91,13 @@ class _ApiShieldSchemaValidationSettingsState:
         """
         Input properties used for looking up and filtering ApiShieldSchemaValidationSettings resources.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-               validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-               special value `disable_override` or `null` Available values: "none", "disable_override".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `none` will skip running schema validation entirely for the request
+                 - `null` indicates that no override is in place
+               
+               To clear any override, use the special value `disable_override` or `null`
+               Available values: "none", "disable_override".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if validation_default_mitigation_action is not None:
@@ -111,9 +123,13 @@ class _ApiShieldSchemaValidationSettingsState:
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-        validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-        special value `disable_override` or `null` Available values: "none", "disable_override".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `none` will skip running schema validation entirely for the request
+          - `null` indicates that no override is in place
+
+        To clear any override, use the special value `disable_override` or `null`
+        Available values: "none", "disable_override".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 
@@ -166,9 +182,13 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-               validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-               special value `disable_override` or `null` Available values: "none", "disable_override".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `none` will skip running schema validation entirely for the request
+                 - `null` indicates that no override is in place
+               
+               To clear any override, use the special value `disable_override` or `null`
+               Available values: "none", "disable_override".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
@@ -251,9 +271,13 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
-        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-               validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-               special value `disable_override` or `null` Available values: "none", "disable_override".
+        :param pulumi.Input[_builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
+               
+                 - `none` will skip running schema validation entirely for the request
+                 - `null` indicates that no override is in place
+               
+               To clear any override, use the special value `disable_override` or `null`
+               Available values: "none", "disable_override".
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -277,9 +301,13 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="validationOverrideMitigationAction")
     def validation_override_mitigation_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
-        validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
-        special value `disable_override` or `null` Available values: "none", "disable_override".
+        When set, this overrides both zone level and operation level mitigation actions.
+
+          - `none` will skip running schema validation entirely for the request
+          - `null` indicates that no override is in place
+
+        To clear any override, use the special value `disable_override` or `null`
+        Available values: "none", "disable_override".
         """
         return pulumi.get(self, "validation_override_mitigation_action")
 

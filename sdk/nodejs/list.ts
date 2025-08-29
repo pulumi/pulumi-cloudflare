@@ -56,36 +56,36 @@ export class List extends pulumi.CustomResource {
     /**
      * The Account ID for this resource.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The RFC 3339 timestamp of when the list was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * An informative summary of the list.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The RFC 3339 timestamp of when the list was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * An informative name for the list. Use this name in filter and rule expressions.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of items in the list.
      */
-    public /*out*/ readonly numItems!: pulumi.Output<number>;
+    declare public /*out*/ readonly numItems: pulumi.Output<number>;
     /**
      * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
-    public /*out*/ readonly numReferencingFilters!: pulumi.Output<number>;
+    declare public /*out*/ readonly numReferencingFilters: pulumi.Output<number>;
 
     /**
      * Create a List resource with the given unique name, arguments, and options.
@@ -100,29 +100,29 @@ export class List extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numItems"] = state ? state.numItems : undefined;
-            resourceInputs["numReferencingFilters"] = state ? state.numReferencingFilters : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numItems"] = state?.numItems;
+            resourceInputs["numReferencingFilters"] = state?.numReferencingFilters;
         } else {
             const args = argsOrState as ListArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["numItems"] = undefined /*out*/;

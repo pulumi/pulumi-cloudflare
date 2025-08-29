@@ -57,23 +57,23 @@ export class WorkersKv extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
-    public readonly keyName!: pulumi.Output<string>;
+    declare public readonly keyName: pulumi.Output<string>;
     /**
      * Associates arbitrary JSON data with a key/value pair.
      */
-    public readonly metadata!: pulumi.Output<string | undefined>;
+    declare public readonly metadata: pulumi.Output<string | undefined>;
     /**
      * Namespace identifier tag.
      */
-    public readonly namespaceId!: pulumi.Output<string>;
+    declare public readonly namespaceId: pulumi.Output<string>;
     /**
      * A byte sequence to be stored, up to 25 MiB in length.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
 
     /**
      * Create a WorkersKv resource with the given unique name, arguments, and options.
@@ -88,30 +88,30 @@ export class WorkersKv extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["keyName"] = state ? state.keyName : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["keyName"] = state?.keyName;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as WorkersKvArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.keyName === undefined) && !opts.urn) {
+            if (args?.keyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyName'");
             }
-            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+            if (args?.namespaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["keyName"] = args?.keyName;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["value"] = args?.value;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersKv.__pulumiType, name, resourceInputs, opts);

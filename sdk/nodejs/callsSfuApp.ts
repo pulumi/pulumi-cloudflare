@@ -48,31 +48,31 @@ export class CallsSfuApp extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
-    public readonly appId!: pulumi.Output<string | undefined>;
+    declare public readonly appId: pulumi.Output<string | undefined>;
     /**
      * The date and time the item was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The date and time the item was last modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
      * A short description of Calls app, not shown to end users.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Bearer token
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a CallsSfuApp resource with the given unique name, arguments, and options.
@@ -87,21 +87,21 @@ export class CallsSfuApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CallsSfuAppState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as CallsSfuAppArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;

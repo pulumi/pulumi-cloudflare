@@ -49,12 +49,12 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly schedules!: pulumi.Output<outputs.WorkerCronTriggerSchedule[]>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly schedules: pulumi.Output<outputs.WorkerCronTriggerSchedule[]>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    public readonly scriptName!: pulumi.Output<string>;
+    declare public readonly scriptName: pulumi.Output<string>;
 
     /**
      * Create a WorkerCronTrigger resource with the given unique name, arguments, and options.
@@ -72,23 +72,23 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerCronTriggerState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["schedules"] = state ? state.schedules : undefined;
-            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["schedules"] = state?.schedules;
+            resourceInputs["scriptName"] = state?.scriptName;
         } else {
             const args = argsOrState as WorkerCronTriggerArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.schedules === undefined) && !opts.urn) {
+            if (args?.schedules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'schedules'");
             }
-            if ((!args || args.scriptName === undefined) && !opts.urn) {
+            if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["schedules"] = args ? args.schedules : undefined;
-            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["schedules"] = args?.schedules;
+            resourceInputs["scriptName"] = args?.scriptName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/workerCronTrigger:WorkerCronTrigger" }] };

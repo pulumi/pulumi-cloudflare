@@ -59,24 +59,24 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserAgentBlockingRule.__pulumiType;
     }
 
-    public readonly configuration!: pulumi.Output<outputs.UserAgentBlockingRuleConfiguration>;
+    declare public readonly configuration: pulumi.Output<outputs.UserAgentBlockingRuleConfiguration>;
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The action to apply to a matched request.
      * Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * When true, indicates that the rule is currently paused.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a UserAgentBlockingRule resource with the given unique name, arguments, and options.
@@ -91,27 +91,27 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserAgentBlockingRuleState | undefined;
-            resourceInputs["configuration"] = state ? state.configuration : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["configuration"] = state?.configuration;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as UserAgentBlockingRuleArgs | undefined;
-            if ((!args || args.configuration === undefined) && !opts.urn) {
+            if (args?.configuration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["configuration"] = args ? args.configuration : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configuration"] = args?.configuration;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserAgentBlockingRule.__pulumiType, name, resourceInputs, opts);

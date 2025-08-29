@@ -49,11 +49,11 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         return obj['__pulumiType'] === ContentScanningExpression.__pulumiType;
     }
 
-    public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
+    declare public readonly bodies: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ContentScanningExpression resource with the given unique name, arguments, and options.
@@ -68,18 +68,18 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
-            resourceInputs["bodies"] = state ? state.bodies : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bodies"] = state?.bodies;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
-            if ((!args || args.bodies === undefined) && !opts.urn) {
+            if (args?.bodies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bodies'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["bodies"] = args ? args.bodies : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bodies"] = args?.bodies;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContentScanningExpression.__pulumiType, name, resourceInputs, opts);

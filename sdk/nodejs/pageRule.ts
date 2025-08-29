@@ -43,15 +43,15 @@ export class PageRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === PageRule.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<outputs.PageRuleActions>;
+    declare public readonly actions: pulumi.Output<outputs.PageRuleActions>;
     /**
      * The timestamp of when the Page Rule was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The timestamp of when the Page Rule was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The priority of the rule, used to define which Page Rule is processed
      * over another. A higher number indicates a higher priority. For example,
@@ -59,17 +59,17 @@ export class PageRule extends pulumi.CustomResource {
      * specific Page Rule to take precedence (rule B: `/images/special/*`),
      * specify a higher priority for rule B so it overrides rule A.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The status of the Page Rule.
      * Available values: "active", "disabled".
      */
-    public readonly status!: pulumi.Output<string>;
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a PageRule resource with the given unique name, arguments, and options.
@@ -84,29 +84,29 @@ export class PageRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PageRuleState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as PageRuleArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

@@ -43,46 +43,46 @@ export class AccessOrganization extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
-    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean>;
+    declare public readonly allowAuthenticateViaWarp: pulumi.Output<boolean>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
-    public readonly authDomain!: pulumi.Output<string | undefined>;
+    declare public readonly authDomain: pulumi.Output<string | undefined>;
     /**
      * When set to `true`, users skip the identity provider selection step during login.
      */
-    public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
-    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
-    public readonly isUiReadOnly!: pulumi.Output<boolean>;
-    public readonly loginDesign!: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
+    declare public readonly autoRedirectToIdentity: pulumi.Output<boolean>;
+    declare public readonly customPages: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
+    declare public readonly isUiReadOnly: pulumi.Output<boolean>;
+    declare public readonly loginDesign: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
     /**
      * The name of your Zero Trust organization.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
-    public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    declare public readonly sessionDuration: pulumi.Output<string | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
-    public readonly uiReadOnlyToggleReason!: pulumi.Output<string | undefined>;
+    declare public readonly uiReadOnlyToggleReason: pulumi.Output<string | undefined>;
     /**
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
-    public readonly userSeatExpirationInactiveTime!: pulumi.Output<string | undefined>;
+    declare public readonly userSeatExpirationInactiveTime: pulumi.Output<string | undefined>;
     /**
      * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
-    public readonly warpAuthSessionDuration!: pulumi.Output<string | undefined>;
+    declare public readonly warpAuthSessionDuration: pulumi.Output<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessOrganization resource with the given unique name, arguments, and options.
@@ -100,34 +100,34 @@ export class AccessOrganization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessOrganizationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
-            resourceInputs["authDomain"] = state ? state.authDomain : undefined;
-            resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
-            resourceInputs["customPages"] = state ? state.customPages : undefined;
-            resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
-            resourceInputs["loginDesign"] = state ? state.loginDesign : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
-            resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
-            resourceInputs["warpAuthSessionDuration"] = state ? state.warpAuthSessionDuration : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowAuthenticateViaWarp"] = state?.allowAuthenticateViaWarp;
+            resourceInputs["authDomain"] = state?.authDomain;
+            resourceInputs["autoRedirectToIdentity"] = state?.autoRedirectToIdentity;
+            resourceInputs["customPages"] = state?.customPages;
+            resourceInputs["isUiReadOnly"] = state?.isUiReadOnly;
+            resourceInputs["loginDesign"] = state?.loginDesign;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["uiReadOnlyToggleReason"] = state?.uiReadOnlyToggleReason;
+            resourceInputs["userSeatExpirationInactiveTime"] = state?.userSeatExpirationInactiveTime;
+            resourceInputs["warpAuthSessionDuration"] = state?.warpAuthSessionDuration;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccessOrganizationArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
-            resourceInputs["authDomain"] = args ? args.authDomain : undefined;
-            resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
-            resourceInputs["customPages"] = args ? args.customPages : undefined;
-            resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
-            resourceInputs["loginDesign"] = args ? args.loginDesign : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["uiReadOnlyToggleReason"] = args ? args.uiReadOnlyToggleReason : undefined;
-            resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
-            resourceInputs["warpAuthSessionDuration"] = args ? args.warpAuthSessionDuration : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowAuthenticateViaWarp"] = args?.allowAuthenticateViaWarp;
+            resourceInputs["authDomain"] = args?.authDomain;
+            resourceInputs["autoRedirectToIdentity"] = args?.autoRedirectToIdentity;
+            resourceInputs["customPages"] = args?.customPages;
+            resourceInputs["isUiReadOnly"] = args?.isUiReadOnly;
+            resourceInputs["loginDesign"] = args?.loginDesign;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["uiReadOnlyToggleReason"] = args?.uiReadOnlyToggleReason;
+            resourceInputs["userSeatExpirationInactiveTime"] = args?.userSeatExpirationInactiveTime;
+            resourceInputs["warpAuthSessionDuration"] = args?.warpAuthSessionDuration;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessOrganization:AccessOrganization" }] };

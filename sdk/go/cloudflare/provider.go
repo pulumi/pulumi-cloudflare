@@ -18,23 +18,15 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-	// keys are [now considered legacy by
-	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-	// instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
-	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-	// Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
-	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
-	// `apiUserServiceKey`.
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiUserServiceKey pulumi.StringPtrOutput `pulumi:"apiUserServiceKey"`
-	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
-	// variable.
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl pulumi.StringPtrOutput `pulumi:"baseUrl"`
-	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
 	Email                   pulumi.StringPtrOutput `pulumi:"email"`
 	UserAgentOperatorSuffix pulumi.StringPtrOutput `pulumi:"userAgentOperatorSuffix"`
 }
@@ -71,46 +63,30 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-	// keys are [now considered legacy by
-	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-	// instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiKey *string `pulumi:"apiKey"`
-	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-	// Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiToken *string `pulumi:"apiToken"`
-	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
-	// `apiUserServiceKey`.
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiUserServiceKey *string `pulumi:"apiUserServiceKey"`
-	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
-	// variable.
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl *string `pulumi:"baseUrl"`
-	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
 	Email                   *string `pulumi:"email"`
 	UserAgentOperatorSuffix *string `pulumi:"userAgentOperatorSuffix"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-	// keys are [now considered legacy by
-	// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-	// instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiKey pulumi.StringPtrInput
-	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-	// Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiToken pulumi.StringPtrInput
-	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
-	// `apiUserServiceKey`.
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 	ApiUserServiceKey pulumi.StringPtrInput
-	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
-	// variable.
+	// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 	BaseUrl pulumi.StringPtrInput
-	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-	// variable. Required when using `apiKey`. Conflicts with `apiToken`.
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
 	Email                   pulumi.StringPtrInput
 	UserAgentOperatorSuffix pulumi.StringPtrInput
 }
@@ -175,35 +151,27 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-// keys are [now considered legacy by
-// Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-// instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-// Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
-// `apiUserServiceKey`.
+// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
 func (o ProviderOutput) ApiUserServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUserServiceKey }).(pulumi.StringPtrOutput)
 }
 
-// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
-// variable.
+// Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
 func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
-// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-// variable. Required when using `apiKey`. Conflicts with `apiToken`.
+// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
 func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }

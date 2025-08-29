@@ -62,34 +62,34 @@ export class AddressMap extends pulumi.CustomResource {
     /**
      * Identifier of a Cloudflare account.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
-    public /*out*/ readonly canDelete!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly canDelete: pulumi.Output<boolean>;
     /**
      * If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
      */
-    public /*out*/ readonly canModifyIps!: pulumi.Output<boolean>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly canModifyIps: pulumi.Output<boolean>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map. If Cloudflare receives a TLS handshake from a client without an SNI, it will respond with the default SNI on those IPs. The default SNI can be any valid zone or subdomain owned by the account.
      */
-    public readonly defaultSni!: pulumi.Output<string | undefined>;
+    declare public readonly defaultSni: pulumi.Output<string | undefined>;
     /**
      * An optional description field which may be used to describe the types of IPs or zones on the map.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
-    public readonly ips!: pulumi.Output<string[] | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean>;
+    declare public readonly ips: pulumi.Output<string[] | undefined>;
     /**
      * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
-    public readonly memberships!: pulumi.Output<outputs.AddressMapMembership[]>;
-    public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
+    declare public readonly memberships: pulumi.Output<outputs.AddressMapMembership[]>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
 
     /**
      * Create a AddressMap resource with the given unique name, arguments, and options.
@@ -104,27 +104,27 @@ export class AddressMap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressMapState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["canDelete"] = state ? state.canDelete : undefined;
-            resourceInputs["canModifyIps"] = state ? state.canModifyIps : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["defaultSni"] = state ? state.defaultSni : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["ips"] = state ? state.ips : undefined;
-            resourceInputs["memberships"] = state ? state.memberships : undefined;
-            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["canDelete"] = state?.canDelete;
+            resourceInputs["canModifyIps"] = state?.canModifyIps;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["defaultSni"] = state?.defaultSni;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["ips"] = state?.ips;
+            resourceInputs["memberships"] = state?.memberships;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
         } else {
             const args = argsOrState as AddressMapArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["defaultSni"] = args ? args.defaultSni : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["ips"] = args ? args.ips : undefined;
-            resourceInputs["memberships"] = args ? args.memberships : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["defaultSni"] = args?.defaultSni;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["ips"] = args?.ips;
+            resourceInputs["memberships"] = args?.memberships;
             resourceInputs["canDelete"] = undefined /*out*/;
             resourceInputs["canModifyIps"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

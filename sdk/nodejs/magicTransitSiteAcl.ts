@@ -46,30 +46,30 @@ export class MagicTransitSiteAcl extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Description for the ACL.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false.
      */
-    public readonly forwardLocally!: pulumi.Output<boolean | undefined>;
-    public readonly lan1!: pulumi.Output<outputs.MagicTransitSiteAclLan1>;
-    public readonly lan2!: pulumi.Output<outputs.MagicTransitSiteAclLan2>;
+    declare public readonly forwardLocally: pulumi.Output<boolean | undefined>;
+    declare public readonly lan1: pulumi.Output<outputs.MagicTransitSiteAclLan1>;
+    declare public readonly lan2: pulumi.Output<outputs.MagicTransitSiteAclLan2>;
     /**
      * The name of the ACL.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly protocols!: pulumi.Output<string[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly protocols: pulumi.Output<string[] | undefined>;
     /**
      * Identifier
      */
-    public readonly siteId!: pulumi.Output<string>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false.
      */
-    public readonly unidirectional!: pulumi.Output<boolean | undefined>;
+    declare public readonly unidirectional: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a MagicTransitSiteAcl resource with the given unique name, arguments, and options.
@@ -84,41 +84,41 @@ export class MagicTransitSiteAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicTransitSiteAclState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["forwardLocally"] = state ? state.forwardLocally : undefined;
-            resourceInputs["lan1"] = state ? state.lan1 : undefined;
-            resourceInputs["lan2"] = state ? state.lan2 : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocols"] = state ? state.protocols : undefined;
-            resourceInputs["siteId"] = state ? state.siteId : undefined;
-            resourceInputs["unidirectional"] = state ? state.unidirectional : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["forwardLocally"] = state?.forwardLocally;
+            resourceInputs["lan1"] = state?.lan1;
+            resourceInputs["lan2"] = state?.lan2;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocols"] = state?.protocols;
+            resourceInputs["siteId"] = state?.siteId;
+            resourceInputs["unidirectional"] = state?.unidirectional;
         } else {
             const args = argsOrState as MagicTransitSiteAclArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.lan1 === undefined) && !opts.urn) {
+            if (args?.lan1 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lan1'");
             }
-            if ((!args || args.lan2 === undefined) && !opts.urn) {
+            if (args?.lan2 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lan2'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.siteId === undefined) && !opts.urn) {
+            if (args?.siteId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["forwardLocally"] = args ? args.forwardLocally : undefined;
-            resourceInputs["lan1"] = args ? args.lan1 : undefined;
-            resourceInputs["lan2"] = args ? args.lan2 : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["protocols"] = args ? args.protocols : undefined;
-            resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["unidirectional"] = args ? args.unidirectional : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["forwardLocally"] = args?.forwardLocally;
+            resourceInputs["lan1"] = args?.lan1;
+            resourceInputs["lan2"] = args?.lan2;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["protocols"] = args?.protocols;
+            resourceInputs["siteId"] = args?.siteId;
+            resourceInputs["unidirectional"] = args?.unidirectional;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitSiteAcl.__pulumiType, name, resourceInputs, opts);

@@ -51,46 +51,50 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDlpDataset.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Only applies to custom word lists.
      * Determines if the words should be matched in a case-sensitive manner
      * Cannot be set to false if `secret` is true or undefined
      */
-    public readonly caseSensitive!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly columns!: pulumi.Output<outputs.ZeroTrustDlpDatasetColumn[]>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public /*out*/ readonly dataset!: pulumi.Output<outputs.ZeroTrustDlpDatasetDataset>;
-    public readonly datasetId!: pulumi.Output<string | undefined>;
+    declare public readonly caseSensitive: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly columns: pulumi.Output<outputs.ZeroTrustDlpDatasetColumn[]>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public /*out*/ readonly dataset: pulumi.Output<outputs.ZeroTrustDlpDatasetDataset>;
+    declare public readonly datasetId: pulumi.Output<string | undefined>;
     /**
      * The description of the dataset.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Dataset encoding version
      */
-    public readonly encodingVersion!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly maxCells!: pulumi.Output<number>;
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly numCells!: pulumi.Output<number>;
+    declare public readonly encodingVersion: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly maxCells: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly numCells: pulumi.Output<number>;
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     *
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      */
-    public readonly secret!: pulumi.Output<boolean | undefined>;
+    declare public readonly secret: pulumi.Output<boolean | undefined>;
     /**
      * Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * When the dataset was last updated. This includes name or description changes as well as uploads.
+     * When the dataset was last updated.
+     *
+     * This includes name or description changes as well as uploads.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
-    public /*out*/ readonly uploads!: pulumi.Output<outputs.ZeroTrustDlpDatasetUpload[]>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    declare public /*out*/ readonly uploads: pulumi.Output<outputs.ZeroTrustDlpDatasetUpload[]>;
     /**
      * The version to use when uploading the dataset.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a ZeroTrustDlpDataset resource with the given unique name, arguments, and options.
@@ -105,37 +109,37 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpDatasetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["caseSensitive"] = state ? state.caseSensitive : undefined;
-            resourceInputs["columns"] = state ? state.columns : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataset"] = state ? state.dataset : undefined;
-            resourceInputs["datasetId"] = state ? state.datasetId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encodingVersion"] = state ? state.encodingVersion : undefined;
-            resourceInputs["maxCells"] = state ? state.maxCells : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numCells"] = state ? state.numCells : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["uploads"] = state ? state.uploads : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["caseSensitive"] = state?.caseSensitive;
+            resourceInputs["columns"] = state?.columns;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataset"] = state?.dataset;
+            resourceInputs["datasetId"] = state?.datasetId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encodingVersion"] = state?.encodingVersion;
+            resourceInputs["maxCells"] = state?.maxCells;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numCells"] = state?.numCells;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uploads"] = state?.uploads;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as ZeroTrustDlpDatasetArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["caseSensitive"] = args ? args.caseSensitive : undefined;
-            resourceInputs["datasetId"] = args ? args.datasetId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encodingVersion"] = args ? args.encodingVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["caseSensitive"] = args?.caseSensitive;
+            resourceInputs["datasetId"] = args?.datasetId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encodingVersion"] = args?.encodingVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secret"] = args?.secret;
             resourceInputs["columns"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["dataset"] = undefined /*out*/;
@@ -178,8 +182,10 @@ export interface ZeroTrustDlpDatasetState {
     name?: pulumi.Input<string>;
     numCells?: pulumi.Input<number>;
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     *
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      */
     secret?: pulumi.Input<boolean>;
     /**
@@ -187,7 +193,9 @@ export interface ZeroTrustDlpDatasetState {
      */
     status?: pulumi.Input<string>;
     /**
-     * When the dataset was last updated. This includes name or description changes as well as uploads.
+     * When the dataset was last updated.
+     *
+     * This includes name or description changes as well as uploads.
      */
     updatedAt?: pulumi.Input<string>;
     uploads?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetUpload>[]>;
@@ -219,8 +227,10 @@ export interface ZeroTrustDlpDatasetArgs {
     encodingVersion?: pulumi.Input<number>;
     name: pulumi.Input<string>;
     /**
-     * Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-     * response has no secret and the dataset is uploaded in plaintext.
+     * Generate a secret dataset.
+     *
+     * If true, the response will include a secret to use with the EDM encoder.
+     * If false, the response has no secret and the dataset is uploaded in plaintext.
      */
     secret?: pulumi.Input<boolean>;
 }

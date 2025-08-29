@@ -46,13 +46,13 @@ export class TeamsAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsAccount.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Account settings.
      */
-    public readonly settings!: pulumi.Output<outputs.TeamsAccountSettings | undefined>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly settings: pulumi.Output<outputs.TeamsAccountSettings | undefined>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a TeamsAccount resource with the given unique name, arguments, and options.
@@ -70,17 +70,17 @@ export class TeamsAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsAccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["settings"] = state?.settings;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TeamsAccountArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["settings"] = args?.settings;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

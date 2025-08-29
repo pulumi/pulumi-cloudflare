@@ -34,10 +34,13 @@ namespace Pulumi.Cloudflare
     public partial class SchemaValidationOperationSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        /// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        /// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        /// "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema for this operation
+        ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
+        ///   - `"none"` - will skip mitigation for this operation
+        ///   - `null` - clears any mitigation action
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
         public Output<string> MitigationAction { get; private set; } = null!;
@@ -101,10 +104,13 @@ namespace Pulumi.Cloudflare
     public sealed class SchemaValidationOperationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        /// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        /// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        /// "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema for this operation
+        ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
+        ///   - `"none"` - will skip mitigation for this operation
+        ///   - `null` - clears any mitigation action
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction", required: true)]
         public Input<string> MitigationAction { get; set; } = null!;
@@ -130,10 +136,13 @@ namespace Pulumi.Cloudflare
     public sealed class SchemaValidationOperationSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        /// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        /// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        /// "log", "block", "none".
+        /// When set, this applies a mitigation action to this operation
+        /// 
+        ///   - `"log"` - log request when request does not conform to schema for this operation
+        ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
+        ///   - `"none"` - will skip mitigation for this operation
+        ///   - `null` - clears any mitigation action
+        /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }

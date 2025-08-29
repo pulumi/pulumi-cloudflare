@@ -46,23 +46,23 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     /**
      * Define configurations using a unique string identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly caching!: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly caching: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
     /**
      * Defines the creation time of the Hyperdrive configuration.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Defines the last modified time of the Hyperdrive configuration.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
-    public readonly mtls!: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly origin!: pulumi.Output<outputs.HyperdriveConfigOrigin>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    declare public readonly mtls: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<outputs.HyperdriveConfigOrigin>;
     /**
      * The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
      */
-    public readonly originConnectionLimit!: pulumi.Output<number | undefined>;
+    declare public readonly originConnectionLimit: pulumi.Output<number | undefined>;
 
     /**
      * Create a HyperdriveConfig resource with the given unique name, arguments, and options.
@@ -77,31 +77,31 @@ export class HyperdriveConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HyperdriveConfigState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["caching"] = state ? state.caching : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["mtls"] = state ? state.mtls : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["originConnectionLimit"] = state ? state.originConnectionLimit : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["caching"] = state?.caching;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["mtls"] = state?.mtls;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["originConnectionLimit"] = state?.originConnectionLimit;
         } else {
             const args = argsOrState as HyperdriveConfigArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.origin === undefined) && !opts.urn) {
+            if (args?.origin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["caching"] = args ? args.caching : undefined;
-            resourceInputs["mtls"] = args ? args.mtls : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["originConnectionLimit"] = args ? args.originConnectionLimit : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["caching"] = args?.caching;
+            resourceInputs["mtls"] = args?.mtls;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["originConnectionLimit"] = args?.originConnectionLimit;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

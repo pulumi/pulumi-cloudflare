@@ -77,64 +77,64 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * Enables Argo Smart Routing for this application.
      * Notes: Only available for TCP applications with trafficType set to "direct".
      */
-    public readonly argoSmartRouting!: pulumi.Output<boolean>;
+    declare public readonly argoSmartRouting: pulumi.Output<boolean>;
     /**
      * When the Application was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
-    public readonly dns!: pulumi.Output<outputs.SpectrumApplicationDns>;
+    declare public readonly dns: pulumi.Output<outputs.SpectrumApplicationDns>;
     /**
      * The anycast edge IP configuration for the hostname of this application.
      */
-    public readonly edgeIps!: pulumi.Output<outputs.SpectrumApplicationEdgeIps>;
+    declare public readonly edgeIps: pulumi.Output<outputs.SpectrumApplicationEdgeIps>;
     /**
      * Enables IP Access Rules for this application.
      * Notes: Only available for TCP applications.
      */
-    public readonly ipFirewall!: pulumi.Output<boolean>;
+    declare public readonly ipFirewall: pulumi.Output<boolean>;
     /**
      * When the Application was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
      */
-    public readonly originDirects!: pulumi.Output<string[] | undefined>;
+    declare public readonly originDirects: pulumi.Output<string[] | undefined>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
-    public readonly originDns!: pulumi.Output<outputs.SpectrumApplicationOriginDns | undefined>;
+    declare public readonly originDns: pulumi.Output<outputs.SpectrumApplicationOriginDns | undefined>;
     /**
      * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
      * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
      */
-    public readonly originPort!: pulumi.Output<any | undefined>;
+    declare public readonly originPort: pulumi.Output<any | undefined>;
     /**
      * The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
      * Available values: "off", "v1", "v2", "simple".
      */
-    public readonly proxyProtocol!: pulumi.Output<string>;
+    declare public readonly proxyProtocol: pulumi.Output<string>;
     /**
      * The type of TLS termination associated with the application.
      * Available values: "off", "flexible", "full", "strict".
      */
-    public readonly tls!: pulumi.Output<string>;
+    declare public readonly tls: pulumi.Output<string>;
     /**
      * Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
      * Available values: "direct", "http", "https".
      */
-    public readonly trafficType!: pulumi.Output<string>;
+    declare public readonly trafficType: pulumi.Output<string>;
     /**
      * Zone identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SpectrumApplication resource with the given unique name, arguments, and options.
@@ -149,43 +149,43 @@ export class SpectrumApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpectrumApplicationState | undefined;
-            resourceInputs["argoSmartRouting"] = state ? state.argoSmartRouting : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["dns"] = state ? state.dns : undefined;
-            resourceInputs["edgeIps"] = state ? state.edgeIps : undefined;
-            resourceInputs["ipFirewall"] = state ? state.ipFirewall : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["originDirects"] = state ? state.originDirects : undefined;
-            resourceInputs["originDns"] = state ? state.originDns : undefined;
-            resourceInputs["originPort"] = state ? state.originPort : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            resourceInputs["tls"] = state ? state.tls : undefined;
-            resourceInputs["trafficType"] = state ? state.trafficType : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["argoSmartRouting"] = state?.argoSmartRouting;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["dns"] = state?.dns;
+            resourceInputs["edgeIps"] = state?.edgeIps;
+            resourceInputs["ipFirewall"] = state?.ipFirewall;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["originDirects"] = state?.originDirects;
+            resourceInputs["originDns"] = state?.originDns;
+            resourceInputs["originPort"] = state?.originPort;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["proxyProtocol"] = state?.proxyProtocol;
+            resourceInputs["tls"] = state?.tls;
+            resourceInputs["trafficType"] = state?.trafficType;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
-            if ((!args || args.dns === undefined) && !opts.urn) {
+            if (args?.dns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dns'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;
-            resourceInputs["dns"] = args ? args.dns : undefined;
-            resourceInputs["edgeIps"] = args ? args.edgeIps : undefined;
-            resourceInputs["ipFirewall"] = args ? args.ipFirewall : undefined;
-            resourceInputs["originDirects"] = args ? args.originDirects : undefined;
-            resourceInputs["originDns"] = args ? args.originDns : undefined;
-            resourceInputs["originPort"] = args ? args.originPort : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            resourceInputs["tls"] = args ? args.tls : undefined;
-            resourceInputs["trafficType"] = args ? args.trafficType : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["argoSmartRouting"] = args?.argoSmartRouting;
+            resourceInputs["dns"] = args?.dns;
+            resourceInputs["edgeIps"] = args?.edgeIps;
+            resourceInputs["ipFirewall"] = args?.ipFirewall;
+            resourceInputs["originDirects"] = args?.originDirects;
+            resourceInputs["originDns"] = args?.originDns;
+            resourceInputs["originPort"] = args?.originPort;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["proxyProtocol"] = args?.proxyProtocol;
+            resourceInputs["tls"] = args?.tls;
+            resourceInputs["trafficType"] = args?.trafficType;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

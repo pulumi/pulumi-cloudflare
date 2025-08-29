@@ -50,36 +50,36 @@ export class ApiShieldSchema extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiShieldSchema.__pulumiType;
     }
 
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Schema file bytes
      */
-    public readonly file!: pulumi.Output<string>;
+    declare public readonly file: pulumi.Output<string>;
     /**
      * Kind of schema
      * Available values: "openapiV3".
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * Name of the schema
      */
-    public readonly name!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly schema!: pulumi.Output<outputs.ApiShieldSchemaSchema>;
-    public readonly schemaId!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly schema: pulumi.Output<outputs.ApiShieldSchemaSchema>;
+    declare public readonly schemaId: pulumi.Output<string | undefined>;
     /**
      * Source of the schema
      */
-    public /*out*/ readonly source!: pulumi.Output<string>;
-    public /*out*/ readonly uploadDetails!: pulumi.Output<outputs.ApiShieldSchemaUploadDetails>;
+    declare public /*out*/ readonly source: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadDetails: pulumi.Output<outputs.ApiShieldSchemaUploadDetails>;
     /**
      * Flag whether schema is enabled for validation.
      * Available values: "true", "false".
      */
-    public readonly validationEnabled!: pulumi.Output<string | undefined>;
+    declare public readonly validationEnabled: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldSchema resource with the given unique name, arguments, and options.
@@ -94,33 +94,33 @@ export class ApiShieldSchema extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldSchemaState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["schema"] = state ? state.schema : undefined;
-            resourceInputs["schemaId"] = state ? state.schemaId : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["uploadDetails"] = state ? state.uploadDetails : undefined;
-            resourceInputs["validationEnabled"] = state ? state.validationEnabled : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["schema"] = state?.schema;
+            resourceInputs["schemaId"] = state?.schemaId;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["uploadDetails"] = state?.uploadDetails;
+            resourceInputs["validationEnabled"] = state?.validationEnabled;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldSchemaArgs | undefined;
-            if ((!args || args.file === undefined) && !opts.urn) {
+            if (args?.file === undefined && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["schemaId"] = args ? args.schemaId : undefined;
-            resourceInputs["validationEnabled"] = args ? args.validationEnabled : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["schemaId"] = args?.schemaId;
+            resourceInputs["validationEnabled"] = args?.validationEnabled;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;

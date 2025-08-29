@@ -47,54 +47,54 @@ export class KeylessCertificate extends pulumi.CustomResource {
      * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
      * Available values: "ubiquitous", "optimal", "force".
      */
-    public readonly bundleMethod!: pulumi.Output<string>;
+    declare public readonly bundleMethod: pulumi.Output<string>;
     /**
      * The zone's SSL certificate or SSL certificate and intermediate(s).
      */
-    public readonly certificate!: pulumi.Output<string>;
+    declare public readonly certificate: pulumi.Output<string>;
     /**
      * When the Keyless SSL was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Whether or not the Keyless SSL is on or off.
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The keyless SSL name.
      */
-    public readonly host!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
     /**
      * When the Keyless SSL was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The keyless SSL name.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Available permissions for the Keyless SSL for the current user requesting the item.
      */
-    public /*out*/ readonly permissions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly permissions: pulumi.Output<string[]>;
     /**
      * The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Status of the Keyless SSL.
      * Available values: "active", "deleted".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Configuration for using Keyless SSL through a Cloudflare Tunnel
      */
-    public readonly tunnel!: pulumi.Output<outputs.KeylessCertificateTunnel | undefined>;
+    declare public readonly tunnel: pulumi.Output<outputs.KeylessCertificateTunnel | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a KeylessCertificate resource with the given unique name, arguments, and options.
@@ -109,37 +109,37 @@ export class KeylessCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeylessCertificateState | undefined;
-            resourceInputs["bundleMethod"] = state ? state.bundleMethod : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permissions"] = state ? state.permissions : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tunnel"] = state ? state.tunnel : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bundleMethod"] = state?.bundleMethod;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permissions"] = state?.permissions;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tunnel"] = state?.tunnel;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as KeylessCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !opts.urn) {
+            if (args?.certificate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["bundleMethod"] = args ? args.bundleMethod : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["tunnel"] = args ? args.tunnel : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bundleMethod"] = args?.bundleMethod;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["tunnel"] = args?.tunnel;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["permissions"] = undefined /*out*/;

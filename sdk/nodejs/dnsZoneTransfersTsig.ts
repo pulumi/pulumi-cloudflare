@@ -53,19 +53,19 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersTsig.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * TSIG algorithm.
      */
-    public readonly algo!: pulumi.Output<string>;
+    declare public readonly algo: pulumi.Output<string>;
     /**
      * TSIG key name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * TSIG secret.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
 
     /**
      * Create a DnsZoneTransfersTsig resource with the given unique name, arguments, and options.
@@ -80,27 +80,27 @@ export class DnsZoneTransfersTsig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneTransfersTsigState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["algo"] = state ? state.algo : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["algo"] = state?.algo;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
         } else {
             const args = argsOrState as DnsZoneTransfersTsigArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.algo === undefined) && !opts.urn) {
+            if (args?.algo === undefined && !opts.urn) {
                 throw new Error("Missing required property 'algo'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.secret === undefined) && !opts.urn) {
+            if (args?.secret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["algo"] = args ? args.algo : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["algo"] = args?.algo;
+            resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

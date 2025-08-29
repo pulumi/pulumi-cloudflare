@@ -66,26 +66,26 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
     /**
      * Account identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Date and time at which the target was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A non-unique field that refers to a target. Case insensitive, maximum
      * length of 255 characters, supports the use of special characters dash
      * and period, does not support spaces, and must start and end with an
      * alphanumeric character.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * The IPv4/IPv6 address that identifies where to reach a target
      */
-    public readonly ip!: pulumi.Output<outputs.ZeroTrustAccessInfrastructureTargetIp>;
+    declare public readonly ip: pulumi.Output<outputs.ZeroTrustAccessInfrastructureTargetIp>;
     /**
      * Date and time at which the target was modified
      */
-    public /*out*/ readonly modifiedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustAccessInfrastructureTarget resource with the given unique name, arguments, and options.
@@ -100,25 +100,25 @@ export class ZeroTrustAccessInfrastructureTarget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessInfrastructureTargetState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["modifiedAt"] = state ? state.modifiedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["modifiedAt"] = state?.modifiedAt;
         } else {
             const args = argsOrState as ZeroTrustAccessInfrastructureTargetArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.ip === undefined) && !opts.urn) {
+            if (args?.ip === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ip'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["ip"] = args?.ip;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["modifiedAt"] = undefined /*out*/;
         }

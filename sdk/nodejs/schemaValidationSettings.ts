@@ -47,20 +47,27 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
     }
 
     /**
-     * The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-     * conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-     * running schema validation Available values: "none", "log", "block".
+     * The default mitigation action used
+     * Mitigation actions are as follows:
+     *
+     *   - `"log"` - log request when request does not conform to schema
+     *   - `"block"` - deny access to the site when request does not conform to schema
+     *   - `"none"` - skip running schema validation
+     * Available values: "none", "log", "block".
      */
-    public readonly validationDefaultMitigationAction!: pulumi.Output<string>;
+    declare public readonly validationDefaultMitigationAction: pulumi.Output<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-     * validation entirely for the request - `null` - clears any existing override Available values: "none".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `"none"` - skip running schema validation entirely for the request
+     *   - `null` - clears any existing override
+     * Available values: "none".
      */
-    public readonly validationOverrideMitigationAction!: pulumi.Output<string | undefined>;
+    declare public readonly validationOverrideMitigationAction: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -75,20 +82,20 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaValidationSettingsState | undefined;
-            resourceInputs["validationDefaultMitigationAction"] = state ? state.validationDefaultMitigationAction : undefined;
-            resourceInputs["validationOverrideMitigationAction"] = state ? state.validationOverrideMitigationAction : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["validationDefaultMitigationAction"] = state?.validationDefaultMitigationAction;
+            resourceInputs["validationOverrideMitigationAction"] = state?.validationOverrideMitigationAction;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SchemaValidationSettingsArgs | undefined;
-            if ((!args || args.validationDefaultMitigationAction === undefined) && !opts.urn) {
+            if (args?.validationDefaultMitigationAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'validationDefaultMitigationAction'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["validationDefaultMitigationAction"] = args ? args.validationDefaultMitigationAction : undefined;
-            resourceInputs["validationOverrideMitigationAction"] = args ? args.validationOverrideMitigationAction : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["validationDefaultMitigationAction"] = args?.validationDefaultMitigationAction;
+            resourceInputs["validationOverrideMitigationAction"] = args?.validationOverrideMitigationAction;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SchemaValidationSettings.__pulumiType, name, resourceInputs, opts);
@@ -100,14 +107,21 @@ export class SchemaValidationSettings extends pulumi.CustomResource {
  */
 export interface SchemaValidationSettingsState {
     /**
-     * The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-     * conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-     * running schema validation Available values: "none", "log", "block".
+     * The default mitigation action used
+     * Mitigation actions are as follows:
+     *
+     *   - `"log"` - log request when request does not conform to schema
+     *   - `"block"` - deny access to the site when request does not conform to schema
+     *   - `"none"` - skip running schema validation
+     * Available values: "none", "log", "block".
      */
     validationDefaultMitigationAction?: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-     * validation entirely for the request - `null` - clears any existing override Available values: "none".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `"none"` - skip running schema validation entirely for the request
+     *   - `null` - clears any existing override
+     * Available values: "none".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
@@ -121,14 +135,21 @@ export interface SchemaValidationSettingsState {
  */
 export interface SchemaValidationSettingsArgs {
     /**
-     * The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-     * conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-     * running schema validation Available values: "none", "log", "block".
+     * The default mitigation action used
+     * Mitigation actions are as follows:
+     *
+     *   - `"log"` - log request when request does not conform to schema
+     *   - `"block"` - deny access to the site when request does not conform to schema
+     *   - `"none"` - skip running schema validation
+     * Available values: "none", "log", "block".
      */
     validationDefaultMitigationAction: pulumi.Input<string>;
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-     * validation entirely for the request - `null` - clears any existing override Available values: "none".
+     * When set, this overrides both zone level and operation level mitigation actions.
+     *
+     *   - `"none"` - skip running schema validation entirely for the request
+     *   - `null` - clears any existing override
+     * Available values: "none".
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**

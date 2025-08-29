@@ -46,69 +46,69 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A list of regions from which to run health checks. Null means every Cloudflare data center.
      */
-    public readonly checkRegions!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public readonly checkRegions: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * A human-readable description of the pool.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
      */
-    public /*out*/ readonly disabledAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly disabledAt: pulumi.Output<string>;
     /**
      * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      */
-    public readonly latitude!: pulumi.Output<number | undefined>;
+    declare public readonly latitude: pulumi.Output<number | undefined>;
     /**
      * Configures load shedding policies and percentages for the pool.
      */
-    public readonly loadShedding!: pulumi.Output<outputs.LoadBalancerPoolLoadShedding>;
+    declare public readonly loadShedding: pulumi.Output<outputs.LoadBalancerPoolLoadShedding>;
     /**
      * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      */
-    public readonly longitude!: pulumi.Output<number | undefined>;
+    declare public readonly longitude: pulumi.Output<number | undefined>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      */
-    public readonly minimumOrigins!: pulumi.Output<number>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly minimumOrigins: pulumi.Output<number>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
-    public readonly monitor!: pulumi.Output<string | undefined>;
+    declare public readonly monitor: pulumi.Output<string | undefined>;
     /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    public /*out*/ readonly networks!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly networks: pulumi.Output<string[]>;
     /**
      * This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    public readonly notificationEmail!: pulumi.Output<string>;
+    declare public readonly notificationEmail: pulumi.Output<string>;
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */
-    public readonly notificationFilter!: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter>;
+    declare public readonly notificationFilter: pulumi.Output<outputs.LoadBalancerPoolNotificationFilter>;
     /**
      * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
      */
-    public readonly originSteering!: pulumi.Output<outputs.LoadBalancerPoolOriginSteering>;
+    declare public readonly originSteering: pulumi.Output<outputs.LoadBalancerPoolOriginSteering>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      */
-    public readonly origins!: pulumi.Output<outputs.LoadBalancerPoolOrigin[]>;
+    declare public readonly origins: pulumi.Output<outputs.LoadBalancerPoolOrigin[]>;
 
     /**
      * Create a LoadBalancerPool resource with the given unique name, arguments, and options.
@@ -123,49 +123,49 @@ export class LoadBalancerPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerPoolState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["checkRegions"] = state ? state.checkRegions : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabledAt"] = state ? state.disabledAt : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["latitude"] = state ? state.latitude : undefined;
-            resourceInputs["loadShedding"] = state ? state.loadShedding : undefined;
-            resourceInputs["longitude"] = state ? state.longitude : undefined;
-            resourceInputs["minimumOrigins"] = state ? state.minimumOrigins : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["monitor"] = state ? state.monitor : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["notificationEmail"] = state ? state.notificationEmail : undefined;
-            resourceInputs["notificationFilter"] = state ? state.notificationFilter : undefined;
-            resourceInputs["originSteering"] = state ? state.originSteering : undefined;
-            resourceInputs["origins"] = state ? state.origins : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["checkRegions"] = state?.checkRegions;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabledAt"] = state?.disabledAt;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["latitude"] = state?.latitude;
+            resourceInputs["loadShedding"] = state?.loadShedding;
+            resourceInputs["longitude"] = state?.longitude;
+            resourceInputs["minimumOrigins"] = state?.minimumOrigins;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["monitor"] = state?.monitor;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["notificationEmail"] = state?.notificationEmail;
+            resourceInputs["notificationFilter"] = state?.notificationFilter;
+            resourceInputs["originSteering"] = state?.originSteering;
+            resourceInputs["origins"] = state?.origins;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.origins === undefined) && !opts.urn) {
+            if (args?.origins === undefined && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["checkRegions"] = args ? args.checkRegions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["latitude"] = args ? args.latitude : undefined;
-            resourceInputs["loadShedding"] = args ? args.loadShedding : undefined;
-            resourceInputs["longitude"] = args ? args.longitude : undefined;
-            resourceInputs["minimumOrigins"] = args ? args.minimumOrigins : undefined;
-            resourceInputs["monitor"] = args ? args.monitor : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationEmail"] = args ? args.notificationEmail : undefined;
-            resourceInputs["notificationFilter"] = args ? args.notificationFilter : undefined;
-            resourceInputs["originSteering"] = args ? args.originSteering : undefined;
-            resourceInputs["origins"] = args ? args.origins : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["checkRegions"] = args?.checkRegions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["latitude"] = args?.latitude;
+            resourceInputs["loadShedding"] = args?.loadShedding;
+            resourceInputs["longitude"] = args?.longitude;
+            resourceInputs["minimumOrigins"] = args?.minimumOrigins;
+            resourceInputs["monitor"] = args?.monitor;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notificationEmail"] = args?.notificationEmail;
+            resourceInputs["notificationFilter"] = args?.notificationFilter;
+            resourceInputs["originSteering"] = args?.originSteering;
+            resourceInputs["origins"] = args?.origins;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["disabledAt"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;

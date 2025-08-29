@@ -63,35 +63,35 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      */
-    public readonly configurations!: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
+    declare public readonly configurations: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
     /**
      * The timestamp of when the rule was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the rule was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * When true, indicates that the rule is currently paused.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    declare public readonly paused: pulumi.Output<boolean>;
     /**
      * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
-    public readonly urls!: pulumi.Output<string[]>;
+    declare public readonly urls: pulumi.Output<string[]>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneLockdown resource with the given unique name, arguments, and options.
@@ -106,31 +106,31 @@ export class ZoneLockdown extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneLockdownState | undefined;
-            resourceInputs["configurations"] = state ? state.configurations : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["urls"] = state ? state.urls : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["configurations"] = state?.configurations;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["urls"] = state?.urls;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneLockdownArgs | undefined;
-            if ((!args || args.configurations === undefined) && !opts.urn) {
+            if (args?.configurations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configurations'");
             }
-            if ((!args || args.urls === undefined) && !opts.urn) {
+            if (args?.urls === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["configurations"] = args ? args.configurations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["urls"] = args ? args.urls : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configurations"] = args?.configurations;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["urls"] = args?.urls;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

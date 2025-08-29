@@ -64,27 +64,27 @@ export class Filter extends pulumi.CustomResource {
         return obj['__pulumiType'] === Filter.__pulumiType;
     }
 
-    public readonly bodies!: pulumi.Output<outputs.FilterBody[]>;
+    declare public readonly bodies: pulumi.Output<outputs.FilterBody[]>;
     /**
      * An informative summary of the filter.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      */
-    public readonly expression!: pulumi.Output<string | undefined>;
+    declare public readonly expression: pulumi.Output<string | undefined>;
     /**
      * When true, indicates that the filter is currently paused.
      */
-    public readonly paused!: pulumi.Output<boolean | undefined>;
+    declare public readonly paused: pulumi.Output<boolean | undefined>;
     /**
      * A short reference tag. Allows you to select related filters.
      */
-    public readonly ref!: pulumi.Output<string | undefined>;
+    declare public readonly ref: pulumi.Output<string | undefined>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Filter resource with the given unique name, arguments, and options.
@@ -99,26 +99,26 @@ export class Filter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilterState | undefined;
-            resourceInputs["bodies"] = state ? state.bodies : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["ref"] = state ? state.ref : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["bodies"] = state?.bodies;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["ref"] = state?.ref;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as FilterArgs | undefined;
-            if ((!args || args.bodies === undefined) && !opts.urn) {
+            if (args?.bodies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bodies'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["bodies"] = args ? args.bodies : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["ref"] = args ? args.ref : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bodies"] = args?.bodies;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expression"] = args?.expression;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["ref"] = args?.ref;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Filter.__pulumiType, name, resourceInputs, opts);

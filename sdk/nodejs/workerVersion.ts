@@ -46,70 +46,70 @@ export class WorkerVersion extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Metadata about the version.
      */
-    public readonly annotations!: pulumi.Output<outputs.WorkerVersionAnnotations>;
+    declare public readonly annotations: pulumi.Output<outputs.WorkerVersionAnnotations>;
     /**
      * Configuration for assets within a Worker.
      */
-    public readonly assets!: pulumi.Output<outputs.WorkerVersionAssets | undefined>;
+    declare public readonly assets: pulumi.Output<outputs.WorkerVersionAssets | undefined>;
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    public readonly bindings!: pulumi.Output<outputs.WorkerVersionBinding[] | undefined>;
+    declare public readonly bindings: pulumi.Output<outputs.WorkerVersionBinding[] | undefined>;
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    public readonly compatibilityDate!: pulumi.Output<string | undefined>;
+    declare public readonly compatibilityDate: pulumi.Output<string | undefined>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    public readonly compatibilityFlags!: pulumi.Output<string[]>;
+    declare public readonly compatibilityFlags: pulumi.Output<string[]>;
     /**
      * When the version was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Resource limits enforced at runtime.
      */
-    public readonly limits!: pulumi.Output<outputs.WorkerVersionLimits>;
+    declare public readonly limits: pulumi.Output<outputs.WorkerVersionLimits>;
     /**
      * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
      */
-    public readonly mainModule!: pulumi.Output<string | undefined>;
+    declare public readonly mainModule: pulumi.Output<string | undefined>;
     /**
      * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
      */
-    public readonly migrations!: pulumi.Output<outputs.WorkerVersionMigrations | undefined>;
+    declare public readonly migrations: pulumi.Output<outputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
      */
-    public readonly modules!: pulumi.Output<outputs.WorkerVersionModule[] | undefined>;
+    declare public readonly modules: pulumi.Output<outputs.WorkerVersionModule[] | undefined>;
     /**
      * The integer version number, starting from one.
      */
-    public /*out*/ readonly number!: pulumi.Output<number>;
+    declare public /*out*/ readonly number: pulumi.Output<number>;
     /**
      * Placement settings for the version.
      */
-    public readonly placement!: pulumi.Output<outputs.WorkerVersionPlacement | undefined>;
+    declare public readonly placement: pulumi.Output<outputs.WorkerVersionPlacement | undefined>;
     /**
      * The client used to create the version.
      */
-    public /*out*/ readonly source!: pulumi.Output<string>;
+    declare public /*out*/ readonly source: pulumi.Output<string>;
     /**
      * Usage model for the version.
      * Available values: "standard", "bundled", "unbound".
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly usageModel!: pulumi.Output<string>;
+    declare public readonly usageModel: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly workerId!: pulumi.Output<string>;
+    declare public readonly workerId: pulumi.Output<string>;
 
     /**
      * Create a WorkerVersion resource with the given unique name, arguments, and options.
@@ -124,43 +124,43 @@ export class WorkerVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerVersionState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["assets"] = state ? state.assets : undefined;
-            resourceInputs["bindings"] = state ? state.bindings : undefined;
-            resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
-            resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["limits"] = state ? state.limits : undefined;
-            resourceInputs["mainModule"] = state ? state.mainModule : undefined;
-            resourceInputs["migrations"] = state ? state.migrations : undefined;
-            resourceInputs["modules"] = state ? state.modules : undefined;
-            resourceInputs["number"] = state ? state.number : undefined;
-            resourceInputs["placement"] = state ? state.placement : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["usageModel"] = state ? state.usageModel : undefined;
-            resourceInputs["workerId"] = state ? state.workerId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["assets"] = state?.assets;
+            resourceInputs["bindings"] = state?.bindings;
+            resourceInputs["compatibilityDate"] = state?.compatibilityDate;
+            resourceInputs["compatibilityFlags"] = state?.compatibilityFlags;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["limits"] = state?.limits;
+            resourceInputs["mainModule"] = state?.mainModule;
+            resourceInputs["migrations"] = state?.migrations;
+            resourceInputs["modules"] = state?.modules;
+            resourceInputs["number"] = state?.number;
+            resourceInputs["placement"] = state?.placement;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["usageModel"] = state?.usageModel;
+            resourceInputs["workerId"] = state?.workerId;
         } else {
             const args = argsOrState as WorkerVersionArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.workerId === undefined) && !opts.urn) {
+            if (args?.workerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workerId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["assets"] = args ? args.assets : undefined;
-            resourceInputs["bindings"] = args ? args.bindings : undefined;
-            resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
-            resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
-            resourceInputs["limits"] = args ? args.limits : undefined;
-            resourceInputs["mainModule"] = args ? args.mainModule : undefined;
-            resourceInputs["migrations"] = args ? args.migrations : undefined;
-            resourceInputs["modules"] = args ? args.modules : undefined;
-            resourceInputs["placement"] = args ? args.placement : undefined;
-            resourceInputs["usageModel"] = args ? args.usageModel : undefined;
-            resourceInputs["workerId"] = args ? args.workerId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["assets"] = args?.assets;
+            resourceInputs["bindings"] = args?.bindings;
+            resourceInputs["compatibilityDate"] = args?.compatibilityDate;
+            resourceInputs["compatibilityFlags"] = args?.compatibilityFlags;
+            resourceInputs["limits"] = args?.limits;
+            resourceInputs["mainModule"] = args?.mainModule;
+            resourceInputs["migrations"] = args?.migrations;
+            resourceInputs["modules"] = args?.modules;
+            resourceInputs["placement"] = args?.placement;
+            resourceInputs["usageModel"] = args?.usageModel;
+            resourceInputs["workerId"] = args?.workerId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;

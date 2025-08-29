@@ -58,52 +58,52 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly completed!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly completed: pulumi.Output<string>;
     /**
      * Request content.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Tokens for the request messages.
      */
-    public /*out*/ readonly messageTokens!: pulumi.Output<number>;
+    declare public /*out*/ readonly messageTokens: pulumi.Output<number>;
     /**
      * Priority for analyzing the request.
      */
-    public readonly priority!: pulumi.Output<string | undefined>;
+    declare public readonly priority: pulumi.Output<string | undefined>;
     /**
      * Readable Request ID.
      */
-    public /*out*/ readonly readableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly readableId: pulumi.Output<string>;
     /**
      * Requested information from request.
      */
-    public /*out*/ readonly request!: pulumi.Output<string>;
+    declare public /*out*/ readonly request: pulumi.Output<string>;
     /**
      * Requested information from request.
      */
-    public readonly requestType!: pulumi.Output<string | undefined>;
+    declare public readonly requestType: pulumi.Output<string | undefined>;
     /**
      * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Brief description of the request.
      */
-    public readonly summary!: pulumi.Output<string | undefined>;
+    declare public readonly summary: pulumi.Output<string | undefined>;
     /**
      * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
-    public readonly tlp!: pulumi.Output<string | undefined>;
+    declare public readonly tlp: pulumi.Output<string | undefined>;
     /**
      * Tokens for the request.
      */
-    public /*out*/ readonly tokens!: pulumi.Output<number>;
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokens: pulumi.Output<number>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a CloudforceOneRequest resource with the given unique name, arguments, and options.
@@ -118,31 +118,31 @@ export class CloudforceOneRequest extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["completed"] = state ? state.completed : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["messageTokens"] = state ? state.messageTokens : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["readableId"] = state ? state.readableId : undefined;
-            resourceInputs["request"] = state ? state.request : undefined;
-            resourceInputs["requestType"] = state ? state.requestType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["summary"] = state ? state.summary : undefined;
-            resourceInputs["tlp"] = state ? state.tlp : undefined;
-            resourceInputs["tokens"] = state ? state.tokens : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["completed"] = state?.completed;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["messageTokens"] = state?.messageTokens;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["readableId"] = state?.readableId;
+            resourceInputs["request"] = state?.request;
+            resourceInputs["requestType"] = state?.requestType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["summary"] = state?.summary;
+            resourceInputs["tlp"] = state?.tlp;
+            resourceInputs["tokens"] = state?.tokens;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["requestType"] = args ? args.requestType : undefined;
-            resourceInputs["summary"] = args ? args.summary : undefined;
-            resourceInputs["tlp"] = args ? args.tlp : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["requestType"] = args?.requestType;
+            resourceInputs["summary"] = args?.summary;
+            resourceInputs["tlp"] = args?.tlp;
             resourceInputs["completed"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["messageTokens"] = undefined /*out*/;

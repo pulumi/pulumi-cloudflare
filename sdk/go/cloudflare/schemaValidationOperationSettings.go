@@ -42,10 +42,13 @@ import (
 type SchemaValidationOperationSettings struct {
 	pulumi.CustomResourceState
 
-	// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-	// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-	// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-	// "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `"log"` - log request when request does not conform to schema for this operation
+	//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+	//   - `"none"` - will skip mitigation for this operation
+	//   - `null` - clears any mitigation action
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringOutput `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
@@ -92,10 +95,13 @@ func GetSchemaValidationOperationSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SchemaValidationOperationSettings resources.
 type schemaValidationOperationSettingsState struct {
-	// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-	// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-	// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-	// "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `"log"` - log request when request does not conform to schema for this operation
+	//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+	//   - `"none"` - will skip mitigation for this operation
+	//   - `null` - clears any mitigation action
+	//     Available values: "log", "block", "none".
 	MitigationAction *string `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
@@ -104,10 +110,13 @@ type schemaValidationOperationSettingsState struct {
 }
 
 type SchemaValidationOperationSettingsState struct {
-	// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-	// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-	// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-	// "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `"log"` - log request when request does not conform to schema for this operation
+	//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+	//   - `"none"` - will skip mitigation for this operation
+	//   - `null` - clears any mitigation action
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrInput
 	// UUID.
 	OperationId pulumi.StringPtrInput
@@ -120,10 +129,13 @@ func (SchemaValidationOperationSettingsState) ElementType() reflect.Type {
 }
 
 type schemaValidationOperationSettingsArgs struct {
-	// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-	// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-	// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-	// "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `"log"` - log request when request does not conform to schema for this operation
+	//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+	//   - `"none"` - will skip mitigation for this operation
+	//   - `null` - clears any mitigation action
+	//     Available values: "log", "block", "none".
 	MitigationAction string `pulumi:"mitigationAction"`
 	// UUID.
 	OperationId string `pulumi:"operationId"`
@@ -133,10 +145,13 @@ type schemaValidationOperationSettingsArgs struct {
 
 // The set of arguments for constructing a SchemaValidationOperationSettings resource.
 type SchemaValidationOperationSettingsArgs struct {
-	// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-	// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-	// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-	// "log", "block", "none".
+	// When set, this applies a mitigation action to this operation
+	//
+	//   - `"log"` - log request when request does not conform to schema for this operation
+	//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+	//   - `"none"` - will skip mitigation for this operation
+	//   - `null` - clears any mitigation action
+	//     Available values: "log", "block", "none".
 	MitigationAction pulumi.StringInput
 	// UUID.
 	OperationId pulumi.StringInput
@@ -231,10 +246,13 @@ func (o SchemaValidationOperationSettingsOutput) ToSchemaValidationOperationSett
 	return o
 }
 
-// When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-// schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-// operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-// "log", "block", "none".
+// When set, this applies a mitigation action to this operation
+//
+//   - `"log"` - log request when request does not conform to schema for this operation
+//   - `"block"` - deny access to the site when request does not conform to schema for this operation
+//   - `"none"` - will skip mitigation for this operation
+//   - `null` - clears any mitigation action
+//     Available values: "log", "block", "none".
 func (o SchemaValidationOperationSettingsOutput) MitigationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *SchemaValidationOperationSettings) pulumi.StringOutput { return v.MitigationAction }).(pulumi.StringOutput)
 }

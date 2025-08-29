@@ -54,28 +54,28 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
     /**
      * This is the time the fallback origin was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * These are errors that were encountered while trying to activate a fallback origin.
      */
-    public /*out*/ readonly errors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<string[]>;
     /**
      * Your origin hostname that requests to your custom hostnames will be sent to.
      */
-    public readonly origin!: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<string>;
     /**
      * Status of the fallback origin's activation.
      * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * This is the time the fallback origin was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomHostnameFallbackOrigin resource with the given unique name, arguments, and options.
@@ -90,22 +90,22 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameFallbackOriginState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomHostnameFallbackOriginArgs | undefined;
-            if ((!args || args.origin === undefined) && !opts.urn) {
+            if (args?.origin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

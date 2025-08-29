@@ -49,27 +49,27 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceSettings.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Sets the time limit, in seconds, that a user can use an override code to bypass WARP.
      */
-    public readonly disableForTime!: pulumi.Output<number | undefined>;
+    declare public readonly disableForTime: pulumi.Output<number | undefined>;
     /**
      * Enable gateway proxy filtering on TCP.
      */
-    public readonly gatewayProxyEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly gatewayProxyEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Enable gateway proxy filtering on UDP.
      */
-    public readonly gatewayUdpProxyEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly gatewayUdpProxyEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Enable installation of cloudflare managed root certificate.
      */
-    public readonly rootCertificateInstallationEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly rootCertificateInstallationEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Enable using CGNAT virtual IPv4.
      */
-    public readonly useZtVirtualIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly useZtVirtualIp: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ZeroTrustDeviceSettings resource with the given unique name, arguments, and options.
@@ -84,23 +84,23 @@ export class ZeroTrustDeviceSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceSettingsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["disableForTime"] = state ? state.disableForTime : undefined;
-            resourceInputs["gatewayProxyEnabled"] = state ? state.gatewayProxyEnabled : undefined;
-            resourceInputs["gatewayUdpProxyEnabled"] = state ? state.gatewayUdpProxyEnabled : undefined;
-            resourceInputs["rootCertificateInstallationEnabled"] = state ? state.rootCertificateInstallationEnabled : undefined;
-            resourceInputs["useZtVirtualIp"] = state ? state.useZtVirtualIp : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["disableForTime"] = state?.disableForTime;
+            resourceInputs["gatewayProxyEnabled"] = state?.gatewayProxyEnabled;
+            resourceInputs["gatewayUdpProxyEnabled"] = state?.gatewayUdpProxyEnabled;
+            resourceInputs["rootCertificateInstallationEnabled"] = state?.rootCertificateInstallationEnabled;
+            resourceInputs["useZtVirtualIp"] = state?.useZtVirtualIp;
         } else {
             const args = argsOrState as ZeroTrustDeviceSettingsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["disableForTime"] = args ? args.disableForTime : undefined;
-            resourceInputs["gatewayProxyEnabled"] = args ? args.gatewayProxyEnabled : undefined;
-            resourceInputs["gatewayUdpProxyEnabled"] = args ? args.gatewayUdpProxyEnabled : undefined;
-            resourceInputs["rootCertificateInstallationEnabled"] = args ? args.rootCertificateInstallationEnabled : undefined;
-            resourceInputs["useZtVirtualIp"] = args ? args.useZtVirtualIp : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["disableForTime"] = args?.disableForTime;
+            resourceInputs["gatewayProxyEnabled"] = args?.gatewayProxyEnabled;
+            resourceInputs["gatewayUdpProxyEnabled"] = args?.gatewayUdpProxyEnabled;
+            resourceInputs["rootCertificateInstallationEnabled"] = args?.rootCertificateInstallationEnabled;
+            resourceInputs["useZtVirtualIp"] = args?.useZtVirtualIp;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDeviceSettings.__pulumiType, name, resourceInputs, opts);

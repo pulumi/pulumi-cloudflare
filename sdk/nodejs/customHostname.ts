@@ -46,48 +46,48 @@ export class CustomHostname extends pulumi.CustomResource {
     /**
      * This is the time the hostname was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      */
-    public readonly customMetadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly customMetadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      */
-    public readonly customOriginServer!: pulumi.Output<string | undefined>;
+    declare public readonly customOriginServer: pulumi.Output<string | undefined>;
     /**
      * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      */
-    public readonly customOriginSni!: pulumi.Output<string | undefined>;
+    declare public readonly customOriginSni: pulumi.Output<string | undefined>;
     /**
      * The custom hostname that will point to your hostname via CNAME.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * This is a record which can be placed to activate a hostname.
      */
-    public /*out*/ readonly ownershipVerification!: pulumi.Output<outputs.CustomHostnameOwnershipVerification>;
+    declare public /*out*/ readonly ownershipVerification: pulumi.Output<outputs.CustomHostnameOwnershipVerification>;
     /**
      * This presents the token to be served by the given http url to activate a hostname.
      */
-    public /*out*/ readonly ownershipVerificationHttp!: pulumi.Output<outputs.CustomHostnameOwnershipVerificationHttp>;
+    declare public /*out*/ readonly ownershipVerificationHttp: pulumi.Output<outputs.CustomHostnameOwnershipVerificationHttp>;
     /**
      * SSL properties used when creating the custom hostname.
      */
-    public readonly ssl!: pulumi.Output<outputs.CustomHostnameSsl>;
+    declare public readonly ssl: pulumi.Output<outputs.CustomHostnameSsl>;
     /**
      * Status of the hostname's activation.
      * Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "testFailed", "provisioned", "blocked".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * These are errors that were encountered while trying to activate a hostname.
      */
-    public /*out*/ readonly verificationErrors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly verificationErrors: pulumi.Output<string[]>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a CustomHostname resource with the given unique name, arguments, and options.
@@ -102,34 +102,34 @@ export class CustomHostname extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customMetadata"] = state ? state.customMetadata : undefined;
-            resourceInputs["customOriginServer"] = state ? state.customOriginServer : undefined;
-            resourceInputs["customOriginSni"] = state ? state.customOriginSni : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["ownershipVerification"] = state ? state.ownershipVerification : undefined;
-            resourceInputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
-            resourceInputs["ssl"] = state ? state.ssl : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["verificationErrors"] = state ? state.verificationErrors : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customMetadata"] = state?.customMetadata;
+            resourceInputs["customOriginServer"] = state?.customOriginServer;
+            resourceInputs["customOriginSni"] = state?.customOriginSni;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["ownershipVerification"] = state?.ownershipVerification;
+            resourceInputs["ownershipVerificationHttp"] = state?.ownershipVerificationHttp;
+            resourceInputs["ssl"] = state?.ssl;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["verificationErrors"] = state?.verificationErrors;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomHostnameArgs | undefined;
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.ssl === undefined) && !opts.urn) {
+            if (args?.ssl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ssl'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["customMetadata"] = args ? args.customMetadata : undefined;
-            resourceInputs["customOriginServer"] = args ? args.customOriginServer : undefined;
-            resourceInputs["customOriginSni"] = args ? args.customOriginSni : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["ssl"] = args ? args.ssl : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["customMetadata"] = args?.customMetadata;
+            resourceInputs["customOriginServer"] = args?.customOriginServer;
+            resourceInputs["customOriginSni"] = args?.customOriginSni;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["ssl"] = args?.ssl;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ownershipVerification"] = undefined /*out*/;
             resourceInputs["ownershipVerificationHttp"] = undefined /*out*/;

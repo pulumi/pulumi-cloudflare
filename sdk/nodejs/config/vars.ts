@@ -8,10 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("cloudflare");
 
 /**
- * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
- * keys are [now considered legacy by
- * Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
- * instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+ * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  */
 export declare const apiKey: string | undefined;
 Object.defineProperty(exports, "apiKey", {
@@ -22,8 +19,7 @@ Object.defineProperty(exports, "apiKey", {
 });
 
 /**
- * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
- * Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
+ * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
@@ -34,9 +30,7 @@ Object.defineProperty(exports, "apiToken", {
 });
 
 /**
- * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
- * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`,
- * `apiUserServiceKey`.
+ * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  */
 export declare const apiUserServiceKey: string | undefined;
 Object.defineProperty(exports, "apiUserServiceKey", {
@@ -47,8 +41,7 @@ Object.defineProperty(exports, "apiUserServiceKey", {
 });
 
 /**
- * Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment
- * variable.
+ * Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
  */
 export declare const baseUrl: string | undefined;
 Object.defineProperty(exports, "baseUrl", {
@@ -59,8 +52,7 @@ Object.defineProperty(exports, "baseUrl", {
 });
 
 /**
- * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
- * variable. Required when using `apiKey`. Conflicts with `apiToken`.
+ * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
  */
 export declare const email: string | undefined;
 Object.defineProperty(exports, "email", {

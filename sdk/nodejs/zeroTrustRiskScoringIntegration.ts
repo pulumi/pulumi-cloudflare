@@ -53,36 +53,36 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustRiskScoringIntegration.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The Cloudflare account tag.
      */
-    public /*out*/ readonly accountTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountTag: pulumi.Output<string>;
     /**
      * Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
      */
-    public readonly active!: pulumi.Output<boolean | undefined>;
+    declare public readonly active: pulumi.Output<boolean | undefined>;
     /**
      * When the integration was created in RFC3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Available values: "Okta".
      */
-    public readonly integrationType!: pulumi.Output<string>;
+    declare public readonly integrationType: pulumi.Output<string>;
     /**
      * A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
      * https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
      */
-    public readonly referenceId!: pulumi.Output<string | undefined>;
+    declare public readonly referenceId: pulumi.Output<string | undefined>;
     /**
      * The base url of the tenant, e.g. "https://tenant.okta.com".
      */
-    public readonly tenantUrl!: pulumi.Output<string>;
+    declare public readonly tenantUrl: pulumi.Output<string>;
     /**
      * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
-    public /*out*/ readonly wellKnownUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly wellKnownUrl: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustRiskScoringIntegration resource with the given unique name, arguments, and options.
@@ -97,30 +97,30 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustRiskScoringIntegrationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["accountTag"] = state ? state.accountTag : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["integrationType"] = state ? state.integrationType : undefined;
-            resourceInputs["referenceId"] = state ? state.referenceId : undefined;
-            resourceInputs["tenantUrl"] = state ? state.tenantUrl : undefined;
-            resourceInputs["wellKnownUrl"] = state ? state.wellKnownUrl : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["accountTag"] = state?.accountTag;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["integrationType"] = state?.integrationType;
+            resourceInputs["referenceId"] = state?.referenceId;
+            resourceInputs["tenantUrl"] = state?.tenantUrl;
+            resourceInputs["wellKnownUrl"] = state?.wellKnownUrl;
         } else {
             const args = argsOrState as ZeroTrustRiskScoringIntegrationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.integrationType === undefined) && !opts.urn) {
+            if (args?.integrationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'integrationType'");
             }
-            if ((!args || args.tenantUrl === undefined) && !opts.urn) {
+            if (args?.tenantUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantUrl'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["integrationType"] = args ? args.integrationType : undefined;
-            resourceInputs["referenceId"] = args ? args.referenceId : undefined;
-            resourceInputs["tenantUrl"] = args ? args.tenantUrl : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["integrationType"] = args?.integrationType;
+            resourceInputs["referenceId"] = args?.referenceId;
+            resourceInputs["tenantUrl"] = args?.tenantUrl;
             resourceInputs["accountTag"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["wellKnownUrl"] = undefined /*out*/;

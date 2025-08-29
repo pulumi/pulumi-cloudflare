@@ -52,15 +52,15 @@ export class DnsZoneTransfersAcl extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersAcl.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.
      */
-    public readonly ipRange!: pulumi.Output<string>;
+    declare public readonly ipRange: pulumi.Output<string>;
     /**
      * The name of the acl.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a DnsZoneTransfersAcl resource with the given unique name, arguments, and options.
@@ -75,23 +75,23 @@ export class DnsZoneTransfersAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneTransfersAclState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as DnsZoneTransfersAclArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.ipRange === undefined) && !opts.urn) {
+            if (args?.ipRange === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipRange'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsZoneTransfersAcl.__pulumiType, name, resourceInputs, opts);

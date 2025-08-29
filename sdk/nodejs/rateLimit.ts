@@ -92,35 +92,35 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
-    public readonly action!: pulumi.Output<outputs.RateLimitAction>;
+    declare public readonly action: pulumi.Output<outputs.RateLimitAction>;
     /**
      * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      */
-    public /*out*/ readonly bypasses!: pulumi.Output<outputs.RateLimitBypass[]>;
+    declare public /*out*/ readonly bypasses: pulumi.Output<outputs.RateLimitBypass[]>;
     /**
      * An informative summary of the rule. This value is sanitized and any tags will be removed.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * When true, indicates that the rate limit is currently disabled.
      */
-    public /*out*/ readonly disabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly disabled: pulumi.Output<boolean>;
     /**
      * Determines which traffic the rate limit counts towards the threshold.
      */
-    public readonly match!: pulumi.Output<outputs.RateLimitMatch>;
+    declare public readonly match: pulumi.Output<outputs.RateLimitMatch>;
     /**
      * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
-    public readonly threshold!: pulumi.Output<number>;
+    declare public readonly threshold: pulumi.Output<number>;
     /**
      * Defines an identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a RateLimit resource with the given unique name, arguments, and options.
@@ -135,36 +135,36 @@ export class RateLimit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RateLimitState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["bypasses"] = state ? state.bypasses : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["match"] = state ? state.match : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["threshold"] = state ? state.threshold : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["bypasses"] = state?.bypasses;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["match"] = state?.match;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["threshold"] = state?.threshold;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as RateLimitArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.match === undefined) && !opts.urn) {
+            if (args?.match === undefined && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.threshold === undefined) && !opts.urn) {
+            if (args?.threshold === undefined && !opts.urn) {
                 throw new Error("Missing required property 'threshold'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["match"] = args ? args.match : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["threshold"] = args ? args.threshold : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["match"] = args?.match;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["threshold"] = args?.threshold;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["bypasses"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;

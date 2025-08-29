@@ -46,39 +46,39 @@ export class Worker extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * When the Worker was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Whether logpush is enabled for the Worker.
      */
-    public readonly logpush!: pulumi.Output<boolean>;
+    declare public readonly logpush: pulumi.Output<boolean>;
     /**
      * Name of the Worker.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Observability settings for the Worker.
      */
-    public readonly observability!: pulumi.Output<outputs.WorkerObservability>;
+    declare public readonly observability: pulumi.Output<outputs.WorkerObservability>;
     /**
      * Subdomain settings for the Worker.
      */
-    public readonly subdomain!: pulumi.Output<outputs.WorkerSubdomain>;
+    declare public readonly subdomain: pulumi.Output<outputs.WorkerSubdomain>;
     /**
      * Tags associated with the Worker.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Other Workers that should consume logs from the Worker.
      */
-    public readonly tailConsumers!: pulumi.Output<outputs.WorkerTailConsumer[]>;
+    declare public readonly tailConsumers: pulumi.Output<outputs.WorkerTailConsumer[]>;
     /**
      * When the Worker was most recently updated.
      */
-    public /*out*/ readonly updatedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedOn: pulumi.Output<string>;
 
     /**
      * Create a Worker resource with the given unique name, arguments, and options.
@@ -93,30 +93,30 @@ export class Worker extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["logpush"] = state ? state.logpush : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["observability"] = state ? state.observability : undefined;
-            resourceInputs["subdomain"] = state ? state.subdomain : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tailConsumers"] = state ? state.tailConsumers : undefined;
-            resourceInputs["updatedOn"] = state ? state.updatedOn : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["logpush"] = state?.logpush;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["observability"] = state?.observability;
+            resourceInputs["subdomain"] = state?.subdomain;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tailConsumers"] = state?.tailConsumers;
+            resourceInputs["updatedOn"] = state?.updatedOn;
         } else {
             const args = argsOrState as WorkerArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["logpush"] = args ? args.logpush : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["observability"] = args ? args.observability : undefined;
-            resourceInputs["subdomain"] = args ? args.subdomain : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tailConsumers"] = args ? args.tailConsumers : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["logpush"] = args?.logpush;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["observability"] = args?.observability;
+            resourceInputs["subdomain"] = args?.subdomain;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tailConsumers"] = args?.tailConsumers;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["updatedOn"] = undefined /*out*/;
         }

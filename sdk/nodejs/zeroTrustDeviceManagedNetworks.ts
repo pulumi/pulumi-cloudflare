@@ -43,24 +43,24 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustDeviceManagedNetworks.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The configuration object containing information for the WARP client to detect the managed network.
      */
-    public readonly config!: pulumi.Output<outputs.ZeroTrustDeviceManagedNetworksConfig>;
+    declare public readonly config: pulumi.Output<outputs.ZeroTrustDeviceManagedNetworksConfig>;
     /**
      * The name of the device managed network. This name must be unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * API UUID.
      */
-    public /*out*/ readonly networkId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkId: pulumi.Output<string>;
     /**
      * The type of device managed network.
      * Available values: "tls".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDeviceManagedNetworks resource with the given unique name, arguments, and options.
@@ -75,29 +75,29 @@ export class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustDeviceManagedNetworksState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ZeroTrustDeviceManagedNetworksArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["type"] = args?.type;
             resourceInputs["networkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

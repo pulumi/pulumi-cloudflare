@@ -57,27 +57,27 @@ export class WorkersCustomDomain extends pulumi.CustomResource {
     /**
      * Identifer of the account.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Worker environment associated with the zone and hostname.
      */
-    public readonly environment!: pulumi.Output<string>;
+    declare public readonly environment: pulumi.Output<string>;
     /**
      * Hostname of the Worker Domain.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * Worker service associated with the zone and hostname.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Identifier of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * Name of the zone.
      */
-    public /*out*/ readonly zoneName!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a WorkersCustomDomain resource with the given unique name, arguments, and options.
@@ -92,34 +92,34 @@ export class WorkersCustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersCustomDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as WorkersCustomDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.environment === undefined) && !opts.urn) {
+            if (args?.environment === undefined && !opts.urn) {
                 throw new Error("Missing required property 'environment'");
             }
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["zoneName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

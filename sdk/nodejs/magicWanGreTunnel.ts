@@ -46,48 +46,48 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
-    public readonly cloudflareGreEndpoint!: pulumi.Output<string>;
+    declare public readonly cloudflareGreEndpoint: pulumi.Output<string>;
     /**
      * The date and time the tunnel was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      */
-    public readonly customerGreEndpoint!: pulumi.Output<string>;
+    declare public readonly customerGreEndpoint: pulumi.Output<string>;
     /**
      * An optional description of the GRE tunnel.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly healthCheck!: pulumi.Output<outputs.MagicWanGreTunnelHealthCheck>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly healthCheck: pulumi.Output<outputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    public readonly interfaceAddress!: pulumi.Output<string>;
+    declare public readonly interfaceAddress: pulumi.Output<string>;
     /**
      * A 127 bit IPV6 prefix from within the virtual*subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual*subnet6. Eg if virtual*subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface*address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127
      */
-    public readonly interfaceAddress6!: pulumi.Output<string | undefined>;
+    declare public readonly interfaceAddress6: pulumi.Output<string | undefined>;
     /**
      * The date and time the tunnel was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
-    public readonly mtu!: pulumi.Output<number>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
 
     /**
      * Create a MagicWanGreTunnel resource with the given unique name, arguments, and options.
@@ -102,45 +102,45 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicWanGreTunnelState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["cloudflareGreEndpoint"] = state ? state.cloudflareGreEndpoint : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["customerGreEndpoint"] = state ? state.customerGreEndpoint : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
-            resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
-            resourceInputs["interfaceAddress6"] = state ? state.interfaceAddress6 : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["mtu"] = state ? state.mtu : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["cloudflareGreEndpoint"] = state?.cloudflareGreEndpoint;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["customerGreEndpoint"] = state?.customerGreEndpoint;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["interfaceAddress"] = state?.interfaceAddress;
+            resourceInputs["interfaceAddress6"] = state?.interfaceAddress6;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["mtu"] = state?.mtu;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as MagicWanGreTunnelArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.cloudflareGreEndpoint === undefined) && !opts.urn) {
+            if (args?.cloudflareGreEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudflareGreEndpoint'");
             }
-            if ((!args || args.customerGreEndpoint === undefined) && !opts.urn) {
+            if (args?.customerGreEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customerGreEndpoint'");
             }
-            if ((!args || args.interfaceAddress === undefined) && !opts.urn) {
+            if (args?.interfaceAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interfaceAddress'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["cloudflareGreEndpoint"] = args ? args.cloudflareGreEndpoint : undefined;
-            resourceInputs["customerGreEndpoint"] = args ? args.customerGreEndpoint : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
-            resourceInputs["interfaceAddress6"] = args ? args.interfaceAddress6 : undefined;
-            resourceInputs["mtu"] = args ? args.mtu : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["cloudflareGreEndpoint"] = args?.cloudflareGreEndpoint;
+            resourceInputs["customerGreEndpoint"] = args?.customerGreEndpoint;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["interfaceAddress"] = args?.interfaceAddress;
+            resourceInputs["interfaceAddress6"] = args?.interfaceAddress6;
+            resourceInputs["mtu"] = args?.mtu;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

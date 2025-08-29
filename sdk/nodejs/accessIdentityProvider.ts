@@ -49,28 +49,28 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      */
-    public readonly config!: pulumi.Output<outputs.AccessIdentityProviderConfig>;
+    declare public readonly config: pulumi.Output<outputs.AccessIdentityProviderConfig>;
     /**
      * The name of the identity provider, shown to users on the login page.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      */
-    public readonly scimConfig!: pulumi.Output<outputs.AccessIdentityProviderScimConfig>;
+    declare public readonly scimConfig: pulumi.Output<outputs.AccessIdentityProviderScimConfig>;
     /**
      * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * Available values: "onetimepin", "azureAD", "saml", "centrify", "facebook", "github", "google-apps", "google", "linkedin", "oidc", "okta", "onelogin", "pingone", "yandex".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessIdentityProvider resource with the given unique name, arguments, and options.
@@ -88,29 +88,29 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessIdentityProviderState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["scimConfig"] = state?.scimConfig;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccessIdentityProviderArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["scimConfig"] = args?.scimConfig;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessIdentityProvider:AccessIdentityProvider" }] };

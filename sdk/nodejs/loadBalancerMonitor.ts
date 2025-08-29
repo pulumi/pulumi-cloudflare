@@ -72,74 +72,74 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
      */
-    public readonly allowInsecure!: pulumi.Output<boolean>;
+    declare public readonly allowInsecure: pulumi.Output<boolean>;
     /**
      * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
      */
-    public readonly consecutiveDown!: pulumi.Output<number | undefined>;
+    declare public readonly consecutiveDown: pulumi.Output<number | undefined>;
     /**
      * To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
      */
-    public readonly consecutiveUp!: pulumi.Output<number | undefined>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public readonly consecutiveUp: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Object description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly expectedBody!: pulumi.Output<string>;
+    declare public readonly expectedBody: pulumi.Output<string>;
     /**
      * The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly expectedCodes!: pulumi.Output<string>;
+    declare public readonly expectedCodes: pulumi.Output<string>;
     /**
      * Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly followRedirects!: pulumi.Output<boolean>;
+    declare public readonly followRedirects: pulumi.Output<boolean>;
     /**
      * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly header!: pulumi.Output<{[key: string]: string[]} | undefined>;
+    declare public readonly header: pulumi.Output<{[key: string]: string[]} | undefined>;
     /**
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
      */
-    public readonly interval!: pulumi.Output<number>;
+    declare public readonly interval: pulumi.Output<number>;
     /**
      * The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
      */
-    public readonly method!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly method: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly path!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
     /**
      * The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
      */
-    public readonly probeZone!: pulumi.Output<string>;
+    declare public readonly probeZone: pulumi.Output<string>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      */
-    public readonly retries!: pulumi.Output<number>;
+    declare public readonly retries: pulumi.Output<number>;
     /**
      * The timeout (in seconds) before marking the health check as failed.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
      * Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancerMonitor resource with the given unique name, arguments, and options.
@@ -154,47 +154,47 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowInsecure"] = state ? state.allowInsecure : undefined;
-            resourceInputs["consecutiveDown"] = state ? state.consecutiveDown : undefined;
-            resourceInputs["consecutiveUp"] = state ? state.consecutiveUp : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expectedBody"] = state ? state.expectedBody : undefined;
-            resourceInputs["expectedCodes"] = state ? state.expectedCodes : undefined;
-            resourceInputs["followRedirects"] = state ? state.followRedirects : undefined;
-            resourceInputs["header"] = state ? state.header : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["probeZone"] = state ? state.probeZone : undefined;
-            resourceInputs["retries"] = state ? state.retries : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowInsecure"] = state?.allowInsecure;
+            resourceInputs["consecutiveDown"] = state?.consecutiveDown;
+            resourceInputs["consecutiveUp"] = state?.consecutiveUp;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expectedBody"] = state?.expectedBody;
+            resourceInputs["expectedCodes"] = state?.expectedCodes;
+            resourceInputs["followRedirects"] = state?.followRedirects;
+            resourceInputs["header"] = state?.header;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["probeZone"] = state?.probeZone;
+            resourceInputs["retries"] = state?.retries;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
-            resourceInputs["consecutiveDown"] = args ? args.consecutiveDown : undefined;
-            resourceInputs["consecutiveUp"] = args ? args.consecutiveUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expectedBody"] = args ? args.expectedBody : undefined;
-            resourceInputs["expectedCodes"] = args ? args.expectedCodes : undefined;
-            resourceInputs["followRedirects"] = args ? args.followRedirects : undefined;
-            resourceInputs["header"] = args ? args.header : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["probeZone"] = args ? args.probeZone : undefined;
-            resourceInputs["retries"] = args ? args.retries : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowInsecure"] = args?.allowInsecure;
+            resourceInputs["consecutiveDown"] = args?.consecutiveDown;
+            resourceInputs["consecutiveUp"] = args?.consecutiveUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expectedBody"] = args?.expectedBody;
+            resourceInputs["expectedCodes"] = args?.expectedCodes;
+            resourceInputs["followRedirects"] = args?.followRedirects;
+            resourceInputs["header"] = args?.header;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["probeZone"] = args?.probeZone;
+            resourceInputs["retries"] = args?.retries;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }
