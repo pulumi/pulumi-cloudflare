@@ -249,6 +249,19 @@
                 "fields": {
                     "hosts": {
                         "maxItemsOne": false
+                    },
+                    "validation_errors": {
+                        "maxItemsOne": false
+                    },
+                    "validation_records": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "emails": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -497,7 +510,12 @@
             },
             "cloudflare_filter": {
                 "current": "cloudflare:index/filter:Filter",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "body": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_firewall_rule": {
                 "current": "cloudflare:index/firewallRule:FirewallRule",
@@ -841,24 +859,10 @@
                 "majorVersion": 6,
                 "fields": {
                     "managed_request_headers": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "conflicts_with": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "managed_response_headers": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "conflicts_with": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1290,7 +1294,12 @@
             },
             "cloudflare_r2_custom_domain": {
                 "current": "cloudflare:index/r2CustomDomain:R2CustomDomain",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "ciphers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_r2_managed_domain": {
                 "current": "cloudflare:index/r2ManagedDomain:R2ManagedDomain",
@@ -1449,9 +1458,6 @@
                                         }
                                     }
                                 },
-                                "categories": {
-                                    "maxItemsOne": false
-                                },
                                 "ratelimit": {
                                     "fields": {
                                         "characteristics": {
@@ -1475,6 +1481,15 @@
             "cloudflare_schema_validation_settings": {
                 "current": "cloudflare:index/schemaValidationSettings:SchemaValidationSettings",
                 "majorVersion": 6
+            },
+            "cloudflare_snippet": {
+                "current": "cloudflare:index/snippet:Snippet",
+                "majorVersion": 6,
+                "fields": {
+                    "files": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_snippet_rules": {
                 "current": "cloudflare:index/snippetRules:SnippetRules",
@@ -4530,24 +4545,10 @@
                 "majorVersion": 6,
                 "fields": {
                     "managed_request_headers": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "conflicts_with": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "managed_response_headers": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "conflicts_with": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -5313,7 +5314,12 @@
             },
             "cloudflare_r2_custom_domain": {
                 "current": "cloudflare:index/getR2CustomDomain:getR2CustomDomain",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "ciphers": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_rate_limit": {
                 "current": "cloudflare:index/getRateLimit:getRateLimit",
@@ -5611,6 +5617,19 @@
             "cloudflare_schema_validation_settings": {
                 "current": "cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings",
                 "majorVersion": 6
+            },
+            "cloudflare_snippet": {
+                "current": "cloudflare:index/getSnippet:getSnippet",
+                "majorVersion": 6
+            },
+            "cloudflare_snippet_list": {
+                "current": "cloudflare:index/getSnippetList:getSnippetList",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_snippet_rules_list": {
                 "current": "cloudflare:index/getSnippetRulesList:getSnippetRulesList",
