@@ -138,6 +138,10 @@ namespace Pulumi.Cloudflare
         /// Account settings
         /// </summary>
         public readonly Outputs.GetAccountSettingsResult Settings;
+        /// <summary>
+        /// Available values: "standard", "enterprise".
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
         private GetAccountResult(
@@ -151,7 +155,9 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            Outputs.GetAccountSettingsResult settings)
+            Outputs.GetAccountSettingsResult settings,
+
+            string type)
         {
             AccountId = accountId;
             CreatedOn = createdOn;
@@ -159,6 +165,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             Name = name;
             Settings = settings;
+            Type = type;
         }
     }
 }

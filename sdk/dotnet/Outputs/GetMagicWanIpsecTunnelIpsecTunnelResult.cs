@@ -17,6 +17,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         /// </summary>
         public readonly bool AllowNullCipher;
+        public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpResult Bgp;
+        public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatusResult BgpStatus;
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
@@ -67,6 +69,10 @@ namespace Pulumi.Cloudflare.Outputs
         private GetMagicWanIpsecTunnelIpsecTunnelResult(
             bool allowNullCipher,
 
+            Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpResult bgp,
+
+            Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatusResult bgpStatus,
+
             string cloudflareEndpoint,
 
             string createdOn,
@@ -92,6 +98,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool replayProtection)
         {
             AllowNullCipher = allowNullCipher;
+            Bgp = bgp;
+            BgpStatus = bgpStatus;
             CloudflareEndpoint = cloudflareEndpoint;
             CreatedOn = createdOn;
             CustomerEndpoint = customerEndpoint;

@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsRedirectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, context information will be passed as query parameters
+        /// If true, context information will be passed as query parameters.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }
 
         /// <summary>
-        /// If true, the path and query parameters from the original request will be appended to target_uri
+        /// If true, the path and query parameters from the original request will be appended to target_uri.
         /// </summary>
         [Input("preservePathAndQuery")]
         public Input<bool>? PreservePathAndQuery { get; set; }
 
         /// <summary>
-        /// URI to which the user will be redirected
+        /// URI to which the user will be redirected.
         /// </summary>
         [Input("targetUri", required: true)]
         public Input<string> TargetUri { get; set; } = null!;

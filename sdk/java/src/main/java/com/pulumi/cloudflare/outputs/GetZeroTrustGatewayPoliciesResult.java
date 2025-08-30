@@ -46,7 +46,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
      */
     private GetZeroTrustGatewayPoliciesResultExpiration expiration;
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     private List<String> filters;
@@ -62,13 +62,13 @@ public final class GetZeroTrustGatewayPoliciesResult {
      */
     private String name;
     /**
-     * @return The rule cannot be shared via the Orgs API
+     * @return The rule cannot be shared via the Orgs API.
      * 
      */
     private Boolean notSharable;
     private Integer precedence;
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     private Boolean readOnly;
@@ -83,14 +83,14 @@ public final class GetZeroTrustGatewayPoliciesResult {
      */
     private GetZeroTrustGatewayPoliciesResultSchedule schedule;
     /**
-     * @return account tag of account that created the rule
+     * @return account tag of account that created the rule.
      * 
      */
     private String sourceAccount;
     private String traffic;
     private String updatedAt;
     /**
-     * @return version number of the rule
+     * @return version number of the rule.
      * 
      */
     private Integer version;
@@ -145,7 +145,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.expiration;
     }
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     public List<String> filters() {
@@ -169,7 +169,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.name;
     }
     /**
-     * @return The rule cannot be shared via the Orgs API
+     * @return The rule cannot be shared via the Orgs API.
      * 
      */
     public Boolean notSharable() {
@@ -179,7 +179,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.precedence;
     }
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Boolean readOnly() {
@@ -200,7 +200,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.schedule;
     }
     /**
-     * @return account tag of account that created the rule
+     * @return account tag of account that created the rule.
      * 
      */
     public String sourceAccount() {
@@ -213,7 +213,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.updatedAt;
     }
     /**
-     * @return version number of the rule
+     * @return version number of the rule.
      * 
      */
     public Integer version() {

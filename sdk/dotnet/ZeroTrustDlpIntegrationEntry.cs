@@ -30,12 +30,29 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry example '&lt;account_id&gt;/&lt;entry_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry")]
     public partial class ZeroTrustDlpIntegrationEntry : global::Pulumi.CustomResource
     {
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Only applies to custom word lists.
+        /// Determines if the words should be matched in a case-sensitive manner
+        /// Cannot be set to false if secret is true
+        /// </summary>
+        [Output("caseSensitive")]
+        public Output<bool> CaseSensitive { get; private set; } = null!;
+
+        [Output("confidence")]
+        public Output<Outputs.ZeroTrustDlpIntegrationEntryConfidence> Confidence { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -49,6 +66,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("pattern")]
+        public Output<Outputs.ZeroTrustDlpIntegrationEntryPattern> Pattern { get; private set; } = null!;
+
         /// <summary>
         /// This field is not actually used as the owning profile for a predefined entry is already set
         /// to a predefined profile
@@ -56,8 +76,23 @@ namespace Pulumi.Cloudflare
         [Output("profileId")]
         public Output<string?> ProfileId { get; private set; } = null!;
 
+        [Output("secret")]
+        public Output<bool> Secret { get; private set; } = null!;
+
+        /// <summary>
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
+
+        [Output("variant")]
+        public Output<Outputs.ZeroTrustDlpIntegrationEntryVariant> Variant { get; private set; } = null!;
+
+        [Output("wordList")]
+        public Output<string> WordList { get; private set; } = null!;
 
 
         /// <summary>
@@ -132,6 +167,17 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Only applies to custom word lists.
+        /// Determines if the words should be matched in a case-sensitive manner
+        /// Cannot be set to false if secret is true
+        /// </summary>
+        [Input("caseSensitive")]
+        public Input<bool>? CaseSensitive { get; set; }
+
+        [Input("confidence")]
+        public Input<Inputs.ZeroTrustDlpIntegrationEntryConfidenceGetArgs>? Confidence { get; set; }
+
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -144,6 +190,9 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("pattern")]
+        public Input<Inputs.ZeroTrustDlpIntegrationEntryPatternGetArgs>? Pattern { get; set; }
+
         /// <summary>
         /// This field is not actually used as the owning profile for a predefined entry is already set
         /// to a predefined profile
@@ -151,8 +200,23 @@ namespace Pulumi.Cloudflare
         [Input("profileId")]
         public Input<string>? ProfileId { get; set; }
 
+        [Input("secret")]
+        public Input<bool>? Secret { get; set; }
+
+        /// <summary>
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
+
+        [Input("variant")]
+        public Input<Inputs.ZeroTrustDlpIntegrationEntryVariantGetArgs>? Variant { get; set; }
+
+        [Input("wordList")]
+        public Input<string>? WordList { get; set; }
 
         public ZeroTrustDlpIntegrationEntryState()
         {

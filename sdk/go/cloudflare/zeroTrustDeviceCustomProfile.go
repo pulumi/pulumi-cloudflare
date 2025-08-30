@@ -122,8 +122,8 @@ type ZeroTrustDeviceCustomProfile struct {
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolOutput `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
-	SccmVpnBoundarySupport pulumi.BoolOutput                                  `pulumi:"sccmVpnBoundarySupport"`
-	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
+	SccmVpnBoundarySupport pulumi.BoolOutput                               `pulumi:"sccmVpnBoundarySupport"`
+	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2Output `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -592,10 +592,10 @@ func (o ZeroTrustDeviceCustomProfileOutput) SccmVpnBoundarySupport() pulumi.Bool
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.SccmVpnBoundarySupport }).(pulumi.BoolOutput)
 }
 
-func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {
+func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2Output {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileServiceModeV2Output {
 		return v.ServiceModeV2
-	}).(ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput)
+	}).(ZeroTrustDeviceCustomProfileServiceModeV2Output)
 }
 
 // The URL to launch when the Send Feedback button is clicked.

@@ -20,6 +20,47 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Ruleset;
+ * import com.pulumi.cloudflare.RulesetArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleRuleset = new Ruleset("exampleRuleset", RulesetArgs.builder()
+ *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+ *             .name("My ruleset")
+ *             .phase("http_request_firewall_custom")
+ *             .kind("root")
+ *             .description("A description for my ruleset.")
+ *             .rules(RulesetRuleArgs.builder()
+ *                 .description("Block the request.")
+ *                 .expression("ip.src ne 1.1.1.1")
+ *                 .action("block")
+ *                 .ref("my_rule")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

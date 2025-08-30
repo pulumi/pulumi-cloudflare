@@ -17,14 +17,14 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
     public static final TeamsRuleRuleSettingsNotificationSettingsArgs Empty = new TeamsRuleRuleSettingsNotificationSettingsArgs();
 
     /**
-     * Set notification on
+     * Set notification on.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Set notification on
+     * @return Set notification on.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
     }
 
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -104,7 +104,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param enabled Set notification on
+         * @param enabled Set notification on.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param enabled Set notification on
+         * @param enabled Set notification on.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 

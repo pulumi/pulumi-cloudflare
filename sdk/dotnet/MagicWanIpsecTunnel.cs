@@ -12,41 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleMagicWanIpsecTunnel = new Cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CloudflareEndpoint = "203.0.113.1",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Name = "IPsec_1",
-    ///         CustomerEndpoint = "203.0.113.1",
-    ///         Description = "Tunnel for ISP X",
-    ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs
-    ///         {
-    ///             Direction = "bidirectional",
-    ///             Enabled = true,
-    ///             Rate = "low",
-    ///             Target = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckTargetArgs
-    ///             {
-    ///                 Saved = "203.0.113.1",
-    ///             },
-    ///             Type = "request",
-    ///         },
-    ///         InterfaceAddress6 = "2606:54c1:7:0:a9fe:12d2:1:200/127",
-    ///         Psk = "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
-    ///         ReplayProtection = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

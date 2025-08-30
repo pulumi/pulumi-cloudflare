@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The sensitivity level to use for rules in the category.
+        /// The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
         /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string SensitivityLevel;

@@ -28,7 +28,7 @@ export function getTieredCache(args: GetTieredCacheArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetTieredCacheArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -38,11 +38,11 @@ export interface GetTieredCacheArgs {
  */
 export interface GetTieredCacheResult {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     readonly editable: boolean;
     /**
-     * ID of the zone setting.
+     * The identifier of the caching setting.
      * Available values: "tiered*cache*smart*topology*enable".
      */
     readonly id: string;
@@ -51,12 +51,12 @@ export interface GetTieredCacheResult {
      */
     readonly modifiedOn: string;
     /**
-     * The value of the feature
+     * Value of the Smart Tiered Cache zone setting.
      * Available values: "on", "off".
      */
     readonly value: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -84,7 +84,7 @@ export function getTieredCacheOutput(args: GetTieredCacheOutputArgs, opts?: pulu
  */
 export interface GetTieredCacheOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

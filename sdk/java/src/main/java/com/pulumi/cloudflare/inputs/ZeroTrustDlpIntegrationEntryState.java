@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryConfidenceArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryPatternArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpIntegrationEntryVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -21,6 +24,32 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
 
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    @Import(name="caseSensitive")
+    private @Nullable Output<Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    public Optional<Output<Boolean>> caseSensitive() {
+        return Optional.ofNullable(this.caseSensitive);
+    }
+
+    @Import(name="confidence")
+    private @Nullable Output<ZeroTrustDlpIntegrationEntryConfidenceArgs> confidence;
+
+    public Optional<Output<ZeroTrustDlpIntegrationEntryConfidenceArgs>> confidence() {
+        return Optional.ofNullable(this.confidence);
     }
 
     @Import(name="createdAt")
@@ -51,6 +80,13 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="pattern")
+    private @Nullable Output<ZeroTrustDlpIntegrationEntryPatternArgs> pattern;
+
+    public Optional<Output<ZeroTrustDlpIntegrationEntryPatternArgs>> pattern() {
+        return Optional.ofNullable(this.pattern);
+    }
+
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
@@ -68,6 +104,28 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         return Optional.ofNullable(this.profileId);
     }
 
+    @Import(name="secret")
+    private @Nullable Output<Boolean> secret;
+
+    public Optional<Output<Boolean>> secret() {
+        return Optional.ofNullable(this.secret);
+    }
+
+    /**
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
@@ -75,16 +133,37 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
         return Optional.ofNullable(this.updatedAt);
     }
 
+    @Import(name="variant")
+    private @Nullable Output<ZeroTrustDlpIntegrationEntryVariantArgs> variant;
+
+    public Optional<Output<ZeroTrustDlpIntegrationEntryVariantArgs>> variant() {
+        return Optional.ofNullable(this.variant);
+    }
+
+    @Import(name="wordList")
+    private @Nullable Output<String> wordList;
+
+    public Optional<Output<String>> wordList() {
+        return Optional.ofNullable(this.wordList);
+    }
+
     private ZeroTrustDlpIntegrationEntryState() {}
 
     private ZeroTrustDlpIntegrationEntryState(ZeroTrustDlpIntegrationEntryState $) {
         this.accountId = $.accountId;
+        this.caseSensitive = $.caseSensitive;
+        this.confidence = $.confidence;
         this.createdAt = $.createdAt;
         this.enabled = $.enabled;
         this.entryId = $.entryId;
         this.name = $.name;
+        this.pattern = $.pattern;
         this.profileId = $.profileId;
+        this.secret = $.secret;
+        this.type = $.type;
         this.updatedAt = $.updatedAt;
+        this.variant = $.variant;
+        this.wordList = $.wordList;
     }
 
     public static Builder builder() {
@@ -112,6 +191,40 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if secret is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(@Nullable Output<Boolean> caseSensitive) {
+            $.caseSensitive = caseSensitive;
+            return this;
+        }
+
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if secret is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(Boolean caseSensitive) {
+            return caseSensitive(Output.of(caseSensitive));
+        }
+
+        public Builder confidence(@Nullable Output<ZeroTrustDlpIntegrationEntryConfidenceArgs> confidence) {
+            $.confidence = confidence;
+            return this;
+        }
+
+        public Builder confidence(ZeroTrustDlpIntegrationEntryConfidenceArgs confidence) {
+            return confidence(Output.of(confidence));
         }
 
         public Builder createdAt(@Nullable Output<String> createdAt) {
@@ -150,6 +263,15 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
             return name(Output.of(name));
         }
 
+        public Builder pattern(@Nullable Output<ZeroTrustDlpIntegrationEntryPatternArgs> pattern) {
+            $.pattern = pattern;
+            return this;
+        }
+
+        public Builder pattern(ZeroTrustDlpIntegrationEntryPatternArgs pattern) {
+            return pattern(Output.of(pattern));
+        }
+
         /**
          * @param profileId This field is not actually used as the owning profile for a predefined entry is already set
          * to a predefined profile
@@ -173,6 +295,36 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
             return profileId(Output.of(profileId));
         }
 
+        public Builder secret(@Nullable Output<Boolean> secret) {
+            $.secret = secret;
+            return this;
+        }
+
+        public Builder secret(Boolean secret) {
+            return secret(Output.of(secret));
+        }
+
+        /**
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public Builder updatedAt(@Nullable Output<String> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
@@ -180,6 +332,24 @@ public final class ZeroTrustDlpIntegrationEntryState extends com.pulumi.resource
 
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder variant(@Nullable Output<ZeroTrustDlpIntegrationEntryVariantArgs> variant) {
+            $.variant = variant;
+            return this;
+        }
+
+        public Builder variant(ZeroTrustDlpIntegrationEntryVariantArgs variant) {
+            return variant(Output.of(variant));
+        }
+
+        public Builder wordList(@Nullable Output<String> wordList) {
+            $.wordList = wordList;
+            return this;
+        }
+
+        public Builder wordList(String wordList) {
+            return wordList(Output.of(wordList));
         }
 
         public ZeroTrustDlpIntegrationEntryState build() {

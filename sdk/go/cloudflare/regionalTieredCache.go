@@ -47,14 +47,14 @@ import (
 type RegionalTieredCache struct {
 	pulumi.CustomResourceState
 
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolOutput `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -91,26 +91,26 @@ func GetRegionalTieredCache(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionalTieredCache resources.
 type regionalTieredCacheState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable *bool `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RegionalTieredCacheState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolPtrInput
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -122,7 +122,7 @@ type regionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -131,7 +131,7 @@ type RegionalTieredCacheArgs struct {
 	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -222,7 +222,7 @@ func (o RegionalTieredCacheOutput) ToRegionalTieredCacheOutputWithContext(ctx co
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o RegionalTieredCacheOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
@@ -238,7 +238,7 @@ func (o RegionalTieredCacheOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o RegionalTieredCacheOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalTieredCache) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

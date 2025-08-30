@@ -28,10 +28,13 @@ class GetAccountMemberResult:
     """
     A collection of values returned by getAccountMember.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, member_id=None, policies=None, roles=None, status=None, user=None):
+    def __init__(__self__, account_id=None, email=None, filter=None, id=None, member_id=None, policies=None, roles=None, status=None, user=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if email and not isinstance(email, str):
+            raise TypeError("Expected argument 'email' to be a str")
+        pulumi.set(__self__, "email", email)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -61,6 +64,14 @@ class GetAccountMemberResult:
         Account identifier tag.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The contact email address of the user.
+        """
+        return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +135,7 @@ class AwaitableGetAccountMemberResult(GetAccountMemberResult):
             yield self
         return GetAccountMemberResult(
             account_id=self.account_id,
+            email=self.email,
             filter=self.filter,
             id=self.id,
             member_id=self.member_id,
@@ -161,6 +173,7 @@ def get_account_member(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetAccountMemberResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        email=pulumi.get(__ret__, 'email'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         member_id=pulumi.get(__ret__, 'member_id'),
@@ -195,6 +208,7 @@ def get_account_member_output(account_id: Optional[pulumi.Input[_builtins.str]] 
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getAccountMember:getAccountMember', __args__, opts=opts, typ=GetAccountMemberResult)
     return __ret__.apply(lambda __response__: GetAccountMemberResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        email=pulumi.get(__response__, 'email'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         member_id=pulumi.get(__response__, 'member_id'),

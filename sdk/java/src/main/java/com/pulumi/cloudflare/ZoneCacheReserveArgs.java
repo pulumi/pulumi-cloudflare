@@ -34,14 +34,14 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -97,7 +97,7 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -59,6 +59,8 @@ type LookupBotManagementResult struct {
 	AiBotsProtection string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled bool `pulumi:"bmCookieEnabled"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection string `pulumi:"crawlerProtection"`
@@ -138,6 +140,11 @@ func (o LookupBotManagementResultOutput) AiBotsProtection() pulumi.StringOutput 
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 func (o LookupBotManagementResultOutput) AutoUpdateModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.AutoUpdateModel }).(pulumi.BoolOutput)
+}
+
+// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+func (o LookupBotManagementResultOutput) BmCookieEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.BmCookieEnabled }).(pulumi.BoolOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.

@@ -17,14 +17,14 @@ public final class GetZeroTrustGatewayCategoriesListPlainArgs extends com.pulumi
     public static final GetZeroTrustGatewayCategoriesListPlainArgs Empty = new GetZeroTrustGatewayCategoriesListPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -72,7 +72,7 @@ public final class GetZeroTrustGatewayCategoriesListPlainArgs extends com.pulumi
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

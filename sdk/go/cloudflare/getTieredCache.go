@@ -48,23 +48,23 @@ func LookupTieredCache(ctx *pulumi.Context, args *LookupTieredCacheArgs, opts ..
 
 // A collection of arguments for invoking getTieredCache.
 type LookupTieredCacheArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getTieredCache.
 type LookupTieredCacheResult struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// ID of the zone setting.
+	// The identifier of the caching setting.
 	// Available values: "tiered*cache*smart*topology*enable".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The value of the feature
+	// Value of the Smart Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupTieredCacheOutput(ctx *pulumi.Context, args LookupTieredCacheOutputAr
 
 // A collection of arguments for invoking getTieredCache.
 type LookupTieredCacheOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupTieredCacheResultOutput) ToLookupTieredCacheResultOutputWithContex
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o LookupTieredCacheResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// ID of the zone setting.
+// The identifier of the caching setting.
 // Available values: "tiered*cache*smart*topology*enable".
 func (o LookupTieredCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.Id }).(pulumi.StringOutput)
@@ -118,13 +118,13 @@ func (o LookupTieredCacheResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The value of the feature
+// Value of the Smart Tiered Cache zone setting.
 // Available values: "on", "off".
 func (o LookupTieredCacheResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupTieredCacheResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTieredCacheResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

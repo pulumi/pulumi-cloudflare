@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersFromValueTargetUrl {
     /**
-     * @return An expression to evaluate to get the URL to redirect the request to.
+     * @return An expression that evaluates to a URL to redirect the request to.
      * 
      */
     private String expression;
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     private String value;
 
     private GetRulesetRuleActionParametersFromValueTargetUrl() {}
     /**
-     * @return An expression to evaluate to get the URL to redirect the request to.
+     * @return An expression that evaluates to a URL to redirect the request to.
      * 
      */
     public String expression() {
         return this.expression;
     }
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     public String value() {

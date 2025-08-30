@@ -17,7 +17,7 @@ public final class GetZeroTrustGatewaySettingsSettingsCustomCertificate {
      */
     private String bindingStatus;
     /**
-     * @return Enable use of custom certificate authority for signing Gateway traffic.
+     * @return Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     private Boolean enabled;
@@ -37,7 +37,7 @@ public final class GetZeroTrustGatewaySettingsSettingsCustomCertificate {
         return this.bindingStatus;
     }
     /**
-     * @return Enable use of custom certificate authority for signing Gateway traffic.
+     * @return Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     public Boolean enabled() {

@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.ResourceArgs {
@@ -53,21 +51,6 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         return this.profileId;
     }
 
-    /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    @Import(name="type")
-    private @Nullable Output<String> type;
-
-    /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-     * 
-     */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
-    }
-
     private ZeroTrustDlpCustomEntryArgs() {}
 
     private ZeroTrustDlpCustomEntryArgs(ZeroTrustDlpCustomEntryArgs $) {
@@ -76,7 +59,6 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
         this.name = $.name;
         this.pattern = $.pattern;
         this.profileId = $.profileId;
-        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -140,27 +122,6 @@ public final class ZeroTrustDlpCustomEntryArgs extends com.pulumi.resources.Reso
 
         public Builder profileId(String profileId) {
             return profileId(Output.of(profileId));
-        }
-
-        /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(String type) {
-            return type(Output.of(type));
         }
 
         public ZeroTrustDlpCustomEntryArgs build() {

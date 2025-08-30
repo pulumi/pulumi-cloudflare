@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>
+        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// </summary>
+        public readonly bool? IsDefaultNetwork;
+        /// <summary>
         /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
         /// </summary>
         public readonly bool? IsDeleted;
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? isDefault,
 
+            bool? isDefaultNetwork,
+
             bool? isDeleted,
 
             string? name)
         {
             Id = id;
             IsDefault = isDefault;
+            IsDefaultNetwork = isDefaultNetwork;
             IsDeleted = isDeleted;
             Name = name;
         }

@@ -40,18 +40,35 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustDlpIntegrationEntry:ZeroTrustDlpIntegrationEntry example '<account_id>/<entry_id>'
+// ```
 type ZeroTrustDlpIntegrationEntry struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	Enabled   pulumi.BoolOutput   `pulumi:"enabled"`
-	EntryId   pulumi.StringOutput `pulumi:"entryId"`
-	Name      pulumi.StringOutput `pulumi:"name"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolOutput                            `pulumi:"caseSensitive"`
+	Confidence    ZeroTrustDlpIntegrationEntryConfidenceOutput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringOutput                          `pulumi:"createdAt"`
+	Enabled       pulumi.BoolOutput                            `pulumi:"enabled"`
+	EntryId       pulumi.StringOutput                          `pulumi:"entryId"`
+	Name          pulumi.StringOutput                          `pulumi:"name"`
+	Pattern       ZeroTrustDlpIntegrationEntryPatternOutput    `pulumi:"pattern"`
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId pulumi.StringPtrOutput `pulumi:"profileId"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	Secret    pulumi.BoolOutput      `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringOutput                       `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput                       `pulumi:"updatedAt"`
+	Variant   ZeroTrustDlpIntegrationEntryVariantOutput `pulumi:"variant"`
+	WordList  pulumi.StringOutput                       `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpIntegrationEntry registers a new resource with the given unique name, arguments, and options.
@@ -94,26 +111,48 @@ func GetZeroTrustDlpIntegrationEntry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustDlpIntegrationEntry resources.
 type zeroTrustDlpIntegrationEntryState struct {
 	AccountId *string `pulumi:"accountId"`
-	CreatedAt *string `pulumi:"createdAt"`
-	Enabled   *bool   `pulumi:"enabled"`
-	EntryId   *string `pulumi:"entryId"`
-	Name      *string `pulumi:"name"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive *bool                                   `pulumi:"caseSensitive"`
+	Confidence    *ZeroTrustDlpIntegrationEntryConfidence `pulumi:"confidence"`
+	CreatedAt     *string                                 `pulumi:"createdAt"`
+	Enabled       *bool                                   `pulumi:"enabled"`
+	EntryId       *string                                 `pulumi:"entryId"`
+	Name          *string                                 `pulumi:"name"`
+	Pattern       *ZeroTrustDlpIntegrationEntryPattern    `pulumi:"pattern"`
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId *string `pulumi:"profileId"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Secret    *bool   `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      *string                              `pulumi:"type"`
+	UpdatedAt *string                              `pulumi:"updatedAt"`
+	Variant   *ZeroTrustDlpIntegrationEntryVariant `pulumi:"variant"`
+	WordList  *string                              `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpIntegrationEntryState struct {
 	AccountId pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
-	Enabled   pulumi.BoolPtrInput
-	EntryId   pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolPtrInput
+	Confidence    ZeroTrustDlpIntegrationEntryConfidencePtrInput
+	CreatedAt     pulumi.StringPtrInput
+	Enabled       pulumi.BoolPtrInput
+	EntryId       pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Pattern       ZeroTrustDlpIntegrationEntryPatternPtrInput
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId pulumi.StringPtrInput
+	Secret    pulumi.BoolPtrInput
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
+	Variant   ZeroTrustDlpIntegrationEntryVariantPtrInput
+	WordList  pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpIntegrationEntryState) ElementType() reflect.Type {
@@ -230,6 +269,19 @@ func (o ZeroTrustDlpIntegrationEntryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o ZeroTrustDlpIntegrationEntryOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.BoolOutput { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+func (o ZeroTrustDlpIntegrationEntryOutput) Confidence() ZeroTrustDlpIntegrationEntryConfidenceOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryConfidenceOutput {
+		return v.Confidence
+	}).(ZeroTrustDlpIntegrationEntryConfidenceOutput)
+}
+
 func (o ZeroTrustDlpIntegrationEntryOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -246,14 +298,35 @@ func (o ZeroTrustDlpIntegrationEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ZeroTrustDlpIntegrationEntryOutput) Pattern() ZeroTrustDlpIntegrationEntryPatternOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryPatternOutput { return v.Pattern }).(ZeroTrustDlpIntegrationEntryPatternOutput)
+}
+
 // This field is not actually used as the owning profile for a predefined entry is already set
 // to a predefined profile
 func (o ZeroTrustDlpIntegrationEntryOutput) ProfileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
 }
 
+func (o ZeroTrustDlpIntegrationEntryOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o ZeroTrustDlpIntegrationEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func (o ZeroTrustDlpIntegrationEntryOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpIntegrationEntryOutput) Variant() ZeroTrustDlpIntegrationEntryVariantOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) ZeroTrustDlpIntegrationEntryVariantOutput { return v.Variant }).(ZeroTrustDlpIntegrationEntryVariantOutput)
+}
+
+func (o ZeroTrustDlpIntegrationEntryOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpIntegrationEntry) pulumi.StringOutput { return v.WordList }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDlpIntegrationEntryArrayOutput struct{ *pulumi.OutputState }

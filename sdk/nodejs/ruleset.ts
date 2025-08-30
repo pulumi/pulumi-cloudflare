@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleRuleset = new cloudflare.Ruleset("example_ruleset", {
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     name: "My ruleset",
+ *     phase: "http_request_firewall_custom",
+ *     kind: "root",
+ *     description: "A description for my ruleset.",
+ *     rules: [{
+ *         description: "Block the request.",
+ *         expression: "ip.src ne 1.1.1.1",
+ *         action: "block",
+ *         ref: "my_rule",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

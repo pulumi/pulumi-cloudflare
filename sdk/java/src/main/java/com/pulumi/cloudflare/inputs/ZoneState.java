@@ -242,10 +242,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * Legacy permissions based on legacy user membership information.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This has been replaced by Account memberships. */
     @Import(name="permissions")
     private @Nullable Output<List<String>> permissions;
 
@@ -253,10 +253,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * @return Legacy permissions based on legacy user membership information.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This has been replaced by Account memberships. */
     public Optional<Output<List<String>>> permissions() {
         return Optional.ofNullable(this.permissions);
     }
@@ -265,10 +265,16 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * A Zones subscription information.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * Please use the `/zones/{zone_id}/subscription` API
+     * to update a zone&#39;s plan. Changing this value will create/cancel
+     * associated subscriptions. To view available plans for this zone,
+     * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
     @Import(name="plan")
     private @Nullable Output<ZonePlanArgs> plan;
 
@@ -276,10 +282,16 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      * @return A Zones subscription information.
      * 
      * @deprecated
-     * This attribute is deprecated.
+     * Please use the `/zones/{zone_id}/subscription` API
+     * to update a zone&#39;s plan. Changing this value will create/cancel
+     * associated subscriptions. To view available plans for this zone,
+     * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
     public Optional<Output<ZonePlanArgs>> plan() {
         return Optional.ofNullable(this.plan);
     }
@@ -747,10 +759,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This has been replaced by Account memberships.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This has been replaced by Account memberships. */
         public Builder permissions(@Nullable Output<List<String>> permissions) {
             $.permissions = permissions;
             return this;
@@ -762,10 +774,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This has been replaced by Account memberships.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This has been replaced by Account memberships. */
         public Builder permissions(List<String> permissions) {
             return permissions(Output.of(permissions));
         }
@@ -776,10 +788,10 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * This has been replaced by Account memberships.
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* This has been replaced by Account memberships. */
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
         }
@@ -790,10 +802,16 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * Please use the `/zones/{zone_id}/subscription` API
+         * to update a zone&#39;s plan. Changing this value will create/cancel
+         * associated subscriptions. To view available plans for this zone,
+         * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
         public Builder plan(@Nullable Output<ZonePlanArgs> plan) {
             $.plan = plan;
             return this;
@@ -805,10 +823,16 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This attribute is deprecated.
+         * Please use the `/zones/{zone_id}/subscription` API
+         * to update a zone&#39;s plan. Changing this value will create/cancel
+         * associated subscriptions. To view available plans for this zone,
+         * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
          * 
          */
-        @Deprecated /* This attribute is deprecated. */
+        @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
         public Builder plan(ZonePlanArgs plan) {
             return plan(Output.of(plan));
         }

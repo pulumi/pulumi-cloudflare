@@ -61,11 +61,10 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccountSettings> Settings { get; private set; } = null!;
 
         /// <summary>
-        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
@@ -132,11 +131,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccountSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
@@ -171,7 +169,6 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccountSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
-        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]

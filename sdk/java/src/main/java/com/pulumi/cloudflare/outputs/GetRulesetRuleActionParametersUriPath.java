@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersUriPath {
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI path to.
      * 
      */
     private String expression;
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI path to.
      * 
      */
     private String value;
 
     private GetRulesetRuleActionParametersUriPath() {}
     /**
-     * @return Expression to evaluate for the replacement value.
+     * @return An expression that evaluates to a value to rewrite the URI path to.
      * 
      */
     public String expression() {
         return this.expression;
     }
     /**
-     * @return Predefined replacement value.
+     * @return A value to rewrite the URI path to.
      * 
      */
     public String value() {

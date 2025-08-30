@@ -28,7 +28,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, name=None, settings=None):
+    def __init__(__self__, account_id=None, created_on=None, filter=None, id=None, name=None, settings=None, type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,9 @@ class GetAccountResult:
         if settings and not isinstance(settings, dict):
             raise TypeError("Expected argument 'settings' to be a dict")
         pulumi.set(__self__, "settings", settings)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -93,6 +96,14 @@ class GetAccountResult:
         """
         return pulumi.get(self, "settings")
 
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Available values: "standard", "enterprise".
+        """
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetAccountResult(GetAccountResult):
     # pylint: disable=using-constant-test
@@ -105,7 +116,8 @@ class AwaitableGetAccountResult(GetAccountResult):
             filter=self.filter,
             id=self.id,
             name=self.name,
-            settings=self.settings)
+            settings=self.settings,
+            type=self.type)
 
 
 def get_account(account_id: Optional[_builtins.str] = None,
@@ -136,7 +148,8 @@ def get_account(account_id: Optional[_builtins.str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        settings=pulumi.get(__ret__, 'settings'))
+        settings=pulumi.get(__ret__, 'settings'),
+        type=pulumi.get(__ret__, 'type'))
 def get_account_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        filter: Optional[pulumi.Input[Optional[Union['GetAccountFilterArgs', 'GetAccountFilterArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
@@ -164,4 +177,5 @@ def get_account_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        settings=pulumi.get(__response__, 'settings')))
+        settings=pulumi.get(__response__, 'settings'),
+        type=pulumi.get(__response__, 'type')))

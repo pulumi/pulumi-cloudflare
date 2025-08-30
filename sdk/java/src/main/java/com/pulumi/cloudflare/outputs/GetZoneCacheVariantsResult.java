@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZoneCacheVariantsValue;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneCacheVariantsResult {
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     private Boolean editable;
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;variants&#34;.
      * 
      */
@@ -28,26 +29,26 @@ public final class GetZoneCacheVariantsResult {
      */
     private String modifiedOn;
     /**
-     * @return The value of the feature
+     * @return Value of the zone setting.
      * 
      */
-    private String value;
+    private GetZoneCacheVariantsValue value;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetZoneCacheVariantsResult() {}
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Boolean editable() {
         return this.editable;
     }
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;variants&#34;.
      * 
      */
@@ -62,14 +63,14 @@ public final class GetZoneCacheVariantsResult {
         return this.modifiedOn;
     }
     /**
-     * @return The value of the feature
+     * @return Value of the zone setting.
      * 
      */
-    public String value() {
+    public GetZoneCacheVariantsValue value() {
         return this.value;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -88,7 +89,7 @@ public final class GetZoneCacheVariantsResult {
         private Boolean editable;
         private String id;
         private String modifiedOn;
-        private String value;
+        private GetZoneCacheVariantsValue value;
         private String zoneId;
         public Builder() {}
         public Builder(GetZoneCacheVariantsResult defaults) {
@@ -125,7 +126,7 @@ public final class GetZoneCacheVariantsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
+        public Builder value(GetZoneCacheVariantsValue value) {
             if (value == null) {
               throw new MissingRequiredPropertyException("GetZoneCacheVariantsResult", "value");
             }

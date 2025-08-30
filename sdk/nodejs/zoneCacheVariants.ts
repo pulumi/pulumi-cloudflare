@@ -44,7 +44,7 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
@@ -56,7 +56,7 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<outputs.ZoneCacheVariantsValue>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -100,7 +100,7 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
  */
 export interface ZoneCacheVariantsState {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     editable?: pulumi.Input<boolean>;
     /**
@@ -112,7 +112,7 @@ export interface ZoneCacheVariantsState {
      */
     value?: pulumi.Input<inputs.ZoneCacheVariantsValue>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -126,7 +126,7 @@ export interface ZoneCacheVariantsArgs {
      */
     value: pulumi.Input<inputs.ZoneCacheVariantsValue>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult
     {
         /// <summary>
-        /// Response status code lower bound.
+        /// The lower bound of the range.
         /// </summary>
         public readonly int From;
         /// <summary>
-        /// Response status code upper bound.
+        /// The upper bound of the range.
         /// </summary>
         public readonly int To;
 

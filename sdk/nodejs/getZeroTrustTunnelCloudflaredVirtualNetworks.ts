@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     isDefault: true,
+ *     isDefaultNetwork: true,
  *     isDeleted: true,
  *     name: "us-east-1-vpc",
  * });
@@ -28,6 +29,7 @@ export function getZeroTrustTunnelCloudflaredVirtualNetworks(args: GetZeroTrustT
         "accountId": args.accountId,
         "id": args.id,
         "isDefault": args.isDefault,
+        "isDefaultNetwork": args.isDefaultNetwork,
         "isDeleted": args.isDeleted,
         "maxItems": args.maxItems,
         "name": args.name,
@@ -50,6 +52,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksArgs {
      * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
      */
     isDefault?: boolean;
+    /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    isDefaultNetwork?: boolean;
     /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */
@@ -81,6 +87,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksResult {
      */
     readonly isDefault?: boolean;
     /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    readonly isDefaultNetwork?: boolean;
+    /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */
     readonly isDeleted?: boolean;
@@ -108,6 +118,7 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksResult {
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     id: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
  *     isDefault: true,
+ *     isDefaultNetwork: true,
  *     isDeleted: true,
  *     name: "us-east-1-vpc",
  * });
@@ -119,6 +130,7 @@ export function getZeroTrustTunnelCloudflaredVirtualNetworksOutput(args: GetZero
         "accountId": args.accountId,
         "id": args.id,
         "isDefault": args.isDefault,
+        "isDefaultNetwork": args.isDefaultNetwork,
         "isDeleted": args.isDeleted,
         "maxItems": args.maxItems,
         "name": args.name,
@@ -141,6 +153,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworksOutputArgs {
      * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
      */
     isDefault?: pulumi.Input<boolean>;
+    /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    isDefaultNetwork?: pulumi.Input<boolean>;
     /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */

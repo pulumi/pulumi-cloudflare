@@ -63,6 +63,7 @@ export interface GetZeroTrustDlpEntryResult {
      */
     readonly type: string;
     readonly updatedAt: string;
+    readonly variant: outputs.GetZeroTrustDlpEntryVariant;
     readonly wordList: string;
 }
 /**

@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleListItems = cloudflare.getListItems({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
+ *     perPage: 1,
  *     search: "1.1.1.",
  * });
  * ```
@@ -26,6 +27,7 @@ export function getListItems(args: GetListItemsArgs, opts?: pulumi.InvokeOptions
         "accountId": args.accountId,
         "listId": args.listId,
         "maxItems": args.maxItems,
+        "perPage": args.perPage,
         "search": args.search,
     }, opts);
 }
@@ -46,6 +48,10 @@ export interface GetListItemsArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     */
+    perPage?: number;
     /**
      * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
      */
@@ -73,6 +79,10 @@ export interface GetListItemsResult {
      */
     readonly maxItems?: number;
     /**
+     * Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     */
+    readonly perPage?: number;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetListItemsResult[];
@@ -91,6 +101,7 @@ export interface GetListItemsResult {
  * const exampleListItems = cloudflare.getListItems({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
+ *     perPage: 1,
  *     search: "1.1.1.",
  * });
  * ```
@@ -101,6 +112,7 @@ export function getListItemsOutput(args: GetListItemsOutputArgs, opts?: pulumi.I
         "accountId": args.accountId,
         "listId": args.listId,
         "maxItems": args.maxItems,
+        "perPage": args.perPage,
         "search": args.search,
     }, opts);
 }
@@ -121,6 +133,10 @@ export interface GetListItemsOutputArgs {
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     */
+    perPage?: pulumi.Input<number>;
     /**
      * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
      */

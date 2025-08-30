@@ -19,17 +19,17 @@ public final class TeamsAccountSettingsExtendedEmailMatching {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     private @Nullable String sourceAccount;
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     private @Nullable Integer version;
@@ -43,21 +43,21 @@ public final class TeamsAccountSettingsExtendedEmailMatching {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     public Optional<String> sourceAccount() {
         return Optional.ofNullable(this.sourceAccount);
     }
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     public Optional<Integer> version() {

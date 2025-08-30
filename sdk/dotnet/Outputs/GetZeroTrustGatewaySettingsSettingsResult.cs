@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsCertificateResult Certificate;
         /// <summary>
-        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsCustomCertificateResult CustomCertificate;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsHostSelectorResult HostSelector;
         /// <summary>
-        /// Setting to define inspection settings
+        /// Setting to define inspection settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsInspectionResult Inspection;
         /// <summary>

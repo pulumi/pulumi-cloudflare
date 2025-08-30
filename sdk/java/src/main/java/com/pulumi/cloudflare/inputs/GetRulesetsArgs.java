@@ -17,14 +17,14 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRulesetsArgs Empty = new GetRulesetsArgs();
 
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Max items to fetch, default: 1000
+     * Maximum number of rulesets to fetch (defaults to 1000).
      * 
      */
     @Import(name="maxItems")
     private @Nullable Output<Integer> maxItems;
 
     /**
-     * @return Max items to fetch, default: 1000
+     * @return Maximum number of rulesets to fetch (defaults to 1000).
      * 
      */
     public Optional<Output<Integer>> maxItems() {
@@ -47,14 +47,14 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -88,7 +88,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param maxItems Max items to fetch, default: 1000
+         * @param maxItems Maximum number of rulesets to fetch (defaults to 1000).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param maxItems Max items to fetch, default: 1000
+         * @param maxItems Maximum number of rulesets to fetch (defaults to 1000).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GetRulesetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

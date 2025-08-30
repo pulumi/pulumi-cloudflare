@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersScriptsResultResult
     {
         /// <summary>
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+        /// </summary>
+        public readonly string CompatibilityDate;
+        /// <summary>
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// </summary>
+        public readonly ImmutableArray<string> CompatibilityFlags;
+        /// <summary>
         /// When the script was created.
         /// </summary>
         public readonly string CreatedOn;
@@ -21,6 +29,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Hashed script content, can be used in a If-None-Match header when updating.
         /// </summary>
         public readonly string Etag;
+        /// <summary>
+        /// The names of handlers exported as part of the default export.
+        /// </summary>
+        public readonly ImmutableArray<string> Handlers;
         /// <summary>
         /// Whether a Worker contains assets.
         /// </summary>
@@ -34,13 +46,25 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The client most recently used to deploy this Worker.
+        /// </summary>
+        public readonly string LastDeployedFrom;
+        /// <summary>
         /// Whether Logpush is turned on for the Worker.
         /// </summary>
         public readonly bool Logpush;
         /// <summary>
+        /// The tag of the Durable Object migration that was most recently applied for this Worker.
+        /// </summary>
+        public readonly string MigrationTag;
+        /// <summary>
         /// When the script was last modified.
         /// </summary>
         public readonly string ModifiedOn;
+        /// <summary>
+        /// Named exports, such as Durable Object class implementations and named entrypoints.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetWorkersScriptsResultNamedHandlerResult> NamedHandlers;
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
@@ -61,15 +85,21 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetWorkersScriptsResultTailConsumerResult> TailConsumers;
         /// <summary>
         /// Usage model for the Worker invocations.
-        /// Available values: "standard".
+        /// Available values: "standard", "bundled", "unbound".
         /// </summary>
         public readonly string UsageModel;
 
         [OutputConstructor]
         private GetWorkersScriptsResultResult(
+            string compatibilityDate,
+
+            ImmutableArray<string> compatibilityFlags,
+
             string createdOn,
 
             string etag,
+
+            ImmutableArray<string> handlers,
 
             bool hasAssets,
 
@@ -77,9 +107,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            string lastDeployedFrom,
+
             bool logpush,
 
+            string migrationTag,
+
             string modifiedOn,
+
+            ImmutableArray<Outputs.GetWorkersScriptsResultNamedHandlerResult> namedHandlers,
 
             Outputs.GetWorkersScriptsResultPlacementResult placement,
 
@@ -91,13 +127,19 @@ namespace Pulumi.Cloudflare.Outputs
 
             string usageModel)
         {
+            CompatibilityDate = compatibilityDate;
+            CompatibilityFlags = compatibilityFlags;
             CreatedOn = createdOn;
             Etag = etag;
+            Handlers = handlers;
             HasAssets = hasAssets;
             HasModules = hasModules;
             Id = id;
+            LastDeployedFrom = lastDeployedFrom;
             Logpush = logpush;
+            MigrationTag = migrationTag;
             ModifiedOn = modifiedOn;
+            NamedHandlers = namedHandlers;
             Placement = placement;
             PlacementMode = placementMode;
             PlacementStatus = placementStatus;

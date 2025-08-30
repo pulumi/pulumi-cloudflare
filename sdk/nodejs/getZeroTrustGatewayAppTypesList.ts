@@ -31,7 +31,7 @@ export function getZeroTrustGatewayAppTypesList(args: GetZeroTrustGatewayAppType
  */
 export interface GetZeroTrustGatewayAppTypesListArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetZeroTrustGatewayAppTypesListArgs {
  */
 export interface GetZeroTrustGatewayAppTypesListResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getZeroTrustGatewayAppTypesListOutput(args: GetZeroTrustGatewayA
  */
 export interface GetZeroTrustGatewayAppTypesListOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

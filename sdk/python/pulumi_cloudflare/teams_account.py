@@ -25,7 +25,7 @@ class TeamsAccountArgs:
                  settings: Optional[pulumi.Input['TeamsAccountSettingsArgs']] = None):
         """
         The set of arguments for constructing a TeamsAccount resource.
-        :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Account settings.
         """
         pulumi.set(__self__, "account_id", account_id)
         if settings is not None:
@@ -44,7 +44,7 @@ class TeamsAccountArgs:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['TeamsAccountSettingsArgs']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 
@@ -62,7 +62,7 @@ class _TeamsAccountState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamsAccount resources.
-        :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input['TeamsAccountSettingsArgs'] settings: Account settings.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -95,7 +95,7 @@ class _TeamsAccountState:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['TeamsAccountSettingsArgs']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 
@@ -138,7 +138,7 @@ class TeamsAccount(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict']] settings: Account settings.
         """
         ...
     @overload
@@ -211,7 +211,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['TeamsAccountSettingsArgs', 'TeamsAccountSettingsArgsDict']] settings: Account settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -237,7 +237,7 @@ class TeamsAccount(pulumi.CustomResource):
     @pulumi.getter
     def settings(self) -> pulumi.Output[Optional['outputs.TeamsAccountSettings']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 

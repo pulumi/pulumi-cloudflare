@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersFromListResult
     {
         /// <summary>
-        /// Expression that evaluates to the list lookup key.
+        /// An expression that evaluates to the list lookup key.
         /// </summary>
         public readonly string Key;
         /// <summary>

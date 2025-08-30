@@ -103,7 +103,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsL4override l4override;
@@ -128,12 +128,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
@@ -260,7 +260,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.ipIndicatorFeeds);
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsL4override> l4override() {
@@ -295,14 +295,14 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.payloadLog);
     }
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsQuarantine> quarantine() {
         return Optional.ofNullable(this.quarantine);
     }
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsRedirect> redirect() {

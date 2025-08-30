@@ -15,62 +15,62 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKeyCustomKey {
     /**
-     * @return The cookies to include in building the cache key.
+     * @return Which cookies to include in the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
     /**
-     * @return The header names and values to include in building the cache key.
+     * @return Which headers to include in the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyHeader header;
     /**
-     * @return Whether to use the original host or the resolved host in the cache key.
+     * @return How to use the host in the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyHost host;
     /**
-     * @return Use the presence of parameters in the query string to build the cache key.
+     * @return Which query string parameters to include in or exclude from the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
     /**
-     * @return Characteristics of the request user agent used in building the cache key.
+     * @return How to use characteristics of the request user agent in the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private GetRulesetRuleActionParametersCacheKeyCustomKey() {}
     /**
-     * @return The cookies to include in building the cache key.
+     * @return Which cookies to include in the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyCookie cookie() {
         return this.cookie;
     }
     /**
-     * @return The header names and values to include in building the cache key.
+     * @return Which headers to include in the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyHeader header() {
         return this.header;
     }
     /**
-     * @return Whether to use the original host or the resolved host in the cache key.
+     * @return How to use the host in the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyHost host() {
         return this.host;
     }
     /**
-     * @return Use the presence of parameters in the query string to build the cache key.
+     * @return Which query string parameters to include in or exclude from the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString() {
         return this.queryString;
     }
     /**
-     * @return Characteristics of the request user agent used in building the cache key.
+     * @return How to use characteristics of the request user agent in the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyUser user() {

@@ -12,6 +12,36 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleRuleset = new Cloudflare.Ruleset("example_ruleset", new()
+    ///     {
+    ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+    ///         Name = "My ruleset",
+    ///         Phase = "http_request_firewall_custom",
+    ///         Kind = "root",
+    ///         Description = "A description for my ruleset.",
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.RulesetRuleArgs
+    ///             {
+    ///                 Description = "Block the request.",
+    ///                 Expression = "ip.src ne 1.1.1.1",
+    ///                 Action = "block",
+    ///                 Ref = "my_rule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

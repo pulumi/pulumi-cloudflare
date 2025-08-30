@@ -27,7 +27,7 @@ class GetListItemsResult:
     """
     A collection of values returned by getListItems.
     """
-    def __init__(__self__, account_id=None, id=None, list_id=None, max_items=None, results=None, search=None):
+    def __init__(__self__, account_id=None, id=None, list_id=None, max_items=None, per_page=None, results=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetListItemsResult:
         if max_items and not isinstance(max_items, int):
             raise TypeError("Expected argument 'max_items' to be a int")
         pulumi.set(__self__, "max_items", max_items)
+        if per_page and not isinstance(per_page, int):
+            raise TypeError("Expected argument 'per_page' to be a int")
+        pulumi.set(__self__, "per_page", per_page)
         if results and not isinstance(results, list):
             raise TypeError("Expected argument 'results' to be a list")
         pulumi.set(__self__, "results", results)
@@ -80,6 +83,14 @@ class GetListItemsResult:
         return pulumi.get(self, "max_items")
 
     @_builtins.property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> Optional[_builtins.int]:
+        """
+        Amount of results to include in each paginated response. A non-negative 32 bit integer.
+        """
+        return pulumi.get(self, "per_page")
+
+    @_builtins.property
     @pulumi.getter
     def results(self) -> Sequence['outputs.GetListItemsResultResult']:
         """
@@ -106,6 +117,7 @@ class AwaitableGetListItemsResult(GetListItemsResult):
             id=self.id,
             list_id=self.list_id,
             max_items=self.max_items,
+            per_page=self.per_page,
             results=self.results,
             search=self.search)
 
@@ -113,6 +125,7 @@ class AwaitableGetListItemsResult(GetListItemsResult):
 def get_list_items(account_id: Optional[_builtins.str] = None,
                    list_id: Optional[_builtins.str] = None,
                    max_items: Optional[_builtins.int] = None,
+                   per_page: Optional[_builtins.int] = None,
                    search: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListItemsResult:
     """
@@ -124,6 +137,7 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
 
     example_list_items = cloudflare.get_list_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
+        per_page=1,
         search="1.1.1.")
     ```
 
@@ -131,12 +145,14 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
     :param _builtins.str account_id: The Account ID for this resource.
     :param _builtins.str list_id: The unique ID of the list.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.int per_page: Amount of results to include in each paginated response. A non-negative 32 bit integer.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
     __args__['maxItems'] = max_items
+    __args__['perPage'] = per_page
     __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getListItems:getListItems', __args__, opts=opts, typ=GetListItemsResult).value
@@ -146,11 +162,13 @@ def get_list_items(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         list_id=pulumi.get(__ret__, 'list_id'),
         max_items=pulumi.get(__ret__, 'max_items'),
+        per_page=pulumi.get(__ret__, 'per_page'),
         results=pulumi.get(__ret__, 'results'),
         search=pulumi.get(__ret__, 'search'))
 def get_list_items_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                           list_id: Optional[pulumi.Input[_builtins.str]] = None,
                           max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+                          per_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                           search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListItemsResult]:
     """
@@ -162,6 +180,7 @@ def get_list_items_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
 
     example_list_items = cloudflare.get_list_items(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
+        per_page=1,
         search="1.1.1.")
     ```
 
@@ -169,12 +188,14 @@ def get_list_items_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
     :param _builtins.str account_id: The Account ID for this resource.
     :param _builtins.str list_id: The unique ID of the list.
     :param _builtins.int max_items: Max items to fetch, default: 1000
+    :param _builtins.int per_page: Amount of results to include in each paginated response. A non-negative 32 bit integer.
     :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
     __args__['maxItems'] = max_items
+    __args__['perPage'] = per_page
     __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getListItems:getListItems', __args__, opts=opts, typ=GetListItemsResult)
@@ -183,5 +204,6 @@ def get_list_items_output(account_id: Optional[pulumi.Input[_builtins.str]] = No
         id=pulumi.get(__response__, 'id'),
         list_id=pulumi.get(__response__, 'list_id'),
         max_items=pulumi.get(__response__, 'max_items'),
+        per_page=pulumi.get(__response__, 'per_page'),
         results=pulumi.get(__response__, 'results'),
         search=pulumi.get(__response__, 'search')))

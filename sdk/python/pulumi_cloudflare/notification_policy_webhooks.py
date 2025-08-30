@@ -105,7 +105,7 @@ class _NotificationPolicyWebhooksState:
         :param pulumi.Input[_builtins.str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[_builtins.str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         :param pulumi.Input[_builtins.str] type: Type of webhook endpoint.
-               Available values: "slack", "generic", "gchat".
+               Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         :param pulumi.Input[_builtins.str] url: The POST endpoint to call when dispatching a notification.
         """
         if account_id is not None:
@@ -202,7 +202,7 @@ class _NotificationPolicyWebhooksState:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Type of webhook endpoint.
-        Available values: "slack", "generic", "gchat".
+        Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         """
         return pulumi.get(self, "type")
 
@@ -363,7 +363,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the webhook destination. This will be included in the request body when you receive a webhook notification.
         :param pulumi.Input[_builtins.str] secret: Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body.
         :param pulumi.Input[_builtins.str] type: Type of webhook endpoint.
-               Available values: "slack", "generic", "gchat".
+               Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         :param pulumi.Input[_builtins.str] url: The POST endpoint to call when dispatching a notification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -433,7 +433,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Type of webhook endpoint.
-        Available values: "slack", "generic", "gchat".
+        Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         """
         return pulumi.get(self, "type")
 

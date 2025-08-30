@@ -14,28 +14,28 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlResult
     {
         /// <summary>
-        /// The range of status codes used to apply the selected mode.
+        /// A single status code to apply the TTL to.
+        /// </summary>
+        public readonly int StatusCode;
+        /// <summary>
+        /// A range of status codes to apply the TTL to.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult StatusCodeRange;
         /// <summary>
-        /// Set the TTL for responses with this specific status code.
-        /// </summary>
-        public readonly int StatusCodeValue;
-        /// <summary>
-        /// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+        /// The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store".
         /// </summary>
         public readonly int Value;
 
         [OutputConstructor]
         private GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlResult(
-            Outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult statusCodeRange,
+            int statusCode,
 
-            int statusCodeValue,
+            Outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult statusCodeRange,
 
             int value)
         {
+            StatusCode = statusCode;
             StatusCodeRange = statusCodeRange;
-            StatusCodeValue = statusCodeValue;
             Value = value;
         }
     }

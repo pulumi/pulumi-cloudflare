@@ -25,7 +25,7 @@ class ZeroTrustGatewaySettingsArgs:
                  settings: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewaySettings resource.
-        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings.
         """
         pulumi.set(__self__, "account_id", account_id)
         if settings is not None:
@@ -44,7 +44,7 @@ class ZeroTrustGatewaySettingsArgs:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 
@@ -62,7 +62,7 @@ class _ZeroTrustGatewaySettingsState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
-        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs'] settings: Account settings.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -95,7 +95,7 @@ class _ZeroTrustGatewaySettingsState:
     @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsArgs']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 
@@ -133,7 +133,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings.
         """
         ...
     @overload
@@ -205,7 +205,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings
+        :param pulumi.Input[Union['ZeroTrustGatewaySettingsSettingsArgs', 'ZeroTrustGatewaySettingsSettingsArgsDict']] settings: Account settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -231,7 +231,7 @@ class ZeroTrustGatewaySettings(pulumi.CustomResource):
     @pulumi.getter
     def settings(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewaySettingsSettings']]:
         """
-        Account settings
+        Account settings.
         """
         return pulumi.get(self, "settings")
 

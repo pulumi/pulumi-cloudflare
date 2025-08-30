@@ -66,9 +66,10 @@ type ZeroTrustDlpEntry struct {
 	ProfileId     pulumi.StringOutput               `pulumi:"profileId"`
 	Secret        pulumi.BoolOutput                 `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration".
-	Type      pulumi.StringPtrOutput `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
-	WordList  pulumi.StringOutput    `pulumi:"wordList"`
+	Type      pulumi.StringPtrOutput         `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput            `pulumi:"updatedAt"`
+	Variant   ZeroTrustDlpEntryVariantOutput `pulumi:"variant"`
+	WordList  pulumi.StringOutput            `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpEntry registers a new resource with the given unique name, arguments, and options.
@@ -129,9 +130,10 @@ type zeroTrustDlpEntryState struct {
 	ProfileId     *string                      `pulumi:"profileId"`
 	Secret        *bool                        `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration".
-	Type      *string `pulumi:"type"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	WordList  *string `pulumi:"wordList"`
+	Type      *string                   `pulumi:"type"`
+	UpdatedAt *string                   `pulumi:"updatedAt"`
+	Variant   *ZeroTrustDlpEntryVariant `pulumi:"variant"`
+	WordList  *string                   `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpEntryState struct {
@@ -150,6 +152,7 @@ type ZeroTrustDlpEntryState struct {
 	// Available values: "custom", "predefined", "integration".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
+	Variant   ZeroTrustDlpEntryVariantPtrInput
 	WordList  pulumi.StringPtrInput
 }
 
@@ -311,6 +314,10 @@ func (o ZeroTrustDlpEntryOutput) Type() pulumi.StringPtrOutput {
 
 func (o ZeroTrustDlpEntryOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpEntryOutput) Variant() ZeroTrustDlpEntryVariantOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpEntry) ZeroTrustDlpEntryVariantOutput { return v.Variant }).(ZeroTrustDlpEntryVariantOutput)
 }
 
 func (o ZeroTrustDlpEntryOutput) WordList() pulumi.StringOutput {

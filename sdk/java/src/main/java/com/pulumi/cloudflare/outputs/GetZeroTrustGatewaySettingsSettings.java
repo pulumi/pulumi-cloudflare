@@ -54,7 +54,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
      */
     private GetZeroTrustGatewaySettingsSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -78,7 +78,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
      */
     private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsInspection inspection;
@@ -142,7 +142,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.certificate;
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -174,7 +174,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.hostSelector;
     }
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsInspection inspection() {

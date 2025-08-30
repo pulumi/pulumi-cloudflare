@@ -40,17 +40,35 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry example '<account_id>/<entry_id>'
+// ```
 type ZeroTrustDlpPredefinedEntry struct {
 	pulumi.CustomResourceState
 
-	AccountId  pulumi.StringOutput                         `pulumi:"accountId"`
-	Confidence ZeroTrustDlpPredefinedEntryConfidenceOutput `pulumi:"confidence"`
-	Enabled    pulumi.BoolOutput                           `pulumi:"enabled"`
-	EntryId    pulumi.StringOutput                         `pulumi:"entryId"`
-	Name       pulumi.StringOutput                         `pulumi:"name"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolOutput                           `pulumi:"caseSensitive"`
+	Confidence    ZeroTrustDlpPredefinedEntryConfidenceOutput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringOutput                         `pulumi:"createdAt"`
+	Enabled       pulumi.BoolOutput                           `pulumi:"enabled"`
+	EntryId       pulumi.StringOutput                         `pulumi:"entryId"`
+	Name          pulumi.StringOutput                         `pulumi:"name"`
+	Pattern       ZeroTrustDlpPredefinedEntryPatternOutput    `pulumi:"pattern"`
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId pulumi.StringPtrOutput `pulumi:"profileId"`
+	Secret    pulumi.BoolOutput      `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringOutput                      `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput                      `pulumi:"updatedAt"`
+	Variant   ZeroTrustDlpPredefinedEntryVariantOutput `pulumi:"variant"`
+	WordList  pulumi.StringOutput                      `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpPredefinedEntry registers a new resource with the given unique name, arguments, and options.
@@ -92,25 +110,49 @@ func GetZeroTrustDlpPredefinedEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDlpPredefinedEntry resources.
 type zeroTrustDlpPredefinedEntryState struct {
-	AccountId  *string                                `pulumi:"accountId"`
-	Confidence *ZeroTrustDlpPredefinedEntryConfidence `pulumi:"confidence"`
-	Enabled    *bool                                  `pulumi:"enabled"`
-	EntryId    *string                                `pulumi:"entryId"`
-	Name       *string                                `pulumi:"name"`
+	AccountId *string `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive *bool                                  `pulumi:"caseSensitive"`
+	Confidence    *ZeroTrustDlpPredefinedEntryConfidence `pulumi:"confidence"`
+	CreatedAt     *string                                `pulumi:"createdAt"`
+	Enabled       *bool                                  `pulumi:"enabled"`
+	EntryId       *string                                `pulumi:"entryId"`
+	Name          *string                                `pulumi:"name"`
+	Pattern       *ZeroTrustDlpPredefinedEntryPattern    `pulumi:"pattern"`
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId *string `pulumi:"profileId"`
+	Secret    *bool   `pulumi:"secret"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      *string                             `pulumi:"type"`
+	UpdatedAt *string                             `pulumi:"updatedAt"`
+	Variant   *ZeroTrustDlpPredefinedEntryVariant `pulumi:"variant"`
+	WordList  *string                             `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpPredefinedEntryState struct {
-	AccountId  pulumi.StringPtrInput
-	Confidence ZeroTrustDlpPredefinedEntryConfidencePtrInput
-	Enabled    pulumi.BoolPtrInput
-	EntryId    pulumi.StringPtrInput
-	Name       pulumi.StringPtrInput
+	AccountId pulumi.StringPtrInput
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolPtrInput
+	Confidence    ZeroTrustDlpPredefinedEntryConfidencePtrInput
+	CreatedAt     pulumi.StringPtrInput
+	Enabled       pulumi.BoolPtrInput
+	EntryId       pulumi.StringPtrInput
+	Name          pulumi.StringPtrInput
+	Pattern       ZeroTrustDlpPredefinedEntryPatternPtrInput
 	// This field is not actually used as the owning profile for a predefined entry is already set
 	// to a predefined profile
 	ProfileId pulumi.StringPtrInput
+	Secret    pulumi.BoolPtrInput
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	Variant   ZeroTrustDlpPredefinedEntryVariantPtrInput
+	WordList  pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpPredefinedEntryState) ElementType() reflect.Type {
@@ -227,8 +269,19 @@ func (o ZeroTrustDlpPredefinedEntryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o ZeroTrustDlpPredefinedEntryOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.BoolOutput { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
 func (o ZeroTrustDlpPredefinedEntryOutput) Confidence() ZeroTrustDlpPredefinedEntryConfidenceOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) ZeroTrustDlpPredefinedEntryConfidenceOutput { return v.Confidence }).(ZeroTrustDlpPredefinedEntryConfidenceOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpPredefinedEntryOutput) Enabled() pulumi.BoolOutput {
@@ -243,10 +296,35 @@ func (o ZeroTrustDlpPredefinedEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ZeroTrustDlpPredefinedEntryOutput) Pattern() ZeroTrustDlpPredefinedEntryPatternOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) ZeroTrustDlpPredefinedEntryPatternOutput { return v.Pattern }).(ZeroTrustDlpPredefinedEntryPatternOutput)
+}
+
 // This field is not actually used as the owning profile for a predefined entry is already set
 // to a predefined profile
 func (o ZeroTrustDlpPredefinedEntryOutput) ProfileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringPtrOutput { return v.ProfileId }).(pulumi.StringPtrOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
+}
+
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o ZeroTrustDlpPredefinedEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) Variant() ZeroTrustDlpPredefinedEntryVariantOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) ZeroTrustDlpPredefinedEntryVariantOutput { return v.Variant }).(ZeroTrustDlpPredefinedEntryVariantOutput)
+}
+
+func (o ZeroTrustDlpPredefinedEntryOutput) WordList() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpPredefinedEntry) pulumi.StringOutput { return v.WordList }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDlpPredefinedEntryArrayOutput struct{ *pulumi.OutputState }

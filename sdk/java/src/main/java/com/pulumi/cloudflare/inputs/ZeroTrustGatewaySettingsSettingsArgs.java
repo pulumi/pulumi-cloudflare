@@ -119,7 +119,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -130,7 +130,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     private @Nullable Output<ZeroTrustGatewaySettingsSettingsCustomCertificateArgs> customCertificate;
 
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -187,14 +187,14 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      * 
      */
     @Import(name="inspection")
     private @Nullable Output<ZeroTrustGatewaySettingsSettingsInspectionArgs> inspection;
 
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     public Optional<Output<ZeroTrustGatewaySettingsSettingsInspectionArgs>> inspection() {
@@ -410,7 +410,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inspection Setting to define inspection settings
+         * @param inspection Setting to define inspection settings.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inspection Setting to define inspection settings
+         * @param inspection Setting to define inspection settings.
          * 
          * @return builder
          * 

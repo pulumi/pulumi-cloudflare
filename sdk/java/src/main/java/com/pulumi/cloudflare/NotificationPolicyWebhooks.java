@@ -149,7 +149,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
     }
     /**
      * Type of webhook endpoint.
-     * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
+     * Available values: &#34;datadog&#34;, &#34;discord&#34;, &#34;feishu&#34;, &#34;gchat&#34;, &#34;generic&#34;, &#34;opsgenie&#34;, &#34;slack&#34;, &#34;splunk&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -157,7 +157,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
 
     /**
      * @return Type of webhook endpoint.
-     * Available values: &#34;slack&#34;, &#34;generic&#34;, &#34;gchat&#34;.
+     * Available values: &#34;datadog&#34;, &#34;discord&#34;, &#34;feishu&#34;, &#34;gchat&#34;, &#34;generic&#34;, &#34;opsgenie&#34;, &#34;slack&#34;, &#34;splunk&#34;.
      * 
      */
     public Output<String> type() {

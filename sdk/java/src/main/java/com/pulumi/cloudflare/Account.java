@@ -109,20 +109,18 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.settings;
     }
     /**
-     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
+    private Output</* @Nullable */ String> type;
 
     /**
-     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/

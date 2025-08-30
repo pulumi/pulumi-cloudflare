@@ -26,11 +26,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupZeroTrustTunnelCloudflaredVirtualNetworks(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredVirtualNetworksArgs{
-//				AccountId: "699d98642c564d2e855e9661899b7252",
-//				Id:        pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
-//				IsDefault: pulumi.BoolRef(true),
-//				IsDeleted: pulumi.BoolRef(true),
-//				Name:      pulumi.StringRef("us-east-1-vpc"),
+//				AccountId:        "699d98642c564d2e855e9661899b7252",
+//				Id:               pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				IsDefault:        pulumi.BoolRef(true),
+//				IsDefaultNetwork: pulumi.BoolRef(true),
+//				IsDeleted:        pulumi.BoolRef(true),
+//				Name:             pulumi.StringRef("us-east-1-vpc"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,6 +59,8 @@ type LookupZeroTrustTunnelCloudflaredVirtualNetworksArgs struct {
 	Id *string `pulumi:"id"`
 	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
 	IsDefault *bool `pulumi:"isDefault"`
+	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
 	// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// Max items to fetch, default: 1000
@@ -74,6 +77,8 @@ type LookupZeroTrustTunnelCloudflaredVirtualNetworksResult struct {
 	Id *string `pulumi:"id"`
 	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
 	IsDefault *bool `pulumi:"isDefault"`
+	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
 	// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
 	IsDeleted *bool `pulumi:"isDeleted"`
 	// Max items to fetch, default: 1000
@@ -101,6 +106,8 @@ type LookupZeroTrustTunnelCloudflaredVirtualNetworksOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
 	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+	IsDefaultNetwork pulumi.BoolPtrInput `pulumi:"isDefaultNetwork"`
 	// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
 	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// Max items to fetch, default: 1000
@@ -141,6 +148,11 @@ func (o LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput) Id() pulumi
 // If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
 func (o LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredVirtualNetworksResult) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+func (o LookupZeroTrustTunnelCloudflaredVirtualNetworksResultOutput) IsDefaultNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredVirtualNetworksResult) *bool { return v.IsDefaultNetwork }).(pulumi.BoolPtrOutput)
 }
 
 // If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.

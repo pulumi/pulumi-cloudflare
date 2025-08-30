@@ -47,14 +47,14 @@ import (
 type TieredCache struct {
 	pulumi.CustomResourceState
 
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolOutput `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// Enable or disable the Smart Tiered Cache
+	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -94,26 +94,26 @@ func GetTieredCache(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TieredCache resources.
 type tieredCacheState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable *bool `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Enable or disable the Smart Tiered Cache
+	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type TieredCacheState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolPtrInput
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
-	// Enable or disable the Smart Tiered Cache
+	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -122,19 +122,19 @@ func (TieredCacheState) ElementType() reflect.Type {
 }
 
 type tieredCacheArgs struct {
-	// Enable or disable the Smart Tiered Cache
+	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a TieredCache resource.
 type TieredCacheArgs struct {
-	// Enable or disable the Smart Tiered Cache
+	// Enable or disable the Smart Tiered Cache.
 	// Available values: "on", "off".
 	Value pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -225,7 +225,7 @@ func (o TieredCacheOutput) ToTieredCacheOutputWithContext(ctx context.Context) T
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o TieredCacheOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
@@ -235,13 +235,13 @@ func (o TieredCacheOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Enable or disable the Smart Tiered Cache
+// Enable or disable the Smart Tiered Cache.
 // Available values: "on", "off".
 func (o TieredCacheOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o TieredCacheOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TieredCache) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

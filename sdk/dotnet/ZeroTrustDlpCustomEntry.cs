@@ -35,6 +35,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '&lt;account_id&gt;/&lt;entry_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry")]
     public partial class ZeroTrustDlpCustomEntry : global::Pulumi.CustomResource
@@ -72,13 +78,16 @@ namespace Pulumi.Cloudflare
         public Output<bool> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "custom", "predefined", "integration".
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
+
+        [Output("variant")]
+        public Output<Outputs.ZeroTrustDlpCustomEntryVariant> Variant { get; private set; } = null!;
 
         [Output("wordList")]
         public Output<string> WordList { get; private set; } = null!;
@@ -144,12 +153,6 @@ namespace Pulumi.Cloudflare
         [Input("profileId", required: true)]
         public Input<string> ProfileId { get; set; } = null!;
 
-        /// <summary>
-        /// Available values: "custom", "predefined", "integration".
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
         public ZeroTrustDlpCustomEntryArgs()
         {
         }
@@ -191,13 +194,16 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Secret { get; set; }
 
         /// <summary>
-        /// Available values: "custom", "predefined", "integration".
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
+
+        [Input("variant")]
+        public Input<Inputs.ZeroTrustDlpCustomEntryVariantGetArgs>? Variant { get; set; }
 
         [Input("wordList")]
         public Input<string>? WordList { get; set; }

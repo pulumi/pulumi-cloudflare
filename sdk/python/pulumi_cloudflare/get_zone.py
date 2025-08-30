@@ -187,13 +187,16 @@ class GetZoneResult:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This has been replaced by Account memberships.""")
     def permissions(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "permissions")
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).""")
     def plan(self) -> 'outputs.GetZonePlanResult':
         return pulumi.get(self, "plan")
 

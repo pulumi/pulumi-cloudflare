@@ -1465,6 +1465,26 @@ export const getWebAnalyticsSites: typeof import("./getWebAnalyticsSites").getWe
 export const getWebAnalyticsSitesOutput: typeof import("./getWebAnalyticsSites").getWebAnalyticsSitesOutput = null as any;
 utilities.lazyLoad(exports, ["getWebAnalyticsSites","getWebAnalyticsSitesOutput"], () => require("./getWebAnalyticsSites"));
 
+export { GetWorkerArgs, GetWorkerResult, GetWorkerOutputArgs } from "./getWorker";
+export const getWorker: typeof import("./getWorker").getWorker = null as any;
+export const getWorkerOutput: typeof import("./getWorker").getWorkerOutput = null as any;
+utilities.lazyLoad(exports, ["getWorker","getWorkerOutput"], () => require("./getWorker"));
+
+export { GetWorkerVersionArgs, GetWorkerVersionResult, GetWorkerVersionOutputArgs } from "./getWorkerVersion";
+export const getWorkerVersion: typeof import("./getWorkerVersion").getWorkerVersion = null as any;
+export const getWorkerVersionOutput: typeof import("./getWorkerVersion").getWorkerVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerVersion","getWorkerVersionOutput"], () => require("./getWorkerVersion"));
+
+export { GetWorkerVersionsArgs, GetWorkerVersionsResult, GetWorkerVersionsOutputArgs } from "./getWorkerVersions";
+export const getWorkerVersions: typeof import("./getWorkerVersions").getWorkerVersions = null as any;
+export const getWorkerVersionsOutput: typeof import("./getWorkerVersions").getWorkerVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerVersions","getWorkerVersionsOutput"], () => require("./getWorkerVersions"));
+
+export { GetWorkersArgs, GetWorkersResult, GetWorkersOutputArgs } from "./getWorkers";
+export const getWorkers: typeof import("./getWorkers").getWorkers = null as any;
+export const getWorkersOutput: typeof import("./getWorkers").getWorkersOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkers","getWorkersOutput"], () => require("./getWorkers"));
+
 export { GetWorkersCronTriggerArgs, GetWorkersCronTriggerResult, GetWorkersCronTriggerOutputArgs } from "./getWorkersCronTrigger";
 export const getWorkersCronTrigger: typeof import("./getWorkersCronTrigger").getWorkersCronTrigger = null as any;
 export const getWorkersCronTriggerOutput: typeof import("./getWorkersCronTrigger").getWorkersCronTriggerOutput = null as any;
@@ -1720,6 +1740,16 @@ export const getZeroTrustDexTests: typeof import("./getZeroTrustDexTests").getZe
 export const getZeroTrustDexTestsOutput: typeof import("./getZeroTrustDexTests").getZeroTrustDexTestsOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDexTests","getZeroTrustDexTestsOutput"], () => require("./getZeroTrustDexTests"));
 
+export { GetZeroTrustDlpCustomEntriesArgs, GetZeroTrustDlpCustomEntriesResult, GetZeroTrustDlpCustomEntriesOutputArgs } from "./getZeroTrustDlpCustomEntries";
+export const getZeroTrustDlpCustomEntries: typeof import("./getZeroTrustDlpCustomEntries").getZeroTrustDlpCustomEntries = null as any;
+export const getZeroTrustDlpCustomEntriesOutput: typeof import("./getZeroTrustDlpCustomEntries").getZeroTrustDlpCustomEntriesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpCustomEntries","getZeroTrustDlpCustomEntriesOutput"], () => require("./getZeroTrustDlpCustomEntries"));
+
+export { GetZeroTrustDlpCustomEntryArgs, GetZeroTrustDlpCustomEntryResult, GetZeroTrustDlpCustomEntryOutputArgs } from "./getZeroTrustDlpCustomEntry";
+export const getZeroTrustDlpCustomEntry: typeof import("./getZeroTrustDlpCustomEntry").getZeroTrustDlpCustomEntry = null as any;
+export const getZeroTrustDlpCustomEntryOutput: typeof import("./getZeroTrustDlpCustomEntry").getZeroTrustDlpCustomEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpCustomEntry","getZeroTrustDlpCustomEntryOutput"], () => require("./getZeroTrustDlpCustomEntry"));
+
 export { GetZeroTrustDlpCustomProfileArgs, GetZeroTrustDlpCustomProfileResult, GetZeroTrustDlpCustomProfileOutputArgs } from "./getZeroTrustDlpCustomProfile";
 export const getZeroTrustDlpCustomProfile: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfile = null as any;
 export const getZeroTrustDlpCustomProfileOutput: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfileOutput = null as any;
@@ -1744,6 +1774,26 @@ export { GetZeroTrustDlpEntryArgs, GetZeroTrustDlpEntryResult, GetZeroTrustDlpEn
 export const getZeroTrustDlpEntry: typeof import("./getZeroTrustDlpEntry").getZeroTrustDlpEntry = null as any;
 export const getZeroTrustDlpEntryOutput: typeof import("./getZeroTrustDlpEntry").getZeroTrustDlpEntryOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDlpEntry","getZeroTrustDlpEntryOutput"], () => require("./getZeroTrustDlpEntry"));
+
+export { GetZeroTrustDlpIntegrationEntriesArgs, GetZeroTrustDlpIntegrationEntriesResult, GetZeroTrustDlpIntegrationEntriesOutputArgs } from "./getZeroTrustDlpIntegrationEntries";
+export const getZeroTrustDlpIntegrationEntries: typeof import("./getZeroTrustDlpIntegrationEntries").getZeroTrustDlpIntegrationEntries = null as any;
+export const getZeroTrustDlpIntegrationEntriesOutput: typeof import("./getZeroTrustDlpIntegrationEntries").getZeroTrustDlpIntegrationEntriesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpIntegrationEntries","getZeroTrustDlpIntegrationEntriesOutput"], () => require("./getZeroTrustDlpIntegrationEntries"));
+
+export { GetZeroTrustDlpIntegrationEntryArgs, GetZeroTrustDlpIntegrationEntryResult, GetZeroTrustDlpIntegrationEntryOutputArgs } from "./getZeroTrustDlpIntegrationEntry";
+export const getZeroTrustDlpIntegrationEntry: typeof import("./getZeroTrustDlpIntegrationEntry").getZeroTrustDlpIntegrationEntry = null as any;
+export const getZeroTrustDlpIntegrationEntryOutput: typeof import("./getZeroTrustDlpIntegrationEntry").getZeroTrustDlpIntegrationEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpIntegrationEntry","getZeroTrustDlpIntegrationEntryOutput"], () => require("./getZeroTrustDlpIntegrationEntry"));
+
+export { GetZeroTrustDlpPredefinedEntriesArgs, GetZeroTrustDlpPredefinedEntriesResult, GetZeroTrustDlpPredefinedEntriesOutputArgs } from "./getZeroTrustDlpPredefinedEntries";
+export const getZeroTrustDlpPredefinedEntries: typeof import("./getZeroTrustDlpPredefinedEntries").getZeroTrustDlpPredefinedEntries = null as any;
+export const getZeroTrustDlpPredefinedEntriesOutput: typeof import("./getZeroTrustDlpPredefinedEntries").getZeroTrustDlpPredefinedEntriesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpPredefinedEntries","getZeroTrustDlpPredefinedEntriesOutput"], () => require("./getZeroTrustDlpPredefinedEntries"));
+
+export { GetZeroTrustDlpPredefinedEntryArgs, GetZeroTrustDlpPredefinedEntryResult, GetZeroTrustDlpPredefinedEntryOutputArgs } from "./getZeroTrustDlpPredefinedEntry";
+export const getZeroTrustDlpPredefinedEntry: typeof import("./getZeroTrustDlpPredefinedEntry").getZeroTrustDlpPredefinedEntry = null as any;
+export const getZeroTrustDlpPredefinedEntryOutput: typeof import("./getZeroTrustDlpPredefinedEntry").getZeroTrustDlpPredefinedEntryOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDlpPredefinedEntry","getZeroTrustDlpPredefinedEntryOutput"], () => require("./getZeroTrustDlpPredefinedEntry"));
 
 export { GetZeroTrustDlpPredefinedProfileArgs, GetZeroTrustDlpPredefinedProfileResult, GetZeroTrustDlpPredefinedProfileOutputArgs } from "./getZeroTrustDlpPredefinedProfile";
 export const getZeroTrustDlpPredefinedProfile: typeof import("./getZeroTrustDlpPredefinedProfile").getZeroTrustDlpPredefinedProfile = null as any;
@@ -2408,6 +2458,11 @@ export type WebAnalyticsSite = import("./webAnalyticsSite").WebAnalyticsSite;
 export const WebAnalyticsSite: typeof import("./webAnalyticsSite").WebAnalyticsSite = null as any;
 utilities.lazyLoad(exports, ["WebAnalyticsSite"], () => require("./webAnalyticsSite"));
 
+export { WorkerArgs, WorkerState } from "./worker";
+export type Worker = import("./worker").Worker;
+export const Worker: typeof import("./worker").Worker = null as any;
+utilities.lazyLoad(exports, ["Worker"], () => require("./worker"));
+
 export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigger";
 export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
 export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
@@ -2422,6 +2477,11 @@ export { WorkerScriptArgs, WorkerScriptState } from "./workerScript";
 export type WorkerScript = import("./workerScript").WorkerScript;
 export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
 utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
+
+export { WorkerVersionArgs, WorkerVersionState } from "./workerVersion";
+export type WorkerVersion = import("./workerVersion").WorkerVersion;
+export const WorkerVersion: typeof import("./workerVersion").WorkerVersion = null as any;
+utilities.lazyLoad(exports, ["WorkerVersion"], () => require("./workerVersion"));
 
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
@@ -3081,12 +3141,16 @@ const _module = {
                 return new WebAnalyticsRule(name, <any>undefined, { urn })
             case "cloudflare:index/webAnalyticsSite:WebAnalyticsSite":
                 return new WebAnalyticsSite(name, <any>undefined, { urn })
+            case "cloudflare:index/worker:Worker":
+                return new Worker(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerDomain:WorkerDomain":
                 return new WorkerDomain(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
                 return new WorkerScript(name, <any>undefined, { urn })
+            case "cloudflare:index/workerVersion:WorkerVersion":
+                return new WorkerVersion(name, <any>undefined, { urn })
             case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
                 return new WorkersCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -3382,9 +3446,11 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomSettings",
 pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/worker", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerVersion", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)

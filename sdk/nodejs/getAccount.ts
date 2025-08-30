@@ -63,6 +63,10 @@ export interface GetAccountResult {
      * Account settings
      */
     readonly settings: outputs.GetAccountSettings;
+    /**
+     * Available values: "standard", "enterprise".
+     */
+    readonly type: string;
 }
 /**
  * ## Example Usage

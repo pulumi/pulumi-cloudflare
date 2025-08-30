@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpPredefinedProfileEntryConfidence;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpPredefinedProfileEntryPattern;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDlpPredefinedProfileEntryVariant;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -34,6 +35,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
      */
     private String type;
     private String updatedAt;
+    private GetZeroTrustDlpPredefinedProfileEntryVariant variant;
     private String wordList;
 
     private GetZeroTrustDlpPredefinedProfileEntry() {}
@@ -80,6 +82,9 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
     public String updatedAt() {
         return this.updatedAt;
     }
+    public GetZeroTrustDlpPredefinedProfileEntryVariant variant() {
+        return this.variant;
+    }
     public String wordList() {
         return this.wordList;
     }
@@ -104,6 +109,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
         private Boolean secret;
         private String type;
         private String updatedAt;
+        private GetZeroTrustDlpPredefinedProfileEntryVariant variant;
         private String wordList;
         public Builder() {}
         public Builder(GetZeroTrustDlpPredefinedProfileEntry defaults) {
@@ -119,6 +125,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
     	      this.secret = defaults.secret;
     	      this.type = defaults.type;
     	      this.updatedAt = defaults.updatedAt;
+    	      this.variant = defaults.variant;
     	      this.wordList = defaults.wordList;
         }
 
@@ -211,6 +218,14 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
             return this;
         }
         @CustomType.Setter
+        public Builder variant(GetZeroTrustDlpPredefinedProfileEntryVariant variant) {
+            if (variant == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileEntry", "variant");
+            }
+            this.variant = variant;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wordList(String wordList) {
             if (wordList == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpPredefinedProfileEntry", "wordList");
@@ -231,6 +246,7 @@ public final class GetZeroTrustDlpPredefinedProfileEntry {
             _resultValue.secret = secret;
             _resultValue.type = type;
             _resultValue.updatedAt = updatedAt;
+            _resultValue.variant = variant;
             _resultValue.wordList = wordList;
             return _resultValue;
         }

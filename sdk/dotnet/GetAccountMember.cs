@@ -136,6 +136,10 @@ namespace Pulumi.Cloudflare
         /// Account identifier tag.
         /// </summary>
         public readonly string AccountId;
+        /// <summary>
+        /// The contact email address of the user.
+        /// </summary>
+        public readonly string Email;
         public readonly Outputs.GetAccountMemberFilterResult? Filter;
         /// <summary>
         /// Membership identifier tag.
@@ -167,6 +171,8 @@ namespace Pulumi.Cloudflare
         private GetAccountMemberResult(
             string accountId,
 
+            string email,
+
             Outputs.GetAccountMemberFilterResult? filter,
 
             string id,
@@ -182,6 +188,7 @@ namespace Pulumi.Cloudflare
             Outputs.GetAccountMemberUserResult user)
         {
             AccountId = accountId;
+            Email = email;
             Filter = filter;
             Id = id;
             MemberId = memberId;

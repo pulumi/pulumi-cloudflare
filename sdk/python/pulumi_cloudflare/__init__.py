@@ -298,6 +298,10 @@ from .get_web3_hostname import *
 from .get_web3_hostnames import *
 from .get_web_analytics_site import *
 from .get_web_analytics_sites import *
+from .get_worker import *
+from .get_worker_version import *
+from .get_worker_versions import *
+from .get_workers import *
 from .get_workers_cron_trigger import *
 from .get_workers_custom_domain import *
 from .get_workers_custom_domains import *
@@ -349,11 +353,17 @@ from .get_zero_trust_device_posture_rules import *
 from .get_zero_trust_device_settings import *
 from .get_zero_trust_dex_test import *
 from .get_zero_trust_dex_tests import *
+from .get_zero_trust_dlp_custom_entries import *
+from .get_zero_trust_dlp_custom_entry import *
 from .get_zero_trust_dlp_custom_profile import *
 from .get_zero_trust_dlp_dataset import *
 from .get_zero_trust_dlp_datasets import *
 from .get_zero_trust_dlp_entries import *
 from .get_zero_trust_dlp_entry import *
+from .get_zero_trust_dlp_integration_entries import *
+from .get_zero_trust_dlp_integration_entry import *
+from .get_zero_trust_dlp_predefined_entries import *
+from .get_zero_trust_dlp_predefined_entry import *
 from .get_zero_trust_dlp_predefined_profile import *
 from .get_zero_trust_dns_location import *
 from .get_zero_trust_dns_locations import *
@@ -487,9 +497,11 @@ from .waiting_room_settings import *
 from .web3_hostname import *
 from .web_analytics_rule import *
 from .web_analytics_site import *
+from .worker import *
 from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_script import *
+from .worker_version import *
 from .workers_cron_trigger import *
 from .workers_custom_domain import *
 from .workers_deployment import *
@@ -1865,6 +1877,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/worker",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/worker:Worker": "Worker"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/workerCronTrigger",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1885,6 +1905,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workerScript:WorkerScript": "WorkerScript"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerVersion",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerVersion:WorkerVersion": "WorkerVersion"
   }
  },
  {

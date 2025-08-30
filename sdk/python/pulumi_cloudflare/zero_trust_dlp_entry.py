@@ -111,6 +111,7 @@ class _ZeroTrustDlpEntryState:
                  secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 variant: Optional[pulumi.Input['ZeroTrustDlpEntryVariantArgs']] = None,
                  word_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
@@ -141,6 +142,8 @@ class _ZeroTrustDlpEntryState:
             pulumi.set(__self__, "type", type)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
         if word_list is not None:
             pulumi.set(__self__, "word_list", word_list)
 
@@ -250,6 +253,15 @@ class _ZeroTrustDlpEntryState:
     @updated_at.setter
     def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input['ZeroTrustDlpEntryVariantArgs']]:
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input['ZeroTrustDlpEntryVariantArgs']]):
+        pulumi.set(self, "variant", value)
 
     @_builtins.property
     @pulumi.getter(name="wordList")
@@ -383,6 +395,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["updated_at"] = None
+            __props__.__dict__["variant"] = None
             __props__.__dict__["word_list"] = None
         super(ZeroTrustDlpEntry, __self__).__init__(
             'cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry',
@@ -405,6 +418,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             secret: Optional[pulumi.Input[_builtins.bool]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+            variant: Optional[pulumi.Input[Union['ZeroTrustDlpEntryVariantArgs', 'ZeroTrustDlpEntryVariantArgsDict']]] = None,
             word_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZeroTrustDlpEntry':
         """
         Get an existing ZeroTrustDlpEntry resource's state with the given name, id, and optional extra
@@ -433,6 +447,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__.__dict__["secret"] = secret
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["variant"] = variant
         __props__.__dict__["word_list"] = word_list
         return ZeroTrustDlpEntry(resource_name, opts=opts, __props__=__props__)
 
@@ -498,6 +513,11 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def variant(self) -> pulumi.Output['outputs.ZeroTrustDlpEntryVariant']:
+        return pulumi.get(self, "variant")
 
     @_builtins.property
     @pulumi.getter(name="wordList")

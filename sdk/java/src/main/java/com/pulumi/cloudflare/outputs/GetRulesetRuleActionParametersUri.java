@@ -7,31 +7,44 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUriPath;
 import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUriQuery;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.util.Objects;
 
 @CustomType
 public final class GetRulesetRuleActionParametersUri {
     /**
-     * @return Path portion rewrite.
+     * @return Whether to propagate the rewritten URI to origin.
+     * 
+     */
+    private Boolean origin;
+    /**
+     * @return A URI path rewrite.
      * 
      */
     private GetRulesetRuleActionParametersUriPath path;
     /**
-     * @return Query portion rewrite.
+     * @return A URI query rewrite.
      * 
      */
     private GetRulesetRuleActionParametersUriQuery query;
 
     private GetRulesetRuleActionParametersUri() {}
     /**
-     * @return Path portion rewrite.
+     * @return Whether to propagate the rewritten URI to origin.
+     * 
+     */
+    public Boolean origin() {
+        return this.origin;
+    }
+    /**
+     * @return A URI path rewrite.
      * 
      */
     public GetRulesetRuleActionParametersUriPath path() {
         return this.path;
     }
     /**
-     * @return Query portion rewrite.
+     * @return A URI query rewrite.
      * 
      */
     public GetRulesetRuleActionParametersUriQuery query() {
@@ -47,15 +60,25 @@ public final class GetRulesetRuleActionParametersUri {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean origin;
         private GetRulesetRuleActionParametersUriPath path;
         private GetRulesetRuleActionParametersUriQuery query;
         public Builder() {}
         public Builder(GetRulesetRuleActionParametersUri defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.origin = defaults.origin;
     	      this.path = defaults.path;
     	      this.query = defaults.query;
         }
 
+        @CustomType.Setter
+        public Builder origin(Boolean origin) {
+            if (origin == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParametersUri", "origin");
+            }
+            this.origin = origin;
+            return this;
+        }
         @CustomType.Setter
         public Builder path(GetRulesetRuleActionParametersUriPath path) {
             if (path == null) {
@@ -74,6 +97,7 @@ public final class GetRulesetRuleActionParametersUri {
         }
         public GetRulesetRuleActionParametersUri build() {
             final var _resultValue = new GetRulesetRuleActionParametersUri();
+            _resultValue.origin = origin;
             _resultValue.path = path;
             _resultValue.query = query;
             return _resultValue;

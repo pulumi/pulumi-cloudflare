@@ -32,6 +32,11 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
      */
     private @Nullable Boolean isDefault;
     /**
+     * @return If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    private @Nullable Boolean isDefaultNetwork;
+    /**
      * @return If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
         return Optional.ofNullable(this.isDefault);
     }
     /**
+     * @return If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    public Optional<Boolean> isDefaultNetwork() {
+        return Optional.ofNullable(this.isDefaultNetwork);
+    }
+    /**
      * @return If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      * 
      */
@@ -115,6 +127,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
         private String accountId;
         private @Nullable String id;
         private @Nullable Boolean isDefault;
+        private @Nullable Boolean isDefaultNetwork;
         private @Nullable Boolean isDeleted;
         private @Nullable Integer maxItems;
         private @Nullable String name;
@@ -125,6 +138,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
     	      this.isDefault = defaults.isDefault;
+    	      this.isDefaultNetwork = defaults.isDefaultNetwork;
     	      this.isDeleted = defaults.isDeleted;
     	      this.maxItems = defaults.maxItems;
     	      this.name = defaults.name;
@@ -149,6 +163,12 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
         public Builder isDefault(@Nullable Boolean isDefault) {
 
             this.isDefault = isDefault;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isDefaultNetwork(@Nullable Boolean isDefaultNetwork) {
+
+            this.isDefaultNetwork = isDefaultNetwork;
             return this;
         }
         @CustomType.Setter
@@ -185,6 +205,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult {
             _resultValue.accountId = accountId;
             _resultValue.id = id;
             _resultValue.isDefault = isDefault;
+            _resultValue.isDefaultNetwork = isDefaultNetwork;
             _resultValue.isDeleted = isDeleted;
             _resultValue.maxItems = maxItems;
             _resultValue.name = name;

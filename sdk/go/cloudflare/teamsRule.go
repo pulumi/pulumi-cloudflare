@@ -39,25 +39,25 @@ type TeamsRule struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationOutput `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayOutput `pulumi:"filters"`
 	Identity pulumi.StringOutput      `pulumi:"identity"`
 	// The name of the rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable pulumi.BoolOutput `pulumi:"notSharable"`
 	Precedence  pulumi.IntOutput  `pulumi:"precedence"`
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule TeamsRuleScheduleOutput `pulumi:"schedule"`
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
 	Traffic       pulumi.StringOutput `pulumi:"traffic"`
 	UpdatedAt     pulumi.StringOutput `pulumi:"updatedAt"`
-	// version number of the rule
+	// version number of the rule.
 	Version pulumi.IntOutput `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
 	WarningStatus pulumi.StringOutput `pulumi:"warningStatus"`
@@ -123,25 +123,25 @@ type teamsRuleState struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
 	Name *string `pulumi:"name"`
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable *bool `pulumi:"notSharable"`
 	Precedence  *int  `pulumi:"precedence"`
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule *TeamsRuleSchedule `pulumi:"schedule"`
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount *string `pulumi:"sourceAccount"`
 	Traffic       *string `pulumi:"traffic"`
 	UpdatedAt     *string `pulumi:"updatedAt"`
-	// version number of the rule
+	// version number of the rule.
 	Version *int `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
 	WarningStatus *string `pulumi:"warningStatus"`
@@ -163,25 +163,25 @@ type TeamsRuleState struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationPtrInput
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
 	Name pulumi.StringPtrInput
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable pulumi.BoolPtrInput
 	Precedence  pulumi.IntPtrInput
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly pulumi.BoolPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule TeamsRuleSchedulePtrInput
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount pulumi.StringPtrInput
 	Traffic       pulumi.StringPtrInput
 	UpdatedAt     pulumi.StringPtrInput
-	// version number of the rule
+	// version number of the rule.
 	Version pulumi.IntPtrInput
 	// Warning for a misconfigured rule, if any.
 	WarningStatus pulumi.StringPtrInput
@@ -204,7 +204,7 @@ type teamsRuleArgs struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *TeamsRuleExpiration `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
@@ -231,7 +231,7 @@ type TeamsRuleArgs struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration TeamsRuleExpirationPtrInput
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
@@ -370,7 +370,7 @@ func (o TeamsRuleOutput) Expiration() TeamsRuleExpirationOutput {
 	return o.ApplyT(func(v *TeamsRule) TeamsRuleExpirationOutput { return v.Expiration }).(TeamsRuleExpirationOutput)
 }
 
-// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -384,7 +384,7 @@ func (o TeamsRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The rule cannot be shared via the Orgs API
+// The rule cannot be shared via the Orgs API.
 func (o TeamsRuleOutput) NotSharable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.NotSharable }).(pulumi.BoolOutput)
 }
@@ -393,7 +393,7 @@ func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
-// The rule was shared via the Orgs API and cannot be edited by the current account
+// The rule was shared via the Orgs API and cannot be edited by the current account.
 func (o TeamsRuleOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
@@ -408,7 +408,7 @@ func (o TeamsRuleOutput) Schedule() TeamsRuleScheduleOutput {
 	return o.ApplyT(func(v *TeamsRule) TeamsRuleScheduleOutput { return v.Schedule }).(TeamsRuleScheduleOutput)
 }
 
-// account tag of account that created the rule
+// account tag of account that created the rule.
 func (o TeamsRuleOutput) SourceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
@@ -421,7 +421,7 @@ func (o TeamsRuleOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// version number of the rule
+// version number of the rule.
 func (o TeamsRuleOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }

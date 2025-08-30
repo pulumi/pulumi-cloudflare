@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Account settings
+        /// Account settings.
         /// </summary>
         [Output("settings")]
         public Output<Outputs.ZeroTrustGatewaySettingsSettings?> Settings { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Account settings
+        /// Account settings.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsArgs>? Settings { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Account settings
+        /// Account settings.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsGetArgs>? Settings { get; set; }

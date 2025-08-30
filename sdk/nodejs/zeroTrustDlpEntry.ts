@@ -78,6 +78,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly variant!: pulumi.Output<outputs.ZeroTrustDlpEntryVariant>;
     public /*out*/ readonly wordList!: pulumi.Output<string>;
 
     /**
@@ -104,6 +105,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["variant"] = state ? state.variant : undefined;
             resourceInputs["wordList"] = state ? state.wordList : undefined;
         } else {
             const args = argsOrState as ZeroTrustDlpEntryArgs | undefined;
@@ -133,6 +135,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["variant"] = undefined /*out*/;
             resourceInputs["wordList"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -163,6 +166,7 @@ export interface ZeroTrustDlpEntryState {
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
+    variant?: pulumi.Input<inputs.ZeroTrustDlpEntryVariant>;
     wordList?: pulumi.Input<string>;
 }
 

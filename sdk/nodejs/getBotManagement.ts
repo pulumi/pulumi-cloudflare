@@ -49,6 +49,10 @@ export interface GetBotManagementResult {
      */
     readonly autoUpdateModel: boolean;
     /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     */
+    readonly bmCookieEnabled: boolean;
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */

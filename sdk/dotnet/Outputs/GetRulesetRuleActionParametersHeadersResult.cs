@@ -14,15 +14,16 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersHeadersResult
     {
         /// <summary>
-        /// Expression for the header value.
+        /// An expression that evaluates to a value for the header.
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// Available values: "remove", "add", "set".
+        /// The operation to perform on the header.
+        /// Available values: "add", "set", "remove".
         /// </summary>
         public readonly string Operation;
         /// <summary>
-        /// Static value for the header.
+        /// A static value for the header.
         /// </summary>
         public readonly string Value;
 

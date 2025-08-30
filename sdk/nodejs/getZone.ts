@@ -56,11 +56,14 @@ export interface GetZoneResult {
     readonly owner: outputs.GetZoneOwner;
     readonly paused: boolean;
     /**
-     * @deprecated This attribute is deprecated.
+     * @deprecated This has been replaced by Account memberships.
      */
     readonly permissions: string[];
     /**
-     * @deprecated This attribute is deprecated.
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      */
     readonly plan: outputs.GetZonePlan;
     readonly status: string;

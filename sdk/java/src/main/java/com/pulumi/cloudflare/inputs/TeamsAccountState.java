@@ -31,14 +31,14 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Account settings
+     * Account settings.
      * 
      */
     @Import(name="settings")
     private @Nullable Output<TeamsAccountSettingsArgs> settings;
 
     /**
-     * @return Account settings
+     * @return Account settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsArgs>> settings() {
@@ -98,7 +98,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settings Account settings
+         * @param settings Account settings.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settings Account settings
+         * @param settings Account settings.
          * 
          * @return builder
          * 

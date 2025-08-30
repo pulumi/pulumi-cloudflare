@@ -52,7 +52,7 @@ export class TieredCache extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
@@ -60,12 +60,12 @@ export class TieredCache extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * Enable or disable the Smart Tiered Cache
+     * Enable or disable the Smart Tiered Cache.
      * Available values: "on", "off".
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -109,7 +109,7 @@ export class TieredCache extends pulumi.CustomResource {
  */
 export interface TieredCacheState {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     editable?: pulumi.Input<boolean>;
     /**
@@ -117,12 +117,12 @@ export interface TieredCacheState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * Enable or disable the Smart Tiered Cache
+     * Enable or disable the Smart Tiered Cache.
      * Available values: "on", "off".
      */
     value?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -132,12 +132,12 @@ export interface TieredCacheState {
  */
 export interface TieredCacheArgs {
     /**
-     * Enable or disable the Smart Tiered Cache
+     * Enable or disable the Smart Tiered Cache.
      * Available values: "on", "off".
      */
     value: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

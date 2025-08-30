@@ -32,21 +32,6 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * True if new beta namespace, with additional preview features.
-     * 
-     */
-    @Import(name="beta")
-    private @Nullable Output<Boolean> beta;
-
-    /**
-     * @return True if new beta namespace, with additional preview features.
-     * 
-     */
-    public Optional<Output<Boolean>> beta() {
-        return Optional.ofNullable(this.beta);
-    }
-
-    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */
@@ -80,7 +65,6 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
 
     private WorkersKvNamespaceState(WorkersKvNamespaceState $) {
         this.accountId = $.accountId;
-        this.beta = $.beta;
         this.supportsUrlEncoding = $.supportsUrlEncoding;
         this.title = $.title;
     }
@@ -122,27 +106,6 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param beta True if new beta namespace, with additional preview features.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder beta(@Nullable Output<Boolean> beta) {
-            $.beta = beta;
-            return this;
-        }
-
-        /**
-         * @param beta True if new beta namespace, with additional preview features.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder beta(Boolean beta) {
-            return beta(Output.of(beta));
         }
 
         /**

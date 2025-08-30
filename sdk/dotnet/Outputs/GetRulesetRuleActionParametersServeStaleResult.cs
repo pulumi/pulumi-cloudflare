@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersServeStaleResult
     {
         /// <summary>
-        /// Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+        /// Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
         /// </summary>
         public readonly bool DisableStaleWhileUpdating;
 

@@ -12,50 +12,50 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKey {
     /**
-     * @return Separate cached content based on the visitor’s device type.
+     * @return Whether to separate cached content based on the visitor&#39;s device type.
      * 
      */
     private Boolean cacheByDeviceType;
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached.
+     * @return Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      * 
      */
     private Boolean cacheDeceptionArmor;
     /**
-     * @return Customize which components of the request are included or excluded from the cache key.
+     * @return Which components of the request are included or excluded from the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKey customKey;
     /**
-     * @return Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
+     * @return Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      * 
      */
     private Boolean ignoreQueryStringsOrder;
 
     private GetRulesetRuleActionParametersCacheKey() {}
     /**
-     * @return Separate cached content based on the visitor’s device type.
+     * @return Whether to separate cached content based on the visitor&#39;s device type.
      * 
      */
     public Boolean cacheByDeviceType() {
         return this.cacheByDeviceType;
     }
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached.
+     * @return Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      * 
      */
     public Boolean cacheDeceptionArmor() {
         return this.cacheDeceptionArmor;
     }
     /**
-     * @return Customize which components of the request are included or excluded from the cache key.
+     * @return Which components of the request are included or excluded from the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKey customKey() {
         return this.customKey;
     }
     /**
-     * @return Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings&#39; order.
+     * @return Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      * 
      */
     public Boolean ignoreQueryStringsOrder() {

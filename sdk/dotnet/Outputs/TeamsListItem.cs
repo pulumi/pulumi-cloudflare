@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsListItem
     {
         /// <summary>
-        /// The description of the list item, if present
+        /// The description of the list item, if present.
         /// </summary>
         public readonly string? Description;
         /// <summary>

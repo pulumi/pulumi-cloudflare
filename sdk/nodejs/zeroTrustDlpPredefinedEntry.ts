@@ -20,6 +20,12 @@ import * as utilities from "./utilities";
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry example '<account_id>/<entry_id>'
+ * ```
  */
 export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     /**
@@ -50,15 +56,31 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    public /*out*/ readonly caseSensitive!: pulumi.Output<boolean>;
     public /*out*/ readonly confidence!: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryConfidence>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean>;
     public readonly entryId!: pulumi.Output<string>;
     public /*out*/ readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly pattern!: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryPattern>;
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      */
     public readonly profileId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly secret!: pulumi.Output<boolean>;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly variant!: pulumi.Output<outputs.ZeroTrustDlpPredefinedEntryVariant>;
+    public /*out*/ readonly wordList!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustDlpPredefinedEntry resource with the given unique name, arguments, and options.
@@ -74,11 +96,19 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpPredefinedEntryState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["caseSensitive"] = state ? state.caseSensitive : undefined;
             resourceInputs["confidence"] = state ? state.confidence : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["entryId"] = state ? state.entryId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pattern"] = state ? state.pattern : undefined;
             resourceInputs["profileId"] = state ? state.profileId : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["variant"] = state ? state.variant : undefined;
+            resourceInputs["wordList"] = state ? state.wordList : undefined;
         } else {
             const args = argsOrState as ZeroTrustDlpPredefinedEntryArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -94,8 +124,16 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["entryId"] = args ? args.entryId : undefined;
             resourceInputs["profileId"] = args ? args.profileId : undefined;
+            resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["pattern"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["variant"] = undefined /*out*/;
+            resourceInputs["wordList"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustDlpPredefinedEntry.__pulumiType, name, resourceInputs, opts);
@@ -107,15 +145,31 @@ export class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
  */
 export interface ZeroTrustDlpPredefinedEntryState {
     accountId?: pulumi.Input<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive?: pulumi.Input<boolean>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpPredefinedEntryConfidence>;
+    createdAt?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     entryId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    pattern?: pulumi.Input<inputs.ZeroTrustDlpPredefinedEntryPattern>;
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
      */
     profileId?: pulumi.Input<string>;
+    secret?: pulumi.Input<boolean>;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+    variant?: pulumi.Input<inputs.ZeroTrustDlpPredefinedEntryVariant>;
+    wordList?: pulumi.Input<string>;
 }
 
 /**

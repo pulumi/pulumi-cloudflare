@@ -63,6 +63,21 @@ public final class GetListItemsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     * 
+     */
+    @Import(name="perPage")
+    private @Nullable Output<Integer> perPage;
+
+    /**
+     * @return Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     * 
+     */
+    public Optional<Output<Integer>> perPage() {
+        return Optional.ofNullable(this.perPage);
+    }
+
+    /**
      * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
      * 
      */
@@ -83,6 +98,7 @@ public final class GetListItemsArgs extends com.pulumi.resources.InvokeArgs {
         this.accountId = $.accountId;
         this.listId = $.listId;
         this.maxItems = $.maxItems;
+        this.perPage = $.perPage;
         this.search = $.search;
     }
 
@@ -165,6 +181,27 @@ public final class GetListItemsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder maxItems(Integer maxItems) {
             return maxItems(Output.of(maxItems));
+        }
+
+        /**
+         * @param perPage Amount of results to include in each paginated response. A non-negative 32 bit integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(@Nullable Output<Integer> perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param perPage Amount of results to include in each paginated response. A non-negative 32 bit integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Integer perPage) {
+            return perPage(Output.of(perPage));
         }
 
         /**

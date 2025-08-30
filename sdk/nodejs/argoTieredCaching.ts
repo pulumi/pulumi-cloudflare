@@ -52,7 +52,7 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
@@ -65,7 +65,7 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -109,7 +109,7 @@ export class ArgoTieredCaching extends pulumi.CustomResource {
  */
 export interface ArgoTieredCachingState {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     editable?: pulumi.Input<boolean>;
     /**
@@ -122,7 +122,7 @@ export interface ArgoTieredCachingState {
      */
     value?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -137,7 +137,7 @@ export interface ArgoTieredCachingArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

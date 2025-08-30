@@ -13,6 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetMagicWanGreTunnelGreTunnelResult
     {
+        public readonly Outputs.GetMagicWanGreTunnelGreTunnelBgpResult Bgp;
+        public readonly Outputs.GetMagicWanGreTunnelGreTunnelBgpStatusResult BgpStatus;
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
@@ -61,6 +63,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetMagicWanGreTunnelGreTunnelResult(
+            Outputs.GetMagicWanGreTunnelGreTunnelBgpResult bgp,
+
+            Outputs.GetMagicWanGreTunnelGreTunnelBgpStatusResult bgpStatus,
+
             string cloudflareGreEndpoint,
 
             string createdOn,
@@ -85,6 +91,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             int ttl)
         {
+            Bgp = bgp;
+            BgpStatus = bgpStatus;
             CloudflareGreEndpoint = cloudflareGreEndpoint;
             CreatedOn = createdOn;
             CustomerGreEndpoint = customerGreEndpoint;

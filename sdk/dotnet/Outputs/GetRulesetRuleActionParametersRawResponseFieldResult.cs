@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersRawResponseFieldResult
     {
         /// <summary>
-        /// The name of the field.
+        /// The name of the response header.
         /// </summary>
         public readonly string Name;
         /// <summary>

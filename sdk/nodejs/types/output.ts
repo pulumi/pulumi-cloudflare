@@ -5004,6 +5004,10 @@ export interface GetAccountMemberUser {
 
 export interface GetAccountMembersResult {
     /**
+     * The contact email address of the user.
+     */
+    email: string;
+    /**
      * Membership identifier tag.
      */
     id: string;
@@ -5639,6 +5643,10 @@ export interface GetAccountsResult {
      * Account settings
      */
     settings: outputs.GetAccountsResultSettings;
+    /**
+     * Available values: "standard", "enterprise".
+     */
+    type: string;
 }
 
 export interface GetAccountsResultSettings {
@@ -10723,6 +10731,8 @@ export interface GetMagicTransitSitesResultLocation {
 }
 
 export interface GetMagicWanGreTunnelGreTunnel {
+    bgp: outputs.GetMagicWanGreTunnelGreTunnelBgp;
+    bgpStatus: outputs.GetMagicWanGreTunnelGreTunnelBgpStatus;
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
@@ -10770,6 +10780,35 @@ export interface GetMagicWanGreTunnelGreTunnel {
     ttl: number;
 }
 
+export interface GetMagicWanGreTunnelGreTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: number;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes: string[];
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key: string;
+}
+
+export interface GetMagicWanGreTunnelGreTunnelBgpStatus {
+    bgpState: string;
+    cfSpeakerIp: string;
+    cfSpeakerPort: number;
+    customerSpeakerIp: string;
+    customerSpeakerPort: number;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state: string;
+    tcpEstablished: boolean;
+    updatedAt: string;
+}
+
 export interface GetMagicWanGreTunnelGreTunnelHealthCheck {
     /**
      * The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel.
@@ -10812,6 +10851,8 @@ export interface GetMagicWanIpsecTunnelIpsecTunnel {
      * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
      */
     allowNullCipher: boolean;
+    bgp: outputs.GetMagicWanIpsecTunnelIpsecTunnelBgp;
+    bgpStatus: outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatus;
     /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
@@ -10857,6 +10898,35 @@ export interface GetMagicWanIpsecTunnelIpsecTunnel {
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
     replayProtection: boolean;
+}
+
+export interface GetMagicWanIpsecTunnelIpsecTunnelBgp {
+    /**
+     * ASN used on the customer end of the BGP session
+     */
+    customerAsn: number;
+    /**
+     * Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+     */
+    extraPrefixes: string[];
+    /**
+     * MD5 key to use for session authentication.
+     */
+    md5Key: string;
+}
+
+export interface GetMagicWanIpsecTunnelIpsecTunnelBgpStatus {
+    bgpState: string;
+    cfSpeakerIp: string;
+    cfSpeakerPort: number;
+    customerSpeakerIp: string;
+    customerSpeakerPort: number;
+    /**
+     * Available values: "BGP*DOWN", "BGP*UP", "BGP_ESTABLISHING".
+     */
+    state: string;
+    tcpEstablished: boolean;
+    updatedAt: string;
 }
 
 export interface GetMagicWanIpsecTunnelIpsecTunnelHealthCheck {
@@ -11475,7 +11545,7 @@ export interface GetNotificationPolicyWebhooksListResult {
     secret: string;
     /**
      * Type of webhook endpoint.
-     * Available values: "slack", "generic", "gchat".
+     * Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
      */
     type: string;
     /**
@@ -13590,7 +13660,7 @@ export interface GetResourceGroupsResultScopeObject {
 export interface GetRulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
+     * Available values: "block", "challenge", "compress*response", "ddos*dynamic", "execute", "force*connection*close", "js*challenge", "log", "log*custom*field", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*cache*settings", "set*config", "skip".
      */
     action: string;
     /**
@@ -13610,7 +13680,7 @@ export interface GetRulesetRule {
      */
     enabled: boolean;
     /**
-     * Configure checks for exposed credentials.
+     * Configuration for exposed credential checking.
      */
     exposedCredentialCheck: outputs.GetRulesetRuleExposedCredentialCheck;
     /**
@@ -13626,18 +13696,18 @@ export interface GetRulesetRule {
      */
     logging: outputs.GetRulesetRuleLogging;
     /**
-     * An object configuring the rule's ratelimit behavior.
+     * An object configuring the rule's rate limit behavior.
      */
     ratelimit: outputs.GetRulesetRuleRatelimit;
     /**
-     * The reference of the rule (the rule ID by default).
+     * The reference of the rule (the rule's ID by default).
      */
     ref: string;
 }
 
 export interface GetRulesetRuleActionParameters {
     /**
-     * List of additional ports that caching can be enabled on.
+     * A list of additional ports that caching should be enabled on.
      */
     additionalCacheablePorts: number[];
     /**
@@ -13645,40 +13715,44 @@ export interface GetRulesetRuleActionParameters {
      */
     algorithms: outputs.GetRulesetRuleActionParametersAlgorithm[];
     /**
-     * Turn on or off Automatic HTTPS Rewrites.
+     * The name of a custom asset to serve as the response.
+     */
+    assetName: string;
+    /**
+     * Whether to enable Automatic HTTPS Rewrites.
      */
     automaticHttpsRewrites: boolean;
     /**
-     * Select which file extensions to minify automatically.
+     * Which file extensions to minify automatically.
      */
     autominify: outputs.GetRulesetRuleActionParametersAutominify;
     /**
-     * Turn on or off Browser Integrity Check.
+     * Whether to enable Browser Integrity Check (BIC).
      */
     bic: boolean;
     /**
-     * Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      */
     browserTtl: outputs.GetRulesetRuleActionParametersBrowserTtl;
     /**
-     * Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * Whether the request's response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      */
     cache: boolean;
     /**
-     * Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      */
     cacheKey: outputs.GetRulesetRuleActionParametersCacheKey;
     /**
-     * Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * Settings to determine whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      */
     cacheReserve: outputs.GetRulesetRuleActionParametersCacheReserve;
     /**
-     * Error response content.
+     * The response content.
      */
     content: string;
     /**
-     * Content-type header to set with the response.
-     * Available values: "application/json", "text/xml", "text/plain", "text/html".
+     * The content type header to set with the error response.
+     * Available values: "application/json", "text/html", "text/plain", "text/xml".
      */
     contentType: string;
     /**
@@ -13686,47 +13760,47 @@ export interface GetRulesetRuleActionParameters {
      */
     cookieFields: outputs.GetRulesetRuleActionParametersCookieField[];
     /**
-     * Turn off all active Cloudflare Apps.
+     * Whether to disable Cloudflare Apps.
      */
     disableApps: boolean;
     /**
-     * Turn off Real User Monitoring (RUM).
+     * Whether to disable Real User Monitoring (RUM).
      */
     disableRum: boolean;
     /**
-     * Turn off Zaraz.
+     * Whether to disable Zaraz.
      */
     disableZaraz: boolean;
     /**
-     * TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * How long the Cloudflare edge network should cache the response.
      */
     edgeTtl: outputs.GetRulesetRuleActionParametersEdgeTtl;
     /**
-     * Turn on or off Email Obfuscation.
+     * Whether to enable Email Obfuscation.
      */
     emailObfuscation: boolean;
     /**
-     * Turn on or off Cloudflare Fonts.
+     * Whether to enable Cloudflare Fonts.
      */
     fonts: boolean;
     /**
-     * Serve a redirect based on a bulk list lookup.
+     * A redirect based on a bulk list lookup.
      */
     fromList: outputs.GetRulesetRuleActionParametersFromList;
     /**
-     * Serve a redirect based on the request properties.
+     * A redirect based on the request properties.
      */
     fromValue: outputs.GetRulesetRuleActionParametersFromValue;
     /**
-     * Map of request headers to modify.
+     * A map of headers to rewrite.
      */
     headers: {[key: string]: outputs.GetRulesetRuleActionParametersHeaders};
     /**
-     * Rewrite the HTTP Host header.
+     * A value to rewrite the HTTP host header to.
      */
     hostHeader: string;
     /**
-     * Turn on or off the Hotlink Protection.
+     * Whether to enable Hotlink Protection.
      */
     hotlinkProtection: boolean;
     /**
@@ -13734,7 +13808,7 @@ export interface GetRulesetRuleActionParameters {
      */
     id: string;
     /**
-     * Increment contains the delta to change the score and can be either positive or negative.
+     * A delta to change the score by, which can be either positive or negative.
      */
     increment: number;
     /**
@@ -13742,23 +13816,23 @@ export interface GetRulesetRuleActionParameters {
      */
     matchedData: outputs.GetRulesetRuleActionParametersMatchedData;
     /**
-     * Turn on or off Mirage.
+     * Whether to enable Mirage.
      */
     mirage: boolean;
     /**
-     * Turn on or off Opportunistic Encryption.
+     * Whether to enable Opportunistic Encryption.
      */
     opportunisticEncryption: boolean;
     /**
-     * Override the IP/TCP destination.
+     * An origin to route to.
      */
     origin: outputs.GetRulesetRuleActionParametersOrigin;
     /**
-     * When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * Whether Cloudflare will aim to strictly adhere to RFC 7234.
      */
     originCacheControl: boolean;
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * Whether to generate Cloudflare error pages for issues from the origin server.
      */
     originErrorPagePassthru: boolean;
     /**
@@ -13766,21 +13840,18 @@ export interface GetRulesetRuleActionParameters {
      */
     overrides: outputs.GetRulesetRuleActionParametersOverrides;
     /**
-     * A phase to skip the execution of. This property is only compatible with products.
-     * Available values: "current".
-     */
-    phase: string;
-    /**
      * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phases: string[];
     /**
-     * Configure the Polish level.
+     * The Polish level to configure.
      * Available values: "off", "lossless", "lossy", "webp".
      */
     polish: string;
     /**
      * A list of legacy security products to skip the execution of.
+     * Available values: "bic", "hot", "rateLimit", "securityLevel", "uaBlock", "waf", "zoneLockdown".
      */
     products: string[];
     /**
@@ -13788,7 +13859,7 @@ export interface GetRulesetRuleActionParameters {
      */
     rawResponseFields: outputs.GetRulesetRuleActionParametersRawResponseField[];
     /**
-     * Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      */
     readTimeout: number;
     /**
@@ -13796,7 +13867,7 @@ export interface GetRulesetRuleActionParameters {
      */
     requestFields: outputs.GetRulesetRuleActionParametersRequestField[];
     /**
-     * Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      */
     respectStrongEtags: boolean;
     /**
@@ -13808,7 +13879,7 @@ export interface GetRulesetRuleActionParameters {
      */
     responseFields: outputs.GetRulesetRuleActionParametersResponseField[];
     /**
-     * Turn on or off Rocket Loader.
+     * Whether to enable Rocket Loader.
      */
     rocketLoader: boolean;
     /**
@@ -13825,24 +13896,24 @@ export interface GetRulesetRuleActionParameters {
      */
     rulesets: string[];
     /**
-     * Configure the Security Level.
+     * The Security Level to configure.
      * Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
      */
     securityLevel: string;
     /**
-     * Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * When to serve stale content from cache.
      */
     serveStale: outputs.GetRulesetRuleActionParametersServeStale;
     /**
-     * Turn on or off Server Side Excludes.
+     * Whether to enable Server-Side Excludes.
      */
     serverSideExcludes: boolean;
     /**
-     * Override the Server Name Indication (SNI).
+     * A Server Name Indication (SNI) override.
      */
     sni: outputs.GetRulesetRuleActionParametersSni;
     /**
-     * Configure the SSL level.
+     * The SSL level to configure.
      * Available values: "off", "flexible", "full", "strict", "originPull".
      */
     ssl: string;
@@ -13851,7 +13922,7 @@ export interface GetRulesetRuleActionParameters {
      */
     statusCode: number;
     /**
-     * Turn on or off Signed Exchanges (SXG).
+     * Whether to enable Signed Exchanges (SXG).
      */
     sxg: boolean;
     /**
@@ -13859,14 +13930,14 @@ export interface GetRulesetRuleActionParameters {
      */
     transformedRequestFields: outputs.GetRulesetRuleActionParametersTransformedRequestField[];
     /**
-     * URI to rewrite the request to.
+     * A URI rewrite.
      */
     uri: outputs.GetRulesetRuleActionParametersUri;
 }
 
 export interface GetRulesetRuleActionParametersAlgorithm {
     /**
-     * Name of compression algorithm to enable.
+     * Name of the compression algorithm to enable.
      * Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
      */
     name: string;
@@ -13874,26 +13945,26 @@ export interface GetRulesetRuleActionParametersAlgorithm {
 
 export interface GetRulesetRuleActionParametersAutominify {
     /**
-     * Minify CSS files.
+     * Whether to minify CSS files.
      */
     css: boolean;
     /**
-     * Minify HTML files.
+     * Whether to minify HTML files.
      */
     html: boolean;
     /**
-     * Minify JS files.
+     * Whether to minify JavaScript files.
      */
     js: boolean;
 }
 
 export interface GetRulesetRuleActionParametersBrowserTtl {
     /**
-     * The TTL (in seconds) if you choose overrideOrigin mode.
+     * The browser TTL (in seconds) if you choose the "overrideOrigin" mode.
      */
     default: number;
     /**
-     * Determines which browser ttl mode to use.
+     * The browser TTL mode.
      * Available values: "respect*origin", "bypass*by*default", "override*origin", "bypass".
      */
     mode: string;
@@ -13901,188 +13972,194 @@ export interface GetRulesetRuleActionParametersBrowserTtl {
 
 export interface GetRulesetRuleActionParametersCacheKey {
     /**
-     * Separate cached content based on the visitor’s device type.
+     * Whether to separate cached content based on the visitor's device type.
      */
     cacheByDeviceType: boolean;
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached.
+     * Whether to protect from web cache deception attacks, while allowing static assets to be cached.
      */
     cacheDeceptionArmor: boolean;
     /**
-     * Customize which components of the request are included or excluded from the cache key.
+     * Which components of the request are included or excluded from the cache key.
      */
     customKey: outputs.GetRulesetRuleActionParametersCacheKeyCustomKey;
     /**
-     * Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
+     * Whether to treat requests with the same query parameters the same, regardless of the order those query parameters are in.
      */
     ignoreQueryStringsOrder: boolean;
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKey {
     /**
-     * The cookies to include in building the cache key.
+     * Which cookies to include in the cache key.
      */
     cookie: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyCookie;
     /**
-     * The header names and values to include in building the cache key.
+     * Which headers to include in the cache key.
      */
     header: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyHeader;
     /**
-     * Whether to use the original host or the resolved host in the cache key.
+     * How to use the host in the cache key.
      */
     host: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyHost;
     /**
-     * Use the presence of parameters in the query string to build the cache key.
+     * Which query string parameters to include in or exclude from the cache key.
      */
     queryString: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString;
     /**
-     * Characteristics of the request user agent used in building the cache key.
+     * How to use characteristics of the request user agent in the cache key.
      */
     user: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyUser;
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyCookie {
     /**
-     * Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      */
     checkPresences: string[];
     /**
-     * Include these cookies' names and their values.
+     * A list of cookies to include in the cache key.
      */
     includes: string[];
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * Checks for the presence of these header names. The presence of these headers is used in building the cache key.
+     * A list of headers to check for the presence of. The presence of these headers is included in the cache key.
      */
     checkPresences: string[];
     /**
-     * For each header name and list of values combination, check if the request header contains any of the values provided. The presence of the request header and whether any of the values provided are contained in the request header value is used in building the cache key.
+     * A mapping of header names to a list of values. If a header is present in the request and contains any of the values provided, its value is included in the cache key.
      */
     contains: {[key: string]: string[]};
     /**
-     * Whether or not to include the origin header. A value of true will exclude the origin header in the cache key.
+     * Whether to exclude the origin header in the cache key.
      */
     excludeOrigin: boolean;
     /**
-     * Include these headers' names and their values.
+     * A list of headers to include in the cache key.
      */
     includes: string[];
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyHost {
     /**
-     * Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+     * Whether to use the resolved host in the cache key.
      */
     resolved: boolean;
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     /**
-     * A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * Which query string parameters to exclude from the cache key.
      */
     exclude: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
     /**
-     * A list of query string parameters used to build the cache key.
+     * Which query string parameters to include in the cache key.
      */
     include: outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
     /**
-     * Determines whether to exclude all query string parameters from the cache key.
+     * Whether to exclude all query string parameters from the cache key.
      */
     all: boolean;
+    /**
+     * A list of query string parameters to exclude from the cache key.
+     */
     lists: string[];
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
     /**
-     * Determines whether to include all query string parameters in the cache key.
+     * Whether to include all query string parameters in the cache key.
      */
     all: boolean;
+    /**
+     * A list of query string parameters to include in the cache key.
+     */
     lists: string[];
 }
 
 export interface GetRulesetRuleActionParametersCacheKeyCustomKeyUser {
     /**
-     * Use the user agent's device type in the cache key.
+     * Whether to use the user agent's device type in the cache key.
      */
     deviceType: boolean;
     /**
-     * Use the user agents's country in the cache key.
+     * Whether to use the user agents's country in the cache key.
      */
     geo: boolean;
     /**
-     * Use the user agent's language in the cache key.
+     * Whether to use the user agent's language in the cache key.
      */
     lang: boolean;
 }
 
 export interface GetRulesetRuleActionParametersCacheReserve {
     /**
-     * Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      */
     eligible: boolean;
     /**
-     * The minimum file size eligible for store in cache reserve.
+     * The minimum file size eligible for storage in Cache Reserve.
      */
     minimumFileSize: number;
 }
 
 export interface GetRulesetRuleActionParametersCookieField {
     /**
-     * The name of the field.
+     * The name of the cookie.
      */
     name: string;
 }
 
 export interface GetRulesetRuleActionParametersEdgeTtl {
     /**
-     * The TTL (in seconds) if you choose overrideOrigin mode.
+     * The edge TTL (in seconds) if you choose the "overrideOrigin" mode.
      */
     default: number;
     /**
-     * Edge TTL options.
+     * The edge TTL mode.
      * Available values: "respect*origin", "bypass*by*default", "override*origin".
      */
     mode: string;
     /**
-     * List of single status codes, or status code ranges to apply the selected mode.
+     * A list of TTLs to apply to specific status codes or status code ranges.
      */
     statusCodeTtls: outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
 export interface GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * The range of status codes used to apply the selected mode.
+     * A single status code to apply the TTL to.
+     */
+    statusCode: number;
+    /**
+     * A range of status codes to apply the TTL to.
      */
     statusCodeRange: outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
     /**
-     * Set the TTL for responses with this specific status code.
-     */
-    statusCodeValue: number;
-    /**
-     * Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+     * The time to cache the response for (in seconds). A value of 0 is equivalent to setting the cache control header with the value "no-cache". A value of -1 is equivalent to setting the cache control header with the value of "no-store".
      */
     value: number;
 }
 
 export interface GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * Response status code lower bound.
+     * The lower bound of the range.
      */
     from: number;
     /**
-     * Response status code upper bound.
+     * The upper bound of the range.
      */
     to: number;
 }
 
 export interface GetRulesetRuleActionParametersFromList {
     /**
-     * Expression that evaluates to the list lookup key.
+     * An expression that evaluates to the list lookup key.
      */
     key: string;
     /**
@@ -14093,42 +14170,42 @@ export interface GetRulesetRuleActionParametersFromList {
 
 export interface GetRulesetRuleActionParametersFromValue {
     /**
-     * Keep the query string of the original request.
+     * Whether to keep the query string of the original request.
      */
     preserveQueryString: boolean;
     /**
-     * The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * The status code to use for the redirect.
      */
     statusCode: number;
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      */
     targetUrl: outputs.GetRulesetRuleActionParametersFromValueTargetUrl;
 }
 
 export interface GetRulesetRuleActionParametersFromValueTargetUrl {
     /**
-     * An expression to evaluate to get the URL to redirect the request to.
+     * An expression that evaluates to a URL to redirect the request to.
      */
     expression: string;
     /**
-     * The URL to redirect the request to.
+     * A URL to redirect the request to.
      */
     value: string;
 }
 
 export interface GetRulesetRuleActionParametersHeaders {
     /**
-     * Expression for the header value.
+     * An expression that evaluates to a value for the header.
      */
     expression: string;
     /**
-     * Available values: "remove", "add", "set".
+     * The operation to perform on the header.
+     * Available values: "add", "set", "remove".
      */
     operation: string;
     /**
-     * Static value for the header.
+     * A static value for the header.
      */
     value: string;
 }
@@ -14142,11 +14219,11 @@ export interface GetRulesetRuleActionParametersMatchedData {
 
 export interface GetRulesetRuleActionParametersOrigin {
     /**
-     * Override the resolved hostname.
+     * A resolved host to route to.
      */
     host: string;
     /**
-     * Override the destination port.
+     * A destination port to route to.
      */
     port: number;
 }
@@ -14189,7 +14266,7 @@ export interface GetRulesetRuleActionParametersOverridesCategory {
      */
     enabled: boolean;
     /**
-     * The sensitivity level to use for rules in the category.
+     * The sensitivity level to use for rules in the category. This option is only applicable for DDoS phases.
      * Available values: "default", "medium", "low", "eoff".
      */
     sensitivityLevel: string;
@@ -14213,7 +14290,7 @@ export interface GetRulesetRuleActionParametersOverridesRule {
      */
     scoreThreshold: number;
     /**
-     * The sensitivity level to use for the rule.
+     * The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
      * Available values: "default", "medium", "low", "eoff".
      */
     sensitivityLevel: string;
@@ -14221,7 +14298,7 @@ export interface GetRulesetRuleActionParametersOverridesRule {
 
 export interface GetRulesetRuleActionParametersRawResponseField {
     /**
-     * The name of the field.
+     * The name of the response header.
      */
     name: string;
     /**
@@ -14232,7 +14309,7 @@ export interface GetRulesetRuleActionParametersRawResponseField {
 
 export interface GetRulesetRuleActionParametersRequestField {
     /**
-     * The name of the field.
+     * The name of the header.
      */
     name: string;
 }
@@ -14254,7 +14331,7 @@ export interface GetRulesetRuleActionParametersResponse {
 
 export interface GetRulesetRuleActionParametersResponseField {
     /**
-     * The name of the field.
+     * The name of the response header.
      */
     name: string;
     /**
@@ -14265,65 +14342,69 @@ export interface GetRulesetRuleActionParametersResponseField {
 
 export interface GetRulesetRuleActionParametersServeStale {
     /**
-     * Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      */
     disableStaleWhileUpdating: boolean;
 }
 
 export interface GetRulesetRuleActionParametersSni {
     /**
-     * The SNI override.
+     * A value to override the SNI to.
      */
     value: string;
 }
 
 export interface GetRulesetRuleActionParametersTransformedRequestField {
     /**
-     * The name of the field.
+     * The name of the header.
      */
     name: string;
 }
 
 export interface GetRulesetRuleActionParametersUri {
     /**
-     * Path portion rewrite.
+     * Whether to propagate the rewritten URI to origin.
+     */
+    origin: boolean;
+    /**
+     * A URI path rewrite.
      */
     path: outputs.GetRulesetRuleActionParametersUriPath;
     /**
-     * Query portion rewrite.
+     * A URI query rewrite.
      */
     query: outputs.GetRulesetRuleActionParametersUriQuery;
 }
 
 export interface GetRulesetRuleActionParametersUriPath {
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI path to.
      */
     expression: string;
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI path to.
      */
     value: string;
 }
 
 export interface GetRulesetRuleActionParametersUriQuery {
     /**
-     * Expression to evaluate for the replacement value.
+     * An expression that evaluates to a value to rewrite the URI query to.
      */
     expression: string;
     /**
-     * Predefined replacement value.
+     * A value to rewrite the URI query to.
      */
     value: string;
 }
 
 export interface GetRulesetRuleExposedCredentialCheck {
     /**
-     * Expression that selects the password used in the credentials check.
+     * An expression that selects the password used in the credentials check.
      */
     passwordExpression: string;
     /**
-     * Expression that selects the user ID used in the credentials check.
+     * An expression that selects the user ID used in the credentials check.
      */
     usernameExpression: string;
 }
@@ -14337,11 +14418,11 @@ export interface GetRulesetRuleLogging {
 
 export interface GetRulesetRuleRatelimit {
     /**
-     * Characteristics of the request on which the ratelimiter counter will be incremented.
+     * Characteristics of the request on which the rate limit counter will be incremented.
      */
     characteristics: string[];
     /**
-     * Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule's expression.
+     * An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression.
      */
     countingExpression: string;
     /**
@@ -14357,7 +14438,7 @@ export interface GetRulesetRuleRatelimit {
      */
     requestsPerPeriod: number;
     /**
-     * Defines if ratelimit counting is only done when an origin is reached.
+     * Whether counting is only performed when an origin is reached.
      */
     requestsToOrigin: boolean;
     /**
@@ -14365,12 +14446,55 @@ export interface GetRulesetRuleRatelimit {
      */
     scorePerPeriod: number;
     /**
-     * The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * A response header name provided by the origin, which contains the score to increment rate limit counter with.
      */
     scoreResponseHeaderName: string;
 }
 
 export interface GetRulesetsResult {
+    /**
+     * An informative description of the ruleset.
+     *
+     * @deprecated Use rulesets.description instead. This attribute will be removed in the next major version of the provider.
+     */
+    description: string;
+    /**
+     * The unique ID of the ruleset.
+     *
+     * @deprecated Use rulesets.id instead. This attribute will be removed in the next major version of the provider.
+     */
+    id: string;
+    /**
+     * The kind of the ruleset.
+     * Available values: "managed", "custom", "root", "zone".
+     *
+     * @deprecated Use rulesets.kind instead. This attribute will be removed in the next major version of the provider.
+     */
+    kind: string;
+    /**
+     * The timestamp of when the ruleset was last modified.
+     */
+    lastUpdated: string;
+    /**
+     * The human-readable name of the ruleset.
+     *
+     * @deprecated Use rulesets.name instead. This attribute will be removed in the next major version of the provider.
+     */
+    name: string;
+    /**
+     * The phase of the ruleset.
+     * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+     *
+     * @deprecated Use rulesets.phase instead. This attribute will be removed in the next major version of the provider.
+     */
+    phase: string;
+    /**
+     * The version of the ruleset.
+     */
+    version: string;
+}
+
+export interface GetRulesetsRuleset {
     /**
      * An informative description of the ruleset.
      */
@@ -14385,6 +14509,10 @@ export interface GetRulesetsResult {
      */
     kind: string;
     /**
+     * The timestamp of when the ruleset was last modified.
+     */
+    lastUpdated: string;
+    /**
      * The human-readable name of the ruleset.
      */
     name: string;
@@ -14393,6 +14521,10 @@ export interface GetRulesetsResult {
      * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phase: string;
+    /**
+     * The version of the ruleset.
+     */
+    version: string;
 }
 
 export interface GetSchemaValidationOperationSettingsListResult {
@@ -15569,6 +15701,688 @@ export interface GetWebAnalyticsSitesResultRuleset {
     zoneTag: string;
 }
 
+export interface GetWorkerObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.GetWorkerObservabilityLogs;
+}
+
+export interface GetWorkerObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+}
+
+export interface GetWorkerSubdomain {
+    /**
+     * Whether the *.workers.dev subdomain is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
+     */
+    previewsEnabled: boolean;
+}
+
+export interface GetWorkerTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
+}
+
+export interface GetWorkerVersionAnnotations {
+    /**
+     * Human-readable message about the version.
+     */
+    workersMessage: string;
+    /**
+     * User-provided identifier for the version.
+     */
+    workersTag: string;
+    /**
+     * Operation that triggered the creation of the version.
+     */
+    workersTriggeredBy: string;
+}
+
+export interface GetWorkerVersionAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config: outputs.GetWorkerVersionAssetsConfig;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt: string;
+}
+
+export interface GetWorkerVersionAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling: string;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling: string;
+    /**
+     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     */
+    runWorkerFirsts: string[];
+}
+
+export interface GetWorkerVersionBinding {
+    /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm: string;
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName: string;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId: string;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className: string;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset: string;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment: string;
+    /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format: string;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id: string;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName: string;
+    /**
+     * JSON data to use.
+     */
+    json: string;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64: string;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk: string;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+    /**
+     * Namespace to bind to.
+     */
+    namespace: string;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId: string;
+    /**
+     * Outbound worker.
+     */
+    outbound: outputs.GetWorkerVersionBindingOutbound;
+    /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline: string;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName: string;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName: string;
+    /**
+     * Name of the secret in the store.
+     */
+    secretName: string;
+    /**
+     * Name of Worker to bind to.
+     */
+    service: string;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId: string;
+    /**
+     * The text value to use.
+     */
+    text: string;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     */
+    type: string;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages: string[];
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName: string;
+}
+
+export interface GetWorkerVersionBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params: string[];
+    /**
+     * Outbound worker.
+     */
+    worker: outputs.GetWorkerVersionBindingOutboundWorker;
+}
+
+export interface GetWorkerVersionBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment: string;
+    /**
+     * Name of the outbound worker.
+     */
+    service: string;
+}
+
+export interface GetWorkerVersionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
+}
+
+export interface GetWorkerVersionMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses: string[];
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag: string;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag: string;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses: outputs.GetWorkerVersionMigrationsRenamedClass[];
+    /**
+     * Migrations to apply in order.
+     */
+    steps: outputs.GetWorkerVersionMigrationsStep[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses: outputs.GetWorkerVersionMigrationsTransferredClass[];
+}
+
+export interface GetWorkerVersionMigrationsRenamedClass {
+    from: string;
+    to: string;
+}
+
+export interface GetWorkerVersionMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses: string[];
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses: outputs.GetWorkerVersionMigrationsStepRenamedClass[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses: outputs.GetWorkerVersionMigrationsStepTransferredClass[];
+}
+
+export interface GetWorkerVersionMigrationsStepRenamedClass {
+    from: string;
+    to: string;
+}
+
+export interface GetWorkerVersionMigrationsStepTransferredClass {
+    from: string;
+    fromScript: string;
+    to: string;
+}
+
+export interface GetWorkerVersionMigrationsTransferredClass {
+    from: string;
+    fromScript: string;
+    to: string;
+}
+
+export interface GetWorkerVersionModule {
+    /**
+     * The base64-encoded module content.
+     */
+    contentBase64: string;
+    /**
+     * The content type of the module.
+     */
+    contentType: string;
+    /**
+     * The name of the module.
+     */
+    name: string;
+}
+
+export interface GetWorkerVersionPlacement {
+    /**
+     * Placement mode for the version.
+     * Available values: "smart".
+     */
+    mode: string;
+}
+
+export interface GetWorkerVersionsResult {
+    /**
+     * Metadata about the version.
+     */
+    annotations: outputs.GetWorkerVersionsResultAnnotations;
+    /**
+     * Configuration for assets within a Worker.
+     */
+    assets: outputs.GetWorkerVersionsResultAssets;
+    /**
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     */
+    bindings: outputs.GetWorkerVersionsResultBinding[];
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     */
+    compatibilityDate: string;
+    /**
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     */
+    compatibilityFlags: string[];
+    /**
+     * When the version was created.
+     */
+    createdOn: string;
+    /**
+     * Version identifier.
+     */
+    id: string;
+    /**
+     * Resource limits enforced at runtime.
+     */
+    limits: outputs.GetWorkerVersionsResultLimits;
+    /**
+     * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+     */
+    mainModule: string;
+    /**
+     * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
+     */
+    migrations: outputs.GetWorkerVersionsResultMigrations;
+    /**
+     * Code, sourcemaps, and other content used at runtime.
+     */
+    modules: outputs.GetWorkerVersionsResultModule[];
+    /**
+     * The integer version number, starting from one.
+     */
+    number: number;
+    /**
+     * Placement settings for the version.
+     */
+    placement: outputs.GetWorkerVersionsResultPlacement;
+    /**
+     * The client used to create the version.
+     */
+    source: string;
+    /**
+     * Usage model for the version.
+     * Available values: "standard", "bundled", "unbound".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    usageModel: string;
+}
+
+export interface GetWorkerVersionsResultAnnotations {
+    /**
+     * Human-readable message about the version.
+     */
+    workersMessage: string;
+    /**
+     * User-provided identifier for the version.
+     */
+    workersTag: string;
+    /**
+     * Operation that triggered the creation of the version.
+     */
+    workersTriggeredBy: string;
+}
+
+export interface GetWorkerVersionsResultAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config: outputs.GetWorkerVersionsResultAssetsConfig;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt: string;
+}
+
+export interface GetWorkerVersionsResultAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling: string;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling: string;
+    /**
+     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     */
+    runWorkerFirsts: string[];
+}
+
+export interface GetWorkerVersionsResultBinding {
+    /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm: string;
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName: string;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId: string;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className: string;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset: string;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment: string;
+    /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format: string;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id: string;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName: string;
+    /**
+     * JSON data to use.
+     */
+    json: string;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64: string;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk: string;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+    /**
+     * Namespace to bind to.
+     */
+    namespace: string;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId: string;
+    /**
+     * Outbound worker.
+     */
+    outbound: outputs.GetWorkerVersionsResultBindingOutbound;
+    /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline: string;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName: string;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName: string;
+    /**
+     * Name of the secret in the store.
+     */
+    secretName: string;
+    /**
+     * Name of Worker to bind to.
+     */
+    service: string;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId: string;
+    /**
+     * The text value to use.
+     */
+    text: string;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     */
+    type: string;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages: string[];
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName: string;
+}
+
+export interface GetWorkerVersionsResultBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params: string[];
+    /**
+     * Outbound worker.
+     */
+    worker: outputs.GetWorkerVersionsResultBindingOutboundWorker;
+}
+
+export interface GetWorkerVersionsResultBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment: string;
+    /**
+     * Name of the outbound worker.
+     */
+    service: string;
+}
+
+export interface GetWorkerVersionsResultLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
+}
+
+export interface GetWorkerVersionsResultMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses: string[];
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag: string;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag: string;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses: outputs.GetWorkerVersionsResultMigrationsRenamedClass[];
+    /**
+     * Migrations to apply in order.
+     */
+    steps: outputs.GetWorkerVersionsResultMigrationsStep[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses: outputs.GetWorkerVersionsResultMigrationsTransferredClass[];
+}
+
+export interface GetWorkerVersionsResultMigrationsRenamedClass {
+    from: string;
+    to: string;
+}
+
+export interface GetWorkerVersionsResultMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses: string[];
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses: outputs.GetWorkerVersionsResultMigrationsStepRenamedClass[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses: outputs.GetWorkerVersionsResultMigrationsStepTransferredClass[];
+}
+
+export interface GetWorkerVersionsResultMigrationsStepRenamedClass {
+    from: string;
+    to: string;
+}
+
+export interface GetWorkerVersionsResultMigrationsStepTransferredClass {
+    from: string;
+    fromScript: string;
+    to: string;
+}
+
+export interface GetWorkerVersionsResultMigrationsTransferredClass {
+    from: string;
+    fromScript: string;
+    to: string;
+}
+
+export interface GetWorkerVersionsResultModule {
+    /**
+     * The base64-encoded module content.
+     */
+    contentBase64: string;
+    /**
+     * The content type of the module.
+     */
+    contentType: string;
+    /**
+     * The name of the module.
+     */
+    name: string;
+}
+
+export interface GetWorkerVersionsResultPlacement {
+    /**
+     * Placement mode for the version.
+     * Available values: "smart".
+     */
+    mode: string;
+}
+
 export interface GetWorkersCronTriggerSchedule {
     createdOn: string;
     cron: string;
@@ -15691,10 +16505,6 @@ export interface GetWorkersKvNamespaceFilter {
 
 export interface GetWorkersKvNamespacesResult {
     /**
-     * True if new beta namespace, with additional preview features.
-     */
-    beta: boolean;
-    /**
      * Namespace identifier tag.
      */
     id: string;
@@ -15706,6 +16516,93 @@ export interface GetWorkersKvNamespacesResult {
      * A human-readable string name for a Namespace.
      */
     title: string;
+}
+
+export interface GetWorkersResult {
+    /**
+     * When the Worker was created.
+     */
+    createdOn: string;
+    /**
+     * Identifier.
+     */
+    id: string;
+    /**
+     * Whether logpush is enabled for the Worker.
+     */
+    logpush: boolean;
+    /**
+     * Name of the Worker.
+     */
+    name: string;
+    /**
+     * Observability settings for the Worker.
+     */
+    observability: outputs.GetWorkersResultObservability;
+    /**
+     * Subdomain settings for the Worker.
+     */
+    subdomain: outputs.GetWorkersResultSubdomain;
+    /**
+     * Tags associated with the Worker.
+     */
+    tags: string[];
+    /**
+     * Other Workers that should consume logs from the Worker.
+     */
+    tailConsumers: outputs.GetWorkersResultTailConsumer[];
+    /**
+     * When the Worker was most recently updated.
+     */
+    updatedOn: string;
+}
+
+export interface GetWorkersResultObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.GetWorkersResultObservabilityLogs;
+}
+
+export interface GetWorkersResultObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+}
+
+export interface GetWorkersResultSubdomain {
+    /**
+     * Whether the *.workers.dev subdomain is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
+     */
+    previewsEnabled: boolean;
+}
+
+export interface GetWorkersResultTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
 }
 
 export interface GetWorkersRoutesResult {
@@ -15725,6 +16622,14 @@ export interface GetWorkersRoutesResult {
 
 export interface GetWorkersScriptsResult {
     /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     */
+    compatibilityDate: string;
+    /**
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
+     */
+    compatibilityFlags: string[];
+    /**
      * When the script was created.
      */
     createdOn: string;
@@ -15732,6 +16637,10 @@ export interface GetWorkersScriptsResult {
      * Hashed script content, can be used in a If-None-Match header when updating.
      */
     etag: string;
+    /**
+     * The names of handlers exported as part of the default export.
+     */
+    handlers: string[];
     /**
      * Whether a Worker contains assets.
      */
@@ -15745,13 +16654,25 @@ export interface GetWorkersScriptsResult {
      */
     id: string;
     /**
+     * The client most recently used to deploy this Worker.
+     */
+    lastDeployedFrom: string;
+    /**
      * Whether Logpush is turned on for the Worker.
      */
     logpush: boolean;
     /**
+     * The tag of the Durable Object migration that was most recently applied for this Worker.
+     */
+    migrationTag: string;
+    /**
      * When the script was last modified.
      */
     modifiedOn: string;
+    /**
+     * Named exports, such as Durable Object class implementations and named entrypoints.
+     */
+    namedHandlers: outputs.GetWorkersScriptsResultNamedHandler[];
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
@@ -15776,9 +16697,20 @@ export interface GetWorkersScriptsResult {
     tailConsumers: outputs.GetWorkersScriptsResultTailConsumer[];
     /**
      * Usage model for the Worker invocations.
-     * Available values: "standard".
+     * Available values: "standard", "bundled", "unbound".
      */
     usageModel: string;
+}
+
+export interface GetWorkersScriptsResultNamedHandler {
+    /**
+     * The names of handlers exported as part of the named export.
+     */
+    handlers: string[];
+    /**
+     * The name of the export.
+     */
+    name: string;
 }
 
 export interface GetWorkersScriptsResultPlacement {
@@ -23363,6 +24295,96 @@ export interface GetZeroTrustDexTestsResultTargetPolicy {
     name: string;
 }
 
+export interface GetZeroTrustDlpCustomEntriesResult {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
+    confidence: outputs.GetZeroTrustDlpCustomEntriesResultConfidence;
+    createdAt: string;
+    enabled: boolean;
+    id: string;
+    name: string;
+    pattern: outputs.GetZeroTrustDlpCustomEntriesResultPattern;
+    profileId: string;
+    secret: boolean;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+    updatedAt: string;
+    variant: outputs.GetZeroTrustDlpCustomEntriesResultVariant;
+    wordList: string;
+}
+
+export interface GetZeroTrustDlpCustomEntriesResultConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpCustomEntriesResultPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpCustomEntriesResultVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpCustomEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpCustomEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpCustomEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
 export interface GetZeroTrustDlpCustomProfileContextAwareness {
     /**
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
@@ -23401,6 +24423,7 @@ export interface GetZeroTrustDlpCustomProfileEntry {
      */
     type: string;
     updatedAt: string;
+    variant: outputs.GetZeroTrustDlpCustomProfileEntryVariant;
     wordList: string;
 }
 
@@ -23423,6 +24446,18 @@ export interface GetZeroTrustDlpCustomProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation: string;
+}
+
+export interface GetZeroTrustDlpCustomProfileEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
 }
 
 export interface GetZeroTrustDlpDatasetColumn {
@@ -23507,6 +24542,7 @@ export interface GetZeroTrustDlpEntriesResult {
      */
     type: string;
     updatedAt: string;
+    variant: outputs.GetZeroTrustDlpEntriesResultVariant;
     wordList: string;
 }
 
@@ -23531,6 +24567,18 @@ export interface GetZeroTrustDlpEntriesResultPattern {
     validation: string;
 }
 
+export interface GetZeroTrustDlpEntriesResultVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
 export interface GetZeroTrustDlpEntryConfidence {
     /**
      * Indicates whether this entry has AI remote service validation.
@@ -23550,6 +24598,198 @@ export interface GetZeroTrustDlpEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation: string;
+}
+
+export interface GetZeroTrustDlpEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpIntegrationEntriesResult {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
+    confidence: outputs.GetZeroTrustDlpIntegrationEntriesResultConfidence;
+    createdAt: string;
+    enabled: boolean;
+    id: string;
+    name: string;
+    pattern: outputs.GetZeroTrustDlpIntegrationEntriesResultPattern;
+    profileId: string;
+    secret: boolean;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+    updatedAt: string;
+    variant: outputs.GetZeroTrustDlpIntegrationEntriesResultVariant;
+    wordList: string;
+}
+
+export interface GetZeroTrustDlpIntegrationEntriesResultConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpIntegrationEntriesResultPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpIntegrationEntriesResultVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpIntegrationEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpIntegrationEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpIntegrationEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpPredefinedEntriesResult {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
+    confidence: outputs.GetZeroTrustDlpPredefinedEntriesResultConfidence;
+    createdAt: string;
+    enabled: boolean;
+    id: string;
+    name: string;
+    pattern: outputs.GetZeroTrustDlpPredefinedEntriesResultPattern;
+    profileId: string;
+    secret: boolean;
+    /**
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+     */
+    type: string;
+    updatedAt: string;
+    variant: outputs.GetZeroTrustDlpPredefinedEntriesResultVariant;
+    wordList: string;
+}
+
+export interface GetZeroTrustDlpPredefinedEntriesResultConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpPredefinedEntriesResultPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpPredefinedEntriesResultVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface GetZeroTrustDlpPredefinedEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface GetZeroTrustDlpPredefinedEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface GetZeroTrustDlpPredefinedEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
 }
 
 export interface GetZeroTrustDlpPredefinedProfileContextAwareness {
@@ -23590,6 +24830,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
      */
     type: string;
     updatedAt: string;
+    variant: outputs.GetZeroTrustDlpPredefinedProfileEntryVariant;
     wordList: string;
 }
 
@@ -23612,6 +24853,18 @@ export interface GetZeroTrustDlpPredefinedProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation: string;
+}
+
+export interface GetZeroTrustDlpPredefinedProfileEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
 }
 
 export interface GetZeroTrustDnsLocationEndpoints {
@@ -24000,7 +25253,7 @@ export interface GetZeroTrustGatewayPoliciesResult {
      */
     expiration: outputs.GetZeroTrustGatewayPoliciesResultExpiration;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      */
     filters: string[];
     /**
@@ -24013,12 +25266,12 @@ export interface GetZeroTrustGatewayPoliciesResult {
      */
     name: string;
     /**
-     * The rule cannot be shared via the Orgs API
+     * The rule cannot be shared via the Orgs API.
      */
     notSharable: boolean;
     precedence: number;
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * The rule was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
@@ -24030,13 +25283,13 @@ export interface GetZeroTrustGatewayPoliciesResult {
      */
     schedule: outputs.GetZeroTrustGatewayPoliciesResultSchedule;
     /**
-     * account tag of account that created the rule
+     * account tag of account that created the rule.
      */
     sourceAccount: string;
     traffic: string;
     updatedAt: string;
     /**
-     * version number of the rule
+     * version number of the rule.
      */
     version: number;
     /**
@@ -24123,7 +25376,7 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     ipIndicatorFeeds: boolean;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsL4override;
     /**
@@ -24143,11 +25396,11 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     payloadLog: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLog;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect;
     /**
@@ -24231,11 +25484,11 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls 
 
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -24319,11 +25572,11 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsL4override {
 
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
@@ -24352,15 +25605,15 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine {
 
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -24498,7 +25751,7 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      */
     ipIndicatorFeeds: boolean;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override: outputs.GetZeroTrustGatewayPolicyRuleSettingsL4override;
     /**
@@ -24518,11 +25771,11 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      */
     payloadLog: outputs.GetZeroTrustGatewayPolicyRuleSettingsPayloadLog;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine: outputs.GetZeroTrustGatewayPolicyRuleSettingsQuarantine;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect: outputs.GetZeroTrustGatewayPolicyRuleSettingsRedirect;
     /**
@@ -24606,11 +25859,11 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
 
 export interface GetZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -24694,11 +25947,11 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsL4override {
 
 export interface GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
@@ -24727,15 +25980,15 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsQuarantine {
 
 export interface GetZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -24821,7 +26074,7 @@ export interface GetZeroTrustGatewaySettingsSettings {
      */
     certificate: outputs.GetZeroTrustGatewaySettingsSettingsCertificate;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      *
      * @deprecated This attribute is deprecated.
      */
@@ -24839,7 +26092,7 @@ export interface GetZeroTrustGatewaySettingsSettings {
      */
     hostSelector: outputs.GetZeroTrustGatewaySettingsSettingsHostSelector;
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      */
     inspection: outputs.GetZeroTrustGatewaySettingsSettingsInspection;
     /**
@@ -24884,11 +26137,11 @@ export interface GetZeroTrustGatewaySettingsSettingsAntivirus {
 
 export interface GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext: boolean;
     /**
@@ -24907,7 +26160,7 @@ export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     backgroundColor: string;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     enabled: boolean;
     /**
@@ -24944,11 +26197,11 @@ export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     name: string;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
@@ -24960,7 +26213,7 @@ export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     targetUri: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
@@ -24997,7 +26250,7 @@ export interface GetZeroTrustGatewaySettingsSettingsCustomCertificate {
      */
     bindingStatus: string;
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      */
     enabled: boolean;
     /**
@@ -25013,22 +26266,22 @@ export interface GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      */
     enabled: boolean;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
 
 export interface GetZeroTrustGatewaySettingsSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     tls: boolean;
 }
@@ -25087,7 +26340,7 @@ export interface GetZeroTrustListFilter {
 export interface GetZeroTrustListItem {
     createdAt: string;
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description: string;
     /**
@@ -25129,7 +26382,7 @@ export interface GetZeroTrustListsResult {
 export interface GetZeroTrustListsResultItem {
     createdAt: string;
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description: string;
     /**
@@ -25555,6 +26808,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkFilter {
      */
     isDefault?: boolean;
     /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    isDefaultNetwork?: boolean;
+    /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */
     isDeleted?: boolean;
@@ -25857,6 +27114,53 @@ export interface GetZoneAccount {
      * The name of the account.
      */
     name: string;
+}
+
+export interface GetZoneCacheVariantsValue {
+    /**
+     * List of strings with the MIME types of all the variants that should be served for avif.
+     */
+    avifs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for bmp.
+     */
+    bmps: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for gif.
+     */
+    gifs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jp2.
+     */
+    jp2s: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpeg.
+     */
+    jpegs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg2.
+     */
+    jpg2s: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg.
+     */
+    jpgs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for png.
+     */
+    pngs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tiff.
+     */
+    tiffs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tif.
+     */
+    tifs: string[];
+    /**
+     * List of strings with the MIME types of all the variants that should be served for webp.
+     */
+    webps: string[];
 }
 
 export interface GetZoneDnsSettingsInternalDns {
@@ -26283,13 +27587,16 @@ export interface GetZonesResult {
     /**
      * Legacy permissions based on legacy user membership information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This has been replaced by Account memberships.
      */
     permissions: string[];
     /**
      * A Zones subscription information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      */
     plan: outputs.GetZonesResultPlan;
     /**
@@ -30233,7 +31540,7 @@ export interface TeamsAccountSettings {
      */
     certificate?: outputs.TeamsAccountSettingsCertificate;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      *
      * @deprecated This attribute is deprecated.
      */
@@ -30251,7 +31558,7 @@ export interface TeamsAccountSettings {
      */
     hostSelector?: outputs.TeamsAccountSettingsHostSelector;
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      */
     inspection?: outputs.TeamsAccountSettingsInspection;
     /**
@@ -30296,11 +31603,11 @@ export interface TeamsAccountSettingsAntivirus {
 
 export interface TeamsAccountSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
@@ -30319,7 +31626,7 @@ export interface TeamsAccountSettingsBlockPage {
      */
     backgroundColor?: string;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     enabled?: boolean;
     /**
@@ -30356,11 +31663,11 @@ export interface TeamsAccountSettingsBlockPage {
      */
     name?: string;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
@@ -30372,7 +31679,7 @@ export interface TeamsAccountSettingsBlockPage {
      */
     targetUri?: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
@@ -30409,7 +31716,7 @@ export interface TeamsAccountSettingsCustomCertificate {
      */
     bindingStatus: string;
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      */
     enabled: boolean;
     /**
@@ -30425,22 +31732,22 @@ export interface TeamsAccountSettingsExtendedEmailMatching {
      */
     enabled?: boolean;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
 
 export interface TeamsAccountSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     tls?: boolean;
 }
@@ -30490,7 +31797,7 @@ export interface TeamsAccountSettingsTlsDecrypt {
 
 export interface TeamsListItem {
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description?: string;
     /**
@@ -30656,7 +31963,7 @@ export interface TeamsRuleRuleSettings {
      */
     ipIndicatorFeeds: boolean;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override?: outputs.TeamsRuleRuleSettingsL4override;
     /**
@@ -30676,11 +31983,11 @@ export interface TeamsRuleRuleSettings {
      */
     payloadLog?: outputs.TeamsRuleRuleSettingsPayloadLog;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine?: outputs.TeamsRuleRuleSettingsQuarantine;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect?: outputs.TeamsRuleRuleSettingsRedirect;
     /**
@@ -30764,11 +32071,11 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
 
 export interface TeamsRuleRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -30852,11 +32159,11 @@ export interface TeamsRuleRuleSettingsL4override {
 
 export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
@@ -30885,15 +32192,15 @@ export interface TeamsRuleRuleSettingsQuarantine {
 
 export interface TeamsRuleRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery?: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -31295,6 +32602,36 @@ export interface WorkerCronTriggerSchedule {
     modifiedOn: string;
 }
 
+export interface WorkerObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs: outputs.WorkerObservabilityLogs;
+}
+
+export interface WorkerObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
+}
+
 export interface WorkerScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -31308,7 +32645,7 @@ export interface WorkerScriptAssets {
 
 export interface WorkerScriptAssetsConfig {
     /**
-     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * The contents of a _headers file (used to attach custom headers on asset responses).
      */
     headers?: string;
     /**
@@ -31322,7 +32659,7 @@ export interface WorkerScriptAssetsConfig {
      */
     notFoundHandling?: string;
     /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      */
     redirects?: string;
     /**
@@ -31334,7 +32671,7 @@ export interface WorkerScriptAssetsConfig {
      *
      * @deprecated This attribute is deprecated.
      */
-    serveDirectly: boolean;
+    serveDirectly?: boolean;
 }
 
 export interface WorkerScriptBinding {
@@ -31468,6 +32805,24 @@ export interface WorkerScriptBindingOutboundWorker {
     service?: string;
 }
 
+export interface WorkerScriptLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs?: number;
+}
+
+export interface WorkerScriptNamedHandler {
+    /**
+     * The names of handlers exported as part of the named export.
+     */
+    handlers: string[];
+    /**
+     * The name of the export.
+     */
+    name: string;
+}
+
 export interface WorkerScriptObservability {
     /**
      * Whether observability is enabled for the Worker.
@@ -31530,6 +32885,308 @@ export interface WorkerScriptTailConsumer {
     service: string;
 }
 
+export interface WorkerSubdomain {
+    /**
+     * Whether the *.workers.dev subdomain is enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
+     */
+    previewsEnabled: boolean;
+}
+
+export interface WorkerTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: string;
+}
+
+export interface WorkerVersionAnnotations {
+    /**
+     * Human-readable message about the version.
+     */
+    workersMessage?: string;
+    /**
+     * User-provided identifier for the version.
+     */
+    workersTag?: string;
+    /**
+     * Operation that triggered the creation of the version.
+     */
+    workersTriggeredBy: string;
+}
+
+export interface WorkerVersionAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config?: outputs.WorkerVersionAssetsConfig;
+}
+
+export interface WorkerVersionAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling?: string;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling?: string;
+    /**
+     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     */
+    runWorkerFirsts?: string[];
+}
+
+export interface WorkerVersionBinding {
+    /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: string;
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName?: string;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId?: string;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className: string;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset?: string;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment?: string;
+    /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: string;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id?: string;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName?: string;
+    /**
+     * JSON data to use.
+     */
+    json?: string;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: string;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: string;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+    /**
+     * Namespace to bind to.
+     */
+    namespace?: string;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId: string;
+    /**
+     * Outbound worker.
+     */
+    outbound?: outputs.WorkerVersionBindingOutbound;
+    /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: string;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName?: string;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName: string;
+    /**
+     * Name of the secret in the store.
+     */
+    secretName?: string;
+    /**
+     * Name of Worker to bind to.
+     */
+    service?: string;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: string;
+    /**
+     * The text value to use.
+     */
+    text?: string;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     */
+    type: string;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: string[];
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: string;
+}
+
+export interface WorkerVersionBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params?: string[];
+    /**
+     * Outbound worker.
+     */
+    worker?: outputs.WorkerVersionBindingOutboundWorker;
+}
+
+export interface WorkerVersionBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment?: string;
+    /**
+     * Name of the outbound worker.
+     */
+    service?: string;
+}
+
+export interface WorkerVersionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: number;
+}
+
+export interface WorkerVersionMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: string;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: string;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerVersionMigrationsRenamedClass[];
+    /**
+     * Migrations to apply in order.
+     */
+    steps?: outputs.WorkerVersionMigrationsStep[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerVersionMigrationsTransferredClass[];
+}
+
+export interface WorkerVersionMigrationsRenamedClass {
+    from?: string;
+    to?: string;
+}
+
+export interface WorkerVersionMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerVersionMigrationsStepRenamedClass[];
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerVersionMigrationsStepTransferredClass[];
+}
+
+export interface WorkerVersionMigrationsStepRenamedClass {
+    from?: string;
+    to?: string;
+}
+
+export interface WorkerVersionMigrationsStepTransferredClass {
+    from?: string;
+    fromScript?: string;
+    to?: string;
+}
+
+export interface WorkerVersionMigrationsTransferredClass {
+    from?: string;
+    fromScript?: string;
+    to?: string;
+}
+
+export interface WorkerVersionModule {
+    /**
+     * The file path of the module content.
+     */
+    contentFile: string;
+    /**
+     * The SHA-256 hash of the module content.
+     */
+    contentSha256: string;
+    /**
+     * The content type of the module.
+     */
+    contentType: string;
+    /**
+     * The name of the module.
+     */
+    name: string;
+}
+
+export interface WorkerVersionPlacement {
+    /**
+     * Placement mode for the version.
+     * Available values: "smart".
+     */
+    mode?: string;
+}
+
 export interface WorkersCronTriggerSchedule {
     createdOn: string;
     cron: string;
@@ -31565,7 +33222,7 @@ export interface WorkersScriptAssets {
 
 export interface WorkersScriptAssetsConfig {
     /**
-     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * The contents of a _headers file (used to attach custom headers on asset responses).
      */
     headers?: string;
     /**
@@ -31579,7 +33236,7 @@ export interface WorkersScriptAssetsConfig {
      */
     notFoundHandling?: string;
     /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      */
     redirects?: string;
     /**
@@ -31591,7 +33248,7 @@ export interface WorkersScriptAssetsConfig {
      *
      * @deprecated This attribute is deprecated.
      */
-    serveDirectly: boolean;
+    serveDirectly?: boolean;
 }
 
 export interface WorkersScriptBinding {
@@ -31723,6 +33380,24 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: string;
+}
+
+export interface WorkersScriptLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs?: number;
+}
+
+export interface WorkersScriptNamedHandler {
+    /**
+     * The names of handlers exported as part of the named export.
+     */
+    handlers: string[];
+    /**
+     * The name of the export.
+     */
+    name: string;
 }
 
 export interface WorkersScriptObservability {
@@ -33837,7 +35512,7 @@ export interface ZeroTrustAccessInfrastructureTargetIpIpv4 {
     /**
      * (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
      */
-    virtualNetworkId?: string;
+    virtualNetworkId: string;
 }
 
 export interface ZeroTrustAccessInfrastructureTargetIpIpv6 {
@@ -33848,7 +35523,7 @@ export interface ZeroTrustAccessInfrastructureTargetIpIpv6 {
     /**
      * (optional) Private virtual network identifier for the target. If omitted, the default virtual network ID will be used.
      */
-    virtualNetworkId?: string;
+    virtualNetworkId: string;
 }
 
 export interface ZeroTrustAccessMtlsHostnameSettingsSetting {
@@ -34596,15 +36271,15 @@ export interface ZeroTrustDeviceCustomProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      */
-    address?: string;
+    address: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description?: string;
+    description: string;
     /**
      * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      */
-    host?: string;
+    host: string;
 }
 
 export interface ZeroTrustDeviceCustomProfileFallbackDomain {
@@ -34626,15 +36301,15 @@ export interface ZeroTrustDeviceCustomProfileInclude {
     /**
      * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
-    address?: string;
+    address: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description?: string;
+    description: string;
     /**
      * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
-    host?: string;
+    host: string;
 }
 
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain {
@@ -34656,11 +36331,11 @@ export interface ZeroTrustDeviceCustomProfileServiceModeV2 {
     /**
      * The mode to run the WARP client under.
      */
-    mode?: string;
+    mode: string;
     /**
      * The port number when used with proxy mode.
      */
-    port?: number;
+    port: number;
 }
 
 export interface ZeroTrustDeviceCustomProfileTargetTest {
@@ -35034,6 +36709,18 @@ export interface ZeroTrustDlpCustomEntryPattern {
     validation?: string;
 }
 
+export interface ZeroTrustDlpCustomEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
 export interface ZeroTrustDlpCustomProfileContextAwareness {
     /**
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
@@ -35161,6 +36848,51 @@ export interface ZeroTrustDlpEntryPattern {
     validation?: string;
 }
 
+export interface ZeroTrustDlpEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
+export interface ZeroTrustDlpIntegrationEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable: boolean;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available: boolean;
+}
+
+export interface ZeroTrustDlpIntegrationEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface ZeroTrustDlpIntegrationEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
+}
+
 export interface ZeroTrustDlpPredefinedEntryConfidence {
     /**
      * Indicates whether this entry has AI remote service validation.
@@ -35170,6 +36902,28 @@ export interface ZeroTrustDlpPredefinedEntryConfidence {
      * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
+}
+
+export interface ZeroTrustDlpPredefinedEntryPattern {
+    regex: string;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation: string;
+}
+
+export interface ZeroTrustDlpPredefinedEntryVariant {
+    description: string;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType: string;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type: string;
 }
 
 export interface ZeroTrustDlpPredefinedProfileContextAwareness {
@@ -35391,7 +37145,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     ipIndicatorFeeds: boolean;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override?: outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
     /**
@@ -35411,11 +37165,11 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     payloadLog?: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine?: outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect?: outputs.ZeroTrustGatewayPolicyRuleSettingsRedirect;
     /**
@@ -35499,11 +37253,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -35587,11 +37341,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
@@ -35620,15 +37374,15 @@ export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery?: boolean;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: string;
 }
@@ -35714,7 +37468,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     certificate?: outputs.ZeroTrustGatewaySettingsSettingsCertificate;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      *
      * @deprecated This attribute is deprecated.
      */
@@ -35732,7 +37486,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     hostSelector?: outputs.ZeroTrustGatewaySettingsSettingsHostSelector;
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      */
     inspection?: outputs.ZeroTrustGatewaySettingsSettingsInspection;
     /**
@@ -35777,11 +37531,11 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirus {
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: boolean;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: boolean;
     /**
@@ -35800,7 +37554,7 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     backgroundColor?: string;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     enabled?: boolean;
     /**
@@ -35837,11 +37591,11 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     name?: string;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
@@ -35853,7 +37607,7 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     targetUri?: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
@@ -35890,7 +37644,7 @@ export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
      */
     bindingStatus: string;
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      */
     enabled: boolean;
     /**
@@ -35906,22 +37660,22 @@ export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      */
     enabled?: boolean;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly: boolean;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount: string;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version: number;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     tls?: boolean;
 }
@@ -35971,7 +37725,7 @@ export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
 
 export interface ZeroTrustListItem {
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description?: string;
     /**

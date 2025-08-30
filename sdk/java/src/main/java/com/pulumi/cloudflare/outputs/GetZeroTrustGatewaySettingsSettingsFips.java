@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsFips {
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     private Boolean tls;
 
     private GetZeroTrustGatewaySettingsSettingsFips() {}
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Boolean tls() {

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesetResult {
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     private @Nullable String accountId;
@@ -28,13 +28,18 @@ public final class GetRulesetResult {
      * @return The unique ID of the ruleset.
      * 
      */
-    private String id;
+    private @Nullable String id;
     /**
      * @return The kind of the ruleset.
      * Available values: &#34;managed&#34;, &#34;custom&#34;, &#34;root&#34;, &#34;zone&#34;.
      * 
      */
     private String kind;
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    private String lastUpdated;
     /**
      * @return The human-readable name of the ruleset.
      * 
@@ -54,17 +59,26 @@ public final class GetRulesetResult {
     /**
      * @return The unique ID of the ruleset.
      * 
+     * @deprecated
+     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
     private @Nullable String rulesetId;
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The version of the ruleset.
+     * 
+     */
+    private String version;
+    /**
+     * @return The unique ID of the zone.
      * 
      */
     private @Nullable String zoneId;
 
     private GetRulesetResult() {}
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<String> accountId() {
@@ -81,8 +95,8 @@ public final class GetRulesetResult {
      * @return The unique ID of the ruleset.
      * 
      */
-    public String id() {
-        return this.id;
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
     }
     /**
      * @return The kind of the ruleset.
@@ -91,6 +105,13 @@ public final class GetRulesetResult {
      */
     public String kind() {
         return this.kind;
+    }
+    /**
+     * @return The timestamp of when the ruleset was last modified.
+     * 
+     */
+    public String lastUpdated() {
+        return this.lastUpdated;
     }
     /**
      * @return The human-readable name of the ruleset.
@@ -117,12 +138,23 @@ public final class GetRulesetResult {
     /**
      * @return The unique ID of the ruleset.
      * 
+     * @deprecated
+     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
     public Optional<String> rulesetId() {
         return Optional.ofNullable(this.rulesetId);
     }
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The version of the ruleset.
+     * 
+     */
+    public String version() {
+        return this.version;
+    }
+    /**
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<String> zoneId() {
@@ -140,12 +172,14 @@ public final class GetRulesetResult {
     public static final class Builder {
         private @Nullable String accountId;
         private String description;
-        private String id;
+        private @Nullable String id;
         private String kind;
+        private String lastUpdated;
         private String name;
         private String phase;
         private List<GetRulesetRule> rules;
         private @Nullable String rulesetId;
+        private String version;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetRulesetResult defaults) {
@@ -154,10 +188,12 @@ public final class GetRulesetResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.kind = defaults.kind;
+    	      this.lastUpdated = defaults.lastUpdated;
     	      this.name = defaults.name;
     	      this.phase = defaults.phase;
     	      this.rules = defaults.rules;
     	      this.rulesetId = defaults.rulesetId;
+    	      this.version = defaults.version;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -176,10 +212,8 @@ public final class GetRulesetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetRulesetResult", "id");
-            }
+        public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
@@ -189,6 +223,14 @@ public final class GetRulesetResult {
               throw new MissingRequiredPropertyException("GetRulesetResult", "kind");
             }
             this.kind = kind;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastUpdated(String lastUpdated) {
+            if (lastUpdated == null) {
+              throw new MissingRequiredPropertyException("GetRulesetResult", "lastUpdated");
+            }
+            this.lastUpdated = lastUpdated;
             return this;
         }
         @CustomType.Setter
@@ -225,6 +267,14 @@ public final class GetRulesetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder version(String version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetRulesetResult", "version");
+            }
+            this.version = version;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -236,10 +286,12 @@ public final class GetRulesetResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.kind = kind;
+            _resultValue.lastUpdated = lastUpdated;
             _resultValue.name = name;
             _resultValue.phase = phase;
             _resultValue.rules = rules;
             _resultValue.rulesetId = rulesetId;
+            _resultValue.version = version;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

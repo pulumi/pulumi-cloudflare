@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string CreatedAt;
         /// <summary>
-        /// The description of the list item, if present
+        /// The description of the list item, if present.
         /// </summary>
         public readonly string Description;
         /// <summary>

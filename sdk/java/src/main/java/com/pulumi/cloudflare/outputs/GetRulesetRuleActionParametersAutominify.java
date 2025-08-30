@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersAutominify {
     /**
-     * @return Minify CSS files.
+     * @return Whether to minify CSS files.
      * 
      */
     private Boolean css;
     /**
-     * @return Minify HTML files.
+     * @return Whether to minify HTML files.
      * 
      */
     private Boolean html;
     /**
-     * @return Minify JS files.
+     * @return Whether to minify JavaScript files.
      * 
      */
     private Boolean js;
 
     private GetRulesetRuleActionParametersAutominify() {}
     /**
-     * @return Minify CSS files.
+     * @return Whether to minify CSS files.
      * 
      */
     public Boolean css() {
         return this.css;
     }
     /**
-     * @return Minify HTML files.
+     * @return Whether to minify HTML files.
      * 
      */
     public Boolean html() {
         return this.html;
     }
     /**
-     * @return Minify JS files.
+     * @return Whether to minify JavaScript files.
      * 
      */
     public Boolean js() {

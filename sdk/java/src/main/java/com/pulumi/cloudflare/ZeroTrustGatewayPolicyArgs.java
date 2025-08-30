@@ -101,14 +101,14 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -324,7 +324,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ class GetZeroTrustDlpEntryResult:
     """
     A collection of values returned by getZeroTrustDlpEntry.
     """
-    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, secret=None, type=None, updated_at=None, word_list=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, secret=None, type=None, updated_at=None, variant=None, word_list=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -67,6 +67,9 @@ class GetZeroTrustDlpEntryResult:
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
+        if variant and not isinstance(variant, dict):
+            raise TypeError("Expected argument 'variant' to be a dict")
+        pulumi.set(__self__, "variant", variant)
         if word_list and not isinstance(word_list, str):
             raise TypeError("Expected argument 'word_list' to be a str")
         pulumi.set(__self__, "word_list", word_list)
@@ -148,6 +151,11 @@ class GetZeroTrustDlpEntryResult:
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
+    @pulumi.getter
+    def variant(self) -> 'outputs.GetZeroTrustDlpEntryVariantResult':
+        return pulumi.get(self, "variant")
+
+    @_builtins.property
     @pulumi.getter(name="wordList")
     def word_list(self) -> _builtins.str:
         return pulumi.get(self, "word_list")
@@ -172,6 +180,7 @@ class AwaitableGetZeroTrustDlpEntryResult(GetZeroTrustDlpEntryResult):
             secret=self.secret,
             type=self.type,
             updated_at=self.updated_at,
+            variant=self.variant,
             word_list=self.word_list)
 
 
@@ -209,6 +218,7 @@ def get_zero_trust_dlp_entry(account_id: Optional[_builtins.str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         type=pulumi.get(__ret__, 'type'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
+        variant=pulumi.get(__ret__, 'variant'),
         word_list=pulumi.get(__ret__, 'word_list'))
 def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                     entry_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -243,4 +253,5 @@ def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[_builtins.
         secret=pulumi.get(__response__, 'secret'),
         type=pulumi.get(__response__, 'type'),
         updated_at=pulumi.get(__response__, 'updated_at'),
+        variant=pulumi.get(__response__, 'variant'),
         word_list=pulumi.get(__response__, 'word_list')))

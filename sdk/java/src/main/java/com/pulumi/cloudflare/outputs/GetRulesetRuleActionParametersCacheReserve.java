@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheReserve {
     /**
-     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * @return Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     private Boolean eligible;
     /**
-     * @return The minimum file size eligible for store in cache reserve.
+     * @return The minimum file size eligible for storage in Cache Reserve.
      * 
      */
     private Integer minimumFileSize;
 
     private GetRulesetRuleActionParametersCacheReserve() {}
     /**
-     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+     * @return Whether Cache Reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to Cache Reserve.
      * 
      */
     public Boolean eligible() {
         return this.eligible;
     }
     /**
-     * @return The minimum file size eligible for store in cache reserve.
+     * @return The minimum file size eligible for storage in Cache Reserve.
      * 
      */
     public Integer minimumFileSize() {

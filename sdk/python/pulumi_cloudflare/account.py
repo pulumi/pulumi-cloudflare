@@ -22,21 +22,21 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 type: pulumi.Input[_builtins.str],
                  settings: Optional[pulumi.Input['AccountSettingsArgs']] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  unit: Optional[pulumi.Input['AccountUnitArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[_builtins.str] name: Account name
-        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-               Available values: "standard", "enterprise".
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
+        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if unit is not None:
             pulumi.set(__self__, "unit", unit)
 
@@ -54,19 +54,6 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-        Available values: "standard", "enterprise".
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter
     def settings(self) -> Optional[pulumi.Input['AccountSettingsArgs']]:
         """
         Account settings
@@ -76,6 +63,18 @@ class AccountArgs:
     @settings.setter
     def settings(self, value: Optional[pulumi.Input['AccountSettingsArgs']]):
         pulumi.set(self, "settings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Available values: "standard", "enterprise".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -103,8 +102,7 @@ class _AccountState:
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input['AccountSettingsArgs'] settings: Account settings
-        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-               Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
         :param pulumi.Input['AccountUnitArgs'] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         if created_on is not None:
@@ -158,7 +156,6 @@ class _AccountState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")
@@ -216,8 +213,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
-        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-               Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         ...
@@ -279,8 +275,6 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["settings"] = settings
-            if type is None and not opts.urn:
-                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["unit"] = unit
             __props__.__dict__["created_on"] = None
@@ -309,8 +303,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_on: Timestamp for the creation of the account
         :param pulumi.Input[_builtins.str] name: Account name
         :param pulumi.Input[Union['AccountSettingsArgs', 'AccountSettingsArgsDict']] settings: Account settings
-        :param pulumi.Input[_builtins.str] type: the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-               Available values: "standard", "enterprise".
+        :param pulumi.Input[_builtins.str] type: Available values: "standard", "enterprise".
         :param pulumi.Input[Union['AccountUnitArgs', 'AccountUnitArgsDict']] unit: information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -350,9 +343,8 @@ class Account(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> pulumi.Output[_builtins.str]:
+    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
         Available values: "standard", "enterprise".
         """
         return pulumi.get(self, "type")

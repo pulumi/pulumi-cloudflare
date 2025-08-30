@@ -345,12 +345,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebAnalyticsRule{}
 	case "cloudflare:index/webAnalyticsSite:WebAnalyticsSite":
 		r = &WebAnalyticsSite{}
+	case "cloudflare:index/worker:Worker":
+		r = &Worker{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
 		r = &WorkerCronTrigger{}
 	case "cloudflare:index/workerDomain:WorkerDomain":
 		r = &WorkerDomain{}
 	case "cloudflare:index/workerScript:WorkerScript":
 		r = &WorkerScript{}
+	case "cloudflare:index/workerVersion:WorkerVersion":
+		r = &WorkerVersion{}
 	case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
 		r = &WorkersCronTrigger{}
 	case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -1322,6 +1326,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/worker",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/workerCronTrigger",
 		&module{version},
 	)
@@ -1333,6 +1342,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workerScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

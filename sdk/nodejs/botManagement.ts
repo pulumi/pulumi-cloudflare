@@ -67,6 +67,10 @@ export class BotManagement extends pulumi.CustomResource {
      */
     public readonly autoUpdateModel!: pulumi.Output<boolean>;
     /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     */
+    public readonly bmCookieEnabled!: pulumi.Output<boolean>;
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */
@@ -140,6 +144,7 @@ export class BotManagement extends pulumi.CustomResource {
             const state = argsOrState as BotManagementState | undefined;
             resourceInputs["aiBotsProtection"] = state ? state.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = state ? state.autoUpdateModel : undefined;
+            resourceInputs["bmCookieEnabled"] = state ? state.bmCookieEnabled : undefined;
             resourceInputs["crawlerProtection"] = state ? state.crawlerProtection : undefined;
             resourceInputs["enableJs"] = state ? state.enableJs : undefined;
             resourceInputs["fightMode"] = state ? state.fightMode : undefined;
@@ -160,6 +165,7 @@ export class BotManagement extends pulumi.CustomResource {
             }
             resourceInputs["aiBotsProtection"] = args ? args.aiBotsProtection : undefined;
             resourceInputs["autoUpdateModel"] = args ? args.autoUpdateModel : undefined;
+            resourceInputs["bmCookieEnabled"] = args ? args.bmCookieEnabled : undefined;
             resourceInputs["crawlerProtection"] = args ? args.crawlerProtection : undefined;
             resourceInputs["enableJs"] = args ? args.enableJs : undefined;
             resourceInputs["fightMode"] = args ? args.fightMode : undefined;
@@ -192,6 +198,10 @@ export interface BotManagementState {
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     autoUpdateModel?: pulumi.Input<boolean>;
+    /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     */
+    bmCookieEnabled?: pulumi.Input<boolean>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -265,6 +275,10 @@ export interface BotManagementArgs {
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
      */
     autoUpdateModel?: pulumi.Input<boolean>;
+    /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     */
+    bmCookieEnabled?: pulumi.Input<boolean>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".

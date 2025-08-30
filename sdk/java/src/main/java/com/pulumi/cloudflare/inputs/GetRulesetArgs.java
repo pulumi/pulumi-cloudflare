@@ -16,14 +16,14 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRulesetArgs Empty = new GetRulesetArgs();
 
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,26 +34,49 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
      * The unique ID of the ruleset.
      * 
      */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The unique ID of the ruleset.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * The unique ID of the ruleset.
+     * 
+     * @deprecated
+     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * 
+     */
+    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
     @Import(name="rulesetId")
     private @Nullable Output<String> rulesetId;
 
     /**
      * @return The unique ID of the ruleset.
      * 
+     * @deprecated
+     * Configure id instead. This attribute will be removed in the next major version of the provider.
+     * 
      */
+    @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
     public Optional<Output<String>> rulesetId() {
         return Optional.ofNullable(this.rulesetId);
     }
 
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -64,6 +87,7 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetRulesetArgs(GetRulesetArgs $) {
         this.accountId = $.accountId;
+        this.id = $.id;
         this.rulesetId = $.rulesetId;
         this.zoneId = $.zoneId;
     }
@@ -87,7 +111,7 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -98,7 +122,7 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+         * @param accountId The unique ID of the account.
          * 
          * @return builder
          * 
@@ -108,11 +132,36 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rulesetId The unique ID of the ruleset.
+         * @param id The unique ID of the ruleset.
          * 
          * @return builder
          * 
          */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The unique ID of the ruleset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param rulesetId The unique ID of the ruleset.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Configure id instead. This attribute will be removed in the next major version of the provider.
+         * 
+         */
+        @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
         public Builder rulesetId(@Nullable Output<String> rulesetId) {
             $.rulesetId = rulesetId;
             return this;
@@ -123,13 +172,17 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Configure id instead. This attribute will be removed in the next major version of the provider.
+         * 
          */
+        @Deprecated /* Configure id instead. This attribute will be removed in the next major version of the provider. */
         public Builder rulesetId(String rulesetId) {
             return rulesetId(Output.of(rulesetId));
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -140,7 +193,7 @@ public final class GetRulesetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

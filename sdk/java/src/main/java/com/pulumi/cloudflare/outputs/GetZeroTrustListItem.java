@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class GetZeroTrustListItem {
     private String createdAt;
     /**
-     * @return The description of the list item, if present
+     * @return The description of the list item, if present.
      * 
      */
     private String description;
@@ -27,7 +27,7 @@ public final class GetZeroTrustListItem {
         return this.createdAt;
     }
     /**
-     * @return The description of the list item, if present
+     * @return The description of the list item, if present.
      * 
      */
     public String description() {

@@ -102,7 +102,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     private Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     private GetZeroTrustGatewayPoliciesResultRuleSettingsL4override l4override;
@@ -127,12 +127,12 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     private GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLog payloadLog;
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     private GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine quarantine;
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     private GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect redirect;
@@ -259,7 +259,7 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
         return this.ipIndicatorFeeds;
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     public GetZeroTrustGatewayPoliciesResultRuleSettingsL4override l4override() {
@@ -294,14 +294,14 @@ public final class GetZeroTrustGatewayPoliciesResultRuleSettings {
         return this.payloadLog;
     }
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     public GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine quarantine() {
         return this.quarantine;
     }
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     public GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect redirect() {

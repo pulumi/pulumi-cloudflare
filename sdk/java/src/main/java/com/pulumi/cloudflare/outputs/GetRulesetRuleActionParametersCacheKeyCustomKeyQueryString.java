@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     /**
-     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * @return Which query string parameters to exclude from the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude exclude;
     /**
-     * @return A list of query string parameters used to build the cache key.
+     * @return Which query string parameters to include in the cache key.
      * 
      */
     private GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude include;
 
     private GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString() {}
     /**
-     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+     * @return Which query string parameters to exclude from the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude exclude() {
         return this.exclude;
     }
     /**
-     * @return A list of query string parameters used to build the cache key.
+     * @return Which query string parameters to include in the cache key.
      * 
      */
     public GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude include() {

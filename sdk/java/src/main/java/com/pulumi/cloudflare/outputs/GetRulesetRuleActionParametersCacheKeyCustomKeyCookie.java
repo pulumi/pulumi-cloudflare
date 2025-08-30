@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKeyCustomKeyCookie {
     /**
-     * @return Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * @return A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      * 
      */
     private List<String> checkPresences;
     /**
-     * @return Include these cookies&#39; names and their values.
+     * @return A list of cookies to include in the cache key.
      * 
      */
     private List<String> includes;
 
     private GetRulesetRuleActionParametersCacheKeyCustomKeyCookie() {}
     /**
-     * @return Checks for the presence of these cookie names. The presence of these cookies is used in building the cache key.
+     * @return A list of cookies to check for the presence of. The presence of these cookies is included in the cache key.
      * 
      */
     public List<String> checkPresences() {
         return this.checkPresences;
     }
     /**
-     * @return Include these cookies&#39; names and their values.
+     * @return A list of cookies to include in the cache key.
      * 
      */
     public List<String> includes() {

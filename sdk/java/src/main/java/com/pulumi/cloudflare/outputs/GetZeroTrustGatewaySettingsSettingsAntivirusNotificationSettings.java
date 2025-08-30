@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * @return Set notification on
+     * @return Set notification on.
      * 
      */
     private Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     private Boolean includeContext;
@@ -34,14 +34,14 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
 
     private GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings() {}
     /**
-     * @return Set notification on
+     * @return Set notification on.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Boolean includeContext() {

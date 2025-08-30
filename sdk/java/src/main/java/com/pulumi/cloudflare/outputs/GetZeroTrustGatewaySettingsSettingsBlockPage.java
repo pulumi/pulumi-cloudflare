@@ -18,7 +18,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private String backgroundColor;
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     private Boolean enabled;
@@ -64,12 +64,12 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private String name;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     private Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     private String sourceAccount;
@@ -84,7 +84,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private String targetUri;
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     private Integer version;
@@ -98,7 +98,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
         return this.backgroundColor;
     }
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Boolean enabled() {
@@ -162,14 +162,14 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
         return this.name;
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Boolean readOnly() {
         return this.readOnly;
     }
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     public String sourceAccount() {
@@ -190,7 +190,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
         return this.targetUri;
     }
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     public Integer version() {

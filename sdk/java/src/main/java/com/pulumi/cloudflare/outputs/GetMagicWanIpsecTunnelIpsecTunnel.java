@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelBgp;
+import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatus;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelHealthCheck;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelPskMetadata;
 import com.pulumi.core.annotations.CustomType;
@@ -18,6 +20,8 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      * 
      */
     private Boolean allowNullCipher;
+    private GetMagicWanIpsecTunnelIpsecTunnelBgp bgp;
+    private GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus;
     /**
      * @return The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
@@ -82,6 +86,12 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      */
     public Boolean allowNullCipher() {
         return this.allowNullCipher;
+    }
+    public GetMagicWanIpsecTunnelIpsecTunnelBgp bgp() {
+        return this.bgp;
+    }
+    public GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus() {
+        return this.bgpStatus;
     }
     /**
      * @return The IP address assigned to the Cloudflare side of the IPsec tunnel.
@@ -174,6 +184,8 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowNullCipher;
+        private GetMagicWanIpsecTunnelIpsecTunnelBgp bgp;
+        private GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus;
         private String cloudflareEndpoint;
         private String createdOn;
         private String customerEndpoint;
@@ -190,6 +202,8 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         public Builder(GetMagicWanIpsecTunnelIpsecTunnel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowNullCipher = defaults.allowNullCipher;
+    	      this.bgp = defaults.bgp;
+    	      this.bgpStatus = defaults.bgpStatus;
     	      this.cloudflareEndpoint = defaults.cloudflareEndpoint;
     	      this.createdOn = defaults.createdOn;
     	      this.customerEndpoint = defaults.customerEndpoint;
@@ -210,6 +224,22 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
               throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "allowNullCipher");
             }
             this.allowNullCipher = allowNullCipher;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bgp(GetMagicWanIpsecTunnelIpsecTunnelBgp bgp) {
+            if (bgp == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "bgp");
+            }
+            this.bgp = bgp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bgpStatus(GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus) {
+            if (bgpStatus == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "bgpStatus");
+            }
+            this.bgpStatus = bgpStatus;
             return this;
         }
         @CustomType.Setter
@@ -311,6 +341,8 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         public GetMagicWanIpsecTunnelIpsecTunnel build() {
             final var _resultValue = new GetMagicWanIpsecTunnelIpsecTunnel();
             _resultValue.allowNullCipher = allowNullCipher;
+            _resultValue.bgp = bgp;
+            _resultValue.bgpStatus = bgpStatus;
             _resultValue.cloudflareEndpoint = cloudflareEndpoint;
             _resultValue.createdOn = createdOn;
             _resultValue.customerEndpoint = customerEndpoint;

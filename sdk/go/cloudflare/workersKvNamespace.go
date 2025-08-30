@@ -49,8 +49,6 @@ type WorkersKvNamespace struct {
 
 	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// True if new beta namespace, with additional preview features.
-	Beta pulumi.BoolOutput `pulumi:"beta"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolOutput `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -95,8 +93,6 @@ func GetWorkersKvNamespace(ctx *pulumi.Context,
 type workersKvNamespaceState struct {
 	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// True if new beta namespace, with additional preview features.
-	Beta *bool `pulumi:"beta"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding *bool `pulumi:"supportsUrlEncoding"`
 	// A human-readable string name for a Namespace.
@@ -106,8 +102,6 @@ type workersKvNamespaceState struct {
 type WorkersKvNamespaceState struct {
 	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// True if new beta namespace, with additional preview features.
-	Beta pulumi.BoolPtrInput
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
 	SupportsUrlEncoding pulumi.BoolPtrInput
 	// A human-readable string name for a Namespace.
@@ -223,11 +217,6 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 // Identifier.
 func (o WorkersKvNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
-}
-
-// True if new beta namespace, with additional preview features.
-func (o WorkersKvNamespaceOutput) Beta() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.BoolOutput { return v.Beta }).(pulumi.BoolOutput)
 }
 
 // True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

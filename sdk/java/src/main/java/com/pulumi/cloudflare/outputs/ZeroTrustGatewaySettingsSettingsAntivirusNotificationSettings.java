@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * @return Set notification on
+     * @return Set notification on.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
@@ -35,14 +35,14 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
 
     private ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings() {}
     /**
-     * @return Set notification on
+     * @return Set notification on.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {

@@ -103,15 +103,15 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
-    @Import(name="includes", required=true)
-    private Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes;
+    @Import(name="includes")
+    private @Nullable Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes;
 
     /**
      * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
-    public Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes() {
-        return this.includes;
+    public Optional<Output<List<ZeroTrustAccessPolicyIncludeArgs>>> includes() {
+        return Optional.ofNullable(this.includes);
     }
 
     /**
@@ -372,7 +372,7 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder includes(Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes) {
+        public Builder includes(@Nullable Output<List<ZeroTrustAccessPolicyIncludeArgs>> includes) {
             $.includes = includes;
             return this;
         }
@@ -539,9 +539,6 @@ public final class ZeroTrustAccessPolicyArgs extends com.pulumi.resources.Resour
             }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "decision");
-            }
-            if ($.includes == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "includes");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyArgs", "name");

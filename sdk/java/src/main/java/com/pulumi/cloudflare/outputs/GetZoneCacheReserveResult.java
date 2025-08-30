@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneCacheReserveResult {
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     private Boolean editable;
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;cache_reserve&#34;.
      * 
      */
@@ -28,27 +28,27 @@ public final class GetZoneCacheReserveResult {
      */
     private String modifiedOn;
     /**
-     * @return The value of the feature
+     * @return Value of the Cache Reserve zone setting.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String value;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetZoneCacheReserveResult() {}
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Boolean editable() {
         return this.editable;
     }
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;cache_reserve&#34;.
      * 
      */
@@ -63,7 +63,7 @@ public final class GetZoneCacheReserveResult {
         return this.modifiedOn;
     }
     /**
-     * @return The value of the feature
+     * @return Value of the Cache Reserve zone setting.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetZoneCacheReserveResult {
         return this.value;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

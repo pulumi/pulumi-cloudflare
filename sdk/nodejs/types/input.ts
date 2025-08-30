@@ -6346,6 +6346,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkFilter {
      */
     isDefault?: boolean;
     /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    isDefaultNetwork?: boolean;
+    /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */
     isDeleted?: boolean;
@@ -6364,6 +6368,10 @@ export interface GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs {
      * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
      */
     isDefault?: pulumi.Input<boolean>;
+    /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     */
+    isDefaultNetwork?: pulumi.Input<boolean>;
     /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      */
@@ -10453,7 +10461,7 @@ export interface TeamsAccountSettings {
      */
     certificate?: pulumi.Input<inputs.TeamsAccountSettingsCertificate>;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      *
      * @deprecated This attribute is deprecated.
      */
@@ -10471,7 +10479,7 @@ export interface TeamsAccountSettings {
      */
     hostSelector?: pulumi.Input<inputs.TeamsAccountSettingsHostSelector>;
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      */
     inspection?: pulumi.Input<inputs.TeamsAccountSettingsInspection>;
     /**
@@ -10516,11 +10524,11 @@ export interface TeamsAccountSettingsAntivirus {
 
 export interface TeamsAccountSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -10539,7 +10547,7 @@ export interface TeamsAccountSettingsBlockPage {
      */
     backgroundColor?: pulumi.Input<string>;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -10576,11 +10584,11 @@ export interface TeamsAccountSettingsBlockPage {
      */
     name?: pulumi.Input<string>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
@@ -10592,7 +10600,7 @@ export interface TeamsAccountSettingsBlockPage {
      */
     targetUri?: pulumi.Input<string>;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
@@ -10629,7 +10637,7 @@ export interface TeamsAccountSettingsCustomCertificate {
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      */
     enabled: pulumi.Input<boolean>;
     /**
@@ -10645,22 +10653,22 @@ export interface TeamsAccountSettingsExtendedEmailMatching {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface TeamsAccountSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     tls?: pulumi.Input<boolean>;
 }
@@ -10710,7 +10718,7 @@ export interface TeamsAccountSettingsTlsDecrypt {
 
 export interface TeamsListItem {
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description?: pulumi.Input<string>;
     /**
@@ -10876,7 +10884,7 @@ export interface TeamsRuleRuleSettings {
      */
     ipIndicatorFeeds?: pulumi.Input<boolean>;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
     /**
@@ -10896,11 +10904,11 @@ export interface TeamsRuleRuleSettings {
      */
     payloadLog?: pulumi.Input<inputs.TeamsRuleRuleSettingsPayloadLog>;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine?: pulumi.Input<inputs.TeamsRuleRuleSettingsQuarantine>;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect?: pulumi.Input<inputs.TeamsRuleRuleSettingsRedirect>;
     /**
@@ -10984,11 +10992,11 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
 
 export interface TeamsRuleRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: pulumi.Input<string>;
 }
@@ -11072,11 +11080,11 @@ export interface TeamsRuleRuleSettingsL4override {
 
 export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -11105,15 +11113,15 @@ export interface TeamsRuleRuleSettingsQuarantine {
 
 export interface TeamsRuleRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: pulumi.Input<string>;
 }
@@ -11515,6 +11523,36 @@ export interface WorkerCronTriggerSchedule {
     modifiedOn?: pulumi.Input<string>;
 }
 
+export interface WorkerObservability {
+    /**
+     * Whether observability is enabled for the Worker.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The sampling rate for observability. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate?: pulumi.Input<number>;
+    /**
+     * Log settings for the Worker.
+     */
+    logs?: pulumi.Input<inputs.WorkerObservabilityLogs>;
+}
+
+export interface WorkerObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%).
+     */
+    headSamplingRate?: pulumi.Input<number>;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs?: pulumi.Input<boolean>;
+}
+
 export interface WorkerScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -11528,7 +11566,7 @@ export interface WorkerScriptAssets {
 
 export interface WorkerScriptAssetsConfig {
     /**
-     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * The contents of a _headers file (used to attach custom headers on asset responses).
      */
     headers?: pulumi.Input<string>;
     /**
@@ -11542,7 +11580,7 @@ export interface WorkerScriptAssetsConfig {
      */
     notFoundHandling?: pulumi.Input<string>;
     /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      */
     redirects?: pulumi.Input<string>;
     /**
@@ -11688,6 +11726,24 @@ export interface WorkerScriptBindingOutboundWorker {
     service?: pulumi.Input<string>;
 }
 
+export interface WorkerScriptLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs?: pulumi.Input<number>;
+}
+
+export interface WorkerScriptNamedHandler {
+    /**
+     * The names of handlers exported as part of the named export.
+     */
+    handlers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the export.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface WorkerScriptObservability {
     /**
      * Whether observability is enabled for the Worker.
@@ -11750,6 +11806,308 @@ export interface WorkerScriptTailConsumer {
     service: pulumi.Input<string>;
 }
 
+export interface WorkerSubdomain {
+    /**
+     * Whether the *.workers.dev subdomain is enabled for the Worker.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether [preview URLs](https://developers.cloudflare.com/workers/configuration/previews/) are enabled for the Worker.
+     */
+    previewsEnabled?: pulumi.Input<boolean>;
+}
+
+export interface WorkerTailConsumer {
+    /**
+     * Name of the consumer Worker.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkerVersionAnnotations {
+    /**
+     * Human-readable message about the version.
+     */
+    workersMessage?: pulumi.Input<string>;
+    /**
+     * User-provided identifier for the version.
+     */
+    workersTag?: pulumi.Input<string>;
+    /**
+     * Operation that triggered the creation of the version.
+     */
+    workersTriggeredBy?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionAssets {
+    /**
+     * Configuration for assets within a Worker.
+     */
+    config?: pulumi.Input<inputs.WorkerVersionAssetsConfig>;
+}
+
+export interface WorkerVersionAssetsConfig {
+    /**
+     * Determines the redirects and rewrites of requests for HTML content.
+     * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
+     */
+    htmlHandling?: pulumi.Input<string>;
+    /**
+     * Determines the response when a request does not match a static asset, and there is no Worker script.
+     * Available values: "none", "404-page", "single-page-application".
+     */
+    notFoundHandling?: pulumi.Input<string>;
+    /**
+     * Contains a list path rules to control routing to either the Worker or assets. Glob (*) and negative (!) rules are supported. Rules must start with either '/' or '!/'. At least one non-negative rule must be provided, and negative rules have higher precedence than non-negative rules.
+     */
+    runWorkerFirsts?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface WorkerVersionBinding {
+    /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
+     * R2 bucket to bind to.
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * Identifier of the certificate to bind to.
+     */
+    certificateId?: pulumi.Input<string>;
+    /**
+     * The exported class name of the Durable Object.
+     */
+    className?: pulumi.Input<string>;
+    /**
+     * The name of the dataset to bind to.
+     */
+    dataset?: pulumi.Input<string>;
+    /**
+     * The environment of the scriptName to bind to.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * Identifier of the D1 database to bind to.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the Vectorize index to bind to.
+     */
+    indexName?: pulumi.Input<string>;
+    /**
+     * JSON data to use.
+     */
+    json?: pulumi.Input<string>;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: pulumi.Input<string>;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: pulumi.Input<string>;
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Namespace to bind to.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * Namespace identifier tag.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * Outbound worker.
+     */
+    outbound?: pulumi.Input<inputs.WorkerVersionBindingOutbound>;
+    /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: pulumi.Input<string>;
+    /**
+     * Name of the Queue to bind to.
+     */
+    queueName?: pulumi.Input<string>;
+    /**
+     * The script where the Durable Object is defined, if it is external to this Worker.
+     */
+    scriptName?: pulumi.Input<string>;
+    /**
+     * Name of the secret in the store.
+     */
+    secretName?: pulumi.Input<string>;
+    /**
+     * Name of Worker to bind to.
+     */
+    service?: pulumi.Input<string>;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: pulumi.Input<string>;
+    /**
+     * The text value to use.
+     */
+    text?: pulumi.Input<string>;
+    /**
+     * The kind of resource that the binding provides.
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionBindingOutbound {
+    /**
+     * Pass information from the Dispatch Worker to the Outbound Worker through the parameters.
+     */
+    params?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Outbound worker.
+     */
+    worker?: pulumi.Input<inputs.WorkerVersionBindingOutboundWorker>;
+}
+
+export interface WorkerVersionBindingOutboundWorker {
+    /**
+     * Environment of the outbound worker.
+     */
+    environment?: pulumi.Input<string>;
+    /**
+     * Name of the outbound worker.
+     */
+    service?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionLimits {
+    /**
+     * CPU time limit in milliseconds.
+     */
+    cpuMs: pulumi.Input<number>;
+}
+
+export interface WorkerVersionMigrations {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: pulumi.Input<string>;
+    /**
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: pulumi.Input<string>;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerVersionMigrationsRenamedClass>[]>;
+    /**
+     * Migrations to apply in order.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkerVersionMigrationsStep>[]>;
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerVersionMigrationsTransferredClass>[]>;
+}
+
+export interface WorkerVersionMigrationsRenamedClass {
+    from?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionMigrationsStep {
+    /**
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerVersionMigrationsStepRenamedClass>[]>;
+    /**
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerVersionMigrationsStepTransferredClass>[]>;
+}
+
+export interface WorkerVersionMigrationsStepRenamedClass {
+    from?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionMigrationsStepTransferredClass {
+    from?: pulumi.Input<string>;
+    fromScript?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionMigrationsTransferredClass {
+    from?: pulumi.Input<string>;
+    fromScript?: pulumi.Input<string>;
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerVersionModule {
+    /**
+     * The file path of the module content.
+     */
+    contentFile: pulumi.Input<string>;
+    /**
+     * The SHA-256 hash of the module content.
+     */
+    contentSha256?: pulumi.Input<string>;
+    /**
+     * The content type of the module.
+     */
+    contentType: pulumi.Input<string>;
+    /**
+     * The name of the module.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkerVersionPlacement {
+    /**
+     * Placement mode for the version.
+     * Available values: "smart".
+     */
+    mode?: pulumi.Input<string>;
+}
+
 export interface WorkersCronTriggerSchedule {
     createdOn?: pulumi.Input<string>;
     cron: pulumi.Input<string>;
@@ -11785,7 +12143,7 @@ export interface WorkersScriptAssets {
 
 export interface WorkersScriptAssetsConfig {
     /**
-     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * The contents of a _headers file (used to attach custom headers on asset responses).
      */
     headers?: pulumi.Input<string>;
     /**
@@ -11799,7 +12157,7 @@ export interface WorkersScriptAssetsConfig {
      */
     notFoundHandling?: pulumi.Input<string>;
     /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      */
     redirects?: pulumi.Input<string>;
     /**
@@ -11943,6 +12301,24 @@ export interface WorkersScriptBindingOutboundWorker {
      * Name of the outbound worker.
      */
     service?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptLimits {
+    /**
+     * The amount of CPU time this Worker can use in milliseconds.
+     */
+    cpuMs?: pulumi.Input<number>;
+}
+
+export interface WorkersScriptNamedHandler {
+    /**
+     * The names of handlers exported as part of the named export.
+     */
+    handlers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The name of the export.
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptObservability {
@@ -15254,6 +15630,18 @@ export interface ZeroTrustDlpCustomEntryPattern {
     validation?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustDlpCustomEntryVariant {
+    description?: pulumi.Input<string>;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType?: pulumi.Input<string>;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface ZeroTrustDlpCustomProfileContextAwareness {
     /**
      * If true, scan the context of predefined entries to only return matches surrounded by keywords.
@@ -15381,6 +15769,51 @@ export interface ZeroTrustDlpEntryPattern {
     validation?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustDlpEntryVariant {
+    description?: pulumi.Input<string>;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType?: pulumi.Input<string>;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDlpIntegrationEntryConfidence {
+    /**
+     * Indicates whether this entry has AI remote service validation.
+     */
+    aiContextAvailable?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
+     */
+    available?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustDlpIntegrationEntryPattern {
+    regex?: pulumi.Input<string>;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDlpIntegrationEntryVariant {
+    description?: pulumi.Input<string>;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType?: pulumi.Input<string>;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface ZeroTrustDlpPredefinedEntryConfidence {
     /**
      * Indicates whether this entry has AI remote service validation.
@@ -15390,6 +15823,28 @@ export interface ZeroTrustDlpPredefinedEntryConfidence {
      * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustDlpPredefinedEntryPattern {
+    regex?: pulumi.Input<string>;
+    /**
+     * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    validation?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustDlpPredefinedEntryVariant {
+    description?: pulumi.Input<string>;
+    /**
+     * Available values: "Intent", "Content".
+     */
+    topicType?: pulumi.Input<string>;
+    /**
+     * Available values: "PromptTopic".
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDlpPredefinedProfileContextAwareness {
@@ -15611,7 +16066,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     ipIndicatorFeeds?: pulumi.Input<boolean>;
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      */
     l4override?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsL4override>;
     /**
@@ -15631,11 +16086,11 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     payloadLog?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog>;
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      */
     quarantine?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine>;
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      */
     redirect?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsRedirect>;
     /**
@@ -15719,11 +16174,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: pulumi.Input<string>;
 }
@@ -15807,11 +16262,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -15840,15 +16295,15 @@ export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      */
     preservePathAndQuery?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      */
     targetUri: pulumi.Input<string>;
 }
@@ -15934,7 +16389,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCertificate>;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      *
      * @deprecated This attribute is deprecated.
      */
@@ -15952,7 +16407,7 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     hostSelector?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsHostSelector>;
     /**
-     * Setting to define inspection settings
+     * Setting to define inspection settings.
      */
     inspection?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsInspection>;
     /**
@@ -15997,11 +16452,11 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirus {
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on
+     * Set notification on.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -16020,7 +16475,7 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     backgroundColor?: pulumi.Input<string>;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -16057,11 +16512,11 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     name?: pulumi.Input<string>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
@@ -16073,7 +16528,7 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     targetUri?: pulumi.Input<string>;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
@@ -16110,7 +16565,7 @@ export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      */
     enabled: pulumi.Input<boolean>;
     /**
@@ -16126,22 +16581,22 @@ export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * Version number of the setting
+     * Version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      */
     tls?: pulumi.Input<boolean>;
 }
@@ -16191,7 +16646,7 @@ export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
 
 export interface ZeroTrustListItem {
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      */
     description?: pulumi.Input<string>;
     /**

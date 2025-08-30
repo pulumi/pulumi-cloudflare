@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersBrowserTtl {
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     private Integer default_;
     /**
-     * @return Determines which browser ttl mode to use.
+     * @return The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */
@@ -25,14 +25,14 @@ public final class GetRulesetRuleActionParametersBrowserTtl {
 
     private GetRulesetRuleActionParametersBrowserTtl() {}
     /**
-     * @return The TTL (in seconds) if you choose override_origin mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
      * 
      */
     public Integer default_() {
         return this.default_;
     }
     /**
-     * @return Determines which browser ttl mode to use.
+     * @return The browser TTL mode.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;, &#34;bypass&#34;.
      * 
      */

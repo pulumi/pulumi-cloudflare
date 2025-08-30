@@ -28,6 +28,7 @@ import (
 //			_, err := cloudflare.LookupListItems(ctx, &cloudflare.LookupListItemsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
+//				PerPage:   pulumi.IntRef(1),
 //				Search:    pulumi.StringRef("1.1.1."),
 //			}, nil)
 //			if err != nil {
@@ -56,6 +57,8 @@ type LookupListItemsArgs struct {
 	ListId string `pulumi:"listId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+	PerPage *int `pulumi:"perPage"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
 	Search *string `pulumi:"search"`
 }
@@ -70,6 +73,8 @@ type LookupListItemsResult struct {
 	ListId string `pulumi:"listId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+	PerPage *int `pulumi:"perPage"`
 	// The items returned by the data source
 	Results []GetListItemsResult `pulumi:"results"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -93,6 +98,8 @@ type LookupListItemsOutputArgs struct {
 	ListId pulumi.StringInput `pulumi:"listId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+	PerPage pulumi.IntPtrInput `pulumi:"perPage"`
 	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
 	Search pulumi.StringPtrInput `pulumi:"search"`
 }
@@ -134,6 +141,11 @@ func (o LookupListItemsResultOutput) ListId() pulumi.StringOutput {
 // Max items to fetch, default: 1000
 func (o LookupListItemsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupListItemsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
+}
+
+// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+func (o LookupListItemsResultOutput) PerPage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupListItemsResult) *int { return v.PerPage }).(pulumi.IntPtrOutput)
 }
 
 // The items returned by the data source

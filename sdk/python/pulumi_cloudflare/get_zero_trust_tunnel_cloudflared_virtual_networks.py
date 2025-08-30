@@ -27,7 +27,7 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworksResult:
     """
     A collection of values returned by getZeroTrustTunnelCloudflaredVirtualNetworks.
     """
-    def __init__(__self__, account_id=None, id=None, is_default=None, is_deleted=None, max_items=None, name=None, results=None):
+    def __init__(__self__, account_id=None, id=None, is_default=None, is_default_network=None, is_deleted=None, max_items=None, name=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -37,6 +37,9 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworksResult:
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
+        if is_default_network and not isinstance(is_default_network, bool):
+            raise TypeError("Expected argument 'is_default_network' to be a bool")
+        pulumi.set(__self__, "is_default_network", is_default_network)
         if is_deleted and not isinstance(is_deleted, bool):
             raise TypeError("Expected argument 'is_deleted' to be a bool")
         pulumi.set(__self__, "is_deleted", is_deleted)
@@ -73,6 +76,14 @@ class GetZeroTrustTunnelCloudflaredVirtualNetworksResult:
         If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
         """
         return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefaultNetwork")
+    def is_default_network(self) -> Optional[_builtins.bool]:
+        """
+        If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        """
+        return pulumi.get(self, "is_default_network")
 
     @_builtins.property
     @pulumi.getter(name="isDeleted")
@@ -116,6 +127,7 @@ class AwaitableGetZeroTrustTunnelCloudflaredVirtualNetworksResult(GetZeroTrustTu
             account_id=self.account_id,
             id=self.id,
             is_default=self.is_default,
+            is_default_network=self.is_default_network,
             is_deleted=self.is_deleted,
             max_items=self.max_items,
             name=self.name,
@@ -125,6 +137,7 @@ class AwaitableGetZeroTrustTunnelCloudflaredVirtualNetworksResult(GetZeroTrustTu
 def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_builtins.str] = None,
                                                        id: Optional[_builtins.str] = None,
                                                        is_default: Optional[_builtins.bool] = None,
+                                                       is_default_network: Optional[_builtins.bool] = None,
                                                        is_deleted: Optional[_builtins.bool] = None,
                                                        max_items: Optional[_builtins.int] = None,
                                                        name: Optional[_builtins.str] = None,
@@ -139,6 +152,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
     example_zero_trust_tunnel_cloudflared_virtual_networks = cloudflare.get_zero_trust_tunnel_cloudflared_virtual_networks(account_id="699d98642c564d2e855e9661899b7252",
         id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         is_default=True,
+        is_default_network=True,
         is_deleted=True,
         name="us-east-1-vpc")
     ```
@@ -147,6 +161,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str id: UUID of the virtual network.
     :param _builtins.bool is_default: If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+    :param _builtins.bool is_default_network: If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
     :param _builtins.bool is_deleted: If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: A user-friendly name for the virtual network.
@@ -155,6 +170,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
     __args__['accountId'] = account_id
     __args__['id'] = id
     __args__['isDefault'] = is_default
+    __args__['isDefaultNetwork'] = is_default_network
     __args__['isDeleted'] = is_deleted
     __args__['maxItems'] = max_items
     __args__['name'] = name
@@ -165,6 +181,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         is_default=pulumi.get(__ret__, 'is_default'),
+        is_default_network=pulumi.get(__ret__, 'is_default_network'),
         is_deleted=pulumi.get(__ret__, 'is_deleted'),
         max_items=pulumi.get(__ret__, 'max_items'),
         name=pulumi.get(__ret__, 'name'),
@@ -172,6 +189,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks(account_id: Optional[_bui
 def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                                               id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                               is_default: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                                                              is_default_network: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                                               is_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                                               max_items: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                                               name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -186,6 +204,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Option
     example_zero_trust_tunnel_cloudflared_virtual_networks = cloudflare.get_zero_trust_tunnel_cloudflared_virtual_networks(account_id="699d98642c564d2e855e9661899b7252",
         id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         is_default=True,
+        is_default_network=True,
         is_deleted=True,
         name="us-east-1-vpc")
     ```
@@ -194,6 +213,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Option
     :param _builtins.str account_id: Cloudflare account ID
     :param _builtins.str id: UUID of the virtual network.
     :param _builtins.bool is_default: If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+    :param _builtins.bool is_default_network: If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
     :param _builtins.bool is_deleted: If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     :param _builtins.str name: A user-friendly name for the virtual network.
@@ -202,6 +222,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Option
     __args__['accountId'] = account_id
     __args__['id'] = id
     __args__['isDefault'] = is_default
+    __args__['isDefaultNetwork'] = is_default_network
     __args__['isDeleted'] = is_deleted
     __args__['maxItems'] = max_items
     __args__['name'] = name
@@ -211,6 +232,7 @@ def get_zero_trust_tunnel_cloudflared_virtual_networks_output(account_id: Option
         account_id=pulumi.get(__response__, 'account_id'),
         id=pulumi.get(__response__, 'id'),
         is_default=pulumi.get(__response__, 'is_default'),
+        is_default_network=pulumi.get(__response__, 'is_default_network'),
         is_deleted=pulumi.get(__response__, 'is_deleted'),
         max_items=pulumi.get(__response__, 'max_items'),
         name=pulumi.get(__response__, 'name'),

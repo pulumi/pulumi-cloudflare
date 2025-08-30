@@ -19,7 +19,7 @@ public final class TeamsAccountSettingsCustomCertificate {
      */
     private @Nullable String bindingStatus;
     /**
-     * @return Enable use of custom certificate authority for signing Gateway traffic.
+     * @return Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     private Boolean enabled;
@@ -39,7 +39,7 @@ public final class TeamsAccountSettingsCustomCertificate {
         return Optional.ofNullable(this.bindingStatus);
     }
     /**
-     * @return Enable use of custom certificate authority for signing Gateway traffic.
+     * @return Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     public Boolean enabled() {

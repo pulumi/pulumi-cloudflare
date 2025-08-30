@@ -257,14 +257,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Send matching traffic to the supplied destination IP address and port.
+     * Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     @Import(name="l4override")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs> l4override;
 
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs>> l4override() {
@@ -332,14 +332,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Settings that apply to quarantine rules
+     * Settings that apply to quarantine rules.
      * 
      */
     @Import(name="quarantine")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs> quarantine;
 
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs>> quarantine() {
@@ -347,14 +347,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Settings that apply to redirect rules
+     * Settings that apply to redirect rules.
      * 
      */
     @Import(name="redirect")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsRedirectArgs> redirect;
 
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsRedirectArgs>> redirect() {
@@ -770,7 +770,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param l4override Send matching traffic to the supplied destination IP address and port.
+         * @param l4override Send matching traffic to the supplied destination IP address. and port.
          * 
          * @return builder
          * 
@@ -781,7 +781,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param l4override Send matching traffic to the supplied destination IP address and port.
+         * @param l4override Send matching traffic to the supplied destination IP address. and port.
          * 
          * @return builder
          * 
@@ -885,7 +885,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param quarantine Settings that apply to quarantine rules
+         * @param quarantine Settings that apply to quarantine rules.
          * 
          * @return builder
          * 
@@ -896,7 +896,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param quarantine Settings that apply to quarantine rules
+         * @param quarantine Settings that apply to quarantine rules.
          * 
          * @return builder
          * 
@@ -906,7 +906,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param redirect Settings that apply to redirect rules
+         * @param redirect Settings that apply to redirect rules.
          * 
          * @return builder
          * 
@@ -917,7 +917,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param redirect Settings that apply to redirect rules
+         * @param redirect Settings that apply to redirect rules.
          * 
          * @return builder
          * 

@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegionalTieredCacheArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegionalTieredCacheInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -112,11 +112,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetRegionalTieredCacheResult
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         public readonly bool Editable;
         /// <summary>
-        /// ID of the zone setting.
+        /// The identifier of the caching setting.
         /// Available values: "tc_regional".
         /// </summary>
         public readonly string Id;
@@ -125,12 +125,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// The value of the feature
+        /// Value of the Regional Tiered Cache zone setting.
         /// Available values: "on", "off".
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

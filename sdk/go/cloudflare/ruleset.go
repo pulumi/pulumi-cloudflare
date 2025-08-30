@@ -14,6 +14,42 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewRuleset(ctx, "example_ruleset", &cloudflare.RulesetArgs{
+//				ZoneId:      pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
+//				Name:        pulumi.String("My ruleset"),
+//				Phase:       pulumi.String("http_request_firewall_custom"),
+//				Kind:        pulumi.String("root"),
+//				Description: pulumi.String("A description for my ruleset."),
+//				Rules: cloudflare.RulesetRuleArray{
+//					&cloudflare.RulesetRuleArgs{
+//						Description: pulumi.String("Block the request."),
+//						Expression:  pulumi.String("ip.src ne 1.1.1.1"),
+//						Action:      pulumi.String("block"),
+//						Ref:         pulumi.String("my_rule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

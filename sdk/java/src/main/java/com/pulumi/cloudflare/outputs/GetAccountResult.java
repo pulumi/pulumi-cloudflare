@@ -40,6 +40,11 @@ public final class GetAccountResult {
      * 
      */
     private GetAccountSettings settings;
+    /**
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * 
+     */
+    private String type;
 
     private GetAccountResult() {}
     /**
@@ -80,6 +85,13 @@ public final class GetAccountResult {
     public GetAccountSettings settings() {
         return this.settings;
     }
+    /**
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -96,6 +108,7 @@ public final class GetAccountResult {
         private String id;
         private String name;
         private GetAccountSettings settings;
+        private String type;
         public Builder() {}
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -105,6 +118,7 @@ public final class GetAccountResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -151,6 +165,14 @@ public final class GetAccountResult {
             this.settings = settings;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
         public GetAccountResult build() {
             final var _resultValue = new GetAccountResult();
             _resultValue.accountId = accountId;
@@ -159,6 +181,7 @@ public final class GetAccountResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.settings = settings;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

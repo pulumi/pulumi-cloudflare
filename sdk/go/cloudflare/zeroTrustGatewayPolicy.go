@@ -37,25 +37,25 @@ type ZeroTrustGatewayPolicy struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration ZeroTrustGatewayPolicyExpirationOutput `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayOutput `pulumi:"filters"`
 	Identity pulumi.StringOutput      `pulumi:"identity"`
 	// The name of the rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable pulumi.BoolOutput `pulumi:"notSharable"`
 	Precedence  pulumi.IntOutput  `pulumi:"precedence"`
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule ZeroTrustGatewayPolicyScheduleOutput `pulumi:"schedule"`
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount pulumi.StringOutput `pulumi:"sourceAccount"`
 	Traffic       pulumi.StringOutput `pulumi:"traffic"`
 	UpdatedAt     pulumi.StringOutput `pulumi:"updatedAt"`
-	// version number of the rule
+	// version number of the rule.
 	Version pulumi.IntOutput `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
 	WarningStatus pulumi.StringOutput `pulumi:"warningStatus"`
@@ -121,25 +121,25 @@ type zeroTrustGatewayPolicyState struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *ZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
 	Name *string `pulumi:"name"`
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable *bool `pulumi:"notSharable"`
 	Precedence  *int  `pulumi:"precedence"`
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *ZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule *ZeroTrustGatewayPolicySchedule `pulumi:"schedule"`
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount *string `pulumi:"sourceAccount"`
 	Traffic       *string `pulumi:"traffic"`
 	UpdatedAt     *string `pulumi:"updatedAt"`
-	// version number of the rule
+	// version number of the rule.
 	Version *int `pulumi:"version"`
 	// Warning for a misconfigured rule, if any.
 	WarningStatus *string `pulumi:"warningStatus"`
@@ -161,25 +161,25 @@ type ZeroTrustGatewayPolicyState struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration ZeroTrustGatewayPolicyExpirationPtrInput
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
 	Name pulumi.StringPtrInput
-	// The rule cannot be shared via the Orgs API
+	// The rule cannot be shared via the Orgs API.
 	NotSharable pulumi.BoolPtrInput
 	Precedence  pulumi.IntPtrInput
-	// The rule was shared via the Orgs API and cannot be edited by the current account
+	// The rule was shared via the Orgs API and cannot be edited by the current account.
 	ReadOnly pulumi.BoolPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsPtrInput
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
 	Schedule ZeroTrustGatewayPolicySchedulePtrInput
-	// account tag of account that created the rule
+	// account tag of account that created the rule.
 	SourceAccount pulumi.StringPtrInput
 	Traffic       pulumi.StringPtrInput
 	UpdatedAt     pulumi.StringPtrInput
-	// version number of the rule
+	// version number of the rule.
 	Version pulumi.IntPtrInput
 	// Warning for a misconfigured rule, if any.
 	WarningStatus pulumi.StringPtrInput
@@ -202,7 +202,7 @@ type zeroTrustGatewayPolicyArgs struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration *ZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  []string `pulumi:"filters"`
 	Identity *string  `pulumi:"identity"`
 	// The name of the rule.
@@ -229,7 +229,7 @@ type ZeroTrustGatewayPolicyArgs struct {
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration ZeroTrustGatewayPolicyExpirationPtrInput
-	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 	Filters  pulumi.StringArrayInput
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
@@ -368,7 +368,7 @@ func (o ZeroTrustGatewayPolicyOutput) Expiration() ZeroTrustGatewayPolicyExpirat
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyExpirationOutput { return v.Expiration }).(ZeroTrustGatewayPolicyExpirationOutput)
 }
 
-// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
 func (o ZeroTrustGatewayPolicyOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
 }
@@ -382,7 +382,7 @@ func (o ZeroTrustGatewayPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The rule cannot be shared via the Orgs API
+// The rule cannot be shared via the Orgs API.
 func (o ZeroTrustGatewayPolicyOutput) NotSharable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolOutput { return v.NotSharable }).(pulumi.BoolOutput)
 }
@@ -391,7 +391,7 @@ func (o ZeroTrustGatewayPolicyOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
-// The rule was shared via the Orgs API and cannot be edited by the current account
+// The rule was shared via the Orgs API and cannot be edited by the current account.
 func (o ZeroTrustGatewayPolicyOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
@@ -406,7 +406,7 @@ func (o ZeroTrustGatewayPolicyOutput) Schedule() ZeroTrustGatewayPolicyScheduleO
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyScheduleOutput { return v.Schedule }).(ZeroTrustGatewayPolicyScheduleOutput)
 }
 
-// account tag of account that created the rule
+// account tag of account that created the rule.
 func (o ZeroTrustGatewayPolicyOutput) SourceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.SourceAccount }).(pulumi.StringOutput)
 }
@@ -419,7 +419,7 @@ func (o ZeroTrustGatewayPolicyOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// version number of the rule
+// version number of the rule.
 func (o ZeroTrustGatewayPolicyOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }

@@ -102,7 +102,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
      */
     private Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsL4override l4override;
@@ -127,12 +127,12 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
      */
     private GetZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
@@ -259,7 +259,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         return this.ipIndicatorFeeds;
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address and port.
+     * @return Send matching traffic to the supplied destination IP address. and port.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsL4override l4override() {
@@ -294,14 +294,14 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         return this.payloadLog;
     }
     /**
-     * @return Settings that apply to quarantine rules
+     * @return Settings that apply to quarantine rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine() {
         return this.quarantine;
     }
     /**
-     * @return Settings that apply to redirect rules
+     * @return Settings that apply to redirect rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect() {

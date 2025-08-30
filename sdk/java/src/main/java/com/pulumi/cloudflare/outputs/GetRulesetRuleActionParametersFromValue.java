@@ -7,46 +7,44 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersFromValueTarg
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetRulesetRuleActionParametersFromValue {
     /**
-     * @return Keep the query string of the original request.
+     * @return Whether to keep the query string of the original request.
      * 
      */
     private Boolean preserveQueryString;
     /**
-     * @return The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * @return The status code to use for the redirect.
      * 
      */
-    private Double statusCode;
+    private Integer statusCode;
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     private GetRulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private GetRulesetRuleActionParametersFromValue() {}
     /**
-     * @return Keep the query string of the original request.
+     * @return Whether to keep the query string of the original request.
      * 
      */
     public Boolean preserveQueryString() {
         return this.preserveQueryString;
     }
     /**
-     * @return The status code to be used for the redirect.
-     * Available values: 301, 302, 303, 307, 308.
+     * @return The status code to use for the redirect.
      * 
      */
-    public Double statusCode() {
+    public Integer statusCode() {
         return this.statusCode;
     }
     /**
-     * @return The URL to redirect the request to.
+     * @return A URL to redirect the request to.
      * 
      */
     public GetRulesetRuleActionParametersFromValueTargetUrl targetUrl() {
@@ -63,7 +61,7 @@ public final class GetRulesetRuleActionParametersFromValue {
     @CustomType.Builder
     public static final class Builder {
         private Boolean preserveQueryString;
-        private Double statusCode;
+        private Integer statusCode;
         private GetRulesetRuleActionParametersFromValueTargetUrl targetUrl;
         public Builder() {}
         public Builder(GetRulesetRuleActionParametersFromValue defaults) {
@@ -82,7 +80,7 @@ public final class GetRulesetRuleActionParametersFromValue {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(Double statusCode) {
+        public Builder statusCode(Integer statusCode) {
             if (statusCode == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParametersFromValue", "statusCode");
             }

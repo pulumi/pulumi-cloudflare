@@ -18,14 +18,14 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
     public static final TeamsRuleRuleSettingsRedirectArgs Empty = new TeamsRuleRuleSettingsRedirectArgs();
 
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -33,14 +33,14 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
     }
 
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri
+     * If true, the path and query parameters from the original request will be appended to target_uri.
      * 
      */
     @Import(name="preservePathAndQuery")
     private @Nullable Output<Boolean> preservePathAndQuery;
 
     /**
-     * @return If true, the path and query parameters from the original request will be appended to target_uri
+     * @return If true, the path and query parameters from the original request will be appended to target_uri.
      * 
      */
     public Optional<Output<Boolean>> preservePathAndQuery() {
@@ -48,14 +48,14 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
     }
 
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      * 
      */
     @Import(name="targetUri", required=true)
     private Output<String> targetUri;
 
     /**
-     * @return URI to which the user will be redirected
+     * @return URI to which the user will be redirected.
      * 
      */
     public Output<String> targetUri() {
@@ -89,7 +89,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param preservePathAndQuery If true, the path and query parameters from the original request will be appended to target_uri
+         * @param preservePathAndQuery If true, the path and query parameters from the original request will be appended to target_uri.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param preservePathAndQuery If true, the path and query parameters from the original request will be appended to target_uri
+         * @param preservePathAndQuery If true, the path and query parameters from the original request will be appended to target_uri.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected
+         * @param targetUri URI to which the user will be redirected.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class TeamsRuleRuleSettingsRedirectArgs extends com.pulumi.resource
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected
+         * @param targetUri URI to which the user will be redirected.
          * 
          * @return builder
          * 

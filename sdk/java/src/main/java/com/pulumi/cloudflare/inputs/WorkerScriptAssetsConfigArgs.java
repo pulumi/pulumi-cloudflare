@@ -17,14 +17,14 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     public static final WorkerScriptAssetsConfigArgs Empty = new WorkerScriptAssetsConfigArgs();
 
     /**
-     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
     @Import(name="headers")
     private @Nullable Output<String> headers;
 
     /**
-     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * @return The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
     public Optional<Output<String>> headers() {
@@ -66,14 +66,14 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      * 
      */
     @Import(name="redirects")
     private @Nullable Output<String> redirects;
 
     /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      * 
      */
     public Optional<Output<String>> redirects() {
@@ -148,7 +148,7 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * @param headers The contents of a _headers file (used to attach custom headers on asset responses).
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * @param headers The contents of a _headers file (used to attach custom headers on asset responses).
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * @param redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
          * 
          * @return builder
          * 

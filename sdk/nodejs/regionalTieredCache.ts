@@ -52,7 +52,7 @@ export class RegionalTieredCache extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
@@ -65,7 +65,7 @@ export class RegionalTieredCache extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -106,7 +106,7 @@ export class RegionalTieredCache extends pulumi.CustomResource {
  */
 export interface RegionalTieredCacheState {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     editable?: pulumi.Input<boolean>;
     /**
@@ -119,7 +119,7 @@ export interface RegionalTieredCacheState {
      */
     value?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -134,7 +134,7 @@ export interface RegionalTieredCacheArgs {
      */
     value?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

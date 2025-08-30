@@ -14,14 +14,14 @@ public final class GetTieredCachePlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetTieredCachePlainArgs Empty = new GetTieredCachePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetTieredCachePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

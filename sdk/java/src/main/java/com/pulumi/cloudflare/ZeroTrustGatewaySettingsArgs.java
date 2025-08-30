@@ -25,14 +25,14 @@ public final class ZeroTrustGatewaySettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Account settings
+     * Account settings.
      * 
      */
     @Import(name="settings")
     private @Nullable Output<ZeroTrustGatewaySettingsSettingsArgs> settings;
 
     /**
-     * @return Account settings
+     * @return Account settings.
      * 
      */
     public Optional<Output<ZeroTrustGatewaySettingsSettingsArgs>> settings() {
@@ -74,7 +74,7 @@ public final class ZeroTrustGatewaySettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param settings Account settings
+         * @param settings Account settings.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ZeroTrustGatewaySettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param settings Account settings
+         * @param settings Account settings.
          * 
          * @return builder
          * 

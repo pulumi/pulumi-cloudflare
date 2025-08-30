@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsAccountSettingsCertificateGetArgs>? Certificate { get; set; }
 
         /// <summary>
-        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.TeamsAccountSettingsCustomCertificateGetArgs>? CustomCertificate { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsAccountSettingsHostSelectorGetArgs>? HostSelector { get; set; }
 
         /// <summary>
-        /// Setting to define inspection settings
+        /// Setting to define inspection settings.
         /// </summary>
         [Input("inspection")]
         public Input<Inputs.TeamsAccountSettingsInspectionGetArgs>? Inspection { get; set; }
