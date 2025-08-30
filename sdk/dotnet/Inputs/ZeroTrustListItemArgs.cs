@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the list item, if present
+        /// The description of the list item, if present.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

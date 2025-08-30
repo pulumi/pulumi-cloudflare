@@ -28,7 +28,7 @@ export function getZoneCacheReserve(args: GetZoneCacheReserveArgs, opts?: pulumi
  */
 export interface GetZoneCacheReserveArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -38,11 +38,11 @@ export interface GetZoneCacheReserveArgs {
  */
 export interface GetZoneCacheReserveResult {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     readonly editable: boolean;
     /**
-     * ID of the zone setting.
+     * The identifier of the caching setting.
      * Available values: "cacheReserve".
      */
     readonly id: string;
@@ -51,12 +51,12 @@ export interface GetZoneCacheReserveResult {
      */
     readonly modifiedOn: string;
     /**
-     * The value of the feature
+     * Value of the Cache Reserve zone setting.
      * Available values: "on", "off".
      */
     readonly value: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -84,7 +84,7 @@ export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, o
  */
 export interface GetZoneCacheReserveOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -50,6 +50,21 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    @Import(name="bmCookieEnabled")
+    private @Nullable Output<Boolean> bmCookieEnabled;
+
+    /**
+     * @return Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    public Optional<Output<Boolean>> bmCookieEnabled() {
+        return Optional.ofNullable(this.bmCookieEnabled);
+    }
+
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
@@ -261,6 +276,7 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
     private BotManagementState(BotManagementState $) {
         this.aiBotsProtection = $.aiBotsProtection;
         this.autoUpdateModel = $.autoUpdateModel;
+        this.bmCookieEnabled = $.bmCookieEnabled;
         this.crawlerProtection = $.crawlerProtection;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
@@ -336,6 +352,27 @@ public final class BotManagementState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder autoUpdateModel(Boolean autoUpdateModel) {
             return autoUpdateModel(Output.of(autoUpdateModel));
+        }
+
+        /**
+         * @param bmCookieEnabled Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bmCookieEnabled(@Nullable Output<Boolean> bmCookieEnabled) {
+            $.bmCookieEnabled = bmCookieEnabled;
+            return this;
+        }
+
+        /**
+         * @param bmCookieEnabled Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bmCookieEnabled(Boolean bmCookieEnabled) {
+            return bmCookieEnabled(Output.of(bmCookieEnabled));
         }
 
         /**

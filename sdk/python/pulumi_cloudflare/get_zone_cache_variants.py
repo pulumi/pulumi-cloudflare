@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetZoneCacheVariantsResult',
@@ -36,8 +37,8 @@ class GetZoneCacheVariantsResult:
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
-        if value and not isinstance(value, str):
-            raise TypeError("Expected argument 'value' to be a str")
+        if value and not isinstance(value, dict):
+            raise TypeError("Expected argument 'value' to be a dict")
         pulumi.set(__self__, "value", value)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
@@ -47,7 +48,7 @@ class GetZoneCacheVariantsResult:
     @pulumi.getter
     def editable(self) -> _builtins.bool:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -55,7 +56,7 @@ class GetZoneCacheVariantsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the zone setting.
+        The identifier of the caching setting.
         Available values: "variants".
         """
         return pulumi.get(self, "id")
@@ -70,9 +71,9 @@ class GetZoneCacheVariantsResult:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> _builtins.str:
+    def value(self) -> 'outputs.GetZoneCacheVariantsValueResult':
         """
-        The value of the feature
+        Value of the zone setting.
         """
         return pulumi.get(self, "value")
 
@@ -80,7 +81,7 @@ class GetZoneCacheVariantsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -111,7 +112,7 @@ def get_zone_cache_variants(zone_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -137,7 +138,7 @@ def get_zone_cache_variants_output(zone_id: Optional[pulumi.Input[_builtins.str]
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

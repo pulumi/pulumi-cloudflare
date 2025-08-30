@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerScriptAssetsConfig
     {
         /// <summary>
-        /// The contents of a _headers file (used to attach custom headers on asset responses)
+        /// The contents of a _headers file (used to attach custom headers on asset responses).
         /// </summary>
         public readonly string? Headers;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NotFoundHandling;
         /// <summary>
-        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
         /// </summary>
         public readonly string? Redirects;
         /// <summary>

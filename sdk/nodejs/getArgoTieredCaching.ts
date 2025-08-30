@@ -28,7 +28,7 @@ export function getArgoTieredCaching(args: GetArgoTieredCachingArgs, opts?: pulu
  */
 export interface GetArgoTieredCachingArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -38,11 +38,11 @@ export interface GetArgoTieredCachingArgs {
  */
 export interface GetArgoTieredCachingResult {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     readonly editable: boolean;
     /**
-     * ID of the zone setting.
+     * The identifier of the caching setting.
      * Available values: "tieredCaching".
      */
     readonly id: string;
@@ -51,12 +51,12 @@ export interface GetArgoTieredCachingResult {
      */
     readonly modifiedOn: string;
     /**
-     * The value of the feature
+     * Value of the Tiered Cache zone setting.
      * Available values: "on", "off".
      */
     readonly value: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -84,7 +84,7 @@ export function getArgoTieredCachingOutput(args: GetArgoTieredCachingOutputArgs,
  */
 export interface GetArgoTieredCachingOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

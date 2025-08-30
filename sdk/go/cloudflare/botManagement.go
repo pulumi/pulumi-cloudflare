@@ -56,6 +56,8 @@ type BotManagement struct {
 	AiBotsProtection pulumi.StringOutput `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolOutput `pulumi:"autoUpdateModel"`
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled pulumi.BoolOutput `pulumi:"bmCookieEnabled"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringOutput `pulumi:"crawlerProtection"`
@@ -128,6 +130,8 @@ type botManagementState struct {
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -168,6 +172,8 @@ type BotManagementState struct {
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled pulumi.BoolPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -212,6 +218,8 @@ type botManagementArgs struct {
 	AiBotsProtection *string `pulumi:"aiBotsProtection"`
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -249,6 +257,8 @@ type BotManagementArgs struct {
 	AiBotsProtection pulumi.StringPtrInput
 	// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 	AutoUpdateModel pulumi.BoolPtrInput
+	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+	BmCookieEnabled pulumi.BoolPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -375,6 +385,11 @@ func (o BotManagementOutput) AiBotsProtection() pulumi.StringOutput {
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
 func (o BotManagementOutput) AutoUpdateModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.AutoUpdateModel }).(pulumi.BoolOutput)
+}
+
+// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+func (o BotManagementOutput) BmCookieEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.BmCookieEnabled }).(pulumi.BoolOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string BackgroundColor;
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -55,11 +55,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account
+        /// This setting was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// Account tag of account that shared this setting
+        /// Account tag of account that shared this setting.
         /// </summary>
         public readonly string SourceAccount;
         /// <summary>
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string TargetUri;
         /// <summary>
-        /// Version number of the setting
+        /// Version number of the setting.
         /// </summary>
         public readonly int Version;
 

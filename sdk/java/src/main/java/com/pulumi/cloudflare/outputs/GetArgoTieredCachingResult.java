@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetArgoTieredCachingResult {
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     private Boolean editable;
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;tiered_caching&#34;.
      * 
      */
@@ -28,27 +28,27 @@ public final class GetArgoTieredCachingResult {
      */
     private String modifiedOn;
     /**
-     * @return The value of the feature
+     * @return Value of the Tiered Cache zone setting.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
     private String value;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetArgoTieredCachingResult() {}
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Boolean editable() {
         return this.editable;
     }
     /**
-     * @return ID of the zone setting.
+     * @return The identifier of the caching setting.
      * Available values: &#34;tiered_caching&#34;.
      * 
      */
@@ -63,7 +63,7 @@ public final class GetArgoTieredCachingResult {
         return this.modifiedOn;
     }
     /**
-     * @return The value of the feature
+     * @return Value of the Tiered Cache zone setting.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetArgoTieredCachingResult {
         return this.value;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

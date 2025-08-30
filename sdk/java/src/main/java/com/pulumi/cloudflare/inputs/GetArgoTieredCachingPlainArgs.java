@@ -14,14 +14,14 @@ public final class GetArgoTieredCachingPlainArgs extends com.pulumi.resources.In
     public static final GetArgoTieredCachingPlainArgs Empty = new GetArgoTieredCachingPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetArgoTieredCachingPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     public partial class TieredCache : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         [Output("editable")]
         public Output<bool> Editable { get; private set; } = null!;
@@ -51,14 +51,14 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the Smart Tiered Cache
+        /// Enable or disable the Smart Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -110,14 +110,14 @@ namespace Pulumi.Cloudflare
     public sealed class TieredCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable or disable the Smart Tiered Cache
+        /// Enable or disable the Smart Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
     public sealed class TieredCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         [Input("editable")]
         public Input<bool>? Editable { get; set; }
@@ -143,14 +143,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Enable or disable the Smart Tiered Cache
+        /// Enable or disable the Smart Tiered Cache.
         /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

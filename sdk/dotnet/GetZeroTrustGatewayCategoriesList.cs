@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustGatewayCategoriesListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustGatewayCategoriesListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustGatewayCategoriesListResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

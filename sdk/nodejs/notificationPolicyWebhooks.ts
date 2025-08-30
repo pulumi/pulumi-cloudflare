@@ -79,7 +79,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
     public readonly secret!: pulumi.Output<string | undefined>;
     /**
      * Type of webhook endpoint.
-     * Available values: "slack", "generic", "gchat".
+     * Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -165,7 +165,7 @@ export interface NotificationPolicyWebhooksState {
     secret?: pulumi.Input<string>;
     /**
      * Type of webhook endpoint.
-     * Available values: "slack", "generic", "gchat".
+     * Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
      */
     type?: pulumi.Input<string>;
     /**

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BindingStatus;
         /// <summary>
-        /// Enable use of custom certificate authority for signing Gateway traffic.
+        /// Enable use of custom certificate authority for signing Gateway. traffic.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

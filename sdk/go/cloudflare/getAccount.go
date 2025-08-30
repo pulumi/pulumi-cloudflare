@@ -66,6 +66,8 @@ type LookupAccountResult struct {
 	Name string `pulumi:"name"`
 	// Account settings
 	Settings GetAccountSettings `pulumi:"settings"`
+	// Available values: "standard", "enterprise".
+	Type string `pulumi:"type"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -130,6 +132,11 @@ func (o LookupAccountResultOutput) Name() pulumi.StringOutput {
 // Account settings
 func (o LookupAccountResultOutput) Settings() GetAccountSettingsOutput {
 	return o.ApplyT(func(v LookupAccountResult) GetAccountSettings { return v.Settings }).(GetAccountSettingsOutput)
+}
+
+// Available values: "standard", "enterprise".
+func (o LookupAccountResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {

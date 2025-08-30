@@ -33,14 +33,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -170,14 +170,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account
+     * This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -185,14 +185,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Account tag of account that shared this setting
+     * Account tag of account that shared this setting.
      * 
      */
     @Import(name="sourceAccount")
     private @Nullable Output<String> sourceAccount;
 
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     public Optional<Output<String>> sourceAccount() {
@@ -230,14 +230,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Version number of the setting
+     * Version number of the setting.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -304,7 +304,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account
+         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account
+         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting
+         * @param sourceAccount Account tag of account that shared this setting.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting
+         * @param sourceAccount Account tag of account that shared this setting.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param version Version number of the setting
+         * @param version Version number of the setting.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param version Version number of the setting
+         * @param version Version number of the setting.
          * 
          * @return builder
          * 

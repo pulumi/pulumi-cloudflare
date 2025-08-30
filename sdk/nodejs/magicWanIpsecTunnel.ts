@@ -9,32 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleMagicWanIpsecTunnel = new cloudflare.MagicWanIpsecTunnel("example_magic_wan_ipsec_tunnel", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     cloudflareEndpoint: "203.0.113.1",
- *     interfaceAddress: "192.0.2.0/31",
- *     name: "IPsec_1",
- *     customerEndpoint: "203.0.113.1",
- *     description: "Tunnel for ISP X",
- *     healthCheck: {
- *         direction: "bidirectional",
- *         enabled: true,
- *         rate: "low",
- *         target: {
- *             saved: "203.0.113.1",
- *         },
- *         type: "request",
- *     },
- *     interfaceAddress6: "2606:54c1:7:0:a9fe:12d2:1:200/127",
- *     psk: "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
- *     replayProtection: false,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

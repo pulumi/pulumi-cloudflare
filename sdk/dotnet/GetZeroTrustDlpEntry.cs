@@ -138,6 +138,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
+        public readonly Outputs.GetZeroTrustDlpEntryVariantResult Variant;
         public readonly string WordList;
 
         [OutputConstructor]
@@ -168,6 +169,8 @@ namespace Pulumi.Cloudflare
 
             string updatedAt,
 
+            Outputs.GetZeroTrustDlpEntryVariantResult variant,
+
             string wordList)
         {
             AccountId = accountId;
@@ -183,6 +186,7 @@ namespace Pulumi.Cloudflare
             Secret = secret;
             Type = type;
             UpdatedAt = updatedAt;
+            Variant = variant;
             WordList = wordList;
         }
     }

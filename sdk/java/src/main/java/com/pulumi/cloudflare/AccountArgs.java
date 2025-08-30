@@ -49,20 +49,18 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-     * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
@@ -150,20 +148,18 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
-         * Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+         * @param type Available values: &#34;standard&#34;, &#34;enterprise&#34;.
          * 
          * @return builder
          * 
@@ -196,9 +192,6 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         public AccountArgs build() {
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("AccountArgs", "name");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("AccountArgs", "type");
             }
             return $;
         }

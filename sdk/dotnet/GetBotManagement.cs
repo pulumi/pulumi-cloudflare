@@ -121,6 +121,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool AutoUpdateModel;
         /// <summary>
+        /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        /// </summary>
+        public readonly bool BmCookieEnabled;
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -189,6 +193,8 @@ namespace Pulumi.Cloudflare
 
             bool autoUpdateModel,
 
+            bool bmCookieEnabled,
+
             string crawlerProtection,
 
             bool enableJs,
@@ -219,6 +225,7 @@ namespace Pulumi.Cloudflare
         {
             AiBotsProtection = aiBotsProtection;
             AutoUpdateModel = autoUpdateModel;
+            BmCookieEnabled = bmCookieEnabled;
             CrawlerProtection = crawlerProtection;
             EnableJs = enableJs;
             FightMode = fightMode;

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerScriptAssetsConfig {
     /**
-     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * @return The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
     private @Nullable String headers;
@@ -30,7 +30,7 @@ public final class WorkerScriptAssetsConfig {
      */
     private @Nullable String notFoundHandling;
     /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      * 
      */
     private @Nullable String redirects;
@@ -51,7 +51,7 @@ public final class WorkerScriptAssetsConfig {
 
     private WorkerScriptAssetsConfig() {}
     /**
-     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * @return The contents of a _headers file (used to attach custom headers on asset responses).
      * 
      */
     public Optional<String> headers() {
@@ -74,7 +74,7 @@ public final class WorkerScriptAssetsConfig {
         return Optional.ofNullable(this.notFoundHandling);
     }
     /**
-     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
      * 
      */
     public Optional<String> redirects() {

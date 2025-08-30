@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsBlockPage {
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return URI to which the user will be redirected
+     * @return URI to which the user will be redirected.
      * 
      */
     private String targetUri;
 
     private TeamsRuleRuleSettingsBlockPage() {}
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return URI to which the user will be redirected
+     * @return URI to which the user will be redirected.
      * 
      */
     public String targetUri() {

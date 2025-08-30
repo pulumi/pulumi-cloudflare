@@ -71,9 +71,10 @@ type LookupZeroTrustDlpEntryResult struct {
 	ProfileId string                      `pulumi:"profileId"`
 	Secret    bool                        `pulumi:"secret"`
 	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
-	WordList  string `pulumi:"wordList"`
+	Type      string                      `pulumi:"type"`
+	UpdatedAt string                      `pulumi:"updatedAt"`
+	Variant   GetZeroTrustDlpEntryVariant `pulumi:"variant"`
+	WordList  string                      `pulumi:"wordList"`
 }
 
 func LookupZeroTrustDlpEntryOutput(ctx *pulumi.Context, args LookupZeroTrustDlpEntryOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustDlpEntryResultOutput {
@@ -165,6 +166,10 @@ func (o LookupZeroTrustDlpEntryResultOutput) Type() pulumi.StringOutput {
 
 func (o LookupZeroTrustDlpEntryResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustDlpEntryResultOutput) Variant() GetZeroTrustDlpEntryVariantOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) GetZeroTrustDlpEntryVariant { return v.Variant }).(GetZeroTrustDlpEntryVariantOutput)
 }
 
 func (o LookupZeroTrustDlpEntryResultOutput) WordList() pulumi.StringOutput {

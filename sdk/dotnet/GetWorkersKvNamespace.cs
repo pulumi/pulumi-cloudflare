@@ -136,10 +136,6 @@ namespace Pulumi.Cloudflare
         /// Identifier.
         /// </summary>
         public readonly string AccountId;
-        /// <summary>
-        /// True if new beta namespace, with additional preview features.
-        /// </summary>
-        public readonly bool Beta;
         public readonly Outputs.GetWorkersKvNamespaceFilterResult? Filter;
         /// <summary>
         /// Namespace identifier tag.
@@ -162,8 +158,6 @@ namespace Pulumi.Cloudflare
         private GetWorkersKvNamespaceResult(
             string accountId,
 
-            bool beta,
-
             Outputs.GetWorkersKvNamespaceFilterResult? filter,
 
             string id,
@@ -175,7 +169,6 @@ namespace Pulumi.Cloudflare
             string title)
         {
             AccountId = accountId;
-            Beta = beta;
             Filter = filter;
             Id = id;
             NamespaceId = namespaceId;

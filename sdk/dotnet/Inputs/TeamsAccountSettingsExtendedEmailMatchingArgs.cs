@@ -19,19 +19,19 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account
+        /// This setting was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// Account tag of account that shared this setting
+        /// Account tag of account that shared this setting.
         /// </summary>
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
 
         /// <summary>
-        /// Version number of the setting
+        /// Version number of the setting.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

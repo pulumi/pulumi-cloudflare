@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -112,11 +112,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveResult
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         public readonly bool Editable;
         /// <summary>
-        /// ID of the zone setting.
+        /// The identifier of the caching setting.
         /// Available values: "cache_reserve".
         /// </summary>
         public readonly string Id;
@@ -125,12 +125,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// The value of the feature
+        /// Value of the Cache Reserve zone setting.
         /// Available values: "on", "off".
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

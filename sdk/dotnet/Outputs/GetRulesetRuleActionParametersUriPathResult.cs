@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersUriPathResult
     {
         /// <summary>
-        /// Expression to evaluate for the replacement value.
+        /// An expression that evaluates to a value to rewrite the URI path to.
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// Predefined replacement value.
+        /// A value to rewrite the URI path to.
         /// </summary>
         public readonly string Value;
 

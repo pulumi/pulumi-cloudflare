@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,7 +30,7 @@ export function getZoneCacheVariants(args: GetZoneCacheVariantsArgs, opts?: pulu
  */
 export interface GetZoneCacheVariantsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -38,11 +40,11 @@ export interface GetZoneCacheVariantsArgs {
  */
 export interface GetZoneCacheVariantsResult {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     readonly editable: boolean;
     /**
-     * ID of the zone setting.
+     * The identifier of the caching setting.
      * Available values: "variants".
      */
     readonly id: string;
@@ -51,11 +53,11 @@ export interface GetZoneCacheVariantsResult {
      */
     readonly modifiedOn: string;
     /**
-     * The value of the feature
+     * Value of the zone setting.
      */
-    readonly value: string;
+    readonly value: outputs.GetZoneCacheVariantsValue;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -83,7 +85,7 @@ export function getZoneCacheVariantsOutput(args: GetZoneCacheVariantsOutputArgs,
  */
 export interface GetZoneCacheVariantsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

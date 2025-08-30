@@ -22,6 +22,11 @@ public final class GetAccountMemberResult {
      * 
      */
     private String accountId;
+    /**
+     * @return The contact email address of the user.
+     * 
+     */
+    private String email;
     private @Nullable GetAccountMemberFilter filter;
     /**
      * @return Membership identifier tag.
@@ -62,6 +67,13 @@ public final class GetAccountMemberResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return The contact email address of the user.
+     * 
+     */
+    public String email() {
+        return this.email;
     }
     public Optional<GetAccountMemberFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -120,6 +132,7 @@ public final class GetAccountMemberResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private String email;
         private @Nullable GetAccountMemberFilter filter;
         private String id;
         private @Nullable String memberId;
@@ -131,6 +144,7 @@ public final class GetAccountMemberResult {
         public Builder(GetAccountMemberResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.email = defaults.email;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.memberId = defaults.memberId;
@@ -146,6 +160,14 @@ public final class GetAccountMemberResult {
               throw new MissingRequiredPropertyException("GetAccountMemberResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAccountMemberResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +231,7 @@ public final class GetAccountMemberResult {
         public GetAccountMemberResult build() {
             final var _resultValue = new GetAccountMemberResult();
             _resultValue.accountId = accountId;
+            _resultValue.email = email;
             _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.memberId = memberId;

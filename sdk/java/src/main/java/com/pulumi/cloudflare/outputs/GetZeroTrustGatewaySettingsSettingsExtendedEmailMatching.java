@@ -18,17 +18,17 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
      */
     private Boolean enabled;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     private Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     private String sourceAccount;
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     private Integer version;
@@ -42,21 +42,21 @@ public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
         return this.enabled;
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Boolean readOnly() {
         return this.readOnly;
     }
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     public String sourceAccount() {
         return this.sourceAccount;
     }
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     public Integer version() {

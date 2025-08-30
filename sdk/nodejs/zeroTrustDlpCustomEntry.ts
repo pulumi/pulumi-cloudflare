@@ -24,6 +24,12 @@ import * as utilities from "./utilities";
  *     profileId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '<account_id>/<entry_id>'
+ * ```
  */
 export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     /**
@@ -68,10 +74,11 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
     public readonly profileId!: pulumi.Output<string>;
     public /*out*/ readonly secret!: pulumi.Output<boolean>;
     /**
-     * Available values: "custom", "predefined", "integration".
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly variant!: pulumi.Output<outputs.ZeroTrustDlpCustomEntryVariant>;
     public /*out*/ readonly wordList!: pulumi.Output<string>;
 
     /**
@@ -98,6 +105,7 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
             resourceInputs["secret"] = state ? state.secret : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["variant"] = state ? state.variant : undefined;
             resourceInputs["wordList"] = state ? state.wordList : undefined;
         } else {
             const args = argsOrState as ZeroTrustDlpCustomEntryArgs | undefined;
@@ -121,12 +129,13 @@ export class ZeroTrustDlpCustomEntry extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["pattern"] = args ? args.pattern : undefined;
             resourceInputs["profileId"] = args ? args.profileId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["variant"] = undefined /*out*/;
             resourceInputs["wordList"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,10 +162,11 @@ export interface ZeroTrustDlpCustomEntryState {
     profileId?: pulumi.Input<string>;
     secret?: pulumi.Input<boolean>;
     /**
-     * Available values: "custom", "predefined", "integration".
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
+    variant?: pulumi.Input<inputs.ZeroTrustDlpCustomEntryVariant>;
     wordList?: pulumi.Input<string>;
 }
 
@@ -169,8 +179,4 @@ export interface ZeroTrustDlpCustomEntryArgs {
     name: pulumi.Input<string>;
     pattern: pulumi.Input<inputs.ZeroTrustDlpCustomEntryPattern>;
     profileId: pulumi.Input<string>;
-    /**
-     * Available values: "custom", "predefined", "integration".
-     */
-    type?: pulumi.Input<string>;
 }

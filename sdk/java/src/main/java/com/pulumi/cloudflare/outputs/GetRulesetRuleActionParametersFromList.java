@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersFromList {
     /**
-     * @return Expression that evaluates to the list lookup key.
+     * @return An expression that evaluates to the list lookup key.
      * 
      */
     private String key;
@@ -23,7 +23,7 @@ public final class GetRulesetRuleActionParametersFromList {
 
     private GetRulesetRuleActionParametersFromList() {}
     /**
-     * @return Expression that evaluates to the list lookup key.
+     * @return An expression that evaluates to the list lookup key.
      * 
      */
     public String key() {

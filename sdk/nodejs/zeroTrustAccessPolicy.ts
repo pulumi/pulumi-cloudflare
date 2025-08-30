@@ -126,9 +126,6 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
             if ((!args || args.decision === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
-            if ((!args || args.includes === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'includes'");
-            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -235,7 +232,7 @@ export interface ZeroTrustAccessPolicyArgs {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessPolicyInclude>[]>;
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */

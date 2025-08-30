@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustDlpPredefinedEntryArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedEntryState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryConfidence;
+import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryPattern;
+import com.pulumi.cloudflare.outputs.ZeroTrustDlpPredefinedEntryVariant;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -55,6 +57,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry example &#39;&lt;account_id&gt;/&lt;entry_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry")
 public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomResource {
@@ -64,11 +72,35 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    @Export(name="caseSensitive", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    public Output<Boolean> caseSensitive() {
+        return this.caseSensitive;
+    }
     @Export(name="confidence", refs={ZeroTrustDlpPredefinedEntryConfidence.class}, tree="[0]")
     private Output<ZeroTrustDlpPredefinedEntryConfidence> confidence;
 
     public Output<ZeroTrustDlpPredefinedEntryConfidence> confidence() {
         return this.confidence;
+    }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
@@ -88,6 +120,12 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="pattern", refs={ZeroTrustDlpPredefinedEntryPattern.class}, tree="[0]")
+    private Output<ZeroTrustDlpPredefinedEntryPattern> pattern;
+
+    public Output<ZeroTrustDlpPredefinedEntryPattern> pattern() {
+        return this.pattern;
+    }
     /**
      * This field is not actually used as the owning profile for a predefined entry is already set
      * to a predefined profile
@@ -103,6 +141,44 @@ public class ZeroTrustDlpPredefinedEntry extends com.pulumi.resources.CustomReso
      */
     public Output<Optional<String>> profileId() {
         return Codegen.optional(this.profileId);
+    }
+    @Export(name="secret", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> secret;
+
+    public Output<Boolean> secret() {
+        return this.secret;
+    }
+    /**
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
+    @Export(name="variant", refs={ZeroTrustDlpPredefinedEntryVariant.class}, tree="[0]")
+    private Output<ZeroTrustDlpPredefinedEntryVariant> variant;
+
+    public Output<ZeroTrustDlpPredefinedEntryVariant> variant() {
+        return this.variant;
+    }
+    @Export(name="wordList", refs={String.class}, tree="[0]")
+    private Output<String> wordList;
+
+    public Output<String> wordList() {
+        return this.wordList;
     }
 
     /**

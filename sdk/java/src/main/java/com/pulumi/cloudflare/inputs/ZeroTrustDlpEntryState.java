@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpEntryConfidenceArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpEntryPatternArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpEntryVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -115,6 +116,13 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.updatedAt);
     }
 
+    @Import(name="variant")
+    private @Nullable Output<ZeroTrustDlpEntryVariantArgs> variant;
+
+    public Optional<Output<ZeroTrustDlpEntryVariantArgs>> variant() {
+        return Optional.ofNullable(this.variant);
+    }
+
     @Import(name="wordList")
     private @Nullable Output<String> wordList;
 
@@ -136,6 +144,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         this.secret = $.secret;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
+        this.variant = $.variant;
         this.wordList = $.wordList;
     }
 
@@ -282,6 +291,15 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
 
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder variant(@Nullable Output<ZeroTrustDlpEntryVariantArgs> variant) {
+            $.variant = variant;
+            return this;
+        }
+
+        public Builder variant(ZeroTrustDlpEntryVariantArgs variant) {
+            return variant(Output.of(variant));
         }
 
         public Builder wordList(@Nullable Output<String> wordList) {

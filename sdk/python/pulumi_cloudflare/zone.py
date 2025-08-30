@@ -198,13 +198,19 @@ class _ZoneState:
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
         if permissions is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""permissions is deprecated: This attribute is deprecated.""")
+            warnings.warn("""This has been replaced by Account memberships.""", DeprecationWarning)
+            pulumi.log.warn("""permissions is deprecated: This has been replaced by Account memberships.""")
         if permissions is not None:
             pulumi.set(__self__, "permissions", permissions)
         if plan is not None:
-            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""plan is deprecated: This attribute is deprecated.""")
+            warnings.warn("""Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).""", DeprecationWarning)
+            pulumi.log.warn("""plan is deprecated: Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).""")
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
         if status is not None:
@@ -393,7 +399,7 @@ class _ZoneState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This has been replaced by Account memberships.""")
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Legacy permissions based on legacy user membership information.
@@ -406,7 +412,10 @@ class _ZoneState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).""")
     def plan(self) -> Optional[pulumi.Input['ZonePlanArgs']]:
         """
         A Zones subscription information.
@@ -841,7 +850,7 @@ class Zone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""This has been replaced by Account memberships.""")
     def permissions(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Legacy permissions based on legacy user membership information.
@@ -850,7 +859,10 @@ class Zone(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated.""")
+    @_utilities.deprecated("""Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).""")
     def plan(self) -> pulumi.Output['outputs.ZonePlan']:
         """
         A Zones subscription information.

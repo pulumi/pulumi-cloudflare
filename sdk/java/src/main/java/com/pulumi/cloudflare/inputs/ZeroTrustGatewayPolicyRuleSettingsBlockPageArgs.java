@@ -18,14 +18,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
     public static final ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs();
 
     /**
-     * If true, context information will be passed as query parameters
+     * If true, context information will be passed as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters
+     * @return If true, context information will be passed as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -33,14 +33,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
     }
 
     /**
-     * URI to which the user will be redirected
+     * URI to which the user will be redirected.
      * 
      */
     @Import(name="targetUri", required=true)
     private Output<String> targetUri;
 
     /**
-     * @return URI to which the user will be redirected
+     * @return URI to which the user will be redirected.
      * 
      */
     public Output<String> targetUri() {
@@ -73,7 +73,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters
+         * @param includeContext If true, context information will be passed as query parameters.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected
+         * @param targetUri URI to which the user will be redirected.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs extends com.p
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected
+         * @param targetUri URI to which the user will be redirected.
          * 
          * @return builder
          * 

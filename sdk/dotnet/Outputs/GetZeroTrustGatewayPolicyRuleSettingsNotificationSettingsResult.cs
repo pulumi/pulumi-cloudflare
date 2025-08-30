@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsNotificationSettingsResult
     {
         /// <summary>
-        /// Set notification on
+        /// Set notification on.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// If true, context information will be passed as query parameters
+        /// If true, context information will be passed as query parameters.
         /// </summary>
         public readonly bool IncludeContext;
         /// <summary>

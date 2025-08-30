@@ -3,6 +3,8 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelGreTunnelBgp;
+import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelGreTunnelBgpStatus;
 import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelGreTunnelHealthCheck;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -12,6 +14,8 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMagicWanGreTunnelGreTunnel {
+    private GetMagicWanGreTunnelGreTunnelBgp bgp;
+    private GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus;
     /**
      * @return The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
@@ -70,6 +74,12 @@ public final class GetMagicWanGreTunnelGreTunnel {
     private Integer ttl;
 
     private GetMagicWanGreTunnelGreTunnel() {}
+    public GetMagicWanGreTunnelGreTunnelBgp bgp() {
+        return this.bgp;
+    }
+    public GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus() {
+        return this.bgpStatus;
+    }
     /**
      * @return The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
@@ -160,6 +170,8 @@ public final class GetMagicWanGreTunnelGreTunnel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetMagicWanGreTunnelGreTunnelBgp bgp;
+        private GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus;
         private String cloudflareGreEndpoint;
         private String createdOn;
         private String customerGreEndpoint;
@@ -175,6 +187,8 @@ public final class GetMagicWanGreTunnelGreTunnel {
         public Builder() {}
         public Builder(GetMagicWanGreTunnelGreTunnel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bgp = defaults.bgp;
+    	      this.bgpStatus = defaults.bgpStatus;
     	      this.cloudflareGreEndpoint = defaults.cloudflareGreEndpoint;
     	      this.createdOn = defaults.createdOn;
     	      this.customerGreEndpoint = defaults.customerGreEndpoint;
@@ -189,6 +203,22 @@ public final class GetMagicWanGreTunnelGreTunnel {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder bgp(GetMagicWanGreTunnelGreTunnelBgp bgp) {
+            if (bgp == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnel", "bgp");
+            }
+            this.bgp = bgp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bgpStatus(GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus) {
+            if (bgpStatus == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnel", "bgpStatus");
+            }
+            this.bgpStatus = bgpStatus;
+            return this;
+        }
         @CustomType.Setter
         public Builder cloudflareGreEndpoint(String cloudflareGreEndpoint) {
             if (cloudflareGreEndpoint == null) {
@@ -287,6 +317,8 @@ public final class GetMagicWanGreTunnelGreTunnel {
         }
         public GetMagicWanGreTunnelGreTunnel build() {
             final var _resultValue = new GetMagicWanGreTunnelGreTunnel();
+            _resultValue.bgp = bgp;
+            _resultValue.bgpStatus = bgpStatus;
             _resultValue.cloudflareGreEndpoint = cloudflareGreEndpoint;
             _resultValue.createdOn = createdOn;
             _resultValue.customerGreEndpoint = customerGreEndpoint;

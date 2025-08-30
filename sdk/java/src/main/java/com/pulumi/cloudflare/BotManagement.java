@@ -96,6 +96,20 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
         return this.autoUpdateModel;
     }
     /**
+     * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    @Export(name="bmCookieEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> bmCookieEnabled;
+
+    /**
+     * @return Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    public Output<Boolean> bmCookieEnabled() {
+        return this.bmCookieEnabled;
+    }
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 

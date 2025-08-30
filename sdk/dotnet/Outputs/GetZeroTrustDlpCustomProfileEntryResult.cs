@@ -32,6 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;
+        public readonly Outputs.GetZeroTrustDlpCustomProfileEntryVariantResult Variant;
         public readonly string WordList;
 
         [OutputConstructor]
@@ -58,6 +59,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string updatedAt,
 
+            Outputs.GetZeroTrustDlpCustomProfileEntryVariantResult variant,
+
             string wordList)
         {
             CaseSensitive = caseSensitive;
@@ -71,6 +74,7 @@ namespace Pulumi.Cloudflare.Outputs
             Secret = secret;
             Type = type;
             UpdatedAt = updatedAt;
+            Variant = variant;
             WordList = wordList;
         }
     }

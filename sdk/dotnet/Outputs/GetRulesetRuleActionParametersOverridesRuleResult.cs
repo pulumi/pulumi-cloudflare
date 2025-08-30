@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int ScoreThreshold;
         /// <summary>
-        /// The sensitivity level to use for the rule.
+        /// The sensitivity level to use for the rule. This option is only applicable for DDoS phases.
         /// Available values: "default", "medium", "low", "eoff".
         /// </summary>
         public readonly string SensitivityLevel;

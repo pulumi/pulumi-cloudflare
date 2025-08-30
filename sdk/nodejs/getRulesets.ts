@@ -14,8 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleRulesets = cloudflare.getRulesets({
- *     accountId: "account_id",
- *     zoneId: "zone_id",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
@@ -34,15 +33,15 @@ export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetRulesetsArgs {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: string;
     /**
-     * Max items to fetch, default: 1000
+     * Maximum number of rulesets to fetch (defaults to 1000).
      */
     maxItems?: number;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      */
     zoneId?: string;
 }
@@ -52,7 +51,7 @@ export interface GetRulesetsArgs {
  */
 export interface GetRulesetsResult {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     readonly accountId?: string;
     /**
@@ -60,15 +59,21 @@ export interface GetRulesetsResult {
      */
     readonly id: string;
     /**
-     * Max items to fetch, default: 1000
+     * Maximum number of rulesets to fetch (defaults to 1000).
      */
     readonly maxItems?: number;
     /**
-     * The items returned by the data source
+     * A list of rulesets. The returned information will not include the rules in each ruleset.
+     *
+     * @deprecated Use rulesets instead. This attribute will be removed in the next major version of the provider.
      */
     readonly results: outputs.GetRulesetsResult[];
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * A list of rulesets. The returned information will not include the rules in each ruleset.
+     */
+    readonly rulesets: outputs.GetRulesetsRuleset[];
+    /**
+     * The unique ID of the zone.
      */
     readonly zoneId?: string;
 }
@@ -80,8 +85,7 @@ export interface GetRulesetsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleRulesets = cloudflare.getRulesets({
- *     accountId: "account_id",
- *     zoneId: "zone_id",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
  * });
  * ```
  */
@@ -100,15 +104,15 @@ export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.In
  */
 export interface GetRulesetsOutputArgs {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Max items to fetch, default: 1000
+     * Maximum number of rulesets to fetch (defaults to 1000).
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }

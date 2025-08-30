@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersResponseField {
     /**
-     * @return The name of the field.
+     * @return The name of the response header.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class GetRulesetRuleActionParametersResponseField {
 
     private GetRulesetRuleActionParametersResponseField() {}
     /**
-     * @return The name of the field.
+     * @return The name of the response header.
      * 
      */
     public String name() {

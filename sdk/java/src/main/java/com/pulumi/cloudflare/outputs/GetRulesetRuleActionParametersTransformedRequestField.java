@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersTransformedRequestField {
     /**
-     * @return The name of the field.
+     * @return The name of the header.
      * 
      */
     private String name;
 
     private GetRulesetRuleActionParametersTransformedRequestField() {}
     /**
-     * @return The name of the field.
+     * @return The name of the header.
      * 
      */
     public String name() {

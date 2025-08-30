@@ -63,6 +63,21 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksPlainArgs extends
     }
 
     /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    @Import(name="isDefaultNetwork")
+    private @Nullable Boolean isDefaultNetwork;
+
+    /**
+     * @return If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    public Optional<Boolean> isDefaultNetwork() {
+        return Optional.ofNullable(this.isDefaultNetwork);
+    }
+
+    /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      * 
      */
@@ -113,6 +128,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksPlainArgs extends
         this.accountId = $.accountId;
         this.id = $.id;
         this.isDefault = $.isDefault;
+        this.isDefaultNetwork = $.isDefaultNetwork;
         this.isDeleted = $.isDeleted;
         this.maxItems = $.maxItems;
         this.name = $.name;
@@ -166,6 +182,17 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworksPlainArgs extends
          */
         public Builder isDefault(@Nullable Boolean isDefault) {
             $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefaultNetwork If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultNetwork(@Nullable Boolean isDefaultNetwork) {
+            $.isDefaultNetwork = isDefaultNetwork;
             return this;
         }
 

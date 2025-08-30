@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleExposedCredentialCheckResult
     {
         /// <summary>
-        /// Expression that selects the password used in the credentials check.
+        /// An expression that selects the password used in the credentials check.
         /// </summary>
         public readonly string PasswordExpression;
         /// <summary>
-        /// Expression that selects the user ID used in the credentials check.
+        /// An expression that selects the user ID used in the credentials check.
         /// </summary>
         public readonly string UsernameExpression;
 

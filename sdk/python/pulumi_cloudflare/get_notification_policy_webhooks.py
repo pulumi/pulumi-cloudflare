@@ -119,7 +119,7 @@ class GetNotificationPolicyWebhooksResult:
     def type(self) -> _builtins.str:
         """
         Type of webhook endpoint.
-        Available values: "slack", "generic", "gchat".
+        Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         """
         return pulumi.get(self, "type")
 

@@ -26,7 +26,7 @@ class ZoneCacheVariantsArgs:
         """
         The set of arguments for constructing a ZoneCacheVariants resource.
         :param pulumi.Input['ZoneCacheVariantsValueArgs'] value: Value of the zone setting.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -47,7 +47,7 @@ class ZoneCacheVariantsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -65,10 +65,10 @@ class _ZoneCacheVariantsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneCacheVariants resources.
-        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input['ZoneCacheVariantsValueArgs'] value: Value of the zone setting.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if editable is not None:
             pulumi.set(__self__, "editable", editable)
@@ -83,7 +83,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter
     def editable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -119,7 +119,7 @@ class _ZoneCacheVariantsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -149,7 +149,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']] value: Value of the zone setting.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -221,10 +221,10 @@ class ZoneCacheVariants(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[Union['ZoneCacheVariantsValueArgs', 'ZoneCacheVariantsValueArgsDict']] value: Value of the zone setting.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -240,7 +240,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter
     def editable(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -264,7 +264,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

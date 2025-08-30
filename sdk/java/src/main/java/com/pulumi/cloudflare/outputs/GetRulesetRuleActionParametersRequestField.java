@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersRequestField {
     /**
-     * @return The name of the field.
+     * @return The name of the header.
      * 
      */
     private String name;
 
     private GetRulesetRuleActionParametersRequestField() {}
     /**
-     * @return The name of the field.
+     * @return The name of the header.
      * 
      */
     public String name() {

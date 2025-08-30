@@ -86,6 +86,9 @@ namespace Pulumi.Cloudflare
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
+        [Output("variant")]
+        public Output<Outputs.ZeroTrustDlpEntryVariant> Variant { get; private set; } = null!;
+
         [Output("wordList")]
         public Output<string> WordList { get; private set; } = null!;
 
@@ -204,6 +207,9 @@ namespace Pulumi.Cloudflare
 
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
+
+        [Input("variant")]
+        public Input<Inputs.ZeroTrustDlpEntryVariantGetArgs>? Variant { get; set; }
 
         [Input("wordList")]
         public Input<string>? WordList { get; set; }

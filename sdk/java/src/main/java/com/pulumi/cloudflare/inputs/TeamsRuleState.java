@@ -122,14 +122,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -159,14 +159,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule cannot be shared via the Orgs API
+     * The rule cannot be shared via the Orgs API.
      * 
      */
     @Import(name="notSharable")
     private @Nullable Output<Boolean> notSharable;
 
     /**
-     * @return The rule cannot be shared via the Orgs API
+     * @return The rule cannot be shared via the Orgs API.
      * 
      */
     public Optional<Output<Boolean>> notSharable() {
@@ -181,14 +181,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -226,14 +226,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * account tag of account that created the rule
+     * account tag of account that created the rule.
      * 
      */
     @Import(name="sourceAccount")
     private @Nullable Output<String> sourceAccount;
 
     /**
-     * @return account tag of account that created the rule
+     * @return account tag of account that created the rule.
      * 
      */
     public Optional<Output<String>> sourceAccount() {
@@ -255,14 +255,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * version number of the rule
+     * version number of the rule.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return version number of the rule
+     * @return version number of the rule.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -465,7 +465,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notSharable The rule cannot be shared via the Orgs API
+         * @param notSharable The rule cannot be shared via the Orgs API.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notSharable The rule cannot be shared via the Orgs API
+         * @param notSharable The rule cannot be shared via the Orgs API.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account
+         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account
+         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceAccount account tag of account that created the rule
+         * @param sourceAccount account tag of account that created the rule.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceAccount account tag of account that created the rule
+         * @param sourceAccount account tag of account that created the rule.
          * 
          * @return builder
          * 
@@ -658,7 +658,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version version number of the rule
+         * @param version version number of the rule.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version version number of the rule
+         * @param version version number of the rule.
          * 
          * @return builder
          * 

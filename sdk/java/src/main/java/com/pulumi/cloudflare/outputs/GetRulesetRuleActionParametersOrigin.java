@@ -5,36 +5,36 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetRulesetRuleActionParametersOrigin {
     /**
-     * @return Override the resolved hostname.
+     * @return A resolved host to route to.
      * 
      */
     private String host;
     /**
-     * @return Override the destination port.
+     * @return A destination port to route to.
      * 
      */
-    private Double port;
+    private Integer port;
 
     private GetRulesetRuleActionParametersOrigin() {}
     /**
-     * @return Override the resolved hostname.
+     * @return A resolved host to route to.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return Override the destination port.
+     * @return A destination port to route to.
      * 
      */
-    public Double port() {
+    public Integer port() {
         return this.port;
     }
 
@@ -48,7 +48,7 @@ public final class GetRulesetRuleActionParametersOrigin {
     @CustomType.Builder
     public static final class Builder {
         private String host;
-        private Double port;
+        private Integer port;
         public Builder() {}
         public Builder(GetRulesetRuleActionParametersOrigin defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,7 +65,7 @@ public final class GetRulesetRuleActionParametersOrigin {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Double port) {
+        public Builder port(Integer port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParametersOrigin", "port");
             }

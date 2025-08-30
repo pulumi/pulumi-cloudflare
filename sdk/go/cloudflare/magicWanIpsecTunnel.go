@@ -14,47 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanIpsecTunnel(ctx, "example_magic_wan_ipsec_tunnel", &cloudflare.MagicWanIpsecTunnelArgs{
-//				AccountId:          pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
-//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
-//				Name:               pulumi.String("IPsec_1"),
-//				CustomerEndpoint:   pulumi.String("203.0.113.1"),
-//				Description:        pulumi.String("Tunnel for ISP X"),
-//				HealthCheck: &cloudflare.MagicWanIpsecTunnelHealthCheckArgs{
-//					Direction: pulumi.String("bidirectional"),
-//					Enabled:   pulumi.Bool(true),
-//					Rate:      pulumi.String("low"),
-//					Target: &cloudflare.MagicWanIpsecTunnelHealthCheckTargetArgs{
-//						Saved: pulumi.String("203.0.113.1"),
-//					},
-//					Type: pulumi.String("request"),
-//				},
-//				InterfaceAddress6: pulumi.String("2606:54c1:7:0:a9fe:12d2:1:200/127"),
-//				Psk:               pulumi.String("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"),
-//				ReplayProtection:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

@@ -31,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zoneCacheVariants:ZoneCacheVariants")
 public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      * 
      */
     @Export(name="editable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> editable;
 
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Output<Boolean> editable() {
@@ -73,14 +73,14 @@ public class ZoneCacheVariants extends com.pulumi.resources.CustomResource {
         return this.value;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

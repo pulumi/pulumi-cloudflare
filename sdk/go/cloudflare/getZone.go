@@ -70,9 +70,12 @@ type LookupZoneResult struct {
 	OriginalRegistrar   string         `pulumi:"originalRegistrar"`
 	Owner               GetZoneOwner   `pulumi:"owner"`
 	Paused              bool           `pulumi:"paused"`
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This has been replaced by Account memberships.
 	Permissions []string `pulumi:"permissions"`
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+	// to update a zone's plan. Changing this value will create/cancel
+	// associated subscriptions. To view available plans for this zone,
+	// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 	Plan              GetZonePlan       `pulumi:"plan"`
 	Status            string            `pulumi:"status"`
 	Tenant            GetZoneTenant     `pulumi:"tenant"`
@@ -181,12 +184,15 @@ func (o LookupZoneResultOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
-// Deprecated: This attribute is deprecated.
+// Deprecated: This has been replaced by Account memberships.
 func (o LookupZoneResultOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneResult) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Deprecated: This attribute is deprecated.
+// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+// to update a zone's plan. Changing this value will create/cancel
+// associated subscriptions. To view available plans for this zone,
+// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 func (o LookupZoneResultOutput) Plan() GetZonePlanOutput {
 	return o.ApplyT(func(v LookupZoneResult) GetZonePlan { return v.Plan }).(GetZonePlanOutput)
 }

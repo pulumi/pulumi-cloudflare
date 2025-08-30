@@ -13,20 +13,28 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
     /**
-     * @return Determines whether to exclude all query string parameters from the cache key.
+     * @return Whether to exclude all query string parameters from the cache key.
      * 
      */
     private Boolean all;
+    /**
+     * @return A list of query string parameters to exclude from the cache key.
+     * 
+     */
     private List<String> lists;
 
     private GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude() {}
     /**
-     * @return Determines whether to exclude all query string parameters from the cache key.
+     * @return Whether to exclude all query string parameters from the cache key.
      * 
      */
     public Boolean all() {
         return this.all;
     }
+    /**
+     * @return A list of query string parameters to exclude from the cache key.
+     * 
+     */
     public List<String> lists() {
         return this.lists;
     }

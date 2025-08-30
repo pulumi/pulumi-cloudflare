@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Type of webhook endpoint.
-        /// Available values: "slack", "generic", "gchat".
+        /// Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Type of webhook endpoint.
-        /// Available values: "slack", "generic", "gchat".
+        /// Available values: "datadog", "discord", "feishu", "gchat", "generic", "opsgenie", "slack", "splunk".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -27,7 +27,7 @@ class GetRulesetResult:
     """
     A collection of values returned by getRuleset.
     """
-    def __init__(__self__, account_id=None, description=None, id=None, kind=None, name=None, phase=None, rules=None, ruleset_id=None, zone_id=None):
+    def __init__(__self__, account_id=None, description=None, id=None, kind=None, last_updated=None, name=None, phase=None, rules=None, ruleset_id=None, version=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetRulesetResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if last_updated and not isinstance(last_updated, str):
+            raise TypeError("Expected argument 'last_updated' to be a str")
+        pulumi.set(__self__, "last_updated", last_updated)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -52,6 +55,9 @@ class GetRulesetResult:
         if ruleset_id and not isinstance(ruleset_id, str):
             raise TypeError("Expected argument 'ruleset_id' to be a str")
         pulumi.set(__self__, "ruleset_id", ruleset_id)
+        if version and not isinstance(version, str):
+            raise TypeError("Expected argument 'version' to be a str")
+        pulumi.set(__self__, "version", version)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -60,7 +66,7 @@ class GetRulesetResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[_builtins.str]:
         """
-        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        The unique ID of the account.
         """
         return pulumi.get(self, "account_id")
 
@@ -74,7 +80,7 @@ class GetRulesetResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
+    def id(self) -> Optional[_builtins.str]:
         """
         The unique ID of the ruleset.
         """
@@ -88,6 +94,14 @@ class GetRulesetResult:
         Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> _builtins.str:
+        """
+        The timestamp of when the ruleset was last modified.
+        """
+        return pulumi.get(self, "last_updated")
 
     @_builtins.property
     @pulumi.getter
@@ -116,6 +130,7 @@ class GetRulesetResult:
 
     @_builtins.property
     @pulumi.getter(name="rulesetId")
+    @_utilities.deprecated("""Configure id instead. This attribute will be removed in the next major version of the provider.""")
     def ruleset_id(self) -> Optional[_builtins.str]:
         """
         The unique ID of the ruleset.
@@ -123,10 +138,18 @@ class GetRulesetResult:
         return pulumi.get(self, "ruleset_id")
 
     @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        The version of the ruleset.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
-        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        The unique ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
@@ -141,14 +164,17 @@ class AwaitableGetRulesetResult(GetRulesetResult):
             description=self.description,
             id=self.id,
             kind=self.kind,
+            last_updated=self.last_updated,
             name=self.name,
             phase=self.phase,
             rules=self.rules,
             ruleset_id=self.ruleset_id,
+            version=self.version,
             zone_id=self.zone_id)
 
 
 def get_ruleset(account_id: Optional[_builtins.str] = None,
+                id: Optional[_builtins.str] = None,
                 ruleset_id: Optional[_builtins.str] = None,
                 zone_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRulesetResult:
@@ -159,18 +185,19 @@ def get_ruleset(account_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ruleset = cloudflare.get_ruleset(ruleset_id="2f2feab2026849078ba485f918791bdc",
-        account_id="account_id",
-        zone_id="zone_id")
+    example_ruleset = cloudflare.get_ruleset(zone_id="9f1839b6152d298aca64c4e906b6d074",
+        id="2f2feab2026849078ba485f918791bdc")
     ```
 
 
-    :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param _builtins.str account_id: The unique ID of the account.
+    :param _builtins.str id: The unique ID of the ruleset.
     :param _builtins.str ruleset_id: The unique ID of the ruleset.
-    :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['id'] = id
     __args__['rulesetId'] = ruleset_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -181,12 +208,15 @@ def get_ruleset(account_id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         kind=pulumi.get(__ret__, 'kind'),
+        last_updated=pulumi.get(__ret__, 'last_updated'),
         name=pulumi.get(__ret__, 'name'),
         phase=pulumi.get(__ret__, 'phase'),
         rules=pulumi.get(__ret__, 'rules'),
         ruleset_id=pulumi.get(__ret__, 'ruleset_id'),
+        version=pulumi.get(__ret__, 'version'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_ruleset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        ruleset_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesetResult]:
@@ -197,18 +227,19 @@ def get_ruleset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_ruleset = cloudflare.get_ruleset(ruleset_id="2f2feab2026849078ba485f918791bdc",
-        account_id="account_id",
-        zone_id="zone_id")
+    example_ruleset = cloudflare.get_ruleset(zone_id="9f1839b6152d298aca64c4e906b6d074",
+        id="2f2feab2026849078ba485f918791bdc")
     ```
 
 
-    :param _builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+    :param _builtins.str account_id: The unique ID of the account.
+    :param _builtins.str id: The unique ID of the ruleset.
     :param _builtins.str ruleset_id: The unique ID of the ruleset.
-    :param _builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+    :param _builtins.str zone_id: The unique ID of the zone.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['id'] = id
     __args__['rulesetId'] = ruleset_id
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -218,8 +249,10 @@ def get_ruleset_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         kind=pulumi.get(__response__, 'kind'),
+        last_updated=pulumi.get(__response__, 'last_updated'),
         name=pulumi.get(__response__, 'name'),
         phase=pulumi.get(__response__, 'phase'),
         rules=pulumi.get(__response__, 'rules'),
         ruleset_id=pulumi.get(__response__, 'ruleset_id'),
+        version=pulumi.get(__response__, 'version'),
         zone_id=pulumi.get(__response__, 'zone_id')))

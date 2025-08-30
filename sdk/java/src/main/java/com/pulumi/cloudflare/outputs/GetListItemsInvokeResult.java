@@ -36,6 +36,11 @@ public final class GetListItemsInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     * 
+     */
+    private @Nullable Integer perPage;
+    /**
      * @return The items returned by the data source
      * 
      */
@@ -76,6 +81,13 @@ public final class GetListItemsInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
+     * @return Amount of results to include in each paginated response. A non-negative 32 bit integer.
+     * 
+     */
+    public Optional<Integer> perPage() {
+        return Optional.ofNullable(this.perPage);
+    }
+    /**
      * @return The items returned by the data source
      * 
      */
@@ -103,6 +115,7 @@ public final class GetListItemsInvokeResult {
         private String id;
         private String listId;
         private @Nullable Integer maxItems;
+        private @Nullable Integer perPage;
         private List<GetListItemsResult> results;
         private @Nullable String search;
         public Builder() {}
@@ -112,6 +125,7 @@ public final class GetListItemsInvokeResult {
     	      this.id = defaults.id;
     	      this.listId = defaults.listId;
     	      this.maxItems = defaults.maxItems;
+    	      this.perPage = defaults.perPage;
     	      this.results = defaults.results;
     	      this.search = defaults.search;
         }
@@ -147,6 +161,12 @@ public final class GetListItemsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder perPage(@Nullable Integer perPage) {
+
+            this.perPage = perPage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder results(List<GetListItemsResult> results) {
             if (results == null) {
               throw new MissingRequiredPropertyException("GetListItemsInvokeResult", "results");
@@ -169,6 +189,7 @@ public final class GetListItemsInvokeResult {
             _resultValue.id = id;
             _resultValue.listId = listId;
             _resultValue.maxItems = maxItems;
+            _resultValue.perPage = perPage;
             _resultValue.results = results;
             _resultValue.search = search;
             return _resultValue;

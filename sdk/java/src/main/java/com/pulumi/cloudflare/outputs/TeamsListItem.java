@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsListItem {
     /**
-     * @return The description of the list item, if present
+     * @return The description of the list item, if present.
      * 
      */
     private @Nullable String description;
@@ -24,7 +24,7 @@ public final class TeamsListItem {
 
     private TeamsListItem() {}
     /**
-     * @return The description of the list item, if present
+     * @return The description of the list item, if present.
      * 
      */
     public Optional<String> description() {

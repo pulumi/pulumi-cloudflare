@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringResult
     {
         /// <summary>
-        /// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+        /// Which query string parameters to exclude from the cache key.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeResult Exclude;
         /// <summary>
-        /// A list of query string parameters used to build the cache key.
+        /// Which query string parameters to include in the cache key.
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeResult Include;
 

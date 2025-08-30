@@ -27,7 +27,6 @@ import com.pulumi.cloudflare.outputs.GetRulesetRuleActionParametersUri;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,7 +36,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParameters {
     /**
-     * @return List of additional ports that caching can be enabled on.
+     * @return A list of additional ports that caching should be enabled on.
      * 
      */
     private List<Integer> additionalCacheablePorts;
@@ -47,48 +46,53 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersAlgorithm> algorithms;
     /**
-     * @return Turn on or off Automatic HTTPS Rewrites.
+     * @return The name of a custom asset to serve as the response.
+     * 
+     */
+    private String assetName;
+    /**
+     * @return Whether to enable Automatic HTTPS Rewrites.
      * 
      */
     private Boolean automaticHttpsRewrites;
     /**
-     * @return Select which file extensions to minify automatically.
+     * @return Which file extensions to minify automatically.
      * 
      */
     private GetRulesetRuleActionParametersAutominify autominify;
     /**
-     * @return Turn on or off Browser Integrity Check.
+     * @return Whether to enable Browser Integrity Check (BIC).
      * 
      */
     private Boolean bic;
     /**
-     * @return Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * @return How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     private GetRulesetRuleActionParametersBrowserTtl browserTtl;
     /**
-     * @return Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * @return Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      * 
      */
     private Boolean cache;
     /**
-     * @return Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * @return Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     private GetRulesetRuleActionParametersCacheKey cacheKey;
     /**
-     * @return Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * @return Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     private GetRulesetRuleActionParametersCacheReserve cacheReserve;
     /**
-     * @return Error response content.
+     * @return The response content.
      * 
      */
     private String content;
     /**
-     * @return Content-type header to set with the response.
-     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+     * @return The content type header to set with the error response.
+     * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
      */
     private String contentType;
@@ -98,57 +102,57 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersCookieField> cookieFields;
     /**
-     * @return Turn off all active Cloudflare Apps.
+     * @return Whether to disable Cloudflare Apps.
      * 
      */
     private Boolean disableApps;
     /**
-     * @return Turn off Real User Monitoring (RUM).
+     * @return Whether to disable Real User Monitoring (RUM).
      * 
      */
     private Boolean disableRum;
     /**
-     * @return Turn off Zaraz.
+     * @return Whether to disable Zaraz.
      * 
      */
     private Boolean disableZaraz;
     /**
-     * @return TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * @return How long the Cloudflare edge network should cache the response.
      * 
      */
     private GetRulesetRuleActionParametersEdgeTtl edgeTtl;
     /**
-     * @return Turn on or off Email Obfuscation.
+     * @return Whether to enable Email Obfuscation.
      * 
      */
     private Boolean emailObfuscation;
     /**
-     * @return Turn on or off Cloudflare Fonts.
+     * @return Whether to enable Cloudflare Fonts.
      * 
      */
     private Boolean fonts;
     /**
-     * @return Serve a redirect based on a bulk list lookup.
+     * @return A redirect based on a bulk list lookup.
      * 
      */
     private GetRulesetRuleActionParametersFromList fromList;
     /**
-     * @return Serve a redirect based on the request properties.
+     * @return A redirect based on the request properties.
      * 
      */
     private GetRulesetRuleActionParametersFromValue fromValue;
     /**
-     * @return Map of request headers to modify.
+     * @return A map of headers to rewrite.
      * 
      */
     private Map<String,GetRulesetRuleActionParametersHeaders> headers;
     /**
-     * @return Rewrite the HTTP Host header.
+     * @return A value to rewrite the HTTP host header to.
      * 
      */
     private String hostHeader;
     /**
-     * @return Turn on or off the Hotlink Protection.
+     * @return Whether to enable Hotlink Protection.
      * 
      */
     private Boolean hotlinkProtection;
@@ -158,7 +162,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private String id;
     /**
-     * @return Increment contains the delta to change the score and can be either positive or negative.
+     * @return A delta to change the score by, which can be either positive or negative.
      * 
      */
     private Integer increment;
@@ -168,27 +172,27 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersMatchedData matchedData;
     /**
-     * @return Turn on or off Mirage.
+     * @return Whether to enable Mirage.
      * 
      */
     private Boolean mirage;
     /**
-     * @return Turn on or off Opportunistic Encryption.
+     * @return Whether to enable Opportunistic Encryption.
      * 
      */
     private Boolean opportunisticEncryption;
     /**
-     * @return Override the IP/TCP destination.
+     * @return An origin to route to.
      * 
      */
     private GetRulesetRuleActionParametersOrigin origin;
     /**
-     * @return When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * @return Whether Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     private Boolean originCacheControl;
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * @return Whether to generate Cloudflare error pages for issues from the origin server.
      * 
      */
     private Boolean originErrorPagePassthru;
@@ -198,24 +202,20 @@ public final class GetRulesetRuleActionParameters {
      */
     private GetRulesetRuleActionParametersOverrides overrides;
     /**
-     * @return A phase to skip the execution of. This property is only compatible with products.
-     * Available values: &#34;current&#34;.
-     * 
-     */
-    private String phase;
-    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     private List<String> phases;
     /**
-     * @return Configure the Polish level.
+     * @return The Polish level to configure.
      * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     private String polish;
     /**
      * @return A list of legacy security products to skip the execution of.
+     * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     private List<String> products;
@@ -225,7 +225,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersRawResponseField> rawResponseFields;
     /**
-     * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * @return A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     private Integer readTimeout;
@@ -235,7 +235,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersRequestField> requestFields;
     /**
-     * @return Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * @return Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     private Boolean respectStrongEtags;
@@ -250,7 +250,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersResponseField> responseFields;
     /**
-     * @return Turn on or off Rocket Loader.
+     * @return Whether to enable Rocket Loader.
      * 
      */
     private Boolean rocketLoader;
@@ -271,28 +271,28 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<String> rulesets;
     /**
-     * @return Configure the Security Level.
+     * @return The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
     private String securityLevel;
     /**
-     * @return Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return When to serve stale content from cache.
      * 
      */
     private GetRulesetRuleActionParametersServeStale serveStale;
     /**
-     * @return Turn on or off Server Side Excludes.
+     * @return Whether to enable Server-Side Excludes.
      * 
      */
     private Boolean serverSideExcludes;
     /**
-     * @return Override the Server Name Indication (SNI).
+     * @return A Server Name Indication (SNI) override.
      * 
      */
     private GetRulesetRuleActionParametersSni sni;
     /**
-     * @return Configure the SSL level.
+     * @return The SSL level to configure.
      * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
@@ -301,9 +301,9 @@ public final class GetRulesetRuleActionParameters {
      * @return The status code to use for the error.
      * 
      */
-    private Double statusCode;
+    private Integer statusCode;
     /**
-     * @return Turn on or off Signed Exchanges (SXG).
+     * @return Whether to enable Signed Exchanges (SXG).
      * 
      */
     private Boolean sxg;
@@ -313,14 +313,14 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
     /**
-     * @return URI to rewrite the request to.
+     * @return A URI rewrite.
      * 
      */
     private GetRulesetRuleActionParametersUri uri;
 
     private GetRulesetRuleActionParameters() {}
     /**
-     * @return List of additional ports that caching can be enabled on.
+     * @return A list of additional ports that caching should be enabled on.
      * 
      */
     public List<Integer> additionalCacheablePorts() {
@@ -334,64 +334,71 @@ public final class GetRulesetRuleActionParameters {
         return this.algorithms;
     }
     /**
-     * @return Turn on or off Automatic HTTPS Rewrites.
+     * @return The name of a custom asset to serve as the response.
+     * 
+     */
+    public String assetName() {
+        return this.assetName;
+    }
+    /**
+     * @return Whether to enable Automatic HTTPS Rewrites.
      * 
      */
     public Boolean automaticHttpsRewrites() {
         return this.automaticHttpsRewrites;
     }
     /**
-     * @return Select which file extensions to minify automatically.
+     * @return Which file extensions to minify automatically.
      * 
      */
     public GetRulesetRuleActionParametersAutominify autominify() {
         return this.autominify;
     }
     /**
-     * @return Turn on or off Browser Integrity Check.
+     * @return Whether to enable Browser Integrity Check (BIC).
      * 
      */
     public Boolean bic() {
         return this.bic;
     }
     /**
-     * @return Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
+     * @return How long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      * 
      */
     public GetRulesetRuleActionParametersBrowserTtl browserTtl() {
         return this.browserTtl;
     }
     /**
-     * @return Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
+     * @return Whether the request&#39;s response from the origin is eligible for caching. Caching itself will still depend on the cache control header and your other caching configurations.
      * 
      */
     public Boolean cache() {
         return this.cache;
     }
     /**
-     * @return Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
+     * @return Which components of the request are included in or excluded from the cache key Cloudflare uses to store the response in cache.
      * 
      */
     public GetRulesetRuleActionParametersCacheKey cacheKey() {
         return this.cacheKey;
     }
     /**
-     * @return Mark whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
+     * @return Settings to determine whether the request&#39;s response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      * 
      */
     public GetRulesetRuleActionParametersCacheReserve cacheReserve() {
         return this.cacheReserve;
     }
     /**
-     * @return Error response content.
+     * @return The response content.
      * 
      */
     public String content() {
         return this.content;
     }
     /**
-     * @return Content-type header to set with the response.
-     * Available values: &#34;application/json&#34;, &#34;text/xml&#34;, &#34;text/plain&#34;, &#34;text/html&#34;.
+     * @return The content type header to set with the error response.
+     * Available values: &#34;application/json&#34;, &#34;text/html&#34;, &#34;text/plain&#34;, &#34;text/xml&#34;.
      * 
      */
     public String contentType() {
@@ -405,77 +412,77 @@ public final class GetRulesetRuleActionParameters {
         return this.cookieFields;
     }
     /**
-     * @return Turn off all active Cloudflare Apps.
+     * @return Whether to disable Cloudflare Apps.
      * 
      */
     public Boolean disableApps() {
         return this.disableApps;
     }
     /**
-     * @return Turn off Real User Monitoring (RUM).
+     * @return Whether to disable Real User Monitoring (RUM).
      * 
      */
     public Boolean disableRum() {
         return this.disableRum;
     }
     /**
-     * @return Turn off Zaraz.
+     * @return Whether to disable Zaraz.
      * 
      */
     public Boolean disableZaraz() {
         return this.disableZaraz;
     }
     /**
-     * @return TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
+     * @return How long the Cloudflare edge network should cache the response.
      * 
      */
     public GetRulesetRuleActionParametersEdgeTtl edgeTtl() {
         return this.edgeTtl;
     }
     /**
-     * @return Turn on or off Email Obfuscation.
+     * @return Whether to enable Email Obfuscation.
      * 
      */
     public Boolean emailObfuscation() {
         return this.emailObfuscation;
     }
     /**
-     * @return Turn on or off Cloudflare Fonts.
+     * @return Whether to enable Cloudflare Fonts.
      * 
      */
     public Boolean fonts() {
         return this.fonts;
     }
     /**
-     * @return Serve a redirect based on a bulk list lookup.
+     * @return A redirect based on a bulk list lookup.
      * 
      */
     public GetRulesetRuleActionParametersFromList fromList() {
         return this.fromList;
     }
     /**
-     * @return Serve a redirect based on the request properties.
+     * @return A redirect based on the request properties.
      * 
      */
     public GetRulesetRuleActionParametersFromValue fromValue() {
         return this.fromValue;
     }
     /**
-     * @return Map of request headers to modify.
+     * @return A map of headers to rewrite.
      * 
      */
     public Map<String,GetRulesetRuleActionParametersHeaders> headers() {
         return this.headers;
     }
     /**
-     * @return Rewrite the HTTP Host header.
+     * @return A value to rewrite the HTTP host header to.
      * 
      */
     public String hostHeader() {
         return this.hostHeader;
     }
     /**
-     * @return Turn on or off the Hotlink Protection.
+     * @return Whether to enable Hotlink Protection.
      * 
      */
     public Boolean hotlinkProtection() {
@@ -489,7 +496,7 @@ public final class GetRulesetRuleActionParameters {
         return this.id;
     }
     /**
-     * @return Increment contains the delta to change the score and can be either positive or negative.
+     * @return A delta to change the score by, which can be either positive or negative.
      * 
      */
     public Integer increment() {
@@ -503,35 +510,35 @@ public final class GetRulesetRuleActionParameters {
         return this.matchedData;
     }
     /**
-     * @return Turn on or off Mirage.
+     * @return Whether to enable Mirage.
      * 
      */
     public Boolean mirage() {
         return this.mirage;
     }
     /**
-     * @return Turn on or off Opportunistic Encryption.
+     * @return Whether to enable Opportunistic Encryption.
      * 
      */
     public Boolean opportunisticEncryption() {
         return this.opportunisticEncryption;
     }
     /**
-     * @return Override the IP/TCP destination.
+     * @return An origin to route to.
      * 
      */
     public GetRulesetRuleActionParametersOrigin origin() {
         return this.origin;
     }
     /**
-     * @return When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
+     * @return Whether Cloudflare will aim to strictly adhere to RFC 7234.
      * 
      */
     public Boolean originCacheControl() {
         return this.originCacheControl;
     }
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
+     * @return Whether to generate Cloudflare error pages for issues from the origin server.
      * 
      */
     public Boolean originErrorPagePassthru() {
@@ -545,22 +552,15 @@ public final class GetRulesetRuleActionParameters {
         return this.overrides;
     }
     /**
-     * @return A phase to skip the execution of. This property is only compatible with products.
-     * Available values: &#34;current&#34;.
-     * 
-     */
-    public String phase() {
-        return this.phase;
-    }
-    /**
      * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
+     * Available values: &#34;ddos*l4&#34;, &#34;ddos*l7&#34;, &#34;http*config*settings&#34;, &#34;http*custom*errors&#34;, &#34;http*log*custom*fields&#34;, &#34;http*ratelimit&#34;, &#34;http*request*cache*settings&#34;, &#34;http*request*dynamic*redirect&#34;, &#34;http*request*firewall*custom&#34;, &#34;http*request*firewall*managed&#34;, &#34;http*request*late*transform&#34;, &#34;http*request*origin&#34;, &#34;http*request*redirect&#34;, &#34;http*request*sanitize&#34;, &#34;http*request*sbfm&#34;, &#34;http*request*transform&#34;, &#34;http*response*compression&#34;, &#34;http*response*firewall*managed&#34;, &#34;http*response*headers*transform&#34;, &#34;magic*transit&#34;, &#34;magic*transit*ids*managed&#34;, &#34;magic*transit*managed&#34;, &#34;magic*transit_ratelimit&#34;.
      * 
      */
     public List<String> phases() {
         return this.phases;
     }
     /**
-     * @return Configure the Polish level.
+     * @return The Polish level to configure.
      * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
@@ -569,6 +569,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return A list of legacy security products to skip the execution of.
+     * Available values: &#34;bic&#34;, &#34;hot&#34;, &#34;rateLimit&#34;, &#34;securityLevel&#34;, &#34;uaBlock&#34;, &#34;waf&#34;, &#34;zoneLockdown&#34;.
      * 
      */
     public List<String> products() {
@@ -582,7 +583,7 @@ public final class GetRulesetRuleActionParameters {
         return this.rawResponseFields;
     }
     /**
-     * @return Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
+     * @return A timeout value between two successive read operations to use for your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      * 
      */
     public Integer readTimeout() {
@@ -596,7 +597,7 @@ public final class GetRulesetRuleActionParameters {
         return this.requestFields;
     }
     /**
-     * @return Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
+     * @return Whether Cloudflare should respect strong ETag (entity tag) headers. If false, Cloudflare converts strong ETag headers to weak ETag headers.
      * 
      */
     public Boolean respectStrongEtags() {
@@ -617,7 +618,7 @@ public final class GetRulesetRuleActionParameters {
         return this.responseFields;
     }
     /**
-     * @return Turn on or off Rocket Loader.
+     * @return Whether to enable Rocket Loader.
      * 
      */
     public Boolean rocketLoader() {
@@ -646,7 +647,7 @@ public final class GetRulesetRuleActionParameters {
         return this.rulesets;
     }
     /**
-     * @return Configure the Security Level.
+     * @return The Security Level to configure.
      * Available values: &#34;off&#34;, &#34;essentially*off&#34;, &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;under*attack&#34;.
      * 
      */
@@ -654,28 +655,28 @@ public final class GetRulesetRuleActionParameters {
         return this.securityLevel;
     }
     /**
-     * @return Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return When to serve stale content from cache.
      * 
      */
     public GetRulesetRuleActionParametersServeStale serveStale() {
         return this.serveStale;
     }
     /**
-     * @return Turn on or off Server Side Excludes.
+     * @return Whether to enable Server-Side Excludes.
      * 
      */
     public Boolean serverSideExcludes() {
         return this.serverSideExcludes;
     }
     /**
-     * @return Override the Server Name Indication (SNI).
+     * @return A Server Name Indication (SNI) override.
      * 
      */
     public GetRulesetRuleActionParametersSni sni() {
         return this.sni;
     }
     /**
-     * @return Configure the SSL level.
+     * @return The SSL level to configure.
      * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
      * 
      */
@@ -686,11 +687,11 @@ public final class GetRulesetRuleActionParameters {
      * @return The status code to use for the error.
      * 
      */
-    public Double statusCode() {
+    public Integer statusCode() {
         return this.statusCode;
     }
     /**
-     * @return Turn on or off Signed Exchanges (SXG).
+     * @return Whether to enable Signed Exchanges (SXG).
      * 
      */
     public Boolean sxg() {
@@ -704,7 +705,7 @@ public final class GetRulesetRuleActionParameters {
         return this.transformedRequestFields;
     }
     /**
-     * @return URI to rewrite the request to.
+     * @return A URI rewrite.
      * 
      */
     public GetRulesetRuleActionParametersUri uri() {
@@ -722,6 +723,7 @@ public final class GetRulesetRuleActionParameters {
     public static final class Builder {
         private List<Integer> additionalCacheablePorts;
         private List<GetRulesetRuleActionParametersAlgorithm> algorithms;
+        private String assetName;
         private Boolean automaticHttpsRewrites;
         private GetRulesetRuleActionParametersAutominify autominify;
         private Boolean bic;
@@ -752,7 +754,6 @@ public final class GetRulesetRuleActionParameters {
         private Boolean originCacheControl;
         private Boolean originErrorPagePassthru;
         private GetRulesetRuleActionParametersOverrides overrides;
-        private String phase;
         private List<String> phases;
         private String polish;
         private List<String> products;
@@ -771,7 +772,7 @@ public final class GetRulesetRuleActionParameters {
         private Boolean serverSideExcludes;
         private GetRulesetRuleActionParametersSni sni;
         private String ssl;
-        private Double statusCode;
+        private Integer statusCode;
         private Boolean sxg;
         private List<GetRulesetRuleActionParametersTransformedRequestField> transformedRequestFields;
         private GetRulesetRuleActionParametersUri uri;
@@ -780,6 +781,7 @@ public final class GetRulesetRuleActionParameters {
     	      Objects.requireNonNull(defaults);
     	      this.additionalCacheablePorts = defaults.additionalCacheablePorts;
     	      this.algorithms = defaults.algorithms;
+    	      this.assetName = defaults.assetName;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
     	      this.autominify = defaults.autominify;
     	      this.bic = defaults.bic;
@@ -810,7 +812,6 @@ public final class GetRulesetRuleActionParameters {
     	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
     	      this.overrides = defaults.overrides;
-    	      this.phase = defaults.phase;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
@@ -856,6 +857,14 @@ public final class GetRulesetRuleActionParameters {
         }
         public Builder algorithms(GetRulesetRuleActionParametersAlgorithm... algorithms) {
             return algorithms(List.of(algorithms));
+        }
+        @CustomType.Setter
+        public Builder assetName(String assetName) {
+            if (assetName == null) {
+              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "assetName");
+            }
+            this.assetName = assetName;
+            return this;
         }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(Boolean automaticHttpsRewrites) {
@@ -1101,14 +1110,6 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder phase(String phase) {
-            if (phase == null) {
-              throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phase");
-            }
-            this.phase = phase;
-            return this;
-        }
-        @CustomType.Setter
         public Builder phases(List<String> phases) {
             if (phases == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "phases");
@@ -1271,7 +1272,7 @@ public final class GetRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
-        public Builder statusCode(Double statusCode) {
+        public Builder statusCode(Integer statusCode) {
             if (statusCode == null) {
               throw new MissingRequiredPropertyException("GetRulesetRuleActionParameters", "statusCode");
             }
@@ -1309,6 +1310,7 @@ public final class GetRulesetRuleActionParameters {
             final var _resultValue = new GetRulesetRuleActionParameters();
             _resultValue.additionalCacheablePorts = additionalCacheablePorts;
             _resultValue.algorithms = algorithms;
+            _resultValue.assetName = assetName;
             _resultValue.automaticHttpsRewrites = automaticHttpsRewrites;
             _resultValue.autominify = autominify;
             _resultValue.bic = bic;
@@ -1339,7 +1341,6 @@ public final class GetRulesetRuleActionParameters {
             _resultValue.originCacheControl = originCacheControl;
             _resultValue.originErrorPagePassthru = originErrorPagePassthru;
             _resultValue.overrides = overrides;
-            _resultValue.phase = phase;
             _resultValue.phases = phases;
             _resultValue.polish = polish;
             _resultValue.products = products;

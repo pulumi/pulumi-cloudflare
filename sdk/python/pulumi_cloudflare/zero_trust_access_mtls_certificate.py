@@ -250,6 +250,8 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
 
         ## Import
 
+        Note: The "certificate" field cannot be imported by this module and must be manually added to state.
+
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
         ```
@@ -287,6 +289,8 @@ class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Note: The "certificate" field cannot be imported by this module and must be manually added to state.
 
         ```sh
         $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'

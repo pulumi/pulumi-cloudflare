@@ -127,13 +127,13 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[] | undefined>;
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[]>;
     public /*out*/ readonly fallbackDomains!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileFallbackDomain[]>;
     public /*out*/ readonly gatewayUniqueId!: pulumi.Output<string>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[] | undefined>;
+    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[]>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */
@@ -163,7 +163,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      */
     public readonly sccmVpnBoundarySupport!: pulumi.Output<boolean>;
-    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2 | undefined>;
+    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */

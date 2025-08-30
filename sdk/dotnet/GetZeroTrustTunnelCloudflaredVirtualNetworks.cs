@@ -27,6 +27,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         IsDefault = true,
+        ///         IsDefaultNetwork = true,
         ///         IsDeleted = true,
         ///         Name = "us-east-1-vpc",
         ///     });
@@ -53,6 +54,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         IsDefault = true,
+        ///         IsDefaultNetwork = true,
         ///         IsDeleted = true,
         ///         Name = "us-east-1-vpc",
         ///     });
@@ -79,6 +81,7 @@ namespace Pulumi.Cloudflare
         ///         AccountId = "699d98642c564d2e855e9661899b7252",
         ///         Id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         ///         IsDefault = true,
+        ///         IsDefaultNetwork = true,
         ///         IsDeleted = true,
         ///         Name = "us-east-1-vpc",
         ///     });
@@ -110,6 +113,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("isDefault")]
         public bool? IsDefault { get; set; }
+
+        /// <summary>
+        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// </summary>
+        [Input("isDefaultNetwork")]
+        public bool? IsDefaultNetwork { get; set; }
 
         /// <summary>
         /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
@@ -156,6 +165,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
+        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// </summary>
+        [Input("isDefaultNetwork")]
+        public Input<bool>? IsDefaultNetwork { get; set; }
+
+        /// <summary>
         /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
         /// </summary>
         [Input("isDeleted")]
@@ -196,6 +211,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>
+        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// </summary>
+        public readonly bool? IsDefaultNetwork;
+        /// <summary>
         /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
         /// </summary>
         public readonly bool? IsDeleted;
@@ -220,6 +239,8 @@ namespace Pulumi.Cloudflare
 
             bool? isDefault,
 
+            bool? isDefaultNetwork,
+
             bool? isDeleted,
 
             int? maxItems,
@@ -231,6 +252,7 @@ namespace Pulumi.Cloudflare
             AccountId = accountId;
             Id = id;
             IsDefault = isDefault;
+            IsDefaultNetwork = isDefaultNetwork;
             IsDeleted = isDeleted;
             MaxItems = maxItems;
             Name = name;

@@ -14,9 +14,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleRuleset = cloudflare.getRuleset({
- *     rulesetId: "2f2feab2026849078ba485f918791bdc",
- *     accountId: "account_id",
- *     zoneId: "zone_id",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     id: "2f2feab2026849078ba485f918791bdc",
  * });
  * ```
  */
@@ -25,6 +24,7 @@ export function getRuleset(args?: GetRulesetArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRuleset:getRuleset", {
         "accountId": args.accountId,
+        "id": args.id,
         "rulesetId": args.rulesetId,
         "zoneId": args.zoneId,
     }, opts);
@@ -35,15 +35,21 @@ export function getRuleset(args?: GetRulesetArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetRulesetArgs {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: string;
     /**
      * The unique ID of the ruleset.
      */
+    id?: string;
+    /**
+     * The unique ID of the ruleset.
+     *
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
+     */
     rulesetId?: string;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      */
     zoneId?: string;
 }
@@ -53,7 +59,7 @@ export interface GetRulesetArgs {
  */
 export interface GetRulesetResult {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     readonly accountId?: string;
     /**
@@ -63,12 +69,16 @@ export interface GetRulesetResult {
     /**
      * The unique ID of the ruleset.
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * The kind of the ruleset.
      * Available values: "managed", "custom", "root", "zone".
      */
     readonly kind: string;
+    /**
+     * The timestamp of when the ruleset was last modified.
+     */
+    readonly lastUpdated: string;
     /**
      * The human-readable name of the ruleset.
      */
@@ -84,10 +94,16 @@ export interface GetRulesetResult {
     readonly rules: outputs.GetRulesetRule[];
     /**
      * The unique ID of the ruleset.
+     *
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
      */
     readonly rulesetId?: string;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The version of the ruleset.
+     */
+    readonly version: string;
+    /**
+     * The unique ID of the zone.
      */
     readonly zoneId?: string;
 }
@@ -99,9 +115,8 @@ export interface GetRulesetResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleRuleset = cloudflare.getRuleset({
- *     rulesetId: "2f2feab2026849078ba485f918791bdc",
- *     accountId: "account_id",
- *     zoneId: "zone_id",
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     id: "2f2feab2026849078ba485f918791bdc",
  * });
  * ```
  */
@@ -110,6 +125,7 @@ export function getRulesetOutput(args?: GetRulesetOutputArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getRuleset:getRuleset", {
         "accountId": args.accountId,
+        "id": args.id,
         "rulesetId": args.rulesetId,
         "zoneId": args.zoneId,
     }, opts);
@@ -120,15 +136,21 @@ export function getRulesetOutput(args?: GetRulesetOutputArgs, opts?: pulumi.Invo
  */
 export interface GetRulesetOutputArgs {
     /**
-     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * The unique ID of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
      * The unique ID of the ruleset.
      */
+    id?: pulumi.Input<string>;
+    /**
+     * The unique ID of the ruleset.
+     *
+     * @deprecated Configure id instead. This attribute will be removed in the next major version of the provider.
+     */
     rulesetId?: pulumi.Input<string>;
     /**
-     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * The unique ID of the zone.
      */
     zoneId?: pulumi.Input<string>;
 }

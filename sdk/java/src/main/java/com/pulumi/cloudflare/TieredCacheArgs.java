@@ -15,7 +15,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
     public static final TieredCacheArgs Empty = new TieredCacheArgs();
 
     /**
-     * Enable or disable the Smart Tiered Cache
+     * Enable or disable the Smart Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -23,7 +23,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> value;
 
     /**
-     * @return Enable or disable the Smart Tiered Cache
+     * @return Enable or disable the Smart Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -32,14 +32,14 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -72,7 +72,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Enable or disable the Smart Tiered Cache
+         * @param value Enable or disable the Smart Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -84,7 +84,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Enable or disable the Smart Tiered Cache
+         * @param value Enable or disable the Smart Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -95,7 +95,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

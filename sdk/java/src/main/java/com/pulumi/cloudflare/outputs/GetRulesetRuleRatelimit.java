@@ -14,12 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleRatelimit {
     /**
-     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
+     * @return Characteristics of the request on which the rate limit counter will be incremented.
      * 
      */
     private List<String> characteristics;
     /**
-     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+     * @return An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
      * 
      */
     private String countingExpression;
@@ -39,7 +39,7 @@ public final class GetRulesetRuleRatelimit {
      */
     private Integer requestsPerPeriod;
     /**
-     * @return Defines if ratelimit counting is only done when an origin is reached.
+     * @return Whether counting is only performed when an origin is reached.
      * 
      */
     private Boolean requestsToOrigin;
@@ -49,21 +49,21 @@ public final class GetRulesetRuleRatelimit {
      */
     private Integer scorePerPeriod;
     /**
-     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * @return A response header name provided by the origin, which contains the score to increment rate limit counter with.
      * 
      */
     private String scoreResponseHeaderName;
 
     private GetRulesetRuleRatelimit() {}
     /**
-     * @return Characteristics of the request on which the ratelimiter counter will be incremented.
+     * @return Characteristics of the request on which the rate limit counter will be incremented.
      * 
      */
     public List<String> characteristics() {
         return this.characteristics;
     }
     /**
-     * @return Defines when the ratelimit counter should be incremented. It is optional and defaults to the same as the rule&#39;s expression.
+     * @return An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule&#39;s expression.
      * 
      */
     public String countingExpression() {
@@ -91,7 +91,7 @@ public final class GetRulesetRuleRatelimit {
         return this.requestsPerPeriod;
     }
     /**
-     * @return Defines if ratelimit counting is only done when an origin is reached.
+     * @return Whether counting is only performed when an origin is reached.
      * 
      */
     public Boolean requestsToOrigin() {
@@ -105,7 +105,7 @@ public final class GetRulesetRuleRatelimit {
         return this.scorePerPeriod;
     }
     /**
-     * @return The response header name provided by the origin which should contain the score to increment ratelimit counter on.
+     * @return A response header name provided by the origin, which contains the score to increment rate limit counter with.
      * 
      */
     public String scoreResponseHeaderName() {

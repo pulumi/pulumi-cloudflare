@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryConfidenceArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryPatternArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomEntryVariantArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -94,14 +95,14 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
     }
 
     /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -113,6 +114,13 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
 
     public Optional<Output<String>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
+    }
+
+    @Import(name="variant")
+    private @Nullable Output<ZeroTrustDlpCustomEntryVariantArgs> variant;
+
+    public Optional<Output<ZeroTrustDlpCustomEntryVariantArgs>> variant() {
+        return Optional.ofNullable(this.variant);
     }
 
     @Import(name="wordList")
@@ -136,6 +144,7 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         this.secret = $.secret;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
+        this.variant = $.variant;
         this.wordList = $.wordList;
     }
 
@@ -255,7 +264,7 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
          * 
          * @return builder
          * 
@@ -266,7 +275,7 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
          * 
          * @return builder
          * 
@@ -282,6 +291,15 @@ public final class ZeroTrustDlpCustomEntryState extends com.pulumi.resources.Res
 
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder variant(@Nullable Output<ZeroTrustDlpCustomEntryVariantArgs> variant) {
+            $.variant = variant;
+            return this;
+        }
+
+        public Builder variant(ZeroTrustDlpCustomEntryVariantArgs variant) {
+            return variant(Output.of(variant));
         }
 
         public Builder wordList(@Nullable Output<String> wordList) {

@@ -44,6 +44,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zeroTrustDlpCustomEntry:ZeroTrustDlpCustomEntry example '<account_id>/<entry_id>'
+// ```
 type ZeroTrustDlpCustomEntry struct {
 	pulumi.CustomResourceState
 
@@ -59,10 +65,11 @@ type ZeroTrustDlpCustomEntry struct {
 	Pattern       ZeroTrustDlpCustomEntryPatternOutput    `pulumi:"pattern"`
 	ProfileId     pulumi.StringOutput                     `pulumi:"profileId"`
 	Secret        pulumi.BoolOutput                       `pulumi:"secret"`
-	// Available values: "custom", "predefined", "integration".
-	Type      pulumi.StringPtrOutput `pulumi:"type"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
-	WordList  pulumi.StringOutput    `pulumi:"wordList"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      pulumi.StringOutput                  `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput                  `pulumi:"updatedAt"`
+	Variant   ZeroTrustDlpCustomEntryVariantOutput `pulumi:"variant"`
+	WordList  pulumi.StringOutput                  `pulumi:"wordList"`
 }
 
 // NewZeroTrustDlpCustomEntry registers a new resource with the given unique name, arguments, and options.
@@ -122,10 +129,11 @@ type zeroTrustDlpCustomEntryState struct {
 	Pattern       *ZeroTrustDlpCustomEntryPattern    `pulumi:"pattern"`
 	ProfileId     *string                            `pulumi:"profileId"`
 	Secret        *bool                              `pulumi:"secret"`
-	// Available values: "custom", "predefined", "integration".
-	Type      *string `pulumi:"type"`
-	UpdatedAt *string `pulumi:"updatedAt"`
-	WordList  *string `pulumi:"wordList"`
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+	Type      *string                         `pulumi:"type"`
+	UpdatedAt *string                         `pulumi:"updatedAt"`
+	Variant   *ZeroTrustDlpCustomEntryVariant `pulumi:"variant"`
+	WordList  *string                         `pulumi:"wordList"`
 }
 
 type ZeroTrustDlpCustomEntryState struct {
@@ -141,9 +149,10 @@ type ZeroTrustDlpCustomEntryState struct {
 	Pattern       ZeroTrustDlpCustomEntryPatternPtrInput
 	ProfileId     pulumi.StringPtrInput
 	Secret        pulumi.BoolPtrInput
-	// Available values: "custom", "predefined", "integration".
+	// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
+	Variant   ZeroTrustDlpCustomEntryVariantPtrInput
 	WordList  pulumi.StringPtrInput
 }
 
@@ -157,8 +166,6 @@ type zeroTrustDlpCustomEntryArgs struct {
 	Name      string                         `pulumi:"name"`
 	Pattern   ZeroTrustDlpCustomEntryPattern `pulumi:"pattern"`
 	ProfileId string                         `pulumi:"profileId"`
-	// Available values: "custom", "predefined", "integration".
-	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustDlpCustomEntry resource.
@@ -168,8 +175,6 @@ type ZeroTrustDlpCustomEntryArgs struct {
 	Name      pulumi.StringInput
 	Pattern   ZeroTrustDlpCustomEntryPatternInput
 	ProfileId pulumi.StringInput
-	// Available values: "custom", "predefined", "integration".
-	Type pulumi.StringPtrInput
 }
 
 func (ZeroTrustDlpCustomEntryArgs) ElementType() reflect.Type {
@@ -298,13 +303,17 @@ func (o ZeroTrustDlpCustomEntryOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "custom", "predefined", "integration".
-func (o ZeroTrustDlpCustomEntryOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "wordList".
+func (o ZeroTrustDlpCustomEntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustDlpCustomEntryOutput) Variant() ZeroTrustDlpCustomEntryVariantOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomEntry) ZeroTrustDlpCustomEntryVariantOutput { return v.Variant }).(ZeroTrustDlpCustomEntryVariantOutput)
 }
 
 func (o ZeroTrustDlpCustomEntryOutput) WordList() pulumi.StringOutput {

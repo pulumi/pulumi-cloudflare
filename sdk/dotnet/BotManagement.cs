@@ -56,6 +56,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> AutoUpdateModel { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        /// </summary>
+        [Output("bmCookieEnabled")]
+        public Output<bool> BmCookieEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -199,6 +205,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AutoUpdateModel { get; set; }
 
         /// <summary>
+        /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        /// </summary>
+        [Input("bmCookieEnabled")]
+        public Input<bool>? BmCookieEnabled { get; set; }
+
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -290,6 +302,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoUpdateModel")]
         public Input<bool>? AutoUpdateModel { get; set; }
+
+        /// <summary>
+        /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        /// </summary>
+        [Input("bmCookieEnabled")]
+        public Input<bool>? BmCookieEnabled { get; set; }
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.

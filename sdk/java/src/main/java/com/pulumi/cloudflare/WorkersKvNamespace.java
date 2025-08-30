@@ -75,20 +75,6 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * True if new beta namespace, with additional preview features.
-     * 
-     */
-    @Export(name="beta", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> beta;
-
-    /**
-     * @return True if new beta namespace, with additional preview features.
-     * 
-     */
-    public Output<Boolean> beta() {
-        return this.beta;
-    }
-    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
      * 
      */

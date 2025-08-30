@@ -69,10 +69,9 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly settings!: pulumi.Output<outputs.AccountSettings>;
     /**
-     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      */
-    public readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
@@ -100,9 +99,6 @@ export class Account extends pulumi.CustomResource {
             const args = argsOrState as AccountArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if ((!args || args.type === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'type'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
@@ -132,7 +128,6 @@ export interface AccountState {
      */
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
-     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      */
     type?: pulumi.Input<string>;
@@ -155,10 +150,9 @@ export interface AccountArgs {
      */
     settings?: pulumi.Input<inputs.AccountSettings>;
     /**
-     * the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
      * Available values: "standard", "enterprise".
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */

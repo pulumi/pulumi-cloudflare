@@ -48,23 +48,23 @@ func LookupArgoTieredCaching(ctx *pulumi.Context, args *LookupArgoTieredCachingA
 
 // A collection of arguments for invoking getArgoTieredCaching.
 type LookupArgoTieredCachingArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getArgoTieredCaching.
 type LookupArgoTieredCachingResult struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// ID of the zone setting.
+	// The identifier of the caching setting.
 	// Available values: "tieredCaching".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The value of the feature
+	// Value of the Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupArgoTieredCachingOutput(ctx *pulumi.Context, args LookupArgoTieredCac
 
 // A collection of arguments for invoking getArgoTieredCaching.
 type LookupArgoTieredCachingOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupArgoTieredCachingResultOutput) ToLookupArgoTieredCachingResultOutp
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o LookupArgoTieredCachingResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// ID of the zone setting.
+// The identifier of the caching setting.
 // Available values: "tieredCaching".
 func (o LookupArgoTieredCachingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.Id }).(pulumi.StringOutput)
@@ -118,13 +118,13 @@ func (o LookupArgoTieredCachingResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The value of the feature
+// Value of the Tiered Cache zone setting.
 // Available values: "on", "off".
 func (o LookupArgoTieredCachingResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupArgoTieredCachingResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArgoTieredCachingResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

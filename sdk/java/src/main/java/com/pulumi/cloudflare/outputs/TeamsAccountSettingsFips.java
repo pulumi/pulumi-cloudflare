@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsFips {
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     private @Nullable Boolean tls;
 
     private TeamsAccountSettingsFips() {}
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Optional<Boolean> tls() {

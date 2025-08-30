@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkersScriptAssetsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The contents of a _headers file (used to attach custom headers on asset responses)
+        /// The contents of a _headers file (used to attach custom headers on asset responses).
         /// </summary>
         [Input("headers")]
         public Input<string>? Headers { get; set; }
@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NotFoundHandling { get; set; }
 
         /// <summary>
-        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving).
         /// </summary>
         [Input("redirects")]
         public Input<string>? Redirects { get; set; }

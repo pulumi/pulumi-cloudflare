@@ -28,7 +28,7 @@ export function getRegionalTieredCache(args: GetRegionalTieredCacheArgs, opts?: 
  */
 export interface GetRegionalTieredCacheArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -38,11 +38,11 @@ export interface GetRegionalTieredCacheArgs {
  */
 export interface GetRegionalTieredCacheResult {
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      */
     readonly editable: boolean;
     /**
-     * ID of the zone setting.
+     * The identifier of the caching setting.
      * Available values: "tcRegional".
      */
     readonly id: string;
@@ -51,12 +51,12 @@ export interface GetRegionalTieredCacheResult {
      */
     readonly modifiedOn: string;
     /**
-     * The value of the feature
+     * Value of the Regional Tiered Cache zone setting.
      * Available values: "on", "off".
      */
     readonly value: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -84,7 +84,7 @@ export function getRegionalTieredCacheOutput(args: GetRegionalTieredCacheOutputA
  */
 export interface GetRegionalTieredCacheOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

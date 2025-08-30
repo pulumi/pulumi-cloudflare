@@ -56,10 +56,6 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * True if new beta namespace, with additional preview features.
-     */
-    public /*out*/ readonly beta!: pulumi.Output<boolean>;
-    /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */
     public /*out*/ readonly supportsUrlEncoding!: pulumi.Output<boolean>;
@@ -82,7 +78,6 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["beta"] = state ? state.beta : undefined;
             resourceInputs["supportsUrlEncoding"] = state ? state.supportsUrlEncoding : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
@@ -95,7 +90,6 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["beta"] = undefined /*out*/;
             resourceInputs["supportsUrlEncoding"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,10 +105,6 @@ export interface WorkersKvNamespaceState {
      * Identifier.
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * True if new beta namespace, with additional preview features.
-     */
-    beta?: pulumi.Input<boolean>;
     /**
      * True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
      */

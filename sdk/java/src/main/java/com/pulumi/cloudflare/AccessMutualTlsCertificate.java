@@ -62,6 +62,8 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Note: The &#34;certificate&#34; field cannot be imported by this module and must be manually added to state.
+ * 
  * ```sh
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;&#39;
  * ```

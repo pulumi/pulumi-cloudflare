@@ -16,14 +16,14 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
     public static final ZeroTrustListItemArgs Empty = new ZeroTrustListItemArgs();
 
     /**
-     * The description of the list item, if present
+     * The description of the list item, if present.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the list item, if present
+     * @return The description of the list item, if present.
      * 
      */
     public Optional<Output<String>> description() {
@@ -71,7 +71,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the list item, if present
+         * @param description The description of the list item, if present.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the list item, if present
+         * @param description The description of the list item, if present.
          * 
          * @return builder
          * 

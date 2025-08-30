@@ -380,7 +380,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Legacy permissions based on legacy user membership information.
         /// </summary>
-        [Obsolete(@"This attribute is deprecated.")]
+        [Obsolete(@"This has been replaced by Account memberships.")]
         public InputList<string> Permissions
         {
             get => _permissions ?? (_permissions = new InputList<string>());

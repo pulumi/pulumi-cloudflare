@@ -55,7 +55,7 @@ public final class TeamsAccountSettings {
      */
     private @Nullable TeamsAccountSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -79,7 +79,7 @@ public final class TeamsAccountSettings {
      */
     private @Nullable TeamsAccountSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     private @Nullable TeamsAccountSettingsInspection inspection;
@@ -143,7 +143,7 @@ public final class TeamsAccountSettings {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -175,7 +175,7 @@ public final class TeamsAccountSettings {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     public Optional<TeamsAccountSettingsInspection> inspection() {

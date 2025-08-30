@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * @return Response status code lower bound.
+     * @return The lower bound of the range.
      * 
      */
     private Integer from;
     /**
-     * @return Response status code upper bound.
+     * @return The upper bound of the range.
      * 
      */
     private Integer to;
 
     private GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange() {}
     /**
-     * @return Response status code lower bound.
+     * @return The lower bound of the range.
      * 
      */
     public Integer from() {
         return this.from;
     }
     /**
-     * @return Response status code upper bound.
+     * @return The upper bound of the range.
      * 
      */
     public Integer to() {

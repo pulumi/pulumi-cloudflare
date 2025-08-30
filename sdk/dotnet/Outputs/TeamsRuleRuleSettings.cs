@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? IpIndicatorFeeds;
         /// <summary>
-        /// Send matching traffic to the supplied destination IP address and port.
+        /// Send matching traffic to the supplied destination IP address. and port.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
@@ -94,11 +94,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsPayloadLog? PayloadLog;
         /// <summary>
-        /// Settings that apply to quarantine rules
+        /// Settings that apply to quarantine rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsQuarantine? Quarantine;
         /// <summary>
-        /// Settings that apply to redirect rules
+        /// Settings that apply to redirect rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsRedirect? Redirect;
         /// <summary>

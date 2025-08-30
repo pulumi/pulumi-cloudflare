@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKeyCustomKeyUser {
     /**
-     * @return Use the user agent&#39;s device type in the cache key.
+     * @return Whether to use the user agent&#39;s device type in the cache key.
      * 
      */
     private Boolean deviceType;
     /**
-     * @return Use the user agents&#39;s country in the cache key.
+     * @return Whether to use the user agents&#39;s country in the cache key.
      * 
      */
     private Boolean geo;
     /**
-     * @return Use the user agent&#39;s language in the cache key.
+     * @return Whether to use the user agent&#39;s language in the cache key.
      * 
      */
     private Boolean lang;
 
     private GetRulesetRuleActionParametersCacheKeyCustomKeyUser() {}
     /**
-     * @return Use the user agent&#39;s device type in the cache key.
+     * @return Whether to use the user agent&#39;s device type in the cache key.
      * 
      */
     public Boolean deviceType() {
         return this.deviceType;
     }
     /**
-     * @return Use the user agents&#39;s country in the cache key.
+     * @return Whether to use the user agents&#39;s country in the cache key.
      * 
      */
     public Boolean geo() {
         return this.geo;
     }
     /**
-     * @return Use the user agent&#39;s language in the cache key.
+     * @return Whether to use the user agent&#39;s language in the cache key.
      * 
      */
     public Boolean lang() {

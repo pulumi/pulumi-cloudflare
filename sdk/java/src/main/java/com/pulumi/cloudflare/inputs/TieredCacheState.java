@@ -17,14 +17,14 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     public static final TieredCacheState Empty = new TieredCacheState();
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      * 
      */
     @Import(name="editable")
     private @Nullable Output<Boolean> editable;
 
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Optional<Output<Boolean>> editable() {
@@ -47,7 +47,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable the Smart Tiered Cache
+     * Enable or disable the Smart Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -55,7 +55,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> value;
 
     /**
-     * @return Enable or disable the Smart Tiered Cache
+     * @return Enable or disable the Smart Tiered Cache.
      * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
@@ -64,14 +64,14 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -106,7 +106,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param editable Whether the setting is editable
+         * @param editable Whether the setting is editable.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param editable Whether the setting is editable
+         * @param editable Whether the setting is editable.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Enable or disable the Smart Tiered Cache
+         * @param value Enable or disable the Smart Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -160,7 +160,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Enable or disable the Smart Tiered Cache
+         * @param value Enable or disable the Smart Tiered Cache.
          * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
@@ -171,7 +171,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class TieredCacheState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

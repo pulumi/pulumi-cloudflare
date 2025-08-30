@@ -48,22 +48,22 @@ func LookupZoneCacheVariants(ctx *pulumi.Context, args *LookupZoneCacheVariantsA
 
 // A collection of arguments for invoking getZoneCacheVariants.
 type LookupZoneCacheVariantsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneCacheVariants.
 type LookupZoneCacheVariantsResult struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// ID of the zone setting.
+	// The identifier of the caching setting.
 	// Available values: "variants".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The value of the feature
-	Value string `pulumi:"value"`
-	// Identifier
+	// Value of the zone setting.
+	Value GetZoneCacheVariantsValue `pulumi:"value"`
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -78,7 +78,7 @@ func LookupZoneCacheVariantsOutput(ctx *pulumi.Context, args LookupZoneCacheVari
 
 // A collection of arguments for invoking getZoneCacheVariants.
 type LookupZoneCacheVariantsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -101,12 +101,12 @@ func (o LookupZoneCacheVariantsResultOutput) ToLookupZoneCacheVariantsResultOutp
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o LookupZoneCacheVariantsResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// ID of the zone setting.
+// The identifier of the caching setting.
 // Available values: "variants".
 func (o LookupZoneCacheVariantsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.Id }).(pulumi.StringOutput)
@@ -117,12 +117,12 @@ func (o LookupZoneCacheVariantsResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The value of the feature
-func (o LookupZoneCacheVariantsResultOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.Value }).(pulumi.StringOutput)
+// Value of the zone setting.
+func (o LookupZoneCacheVariantsResultOutput) Value() GetZoneCacheVariantsValueOutput {
+	return o.ApplyT(func(v LookupZoneCacheVariantsResult) GetZoneCacheVariantsValue { return v.Value }).(GetZoneCacheVariantsValueOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZoneCacheVariantsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneCacheVariantsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

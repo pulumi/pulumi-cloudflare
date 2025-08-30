@@ -255,6 +255,8 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
         ## Import
 
+        Note: The "certificate" field cannot be imported by this module and must be manually added to state.
+
         ```sh
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'
         ```
@@ -292,6 +294,8 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         ```
 
         ## Import
+
+        Note: The "certificate" field cannot be imported by this module and must be manually added to state.
 
         ```sh
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example '<{accounts|zones}/{account_id|zone_id}>/<certificate_id>'

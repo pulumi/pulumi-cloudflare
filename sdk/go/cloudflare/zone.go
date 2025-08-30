@@ -87,11 +87,14 @@ type Zone struct {
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// Legacy permissions based on legacy user membership information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This has been replaced by Account memberships.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// A Zones subscription information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+	// to update a zone's plan. Changing this value will create/cancel
+	// associated subscriptions. To view available plans for this zone,
+	// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 	Plan ZonePlanOutput `pulumi:"plan"`
 	// The zone status on Cloudflare.
 	// Available values: "initializing", "pending", "active", "moved".
@@ -182,11 +185,14 @@ type zoneState struct {
 	Paused *bool `pulumi:"paused"`
 	// Legacy permissions based on legacy user membership information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This has been replaced by Account memberships.
 	Permissions []string `pulumi:"permissions"`
 	// A Zones subscription information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+	// to update a zone's plan. Changing this value will create/cancel
+	// associated subscriptions. To view available plans for this zone,
+	// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 	Plan *ZonePlan `pulumi:"plan"`
 	// The zone status on Cloudflare.
 	// Available values: "initializing", "pending", "active", "moved".
@@ -242,11 +248,14 @@ type ZoneState struct {
 	Paused pulumi.BoolPtrInput
 	// Legacy permissions based on legacy user membership information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: This has been replaced by Account memberships.
 	Permissions pulumi.StringArrayInput
 	// A Zones subscription information.
 	//
-	// Deprecated: This attribute is deprecated.
+	// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+	// to update a zone's plan. Changing this value will create/cancel
+	// associated subscriptions. To view available plans for this zone,
+	// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 	Plan ZonePlanPtrInput
 	// The zone status on Cloudflare.
 	// Available values: "initializing", "pending", "active", "moved".
@@ -469,14 +478,17 @@ func (o ZoneOutput) Paused() pulumi.BoolOutput {
 
 // Legacy permissions based on legacy user membership information.
 //
-// Deprecated: This attribute is deprecated.
+// Deprecated: This has been replaced by Account memberships.
 func (o ZoneOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
 // A Zones subscription information.
 //
-// Deprecated: This attribute is deprecated.
+// Deprecated: Please use the `/zones/{zone_id}/subscription` API
+// to update a zone's plan. Changing this value will create/cancel
+// associated subscriptions. To view available plans for this zone,
+// see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
 func (o ZoneOutput) Plan() ZonePlanOutput {
 	return o.ApplyT(func(v *Zone) ZonePlanOutput { return v.Plan }).(ZonePlanOutput)
 }

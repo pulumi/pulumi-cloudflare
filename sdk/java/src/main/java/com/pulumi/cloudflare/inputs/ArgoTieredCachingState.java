@@ -17,14 +17,14 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
     public static final ArgoTieredCachingState Empty = new ArgoTieredCachingState();
 
     /**
-     * Whether the setting is editable
+     * Whether the setting is editable.
      * 
      */
     @Import(name="editable")
     private @Nullable Output<Boolean> editable;
 
     /**
-     * @return Whether the setting is editable
+     * @return Whether the setting is editable.
      * 
      */
     public Optional<Output<Boolean>> editable() {
@@ -64,14 +64,14 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -106,7 +106,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param editable Whether the setting is editable
+         * @param editable Whether the setting is editable.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param editable Whether the setting is editable
+         * @param editable Whether the setting is editable.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ArgoTieredCachingState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

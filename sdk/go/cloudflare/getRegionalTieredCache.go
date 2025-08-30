@@ -48,23 +48,23 @@ func LookupRegionalTieredCache(ctx *pulumi.Context, args *LookupRegionalTieredCa
 
 // A collection of arguments for invoking getRegionalTieredCache.
 type LookupRegionalTieredCacheArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRegionalTieredCache.
 type LookupRegionalTieredCacheResult struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable bool `pulumi:"editable"`
-	// ID of the zone setting.
+	// The identifier of the caching setting.
 	// Available values: "tcRegional".
 	Id string `pulumi:"id"`
 	// Last time this setting was modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The value of the feature
+	// Value of the Regional Tiered Cache zone setting.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupRegionalTieredCacheOutput(ctx *pulumi.Context, args LookupRegionalTie
 
 // A collection of arguments for invoking getRegionalTieredCache.
 type LookupRegionalTieredCacheOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupRegionalTieredCacheResultOutput) ToLookupRegionalTieredCacheResult
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o LookupRegionalTieredCacheResultOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) bool { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// ID of the zone setting.
+// The identifier of the caching setting.
 // Available values: "tcRegional".
 func (o LookupRegionalTieredCacheResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.Id }).(pulumi.StringOutput)
@@ -118,13 +118,13 @@ func (o LookupRegionalTieredCacheResultOutput) ModifiedOn() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The value of the feature
+// Value of the Regional Tiered Cache zone setting.
 // Available values: "on", "off".
 func (o LookupRegionalTieredCacheResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupRegionalTieredCacheResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalTieredCacheResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

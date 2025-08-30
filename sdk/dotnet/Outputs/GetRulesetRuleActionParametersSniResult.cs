@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersSniResult
     {
         /// <summary>
-        /// The SNI override.
+        /// A value to override the SNI to.
         /// </summary>
         public readonly string Value;
 

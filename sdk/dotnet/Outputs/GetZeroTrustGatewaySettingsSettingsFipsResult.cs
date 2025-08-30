@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsFipsResult
     {
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
         /// </summary>
         public readonly bool Tls;
 

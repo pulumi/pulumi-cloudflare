@@ -16,14 +16,14 @@ public final class ZeroTrustGatewaySettingsSettingsFipsArgs extends com.pulumi.r
     public static final ZeroTrustGatewaySettingsSettingsFipsArgs Empty = new ZeroTrustGatewaySettingsSettingsFipsArgs();
 
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     @Import(name="tls")
     private @Nullable Output<Boolean> tls;
 
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Optional<Output<Boolean>> tls() {
@@ -55,7 +55,7 @@ public final class ZeroTrustGatewaySettingsSettingsFipsArgs extends com.pulumi.r
         }
 
         /**
-         * @param tls Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+         * @param tls Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ZeroTrustGatewaySettingsSettingsFipsArgs extends com.pulumi.r
         }
 
         /**
-         * @param tls Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+         * @param tls Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
          * 
          * @return builder
          * 

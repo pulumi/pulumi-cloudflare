@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersKvNamespacesResultResult
     {
         /// <summary>
-        /// True if new beta namespace, with additional preview features.
-        /// </summary>
-        public readonly bool Beta;
-        /// <summary>
         /// Namespace identifier tag.
         /// </summary>
         public readonly string Id;
@@ -32,15 +28,12 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetWorkersKvNamespacesResultResult(
-            bool beta,
-
             string id,
 
             bool supportsUrlEncoding,
 
             string title)
         {
-            Beta = beta;
             Id = id;
             SupportsUrlEncoding = supportsUrlEncoding;
             Title = title;

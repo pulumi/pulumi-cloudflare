@@ -55,7 +55,7 @@ public final class ZeroTrustGatewaySettingsSettings {
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -79,7 +79,7 @@ public final class ZeroTrustGatewaySettingsSettings {
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsInspection inspection;
@@ -143,7 +143,7 @@ public final class ZeroTrustGatewaySettingsSettings {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -175,7 +175,7 @@ public final class ZeroTrustGatewaySettingsSettings {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
-     * @return Setting to define inspection settings
+     * @return Setting to define inspection settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsInspection> inspection() {

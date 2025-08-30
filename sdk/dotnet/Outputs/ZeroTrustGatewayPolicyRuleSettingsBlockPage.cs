@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsBlockPage
     {
         /// <summary>
-        /// If true, context information will be passed as query parameters
+        /// If true, context information will be passed as query parameters.
         /// </summary>
         public readonly bool? IncludeContext;
         /// <summary>
-        /// URI to which the user will be redirected
+        /// URI to which the user will be redirected.
         /// </summary>
         public readonly string TargetUri;
 

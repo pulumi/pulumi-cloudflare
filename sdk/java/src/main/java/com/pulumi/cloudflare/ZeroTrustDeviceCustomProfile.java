@@ -253,14 +253,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustDeviceCustomProfileExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDeviceCustomProfileExclude>> excludes;
+    private Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes;
 
     /**
      * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<Optional<List<ZeroTrustDeviceCustomProfileExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes() {
+        return this.excludes;
     }
     @Export(name="fallbackDomains", refs={List.class,ZeroTrustDeviceCustomProfileFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileFallbackDomain>> fallbackDomains;
@@ -279,14 +279,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="includes", refs={List.class,ZeroTrustDeviceCustomProfileInclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDeviceCustomProfileInclude>> includes;
+    private Output<List<ZeroTrustDeviceCustomProfileInclude>> includes;
 
     /**
      * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<Optional<List<ZeroTrustDeviceCustomProfileInclude>>> includes() {
-        return Codegen.optional(this.includes);
+    public Output<List<ZeroTrustDeviceCustomProfileInclude>> includes() {
+        return this.includes;
     }
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -393,10 +393,10 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return this.sccmVpnBoundarySupport;
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceCustomProfileServiceModeV2.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;
+    private Output<ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;
 
-    public Output<Optional<ZeroTrustDeviceCustomProfileServiceModeV2>> serviceModeV2() {
-        return Codegen.optional(this.serviceModeV2);
+    public Output<ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2() {
+        return this.serviceModeV2;
     }
     /**
      * The URL to launch when the Send Feedback button is clicked.

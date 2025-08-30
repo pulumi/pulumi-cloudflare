@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         PerPage = 1,
         ///         Search = "1.1.1.",
         ///     });
         /// 
@@ -50,6 +51,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         PerPage = 1,
         ///         Search = "1.1.1.",
         ///     });
         /// 
@@ -74,6 +76,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         PerPage = 1,
         ///         Search = "1.1.1.",
         ///     });
         /// 
@@ -104,6 +107,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
+
+        /// <summary>
+        /// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+        /// </summary>
+        [Input("perPage")]
+        public int? PerPage { get; set; }
 
         /// <summary>
         /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
@@ -138,6 +147,12 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
+        /// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+        /// </summary>
+        [Input("perPage")]
+        public Input<int>? PerPage { get; set; }
+
+        /// <summary>
         /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
         /// </summary>
         [Input("search")]
@@ -170,6 +185,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
+        /// Amount of results to include in each paginated response. A non-negative 32 bit integer.
+        /// </summary>
+        public readonly int? PerPage;
+        /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetListItemsResultResult> Results;
@@ -188,6 +207,8 @@ namespace Pulumi.Cloudflare
 
             int? maxItems,
 
+            int? perPage,
+
             ImmutableArray<Outputs.GetListItemsResultResult> results,
 
             string? search)
@@ -196,6 +217,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             ListId = listId;
             MaxItems = maxItems;
+            PerPage = perPage;
             Results = results;
             Search = search;
         }

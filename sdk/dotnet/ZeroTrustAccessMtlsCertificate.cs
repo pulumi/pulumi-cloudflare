@@ -40,6 +40,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
+    /// Note: The "certificate" field cannot be imported by this module and must be manually added to state.
+    /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;'
     /// ```

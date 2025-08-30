@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultExpirationResult Expiration;
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
         /// </summary>
         public readonly ImmutableArray<string> Filters;
         /// <summary>
@@ -51,12 +51,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The rule cannot be shared via the Orgs API
+        /// The rule cannot be shared via the Orgs API.
         /// </summary>
         public readonly bool NotSharable;
         public readonly int Precedence;
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// The rule was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
@@ -68,13 +68,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult Schedule;
         /// <summary>
-        /// account tag of account that created the rule
+        /// account tag of account that created the rule.
         /// </summary>
         public readonly string SourceAccount;
         public readonly string Traffic;
         public readonly string UpdatedAt;
         /// <summary>
-        /// version number of the rule
+        /// version number of the rule.
         /// </summary>
         public readonly int Version;
         /// <summary>

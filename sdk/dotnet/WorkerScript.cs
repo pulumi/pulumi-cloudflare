@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// !&gt; This resource is no longer recommended. Please use the `cloudflare_worker`, `cloudflare_worker_version`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+    /// !&gt; This resource is no longer recommended. Please use the `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
     /// 
     /// ## Import
     /// 
@@ -29,35 +29,31 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for assets within a Worker
+        /// Configuration for assets within a Worker.
         /// </summary>
         [Output("assets")]
         public Output<Outputs.WorkerScriptAssets?> Assets { get; private set; } = null!;
 
         /// <summary>
-        /// List of bindings attached to a Worker. You can find more about bindings on our docs:
-        /// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         /// </summary>
         [Output("bindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
-        /// event). Indicates a `service worker syntax` Worker.
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Output("bodyPart")]
         public Output<string?> BodyPart { get; private set; } = null!;
 
         /// <summary>
-        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
-        /// will not affect this Worker.
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Output("compatibilityDate")]
         public Output<string> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
-        /// of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
@@ -69,15 +65,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
-        /// `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
         /// </summary>
         [Output("contentFile")]
         public Output<string?> ContentFile { get; private set; } = null!;
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
-        /// `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         /// </summary>
         [Output("contentSha256")]
         public Output<string?> ContentSha256 { get; private set; } = null!;
@@ -99,6 +93,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// The names of handlers exported as part of the default export.
+        /// </summary>
+        [Output("handlers")]
+        public Output<ImmutableArray<string>> Handlers { get; private set; } = null!;
 
         /// <summary>
         /// Whether a Worker contains assets.
@@ -125,23 +125,46 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> KeepBindings { get; private set; } = null!;
 
         /// <summary>
+        /// The client most recently used to deploy this Worker.
+        /// </summary>
+        [Output("lastDeployedFrom")]
+        public Output<string> LastDeployedFrom { get; private set; } = null!;
+
+        /// <summary>
+        /// Limits to apply for this Worker.
+        /// </summary>
+        [Output("limits")]
+        public Output<Outputs.WorkerScriptLimits?> Limits { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Output("logpush")]
         public Output<bool> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
-        /// Indicates a `module syntax` Worker.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Output("mainModule")]
         public Output<string?> MainModule { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the Durable Object migration that was most recently applied for this Worker.
+        /// </summary>
+        [Output("migrationTag")]
+        public Output<string> MigrationTag { get; private set; } = null!;
 
         /// <summary>
         /// When the script was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Named exports, such as Durable Object class implementations and named entrypoints.
+        /// </summary>
+        [Output("namedHandlers")]
+        public Output<ImmutableArray<Outputs.WorkerScriptNamedHandler>> NamedHandlers { get; private set; } = null!;
 
         /// <summary>
         /// Observability settings for the Worker.
@@ -171,7 +194,8 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptTailConsumer>> TailConsumers { get; private set; } = null!;
 
         /// <summary>
-        /// Usage model for the Worker invocations. Available values: "standard".
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard", "bundled", "unbound".
         /// </summary>
         [Output("usageModel")]
         public Output<string> UsageModel { get; private set; } = null!;
@@ -233,7 +257,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Configuration for assets within a Worker
+        /// Configuration for assets within a Worker.
         /// </summary>
         [Input("assets")]
         public Input<Inputs.WorkerScriptAssetsArgs>? Assets { get; set; }
@@ -242,8 +266,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.WorkerScriptBindingArgs>? _bindings;
 
         /// <summary>
-        /// List of bindings attached to a Worker. You can find more about bindings on our docs:
-        /// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         /// </summary>
         public InputList<Inputs.WorkerScriptBindingArgs> Bindings
         {
@@ -252,15 +275,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
-        /// event). Indicates a `service worker syntax` Worker.
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
 
         /// <summary>
-        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
-        /// will not affect this Worker.
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
@@ -269,8 +290,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
-        /// of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -285,15 +305,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
-        /// `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
-        /// `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         /// </summary>
         [Input("contentSha256")]
         public Input<string>? ContentSha256 { get; set; }
@@ -323,14 +341,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Limits to apply for this Worker.
+        /// </summary>
+        [Input("limits")]
+        public Input<Inputs.WorkerScriptLimitsArgs>? Limits { get; set; }
+
+        /// <summary>
         /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Input("logpush")]
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
-        /// Indicates a `module syntax` Worker.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
@@ -366,7 +389,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Usage model for the Worker invocations. Available values: "standard".
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard", "bundled", "unbound".
         /// </summary>
         [Input("usageModel")]
         public Input<string>? UsageModel { get; set; }
@@ -386,7 +410,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Configuration for assets within a Worker
+        /// Configuration for assets within a Worker.
         /// </summary>
         [Input("assets")]
         public Input<Inputs.WorkerScriptAssetsGetArgs>? Assets { get; set; }
@@ -395,8 +419,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.WorkerScriptBindingGetArgs>? _bindings;
 
         /// <summary>
-        /// List of bindings attached to a Worker. You can find more about bindings on our docs:
-        /// https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         /// </summary>
         public InputList<Inputs.WorkerScriptBindingGetArgs> Bindings
         {
@@ -405,15 +428,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch`
-        /// event). Indicates a `service worker syntax` Worker.
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
 
         /// <summary>
-        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date
-        /// will not affect this Worker.
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
@@ -422,8 +443,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out
-        /// of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -438,15 +458,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or
-        /// `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when
-        /// `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
         /// </summary>
         [Input("contentSha256")]
         public Input<string>? ContentSha256 { get; set; }
@@ -468,6 +486,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("handlers")]
+        private InputList<string>? _handlers;
+
+        /// <summary>
+        /// The names of handlers exported as part of the default export.
+        /// </summary>
+        public InputList<string> Handlers
+        {
+            get => _handlers ?? (_handlers = new InputList<string>());
+            set => _handlers = value;
+        }
 
         /// <summary>
         /// Whether a Worker contains assets.
@@ -500,23 +530,52 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The client most recently used to deploy this Worker.
+        /// </summary>
+        [Input("lastDeployedFrom")]
+        public Input<string>? LastDeployedFrom { get; set; }
+
+        /// <summary>
+        /// Limits to apply for this Worker.
+        /// </summary>
+        [Input("limits")]
+        public Input<Inputs.WorkerScriptLimitsGetArgs>? Limits { get; set; }
+
+        /// <summary>
         /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Input("logpush")]
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler).
-        /// Indicates a `module syntax` Worker.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
+
+        /// <summary>
+        /// The tag of the Durable Object migration that was most recently applied for this Worker.
+        /// </summary>
+        [Input("migrationTag")]
+        public Input<string>? MigrationTag { get; set; }
 
         /// <summary>
         /// When the script was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
+
+        [Input("namedHandlers")]
+        private InputList<Inputs.WorkerScriptNamedHandlerGetArgs>? _namedHandlers;
+
+        /// <summary>
+        /// Named exports, such as Durable Object class implementations and named entrypoints.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptNamedHandlerGetArgs> NamedHandlers
+        {
+            get => _namedHandlers ?? (_namedHandlers = new InputList<Inputs.WorkerScriptNamedHandlerGetArgs>());
+            set => _namedHandlers = value;
+        }
 
         /// <summary>
         /// Observability settings for the Worker.
@@ -552,7 +611,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Usage model for the Worker invocations. Available values: "standard".
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard", "bundled", "unbound".
         /// </summary>
         [Input("usageModel")]
         public Input<string>? UsageModel { get; set; }

@@ -47,14 +47,14 @@ import (
 type ArgoTieredCaching struct {
 	pulumi.CustomResourceState
 
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolOutput `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Enables Tiered Caching.
 	// Available values: "on", "off".
 	Value pulumi.StringOutput `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -94,26 +94,26 @@ func GetArgoTieredCaching(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ArgoTieredCaching resources.
 type argoTieredCachingState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable *bool `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Enables Tiered Caching.
 	// Available values: "on", "off".
 	Value *string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ArgoTieredCachingState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolPtrInput
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Enables Tiered Caching.
 	// Available values: "on", "off".
 	Value pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -125,7 +125,7 @@ type argoTieredCachingArgs struct {
 	// Enables Tiered Caching.
 	// Available values: "on", "off".
 	Value string `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -134,7 +134,7 @@ type ArgoTieredCachingArgs struct {
 	// Enables Tiered Caching.
 	// Available values: "on", "off".
 	Value pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -225,7 +225,7 @@ func (o ArgoTieredCachingOutput) ToArgoTieredCachingOutputWithContext(ctx contex
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o ArgoTieredCachingOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
@@ -241,7 +241,7 @@ func (o ArgoTieredCachingOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ArgoTieredCachingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTieredCaching) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

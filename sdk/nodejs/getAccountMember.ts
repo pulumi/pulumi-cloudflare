@@ -51,6 +51,10 @@ export interface GetAccountMemberResult {
      * Account identifier tag.
      */
     readonly accountId: string;
+    /**
+     * The contact email address of the user.
+     */
+    readonly email: string;
     readonly filter?: outputs.GetAccountMemberFilter;
     /**
      * Membership identifier tag.

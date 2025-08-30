@@ -48,7 +48,7 @@ func LookupZeroTrustGatewayAppTypesList(ctx *pulumi.Context, args *LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustGatewayAppTypesList.
 type LookupZeroTrustGatewayAppTypesListArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -56,7 +56,7 @@ type LookupZeroTrustGatewayAppTypesListArgs struct {
 
 // A collection of values returned by getZeroTrustGatewayAppTypesList.
 type LookupZeroTrustGatewayAppTypesListResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupZeroTrustGatewayAppTypesListOutput(ctx *pulumi.Context, args LookupZe
 
 // A collection of arguments for invoking getZeroTrustGatewayAppTypesList.
 type LookupZeroTrustGatewayAppTypesListOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -102,7 +102,7 @@ func (o LookupZeroTrustGatewayAppTypesListResultOutput) ToLookupZeroTrustGateway
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustGatewayAppTypesListResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayAppTypesListResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

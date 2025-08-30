@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetRuleActionParametersCookieFieldResult
     {
         /// <summary>
-        /// The name of the field.
+        /// The name of the cookie.
         /// </summary>
         public readonly string Name;
 

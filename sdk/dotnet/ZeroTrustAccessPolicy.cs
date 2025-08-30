@@ -187,7 +187,7 @@ namespace Pulumi.Cloudflare
             set => _excludes = value;
         }
 
-        [Input("includes", required: true)]
+        [Input("includes")]
         private InputList<Inputs.ZeroTrustAccessPolicyIncludeArgs>? _includes;
 
         /// <summary>

@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsRuleExpiration> Expiration { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The rule cannot be shared via the Orgs API
+        /// The rule cannot be shared via the Orgs API.
         /// </summary>
         [Output("notSharable")]
         public Output<bool> NotSharable { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// The rule was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// account tag of account that created the rule
+        /// account tag of account that created the rule.
         /// </summary>
         [Output("sourceAccount")]
         public Output<string> SourceAccount { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// version number of the rule
+        /// version number of the rule.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -303,7 +303,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -321,7 +321,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The rule cannot be shared via the Orgs API
+        /// The rule cannot be shared via the Orgs API.
         /// </summary>
         [Input("notSharable")]
         public Input<bool>? NotSharable { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account
+        /// The rule was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -348,7 +348,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsRuleScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// account tag of account that created the rule
+        /// account tag of account that created the rule.
         /// </summary>
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// version number of the rule
+        /// version number of the rule.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

@@ -22,13 +22,13 @@ import (
 type ZoneCacheVariants struct {
 	pulumi.CustomResourceState
 
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolOutput `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Value of the zone setting.
 	Value ZoneCacheVariantsValueOutput `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -68,24 +68,24 @@ func GetZoneCacheVariants(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneCacheVariants resources.
 type zoneCacheVariantsState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable *bool `pulumi:"editable"`
 	// Last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Value of the zone setting.
 	Value *ZoneCacheVariantsValue `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneCacheVariantsState struct {
-	// Whether the setting is editable
+	// Whether the setting is editable.
 	Editable pulumi.BoolPtrInput
 	// Last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Value of the zone setting.
 	Value ZoneCacheVariantsValuePtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -96,7 +96,7 @@ func (ZoneCacheVariantsState) ElementType() reflect.Type {
 type zoneCacheVariantsArgs struct {
 	// Value of the zone setting.
 	Value ZoneCacheVariantsValue `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -104,7 +104,7 @@ type zoneCacheVariantsArgs struct {
 type ZoneCacheVariantsArgs struct {
 	// Value of the zone setting.
 	Value ZoneCacheVariantsValueInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -195,7 +195,7 @@ func (o ZoneCacheVariantsOutput) ToZoneCacheVariantsOutputWithContext(ctx contex
 	return o
 }
 
-// Whether the setting is editable
+// Whether the setting is editable.
 func (o ZoneCacheVariantsOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
@@ -210,7 +210,7 @@ func (o ZoneCacheVariantsOutput) Value() ZoneCacheVariantsValueOutput {
 	return o.ApplyT(func(v *ZoneCacheVariants) ZoneCacheVariantsValueOutput { return v.Value }).(ZoneCacheVariantsValueOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ZoneCacheVariantsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

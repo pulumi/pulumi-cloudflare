@@ -56,9 +56,8 @@ type Account struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Account settings
 	Settings AccountSettingsOutput `pulumi:"settings"`
-	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit AccountUnitPtrOutput `pulumi:"unit"`
 }
@@ -72,9 +71,6 @@ func NewAccount(ctx *pulumi.Context,
 
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
@@ -105,7 +101,6 @@ type accountState struct {
 	Name *string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
-	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	Type *string `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
@@ -119,7 +114,6 @@ type AccountState struct {
 	Name pulumi.StringPtrInput
 	// Account settings
 	Settings AccountSettingsPtrInput
-	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
 	Type pulumi.StringPtrInput
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
@@ -135,9 +129,8 @@ type accountArgs struct {
 	Name string `pulumi:"name"`
 	// Account settings
 	Settings *AccountSettings `pulumi:"settings"`
-	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit *AccountUnit `pulumi:"unit"`
 }
@@ -148,9 +141,8 @@ type AccountArgs struct {
 	Name pulumi.StringInput
 	// Account settings
 	Settings AccountSettingsPtrInput
-	// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 	// Available values: "standard", "enterprise".
-	Type pulumi.StringInput
+	Type pulumi.StringPtrInput
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
 	Unit AccountUnitPtrInput
 }
@@ -257,10 +249,9 @@ func (o AccountOutput) Settings() AccountSettingsOutput {
 	return o.ApplyT(func(v *Account) AccountSettingsOutput { return v.Settings }).(AccountSettingsOutput)
 }
 
-// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
 // Available values: "standard", "enterprise".
-func (o AccountOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+func (o AccountOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/

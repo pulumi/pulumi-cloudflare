@@ -18,7 +18,7 @@ import java.util.Objects;
 public final class GetRulesetRule {
     /**
      * @return The action to perform when the rule matches.
-     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;execute&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*config&#34;, &#34;skip&#34;, &#34;set*cache*settings&#34;, &#34;log*custom*field&#34;, &#34;ddos*dynamic&#34;, &#34;force*connection*close&#34;.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;ddos*dynamic&#34;, &#34;execute&#34;, &#34;force*connection*close&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;log*custom*field&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*cache*settings&#34;, &#34;set*config&#34;, &#34;skip&#34;.
      * 
      */
     private String action;
@@ -43,7 +43,7 @@ public final class GetRulesetRule {
      */
     private Boolean enabled;
     /**
-     * @return Configure checks for exposed credentials.
+     * @return Configuration for exposed credential checking.
      * 
      */
     private GetRulesetRuleExposedCredentialCheck exposedCredentialCheck;
@@ -63,12 +63,12 @@ public final class GetRulesetRule {
      */
     private GetRulesetRuleLogging logging;
     /**
-     * @return An object configuring the rule&#39;s ratelimit behavior.
+     * @return An object configuring the rule&#39;s rate limit behavior.
      * 
      */
     private GetRulesetRuleRatelimit ratelimit;
     /**
-     * @return The reference of the rule (the rule ID by default).
+     * @return The reference of the rule (the rule&#39;s ID by default).
      * 
      */
     private String ref;
@@ -76,7 +76,7 @@ public final class GetRulesetRule {
     private GetRulesetRule() {}
     /**
      * @return The action to perform when the rule matches.
-     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;execute&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*config&#34;, &#34;skip&#34;, &#34;set*cache*settings&#34;, &#34;log*custom*field&#34;, &#34;ddos*dynamic&#34;, &#34;force*connection*close&#34;.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;compress*response&#34;, &#34;ddos*dynamic&#34;, &#34;execute&#34;, &#34;force*connection*close&#34;, &#34;js*challenge&#34;, &#34;log&#34;, &#34;log*custom*field&#34;, &#34;managed*challenge&#34;, &#34;redirect&#34;, &#34;rewrite&#34;, &#34;route&#34;, &#34;score&#34;, &#34;serve*error&#34;, &#34;set*cache*settings&#34;, &#34;set*config&#34;, &#34;skip&#34;.
      * 
      */
     public String action() {
@@ -111,7 +111,7 @@ public final class GetRulesetRule {
         return this.enabled;
     }
     /**
-     * @return Configure checks for exposed credentials.
+     * @return Configuration for exposed credential checking.
      * 
      */
     public GetRulesetRuleExposedCredentialCheck exposedCredentialCheck() {
@@ -139,14 +139,14 @@ public final class GetRulesetRule {
         return this.logging;
     }
     /**
-     * @return An object configuring the rule&#39;s ratelimit behavior.
+     * @return An object configuring the rule&#39;s rate limit behavior.
      * 
      */
     public GetRulesetRuleRatelimit ratelimit() {
         return this.ratelimit;
     }
     /**
-     * @return The reference of the rule (the rule ID by default).
+     * @return The reference of the rule (the rule&#39;s ID by default).
      * 
      */
     public String ref() {

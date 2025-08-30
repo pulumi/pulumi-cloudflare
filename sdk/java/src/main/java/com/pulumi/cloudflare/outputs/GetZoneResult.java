@@ -40,17 +40,23 @@ public final class GetZoneResult {
     private Boolean paused;
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This has been replaced by Account memberships. */
     private List<String> permissions;
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * Please use the `/zones/{zone_id}/subscription` API
+     * to update a zone&#39;s plan. Changing this value will create/cancel
+     * associated subscriptions. To view available plans for this zone,
+     * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
     private GetZonePlan plan;
     private String status;
     private GetZoneTenant tenant;
@@ -111,19 +117,25 @@ public final class GetZoneResult {
     }
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * This has been replaced by Account memberships.
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* This has been replaced by Account memberships. */
     public List<String> permissions() {
         return this.permissions;
     }
     /**
      * @deprecated
-     * This attribute is deprecated.
+     * Please use the `/zones/{zone_id}/subscription` API
+     * to update a zone&#39;s plan. Changing this value will create/cancel
+     * associated subscriptions. To view available plans for this zone,
+     * see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      * 
      */
-    @Deprecated /* This attribute is deprecated. */
+    @Deprecated /* Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/). */
     public GetZonePlan plan() {
         return this.plan;
     }

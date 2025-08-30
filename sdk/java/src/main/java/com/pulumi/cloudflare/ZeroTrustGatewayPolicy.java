@@ -129,14 +129,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.expiration;
     }
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      * 
      */
     public Output<Optional<List<String>>> filters() {
@@ -163,14 +163,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * The rule cannot be shared via the Orgs API
+     * The rule cannot be shared via the Orgs API.
      * 
      */
     @Export(name="notSharable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notSharable;
 
     /**
-     * @return The rule cannot be shared via the Orgs API
+     * @return The rule cannot be shared via the Orgs API.
      * 
      */
     public Output<Boolean> notSharable() {
@@ -183,14 +183,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.precedence;
     }
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account
+     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Output<Boolean> readOnly() {
@@ -225,14 +225,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.schedule;
     }
     /**
-     * account tag of account that created the rule
+     * account tag of account that created the rule.
      * 
      */
     @Export(name="sourceAccount", refs={String.class}, tree="[0]")
     private Output<String> sourceAccount;
 
     /**
-     * @return account tag of account that created the rule
+     * @return account tag of account that created the rule.
      * 
      */
     public Output<String> sourceAccount() {
@@ -251,14 +251,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.updatedAt;
     }
     /**
-     * version number of the rule
+     * version number of the rule.
      * 
      */
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     /**
-     * @return version number of the rule
+     * @return version number of the rule.
      * 
      */
     public Output<Integer> version() {

@@ -31,6 +31,11 @@ public final class GetAccountsResult {
      * 
      */
     private GetAccountsResultSettings settings;
+    /**
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * 
+     */
+    private String type;
 
     private GetAccountsResult() {}
     /**
@@ -61,6 +66,13 @@ public final class GetAccountsResult {
     public GetAccountsResultSettings settings() {
         return this.settings;
     }
+    /**
+     * @return Available values: &#34;standard&#34;, &#34;enterprise&#34;.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -75,6 +87,7 @@ public final class GetAccountsResult {
         private String id;
         private String name;
         private GetAccountsResultSettings settings;
+        private String type;
         public Builder() {}
         public Builder(GetAccountsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +95,7 @@ public final class GetAccountsResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.settings = defaults.settings;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -116,12 +130,21 @@ public final class GetAccountsResult {
             this.settings = settings;
             return this;
         }
+        @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccountsResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
         public GetAccountsResult build() {
             final var _resultValue = new GetAccountsResult();
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.settings = settings;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

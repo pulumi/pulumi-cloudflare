@@ -33,14 +33,14 @@ public final class ZeroTrustGatewaySettingsSettingsCustomCertificateArgs extends
     }
 
     /**
-     * Enable use of custom certificate authority for signing Gateway traffic.
+     * Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable use of custom certificate authority for signing Gateway traffic.
+     * @return Enable use of custom certificate authority for signing Gateway. traffic.
      * 
      */
     public Output<Boolean> enabled() {
@@ -118,7 +118,7 @@ public final class ZeroTrustGatewaySettingsSettingsCustomCertificateArgs extends
         }
 
         /**
-         * @param enabled Enable use of custom certificate authority for signing Gateway traffic.
+         * @param enabled Enable use of custom certificate authority for signing Gateway. traffic.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ZeroTrustGatewaySettingsSettingsCustomCertificateArgs extends
         }
 
         /**
-         * @param enabled Enable use of custom certificate authority for signing Gateway traffic.
+         * @param enabled Enable use of custom certificate authority for signing Gateway. traffic.
          * 
          * @return builder
          * 

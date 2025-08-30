@@ -120,13 +120,16 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Legacy permissions based on legacy user membership information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This has been replaced by Account memberships.
      */
     public /*out*/ readonly permissions!: pulumi.Output<string[]>;
     /**
      * A Zones subscription information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      */
     public /*out*/ readonly plan!: pulumi.Output<outputs.ZonePlan>;
     /**
@@ -295,13 +298,16 @@ export interface ZoneState {
     /**
      * Legacy permissions based on legacy user membership information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated This has been replaced by Account memberships.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A Zones subscription information.
      *
-     * @deprecated This attribute is deprecated.
+     * @deprecated Please use the `/zones/{zone_id}/subscription` API
+to update a zone's plan. Changing this value will create/cancel
+associated subscriptions. To view available plans for this zone,
+see [Zone Plans](https://developers.cloudflare.com/api/resources/zones/subresources/plans/).
      */
     plan?: pulumi.Input<inputs.ZonePlan>;
     /**

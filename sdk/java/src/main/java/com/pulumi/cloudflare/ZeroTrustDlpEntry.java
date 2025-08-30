@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.ZeroTrustDlpEntryArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpEntryState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpEntryConfidence;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpEntryPattern;
+import com.pulumi.cloudflare.outputs.ZeroTrustDlpEntryVariant;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -155,6 +156,12 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
 
     public Output<String> updatedAt() {
         return this.updatedAt;
+    }
+    @Export(name="variant", refs={ZeroTrustDlpEntryVariant.class}, tree="[0]")
+    private Output<ZeroTrustDlpEntryVariant> variant;
+
+    public Output<ZeroTrustDlpEntryVariant> variant() {
+        return this.variant;
     }
     @Export(name="wordList", refs={String.class}, tree="[0]")
     private Output<String> wordList;

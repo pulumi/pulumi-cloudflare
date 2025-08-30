@@ -24,8 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         AccountId = "account_id",
-        ///         ZoneId = "zone_id",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });
         /// 
         /// });
@@ -47,8 +46,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         AccountId = "account_id",
-        ///         ZoneId = "zone_id",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });
         /// 
         /// });
@@ -70,8 +68,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleRulesets = Cloudflare.GetRulesets.Invoke(new()
         ///     {
-        ///         AccountId = "account_id",
-        ///         ZoneId = "zone_id",
+        ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
         ///     });
         /// 
         /// });
@@ -85,19 +82,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Maximum number of rulesets to fetch (defaults to 1000).
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -111,19 +108,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Maximum number of rulesets to fetch (defaults to 1000).
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -139,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetRulesetsResult
     {
         /// <summary>
-        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        /// The unique ID of the account.
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
@@ -147,15 +144,19 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// Maximum number of rulesets to fetch (defaults to 1000).
         /// </summary>
         public readonly int? MaxItems;
         /// <summary>
-        /// The items returned by the data source
+        /// A list of rulesets. The returned information will not include the rules in each ruleset.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesetsResultResult> Results;
         /// <summary>
-        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+        /// A list of rulesets. The returned information will not include the rules in each ruleset.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRulesetsRulesetResult> Rulesets;
+        /// <summary>
+        /// The unique ID of the zone.
         /// </summary>
         public readonly string? ZoneId;
 
@@ -169,12 +170,15 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetRulesetsResultResult> results,
 
+            ImmutableArray<Outputs.GetRulesetsRulesetResult> rulesets,
+
             string? zoneId)
         {
             AccountId = accountId;
             Id = id;
             MaxItems = maxItems;
             Results = results;
+            Rulesets = rulesets;
             ZoneId = zoneId;
         }
     }

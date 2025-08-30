@@ -18,15 +18,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account
+        /// This setting was shared via the Orgs API and cannot be edited by the current account.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// Account tag of account that shared this setting
+        /// Account tag of account that shared this setting.
         /// </summary>
         public readonly string SourceAccount;
         /// <summary>
-        /// Version number of the setting
+        /// Version number of the setting.
         /// </summary>
         public readonly int Version;
 

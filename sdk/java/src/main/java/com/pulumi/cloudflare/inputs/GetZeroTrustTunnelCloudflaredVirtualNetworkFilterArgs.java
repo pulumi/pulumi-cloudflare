@@ -47,6 +47,21 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs extends
     }
 
     /**
+     * If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    @Import(name="isDefaultNetwork")
+    private @Nullable Output<Boolean> isDefaultNetwork;
+
+    /**
+     * @return If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefaultNetwork() {
+        return Optional.ofNullable(this.isDefaultNetwork);
+    }
+
+    /**
      * If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
      * 
      */
@@ -81,6 +96,7 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs extends
     private GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs(GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs $) {
         this.id = $.id;
         this.isDefault = $.isDefault;
+        this.isDefaultNetwork = $.isDefaultNetwork;
         this.isDeleted = $.isDeleted;
         this.name = $.name;
     }
@@ -143,6 +159,27 @@ public final class GetZeroTrustTunnelCloudflaredVirtualNetworkFilterArgs extends
          */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
+        }
+
+        /**
+         * @param isDefaultNetwork If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultNetwork(@Nullable Output<Boolean> isDefaultNetwork) {
+            $.isDefaultNetwork = isDefaultNetwork;
+            return this;
+        }
+
+        /**
+         * @param isDefaultNetwork If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefaultNetwork(Boolean isDefaultNetwork) {
+            return isDefaultNetwork(Output.of(isDefaultNetwork));
         }
 
         /**

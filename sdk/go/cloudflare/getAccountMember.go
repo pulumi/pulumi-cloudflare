@@ -59,8 +59,10 @@ type LookupAccountMemberArgs struct {
 // A collection of values returned by getAccountMember.
 type LookupAccountMemberResult struct {
 	// Account identifier tag.
-	AccountId string                  `pulumi:"accountId"`
-	Filter    *GetAccountMemberFilter `pulumi:"filter"`
+	AccountId string `pulumi:"accountId"`
+	// The contact email address of the user.
+	Email  string                  `pulumi:"email"`
+	Filter *GetAccountMemberFilter `pulumi:"filter"`
 	// Membership identifier tag.
 	Id string `pulumi:"id"`
 	// Membership identifier tag.
@@ -116,6 +118,11 @@ func (o LookupAccountMemberResultOutput) ToLookupAccountMemberResultOutputWithCo
 // Account identifier tag.
 func (o LookupAccountMemberResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountMemberResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The contact email address of the user.
+func (o LookupAccountMemberResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountMemberResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
 func (o LookupAccountMemberResultOutput) Filter() GetAccountMemberFilterPtrOutput {

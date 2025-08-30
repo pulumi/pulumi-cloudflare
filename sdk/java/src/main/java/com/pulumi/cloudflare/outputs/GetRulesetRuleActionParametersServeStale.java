@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersServeStale {
     /**
-     * @return Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      * 
      */
     private Boolean disableStaleWhileUpdating;
 
     private GetRulesetRuleActionParametersServeStale() {}
     /**
-     * @return Defines whether Cloudflare should serve stale content while updating. If true, Cloudflare will not serve stale content while getting the latest content from the origin.
+     * @return Whether Cloudflare should disable serving stale content while getting the latest content from the origin.
      * 
      */
     public Boolean disableStaleWhileUpdating() {

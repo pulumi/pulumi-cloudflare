@@ -27,6 +27,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Kind;
         /// <summary>
+        /// The timestamp of when the ruleset was last modified.
+        /// </summary>
+        public readonly string LastUpdated;
+        /// <summary>
         /// The human-readable name of the ruleset.
         /// </summary>
         public readonly string Name;
@@ -35,6 +39,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         public readonly string Phase;
+        /// <summary>
+        /// The version of the ruleset.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private GetRulesetsResultResult(
@@ -44,15 +52,21 @@ namespace Pulumi.Cloudflare.Outputs
 
             string kind,
 
+            string lastUpdated,
+
             string name,
 
-            string phase)
+            string phase,
+
+            string version)
         {
             Description = description;
             Id = id;
             Kind = kind;
+            LastUpdated = lastUpdated;
             Name = name;
             Phase = phase;
+            Version = version;
         }
     }
 }

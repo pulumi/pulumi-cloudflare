@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccountMembersResultResult
     {
         /// <summary>
+        /// The contact email address of the user.
+        /// </summary>
+        public readonly string Email;
+        /// <summary>
         /// Membership identifier tag.
         /// </summary>
         public readonly string Id;
@@ -37,6 +41,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetAccountMembersResultResult(
+            string email,
+
             string id,
 
             ImmutableArray<Outputs.GetAccountMembersResultPolicyResult> policies,
@@ -47,6 +53,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetAccountMembersResultUserResult user)
         {
+            Email = email;
             Id = id;
             Policies = policies;
             Roles = roles;

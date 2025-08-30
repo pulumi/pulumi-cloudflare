@@ -18,14 +18,14 @@ public final class GetZeroTrustGatewayCategoriesListArgs extends com.pulumi.reso
     public static final GetZeroTrustGatewayCategoriesListArgs Empty = new GetZeroTrustGatewayCategoriesListArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -73,7 +73,7 @@ public final class GetZeroTrustGatewayCategoriesListArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetZeroTrustGatewayCategoriesListArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

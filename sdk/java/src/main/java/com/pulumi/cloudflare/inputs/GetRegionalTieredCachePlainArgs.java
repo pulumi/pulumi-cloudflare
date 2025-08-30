@@ -14,14 +14,14 @@ public final class GetRegionalTieredCachePlainArgs extends com.pulumi.resources.
     public static final GetRegionalTieredCachePlainArgs Empty = new GetRegionalTieredCachePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetRegionalTieredCachePlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

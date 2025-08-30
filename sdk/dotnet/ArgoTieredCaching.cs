@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     public partial class ArgoTieredCaching : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         [Output("editable")]
         public Output<bool> Editable { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoTieredCachingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the setting is editable
+        /// Whether the setting is editable.
         /// </summary>
         [Input("editable")]
         public Input<bool>? Editable { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

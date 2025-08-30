@@ -23,7 +23,7 @@ class ZoneCacheReserveArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneCacheReserve resource.
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
                Available values: "on", "off".
         """
@@ -35,7 +35,7 @@ class ZoneCacheReserveArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -66,11 +66,11 @@ class _ZoneCacheReserveState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneCacheReserve resources.
-        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         if editable is not None:
             pulumi.set(__self__, "editable", editable)
@@ -85,7 +85,7 @@ class _ZoneCacheReserveState:
     @pulumi.getter
     def editable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -122,7 +122,7 @@ class _ZoneCacheReserveState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -162,7 +162,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -241,11 +241,11 @@ class ZoneCacheReserve(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable
+        :param pulumi.Input[_builtins.bool] editable: Whether the setting is editable.
         :param pulumi.Input[_builtins.str] modified_on: Last time this setting was modified.
         :param pulumi.Input[_builtins.str] value: Value of the Cache Reserve zone setting.
                Available values: "on", "off".
-        :param pulumi.Input[_builtins.str] zone_id: Identifier
+        :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -261,7 +261,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
     @pulumi.getter
     def editable(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -286,7 +286,7 @@ class ZoneCacheReserve(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

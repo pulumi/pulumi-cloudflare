@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetRulesetsResult;
+import com.pulumi.cloudflare.outputs.GetRulesetsRuleset;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -16,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesetsInvokeResult {
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     private @Nullable String accountId;
@@ -26,24 +27,33 @@ public final class GetRulesetsInvokeResult {
      */
     private String id;
     /**
-     * @return Max items to fetch, default: 1000
+     * @return Maximum number of rulesets to fetch (defaults to 1000).
      * 
      */
     private @Nullable Integer maxItems;
     /**
-     * @return The items returned by the data source
+     * @return A list of rulesets. The returned information will not include the rules in each ruleset.
+     * 
+     * @deprecated
+     * Use rulesets instead. This attribute will be removed in the next major version of the provider.
      * 
      */
+    @Deprecated /* Use rulesets instead. This attribute will be removed in the next major version of the provider. */
     private List<GetRulesetsResult> results;
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return A list of rulesets. The returned information will not include the rules in each ruleset.
+     * 
+     */
+    private List<GetRulesetsRuleset> rulesets;
+    /**
+     * @return The unique ID of the zone.
      * 
      */
     private @Nullable String zoneId;
 
     private GetRulesetsInvokeResult() {}
     /**
-     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+     * @return The unique ID of the account.
      * 
      */
     public Optional<String> accountId() {
@@ -57,21 +67,32 @@ public final class GetRulesetsInvokeResult {
         return this.id;
     }
     /**
-     * @return Max items to fetch, default: 1000
+     * @return Maximum number of rulesets to fetch (defaults to 1000).
      * 
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
     /**
-     * @return The items returned by the data source
+     * @return A list of rulesets. The returned information will not include the rules in each ruleset.
+     * 
+     * @deprecated
+     * Use rulesets instead. This attribute will be removed in the next major version of the provider.
      * 
      */
+    @Deprecated /* Use rulesets instead. This attribute will be removed in the next major version of the provider. */
     public List<GetRulesetsResult> results() {
         return this.results;
     }
     /**
-     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     * @return A list of rulesets. The returned information will not include the rules in each ruleset.
+     * 
+     */
+    public List<GetRulesetsRuleset> rulesets() {
+        return this.rulesets;
+    }
+    /**
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<String> zoneId() {
@@ -91,6 +112,7 @@ public final class GetRulesetsInvokeResult {
         private String id;
         private @Nullable Integer maxItems;
         private List<GetRulesetsResult> results;
+        private List<GetRulesetsRuleset> rulesets;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetRulesetsInvokeResult defaults) {
@@ -99,6 +121,7 @@ public final class GetRulesetsInvokeResult {
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
     	      this.results = defaults.results;
+    	      this.rulesets = defaults.rulesets;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -134,6 +157,17 @@ public final class GetRulesetsInvokeResult {
             return results(List.of(results));
         }
         @CustomType.Setter
+        public Builder rulesets(List<GetRulesetsRuleset> rulesets) {
+            if (rulesets == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsInvokeResult", "rulesets");
+            }
+            this.rulesets = rulesets;
+            return this;
+        }
+        public Builder rulesets(GetRulesetsRuleset... rulesets) {
+            return rulesets(List.of(rulesets));
+        }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -145,6 +179,7 @@ public final class GetRulesetsInvokeResult {
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
             _resultValue.results = results;
+            _resultValue.rulesets = rulesets;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

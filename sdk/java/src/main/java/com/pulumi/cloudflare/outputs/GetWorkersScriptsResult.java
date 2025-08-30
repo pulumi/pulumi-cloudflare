@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultNamedHandler;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultPlacement;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsResultTailConsumer;
 import com.pulumi.core.annotations.CustomType;
@@ -15,6 +16,16 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersScriptsResult {
     /**
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * 
+     */
+    private String compatibilityDate;
+    /**
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * 
+     */
+    private List<String> compatibilityFlags;
+    /**
      * @return When the script was created.
      * 
      */
@@ -24,6 +35,11 @@ public final class GetWorkersScriptsResult {
      * 
      */
     private String etag;
+    /**
+     * @return The names of handlers exported as part of the default export.
+     * 
+     */
+    private List<String> handlers;
     /**
      * @return Whether a Worker contains assets.
      * 
@@ -40,15 +56,30 @@ public final class GetWorkersScriptsResult {
      */
     private String id;
     /**
+     * @return The client most recently used to deploy this Worker.
+     * 
+     */
+    private String lastDeployedFrom;
+    /**
      * @return Whether Logpush is turned on for the Worker.
      * 
      */
     private Boolean logpush;
     /**
+     * @return The tag of the Durable Object migration that was most recently applied for this Worker.
+     * 
+     */
+    private String migrationTag;
+    /**
      * @return When the script was last modified.
      * 
      */
     private String modifiedOn;
+    /**
+     * @return Named exports, such as Durable Object class implementations and named entrypoints.
+     * 
+     */
+    private List<GetWorkersScriptsResultNamedHandler> namedHandlers;
     /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
@@ -81,12 +112,26 @@ public final class GetWorkersScriptsResult {
     private List<GetWorkersScriptsResultTailConsumer> tailConsumers;
     /**
      * @return Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
      */
     private String usageModel;
 
     private GetWorkersScriptsResult() {}
+    /**
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
+     * 
+     */
+    public String compatibilityDate() {
+        return this.compatibilityDate;
+    }
+    /**
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * 
+     */
+    public List<String> compatibilityFlags() {
+        return this.compatibilityFlags;
+    }
     /**
      * @return When the script was created.
      * 
@@ -100,6 +145,13 @@ public final class GetWorkersScriptsResult {
      */
     public String etag() {
         return this.etag;
+    }
+    /**
+     * @return The names of handlers exported as part of the default export.
+     * 
+     */
+    public List<String> handlers() {
+        return this.handlers;
     }
     /**
      * @return Whether a Worker contains assets.
@@ -123,6 +175,13 @@ public final class GetWorkersScriptsResult {
         return this.id;
     }
     /**
+     * @return The client most recently used to deploy this Worker.
+     * 
+     */
+    public String lastDeployedFrom() {
+        return this.lastDeployedFrom;
+    }
+    /**
      * @return Whether Logpush is turned on for the Worker.
      * 
      */
@@ -130,11 +189,25 @@ public final class GetWorkersScriptsResult {
         return this.logpush;
     }
     /**
+     * @return The tag of the Durable Object migration that was most recently applied for this Worker.
+     * 
+     */
+    public String migrationTag() {
+        return this.migrationTag;
+    }
+    /**
      * @return When the script was last modified.
      * 
      */
     public String modifiedOn() {
         return this.modifiedOn;
+    }
+    /**
+     * @return Named exports, such as Durable Object class implementations and named entrypoints.
+     * 
+     */
+    public List<GetWorkersScriptsResultNamedHandler> namedHandlers() {
+        return this.namedHandlers;
     }
     /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -176,7 +249,7 @@ public final class GetWorkersScriptsResult {
     }
     /**
      * @return Usage model for the Worker invocations.
-     * Available values: &#34;standard&#34;.
+     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
      * 
      */
     public String usageModel() {
@@ -192,13 +265,19 @@ public final class GetWorkersScriptsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String compatibilityDate;
+        private List<String> compatibilityFlags;
         private String createdOn;
         private String etag;
+        private List<String> handlers;
         private Boolean hasAssets;
         private Boolean hasModules;
         private String id;
+        private String lastDeployedFrom;
         private Boolean logpush;
+        private String migrationTag;
         private String modifiedOn;
+        private List<GetWorkersScriptsResultNamedHandler> namedHandlers;
         private GetWorkersScriptsResultPlacement placement;
         private String placementMode;
         private String placementStatus;
@@ -207,13 +286,19 @@ public final class GetWorkersScriptsResult {
         public Builder() {}
         public Builder(GetWorkersScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.compatibilityDate = defaults.compatibilityDate;
+    	      this.compatibilityFlags = defaults.compatibilityFlags;
     	      this.createdOn = defaults.createdOn;
     	      this.etag = defaults.etag;
+    	      this.handlers = defaults.handlers;
     	      this.hasAssets = defaults.hasAssets;
     	      this.hasModules = defaults.hasModules;
     	      this.id = defaults.id;
+    	      this.lastDeployedFrom = defaults.lastDeployedFrom;
     	      this.logpush = defaults.logpush;
+    	      this.migrationTag = defaults.migrationTag;
     	      this.modifiedOn = defaults.modifiedOn;
+    	      this.namedHandlers = defaults.namedHandlers;
     	      this.placement = defaults.placement;
     	      this.placementMode = defaults.placementMode;
     	      this.placementStatus = defaults.placementStatus;
@@ -221,6 +306,25 @@ public final class GetWorkersScriptsResult {
     	      this.usageModel = defaults.usageModel;
         }
 
+        @CustomType.Setter
+        public Builder compatibilityDate(String compatibilityDate) {
+            if (compatibilityDate == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "compatibilityDate");
+            }
+            this.compatibilityDate = compatibilityDate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder compatibilityFlags(List<String> compatibilityFlags) {
+            if (compatibilityFlags == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "compatibilityFlags");
+            }
+            this.compatibilityFlags = compatibilityFlags;
+            return this;
+        }
+        public Builder compatibilityFlags(String... compatibilityFlags) {
+            return compatibilityFlags(List.of(compatibilityFlags));
+        }
         @CustomType.Setter
         public Builder createdOn(String createdOn) {
             if (createdOn == null) {
@@ -236,6 +340,17 @@ public final class GetWorkersScriptsResult {
             }
             this.etag = etag;
             return this;
+        }
+        @CustomType.Setter
+        public Builder handlers(List<String> handlers) {
+            if (handlers == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "handlers");
+            }
+            this.handlers = handlers;
+            return this;
+        }
+        public Builder handlers(String... handlers) {
+            return handlers(List.of(handlers));
         }
         @CustomType.Setter
         public Builder hasAssets(Boolean hasAssets) {
@@ -262,11 +377,27 @@ public final class GetWorkersScriptsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder lastDeployedFrom(String lastDeployedFrom) {
+            if (lastDeployedFrom == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "lastDeployedFrom");
+            }
+            this.lastDeployedFrom = lastDeployedFrom;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logpush(Boolean logpush) {
             if (logpush == null) {
               throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "logpush");
             }
             this.logpush = logpush;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder migrationTag(String migrationTag) {
+            if (migrationTag == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "migrationTag");
+            }
+            this.migrationTag = migrationTag;
             return this;
         }
         @CustomType.Setter
@@ -276,6 +407,17 @@ public final class GetWorkersScriptsResult {
             }
             this.modifiedOn = modifiedOn;
             return this;
+        }
+        @CustomType.Setter
+        public Builder namedHandlers(List<GetWorkersScriptsResultNamedHandler> namedHandlers) {
+            if (namedHandlers == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResult", "namedHandlers");
+            }
+            this.namedHandlers = namedHandlers;
+            return this;
+        }
+        public Builder namedHandlers(GetWorkersScriptsResultNamedHandler... namedHandlers) {
+            return namedHandlers(List.of(namedHandlers));
         }
         @CustomType.Setter
         public Builder placement(GetWorkersScriptsResultPlacement placement) {
@@ -322,13 +464,19 @@ public final class GetWorkersScriptsResult {
         }
         public GetWorkersScriptsResult build() {
             final var _resultValue = new GetWorkersScriptsResult();
+            _resultValue.compatibilityDate = compatibilityDate;
+            _resultValue.compatibilityFlags = compatibilityFlags;
             _resultValue.createdOn = createdOn;
             _resultValue.etag = etag;
+            _resultValue.handlers = handlers;
             _resultValue.hasAssets = hasAssets;
             _resultValue.hasModules = hasModules;
             _resultValue.id = id;
+            _resultValue.lastDeployedFrom = lastDeployedFrom;
             _resultValue.logpush = logpush;
+            _resultValue.migrationTag = migrationTag;
             _resultValue.modifiedOn = modifiedOn;
+            _resultValue.namedHandlers = namedHandlers;
             _resultValue.placement = placement;
             _resultValue.placementMode = placementMode;
             _resultValue.placementStatus = placementStatus;

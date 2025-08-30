@@ -26,9 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupRuleset(ctx, &cloudflare.LookupRulesetArgs{
-//				RulesetId: pulumi.StringRef("2f2feab2026849078ba485f918791bdc"),
-//				AccountId: pulumi.StringRef("account_id"),
-//				ZoneId:    pulumi.StringRef("zone_id"),
+//				ZoneId: pulumi.StringRef("9f1839b6152d298aca64c4e906b6d074"),
+//				Id:     pulumi.StringRef("2f2feab2026849078ba485f918791bdc"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,25 +49,31 @@ func LookupRuleset(ctx *pulumi.Context, args *LookupRulesetArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRuleset.
 type LookupRulesetArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// The unique ID of the ruleset.
+	Id *string `pulumi:"id"`
+	// The unique ID of the ruleset.
+	//
+	// Deprecated: Configure id instead. This attribute will be removed in the next major version of the provider.
 	RulesetId *string `pulumi:"rulesetId"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRuleset.
 type LookupRulesetResult struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// An informative description of the ruleset.
 	Description string `pulumi:"description"`
 	// The unique ID of the ruleset.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind string `pulumi:"kind"`
+	// The timestamp of when the ruleset was last modified.
+	LastUpdated string `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name string `pulumi:"name"`
 	// The phase of the ruleset.
@@ -77,8 +82,12 @@ type LookupRulesetResult struct {
 	// The list of rules in the ruleset.
 	Rules []GetRulesetRule `pulumi:"rules"`
 	// The unique ID of the ruleset.
+	//
+	// Deprecated: Configure id instead. This attribute will be removed in the next major version of the provider.
 	RulesetId *string `pulumi:"rulesetId"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The version of the ruleset.
+	Version string `pulumi:"version"`
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -93,11 +102,15 @@ func LookupRulesetOutput(ctx *pulumi.Context, args LookupRulesetOutputArgs, opts
 
 // A collection of arguments for invoking getRuleset.
 type LookupRulesetOutputArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The unique ID of the ruleset.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The unique ID of the ruleset.
+	//
+	// Deprecated: Configure id instead. This attribute will be removed in the next major version of the provider.
 	RulesetId pulumi.StringPtrInput `pulumi:"rulesetId"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -120,7 +133,7 @@ func (o LookupRulesetResultOutput) ToLookupRulesetResultOutputWithContext(ctx co
 	return o
 }
 
-// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+// The unique ID of the account.
 func (o LookupRulesetResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -131,14 +144,19 @@ func (o LookupRulesetResultOutput) Description() pulumi.StringOutput {
 }
 
 // The unique ID of the ruleset.
-func (o LookupRulesetResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRulesetResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupRulesetResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRulesetResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The kind of the ruleset.
 // Available values: "managed", "custom", "root", "zone".
 func (o LookupRulesetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesetResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the ruleset was last modified.
+func (o LookupRulesetResultOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesetResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the ruleset.
@@ -158,11 +176,18 @@ func (o LookupRulesetResultOutput) Rules() GetRulesetRuleArrayOutput {
 }
 
 // The unique ID of the ruleset.
+//
+// Deprecated: Configure id instead. This attribute will be removed in the next major version of the provider.
 func (o LookupRulesetResultOutput) RulesetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetResult) *string { return v.RulesetId }).(pulumi.StringPtrOutput)
 }
 
-// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+// The version of the ruleset.
+func (o LookupRulesetResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRulesetResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The unique ID of the zone.
 func (o LookupRulesetResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

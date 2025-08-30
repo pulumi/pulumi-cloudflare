@@ -15,6 +15,11 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountMembersResult {
     /**
+     * @return The contact email address of the user.
+     * 
+     */
+    private String email;
+    /**
      * @return Membership identifier tag.
      * 
      */
@@ -42,6 +47,13 @@ public final class GetAccountMembersResult {
     private GetAccountMembersResultUser user;
 
     private GetAccountMembersResult() {}
+    /**
+     * @return The contact email address of the user.
+     * 
+     */
+    public String email() {
+        return this.email;
+    }
     /**
      * @return Membership identifier tag.
      * 
@@ -88,6 +100,7 @@ public final class GetAccountMembersResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String email;
         private String id;
         private List<GetAccountMembersResultPolicy> policies;
         private List<GetAccountMembersResultRole> roles;
@@ -96,6 +109,7 @@ public final class GetAccountMembersResult {
         public Builder() {}
         public Builder(GetAccountMembersResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.email = defaults.email;
     	      this.id = defaults.id;
     	      this.policies = defaults.policies;
     	      this.roles = defaults.roles;
@@ -103,6 +117,14 @@ public final class GetAccountMembersResult {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
+        public Builder email(String email) {
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAccountMembersResult", "email");
+            }
+            this.email = email;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -151,6 +173,7 @@ public final class GetAccountMembersResult {
         }
         public GetAccountMembersResult build() {
             final var _resultValue = new GetAccountMembersResult();
+            _resultValue.email = email;
             _resultValue.id = id;
             _resultValue.policies = policies;
             _resultValue.roles = roles;

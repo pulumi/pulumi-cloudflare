@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? IpIndicatorFeeds { get; set; }
 
         /// <summary>
-        /// Send matching traffic to the supplied destination IP address and port.
+        /// Send matching traffic to the supplied destination IP address. and port.
         /// </summary>
         [Input("l4override")]
         public Input<Inputs.TeamsRuleRuleSettingsL4overrideGetArgs>? L4override { get; set; }
@@ -145,13 +145,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsPayloadLogGetArgs>? PayloadLog { get; set; }
 
         /// <summary>
-        /// Settings that apply to quarantine rules
+        /// Settings that apply to quarantine rules.
         /// </summary>
         [Input("quarantine")]
         public Input<Inputs.TeamsRuleRuleSettingsQuarantineGetArgs>? Quarantine { get; set; }
 
         /// <summary>
-        /// Settings that apply to redirect rules
+        /// Settings that apply to redirect rules.
         /// </summary>
         [Input("redirect")]
         public Input<Inputs.TeamsRuleRuleSettingsRedirectGetArgs>? Redirect { get; set; }

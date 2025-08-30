@@ -47,7 +47,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter
     def editable(self) -> _builtins.bool:
         """
-        Whether the setting is editable
+        Whether the setting is editable.
         """
         return pulumi.get(self, "editable")
 
@@ -55,7 +55,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the zone setting.
+        The identifier of the caching setting.
         Available values: "cache_reserve".
         """
         return pulumi.get(self, "id")
@@ -72,7 +72,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        The value of the feature
+        Value of the Cache Reserve zone setting.
         Available values: "on", "off".
         """
         return pulumi.get(self, "value")
@@ -81,7 +81,7 @@ class GetZoneCacheReserveResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> _builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -112,7 +112,7 @@ def get_zone_cache_reserve(zone_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -138,7 +138,7 @@ def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[_builtins.str]]
     ```
 
 
-    :param _builtins.str zone_id: Identifier
+    :param _builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

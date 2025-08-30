@@ -69,7 +69,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      */
     public readonly expiration!: pulumi.Output<outputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      */
     public readonly filters!: pulumi.Output<string[] | undefined>;
     public readonly identity!: pulumi.Output<string>;
@@ -78,12 +78,12 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The rule cannot be shared via the Orgs API
+     * The rule cannot be shared via the Orgs API.
      */
     public /*out*/ readonly notSharable!: pulumi.Output<boolean>;
     public readonly precedence!: pulumi.Output<number>;
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * The rule was shared via the Orgs API and cannot be edited by the current account.
      */
     public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
     /**
@@ -95,13 +95,13 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      */
     public readonly schedule!: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
     /**
-     * account tag of account that created the rule
+     * account tag of account that created the rule.
      */
     public /*out*/ readonly sourceAccount!: pulumi.Output<string>;
     public readonly traffic!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * version number of the rule
+     * version number of the rule.
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
     /**
@@ -213,7 +213,7 @@ export interface ZeroTrustGatewayPolicyState {
      */
     expiration?: pulumi.Input<inputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;
@@ -222,12 +222,12 @@ export interface ZeroTrustGatewayPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The rule cannot be shared via the Orgs API
+     * The rule cannot be shared via the Orgs API.
      */
     notSharable?: pulumi.Input<boolean>;
     precedence?: pulumi.Input<number>;
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account
+     * The rule was shared via the Orgs API and cannot be edited by the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
@@ -239,13 +239,13 @@ export interface ZeroTrustGatewayPolicyState {
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
     /**
-     * account tag of account that created the rule
+     * account tag of account that created the rule.
      */
     sourceAccount?: pulumi.Input<string>;
     traffic?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     /**
-     * version number of the rule
+     * version number of the rule.
      */
     version?: pulumi.Input<number>;
     /**
@@ -279,7 +279,7 @@ export interface ZeroTrustGatewayPolicyArgs {
      */
     expiration?: pulumi.Input<inputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;

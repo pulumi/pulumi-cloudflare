@@ -26,8 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupRulesets(ctx, &cloudflare.LookupRulesetsArgs{
-//				AccountId: pulumi.StringRef("account_id"),
-//				ZoneId:    pulumi.StringRef("zone_id"),
+//				ZoneId: pulumi.StringRef("9f1839b6152d298aca64c4e906b6d074"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,25 +48,29 @@ func LookupRulesets(ctx *pulumi.Context, args *LookupRulesetsArgs, opts ...pulum
 
 // A collection of arguments for invoking getRulesets.
 type LookupRulesetsArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
+	// Maximum number of rulesets to fetch (defaults to 1000).
 	MaxItems *int `pulumi:"maxItems"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getRulesets.
 type LookupRulesetsResult struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Max items to fetch, default: 1000
+	// Maximum number of rulesets to fetch (defaults to 1000).
 	MaxItems *int `pulumi:"maxItems"`
-	// The items returned by the data source
+	// A list of rulesets. The returned information will not include the rules in each ruleset.
+	//
+	// Deprecated: Use rulesets instead. This attribute will be removed in the next major version of the provider.
 	Results []GetRulesetsResult `pulumi:"results"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// A list of rulesets. The returned information will not include the rules in each ruleset.
+	Rulesets []GetRulesetsRuleset `pulumi:"rulesets"`
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -82,11 +85,11 @@ func LookupRulesetsOutput(ctx *pulumi.Context, args LookupRulesetsOutputArgs, op
 
 // A collection of arguments for invoking getRulesets.
 type LookupRulesetsOutputArgs struct {
-	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	// The unique ID of the account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Max items to fetch, default: 1000
+	// Maximum number of rulesets to fetch (defaults to 1000).
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 
@@ -109,7 +112,7 @@ func (o LookupRulesetsResultOutput) ToLookupRulesetsResultOutputWithContext(ctx 
 	return o
 }
 
-// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+// The unique ID of the account.
 func (o LookupRulesetsResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -119,17 +122,24 @@ func (o LookupRulesetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Max items to fetch, default: 1000
+// Maximum number of rulesets to fetch (defaults to 1000).
 func (o LookupRulesetsResultOutput) MaxItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
-// The items returned by the data source
+// A list of rulesets. The returned information will not include the rules in each ruleset.
+//
+// Deprecated: Use rulesets instead. This attribute will be removed in the next major version of the provider.
 func (o LookupRulesetsResultOutput) Results() GetRulesetsResultArrayOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) []GetRulesetsResult { return v.Results }).(GetRulesetsResultArrayOutput)
 }
 
-// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+// A list of rulesets. The returned information will not include the rules in each ruleset.
+func (o LookupRulesetsResultOutput) Rulesets() GetRulesetsRulesetArrayOutput {
+	return o.ApplyT(func(v LookupRulesetsResult) []GetRulesetsRuleset { return v.Rulesets }).(GetRulesetsRulesetArrayOutput)
+}
+
+// The unique ID of the zone.
 func (o LookupRulesetsResultOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRulesetsResult) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

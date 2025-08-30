@@ -51,10 +51,6 @@ export interface GetWorkersKvNamespaceResult {
      * Identifier.
      */
     readonly accountId: string;
-    /**
-     * True if new beta namespace, with additional preview features.
-     */
-    readonly beta: boolean;
     readonly filter?: outputs.GetWorkersKvNamespaceFilter;
     /**
      * Namespace identifier tag.

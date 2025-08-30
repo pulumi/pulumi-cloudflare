@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsAntivirusNotificationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set notification on
+        /// Set notification on.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If true, context information will be passed as query parameters
+        /// If true, context information will be passed as query parameters.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }

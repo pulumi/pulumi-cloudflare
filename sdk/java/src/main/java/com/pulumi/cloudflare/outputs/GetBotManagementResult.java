@@ -24,6 +24,11 @@ public final class GetBotManagementResult {
      */
     private Boolean autoUpdateModel;
     /**
+     * @return Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    private Boolean bmCookieEnabled;
+    /**
      * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
@@ -115,6 +120,13 @@ public final class GetBotManagementResult {
      */
     public Boolean autoUpdateModel() {
         return this.autoUpdateModel;
+    }
+    /**
+     * @return Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+     * 
+     */
+    public Boolean bmCookieEnabled() {
+        return this.bmCookieEnabled;
     }
     /**
      * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -232,6 +244,7 @@ public final class GetBotManagementResult {
     public static final class Builder {
         private String aiBotsProtection;
         private Boolean autoUpdateModel;
+        private Boolean bmCookieEnabled;
         private String crawlerProtection;
         private Boolean enableJs;
         private Boolean fightMode;
@@ -251,6 +264,7 @@ public final class GetBotManagementResult {
     	      Objects.requireNonNull(defaults);
     	      this.aiBotsProtection = defaults.aiBotsProtection;
     	      this.autoUpdateModel = defaults.autoUpdateModel;
+    	      this.bmCookieEnabled = defaults.bmCookieEnabled;
     	      this.crawlerProtection = defaults.crawlerProtection;
     	      this.enableJs = defaults.enableJs;
     	      this.fightMode = defaults.fightMode;
@@ -281,6 +295,14 @@ public final class GetBotManagementResult {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "autoUpdateModel");
             }
             this.autoUpdateModel = autoUpdateModel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bmCookieEnabled(Boolean bmCookieEnabled) {
+            if (bmCookieEnabled == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "bmCookieEnabled");
+            }
+            this.bmCookieEnabled = bmCookieEnabled;
             return this;
         }
         @CustomType.Setter
@@ -399,6 +421,7 @@ public final class GetBotManagementResult {
             final var _resultValue = new GetBotManagementResult();
             _resultValue.aiBotsProtection = aiBotsProtection;
             _resultValue.autoUpdateModel = autoUpdateModel;
+            _resultValue.bmCookieEnabled = bmCookieEnabled;
             _resultValue.crawlerProtection = crawlerProtection;
             _resultValue.enableJs = enableJs;
             _resultValue.fightMode = fightMode;

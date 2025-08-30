@@ -19,7 +19,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private @Nullable String backgroundColor;
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     private @Nullable Boolean enabled;
@@ -65,12 +65,12 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private @Nullable String name;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     private @Nullable String sourceAccount;
@@ -85,7 +85,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     private @Nullable String targetUri;
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     private @Nullable Integer version;
@@ -99,7 +99,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         return Optional.ofNullable(this.backgroundColor);
     }
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS 140-2.
+     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -163,14 +163,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account
+     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
      * 
      */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return Account tag of account that shared this setting
+     * @return Account tag of account that shared this setting.
      * 
      */
     public Optional<String> sourceAccount() {
@@ -191,7 +191,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPage {
         return Optional.ofNullable(this.targetUri);
     }
     /**
-     * @return Version number of the setting
+     * @return Version number of the setting.
      * 
      */
     public Optional<Integer> version() {
