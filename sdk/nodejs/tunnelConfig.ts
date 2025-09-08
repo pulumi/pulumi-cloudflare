@@ -49,25 +49,25 @@ export class TunnelConfig extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The tunnel configuration and ingress rules.
      */
-    public readonly config!: pulumi.Output<outputs.TunnelConfigConfig>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly config: pulumi.Output<outputs.TunnelConfigConfig>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
      * Available values: "local", "cloudflare".
      */
-    public readonly source!: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string>;
     /**
      * UUID of the tunnel.
      */
-    public readonly tunnelId!: pulumi.Output<string>;
+    declare public readonly tunnelId: pulumi.Output<string>;
     /**
      * The version of the Tunnel Configuration.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a TunnelConfig resource with the given unique name, arguments, and options.
@@ -85,24 +85,24 @@ export class TunnelConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelConfigState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["tunnelId"] = state?.tunnelId;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as TunnelConfigArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.tunnelId === undefined) && !opts.urn) {
+            if (args?.tunnelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["tunnelId"] = args ? args.tunnelId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["tunnelId"] = args?.tunnelId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }

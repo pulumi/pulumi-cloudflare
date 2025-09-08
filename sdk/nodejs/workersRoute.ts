@@ -55,15 +55,15 @@ export class WorkersRoute extends pulumi.CustomResource {
     /**
      * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
      */
-    public readonly pattern!: pulumi.Output<string>;
+    declare public readonly pattern: pulumi.Output<string>;
     /**
      * Name of the script to run if the route matches.
      */
-    public readonly script!: pulumi.Output<string | undefined>;
+    declare public readonly script: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WorkersRoute resource with the given unique name, arguments, and options.
@@ -78,20 +78,20 @@ export class WorkersRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersRouteState | undefined;
-            resourceInputs["pattern"] = state ? state.pattern : undefined;
-            resourceInputs["script"] = state ? state.script : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["pattern"] = state?.pattern;
+            resourceInputs["script"] = state?.script;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as WorkersRouteArgs | undefined;
-            if ((!args || args.pattern === undefined) && !opts.urn) {
+            if (args?.pattern === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["pattern"] = args ? args.pattern : undefined;
-            resourceInputs["script"] = args ? args.script : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["pattern"] = args?.pattern;
+            resourceInputs["script"] = args?.script;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersRoute.__pulumiType, name, resourceInputs, opts);

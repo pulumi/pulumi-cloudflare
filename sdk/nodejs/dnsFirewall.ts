@@ -46,49 +46,49 @@ export class DnsFirewall extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Attack mitigation settings
      */
-    public readonly attackMitigation!: pulumi.Output<outputs.DnsFirewallAttackMitigation>;
+    declare public readonly attackMitigation: pulumi.Output<outputs.DnsFirewallAttackMitigation>;
     /**
      * Whether to refuse to answer queries for the ANY type
      */
-    public readonly deprecateAnyRequests!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly dnsFirewallIps!: pulumi.Output<string[]>;
+    declare public readonly deprecateAnyRequests: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly dnsFirewallIps: pulumi.Output<string[]>;
     /**
      * Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
      */
-    public readonly ecsFallback!: pulumi.Output<boolean | undefined>;
+    declare public readonly ecsFallback: pulumi.Output<boolean | undefined>;
     /**
      * Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
      */
-    public readonly maximumCacheTtl!: pulumi.Output<number>;
+    declare public readonly maximumCacheTtl: pulumi.Output<number>;
     /**
      * Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
      */
-    public readonly minimumCacheTtl!: pulumi.Output<number>;
+    declare public readonly minimumCacheTtl: pulumi.Output<number>;
     /**
      * Last modification of DNS Firewall cluster
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * DNS Firewall cluster name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
      */
-    public readonly negativeCacheTtl!: pulumi.Output<number | undefined>;
+    declare public readonly negativeCacheTtl: pulumi.Output<number | undefined>;
     /**
      * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
      */
-    public readonly ratelimit!: pulumi.Output<number | undefined>;
+    declare public readonly ratelimit: pulumi.Output<number | undefined>;
     /**
      * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
      */
-    public readonly retries!: pulumi.Output<number>;
-    public readonly upstreamIps!: pulumi.Output<string[]>;
+    declare public readonly retries: pulumi.Output<number>;
+    declare public readonly upstreamIps: pulumi.Output<string[]>;
 
     /**
      * Create a DnsFirewall resource with the given unique name, arguments, and options.
@@ -103,41 +103,41 @@ export class DnsFirewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsFirewallState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["attackMitigation"] = state ? state.attackMitigation : undefined;
-            resourceInputs["deprecateAnyRequests"] = state ? state.deprecateAnyRequests : undefined;
-            resourceInputs["dnsFirewallIps"] = state ? state.dnsFirewallIps : undefined;
-            resourceInputs["ecsFallback"] = state ? state.ecsFallback : undefined;
-            resourceInputs["maximumCacheTtl"] = state ? state.maximumCacheTtl : undefined;
-            resourceInputs["minimumCacheTtl"] = state ? state.minimumCacheTtl : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["negativeCacheTtl"] = state ? state.negativeCacheTtl : undefined;
-            resourceInputs["ratelimit"] = state ? state.ratelimit : undefined;
-            resourceInputs["retries"] = state ? state.retries : undefined;
-            resourceInputs["upstreamIps"] = state ? state.upstreamIps : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["attackMitigation"] = state?.attackMitigation;
+            resourceInputs["deprecateAnyRequests"] = state?.deprecateAnyRequests;
+            resourceInputs["dnsFirewallIps"] = state?.dnsFirewallIps;
+            resourceInputs["ecsFallback"] = state?.ecsFallback;
+            resourceInputs["maximumCacheTtl"] = state?.maximumCacheTtl;
+            resourceInputs["minimumCacheTtl"] = state?.minimumCacheTtl;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["negativeCacheTtl"] = state?.negativeCacheTtl;
+            resourceInputs["ratelimit"] = state?.ratelimit;
+            resourceInputs["retries"] = state?.retries;
+            resourceInputs["upstreamIps"] = state?.upstreamIps;
         } else {
             const args = argsOrState as DnsFirewallArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.upstreamIps === undefined) && !opts.urn) {
+            if (args?.upstreamIps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'upstreamIps'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["attackMitigation"] = args ? args.attackMitigation : undefined;
-            resourceInputs["deprecateAnyRequests"] = args ? args.deprecateAnyRequests : undefined;
-            resourceInputs["ecsFallback"] = args ? args.ecsFallback : undefined;
-            resourceInputs["maximumCacheTtl"] = args ? args.maximumCacheTtl : undefined;
-            resourceInputs["minimumCacheTtl"] = args ? args.minimumCacheTtl : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["negativeCacheTtl"] = args ? args.negativeCacheTtl : undefined;
-            resourceInputs["ratelimit"] = args ? args.ratelimit : undefined;
-            resourceInputs["retries"] = args ? args.retries : undefined;
-            resourceInputs["upstreamIps"] = args ? args.upstreamIps : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["attackMitigation"] = args?.attackMitigation;
+            resourceInputs["deprecateAnyRequests"] = args?.deprecateAnyRequests;
+            resourceInputs["ecsFallback"] = args?.ecsFallback;
+            resourceInputs["maximumCacheTtl"] = args?.maximumCacheTtl;
+            resourceInputs["minimumCacheTtl"] = args?.minimumCacheTtl;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["negativeCacheTtl"] = args?.negativeCacheTtl;
+            resourceInputs["ratelimit"] = args?.ratelimit;
+            resourceInputs["retries"] = args?.retries;
+            resourceInputs["upstreamIps"] = args?.upstreamIps;
             resourceInputs["dnsFirewallIps"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

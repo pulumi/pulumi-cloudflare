@@ -72,31 +72,31 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustAccessGroupExclude[] | undefined>;
+    declare public readonly excludes: pulumi.Output<outputs.ZeroTrustAccessGroupExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    public readonly includes!: pulumi.Output<outputs.ZeroTrustAccessGroupInclude[]>;
+    declare public readonly includes: pulumi.Output<outputs.ZeroTrustAccessGroupInclude[]>;
     /**
      * Whether this is the default group
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Access group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessGroupRequire[] | undefined>;
+    declare public readonly requires: pulumi.Output<outputs.ZeroTrustAccessGroupRequire[] | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZeroTrustAccessGroup resource with the given unique name, arguments, and options.
@@ -111,28 +111,28 @@ export class ZeroTrustAccessGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustAccessGroupState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["excludes"] = state ? state.excludes : undefined;
-            resourceInputs["includes"] = state ? state.includes : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["requires"] = state ? state.requires : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["excludes"] = state?.excludes;
+            resourceInputs["includes"] = state?.includes;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["requires"] = state?.requires;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessGroupArgs | undefined;
-            if ((!args || args.includes === undefined) && !opts.urn) {
+            if (args?.includes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'includes'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["excludes"] = args ? args.excludes : undefined;
-            resourceInputs["includes"] = args ? args.includes : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["requires"] = args ? args.requires : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["excludes"] = args?.excludes;
+            resourceInputs["includes"] = args?.includes;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["requires"] = args?.requires;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/accessGroup:AccessGroup" }] };

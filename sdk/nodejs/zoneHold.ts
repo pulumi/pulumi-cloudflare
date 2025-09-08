@@ -48,7 +48,7 @@ export class ZoneHold extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneHold.__pulumiType;
     }
 
-    public /*out*/ readonly hold!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hold: pulumi.Output<boolean>;
     /**
      * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
@@ -56,18 +56,18 @@ export class ZoneHold extends pulumi.CustomResource {
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      */
-    public readonly holdAfter!: pulumi.Output<string>;
+    declare public readonly holdAfter: pulumi.Output<string>;
     /**
      * If `true`, the zone hold will extend to block any subdomain of the given zone, as well
      * as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
      * 'example.com' and include_subdomains=true will block 'example.com',
      * 'staging.example.com', 'api.staging.example.com', etc.
      */
-    public readonly includeSubdomains!: pulumi.Output<boolean>;
+    declare public readonly includeSubdomains: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ZoneHold resource with the given unique name, arguments, and options.
@@ -82,18 +82,18 @@ export class ZoneHold extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneHoldState | undefined;
-            resourceInputs["hold"] = state ? state.hold : undefined;
-            resourceInputs["holdAfter"] = state ? state.holdAfter : undefined;
-            resourceInputs["includeSubdomains"] = state ? state.includeSubdomains : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["hold"] = state?.hold;
+            resourceInputs["holdAfter"] = state?.holdAfter;
+            resourceInputs["includeSubdomains"] = state?.includeSubdomains;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZoneHoldArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["holdAfter"] = args ? args.holdAfter : undefined;
-            resourceInputs["includeSubdomains"] = args ? args.includeSubdomains : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["holdAfter"] = args?.holdAfter;
+            resourceInputs["includeSubdomains"] = args?.includeSubdomains;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["hold"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

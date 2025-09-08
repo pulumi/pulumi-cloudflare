@@ -47,20 +47,23 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
     }
 
     /**
-     * When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-     * schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-     * operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-     * "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `"log"` - log request when request does not conform to schema for this operation
+     *   - `"block"` - deny access to the site when request does not conform to schema for this operation
+     *   - `"none"` - will skip mitigation for this operation
+     *   - `null` - clears any mitigation action
+     * Available values: "log", "block", "none".
      */
-    public readonly mitigationAction!: pulumi.Output<string>;
+    declare public readonly mitigationAction: pulumi.Output<string>;
     /**
      * UUID.
      */
-    public readonly operationId!: pulumi.Output<string>;
+    declare public readonly operationId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a SchemaValidationOperationSettings resource with the given unique name, arguments, and options.
@@ -75,23 +78,23 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaValidationOperationSettingsState | undefined;
-            resourceInputs["mitigationAction"] = state ? state.mitigationAction : undefined;
-            resourceInputs["operationId"] = state ? state.operationId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["mitigationAction"] = state?.mitigationAction;
+            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SchemaValidationOperationSettingsArgs | undefined;
-            if ((!args || args.mitigationAction === undefined) && !opts.urn) {
+            if (args?.mitigationAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mitigationAction'");
             }
-            if ((!args || args.operationId === undefined) && !opts.urn) {
+            if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["mitigationAction"] = args ? args.mitigationAction : undefined;
-            resourceInputs["operationId"] = args ? args.operationId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["mitigationAction"] = args?.mitigationAction;
+            resourceInputs["operationId"] = args?.operationId;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SchemaValidationOperationSettings.__pulumiType, name, resourceInputs, opts);
@@ -103,10 +106,13 @@ export class SchemaValidationOperationSettings extends pulumi.CustomResource {
  */
 export interface SchemaValidationOperationSettingsState {
     /**
-     * When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-     * schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-     * operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-     * "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `"log"` - log request when request does not conform to schema for this operation
+     *   - `"block"` - deny access to the site when request does not conform to schema for this operation
+     *   - `"none"` - will skip mitigation for this operation
+     *   - `null` - clears any mitigation action
+     * Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string>;
     /**
@@ -124,10 +130,13 @@ export interface SchemaValidationOperationSettingsState {
  */
 export interface SchemaValidationOperationSettingsArgs {
     /**
-     * When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-     * schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-     * operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-     * "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `"log"` - log request when request does not conform to schema for this operation
+     *   - `"block"` - deny access to the site when request does not conform to schema for this operation
+     *   - `"none"` - will skip mitigation for this operation
+     *   - `null` - clears any mitigation action
+     * Available values: "log", "block", "none".
      */
     mitigationAction: pulumi.Input<string>;
     /**

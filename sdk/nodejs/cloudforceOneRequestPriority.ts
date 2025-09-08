@@ -60,56 +60,56 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly completed!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly completed: pulumi.Output<string>;
     /**
      * Request content.
      */
-    public /*out*/ readonly content!: pulumi.Output<string>;
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly content: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * List of labels.
      */
-    public readonly labels!: pulumi.Output<string[]>;
+    declare public readonly labels: pulumi.Output<string[]>;
     /**
      * Tokens for the request messages.
      */
-    public /*out*/ readonly messageTokens!: pulumi.Output<number>;
+    declare public /*out*/ readonly messageTokens: pulumi.Output<number>;
     /**
      * Priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Readable Request ID.
      */
-    public /*out*/ readonly readableId!: pulumi.Output<string>;
+    declare public /*out*/ readonly readableId: pulumi.Output<string>;
     /**
      * Requested information from request.
      */
-    public /*out*/ readonly request!: pulumi.Output<string>;
+    declare public /*out*/ readonly request: pulumi.Output<string>;
     /**
      * Requirement.
      */
-    public readonly requirement!: pulumi.Output<string>;
+    declare public readonly requirement: pulumi.Output<string>;
     /**
      * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Brief description of the request.
      */
-    public /*out*/ readonly summary!: pulumi.Output<string>;
+    declare public /*out*/ readonly summary: pulumi.Output<string>;
     /**
      * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
-    public readonly tlp!: pulumi.Output<string>;
+    declare public readonly tlp: pulumi.Output<string>;
     /**
      * Tokens for the request.
      */
-    public /*out*/ readonly tokens!: pulumi.Output<number>;
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokens: pulumi.Output<number>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a CloudforceOneRequestPriority resource with the given unique name, arguments, and options.
@@ -124,43 +124,43 @@ export class CloudforceOneRequestPriority extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestPriorityState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["completed"] = state ? state.completed : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["messageTokens"] = state ? state.messageTokens : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["readableId"] = state ? state.readableId : undefined;
-            resourceInputs["request"] = state ? state.request : undefined;
-            resourceInputs["requirement"] = state ? state.requirement : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["summary"] = state ? state.summary : undefined;
-            resourceInputs["tlp"] = state ? state.tlp : undefined;
-            resourceInputs["tokens"] = state ? state.tokens : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["completed"] = state?.completed;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["messageTokens"] = state?.messageTokens;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["readableId"] = state?.readableId;
+            resourceInputs["request"] = state?.request;
+            resourceInputs["requirement"] = state?.requirement;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["summary"] = state?.summary;
+            resourceInputs["tlp"] = state?.tlp;
+            resourceInputs["tokens"] = state?.tokens;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestPriorityArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.labels === undefined) && !opts.urn) {
+            if (args?.labels === undefined && !opts.urn) {
                 throw new Error("Missing required property 'labels'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.requirement === undefined) && !opts.urn) {
+            if (args?.requirement === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requirement'");
             }
-            if ((!args || args.tlp === undefined) && !opts.urn) {
+            if (args?.tlp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tlp'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["requirement"] = args ? args.requirement : undefined;
-            resourceInputs["tlp"] = args ? args.tlp : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["requirement"] = args?.requirement;
+            resourceInputs["tlp"] = args?.tlp;
             resourceInputs["completed"] = undefined /*out*/;
             resourceInputs["content"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;

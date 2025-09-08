@@ -40,16 +40,16 @@ export class R2BucketCors extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * Jurisdiction of the bucket
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
-    public readonly rules!: pulumi.Output<outputs.R2BucketCorsRule[] | undefined>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
+    declare public readonly rules: pulumi.Output<outputs.R2BucketCorsRule[] | undefined>;
 
     /**
      * Create a R2BucketCors resource with the given unique name, arguments, and options.
@@ -64,22 +64,22 @@ export class R2BucketCors extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2BucketCorsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as R2BucketCorsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(R2BucketCors.__pulumiType, name, resourceInputs, opts);

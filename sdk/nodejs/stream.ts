@@ -47,94 +47,94 @@ export class Stream extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
      */
-    public readonly allowedOrigins!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
     /**
      * The date and time the media item was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * A user-defined identifier for the media creator.
      */
-    public readonly creator!: pulumi.Output<string | undefined>;
+    declare public readonly creator: pulumi.Output<string | undefined>;
     /**
      * The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
      */
-    public /*out*/ readonly duration!: pulumi.Output<number>;
+    declare public /*out*/ readonly duration: pulumi.Output<number>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public readonly identifier!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly input!: pulumi.Output<outputs.StreamInput>;
+    declare public readonly identifier: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly input: pulumi.Output<outputs.StreamInput>;
     /**
      * The live input ID used to upload a video with Stream Live.
      */
-    public /*out*/ readonly liveInput!: pulumi.Output<string>;
+    declare public /*out*/ readonly liveInput: pulumi.Output<string>;
     /**
      * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
      */
-    public readonly maxDurationSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly maxDurationSeconds: pulumi.Output<number | undefined>;
     /**
      * A user modifiable key-value store used to reference other systems of record for managing videos.
      */
-    public readonly meta!: pulumi.Output<string | undefined>;
+    declare public readonly meta: pulumi.Output<string | undefined>;
     /**
      * The date and time the media item was last modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
-    public /*out*/ readonly playback!: pulumi.Output<outputs.StreamPlayback>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
+    declare public /*out*/ readonly playback: pulumi.Output<outputs.StreamPlayback>;
     /**
      * The video's preview page URI. This field is omitted until encoding is complete.
      */
-    public /*out*/ readonly preview!: pulumi.Output<string>;
+    declare public /*out*/ readonly preview: pulumi.Output<string>;
     /**
      * Indicates whether the video is playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
-    public /*out*/ readonly readyToStream!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly readyToStream: pulumi.Output<boolean>;
     /**
      * Indicates the time at which the video became playable. The field is empty if the video is not ready for viewing or the live stream is still in progress.
      */
-    public /*out*/ readonly readyToStreamAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly readyToStreamAt: pulumi.Output<string>;
     /**
      * Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
      */
-    public readonly requireSignedUrls!: pulumi.Output<boolean>;
+    declare public readonly requireSignedUrls: pulumi.Output<boolean>;
     /**
      * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
      */
-    public readonly scheduledDeletion!: pulumi.Output<string | undefined>;
+    declare public readonly scheduledDeletion: pulumi.Output<string | undefined>;
     /**
      * The size of the media item in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
      */
-    public /*out*/ readonly status!: pulumi.Output<outputs.StreamStatus>;
+    declare public /*out*/ readonly status: pulumi.Output<outputs.StreamStatus>;
     /**
      * The media item's thumbnail URI. This field is omitted until encoding is complete.
      */
-    public /*out*/ readonly thumbnail!: pulumi.Output<string>;
+    declare public /*out*/ readonly thumbnail: pulumi.Output<string>;
     /**
      * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video.  If this value is not set, the default thumbnail image is taken from 0s of the video.
      */
-    public readonly thumbnailTimestampPct!: pulumi.Output<number>;
+    declare public readonly thumbnailTimestampPct: pulumi.Output<number>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
      * The date and time when the video upload URL is no longer valid for direct user uploads.
      */
-    public readonly uploadExpiry!: pulumi.Output<string | undefined>;
+    declare public readonly uploadExpiry: pulumi.Output<string | undefined>;
     /**
      * The date and time the media item was uploaded.
      */
-    public /*out*/ readonly uploaded!: pulumi.Output<string>;
-    public /*out*/ readonly watermark!: pulumi.Output<outputs.StreamWatermark>;
+    declare public /*out*/ readonly uploaded: pulumi.Output<string>;
+    declare public /*out*/ readonly watermark: pulumi.Output<outputs.StreamWatermark>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -149,46 +149,46 @@ export class Stream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["allowedOrigins"] = state ? state.allowedOrigins : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["duration"] = state ? state.duration : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["input"] = state ? state.input : undefined;
-            resourceInputs["liveInput"] = state ? state.liveInput : undefined;
-            resourceInputs["maxDurationSeconds"] = state ? state.maxDurationSeconds : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["playback"] = state ? state.playback : undefined;
-            resourceInputs["preview"] = state ? state.preview : undefined;
-            resourceInputs["readyToStream"] = state ? state.readyToStream : undefined;
-            resourceInputs["readyToStreamAt"] = state ? state.readyToStreamAt : undefined;
-            resourceInputs["requireSignedUrls"] = state ? state.requireSignedUrls : undefined;
-            resourceInputs["scheduledDeletion"] = state ? state.scheduledDeletion : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["thumbnail"] = state ? state.thumbnail : undefined;
-            resourceInputs["thumbnailTimestampPct"] = state ? state.thumbnailTimestampPct : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
-            resourceInputs["uploadExpiry"] = state ? state.uploadExpiry : undefined;
-            resourceInputs["uploaded"] = state ? state.uploaded : undefined;
-            resourceInputs["watermark"] = state ? state.watermark : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowedOrigins"] = state?.allowedOrigins;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["duration"] = state?.duration;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["input"] = state?.input;
+            resourceInputs["liveInput"] = state?.liveInput;
+            resourceInputs["maxDurationSeconds"] = state?.maxDurationSeconds;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["playback"] = state?.playback;
+            resourceInputs["preview"] = state?.preview;
+            resourceInputs["readyToStream"] = state?.readyToStream;
+            resourceInputs["readyToStreamAt"] = state?.readyToStreamAt;
+            resourceInputs["requireSignedUrls"] = state?.requireSignedUrls;
+            resourceInputs["scheduledDeletion"] = state?.scheduledDeletion;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["thumbnail"] = state?.thumbnail;
+            resourceInputs["thumbnailTimestampPct"] = state?.thumbnailTimestampPct;
+            resourceInputs["uid"] = state?.uid;
+            resourceInputs["uploadExpiry"] = state?.uploadExpiry;
+            resourceInputs["uploaded"] = state?.uploaded;
+            resourceInputs["watermark"] = state?.watermark;
         } else {
             const args = argsOrState as StreamArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["allowedOrigins"] = args ? args.allowedOrigins : undefined;
-            resourceInputs["creator"] = args ? args.creator : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["maxDurationSeconds"] = args ? args.maxDurationSeconds : undefined;
-            resourceInputs["meta"] = args ? args.meta : undefined;
-            resourceInputs["requireSignedUrls"] = args ? args.requireSignedUrls : undefined;
-            resourceInputs["scheduledDeletion"] = args ? args.scheduledDeletion : undefined;
-            resourceInputs["thumbnailTimestampPct"] = args ? args.thumbnailTimestampPct : undefined;
-            resourceInputs["uploadExpiry"] = args ? args.uploadExpiry : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowedOrigins"] = args?.allowedOrigins;
+            resourceInputs["creator"] = args?.creator;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["maxDurationSeconds"] = args?.maxDurationSeconds;
+            resourceInputs["meta"] = args?.meta;
+            resourceInputs["requireSignedUrls"] = args?.requireSignedUrls;
+            resourceInputs["scheduledDeletion"] = args?.scheduledDeletion;
+            resourceInputs["thumbnailTimestampPct"] = args?.thumbnailTimestampPct;
+            resourceInputs["uploadExpiry"] = args?.uploadExpiry;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["input"] = undefined /*out*/;

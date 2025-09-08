@@ -46,72 +46,72 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * When the record comment was last modified. Omitted if there is no comment.
      */
-    public /*out*/ readonly commentModifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly commentModifiedOn: pulumi.Output<string>;
     /**
      * A valid IPv4 address.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * When the record was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Components of a CAA record.
      */
-    public readonly data!: pulumi.Output<outputs.DnsRecordData | undefined>;
+    declare public readonly data: pulumi.Output<outputs.DnsRecordData | undefined>;
     /**
      * Extra Cloudflare-specific information about the record.
      */
-    public /*out*/ readonly meta!: pulumi.Output<string>;
+    declare public /*out*/ readonly meta: pulumi.Output<string>;
     /**
      * When the record was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * DNS record name (or @ for the zone apex) in Punycode.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * Whether the record can be proxied by Cloudflare or not.
      */
-    public /*out*/ readonly proxiable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly proxiable: pulumi.Output<boolean>;
     /**
      * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
-    public readonly proxied!: pulumi.Output<boolean>;
+    declare public readonly proxied: pulumi.Output<boolean>;
     /**
      * Settings for the DNS record.
      */
-    public readonly settings!: pulumi.Output<outputs.DnsRecordSettings>;
+    declare public readonly settings: pulumi.Output<outputs.DnsRecordSettings>;
     /**
      * Custom tags for the DNS record. This field has no effect on DNS responses.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * When the record tags were last modified. Omitted if there are no tags.
      */
-    public /*out*/ readonly tagsModifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly tagsModifiedOn: pulumi.Output<string>;
     /**
      * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * Record type.
      * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DnsRecord resource with the given unique name, arguments, and options.
@@ -126,48 +126,48 @@ export class DnsRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordState | undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["commentModifiedOn"] = state ? state.commentModifiedOn : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["meta"] = state ? state.meta : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["proxiable"] = state ? state.proxiable : undefined;
-            resourceInputs["proxied"] = state ? state.proxied : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tagsModifiedOn"] = state ? state.tagsModifiedOn : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["commentModifiedOn"] = state?.commentModifiedOn;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["meta"] = state?.meta;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["proxiable"] = state?.proxiable;
+            resourceInputs["proxied"] = state?.proxied;
+            resourceInputs["settings"] = state?.settings;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tagsModifiedOn"] = state?.tagsModifiedOn;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DnsRecordArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.ttl === undefined) && !opts.urn) {
+            if (args?.ttl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ttl'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["data"] = args ? args.data : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["proxied"] = args ? args.proxied : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["data"] = args?.data;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["proxied"] = args?.proxied;
+            resourceInputs["settings"] = args?.settings;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["commentModifiedOn"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["meta"] = undefined /*out*/;

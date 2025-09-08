@@ -54,43 +54,43 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * When the script was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public /*out*/ readonly modifiedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedBy: pulumi.Output<string>;
     /**
      * When the script was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The name of the dispatch namespace.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * API Resource UUID tag.
      */
-    public /*out*/ readonly namespaceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespaceId: pulumi.Output<string>;
     /**
      * Name of the Workers for Platforms dispatch namespace.
      */
-    public /*out*/ readonly namespaceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly namespaceName: pulumi.Output<string>;
     /**
      * The current number of scripts in this Dispatch Namespace.
      */
-    public /*out*/ readonly scriptCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly scriptCount: pulumi.Output<number>;
     /**
      * Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted".
      */
-    public /*out*/ readonly trustedWorkers!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly trustedWorkers: pulumi.Output<boolean>;
 
     /**
      * Create a WorkersForPlatformsDispatchNamespace resource with the given unique name, arguments, and options.
@@ -105,23 +105,23 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersForPlatformsDispatchNamespaceState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
-            resourceInputs["scriptCount"] = state ? state.scriptCount : undefined;
-            resourceInputs["trustedWorkers"] = state ? state.trustedWorkers : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["modifiedBy"] = state?.modifiedBy;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["namespaceName"] = state?.namespaceName;
+            resourceInputs["scriptCount"] = state?.scriptCount;
+            resourceInputs["trustedWorkers"] = state?.trustedWorkers;
         } else {
             const args = argsOrState as WorkersForPlatformsDispatchNamespaceArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedBy"] = undefined /*out*/;

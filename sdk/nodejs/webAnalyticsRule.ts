@@ -52,23 +52,23 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly created!: pulumi.Output<string>;
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * Whether the rule includes or excludes traffic from being measured.
      */
-    public readonly inclusive!: pulumi.Output<boolean | undefined>;
+    declare public readonly inclusive: pulumi.Output<boolean | undefined>;
     /**
      * Whether the rule is paused or not.
      */
-    public readonly isPaused!: pulumi.Output<boolean | undefined>;
-    public readonly paths!: pulumi.Output<string[] | undefined>;
-    public /*out*/ readonly priority!: pulumi.Output<number>;
+    declare public readonly isPaused: pulumi.Output<boolean | undefined>;
+    declare public readonly paths: pulumi.Output<string[] | undefined>;
+    declare public /*out*/ readonly priority: pulumi.Output<number>;
     /**
      * The Web Analytics ruleset identifier.
      */
-    public readonly rulesetId!: pulumi.Output<string>;
+    declare public readonly rulesetId: pulumi.Output<string>;
 
     /**
      * Create a WebAnalyticsRule resource with the given unique name, arguments, and options.
@@ -83,28 +83,28 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebAnalyticsRuleState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["inclusive"] = state ? state.inclusive : undefined;
-            resourceInputs["isPaused"] = state ? state.isPaused : undefined;
-            resourceInputs["paths"] = state ? state.paths : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["rulesetId"] = state ? state.rulesetId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["inclusive"] = state?.inclusive;
+            resourceInputs["isPaused"] = state?.isPaused;
+            resourceInputs["paths"] = state?.paths;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["rulesetId"] = state?.rulesetId;
         } else {
             const args = argsOrState as WebAnalyticsRuleArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.rulesetId === undefined) && !opts.urn) {
+            if (args?.rulesetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulesetId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["inclusive"] = args ? args.inclusive : undefined;
-            resourceInputs["isPaused"] = args ? args.isPaused : undefined;
-            resourceInputs["paths"] = args ? args.paths : undefined;
-            resourceInputs["rulesetId"] = args ? args.rulesetId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["inclusive"] = args?.inclusive;
+            resourceInputs["isPaused"] = args?.isPaused;
+            resourceInputs["paths"] = args?.paths;
+            resourceInputs["rulesetId"] = args?.rulesetId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
         }

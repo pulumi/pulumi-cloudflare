@@ -56,16 +56,16 @@ export class Queue extends pulumi.CustomResource {
     /**
      * A Resource identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly consumers!: pulumi.Output<outputs.QueueConsumer[]>;
-    public /*out*/ readonly consumersTotalCount!: pulumi.Output<number>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
-    public /*out*/ readonly producers!: pulumi.Output<outputs.QueueProducer[]>;
-    public /*out*/ readonly producersTotalCount!: pulumi.Output<number>;
-    public /*out*/ readonly queueId!: pulumi.Output<string>;
-    public readonly queueName!: pulumi.Output<string>;
-    public readonly settings!: pulumi.Output<outputs.QueueSettings>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly consumers: pulumi.Output<outputs.QueueConsumer[]>;
+    declare public /*out*/ readonly consumersTotalCount: pulumi.Output<number>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    declare public /*out*/ readonly producers: pulumi.Output<outputs.QueueProducer[]>;
+    declare public /*out*/ readonly producersTotalCount: pulumi.Output<number>;
+    declare public /*out*/ readonly queueId: pulumi.Output<string>;
+    declare public readonly queueName: pulumi.Output<string>;
+    declare public readonly settings: pulumi.Output<outputs.QueueSettings>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -80,27 +80,27 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["consumers"] = state ? state.consumers : undefined;
-            resourceInputs["consumersTotalCount"] = state ? state.consumersTotalCount : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["producers"] = state ? state.producers : undefined;
-            resourceInputs["producersTotalCount"] = state ? state.producersTotalCount : undefined;
-            resourceInputs["queueId"] = state ? state.queueId : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["consumers"] = state?.consumers;
+            resourceInputs["consumersTotalCount"] = state?.consumersTotalCount;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["producers"] = state?.producers;
+            resourceInputs["producersTotalCount"] = state?.producersTotalCount;
+            resourceInputs["queueId"] = state?.queueId;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["settings"] = state?.settings;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.queueName === undefined) && !opts.urn) {
+            if (args?.queueName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["queueName"] = args ? args.queueName : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["settings"] = args?.settings;
             resourceInputs["consumers"] = undefined /*out*/;
             resourceInputs["consumersTotalCount"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;

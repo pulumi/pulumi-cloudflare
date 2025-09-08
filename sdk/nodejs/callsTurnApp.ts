@@ -48,31 +48,31 @@ export class CallsTurnApp extends pulumi.CustomResource {
     /**
      * The account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The date and time the item was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Bearer token
      */
-    public /*out*/ readonly key!: pulumi.Output<string>;
+    declare public /*out*/ readonly key: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
-    public readonly keyId!: pulumi.Output<string | undefined>;
+    declare public readonly keyId: pulumi.Output<string | undefined>;
     /**
      * The date and time the item was last modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
      * A short description of a TURN key, not shown to end users.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a item.
      */
-    public /*out*/ readonly uid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uid: pulumi.Output<string>;
 
     /**
      * Create a CallsTurnApp resource with the given unique name, arguments, and options.
@@ -87,21 +87,21 @@ export class CallsTurnApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CallsTurnAppState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["uid"] = state?.uid;
         } else {
             const args = argsOrState as CallsTurnAppArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["keyId"] = args?.keyId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["key"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;

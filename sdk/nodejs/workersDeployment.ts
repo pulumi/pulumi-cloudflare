@@ -46,20 +46,20 @@ export class WorkersDeployment extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
-    public /*out*/ readonly authorEmail!: pulumi.Output<string>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly annotations: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
+    declare public /*out*/ readonly authorEmail: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
-    public readonly scriptName!: pulumi.Output<string>;
-    public /*out*/ readonly source!: pulumi.Output<string>;
+    declare public readonly scriptName: pulumi.Output<string>;
+    declare public /*out*/ readonly source: pulumi.Output<string>;
     /**
      * Available values: "percentage".
      */
-    public readonly strategy!: pulumi.Output<string>;
-    public readonly versions!: pulumi.Output<outputs.WorkersDeploymentVersion[]>;
+    declare public readonly strategy: pulumi.Output<string>;
+    declare public readonly versions: pulumi.Output<outputs.WorkersDeploymentVersion[]>;
 
     /**
      * Create a WorkersDeployment resource with the given unique name, arguments, and options.
@@ -74,33 +74,33 @@ export class WorkersDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersDeploymentState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["authorEmail"] = state ? state.authorEmail : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["strategy"] = state ? state.strategy : undefined;
-            resourceInputs["versions"] = state ? state.versions : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["authorEmail"] = state?.authorEmail;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["scriptName"] = state?.scriptName;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["strategy"] = state?.strategy;
+            resourceInputs["versions"] = state?.versions;
         } else {
             const args = argsOrState as WorkersDeploymentArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.scriptName === undefined) && !opts.urn) {
+            if (args?.scriptName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            if ((!args || args.strategy === undefined) && !opts.urn) {
+            if (args?.strategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'strategy'");
             }
-            if ((!args || args.versions === undefined) && !opts.urn) {
+            if (args?.versions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
-            resourceInputs["strategy"] = args ? args.strategy : undefined;
-            resourceInputs["versions"] = args ? args.versions : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["scriptName"] = args?.scriptName;
+            resourceInputs["strategy"] = args?.strategy;
+            resourceInputs["versions"] = args?.versions;
             resourceInputs["authorEmail"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["source"] = undefined /*out*/;

@@ -57,19 +57,19 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The number of days until the next key rotation.
      */
-    public /*out*/ readonly daysUntilNextRotation!: pulumi.Output<number>;
+    declare public /*out*/ readonly daysUntilNextRotation: pulumi.Output<number>;
     /**
      * The number of days between key rotations.
      */
-    public readonly keyRotationIntervalDays!: pulumi.Output<number>;
+    declare public readonly keyRotationIntervalDays: pulumi.Output<number>;
     /**
      * The timestamp of the previous key rotation.
      */
-    public /*out*/ readonly lastKeyRotationAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastKeyRotationAt: pulumi.Output<string>;
 
     /**
      * Create a AccessKeysConfiguration resource with the given unique name, arguments, and options.
@@ -87,20 +87,20 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeysConfigurationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["daysUntilNextRotation"] = state ? state.daysUntilNextRotation : undefined;
-            resourceInputs["keyRotationIntervalDays"] = state ? state.keyRotationIntervalDays : undefined;
-            resourceInputs["lastKeyRotationAt"] = state ? state.lastKeyRotationAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["daysUntilNextRotation"] = state?.daysUntilNextRotation;
+            resourceInputs["keyRotationIntervalDays"] = state?.keyRotationIntervalDays;
+            resourceInputs["lastKeyRotationAt"] = state?.lastKeyRotationAt;
         } else {
             const args = argsOrState as AccessKeysConfigurationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.keyRotationIntervalDays === undefined) && !opts.urn) {
+            if (args?.keyRotationIntervalDays === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyRotationIntervalDays'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["keyRotationIntervalDays"] = args ? args.keyRotationIntervalDays : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["keyRotationIntervalDays"] = args?.keyRotationIntervalDays;
             resourceInputs["daysUntilNextRotation"] = undefined /*out*/;
             resourceInputs["lastKeyRotationAt"] = undefined /*out*/;
         }

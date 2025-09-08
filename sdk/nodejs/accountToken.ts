@@ -46,45 +46,45 @@ export class AccountToken extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.AccountTokenCondition | undefined>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly condition: pulumi.Output<outputs.AccountTokenCondition | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */
-    public readonly expiresOn!: pulumi.Output<string | undefined>;
+    declare public readonly expiresOn: pulumi.Output<string | undefined>;
     /**
      * The time on which the token was created.
      */
-    public /*out*/ readonly issuedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuedOn: pulumi.Output<string>;
     /**
      * Last time the token was used.
      */
-    public /*out*/ readonly lastUsedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUsedOn: pulumi.Output<string>;
     /**
      * Last time the token was modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * Token name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The time before which the token MUST NOT be accepted for processing.
      */
-    public readonly notBefore!: pulumi.Output<string | undefined>;
+    declare public readonly notBefore: pulumi.Output<string | undefined>;
     /**
      * List of access policies assigned to the token.
      */
-    public readonly policies!: pulumi.Output<outputs.AccountTokenPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.AccountTokenPolicy[]>;
     /**
      * Status of the token.
      * Available values: "active", "disabled", "expired".
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The token value.
      */
-    public /*out*/ readonly value!: pulumi.Output<string>;
+    declare public /*out*/ readonly value: pulumi.Output<string>;
 
     /**
      * Create a AccountToken resource with the given unique name, arguments, and options.
@@ -99,35 +99,35 @@ export class AccountToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountTokenState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["issuedOn"] = state ? state.issuedOn : undefined;
-            resourceInputs["lastUsedOn"] = state ? state.lastUsedOn : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notBefore"] = state ? state.notBefore : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["issuedOn"] = state?.issuedOn;
+            resourceInputs["lastUsedOn"] = state?.lastUsedOn;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notBefore"] = state?.notBefore;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["value"] = state?.value;
         } else {
             const args = argsOrState as AccountTokenArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.policies === undefined) && !opts.urn) {
+            if (args?.policies === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["expiresOn"] = args ? args.expiresOn : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notBefore"] = args ? args.notBefore : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["expiresOn"] = args?.expiresOn;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notBefore"] = args?.notBefore;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["status"] = args?.status;
             resourceInputs["issuedOn"] = undefined /*out*/;
             resourceInputs["lastUsedOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;

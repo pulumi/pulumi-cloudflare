@@ -40,44 +40,44 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
     /**
      * Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
      */
-    public readonly flattenAllCnames!: pulumi.Output<boolean | undefined>;
+    declare public readonly flattenAllCnames: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable Foundation DNS Advanced Nameservers on the zone.
      */
-    public readonly foundationDns!: pulumi.Output<boolean | undefined>;
+    declare public readonly foundationDns: pulumi.Output<boolean | undefined>;
     /**
      * Settings for this internal zone.
      */
-    public readonly internalDns!: pulumi.Output<outputs.ZoneDnsSettingsInternalDns | undefined>;
+    declare public readonly internalDns: pulumi.Output<outputs.ZoneDnsSettingsInternalDns | undefined>;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
-    public readonly multiProvider!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiProvider: pulumi.Output<boolean | undefined>;
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    public readonly nameservers!: pulumi.Output<outputs.ZoneDnsSettingsNameservers | undefined>;
+    declare public readonly nameservers: pulumi.Output<outputs.ZoneDnsSettingsNameservers | undefined>;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
-    public readonly nsTtl!: pulumi.Output<number | undefined>;
+    declare public readonly nsTtl: pulumi.Output<number | undefined>;
     /**
      * Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
      */
-    public readonly secondaryOverrides!: pulumi.Output<boolean | undefined>;
+    declare public readonly secondaryOverrides: pulumi.Output<boolean | undefined>;
     /**
      * Components of the zone's SOA record.
      */
-    public readonly soa!: pulumi.Output<outputs.ZoneDnsSettingsSoa | undefined>;
+    declare public readonly soa: pulumi.Output<outputs.ZoneDnsSettingsSoa | undefined>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
      */
-    public readonly zoneMode!: pulumi.Output<string | undefined>;
+    declare public readonly zoneMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a ZoneDnsSettings resource with the given unique name, arguments, and options.
@@ -92,31 +92,31 @@ export class ZoneDnsSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneDnsSettingsState | undefined;
-            resourceInputs["flattenAllCnames"] = state ? state.flattenAllCnames : undefined;
-            resourceInputs["foundationDns"] = state ? state.foundationDns : undefined;
-            resourceInputs["internalDns"] = state ? state.internalDns : undefined;
-            resourceInputs["multiProvider"] = state ? state.multiProvider : undefined;
-            resourceInputs["nameservers"] = state ? state.nameservers : undefined;
-            resourceInputs["nsTtl"] = state ? state.nsTtl : undefined;
-            resourceInputs["secondaryOverrides"] = state ? state.secondaryOverrides : undefined;
-            resourceInputs["soa"] = state ? state.soa : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneMode"] = state ? state.zoneMode : undefined;
+            resourceInputs["flattenAllCnames"] = state?.flattenAllCnames;
+            resourceInputs["foundationDns"] = state?.foundationDns;
+            resourceInputs["internalDns"] = state?.internalDns;
+            resourceInputs["multiProvider"] = state?.multiProvider;
+            resourceInputs["nameservers"] = state?.nameservers;
+            resourceInputs["nsTtl"] = state?.nsTtl;
+            resourceInputs["secondaryOverrides"] = state?.secondaryOverrides;
+            resourceInputs["soa"] = state?.soa;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneMode"] = state?.zoneMode;
         } else {
             const args = argsOrState as ZoneDnsSettingsArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["flattenAllCnames"] = args ? args.flattenAllCnames : undefined;
-            resourceInputs["foundationDns"] = args ? args.foundationDns : undefined;
-            resourceInputs["internalDns"] = args ? args.internalDns : undefined;
-            resourceInputs["multiProvider"] = args ? args.multiProvider : undefined;
-            resourceInputs["nameservers"] = args ? args.nameservers : undefined;
-            resourceInputs["nsTtl"] = args ? args.nsTtl : undefined;
-            resourceInputs["secondaryOverrides"] = args ? args.secondaryOverrides : undefined;
-            resourceInputs["soa"] = args ? args.soa : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["zoneMode"] = args ? args.zoneMode : undefined;
+            resourceInputs["flattenAllCnames"] = args?.flattenAllCnames;
+            resourceInputs["foundationDns"] = args?.foundationDns;
+            resourceInputs["internalDns"] = args?.internalDns;
+            resourceInputs["multiProvider"] = args?.multiProvider;
+            resourceInputs["nameservers"] = args?.nameservers;
+            resourceInputs["nsTtl"] = args?.nsTtl;
+            resourceInputs["secondaryOverrides"] = args?.secondaryOverrides;
+            resourceInputs["soa"] = args?.soa;
+            resourceInputs["zoneId"] = args?.zoneId;
+            resourceInputs["zoneMode"] = args?.zoneMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneDnsSettings.__pulumiType, name, resourceInputs, opts);

@@ -46,29 +46,29 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
     /**
      * List actions for the catch-all routing rule.
      */
-    public readonly actions!: pulumi.Output<outputs.EmailRoutingCatchAllAction[]>;
+    declare public readonly actions: pulumi.Output<outputs.EmailRoutingCatchAllAction[]>;
     /**
      * Routing rule status.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * List of matchers for the catch-all routing rule.
      */
-    public readonly matchers!: pulumi.Output<outputs.EmailRoutingCatchAllMatcher[]>;
+    declare public readonly matchers: pulumi.Output<outputs.EmailRoutingCatchAllMatcher[]>;
     /**
      * Routing rule name.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly tag!: pulumi.Output<string>;
+    declare public /*out*/ readonly tag: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingCatchAll resource with the given unique name, arguments, and options.
@@ -83,28 +83,28 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailRoutingCatchAllState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["matchers"] = state ? state.matchers : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["matchers"] = state?.matchers;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EmailRoutingCatchAllArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.matchers === undefined) && !opts.urn) {
+            if (args?.matchers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'matchers'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["matchers"] = args ? args.matchers : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["matchers"] = args?.matchers;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["tag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

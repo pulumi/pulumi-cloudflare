@@ -56,17 +56,17 @@ export class ApiShield extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiShield.__pulumiType;
     }
 
-    public readonly authIdCharacteristics!: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
-    public /*out*/ readonly errors!: pulumi.Output<outputs.ApiShieldError[]>;
-    public /*out*/ readonly messages!: pulumi.Output<outputs.ApiShieldMessage[]>;
+    declare public readonly authIdCharacteristics: pulumi.Output<outputs.ApiShieldAuthIdCharacteristic[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<outputs.ApiShieldError[]>;
+    declare public /*out*/ readonly messages: pulumi.Output<outputs.ApiShieldMessage[]>;
     /**
      * Whether the API call was successful.
      */
-    public /*out*/ readonly success!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly success: pulumi.Output<boolean>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShield resource with the given unique name, arguments, and options.
@@ -81,21 +81,21 @@ export class ApiShield extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldState | undefined;
-            resourceInputs["authIdCharacteristics"] = state ? state.authIdCharacteristics : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["messages"] = state ? state.messages : undefined;
-            resourceInputs["success"] = state ? state.success : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["authIdCharacteristics"] = state?.authIdCharacteristics;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["messages"] = state?.messages;
+            resourceInputs["success"] = state?.success;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldArgs | undefined;
-            if ((!args || args.authIdCharacteristics === undefined) && !opts.urn) {
+            if (args?.authIdCharacteristics === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authIdCharacteristics'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["authIdCharacteristics"] = args ? args.authIdCharacteristics : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["authIdCharacteristics"] = args?.authIdCharacteristics;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["messages"] = undefined /*out*/;
             resourceInputs["success"] = undefined /*out*/;

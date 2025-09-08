@@ -53,52 +53,52 @@ export class User extends pulumi.CustomResource {
     /**
      * Lists the betas that the user is participating in.
      */
-    public /*out*/ readonly betas!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly betas: pulumi.Output<string[]>;
     /**
      * The country in which the user lives.
      */
-    public readonly country!: pulumi.Output<string | undefined>;
+    declare public readonly country: pulumi.Output<string | undefined>;
     /**
      * User's first name
      */
-    public readonly firstName!: pulumi.Output<string | undefined>;
+    declare public readonly firstName: pulumi.Output<string | undefined>;
     /**
      * Indicates whether user has any business zones
      */
-    public /*out*/ readonly hasBusinessZones!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasBusinessZones: pulumi.Output<boolean>;
     /**
      * Indicates whether user has any enterprise zones
      */
-    public /*out*/ readonly hasEnterpriseZones!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasEnterpriseZones: pulumi.Output<boolean>;
     /**
      * Indicates whether user has any pro zones
      */
-    public /*out*/ readonly hasProZones!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasProZones: pulumi.Output<boolean>;
     /**
      * User's last name
      */
-    public readonly lastName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly organizations!: pulumi.Output<outputs.UserOrganization[]>;
+    declare public readonly lastName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly organizations: pulumi.Output<outputs.UserOrganization[]>;
     /**
      * Indicates whether user has been suspended
      */
-    public /*out*/ readonly suspended!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly suspended: pulumi.Output<boolean>;
     /**
      * User's telephone number
      */
-    public readonly telephone!: pulumi.Output<string | undefined>;
+    declare public readonly telephone: pulumi.Output<string | undefined>;
     /**
      * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
      */
-    public /*out*/ readonly twoFactorAuthenticationEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly twoFactorAuthenticationEnabled: pulumi.Output<boolean>;
     /**
      * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
      */
-    public /*out*/ readonly twoFactorAuthenticationLocked!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly twoFactorAuthenticationLocked: pulumi.Output<boolean>;
     /**
      * The zipcode or postal code where the user lives.
      */
-    public readonly zipcode!: pulumi.Output<string | undefined>;
+    declare public readonly zipcode: pulumi.Output<string | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -113,26 +113,26 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["betas"] = state ? state.betas : undefined;
-            resourceInputs["country"] = state ? state.country : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["hasBusinessZones"] = state ? state.hasBusinessZones : undefined;
-            resourceInputs["hasEnterpriseZones"] = state ? state.hasEnterpriseZones : undefined;
-            resourceInputs["hasProZones"] = state ? state.hasProZones : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["organizations"] = state ? state.organizations : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["telephone"] = state ? state.telephone : undefined;
-            resourceInputs["twoFactorAuthenticationEnabled"] = state ? state.twoFactorAuthenticationEnabled : undefined;
-            resourceInputs["twoFactorAuthenticationLocked"] = state ? state.twoFactorAuthenticationLocked : undefined;
-            resourceInputs["zipcode"] = state ? state.zipcode : undefined;
+            resourceInputs["betas"] = state?.betas;
+            resourceInputs["country"] = state?.country;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["hasBusinessZones"] = state?.hasBusinessZones;
+            resourceInputs["hasEnterpriseZones"] = state?.hasEnterpriseZones;
+            resourceInputs["hasProZones"] = state?.hasProZones;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["organizations"] = state?.organizations;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["telephone"] = state?.telephone;
+            resourceInputs["twoFactorAuthenticationEnabled"] = state?.twoFactorAuthenticationEnabled;
+            resourceInputs["twoFactorAuthenticationLocked"] = state?.twoFactorAuthenticationLocked;
+            resourceInputs["zipcode"] = state?.zipcode;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            resourceInputs["country"] = args ? args.country : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["telephone"] = args ? args.telephone : undefined;
-            resourceInputs["zipcode"] = args ? args.zipcode : undefined;
+            resourceInputs["country"] = args?.country;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["telephone"] = args?.telephone;
+            resourceInputs["zipcode"] = args?.zipcode;
             resourceInputs["betas"] = undefined /*out*/;
             resourceInputs["hasBusinessZones"] = undefined /*out*/;
             resourceInputs["hasEnterpriseZones"] = undefined /*out*/;

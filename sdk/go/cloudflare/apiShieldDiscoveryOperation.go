@@ -44,8 +44,10 @@ type ApiShieldDiscoveryOperation struct {
 
 	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
-	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored Available values: "review", "ignored".
+	// Mark state of operation in API Discovery
+	//   * `review` - Mark operation as for review
+	//   * `ignored` - Mark operation as ignored
+	//     Available values: "review", "ignored".
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -89,8 +91,10 @@ func GetApiShieldDiscoveryOperation(ctx *pulumi.Context,
 type apiShieldDiscoveryOperationState struct {
 	// UUID.
 	OperationId *string `pulumi:"operationId"`
-	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored Available values: "review", "ignored".
+	// Mark state of operation in API Discovery
+	//   * `review` - Mark operation as for review
+	//   * `ignored` - Mark operation as ignored
+	//     Available values: "review", "ignored".
 	State *string `pulumi:"state"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
@@ -99,8 +103,10 @@ type apiShieldDiscoveryOperationState struct {
 type ApiShieldDiscoveryOperationState struct {
 	// UUID.
 	OperationId pulumi.StringPtrInput
-	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored Available values: "review", "ignored".
+	// Mark state of operation in API Discovery
+	//   * `review` - Mark operation as for review
+	//   * `ignored` - Mark operation as ignored
+	//     Available values: "review", "ignored".
 	State pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -113,8 +119,10 @@ func (ApiShieldDiscoveryOperationState) ElementType() reflect.Type {
 type apiShieldDiscoveryOperationArgs struct {
 	// UUID.
 	OperationId string `pulumi:"operationId"`
-	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored Available values: "review", "ignored".
+	// Mark state of operation in API Discovery
+	//   * `review` - Mark operation as for review
+	//   * `ignored` - Mark operation as ignored
+	//     Available values: "review", "ignored".
 	State *string `pulumi:"state"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -124,8 +132,10 @@ type apiShieldDiscoveryOperationArgs struct {
 type ApiShieldDiscoveryOperationArgs struct {
 	// UUID.
 	OperationId pulumi.StringInput
-	// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-	// ignored Available values: "review", "ignored".
+	// Mark state of operation in API Discovery
+	//   * `review` - Mark operation as for review
+	//   * `ignored` - Mark operation as ignored
+	//     Available values: "review", "ignored".
 	State pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -223,8 +233,10 @@ func (o ApiShieldDiscoveryOperationOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-// ignored Available values: "review", "ignored".
+// Mark state of operation in API Discovery
+//   - `review` - Mark operation as for review
+//   - `ignored` - Mark operation as ignored
+//     Available values: "review", "ignored".
 func (o ApiShieldDiscoveryOperationOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldDiscoveryOperation) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

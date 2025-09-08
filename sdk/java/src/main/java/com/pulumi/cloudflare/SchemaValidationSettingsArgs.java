@@ -17,18 +17,26 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
     public static final SchemaValidationSettingsArgs Empty = new SchemaValidationSettingsArgs();
 
     /**
-     * The default mitigation action used Mitigation actions are as follows: - `&#34;log&#34;` - log request when request does not
-     * conform to schema - `&#34;block&#34;` - deny access to the site when request does not conform to schema - `&#34;none&#34;` - skip
-     * running schema validation Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
+     * The default mitigation action used
+     * Mitigation actions are as follows:
+     * 
+     *   - `&#34;log&#34;` - log request when request does not conform to schema
+     *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema
+     *   - `&#34;none&#34;` - skip running schema validation
+     *     Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     @Import(name="validationDefaultMitigationAction", required=true)
     private Output<String> validationDefaultMitigationAction;
 
     /**
-     * @return The default mitigation action used Mitigation actions are as follows: - `&#34;log&#34;` - log request when request does not
-     * conform to schema - `&#34;block&#34;` - deny access to the site when request does not conform to schema - `&#34;none&#34;` - skip
-     * running schema validation Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
+     * @return The default mitigation action used
+     * Mitigation actions are as follows:
+     * 
+     *   - `&#34;log&#34;` - log request when request does not conform to schema
+     *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema
+     *   - `&#34;none&#34;` - skip running schema validation
+     *     Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
      * 
      */
     public Output<String> validationDefaultMitigationAction() {
@@ -36,16 +44,22 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * When set, this overrides both zone level and operation level mitigation actions. - `&#34;none&#34;` - skip running schema
-     * validation entirely for the request - `null` - clears any existing override Available values: &#34;none&#34;.
+     * When set, this overrides both zone level and operation level mitigation actions.
+     * 
+     *   - `&#34;none&#34;` - skip running schema validation entirely for the request
+     *   - `null` - clears any existing override
+     *     Available values: &#34;none&#34;.
      * 
      */
     @Import(name="validationOverrideMitigationAction")
     private @Nullable Output<String> validationOverrideMitigationAction;
 
     /**
-     * @return When set, this overrides both zone level and operation level mitigation actions. - `&#34;none&#34;` - skip running schema
-     * validation entirely for the request - `null` - clears any existing override Available values: &#34;none&#34;.
+     * @return When set, this overrides both zone level and operation level mitigation actions.
+     * 
+     *   - `&#34;none&#34;` - skip running schema validation entirely for the request
+     *   - `null` - clears any existing override
+     *     Available values: &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> validationOverrideMitigationAction() {
@@ -94,9 +108,13 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param validationDefaultMitigationAction The default mitigation action used Mitigation actions are as follows: - `&#34;log&#34;` - log request when request does not
-         * conform to schema - `&#34;block&#34;` - deny access to the site when request does not conform to schema - `&#34;none&#34;` - skip
-         * running schema validation Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
+         * @param validationDefaultMitigationAction The default mitigation action used
+         * Mitigation actions are as follows:
+         * 
+         *   - `&#34;log&#34;` - log request when request does not conform to schema
+         *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema
+         *   - `&#34;none&#34;` - skip running schema validation
+         *     Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -107,9 +125,13 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param validationDefaultMitigationAction The default mitigation action used Mitigation actions are as follows: - `&#34;log&#34;` - log request when request does not
-         * conform to schema - `&#34;block&#34;` - deny access to the site when request does not conform to schema - `&#34;none&#34;` - skip
-         * running schema validation Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
+         * @param validationDefaultMitigationAction The default mitigation action used
+         * Mitigation actions are as follows:
+         * 
+         *   - `&#34;log&#34;` - log request when request does not conform to schema
+         *   - `&#34;block&#34;` - deny access to the site when request does not conform to schema
+         *   - `&#34;none&#34;` - skip running schema validation
+         *     Available values: &#34;none&#34;, &#34;log&#34;, &#34;block&#34;.
          * 
          * @return builder
          * 
@@ -119,8 +141,11 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions. - `&#34;none&#34;` - skip running schema
-         * validation entirely for the request - `null` - clears any existing override Available values: &#34;none&#34;.
+         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions.
+         * 
+         *   - `&#34;none&#34;` - skip running schema validation entirely for the request
+         *   - `null` - clears any existing override
+         *     Available values: &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -131,8 +156,11 @@ public final class SchemaValidationSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions. - `&#34;none&#34;` - skip running schema
-         * validation entirely for the request - `null` - clears any existing override Available values: &#34;none&#34;.
+         * @param validationOverrideMitigationAction When set, this overrides both zone level and operation level mitigation actions.
+         * 
+         *   - `&#34;none&#34;` - skip running schema validation entirely for the request
+         *   - `null` - clears any existing override
+         *     Available values: &#34;none&#34;.
          * 
          * @return builder
          * 

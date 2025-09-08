@@ -60,25 +60,25 @@ export class PagesDomain extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Available values: "google", "letsEncrypt".
      */
-    public /*out*/ readonly certificateAuthority!: pulumi.Output<string>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
-    public /*out*/ readonly domainId!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly certificateAuthority: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public /*out*/ readonly domainId: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Name of the project.
      */
-    public readonly projectName!: pulumi.Output<string>;
+    declare public readonly projectName: pulumi.Output<string>;
     /**
      * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public /*out*/ readonly validationData!: pulumi.Output<outputs.PagesDomainValidationData>;
-    public /*out*/ readonly verificationData!: pulumi.Output<outputs.PagesDomainVerificationData>;
-    public /*out*/ readonly zoneTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public /*out*/ readonly validationData: pulumi.Output<outputs.PagesDomainValidationData>;
+    declare public /*out*/ readonly verificationData: pulumi.Output<outputs.PagesDomainVerificationData>;
+    declare public /*out*/ readonly zoneTag: pulumi.Output<string>;
 
     /**
      * Create a PagesDomain resource with the given unique name, arguments, and options.
@@ -93,30 +93,30 @@ export class PagesDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PagesDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectName"] = state ? state.projectName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["validationData"] = state ? state.validationData : undefined;
-            resourceInputs["verificationData"] = state ? state.verificationData : undefined;
-            resourceInputs["zoneTag"] = state ? state.zoneTag : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectName"] = state?.projectName;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["validationData"] = state?.validationData;
+            resourceInputs["verificationData"] = state?.verificationData;
+            resourceInputs["zoneTag"] = state?.zoneTag;
         } else {
             const args = argsOrState as PagesDomainArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.projectName === undefined) && !opts.urn) {
+            if (args?.projectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectName"] = args?.projectName;
             resourceInputs["certificateAuthority"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;

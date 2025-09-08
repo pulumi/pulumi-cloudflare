@@ -57,31 +57,31 @@ export class ZeroTrustTunnelCloudflaredRoute extends pulumi.CustomResource {
     /**
      * Cloudflare account ID
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Optional remark describing the route.
      */
-    public readonly comment!: pulumi.Output<string>;
+    declare public readonly comment: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
      */
-    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
      * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      */
-    public readonly network!: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string>;
     /**
      * UUID of the tunnel.
      */
-    public readonly tunnelId!: pulumi.Output<string>;
+    declare public readonly tunnelId: pulumi.Output<string>;
     /**
      * UUID of the virtual network.
      */
-    public readonly virtualNetworkId!: pulumi.Output<string>;
+    declare public readonly virtualNetworkId: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustTunnelCloudflaredRoute resource with the given unique name, arguments, and options.
@@ -96,29 +96,29 @@ export class ZeroTrustTunnelCloudflaredRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustTunnelCloudflaredRouteState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
-            resourceInputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["tunnelId"] = state?.tunnelId;
+            resourceInputs["virtualNetworkId"] = state?.virtualNetworkId;
         } else {
             const args = argsOrState as ZeroTrustTunnelCloudflaredRouteArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.network === undefined) && !opts.urn) {
+            if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.tunnelId === undefined) && !opts.urn) {
+            if (args?.tunnelId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tunnelId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["tunnelId"] = args ? args.tunnelId : undefined;
-            resourceInputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["tunnelId"] = args?.tunnelId;
+            resourceInputs["virtualNetworkId"] = args?.virtualNetworkId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
         }

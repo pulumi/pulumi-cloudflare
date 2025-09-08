@@ -58,26 +58,26 @@ export class ApiShieldOperation extends pulumi.CustomResource {
     /**
      * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      */
-    public readonly endpoint!: pulumi.Output<string>;
-    public /*out*/ readonly features!: pulumi.Output<outputs.ApiShieldOperationFeatures>;
+    declare public readonly endpoint: pulumi.Output<string>;
+    declare public /*out*/ readonly features: pulumi.Output<outputs.ApiShieldOperationFeatures>;
     /**
      * RFC3986-compliant host.
      */
-    public readonly host!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public readonly host: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * The HTTP method used to access the endpoint.
      * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
-    public readonly method!: pulumi.Output<string>;
+    declare public readonly method: pulumi.Output<string>;
     /**
      * UUID.
      */
-    public /*out*/ readonly operationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly operationId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldOperation resource with the given unique name, arguments, and options.
@@ -92,31 +92,31 @@ export class ApiShieldOperation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldOperationState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["features"] = state ? state.features : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["method"] = state ? state.method : undefined;
-            resourceInputs["operationId"] = state ? state.operationId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["features"] = state?.features;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["method"] = state?.method;
+            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldOperationArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.host === undefined) && !opts.urn) {
+            if (args?.host === undefined && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.method === undefined) && !opts.urn) {
+            if (args?.method === undefined && !opts.urn) {
                 throw new Error("Missing required property 'method'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["method"] = args ? args.method : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["method"] = args?.method;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["features"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["operationId"] = undefined /*out*/;

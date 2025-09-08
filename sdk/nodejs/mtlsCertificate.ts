@@ -63,47 +63,47 @@ export class MtlsCertificate extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Indicates whether the certificate is a CA or leaf certificate.
      */
-    public readonly ca!: pulumi.Output<boolean>;
+    declare public readonly ca: pulumi.Output<boolean>;
     /**
      * The uploaded root CA certificate.
      */
-    public readonly certificates!: pulumi.Output<string>;
+    declare public readonly certificates: pulumi.Output<string>;
     /**
      * When the certificate expires.
      */
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
      * The certificate authority that issued the certificate.
      */
-    public /*out*/ readonly issuer!: pulumi.Output<string>;
+    declare public /*out*/ readonly issuer: pulumi.Output<string>;
     /**
      * Optional unique name for the certificate. Only used for human readability.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     /**
      * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * The certificate serial number.
      */
-    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
     /**
      * The type of hash used for the certificate.
      */
-    public /*out*/ readonly signature!: pulumi.Output<string>;
+    declare public /*out*/ readonly signature: pulumi.Output<string>;
     /**
      * This is the time the certificate was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * This is the time the certificate was uploaded.
      */
-    public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly uploadedOn: pulumi.Output<string>;
 
     /**
      * Create a MtlsCertificate resource with the given unique name, arguments, and options.
@@ -118,32 +118,32 @@ export class MtlsCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MtlsCertificateState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["ca"] = state ? state.ca : undefined;
-            resourceInputs["certificates"] = state ? state.certificates : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["issuer"] = state ? state.issuer : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
-            resourceInputs["signature"] = state ? state.signature : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["ca"] = state?.ca;
+            resourceInputs["certificates"] = state?.certificates;
+            resourceInputs["expiresOn"] = state?.expiresOn;
+            resourceInputs["issuer"] = state?.issuer;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["serialNumber"] = state?.serialNumber;
+            resourceInputs["signature"] = state?.signature;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uploadedOn"] = state?.uploadedOn;
         } else {
             const args = argsOrState as MtlsCertificateArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.ca === undefined) && !opts.urn) {
+            if (args?.ca === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ca'");
             }
-            if ((!args || args.certificates === undefined) && !opts.urn) {
+            if (args?.certificates === undefined && !opts.urn) {
                 throw new Error("Missing required property 'certificates'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["ca"] = args ? args.ca : undefined;
-            resourceInputs["certificates"] = args ? args.certificates : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["ca"] = args?.ca;
+            resourceInputs["certificates"] = args?.certificates;
+            resourceInputs["name"] = args?.name;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["expiresOn"] = undefined /*out*/;
             resourceInputs["issuer"] = undefined /*out*/;

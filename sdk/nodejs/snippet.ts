@@ -40,27 +40,27 @@ export class Snippet extends pulumi.CustomResource {
     /**
      * The timestamp of when the snippet was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * The list of files belonging to the snippet.
      */
-    public readonly files!: pulumi.Output<outputs.SnippetFile[]>;
+    declare public readonly files: pulumi.Output<outputs.SnippetFile[]>;
     /**
      * Metadata about the snippet.
      */
-    public readonly metadata!: pulumi.Output<outputs.SnippetMetadata>;
+    declare public readonly metadata: pulumi.Output<outputs.SnippetMetadata>;
     /**
      * The timestamp of when the snippet was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The identifying name of the snippet.
      */
-    public readonly snippetName!: pulumi.Output<string>;
+    declare public readonly snippetName: pulumi.Output<string>;
     /**
      * The unique ID of the zone.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a Snippet resource with the given unique name, arguments, and options.
@@ -75,30 +75,30 @@ export class Snippet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnippetState | undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["files"] = state ? state.files : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["snippetName"] = state ? state.snippetName : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["files"] = state?.files;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["snippetName"] = state?.snippetName;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SnippetArgs | undefined;
-            if ((!args || args.files === undefined) && !opts.urn) {
+            if (args?.files === undefined && !opts.urn) {
                 throw new Error("Missing required property 'files'");
             }
-            if ((!args || args.metadata === undefined) && !opts.urn) {
+            if (args?.metadata === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metadata'");
             }
-            if ((!args || args.snippetName === undefined) && !opts.urn) {
+            if (args?.snippetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snippetName'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["files"] = args ? args.files : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["snippetName"] = args ? args.snippetName : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["files"] = args?.files;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["snippetName"] = args?.snippetName;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

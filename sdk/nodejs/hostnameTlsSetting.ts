@@ -59,32 +59,32 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
     /**
      * This is the time the tls setting was originally created for this hostname.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The hostname for which the tls settings are set.
      */
-    public readonly hostname!: pulumi.Output<string>;
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * The TLS Setting name.
      * Available values: "ciphers", "min*tls*version", "http2".
      */
-    public readonly settingId!: pulumi.Output<string>;
+    declare public readonly settingId: pulumi.Output<string>;
     /**
      * Deployment status for the given tls setting.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * This is the time the tls setting was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The tls setting value.
      */
-    public readonly value!: pulumi.Output<any>;
+    declare public readonly value: pulumi.Output<any>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a HostnameTlsSetting resource with the given unique name, arguments, and options.
@@ -99,31 +99,31 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostnameTlsSettingState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["settingId"] = state ? state.settingId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["settingId"] = state?.settingId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as HostnameTlsSettingArgs | undefined;
-            if ((!args || args.hostname === undefined) && !opts.urn) {
+            if (args?.hostname === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if ((!args || args.settingId === undefined) && !opts.urn) {
+            if (args?.settingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'settingId'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["settingId"] = args ? args.settingId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["settingId"] = args?.settingId;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

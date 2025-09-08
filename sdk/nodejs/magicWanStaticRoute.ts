@@ -46,39 +46,39 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * When the route was created.
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * An optional human provided description of the static route.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * When the route was last modified.
      */
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The next-hop IP Address for the static route.
      */
-    public readonly nexthop!: pulumi.Output<string>;
+    declare public readonly nexthop: pulumi.Output<string>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    public readonly prefix!: pulumi.Output<string>;
+    declare public readonly prefix: pulumi.Output<string>;
     /**
      * Priority of the static route.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Used only for ECMP routes.
      */
-    public readonly scope!: pulumi.Output<outputs.MagicWanStaticRouteScope | undefined>;
+    declare public readonly scope: pulumi.Output<outputs.MagicWanStaticRouteScope | undefined>;
     /**
      * Optional weight of the ECMP scope - if provided.
      */
-    public readonly weight!: pulumi.Output<number | undefined>;
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a MagicWanStaticRoute resource with the given unique name, arguments, and options.
@@ -93,36 +93,36 @@ export class MagicWanStaticRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicWanStaticRouteState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["nexthop"] = state ? state.nexthop : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["nexthop"] = state?.nexthop;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as MagicWanStaticRouteArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.nexthop === undefined) && !opts.urn) {
+            if (args?.nexthop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nexthop'");
             }
-            if ((!args || args.prefix === undefined) && !opts.urn) {
+            if (args?.prefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefix'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["nexthop"] = args ? args.nexthop : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["nexthop"] = args?.nexthop;
+            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

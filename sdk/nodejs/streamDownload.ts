@@ -48,11 +48,11 @@ export class StreamDownload extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
 
     /**
      * Create a StreamDownload resource with the given unique name, arguments, and options.
@@ -67,18 +67,18 @@ export class StreamDownload extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamDownloadState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["identifier"] = state?.identifier;
         } else {
             const args = argsOrState as StreamDownloadArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["identifier"] = args?.identifier;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(StreamDownload.__pulumiType, name, resourceInputs, opts);

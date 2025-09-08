@@ -60,27 +60,27 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
     /**
      * Account ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Name of the bucket.
      */
-    public readonly bucketName!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
     /**
      * Jurisdiction of the bucket
      */
-    public readonly jurisdiction!: pulumi.Output<string>;
+    declare public readonly jurisdiction: pulumi.Output<string>;
     /**
      * Queue ID.
      */
-    public readonly queueId!: pulumi.Output<string>;
+    declare public readonly queueId: pulumi.Output<string>;
     /**
      * Name of the queue.
      */
-    public /*out*/ readonly queueName!: pulumi.Output<string>;
+    declare public /*out*/ readonly queueName: pulumi.Output<string>;
     /**
      * Array of rules to drive notifications.
      */
-    public readonly rules!: pulumi.Output<outputs.R2BucketEventNotificationRule[] | undefined>;
+    declare public readonly rules: pulumi.Output<outputs.R2BucketEventNotificationRule[] | undefined>;
 
     /**
      * Create a R2BucketEventNotification resource with the given unique name, arguments, and options.
@@ -95,28 +95,28 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as R2BucketEventNotificationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
-            resourceInputs["queueId"] = state ? state.queueId : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["jurisdiction"] = state?.jurisdiction;
+            resourceInputs["queueId"] = state?.queueId;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as R2BucketEventNotificationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.queueId === undefined) && !opts.urn) {
+            if (args?.queueId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
-            resourceInputs["queueId"] = args ? args.queueId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["jurisdiction"] = args?.jurisdiction;
+            resourceInputs["queueId"] = args?.queueId;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["queueName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

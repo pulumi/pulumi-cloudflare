@@ -53,20 +53,23 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
     }
 
     /**
-     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `log` log request when request does not conform to schema for this operation
+     *   - `block` deny access to the site when request does not conform to schema for this operation
+     *   - `none` will skip mitigation for this operation
+     *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+     * Available values: "log", "block", "none".
      */
-    public readonly mitigationAction!: pulumi.Output<string | undefined>;
+    declare public readonly mitigationAction: pulumi.Output<string | undefined>;
     /**
      * UUID.
      */
-    public readonly operationId!: pulumi.Output<string>;
+    declare public readonly operationId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a ApiShieldOperationSchemaValidationSettings resource with the given unique name, arguments, and options.
@@ -81,20 +84,20 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiShieldOperationSchemaValidationSettingsState | undefined;
-            resourceInputs["mitigationAction"] = state ? state.mitigationAction : undefined;
-            resourceInputs["operationId"] = state ? state.operationId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["mitigationAction"] = state?.mitigationAction;
+            resourceInputs["operationId"] = state?.operationId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ApiShieldOperationSchemaValidationSettingsArgs | undefined;
-            if ((!args || args.operationId === undefined) && !opts.urn) {
+            if (args?.operationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["mitigationAction"] = args ? args.mitigationAction : undefined;
-            resourceInputs["operationId"] = args ? args.operationId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["mitigationAction"] = args?.mitigationAction;
+            resourceInputs["operationId"] = args?.operationId;
+            resourceInputs["zoneId"] = args?.zoneId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldOperationSchemaValidationSettings.__pulumiType, name, resourceInputs, opts);
@@ -106,10 +109,13 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
  */
 export interface ApiShieldOperationSchemaValidationSettingsState {
     /**
-     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `log` log request when request does not conform to schema for this operation
+     *   - `block` deny access to the site when request does not conform to schema for this operation
+     *   - `none` will skip mitigation for this operation
+     *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+     * Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string>;
     /**
@@ -127,10 +133,13 @@ export interface ApiShieldOperationSchemaValidationSettingsState {
  */
 export interface ApiShieldOperationSchemaValidationSettingsArgs {
     /**
-     * When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
-     * for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
-     * will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
-     * Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
+     * When set, this applies a mitigation action to this operation
+     *
+     *   - `log` log request when request does not conform to schema for this operation
+     *   - `block` deny access to the site when request does not conform to schema for this operation
+     *   - `none` will skip mitigation for this operation
+     *   - `null` indicates that no operation level mitigation is in place, see Zone Level Schema Validation Settings for mitigation action that will be applied
+     * Available values: "log", "block", "none".
      */
     mitigationAction?: pulumi.Input<string>;
     /**

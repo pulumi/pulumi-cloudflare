@@ -37,17 +37,17 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicNetworkMonitoringConfiguration.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Fallback sampling rate of flow messages being sent in packets per second. This should match the packet sampling rate configured on the router.
      */
-    public readonly defaultSampling!: pulumi.Output<number>;
+    declare public readonly defaultSampling: pulumi.Output<number>;
     /**
      * The account name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly routerIps!: pulumi.Output<string[] | undefined>;
-    public readonly warpDevices!: pulumi.Output<outputs.MagicNetworkMonitoringConfigurationWarpDevice[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly routerIps: pulumi.Output<string[] | undefined>;
+    declare public readonly warpDevices: pulumi.Output<outputs.MagicNetworkMonitoringConfigurationWarpDevice[] | undefined>;
 
     /**
      * Create a MagicNetworkMonitoringConfiguration resource with the given unique name, arguments, and options.
@@ -62,24 +62,24 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicNetworkMonitoringConfigurationState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["defaultSampling"] = state ? state.defaultSampling : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["routerIps"] = state ? state.routerIps : undefined;
-            resourceInputs["warpDevices"] = state ? state.warpDevices : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["defaultSampling"] = state?.defaultSampling;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["routerIps"] = state?.routerIps;
+            resourceInputs["warpDevices"] = state?.warpDevices;
         } else {
             const args = argsOrState as MagicNetworkMonitoringConfigurationArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["defaultSampling"] = args ? args.defaultSampling : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["routerIps"] = args ? args.routerIps : undefined;
-            resourceInputs["warpDevices"] = args ? args.warpDevices : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["defaultSampling"] = args?.defaultSampling;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["routerIps"] = args?.routerIps;
+            resourceInputs["warpDevices"] = args?.warpDevices;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicNetworkMonitoringConfiguration.__pulumiType, name, resourceInputs, opts);

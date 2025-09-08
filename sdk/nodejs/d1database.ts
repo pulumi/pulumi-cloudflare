@@ -60,34 +60,34 @@ export class D1Database extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Specifies the timestamp the resource was created as an ISO8601 string.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The D1 database's size, in bytes.
      */
-    public /*out*/ readonly fileSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly fileSize: pulumi.Output<number>;
     /**
      * D1 database name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly numTables!: pulumi.Output<number>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly numTables: pulumi.Output<number>;
     /**
      * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
      * Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
      */
-    public readonly primaryLocationHint!: pulumi.Output<string | undefined>;
+    declare public readonly primaryLocationHint: pulumi.Output<string | undefined>;
     /**
      * Configuration for D1 read replication.
      */
-    public readonly readReplication!: pulumi.Output<outputs.D1DatabaseReadReplication | undefined>;
+    declare public readonly readReplication: pulumi.Output<outputs.D1DatabaseReadReplication | undefined>;
     /**
      * D1 database identifier (UUID).
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a D1Database resource with the given unique name, arguments, and options.
@@ -102,27 +102,27 @@ export class D1Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as D1DatabaseState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["fileSize"] = state ? state.fileSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["numTables"] = state ? state.numTables : undefined;
-            resourceInputs["primaryLocationHint"] = state ? state.primaryLocationHint : undefined;
-            resourceInputs["readReplication"] = state ? state.readReplication : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["fileSize"] = state?.fileSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["numTables"] = state?.numTables;
+            resourceInputs["primaryLocationHint"] = state?.primaryLocationHint;
+            resourceInputs["readReplication"] = state?.readReplication;
+            resourceInputs["uuid"] = state?.uuid;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as D1DatabaseArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["primaryLocationHint"] = args ? args.primaryLocationHint : undefined;
-            resourceInputs["readReplication"] = args ? args.readReplication : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["primaryLocationHint"] = args?.primaryLocationHint;
+            resourceInputs["readReplication"] = args?.readReplication;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
             resourceInputs["numTables"] = undefined /*out*/;

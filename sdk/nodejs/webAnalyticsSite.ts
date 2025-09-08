@@ -58,45 +58,45 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      */
-    public readonly autoInstall!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public readonly autoInstall: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Enables or disables RUM. This option can be used only when autoInstall is set to true.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The hostname to use for gray-clouded sites.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
      */
-    public readonly lite!: pulumi.Output<boolean | undefined>;
+    declare public readonly lite: pulumi.Output<boolean | undefined>;
     /**
      * A list of rules.
      */
-    public /*out*/ readonly rules!: pulumi.Output<outputs.WebAnalyticsSiteRule[]>;
-    public /*out*/ readonly ruleset!: pulumi.Output<outputs.WebAnalyticsSiteRuleset>;
+    declare public /*out*/ readonly rules: pulumi.Output<outputs.WebAnalyticsSiteRule[]>;
+    declare public /*out*/ readonly ruleset: pulumi.Output<outputs.WebAnalyticsSiteRuleset>;
     /**
      * The Web Analytics site identifier.
      */
-    public /*out*/ readonly siteTag!: pulumi.Output<string>;
+    declare public /*out*/ readonly siteTag: pulumi.Output<string>;
     /**
      * The Web Analytics site token.
      */
-    public /*out*/ readonly siteToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly siteToken: pulumi.Output<string>;
     /**
      * Encoded JavaScript snippet.
      */
-    public /*out*/ readonly snippet!: pulumi.Output<string>;
+    declare public /*out*/ readonly snippet: pulumi.Output<string>;
     /**
      * The zone identifier.
      */
-    public readonly zoneTag!: pulumi.Output<string | undefined>;
+    declare public readonly zoneTag: pulumi.Output<string | undefined>;
 
     /**
      * Create a WebAnalyticsSite resource with the given unique name, arguments, and options.
@@ -111,29 +111,29 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebAnalyticsSiteState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["autoInstall"] = state ? state.autoInstall : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["lite"] = state ? state.lite : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["ruleset"] = state ? state.ruleset : undefined;
-            resourceInputs["siteTag"] = state ? state.siteTag : undefined;
-            resourceInputs["siteToken"] = state ? state.siteToken : undefined;
-            resourceInputs["snippet"] = state ? state.snippet : undefined;
-            resourceInputs["zoneTag"] = state ? state.zoneTag : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["autoInstall"] = state?.autoInstall;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["lite"] = state?.lite;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["ruleset"] = state?.ruleset;
+            resourceInputs["siteTag"] = state?.siteTag;
+            resourceInputs["siteToken"] = state?.siteToken;
+            resourceInputs["snippet"] = state?.snippet;
+            resourceInputs["zoneTag"] = state?.zoneTag;
         } else {
             const args = argsOrState as WebAnalyticsSiteArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["autoInstall"] = args ? args.autoInstall : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["lite"] = args ? args.lite : undefined;
-            resourceInputs["zoneTag"] = args ? args.zoneTag : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["autoInstall"] = args?.autoInstall;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["lite"] = args?.lite;
+            resourceInputs["zoneTag"] = args?.zoneTag;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["ruleset"] = undefined /*out*/;

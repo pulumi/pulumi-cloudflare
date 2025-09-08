@@ -81,8 +81,10 @@ namespace Pulumi.Cloudflare
         public Output<int> NumCells { get; private set; } = null!;
 
         /// <summary>
-        /// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-        /// response has no secret and the dataset is uploaded in plaintext.
+        /// Generate a secret dataset.
+        /// 
+        /// If true, the response will include a secret to use with the EDM encoder.
+        /// If false, the response has no secret and the dataset is uploaded in plaintext.
         /// </summary>
         [Output("secret")]
         public Output<bool?> Secret { get; private set; } = null!;
@@ -94,7 +96,9 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// When the dataset was last updated. This includes name or description changes as well as uploads.
+        /// When the dataset was last updated.
+        /// 
+        /// This includes name or description changes as well as uploads.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -184,8 +188,10 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-        /// response has no secret and the dataset is uploaded in plaintext.
+        /// Generate a secret dataset.
+        /// 
+        /// If true, the response will include a secret to use with the EDM encoder.
+        /// If false, the response has no secret and the dataset is uploaded in plaintext.
         /// </summary>
         [Input("secret")]
         public Input<bool>? Secret { get; set; }
@@ -248,8 +254,10 @@ namespace Pulumi.Cloudflare
         public Input<int>? NumCells { get; set; }
 
         /// <summary>
-        /// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-        /// response has no secret and the dataset is uploaded in plaintext.
+        /// Generate a secret dataset.
+        /// 
+        /// If true, the response will include a secret to use with the EDM encoder.
+        /// If false, the response has no secret and the dataset is uploaded in plaintext.
         /// </summary>
         [Input("secret")]
         public Input<bool>? Secret { get; set; }
@@ -261,7 +269,9 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// When the dataset was last updated. This includes name or description changes as well as uploads.
+        /// When the dataset was last updated.
+        /// 
+        /// This includes name or description changes as well as uploads.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

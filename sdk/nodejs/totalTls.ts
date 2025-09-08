@@ -56,20 +56,20 @@ export class TotalTls extends pulumi.CustomResource {
      * The Certificate Authority that Total TLS certificates will be issued through.
      * Available values: "google", "lets*encrypt", "ssl*com".
      */
-    public readonly certificateAuthority!: pulumi.Output<string | undefined>;
+    declare public readonly certificateAuthority: pulumi.Output<string | undefined>;
     /**
      * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The validity period in days for the certificates ordered via Total TLS.
      * Available values: 90.
      */
-    public /*out*/ readonly validityPeriod!: pulumi.Output<number>;
+    declare public /*out*/ readonly validityPeriod: pulumi.Output<number>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a TotalTls resource with the given unique name, arguments, and options.
@@ -84,21 +84,21 @@ export class TotalTls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TotalTlsState | undefined;
-            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["validityPeriod"] = state ? state.validityPeriod : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = state?.certificateAuthority;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["validityPeriod"] = state?.validityPeriod;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as TotalTlsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = args?.certificateAuthority;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["validityPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

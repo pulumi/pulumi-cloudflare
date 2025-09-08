@@ -55,31 +55,31 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Author of message.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    declare public /*out*/ readonly author: pulumi.Output<string>;
     /**
      * Content of message.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Defines the message creation time.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Whether the message is a follow-on request.
      */
-    public /*out*/ readonly isFollowOnRequest!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isFollowOnRequest: pulumi.Output<boolean>;
     /**
      * UUID.
      */
-    public readonly requestId!: pulumi.Output<string>;
+    declare public readonly requestId: pulumi.Output<string>;
     /**
      * Defines the message last updated time.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a CloudforceOneRequestMessage resource with the given unique name, arguments, and options.
@@ -94,24 +94,24 @@ export class CloudforceOneRequestMessage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestMessageState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["author"] = state ? state.author : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["isFollowOnRequest"] = state ? state.isFollowOnRequest : undefined;
-            resourceInputs["requestId"] = state ? state.requestId : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["author"] = state?.author;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["isFollowOnRequest"] = state?.isFollowOnRequest;
+            resourceInputs["requestId"] = state?.requestId;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as CloudforceOneRequestMessageArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.requestId === undefined) && !opts.urn) {
+            if (args?.requestId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'requestId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["requestId"] = args?.requestId;
             resourceInputs["author"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["isFollowOnRequest"] = undefined /*out*/;

@@ -61,12 +61,16 @@ type ZeroTrustDlpDataset struct {
 	MaxCells        pulumi.IntOutput    `pulumi:"maxCells"`
 	Name            pulumi.StringOutput `pulumi:"name"`
 	NumCells        pulumi.IntOutput    `pulumi:"numCells"`
-	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-	// response has no secret and the dataset is uploaded in plaintext.
+	// Generate a secret dataset.
+	//
+	// If true, the response will include a secret to use with the EDM encoder.
+	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret pulumi.BoolPtrOutput `pulumi:"secret"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// When the dataset was last updated. This includes name or description changes as well as uploads.
+	// When the dataset was last updated.
+	//
+	// This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringOutput                  `pulumi:"updatedAt"`
 	Uploads   ZeroTrustDlpDatasetUploadArrayOutput `pulumi:"uploads"`
 	// The version to use when uploading the dataset.
@@ -125,12 +129,16 @@ type zeroTrustDlpDatasetState struct {
 	MaxCells        *int    `pulumi:"maxCells"`
 	Name            *string `pulumi:"name"`
 	NumCells        *int    `pulumi:"numCells"`
-	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-	// response has no secret and the dataset is uploaded in plaintext.
+	// Generate a secret dataset.
+	//
+	// If true, the response will include a secret to use with the EDM encoder.
+	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret *bool `pulumi:"secret"`
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status *string `pulumi:"status"`
-	// When the dataset was last updated. This includes name or description changes as well as uploads.
+	// When the dataset was last updated.
+	//
+	// This includes name or description changes as well as uploads.
 	UpdatedAt *string                     `pulumi:"updatedAt"`
 	Uploads   []ZeroTrustDlpDatasetUpload `pulumi:"uploads"`
 	// The version to use when uploading the dataset.
@@ -154,12 +162,16 @@ type ZeroTrustDlpDatasetState struct {
 	MaxCells        pulumi.IntPtrInput
 	Name            pulumi.StringPtrInput
 	NumCells        pulumi.IntPtrInput
-	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-	// response has no secret and the dataset is uploaded in plaintext.
+	// Generate a secret dataset.
+	//
+	// If true, the response will include a secret to use with the EDM encoder.
+	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret pulumi.BoolPtrInput
 	// Available values: "empty", "uploading", "pending", "processing", "failed", "complete".
 	Status pulumi.StringPtrInput
-	// When the dataset was last updated. This includes name or description changes as well as uploads.
+	// When the dataset was last updated.
+	//
+	// This includes name or description changes as well as uploads.
 	UpdatedAt pulumi.StringPtrInput
 	Uploads   ZeroTrustDlpDatasetUploadArrayInput
 	// The version to use when uploading the dataset.
@@ -182,8 +194,10 @@ type zeroTrustDlpDatasetArgs struct {
 	// Dataset encoding version
 	EncodingVersion *int   `pulumi:"encodingVersion"`
 	Name            string `pulumi:"name"`
-	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-	// response has no secret and the dataset is uploaded in plaintext.
+	// Generate a secret dataset.
+	//
+	// If true, the response will include a secret to use with the EDM encoder.
+	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret *bool `pulumi:"secret"`
 }
 
@@ -200,8 +214,10 @@ type ZeroTrustDlpDatasetArgs struct {
 	// Dataset encoding version
 	EncodingVersion pulumi.IntPtrInput
 	Name            pulumi.StringInput
-	// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-	// response has no secret and the dataset is uploaded in plaintext.
+	// Generate a secret dataset.
+	//
+	// If true, the response will include a secret to use with the EDM encoder.
+	// If false, the response has no secret and the dataset is uploaded in plaintext.
 	Secret pulumi.BoolPtrInput
 }
 
@@ -341,8 +357,10 @@ func (o ZeroTrustDlpDatasetOutput) NumCells() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.IntOutput { return v.NumCells }).(pulumi.IntOutput)
 }
 
-// Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
-// response has no secret and the dataset is uploaded in plaintext.
+// Generate a secret dataset.
+//
+// If true, the response will include a secret to use with the EDM encoder.
+// If false, the response has no secret and the dataset is uploaded in plaintext.
 func (o ZeroTrustDlpDatasetOutput) Secret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.BoolPtrOutput { return v.Secret }).(pulumi.BoolPtrOutput)
 }
@@ -352,7 +370,9 @@ func (o ZeroTrustDlpDatasetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// When the dataset was last updated. This includes name or description changes as well as uploads.
+// When the dataset was last updated.
+//
+// This includes name or description changes as well as uploads.
 func (o ZeroTrustDlpDatasetOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

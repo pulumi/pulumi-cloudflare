@@ -59,23 +59,23 @@ export class Account extends pulumi.CustomResource {
     /**
      * Timestamp for the creation of the account
      */
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * Account name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Account settings
      */
-    public readonly settings!: pulumi.Output<outputs.AccountSettings>;
+    declare public readonly settings: pulumi.Output<outputs.AccountSettings>;
     /**
      * Available values: "standard", "enterprise".
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
-    public readonly unit!: pulumi.Output<outputs.AccountUnit | undefined>;
+    declare public readonly unit: pulumi.Output<outputs.AccountUnit | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -90,20 +90,20 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["unit"] = state ? state.unit : undefined;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["settings"] = state?.settings;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["unit"] = state?.unit;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["unit"] = args ? args.unit : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["settings"] = args?.settings;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["unit"] = args?.unit;
             resourceInputs["createdOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

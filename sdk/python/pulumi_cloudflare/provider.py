@@ -27,19 +27,11 @@ class ProviderArgs:
                  user_agent_operator_suffix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-               keys are [now considered legacy by
-               Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-               instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-               Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
-               `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] base_url: Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
-               variable.
-        :param pulumi.Input[_builtins.str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-               variable. Required when using `api_key`. Conflicts with `api_token`.
+        :param pulumi.Input[_builtins.str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] base_url: Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
+        :param pulumi.Input[_builtins.str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -58,10 +50,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-        keys are [now considered legacy by
-        Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-        instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 
@@ -73,8 +62,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-        Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_token")
 
@@ -86,9 +74,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiUserServiceKey")
     def api_user_service_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
-        `api_user_service_key`.
+        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -100,8 +86,7 @@ class ProviderArgs:
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
-        variable.
+        Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
         """
         return pulumi.get(self, "base_url")
 
@@ -113,8 +98,7 @@ class ProviderArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        variable. Required when using `api_key`. Conflicts with `api_token`.
+        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return pulumi.get(self, "email")
 
@@ -153,19 +137,11 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-               keys are [now considered legacy by
-               Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-               instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-               Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
-               `api_user_service_key`.
-        :param pulumi.Input[_builtins.str] base_url: Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
-               variable.
-        :param pulumi.Input[_builtins.str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-               variable. Required when using `api_key`. Conflicts with `api_token`.
+        :param pulumi.Input[_builtins.str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        :param pulumi.Input[_builtins.str] base_url: Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
+        :param pulumi.Input[_builtins.str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         ...
     @overload
@@ -227,10 +203,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API
-        keys are [now considered legacy by
-        Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used
-        instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_key")
 
@@ -238,8 +211,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
-        Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_token")
 
@@ -247,9 +219,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiUserServiceKey")
     def api_user_service_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
-        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`,
-        `api_user_service_key`.
+        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -257,8 +227,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="baseUrl")
     def base_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment
-        variable.
+        Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
         """
         return pulumi.get(self, "base_url")
 
@@ -266,8 +235,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
-        variable. Required when using `api_key`. Conflicts with `api_token`.
+        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return pulumi.get(self, "email")
 

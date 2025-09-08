@@ -51,27 +51,27 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
         return obj['__pulumiType'] === DnsZoneTransfersPeer.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to.
      */
-    public readonly ip!: pulumi.Output<string | undefined>;
+    declare public readonly ip: pulumi.Output<string | undefined>;
     /**
      * Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones.
      */
-    public readonly ixfrEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly ixfrEnable: pulumi.Output<boolean | undefined>;
     /**
      * The name of the peer.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * DNS port of primary or secondary nameserver, depending on what zone this peer is linked to.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * TSIG authentication will be used for zone transfer if configured.
      */
-    public readonly tsigId!: pulumi.Output<string | undefined>;
+    declare public readonly tsigId: pulumi.Output<string | undefined>;
 
     /**
      * Create a DnsZoneTransfersPeer resource with the given unique name, arguments, and options.
@@ -86,26 +86,26 @@ export class DnsZoneTransfersPeer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneTransfersPeerState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["ixfrEnable"] = state ? state.ixfrEnable : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["tsigId"] = state ? state.tsigId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["ixfrEnable"] = state?.ixfrEnable;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["tsigId"] = state?.tsigId;
         } else {
             const args = argsOrState as DnsZoneTransfersPeerArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
-            resourceInputs["ixfrEnable"] = args ? args.ixfrEnable : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["tsigId"] = args ? args.tsigId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["ip"] = args?.ip;
+            resourceInputs["ixfrEnable"] = args?.ixfrEnable;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["tsigId"] = args?.tsigId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsZoneTransfersPeer.__pulumiType, name, resourceInputs, opts);

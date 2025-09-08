@@ -46,84 +46,84 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin.
      */
-    public readonly adaptiveRouting!: pulumi.Output<outputs.LoadBalancerAdaptiveRouting>;
+    declare public readonly adaptiveRouting: pulumi.Output<outputs.LoadBalancerAdaptiveRouting>;
     /**
      * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
      */
-    public readonly countryPools!: pulumi.Output<{[key: string]: string[]}>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public readonly countryPools: pulumi.Output<{[key: string]: string[]}>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      */
-    public readonly defaultPools!: pulumi.Output<string[]>;
+    declare public readonly defaultPools: pulumi.Output<string[]>;
     /**
      * Object description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Whether to enable (the default) this load balancer.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    public readonly fallbackPool!: pulumi.Output<string>;
+    declare public readonly fallbackPool: pulumi.Output<string>;
     /**
      * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      */
-    public readonly locationStrategy!: pulumi.Output<outputs.LoadBalancerLocationStrategy>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly locationStrategy: pulumi.Output<outputs.LoadBalancerLocationStrategy>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    public readonly networks!: pulumi.Output<string[]>;
+    declare public readonly networks: pulumi.Output<string[]>;
     /**
      * Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */
-    public readonly popPools!: pulumi.Output<{[key: string]: string[]}>;
+    declare public readonly popPools: pulumi.Output<{[key: string]: string[]}>;
     /**
      * Whether the hostname should be gray clouded (false) or orange clouded (true).
      */
-    public readonly proxied!: pulumi.Output<boolean>;
+    declare public readonly proxied: pulumi.Output<boolean>;
     /**
      * Configures pool weights.
      */
-    public readonly randomSteering!: pulumi.Output<outputs.LoadBalancerRandomSteering>;
+    declare public readonly randomSteering: pulumi.Output<outputs.LoadBalancerRandomSteering>;
     /**
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
-    public readonly regionPools!: pulumi.Output<{[key: string]: string[]}>;
+    declare public readonly regionPools: pulumi.Output<{[key: string]: string[]}>;
     /**
      * BETA Field Not General Access: A list of rules for this load balancer to execute.
      */
-    public readonly rules!: pulumi.Output<outputs.LoadBalancerRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.LoadBalancerRule[]>;
     /**
      * Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ipCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
      * Available values: "none", "cookie", "ipCookie", "header".
      */
-    public readonly sessionAffinity!: pulumi.Output<string>;
+    declare public readonly sessionAffinity: pulumi.Output<string>;
     /**
      * Configures attributes for session affinity.
      */
-    public readonly sessionAffinityAttributes!: pulumi.Output<outputs.LoadBalancerSessionAffinityAttributes>;
+    declare public readonly sessionAffinityAttributes: pulumi.Output<outputs.LoadBalancerSessionAffinityAttributes>;
     /**
      * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `"cookie"` / `"ipCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
      */
-    public readonly sessionAffinityTtl!: pulumi.Output<number>;
+    declare public readonly sessionAffinityTtl: pulumi.Output<number>;
     /**
      * Steering Policy for this load balancer.
      */
-    public readonly steeringPolicy!: pulumi.Output<string>;
+    declare public readonly steeringPolicy: pulumi.Output<string>;
     /**
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
      */
-    public readonly ttl!: pulumi.Output<number>;
-    public readonly zoneId!: pulumi.Output<string>;
-    public /*out*/ readonly zoneName!: pulumi.Output<string>;
+    declare public readonly ttl: pulumi.Output<number>;
+    declare public readonly zoneId: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -138,63 +138,63 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["adaptiveRouting"] = state ? state.adaptiveRouting : undefined;
-            resourceInputs["countryPools"] = state ? state.countryPools : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["defaultPools"] = state ? state.defaultPools : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["fallbackPool"] = state ? state.fallbackPool : undefined;
-            resourceInputs["locationStrategy"] = state ? state.locationStrategy : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networks"] = state ? state.networks : undefined;
-            resourceInputs["popPools"] = state ? state.popPools : undefined;
-            resourceInputs["proxied"] = state ? state.proxied : undefined;
-            resourceInputs["randomSteering"] = state ? state.randomSteering : undefined;
-            resourceInputs["regionPools"] = state ? state.regionPools : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
-            resourceInputs["sessionAffinityAttributes"] = state ? state.sessionAffinityAttributes : undefined;
-            resourceInputs["sessionAffinityTtl"] = state ? state.sessionAffinityTtl : undefined;
-            resourceInputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["adaptiveRouting"] = state?.adaptiveRouting;
+            resourceInputs["countryPools"] = state?.countryPools;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["defaultPools"] = state?.defaultPools;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["fallbackPool"] = state?.fallbackPool;
+            resourceInputs["locationStrategy"] = state?.locationStrategy;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networks"] = state?.networks;
+            resourceInputs["popPools"] = state?.popPools;
+            resourceInputs["proxied"] = state?.proxied;
+            resourceInputs["randomSteering"] = state?.randomSteering;
+            resourceInputs["regionPools"] = state?.regionPools;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["sessionAffinity"] = state?.sessionAffinity;
+            resourceInputs["sessionAffinityAttributes"] = state?.sessionAffinityAttributes;
+            resourceInputs["sessionAffinityTtl"] = state?.sessionAffinityTtl;
+            resourceInputs["steeringPolicy"] = state?.steeringPolicy;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.defaultPools === undefined) && !opts.urn) {
+            if (args?.defaultPools === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaultPools'");
             }
-            if ((!args || args.fallbackPool === undefined) && !opts.urn) {
+            if (args?.fallbackPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fallbackPool'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["adaptiveRouting"] = args ? args.adaptiveRouting : undefined;
-            resourceInputs["countryPools"] = args ? args.countryPools : undefined;
-            resourceInputs["defaultPools"] = args ? args.defaultPools : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["fallbackPool"] = args ? args.fallbackPool : undefined;
-            resourceInputs["locationStrategy"] = args ? args.locationStrategy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networks"] = args ? args.networks : undefined;
-            resourceInputs["popPools"] = args ? args.popPools : undefined;
-            resourceInputs["proxied"] = args ? args.proxied : undefined;
-            resourceInputs["randomSteering"] = args ? args.randomSteering : undefined;
-            resourceInputs["regionPools"] = args ? args.regionPools : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            resourceInputs["sessionAffinityAttributes"] = args ? args.sessionAffinityAttributes : undefined;
-            resourceInputs["sessionAffinityTtl"] = args ? args.sessionAffinityTtl : undefined;
-            resourceInputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["adaptiveRouting"] = args?.adaptiveRouting;
+            resourceInputs["countryPools"] = args?.countryPools;
+            resourceInputs["defaultPools"] = args?.defaultPools;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["fallbackPool"] = args?.fallbackPool;
+            resourceInputs["locationStrategy"] = args?.locationStrategy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networks"] = args?.networks;
+            resourceInputs["popPools"] = args?.popPools;
+            resourceInputs["proxied"] = args?.proxied;
+            resourceInputs["randomSteering"] = args?.randomSteering;
+            resourceInputs["regionPools"] = args?.regionPools;
+            resourceInputs["rules"] = args?.rules;
+            resourceInputs["sessionAffinity"] = args?.sessionAffinity;
+            resourceInputs["sessionAffinityAttributes"] = args?.sessionAffinityAttributes;
+            resourceInputs["sessionAffinityTtl"] = args?.sessionAffinityTtl;
+            resourceInputs["steeringPolicy"] = args?.steeringPolicy;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["zoneName"] = undefined /*out*/;

@@ -58,27 +58,27 @@ export class AccountMember extends pulumi.CustomResource {
     /**
      * Account identifier tag.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The contact email address of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * Array of policies associated with this member.
      */
-    public readonly policies!: pulumi.Output<outputs.AccountMemberPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.AccountMemberPolicy[]>;
     /**
      * Array of roles associated with this member.
      */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[] | undefined>;
     /**
      * Available values: "accepted", "pending".
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Details of the user associated to the membership.
      */
-    public /*out*/ readonly user!: pulumi.Output<outputs.AccountMemberUser>;
+    declare public /*out*/ readonly user: pulumi.Output<outputs.AccountMemberUser>;
 
     /**
      * Create a AccountMember resource with the given unique name, arguments, and options.
@@ -93,25 +93,25 @@ export class AccountMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountMemberState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["status"] = args?.status;
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

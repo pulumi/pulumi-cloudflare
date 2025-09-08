@@ -60,24 +60,24 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
     /**
      * Account Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
-    public readonly bodies!: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[] | undefined>;
-    public readonly comments!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly bodies: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[] | undefined>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Select to prevent recently registered domains from triggering a
      * Suspicious or Malicious disposition.
      */
-    public readonly isRecent!: pulumi.Output<boolean | undefined>;
-    public readonly isRegex!: pulumi.Output<boolean | undefined>;
+    declare public readonly isRecent: pulumi.Output<boolean | undefined>;
+    declare public readonly isRegex: pulumi.Output<boolean | undefined>;
     /**
      * Select for partner or other approved domains that have similar
      * spelling to your connected domains. Prevents listed domains from
      * triggering a Spoof disposition.
      */
-    public readonly isSimilarity!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly lastModified!: pulumi.Output<string>;
-    public readonly pattern!: pulumi.Output<string | undefined>;
+    declare public readonly isSimilarity: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly lastModified: pulumi.Output<string>;
+    declare public readonly pattern: pulumi.Output<string | undefined>;
 
     /**
      * Create a EmailSecurityTrustedDomains resource with the given unique name, arguments, and options.
@@ -92,27 +92,27 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailSecurityTrustedDomainsState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["bodies"] = state ? state.bodies : undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["isRecent"] = state ? state.isRecent : undefined;
-            resourceInputs["isRegex"] = state ? state.isRegex : undefined;
-            resourceInputs["isSimilarity"] = state ? state.isSimilarity : undefined;
-            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
-            resourceInputs["pattern"] = state ? state.pattern : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["bodies"] = state?.bodies;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["isRecent"] = state?.isRecent;
+            resourceInputs["isRegex"] = state?.isRegex;
+            resourceInputs["isSimilarity"] = state?.isSimilarity;
+            resourceInputs["lastModified"] = state?.lastModified;
+            resourceInputs["pattern"] = state?.pattern;
         } else {
             const args = argsOrState as EmailSecurityTrustedDomainsArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["bodies"] = args ? args.bodies : undefined;
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["isRecent"] = args ? args.isRecent : undefined;
-            resourceInputs["isRegex"] = args ? args.isRegex : undefined;
-            resourceInputs["isSimilarity"] = args ? args.isSimilarity : undefined;
-            resourceInputs["pattern"] = args ? args.pattern : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["bodies"] = args?.bodies;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["isRecent"] = args?.isRecent;
+            resourceInputs["isRegex"] = args?.isRegex;
+            resourceInputs["isSimilarity"] = args?.isSimilarity;
+            resourceInputs["pattern"] = args?.pattern;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastModified"] = undefined /*out*/;
         }

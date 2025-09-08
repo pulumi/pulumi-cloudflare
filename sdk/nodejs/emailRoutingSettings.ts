@@ -51,38 +51,38 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
     /**
      * The date and time the settings have been created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * State of the zone settings for Email Routing.
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * The date and time the settings have been modified.
      */
-    public /*out*/ readonly modified!: pulumi.Output<string>;
+    declare public /*out*/ readonly modified: pulumi.Output<string>;
     /**
      * Domain of your zone.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Flag to check if the user skipped the configuration wizard.
      */
-    public /*out*/ readonly skipWizard!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly skipWizard: pulumi.Output<boolean>;
     /**
      * Show the state of your account, and the type or configuration error.
      * Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      *
      * @deprecated This attribute is deprecated.
      */
-    public /*out*/ readonly tag!: pulumi.Output<string>;
+    declare public /*out*/ readonly tag: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a EmailRoutingSettings resource with the given unique name, arguments, and options.
@@ -97,20 +97,20 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailRoutingSettingsState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["modified"] = state ? state.modified : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["skipWizard"] = state ? state.skipWizard : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["modified"] = state?.modified;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["skipWizard"] = state?.skipWizard;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EmailRoutingSettingsArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;

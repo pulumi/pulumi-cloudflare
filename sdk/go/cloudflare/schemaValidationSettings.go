@@ -42,12 +42,19 @@ import (
 type SchemaValidationSettings struct {
 	pulumi.CustomResourceState
 
-	// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-	// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-	// running schema validation Available values: "none", "log", "block".
+	// The default mitigation action used
+	// Mitigation actions are as follows:
+	//
+	//   - `"log"` - log request when request does not conform to schema
+	//   - `"block"` - deny access to the site when request does not conform to schema
+	//   - `"none"` - skip running schema validation
+	//     Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction pulumi.StringOutput `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-	// validation entirely for the request - `null` - clears any existing override Available values: "none".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `"none"` - skip running schema validation entirely for the request
+	//   - `null` - clears any existing override
+	//     Available values: "none".
 	ValidationOverrideMitigationAction pulumi.StringPtrOutput `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -89,24 +96,38 @@ func GetSchemaValidationSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SchemaValidationSettings resources.
 type schemaValidationSettingsState struct {
-	// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-	// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-	// running schema validation Available values: "none", "log", "block".
+	// The default mitigation action used
+	// Mitigation actions are as follows:
+	//
+	//   - `"log"` - log request when request does not conform to schema
+	//   - `"block"` - deny access to the site when request does not conform to schema
+	//   - `"none"` - skip running schema validation
+	//     Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction *string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-	// validation entirely for the request - `null` - clears any existing override Available values: "none".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `"none"` - skip running schema validation entirely for the request
+	//   - `null` - clears any existing override
+	//     Available values: "none".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SchemaValidationSettingsState struct {
-	// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-	// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-	// running schema validation Available values: "none", "log", "block".
+	// The default mitigation action used
+	// Mitigation actions are as follows:
+	//
+	//   - `"log"` - log request when request does not conform to schema
+	//   - `"block"` - deny access to the site when request does not conform to schema
+	//   - `"none"` - skip running schema validation
+	//     Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction pulumi.StringPtrInput
-	// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-	// validation entirely for the request - `null` - clears any existing override Available values: "none".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `"none"` - skip running schema validation entirely for the request
+	//   - `null` - clears any existing override
+	//     Available values: "none".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
@@ -117,12 +138,19 @@ func (SchemaValidationSettingsState) ElementType() reflect.Type {
 }
 
 type schemaValidationSettingsArgs struct {
-	// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-	// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-	// running schema validation Available values: "none", "log", "block".
+	// The default mitigation action used
+	// Mitigation actions are as follows:
+	//
+	//   - `"log"` - log request when request does not conform to schema
+	//   - `"block"` - deny access to the site when request does not conform to schema
+	//   - `"none"` - skip running schema validation
+	//     Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction string `pulumi:"validationDefaultMitigationAction"`
-	// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-	// validation entirely for the request - `null` - clears any existing override Available values: "none".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `"none"` - skip running schema validation entirely for the request
+	//   - `null` - clears any existing override
+	//     Available values: "none".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -130,12 +158,19 @@ type schemaValidationSettingsArgs struct {
 
 // The set of arguments for constructing a SchemaValidationSettings resource.
 type SchemaValidationSettingsArgs struct {
-	// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-	// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-	// running schema validation Available values: "none", "log", "block".
+	// The default mitigation action used
+	// Mitigation actions are as follows:
+	//
+	//   - `"log"` - log request when request does not conform to schema
+	//   - `"block"` - deny access to the site when request does not conform to schema
+	//   - `"none"` - skip running schema validation
+	//     Available values: "none", "log", "block".
 	ValidationDefaultMitigationAction pulumi.StringInput
-	// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-	// validation entirely for the request - `null` - clears any existing override Available values: "none".
+	// When set, this overrides both zone level and operation level mitigation actions.
+	//
+	//   - `"none"` - skip running schema validation entirely for the request
+	//   - `null` - clears any existing override
+	//     Available values: "none".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
@@ -228,15 +263,22 @@ func (o SchemaValidationSettingsOutput) ToSchemaValidationSettingsOutputWithCont
 	return o
 }
 
-// The default mitigation action used Mitigation actions are as follows: - `"log"` - log request when request does not
-// conform to schema - `"block"` - deny access to the site when request does not conform to schema - `"none"` - skip
-// running schema validation Available values: "none", "log", "block".
+// The default mitigation action used
+// Mitigation actions are as follows:
+//
+//   - `"log"` - log request when request does not conform to schema
+//   - `"block"` - deny access to the site when request does not conform to schema
+//   - `"none"` - skip running schema validation
+//     Available values: "none", "log", "block".
 func (o SchemaValidationSettingsOutput) ValidationDefaultMitigationAction() pulumi.StringOutput {
 	return o.ApplyT(func(v *SchemaValidationSettings) pulumi.StringOutput { return v.ValidationDefaultMitigationAction }).(pulumi.StringOutput)
 }
 
-// When set, this overrides both zone level and operation level mitigation actions. - `"none"` - skip running schema
-// validation entirely for the request - `null` - clears any existing override Available values: "none".
+// When set, this overrides both zone level and operation level mitigation actions.
+//
+//   - `"none"` - skip running schema validation entirely for the request
+//   - `null` - clears any existing override
+//     Available values: "none".
 func (o SchemaValidationSettingsOutput) ValidationOverrideMitigationAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaValidationSettings) pulumi.StringPtrOutput { return v.ValidationOverrideMitigationAction }).(pulumi.StringPtrOutput)
 }

@@ -55,21 +55,21 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsProxyEndpoint.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A list of CIDRs to restrict ingress connections.
      */
-    public readonly ips!: pulumi.Output<string[]>;
+    declare public readonly ips: pulumi.Output<string[]>;
     /**
      * The name of the proxy endpoint.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The subdomain to be used as the destination in the proxy client.
      */
-    public /*out*/ readonly subdomain!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly subdomain: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a TeamsProxyEndpoint resource with the given unique name, arguments, and options.
@@ -87,26 +87,26 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsProxyEndpointState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["ips"] = state ? state.ips : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["subdomain"] = state ? state.subdomain : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["ips"] = state?.ips;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["subdomain"] = state?.subdomain;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as TeamsProxyEndpointArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.ips === undefined) && !opts.urn) {
+            if (args?.ips === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ips'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["ips"] = args ? args.ips : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["ips"] = args?.ips;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

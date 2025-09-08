@@ -61,15 +61,15 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayLogging.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      */
-    public readonly redactPii!: pulumi.Output<boolean>;
+    declare public readonly redactPii: pulumi.Output<boolean>;
     /**
      * Logging settings by rule type.
      */
-    public readonly settingsByRuleType!: pulumi.Output<outputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
+    declare public readonly settingsByRuleType: pulumi.Output<outputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
 
     /**
      * Create a ZeroTrustGatewayLogging resource with the given unique name, arguments, and options.
@@ -84,17 +84,17 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewayLoggingState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["redactPii"] = state ? state.redactPii : undefined;
-            resourceInputs["settingsByRuleType"] = state ? state.settingsByRuleType : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["redactPii"] = state?.redactPii;
+            resourceInputs["settingsByRuleType"] = state?.settingsByRuleType;
         } else {
             const args = argsOrState as ZeroTrustGatewayLoggingArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["redactPii"] = args ? args.redactPii : undefined;
-            resourceInputs["settingsByRuleType"] = args ? args.settingsByRuleType : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["redactPii"] = args?.redactPii;
+            resourceInputs["settingsByRuleType"] = args?.settingsByRuleType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZeroTrustGatewayLogging.__pulumiType, name, resourceInputs, opts);

@@ -31,16 +31,20 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
     }
 
     /**
-     * Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
+     * Mark state of operation in API Discovery
+     *   * `review` - Mark operation as for review
+     *   * `ignored` - Mark operation as ignored
+     *     Available values: &#34;review&#34;, &#34;ignored&#34;.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-     * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
+     * @return Mark state of operation in API Discovery
+     *   * `review` - Mark operation as for review
+     *   * `ignored` - Mark operation as ignored
+     *     Available values: &#34;review&#34;, &#34;ignored&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -110,8 +114,10 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
         }
 
         /**
-         * @param state Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-         * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
+         * @param state Mark state of operation in API Discovery
+         *   * `review` - Mark operation as for review
+         *   * `ignored` - Mark operation as ignored
+         *     Available values: &#34;review&#34;, &#34;ignored&#34;.
          * 
          * @return builder
          * 
@@ -122,8 +128,10 @@ public final class ApiShieldDiscoveryOperationState extends com.pulumi.resources
         }
 
         /**
-         * @param state Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
-         * ignored Available values: &#34;review&#34;, &#34;ignored&#34;.
+         * @param state Mark state of operation in API Discovery
+         *   * `review` - Mark operation as for review
+         *   * `ignored` - Mark operation as ignored
+         *     Available values: &#34;review&#34;, &#34;ignored&#34;.
          * 
          * @return builder
          * 

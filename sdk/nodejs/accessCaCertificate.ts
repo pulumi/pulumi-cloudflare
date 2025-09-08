@@ -57,23 +57,23 @@ export class AccessCaCertificate extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * UUID.
      */
-    public readonly appId!: pulumi.Output<string>;
+    declare public readonly appId: pulumi.Output<string>;
     /**
      * The Application Audience (AUD) tag. Identifies the application associated with the CA.
      */
-    public /*out*/ readonly aud!: pulumi.Output<string>;
+    declare public /*out*/ readonly aud: pulumi.Output<string>;
     /**
      * The public key to add to your SSH server configuration.
      */
-    public /*out*/ readonly publicKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicKey: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessCaCertificate resource with the given unique name, arguments, and options.
@@ -91,19 +91,19 @@ export class AccessCaCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessCaCertificateState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appId"] = state ? state.appId : undefined;
-            resourceInputs["aud"] = state ? state.aud : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["appId"] = state?.appId;
+            resourceInputs["aud"] = state?.aud;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as AccessCaCertificateArgs | undefined;
-            if ((!args || args.appId === undefined) && !opts.urn) {
+            if (args?.appId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["appId"] = args?.appId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["aud"] = undefined /*out*/;
             resourceInputs["publicKey"] = undefined /*out*/;
         }

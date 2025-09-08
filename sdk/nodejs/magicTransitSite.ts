@@ -64,28 +64,28 @@ export class MagicTransitSite extends pulumi.CustomResource {
     /**
      * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Magic Connector identifier tag.
      */
-    public readonly connectorId!: pulumi.Output<string | undefined>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly connectorId: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
      */
-    public readonly haMode!: pulumi.Output<boolean | undefined>;
+    declare public readonly haMode: pulumi.Output<boolean | undefined>;
     /**
      * Location of site in latitude and longitude.
      */
-    public readonly location!: pulumi.Output<outputs.MagicTransitSiteLocation | undefined>;
+    declare public readonly location: pulumi.Output<outputs.MagicTransitSiteLocation | undefined>;
     /**
      * The name of the site.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Magic Connector identifier tag. Used when high availability mode is on.
      */
-    public readonly secondaryConnectorId!: pulumi.Output<string | undefined>;
+    declare public readonly secondaryConnectorId: pulumi.Output<string | undefined>;
 
     /**
      * Create a MagicTransitSite resource with the given unique name, arguments, and options.
@@ -100,28 +100,28 @@ export class MagicTransitSite extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MagicTransitSiteState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["haMode"] = state ? state.haMode : undefined;
-            resourceInputs["location"] = state ? state.location : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secondaryConnectorId"] = state ? state.secondaryConnectorId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["haMode"] = state?.haMode;
+            resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secondaryConnectorId"] = state?.secondaryConnectorId;
         } else {
             const args = argsOrState as MagicTransitSiteArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["haMode"] = args ? args.haMode : undefined;
-            resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secondaryConnectorId"] = args ? args.secondaryConnectorId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["haMode"] = args?.haMode;
+            resourceInputs["location"] = args?.location;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["secondaryConnectorId"] = args?.secondaryConnectorId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MagicTransitSite.__pulumiType, name, resourceInputs, opts);

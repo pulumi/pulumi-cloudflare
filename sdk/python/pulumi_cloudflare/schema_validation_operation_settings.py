@@ -24,10 +24,13 @@ class SchemaValidationOperationSettingsArgs:
                  zone_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SchemaValidationOperationSettings resource.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-               schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-               operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-               "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `"log"` - log request when request does not conform to schema for this operation
+                 - `"block"` - deny access to the site when request does not conform to schema for this operation
+                 - `"none"` - will skip mitigation for this operation
+                 - `null` - clears any mitigation action
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -39,10 +42,13 @@ class SchemaValidationOperationSettingsArgs:
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> pulumi.Input[_builtins.str]:
         """
-        When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `"log"` - log request when request does not conform to schema for this operation
+          - `"block"` - deny access to the site when request does not conform to schema for this operation
+          - `"none"` - will skip mitigation for this operation
+          - `null` - clears any mitigation action
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -83,10 +89,13 @@ class _SchemaValidationOperationSettingsState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SchemaValidationOperationSettings resources.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-               schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-               operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-               "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `"log"` - log request when request does not conform to schema for this operation
+                 - `"block"` - deny access to the site when request does not conform to schema for this operation
+                 - `"none"` - will skip mitigation for this operation
+                 - `null` - clears any mitigation action
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -101,10 +110,13 @@ class _SchemaValidationOperationSettingsState:
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `"log"` - log request when request does not conform to schema for this operation
+          - `"block"` - deny access to the site when request does not conform to schema for this operation
+          - `"none"` - will skip mitigation for this operation
+          - `null` - clears any mitigation action
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 
@@ -162,10 +174,13 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-               schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-               operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-               "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `"log"` - log request when request does not conform to schema for this operation
+                 - `"block"` - deny access to the site when request does not conform to schema for this operation
+                 - `"none"` - will skip mitigation for this operation
+                 - `null` - clears any mitigation action
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -244,10 +259,13 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-               schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-               operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-               "log", "block", "none".
+        :param pulumi.Input[_builtins.str] mitigation_action: When set, this applies a mitigation action to this operation
+               
+                 - `"log"` - log request when request does not conform to schema for this operation
+                 - `"block"` - deny access to the site when request does not conform to schema for this operation
+                 - `"none"` - will skip mitigation for this operation
+                 - `null` - clears any mitigation action
+               Available values: "log", "block", "none".
         :param pulumi.Input[_builtins.str] operation_id: UUID.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
         """
@@ -264,10 +282,13 @@ class SchemaValidationOperationSettings(pulumi.CustomResource):
     @pulumi.getter(name="mitigationAction")
     def mitigation_action(self) -> pulumi.Output[_builtins.str]:
         """
-        When set, this applies a mitigation action to this operation - `"log"` - log request when request does not conform to
-        schema for this operation - `"block"` - deny access to the site when request does not conform to schema for this
-        operation - `"none"` - will skip mitigation for this operation - `null` - clears any mitigation action Available values:
-        "log", "block", "none".
+        When set, this applies a mitigation action to this operation
+
+          - `"log"` - log request when request does not conform to schema for this operation
+          - `"block"` - deny access to the site when request does not conform to schema for this operation
+          - `"none"` - will skip mitigation for this operation
+          - `null` - clears any mitigation action
+        Available values: "log", "block", "none".
         """
         return pulumi.get(self, "mitigation_action")
 

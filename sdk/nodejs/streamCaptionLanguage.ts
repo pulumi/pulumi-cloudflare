@@ -49,32 +49,32 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
     /**
      * Identifier.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * The WebVTT file containing the caption or subtitle content.
      */
-    public readonly file!: pulumi.Output<string | undefined>;
+    declare public readonly file: pulumi.Output<string | undefined>;
     /**
      * Whether the caption was generated via AI.
      */
-    public /*out*/ readonly generated!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly generated: pulumi.Output<boolean>;
     /**
      * A Cloudflare-generated unique identifier for a media item.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    declare public readonly identifier: pulumi.Output<string>;
     /**
      * The language label displayed in the native language to users.
      */
-    public /*out*/ readonly label!: pulumi.Output<string>;
+    declare public /*out*/ readonly label: pulumi.Output<string>;
     /**
      * The language tag in BCP 47 format.
      */
-    public readonly language!: pulumi.Output<string>;
+    declare public readonly language: pulumi.Output<string>;
     /**
      * The status of a generated caption.
      * Available values: "ready", "inprogress", "error".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a StreamCaptionLanguage resource with the given unique name, arguments, and options.
@@ -89,28 +89,28 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamCaptionLanguageState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["file"] = state ? state.file : undefined;
-            resourceInputs["generated"] = state ? state.generated : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["language"] = state ? state.language : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["file"] = state?.file;
+            resourceInputs["generated"] = state?.generated;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["language"] = state?.language;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as StreamCaptionLanguageArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.language === undefined) && !opts.urn) {
+            if (args?.language === undefined && !opts.urn) {
                 throw new Error("Missing required property 'language'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["file"] = args ? args.file : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["language"] = args ? args.language : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["file"] = args?.file;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["language"] = args?.language;
             resourceInputs["generated"] = undefined /*out*/;
             resourceInputs["label"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

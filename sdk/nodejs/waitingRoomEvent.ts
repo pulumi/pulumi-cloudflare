@@ -66,75 +66,75 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoomEvent.__pulumiType;
     }
 
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
     /**
      * If set, the event will override the waiting room's `customPageHtml` property while it is active. If null, the event will inherit it.
      */
-    public readonly customPageHtml!: pulumi.Output<string | undefined>;
+    declare public readonly customPageHtml: pulumi.Output<string | undefined>;
     /**
      * A note that you can use to add more details about the event.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * If set, the event will override the waiting room's `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      */
-    public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSessionRenewal: pulumi.Output<boolean | undefined>;
     /**
      * An ISO 8601 timestamp that marks the end of the event.
      */
-    public readonly eventEndTime!: pulumi.Output<string>;
+    declare public readonly eventEndTime: pulumi.Output<string>;
     /**
      * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `eventEndTime`.
      */
-    public readonly eventStartTime!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    declare public readonly eventStartTime: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
     /**
      * A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * If set, the event will override the waiting room's `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `totalActiveUsers` property is also set.
      */
-    public readonly newUsersPerMinute!: pulumi.Output<number | undefined>;
+    declare public readonly newUsersPerMinute: pulumi.Output<number | undefined>;
     /**
      * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      */
-    public readonly prequeueStartTime!: pulumi.Output<string | undefined>;
+    declare public readonly prequeueStartTime: pulumi.Output<string | undefined>;
     /**
      * If set, the event will override the waiting room's `queueingMethod` property while it is active. If null, the event will inherit it.
      */
-    public readonly queueingMethod!: pulumi.Output<string | undefined>;
+    declare public readonly queueingMethod: pulumi.Output<string | undefined>;
     /**
      * If set, the event will override the waiting room's `sessionDuration` property while it is active. If null, the event will inherit it.
      */
-    public readonly sessionDuration!: pulumi.Output<number | undefined>;
+    declare public readonly sessionDuration: pulumi.Output<number | undefined>;
     /**
      * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      */
-    public readonly shuffleAtEventStart!: pulumi.Output<boolean>;
+    declare public readonly shuffleAtEventStart: pulumi.Output<boolean>;
     /**
      * Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
-    public readonly suspended!: pulumi.Output<boolean>;
+    declare public readonly suspended: pulumi.Output<boolean>;
     /**
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
-    public readonly totalActiveUsers!: pulumi.Output<number | undefined>;
+    declare public readonly totalActiveUsers: pulumi.Output<number | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
      * Available values: "log", "infiniteQueue".
      */
-    public readonly turnstileAction!: pulumi.Output<string | undefined>;
+    declare public readonly turnstileAction: pulumi.Output<string | undefined>;
     /**
      * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
      * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
      */
-    public readonly turnstileMode!: pulumi.Output<string | undefined>;
-    public readonly waitingRoomId!: pulumi.Output<string>;
+    declare public readonly turnstileMode: pulumi.Output<string | undefined>;
+    declare public readonly waitingRoomId: pulumi.Output<string>;
     /**
      * Identifier.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a WaitingRoomEvent resource with the given unique name, arguments, and options.
@@ -149,59 +149,59 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomEventState | undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["customPageHtml"] = state ? state.customPageHtml : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
-            resourceInputs["eventEndTime"] = state ? state.eventEndTime : undefined;
-            resourceInputs["eventStartTime"] = state ? state.eventStartTime : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
-            resourceInputs["prequeueStartTime"] = state ? state.prequeueStartTime : undefined;
-            resourceInputs["queueingMethod"] = state ? state.queueingMethod : undefined;
-            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            resourceInputs["shuffleAtEventStart"] = state ? state.shuffleAtEventStart : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
-            resourceInputs["turnstileAction"] = state ? state.turnstileAction : undefined;
-            resourceInputs["turnstileMode"] = state ? state.turnstileMode : undefined;
-            resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["customPageHtml"] = state?.customPageHtml;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["disableSessionRenewal"] = state?.disableSessionRenewal;
+            resourceInputs["eventEndTime"] = state?.eventEndTime;
+            resourceInputs["eventStartTime"] = state?.eventStartTime;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newUsersPerMinute"] = state?.newUsersPerMinute;
+            resourceInputs["prequeueStartTime"] = state?.prequeueStartTime;
+            resourceInputs["queueingMethod"] = state?.queueingMethod;
+            resourceInputs["sessionDuration"] = state?.sessionDuration;
+            resourceInputs["shuffleAtEventStart"] = state?.shuffleAtEventStart;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["totalActiveUsers"] = state?.totalActiveUsers;
+            resourceInputs["turnstileAction"] = state?.turnstileAction;
+            resourceInputs["turnstileMode"] = state?.turnstileMode;
+            resourceInputs["waitingRoomId"] = state?.waitingRoomId;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as WaitingRoomEventArgs | undefined;
-            if ((!args || args.eventEndTime === undefined) && !opts.urn) {
+            if (args?.eventEndTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventEndTime'");
             }
-            if ((!args || args.eventStartTime === undefined) && !opts.urn) {
+            if (args?.eventStartTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'eventStartTime'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.waitingRoomId === undefined) && !opts.urn) {
+            if (args?.waitingRoomId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waitingRoomId'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["customPageHtml"] = args ? args.customPageHtml : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
-            resourceInputs["eventEndTime"] = args ? args.eventEndTime : undefined;
-            resourceInputs["eventStartTime"] = args ? args.eventStartTime : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
-            resourceInputs["prequeueStartTime"] = args ? args.prequeueStartTime : undefined;
-            resourceInputs["queueingMethod"] = args ? args.queueingMethod : undefined;
-            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            resourceInputs["shuffleAtEventStart"] = args ? args.shuffleAtEventStart : undefined;
-            resourceInputs["suspended"] = args ? args.suspended : undefined;
-            resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
-            resourceInputs["turnstileAction"] = args ? args.turnstileAction : undefined;
-            resourceInputs["turnstileMode"] = args ? args.turnstileMode : undefined;
-            resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["customPageHtml"] = args?.customPageHtml;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["disableSessionRenewal"] = args?.disableSessionRenewal;
+            resourceInputs["eventEndTime"] = args?.eventEndTime;
+            resourceInputs["eventStartTime"] = args?.eventStartTime;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["newUsersPerMinute"] = args?.newUsersPerMinute;
+            resourceInputs["prequeueStartTime"] = args?.prequeueStartTime;
+            resourceInputs["queueingMethod"] = args?.queueingMethod;
+            resourceInputs["sessionDuration"] = args?.sessionDuration;
+            resourceInputs["shuffleAtEventStart"] = args?.shuffleAtEventStart;
+            resourceInputs["suspended"] = args?.suspended;
+            resourceInputs["totalActiveUsers"] = args?.totalActiveUsers;
+            resourceInputs["turnstileAction"] = args?.turnstileAction;
+            resourceInputs["turnstileMode"] = args?.turnstileMode;
+            resourceInputs["waitingRoomId"] = args?.waitingRoomId;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
         }

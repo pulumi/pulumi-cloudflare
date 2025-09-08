@@ -56,30 +56,30 @@ export class CustomPages extends pulumi.CustomResource {
     /**
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createdOn!: pulumi.Output<string>;
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdOn: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Error Page Types
      * Available values: "under*attack", "basic*challenge", "waf*challenge", "waf*block", "ip*block", "country*challenge", "500*errors", "1000*errors", "managed*challenge", "ratelimit*block".
      */
-    public readonly identifier!: pulumi.Output<string>;
-    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
-    public /*out*/ readonly previewTarget!: pulumi.Output<string>;
-    public /*out*/ readonly requiredTokens!: pulumi.Output<string[]>;
+    declare public readonly identifier: pulumi.Output<string>;
+    declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    declare public /*out*/ readonly previewTarget: pulumi.Output<string>;
+    declare public /*out*/ readonly requiredTokens: pulumi.Output<string[]>;
     /**
      * The custom page state.
      * Available values: "default", "customized".
      */
-    public readonly state!: pulumi.Output<string>;
+    declare public readonly state: pulumi.Output<string>;
     /**
      * The URL associated with the custom page.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    declare public readonly zoneId: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomPages resource with the given unique name, arguments, and options.
@@ -94,29 +94,29 @@ export class CustomPages extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomPagesState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
-            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            resourceInputs["previewTarget"] = state ? state.previewTarget : undefined;
-            resourceInputs["requiredTokens"] = state ? state.requiredTokens : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["createdOn"] = state?.createdOn;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["modifiedOn"] = state?.modifiedOn;
+            resourceInputs["previewTarget"] = state?.previewTarget;
+            resourceInputs["requiredTokens"] = state?.requiredTokens;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as CustomPagesArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
+            if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
-            if ((!args || args.state === undefined) && !opts.urn) {
+            if (args?.state === undefined && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["state"] = args?.state;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
