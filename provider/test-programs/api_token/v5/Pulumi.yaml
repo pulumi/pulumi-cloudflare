@@ -1,0 +1,23 @@
+name: example-ruleset
+runtime: yaml
+
+config:
+  cloudflare-zone-id:
+    type: string
+
+resources:
+  exampleApiToken:
+    type: cloudflare:index/apiToken:ApiToken
+    options:
+      version: 5.49.1
+    properties:
+      name: "readonly token"
+      policies:
+        - effect: "allow"
+          permissionGroups:
+            - "c8fed203ed3043cba015a93ad1616f1f"
+            - "82e64a83756745bbbb1c9c2701bf816b"
+          resources:
+            "com.cloudflare.api.account.zone.${cloudflare-zone-id}": "*"
+      expiresOn: "2030-01-01T00:00:00Z"
+      notBefore: "2018-07-01T05:20:00Z"
