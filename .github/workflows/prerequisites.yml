@@ -78,6 +78,8 @@ jobs:
         tools: go, pulumictl, pulumicli, schema-tools
     - name: Prepare local workspace before restoring previously built files
       run: make prepare_local_workspace
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Generate schema
       run: make schema
     - name: Build registry docs
