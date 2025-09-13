@@ -14,33 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewList(ctx, "example_list", &cloudflare.ListArgs{
-//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Kind:        pulumi.String("ip"),
-//				Name:        pulumi.String("list1"),
-//				Description: pulumi.String("This is a note"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -55,6 +28,8 @@ type List struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An informative summary of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items ListItemTypeArrayOutput `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -113,6 +88,8 @@ type listState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items []ListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind *string `pulumi:"kind"`
@@ -133,6 +110,8 @@ type ListState struct {
 	CreatedOn pulumi.StringPtrInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items ListItemTypeArrayInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringPtrInput
@@ -155,6 +134,8 @@ type listArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items []ListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
@@ -168,6 +149,8 @@ type ListArgs struct {
 	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items ListItemTypeArrayInput
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind pulumi.StringInput
@@ -275,6 +258,11 @@ func (o ListOutput) CreatedOn() pulumi.StringOutput {
 // An informative summary of the list.
 func (o ListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *List) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+func (o ListOutput) Items() ListItemTypeArrayOutput {
+	return o.ApplyT(func(v *List) ListItemTypeArrayOutput { return v.Items }).(ListItemTypeArrayOutput)
 }
 
 // The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).

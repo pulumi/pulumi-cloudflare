@@ -12,25 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleList = new Cloudflare.List("example_list", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Kind = "ip",
-    ///         Name = "list1",
-    ///         Description = "This is a note",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -57,6 +38,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+        /// </summary>
+        [Output("items")]
+        public Output<ImmutableArray<Outputs.ListItem>> Items { get; private set; } = null!;
 
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
@@ -147,6 +134,18 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("items")]
+        private InputList<Inputs.ListItemArgs>? _items;
+
+        /// <summary>
+        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+        /// </summary>
+        public InputList<Inputs.ListItemArgs> Items
+        {
+            get => _items ?? (_items = new InputList<Inputs.ListItemArgs>());
+            set => _items = value;
+        }
+
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// Available values: "ip", "redirect", "hostname", "asn".
@@ -185,6 +184,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("items")]
+        private InputList<Inputs.ListItemGetArgs>? _items;
+
+        /// <summary>
+        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+        /// </summary>
+        public InputList<Inputs.ListItemGetArgs> Items
+        {
+            get => _items ?? (_items = new InputList<Inputs.ListItemGetArgs>());
+            set => _items = value;
+        }
 
         /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).

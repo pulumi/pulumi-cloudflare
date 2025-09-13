@@ -56632,6 +56632,139 @@ func (o KeylessCertificateTunnelPtrOutput) VnetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ListItemType struct {
+	// A non-negative 32 bit integer
+	Asn *int `pulumi:"asn"`
+	// An informative summary of the list item.
+	Comment *string `pulumi:"comment"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname *ListItemHostname `pulumi:"hostname"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip *string `pulumi:"ip"`
+	// The definition of the redirect.
+	Redirect *ListItemRedirect `pulumi:"redirect"`
+}
+
+// ListItemTypeInput is an input type that accepts ListItemTypeArgs and ListItemTypeOutput values.
+// You can construct a concrete instance of `ListItemTypeInput` via:
+//
+//	ListItemTypeArgs{...}
+type ListItemTypeInput interface {
+	pulumi.Input
+
+	ToListItemTypeOutput() ListItemTypeOutput
+	ToListItemTypeOutputWithContext(context.Context) ListItemTypeOutput
+}
+
+type ListItemTypeArgs struct {
+	// A non-negative 32 bit integer
+	Asn pulumi.IntPtrInput `pulumi:"asn"`
+	// An informative summary of the list item.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname ListItemHostnamePtrInput `pulumi:"hostname"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// The definition of the redirect.
+	Redirect ListItemRedirectPtrInput `pulumi:"redirect"`
+}
+
+func (ListItemTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemType)(nil)).Elem()
+}
+
+func (i ListItemTypeArgs) ToListItemTypeOutput() ListItemTypeOutput {
+	return i.ToListItemTypeOutputWithContext(context.Background())
+}
+
+func (i ListItemTypeArgs) ToListItemTypeOutputWithContext(ctx context.Context) ListItemTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemTypeOutput)
+}
+
+// ListItemTypeArrayInput is an input type that accepts ListItemTypeArray and ListItemTypeArrayOutput values.
+// You can construct a concrete instance of `ListItemTypeArrayInput` via:
+//
+//	ListItemTypeArray{ ListItemTypeArgs{...} }
+type ListItemTypeArrayInput interface {
+	pulumi.Input
+
+	ToListItemTypeArrayOutput() ListItemTypeArrayOutput
+	ToListItemTypeArrayOutputWithContext(context.Context) ListItemTypeArrayOutput
+}
+
+type ListItemTypeArray []ListItemTypeInput
+
+func (ListItemTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemType)(nil)).Elem()
+}
+
+func (i ListItemTypeArray) ToListItemTypeArrayOutput() ListItemTypeArrayOutput {
+	return i.ToListItemTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ListItemTypeArray) ToListItemTypeArrayOutputWithContext(ctx context.Context) ListItemTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListItemTypeArrayOutput)
+}
+
+type ListItemTypeOutput struct{ *pulumi.OutputState }
+
+func (ListItemTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListItemType)(nil)).Elem()
+}
+
+func (o ListItemTypeOutput) ToListItemTypeOutput() ListItemTypeOutput {
+	return o
+}
+
+func (o ListItemTypeOutput) ToListItemTypeOutputWithContext(ctx context.Context) ListItemTypeOutput {
+	return o
+}
+
+// A non-negative 32 bit integer
+func (o ListItemTypeOutput) Asn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ListItemType) *int { return v.Asn }).(pulumi.IntPtrOutput)
+}
+
+// An informative summary of the list item.
+func (o ListItemTypeOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemType) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+func (o ListItemTypeOutput) Hostname() ListItemHostnamePtrOutput {
+	return o.ApplyT(func(v ListItemType) *ListItemHostname { return v.Hostname }).(ListItemHostnamePtrOutput)
+}
+
+// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+func (o ListItemTypeOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListItemType) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// The definition of the redirect.
+func (o ListItemTypeOutput) Redirect() ListItemRedirectPtrOutput {
+	return o.ApplyT(func(v ListItemType) *ListItemRedirect { return v.Redirect }).(ListItemRedirectPtrOutput)
+}
+
+type ListItemTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ListItemTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListItemType)(nil)).Elem()
+}
+
+func (o ListItemTypeArrayOutput) ToListItemTypeArrayOutput() ListItemTypeArrayOutput {
+	return o
+}
+
+func (o ListItemTypeArrayOutput) ToListItemTypeArrayOutputWithContext(ctx context.Context) ListItemTypeArrayOutput {
+	return o
+}
+
+func (o ListItemTypeArrayOutput) Index(i pulumi.IntInput) ListItemTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListItemType {
+		return vs[0].([]ListItemType)[vs[1].(int)]
+	}).(ListItemTypeOutput)
+}
+
 type ListItemHostname struct {
 	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	ExcludeExactHostname *bool  `pulumi:"excludeExactHostname"`
@@ -81062,147 +81195,6 @@ func (o RateLimitMatchRequestPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type RateLimitMatchResponse struct {
-	// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-	// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-	OriginTraffic *bool `pulumi:"originTraffic"`
-}
-
-// RateLimitMatchResponseInput is an input type that accepts RateLimitMatchResponseArgs and RateLimitMatchResponseOutput values.
-// You can construct a concrete instance of `RateLimitMatchResponseInput` via:
-//
-//	RateLimitMatchResponseArgs{...}
-type RateLimitMatchResponseInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput
-	ToRateLimitMatchResponseOutputWithContext(context.Context) RateLimitMatchResponseOutput
-}
-
-type RateLimitMatchResponseArgs struct {
-	// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-	// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-	OriginTraffic pulumi.BoolPtrInput `pulumi:"originTraffic"`
-}
-
-func (RateLimitMatchResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchResponse)(nil)).Elem()
-}
-
-func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput {
-	return i.ToRateLimitMatchResponseOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponseOutputWithContext(ctx context.Context) RateLimitMatchResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponseOutput)
-}
-
-func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
-	return i.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponseOutput).ToRateLimitMatchResponsePtrOutputWithContext(ctx)
-}
-
-// RateLimitMatchResponsePtrInput is an input type that accepts RateLimitMatchResponseArgs, RateLimitMatchResponsePtr and RateLimitMatchResponsePtrOutput values.
-// You can construct a concrete instance of `RateLimitMatchResponsePtrInput` via:
-//
-//	        RateLimitMatchResponseArgs{...}
-//
-//	or:
-//
-//	        nil
-type RateLimitMatchResponsePtrInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput
-	ToRateLimitMatchResponsePtrOutputWithContext(context.Context) RateLimitMatchResponsePtrOutput
-}
-
-type rateLimitMatchResponsePtrType RateLimitMatchResponseArgs
-
-func RateLimitMatchResponsePtr(v *RateLimitMatchResponseArgs) RateLimitMatchResponsePtrInput {
-	return (*rateLimitMatchResponsePtrType)(v)
-}
-
-func (*rateLimitMatchResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatchResponse)(nil)).Elem()
-}
-
-func (i *rateLimitMatchResponsePtrType) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
-	return i.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitMatchResponsePtrType) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponsePtrOutput)
-}
-
-type RateLimitMatchResponseOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchResponse)(nil)).Elem()
-}
-
-func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput {
-	return o
-}
-
-func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponseOutputWithContext(ctx context.Context) RateLimitMatchResponseOutput {
-	return o
-}
-
-func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
-	return o.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchResponse) *RateLimitMatchResponse {
-		return &v
-	}).(RateLimitMatchResponsePtrOutput)
-}
-
-// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-func (o RateLimitMatchResponseOutput) OriginTraffic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchResponse) *bool { return v.OriginTraffic }).(pulumi.BoolPtrOutput)
-}
-
-type RateLimitMatchResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatchResponse)(nil)).Elem()
-}
-
-func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
-	return o
-}
-
-func (o RateLimitMatchResponsePtrOutput) Elem() RateLimitMatchResponseOutput {
-	return o.ApplyT(func(v *RateLimitMatchResponse) RateLimitMatchResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitMatchResponse
-		return ret
-	}).(RateLimitMatchResponseOutput)
-}
-
-// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
-// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
-func (o RateLimitMatchResponsePtrOutput) OriginTraffic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RateLimitMatchResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.OriginTraffic
-	}).(pulumi.BoolPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -81915,6 +81907,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantVariantOptionsPtrInput)(nil)).Elem(), ImageVariantVariantOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeylessCertificateTunnelInput)(nil)).Elem(), KeylessCertificateTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeylessCertificateTunnelPtrInput)(nil)).Elem(), KeylessCertificateTunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeArrayInput)(nil)).Elem(), ListItemTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnameInput)(nil)).Elem(), ListItemHostnameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnamePtrInput)(nil)).Elem(), ListItemHostnameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemRedirectInput)(nil)).Elem(), ListItemRedirectArgs{})
@@ -82197,8 +82191,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchHeaderArrayInput)(nil)).Elem(), RateLimitMatchHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestPtrInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponseInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponsePtrInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -82910,6 +82902,8 @@ func init() {
 	pulumi.RegisterOutputType(ImageVariantVariantOptionsPtrOutput{})
 	pulumi.RegisterOutputType(KeylessCertificateTunnelOutput{})
 	pulumi.RegisterOutputType(KeylessCertificateTunnelPtrOutput{})
+	pulumi.RegisterOutputType(ListItemTypeOutput{})
+	pulumi.RegisterOutputType(ListItemTypeArrayOutput{})
 	pulumi.RegisterOutputType(ListItemHostnameOutput{})
 	pulumi.RegisterOutputType(ListItemHostnamePtrOutput{})
 	pulumi.RegisterOutputType(ListItemRedirectOutput{})
@@ -83192,6 +83186,4 @@ func init() {
 	pulumi.RegisterOutputType(RateLimitMatchHeaderArrayOutput{})
 	pulumi.RegisterOutputType(RateLimitMatchRequestOutput{})
 	pulumi.RegisterOutputType(RateLimitMatchRequestPtrOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchResponseOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchResponsePtrOutput{})
 }

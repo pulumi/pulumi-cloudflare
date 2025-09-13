@@ -23719,6 +23719,7 @@ public final class CloudflareFunctions {
      *         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.1")
      *             .build());
      * 
      *     }
@@ -23760,6 +23761,7 @@ public final class CloudflareFunctions {
      *         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.1")
      *             .build());
      * 
      *     }
@@ -23801,6 +23803,7 @@ public final class CloudflareFunctions {
      *         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.1")
      *             .build());
      * 
      *     }
@@ -23842,6 +23845,7 @@ public final class CloudflareFunctions {
      *         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.1")
      *             .build());
      * 
      *     }
@@ -23883,6 +23887,7 @@ public final class CloudflareFunctions {
      *         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
+     *             .search("1.1.1.1")
      *             .build());
      * 
      *     }

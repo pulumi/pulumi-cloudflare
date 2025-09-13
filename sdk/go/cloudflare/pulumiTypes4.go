@@ -13,6 +13,128 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessGroupsResultExcludeSaml struct {
+	// The name of the SAML attribute.
+	AttributeName string `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue string `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeSamlInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeSamlArgs and GetZeroTrustAccessGroupsResultExcludeSamlOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeSamlInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeSamlArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeSamlInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput
+	ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeSamlArgs struct {
+	// The name of the SAML attribute.
+	AttributeName pulumi.StringInput `pulumi:"attributeName"`
+	// The SAML attribute value to look for.
+	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
+	// The ID of your SAML identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSaml)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeSamlArgs) ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeSamlArgs) ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeSamlOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeSamlOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSaml)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput {
+	return o
+}
+
+// The name of the SAML attribute.
+func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) AttributeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.AttributeName }).(pulumi.StringOutput)
+}
+
+// The SAML attribute value to look for.
+func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) AttributeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
+}
+
+// The ID of your SAML identity provider.
+func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeServiceToken struct {
+	// The ID of a Service Token.
+	TokenId string `pulumi:"tokenId"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeServiceTokenInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs and GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeServiceTokenInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeServiceTokenInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput
+	ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs struct {
+	// The ID of a Service Token.
+	TokenId pulumi.StringInput `pulumi:"tokenId"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceToken)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceToken)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
+	return o
+}
+
+// The ID of a Service Token.
+func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustAccessGroupsResultInclude struct {
 	// An empty object which matches on all service tokens.
 	AnyValidServiceToken GetZeroTrustAccessGroupsResultIncludeAnyValidServiceToken `pulumi:"anyValidServiceToken"`
@@ -40415,6 +40537,8 @@ func (o GetZonesResultTenantUnitOutput) Id() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSamlInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIncludeInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIncludeArrayInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIncludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultIncludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultIncludeAnyValidServiceTokenArgs{})
@@ -40973,6 +41097,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultPlanInput)(nil)).Elem(), GetZonesResultPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantInput)(nil)).Elem(), GetZonesResultTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantUnitInput)(nil)).Elem(), GetZonesResultTenantUnitArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeSamlOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIncludeOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIncludeArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultIncludeAnyValidServiceTokenOutput{})

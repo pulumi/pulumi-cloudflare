@@ -28,6 +28,7 @@ import (
 //			_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
+//				Search:    pulumi.StringRef("1.1.1.1"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,6 +54,8 @@ type LookupListArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
+	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+	Search *string `pulumi:"search"`
 }
 
 // A collection of values returned by getList.
@@ -65,6 +68,8 @@ type LookupListResult struct {
 	Description string `pulumi:"description"`
 	// The unique ID of the list.
 	Id string `pulumi:"id"`
+	// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+	Items []GetListItemType `pulumi:"items"`
 	// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
@@ -78,6 +83,8 @@ type LookupListResult struct {
 	NumItems float64 `pulumi:"numItems"`
 	// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 	NumReferencingFilters float64 `pulumi:"numReferencingFilters"`
+	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+	Search *string `pulumi:"search"`
 }
 
 func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pulumi.InvokeOption) LookupListResultOutput {
@@ -95,6 +102,8 @@ type LookupListOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique ID of the list.
 	ListId pulumi.StringInput `pulumi:"listId"`
+	// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+	Search pulumi.StringPtrInput `pulumi:"search"`
 }
 
 func (LookupListOutputArgs) ElementType() reflect.Type {
@@ -136,6 +145,11 @@ func (o LookupListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+func (o LookupListResultOutput) Items() GetListItemTypeArrayOutput {
+	return o.ApplyT(func(v LookupListResult) []GetListItemType { return v.Items }).(GetListItemTypeArrayOutput)
+}
+
 // The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
 // Available values: "ip", "redirect", "hostname", "asn".
 func (o LookupListResultOutput) Kind() pulumi.StringOutput {
@@ -165,6 +179,11 @@ func (o LookupListResultOutput) NumItems() pulumi.Float64Output {
 // The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
 func (o LookupListResultOutput) NumReferencingFilters() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupListResult) float64 { return v.NumReferencingFilters }).(pulumi.Float64Output)
+}
+
+// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+func (o LookupListResultOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupListResult) *string { return v.Search }).(pulumi.StringPtrOutput)
 }
 
 func init() {

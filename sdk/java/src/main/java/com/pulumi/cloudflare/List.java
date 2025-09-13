@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ListArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ListState;
+import com.pulumi.cloudflare.outputs.ListItem;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,42 +18,6 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.List;
- * import com.pulumi.cloudflare.ListArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleList = new List("exampleList", ListArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .kind("ip")
- *             .name("list1")
- *             .description("This is a note")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -104,6 +69,20 @@ public class List extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    @Export(name="items", refs={java.util.List.class,ListItem.class}, tree="[0,1]")
+    private Output</* @Nullable */ java.util.List<ListItem>> items;
+
+    /**
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    public Output<Optional<java.util.List<ListItem>>> items() {
+        return Codegen.optional(this.items);
     }
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).

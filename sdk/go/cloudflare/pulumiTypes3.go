@@ -13,6 +13,116 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition struct {
+	MaxAge int `pulumi:"maxAge"`
+	// Available values: "Age".
+	Type string `pulumi:"type"`
+}
+
+// GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput is an input type that accepts GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs and GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput values.
+// You can construct a concrete instance of `GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput` via:
+//
+//	GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{...}
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput interface {
+	pulumi.Input
+
+	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
+	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
+}
+
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs struct {
+	MaxAge pulumi.IntInput `pulumi:"maxAge"`
+	// Available values: "Age".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
+}
+
+func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
+	return i.ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
+}
+
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
+}
+
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) MaxAge() pulumi.IntOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) int { return v.MaxAge }).(pulumi.IntOutput)
+}
+
+// Available values: "Age".
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetR2BucketLifecycleRuleConditions struct {
+	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
+	Prefix string `pulumi:"prefix"`
+}
+
+// GetR2BucketLifecycleRuleConditionsInput is an input type that accepts GetR2BucketLifecycleRuleConditionsArgs and GetR2BucketLifecycleRuleConditionsOutput values.
+// You can construct a concrete instance of `GetR2BucketLifecycleRuleConditionsInput` via:
+//
+//	GetR2BucketLifecycleRuleConditionsArgs{...}
+type GetR2BucketLifecycleRuleConditionsInput interface {
+	pulumi.Input
+
+	ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput
+	ToGetR2BucketLifecycleRuleConditionsOutputWithContext(context.Context) GetR2BucketLifecycleRuleConditionsOutput
+}
+
+type GetR2BucketLifecycleRuleConditionsArgs struct {
+	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (GetR2BucketLifecycleRuleConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleConditions)(nil)).Elem()
+}
+
+func (i GetR2BucketLifecycleRuleConditionsArgs) ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput {
+	return i.ToGetR2BucketLifecycleRuleConditionsOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketLifecycleRuleConditionsArgs) ToGetR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleConditionsOutput)
+}
+
+type GetR2BucketLifecycleRuleConditionsOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketLifecycleRuleConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleConditions)(nil)).Elem()
+}
+
+func (o GetR2BucketLifecycleRuleConditionsOutput) ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleConditionsOutput) ToGetR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleConditionsOutput {
+	return o
+}
+
+// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
+func (o GetR2BucketLifecycleRuleConditionsOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRuleConditions) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
 type GetR2BucketLifecycleRuleDeleteObjectsTransition struct {
 	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition `pulumi:"condition"`
@@ -42370,129 +42480,9 @@ func (o GetZeroTrustAccessGroupsResultExcludeOktaOutput) Name() pulumi.StringOut
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOkta) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessGroupsResultExcludeSaml struct {
-	// The name of the SAML attribute.
-	AttributeName string `pulumi:"attributeName"`
-	// The SAML attribute value to look for.
-	AttributeValue string `pulumi:"attributeValue"`
-	// The ID of your SAML identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeSamlInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeSamlArgs and GetZeroTrustAccessGroupsResultExcludeSamlOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeSamlInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeSamlArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeSamlInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput
-	ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeSamlArgs struct {
-	// The name of the SAML attribute.
-	AttributeName pulumi.StringInput `pulumi:"attributeName"`
-	// The SAML attribute value to look for.
-	AttributeValue pulumi.StringInput `pulumi:"attributeValue"`
-	// The ID of your SAML identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeSamlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSaml)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeSamlArgs) ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeSamlArgs) ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeSamlOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeSamlOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeSamlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSaml)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) ToGetZeroTrustAccessGroupsResultExcludeSamlOutput() GetZeroTrustAccessGroupsResultExcludeSamlOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) ToGetZeroTrustAccessGroupsResultExcludeSamlOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeSamlOutput {
-	return o
-}
-
-// The name of the SAML attribute.
-func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) AttributeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.AttributeName }).(pulumi.StringOutput)
-}
-
-// The SAML attribute value to look for.
-func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) AttributeValue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.AttributeValue }).(pulumi.StringOutput)
-}
-
-// The ID of your SAML identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeSamlOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeSaml) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeServiceToken struct {
-	// The ID of a Service Token.
-	TokenId string `pulumi:"tokenId"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeServiceTokenInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs and GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeServiceTokenInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeServiceTokenInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput
-	ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs struct {
-	// The ID of a Service Token.
-	TokenId pulumi.StringInput `pulumi:"tokenId"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceToken)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceToken)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutput() GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeServiceTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput {
-	return o
-}
-
-// The ID of a Service Token.
-func (o GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput) TokenId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeServiceToken) string { return v.TokenId }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleConditionsInput)(nil)).Elem(), GetR2BucketLifecycleRuleConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleDeleteObjectsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleDeleteObjectsTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionInput)(nil)).Elem(), GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleStorageClassTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleStorageClassTransitionArgs{})
@@ -43104,8 +43094,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOidcInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOktaInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeOktaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeSamlInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeSamlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeServiceTokenArgs{})
+	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput{})
+	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleConditionsOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleStorageClassTransitionOutput{})
@@ -43717,6 +43707,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeOidcOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeOktaOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeSamlOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeServiceTokenOutput{})
 }

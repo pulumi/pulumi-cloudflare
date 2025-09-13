@@ -13,6 +13,147 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZeroTrustGatewaySettingsSettingsBodyScanning struct {
+	// Set the inspection mode to either `deep` or `shallow`.
+	// Available values: "deep", "shallow".
+	InspectionMode *string `pulumi:"inspectionMode"`
+}
+
+// ZeroTrustGatewaySettingsSettingsBodyScanningInput is an input type that accepts ZeroTrustGatewaySettingsSettingsBodyScanningArgs and ZeroTrustGatewaySettingsSettingsBodyScanningOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsSettingsBodyScanningInput` via:
+//
+//	ZeroTrustGatewaySettingsSettingsBodyScanningArgs{...}
+type ZeroTrustGatewaySettingsSettingsBodyScanningInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsSettingsBodyScanningOutput() ZeroTrustGatewaySettingsSettingsBodyScanningOutput
+	ToZeroTrustGatewaySettingsSettingsBodyScanningOutputWithContext(context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningOutput
+}
+
+type ZeroTrustGatewaySettingsSettingsBodyScanningArgs struct {
+	// Set the inspection mode to either `deep` or `shallow`.
+	// Available values: "deep", "shallow".
+	InspectionMode pulumi.StringPtrInput `pulumi:"inspectionMode"`
+}
+
+func (ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanning)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ToZeroTrustGatewaySettingsSettingsBodyScanningOutput() ZeroTrustGatewaySettingsSettingsBodyScanningOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBodyScanningOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ToZeroTrustGatewaySettingsSettingsBodyScanningOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBodyScanningOutput)
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput() ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBodyScanningOutput).ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput is an input type that accepts ZeroTrustGatewaySettingsSettingsBodyScanningArgs, ZeroTrustGatewaySettingsSettingsBodyScanningPtr and ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput` via:
+//
+//	        ZeroTrustGatewaySettingsSettingsBodyScanningArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput() ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput
+	ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput
+}
+
+type zeroTrustGatewaySettingsSettingsBodyScanningPtrType ZeroTrustGatewaySettingsSettingsBodyScanningArgs
+
+func ZeroTrustGatewaySettingsSettingsBodyScanningPtr(v *ZeroTrustGatewaySettingsSettingsBodyScanningArgs) ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput {
+	return (*zeroTrustGatewaySettingsSettingsBodyScanningPtrType)(v)
+}
+
+func (*zeroTrustGatewaySettingsSettingsBodyScanningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsSettingsBodyScanning)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewaySettingsSettingsBodyScanningPtrType) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput() ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewaySettingsSettingsBodyScanningPtrType) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput)
+}
+
+type ZeroTrustGatewaySettingsSettingsBodyScanningOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanning)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningOutput() ZeroTrustGatewaySettingsSettingsBodyScanningOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput() ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return o.ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewaySettingsSettingsBodyScanning) *ZeroTrustGatewaySettingsSettingsBodyScanning {
+		return &v
+	}).(ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput)
+}
+
+// Set the inspection mode to either `deep` or `shallow`.
+// Available values: "deep", "shallow".
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) InspectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBodyScanning) *string { return v.InspectionMode }).(pulumi.StringPtrOutput)
+}
+
+type ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsSettingsBodyScanning)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput() ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) ToZeroTrustGatewaySettingsSettingsBodyScanningPtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) Elem() ZeroTrustGatewaySettingsSettingsBodyScanningOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBodyScanning) ZeroTrustGatewaySettingsSettingsBodyScanning {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewaySettingsSettingsBodyScanning
+		return ret
+	}).(ZeroTrustGatewaySettingsSettingsBodyScanningOutput)
+}
+
+// Set the inspection mode to either `deep` or `shallow`.
+// Available values: "deep", "shallow".
+func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBodyScanning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InspectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZeroTrustGatewaySettingsSettingsBrowserIsolation struct {
 	// Enable non-identity onramp support for Browser Isolation.
 	NonIdentityEnabled *bool `pulumi:"nonIdentityEnabled"`
@@ -34951,6 +35092,139 @@ func (o GetLeakedCredentialCheckRulesResultArrayOutput) Index(i pulumi.IntInput)
 	}).(GetLeakedCredentialCheckRulesResultOutput)
 }
 
+type GetListItemType struct {
+	// A non-negative 32 bit integer
+	Asn int `pulumi:"asn"`
+	// An informative summary of the list item.
+	Comment string `pulumi:"comment"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname GetListItemHostname `pulumi:"hostname"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip string `pulumi:"ip"`
+	// The definition of the redirect.
+	Redirect GetListItemRedirect `pulumi:"redirect"`
+}
+
+// GetListItemTypeInput is an input type that accepts GetListItemTypeArgs and GetListItemTypeOutput values.
+// You can construct a concrete instance of `GetListItemTypeInput` via:
+//
+//	GetListItemTypeArgs{...}
+type GetListItemTypeInput interface {
+	pulumi.Input
+
+	ToGetListItemTypeOutput() GetListItemTypeOutput
+	ToGetListItemTypeOutputWithContext(context.Context) GetListItemTypeOutput
+}
+
+type GetListItemTypeArgs struct {
+	// A non-negative 32 bit integer
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// An informative summary of the list item.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+	Hostname GetListItemHostnameInput `pulumi:"hostname"`
+	// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The definition of the redirect.
+	Redirect GetListItemRedirectInput `pulumi:"redirect"`
+}
+
+func (GetListItemTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemType)(nil)).Elem()
+}
+
+func (i GetListItemTypeArgs) ToGetListItemTypeOutput() GetListItemTypeOutput {
+	return i.ToGetListItemTypeOutputWithContext(context.Background())
+}
+
+func (i GetListItemTypeArgs) ToGetListItemTypeOutputWithContext(ctx context.Context) GetListItemTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemTypeOutput)
+}
+
+// GetListItemTypeArrayInput is an input type that accepts GetListItemTypeArray and GetListItemTypeArrayOutput values.
+// You can construct a concrete instance of `GetListItemTypeArrayInput` via:
+//
+//	GetListItemTypeArray{ GetListItemTypeArgs{...} }
+type GetListItemTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetListItemTypeArrayOutput() GetListItemTypeArrayOutput
+	ToGetListItemTypeArrayOutputWithContext(context.Context) GetListItemTypeArrayOutput
+}
+
+type GetListItemTypeArray []GetListItemTypeInput
+
+func (GetListItemTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListItemType)(nil)).Elem()
+}
+
+func (i GetListItemTypeArray) ToGetListItemTypeArrayOutput() GetListItemTypeArrayOutput {
+	return i.ToGetListItemTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetListItemTypeArray) ToGetListItemTypeArrayOutputWithContext(ctx context.Context) GetListItemTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetListItemTypeArrayOutput)
+}
+
+type GetListItemTypeOutput struct{ *pulumi.OutputState }
+
+func (GetListItemTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetListItemType)(nil)).Elem()
+}
+
+func (o GetListItemTypeOutput) ToGetListItemTypeOutput() GetListItemTypeOutput {
+	return o
+}
+
+func (o GetListItemTypeOutput) ToGetListItemTypeOutputWithContext(ctx context.Context) GetListItemTypeOutput {
+	return o
+}
+
+// A non-negative 32 bit integer
+func (o GetListItemTypeOutput) Asn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetListItemType) int { return v.Asn }).(pulumi.IntOutput)
+}
+
+// An informative summary of the list item.
+func (o GetListItemTypeOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemType) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+func (o GetListItemTypeOutput) Hostname() GetListItemHostnameOutput {
+	return o.ApplyT(func(v GetListItemType) GetListItemHostname { return v.Hostname }).(GetListItemHostnameOutput)
+}
+
+// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+func (o GetListItemTypeOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetListItemType) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// The definition of the redirect.
+func (o GetListItemTypeOutput) Redirect() GetListItemRedirectOutput {
+	return o.ApplyT(func(v GetListItemType) GetListItemRedirect { return v.Redirect }).(GetListItemRedirectOutput)
+}
+
+type GetListItemTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetListItemTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetListItemType)(nil)).Elem()
+}
+
+func (o GetListItemTypeArrayOutput) ToGetListItemTypeArrayOutput() GetListItemTypeArrayOutput {
+	return o
+}
+
+func (o GetListItemTypeArrayOutput) ToGetListItemTypeArrayOutputWithContext(ctx context.Context) GetListItemTypeArrayOutput {
+	return o
+}
+
+func (o GetListItemTypeArrayOutput) Index(i pulumi.IntInput) GetListItemTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetListItemType {
+		return vs[0].([]GetListItemType)[vs[1].(int)]
+	}).(GetListItemTypeOutput)
+}
+
 type GetListItemHostname struct {
 	// Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
 	ExcludeExactHostname bool   `pulumi:"excludeExactHostname"`
@@ -56129,117 +56403,9 @@ func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) Condition
 	}).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
 }
 
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition struct {
-	MaxAge int `pulumi:"maxAge"`
-	// Available values: "Age".
-	Type string `pulumi:"type"`
-}
-
-// GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput is an input type that accepts GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs and GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput values.
-// You can construct a concrete instance of `GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput` via:
-//
-//	GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{...}
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput interface {
-	pulumi.Input
-
-	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
-	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput
-}
-
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs struct {
-	MaxAge pulumi.IntInput `pulumi:"maxAge"`
-	// Available values: "Age".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return i.ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(context.Background())
-}
-
-func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
-}
-
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput struct{ *pulumi.OutputState }
-
-func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition)(nil)).Elem()
-}
-
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) MaxAge() pulumi.IntOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) int { return v.MaxAge }).(pulumi.IntOutput)
-}
-
-// Available values: "Age".
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetR2BucketLifecycleRuleConditions struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix string `pulumi:"prefix"`
-}
-
-// GetR2BucketLifecycleRuleConditionsInput is an input type that accepts GetR2BucketLifecycleRuleConditionsArgs and GetR2BucketLifecycleRuleConditionsOutput values.
-// You can construct a concrete instance of `GetR2BucketLifecycleRuleConditionsInput` via:
-//
-//	GetR2BucketLifecycleRuleConditionsArgs{...}
-type GetR2BucketLifecycleRuleConditionsInput interface {
-	pulumi.Input
-
-	ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput
-	ToGetR2BucketLifecycleRuleConditionsOutputWithContext(context.Context) GetR2BucketLifecycleRuleConditionsOutput
-}
-
-type GetR2BucketLifecycleRuleConditionsArgs struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
-}
-
-func (GetR2BucketLifecycleRuleConditionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleConditions)(nil)).Elem()
-}
-
-func (i GetR2BucketLifecycleRuleConditionsArgs) ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput {
-	return i.ToGetR2BucketLifecycleRuleConditionsOutputWithContext(context.Background())
-}
-
-func (i GetR2BucketLifecycleRuleConditionsArgs) ToGetR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleConditionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleConditionsOutput)
-}
-
-type GetR2BucketLifecycleRuleConditionsOutput struct{ *pulumi.OutputState }
-
-func (GetR2BucketLifecycleRuleConditionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleConditions)(nil)).Elem()
-}
-
-func (o GetR2BucketLifecycleRuleConditionsOutput) ToGetR2BucketLifecycleRuleConditionsOutput() GetR2BucketLifecycleRuleConditionsOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleConditionsOutput) ToGetR2BucketLifecycleRuleConditionsOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleConditionsOutput {
-	return o
-}
-
-// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
-func (o GetR2BucketLifecycleRuleConditionsOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRuleConditions) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanningInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBrowserIsolationInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsCertificateInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsCertificateArgs{})
@@ -56688,6 +56854,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeylessCertificatesResultTunnelInput)(nil)).Elem(), GetKeylessCertificatesResultTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLeakedCredentialCheckRulesResultArrayInput)(nil)).Elem(), GetLeakedCredentialCheckRulesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemTypeInput)(nil)).Elem(), GetListItemTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemTypeArrayInput)(nil)).Elem(), GetListItemTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemHostnameInput)(nil)).Elem(), GetListItemHostnameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemRedirectInput)(nil)).Elem(), GetListItemRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListItemsResultInput)(nil)).Elem(), GetListItemsResultArgs{})
@@ -56967,8 +57135,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleInput)(nil)).Elem(), GetR2BucketLifecycleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleArrayInput)(nil)).Elem(), GetR2BucketLifecycleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleConditionsInput)(nil)).Elem(), GetR2BucketLifecycleRuleConditionsArgs{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBodyScanningOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsCertificateOutput{})
@@ -57417,6 +57585,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKeylessCertificatesResultTunnelOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultOutput{})
 	pulumi.RegisterOutputType(GetLeakedCredentialCheckRulesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetListItemTypeOutput{})
+	pulumi.RegisterOutputType(GetListItemTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetListItemHostnameOutput{})
 	pulumi.RegisterOutputType(GetListItemRedirectOutput{})
 	pulumi.RegisterOutputType(GetListItemsResultOutput{})
@@ -57696,6 +57866,4 @@ func init() {
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput{})
-	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput{})
-	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleConditionsOutput{})
 }
