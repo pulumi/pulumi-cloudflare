@@ -9017,6 +9017,29 @@ export interface GetLeakedCredentialCheckRulesResult {
     username: string;
 }
 
+export interface GetListItem {
+    /**
+     * A non-negative 32 bit integer
+     */
+    asn: number;
+    /**
+     * An informative summary of the list item.
+     */
+    comment: string;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     */
+    hostname: outputs.GetListItemHostname;
+    /**
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     */
+    ip: string;
+    /**
+     * The definition of the redirect.
+     */
+    redirect: outputs.GetListItemRedirect;
+}
+
 export interface GetListItemHostname {
     /**
      * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.
@@ -27920,6 +27943,29 @@ export interface KeylessCertificateTunnel {
      * Cloudflare Tunnel Virtual Network ID
      */
     vnetId: string;
+}
+
+export interface ListItem {
+    /**
+     * A non-negative 32 bit integer
+     */
+    asn?: number;
+    /**
+     * An informative summary of the list item.
+     */
+    comment?: string;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     */
+    hostname?: outputs.ListItemHostname;
+    /**
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     */
+    ip?: string;
+    /**
+     * The definition of the redirect.
+     */
+    redirect?: outputs.ListItemRedirect;
 }
 
 export interface ListItemHostname {

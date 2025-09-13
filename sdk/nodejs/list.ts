@@ -2,22 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleList = new cloudflare.List("example_list", {
- *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     kind: "ip",
- *     name: "list1",
- *     description: "This is a note",
- * });
- * ```
  *
  * ## Import
  *
@@ -66,6 +56,10 @@ export class List extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     */
+    declare public readonly items: pulumi.Output<outputs.ListItem[] | undefined>;
+    /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".
      */
@@ -103,6 +97,7 @@ export class List extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["createdOn"] = state?.createdOn;
             resourceInputs["description"] = state?.description;
+            resourceInputs["items"] = state?.items;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["name"] = state?.name;
@@ -121,6 +116,7 @@ export class List extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["description"] = args?.description;
+            resourceInputs["items"] = args?.items;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
             resourceInputs["createdOn"] = undefined /*out*/;
@@ -149,6 +145,10 @@ export interface ListState {
      * An informative summary of the list.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".
@@ -184,6 +184,10 @@ export interface ListArgs {
      * An informative summary of the list.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     */
+    items?: pulumi.Input<pulumi.Input<inputs.ListItem>[]>;
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".

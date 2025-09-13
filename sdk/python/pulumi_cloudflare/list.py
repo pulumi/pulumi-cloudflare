@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ListArgs', 'List']
 
@@ -22,7 +24,8 @@ class ListArgs:
                  account_id: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None):
         """
         The set of arguments for constructing a List resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
@@ -30,12 +33,15 @@ class ListArgs:
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
+        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -86,6 +92,18 @@ class ListArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
+        """
+        The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
 
 @pulumi.input_type
 class _ListState:
@@ -93,6 +111,7 @@ class _ListState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  created_on: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -103,6 +122,7 @@ class _ListState:
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
+        :param pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the list was last modified.
@@ -116,6 +136,8 @@ class _ListState:
             pulumi.set(__self__, "created_on", created_on)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if modified_on is not None:
@@ -162,6 +184,18 @@ class _ListState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]:
+        """
+        The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]]):
+        pulumi.set(self, "items", value)
 
     @_builtins.property
     @pulumi.getter
@@ -233,22 +267,12 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_list = cloudflare.List("example_list",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            kind="ip",
-            name="list1",
-            description="This is a note")
-        ```
 
         ## Import
 
@@ -260,6 +284,7 @@ class List(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] name: An informative name for the list. Use this name in filter and rule expressions.
@@ -272,17 +297,6 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_list = cloudflare.List("example_list",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            kind="ip",
-            name="list1",
-            description="This is a note")
-        ```
 
         ## Import
 
@@ -307,6 +321,7 @@ class List(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -322,6 +337,7 @@ class List(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["items"] = items
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__.__dict__["kind"] = kind
@@ -345,6 +361,7 @@ class List(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             created_on: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]]] = None,
             kind: Optional[pulumi.Input[_builtins.str]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -360,6 +377,7 @@ class List(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
         :param pulumi.Input[_builtins.str] created_on: The RFC 3339 timestamp of when the list was created.
         :param pulumi.Input[_builtins.str] description: An informative summary of the list.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ListItemArgs', 'ListItemArgsDict']]]] items: The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
         :param pulumi.Input[_builtins.str] kind: The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
                Available values: "ip", "redirect", "hostname", "asn".
         :param pulumi.Input[_builtins.str] modified_on: The RFC 3339 timestamp of when the list was last modified.
@@ -374,6 +392,7 @@ class List(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
+        __props__.__dict__["items"] = items
         __props__.__dict__["kind"] = kind
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
@@ -404,6 +423,14 @@ class List(pulumi.CustomResource):
         An informative summary of the list.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> pulumi.Output[Optional[Sequence['outputs.ListItem']]]:
+        """
+        The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        """
+        return pulumi.get(self, "items")
 
     @_builtins.property
     @pulumi.getter

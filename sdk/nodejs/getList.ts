@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleList = cloudflare.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
+ *     search: "1.1.1.1",
  * });
  * ```
  */
@@ -22,6 +25,7 @@ export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise
     return pulumi.runtime.invoke("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
         "listId": args.listId,
+        "search": args.search,
     }, opts);
 }
 
@@ -37,6 +41,10 @@ export interface GetListArgs {
      * The unique ID of the list.
      */
     listId: string;
+    /**
+     * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     */
+    search?: string;
 }
 
 /**
@@ -59,6 +67,10 @@ export interface GetListResult {
      * The unique ID of the list.
      */
     readonly id: string;
+    /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     */
+    readonly items: outputs.GetListItem[];
     /**
      * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: "ip", "redirect", "hostname", "asn".
@@ -84,6 +96,10 @@ export interface GetListResult {
      * The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
      */
     readonly numReferencingFilters: number;
+    /**
+     * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     */
+    readonly search?: string;
 }
 /**
  * ## Example Usage
@@ -95,6 +111,7 @@ export interface GetListResult {
  * const exampleList = cloudflare.getList({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
+ *     search: "1.1.1.1",
  * });
  * ```
  */
@@ -103,6 +120,7 @@ export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutpu
     return pulumi.runtime.invokeOutput("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
         "listId": args.listId,
+        "search": args.search,
     }, opts);
 }
 
@@ -118,4 +136,8 @@ export interface GetListOutputArgs {
      * The unique ID of the list.
      */
     listId: pulumi.Input<string>;
+    /**
+     * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     */
+    search?: pulumi.Input<string>;
 }

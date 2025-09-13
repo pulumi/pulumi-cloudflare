@@ -3,11 +3,15 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetListItem;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetListResult {
@@ -31,6 +35,11 @@ public final class GetListResult {
      * 
      */
     private String id;
+    /**
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    private List<GetListItem> items;
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
      * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
@@ -62,6 +71,11 @@ public final class GetListResult {
      * 
      */
     private Double numReferencingFilters;
+    /**
+     * @return A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     * 
+     */
+    private @Nullable String search;
 
     private GetListResult() {}
     /**
@@ -91,6 +105,13 @@ public final class GetListResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    public List<GetListItem> items() {
+        return this.items;
     }
     /**
      * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
@@ -135,6 +156,13 @@ public final class GetListResult {
     public Double numReferencingFilters() {
         return this.numReferencingFilters;
     }
+    /**
+     * @return A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     * 
+     */
+    public Optional<String> search() {
+        return Optional.ofNullable(this.search);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -149,12 +177,14 @@ public final class GetListResult {
         private String createdOn;
         private String description;
         private String id;
+        private List<GetListItem> items;
         private String kind;
         private String listId;
         private String modifiedOn;
         private String name;
         private Double numItems;
         private Double numReferencingFilters;
+        private @Nullable String search;
         public Builder() {}
         public Builder(GetListResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -162,12 +192,14 @@ public final class GetListResult {
     	      this.createdOn = defaults.createdOn;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.items = defaults.items;
     	      this.kind = defaults.kind;
     	      this.listId = defaults.listId;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.name = defaults.name;
     	      this.numItems = defaults.numItems;
     	      this.numReferencingFilters = defaults.numReferencingFilters;
+    	      this.search = defaults.search;
         }
 
         @CustomType.Setter
@@ -201,6 +233,17 @@ public final class GetListResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder items(List<GetListItem> items) {
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetListResult", "items");
+            }
+            this.items = items;
+            return this;
+        }
+        public Builder items(GetListItem... items) {
+            return items(List.of(items));
         }
         @CustomType.Setter
         public Builder kind(String kind) {
@@ -250,18 +293,26 @@ public final class GetListResult {
             this.numReferencingFilters = numReferencingFilters;
             return this;
         }
+        @CustomType.Setter
+        public Builder search(@Nullable String search) {
+
+            this.search = search;
+            return this;
+        }
         public GetListResult build() {
             final var _resultValue = new GetListResult();
             _resultValue.accountId = accountId;
             _resultValue.createdOn = createdOn;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.items = items;
             _resultValue.kind = kind;
             _resultValue.listId = listId;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.name = name;
             _resultValue.numItems = numItems;
             _resultValue.numReferencingFilters = numReferencingFilters;
+            _resultValue.search = search;
             return _resultValue;
         }
     }
