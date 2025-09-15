@@ -727,6 +727,8 @@ __all__ = [
     'ImageVariantVariantOptionsArgsDict',
     'KeylessCertificateTunnelArgs',
     'KeylessCertificateTunnelArgsDict',
+    'ListItemArgs',
+    'ListItemArgsDict',
     'ListItemHostnameArgs',
     'ListItemHostnameArgsDict',
     'ListItemRedirectArgs',
@@ -25799,6 +25801,118 @@ class KeylessCertificateTunnelArgs:
     @vnet_id.setter
     def vnet_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "vnet_id", value)
+
+
+if not MYPY:
+    class ListItemArgsDict(TypedDict):
+        asn: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        A non-negative 32 bit integer
+        """
+        comment: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An informative summary of the list item.
+        """
+        hostname: NotRequired[pulumi.Input['ListItemHostnameArgsDict']]
+        """
+        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        """
+        ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        """
+        redirect: NotRequired[pulumi.Input['ListItemRedirectArgsDict']]
+        """
+        The definition of the redirect.
+        """
+elif False:
+    ListItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ListItemArgs:
+    def __init__(__self__, *,
+                 asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 comment: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
+                 ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] asn: A non-negative 32 bit integer
+        :param pulumi.Input[_builtins.str] comment: An informative summary of the list item.
+        :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        :param pulumi.Input[_builtins.str] ip: An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
+        """
+        if asn is not None:
+            pulumi.set(__self__, "asn", asn)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+
+    @_builtins.property
+    @pulumi.getter
+    def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        A non-negative 32 bit integer
+        """
+        return pulumi.get(self, "asn")
+
+    @asn.setter
+    def asn(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "asn", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An informative summary of the list item.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
+        """
+        Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input['ListItemHostnameArgs']]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['ListItemRedirectArgs']]:
+        """
+        The definition of the redirect.
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['ListItemRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
 
 
 if not MYPY:

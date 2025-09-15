@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetListResult',
@@ -26,7 +27,7 @@ class GetListResult:
     """
     A collection of values returned by getList.
     """
-    def __init__(__self__, account_id=None, created_on=None, description=None, id=None, kind=None, list_id=None, modified_on=None, name=None, num_items=None, num_referencing_filters=None):
+    def __init__(__self__, account_id=None, created_on=None, description=None, id=None, items=None, kind=None, list_id=None, modified_on=None, name=None, num_items=None, num_referencing_filters=None, search=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -39,6 +40,9 @@ class GetListResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if items and not isinstance(items, list):
+            raise TypeError("Expected argument 'items' to be a list")
+        pulumi.set(__self__, "items", items)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -57,6 +61,9 @@ class GetListResult:
         if num_referencing_filters and not isinstance(num_referencing_filters, float):
             raise TypeError("Expected argument 'num_referencing_filters' to be a float")
         pulumi.set(__self__, "num_referencing_filters", num_referencing_filters)
+        if search and not isinstance(search, str):
+            raise TypeError("Expected argument 'search' to be a str")
+        pulumi.set(__self__, "search", search)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -89,6 +96,14 @@ class GetListResult:
         The unique ID of the list.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.GetListItemResult']:
+        """
+        The items in the list. If set, this overwrites all items in the list. Do not use with `ListItem`.
+        """
+        return pulumi.get(self, "items")
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +154,14 @@ class GetListResult:
         """
         return pulumi.get(self, "num_referencing_filters")
 
+    @_builtins.property
+    @pulumi.getter
+    def search(self) -> Optional[_builtins.str]:
+        """
+        A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+        """
+        return pulumi.get(self, "search")
+
 
 class AwaitableGetListResult(GetListResult):
     # pylint: disable=using-constant-test
@@ -150,16 +173,19 @@ class AwaitableGetListResult(GetListResult):
             created_on=self.created_on,
             description=self.description,
             id=self.id,
+            items=self.items,
             kind=self.kind,
             list_id=self.list_id,
             modified_on=self.modified_on,
             name=self.name,
             num_items=self.num_items,
-            num_referencing_filters=self.num_referencing_filters)
+            num_referencing_filters=self.num_referencing_filters,
+            search=self.search)
 
 
 def get_list(account_id: Optional[_builtins.str] = None,
              list_id: Optional[_builtins.str] = None,
+             search: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListResult:
     """
     ## Example Usage
@@ -169,16 +195,19 @@ def get_list(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
+        search="1.1.1.1")
     ```
 
 
     :param _builtins.str account_id: The Account ID for this resource.
     :param _builtins.str list_id: The unique ID of the list.
+    :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
+    __args__['search'] = search
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getList:getList', __args__, opts=opts, typ=GetListResult).value
 
@@ -187,14 +216,17 @@ def get_list(account_id: Optional[_builtins.str] = None,
         created_on=pulumi.get(__ret__, 'created_on'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        items=pulumi.get(__ret__, 'items'),
         kind=pulumi.get(__ret__, 'kind'),
         list_id=pulumi.get(__ret__, 'list_id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         name=pulumi.get(__ret__, 'name'),
         num_items=pulumi.get(__ret__, 'num_items'),
-        num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'))
+        num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'),
+        search=pulumi.get(__ret__, 'search'))
 def get_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                     list_id: Optional[pulumi.Input[_builtins.str]] = None,
+                    search: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListResult]:
     """
     ## Example Usage
@@ -204,16 +236,19 @@ def get_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi_cloudflare as cloudflare
 
     example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
+        list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
+        search="1.1.1.1")
     ```
 
 
     :param _builtins.str account_id: The Account ID for this resource.
     :param _builtins.str list_id: The unique ID of the list.
+    :param _builtins.str search: A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['listId'] = list_id
+    __args__['search'] = search
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getList:getList', __args__, opts=opts, typ=GetListResult)
     return __ret__.apply(lambda __response__: GetListResult(
@@ -221,9 +256,11 @@ def get_list_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
         created_on=pulumi.get(__response__, 'created_on'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        items=pulumi.get(__response__, 'items'),
         kind=pulumi.get(__response__, 'kind'),
         list_id=pulumi.get(__response__, 'list_id'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         name=pulumi.get(__response__, 'name'),
         num_items=pulumi.get(__response__, 'num_items'),
-        num_referencing_filters=pulumi.get(__response__, 'num_referencing_filters')))
+        num_referencing_filters=pulumi.get(__response__, 'num_referencing_filters'),
+        search=pulumi.get(__response__, 'search')))

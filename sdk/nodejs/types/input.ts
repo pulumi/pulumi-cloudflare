@@ -6843,6 +6843,29 @@ export interface KeylessCertificateTunnel {
     vnetId: pulumi.Input<string>;
 }
 
+export interface ListItem {
+    /**
+     * A non-negative 32 bit integer
+     */
+    asn?: pulumi.Input<number>;
+    /**
+     * An informative summary of the list item.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+     */
+    hostname?: pulumi.Input<inputs.ListItemHostname>;
+    /**
+     * An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * The definition of the redirect.
+     */
+    redirect?: pulumi.Input<inputs.ListItemRedirect>;
+}
+
 export interface ListItemHostname {
     /**
      * Only applies to wildcard hostnames (e.g., *.example.com). When true (default), only subdomains are blocked. When false, both the root domain and subdomains are blocked.

@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         Search = "1.1.1.1",
         ///     });
         /// 
         /// });
@@ -49,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         Search = "1.1.1.1",
         ///     });
         /// 
         /// });
@@ -72,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
+        ///         Search = "1.1.1.1",
         ///     });
         /// 
         /// });
@@ -96,6 +99,12 @@ namespace Pulumi.Cloudflare
         [Input("listId", required: true)]
         public string ListId { get; set; } = null!;
 
+        /// <summary>
+        /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+        /// </summary>
+        [Input("search")]
+        public string? Search { get; set; }
+
         public GetListArgs()
         {
         }
@@ -115,6 +124,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("listId", required: true)]
         public Input<string> ListId { get; set; } = null!;
+
+        /// <summary>
+        /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+        /// </summary>
+        [Input("search")]
+        public Input<string>? Search { get; set; }
 
         public GetListInvokeArgs()
         {
@@ -143,6 +158,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetListItemResult> Items;
+        /// <summary>
         /// The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
         /// Available values: "ip", "redirect", "hostname", "asn".
         /// </summary>
@@ -167,6 +186,10 @@ namespace Pulumi.Cloudflare
         /// The number of [filters](https://www.terraform.io/api/resources/filters/) referencing the list.
         /// </summary>
         public readonly double NumReferencingFilters;
+        /// <summary>
+        /// A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+        /// </summary>
+        public readonly string? Search;
 
         [OutputConstructor]
         private GetListResult(
@@ -178,6 +201,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            ImmutableArray<Outputs.GetListItemResult> items,
+
             string kind,
 
             string listId,
@@ -188,18 +213,22 @@ namespace Pulumi.Cloudflare
 
             double numItems,
 
-            double numReferencingFilters)
+            double numReferencingFilters,
+
+            string? search)
         {
             AccountId = accountId;
             CreatedOn = createdOn;
             Description = description;
             Id = id;
+            Items = items;
             Kind = kind;
             ListId = listId;
             ModifiedOn = modifiedOn;
             Name = name;
             NumItems = numItems;
             NumReferencingFilters = numReferencingFilters;
+            Search = search;
         }
     }
 }

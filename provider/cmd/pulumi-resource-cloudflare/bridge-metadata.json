@@ -587,7 +587,12 @@
             },
             "cloudflare_list": {
                 "current": "cloudflare:index/list:List",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_list_item": {
                 "current": "cloudflare:index/listItem:ListItem",
@@ -4091,7 +4096,12 @@
             },
             "cloudflare_list": {
                 "current": "cloudflare:index/getList:getList",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "cloudflare_list_item": {
                 "current": "cloudflare:index/getListItem:getListItem",

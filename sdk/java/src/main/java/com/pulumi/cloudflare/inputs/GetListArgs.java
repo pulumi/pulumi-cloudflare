@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
@@ -44,11 +46,27 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
         return this.listId;
     }
 
+    /**
+     * A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     * 
+     */
+    @Import(name="search")
+    private @Nullable Output<String> search;
+
+    /**
+     * @return A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+     * 
+     */
+    public Optional<Output<String>> search() {
+        return Optional.ofNullable(this.search);
+    }
+
     private GetListArgs() {}
 
     private GetListArgs(GetListArgs $) {
         this.accountId = $.accountId;
         this.listId = $.listId;
+        this.search = $.search;
     }
 
     public static Builder builder() {
@@ -109,6 +127,27 @@ public final class GetListArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder listId(String listId) {
             return listId(Output.of(listId));
+        }
+
+        /**
+         * @param search A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(@Nullable Output<String> search) {
+            $.search = search;
+            return this;
+        }
+
+        /**
+         * @param search A search query to filter returned items. Its meaning depends on the list type: IP addresses must start with the provided string, hostnames and bulk redirects must contain the string, and ASNs must match the string exactly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder search(String search) {
+            return search(Output.of(search));
         }
 
         public GetListArgs build() {

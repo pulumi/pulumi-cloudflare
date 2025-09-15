@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -59,6 +61,21 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    @Import(name="items")
+    private @Nullable Output<List<ListItemArgs>> items;
+
+    /**
+     * @return The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+     * 
+     */
+    public Optional<Output<List<ListItemArgs>>> items() {
+        return Optional.ofNullable(this.items);
     }
 
     /**
@@ -144,6 +161,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.createdOn = $.createdOn;
         this.description = $.description;
+        this.items = $.items;
         this.kind = $.kind;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
@@ -230,6 +248,37 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder items(@Nullable Output<List<ListItemArgs>> items) {
+            $.items = items;
+            return this;
+        }
+
+        /**
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder items(List<ListItemArgs> items) {
+            return items(Output.of(items));
+        }
+
+        /**
+         * @param items The items in the list. If set, this overwrites all items in the list. Do not use with `cloudflare.ListItem`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder items(ListItemArgs... items) {
+            return items(List.of(items));
         }
 
         /**
