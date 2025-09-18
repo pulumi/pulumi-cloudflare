@@ -1,3 +1,0 @@
-name: cloudflare-record-ts
-description: A simple addition of a DNS record to a CloudFlare zone in TypeScript
-runtime: nodejs
