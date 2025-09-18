@@ -331,6 +331,12 @@ class ListItem(pulumi.CustomResource):
             ip="10.0.0.1")
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID for this resource.
@@ -358,6 +364,12 @@ class ListItem(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
             ip="10.0.0.1")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
         ```
 
         :param str resource_name: The name of the resource.
