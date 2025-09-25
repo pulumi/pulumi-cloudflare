@@ -37,3 +37,6 @@ go.work.sum
 
 # Ignore local build tracking directory
 .make
+
+# Developers define their own direnv config but the repo provides a template in `.envrc.template`.
+.envrc

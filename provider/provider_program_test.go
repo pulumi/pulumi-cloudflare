@@ -115,6 +115,11 @@ func TestAccessPolicyUpgrade(t *testing.T) {
 		t, "test-programs/access_policy/access_policyv5", optproviderupgrade.NewSourcePath("test-programs/access_policy"))
 }
 
+func TestApiTokenUpgrade(t *testing.T) {
+	testUpgrade(t, "test-programs/api_token/v5",
+		optproviderupgrade.NewSourcePath("test-programs/api_token"))
+}
+
 func TestRuleSetUpgrade(t *testing.T) {
 	testUpgrade(t, "test-programs/ruleset/ruleset_v5")
 }

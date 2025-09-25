@@ -32,6 +32,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
+	migratetoken "github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/migrations/token"
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
 
@@ -94,6 +95,11 @@ func Provider() info.Provider {
 		},
 
 		Resources: map[string]*info.Resource{
+			"cloudflare_api_token": {
+				Tok:                 "cloudflare:index/apiToken:ApiToken",
+				PreStateUpgradeHook: migratetoken.PreStateUpgradeHook,
+			},
+
 			// We cannot use TF's ID field as Pulumi's ID field automatically,
 			// since it can (theoretically) be set by the user.
 			//
