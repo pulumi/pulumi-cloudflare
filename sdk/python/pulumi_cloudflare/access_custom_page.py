@@ -195,6 +195,17 @@ class AccessCustomPage(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            custom_html="<html><body><h1>Access Denied</h1></body></html>",
+            name="name",
+            type="identity_denied")
+        ```
+
         ## Import
 
         ```sh
@@ -217,6 +228,17 @@ class AccessCustomPage(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            custom_html="<html><body><h1>Access Denied</h1></body></html>",
+            name="name",
+            type="identity_denied")
+        ```
 
         ## Import
 

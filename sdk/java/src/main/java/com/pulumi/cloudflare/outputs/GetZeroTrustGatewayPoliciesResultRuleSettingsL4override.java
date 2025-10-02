@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultRuleSettingsL4override {
     /**
-     * @return IPv4 or IPv6 address.
+     * @return Defines the IPv4 or IPv6 address.
      * 
      */
     private String ip;
     /**
-     * @return A port number to use for TCP/UDP overrides.
+     * @return Defines a port number to use for TCP/UDP overrides.
      * 
      */
     private Integer port;
 
     private GetZeroTrustGatewayPoliciesResultRuleSettingsL4override() {}
     /**
-     * @return IPv4 or IPv6 address.
+     * @return Defines the IPv4 or IPv6 address.
      * 
      */
     public String ip() {
         return this.ip;
     }
     /**
-     * @return A port number to use for TCP/UDP overrides.
+     * @return Defines a port number to use for TCP/UDP overrides.
      * 
      */
     public Integer port() {

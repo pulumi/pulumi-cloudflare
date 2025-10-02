@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDnsLocationNetwork {
     /**
-     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * @return Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      * 
      */
     private String network;
 
     private GetZeroTrustDnsLocationNetwork() {}
     /**
-     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * @return Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      * 
      */
     public String network() {

@@ -43,6 +43,11 @@ type WorkerVersion struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrOutput `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules WorkerVersionModuleArrayOutput `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number pulumi.IntOutput `pulumi:"number"`
@@ -55,7 +60,7 @@ type WorkerVersion struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	UsageModel pulumi.StringOutput `pulumi:"usageModel"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringOutput `pulumi:"workerId"`
 }
 
@@ -116,6 +121,11 @@ type workerVersionState struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules []WorkerVersionModule `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number *int `pulumi:"number"`
@@ -128,7 +138,7 @@ type workerVersionState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	UsageModel *string `pulumi:"usageModel"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId *string `pulumi:"workerId"`
 }
 
@@ -154,6 +164,11 @@ type WorkerVersionState struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules WorkerVersionModuleArrayInput
 	// The integer version number, starting from one.
 	Number pulumi.IntPtrInput
@@ -166,7 +181,7 @@ type WorkerVersionState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	UsageModel pulumi.StringPtrInput
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringPtrInput
 }
 
@@ -194,6 +209,11 @@ type workerVersionArgs struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations *WorkerVersionMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules []WorkerVersionModule `pulumi:"modules"`
 	// Placement settings for the version.
 	Placement *WorkerVersionPlacement `pulumi:"placement"`
@@ -202,7 +222,7 @@ type workerVersionArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	UsageModel *string `pulumi:"usageModel"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
 
@@ -227,6 +247,11 @@ type WorkerVersionArgs struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations WorkerVersionMigrationsPtrInput
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules WorkerVersionModuleArrayInput
 	// Placement settings for the version.
 	Placement WorkerVersionPlacementPtrInput
@@ -235,7 +260,7 @@ type WorkerVersionArgs struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	UsageModel pulumi.StringPtrInput
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringInput
 }
 
@@ -377,6 +402,11 @@ func (o WorkerVersionOutput) Migrations() WorkerVersionMigrationsPtrOutput {
 }
 
 // Code, sourcemaps, and other content used at runtime.
+//
+// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 func (o WorkerVersionOutput) Modules() WorkerVersionModuleArrayOutput {
 	return o.ApplyT(func(v *WorkerVersion) WorkerVersionModuleArrayOutput { return v.Modules }).(WorkerVersionModuleArrayOutput)
 }
@@ -404,7 +434,7 @@ func (o WorkerVersionOutput) UsageModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.UsageModel }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Identifier for the Worker, which can be ID or name.
 func (o WorkerVersionOutput) WorkerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerVersion) pulumi.StringOutput { return v.WorkerId }).(pulumi.StringOutput)
 }

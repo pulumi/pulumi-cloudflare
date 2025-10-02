@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         public string? ExcludeUrls { get; set; }
 
         /// <summary>
-        /// Export the list of connections as a file.
+        /// Export the list of connections as a file, limited to 50000 entries.
         /// Available values: "csv".
         /// </summary>
         [Input("export")]
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExcludeUrls { get; set; }
 
         /// <summary>
-        /// Export the list of connections as a file.
+        /// Export the list of connections as a file, limited to 50000 entries.
         /// Available values: "csv".
         /// </summary>
         [Input("export")]
@@ -273,7 +273,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? ExcludeUrls;
         /// <summary>
-        /// Export the list of connections as a file.
+        /// Export the list of connections as a file, limited to 50000 entries.
         /// Available values: "csv".
         /// </summary>
         public readonly string? Export;

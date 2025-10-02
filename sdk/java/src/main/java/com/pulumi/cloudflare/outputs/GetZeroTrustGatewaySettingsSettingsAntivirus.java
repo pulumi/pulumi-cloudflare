@@ -12,50 +12,50 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsAntivirus {
     /**
-     * @return Enable anti-virus scanning on downloads.
+     * @return Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     private Boolean enabledDownloadPhase;
     /**
-     * @return Enable anti-virus scanning on uploads.
+     * @return Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     private Boolean enabledUploadPhase;
     /**
-     * @return Block requests for files that cannot be scanned.
+     * @return Specify whether to block requests for unscannable files.
      * 
      */
     private Boolean failClosed;
     /**
-     * @return Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * @return Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings notificationSettings;
 
     private GetZeroTrustGatewaySettingsSettingsAntivirus() {}
     /**
-     * @return Enable anti-virus scanning on downloads.
+     * @return Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     public Boolean enabledDownloadPhase() {
         return this.enabledDownloadPhase;
     }
     /**
-     * @return Enable anti-virus scanning on uploads.
+     * @return Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     public Boolean enabledUploadPhase() {
         return this.enabledUploadPhase;
     }
     /**
-     * @return Block requests for files that cannot be scanned.
+     * @return Specify whether to block requests for unscannable files.
      * 
      */
     public Boolean failClosed() {
         return this.failClosed;
     }
     /**
-     * @return Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * @return Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings notificationSettings() {

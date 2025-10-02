@@ -19,12 +19,12 @@ public final class GetZeroTrustGatewayLoggingResult {
      */
     private String id;
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * @return Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      * 
      */
     private Boolean redactPii;
     /**
-     * @return Logging settings by rule type.
+     * @return Configure logging settings for each rule type.
      * 
      */
     private GetZeroTrustGatewayLoggingSettingsByRuleType settingsByRuleType;
@@ -41,14 +41,14 @@ public final class GetZeroTrustGatewayLoggingResult {
         return this.id;
     }
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * @return Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      * 
      */
     public Boolean redactPii() {
         return this.redactPii;
     }
     /**
-     * @return Logging settings by rule type.
+     * @return Configure logging settings for each rule type.
      * 
      */
     public GetZeroTrustGatewayLoggingSettingsByRuleType settingsByRuleType() {

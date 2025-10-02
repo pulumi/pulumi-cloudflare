@@ -11,101 +11,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayPolicySchedule {
-    /**
-     * @return The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
-     * 
-     */
     private @Nullable String fri;
-    /**
-     * @return The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
-     * 
-     */
     private @Nullable String mon;
-    /**
-     * @return The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
-     * 
-     */
     private @Nullable String sat;
-    /**
-     * @return The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
-     * 
-     */
     private @Nullable String sun;
-    /**
-     * @return The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
-     * 
-     */
     private @Nullable String thu;
     /**
-     * @return The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user&#39;s source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user&#39;s connected data center.
+     * @return Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user&#39;s IP address. Colo time zone is used when the user&#39;s IP address does not resolve to a location.
      * 
      */
     private @Nullable String timeZone;
-    /**
-     * @return The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
-     * 
-     */
     private @Nullable String tue;
-    /**
-     * @return The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
-     * 
-     */
     private @Nullable String wed;
 
     private ZeroTrustGatewayPolicySchedule() {}
-    /**
-     * @return The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
-     * 
-     */
     public Optional<String> fri() {
         return Optional.ofNullable(this.fri);
     }
-    /**
-     * @return The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
-     * 
-     */
     public Optional<String> mon() {
         return Optional.ofNullable(this.mon);
     }
-    /**
-     * @return The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
-     * 
-     */
     public Optional<String> sat() {
         return Optional.ofNullable(this.sat);
     }
-    /**
-     * @return The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
-     * 
-     */
     public Optional<String> sun() {
         return Optional.ofNullable(this.sun);
     }
-    /**
-     * @return The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
-     * 
-     */
     public Optional<String> thu() {
         return Optional.ofNullable(this.thu);
     }
     /**
-     * @return The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user&#39;s source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user&#39;s connected data center.
+     * @return Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user&#39;s IP address. Colo time zone is used when the user&#39;s IP address does not resolve to a location.
      * 
      */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
-    /**
-     * @return The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
-     * 
-     */
     public Optional<String> tue() {
         return Optional.ofNullable(this.tue);
     }
-    /**
-     * @return The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
-     * 
-     */
     public Optional<String> wed() {
         return Optional.ofNullable(this.wed);
     }

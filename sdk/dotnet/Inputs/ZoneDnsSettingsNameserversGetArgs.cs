@@ -22,8 +22,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// Nameserver type
         /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public ZoneDnsSettingsNameserversGetArgs()
         {

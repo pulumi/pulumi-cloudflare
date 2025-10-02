@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsEgress {
     /**
-     * @return The IPv4 address to be used for egress.
+     * @return Specify the IPv4 address to use for egress.
      * 
      */
     private String ipv4;
     /**
-     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+     * @return Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     private String ipv4Fallback;
     /**
-     * @return The IPv6 range to be used for egress.
+     * @return Specify the IPv6 range to use for egress.
      * 
      */
     private String ipv6;
 
     private GetZeroTrustGatewayPolicyRuleSettingsEgress() {}
     /**
-     * @return The IPv4 address to be used for egress.
+     * @return Specify the IPv4 address to use for egress.
      * 
      */
     public String ipv4() {
         return this.ipv4;
     }
     /**
-     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+     * @return Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     public String ipv4Fallback() {
         return this.ipv4Fallback;
     }
     /**
-     * @return The IPv6 range to be used for egress.
+     * @return Specify the IPv6 range to use for egress.
      * 
      */
     public String ipv6() {

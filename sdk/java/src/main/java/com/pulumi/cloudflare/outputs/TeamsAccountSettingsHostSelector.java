@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsHostSelector {
     /**
-     * @return Enable filtering via hosts for egress policies.
+     * @return Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     private @Nullable Boolean enabled;
 
     private TeamsAccountSettingsHostSelector() {}
     /**
-     * @return Enable filtering via hosts for egress policies.
+     * @return Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     public Optional<Boolean> enabled() {

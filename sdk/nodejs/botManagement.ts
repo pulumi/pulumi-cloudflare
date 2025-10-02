@@ -16,10 +16,11 @@ import * as utilities from "./utilities";
  * const exampleBotManagement = new cloudflare.BotManagement("example_bot_management", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     aiBotsProtection: "block",
+ *     cfRobotsVariant: "policy_only",
  *     crawlerProtection: "enabled",
  *     enableJs: true,
  *     fightMode: true,
- *     isRobotsTxtManaged: true,
+ *     isRobotsTxtManaged: false,
  * });
  * ```
  *
@@ -70,6 +71,11 @@ export class BotManagement extends pulumi.CustomResource {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     declare public readonly bmCookieEnabled: pulumi.Output<boolean>;
+    /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: "off", "policyOnly".
+     */
+    declare public readonly cfRobotsVariant: pulumi.Output<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -145,6 +151,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["aiBotsProtection"] = state?.aiBotsProtection;
             resourceInputs["autoUpdateModel"] = state?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = state?.bmCookieEnabled;
+            resourceInputs["cfRobotsVariant"] = state?.cfRobotsVariant;
             resourceInputs["crawlerProtection"] = state?.crawlerProtection;
             resourceInputs["enableJs"] = state?.enableJs;
             resourceInputs["fightMode"] = state?.fightMode;
@@ -166,6 +173,7 @@ export class BotManagement extends pulumi.CustomResource {
             resourceInputs["aiBotsProtection"] = args?.aiBotsProtection;
             resourceInputs["autoUpdateModel"] = args?.autoUpdateModel;
             resourceInputs["bmCookieEnabled"] = args?.bmCookieEnabled;
+            resourceInputs["cfRobotsVariant"] = args?.cfRobotsVariant;
             resourceInputs["crawlerProtection"] = args?.crawlerProtection;
             resourceInputs["enableJs"] = args?.enableJs;
             resourceInputs["fightMode"] = args?.fightMode;
@@ -202,6 +210,11 @@ export interface BotManagementState {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     bmCookieEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: "off", "policyOnly".
+     */
+    cfRobotsVariant?: pulumi.Input<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
@@ -279,6 +292,11 @@ export interface BotManagementArgs {
      * Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
      */
     bmCookieEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: "off", "policyOnly".
+     */
+    cfRobotsVariant?: pulumi.Input<string>;
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".

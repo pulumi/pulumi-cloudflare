@@ -27,7 +27,7 @@ class GetZeroTrustOrganizationResult:
     """
     A collection of values returned by getZeroTrustOrganization.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, created_at=None, custom_pages=None, id=None, is_ui_read_only=None, login_design=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, updated_at=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, auth_domain=None, auto_redirect_to_identity=None, custom_pages=None, id=None, is_ui_read_only=None, login_design=None, name=None, session_duration=None, ui_read_only_toggle_reason=None, user_seat_expiration_inactive_time=None, warp_auth_session_duration=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,9 +40,6 @@ class GetZeroTrustOrganizationResult:
         if auto_redirect_to_identity and not isinstance(auto_redirect_to_identity, bool):
             raise TypeError("Expected argument 'auto_redirect_to_identity' to be a bool")
         pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if custom_pages and not isinstance(custom_pages, dict):
             raise TypeError("Expected argument 'custom_pages' to be a dict")
         pulumi.set(__self__, "custom_pages", custom_pages)
@@ -64,9 +61,6 @@ class GetZeroTrustOrganizationResult:
         if ui_read_only_toggle_reason and not isinstance(ui_read_only_toggle_reason, str):
             raise TypeError("Expected argument 'ui_read_only_toggle_reason' to be a str")
         pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
         if user_seat_expiration_inactive_time and not isinstance(user_seat_expiration_inactive_time, str):
             raise TypeError("Expected argument 'user_seat_expiration_inactive_time' to be a str")
         pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
@@ -108,11 +102,6 @@ class GetZeroTrustOrganizationResult:
         When set to `true`, users skip the identity provider selection step during login.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customPages")
@@ -162,11 +151,6 @@ class GetZeroTrustOrganizationResult:
         return pulumi.get(self, "ui_read_only_toggle_reason")
 
     @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
-    @_builtins.property
     @pulumi.getter(name="userSeatExpirationInactiveTime")
     def user_seat_expiration_inactive_time(self) -> _builtins.str:
         """
@@ -201,7 +185,6 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             allow_authenticate_via_warp=self.allow_authenticate_via_warp,
             auth_domain=self.auth_domain,
             auto_redirect_to_identity=self.auto_redirect_to_identity,
-            created_at=self.created_at,
             custom_pages=self.custom_pages,
             id=self.id,
             is_ui_read_only=self.is_ui_read_only,
@@ -209,7 +192,6 @@ class AwaitableGetZeroTrustOrganizationResult(GetZeroTrustOrganizationResult):
             name=self.name,
             session_duration=self.session_duration,
             ui_read_only_toggle_reason=self.ui_read_only_toggle_reason,
-            updated_at=self.updated_at,
             user_seat_expiration_inactive_time=self.user_seat_expiration_inactive_time,
             warp_auth_session_duration=self.warp_auth_session_duration,
             zone_id=self.zone_id)
@@ -244,7 +226,6 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         allow_authenticate_via_warp=pulumi.get(__ret__, 'allow_authenticate_via_warp'),
         auth_domain=pulumi.get(__ret__, 'auth_domain'),
         auto_redirect_to_identity=pulumi.get(__ret__, 'auto_redirect_to_identity'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         custom_pages=pulumi.get(__ret__, 'custom_pages'),
         id=pulumi.get(__ret__, 'id'),
         is_ui_read_only=pulumi.get(__ret__, 'is_ui_read_only'),
@@ -252,7 +233,6 @@ def get_zero_trust_organization(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         session_duration=pulumi.get(__ret__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__ret__, 'ui_read_only_toggle_reason'),
-        updated_at=pulumi.get(__ret__, 'updated_at'),
         user_seat_expiration_inactive_time=pulumi.get(__ret__, 'user_seat_expiration_inactive_time'),
         warp_auth_session_duration=pulumi.get(__ret__, 'warp_auth_session_duration'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
@@ -284,7 +264,6 @@ def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optiona
         allow_authenticate_via_warp=pulumi.get(__response__, 'allow_authenticate_via_warp'),
         auth_domain=pulumi.get(__response__, 'auth_domain'),
         auto_redirect_to_identity=pulumi.get(__response__, 'auto_redirect_to_identity'),
-        created_at=pulumi.get(__response__, 'created_at'),
         custom_pages=pulumi.get(__response__, 'custom_pages'),
         id=pulumi.get(__response__, 'id'),
         is_ui_read_only=pulumi.get(__response__, 'is_ui_read_only'),
@@ -292,7 +271,6 @@ def get_zero_trust_organization_output(account_id: Optional[pulumi.Input[Optiona
         name=pulumi.get(__response__, 'name'),
         session_duration=pulumi.get(__response__, 'session_duration'),
         ui_read_only_toggle_reason=pulumi.get(__response__, 'ui_read_only_toggle_reason'),
-        updated_at=pulumi.get(__response__, 'updated_at'),
         user_seat_expiration_inactive_time=pulumi.get(__response__, 'user_seat_expiration_inactive_time'),
         warp_auth_session_duration=pulumi.get(__response__, 'warp_auth_session_duration'),
         zone_id=pulumi.get(__response__, 'zone_id')))

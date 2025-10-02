@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,7 +22,7 @@ public final class ZeroTrustDexTestTargetPolicy {
      * @return The id of the DEX rule
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
      * @return The name of the DEX rule
      * 
@@ -40,8 +41,8 @@ public final class ZeroTrustDexTestTargetPolicy {
      * @return The id of the DEX rule
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
      * @return The name of the DEX rule
@@ -61,7 +62,7 @@ public final class ZeroTrustDexTestTargetPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean default_;
-        private @Nullable String id;
+        private String id;
         private @Nullable String name;
         public Builder() {}
         public Builder(ZeroTrustDexTestTargetPolicy defaults) {
@@ -78,8 +79,10 @@ public final class ZeroTrustDexTestTargetPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustDexTestTargetPolicy", "id");
+            }
             this.id = id;
             return this;
         }

@@ -482,6 +482,10 @@ import com.pulumi.cloudflare.inputs.GetWorkersScriptSubdomainArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersScriptSubdomainPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersScriptsArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersScriptsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+import com.pulumi.cloudflare.inputs.GetWorkflowPlainArgs;
+import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+import com.pulumi.cloudflare.inputs.GetWorkflowsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationsArgs;
@@ -606,6 +610,10 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustListArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustListsArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustListsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutePlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustOrganizationArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustOrganizationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustRiskBehaviorArgs;
@@ -898,6 +906,8 @@ import com.pulumi.cloudflare.outputs.GetWorkersRoutesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptResult;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptSubdomainResult;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetWorkflowResult;
+import com.pulumi.cloudflare.outputs.GetWorkflowsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessCustomPageResult;
@@ -960,6 +970,8 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayProxyEndpointResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustListResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustListsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustNetworkHostnameRouteResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustNetworkHostnameRoutesInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustOrganizationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustRiskBehaviorResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustRiskScoringIntegrationResult;
@@ -45702,7 +45714,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorker = CloudflareFunctions.getWorker(GetWorkerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -45741,7 +45753,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorker = CloudflareFunctions.getWorker(GetWorkerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -45780,7 +45792,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorker = CloudflareFunctions.getWorker(GetWorkerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -45819,7 +45831,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorker = CloudflareFunctions.getWorker(GetWorkerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -45858,7 +45870,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorker = CloudflareFunctions.getWorker(GetWorkerArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -45897,8 +45909,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersion = CloudflareFunctions.getWorkerVersion(GetWorkerVersionArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .workerId("worker_id")
+     *             .versionId("version_id")
      *             .include("modules")
      *             .build());
      * 
@@ -45938,8 +45950,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersion = CloudflareFunctions.getWorkerVersion(GetWorkerVersionArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .workerId("worker_id")
+     *             .versionId("version_id")
      *             .include("modules")
      *             .build());
      * 
@@ -45979,8 +45991,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersion = CloudflareFunctions.getWorkerVersion(GetWorkerVersionArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .workerId("worker_id")
+     *             .versionId("version_id")
      *             .include("modules")
      *             .build());
      * 
@@ -46020,8 +46032,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersion = CloudflareFunctions.getWorkerVersion(GetWorkerVersionArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .workerId("worker_id")
+     *             .versionId("version_id")
      *             .include("modules")
      *             .build());
      * 
@@ -46061,8 +46073,8 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersion = CloudflareFunctions.getWorkerVersion(GetWorkerVersionArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .versionId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+     *             .workerId("worker_id")
+     *             .versionId("version_id")
      *             .include("modules")
      *             .build());
      * 
@@ -46102,7 +46114,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersions = CloudflareFunctions.getWorkerVersions(GetWorkerVersionsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -46141,7 +46153,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersions = CloudflareFunctions.getWorkerVersions(GetWorkerVersionsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -46180,7 +46192,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersions = CloudflareFunctions.getWorkerVersions(GetWorkerVersionsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -46219,7 +46231,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersions = CloudflareFunctions.getWorkerVersions(GetWorkerVersionsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -46258,7 +46270,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleWorkerVersions = CloudflareFunctions.getWorkerVersions(GetWorkerVersionsArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .workerId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .workerId("worker_id")
      *             .build());
      * 
      *     }
@@ -49214,6 +49226,396 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetWorkersScriptsInvokeResult> getWorkersScriptsPlain(GetWorkersScriptsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getWorkersScripts:getWorkersScripts", TypeShape.of(GetWorkersScriptsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflow = CloudflareFunctions.getWorkflow(GetWorkflowArgs.builder()
+     *             .accountId("account_id")
+     *             .workflowName("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowResult> getWorkflow(GetWorkflowArgs args) {
+        return getWorkflow(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflow = CloudflareFunctions.getWorkflow(GetWorkflowArgs.builder()
+     *             .accountId("account_id")
+     *             .workflowName("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowResult> getWorkflowPlain(GetWorkflowPlainArgs args) {
+        return getWorkflowPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflow = CloudflareFunctions.getWorkflow(GetWorkflowArgs.builder()
+     *             .accountId("account_id")
+     *             .workflowName("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowResult> getWorkflow(GetWorkflowArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkflow:getWorkflow", TypeShape.of(GetWorkflowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflow = CloudflareFunctions.getWorkflow(GetWorkflowArgs.builder()
+     *             .accountId("account_id")
+     *             .workflowName("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowResult> getWorkflow(GetWorkflowArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkflow:getWorkflow", TypeShape.of(GetWorkflowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflow = CloudflareFunctions.getWorkflow(GetWorkflowArgs.builder()
+     *             .accountId("account_id")
+     *             .workflowName("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowResult> getWorkflowPlain(GetWorkflowPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getWorkflow:getWorkflow", TypeShape.of(GetWorkflowResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflows = CloudflareFunctions.getWorkflows(GetWorkflowsArgs.builder()
+     *             .accountId("account_id")
+     *             .search("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowsInvokeResult> getWorkflows(GetWorkflowsArgs args) {
+        return getWorkflows(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflows = CloudflareFunctions.getWorkflows(GetWorkflowsArgs.builder()
+     *             .accountId("account_id")
+     *             .search("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowsInvokeResult> getWorkflowsPlain(GetWorkflowsPlainArgs args) {
+        return getWorkflowsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflows = CloudflareFunctions.getWorkflows(GetWorkflowsArgs.builder()
+     *             .accountId("account_id")
+     *             .search("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowsInvokeResult> getWorkflows(GetWorkflowsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkflows:getWorkflows", TypeShape.of(GetWorkflowsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflows = CloudflareFunctions.getWorkflows(GetWorkflowsArgs.builder()
+     *             .accountId("account_id")
+     *             .search("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkflowsInvokeResult> getWorkflows(GetWorkflowsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkflows:getWorkflows", TypeShape.of(GetWorkflowsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkflowsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkflows = CloudflareFunctions.getWorkflows(GetWorkflowsArgs.builder()
+     *             .accountId("account_id")
+     *             .search("x")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkflowsInvokeResult> getWorkflowsPlain(GetWorkflowsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getWorkflows:getWorkflows", TypeShape.of(GetWorkflowsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -62310,6 +62712,416 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZeroTrustListsInvokeResult> getZeroTrustListsPlain(GetZeroTrustListsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustLists:getZeroTrustLists", TypeShape.of(GetZeroTrustListsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoute = CloudflareFunctions.getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .hostnameRouteId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs args) {
+        return getZeroTrustNetworkHostnameRoute(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoute = CloudflareFunctions.getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .hostnameRouteId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnameRoutePlain(GetZeroTrustNetworkHostnameRoutePlainArgs args) {
+        return getZeroTrustNetworkHostnameRoutePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoute = CloudflareFunctions.getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .hostnameRouteId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute", TypeShape.of(GetZeroTrustNetworkHostnameRouteResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoute = CloudflareFunctions.getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .hostnameRouteId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute", TypeShape.of(GetZeroTrustNetworkHostnameRouteResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRouteArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoute = CloudflareFunctions.getZeroTrustNetworkHostnameRoute(GetZeroTrustNetworkHostnameRouteArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .hostnameRouteId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnameRoutePlain(GetZeroTrustNetworkHostnameRoutePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute", TypeShape.of(GetZeroTrustNetworkHostnameRouteResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoutes = CloudflareFunctions.getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .id("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .comment("example%20comment")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .hostname("office-1.local")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs args) {
+        return getZeroTrustNetworkHostnameRoutes(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoutes = CloudflareFunctions.getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .id("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .comment("example%20comment")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .hostname("office-1.local")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetworkHostnameRoutesPlain(GetZeroTrustNetworkHostnameRoutesPlainArgs args) {
+        return getZeroTrustNetworkHostnameRoutesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoutes = CloudflareFunctions.getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .id("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .comment("example%20comment")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .hostname("office-1.local")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", TypeShape.of(GetZeroTrustNetworkHostnameRoutesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoutes = CloudflareFunctions.getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .id("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .comment("example%20comment")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .hostname("office-1.local")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", TypeShape.of(GetZeroTrustNetworkHostnameRoutesInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustNetworkHostnameRoutesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustNetworkHostnameRoutes = CloudflareFunctions.getZeroTrustNetworkHostnameRoutes(GetZeroTrustNetworkHostnameRoutesArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .id("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .comment("example%20comment")
+     *             .existedAt("2019-10-12T07%3A20%3A50.52Z")
+     *             .hostname("office-1.local")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetworkHostnameRoutesPlain(GetZeroTrustNetworkHostnameRoutesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes", TypeShape.of(GetZeroTrustNetworkHostnameRoutesInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

@@ -53,6 +53,11 @@ export interface GetBotManagementResult {
      */
     readonly bmCookieEnabled: boolean;
     /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: "off", "policyOnly".
+     */
+    readonly cfRobotsVariant: string;
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: "enabled", "disabled".
      */

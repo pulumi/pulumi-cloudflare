@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsNotificationSettingsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set notification on.
+        /// Enable notification.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If true, context information will be passed as query parameters.
+        /// Indicates whether to pass the context information as query parameters.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Msg { get; set; }
 
         /// <summary>
-        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        /// Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }

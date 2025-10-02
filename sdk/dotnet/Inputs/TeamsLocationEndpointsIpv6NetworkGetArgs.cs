@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsLocationEndpointsIpv6NetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv6 address or IPv6 CIDR.
+        /// Specify the IPv6 address or IPv6 CIDR.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

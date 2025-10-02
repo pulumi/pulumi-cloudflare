@@ -73,42 +73,42 @@ public class ZeroTrustGatewayProxyEndpoint extends com.pulumi.resources.CustomRe
         return this.createdAt;
     }
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     @Export(name="ips", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ips;
 
     /**
-     * @return A list of CIDRs to restrict ingress connections.
+     * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     public Output<List<String>> ips() {
         return this.ips;
     }
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the proxy endpoint.
+     * @return Specify the name of the proxy endpoint.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The subdomain to be used as the destination in the proxy client.
+     * Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**
-     * @return The subdomain to be used as the destination in the proxy client.
+     * @return Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     public Output<String> subdomain() {

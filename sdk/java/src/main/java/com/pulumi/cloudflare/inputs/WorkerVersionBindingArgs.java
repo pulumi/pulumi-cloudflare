@@ -34,6 +34,36 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * List of allowed destination addresses.
+     * 
+     */
+    @Import(name="allowedDestinationAddresses")
+    private @Nullable Output<List<String>> allowedDestinationAddresses;
+
+    /**
+     * @return List of allowed destination addresses.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedDestinationAddresses() {
+        return Optional.ofNullable(this.allowedDestinationAddresses);
+    }
+
+    /**
+     * List of allowed sender addresses.
+     * 
+     */
+    @Import(name="allowedSenderAddresses")
+    private @Nullable Output<List<String>> allowedSenderAddresses;
+
+    /**
+     * @return List of allowed sender addresses.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedSenderAddresses() {
+        return Optional.ofNullable(this.allowedSenderAddresses);
+    }
+
+    /**
      * R2 bucket to bind to.
      * 
      */
@@ -91,6 +121,21 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> dataset() {
         return Optional.ofNullable(this.dataset);
+    }
+
+    /**
+     * Destination address for the email.
+     * 
+     */
+    @Import(name="destinationAddress")
+    private @Nullable Output<String> destinationAddress;
+
+    /**
+     * @return Destination address for the email.
+     * 
+     */
+    public Optional<Output<String>> destinationAddress() {
+        return Optional.ofNullable(this.destinationAddress);
     }
 
     /**
@@ -171,6 +216,23 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
@@ -246,6 +308,21 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * 
+     */
+    @Import(name="oldName")
+    private @Nullable Output<String> oldName;
+
+    /**
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * 
+     */
+    public Optional<Output<String>> oldName() {
+        return Optional.ofNullable(this.oldName);
+    }
+
+    /**
      * Outbound worker.
      * 
      */
@@ -258,6 +335,21 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<WorkerVersionBindingOutboundArgs>> outbound() {
         return Optional.ofNullable(this.outbound);
+    }
+
+    /**
+     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     */
+    @Import(name="part")
+    private @Nullable Output<String> part;
+
+    /**
+     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     */
+    public Optional<Output<String>> part() {
+        return Optional.ofNullable(this.part);
     }
 
     /**
@@ -367,7 +459,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -375,7 +467,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
      * 
      */
     public Output<String> type() {
@@ -398,6 +490,21 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * 
+     */
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    /**
+     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * 
+     */
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
+    /**
      * Name of the Workflow to bind to.
      * 
      */
@@ -416,21 +523,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
     private WorkerVersionBindingArgs(WorkerVersionBindingArgs $) {
         this.algorithm = $.algorithm;
+        this.allowedDestinationAddresses = $.allowedDestinationAddresses;
+        this.allowedSenderAddresses = $.allowedSenderAddresses;
         this.bucketName = $.bucketName;
         this.certificateId = $.certificateId;
         this.className = $.className;
         this.dataset = $.dataset;
+        this.destinationAddress = $.destinationAddress;
         this.environment = $.environment;
         this.format = $.format;
         this.id = $.id;
         this.indexName = $.indexName;
         this.json = $.json;
+        this.jurisdiction = $.jurisdiction;
         this.keyBase64 = $.keyBase64;
         this.keyJwk = $.keyJwk;
         this.name = $.name;
         this.namespace = $.namespace;
         this.namespaceId = $.namespaceId;
+        this.oldName = $.oldName;
         this.outbound = $.outbound;
+        this.part = $.part;
         this.pipeline = $.pipeline;
         this.queueName = $.queueName;
         this.scriptName = $.scriptName;
@@ -440,6 +553,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         this.text = $.text;
         this.type = $.type;
         this.usages = $.usages;
+        this.versionId = $.versionId;
         this.workflowName = $.workflowName;
     }
 
@@ -480,6 +594,68 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder algorithm(String algorithm) {
             return algorithm(Output.of(algorithm));
+        }
+
+        /**
+         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedDestinationAddresses(@Nullable Output<List<String>> allowedDestinationAddresses) {
+            $.allowedDestinationAddresses = allowedDestinationAddresses;
+            return this;
+        }
+
+        /**
+         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedDestinationAddresses(List<String> allowedDestinationAddresses) {
+            return allowedDestinationAddresses(Output.of(allowedDestinationAddresses));
+        }
+
+        /**
+         * @param allowedDestinationAddresses List of allowed destination addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedDestinationAddresses(String... allowedDestinationAddresses) {
+            return allowedDestinationAddresses(List.of(allowedDestinationAddresses));
+        }
+
+        /**
+         * @param allowedSenderAddresses List of allowed sender addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedSenderAddresses(@Nullable Output<List<String>> allowedSenderAddresses) {
+            $.allowedSenderAddresses = allowedSenderAddresses;
+            return this;
+        }
+
+        /**
+         * @param allowedSenderAddresses List of allowed sender addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedSenderAddresses(List<String> allowedSenderAddresses) {
+            return allowedSenderAddresses(Output.of(allowedSenderAddresses));
+        }
+
+        /**
+         * @param allowedSenderAddresses List of allowed sender addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedSenderAddresses(String... allowedSenderAddresses) {
+            return allowedSenderAddresses(List.of(allowedSenderAddresses));
         }
 
         /**
@@ -564,6 +740,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
+        }
+
+        /**
+         * @param destinationAddress Destination address for the email.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationAddress(@Nullable Output<String> destinationAddress) {
+            $.destinationAddress = destinationAddress;
+            return this;
+        }
+
+        /**
+         * @param destinationAddress Destination address for the email.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinationAddress(String destinationAddress) {
+            return destinationAddress(Output.of(destinationAddress));
         }
 
         /**
@@ -674,6 +871,29 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+         * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
+        }
+
+        /**
          * @param keyBase64 Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
          * 
          * @return builder
@@ -779,6 +999,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oldName(@Nullable Output<String> oldName) {
+            $.oldName = oldName;
+            return this;
+        }
+
+        /**
+         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oldName(String oldName) {
+            return oldName(Output.of(oldName));
+        }
+
+        /**
          * @param outbound Outbound worker.
          * 
          * @return builder
@@ -797,6 +1038,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder outbound(WorkerVersionBindingOutboundArgs outbound) {
             return outbound(Output.of(outbound));
+        }
+
+        /**
+         * @param part The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder part(@Nullable Output<String> part) {
+            $.part = part;
+            return this;
+        }
+
+        /**
+         * @param part The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder part(String part) {
+            return part(Output.of(part));
         }
 
         /**
@@ -948,7 +1210,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
          * 
          * @return builder
          * 
@@ -960,7 +1222,7 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
          * 
          * @return builder
          * 
@@ -998,6 +1260,27 @@ public final class WorkerVersionBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder usages(String... usages) {
             return usages(List.of(usages));
+        }
+
+        /**
+         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        /**
+         * @param versionId Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         /**

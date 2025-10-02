@@ -80,14 +80,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.bindings;
     }
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      * 
      */
     @Export(name="bodyPart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bodyPart;
 
     /**
-     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * @return Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      * 
      */
     public Output<Optional<String>> bodyPart() {
@@ -122,28 +122,28 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.compatibilityFlags;
     }
     /**
-     * Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
+     * Module or Service Worker contents of the Worker. Conflicts with `content_file`.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
+     * @return Module or Service Worker contents of the Worker. Conflicts with `content_file`.
      * 
      */
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
      * 
      */
     @Export(name="contentFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentFile;
 
     /**
-     * @return Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
      * 
      */
     public Output<Optional<String>> contentFile() {
@@ -318,14 +318,14 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.logpush;
     }
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
     @Export(name="mainModule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mainModule;
 
     /**
-     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * @return Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
     public Output<Optional<String>> mainModule() {

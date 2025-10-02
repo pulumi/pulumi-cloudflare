@@ -16,14 +16,14 @@ public final class TeamsAccountSettingsHostSelectorArgs extends com.pulumi.resou
     public static final TeamsAccountSettingsHostSelectorArgs Empty = new TeamsAccountSettingsHostSelectorArgs();
 
     /**
-     * Enable filtering via hosts for egress policies.
+     * Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable filtering via hosts for egress policies.
+     * @return Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class TeamsAccountSettingsHostSelectorArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enabled Enable filtering via hosts for egress policies.
+         * @param enabled Specify whether to enable filtering via hosts for egress policies.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TeamsAccountSettingsHostSelectorArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enabled Enable filtering via hosts for egress policies.
+         * @param enabled Specify whether to enable filtering via hosts for egress policies.
          * 
          * @return builder
          * 

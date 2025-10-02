@@ -28,302 +28,302 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettings {
     /**
-     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * @return Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     private @Nullable Map<String,List<String>> addHeaders;
     /**
-     * @return Set by parent MSP accounts to enable their children to bypass this rule.
+     * @return Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      * 
      */
     private @Nullable Boolean allowChildBypass;
     /**
-     * @return Settings for the Audit SSH action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsAuditSsh auditSsh;
     /**
-     * @return Configure how browser isolation behaves.
+     * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
     /**
-     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * @return Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsBlockPage blockPage;
     /**
-     * @return Enable the custom block page.
+     * @return Enable the custom block page. Settable only for `dns` rules with action `block`.
      * 
      */
     private @Nullable Boolean blockPageEnabled;
     /**
-     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * @return Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      * 
      */
     private @Nullable String blockReason;
     /**
-     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
+     * @return Set to enable MSP accounts to bypass their parent&#39;s rules. Only MSP child accounts can set this. Settable for all types of rules.
      * 
      */
     private @Nullable Boolean bypassParentRule;
     /**
-     * @return Configure how session check behaves.
+     * @return Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsDnsResolvers dnsResolvers;
     /**
-     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsEgress egress;
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private @Nullable Boolean ignoreCnameCategoryMatches;
     /**
-     * @return INSECURE - disable DNSSEC validation (for Allow actions).
+     * @return Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      * 
      */
     private @Nullable Boolean insecureDisableDnssecValidation;
     /**
-     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private @Nullable Boolean ipCategories;
     /**
-     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private @Nullable Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address. and port.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsL4override l4override;
     /**
-     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
+     * @return Configure a notification to display on the user&#39;s device when this rule matched. Settable for all types of rules with the action set to `block`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsNotificationSettings notificationSettings;
     /**
-     * @return Override matching DNS queries with a hostname.
+     * @return Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     private @Nullable String overrideHost;
     /**
-     * @return Override matching DNS queries with an IP or set of IPs.
+     * @return Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     private @Nullable List<String> overrideIps;
     /**
-     * @return Configure DLP payload logging.
+     * @return Configure DLP payload logging. Settable only for `http` rules.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
     /**
-     * @return Settings that apply to quarantine rules.
+     * @return Configure settings that apply to quarantine rules. Settable only for `http` rules.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsQuarantine quarantine;
     /**
-     * @return Settings that apply to redirect rules.
+     * @return Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsRedirect redirect;
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsResolveDnsInternally resolveDnsInternally;
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private @Nullable Boolean resolveDnsThroughCloudflare;
     /**
-     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     private @Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert;
 
     private TeamsRuleRuleSettings() {}
     /**
-     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * @return Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     public Map<String,List<String>> addHeaders() {
         return this.addHeaders == null ? Map.of() : this.addHeaders;
     }
     /**
-     * @return Set by parent MSP accounts to enable their children to bypass this rule.
+     * @return Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      * 
      */
     public Optional<Boolean> allowChildBypass() {
         return Optional.ofNullable(this.allowChildBypass);
     }
     /**
-     * @return Settings for the Audit SSH action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
      * 
      */
     public Optional<TeamsRuleRuleSettingsAuditSsh> auditSsh() {
         return Optional.ofNullable(this.auditSsh);
     }
     /**
-     * @return Configure how browser isolation behaves.
+     * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsBisoAdminControls> bisoAdminControls() {
         return Optional.ofNullable(this.bisoAdminControls);
     }
     /**
-     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * @return Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsBlockPage> blockPage() {
         return Optional.ofNullable(this.blockPage);
     }
     /**
-     * @return Enable the custom block page.
+     * @return Enable the custom block page. Settable only for `dns` rules with action `block`.
      * 
      */
     public Optional<Boolean> blockPageEnabled() {
         return Optional.ofNullable(this.blockPageEnabled);
     }
     /**
-     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * @return Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      * 
      */
     public Optional<String> blockReason() {
         return Optional.ofNullable(this.blockReason);
     }
     /**
-     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
+     * @return Set to enable MSP accounts to bypass their parent&#39;s rules. Only MSP child accounts can set this. Settable for all types of rules.
      * 
      */
     public Optional<Boolean> bypassParentRule() {
         return Optional.ofNullable(this.bypassParentRule);
     }
     /**
-     * @return Configure how session check behaves.
+     * @return Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsCheckSession> checkSession() {
         return Optional.ofNullable(this.checkSession);
     }
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public Optional<TeamsRuleRuleSettingsDnsResolvers> dnsResolvers() {
         return Optional.ofNullable(this.dnsResolvers);
     }
     /**
-     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      * 
      */
     public Optional<TeamsRuleRuleSettingsEgress> egress() {
         return Optional.ofNullable(this.egress);
     }
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Optional<Boolean> ignoreCnameCategoryMatches() {
         return Optional.ofNullable(this.ignoreCnameCategoryMatches);
     }
     /**
-     * @return INSECURE - disable DNSSEC validation (for Allow actions).
+     * @return Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      * 
      */
     public Optional<Boolean> insecureDisableDnssecValidation() {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
     }
     /**
-     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Optional<Boolean> ipCategories() {
         return Optional.ofNullable(this.ipCategories);
     }
     /**
-     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Optional<Boolean> ipIndicatorFeeds() {
         return Optional.ofNullable(this.ipIndicatorFeeds);
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address. and port.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsL4override> l4override() {
         return Optional.ofNullable(this.l4override);
     }
     /**
-     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
+     * @return Configure a notification to display on the user&#39;s device when this rule matched. Settable for all types of rules with the action set to `block`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsNotificationSettings> notificationSettings() {
         return Optional.ofNullable(this.notificationSettings);
     }
     /**
-     * @return Override matching DNS queries with a hostname.
+     * @return Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     public Optional<String> overrideHost() {
         return Optional.ofNullable(this.overrideHost);
     }
     /**
-     * @return Override matching DNS queries with an IP or set of IPs.
+     * @return Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     public List<String> overrideIps() {
         return this.overrideIps == null ? List.of() : this.overrideIps;
     }
     /**
-     * @return Configure DLP payload logging.
+     * @return Configure DLP payload logging. Settable only for `http` rules.
      * 
      */
     public Optional<TeamsRuleRuleSettingsPayloadLog> payloadLog() {
         return Optional.ofNullable(this.payloadLog);
     }
     /**
-     * @return Settings that apply to quarantine rules.
+     * @return Configure settings that apply to quarantine rules. Settable only for `http` rules.
      * 
      */
     public Optional<TeamsRuleRuleSettingsQuarantine> quarantine() {
         return Optional.ofNullable(this.quarantine);
     }
     /**
-     * @return Settings that apply to redirect rules.
+     * @return Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsRedirect> redirect() {
         return Optional.ofNullable(this.redirect);
     }
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public Optional<TeamsRuleRuleSettingsResolveDnsInternally> resolveDnsInternally() {
         return Optional.ofNullable(this.resolveDnsInternally);
     }
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public Optional<Boolean> resolveDnsThroughCloudflare() {
         return Optional.ofNullable(this.resolveDnsThroughCloudflare);
     }
     /**
-     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     public Optional<TeamsRuleRuleSettingsUntrustedCert> untrustedCert() {

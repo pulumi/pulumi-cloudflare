@@ -62,7 +62,6 @@ export interface GetZeroTrustAccessServiceTokenResult {
      * The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
      */
     readonly clientId: string;
-    readonly createdAt: string;
     /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
@@ -73,7 +72,6 @@ export interface GetZeroTrustAccessServiceTokenResult {
      * UUID.
      */
     readonly id: string;
-    readonly lastSeenAt: string;
     /**
      * The name of the service token.
      */
@@ -82,7 +80,6 @@ export interface GetZeroTrustAccessServiceTokenResult {
      * UUID.
      */
     readonly serviceTokenId?: string;
-    readonly updatedAt: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

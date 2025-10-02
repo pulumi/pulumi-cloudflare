@@ -32,7 +32,7 @@ public final class GetZeroTrustListsInvokeResult {
      */
     private List<GetZeroTrustListsResult> results;
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -64,7 +64,7 @@ public final class GetZeroTrustListsInvokeResult {
         return this.results;
     }
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */

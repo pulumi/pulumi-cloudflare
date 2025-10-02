@@ -52,11 +52,11 @@ type ZeroTrustGatewayProxyEndpoint struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -108,11 +108,11 @@ func GetZeroTrustGatewayProxyEndpoint(ctx *pulumi.Context,
 type zeroTrustGatewayProxyEndpointState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name *string `pulumi:"name"`
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain *string `pulumi:"subdomain"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -120,11 +120,11 @@ type zeroTrustGatewayProxyEndpointState struct {
 type ZeroTrustGatewayProxyEndpointState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringPtrInput
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -135,18 +135,18 @@ func (ZeroTrustGatewayProxyEndpointState) ElementType() reflect.Type {
 
 type zeroTrustGatewayProxyEndpointArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
 type ZeroTrustGatewayProxyEndpointArgs struct {
 	AccountId pulumi.StringInput
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringInput
 }
 
@@ -245,17 +245,17 @@ func (o ZeroTrustGatewayProxyEndpointOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// A list of CIDRs to restrict ingress connections.
+// Specify the list of CIDRs to restrict ingress connections.
 func (o ZeroTrustGatewayProxyEndpointOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringArrayOutput { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// The name of the proxy endpoint.
+// Specify the name of the proxy endpoint.
 func (o ZeroTrustGatewayProxyEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The subdomain to be used as the destination in the proxy client.
+// Specify the subdomain to use as the destination in the proxy client.
 func (o ZeroTrustGatewayProxyEndpointOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayProxyEndpoint) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
 }

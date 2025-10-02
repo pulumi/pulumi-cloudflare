@@ -16,14 +16,14 @@ public final class ZeroTrustGatewaySettingsSettingsTlsDecryptArgs extends com.pu
     public static final ZeroTrustGatewaySettingsSettingsTlsDecryptArgs Empty = new ZeroTrustGatewaySettingsSettingsTlsDecryptArgs();
 
     /**
-     * Enable inspecting encrypted HTTP traffic.
+     * Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class ZeroTrustGatewaySettingsSettingsTlsDecryptArgs extends com.pu
         }
 
         /**
-         * @param enabled Enable inspecting encrypted HTTP traffic.
+         * @param enabled Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ZeroTrustGatewaySettingsSettingsTlsDecryptArgs extends com.pu
         }
 
         /**
-         * @param enabled Enable inspecting encrypted HTTP traffic.
+         * @param enabled Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 

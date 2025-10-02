@@ -12,12 +12,12 @@ import java.util.Objects;
 public final class GetZeroTrustListsResultItem {
     private String createdAt;
     /**
-     * @return The description of the list item, if present.
+     * @return Provide the list item description (optional).
      * 
      */
     private String description;
     /**
-     * @return The value of the item in a list.
+     * @return Specify the item value.
      * 
      */
     private String value;
@@ -27,14 +27,14 @@ public final class GetZeroTrustListsResultItem {
         return this.createdAt;
     }
     /**
-     * @return The description of the list item, if present.
+     * @return Provide the list item description (optional).
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The value of the item in a list.
+     * @return Specify the item value.
      * 
      */
     public String value() {

@@ -113,47 +113,33 @@ class GetWorkerVersionResult:
     @_builtins.property
     @pulumi.getter
     def bindings(self) -> Sequence['outputs.GetWorkerVersionBindingResult']:
-        """
-        List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        """
         return pulumi.get(self, "bindings")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityDate")
     def compatibility_date(self) -> _builtins.str:
-        """
-        Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        """
         return pulumi.get(self, "compatibility_date")
 
     @_builtins.property
     @pulumi.getter(name="compatibilityFlags")
     def compatibility_flags(self) -> Sequence[_builtins.str]:
-        """
-        Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-        """
         return pulumi.get(self, "compatibility_flags")
 
     @_builtins.property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> _builtins.str:
-        """
-        When the version was created.
-        """
         return pulumi.get(self, "created_on")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def include(self) -> Optional[_builtins.str]:
         """
+        Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         Available values: "modules".
         """
         return pulumi.get(self, "include")
@@ -161,79 +147,57 @@ class GetWorkerVersionResult:
     @_builtins.property
     @pulumi.getter
     def limits(self) -> 'outputs.GetWorkerVersionLimitsResult':
-        """
-        Resource limits enforced at runtime.
-        """
         return pulumi.get(self, "limits")
 
     @_builtins.property
     @pulumi.getter(name="mainModule")
     def main_module(self) -> _builtins.str:
-        """
-        The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-        """
         return pulumi.get(self, "main_module")
 
     @_builtins.property
     @pulumi.getter
     def migrations(self) -> 'outputs.GetWorkerVersionMigrationsResult':
-        """
-        Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-        """
         return pulumi.get(self, "migrations")
 
     @_builtins.property
     @pulumi.getter
     def modules(self) -> Sequence['outputs.GetWorkerVersionModuleResult']:
-        """
-        Code, sourcemaps, and other content used at runtime.
-        """
         return pulumi.get(self, "modules")
 
     @_builtins.property
     @pulumi.getter
     def number(self) -> _builtins.int:
-        """
-        The integer version number, starting from one.
-        """
         return pulumi.get(self, "number")
 
     @_builtins.property
     @pulumi.getter
     def placement(self) -> 'outputs.GetWorkerVersionPlacementResult':
-        """
-        Placement settings for the version.
-        """
         return pulumi.get(self, "placement")
 
     @_builtins.property
     @pulumi.getter
     def source(self) -> _builtins.str:
-        """
-        The client used to create the version.
-        """
         return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter(name="usageModel")
     @_utilities.deprecated("""This attribute is deprecated.""")
     def usage_model(self) -> _builtins.str:
-        """
-        Usage model for the version.
-        Available values: "standard", "bundled", "unbound".
-        """
         return pulumi.get(self, "usage_model")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+        """
         return pulumi.get(self, "version_id")
 
     @_builtins.property
     @pulumi.getter(name="workerId")
     def worker_id(self) -> _builtins.str:
         """
-        Identifier.
+        Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 
@@ -278,15 +242,17 @@ def get_worker_version(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_worker_version = cloudflare.get_worker_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        worker_id="023e105f4ecef8ad9ca31a8372d0c353",
-        version_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        worker_id="worker_id",
+        version_id="version_id",
         include="modules")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str include: Available values: "modules".
-    :param _builtins.str worker_id: Identifier.
+    :param _builtins.str include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+           Available values: "modules".
+    :param _builtins.str version_id: Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+    :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -329,15 +295,17 @@ def get_worker_version_output(account_id: Optional[pulumi.Input[_builtins.str]] 
     import pulumi_cloudflare as cloudflare
 
     example_worker_version = cloudflare.get_worker_version(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        worker_id="023e105f4ecef8ad9ca31a8372d0c353",
-        version_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        worker_id="worker_id",
+        version_id="version_id",
         include="modules")
     ```
 
 
     :param _builtins.str account_id: Identifier.
-    :param _builtins.str include: Available values: "modules".
-    :param _builtins.str worker_id: Identifier.
+    :param _builtins.str include: Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+           Available values: "modules".
+    :param _builtins.str version_id: Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+    :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

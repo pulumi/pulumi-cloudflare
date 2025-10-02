@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * @return Configure logging settings for DNS firewall.
+     * 
+     */
     private GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+    /**
+     * @return Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     private GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+    /**
+     * @return Configure logging settings for Network firewall.
+     * 
+     */
     private GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
 
     private GetZeroTrustGatewayLoggingSettingsByRuleType() {}
+    /**
+     * @return Configure logging settings for DNS firewall.
+     * 
+     */
     public GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns() {
         return this.dns;
     }
+    /**
+     * @return Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     public GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http() {
         return this.http;
     }
+    /**
+     * @return Configure logging settings for Network firewall.
+     * 
+     */
     public GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4() {
         return this.l4;
     }

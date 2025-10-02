@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Output("bodyPart")]
         public Output<string?> BodyPart { get; private set; } = null!;
@@ -59,13 +59,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
+        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         /// </summary>
         [Output("contentFile")]
         public Output<string?> ContentFile { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Output("mainModule")]
         public Output<string?> MainModule { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
@@ -299,13 +299,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
+        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
@@ -452,13 +452,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified.
+        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `content_file` must be specified. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
@@ -548,7 +548,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }

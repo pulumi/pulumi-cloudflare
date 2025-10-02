@@ -8,12 +8,18 @@ import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelGreTunnelBgpStatus;
 import com.pulumi.cloudflare.outputs.GetMagicWanGreTunnelGreTunnelHealthCheck;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetMagicWanGreTunnelGreTunnel {
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    private Boolean automaticReturnRouting;
     private GetMagicWanGreTunnelGreTunnelBgp bgp;
     private GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus;
     /**
@@ -74,6 +80,13 @@ public final class GetMagicWanGreTunnelGreTunnel {
     private Integer ttl;
 
     private GetMagicWanGreTunnelGreTunnel() {}
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Boolean automaticReturnRouting() {
+        return this.automaticReturnRouting;
+    }
     public GetMagicWanGreTunnelGreTunnelBgp bgp() {
         return this.bgp;
     }
@@ -170,6 +183,7 @@ public final class GetMagicWanGreTunnelGreTunnel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean automaticReturnRouting;
         private GetMagicWanGreTunnelGreTunnelBgp bgp;
         private GetMagicWanGreTunnelGreTunnelBgpStatus bgpStatus;
         private String cloudflareGreEndpoint;
@@ -187,6 +201,7 @@ public final class GetMagicWanGreTunnelGreTunnel {
         public Builder() {}
         public Builder(GetMagicWanGreTunnelGreTunnel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.automaticReturnRouting = defaults.automaticReturnRouting;
     	      this.bgp = defaults.bgp;
     	      this.bgpStatus = defaults.bgpStatus;
     	      this.cloudflareGreEndpoint = defaults.cloudflareGreEndpoint;
@@ -203,6 +218,14 @@ public final class GetMagicWanGreTunnelGreTunnel {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder automaticReturnRouting(Boolean automaticReturnRouting) {
+            if (automaticReturnRouting == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanGreTunnelGreTunnel", "automaticReturnRouting");
+            }
+            this.automaticReturnRouting = automaticReturnRouting;
+            return this;
+        }
         @CustomType.Setter
         public Builder bgp(GetMagicWanGreTunnelGreTunnelBgp bgp) {
             if (bgp == null) {
@@ -317,6 +340,7 @@ public final class GetMagicWanGreTunnelGreTunnel {
         }
         public GetMagicWanGreTunnelGreTunnel build() {
             final var _resultValue = new GetMagicWanGreTunnelGreTunnel();
+            _resultValue.automaticReturnRouting = automaticReturnRouting;
             _resultValue.bgp = bgp;
             _resultValue.bgpStatus = bgpStatus;
             _resultValue.cloudflareGreEndpoint = cloudflareGreEndpoint;

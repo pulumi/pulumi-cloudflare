@@ -31,6 +31,7 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: &#34;modules&#34;.
      * 
      */
@@ -38,29 +39,38 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable String include;
 
     /**
-     * @return Available values: &#34;modules&#34;.
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
      * 
      */
     public Optional<String> include() {
         return Optional.ofNullable(this.include);
     }
 
+    /**
+     * Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     @Import(name="versionId")
     private @Nullable String versionId;
 
+    /**
+     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     public Optional<String> versionId() {
         return Optional.ofNullable(this.versionId);
     }
 
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Import(name="workerId", required=true)
     private String workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public String workerId() {
@@ -106,7 +116,8 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param include Available values: &#34;modules&#34;.
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
          * 
          * @return builder
          * 
@@ -116,13 +127,19 @@ public final class GetWorkerVersionPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param versionId Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionId(@Nullable String versionId) {
             $.versionId = versionId;
             return this;
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 

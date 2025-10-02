@@ -44,7 +44,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -52,7 +52,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     private Output<String> action;
 
     /**
-     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -66,28 +66,28 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Date of deletion, if any.
+     * Indicate the date of deletion, if any.
      * 
      */
     @Export(name="deletedAt", refs={String.class}, tree="[0]")
     private Output<String> deletedAt;
 
     /**
-     * @return Date of deletion, if any.
+     * @return Indicate the date of deletion, if any.
      * 
      */
     public Output<String> deletedAt() {
         return this.deletedAt;
     }
     /**
-     * The description of the rule.
+     * Specify the rule description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the rule.
+     * @return Specify the rule description.
      * 
      */
     public Output<Optional<String>> description() {
@@ -100,44 +100,42 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.devicePosture;
     }
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return True if the rule is enabled.
+     * @return Specify whether the rule is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     @Export(name="expiration", refs={TeamsRuleExpiration.class}, tree="[0]")
     private Output<TeamsRuleExpiration> expiration;
 
     /**
-     * @return The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * @return Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     public Output<TeamsRuleExpiration> expiration() {
         return this.expiration;
     }
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     @Export(name="filters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public Output<Optional<List<String>>> filters() {
@@ -150,32 +148,18 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.identity;
     }
     /**
-     * The name of the rule.
+     * Specify the rule name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the rule.
+     * @return Specify the rule name.
      * 
      */
     public Output<String> name() {
         return this.name;
-    }
-    /**
-     * The rule cannot be shared via the Orgs API.
-     * 
-     */
-    @Export(name="notSharable", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> notSharable;
-
-    /**
-     * @return The rule cannot be shared via the Orgs API.
-     * 
-     */
-    public Output<Boolean> notSharable() {
-        return this.notSharable;
     }
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output<Integer> precedence;
@@ -184,56 +168,62 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.precedence;
     }
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }
-    /**
-     * Additional settings that modify the rule&#39;s action.
-     * 
-     */
     @Export(name="ruleSettings", refs={TeamsRuleRuleSettings.class}, tree="[0]")
     private Output<TeamsRuleRuleSettings> ruleSettings;
 
-    /**
-     * @return Additional settings that modify the rule&#39;s action.
-     * 
-     */
     public Output<TeamsRuleRuleSettings> ruleSettings() {
         return this.ruleSettings;
     }
     /**
-     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     @Export(name="schedule", refs={TeamsRuleSchedule.class}, tree="[0]")
     private Output<TeamsRuleSchedule> schedule;
 
     /**
-     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Output<TeamsRuleSchedule> schedule() {
         return this.schedule;
     }
     /**
-     * account tag of account that created the rule.
+     * Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    @Export(name="sharable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> sharable;
+
+    /**
+     * @return Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    public Output<Boolean> sharable() {
+        return this.sharable;
+    }
+    /**
+     * Provide the account tag of the account that created the rule.
      * 
      */
     @Export(name="sourceAccount", refs={String.class}, tree="[0]")
     private Output<String> sourceAccount;
 
     /**
-     * @return account tag of account that created the rule.
+     * @return Provide the account tag of the account that created the rule.
      * 
      */
     public Output<String> sourceAccount() {
@@ -252,28 +242,28 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.updatedAt;
     }
     /**
-     * version number of the rule.
+     * Indicate the version number of the rule(read-only).
      * 
      */
     @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     /**
-     * @return version number of the rule.
+     * @return Indicate the version number of the rule(read-only).
      * 
      */
     public Output<Integer> version() {
         return this.version;
     }
     /**
-     * Warning for a misconfigured rule, if any.
+     * Indicate a warning for a misconfigured rule, if any.
      * 
      */
     @Export(name="warningStatus", refs={String.class}, tree="[0]")
     private Output<String> warningStatus;
 
     /**
-     * @return Warning for a misconfigured rule, if any.
+     * @return Indicate a warning for a misconfigured rule, if any.
      * 
      */
     public Output<String> warningStatus() {

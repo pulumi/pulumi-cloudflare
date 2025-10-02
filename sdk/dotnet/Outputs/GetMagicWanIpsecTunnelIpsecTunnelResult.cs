@@ -17,6 +17,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         /// </summary>
         public readonly bool AllowNullCipher;
+        /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        public readonly bool AutomaticReturnRouting;
         public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpResult Bgp;
         public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatusResult BgpStatus;
         /// <summary>
@@ -27,6 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// The date and time the tunnel was created.
         /// </summary>
         public readonly string CreatedOn;
+        public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesResult CustomRemoteIdentities;
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         /// </summary>
@@ -69,6 +74,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetMagicWanIpsecTunnelIpsecTunnelResult(
             bool allowNullCipher,
 
+            bool automaticReturnRouting,
+
             Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpResult bgp,
 
             Outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatusResult bgpStatus,
@@ -76,6 +83,8 @@ namespace Pulumi.Cloudflare.Outputs
             string cloudflareEndpoint,
 
             string createdOn,
+
+            Outputs.GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesResult customRemoteIdentities,
 
             string customerEndpoint,
 
@@ -98,10 +107,12 @@ namespace Pulumi.Cloudflare.Outputs
             bool replayProtection)
         {
             AllowNullCipher = allowNullCipher;
+            AutomaticReturnRouting = automaticReturnRouting;
             Bgp = bgp;
             BgpStatus = bgpStatus;
             CloudflareEndpoint = cloudflareEndpoint;
             CreatedOn = createdOn;
+            CustomRemoteIdentities = customRemoteIdentities;
             CustomerEndpoint = customerEndpoint;
             Description = description;
             HealthCheck = healthCheck;

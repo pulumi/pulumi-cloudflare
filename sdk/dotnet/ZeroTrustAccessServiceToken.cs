@@ -24,7 +24,9 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         Name = "CI/CD token",
     ///         ZoneId = "zone_id",
+    ///         ClientSecretVersion = 0,
     ///         Duration = "60m",
+    ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
     ///     });
     /// 
     /// });
@@ -58,6 +60,12 @@ namespace Pulumi.Cloudflare
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
+        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// </summary>
+        [Output("clientSecretVersion")]
+        public Output<double> ClientSecretVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Output("duration")]
@@ -71,6 +79,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// </summary>
+        [Output("previousClientSecretExpiresAt")]
+        public Output<string?> PreviousClientSecretExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -139,6 +153,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// </summary>
+        [Input("clientSecretVersion")]
+        public Input<double>? ClientSecretVersion { get; set; }
+
+        /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
@@ -149,6 +169,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// </summary>
+        [Input("previousClientSecretExpiresAt")]
+        public Input<string>? PreviousClientSecretExpiresAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -193,6 +219,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// </summary>
+        [Input("clientSecretVersion")]
+        public Input<double>? ClientSecretVersion { get; set; }
+
+        /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
         [Input("duration")]
@@ -206,6 +238,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// </summary>
+        [Input("previousClientSecretExpiresAt")]
+        public Input<string>? PreviousClientSecretExpiresAt { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

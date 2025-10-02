@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsBodyScanning
     {
         /// <summary>
-        /// Set the inspection mode to either `deep` or `shallow`.
+        /// Specify the inspection mode as either `deep` or `shallow`.
         /// Available values: "deep", "shallow".
         /// </summary>
         public readonly string? InspectionMode;

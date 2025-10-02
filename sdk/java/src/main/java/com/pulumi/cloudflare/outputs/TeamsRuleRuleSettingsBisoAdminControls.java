@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsBisoAdminControls {
     /**
-     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -34,7 +34,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
      */
     private @Nullable Boolean dk;
     /**
-     * @return Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -50,31 +50,31 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
      */
     private @Nullable Boolean du;
     /**
-     * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String keyboard;
     /**
-     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     private @Nullable String paste;
     /**
-     * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure print behavior. Default, Printing is enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String printing;
     /**
-     * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
     private @Nullable String upload;
     /**
-     * @return Indicates which version of the browser isolation controls should apply.
+     * @return Indicate which version of the browser isolation controls should apply.
      * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
@@ -82,7 +82,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
 
     private TeamsRuleRuleSettingsBisoAdminControls() {}
     /**
-     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -111,7 +111,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.dk);
     }
     /**
-     * @return Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -133,7 +133,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.du);
     }
     /**
-     * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
@@ -141,7 +141,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.keyboard);
     }
     /**
-     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
@@ -149,7 +149,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.paste);
     }
     /**
-     * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure print behavior. Default, Printing is enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
@@ -157,7 +157,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.printing);
     }
     /**
-     * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * @return Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == &#34;v2&#34;.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
@@ -165,7 +165,7 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
         return Optional.ofNullable(this.upload);
     }
     /**
-     * @return Indicates which version of the browser isolation controls should apply.
+     * @return Indicate which version of the browser isolation controls should apply.
      * Available values: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */

@@ -375,6 +375,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersScript{}
 	case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
 		r = &WorkersScriptSubdomain{}
+	case "cloudflare:index/workflow:Workflow":
+		r = &Workflow{}
 	case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
 		r = &ZeroTrustAccessApplication{}
 	case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -449,6 +451,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustList{}
 	case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
 		r = &ZeroTrustLocalFallbackDomain{}
+	case "cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute":
+		r = &ZeroTrustNetworkHostnameRoute{}
 	case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
 		r = &ZeroTrustOrganization{}
 	case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
@@ -1401,6 +1405,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/workflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/zeroTrustAccessApplication",
 		&module{version},
 	)
@@ -1582,6 +1591,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustLocalFallbackDomain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustNetworkHostnameRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

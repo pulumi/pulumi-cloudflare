@@ -9,30 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZeroTrustDexTest = new cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", {
- *     accountId: "01a7362d577a6c3019a474fd6f485823",
- *     data: {
- *         host: "https://dash.cloudflare.com",
- *         kind: "http",
- *         method: "GET",
- *     },
- *     enabled: true,
- *     interval: "30m",
- *     name: "HTTP dash health check",
- *     description: "Checks the dash endpoint every 30 minutes",
- *     targetPolicies: [{
- *         id: "id",
- *         "default": true,
- *         name: "name",
- *     }],
- *     targeted: true,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
@@ -91,8 +67,8 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
     /**
      * DEX rules targeted by this test
      */
-    declare public readonly targetPolicies: pulumi.Output<outputs.ZeroTrustDexTestTargetPolicy[] | undefined>;
-    declare public readonly targeted: pulumi.Output<boolean | undefined>;
+    declare public readonly targetPolicies: pulumi.Output<outputs.ZeroTrustDexTestTargetPolicy[]>;
+    declare public /*out*/ readonly targeted: pulumi.Output<boolean>;
     /**
      * The unique identifier for the test.
      */
@@ -144,7 +120,7 @@ export class ZeroTrustDexTest extends pulumi.CustomResource {
             resourceInputs["interval"] = args?.interval;
             resourceInputs["name"] = args?.name;
             resourceInputs["targetPolicies"] = args?.targetPolicies;
-            resourceInputs["targeted"] = args?.targeted;
+            resourceInputs["targeted"] = undefined /*out*/;
             resourceInputs["testId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -217,5 +193,4 @@ export interface ZeroTrustDexTestArgs {
      * DEX rules targeted by this test
      */
     targetPolicies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDexTestTargetPolicy>[]>;
-    targeted?: pulumi.Input<boolean>;
 }

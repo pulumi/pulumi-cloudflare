@@ -71,32 +71,17 @@ export interface GetDnsFirewallResult {
      */
     readonly id: string;
     /**
-     * Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+     * By default, Cloudflare attempts to cache responses for as long as
+     * indicated by the TTL received from upstream nameservers. This setting
+     * sets an upper bound on this duration. For caching purposes, higher TTLs
+     * will be decreased to the maximum value defined by this setting.
      */
     readonly maximumCacheTtl: number;
-    /**
-     * Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
-     */
     readonly minimumCacheTtl: number;
-    /**
-     * Last modification of DNS Firewall cluster
-     */
     readonly modifiedOn: string;
-    /**
-     * DNS Firewall cluster name
-     */
     readonly name: string;
-    /**
-     * Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
-     */
     readonly negativeCacheTtl: number;
-    /**
-     * Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
-     */
     readonly ratelimit: number;
-    /**
-     * Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
-     */
     readonly retries: number;
     readonly upstreamIps: string[];
 }

@@ -58,15 +58,15 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      */
     declare public readonly ips: pulumi.Output<string[]>;
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The subdomain to be used as the destination in the proxy client.
+     * Specify the subdomain to use as the destination in the proxy client.
      */
     declare public /*out*/ readonly subdomain: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -125,15 +125,15 @@ export interface TeamsProxyEndpointState {
     accountId?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      */
     name?: pulumi.Input<string>;
     /**
-     * The subdomain to be used as the destination in the proxy client.
+     * Specify the subdomain to use as the destination in the proxy client.
      */
     subdomain?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -145,11 +145,11 @@ export interface TeamsProxyEndpointState {
 export interface TeamsProxyEndpointArgs {
     accountId: pulumi.Input<string>;
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      */
     ips: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      */
     name: pulumi.Input<string>;
 }

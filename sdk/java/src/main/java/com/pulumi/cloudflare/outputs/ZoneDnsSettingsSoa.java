@@ -4,10 +4,11 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ZoneDnsSettingsSoa {
@@ -15,87 +16,87 @@ public final class ZoneDnsSettingsSoa {
      * @return Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      * 
      */
-    private Double expire;
+    private @Nullable Double expire;
     /**
      * @return The time to live (TTL) for negative caching of records within the zone.
      * 
      */
-    private Double minTtl;
+    private @Nullable Double minTtl;
     /**
-     * @return The primary nameserver, which may be used for outbound zone transfers.
+     * @return The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
-    private String mname;
+    private @Nullable String mname;
     /**
      * @return Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      * 
      */
-    private Double refresh;
+    private @Nullable Double refresh;
     /**
      * @return Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      * 
      */
-    private Double retry;
+    private @Nullable Double retry;
     /**
      * @return The email address of the zone administrator, with the first label representing the local part of the email address.
      * 
      */
-    private String rname;
+    private @Nullable String rname;
     /**
      * @return The time to live (TTL) of the SOA record itself.
      * 
      */
-    private Double ttl;
+    private @Nullable Double ttl;
 
     private ZoneDnsSettingsSoa() {}
     /**
      * @return Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      * 
      */
-    public Double expire() {
-        return this.expire;
+    public Optional<Double> expire() {
+        return Optional.ofNullable(this.expire);
     }
     /**
      * @return The time to live (TTL) for negative caching of records within the zone.
      * 
      */
-    public Double minTtl() {
-        return this.minTtl;
+    public Optional<Double> minTtl() {
+        return Optional.ofNullable(this.minTtl);
     }
     /**
-     * @return The primary nameserver, which may be used for outbound zone transfers.
+     * @return The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
-    public String mname() {
-        return this.mname;
+    public Optional<String> mname() {
+        return Optional.ofNullable(this.mname);
     }
     /**
      * @return Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      * 
      */
-    public Double refresh() {
-        return this.refresh;
+    public Optional<Double> refresh() {
+        return Optional.ofNullable(this.refresh);
     }
     /**
      * @return Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      * 
      */
-    public Double retry() {
-        return this.retry;
+    public Optional<Double> retry() {
+        return Optional.ofNullable(this.retry);
     }
     /**
      * @return The email address of the zone administrator, with the first label representing the local part of the email address.
      * 
      */
-    public String rname() {
-        return this.rname;
+    public Optional<String> rname() {
+        return Optional.ofNullable(this.rname);
     }
     /**
      * @return The time to live (TTL) of the SOA record itself.
      * 
      */
-    public Double ttl() {
-        return this.ttl;
+    public Optional<Double> ttl() {
+        return Optional.ofNullable(this.ttl);
     }
 
     public static Builder builder() {
@@ -107,13 +108,13 @@ public final class ZoneDnsSettingsSoa {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Double expire;
-        private Double minTtl;
-        private String mname;
-        private Double refresh;
-        private Double retry;
-        private String rname;
-        private Double ttl;
+        private @Nullable Double expire;
+        private @Nullable Double minTtl;
+        private @Nullable String mname;
+        private @Nullable Double refresh;
+        private @Nullable Double retry;
+        private @Nullable String rname;
+        private @Nullable Double ttl;
         public Builder() {}
         public Builder(ZoneDnsSettingsSoa defaults) {
     	      Objects.requireNonNull(defaults);
@@ -127,58 +128,44 @@ public final class ZoneDnsSettingsSoa {
         }
 
         @CustomType.Setter
-        public Builder expire(Double expire) {
-            if (expire == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "expire");
-            }
+        public Builder expire(@Nullable Double expire) {
+
             this.expire = expire;
             return this;
         }
         @CustomType.Setter
-        public Builder minTtl(Double minTtl) {
-            if (minTtl == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "minTtl");
-            }
+        public Builder minTtl(@Nullable Double minTtl) {
+
             this.minTtl = minTtl;
             return this;
         }
         @CustomType.Setter
-        public Builder mname(String mname) {
-            if (mname == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "mname");
-            }
+        public Builder mname(@Nullable String mname) {
+
             this.mname = mname;
             return this;
         }
         @CustomType.Setter
-        public Builder refresh(Double refresh) {
-            if (refresh == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "refresh");
-            }
+        public Builder refresh(@Nullable Double refresh) {
+
             this.refresh = refresh;
             return this;
         }
         @CustomType.Setter
-        public Builder retry(Double retry) {
-            if (retry == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "retry");
-            }
+        public Builder retry(@Nullable Double retry) {
+
             this.retry = retry;
             return this;
         }
         @CustomType.Setter
-        public Builder rname(String rname) {
-            if (rname == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "rname");
-            }
+        public Builder rname(@Nullable String rname) {
+
             this.rname = rname;
             return this;
         }
         @CustomType.Setter
-        public Builder ttl(Double ttl) {
-            if (ttl == null) {
-              throw new MissingRequiredPropertyException("ZoneDnsSettingsSoa", "ttl");
-            }
+        public Builder ttl(@Nullable Double ttl) {
+
             this.ttl = ttl;
             return this;
         }

@@ -178,12 +178,22 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
     /**
      * Code, sourcemaps, and other content used at runtime.
      * 
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
+     * 
      */
     @Export(name="modules", refs={List.class,WorkerVersionModule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerVersionModule>> modules;
 
     /**
      * @return Code, sourcemaps, and other content used at runtime.
+     * 
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      * 
      */
     public Output<Optional<List<WorkerVersionModule>>> modules() {
@@ -252,14 +262,14 @@ public class WorkerVersion extends com.pulumi.resources.CustomResource {
         return this.usageModel;
     }
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Export(name="workerId", refs={String.class}, tree="[0]")
     private Output<String> workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public Output<String> workerId() {

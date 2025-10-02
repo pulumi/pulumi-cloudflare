@@ -54,13 +54,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         /// </summary>
         [Output("redactPii")]
         public Output<bool> RedactPii { get; private set; } = null!;
 
         /// <summary>
-        /// Logging settings by rule type.
+        /// Configure logging settings for each rule type.
         /// </summary>
         [Output("settingsByRuleType")]
         public Output<Outputs.ZeroTrustGatewayLoggingSettingsByRuleType> SettingsByRuleType { get; private set; } = null!;
@@ -115,13 +115,13 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         /// </summary>
         [Input("redactPii")]
         public Input<bool>? RedactPii { get; set; }
 
         /// <summary>
-        /// Logging settings by rule type.
+        /// Configure logging settings for each rule type.
         /// </summary>
         [Input("settingsByRuleType")]
         public Input<Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs>? SettingsByRuleType { get; set; }
@@ -138,13 +138,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         /// </summary>
         [Input("redactPii")]
         public Input<bool>? RedactPii { get; set; }
 
         /// <summary>
-        /// Logging settings by rule type.
+        /// Configure logging settings for each rule type.
         /// </summary>
         [Input("settingsByRuleType")]
         public Input<Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeGetArgs>? SettingsByRuleType { get; set; }

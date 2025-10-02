@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsListItem {
     /**
-     * @return The description of the list item, if present.
+     * @return Provide the list item description (optional).
      * 
      */
     private @Nullable String description;
     /**
-     * @return The value of the item in a list.
+     * @return Specify the item value.
      * 
      */
     private @Nullable String value;
 
     private TeamsListItem() {}
     /**
-     * @return The description of the list item, if present.
+     * @return Provide the list item description (optional).
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The value of the item in a list.
+     * @return Specify the item value.
      * 
      */
     public Optional<String> value() {

@@ -901,7 +901,6 @@ export interface AccessApplicationSaasApp {
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
      */
     consumerServiceUrl?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     customAttributes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomAttribute>[]>;
     customClaims?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomClaim>[]>;
     /**
@@ -955,7 +954,6 @@ export interface AccessApplicationSaasApp {
      * The endpoint where your SaaS application will send login requests.
      */
     ssoEndpoint?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 export interface AccessApplicationSaasAppCustomAttribute {
@@ -2891,38 +2889,38 @@ export interface AccountDnsSettingsZoneDefaultsNameservers {
      * Nameserver type
      * Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface AccountDnsSettingsZoneDefaultsSoa {
     /**
      * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      */
-    expire: pulumi.Input<number>;
+    expire?: pulumi.Input<number>;
     /**
      * The time to live (TTL) for negative caching of records within the zone.
      */
-    minTtl: pulumi.Input<number>;
+    minTtl?: pulumi.Input<number>;
     /**
-     * The primary nameserver, which may be used for outbound zone transfers.
+     * The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      */
-    mname: pulumi.Input<string>;
+    mname?: pulumi.Input<string>;
     /**
      * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      */
-    refresh: pulumi.Input<number>;
+    refresh?: pulumi.Input<number>;
     /**
      * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      */
-    retry: pulumi.Input<number>;
+    retry?: pulumi.Input<number>;
     /**
      * The email address of the zone administrator, with the first label representing the local part of the email address.
      */
-    rname: pulumi.Input<string>;
+    rname?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the SOA record itself.
      */
-    ttl: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }
 
 export interface AccountMemberPolicy {
@@ -3092,11 +3090,6 @@ export interface AccountUnit {
 }
 
 export interface AddressMapMembership {
-    /**
-     * Controls whether the membership can be deleted via the API or not.
-     */
-    canDelete?: pulumi.Input<boolean>;
-    createdAt?: pulumi.Input<string>;
     /**
      * The identifier for the membership (eg. a zone or account tag).
      */
@@ -5912,6 +5905,20 @@ export interface GetWorkersKvNamespaceFilterArgs {
     order?: pulumi.Input<string>;
 }
 
+export interface GetWorkflowFilter {
+    /**
+     * Allows filtering workflows` name.
+     */
+    search?: string;
+}
+
+export interface GetWorkflowFilterArgs {
+    /**
+     * Allows filtering workflows` name.
+     */
+    search?: pulumi.Input<string>;
+}
+
 export interface GetZeroTrustAccessApplicationFilter {
     /**
      * The aud of the app.
@@ -6188,7 +6195,7 @@ export interface GetZeroTrustAccessServiceTokenFilterArgs {
 
 export interface GetZeroTrustListFilter {
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type?: string;
@@ -6196,10 +6203,64 @@ export interface GetZeroTrustListFilter {
 
 export interface GetZeroTrustListFilterArgs {
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type?: pulumi.Input<string>;
+}
+
+export interface GetZeroTrustNetworkHostnameRouteFilter {
+    /**
+     * If set, only list hostname routes with the given comment.
+     */
+    comment?: string;
+    /**
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
+     */
+    existedAt?: string;
+    /**
+     * If set, only list hostname routes that contain a substring of the given value, the filter is case-insensitive.
+     */
+    hostname?: string;
+    /**
+     * The hostname route ID.
+     */
+    id?: string;
+    /**
+     * If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+     */
+    isDeleted?: boolean;
+    /**
+     * If set, only list hostname routes that point to a specific tunnel.
+     */
+    tunnelId?: string;
+}
+
+export interface GetZeroTrustNetworkHostnameRouteFilterArgs {
+    /**
+     * If set, only list hostname routes with the given comment.
+     */
+    comment?: pulumi.Input<string>;
+    /**
+     * If provided, include only resources that were created (and not deleted) before this time. URL encoded.
+     */
+    existedAt?: pulumi.Input<string>;
+    /**
+     * If set, only list hostname routes that contain a substring of the given value, the filter is case-insensitive.
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * The hostname route ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+     */
+    isDeleted?: pulumi.Input<boolean>;
+    /**
+     * If set, only list hostname routes that point to a specific tunnel.
+     */
+    tunnelId?: pulumi.Input<string>;
 }
 
 export interface GetZeroTrustTunnelCloudflaredFilter {
@@ -10460,177 +10521,177 @@ export interface StreamWatermark {
 
 export interface TeamsAccountSettings {
     /**
-     * Activity log settings.
+     * Specify activity log settings.
      */
     activityLog?: pulumi.Input<inputs.TeamsAccountSettingsActivityLog>;
     /**
-     * Anti-virus settings.
+     * Specify anti-virus settings.
      */
     antivirus?: pulumi.Input<inputs.TeamsAccountSettingsAntivirus>;
     /**
-     * Block page layout settings.
+     * Specify block page layout settings.
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountSettingsBlockPage>;
     /**
-     * DLP body scanning settings.
+     * Specify the DLP inspection mode.
      */
     bodyScanning?: pulumi.Input<inputs.TeamsAccountSettingsBodyScanning>;
     /**
-     * Browser isolation settings.
+     * Specify Clientless Browser Isolation settings.
      */
     browserIsolation?: pulumi.Input<inputs.TeamsAccountSettingsBrowserIsolation>;
     /**
-     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      */
     certificate?: pulumi.Input<inputs.TeamsAccountSettingsCertificate>;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      *
      * @deprecated This attribute is deprecated.
      */
     customCertificate?: pulumi.Input<inputs.TeamsAccountSettingsCustomCertificate>;
     /**
-     * Extended e-mail matching settings.
+     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      */
     extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountSettingsExtendedEmailMatching>;
     /**
-     * FIPS settings.
+     * Specify FIPS settings.
      */
     fips?: pulumi.Input<inputs.TeamsAccountSettingsFips>;
     /**
-     * Setting to enable host selector in egress policies.
+     * Enable host selection in egress policies.
      */
     hostSelector?: pulumi.Input<inputs.TeamsAccountSettingsHostSelector>;
     /**
-     * Setting to define inspection settings.
+     * Define the proxy inspection mode.
      */
     inspection?: pulumi.Input<inputs.TeamsAccountSettingsInspection>;
     /**
-     * Protocol Detection settings.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      */
     protocolDetection?: pulumi.Input<inputs.TeamsAccountSettingsProtocolDetection>;
     /**
-     * Sandbox settings.
+     * Specify whether to enable the sandbox.
      */
     sandbox?: pulumi.Input<inputs.TeamsAccountSettingsSandbox>;
     /**
-     * TLS interception settings.
+     * Specify whether to inspect encrypted HTTP traffic.
      */
     tlsDecrypt?: pulumi.Input<inputs.TeamsAccountSettingsTlsDecrypt>;
 }
 
 export interface TeamsAccountSettingsActivityLog {
     /**
-     * Enable activity logging.
+     * Specify whether to log activity.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsAntivirus {
     /**
-     * Enable anti-virus scanning on downloads.
+     * Specify whether to enable anti-virus scanning on downloads.
      */
     enabledDownloadPhase?: pulumi.Input<boolean>;
     /**
-     * Enable anti-virus scanning on uploads.
+     * Specify whether to enable anti-virus scanning on uploads.
      */
     enabledUploadPhase?: pulumi.Input<boolean>;
     /**
-     * Block requests for files that cannot be scanned.
+     * Specify whether to block requests for unscannable files.
      */
     failClosed?: pulumi.Input<boolean>;
     /**
-     * Configure a message to display on the user's device when an antivirus search is performed.
+     * Configure the message the user's device shows during an antivirus scan.
      */
     notificationSettings?: pulumi.Input<inputs.TeamsAccountSettingsAntivirusNotificationSettings>;
 }
 
 export interface TeamsAccountSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on.
+     * Specify whether to enable notifications.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to include context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * Customize the message shown in the notification.
+     * Specify the message to show in the notification.
      */
     msg?: pulumi.Input<string>;
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Specify a URL that directs users to more information. If unset, the notification opens a block page.
      */
     supportUrl?: pulumi.Input<string>;
 }
 
 export interface TeamsAccountSettingsBlockPage {
     /**
-     * If mode is customized_block_page: block page background color in #rrggbb format.
+     * Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      */
     backgroundColor?: pulumi.Input<string>;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Specify whether to enable the custom block page.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If mode is customized_block_page: block page footer text.
+     * Specify the block page footer text when the mode is customized*block*page.
      */
     footerText?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: block page header text.
+     * Specify the block page header text when the mode is customized*block*page.
      */
     headerText?: pulumi.Input<string>;
     /**
-     * If mode is redirect_uri: when enabled, context will be appended to targetUri as query parameters.
+     * Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If mode is customized_block_page: full URL to the logo file.
+     * Specify the full URL to the logo file when the mode is customized*block*page.
      */
     logoPath?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: admin email for users to contact.
+     * Specify the admin email for users to contact when the mode is customized*block*page.
      */
     mailtoAddress?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: subject line for emails created from block page.
+     * Specify the subject line for emails created from the block page when the mode is customized*block*page.
      */
     mailtoSubject?: pulumi.Input<string>;
     /**
-     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: "", "customizedBlockPage", "redirectUri".
+     * Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: "", "customized*block*page", "redirectUri".
      */
     mode?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: block page title.
+     * Specify the block page title when the mode is customized*block*page.
      */
     name?: pulumi.Input<string>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      */
     suppressFooter?: pulumi.Input<boolean>;
     /**
-     * If mode is redirect_uri: URI to which the user should be redirected.
+     * Specify the URI to redirect users to when the mode is redirect_uri.
      */
     targetUri?: pulumi.Input<string>;
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface TeamsAccountSettingsBodyScanning {
     /**
-     * Set the inspection mode to either `deep` or `shallow`.
+     * Specify the inspection mode as either `deep` or `shallow`.
      * Available values: "deep", "shallow".
      */
     inspectionMode?: pulumi.Input<string>;
@@ -10638,33 +10699,33 @@ export interface TeamsAccountSettingsBodyScanning {
 
 export interface TeamsAccountSettingsBrowserIsolation {
     /**
-     * Enable non-identity onramp support for Browser Isolation.
+     * Specify whether to enable non-identity onramp support for Browser Isolation.
      */
     nonIdentityEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable Clientless Browser Isolation.
+     * Specify whether to enable Clientless Browser Isolation.
      */
     urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsCertificate {
     /**
-     * UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
      */
     id: pulumi.Input<string>;
 }
 
 export interface TeamsAccountSettingsCustomCertificate {
     /**
-     * Certificate status (internal).
+     * Indicate the internal certificate status.
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * Enable use of custom certificate authority for signing Gateway. traffic.
+     * Specify whether to enable a custom certificate authority for signing Gateway traffic.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * UUID of certificate (ID from MTLS certificate store).
+     * Specify the UUID of the certificate (ID from MTLS certificate store).
      */
     id?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -10672,42 +10733,40 @@ export interface TeamsAccountSettingsCustomCertificate {
 
 export interface TeamsAccountSettingsExtendedEmailMatching {
     /**
-     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface TeamsAccountSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      */
     tls?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsHostSelector {
     /**
-     * Enable filtering via hosts for egress policies.
+     * Specify whether to enable filtering via hosts for egress policies.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsInspection {
     /**
-     * Defines the mode of inspection the proxy will use.
-     * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-     * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+     * Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
      * Available values: "static", "dynamic".
      */
     mode?: pulumi.Input<string>;
@@ -10715,18 +10774,18 @@ export interface TeamsAccountSettingsInspection {
 
 export interface TeamsAccountSettingsProtocolDetection {
     /**
-     * Enable detecting protocol on initial bytes of client traffic.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsSandbox {
     /**
-     * Enable sandbox.
+     * Specify whether to enable the sandbox.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Action to take when the file cannot be scanned.
+     * Specify the action to take when the system cannot scan the file.
      * Available values: "allow", "block".
      */
     fallbackAction?: pulumi.Input<string>;
@@ -10734,18 +10793,18 @@ export interface TeamsAccountSettingsSandbox {
 
 export interface TeamsAccountSettingsTlsDecrypt {
     /**
-     * Enable inspecting encrypted HTTP traffic.
+     * Specify whether to inspect encrypted HTTP traffic.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsListItem {
     /**
-     * The description of the list item, if present.
+     * Provide the list item description (optional).
      */
     description?: pulumi.Input<string>;
     /**
-     * The value of the item in a list.
+     * Specify the item value.
      */
     value?: pulumi.Input<string>;
 }
@@ -10759,205 +10818,204 @@ export interface TeamsLocationEndpoints {
 
 export interface TeamsLocationEndpointsDoh {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the DOH endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDohNetwork>[]>;
     /**
-     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * Specify whether the DOH endpoint requires user identity authentication.
      */
     requireToken?: pulumi.Input<boolean>;
 }
 
 export interface TeamsLocationEndpointsDohNetwork {
     /**
-     * The IP address or IP CIDR.
+     * Specify the IP address or IP CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface TeamsLocationEndpointsDot {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the DOT endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsDotNetwork>[]>;
 }
 
 export interface TeamsLocationEndpointsDotNetwork {
     /**
-     * The IP address or IP CIDR.
+     * Specify the IP address or IP CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface TeamsLocationEndpointsIpv4 {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPv4 endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsLocationEndpointsIpv6 {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPV6 endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationEndpointsIpv6Network>[]>;
 }
 
 export interface TeamsLocationEndpointsIpv6Network {
     /**
-     * The IPv6 address or IPv6 CIDR.
+     * Specify the IPv6 address or IPv6 CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface TeamsLocationNetwork {
     /**
-     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      */
     network: pulumi.Input<string>;
 }
 
 export interface TeamsRuleExpiration {
     /**
-     * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.
+     * Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
      */
     duration?: pulumi.Input<number>;
     /**
-     * Whether the policy has expired.
+     * Indicates whether the policy is expired.
      */
     expired?: pulumi.Input<boolean>;
     /**
-     * The time stamp at which the policy will expire and cease to be
-     * applied.
+     * Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
      */
     expiresAt: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettings {
     /**
-     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      */
     addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * Set by parent MSP accounts to enable their children to bypass this rule.
+     * Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      */
     allowChildBypass?: pulumi.Input<boolean>;
     /**
-     * Settings for the Audit SSH action.
+     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      */
     auditSsh?: pulumi.Input<inputs.TeamsRuleRuleSettingsAuditSsh>;
     /**
-     * Configure how browser isolation behaves.
+     * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
     /**
-     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     * Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      */
     blockPage?: pulumi.Input<inputs.TeamsRuleRuleSettingsBlockPage>;
     /**
-     * Enable the custom block page.
+     * Enable the custom block page. Settable only for `dns` rules with action `block`.
      */
     blockPageEnabled?: pulumi.Input<boolean>;
     /**
-     * The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      */
     blockReason?: pulumi.Input<string>;
     /**
-     * Set by children MSP accounts to bypass their parent's rules.
+     * Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
      */
     bypassParentRule?: pulumi.Input<boolean>;
     /**
-     * Configure how session check behaves.
+     * Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      */
     checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession>;
     /**
-     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+     * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: pulumi.Input<inputs.TeamsRuleRuleSettingsDnsResolvers>;
     /**
-     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      */
     egress?: pulumi.Input<inputs.TeamsRuleRuleSettingsEgress>;
     /**
-     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
     ignoreCnameCategoryMatches?: pulumi.Input<boolean>;
     /**
-     * INSECURE - disable DNSSEC validation (for Allow actions).
+     * Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      */
     insecureDisableDnssecValidation?: pulumi.Input<boolean>;
     /**
-     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      */
     ipCategories?: pulumi.Input<boolean>;
     /**
-     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      */
     ipIndicatorFeeds?: pulumi.Input<boolean>;
     /**
-     * Send matching traffic to the supplied destination IP address. and port.
+     * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      */
     l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
     /**
-     * Configure a notification to display on the user's device when this rule is matched.
+     * Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
      */
     notificationSettings?: pulumi.Input<inputs.TeamsRuleRuleSettingsNotificationSettings>;
     /**
-     * Override matching DNS queries with a hostname.
+     * Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
     overrideHost?: pulumi.Input<string>;
     /**
-     * Override matching DNS queries with an IP or set of IPs.
+     * Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
     overrideIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configure DLP payload logging.
+     * Configure DLP payload logging. Settable only for `http` rules.
      */
     payloadLog?: pulumi.Input<inputs.TeamsRuleRuleSettingsPayloadLog>;
     /**
-     * Settings that apply to quarantine rules.
+     * Configure settings that apply to quarantine rules. Settable only for `http` rules.
      */
     quarantine?: pulumi.Input<inputs.TeamsRuleRuleSettingsQuarantine>;
     /**
-     * Settings that apply to redirect rules.
+     * Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      */
     redirect?: pulumi.Input<inputs.TeamsRuleRuleSettingsRedirect>;
     /**
-     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsInternally?: pulumi.Input<inputs.TeamsRuleRuleSettingsResolveDnsInternally>;
     /**
-     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: pulumi.Input<boolean>;
     /**
-     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
     untrustedCert?: pulumi.Input<inputs.TeamsRuleRuleSettingsUntrustedCert>;
 }
 
 export interface TeamsRuleRuleSettingsAuditSsh {
     /**
-     * Enable to turn on SSH command logging.
+     * Enable SSH command logging.
      */
     commandLogging?: pulumi.Input<boolean>;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
     /**
-     * Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+     * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     copy?: pulumi.Input<string>;
@@ -10974,7 +11032,7 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
      */
     dk?: pulumi.Input<boolean>;
     /**
-     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     download?: pulumi.Input<string>;
@@ -10987,27 +11045,27 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
      */
     du?: pulumi.Input<boolean>;
     /**
-     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     keyboard?: pulumi.Input<string>;
     /**
-     * Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+     * Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     paste?: pulumi.Input<string>;
     /**
-     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+     * Configure print behavior. Default, Printing is enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     printing?: pulumi.Input<string>;
     /**
-     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+     * Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     upload?: pulumi.Input<string>;
     /**
-     * Indicates which version of the browser isolation controls should apply.
+     * Indicate which version of the browser isolation controls should apply.
      * Available values: "v1", "v2".
      */
     version?: pulumi.Input<string>;
@@ -11015,19 +11073,22 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
 
 export interface TeamsRuleRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected.
+     * Specify the URI to which the user is redirected.
      */
     targetUri: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsCheckSession {
+    /**
+     * Sets the required session freshness threshold. The API returns a normalized version of this value.
+     */
     duration?: pulumi.Input<string>;
     /**
-     * Set to true to enable session enforcement.
+     * Enable session enforcement.
      */
     enforce?: pulumi.Input<boolean>;
 }
@@ -11039,75 +11100,75 @@ export interface TeamsRuleRuleSettingsDnsResolvers {
 
 export interface TeamsRuleRuleSettingsDnsResolversIpv4 {
     /**
-     * IPv4 address of upstream resolver.
+     * Specify the IPv4 address of the upstream resolver.
      */
     ip: pulumi.Input<string>;
     /**
-     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      */
     port?: pulumi.Input<number>;
     /**
-     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     * Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      */
     routeThroughPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      */
     vnetId?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
     /**
-     * IPv6 address of upstream resolver.
+     * Specify the IPv6 address of the upstream resolver.
      */
     ip: pulumi.Input<string>;
     /**
-     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      */
     port?: pulumi.Input<number>;
     /**
-     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     * Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      */
     routeThroughPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      */
     vnetId?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsEgress {
     /**
-     * The IPv4 address to be used for egress.
+     * Specify the IPv4 address to use for egress.
      */
     ipv4?: pulumi.Input<string>;
     /**
-     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+     * Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.
      */
     ipv4Fallback?: pulumi.Input<string>;
     /**
-     * The IPv6 range to be used for egress.
+     * Specify the IPv6 range to use for egress.
      */
     ipv6?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsL4override {
     /**
-     * IPv4 or IPv6 address.
+     * Defines the IPv4 or IPv6 address.
      */
     ip?: pulumi.Input<string>;
     /**
-     * A port number to use for TCP/UDP overrides.
+     * Defines a port number to use for TCP/UDP overrides.
      */
     port?: pulumi.Input<number>;
 }
 
 export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
-     * Set notification on.
+     * Enable notification.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters.
+     * Indicates whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -11115,92 +11176,71 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
      */
     msg?: pulumi.Input<string>;
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      */
     supportUrl?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsPayloadLog {
     /**
-     * Set to true to enable DLP payload logging for this rule.
+     * Enable DLP payload logging for this rule.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsRuleRuleSettingsQuarantine {
     /**
-     * Types of files to sandbox.
+     * Specify the types of files to sandbox.
      */
     fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface TeamsRuleRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri.
+     * Specify whether to append the path and query parameters from the original request to target_uri.
      */
     preservePathAndQuery?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected.
+     * Specify the URI to which the user is redirected.
      */
     targetUri: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsResolveDnsInternally {
     /**
-     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     * Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.
      * Available values: "none", "publicDns".
      */
     fallback?: pulumi.Input<string>;
     /**
-     * The internal DNS view identifier that's passed to the internal DNS service.
+     * Specify the internal DNS view identifier to pass to the internal DNS service.
      */
     viewId?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsUntrustedCert {
     /**
-     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: "passThrough", "block", "error".
      */
     action?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleSchedule {
-    /**
-     * The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
-     */
     fri?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
-     */
     mon?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
-     */
     sat?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
-     */
     sun?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
-     */
     thu?: pulumi.Input<string>;
     /**
-     * The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+     * Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
      */
     timeZone?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
-     */
     tue?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
-     */
     wed?: pulumi.Input<string>;
 }
 
@@ -11578,9 +11618,17 @@ export interface WorkerObservabilityLogs {
 
 export interface WorkerScriptAssets {
     /**
+     * The SHA-256 hash of the asset manifest of files to upload.
+     */
+    assetManifestSha256?: pulumi.Input<string>;
+    /**
      * Configuration for assets within a Worker.
      */
     config?: pulumi.Input<inputs.WorkerScriptAssetsConfig>;
+    /**
+     * Path to the directory containing asset files to upload.
+     */
+    directory?: pulumi.Input<string>;
     /**
      * Token provided upon successful upload of all files from a registered manifest.
      */
@@ -11624,6 +11672,14 @@ export interface WorkerScriptBinding {
      */
     algorithm?: pulumi.Input<string>;
     /**
+     * List of allowed destination addresses.
+     */
+    allowedDestinationAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed sender addresses.
+     */
+    allowedSenderAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -11639,6 +11695,10 @@ export interface WorkerScriptBinding {
      * The name of the dataset to bind to.
      */
     dataset?: pulumi.Input<string>;
+    /**
+     * Destination address for the email.
+     */
+    destinationAddress?: pulumi.Input<string>;
     /**
      * The environment of the scriptName to bind to.
      */
@@ -11661,6 +11721,11 @@ export interface WorkerScriptBinding {
      */
     json?: pulumi.Input<string>;
     /**
+     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: "eu", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
      * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
      */
     keyBase64?: pulumi.Input<string>;
@@ -11681,9 +11746,17 @@ export interface WorkerScriptBinding {
      */
     namespaceId?: pulumi.Input<string>;
     /**
+     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     */
+    oldName?: pulumi.Input<string>;
+    /**
      * Outbound worker.
      */
     outbound?: pulumi.Input<inputs.WorkerScriptBindingOutbound>;
+    /**
+     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     */
+    part?: pulumi.Input<string>;
     /**
      * Name of the Pipeline to bind to.
      */
@@ -11714,13 +11787,17 @@ export interface WorkerScriptBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
      */
     type: pulumi.Input<string>;
     /**
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     */
+    versionId?: pulumi.Input<string>;
     /**
      * Name of the Workflow to bind to.
      */
@@ -11784,6 +11861,10 @@ export interface WorkerScriptObservability {
 
 export interface WorkerScriptObservabilityLogs {
     /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Whether logs are enabled for the Worker.
      */
     enabled: pulumi.Input<boolean>;
@@ -11795,6 +11876,10 @@ export interface WorkerScriptObservabilityLogs {
      * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
      */
     invocationLogs: pulumi.Input<boolean>;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist?: pulumi.Input<boolean>;
 }
 
 export interface WorkerScriptPlacement {
@@ -11864,9 +11949,21 @@ export interface WorkerVersionAnnotations {
 
 export interface WorkerVersionAssets {
     /**
+     * The SHA-256 hash of the asset manifest of files to upload.
+     */
+    assetManifestSha256?: pulumi.Input<string>;
+    /**
      * Configuration for assets within a Worker.
      */
     config?: pulumi.Input<inputs.WorkerVersionAssetsConfig>;
+    /**
+     * Path to the directory containing asset files to upload.
+     */
+    directory?: pulumi.Input<string>;
+    /**
+     * Token provided upon successful upload of all files from a registered manifest.
+     */
+    jwt?: pulumi.Input<string>;
 }
 
 export interface WorkerVersionAssetsConfig {
@@ -11892,6 +11989,14 @@ export interface WorkerVersionBinding {
      */
     algorithm?: pulumi.Input<string>;
     /**
+     * List of allowed destination addresses.
+     */
+    allowedDestinationAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed sender addresses.
+     */
+    allowedSenderAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -11907,6 +12012,10 @@ export interface WorkerVersionBinding {
      * The name of the dataset to bind to.
      */
     dataset?: pulumi.Input<string>;
+    /**
+     * Destination address for the email.
+     */
+    destinationAddress?: pulumi.Input<string>;
     /**
      * The environment of the scriptName to bind to.
      */
@@ -11929,6 +12038,11 @@ export interface WorkerVersionBinding {
      */
     json?: pulumi.Input<string>;
     /**
+     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: "eu", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
      * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
      */
     keyBase64?: pulumi.Input<string>;
@@ -11949,9 +12063,17 @@ export interface WorkerVersionBinding {
      */
     namespaceId?: pulumi.Input<string>;
     /**
+     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     */
+    oldName?: pulumi.Input<string>;
+    /**
      * Outbound worker.
      */
     outbound?: pulumi.Input<inputs.WorkerVersionBindingOutbound>;
+    /**
+     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     */
+    part?: pulumi.Input<string>;
     /**
      * Name of the Pipeline to bind to.
      */
@@ -11982,13 +12104,17 @@ export interface WorkerVersionBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
      */
     type: pulumi.Input<string>;
     /**
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     */
+    versionId?: pulumi.Input<string>;
     /**
      * Name of the Workflow to bind to.
      */
@@ -12155,9 +12281,17 @@ export interface WorkersDeploymentVersion {
 
 export interface WorkersScriptAssets {
     /**
+     * The SHA-256 hash of the asset manifest of files to upload.
+     */
+    assetManifestSha256?: pulumi.Input<string>;
+    /**
      * Configuration for assets within a Worker.
      */
     config?: pulumi.Input<inputs.WorkersScriptAssetsConfig>;
+    /**
+     * Path to the directory containing asset files to upload.
+     */
+    directory?: pulumi.Input<string>;
     /**
      * Token provided upon successful upload of all files from a registered manifest.
      */
@@ -12201,6 +12335,14 @@ export interface WorkersScriptBinding {
      */
     algorithm?: pulumi.Input<string>;
     /**
+     * List of allowed destination addresses.
+     */
+    allowedDestinationAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed sender addresses.
+     */
+    allowedSenderAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -12216,6 +12358,10 @@ export interface WorkersScriptBinding {
      * The name of the dataset to bind to.
      */
     dataset?: pulumi.Input<string>;
+    /**
+     * Destination address for the email.
+     */
+    destinationAddress?: pulumi.Input<string>;
     /**
      * The environment of the scriptName to bind to.
      */
@@ -12238,6 +12384,11 @@ export interface WorkersScriptBinding {
      */
     json?: pulumi.Input<string>;
     /**
+     * The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: "eu", "fedramp".
+     */
+    jurisdiction?: pulumi.Input<string>;
+    /**
      * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
      */
     keyBase64?: pulumi.Input<string>;
@@ -12258,9 +12409,17 @@ export interface WorkersScriptBinding {
      */
     namespaceId?: pulumi.Input<string>;
     /**
+     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     */
+    oldName?: pulumi.Input<string>;
+    /**
      * Outbound worker.
      */
     outbound?: pulumi.Input<inputs.WorkersScriptBindingOutbound>;
+    /**
+     * The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     */
+    part?: pulumi.Input<string>;
     /**
      * Name of the Pipeline to bind to.
      */
@@ -12291,13 +12450,17 @@ export interface WorkersScriptBinding {
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
      */
     type: pulumi.Input<string>;
     /**
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     */
+    versionId?: pulumi.Input<string>;
     /**
      * Name of the Workflow to bind to.
      */
@@ -12361,6 +12524,10 @@ export interface WorkersScriptObservability {
 
 export interface WorkersScriptObservabilityLogs {
     /**
+     * A list of destinations where logs will be exported to.
+     */
+    destinations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Whether logs are enabled for the Worker.
      */
     enabled: pulumi.Input<boolean>;
@@ -12372,6 +12539,10 @@ export interface WorkersScriptObservabilityLogs {
      * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
      */
     invocationLogs: pulumi.Input<boolean>;
+    /**
+     * Whether log persistence is enabled for the Worker.
+     */
+    persist?: pulumi.Input<boolean>;
 }
 
 export interface WorkersScriptPlacement {
@@ -12404,6 +12575,17 @@ export interface WorkersScriptTailConsumer {
      * Name of Worker that is to be the consumer.
      */
     service: pulumi.Input<string>;
+}
+
+export interface WorkflowInstances {
+    complete?: pulumi.Input<number>;
+    errored?: pulumi.Input<number>;
+    paused?: pulumi.Input<number>;
+    queued?: pulumi.Input<number>;
+    running?: pulumi.Input<number>;
+    terminated?: pulumi.Input<number>;
+    waiting?: pulumi.Input<number>;
+    waitingForPause?: pulumi.Input<number>;
 }
 
 export interface ZeroTrustAccessApplicationCorsHeaders {
@@ -13302,7 +13484,6 @@ export interface ZeroTrustAccessApplicationSaasApp {
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
      */
     consumerServiceUrl?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     customAttributes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationSaasAppCustomAttribute>[]>;
     customClaims?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationSaasAppCustomClaim>[]>;
     /**
@@ -13356,7 +13537,6 @@ export interface ZeroTrustAccessApplicationSaasApp {
      * The endpoint where your SaaS application will send login requests.
      */
     ssoEndpoint?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomAttribute {
@@ -15606,11 +15786,11 @@ export interface ZeroTrustDexTestData {
     /**
      * The desired endpoint to test.
      */
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * The type of test.
      */
-    kind?: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The HTTP request method type.
      */
@@ -15625,7 +15805,7 @@ export interface ZeroTrustDexTestTargetPolicy {
     /**
      * The id of the DEX rule
      */
-    id?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     /**
      * The name of the DEX rule
      */
@@ -15902,244 +16082,252 @@ export interface ZeroTrustDnsLocationEndpoints {
 
 export interface ZeroTrustDnsLocationEndpointsDoh {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the DOH endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDohNetwork>[]>;
     /**
-     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * Specify whether the DOH endpoint requires user identity authentication.
      */
     requireToken?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsDohNetwork {
     /**
-     * The IP address or IP CIDR.
+     * Specify the IP address or IP CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsDot {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the DOT endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsDotNetwork>[]>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsDotNetwork {
     /**
-     * The IP address or IP CIDR.
+     * Specify the IP address or IP CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsIpv4 {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPv4 endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsIpv6 {
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPV6 endpoint is enabled for this location.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDnsLocationEndpointsIpv6Network>[]>;
 }
 
 export interface ZeroTrustDnsLocationEndpointsIpv6Network {
     /**
-     * The IPv6 address or IPv6 CIDR.
+     * Specify the IPv6 address or IPv6 CIDR.
      */
     network: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDnsLocationNetwork {
     /**
-     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      */
     network: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * Configure logging settings for DNS firewall.
+     */
     dns?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDns>;
+    /**
+     * Configure logging settings for HTTP/HTTPS firewall.
+     */
     http?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttp>;
+    /**
+     * Configure logging settings for Network firewall.
+     */
     l4?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4>;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
-     * Log all requests to this service.
+     * Specify whether to log all requests to this service.
      */
     logAll?: pulumi.Input<boolean>;
     /**
-     * Log only blocking requests to this service.
+     * Specify whether to log only blocking requests to this service.
      */
     logBlocks?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
     /**
-     * Log all requests to this service.
+     * Specify whether to log all requests to this service.
      */
     logAll?: pulumi.Input<boolean>;
     /**
-     * Log only blocking requests to this service.
+     * Specify whether to log only blocking requests to this service.
      */
     logBlocks?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
     /**
-     * Log all requests to this service.
+     * Specify whether to log all requests to this service.
      */
     logAll?: pulumi.Input<boolean>;
     /**
-     * Log only blocking requests to this service.
+     * Specify whether to log only blocking requests to this service.
      */
     logBlocks?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayPolicyExpiration {
     /**
-     * The default duration a policy will be active in minutes. Must be set in order to use the `resetExpiration` endpoint on this rule.
+     * Defines the default duration a policy active in minutes. Must set in order to use the `resetExpiration` endpoint on this rule.
      */
     duration?: pulumi.Input<number>;
     /**
-     * Whether the policy has expired.
+     * Indicates whether the policy is expired.
      */
     expired?: pulumi.Input<boolean>;
     /**
-     * The time stamp at which the policy will expire and cease to be
-     * applied.
+     * Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expiresAt time.
      */
     expiresAt: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
-     * Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      */
     addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * Set by parent MSP accounts to enable their children to bypass this rule.
+     * Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      */
     allowChildBypass?: pulumi.Input<boolean>;
     /**
-     * Settings for the Audit SSH action.
+     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      */
     auditSsh?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh>;
     /**
-     * Configure how browser isolation behaves.
+     * Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      */
     bisoAdminControls?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls>;
     /**
-     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     * Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      */
     blockPage?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage>;
     /**
-     * Enable the custom block page.
+     * Enable the custom block page. Settable only for `dns` rules with action `block`.
      */
     blockPageEnabled?: pulumi.Input<boolean>;
     /**
-     * The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      */
     blockReason?: pulumi.Input<string>;
     /**
-     * Set by children MSP accounts to bypass their parent's rules.
+     * Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
      */
     bypassParentRule?: pulumi.Input<boolean>;
     /**
-     * Configure how session check behaves.
+     * Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      */
     checkSession?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession>;
     /**
-     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+     * Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     dnsResolvers?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers>;
     /**
-     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      */
     egress?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsEgress>;
     /**
-     * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      */
     ignoreCnameCategoryMatches?: pulumi.Input<boolean>;
     /**
-     * INSECURE - disable DNSSEC validation (for Allow actions).
+     * Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      */
     insecureDisableDnssecValidation?: pulumi.Input<boolean>;
     /**
-     * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      */
     ipCategories?: pulumi.Input<boolean>;
     /**
-     * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      */
     ipIndicatorFeeds?: pulumi.Input<boolean>;
     /**
-     * Send matching traffic to the supplied destination IP address. and port.
+     * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      */
     l4override?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsL4override>;
     /**
-     * Configure a notification to display on the user's device when this rule is matched.
+     * Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
      */
     notificationSettings?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings>;
     /**
-     * Override matching DNS queries with a hostname.
+     * Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
     overrideHost?: pulumi.Input<string>;
     /**
-     * Override matching DNS queries with an IP or set of IPs.
+     * Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      */
     overrideIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Configure DLP payload logging.
+     * Configure DLP payload logging. Settable only for `http` rules.
      */
     payloadLog?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog>;
     /**
-     * Settings that apply to quarantine rules.
+     * Configure settings that apply to quarantine rules. Settable only for `http` rules.
      */
     quarantine?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine>;
     /**
-     * Settings that apply to redirect rules.
+     * Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      */
     redirect?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsRedirect>;
     /**
-     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+     * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsInternally?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally>;
     /**
-     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+     * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dnsResolver` rules.
      */
     resolveDnsThroughCloudflare?: pulumi.Input<boolean>;
     /**
-     * Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      */
     untrustedCert?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
     /**
-     * Enable to turn on SSH command logging.
+     * Enable SSH command logging.
      */
     commandLogging?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
-     * Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+     * Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     copy?: pulumi.Input<string>;
@@ -16156,7 +16344,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     dk?: pulumi.Input<boolean>;
     /**
-     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     download?: pulumi.Input<string>;
@@ -16169,27 +16357,27 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     du?: pulumi.Input<boolean>;
     /**
-     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+     * Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     keyboard?: pulumi.Input<string>;
     /**
-     * Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+     * Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled", "remote*only".
      */
     paste?: pulumi.Input<string>;
     /**
-     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+     * Configure print behavior. Default, Printing is enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     printing?: pulumi.Input<string>;
     /**
-     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+     * Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2".
      * Available values: "enabled", "disabled".
      */
     upload?: pulumi.Input<string>;
     /**
-     * Indicates which version of the browser isolation controls should apply.
+     * Indicate which version of the browser isolation controls should apply.
      * Available values: "v1", "v2".
      */
     version?: pulumi.Input<string>;
@@ -16197,19 +16385,22 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected.
+     * Specify the URI to which the user is redirected.
      */
     targetUri: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
+    /**
+     * Sets the required session freshness threshold. The API returns a normalized version of this value.
+     */
     duration?: pulumi.Input<string>;
     /**
-     * Set to true to enable session enforcement.
+     * Enable session enforcement.
      */
     enforce?: pulumi.Input<boolean>;
 }
@@ -16221,75 +16412,75 @@ export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
 
 export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4 {
     /**
-     * IPv4 address of upstream resolver.
+     * Specify the IPv4 address of the upstream resolver.
      */
     ip: pulumi.Input<string>;
     /**
-     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      */
     port?: pulumi.Input<number>;
     /**
-     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     * Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      */
     routeThroughPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      */
     vnetId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6 {
     /**
-     * IPv6 address of upstream resolver.
+     * Specify the IPv6 address of the upstream resolver.
      */
     ip: pulumi.Input<string>;
     /**
-     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      */
     port?: pulumi.Input<number>;
     /**
-     * Whether to connect to this resolver over a private network. Must be set when vnetId is set.
+     * Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      */
     routeThroughPrivateNetwork?: pulumi.Input<boolean>;
     /**
-     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      */
     vnetId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsEgress {
     /**
-     * The IPv4 address to be used for egress.
+     * Specify the IPv4 address to use for egress.
      */
     ipv4?: pulumi.Input<string>;
     /**
-     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+     * Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.
      */
     ipv4Fallback?: pulumi.Input<string>;
     /**
-     * The IPv6 range to be used for egress.
+     * Specify the IPv6 range to use for egress.
      */
     ipv6?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsL4override {
     /**
-     * IPv4 or IPv6 address.
+     * Defines the IPv4 or IPv6 address.
      */
     ip?: pulumi.Input<string>;
     /**
-     * A port number to use for TCP/UDP overrides.
+     * Defines a port number to use for TCP/UDP overrides.
      */
     port?: pulumi.Input<number>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * Set notification on.
+     * Enable notification.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters.
+     * Indicates whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
@@ -16297,268 +16488,247 @@ export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
      */
     msg?: pulumi.Input<string>;
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      */
     supportUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
     /**
-     * Set to true to enable DLP payload logging for this rule.
+     * Enable DLP payload logging for this rule.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
     /**
-     * Types of files to sandbox.
+     * Specify the types of files to sandbox.
      */
     fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to pass the context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If true, the path and query parameters from the original request will be appended to target_uri.
+     * Specify whether to append the path and query parameters from the original request to target_uri.
      */
     preservePathAndQuery?: pulumi.Input<boolean>;
     /**
-     * URI to which the user will be redirected.
+     * Specify the URI to which the user is redirected.
      */
     targetUri: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
     /**
-     * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+     * Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.
      * Available values: "none", "publicDns".
      */
     fallback?: pulumi.Input<string>;
     /**
-     * The internal DNS view identifier that's passed to the internal DNS service.
+     * Specify the internal DNS view identifier to pass to the internal DNS service.
      */
     viewId?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
     /**
-     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: "passThrough", "block", "error".
      */
     action?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewayPolicySchedule {
-    /**
-     * The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
-     */
     fri?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
-     */
     mon?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
-     */
     sat?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
-     */
     sun?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
-     */
     thu?: pulumi.Input<string>;
     /**
-     * The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+     * Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
      */
     timeZone?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
-     */
     tue?: pulumi.Input<string>;
-    /**
-     * The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
-     */
     wed?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewaySettingsSettings {
     /**
-     * Activity log settings.
+     * Specify activity log settings.
      */
     activityLog?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsActivityLog>;
     /**
-     * Anti-virus settings.
+     * Specify anti-virus settings.
      */
     antivirus?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsAntivirus>;
     /**
-     * Block page layout settings.
+     * Specify block page layout settings.
      */
     blockPage?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsBlockPage>;
     /**
-     * DLP body scanning settings.
+     * Specify the DLP inspection mode.
      */
     bodyScanning?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsBodyScanning>;
     /**
-     * Browser isolation settings.
+     * Specify Clientless Browser Isolation settings.
      */
     browserIsolation?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation>;
     /**
-     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      */
     certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCertificate>;
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      *
      * @deprecated This attribute is deprecated.
      */
     customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCustomCertificate>;
     /**
-     * Extended e-mail matching settings.
+     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      */
     extendedEmailMatching?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching>;
     /**
-     * FIPS settings.
+     * Specify FIPS settings.
      */
     fips?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsFips>;
     /**
-     * Setting to enable host selector in egress policies.
+     * Enable host selection in egress policies.
      */
     hostSelector?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsHostSelector>;
     /**
-     * Setting to define inspection settings.
+     * Define the proxy inspection mode.
      */
     inspection?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsInspection>;
     /**
-     * Protocol Detection settings.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      */
     protocolDetection?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsProtocolDetection>;
     /**
-     * Sandbox settings.
+     * Specify whether to enable the sandbox.
      */
     sandbox?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsSandbox>;
     /**
-     * TLS interception settings.
+     * Specify whether to inspect encrypted HTTP traffic.
      */
     tlsDecrypt?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsTlsDecrypt>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsActivityLog {
     /**
-     * Enable activity logging.
+     * Specify whether to log activity.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirus {
     /**
-     * Enable anti-virus scanning on downloads.
+     * Specify whether to enable anti-virus scanning on downloads.
      */
     enabledDownloadPhase?: pulumi.Input<boolean>;
     /**
-     * Enable anti-virus scanning on uploads.
+     * Specify whether to enable anti-virus scanning on uploads.
      */
     enabledUploadPhase?: pulumi.Input<boolean>;
     /**
-     * Block requests for files that cannot be scanned.
+     * Specify whether to block requests for unscannable files.
      */
     failClosed?: pulumi.Input<boolean>;
     /**
-     * Configure a message to display on the user's device when an antivirus search is performed.
+     * Configure the message the user's device shows during an antivirus scan.
      */
     notificationSettings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * Set notification on.
+     * Specify whether to enable notifications.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to include context information as query parameters.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * Customize the message shown in the notification.
+     * Specify the message to show in the notification.
      */
     msg?: pulumi.Input<string>;
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Specify a URL that directs users to more information. If unset, the notification opens a block page.
      */
     supportUrl?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * If mode is customized_block_page: block page background color in #rrggbb format.
+     * Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      */
     backgroundColor?: pulumi.Input<string>;
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Specify whether to enable the custom block page.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If mode is customized_block_page: block page footer text.
+     * Specify the block page footer text when the mode is customized*block*page.
      */
     footerText?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: block page header text.
+     * Specify the block page header text when the mode is customized*block*page.
      */
     headerText?: pulumi.Input<string>;
     /**
-     * If mode is redirect_uri: when enabled, context will be appended to targetUri as query parameters.
+     * Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      */
     includeContext?: pulumi.Input<boolean>;
     /**
-     * If mode is customized_block_page: full URL to the logo file.
+     * Specify the full URL to the logo file when the mode is customized*block*page.
      */
     logoPath?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: admin email for users to contact.
+     * Specify the admin email for users to contact when the mode is customized*block*page.
      */
     mailtoAddress?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: subject line for emails created from block page.
+     * Specify the subject line for emails created from the block page when the mode is customized*block*page.
      */
     mailtoSubject?: pulumi.Input<string>;
     /**
-     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: "", "customizedBlockPage", "redirectUri".
+     * Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: "", "customized*block*page", "redirectUri".
      */
     mode?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: block page title.
+     * Specify the block page title when the mode is customized*block*page.
      */
     name?: pulumi.Input<string>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      */
     suppressFooter?: pulumi.Input<boolean>;
     /**
-     * If mode is redirect_uri: URI to which the user should be redirected.
+     * Specify the URI to redirect users to when the mode is redirect_uri.
      */
     targetUri?: pulumi.Input<string>;
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBodyScanning {
     /**
-     * Set the inspection mode to either `deep` or `shallow`.
+     * Specify the inspection mode as either `deep` or `shallow`.
      * Available values: "deep", "shallow".
      */
     inspectionMode?: pulumi.Input<string>;
@@ -16566,33 +16736,33 @@ export interface ZeroTrustGatewaySettingsSettingsBodyScanning {
 
 export interface ZeroTrustGatewaySettingsSettingsBrowserIsolation {
     /**
-     * Enable non-identity onramp support for Browser Isolation.
+     * Specify whether to enable non-identity onramp support for Browser Isolation.
      */
     nonIdentityEnabled?: pulumi.Input<boolean>;
     /**
-     * Enable Clientless Browser Isolation.
+     * Specify whether to enable Clientless Browser Isolation.
      */
     urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsCertificate {
     /**
-     * UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
      */
     id: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
     /**
-     * Certificate status (internal).
+     * Indicate the internal certificate status.
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * Enable use of custom certificate authority for signing Gateway. traffic.
+     * Specify whether to enable a custom certificate authority for signing Gateway traffic.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * UUID of certificate (ID from MTLS certificate store).
+     * Specify the UUID of the certificate (ID from MTLS certificate store).
      */
     id?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -16600,42 +16770,40 @@ export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
 
 export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
     /**
-     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      */
     readOnly?: pulumi.Input<boolean>;
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      */
     sourceAccount?: pulumi.Input<string>;
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      */
     version?: pulumi.Input<number>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsFips {
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      */
     tls?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsHostSelector {
     /**
-     * Enable filtering via hosts for egress policies.
+     * Specify whether to enable filtering via hosts for egress policies.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsInspection {
     /**
-     * Defines the mode of inspection the proxy will use.
-     * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-     * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
+     * Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
      * Available values: "static", "dynamic".
      */
     mode?: pulumi.Input<string>;
@@ -16643,18 +16811,18 @@ export interface ZeroTrustGatewaySettingsSettingsInspection {
 
 export interface ZeroTrustGatewaySettingsSettingsProtocolDetection {
     /**
-     * Enable detecting protocol on initial bytes of client traffic.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsSandbox {
     /**
-     * Enable sandbox.
+     * Specify whether to enable the sandbox.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Action to take when the file cannot be scanned.
+     * Specify the action to take when the system cannot scan the file.
      * Available values: "allow", "block".
      */
     fallbackAction?: pulumi.Input<string>;
@@ -16662,18 +16830,18 @@ export interface ZeroTrustGatewaySettingsSettingsSandbox {
 
 export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
     /**
-     * Enable inspecting encrypted HTTP traffic.
+     * Specify whether to inspect encrypted HTTP traffic.
      */
     enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustListItem {
     /**
-     * The description of the list item, if present.
+     * Provide the list item description (optional).
      */
     description?: pulumi.Input<string>;
     /**
-     * The value of the item in a list.
+     * Specify the item value.
      */
     value?: pulumi.Input<string>;
 }
@@ -17055,38 +17223,38 @@ export interface ZoneDnsSettingsNameservers {
      * Nameserver type
      * Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
      */
-    type: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
 export interface ZoneDnsSettingsSoa {
     /**
      * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      */
-    expire: pulumi.Input<number>;
+    expire?: pulumi.Input<number>;
     /**
      * The time to live (TTL) for negative caching of records within the zone.
      */
-    minTtl: pulumi.Input<number>;
+    minTtl?: pulumi.Input<number>;
     /**
-     * The primary nameserver, which may be used for outbound zone transfers.
+     * The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      */
-    mname: pulumi.Input<string>;
+    mname?: pulumi.Input<string>;
     /**
      * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      */
-    refresh: pulumi.Input<number>;
+    refresh?: pulumi.Input<number>;
     /**
      * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      */
-    retry: pulumi.Input<number>;
+    retry?: pulumi.Input<number>;
     /**
      * The email address of the zone administrator, with the first label representing the local part of the email address.
      */
-    rname: pulumi.Input<string>;
+    rname?: pulumi.Input<string>;
     /**
      * The time to live (TTL) of the SOA record itself.
      */
-    ttl: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
 }
 
 export interface ZoneLockdownConfiguration {

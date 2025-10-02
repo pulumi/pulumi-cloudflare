@@ -5,10 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,105 +20,105 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
      * Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      * 
      */
-    @Import(name="expire", required=true)
-    private Output<Double> expire;
+    @Import(name="expire")
+    private @Nullable Output<Double> expire;
 
     /**
      * @return Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
      * 
      */
-    public Output<Double> expire() {
-        return this.expire;
+    public Optional<Output<Double>> expire() {
+        return Optional.ofNullable(this.expire);
     }
 
     /**
      * The time to live (TTL) for negative caching of records within the zone.
      * 
      */
-    @Import(name="minTtl", required=true)
-    private Output<Double> minTtl;
+    @Import(name="minTtl")
+    private @Nullable Output<Double> minTtl;
 
     /**
      * @return The time to live (TTL) for negative caching of records within the zone.
      * 
      */
-    public Output<Double> minTtl() {
-        return this.minTtl;
+    public Optional<Output<Double>> minTtl() {
+        return Optional.ofNullable(this.minTtl);
     }
 
     /**
-     * The primary nameserver, which may be used for outbound zone transfers.
+     * The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
-    @Import(name="mname", required=true)
-    private Output<String> mname;
+    @Import(name="mname")
+    private @Nullable Output<String> mname;
 
     /**
-     * @return The primary nameserver, which may be used for outbound zone transfers.
+     * @return The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
-    public Output<String> mname() {
-        return this.mname;
+    public Optional<Output<String>> mname() {
+        return Optional.ofNullable(this.mname);
     }
 
     /**
      * Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      * 
      */
-    @Import(name="refresh", required=true)
-    private Output<Double> refresh;
+    @Import(name="refresh")
+    private @Nullable Output<Double> refresh;
 
     /**
      * @return Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
      * 
      */
-    public Output<Double> refresh() {
-        return this.refresh;
+    public Optional<Output<Double>> refresh() {
+        return Optional.ofNullable(this.refresh);
     }
 
     /**
      * Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      * 
      */
-    @Import(name="retry", required=true)
-    private Output<Double> retry;
+    @Import(name="retry")
+    private @Nullable Output<Double> retry;
 
     /**
      * @return Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
      * 
      */
-    public Output<Double> retry() {
-        return this.retry;
+    public Optional<Output<Double>> retry() {
+        return Optional.ofNullable(this.retry);
     }
 
     /**
      * The email address of the zone administrator, with the first label representing the local part of the email address.
      * 
      */
-    @Import(name="rname", required=true)
-    private Output<String> rname;
+    @Import(name="rname")
+    private @Nullable Output<String> rname;
 
     /**
      * @return The email address of the zone administrator, with the first label representing the local part of the email address.
      * 
      */
-    public Output<String> rname() {
-        return this.rname;
+    public Optional<Output<String>> rname() {
+        return Optional.ofNullable(this.rname);
     }
 
     /**
      * The time to live (TTL) of the SOA record itself.
      * 
      */
-    @Import(name="ttl", required=true)
-    private Output<Double> ttl;
+    @Import(name="ttl")
+    private @Nullable Output<Double> ttl;
 
     /**
      * @return The time to live (TTL) of the SOA record itself.
      * 
      */
-    public Output<Double> ttl() {
-        return this.ttl;
+    public Optional<Output<Double>> ttl() {
+        return Optional.ofNullable(this.ttl);
     }
 
     private ZoneDnsSettingsSoaArgs() {}
@@ -156,7 +157,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder expire(Output<Double> expire) {
+        public Builder expire(@Nullable Output<Double> expire) {
             $.expire = expire;
             return this;
         }
@@ -177,7 +178,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder minTtl(Output<Double> minTtl) {
+        public Builder minTtl(@Nullable Output<Double> minTtl) {
             $.minTtl = minTtl;
             return this;
         }
@@ -193,18 +194,18 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mname The primary nameserver, which may be used for outbound zone transfers.
+         * @param mname The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
          * 
          * @return builder
          * 
          */
-        public Builder mname(Output<String> mname) {
+        public Builder mname(@Nullable Output<String> mname) {
             $.mname = mname;
             return this;
         }
 
         /**
-         * @param mname The primary nameserver, which may be used for outbound zone transfers.
+         * @param mname The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
          * 
          * @return builder
          * 
@@ -219,7 +220,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder refresh(Output<Double> refresh) {
+        public Builder refresh(@Nullable Output<Double> refresh) {
             $.refresh = refresh;
             return this;
         }
@@ -240,7 +241,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder retry(Output<Double> retry) {
+        public Builder retry(@Nullable Output<Double> retry) {
             $.retry = retry;
             return this;
         }
@@ -261,7 +262,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder rname(Output<String> rname) {
+        public Builder rname(@Nullable Output<String> rname) {
             $.rname = rname;
             return this;
         }
@@ -282,7 +283,7 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder ttl(Output<Double> ttl) {
+        public Builder ttl(@Nullable Output<Double> ttl) {
             $.ttl = ttl;
             return this;
         }
@@ -298,27 +299,6 @@ public final class ZoneDnsSettingsSoaArgs extends com.pulumi.resources.ResourceA
         }
 
         public ZoneDnsSettingsSoaArgs build() {
-            if ($.expire == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "expire");
-            }
-            if ($.minTtl == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "minTtl");
-            }
-            if ($.mname == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "mname");
-            }
-            if ($.refresh == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "refresh");
-            }
-            if ($.retry == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "retry");
-            }
-            if ($.rname == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "rname");
-            }
-            if ($.ttl == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsSoaArgs", "ttl");
-            }
             return $;
         }
     }

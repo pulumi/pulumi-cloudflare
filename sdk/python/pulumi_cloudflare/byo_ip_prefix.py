@@ -131,7 +131,13 @@ class _ByoIpPrefixState:
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if advertised is not None:
+            warnings.warn("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""", DeprecationWarning)
+            pulumi.log.warn("""advertised is deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
+        if advertised is not None:
             pulumi.set(__self__, "advertised", advertised)
+        if advertised_modified_at is not None:
+            warnings.warn("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""", DeprecationWarning)
+            pulumi.log.warn("""advertised_modified_at is deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
         if advertised_modified_at is not None:
             pulumi.set(__self__, "advertised_modified_at", advertised_modified_at)
         if approved is not None:
@@ -149,7 +155,13 @@ class _ByoIpPrefixState:
         if modified_at is not None:
             pulumi.set(__self__, "modified_at", modified_at)
         if on_demand_enabled is not None:
+            warnings.warn("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""", DeprecationWarning)
+            pulumi.log.warn("""on_demand_enabled is deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
+        if on_demand_enabled is not None:
             pulumi.set(__self__, "on_demand_enabled", on_demand_enabled)
+        if on_demand_locked is not None:
+            warnings.warn("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""", DeprecationWarning)
+            pulumi.log.warn("""on_demand_locked is deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
         if on_demand_locked is not None:
             pulumi.set(__self__, "on_demand_locked", on_demand_locked)
 
@@ -167,6 +179,7 @@ class _ByoIpPrefixState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
@@ -179,6 +192,7 @@ class _ByoIpPrefixState:
 
     @_builtins.property
     @pulumi.getter(name="advertisedModifiedAt")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised_modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
@@ -269,6 +283,7 @@ class _ByoIpPrefixState:
 
     @_builtins.property
     @pulumi.getter(name="onDemandEnabled")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
@@ -281,6 +296,7 @@ class _ByoIpPrefixState:
 
     @_builtins.property
     @pulumi.getter(name="onDemandLocked")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether advertisement status of the prefix is locked, meaning it cannot be changed.
@@ -475,6 +491,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised(self) -> pulumi.Output[_builtins.bool]:
         """
         Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
@@ -483,6 +500,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="advertisedModifiedAt")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised_modified_at(self) -> pulumi.Output[_builtins.str]:
         """
         Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
@@ -541,6 +559,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="onDemandEnabled")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
@@ -549,6 +568,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="onDemandLocked")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_locked(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether advertisement status of the prefix is locked, meaning it cannot be changed.

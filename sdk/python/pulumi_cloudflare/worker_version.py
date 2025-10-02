@@ -37,7 +37,7 @@ class WorkerVersionArgs:
         """
         The set of arguments for constructing a WorkerVersion resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
-        :param pulumi.Input[_builtins.str] worker_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         :param pulumi.Input['WorkerVersionAnnotationsArgs'] annotations: Metadata about the version.
         :param pulumi.Input['WorkerVersionAssetsArgs'] assets: Configuration for assets within a Worker.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
@@ -47,6 +47,11 @@ class WorkerVersionArgs:
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
@@ -95,7 +100,7 @@ class WorkerVersionArgs:
     @pulumi.getter(name="workerId")
     def worker_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier.
+        Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 
@@ -204,6 +209,11 @@ class WorkerVersionArgs:
     def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
 
@@ -270,12 +280,17 @@ class _WorkerVersionState:
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input['WorkerVersionMigrationsArgs'] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input['WorkerVersionPlacementArgs'] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
-        :param pulumi.Input[_builtins.str] worker_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -438,6 +453,11 @@ class _WorkerVersionState:
     def modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerVersionModuleArgs']]]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
 
@@ -499,7 +519,7 @@ class _WorkerVersionState:
     @pulumi.getter(name="workerId")
     def worker_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Identifier.
+        Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 
@@ -549,10 +569,15 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
-        :param pulumi.Input[_builtins.str] worker_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         """
         ...
     @overload
@@ -670,12 +695,17 @@ class WorkerVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] main_module: The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
         :param pulumi.Input[Union['WorkerVersionMigrationsArgs', 'WorkerVersionMigrationsArgsDict']] migrations: Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerVersionModuleArgs', 'WorkerVersionModuleArgsDict']]]] modules: Code, sourcemaps, and other content used at runtime.
+               
+               This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+               [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+               [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+               included as modules named `_headers` and `_redirects` with content type `text/plain`.
         :param pulumi.Input[_builtins.int] number: The integer version number, starting from one.
         :param pulumi.Input[Union['WorkerVersionPlacementArgs', 'WorkerVersionPlacementArgsDict']] placement: Placement settings for the version.
         :param pulumi.Input[_builtins.str] source: The client used to create the version.
         :param pulumi.Input[_builtins.str] usage_model: Usage model for the version.
                Available values: "standard", "bundled", "unbound".
-        :param pulumi.Input[_builtins.str] worker_id: Identifier.
+        :param pulumi.Input[_builtins.str] worker_id: Identifier for the Worker, which can be ID or name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -784,6 +814,11 @@ class WorkerVersion(pulumi.CustomResource):
     def modules(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerVersionModule']]]:
         """
         Code, sourcemaps, and other content used at runtime.
+
+        This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        included as modules named `_headers` and `_redirects` with content type `text/plain`.
         """
         return pulumi.get(self, "modules")
 
@@ -825,7 +860,7 @@ class WorkerVersion(pulumi.CustomResource):
     @pulumi.getter(name="workerId")
     def worker_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier.
+        Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsFips
     {
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+        /// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
         /// </summary>
         public readonly bool? Tls;
 

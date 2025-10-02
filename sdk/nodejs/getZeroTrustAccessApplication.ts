@@ -95,7 +95,6 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly bgColor: string;
     readonly corsHeaders: outputs.GetZeroTrustAccessApplicationCorsHeaders;
-    readonly createdAt: string;
     /**
      * The custom error message shown to a user when they are denied access to the application.
      */
@@ -213,7 +212,6 @@ export interface GetZeroTrustAccessApplicationResult {
      * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     readonly type: string;
-    readonly updatedAt: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

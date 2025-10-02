@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsL4overrideResult
     {
         /// <summary>
-        /// IPv4 or IPv6 address.
+        /// Defines the IPv4 or IPv6 address.
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// A port number to use for TCP/UDP overrides.
+        /// Defines a port number to use for TCP/UDP overrides.
         /// </summary>
         public readonly int Port;
 

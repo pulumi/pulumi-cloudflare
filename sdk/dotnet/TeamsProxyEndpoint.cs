@@ -50,19 +50,19 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// A list of CIDRs to restrict ingress connections.
+        /// Specify the list of CIDRs to restrict ingress connections.
         /// </summary>
         [Output("ips")]
         public Output<ImmutableArray<string>> Ips { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the proxy endpoint.
+        /// Specify the name of the proxy endpoint.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The subdomain to be used as the destination in the proxy client.
+        /// Specify the subdomain to use as the destination in the proxy client.
         /// </summary>
         [Output("subdomain")]
         public Output<string> Subdomain { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _ips;
 
         /// <summary>
-        /// A list of CIDRs to restrict ingress connections.
+        /// Specify the list of CIDRs to restrict ingress connections.
         /// </summary>
         public InputList<string> Ips
         {
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name of the proxy endpoint.
+        /// Specify the name of the proxy endpoint.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _ips;
 
         /// <summary>
-        /// A list of CIDRs to restrict ingress connections.
+        /// Specify the list of CIDRs to restrict ingress connections.
         /// </summary>
         public InputList<string> Ips
         {
@@ -168,13 +168,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name of the proxy endpoint.
+        /// Specify the name of the proxy endpoint.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The subdomain to be used as the destination in the proxy client.
+        /// Specify the subdomain to use as the destination in the proxy client.
         /// </summary>
         [Input("subdomain")]
         public Input<string>? Subdomain { get; set; }

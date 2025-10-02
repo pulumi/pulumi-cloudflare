@@ -13,10 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerScriptAssetsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The SHA-256 hash of the asset manifest of files to upload.
+        /// </summary>
+        [Input("assetManifestSha256")]
+        public Input<string>? AssetManifestSha256 { get; set; }
+
+        /// <summary>
         /// Configuration for assets within a Worker.
         /// </summary>
         [Input("config")]
         public Input<Inputs.WorkerScriptAssetsConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Path to the directory containing asset files to upload.
+        /// </summary>
+        [Input("directory")]
+        public Input<string>? Directory { get; set; }
 
         [Input("jwt")]
         private Input<string>? _jwt;

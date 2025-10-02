@@ -21,54 +21,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustDexTest;
- * import com.pulumi.cloudflare.ZeroTrustDexTestArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestDataArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDexTestTargetPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleZeroTrustDexTest = new ZeroTrustDexTest("exampleZeroTrustDexTest", ZeroTrustDexTestArgs.builder()
- *             .accountId("01a7362d577a6c3019a474fd6f485823")
- *             .data(ZeroTrustDexTestDataArgs.builder()
- *                 .host("https://dash.cloudflare.com")
- *                 .kind("http")
- *                 .method("GET")
- *                 .build())
- *             .enabled(true)
- *             .interval("30m")
- *             .name("HTTP dash health check")
- *             .description("Checks the dash endpoint every 30 minutes")
- *             .targetPolicies(ZeroTrustDexTestTargetPolicyArgs.builder()
- *                 .id("id")
- *                 .default_(true)
- *                 .name("name")
- *                 .build())
- *             .targeted(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * ```sh
@@ -159,20 +111,20 @@ public class ZeroTrustDexTest extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="targetPolicies", refs={List.class,ZeroTrustDexTestTargetPolicy.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDexTestTargetPolicy>> targetPolicies;
+    private Output<List<ZeroTrustDexTestTargetPolicy>> targetPolicies;
 
     /**
      * @return DEX rules targeted by this test
      * 
      */
-    public Output<Optional<List<ZeroTrustDexTestTargetPolicy>>> targetPolicies() {
-        return Codegen.optional(this.targetPolicies);
+    public Output<List<ZeroTrustDexTestTargetPolicy>> targetPolicies() {
+        return this.targetPolicies;
     }
     @Export(name="targeted", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> targeted;
+    private Output<Boolean> targeted;
 
-    public Output<Optional<Boolean>> targeted() {
-        return Codegen.optional(this.targeted);
+    public Output<Boolean> targeted() {
+        return this.targeted;
     }
     /**
      * The unique identifier for the test.

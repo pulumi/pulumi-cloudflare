@@ -18,14 +18,14 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
     public static final GetZeroTrustGatewayAppTypesListArgs Empty = new GetZeroTrustGatewayAppTypesListArgs();
 
     /**
-     * Identifier.
+     * Provide the identifier string.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier.
+     * @return Provide the identifier string.
      * 
      */
     public Output<String> accountId() {
@@ -73,7 +73,7 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId Provide the identifier string.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetZeroTrustGatewayAppTypesListArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accountId Identifier.
+         * @param accountId Provide the identifier string.
          * 
          * @return builder
          * 

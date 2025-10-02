@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsHostSelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable filtering via hosts for egress policies.
+        /// Specify whether to enable filtering via hosts for egress policies.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

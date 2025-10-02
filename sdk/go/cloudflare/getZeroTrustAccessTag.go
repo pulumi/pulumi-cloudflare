@@ -59,16 +59,12 @@ type LookupZeroTrustAccessTagArgs struct {
 type LookupZeroTrustAccessTagResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The number of applications that have this tag
-	AppCount  int    `pulumi:"appCount"`
-	CreatedAt string `pulumi:"createdAt"`
 	// The name of the tag
 	Id string `pulumi:"id"`
 	// The name of the tag
 	Name string `pulumi:"name"`
 	// The name of the tag
-	TagName   *string `pulumi:"tagName"`
-	UpdatedAt string  `pulumi:"updatedAt"`
+	TagName *string `pulumi:"tagName"`
 }
 
 func LookupZeroTrustAccessTagOutput(ctx *pulumi.Context, args LookupZeroTrustAccessTagOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessTagResultOutput {
@@ -112,15 +108,6 @@ func (o LookupZeroTrustAccessTagResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The number of applications that have this tag
-func (o LookupZeroTrustAccessTagResultOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) int { return v.AppCount }).(pulumi.IntOutput)
-}
-
-func (o LookupZeroTrustAccessTagResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // The name of the tag
 func (o LookupZeroTrustAccessTagResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.Id }).(pulumi.StringOutput)
@@ -134,10 +121,6 @@ func (o LookupZeroTrustAccessTagResultOutput) Name() pulumi.StringOutput {
 // The name of the tag
 func (o LookupZeroTrustAccessTagResultOutput) TagName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) *string { return v.TagName }).(pulumi.StringPtrOutput)
-}
-
-func (o LookupZeroTrustAccessTagResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func init() {

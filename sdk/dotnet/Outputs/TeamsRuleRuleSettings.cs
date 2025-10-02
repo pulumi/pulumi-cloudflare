@@ -14,103 +14,103 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettings
     {
         /// <summary>
-        /// Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+        /// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>>? AddHeaders;
         /// <summary>
-        /// Set by parent MSP accounts to enable their children to bypass this rule.
+        /// Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
         /// </summary>
         public readonly bool? AllowChildBypass;
         /// <summary>
-        /// Settings for the Audit SSH action.
+        /// Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsAuditSsh? AuditSsh;
         /// <summary>
-        /// Configure how browser isolation behaves.
+        /// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
         /// <summary>
-        /// Custom block page settings. If missing/null, blocking will use the the account settings.
+        /// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBlockPage? BlockPage;
         /// <summary>
-        /// Enable the custom block page.
+        /// Enable the custom block page. Settable only for `dns` rules with action `block`.
         /// </summary>
         public readonly bool? BlockPageEnabled;
         /// <summary>
-        /// The text describing why this block occurred, displayed on the custom block page (if enabled).
+        /// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
         /// </summary>
         public readonly string? BlockReason;
         /// <summary>
-        /// Set by children MSP accounts to bypass their parent's rules.
+        /// Set to enable MSP accounts to bypass their parent's rules. Only MSP child accounts can set this. Settable for all types of rules.
         /// </summary>
         public readonly bool? BypassParentRule;
         /// <summary>
-        /// Configure how session check behaves.
+        /// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
         /// <summary>
-        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
+        /// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsDnsResolvers? DnsResolvers;
         /// <summary>
-        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsEgress? Egress;
         /// <summary>
-        /// Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+        /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         public readonly bool? IgnoreCnameCategoryMatches;
         /// <summary>
-        /// INSECURE - disable DNSSEC validation (for Allow actions).
+        /// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
         /// </summary>
         public readonly bool? InsecureDisableDnssecValidation;
         /// <summary>
-        /// Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+        /// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         public readonly bool? IpCategories;
         /// <summary>
-        /// Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+        /// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         public readonly bool? IpIndicatorFeeds;
         /// <summary>
-        /// Send matching traffic to the supplied destination IP address. and port.
+        /// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
-        /// Configure a notification to display on the user's device when this rule is matched.
+        /// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsNotificationSettings? NotificationSettings;
         /// <summary>
-        /// Override matching DNS queries with a hostname.
+        /// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
         /// </summary>
         public readonly string? OverrideHost;
         /// <summary>
-        /// Override matching DNS queries with an IP or set of IPs.
+        /// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
         /// </summary>
         public readonly ImmutableArray<string> OverrideIps;
         /// <summary>
-        /// Configure DLP payload logging.
+        /// Configure DLP payload logging. Settable only for `http` rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsPayloadLog? PayloadLog;
         /// <summary>
-        /// Settings that apply to quarantine rules.
+        /// Configure settings that apply to quarantine rules. Settable only for `http` rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsQuarantine? Quarantine;
         /// <summary>
-        /// Settings that apply to redirect rules.
+        /// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsRedirect? Redirect;
         /// <summary>
-        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
+        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsResolveDnsInternally? ResolveDnsInternally;
         /// <summary>
-        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
+        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
         /// </summary>
         public readonly bool? ResolveDnsThroughCloudflare;
         /// <summary>
-        /// Configure behavior when an upstream cert is invalid or an SSL error occurs.
+        /// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsUntrustedCert? UntrustedCert;
 

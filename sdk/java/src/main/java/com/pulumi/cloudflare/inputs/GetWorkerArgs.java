@@ -32,14 +32,14 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Import(name="workerId")
     private @Nullable Output<String> workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public Optional<Output<String>> workerId() {
@@ -93,7 +93,7 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetWorkerArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 

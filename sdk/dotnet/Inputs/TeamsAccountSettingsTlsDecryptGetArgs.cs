@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsTlsDecryptGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable inspecting encrypted HTTP traffic.
+        /// Specify whether to inspect encrypted HTTP traffic.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsActivityLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable activity logging.
+        /// Specify whether to log activity.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

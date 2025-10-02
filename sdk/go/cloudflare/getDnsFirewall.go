@@ -70,21 +70,18 @@ type LookupDnsFirewallResult struct {
 	EcsFallback bool `pulumi:"ecsFallback"`
 	// Identifier.
 	Id string `pulumi:"id"`
-	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
-	MaximumCacheTtl float64 `pulumi:"maximumCacheTtl"`
-	// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
-	MinimumCacheTtl float64 `pulumi:"minimumCacheTtl"`
-	// Last modification of DNS Firewall cluster
-	ModifiedOn string `pulumi:"modifiedOn"`
-	// DNS Firewall cluster name
-	Name string `pulumi:"name"`
-	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
-	NegativeCacheTtl float64 `pulumi:"negativeCacheTtl"`
-	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
-	Ratelimit float64 `pulumi:"ratelimit"`
-	// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
-	Retries     float64  `pulumi:"retries"`
-	UpstreamIps []string `pulumi:"upstreamIps"`
+	// By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
+	MaximumCacheTtl  float64  `pulumi:"maximumCacheTtl"`
+	MinimumCacheTtl  float64  `pulumi:"minimumCacheTtl"`
+	ModifiedOn       string   `pulumi:"modifiedOn"`
+	Name             string   `pulumi:"name"`
+	NegativeCacheTtl float64  `pulumi:"negativeCacheTtl"`
+	Ratelimit        float64  `pulumi:"ratelimit"`
+	Retries          float64  `pulumi:"retries"`
+	UpstreamIps      []string `pulumi:"upstreamIps"`
 }
 
 func LookupDnsFirewallOutput(ctx *pulumi.Context, args LookupDnsFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupDnsFirewallResultOutput {
@@ -157,37 +154,34 @@ func (o LookupDnsFirewallResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+// By default, Cloudflare attempts to cache responses for as long as
+// indicated by the TTL received from upstream nameservers. This setting
+// sets an upper bound on this duration. For caching purposes, higher TTLs
+// will be decreased to the maximum value defined by this setting.
 func (o LookupDnsFirewallResultOutput) MaximumCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsFirewallResult) float64 { return v.MaximumCacheTtl }).(pulumi.Float64Output)
 }
 
-// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
 func (o LookupDnsFirewallResultOutput) MinimumCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsFirewallResult) float64 { return v.MinimumCacheTtl }).(pulumi.Float64Output)
 }
 
-// Last modification of DNS Firewall cluster
 func (o LookupDnsFirewallResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// DNS Firewall cluster name
 func (o LookupDnsFirewallResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
 func (o LookupDnsFirewallResultOutput) NegativeCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsFirewallResult) float64 { return v.NegativeCacheTtl }).(pulumi.Float64Output)
 }
 
-// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 func (o LookupDnsFirewallResultOutput) Ratelimit() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsFirewallResult) float64 { return v.Ratelimit }).(pulumi.Float64Output)
 }
 
-// Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
 func (o LookupDnsFirewallResultOutput) Retries() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupDnsFirewallResult) float64 { return v.Retries }).(pulumi.Float64Output)
 }

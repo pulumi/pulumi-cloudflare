@@ -17,10 +17,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Nameserver type
         /// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
-        private AccountDnsSettingsZoneDefaultsNameservers(string type)
+        private AccountDnsSettingsZoneDefaultsNameservers(string? type)
         {
             Type = type;
         }

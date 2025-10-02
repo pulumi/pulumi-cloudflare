@@ -42,14 +42,14 @@ public class ZeroTrustGatewaySettings extends com.pulumi.resources.CustomResourc
         return this.createdAt;
     }
     /**
-     * Account settings.
+     * Specify account settings.
      * 
      */
     @Export(name="settings", refs={ZeroTrustGatewaySettingsSettings.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustGatewaySettingsSettings> settings;
 
     /**
-     * @return Account settings.
+     * @return Specify account settings.
      * 
      */
     public Output<Optional<ZeroTrustGatewaySettingsSettings>> settings() {

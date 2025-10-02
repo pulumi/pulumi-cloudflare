@@ -49,13 +49,28 @@ namespace Pulumi.Cloudflare
         public Output<bool?> EcsFallback { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets an upper bound on this duration. For caching purposes, higher TTLs
+        /// will be decreased to the maximum value defined by this setting.
         /// </summary>
         [Output("maximumCacheTtl")]
         public Output<double> MaximumCacheTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets a lower bound on this duration. For caching purposes, lower TTLs
+        /// will be increased to the minimum value defined by this setting.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
+        /// 
+        /// Note that, even with this setting, there is no guarantee that a
+        /// response will be cached for at least the specified duration. Cached
+        /// responses may be removed earlier for capacity or other operational
+        /// reasons.
         /// </summary>
         [Output("minimumCacheTtl")]
         public Output<double> MinimumCacheTtl { get; private set; } = null!;
@@ -73,7 +88,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+        /// This setting controls how long DNS Firewall should cache negative
+        /// responses (e.g., NXDOMAIN) from the upstream servers.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
         /// </summary>
         [Output("negativeCacheTtl")]
         public Output<double?> NegativeCacheTtl { get; private set; } = null!;
@@ -164,13 +184,28 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EcsFallback { get; set; }
 
         /// <summary>
-        /// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets an upper bound on this duration. For caching purposes, higher TTLs
+        /// will be decreased to the maximum value defined by this setting.
         /// </summary>
         [Input("maximumCacheTtl")]
         public Input<double>? MaximumCacheTtl { get; set; }
 
         /// <summary>
-        /// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets a lower bound on this duration. For caching purposes, lower TTLs
+        /// will be increased to the minimum value defined by this setting.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
+        /// 
+        /// Note that, even with this setting, there is no guarantee that a
+        /// response will be cached for at least the specified duration. Cached
+        /// responses may be removed earlier for capacity or other operational
+        /// reasons.
         /// </summary>
         [Input("minimumCacheTtl")]
         public Input<double>? MinimumCacheTtl { get; set; }
@@ -182,7 +217,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+        /// This setting controls how long DNS Firewall should cache negative
+        /// responses (e.g., NXDOMAIN) from the upstream servers.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
         /// </summary>
         [Input("negativeCacheTtl")]
         public Input<double>? NegativeCacheTtl { get; set; }
@@ -248,13 +288,28 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EcsFallback { get; set; }
 
         /// <summary>
-        /// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets an upper bound on this duration. For caching purposes, higher TTLs
+        /// will be decreased to the maximum value defined by this setting.
         /// </summary>
         [Input("maximumCacheTtl")]
         public Input<double>? MaximumCacheTtl { get; set; }
 
         /// <summary>
-        /// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+        /// By default, Cloudflare attempts to cache responses for as long as
+        /// indicated by the TTL received from upstream nameservers. This setting
+        /// sets a lower bound on this duration. For caching purposes, lower TTLs
+        /// will be increased to the minimum value defined by this setting.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
+        /// 
+        /// Note that, even with this setting, there is no guarantee that a
+        /// response will be cached for at least the specified duration. Cached
+        /// responses may be removed earlier for capacity or other operational
+        /// reasons.
         /// </summary>
         [Input("minimumCacheTtl")]
         public Input<double>? MinimumCacheTtl { get; set; }
@@ -272,7 +327,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+        /// This setting controls how long DNS Firewall should cache negative
+        /// responses (e.g., NXDOMAIN) from the upstream servers.
+        /// 
+        /// This setting does not affect the TTL value in the DNS response
+        /// Cloudflare returns to clients. Cloudflare will always forward the TTL
+        /// value received from upstream nameservers.
         /// </summary>
         [Input("negativeCacheTtl")]
         public Input<double>? NegativeCacheTtl { get; set; }

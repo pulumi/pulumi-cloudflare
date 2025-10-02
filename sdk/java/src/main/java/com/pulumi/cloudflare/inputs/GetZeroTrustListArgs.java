@@ -32,14 +32,14 @@ public final class GetZeroTrustListArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * API Resource UUID tag.
+     * Identify the API resource with a UUID.
      * 
      */
     @Import(name="listId")
     private @Nullable Output<String> listId;
 
     /**
-     * @return API Resource UUID tag.
+     * @return Identify the API resource with a UUID.
      * 
      */
     public Optional<Output<String>> listId() {
@@ -91,7 +91,7 @@ public final class GetZeroTrustListArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param listId API Resource UUID tag.
+         * @param listId Identify the API resource with a UUID.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetZeroTrustListArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param listId API Resource UUID tag.
+         * @param listId Identify the API resource with a UUID.
          * 
          * @return builder
          * 

@@ -47,27 +47,29 @@ import (
 type ZeroTrustGatewayCertificate struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	AccountId pulumi.StringOutput  `pulumi:"accountId"`
+	Activate  pulumi.BoolPtrOutput `pulumi:"activate"`
+	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus pulumi.StringOutput `pulumi:"bindingStatus"`
-	// The CA certificate(read only).
+	// Provide the CA certificate (read-only).
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
 	ExpiresOn   pulumi.StringOutput `pulumi:"expiresOn"`
-	// The SHA256 fingerprint of the certificate(read only).
+	// Provide the SHA256 fingerprint of the certificate (read-only).
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+	// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 	InUse pulumi.BoolOutput `pulumi:"inUse"`
-	// The organization that issued the certificate(read only).
+	// Indicate the organization that issued the certificate (read-only).
 	IssuerOrg pulumi.StringOutput `pulumi:"issuerOrg"`
-	// The entire issuer field of the certificate(read only).
+	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw pulumi.StringOutput `pulumi:"issuerRaw"`
-	// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type               pulumi.StringOutput `pulumi:"type"`
-	UpdatedAt          pulumi.StringOutput `pulumi:"updatedAt"`
-	UploadedOn         pulumi.StringOutput `pulumi:"uploadedOn"`
+	Type       pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt  pulumi.StringOutput `pulumi:"updatedAt"`
+	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
+	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
 	ValidityPeriodDays pulumi.IntPtrOutput `pulumi:"validityPeriodDays"`
 }
 
@@ -105,51 +107,55 @@ func GetZeroTrustGatewayCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
 type zeroTrustGatewayCertificateState struct {
 	AccountId *string `pulumi:"accountId"`
-	// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	Activate  *bool   `pulumi:"activate"`
+	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus *string `pulumi:"bindingStatus"`
-	// The CA certificate(read only).
+	// Provide the CA certificate (read-only).
 	Certificate *string `pulumi:"certificate"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	ExpiresOn   *string `pulumi:"expiresOn"`
-	// The SHA256 fingerprint of the certificate(read only).
+	// Provide the SHA256 fingerprint of the certificate (read-only).
 	Fingerprint *string `pulumi:"fingerprint"`
-	// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+	// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 	InUse *bool `pulumi:"inUse"`
-	// The organization that issued the certificate(read only).
+	// Indicate the organization that issued the certificate (read-only).
 	IssuerOrg *string `pulumi:"issuerOrg"`
-	// The entire issuer field of the certificate(read only).
+	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw *string `pulumi:"issuerRaw"`
-	// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type               *string `pulumi:"type"`
-	UpdatedAt          *string `pulumi:"updatedAt"`
-	UploadedOn         *string `pulumi:"uploadedOn"`
-	ValidityPeriodDays *int    `pulumi:"validityPeriodDays"`
+	Type       *string `pulumi:"type"`
+	UpdatedAt  *string `pulumi:"updatedAt"`
+	UploadedOn *string `pulumi:"uploadedOn"`
+	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
 }
 
 type ZeroTrustGatewayCertificateState struct {
 	AccountId pulumi.StringPtrInput
-	// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	Activate  pulumi.BoolPtrInput
+	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus pulumi.StringPtrInput
-	// The CA certificate(read only).
+	// Provide the CA certificate (read-only).
 	Certificate pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	ExpiresOn   pulumi.StringPtrInput
-	// The SHA256 fingerprint of the certificate(read only).
+	// Provide the SHA256 fingerprint of the certificate (read-only).
 	Fingerprint pulumi.StringPtrInput
-	// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+	// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 	InUse pulumi.BoolPtrInput
-	// The organization that issued the certificate(read only).
+	// Indicate the organization that issued the certificate (read-only).
 	IssuerOrg pulumi.StringPtrInput
-	// The entire issuer field of the certificate(read only).
+	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw pulumi.StringPtrInput
-	// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type               pulumi.StringPtrInput
-	UpdatedAt          pulumi.StringPtrInput
-	UploadedOn         pulumi.StringPtrInput
+	Type       pulumi.StringPtrInput
+	UpdatedAt  pulumi.StringPtrInput
+	UploadedOn pulumi.StringPtrInput
+	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -158,13 +164,17 @@ func (ZeroTrustGatewayCertificateState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayCertificateArgs struct {
-	AccountId          string `pulumi:"accountId"`
-	ValidityPeriodDays *int   `pulumi:"validityPeriodDays"`
+	AccountId string `pulumi:"accountId"`
+	Activate  *bool  `pulumi:"activate"`
+	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
 type ZeroTrustGatewayCertificateArgs struct {
-	AccountId          pulumi.StringInput
+	AccountId pulumi.StringInput
+	Activate  pulumi.BoolPtrInput
+	// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -259,13 +269,17 @@ func (o ZeroTrustGatewayCertificateOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+func (o ZeroTrustGatewayCertificateOutput) Activate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolPtrOutput { return v.Activate }).(pulumi.BoolPtrOutput)
+}
+
+// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 // Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 func (o ZeroTrustGatewayCertificateOutput) BindingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.BindingStatus }).(pulumi.StringOutput)
 }
 
-// The CA certificate(read only).
+// Provide the CA certificate (read-only).
 func (o ZeroTrustGatewayCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
@@ -278,27 +292,27 @@ func (o ZeroTrustGatewayCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// The SHA256 fingerprint of the certificate(read only).
+// Provide the SHA256 fingerprint of the certificate (read-only).
 func (o ZeroTrustGatewayCertificateOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 func (o ZeroTrustGatewayCertificateOutput) InUse() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.BoolOutput { return v.InUse }).(pulumi.BoolOutput)
 }
 
-// The organization that issued the certificate(read only).
+// Indicate the organization that issued the certificate (read-only).
 func (o ZeroTrustGatewayCertificateOutput) IssuerOrg() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.IssuerOrg }).(pulumi.StringOutput)
 }
 
-// The entire issuer field of the certificate(read only).
+// Provide the entire issuer field of the certificate (read-only).
 func (o ZeroTrustGatewayCertificateOutput) IssuerRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.IssuerRaw }).(pulumi.StringOutput)
 }
 
-// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 // Available values: "custom", "gatewayManaged".
 func (o ZeroTrustGatewayCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
@@ -312,6 +326,7 @@ func (o ZeroTrustGatewayCertificateOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
+// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
 func (o ZeroTrustGatewayCertificateOutput) ValidityPeriodDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.IntPtrOutput { return v.ValidityPeriodDays }).(pulumi.IntPtrOutput)
 }

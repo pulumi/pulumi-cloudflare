@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +62,21 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
+     * A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * 
+     */
+    @Import(name="clientSecretVersion")
+    private @Nullable Output<Double> clientSecretVersion;
+
+    /**
+     * @return A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * 
+     */
+    public Optional<Output<Double>> clientSecretVersion() {
+        return Optional.ofNullable(this.clientSecretVersion);
+    }
+
+    /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
@@ -98,6 +114,21 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * 
+     */
+    @Import(name="previousClientSecretExpiresAt")
+    private @Nullable Output<String> previousClientSecretExpiresAt;
+
+    /**
+     * @return The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * 
+     */
+    public Optional<Output<String>> previousClientSecretExpiresAt() {
+        return Optional.ofNullable(this.previousClientSecretExpiresAt);
+    }
+
+    /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
@@ -118,9 +149,11 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         this.accountId = $.accountId;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.clientSecretVersion = $.clientSecretVersion;
         this.duration = $.duration;
         this.expiresAt = $.expiresAt;
         this.name = $.name;
+        this.previousClientSecretExpiresAt = $.previousClientSecretExpiresAt;
         this.zoneId = $.zoneId;
     }
 
@@ -206,6 +239,27 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param clientSecretVersion A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretVersion(@Nullable Output<Double> clientSecretVersion) {
+            $.clientSecretVersion = clientSecretVersion;
+            return this;
+        }
+
+        /**
+         * @param clientSecretVersion A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecretVersion(Double clientSecretVersion) {
+            return clientSecretVersion(Output.of(clientSecretVersion));
+        }
+
+        /**
          * @param duration The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
          * 
          * @return builder
@@ -254,6 +308,27 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param previousClientSecretExpiresAt The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previousClientSecretExpiresAt(@Nullable Output<String> previousClientSecretExpiresAt) {
+            $.previousClientSecretExpiresAt = previousClientSecretExpiresAt;
+            return this;
+        }
+
+        /**
+         * @param previousClientSecretExpiresAt The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder previousClientSecretExpiresAt(String previousClientSecretExpiresAt) {
+            return previousClientSecretExpiresAt(Output.of(previousClientSecretExpiresAt));
         }
 
         /**

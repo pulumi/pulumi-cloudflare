@@ -50,33 +50,33 @@ func LookupZeroTrustGatewayCertificate(ctx *pulumi.Context, args *LookupZeroTrus
 // A collection of arguments for invoking getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Certificate UUID tag.
+	// Identify the certificate with a UUID.
 	CertificateId *string `pulumi:"certificateId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+	// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 	// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 	BindingStatus string `pulumi:"bindingStatus"`
-	// The CA certificate(read only).
+	// Provide the CA certificate (read-only).
 	Certificate string `pulumi:"certificate"`
-	// Certificate UUID tag.
+	// Identify the certificate with a UUID.
 	CertificateId *string `pulumi:"certificateId"`
 	CreatedAt     string  `pulumi:"createdAt"`
 	ExpiresOn     string  `pulumi:"expiresOn"`
-	// The SHA256 fingerprint of the certificate(read only).
+	// Provide the SHA256 fingerprint of the certificate (read-only).
 	Fingerprint string `pulumi:"fingerprint"`
-	// Certificate UUID tag.
+	// Identify the certificate with a UUID.
 	Id string `pulumi:"id"`
-	// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+	// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 	InUse bool `pulumi:"inUse"`
-	// The organization that issued the certificate(read only).
+	// Indicate the organization that issued the certificate (read-only).
 	IssuerOrg string `pulumi:"issuerOrg"`
-	// The entire issuer field of the certificate(read only).
+	// Provide the entire issuer field of the certificate (read-only).
 	IssuerRaw string `pulumi:"issuerRaw"`
-	// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+	// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
 	Type       string `pulumi:"type"`
 	UpdatedAt  string `pulumi:"updatedAt"`
@@ -95,7 +95,7 @@ func LookupZeroTrustGatewayCertificateOutput(ctx *pulumi.Context, args LookupZer
 // A collection of arguments for invoking getZeroTrustGatewayCertificate.
 type LookupZeroTrustGatewayCertificateOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Certificate UUID tag.
+	// Identify the certificate with a UUID.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 }
 
@@ -122,18 +122,18 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) AccountId() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
 // Available values: "pending*deployment", "available", "pending*deletion", "inactive".
 func (o LookupZeroTrustGatewayCertificateResultOutput) BindingStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.BindingStatus }).(pulumi.StringOutput)
 }
 
-// The CA certificate(read only).
+// Provide the CA certificate (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Certificate UUID tag.
+// Identify the certificate with a UUID.
 func (o LookupZeroTrustGatewayCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -146,32 +146,32 @@ func (o LookupZeroTrustGatewayCertificateResultOutput) ExpiresOn() pulumi.String
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// The SHA256 fingerprint of the certificate(read only).
+// Provide the SHA256 fingerprint of the certificate (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Certificate UUID tag.
+// Identify the certificate with a UUID.
 func (o LookupZeroTrustGatewayCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) InUse() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) bool { return v.InUse }).(pulumi.BoolOutput)
 }
 
-// The organization that issued the certificate(read only).
+// Indicate the organization that issued the certificate (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) IssuerOrg() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.IssuerOrg }).(pulumi.StringOutput)
 }
 
-// The entire issuer field of the certificate(read only).
+// Provide the entire issuer field of the certificate (read-only).
 func (o LookupZeroTrustGatewayCertificateResultOutput) IssuerRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.IssuerRaw }).(pulumi.StringOutput)
 }
 
-// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
 // Available values: "custom", "gatewayManaged".
 func (o LookupZeroTrustGatewayCertificateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayCertificateResult) string { return v.Type }).(pulumi.StringOutput)

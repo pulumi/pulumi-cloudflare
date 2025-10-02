@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsProtocolDetection {
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ZeroTrustGatewaySettingsSettingsProtocolDetection() {}
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<Boolean> enabled() {

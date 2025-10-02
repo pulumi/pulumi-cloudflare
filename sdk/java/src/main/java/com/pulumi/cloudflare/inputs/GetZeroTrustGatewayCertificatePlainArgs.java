@@ -23,14 +23,14 @@ public final class GetZeroTrustGatewayCertificatePlainArgs extends com.pulumi.re
     }
 
     /**
-     * Certificate UUID tag.
+     * Identify the certificate with a UUID.
      * 
      */
     @Import(name="certificateId")
     private @Nullable String certificateId;
 
     /**
-     * @return Certificate UUID tag.
+     * @return Identify the certificate with a UUID.
      * 
      */
     public Optional<String> certificateId() {
@@ -68,7 +68,7 @@ public final class GetZeroTrustGatewayCertificatePlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param certificateId Certificate UUID tag.
+         * @param certificateId Identify the certificate with a UUID.
          * 
          * @return builder
          * 

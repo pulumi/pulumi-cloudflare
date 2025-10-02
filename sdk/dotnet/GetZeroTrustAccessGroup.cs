@@ -151,7 +151,6 @@ namespace Pulumi.Cloudflare
         /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         public readonly string? AccountId;
-        public readonly string CreatedAt;
         /// <summary>
         /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         /// </summary>
@@ -181,7 +180,6 @@ namespace Pulumi.Cloudflare
         /// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessGroupRequireResult> Requires;
-        public readonly string UpdatedAt;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -190,8 +188,6 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetZeroTrustAccessGroupResult(
             string? accountId,
-
-            string createdAt,
 
             ImmutableArray<Outputs.GetZeroTrustAccessGroupExcludeResult> excludes,
 
@@ -209,12 +205,9 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustAccessGroupRequireResult> requires,
 
-            string updatedAt,
-
             string? zoneId)
         {
             AccountId = accountId;
-            CreatedAt = createdAt;
             Excludes = excludes;
             Filter = filter;
             GroupId = groupId;
@@ -223,7 +216,6 @@ namespace Pulumi.Cloudflare
             IsDefaults = isDefaults;
             Name = name;
             Requires = requires;
-            UpdatedAt = updatedAt;
             ZoneId = zoneId;
         }
     }

@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * @return Set notification on.
+     * @return Enable notification.
      * 
      */
     private Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Indicates whether to pass the context information as query parameters.
      * 
      */
     private Boolean includeContext;
@@ -27,21 +27,21 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
      */
     private String msg;
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     private String supportUrl;
 
     private GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings() {}
     /**
-     * @return Set notification on.
+     * @return Enable notification.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Indicates whether to pass the context information as query parameters.
      * 
      */
     public Boolean includeContext() {
@@ -55,7 +55,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
         return this.msg;
     }
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     public String supportUrl() {

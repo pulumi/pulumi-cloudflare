@@ -17,6 +17,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -122,14 +123,14 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return Domain of your zone.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     @Export(name="result", refs={EmailRoutingDnsResult.class}, tree="[0]")
     private Output<EmailRoutingDnsResult> result;

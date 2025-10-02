@@ -74,7 +74,7 @@ class GetZeroTrustGatewayProxyEndpointResult:
     @pulumi.getter
     def ips(self) -> Sequence[_builtins.str]:
         """
-        A list of CIDRs to restrict ingress connections.
+        Specify the list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -82,7 +82,7 @@ class GetZeroTrustGatewayProxyEndpointResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the proxy endpoint.
+        Specify the name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -95,7 +95,7 @@ class GetZeroTrustGatewayProxyEndpointResult:
     @pulumi.getter
     def subdomain(self) -> _builtins.str:
         """
-        The subdomain to be used as the destination in the proxy client.
+        Specify the subdomain to use as the destination in the proxy client.
         """
         return pulumi.get(self, "subdomain")
 

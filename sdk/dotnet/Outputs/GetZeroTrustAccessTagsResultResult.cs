@@ -14,30 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessTagsResultResult
     {
         /// <summary>
-        /// The number of applications that have this tag
-        /// </summary>
-        public readonly int AppCount;
-        public readonly string CreatedAt;
-        /// <summary>
         /// The name of the tag
         /// </summary>
         public readonly string Name;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
-        private GetZeroTrustAccessTagsResultResult(
-            int appCount,
-
-            string createdAt,
-
-            string name,
-
-            string updatedAt)
+        private GetZeroTrustAccessTagsResultResult(string name)
         {
-            AppCount = appCount;
-            CreatedAt = createdAt;
             Name = name;
-            UpdatedAt = updatedAt;
         }
     }
 }

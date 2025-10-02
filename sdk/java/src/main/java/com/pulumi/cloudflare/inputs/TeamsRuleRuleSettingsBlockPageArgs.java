@@ -18,14 +18,14 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
     public static final TeamsRuleRuleSettingsBlockPageArgs Empty = new TeamsRuleRuleSettingsBlockPageArgs();
 
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to pass the context information as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -33,14 +33,14 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
     }
 
     /**
-     * URI to which the user will be redirected.
+     * Specify the URI to which the user is redirected.
      * 
      */
     @Import(name="targetUri", required=true)
     private Output<String> targetUri;
 
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     public Output<String> targetUri() {
@@ -73,7 +73,7 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Specify whether to pass the context information as query parameters.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Specify whether to pass the context information as query parameters.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected.
+         * @param targetUri Specify the URI to which the user is redirected.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class TeamsRuleRuleSettingsBlockPageArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param targetUri URI to which the user will be redirected.
+         * @param targetUri Specify the URI to which the user is redirected.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
     public static final ZeroTrustGatewayPolicyRuleSettingsEgressArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsEgressArgs();
 
     /**
-     * The IPv4 address to be used for egress.
+     * Specify the IPv4 address to use for egress.
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<String> ipv4;
 
     /**
-     * @return The IPv4 address to be used for egress.
+     * @return Specify the IPv4 address to use for egress.
      * 
      */
     public Optional<Output<String>> ipv4() {
@@ -31,14 +31,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
     }
 
     /**
-     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+     * Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     @Import(name="ipv4Fallback")
     private @Nullable Output<String> ipv4Fallback;
 
     /**
-     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+     * @return Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     public Optional<Output<String>> ipv4Fallback() {
@@ -46,14 +46,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
     }
 
     /**
-     * The IPv6 range to be used for egress.
+     * Specify the IPv6 range to use for egress.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<String> ipv6;
 
     /**
-     * @return The IPv6 range to be used for egress.
+     * @return Specify the IPv6 range to use for egress.
      * 
      */
     public Optional<Output<String>> ipv6() {
@@ -87,7 +87,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv4 The IPv4 address to be used for egress.
+         * @param ipv4 Specify the IPv4 address to use for egress.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv4 The IPv4 address to be used for egress.
+         * @param ipv4 Specify the IPv4 address to use for egress.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv4Fallback The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+         * @param ipv4Fallback Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv4Fallback The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
+         * @param ipv4Fallback Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv6 The IPv6 range to be used for egress.
+         * @param ipv6 Specify the IPv6 range to use for egress.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsEgressArgs extends com.pulu
         }
 
         /**
-         * @param ipv6 The IPv6 range to be used for egress.
+         * @param ipv6 Specify the IPv6 range to use for egress.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ class GetZeroTrustAccessApplicationResult:
     """
     A collection of values returned by getZeroTrustAccessApplication.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allow_iframe=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, created_at=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allow_iframe=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -62,9 +62,6 @@ class GetZeroTrustAccessApplicationResult:
         if cors_headers and not isinstance(cors_headers, dict):
             raise TypeError("Expected argument 'cors_headers' to be a dict")
         pulumi.set(__self__, "cors_headers", cors_headers)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if custom_deny_message and not isinstance(custom_deny_message, str):
             raise TypeError("Expected argument 'custom_deny_message' to be a str")
         pulumi.set(__self__, "custom_deny_message", custom_deny_message)
@@ -155,9 +152,6 @@ class GetZeroTrustAccessApplicationResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -246,11 +240,6 @@ class GetZeroTrustAccessApplicationResult:
     @pulumi.getter(name="corsHeaders")
     def cors_headers(self) -> 'outputs.GetZeroTrustAccessApplicationCorsHeadersResult':
         return pulumi.get(self, "cors_headers")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customDenyMessage")
@@ -489,11 +478,6 @@ class GetZeroTrustAccessApplicationResult:
         return pulumi.get(self, "type")
 
     @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -519,7 +503,6 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
             auto_redirect_to_identity=self.auto_redirect_to_identity,
             bg_color=self.bg_color,
             cors_headers=self.cors_headers,
-            created_at=self.created_at,
             custom_deny_message=self.custom_deny_message,
             custom_deny_url=self.custom_deny_url,
             custom_non_identity_deny_url=self.custom_non_identity_deny_url,
@@ -550,7 +533,6 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
             tags=self.tags,
             target_criterias=self.target_criterias,
             type=self.type,
-            updated_at=self.updated_at,
             zone_id=self.zone_id)
 
 
@@ -596,7 +578,6 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
         auto_redirect_to_identity=pulumi.get(__ret__, 'auto_redirect_to_identity'),
         bg_color=pulumi.get(__ret__, 'bg_color'),
         cors_headers=pulumi.get(__ret__, 'cors_headers'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         custom_deny_message=pulumi.get(__ret__, 'custom_deny_message'),
         custom_deny_url=pulumi.get(__ret__, 'custom_deny_url'),
         custom_non_identity_deny_url=pulumi.get(__ret__, 'custom_non_identity_deny_url'),
@@ -627,7 +608,6 @@ def get_zero_trust_access_application(account_id: Optional[_builtins.str] = None
         tags=pulumi.get(__ret__, 'tags'),
         target_criterias=pulumi.get(__ret__, 'target_criterias'),
         type=pulumi.get(__ret__, 'type'),
-        updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              app_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -670,7 +650,6 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
         auto_redirect_to_identity=pulumi.get(__response__, 'auto_redirect_to_identity'),
         bg_color=pulumi.get(__response__, 'bg_color'),
         cors_headers=pulumi.get(__response__, 'cors_headers'),
-        created_at=pulumi.get(__response__, 'created_at'),
         custom_deny_message=pulumi.get(__response__, 'custom_deny_message'),
         custom_deny_url=pulumi.get(__response__, 'custom_deny_url'),
         custom_non_identity_deny_url=pulumi.get(__response__, 'custom_non_identity_deny_url'),
@@ -701,5 +680,4 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
         tags=pulumi.get(__response__, 'tags'),
         target_criterias=pulumi.get(__response__, 'target_criterias'),
         type=pulumi.get(__response__, 'type'),
-        updated_at=pulumi.get(__response__, 'updated_at'),
         zone_id=pulumi.get(__response__, 'zone_id')))

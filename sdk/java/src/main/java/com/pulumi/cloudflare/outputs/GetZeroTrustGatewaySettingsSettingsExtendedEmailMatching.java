@@ -13,50 +13,50 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
     /**
-     * @return Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * @return Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     private Boolean enabled;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     private Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     private String sourceAccount;
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     private Integer version;
 
     private GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching() {}
     /**
-     * @return Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * @return Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     public Boolean readOnly() {
         return this.readOnly;
     }
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     public String sourceAccount() {
         return this.sourceAccount;
     }
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     public Integer version() {

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsProtocolDetection {
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustGatewaySettingsSettingsProtocolDetection() {}
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Boolean enabled() {

@@ -18,14 +18,14 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
     public static final TeamsLocationEndpointsIpv6Args Empty = new TeamsLocationEndpointsIpv6Args();
 
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPV6 endpoint is enabled for this location.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPV6 endpoint is enabled for this location.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
     }
 
     /**
-     * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<TeamsLocationEndpointsIpv6NetworkArgs>> networks;
 
     /**
-     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     public Optional<Output<List<TeamsLocationEndpointsIpv6NetworkArgs>>> networks() {
@@ -73,7 +73,7 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the IPV6 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the IPV6 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsLocationEndpointsIpv6Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
     public static final ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs Empty = new ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs();
 
     /**
-     * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * @return Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
     }
 
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -48,14 +48,14 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
     }
 
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      * 
      */
     @Import(name="sourceAccount")
     private @Nullable Output<String> sourceAccount;
 
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     public Optional<Output<String>> sourceAccount() {
@@ -63,14 +63,14 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
     }
 
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -105,7 +105,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param enabled Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+         * @param enabled Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param enabled Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+         * @param enabled Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this setting was shared via the Orgs API and read only for the current account.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this setting was shared via the Orgs API and read only for the current account.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting.
+         * @param sourceAccount Indicate the account tag of the account that shared this setting.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting.
+         * @param sourceAccount Indicate the account tag of the account that shared this setting.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param version Version number of the setting.
+         * @param version Indicate the version number of the setting.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs ext
         }
 
         /**
-         * @param version Version number of the setting.
+         * @param version Indicate the version number of the setting.
          * 
          * @return builder
          * 

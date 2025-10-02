@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
     /**
-     * @return Log all requests to this service.
+     * @return Specify whether to log all requests to this service.
      * 
      */
     private @Nullable Boolean logAll;
     /**
-     * @return Log only blocking requests to this service.
+     * @return Specify whether to log only blocking requests to this service.
      * 
      */
     private @Nullable Boolean logBlocks;
 
     private ZeroTrustGatewayLoggingSettingsByRuleTypeL4() {}
     /**
-     * @return Log all requests to this service.
+     * @return Specify whether to log all requests to this service.
      * 
      */
     public Optional<Boolean> logAll() {
         return Optional.ofNullable(this.logAll);
     }
     /**
-     * @return Log only blocking requests to this service.
+     * @return Specify whether to log only blocking requests to this service.
      * 
      */
     public Optional<Boolean> logBlocks() {

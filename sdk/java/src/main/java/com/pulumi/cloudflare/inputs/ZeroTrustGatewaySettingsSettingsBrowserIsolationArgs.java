@@ -16,14 +16,14 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
     public static final ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs Empty = new ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs();
 
     /**
-     * Enable non-identity onramp support for Browser Isolation.
+     * Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     @Import(name="nonIdentityEnabled")
     private @Nullable Output<Boolean> nonIdentityEnabled;
 
     /**
-     * @return Enable non-identity onramp support for Browser Isolation.
+     * @return Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     public Optional<Output<Boolean>> nonIdentityEnabled() {
@@ -31,14 +31,14 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
     }
 
     /**
-     * Enable Clientless Browser Isolation.
+     * Specify whether to enable Clientless Browser Isolation.
      * 
      */
     @Import(name="urlBrowserIsolationEnabled")
     private @Nullable Output<Boolean> urlBrowserIsolationEnabled;
 
     /**
-     * @return Enable Clientless Browser Isolation.
+     * @return Specify whether to enable Clientless Browser Isolation.
      * 
      */
     public Optional<Output<Boolean>> urlBrowserIsolationEnabled() {
@@ -71,7 +71,7 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
         }
 
         /**
-         * @param nonIdentityEnabled Enable non-identity onramp support for Browser Isolation.
+         * @param nonIdentityEnabled Specify whether to enable non-identity onramp support for Browser Isolation.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
         }
 
         /**
-         * @param nonIdentityEnabled Enable non-identity onramp support for Browser Isolation.
+         * @param nonIdentityEnabled Specify whether to enable non-identity onramp support for Browser Isolation.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
         }
 
         /**
-         * @param urlBrowserIsolationEnabled Enable Clientless Browser Isolation.
+         * @param urlBrowserIsolationEnabled Specify whether to enable Clientless Browser Isolation.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs extends 
         }
 
         /**
-         * @param urlBrowserIsolationEnabled Enable Clientless Browser Isolation.
+         * @param urlBrowserIsolationEnabled Specify whether to enable Clientless Browser Isolation.
          * 
          * @return builder
          * 

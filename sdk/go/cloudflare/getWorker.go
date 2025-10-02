@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorker(ctx, &cloudflare.LookupWorkerArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WorkerId:  pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+//				WorkerId:  pulumi.StringRef("worker_id"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupWorker(ctx *pulumi.Context, args *LookupWorkerArgs, opts ...pulumi.In
 type LookupWorkerArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId *string `pulumi:"workerId"`
 }
 
@@ -61,7 +61,7 @@ type LookupWorkerResult struct {
 	AccountId string `pulumi:"accountId"`
 	// When the Worker was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	Id string `pulumi:"id"`
 	// Whether logpush is enabled for the Worker.
 	Logpush bool `pulumi:"logpush"`
@@ -77,7 +77,7 @@ type LookupWorkerResult struct {
 	TailConsumers []GetWorkerTailConsumer `pulumi:"tailConsumers"`
 	// When the Worker was most recently updated.
 	UpdatedOn string `pulumi:"updatedOn"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId *string `pulumi:"workerId"`
 }
 
@@ -94,7 +94,7 @@ func LookupWorkerOutput(ctx *pulumi.Context, args LookupWorkerOutputArgs, opts .
 type LookupWorkerOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringPtrInput `pulumi:"workerId"`
 }
 
@@ -127,7 +127,7 @@ func (o LookupWorkerResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Identifier for the Worker, which can be ID or name.
 func (o LookupWorkerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -167,7 +167,7 @@ func (o LookupWorkerResultOutput) UpdatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerResult) string { return v.UpdatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Identifier for the Worker, which can be ID or name.
 func (o LookupWorkerResultOutput) WorkerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkerResult) *string { return v.WorkerId }).(pulumi.StringPtrOutput)
 }

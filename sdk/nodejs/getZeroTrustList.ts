@@ -35,7 +35,7 @@ export interface GetZeroTrustListArgs {
     accountId: string;
     filter?: inputs.GetZeroTrustListFilter;
     /**
-     * API Resource UUID tag.
+     * Identify the API resource with a UUID.
      */
     listId?: string;
 }
@@ -47,32 +47,32 @@ export interface GetZeroTrustListResult {
     readonly accountId: string;
     readonly createdAt: string;
     /**
-     * The description of the list.
+     * Provide the list description.
      */
     readonly description: string;
     readonly filter?: outputs.GetZeroTrustListFilter;
     /**
-     * API Resource UUID tag.
+     * Identify the API resource with a UUID.
      */
     readonly id: string;
     /**
-     * The items in the list.
+     * Provide the list items.
      */
     readonly items: outputs.GetZeroTrustListItem[];
     /**
-     * The number of items in the list.
+     * Indicate the number of items in the list.
      */
     readonly listCount: number;
     /**
-     * API Resource UUID tag.
+     * Identify the API resource with a UUID.
      */
     readonly listId?: string;
     /**
-     * The name of the list.
+     * Specify the list name.
      */
     readonly name: string;
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     readonly type: string;
@@ -107,7 +107,7 @@ export interface GetZeroTrustListOutputArgs {
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustListFilterArgs>;
     /**
-     * API Resource UUID tag.
+     * Identify the API resource with a UUID.
      */
     listId?: pulumi.Input<string>;
 }

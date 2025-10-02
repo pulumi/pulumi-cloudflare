@@ -80,6 +80,7 @@ class GetByoIpPrefixResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised(self) -> _builtins.bool:
         """
         Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
@@ -88,6 +89,7 @@ class GetByoIpPrefixResult:
 
     @_builtins.property
     @pulumi.getter(name="advertisedModifiedAt")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def advertised_modified_at(self) -> _builtins.str:
         """
         Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
@@ -154,6 +156,7 @@ class GetByoIpPrefixResult:
 
     @_builtins.property
     @pulumi.getter(name="onDemandEnabled")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_enabled(self) -> _builtins.bool:
         """
         Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
@@ -162,6 +165,7 @@ class GetByoIpPrefixResult:
 
     @_builtins.property
     @pulumi.getter(name="onDemandLocked")
+    @_utilities.deprecated("""Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.""")
     def on_demand_locked(self) -> _builtins.bool:
         """
         Whether advertisement status of the prefix is locked, meaning it cannot be changed.

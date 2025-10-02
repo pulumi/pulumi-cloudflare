@@ -74,7 +74,7 @@ export interface GetPageShieldScriptsListArgs {
      */
     excludeUrls?: string;
     /**
-     * Export the list of scripts as a file.
+     * Export the list of scripts as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: string;
@@ -120,7 +120,7 @@ export interface GetPageShieldScriptsListResult {
      */
     readonly excludeUrls?: string;
     /**
-     * Export the list of scripts as a file.
+     * Export the list of scripts as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     readonly export?: string;
@@ -214,7 +214,7 @@ export interface GetPageShieldScriptsListOutputArgs {
      */
     excludeUrls?: pulumi.Input<string>;
     /**
-     * Export the list of scripts as a file.
+     * Export the list of scripts as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: pulumi.Input<string>;

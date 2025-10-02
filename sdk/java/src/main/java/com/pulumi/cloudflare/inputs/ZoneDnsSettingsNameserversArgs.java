@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -37,16 +36,16 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
      * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return Nameserver type
      * Available values: &#34;cloudflare.standard&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;, &#34;custom.zone&#34;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private ZoneDnsSettingsNameserversArgs() {}
@@ -102,7 +101,7 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -119,9 +118,6 @@ public final class ZoneDnsSettingsNameserversArgs extends com.pulumi.resources.R
         }
 
         public ZoneDnsSettingsNameserversArgs build() {
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("ZoneDnsSettingsNameserversArgs", "type");
-            }
             return $;
         }
     }

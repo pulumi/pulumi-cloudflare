@@ -49,7 +49,7 @@ export class TeamsAccount extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     declare public readonly settings: pulumi.Output<outputs.TeamsAccountSettings | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -98,7 +98,7 @@ export interface TeamsAccountState {
     accountId?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     settings?: pulumi.Input<inputs.TeamsAccountSettings>;
     updatedAt?: pulumi.Input<string>;
@@ -110,7 +110,7 @@ export interface TeamsAccountState {
 export interface TeamsAccountArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     settings?: pulumi.Input<inputs.TeamsAccountSettings>;
 }

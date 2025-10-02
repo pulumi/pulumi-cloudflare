@@ -54,11 +54,11 @@ type TeamsProxyEndpoint struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -110,11 +110,11 @@ func GetTeamsProxyEndpoint(ctx *pulumi.Context,
 type teamsProxyEndpointState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name *string `pulumi:"name"`
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain *string `pulumi:"subdomain"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -122,11 +122,11 @@ type teamsProxyEndpointState struct {
 type TeamsProxyEndpointState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringPtrInput
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -137,18 +137,18 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 
 type teamsProxyEndpointArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TeamsProxyEndpoint resource.
 type TeamsProxyEndpointArgs struct {
 	AccountId pulumi.StringInput
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name pulumi.StringInput
 }
 
@@ -247,17 +247,17 @@ func (o TeamsProxyEndpointOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// A list of CIDRs to restrict ingress connections.
+// Specify the list of CIDRs to restrict ingress connections.
 func (o TeamsProxyEndpointOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringArrayOutput { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// The name of the proxy endpoint.
+// Specify the name of the proxy endpoint.
 func (o TeamsProxyEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The subdomain to be used as the destination in the proxy client.
+// Specify the subdomain to use as the destination in the proxy client.
 func (o TeamsProxyEndpointOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
 }

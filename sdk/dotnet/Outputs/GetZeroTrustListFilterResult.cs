@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustListFilterResult
     {
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         public readonly string? Type;

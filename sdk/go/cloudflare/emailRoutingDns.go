@@ -56,7 +56,7 @@ type EmailRoutingDns struct {
 	// The date and time the settings have been modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// Domain of your zone.
-	Name       pulumi.StringOutput             `pulumi:"name"`
+	Name       pulumi.StringPtrOutput          `pulumi:"name"`
 	Result     EmailRoutingDnsResultOutput     `pulumi:"result"`
 	ResultInfo EmailRoutingDnsResultInfoOutput `pulumi:"resultInfo"`
 	// Flag to check if the user skipped the configuration wizard.
@@ -81,9 +81,6 @@ func NewEmailRoutingDns(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -171,7 +168,7 @@ func (EmailRoutingDnsState) ElementType() reflect.Type {
 
 type emailRoutingDnsArgs struct {
 	// Domain of your zone.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -179,7 +176,7 @@ type emailRoutingDnsArgs struct {
 // The set of arguments for constructing a EmailRoutingDns resource.
 type EmailRoutingDnsArgs struct {
 	// Domain of your zone.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -295,8 +292,8 @@ func (o EmailRoutingDnsOutput) Modified() pulumi.StringOutput {
 }
 
 // Domain of your zone.
-func (o EmailRoutingDnsOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o EmailRoutingDnsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o EmailRoutingDnsOutput) Result() EmailRoutingDnsResultOutput {

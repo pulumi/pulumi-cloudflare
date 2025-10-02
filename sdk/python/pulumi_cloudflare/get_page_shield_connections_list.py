@@ -106,7 +106,7 @@ class GetPageShieldConnectionsListResult:
     @pulumi.getter
     def export(self) -> Optional[_builtins.str]:
         """
-        Export the list of connections as a file.
+        Export the list of connections as a file, limited to 50000 entries.
         Available values: "csv".
         """
         return pulumi.get(self, "export")
@@ -247,7 +247,7 @@ def get_page_shield_connections_list(direction: Optional[_builtins.str] = None,
            Available values: "asc", "desc".
     :param _builtins.bool exclude_cdn_cgi: When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
     :param _builtins.str exclude_urls: Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
-    :param _builtins.str export: Export the list of connections as a file.
+    :param _builtins.str export: Export the list of connections as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier
@@ -329,7 +329,7 @@ def get_page_shield_connections_list_output(direction: Optional[pulumi.Input[Opt
            Available values: "asc", "desc".
     :param _builtins.bool exclude_cdn_cgi: When true, excludes connections seen in a `/cdn-cgi` path from the returned connections. The default value is true.
     :param _builtins.str exclude_urls: Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
-    :param _builtins.str export: Export the list of connections as a file.
+    :param _builtins.str export: Export the list of connections as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes connections that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsTlsDecrypt {
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustGatewaySettingsSettingsTlsDecrypt() {}
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Boolean enabled() {

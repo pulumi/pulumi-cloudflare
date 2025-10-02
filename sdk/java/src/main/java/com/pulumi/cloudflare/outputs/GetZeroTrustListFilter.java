@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustListFilter {
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -20,7 +20,7 @@ public final class GetZeroTrustListFilter {
 
     private GetZeroTrustListFilter() {}
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */

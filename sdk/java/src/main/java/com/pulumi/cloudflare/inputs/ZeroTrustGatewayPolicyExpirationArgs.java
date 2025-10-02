@@ -19,14 +19,14 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
     public static final ZeroTrustGatewayPolicyExpirationArgs Empty = new ZeroTrustGatewayPolicyExpirationArgs();
 
     /**
-     * The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+     * Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+     * @return Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -34,14 +34,14 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
     }
 
     /**
-     * Whether the policy has expired.
+     * Indicates whether the policy is expired.
      * 
      */
     @Import(name="expired")
     private @Nullable Output<Boolean> expired;
 
     /**
-     * @return Whether the policy has expired.
+     * @return Indicates whether the policy is expired.
      * 
      */
     public Optional<Output<Boolean>> expired() {
@@ -49,16 +49,14 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
     }
 
     /**
-     * The time stamp at which the policy will expire and cease to be
-     * applied.
+     * Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
      * 
      */
     @Import(name="expiresAt", required=true)
     private Output<String> expiresAt;
 
     /**
-     * @return The time stamp at which the policy will expire and cease to be
-     * applied.
+     * @return Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
      * 
      */
     public Output<String> expiresAt() {
@@ -92,7 +90,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param duration The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+         * @param duration Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
          * 
          * @return builder
          * 
@@ -103,7 +101,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param duration The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+         * @param duration Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
          * 
          * @return builder
          * 
@@ -113,7 +111,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param expired Whether the policy has expired.
+         * @param expired Indicates whether the policy is expired.
          * 
          * @return builder
          * 
@@ -124,7 +122,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param expired Whether the policy has expired.
+         * @param expired Indicates whether the policy is expired.
          * 
          * @return builder
          * 
@@ -134,8 +132,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param expiresAt The time stamp at which the policy will expire and cease to be
-         * applied.
+         * @param expiresAt Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
          * 
          * @return builder
          * 
@@ -146,8 +143,7 @@ public final class ZeroTrustGatewayPolicyExpirationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param expiresAt The time stamp at which the policy will expire and cease to be
-         * applied.
+         * @param expiresAt Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
          * 
          * @return builder
          * 

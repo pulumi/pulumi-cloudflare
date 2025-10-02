@@ -62,7 +62,6 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
      * UUID.
      */
     readonly certificateId?: string;
-    readonly createdAt: string;
     readonly expiresOn: string;
     /**
      * The MD5 fingerprint of the certificate.
@@ -76,7 +75,6 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
      * The name of the certificate.
      */
     readonly name: string;
-    readonly updatedAt: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

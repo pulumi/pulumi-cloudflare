@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorker = Cloudflare.GetWorker.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId")]
         public string? WorkerId { get; set; }
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId")]
         public Input<string>? WorkerId { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string UpdatedOn;
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         public readonly string? WorkerId;
 

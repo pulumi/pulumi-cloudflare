@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsExtendedEmailMatching {
     /**
-     * @return Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * @return Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     private @Nullable String sourceAccount;
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     private @Nullable Integer version;
 
     private TeamsAccountSettingsExtendedEmailMatching() {}
     /**
-     * @return Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+     * @return Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     public Optional<String> sourceAccount() {
         return Optional.ofNullable(this.sourceAccount);
     }
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     public Optional<Integer> version() {

@@ -35,7 +35,6 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private Boolean autoRedirectToIdentity;
-    private String createdAt;
     private GetZeroTrustOrganizationCustomPages customPages;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -59,7 +58,6 @@ public final class GetZeroTrustOrganizationResult {
      * 
      */
     private String uiReadOnlyToggleReason;
-    private String updatedAt;
     /**
      * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
@@ -105,9 +103,6 @@ public final class GetZeroTrustOrganizationResult {
     public Boolean autoRedirectToIdentity() {
         return this.autoRedirectToIdentity;
     }
-    public String createdAt() {
-        return this.createdAt;
-    }
     public GetZeroTrustOrganizationCustomPages customPages() {
         return this.customPages;
     }
@@ -145,9 +140,6 @@ public final class GetZeroTrustOrganizationResult {
     public String uiReadOnlyToggleReason() {
         return this.uiReadOnlyToggleReason;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
     /**
      * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
@@ -183,7 +175,6 @@ public final class GetZeroTrustOrganizationResult {
         private Boolean allowAuthenticateViaWarp;
         private String authDomain;
         private Boolean autoRedirectToIdentity;
-        private String createdAt;
         private GetZeroTrustOrganizationCustomPages customPages;
         private String id;
         private Boolean isUiReadOnly;
@@ -191,7 +182,6 @@ public final class GetZeroTrustOrganizationResult {
         private String name;
         private String sessionDuration;
         private String uiReadOnlyToggleReason;
-        private String updatedAt;
         private String userSeatExpirationInactiveTime;
         private String warpAuthSessionDuration;
         private @Nullable String zoneId;
@@ -202,7 +192,6 @@ public final class GetZeroTrustOrganizationResult {
     	      this.allowAuthenticateViaWarp = defaults.allowAuthenticateViaWarp;
     	      this.authDomain = defaults.authDomain;
     	      this.autoRedirectToIdentity = defaults.autoRedirectToIdentity;
-    	      this.createdAt = defaults.createdAt;
     	      this.customPages = defaults.customPages;
     	      this.id = defaults.id;
     	      this.isUiReadOnly = defaults.isUiReadOnly;
@@ -210,7 +199,6 @@ public final class GetZeroTrustOrganizationResult {
     	      this.name = defaults.name;
     	      this.sessionDuration = defaults.sessionDuration;
     	      this.uiReadOnlyToggleReason = defaults.uiReadOnlyToggleReason;
-    	      this.updatedAt = defaults.updatedAt;
     	      this.userSeatExpirationInactiveTime = defaults.userSeatExpirationInactiveTime;
     	      this.warpAuthSessionDuration = defaults.warpAuthSessionDuration;
     	      this.zoneId = defaults.zoneId;
@@ -244,14 +232,6 @@ public final class GetZeroTrustOrganizationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "autoRedirectToIdentity");
             }
             this.autoRedirectToIdentity = autoRedirectToIdentity;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -311,14 +291,6 @@ public final class GetZeroTrustOrganizationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
-        @CustomType.Setter
         public Builder userSeatExpirationInactiveTime(String userSeatExpirationInactiveTime) {
             if (userSeatExpirationInactiveTime == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustOrganizationResult", "userSeatExpirationInactiveTime");
@@ -346,7 +318,6 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
             _resultValue.authDomain = authDomain;
             _resultValue.autoRedirectToIdentity = autoRedirectToIdentity;
-            _resultValue.createdAt = createdAt;
             _resultValue.customPages = customPages;
             _resultValue.id = id;
             _resultValue.isUiReadOnly = isUiReadOnly;
@@ -354,7 +325,6 @@ public final class GetZeroTrustOrganizationResult {
             _resultValue.name = name;
             _resultValue.sessionDuration = sessionDuration;
             _resultValue.uiReadOnlyToggleReason = uiReadOnlyToggleReason;
-            _resultValue.updatedAt = updatedAt;
             _resultValue.userSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
             _resultValue.warpAuthSessionDuration = warpAuthSessionDuration;
             _resultValue.zoneId = zoneId;

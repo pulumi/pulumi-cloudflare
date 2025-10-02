@@ -28,13 +28,10 @@ class GetZeroTrustAccessGroupResult:
     """
     A collection of values returned by getZeroTrustAccessGroup.
     """
-    def __init__(__self__, account_id=None, created_at=None, excludes=None, filter=None, group_id=None, id=None, includes=None, is_defaults=None, name=None, requires=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, excludes=None, filter=None, group_id=None, id=None, includes=None, is_defaults=None, name=None, requires=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if excludes and not isinstance(excludes, list):
             raise TypeError("Expected argument 'excludes' to be a list")
         pulumi.set(__self__, "excludes", excludes)
@@ -59,9 +56,6 @@ class GetZeroTrustAccessGroupResult:
         if requires and not isinstance(requires, list):
             raise TypeError("Expected argument 'requires' to be a list")
         pulumi.set(__self__, "requires", requires)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -73,11 +67,6 @@ class GetZeroTrustAccessGroupResult:
         The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
@@ -141,11 +130,6 @@ class GetZeroTrustAccessGroupResult:
         return pulumi.get(self, "requires")
 
     @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -161,7 +145,6 @@ class AwaitableGetZeroTrustAccessGroupResult(GetZeroTrustAccessGroupResult):
             yield self
         return GetZeroTrustAccessGroupResult(
             account_id=self.account_id,
-            created_at=self.created_at,
             excludes=self.excludes,
             filter=self.filter,
             group_id=self.group_id,
@@ -170,7 +153,6 @@ class AwaitableGetZeroTrustAccessGroupResult(GetZeroTrustAccessGroupResult):
             is_defaults=self.is_defaults,
             name=self.name,
             requires=self.requires,
-            updated_at=self.updated_at,
             zone_id=self.zone_id)
 
 
@@ -206,7 +188,6 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetZeroTrustAccessGroupResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         excludes=pulumi.get(__ret__, 'excludes'),
         filter=pulumi.get(__ret__, 'filter'),
         group_id=pulumi.get(__ret__, 'group_id'),
@@ -215,7 +196,6 @@ def get_zero_trust_access_group(account_id: Optional[_builtins.str] = None,
         is_defaults=pulumi.get(__ret__, 'is_defaults'),
         name=pulumi.get(__ret__, 'name'),
         requires=pulumi.get(__ret__, 'requires'),
-        updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_group_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessGroupFilterArgs', 'GetZeroTrustAccessGroupFilterArgsDict']]]] = None,
@@ -248,7 +228,6 @@ def get_zero_trust_access_group_output(account_id: Optional[pulumi.Input[Optiona
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessGroup:getZeroTrustAccessGroup', __args__, opts=opts, typ=GetZeroTrustAccessGroupResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessGroupResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        created_at=pulumi.get(__response__, 'created_at'),
         excludes=pulumi.get(__response__, 'excludes'),
         filter=pulumi.get(__response__, 'filter'),
         group_id=pulumi.get(__response__, 'group_id'),
@@ -257,5 +236,4 @@ def get_zero_trust_access_group_output(account_id: Optional[pulumi.Input[Optiona
         is_defaults=pulumi.get(__response__, 'is_defaults'),
         name=pulumi.get(__response__, 'name'),
         requires=pulumi.get(__response__, 'requires'),
-        updated_at=pulumi.get(__response__, 'updated_at'),
         zone_id=pulumi.get(__response__, 'zone_id')))

@@ -17,23 +17,47 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs extends com.pul
 
     public static final ZeroTrustGatewayLoggingSettingsByRuleTypeArgs Empty = new ZeroTrustGatewayLoggingSettingsByRuleTypeArgs();
 
+    /**
+     * Configure logging settings for DNS firewall.
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs> dns;
 
+    /**
+     * @return Configure logging settings for DNS firewall.
+     * 
+     */
     public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
+    /**
+     * Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     @Import(name="http")
     private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs> http;
 
+    /**
+     * @return Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs>> http() {
         return Optional.ofNullable(this.http);
     }
 
+    /**
+     * Configure logging settings for Network firewall.
+     * 
+     */
     @Import(name="l4")
     private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args> l4;
 
+    /**
+     * @return Configure logging settings for Network firewall.
+     * 
+     */
     public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args>> l4() {
         return Optional.ofNullable(this.l4);
     }
@@ -64,29 +88,65 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs extends com.pul
             $ = new ZeroTrustGatewayLoggingSettingsByRuleTypeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dns Configure logging settings for DNS firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns Configure logging settings for DNS firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param http Configure logging settings for HTTP/HTTPS firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs> http) {
             $.http = http;
             return this;
         }
 
+        /**
+         * @param http Configure logging settings for HTTP/HTTPS firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs http) {
             return http(Output.of(http));
         }
 
+        /**
+         * @param l4 Configure logging settings for Network firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder l4(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args> l4) {
             $.l4 = l4;
             return this;
         }
 
+        /**
+         * @param l4 Configure logging settings for Network firewall.
+         * 
+         * @return builder
+         * 
+         */
         public Builder l4(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args l4) {
             return l4(Output.of(l4));
         }

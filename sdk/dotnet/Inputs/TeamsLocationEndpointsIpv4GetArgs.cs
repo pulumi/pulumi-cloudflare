@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsLocationEndpointsIpv4GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the IPv4 endpoint is enabled for this location.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

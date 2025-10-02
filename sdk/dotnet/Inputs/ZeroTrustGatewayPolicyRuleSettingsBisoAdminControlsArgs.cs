@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        /// Configure copy behavior. If set to remote*only, users cannot copy isolated content from the remote browser to the local clipboard. If this field is absent, copying remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("copy")]
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Dk { get; set; }
 
         /// <summary>
-        /// Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+        /// Configure download behavior. When set to remote*only, users can view downloads but cannot save them. Applies only when version == "v2".
         /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("download")]
@@ -57,35 +57,35 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Du { get; set; }
 
         /// <summary>
-        /// Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        /// Configure keyboard usage behavior. If this field is absent, keyboard usage remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
 
         /// <summary>
-        /// Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        /// Configure paste behavior. If set to remote*only, users cannot paste content from the local clipboard into isolated pages. If this field is absent, pasting remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("paste")]
         public Input<string>? Paste { get; set; }
 
         /// <summary>
-        /// Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        /// Configure print behavior. Default, Printing is enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("printing")]
         public Input<string>? Printing { get; set; }
 
         /// <summary>
-        /// Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        /// Configure upload behavior. If this field is absent, uploading remains enabled. Applies only when version == "v2".
         /// Available values: "enabled", "disabled".
         /// </summary>
         [Input("upload")]
         public Input<string>? Upload { get; set; }
 
         /// <summary>
-        /// Indicates which version of the browser isolation controls should apply.
+        /// Indicate which version of the browser isolation controls should apply.
         /// Available values: "v1", "v2".
         /// </summary>
         [Input("version")]

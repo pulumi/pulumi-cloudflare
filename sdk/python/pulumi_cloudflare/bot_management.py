@@ -25,6 +25,7 @@ class BotManagementArgs:
                  ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
                  bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -42,6 +43,8 @@ class BotManagementArgs:
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
+               Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -66,6 +69,8 @@ class BotManagementArgs:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
             pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if cf_robots_variant is not None:
+            pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
         if crawler_protection is not None:
             pulumi.set(__self__, "crawler_protection", crawler_protection)
         if enable_js is not None:
@@ -135,6 +140,19 @@ class BotManagementArgs:
     @bm_cookie_enabled.setter
     def bm_cookie_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfRobotsVariant")
+    def cf_robots_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the Robots Access Control License variant to use.
+        Available values: "off", "policy_only".
+        """
+        return pulumi.get(self, "cf_robots_variant")
+
+    @cf_robots_variant.setter
+    def cf_robots_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cf_robots_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
@@ -269,6 +287,7 @@ class _BotManagementState:
                  ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
                  bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -288,6 +307,8 @@ class _BotManagementState:
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
+               Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -314,6 +335,8 @@ class _BotManagementState:
             pulumi.set(__self__, "auto_update_model", auto_update_model)
         if bm_cookie_enabled is not None:
             pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if cf_robots_variant is not None:
+            pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
         if crawler_protection is not None:
             pulumi.set(__self__, "crawler_protection", crawler_protection)
         if enable_js is not None:
@@ -377,6 +400,19 @@ class _BotManagementState:
     @bm_cookie_enabled.setter
     def bm_cookie_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "bm_cookie_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cfRobotsVariant")
+    def cf_robots_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the Robots Access Control License variant to use.
+        Available values: "off", "policy_only".
+        """
+        return pulumi.get(self, "cf_robots_variant")
+
+    @cf_robots_variant.setter
+    def cf_robots_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cf_robots_variant", value)
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
@@ -550,6 +586,7 @@ class BotManagement(pulumi.CustomResource):
                  ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
                  bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -572,10 +609,11 @@ class BotManagement(pulumi.CustomResource):
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             ai_bots_protection="block",
+            cf_robots_variant="policy_only",
             crawler_protection="enabled",
             enable_js=True,
             fight_mode=True,
-            is_robots_txt_managed=True)
+            is_robots_txt_managed=False)
         ```
 
         ## Import
@@ -590,6 +628,8 @@ class BotManagement(pulumi.CustomResource):
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
+               Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -624,10 +664,11 @@ class BotManagement(pulumi.CustomResource):
         example_bot_management = cloudflare.BotManagement("example_bot_management",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             ai_bots_protection="block",
+            cf_robots_variant="policy_only",
             crawler_protection="enabled",
             enable_js=True,
             fight_mode=True,
-            is_robots_txt_managed=True)
+            is_robots_txt_managed=False)
         ```
 
         ## Import
@@ -654,6 +695,7 @@ class BotManagement(pulumi.CustomResource):
                  ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
                  bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
                  crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
                  fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -677,6 +719,7 @@ class BotManagement(pulumi.CustomResource):
             __props__.__dict__["ai_bots_protection"] = ai_bots_protection
             __props__.__dict__["auto_update_model"] = auto_update_model
             __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
+            __props__.__dict__["cf_robots_variant"] = cf_robots_variant
             __props__.__dict__["crawler_protection"] = crawler_protection
             __props__.__dict__["enable_js"] = enable_js
             __props__.__dict__["fight_mode"] = fight_mode
@@ -705,6 +748,7 @@ class BotManagement(pulumi.CustomResource):
             ai_bots_protection: Optional[pulumi.Input[_builtins.str]] = None,
             auto_update_model: Optional[pulumi.Input[_builtins.bool]] = None,
             bm_cookie_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            cf_robots_variant: Optional[pulumi.Input[_builtins.str]] = None,
             crawler_protection: Optional[pulumi.Input[_builtins.str]] = None,
             enable_js: Optional[pulumi.Input[_builtins.bool]] = None,
             fight_mode: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -729,6 +773,8 @@ class BotManagement(pulumi.CustomResource):
                Available values: "block", "disabled", "only*on*ad_pages".
         :param pulumi.Input[_builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
         :param pulumi.Input[_builtins.bool] bm_cookie_enabled: Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+        :param pulumi.Input[_builtins.str] cf_robots_variant: Specifies the Robots Access Control License variant to use.
+               Available values: "off", "policy_only".
         :param pulumi.Input[_builtins.str] crawler_protection: Enable rule to punish AI Scrapers and Crawlers via a link maze.
                Available values: "enabled", "disabled".
         :param pulumi.Input[_builtins.bool] enable_js: Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
@@ -756,6 +802,7 @@ class BotManagement(pulumi.CustomResource):
         __props__.__dict__["ai_bots_protection"] = ai_bots_protection
         __props__.__dict__["auto_update_model"] = auto_update_model
         __props__.__dict__["bm_cookie_enabled"] = bm_cookie_enabled
+        __props__.__dict__["cf_robots_variant"] = cf_robots_variant
         __props__.__dict__["crawler_protection"] = crawler_protection
         __props__.__dict__["enable_js"] = enable_js
         __props__.__dict__["fight_mode"] = fight_mode
@@ -795,6 +842,15 @@ class BotManagement(pulumi.CustomResource):
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="cfRobotsVariant")
+    def cf_robots_variant(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the Robots Access Control License variant to use.
+        Available values: "off", "policy_only".
+        """
+        return pulumi.get(self, "cf_robots_variant")
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")

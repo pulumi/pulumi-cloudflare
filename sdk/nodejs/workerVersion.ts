@@ -85,6 +85,11 @@ export class WorkerVersion extends pulumi.CustomResource {
     declare public readonly migrations: pulumi.Output<outputs.WorkerVersionMigrations | undefined>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     declare public readonly modules: pulumi.Output<outputs.WorkerVersionModule[] | undefined>;
     /**
@@ -107,7 +112,7 @@ export class WorkerVersion extends pulumi.CustomResource {
      */
     declare public readonly usageModel: pulumi.Output<string>;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     declare public readonly workerId: pulumi.Output<string>;
 
@@ -216,6 +221,11 @@ export interface WorkerVersionState {
     migrations?: pulumi.Input<inputs.WorkerVersionMigrations>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[]>;
     /**
@@ -238,7 +248,7 @@ export interface WorkerVersionState {
      */
     usageModel?: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId?: pulumi.Input<string>;
 }
@@ -285,6 +295,11 @@ export interface WorkerVersionArgs {
     migrations?: pulumi.Input<inputs.WorkerVersionMigrations>;
     /**
      * Code, sourcemaps, and other content used at runtime.
+     *
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      */
     modules?: pulumi.Input<pulumi.Input<inputs.WorkerVersionModule>[]>;
     /**
@@ -299,7 +314,7 @@ export interface WorkerVersionArgs {
      */
     usageModel?: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId: pulumi.Input<string>;
 }

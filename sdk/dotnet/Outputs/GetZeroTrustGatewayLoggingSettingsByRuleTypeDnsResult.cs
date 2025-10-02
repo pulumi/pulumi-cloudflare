@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayLoggingSettingsByRuleTypeDnsResult
     {
         /// <summary>
-        /// Log all requests to this service.
+        /// Specify whether to log all requests to this service.
         /// </summary>
         public readonly bool LogAll;
         /// <summary>
-        /// Log only blocking requests to this service.
+        /// Specify whether to log only blocking requests to this service.
         /// </summary>
         public readonly bool LogBlocks;
 

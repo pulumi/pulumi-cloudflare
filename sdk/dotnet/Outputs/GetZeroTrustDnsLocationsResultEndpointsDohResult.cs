@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDnsLocationsResultEndpointsDohResult
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the DOH endpoint is enabled for this location.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustDnsLocationsResultEndpointsDohNetworkResult> Networks;
         /// <summary>
-        /// True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+        /// Specify whether the DOH endpoint requires user identity authentication.
         /// </summary>
         public readonly bool RequireToken;
 

@@ -17,7 +17,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The hostnames of the applications that will use this certificate.
         /// </summary>
         public readonly ImmutableArray<string> AssociatedHostnames;
-        public readonly string CreatedAt;
         public readonly string ExpiresOn;
         /// <summary>
         /// The MD5 fingerprint of the certificate.
@@ -31,13 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the certificate.
         /// </summary>
         public readonly string Name;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessMtlsCertificatesResultResult(
             ImmutableArray<string> associatedHostnames,
-
-            string createdAt,
 
             string expiresOn,
 
@@ -45,17 +41,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
-            string name,
-
-            string updatedAt)
+            string name)
         {
             AssociatedHostnames = associatedHostnames;
-            CreatedAt = createdAt;
             ExpiresOn = expiresOn;
             Fingerprint = fingerprint;
             Id = id;
             Name = name;
-            UpdatedAt = updatedAt;
         }
     }
 }

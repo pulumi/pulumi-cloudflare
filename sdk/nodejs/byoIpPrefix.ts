@@ -59,10 +59,14 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     declare public /*out*/ readonly advertised: pulumi.Output<boolean>;
     /**
      * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     declare public /*out*/ readonly advertisedModifiedAt: pulumi.Output<string>;
     /**
@@ -89,10 +93,14 @@ export class ByoIpPrefix extends pulumi.CustomResource {
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     declare public /*out*/ readonly onDemandEnabled: pulumi.Output<boolean>;
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     declare public /*out*/ readonly onDemandLocked: pulumi.Output<boolean>;
 
@@ -163,10 +171,14 @@ export interface ByoIpPrefixState {
     accountId?: pulumi.Input<string>;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     advertised?: pulumi.Input<boolean>;
     /**
      * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     advertisedModifiedAt?: pulumi.Input<string>;
     /**
@@ -193,10 +205,14 @@ export interface ByoIpPrefixState {
     modifiedAt?: pulumi.Input<string>;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     onDemandEnabled?: pulumi.Input<boolean>;
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     onDemandLocked?: pulumi.Input<boolean>;
 }

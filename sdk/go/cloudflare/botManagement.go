@@ -29,10 +29,11 @@ import (
 //			_, err := cloudflare.NewBotManagement(ctx, "example_bot_management", &cloudflare.BotManagementArgs{
 //				ZoneId:             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				AiBotsProtection:   pulumi.String("block"),
+//				CfRobotsVariant:    pulumi.String("policy_only"),
 //				CrawlerProtection:  pulumi.String("enabled"),
 //				EnableJs:           pulumi.Bool(true),
 //				FightMode:          pulumi.Bool(true),
-//				IsRobotsTxtManaged: pulumi.Bool(true),
+//				IsRobotsTxtManaged: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -58,6 +59,9 @@ type BotManagement struct {
 	AutoUpdateModel pulumi.BoolOutput `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolOutput `pulumi:"bmCookieEnabled"`
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant pulumi.StringOutput `pulumi:"cfRobotsVariant"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringOutput `pulumi:"crawlerProtection"`
@@ -132,6 +136,9 @@ type botManagementState struct {
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -174,6 +181,9 @@ type BotManagementState struct {
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolPtrInput
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant pulumi.StringPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -220,6 +230,9 @@ type botManagementArgs struct {
 	AutoUpdateModel *bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled *bool `pulumi:"bmCookieEnabled"`
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant *string `pulumi:"cfRobotsVariant"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection *string `pulumi:"crawlerProtection"`
@@ -259,6 +272,9 @@ type BotManagementArgs struct {
 	AutoUpdateModel pulumi.BoolPtrInput
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled pulumi.BoolPtrInput
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant pulumi.StringPtrInput
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection pulumi.StringPtrInput
@@ -390,6 +406,12 @@ func (o BotManagementOutput) AutoUpdateModel() pulumi.BoolOutput {
 // Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 func (o BotManagementOutput) BmCookieEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.BmCookieEnabled }).(pulumi.BoolOutput)
+}
+
+// Specifies the Robots Access Control License variant to use.
+// Available values: "off", "policyOnly".
+func (o BotManagementOutput) CfRobotsVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.CfRobotsVariant }).(pulumi.StringOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.

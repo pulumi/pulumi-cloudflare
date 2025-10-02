@@ -15,14 +15,14 @@ public final class ZeroTrustDnsLocationEndpointsDohNetworkArgs extends com.pulum
     public static final ZeroTrustDnsLocationEndpointsDohNetworkArgs Empty = new ZeroTrustDnsLocationEndpointsDohNetworkArgs();
 
     /**
-     * The IP address or IP CIDR.
+     * Specify the IP address or IP CIDR.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return The IP address or IP CIDR.
+     * @return Specify the IP address or IP CIDR.
      * 
      */
     public Output<String> network() {
@@ -54,7 +54,7 @@ public final class ZeroTrustDnsLocationEndpointsDohNetworkArgs extends com.pulum
         }
 
         /**
-         * @param network The IP address or IP CIDR.
+         * @param network Specify the IP address or IP CIDR.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ZeroTrustDnsLocationEndpointsDohNetworkArgs extends com.pulum
         }
 
         /**
-         * @param network The IP address or IP CIDR.
+         * @param network Specify the IP address or IP CIDR.
          * 
          * @return builder
          * 

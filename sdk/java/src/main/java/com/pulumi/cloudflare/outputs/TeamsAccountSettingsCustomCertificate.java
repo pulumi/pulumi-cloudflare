@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsCustomCertificate {
     /**
-     * @return Certificate status (internal).
+     * @return Indicate the internal certificate status.
      * 
      */
     private @Nullable String bindingStatus;
     /**
-     * @return Enable use of custom certificate authority for signing Gateway. traffic.
+     * @return Specify whether to enable a custom certificate authority for signing Gateway traffic.
      * 
      */
     private Boolean enabled;
     /**
-     * @return UUID of certificate (ID from MTLS certificate store).
+     * @return Specify the UUID of the certificate (ID from MTLS certificate store).
      * 
      */
     private @Nullable String id;
@@ -32,21 +32,21 @@ public final class TeamsAccountSettingsCustomCertificate {
 
     private TeamsAccountSettingsCustomCertificate() {}
     /**
-     * @return Certificate status (internal).
+     * @return Indicate the internal certificate status.
      * 
      */
     public Optional<String> bindingStatus() {
         return Optional.ofNullable(this.bindingStatus);
     }
     /**
-     * @return Enable use of custom certificate authority for signing Gateway. traffic.
+     * @return Specify whether to enable a custom certificate authority for signing Gateway traffic.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return UUID of certificate (ID from MTLS certificate store).
+     * @return Specify the UUID of the certificate (ID from MTLS certificate store).
      * 
      */
     public Optional<String> id() {

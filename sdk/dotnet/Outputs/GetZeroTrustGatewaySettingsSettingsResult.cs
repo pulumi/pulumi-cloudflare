@@ -14,59 +14,59 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsResult
     {
         /// <summary>
-        /// Activity log settings.
+        /// Specify activity log settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsActivityLogResult ActivityLog;
         /// <summary>
-        /// Anti-virus settings.
+        /// Specify anti-virus settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsAntivirusResult Antivirus;
         /// <summary>
-        /// Block page layout settings.
+        /// Specify block page layout settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsBlockPageResult BlockPage;
         /// <summary>
-        /// DLP body scanning settings.
+        /// Specify the DLP inspection mode.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsBodyScanningResult BodyScanning;
         /// <summary>
-        /// Browser isolation settings.
+        /// Specify Clientless Browser Isolation settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsBrowserIsolationResult BrowserIsolation;
         /// <summary>
-        /// Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+        /// Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsCertificateResult Certificate;
         /// <summary>
-        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+        /// Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsCustomCertificateResult CustomCertificate;
         /// <summary>
-        /// Extended e-mail matching settings.
+        /// Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsExtendedEmailMatchingResult ExtendedEmailMatching;
         /// <summary>
-        /// FIPS settings.
+        /// Specify FIPS settings.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsFipsResult Fips;
         /// <summary>
-        /// Setting to enable host selector in egress policies.
+        /// Enable host selection in egress policies.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsHostSelectorResult HostSelector;
         /// <summary>
-        /// Setting to define inspection settings.
+        /// Define the proxy inspection mode.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsInspectionResult Inspection;
         /// <summary>
-        /// Protocol Detection settings.
+        /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetectionResult ProtocolDetection;
         /// <summary>
-        /// Sandbox settings.
+        /// Specify whether to enable the sandbox.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsSandboxResult Sandbox;
         /// <summary>
-        /// TLS interception settings.
+        /// Specify whether to inspect encrypted HTTP traffic.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewaySettingsSettingsTlsDecryptResult TlsDecrypt;
 

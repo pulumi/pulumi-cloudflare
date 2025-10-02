@@ -13,7 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustAccessGroupsResultResult
     {
-        public readonly string CreatedAt;
         /// <summary>
         /// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
         /// </summary>
@@ -38,12 +37,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessGroupsResultRequireResult> Requires;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessGroupsResultResult(
-            string createdAt,
-
             ImmutableArray<Outputs.GetZeroTrustAccessGroupsResultExcludeResult> excludes,
 
             string id,
@@ -54,18 +50,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
-            ImmutableArray<Outputs.GetZeroTrustAccessGroupsResultRequireResult> requires,
-
-            string updatedAt)
+            ImmutableArray<Outputs.GetZeroTrustAccessGroupsResultRequireResult> requires)
         {
-            CreatedAt = createdAt;
             Excludes = excludes;
             Id = id;
             Includes = includes;
             IsDefaults = isDefaults;
             Name = name;
             Requires = requires;
-            UpdatedAt = updatedAt;
         }
     }
 }

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredConfigConfigIngress;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
-import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredConfigConfigWarpRouting;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
@@ -23,11 +22,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfig {
      * 
      */
     private GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest;
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    private GetZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting;
 
     private GetZeroTrustTunnelCloudflaredConfigConfig() {}
     /**
@@ -44,13 +38,6 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfig {
     public GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest() {
         return this.originRequest;
     }
-    /**
-     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
-     * 
-     */
-    public GetZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting() {
-        return this.warpRouting;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -63,13 +50,11 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfig {
     public static final class Builder {
         private List<GetZeroTrustTunnelCloudflaredConfigConfigIngress> ingresses;
         private GetZeroTrustTunnelCloudflaredConfigConfigOriginRequest originRequest;
-        private GetZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting;
         public Builder() {}
         public Builder(GetZeroTrustTunnelCloudflaredConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ingresses = defaults.ingresses;
     	      this.originRequest = defaults.originRequest;
-    	      this.warpRouting = defaults.warpRouting;
         }
 
         @CustomType.Setter
@@ -91,19 +76,10 @@ public final class GetZeroTrustTunnelCloudflaredConfigConfig {
             this.originRequest = originRequest;
             return this;
         }
-        @CustomType.Setter
-        public Builder warpRouting(GetZeroTrustTunnelCloudflaredConfigConfigWarpRouting warpRouting) {
-            if (warpRouting == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustTunnelCloudflaredConfigConfig", "warpRouting");
-            }
-            this.warpRouting = warpRouting;
-            return this;
-        }
         public GetZeroTrustTunnelCloudflaredConfigConfig build() {
             final var _resultValue = new GetZeroTrustTunnelCloudflaredConfigConfig();
             _resultValue.ingresses = ingresses;
             _resultValue.originRequest = originRequest;
-            _resultValue.warpRouting = warpRouting;
             return _resultValue;
         }
     }

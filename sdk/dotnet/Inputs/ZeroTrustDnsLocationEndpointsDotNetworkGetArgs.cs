@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDnsLocationEndpointsDotNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address or IP CIDR.
+        /// Specify the IP address or IP CIDR.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

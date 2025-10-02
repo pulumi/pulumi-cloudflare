@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsSandboxGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable sandbox.
+        /// Specify whether to enable the sandbox.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Action to take when the file cannot be scanned.
+        /// Specify the action to take when the system cannot scan the file.
         /// Available values: "allow", "block".
         /// </summary>
         [Input("fallbackAction")]

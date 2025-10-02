@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDnsLocationsResultEndpointsIpv6 {
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPV6 endpoint is enabled for this location.
      * 
      */
     private Boolean enabled;
     /**
-     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     private List<GetZeroTrustDnsLocationsResultEndpointsIpv6Network> networks;
 
     private GetZeroTrustDnsLocationsResultEndpointsIpv6() {}
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPV6 endpoint is enabled for this location.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     public List<GetZeroTrustDnsLocationsResultEndpointsIpv6Network> networks() {

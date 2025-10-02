@@ -501,7 +501,7 @@ class AddressMap(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def memberships(self) -> pulumi.Output[Sequence['outputs.AddressMapMembership']]:
+    def memberships(self) -> pulumi.Output[Optional[Sequence['outputs.AddressMapMembership']]]:
         """
         Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
         """

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsCertificate {
     /**
-     * @return UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * @return Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
      * 
      */
     private String id;
 
     private GetZeroTrustGatewaySettingsSettingsCertificate() {}
     /**
-     * @return UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * @return Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
      * 
      */
     public String id() {

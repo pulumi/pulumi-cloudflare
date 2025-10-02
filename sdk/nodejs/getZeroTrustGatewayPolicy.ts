@@ -33,7 +33,7 @@ export function getZeroTrustGatewayPolicy(args: GetZeroTrustGatewayPolicyArgs, o
 export interface GetZeroTrustGatewayPolicyArgs {
     accountId: string;
     /**
-     * The API resource UUID.
+     * Identify the API resource with a UUID.
      */
     ruleId?: string;
 }
@@ -44,46 +44,72 @@ export interface GetZeroTrustGatewayPolicyArgs {
 export interface GetZeroTrustGatewayPolicyResult {
     readonly accountId: string;
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     readonly action: string;
     readonly createdAt: string;
     /**
-     * Date of deletion, if any.
+     * Indicate the date of deletion, if any.
      */
     readonly deletedAt: string;
     /**
-     * The description of the rule.
+     * Specify the rule description.
      */
     readonly description: string;
     readonly devicePosture: string;
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      */
     readonly enabled: boolean;
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy's `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      */
     readonly expiration: outputs.GetZeroTrustGatewayPolicyExpiration;
+    /**
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+     */
     readonly filters: string[];
+    /**
+     * Identify the API resource with a UUID.
+     */
     readonly id: string;
     readonly identity: string;
+    /**
+     * Specify the rule name.
+     */
     readonly name: string;
-    readonly notSharable: boolean;
     readonly precedence: number;
+    /**
+     * Indicate that this rule is shared via the Orgs API and read only.
+     */
     readonly readOnly: boolean;
     /**
-     * The API resource UUID.
+     * Identify the API resource with a UUID.
      */
     readonly ruleId?: string;
     readonly ruleSettings: outputs.GetZeroTrustGatewayPolicyRuleSettings;
+    /**
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
+     */
     readonly schedule: outputs.GetZeroTrustGatewayPolicySchedule;
+    /**
+     * Indicate that this rule is sharable via the Orgs API.
+     */
+    readonly sharable: boolean;
+    /**
+     * Provide the account tag of the account that created the rule.
+     */
     readonly sourceAccount: string;
     readonly traffic: string;
     readonly updatedAt: string;
+    /**
+     * Indicate the version number of the rule(read-only).
+     */
     readonly version: number;
+    /**
+     * Indicate a warning for a misconfigured rule, if any.
+     */
     readonly warningStatus: string;
 }
 /**
@@ -113,7 +139,7 @@ export function getZeroTrustGatewayPolicyOutput(args: GetZeroTrustGatewayPolicyO
 export interface GetZeroTrustGatewayPolicyOutputArgs {
     accountId: pulumi.Input<string>;
     /**
-     * The API resource UUID.
+     * Identify the API resource with a UUID.
      */
     ruleId?: pulumi.Input<string>;
 }

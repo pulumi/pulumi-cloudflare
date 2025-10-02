@@ -21,20 +21,28 @@ class AccessServiceTokenArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret_version: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 previous_client_secret_expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessServiceToken resource.
         :param pulumi.Input[_builtins.str] name: The name of the service token.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "name", name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if client_secret_version is not None:
+            pulumi.set(__self__, "client_secret_version", client_secret_version)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if previous_client_secret_expires_at is not None:
+            pulumi.set(__self__, "previous_client_secret_expires_at", previous_client_secret_expires_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -63,6 +71,18 @@ class AccessServiceTokenArgs:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @client_secret_version.setter
+    def client_secret_version(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "client_secret_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -73,6 +93,18 @@ class AccessServiceTokenArgs:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="previousClientSecretExpiresAt")
+    def previous_client_secret_expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        """
+        return pulumi.get(self, "previous_client_secret_expires_at")
+
+    @previous_client_secret_expires_at.setter
+    def previous_client_secret_expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "previous_client_secret_expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -93,17 +125,21 @@ class _AccessServiceTokenState:
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret_version: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 previous_client_secret_expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessServiceToken resources.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -112,12 +148,16 @@ class _AccessServiceTokenState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_version is not None:
+            pulumi.set(__self__, "client_secret_version", client_secret_version)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if previous_client_secret_expires_at is not None:
+            pulumi.set(__self__, "previous_client_secret_expires_at", previous_client_secret_expires_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -158,6 +198,18 @@ class _AccessServiceTokenState:
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @client_secret_version.setter
+    def client_secret_version(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "client_secret_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -191,6 +243,18 @@ class _AccessServiceTokenState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="previousClientSecretExpiresAt")
+    def previous_client_secret_expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        """
+        return pulumi.get(self, "previous_client_secret_expires_at")
+
+    @previous_client_secret_expires_at.setter
+    def previous_client_secret_expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "previous_client_secret_expires_at", value)
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -215,8 +279,10 @@ class AccessServiceToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret_version: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 previous_client_secret_expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -229,7 +295,9 @@ class AccessServiceToken(pulumi.CustomResource):
         example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
-            duration="60m")
+            client_secret_version=0,
+            duration="60m",
+            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
         ```
 
         ## Import
@@ -241,8 +309,10 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -261,7 +331,9 @@ class AccessServiceToken(pulumi.CustomResource):
         example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
             name="CI/CD token",
             zone_id="zone_id",
-            duration="60m")
+            client_secret_version=0,
+            duration="60m",
+            previous_client_secret_expires_at="2014-01-01T05:20:00.12345Z")
         ```
 
         ## Import
@@ -286,8 +358,10 @@ class AccessServiceToken(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_secret_version: Optional[pulumi.Input[_builtins.float]] = None,
                  duration: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 previous_client_secret_expires_at: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""AccessServiceToken is deprecated: cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken""")
@@ -300,10 +374,12 @@ class AccessServiceToken(pulumi.CustomResource):
             __props__ = AccessServiceTokenArgs.__new__(AccessServiceTokenArgs)
 
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["client_secret_version"] = client_secret_version
             __props__.__dict__["duration"] = duration
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["previous_client_secret_expires_at"] = previous_client_secret_expires_at
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
@@ -325,9 +401,11 @@ class AccessServiceToken(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+            client_secret_version: Optional[pulumi.Input[_builtins.float]] = None,
             duration: Optional[pulumi.Input[_builtins.str]] = None,
             expires_at: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            previous_client_secret_expires_at: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessServiceToken':
         """
         Get an existing AccessServiceToken resource's state with the given name, id, and optional extra
@@ -339,8 +417,10 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[_builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         :param pulumi.Input[_builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
+        :param pulumi.Input[_builtins.float] client_secret_version: A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
         :param pulumi.Input[_builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         :param pulumi.Input[_builtins.str] name: The name of the service token.
+        :param pulumi.Input[_builtins.str] previous_client_secret_expires_at: The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         :param pulumi.Input[_builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -350,9 +430,11 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
+        __props__.__dict__["client_secret_version"] = client_secret_version
         __props__.__dict__["duration"] = duration
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["name"] = name
+        __props__.__dict__["previous_client_secret_expires_at"] = previous_client_secret_expires_at
         __props__.__dict__["zone_id"] = zone_id
         return AccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
@@ -381,6 +463,14 @@ class AccessServiceToken(pulumi.CustomResource):
         return pulumi.get(self, "client_secret")
 
     @_builtins.property
+    @pulumi.getter(name="clientSecretVersion")
+    def client_secret_version(self) -> pulumi.Output[_builtins.float]:
+        """
+        A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        """
+        return pulumi.get(self, "client_secret_version")
+
+    @_builtins.property
     @pulumi.getter
     def duration(self) -> pulumi.Output[_builtins.str]:
         """
@@ -400,6 +490,14 @@ class AccessServiceToken(pulumi.CustomResource):
         The name of the service token.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="previousClientSecretExpiresAt")
+    def previous_client_secret_expires_at(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        """
+        return pulumi.get(self, "previous_client_secret_expires_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

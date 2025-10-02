@@ -13,10 +13,10 @@ import * as utilities from "./utilities";
  *
  * const exampleEmailSecurityBlockSender = new cloudflare.EmailSecurityBlockSender("example_email_security_block_sender", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     isRegex: true,
- *     pattern: "x",
+ *     isRegex: false,
+ *     pattern: "test@example.com",
  *     patternType: "EMAIL",
- *     comments: "comments",
+ *     comments: "block sender with email test@example.com",
  * });
  * ```
  *

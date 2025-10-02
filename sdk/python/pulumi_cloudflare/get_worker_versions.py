@@ -80,7 +80,7 @@ class GetWorkerVersionsResult:
     @pulumi.getter(name="workerId")
     def worker_id(self) -> _builtins.str:
         """
-        Identifier.
+        Identifier for the Worker, which can be ID or name.
         """
         return pulumi.get(self, "worker_id")
 
@@ -110,13 +110,13 @@ def get_worker_versions(account_id: Optional[_builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_worker_versions = cloudflare.get_worker_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        worker_id="023e105f4ecef8ad9ca31a8372d0c353")
+        worker_id="worker_id")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str worker_id: Identifier.
+    :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -143,13 +143,13 @@ def get_worker_versions_output(account_id: Optional[pulumi.Input[_builtins.str]]
     import pulumi_cloudflare as cloudflare
 
     example_worker_versions = cloudflare.get_worker_versions(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        worker_id="023e105f4ecef8ad9ca31a8372d0c353")
+        worker_id="worker_id")
     ```
 
 
     :param _builtins.str account_id: Identifier.
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str worker_id: Identifier.
+    :param _builtins.str worker_id: Identifier for the Worker, which can be ID or name.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

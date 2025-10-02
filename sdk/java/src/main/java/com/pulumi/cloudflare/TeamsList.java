@@ -86,63 +86,63 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * The description of the list.
+     * Provide the list description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of the list.
+     * @return Provide the list description.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * items to add to the list.
+     * Add items to the list.
      * 
      */
     @Export(name="items", refs={List.class,TeamsListItem.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TeamsListItem>> items;
 
     /**
-     * @return items to add to the list.
+     * @return Add items to the list.
      * 
      */
     public Output<Optional<List<TeamsListItem>>> items() {
         return Codegen.optional(this.items);
     }
     /**
-     * The number of items in the list.
+     * Indicate the number of items in the list.
      * 
      */
     @Export(name="listCount", refs={Double.class}, tree="[0]")
     private Output<Double> listCount;
 
     /**
-     * @return The number of items in the list.
+     * @return Indicate the number of items in the list.
      * 
      */
     public Output<Double> listCount() {
         return this.listCount;
     }
     /**
-     * The name of the list.
+     * Specify the list name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return Specify the list name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -150,7 +150,7 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */

@@ -88,7 +88,7 @@ export class AddressMap extends pulumi.CustomResource {
     /**
      * Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      */
-    declare public readonly memberships: pulumi.Output<outputs.AddressMapMembership[]>;
+    declare public readonly memberships: pulumi.Output<outputs.AddressMapMembership[] | undefined>;
     declare public /*out*/ readonly modifiedAt: pulumi.Output<string>;
 
     /**

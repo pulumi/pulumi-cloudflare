@@ -31,14 +31,14 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
     /**
-     * @return A list of CIDRs to restrict ingress connections.
+     * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     public Optional<Output<List<String>>> ips() {
@@ -46,14 +46,14 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the proxy endpoint.
+     * @return Specify the name of the proxy endpoint.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The subdomain to be used as the destination in the proxy client.
+     * Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     @Import(name="subdomain")
     private @Nullable Output<String> subdomain;
 
     /**
-     * @return The subdomain to be used as the destination in the proxy client.
+     * @return Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     public Optional<Output<String>> subdomain() {
@@ -130,7 +130,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the proxy endpoint.
+         * @param name Specify the name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the proxy endpoint.
+         * @param name Specify the name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subdomain The subdomain to be used as the destination in the proxy client.
+         * @param subdomain Specify the subdomain to use as the destination in the proxy client.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class TeamsProxyEndpointState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param subdomain The subdomain to be used as the destination in the proxy client.
+         * @param subdomain Specify the subdomain to use as the destination in the proxy client.
          * 
          * @return builder
          * 

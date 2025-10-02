@@ -153,7 +153,6 @@ namespace Pulumi.Cloudflare
         /// UUID.
         /// </summary>
         public readonly string? CertificateId;
-        public readonly string CreatedAt;
         public readonly string ExpiresOn;
         /// <summary>
         /// The MD5 fingerprint of the certificate.
@@ -167,7 +166,6 @@ namespace Pulumi.Cloudflare
         /// The name of the certificate.
         /// </summary>
         public readonly string Name;
-        public readonly string UpdatedAt;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -181,8 +179,6 @@ namespace Pulumi.Cloudflare
 
             string? certificateId,
 
-            string createdAt,
-
             string expiresOn,
 
             string fingerprint,
@@ -191,19 +187,15 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string updatedAt,
-
             string? zoneId)
         {
             AccountId = accountId;
             AssociatedHostnames = associatedHostnames;
             CertificateId = certificateId;
-            CreatedAt = createdAt;
             ExpiresOn = expiresOn;
             Fingerprint = fingerprint;
             Id = id;
             Name = name;
-            UpdatedAt = updatedAt;
             ZoneId = zoneId;
         }
     }

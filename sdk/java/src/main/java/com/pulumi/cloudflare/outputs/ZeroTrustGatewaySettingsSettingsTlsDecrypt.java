@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsTlsDecrypt {
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ZeroTrustGatewaySettingsSettingsTlsDecrypt() {}
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<Boolean> enabled() {

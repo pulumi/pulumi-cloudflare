@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,28 +14,6 @@ import javax.annotation.Nullable;
 public final class AddressMapMembershipArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AddressMapMembershipArgs Empty = new AddressMapMembershipArgs();
-
-    /**
-     * Controls whether the membership can be deleted via the API or not.
-     * 
-     */
-    @Import(name="canDelete")
-    private @Nullable Output<Boolean> canDelete;
-
-    /**
-     * @return Controls whether the membership can be deleted via the API or not.
-     * 
-     */
-    public Optional<Output<Boolean>> canDelete() {
-        return Optional.ofNullable(this.canDelete);
-    }
-
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
 
     /**
      * The identifier for the membership (eg. a zone or account tag).
@@ -73,8 +50,6 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
     private AddressMapMembershipArgs() {}
 
     private AddressMapMembershipArgs(AddressMapMembershipArgs $) {
-        this.canDelete = $.canDelete;
-        this.createdAt = $.createdAt;
         this.identifier = $.identifier;
         this.kind = $.kind;
     }
@@ -95,36 +70,6 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
 
         public Builder(AddressMapMembershipArgs defaults) {
             $ = new AddressMapMembershipArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param canDelete Controls whether the membership can be deleted via the API or not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder canDelete(@Nullable Output<Boolean> canDelete) {
-            $.canDelete = canDelete;
-            return this;
-        }
-
-        /**
-         * @param canDelete Controls whether the membership can be deleted via the API or not.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder canDelete(Boolean canDelete) {
-            return canDelete(Output.of(canDelete));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         /**

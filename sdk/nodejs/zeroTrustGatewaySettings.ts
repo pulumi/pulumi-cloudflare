@@ -46,7 +46,7 @@ export class ZeroTrustGatewaySettings extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     declare public readonly settings: pulumi.Output<outputs.ZeroTrustGatewaySettingsSettings | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
@@ -92,7 +92,7 @@ export interface ZeroTrustGatewaySettingsState {
     accountId?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
     updatedAt?: pulumi.Input<string>;
@@ -104,7 +104,7 @@ export interface ZeroTrustGatewaySettingsState {
 export interface ZeroTrustGatewaySettingsArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Account settings.
+     * Specify account settings.
      */
     settings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettings>;
 }

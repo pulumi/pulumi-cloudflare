@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLog {
     /**
-     * @return Set to true to enable DLP payload logging for this rule.
+     * @return Enable DLP payload logging for this rule.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLog() {}
     /**
-     * @return Set to true to enable DLP payload logging for this rule.
+     * @return Enable DLP payload logging for this rule.
      * 
      */
     public Boolean enabled() {

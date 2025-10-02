@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDnsLocationEndpointsIpv6GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the IPV6 endpoint is enabled for this location.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkGetArgs>? _networks;
 
         /// <summary>
-        /// A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
         /// </summary>
         public InputList<Inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkGetArgs> Networks
         {

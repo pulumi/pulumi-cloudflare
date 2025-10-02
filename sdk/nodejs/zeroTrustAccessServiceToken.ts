@@ -14,7 +14,9 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustAccessServiceToken = new cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token", {
  *     name: "CI/CD token",
  *     zoneId: "zone_id",
+ *     clientSecretVersion: 0,
  *     duration: "60m",
+ *     previousClientSecretExpiresAt: "2014-01-01T05:20:00.12345Z",
  * });
  * ```
  *
@@ -65,6 +67,10 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly clientSecret: pulumi.Output<string>;
     /**
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     */
+    declare public readonly clientSecretVersion: pulumi.Output<number>;
+    /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     declare public readonly duration: pulumi.Output<string>;
@@ -73,6 +79,10 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
      * The name of the service token.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     */
+    declare public readonly previousClientSecretExpiresAt: pulumi.Output<string | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -94,9 +104,11 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["clientSecretVersion"] = state?.clientSecretVersion;
             resourceInputs["duration"] = state?.duration;
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["name"] = state?.name;
+            resourceInputs["previousClientSecretExpiresAt"] = state?.previousClientSecretExpiresAt;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as ZeroTrustAccessServiceTokenArgs | undefined;
@@ -104,8 +116,10 @@ export class ZeroTrustAccessServiceToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["clientSecretVersion"] = args?.clientSecretVersion;
             resourceInputs["duration"] = args?.duration;
             resourceInputs["name"] = args?.name;
+            resourceInputs["previousClientSecretExpiresAt"] = args?.previousClientSecretExpiresAt;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["clientSecret"] = undefined /*out*/;
@@ -137,6 +151,10 @@ export interface ZeroTrustAccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     */
+    clientSecretVersion?: pulumi.Input<number>;
+    /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string>;
@@ -145,6 +163,10 @@ export interface ZeroTrustAccessServiceTokenState {
      * The name of the service token.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     */
+    previousClientSecretExpiresAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -160,6 +182,10 @@ export interface ZeroTrustAccessServiceTokenArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+     */
+    clientSecretVersion?: pulumi.Input<number>;
+    /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      */
     duration?: pulumi.Input<string>;
@@ -167,6 +193,10 @@ export interface ZeroTrustAccessServiceTokenArgs {
      * The name of the service token.
      */
     name: pulumi.Input<string>;
+    /**
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     */
+    previousClientSecretExpiresAt?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

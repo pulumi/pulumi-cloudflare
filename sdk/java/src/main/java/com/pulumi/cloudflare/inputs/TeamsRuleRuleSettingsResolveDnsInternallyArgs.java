@@ -16,7 +16,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
     public static final TeamsRuleRuleSettingsResolveDnsInternallyArgs Empty = new TeamsRuleRuleSettingsResolveDnsInternallyArgs();
 
     /**
-     * The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
      * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
     private @Nullable Output<String> fallback;
 
     /**
-     * @return The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * @return Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
      * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
@@ -33,14 +33,14 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
     }
 
     /**
-     * The internal DNS view identifier that&#39;s passed to the internal DNS service.
+     * Specify the internal DNS view identifier to pass to the internal DNS service.
      * 
      */
     @Import(name="viewId")
     private @Nullable Output<String> viewId;
 
     /**
-     * @return The internal DNS view identifier that&#39;s passed to the internal DNS service.
+     * @return Specify the internal DNS view identifier to pass to the internal DNS service.
      * 
      */
     public Optional<Output<String>> viewId() {
@@ -73,7 +73,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
         }
 
         /**
-         * @param fallback The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+         * @param fallback Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
          * Available values: &#34;none&#34;, &#34;public_dns&#34;.
          * 
          * @return builder
@@ -85,7 +85,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
         }
 
         /**
-         * @param fallback The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+         * @param fallback Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
          * Available values: &#34;none&#34;, &#34;public_dns&#34;.
          * 
          * @return builder
@@ -96,7 +96,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
         }
 
         /**
-         * @param viewId The internal DNS view identifier that&#39;s passed to the internal DNS service.
+         * @param viewId Specify the internal DNS view identifier to pass to the internal DNS service.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
         }
 
         /**
-         * @param viewId The internal DNS view identifier that&#39;s passed to the internal DNS service.
+         * @param viewId Specify the internal DNS view identifier to pass to the internal DNS service.
          * 
          * @return builder
          * 

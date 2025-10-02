@@ -36,16 +36,14 @@ class ZeroTrustGatewayPolicyArgs:
                  traffic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayPolicy resource.
-        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
-        :param pulumi.Input[_builtins.str] name: The name of the rule.
-        :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
-        :param pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs'] expiration: The expiration time stamp and default duration of a DNS policy. Takes
-               precedence over the policy's `schedule` configuration, if any.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
-        :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
-        :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        :param pulumi.Input[_builtins.str] name: Specify the rule name.
+        :param pulumi.Input[_builtins.str] description: Specify the rule description.
+        :param pulumi.Input[_builtins.bool] enabled: Specify whether the rule is enabled.
+        :param pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs'] expiration: Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "action", action)
@@ -84,7 +82,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
         """
-        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -97,7 +95,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the rule.
+        Specify the rule name.
         """
         return pulumi.get(self, "name")
 
@@ -109,7 +107,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the rule.
+        Specify the rule description.
         """
         return pulumi.get(self, "description")
 
@@ -130,7 +128,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        True if the rule is enabled.
+        Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -142,8 +140,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs']]:
         """
-        The expiration time stamp and default duration of a DNS policy. Takes
-        precedence over the policy's `schedule` configuration, if any.
+        Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
@@ -155,7 +152,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         """
         return pulumi.get(self, "filters")
 
@@ -184,9 +181,6 @@ class ZeroTrustGatewayPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs']]:
-        """
-        Additional settings that modify the rule's action.
-        """
         return pulumi.get(self, "rule_settings")
 
     @rule_settings.setter
@@ -197,7 +191,7 @@ class ZeroTrustGatewayPolicyArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs']]:
         """
-        The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         return pulumi.get(self, "schedule")
 
@@ -229,11 +223,11 @@ class _ZeroTrustGatewayPolicyState:
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identity: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_sharable: Optional[pulumi.Input[_builtins.bool]] = None,
                  precedence: Optional[pulumi.Input[_builtins.int]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  rule_settings: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs']] = None,
                  schedule: Optional[pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs']] = None,
+                 sharable: Optional[pulumi.Input[_builtins.bool]] = None,
                  source_account: Optional[pulumi.Input[_builtins.str]] = None,
                  traffic: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -241,22 +235,20 @@ class _ZeroTrustGatewayPolicyState:
                  warning_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
-        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
-        :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
-        :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
-        :param pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs'] expiration: The expiration time stamp and default duration of a DNS policy. Takes
-               precedence over the policy's `schedule` configuration, if any.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
-        :param pulumi.Input[_builtins.str] name: The name of the rule.
-        :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API.
-        :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account.
-        :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
-        :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-        :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule.
-        :param pulumi.Input[_builtins.int] version: version number of the rule.
-        :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
+        :param pulumi.Input[_builtins.str] deleted_at: Indicate the date of deletion, if any.
+        :param pulumi.Input[_builtins.str] description: Specify the rule description.
+        :param pulumi.Input[_builtins.bool] enabled: Specify whether the rule is enabled.
+        :param pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs'] expiration: Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        :param pulumi.Input[_builtins.str] name: Specify the rule name.
+        :param pulumi.Input[_builtins.bool] read_only: Indicate that this rule is shared via the Orgs API and read only.
+        :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        :param pulumi.Input[_builtins.bool] sharable: Indicate that this rule is sharable via the Orgs API.
+        :param pulumi.Input[_builtins.str] source_account: Provide the account tag of the account that created the rule.
+        :param pulumi.Input[_builtins.int] version: Indicate the version number of the rule(read-only).
+        :param pulumi.Input[_builtins.str] warning_status: Indicate a warning for a misconfigured rule, if any.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -280,8 +272,6 @@ class _ZeroTrustGatewayPolicyState:
             pulumi.set(__self__, "identity", identity)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if not_sharable is not None:
-            pulumi.set(__self__, "not_sharable", not_sharable)
         if precedence is not None:
             pulumi.set(__self__, "precedence", precedence)
         if read_only is not None:
@@ -290,6 +280,8 @@ class _ZeroTrustGatewayPolicyState:
             pulumi.set(__self__, "rule_settings", rule_settings)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if sharable is not None:
+            pulumi.set(__self__, "sharable", sharable)
         if source_account is not None:
             pulumi.set(__self__, "source_account", source_account)
         if traffic is not None:
@@ -314,7 +306,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -336,7 +328,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter(name="deletedAt")
     def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Date of deletion, if any.
+        Indicate the date of deletion, if any.
         """
         return pulumi.get(self, "deleted_at")
 
@@ -348,7 +340,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the rule.
+        Specify the rule description.
         """
         return pulumi.get(self, "description")
 
@@ -369,7 +361,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        True if the rule is enabled.
+        Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -381,8 +373,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyExpirationArgs']]:
         """
-        The expiration time stamp and default duration of a DNS policy. Takes
-        precedence over the policy's `schedule` configuration, if any.
+        Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
@@ -394,7 +385,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         """
         return pulumi.get(self, "filters")
 
@@ -415,25 +406,13 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the rule.
+        Specify the rule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="notSharable")
-    def not_sharable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The rule cannot be shared via the Orgs API.
-        """
-        return pulumi.get(self, "not_sharable")
-
-    @not_sharable.setter
-    def not_sharable(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "not_sharable", value)
 
     @_builtins.property
     @pulumi.getter
@@ -448,7 +427,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The rule was shared via the Orgs API and cannot be edited by the current account.
+        Indicate that this rule is shared via the Orgs API and read only.
         """
         return pulumi.get(self, "read_only")
 
@@ -459,9 +438,6 @@ class _ZeroTrustGatewayPolicyState:
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs']]:
-        """
-        Additional settings that modify the rule's action.
-        """
         return pulumi.get(self, "rule_settings")
 
     @rule_settings.setter
@@ -472,7 +448,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs']]:
         """
-        The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         return pulumi.get(self, "schedule")
 
@@ -481,10 +457,22 @@ class _ZeroTrustGatewayPolicyState:
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sharable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicate that this rule is sharable via the Orgs API.
+        """
+        return pulumi.get(self, "sharable")
+
+    @sharable.setter
+    def sharable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sharable", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceAccount")
     def source_account(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        account tag of account that created the rule.
+        Provide the account tag of the account that created the rule.
         """
         return pulumi.get(self, "source_account")
 
@@ -514,7 +502,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        version number of the rule.
+        Indicate the version number of the rule(read-only).
         """
         return pulumi.get(self, "version")
 
@@ -526,7 +514,7 @@ class _ZeroTrustGatewayPolicyState:
     @pulumi.getter(name="warningStatus")
     def warning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Warning for a misconfigured rule, if any.
+        Indicate a warning for a misconfigured rule, if any.
         """
         return pulumi.get(self, "warning_status")
 
@@ -566,16 +554,14 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
-        :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyExpirationArgs', 'ZeroTrustGatewayPolicyExpirationArgsDict']] expiration: The expiration time stamp and default duration of a DNS policy. Takes
-               precedence over the policy's `schedule` configuration, if any.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
-        :param pulumi.Input[_builtins.str] name: The name of the rule.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        :param pulumi.Input[_builtins.str] description: Specify the rule description.
+        :param pulumi.Input[_builtins.bool] enabled: Specify whether the rule is enabled.
+        :param pulumi.Input[Union['ZeroTrustGatewayPolicyExpirationArgs', 'ZeroTrustGatewayPolicyExpirationArgsDict']] expiration: Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        :param pulumi.Input[_builtins.str] name: Specify the rule name.
+        :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         ...
     @overload
@@ -650,8 +636,8 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
             __props__.__dict__["traffic"] = traffic
             __props__.__dict__["created_at"] = None
             __props__.__dict__["deleted_at"] = None
-            __props__.__dict__["not_sharable"] = None
             __props__.__dict__["read_only"] = None
+            __props__.__dict__["sharable"] = None
             __props__.__dict__["source_account"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["version"] = None
@@ -679,11 +665,11 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             identity: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
-            not_sharable: Optional[pulumi.Input[_builtins.bool]] = None,
             precedence: Optional[pulumi.Input[_builtins.int]] = None,
             read_only: Optional[pulumi.Input[_builtins.bool]] = None,
             rule_settings: Optional[pulumi.Input[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']]] = None,
+            sharable: Optional[pulumi.Input[_builtins.bool]] = None,
             source_account: Optional[pulumi.Input[_builtins.str]] = None,
             traffic: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -696,22 +682,20 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        :param pulumi.Input[_builtins.str] action: Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
                Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
-        :param pulumi.Input[_builtins.str] deleted_at: Date of deletion, if any.
-        :param pulumi.Input[_builtins.str] description: The description of the rule.
-        :param pulumi.Input[_builtins.bool] enabled: True if the rule is enabled.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyExpirationArgs', 'ZeroTrustGatewayPolicyExpirationArgsDict']] expiration: The expiration time stamp and default duration of a DNS policy. Takes
-               precedence over the policy's `schedule` configuration, if any.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
-        :param pulumi.Input[_builtins.str] name: The name of the rule.
-        :param pulumi.Input[_builtins.bool] not_sharable: The rule cannot be shared via the Orgs API.
-        :param pulumi.Input[_builtins.bool] read_only: The rule was shared via the Orgs API and cannot be edited by the current account.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
-        :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-        :param pulumi.Input[_builtins.str] source_account: account tag of account that created the rule.
-        :param pulumi.Input[_builtins.int] version: version number of the rule.
-        :param pulumi.Input[_builtins.str] warning_status: Warning for a misconfigured rule, if any.
+        :param pulumi.Input[_builtins.str] deleted_at: Indicate the date of deletion, if any.
+        :param pulumi.Input[_builtins.str] description: Specify the rule description.
+        :param pulumi.Input[_builtins.bool] enabled: Specify whether the rule is enabled.
+        :param pulumi.Input[Union['ZeroTrustGatewayPolicyExpirationArgs', 'ZeroTrustGatewayPolicyExpirationArgsDict']] expiration: Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filters: Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        :param pulumi.Input[_builtins.str] name: Specify the rule name.
+        :param pulumi.Input[_builtins.bool] read_only: Indicate that this rule is shared via the Orgs API and read only.
+        :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        :param pulumi.Input[_builtins.bool] sharable: Indicate that this rule is sharable via the Orgs API.
+        :param pulumi.Input[_builtins.str] source_account: Provide the account tag of the account that created the rule.
+        :param pulumi.Input[_builtins.int] version: Indicate the version number of the rule(read-only).
+        :param pulumi.Input[_builtins.str] warning_status: Indicate a warning for a misconfigured rule, if any.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -728,11 +712,11 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["identity"] = identity
         __props__.__dict__["name"] = name
-        __props__.__dict__["not_sharable"] = not_sharable
         __props__.__dict__["precedence"] = precedence
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["rule_settings"] = rule_settings
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["sharable"] = sharable
         __props__.__dict__["source_account"] = source_account
         __props__.__dict__["traffic"] = traffic
         __props__.__dict__["updated_at"] = updated_at
@@ -749,7 +733,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -763,7 +747,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter(name="deletedAt")
     def deleted_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Date of deletion, if any.
+        Indicate the date of deletion, if any.
         """
         return pulumi.get(self, "deleted_at")
 
@@ -771,7 +755,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the rule.
+        Specify the rule description.
         """
         return pulumi.get(self, "description")
 
@@ -784,7 +768,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        True if the rule is enabled.
+        Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -792,8 +776,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def expiration(self) -> pulumi.Output['outputs.ZeroTrustGatewayPolicyExpiration']:
         """
-        The expiration time stamp and default duration of a DNS policy. Takes
-        precedence over the policy's `schedule` configuration, if any.
+        Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
@@ -801,7 +784,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         """
         return pulumi.get(self, "filters")
 
@@ -814,17 +797,9 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the rule.
+        Specify the rule name.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="notSharable")
-    def not_sharable(self) -> pulumi.Output[_builtins.bool]:
-        """
-        The rule cannot be shared via the Orgs API.
-        """
-        return pulumi.get(self, "not_sharable")
 
     @_builtins.property
     @pulumi.getter
@@ -835,31 +810,36 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[_builtins.bool]:
         """
-        The rule was shared via the Orgs API and cannot be edited by the current account.
+        Indicate that this rule is shared via the Orgs API and read only.
         """
         return pulumi.get(self, "read_only")
 
     @_builtins.property
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> pulumi.Output['outputs.ZeroTrustGatewayPolicyRuleSettings']:
-        """
-        Additional settings that modify the rule's action.
-        """
         return pulumi.get(self, "rule_settings")
 
     @_builtins.property
     @pulumi.getter
     def schedule(self) -> pulumi.Output['outputs.ZeroTrustGatewayPolicySchedule']:
         """
-        The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         """
         return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def sharable(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicate that this rule is sharable via the Orgs API.
+        """
+        return pulumi.get(self, "sharable")
 
     @_builtins.property
     @pulumi.getter(name="sourceAccount")
     def source_account(self) -> pulumi.Output[_builtins.str]:
         """
-        account tag of account that created the rule.
+        Provide the account tag of the account that created the rule.
         """
         return pulumi.get(self, "source_account")
 
@@ -877,7 +857,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.int]:
         """
-        version number of the rule.
+        Indicate the version number of the rule(read-only).
         """
         return pulumi.get(self, "version")
 
@@ -885,7 +865,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @pulumi.getter(name="warningStatus")
     def warning_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Warning for a misconfigured rule, if any.
+        Indicate a warning for a misconfigured rule, if any.
         """
         return pulumi.get(self, "warning_status")
 

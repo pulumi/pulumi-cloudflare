@@ -1555,6 +1555,16 @@ export const getWorkersScripts: typeof import("./getWorkersScripts").getWorkersS
 export const getWorkersScriptsOutput: typeof import("./getWorkersScripts").getWorkersScriptsOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersScripts","getWorkersScriptsOutput"], () => require("./getWorkersScripts"));
 
+export { GetWorkflowArgs, GetWorkflowResult, GetWorkflowOutputArgs } from "./getWorkflow";
+export const getWorkflow: typeof import("./getWorkflow").getWorkflow = null as any;
+export const getWorkflowOutput: typeof import("./getWorkflow").getWorkflowOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkflow","getWorkflowOutput"], () => require("./getWorkflow"));
+
+export { GetWorkflowsArgs, GetWorkflowsResult, GetWorkflowsOutputArgs } from "./getWorkflows";
+export const getWorkflows: typeof import("./getWorkflows").getWorkflows = null as any;
+export const getWorkflowsOutput: typeof import("./getWorkflows").getWorkflowsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkflows","getWorkflowsOutput"], () => require("./getWorkflows"));
+
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
 export const getZeroTrustAccessApplicationOutput: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplicationOutput = null as any;
@@ -1864,6 +1874,16 @@ export { GetZeroTrustListsArgs, GetZeroTrustListsResult, GetZeroTrustListsOutput
 export const getZeroTrustLists: typeof import("./getZeroTrustLists").getZeroTrustLists = null as any;
 export const getZeroTrustListsOutput: typeof import("./getZeroTrustLists").getZeroTrustListsOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustLists","getZeroTrustListsOutput"], () => require("./getZeroTrustLists"));
+
+export { GetZeroTrustNetworkHostnameRouteArgs, GetZeroTrustNetworkHostnameRouteResult, GetZeroTrustNetworkHostnameRouteOutputArgs } from "./getZeroTrustNetworkHostnameRoute";
+export const getZeroTrustNetworkHostnameRoute: typeof import("./getZeroTrustNetworkHostnameRoute").getZeroTrustNetworkHostnameRoute = null as any;
+export const getZeroTrustNetworkHostnameRouteOutput: typeof import("./getZeroTrustNetworkHostnameRoute").getZeroTrustNetworkHostnameRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustNetworkHostnameRoute","getZeroTrustNetworkHostnameRouteOutput"], () => require("./getZeroTrustNetworkHostnameRoute"));
+
+export { GetZeroTrustNetworkHostnameRoutesArgs, GetZeroTrustNetworkHostnameRoutesResult, GetZeroTrustNetworkHostnameRoutesOutputArgs } from "./getZeroTrustNetworkHostnameRoutes";
+export const getZeroTrustNetworkHostnameRoutes: typeof import("./getZeroTrustNetworkHostnameRoutes").getZeroTrustNetworkHostnameRoutes = null as any;
+export const getZeroTrustNetworkHostnameRoutesOutput: typeof import("./getZeroTrustNetworkHostnameRoutes").getZeroTrustNetworkHostnameRoutesOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustNetworkHostnameRoutes","getZeroTrustNetworkHostnameRoutesOutput"], () => require("./getZeroTrustNetworkHostnameRoutes"));
 
 export { GetZeroTrustOrganizationArgs, GetZeroTrustOrganizationResult, GetZeroTrustOrganizationOutputArgs } from "./getZeroTrustOrganization";
 export const getZeroTrustOrganization: typeof import("./getZeroTrustOrganization").getZeroTrustOrganization = null as any;
@@ -2533,6 +2553,11 @@ export type WorkersScriptSubdomain = import("./workersScriptSubdomain").WorkersS
 export const WorkersScriptSubdomain: typeof import("./workersScriptSubdomain").WorkersScriptSubdomain = null as any;
 utilities.lazyLoad(exports, ["WorkersScriptSubdomain"], () => require("./workersScriptSubdomain"));
 
+export { WorkflowArgs, WorkflowState } from "./workflow";
+export type Workflow = import("./workflow").Workflow;
+export const Workflow: typeof import("./workflow").Workflow = null as any;
+utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
+
 export { ZeroTrustAccessApplicationArgs, ZeroTrustAccessApplicationState } from "./zeroTrustAccessApplication";
 export type ZeroTrustAccessApplication = import("./zeroTrustAccessApplication").ZeroTrustAccessApplication;
 export const ZeroTrustAccessApplication: typeof import("./zeroTrustAccessApplication").ZeroTrustAccessApplication = null as any;
@@ -2717,6 +2742,11 @@ export { ZeroTrustLocalFallbackDomainArgs, ZeroTrustLocalFallbackDomainState } f
 export type ZeroTrustLocalFallbackDomain = import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain;
 export const ZeroTrustLocalFallbackDomain: typeof import("./zeroTrustLocalFallbackDomain").ZeroTrustLocalFallbackDomain = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustLocalFallbackDomain"], () => require("./zeroTrustLocalFallbackDomain"));
+
+export { ZeroTrustNetworkHostnameRouteArgs, ZeroTrustNetworkHostnameRouteState } from "./zeroTrustNetworkHostnameRoute";
+export type ZeroTrustNetworkHostnameRoute = import("./zeroTrustNetworkHostnameRoute").ZeroTrustNetworkHostnameRoute;
+export const ZeroTrustNetworkHostnameRoute: typeof import("./zeroTrustNetworkHostnameRoute").ZeroTrustNetworkHostnameRoute = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustNetworkHostnameRoute"], () => require("./zeroTrustNetworkHostnameRoute"));
 
 export { ZeroTrustOrganizationArgs, ZeroTrustOrganizationState } from "./zeroTrustOrganization";
 export type ZeroTrustOrganization = import("./zeroTrustOrganization").ZeroTrustOrganization;
@@ -3171,6 +3201,8 @@ const _module = {
                 return new WorkersScript(name, <any>undefined, { urn })
             case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
                 return new WorkersScriptSubdomain(name, <any>undefined, { urn })
+            case "cloudflare:index/workflow:Workflow":
+                return new Workflow(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
                 return new ZeroTrustAccessApplication(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -3245,6 +3277,8 @@ const _module = {
                 return new ZeroTrustList(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain":
                 return new ZeroTrustLocalFallbackDomain(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute":
+                return new ZeroTrustNetworkHostnameRoute(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization":
                 return new ZeroTrustOrganization(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior":
@@ -3461,6 +3495,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScriptSubdomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workflow", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessCustomPage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessGroup", _module)
@@ -3498,6 +3533,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewayProxy
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustGatewaySettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustLocalFallbackDomain", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustNetworkHostnameRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustOrganization", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustRiskScoringIntegration", _module)

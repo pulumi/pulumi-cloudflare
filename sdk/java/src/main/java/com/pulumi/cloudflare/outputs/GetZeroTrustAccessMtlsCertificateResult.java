@@ -28,7 +28,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      * 
      */
     private @Nullable String certificateId;
-    private String createdAt;
     private String expiresOn;
     /**
      * @return The MD5 fingerprint of the certificate.
@@ -45,7 +44,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      * 
      */
     private String name;
-    private String updatedAt;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -74,9 +72,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
     public Optional<String> certificateId() {
         return Optional.ofNullable(this.certificateId);
     }
-    public String createdAt() {
-        return this.createdAt;
-    }
     public String expiresOn() {
         return this.expiresOn;
     }
@@ -101,9 +96,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
     public String name() {
         return this.name;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -124,12 +116,10 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
         private @Nullable String accountId;
         private List<String> associatedHostnames;
         private @Nullable String certificateId;
-        private String createdAt;
         private String expiresOn;
         private String fingerprint;
         private String id;
         private String name;
-        private String updatedAt;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessMtlsCertificateResult defaults) {
@@ -137,12 +127,10 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
     	      this.accountId = defaults.accountId;
     	      this.associatedHostnames = defaults.associatedHostnames;
     	      this.certificateId = defaults.certificateId;
-    	      this.createdAt = defaults.createdAt;
     	      this.expiresOn = defaults.expiresOn;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
-    	      this.updatedAt = defaults.updatedAt;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -167,14 +155,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
         public Builder certificateId(@Nullable String certificateId) {
 
             this.certificateId = certificateId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificateResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -210,14 +190,6 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificateResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -228,12 +200,10 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
             _resultValue.accountId = accountId;
             _resultValue.associatedHostnames = associatedHostnames;
             _resultValue.certificateId = certificateId;
-            _resultValue.createdAt = createdAt;
             _resultValue.expiresOn = expiresOn;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
             _resultValue.name = name;
-            _resultValue.updatedAt = updatedAt;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

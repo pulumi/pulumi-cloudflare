@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -24,9 +25,24 @@ public final class ZeroTrustGatewayCertificateArgs extends com.pulumi.resources.
         return this.accountId;
     }
 
+    @Import(name="activate")
+    private @Nullable Output<Boolean> activate;
+
+    public Optional<Output<Boolean>> activate() {
+        return Optional.ofNullable(this.activate);
+    }
+
+    /**
+     * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+     * 
+     */
     @Import(name="validityPeriodDays")
     private @Nullable Output<Integer> validityPeriodDays;
 
+    /**
+     * @return Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+     * 
+     */
     public Optional<Output<Integer>> validityPeriodDays() {
         return Optional.ofNullable(this.validityPeriodDays);
     }
@@ -35,6 +51,7 @@ public final class ZeroTrustGatewayCertificateArgs extends com.pulumi.resources.
 
     private ZeroTrustGatewayCertificateArgs(ZeroTrustGatewayCertificateArgs $) {
         this.accountId = $.accountId;
+        this.activate = $.activate;
         this.validityPeriodDays = $.validityPeriodDays;
     }
 
@@ -65,11 +82,32 @@ public final class ZeroTrustGatewayCertificateArgs extends com.pulumi.resources.
             return accountId(Output.of(accountId));
         }
 
+        public Builder activate(@Nullable Output<Boolean> activate) {
+            $.activate = activate;
+            return this;
+        }
+
+        public Builder activate(Boolean activate) {
+            return activate(Output.of(activate));
+        }
+
+        /**
+         * @param validityPeriodDays Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validityPeriodDays(@Nullable Output<Integer> validityPeriodDays) {
             $.validityPeriodDays = validityPeriodDays;
             return this;
         }
 
+        /**
+         * @param validityPeriodDays Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validityPeriodDays(Integer validityPeriodDays) {
             return validityPeriodDays(Output.of(validityPeriodDays));
         }

@@ -45,7 +45,7 @@ class GetZeroTrustGatewayCategoriesListResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Identifier.
+        Provide the identifier string.
         """
         return pulumi.get(self, "account_id")
 
@@ -100,7 +100,7 @@ def get_zero_trust_gateway_categories_list(account_id: Optional[_builtins.str] =
     ```
 
 
-    :param _builtins.str account_id: Identifier.
+    :param _builtins.str account_id: Provide the identifier string.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -128,7 +128,7 @@ def get_zero_trust_gateway_categories_list_output(account_id: Optional[pulumi.In
     ```
 
 
-    :param _builtins.str account_id: Identifier.
+    :param _builtins.str account_id: Provide the identifier string.
     :param _builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

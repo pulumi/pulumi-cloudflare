@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsBrowserIsolation {
     /**
-     * @return Enable non-identity onramp support for Browser Isolation.
+     * @return Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     private @Nullable Boolean nonIdentityEnabled;
     /**
-     * @return Enable Clientless Browser Isolation.
+     * @return Specify whether to enable Clientless Browser Isolation.
      * 
      */
     private @Nullable Boolean urlBrowserIsolationEnabled;
 
     private TeamsAccountSettingsBrowserIsolation() {}
     /**
-     * @return Enable non-identity onramp support for Browser Isolation.
+     * @return Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     public Optional<Boolean> nonIdentityEnabled() {
         return Optional.ofNullable(this.nonIdentityEnabled);
     }
     /**
-     * @return Enable Clientless Browser Isolation.
+     * @return Specify whether to enable Clientless Browser Isolation.
      * 
      */
     public Optional<Boolean> urlBrowserIsolationEnabled() {

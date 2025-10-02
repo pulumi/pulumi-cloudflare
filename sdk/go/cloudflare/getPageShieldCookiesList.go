@@ -67,7 +67,7 @@ type LookupPageShieldCookiesListArgs struct {
 	Direction *string `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain *string `pulumi:"domain"`
-	// Export the list of cookies as a file.
+	// Export the list of cookies as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
@@ -94,7 +94,7 @@ type LookupPageShieldCookiesListResult struct {
 	Direction *string `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain *string `pulumi:"domain"`
-	// Export the list of cookies as a file.
+	// Export the list of cookies as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
@@ -133,7 +133,7 @@ type LookupPageShieldCookiesListOutputArgs struct {
 	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Filters the returned cookies that match the specified domain attribute
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// Export the list of cookies as a file.
+	// Export the list of cookies as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes cookies that match one or more URL-encoded hostnames separated by commas.
@@ -183,7 +183,7 @@ func (o LookupPageShieldCookiesListResultOutput) Domain() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// Export the list of cookies as a file.
+// Export the list of cookies as a file, limited to 50000 entries.
 // Available values: "csv".
 func (o LookupPageShieldCookiesListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldCookiesListResult) *string { return v.Export }).(pulumi.StringPtrOutput)

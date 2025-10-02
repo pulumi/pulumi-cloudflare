@@ -27,8 +27,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkerVersion(ctx, &cloudflare.LookupWorkerVersionArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WorkerId:  "023e105f4ecef8ad9ca31a8372d0c353",
-//				VersionId: pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//				WorkerId:  "worker_id",
+//				VersionId: pulumi.StringRef("version_id"),
 //				Include:   pulumi.StringRef("modules"),
 //			}, nil)
 //			if err != nil {
@@ -53,10 +53,12 @@ func LookupWorkerVersion(ctx *pulumi.Context, args *LookupWorkerVersionArgs, opt
 type LookupWorkerVersionArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include   *string `pulumi:"include"`
+	Include *string `pulumi:"include"`
+	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
 	VersionId *string `pulumi:"versionId"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
 
@@ -67,40 +69,27 @@ type LookupWorkerVersionResult struct {
 	// Metadata about the version.
 	Annotations GetWorkerVersionAnnotations `pulumi:"annotations"`
 	// Configuration for assets within a Worker.
-	Assets GetWorkerVersionAssets `pulumi:"assets"`
-	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-	Bindings []GetWorkerVersionBinding `pulumi:"bindings"`
-	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-	CompatibilityDate string `pulumi:"compatibilityDate"`
-	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
-	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// When the version was created.
-	CreatedOn string `pulumi:"createdOn"`
-	// The ID of this resource.
-	Id string `pulumi:"id"`
+	Assets             GetWorkerVersionAssets    `pulumi:"assets"`
+	Bindings           []GetWorkerVersionBinding `pulumi:"bindings"`
+	CompatibilityDate  string                    `pulumi:"compatibilityDate"`
+	CompatibilityFlags []string                  `pulumi:"compatibilityFlags"`
+	CreatedOn          string                    `pulumi:"createdOn"`
+	Id                 string                    `pulumi:"id"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include *string `pulumi:"include"`
-	// Resource limits enforced at runtime.
-	Limits GetWorkerVersionLimits `pulumi:"limits"`
-	// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-	MainModule string `pulumi:"mainModule"`
-	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
+	Include    *string                    `pulumi:"include"`
+	Limits     GetWorkerVersionLimits     `pulumi:"limits"`
+	MainModule string                     `pulumi:"mainModule"`
 	Migrations GetWorkerVersionMigrations `pulumi:"migrations"`
-	// Code, sourcemaps, and other content used at runtime.
-	Modules []GetWorkerVersionModule `pulumi:"modules"`
-	// The integer version number, starting from one.
-	Number int `pulumi:"number"`
-	// Placement settings for the version.
-	Placement GetWorkerVersionPlacement `pulumi:"placement"`
-	// The client used to create the version.
-	Source string `pulumi:"source"`
-	// Usage model for the version.
-	// Available values: "standard", "bundled", "unbound".
-	//
+	Modules    []GetWorkerVersionModule   `pulumi:"modules"`
+	Number     int                        `pulumi:"number"`
+	Placement  GetWorkerVersionPlacement  `pulumi:"placement"`
+	Source     string                     `pulumi:"source"`
 	// Deprecated: This attribute is deprecated.
-	UsageModel string  `pulumi:"usageModel"`
-	VersionId  *string `pulumi:"versionId"`
-	// Identifier.
+	UsageModel string `pulumi:"usageModel"`
+	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+	VersionId *string `pulumi:"versionId"`
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
 
@@ -117,10 +106,12 @@ func LookupWorkerVersionOutput(ctx *pulumi.Context, args LookupWorkerVersionOutp
 type LookupWorkerVersionOutputArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 	// Available values: "modules".
-	Include   pulumi.StringPtrInput `pulumi:"include"`
+	Include pulumi.StringPtrInput `pulumi:"include"`
+	// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
 	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringInput `pulumi:"workerId"`
 }
 
@@ -158,84 +149,71 @@ func (o LookupWorkerVersionResultOutput) Assets() GetWorkerVersionAssetsOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionAssets { return v.Assets }).(GetWorkerVersionAssetsOutput)
 }
 
-// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 func (o LookupWorkerVersionResultOutput) Bindings() GetWorkerVersionBindingArrayOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) []GetWorkerVersionBinding { return v.Bindings }).(GetWorkerVersionBindingArrayOutput)
 }
 
-// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 func (o LookupWorkerVersionResultOutput) CompatibilityDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.CompatibilityDate }).(pulumi.StringOutput)
 }
 
-// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 func (o LookupWorkerVersionResultOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) []string { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
-// When the version was created.
 func (o LookupWorkerVersionResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// The ID of this resource.
 func (o LookupWorkerVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
 // Available values: "modules".
 func (o LookupWorkerVersionResultOutput) Include() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) *string { return v.Include }).(pulumi.StringPtrOutput)
 }
 
-// Resource limits enforced at runtime.
 func (o LookupWorkerVersionResultOutput) Limits() GetWorkerVersionLimitsOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionLimits { return v.Limits }).(GetWorkerVersionLimitsOutput)
 }
 
-// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
 func (o LookupWorkerVersionResultOutput) MainModule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.MainModule }).(pulumi.StringOutput)
 }
 
-// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 func (o LookupWorkerVersionResultOutput) Migrations() GetWorkerVersionMigrationsOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionMigrations { return v.Migrations }).(GetWorkerVersionMigrationsOutput)
 }
 
-// Code, sourcemaps, and other content used at runtime.
 func (o LookupWorkerVersionResultOutput) Modules() GetWorkerVersionModuleArrayOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) []GetWorkerVersionModule { return v.Modules }).(GetWorkerVersionModuleArrayOutput)
 }
 
-// The integer version number, starting from one.
 func (o LookupWorkerVersionResultOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) int { return v.Number }).(pulumi.IntOutput)
 }
 
-// Placement settings for the version.
 func (o LookupWorkerVersionResultOutput) Placement() GetWorkerVersionPlacementOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) GetWorkerVersionPlacement { return v.Placement }).(GetWorkerVersionPlacementOutput)
 }
 
-// The client used to create the version.
 func (o LookupWorkerVersionResultOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// Usage model for the version.
-// Available values: "standard", "bundled", "unbound".
-//
 // Deprecated: This attribute is deprecated.
 func (o LookupWorkerVersionResultOutput) UsageModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.UsageModel }).(pulumi.StringOutput)
 }
 
+// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
 func (o LookupWorkerVersionResultOutput) VersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) *string { return v.VersionId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier.
+// Identifier for the Worker, which can be ID or name.
 func (o LookupWorkerVersionResultOutput) WorkerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionResult) string { return v.WorkerId }).(pulumi.StringOutput)
 }

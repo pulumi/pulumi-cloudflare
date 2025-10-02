@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     private Boolean includeContext;
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     private String targetUri;
 
     private GetZeroTrustGatewayPolicyRuleSettingsBlockPage() {}
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     public Boolean includeContext() {
         return this.includeContext;
     }
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     public String targetUri() {

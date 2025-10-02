@@ -65,7 +65,6 @@ type LookupZeroTrustOrganizationResult struct {
 	AuthDomain string `pulumi:"authDomain"`
 	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity bool                                `pulumi:"autoRedirectToIdentity"`
-	CreatedAt              string                              `pulumi:"createdAt"`
 	CustomPages            GetZeroTrustOrganizationCustomPages `pulumi:"customPages"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                              `pulumi:"id"`
@@ -77,7 +76,6 @@ type LookupZeroTrustOrganizationResult struct {
 	SessionDuration string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason string `pulumi:"uiReadOnlyToggleReason"`
-	UpdatedAt              string `pulumi:"updatedAt"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime string `pulumi:"userSeatExpirationInactiveTime"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
@@ -142,10 +140,6 @@ func (o LookupZeroTrustOrganizationResultOutput) AutoRedirectToIdentity() pulumi
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) bool { return v.AutoRedirectToIdentity }).(pulumi.BoolOutput)
 }
 
-func (o LookupZeroTrustOrganizationResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 func (o LookupZeroTrustOrganizationResultOutput) CustomPages() GetZeroTrustOrganizationCustomPagesOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) GetZeroTrustOrganizationCustomPages { return v.CustomPages }).(GetZeroTrustOrganizationCustomPagesOutput)
 }
@@ -176,10 +170,6 @@ func (o LookupZeroTrustOrganizationResultOutput) SessionDuration() pulumi.String
 // A description of the reason why the UI read only field is being toggled.
 func (o LookupZeroTrustOrganizationResultOutput) UiReadOnlyToggleReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.UiReadOnlyToggleReason }).(pulumi.StringOutput)
-}
-
-func (o LookupZeroTrustOrganizationResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustOrganizationResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.

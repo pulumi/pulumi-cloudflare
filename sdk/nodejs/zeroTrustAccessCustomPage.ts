@@ -7,6 +7,18 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessCustomPage = new cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
+ *     name: "name",
+ *     type: "identity_denied",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

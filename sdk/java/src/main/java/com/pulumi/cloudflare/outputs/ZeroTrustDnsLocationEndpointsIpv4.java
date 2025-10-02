@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsIpv4 {
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ZeroTrustDnsLocationEndpointsIpv4() {}
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     public Optional<Boolean> enabled() {

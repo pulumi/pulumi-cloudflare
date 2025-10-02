@@ -27,302 +27,302 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettings {
     /**
-     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * @return Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     private Map<String,List<String>> addHeaders;
     /**
-     * @return Set by parent MSP accounts to enable their children to bypass this rule.
+     * @return Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      * 
      */
     private Boolean allowChildBypass;
     /**
-     * @return Settings for the Audit SSH action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
     /**
-     * @return Configure how browser isolation behaves.
+     * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
     /**
-     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * @return Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage;
     /**
-     * @return Enable the custom block page.
+     * @return Enable the custom block page. Settable only for `dns` rules with action `block`.
      * 
      */
     private Boolean blockPageEnabled;
     /**
-     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * @return Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      * 
      */
     private String blockReason;
     /**
-     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
+     * @return Set to enable MSP accounts to bypass their parent&#39;s rules. Only MSP child accounts can set this. Settable for all types of rules.
      * 
      */
     private Boolean bypassParentRule;
     /**
-     * @return Configure how session check behaves.
+     * @return Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
     /**
-     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsEgress egress;
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private Boolean ignoreCnameCategoryMatches;
     /**
-     * @return INSECURE - disable DNSSEC validation (for Allow actions).
+     * @return Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      * 
      */
     private Boolean insecureDisableDnssecValidation;
     /**
-     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private Boolean ipCategories;
     /**
-     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address. and port.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsL4override l4override;
     /**
-     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
+     * @return Configure a notification to display on the user&#39;s device when this rule matched. Settable for all types of rules with the action set to `block`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings notificationSettings;
     /**
-     * @return Override matching DNS queries with a hostname.
+     * @return Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     private String overrideHost;
     /**
-     * @return Override matching DNS queries with an IP or set of IPs.
+     * @return Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     private List<String> overrideIps;
     /**
-     * @return Configure DLP payload logging.
+     * @return Configure DLP payload logging. Settable only for `http` rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
     /**
-     * @return Settings that apply to quarantine rules.
+     * @return Configure settings that apply to quarantine rules. Settable only for `http` rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
     /**
-     * @return Settings that apply to redirect rules.
+     * @return Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     private Boolean resolveDnsThroughCloudflare;
     /**
-     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
 
     private GetZeroTrustGatewayPolicyRuleSettings() {}
     /**
-     * @return Add custom headers to allowed requests, in the form of key-value pairs. Keys are header names, pointing to an array with its header value(s).
+     * @return Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     public Map<String,List<String>> addHeaders() {
         return this.addHeaders;
     }
     /**
-     * @return Set by parent MSP accounts to enable their children to bypass this rule.
+     * @return Set to enable MSP children to bypass this rule. Only parent MSP accounts can set this. this rule. Settable for all types of rules.
      * 
      */
     public Boolean allowChildBypass() {
         return this.allowChildBypass;
     }
     /**
-     * @return Settings for the Audit SSH action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh() {
         return this.auditSsh;
     }
     /**
-     * @return Configure how browser isolation behaves.
+     * @return Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls() {
         return this.bisoAdminControls;
     }
     /**
-     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * @return Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage() {
         return this.blockPage;
     }
     /**
-     * @return Enable the custom block page.
+     * @return Enable the custom block page. Settable only for `dns` rules with action `block`.
      * 
      */
     public Boolean blockPageEnabled() {
         return this.blockPageEnabled;
     }
     /**
-     * @return The text describing why this block occurred, displayed on the custom block page (if enabled).
+     * @return Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
      * 
      */
     public String blockReason() {
         return this.blockReason;
     }
     /**
-     * @return Set by children MSP accounts to bypass their parent&#39;s rules.
+     * @return Set to enable MSP accounts to bypass their parent&#39;s rules. Only MSP child accounts can set this. Settable for all types of rules.
      * 
      */
     public Boolean bypassParentRule() {
         return this.bypassParentRule;
     }
     /**
-     * @return Configure how session check behaves.
+     * @return Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession() {
         return this.checkSession;
     }
     /**
-     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; are set. DNS queries will route to the address closest to their origin. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers() {
         return this.dnsResolvers;
     }
     /**
-     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
+     * @return Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsEgress egress() {
         return this.egress;
     }
     /**
-     * @return Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Boolean ignoreCnameCategoryMatches() {
         return this.ignoreCnameCategoryMatches;
     }
     /**
-     * @return INSECURE - disable DNSSEC validation (for Allow actions).
+     * @return Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
      * 
      */
     public Boolean insecureDisableDnssecValidation() {
         return this.insecureDisableDnssecValidation;
     }
     /**
-     * @return Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Boolean ipCategories() {
         return this.ipCategories;
     }
     /**
-     * @return Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Boolean ipIndicatorFeeds() {
         return this.ipIndicatorFeeds;
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address. and port.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsL4override l4override() {
         return this.l4override;
     }
     /**
-     * @return Configure a notification to display on the user&#39;s device when this rule is matched.
+     * @return Configure a notification to display on the user&#39;s device when this rule matched. Settable for all types of rules with the action set to `block`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings notificationSettings() {
         return this.notificationSettings;
     }
     /**
-     * @return Override matching DNS queries with a hostname.
+     * @return Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     public String overrideHost() {
         return this.overrideHost;
     }
     /**
-     * @return Override matching DNS queries with an IP or set of IPs.
+     * @return Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
      * 
      */
     public List<String> overrideIps() {
         return this.overrideIps;
     }
     /**
-     * @return Configure DLP payload logging.
+     * @return Configure DLP payload logging. Settable only for `http` rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog() {
         return this.payloadLog;
     }
     /**
-     * @return Settings that apply to quarantine rules.
+     * @return Configure settings that apply to quarantine rules. Settable only for `http` rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine() {
         return this.quarantine;
     }
     /**
-     * @return Settings that apply to redirect rules.
+     * @return Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect() {
         return this.redirect;
     }
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally() {
         return this.resolveDnsInternally;
     }
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
      * 
      */
     public Boolean resolveDnsThroughCloudflare() {
         return this.resolveDnsThroughCloudflare;
     }
     /**
-     * @return Configure behavior when an upstream cert is invalid or an SSL error occurs.
+     * @return Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
      * 
      */
     public GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert() {

@@ -29,14 +29,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     public static final TeamsAccountSettingsArgs Empty = new TeamsAccountSettingsArgs();
 
     /**
-     * Activity log settings.
+     * Specify activity log settings.
      * 
      */
     @Import(name="activityLog")
     private @Nullable Output<TeamsAccountSettingsActivityLogArgs> activityLog;
 
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsActivityLogArgs>> activityLog() {
@@ -44,14 +44,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Anti-virus settings.
+     * Specify anti-virus settings.
      * 
      */
     @Import(name="antivirus")
     private @Nullable Output<TeamsAccountSettingsAntivirusArgs> antivirus;
 
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsAntivirusArgs>> antivirus() {
@@ -59,14 +59,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Block page layout settings.
+     * Specify block page layout settings.
      * 
      */
     @Import(name="blockPage")
     private @Nullable Output<TeamsAccountSettingsBlockPageArgs> blockPage;
 
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsBlockPageArgs>> blockPage() {
@@ -74,14 +74,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * DLP body scanning settings.
+     * Specify the DLP inspection mode.
      * 
      */
     @Import(name="bodyScanning")
     private @Nullable Output<TeamsAccountSettingsBodyScanningArgs> bodyScanning;
 
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     public Optional<Output<TeamsAccountSettingsBodyScanningArgs>> bodyScanning() {
@@ -89,14 +89,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Browser isolation settings.
+     * Specify Clientless Browser Isolation settings.
      * 
      */
     @Import(name="browserIsolation")
     private @Nullable Output<TeamsAccountSettingsBrowserIsolationArgs> browserIsolation;
 
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsBrowserIsolationArgs>> browserIsolation() {
@@ -104,14 +104,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<TeamsAccountSettingsCertificateArgs> certificate;
 
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     public Optional<Output<TeamsAccountSettingsCertificateArgs>> certificate() {
@@ -119,7 +119,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -130,7 +130,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<TeamsAccountSettingsCustomCertificateArgs> customCertificate;
 
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -142,14 +142,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Extended e-mail matching settings.
+     * Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     @Import(name="extendedEmailMatching")
     private @Nullable Output<TeamsAccountSettingsExtendedEmailMatchingArgs> extendedEmailMatching;
 
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     public Optional<Output<TeamsAccountSettingsExtendedEmailMatchingArgs>> extendedEmailMatching() {
@@ -157,14 +157,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * FIPS settings.
+     * Specify FIPS settings.
      * 
      */
     @Import(name="fips")
     private @Nullable Output<TeamsAccountSettingsFipsArgs> fips;
 
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     public Optional<Output<TeamsAccountSettingsFipsArgs>> fips() {
@@ -172,14 +172,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Setting to enable host selector in egress policies.
+     * Enable host selection in egress policies.
      * 
      */
     @Import(name="hostSelector")
     private @Nullable Output<TeamsAccountSettingsHostSelectorArgs> hostSelector;
 
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     public Optional<Output<TeamsAccountSettingsHostSelectorArgs>> hostSelector() {
@@ -187,14 +187,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Setting to define inspection settings.
+     * Define the proxy inspection mode.
      * 
      */
     @Import(name="inspection")
     private @Nullable Output<TeamsAccountSettingsInspectionArgs> inspection;
 
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     public Optional<Output<TeamsAccountSettingsInspectionArgs>> inspection() {
@@ -202,14 +202,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Protocol Detection settings.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     @Import(name="protocolDetection")
     private @Nullable Output<TeamsAccountSettingsProtocolDetectionArgs> protocolDetection;
 
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<Output<TeamsAccountSettingsProtocolDetectionArgs>> protocolDetection() {
@@ -217,14 +217,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sandbox settings.
+     * Specify whether to enable the sandbox.
      * 
      */
     @Import(name="sandbox")
     private @Nullable Output<TeamsAccountSettingsSandboxArgs> sandbox;
 
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Optional<Output<TeamsAccountSettingsSandboxArgs>> sandbox() {
@@ -232,14 +232,14 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * TLS interception settings.
+     * Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     @Import(name="tlsDecrypt")
     private @Nullable Output<TeamsAccountSettingsTlsDecryptArgs> tlsDecrypt;
 
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<Output<TeamsAccountSettingsTlsDecryptArgs>> tlsDecrypt() {
@@ -284,7 +284,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param activityLog Activity log settings.
+         * @param activityLog Specify activity log settings.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param activityLog Activity log settings.
+         * @param activityLog Specify activity log settings.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param antivirus Anti-virus settings.
+         * @param antivirus Specify anti-virus settings.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param antivirus Anti-virus settings.
+         * @param antivirus Specify anti-virus settings.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param blockPage Block page layout settings.
+         * @param blockPage Specify block page layout settings.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param blockPage Block page layout settings.
+         * @param blockPage Specify block page layout settings.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bodyScanning DLP body scanning settings.
+         * @param bodyScanning Specify the DLP inspection mode.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param bodyScanning DLP body scanning settings.
+         * @param bodyScanning Specify the DLP inspection mode.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param browserIsolation Browser isolation settings.
+         * @param browserIsolation Specify Clientless Browser Isolation settings.
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param browserIsolation Browser isolation settings.
+         * @param browserIsolation Specify Clientless Browser Isolation settings.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificate Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+         * @param certificate Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param certificate Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+         * @param certificate Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+         * @param customCertificate Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customCertificate Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+         * @param customCertificate Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param extendedEmailMatching Extended e-mail matching settings.
+         * @param extendedEmailMatching Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param extendedEmailMatching Extended e-mail matching settings.
+         * @param extendedEmailMatching Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param fips FIPS settings.
+         * @param fips Specify FIPS settings.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param fips FIPS settings.
+         * @param fips Specify FIPS settings.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param hostSelector Setting to enable host selector in egress policies.
+         * @param hostSelector Enable host selection in egress policies.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param hostSelector Setting to enable host selector in egress policies.
+         * @param hostSelector Enable host selection in egress policies.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inspection Setting to define inspection settings.
+         * @param inspection Define the proxy inspection mode.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param inspection Setting to define inspection settings.
+         * @param inspection Define the proxy inspection mode.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocolDetection Protocol Detection settings.
+         * @param protocolDetection Specify whether to detect protocols from the initial bytes of client traffic.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocolDetection Protocol Detection settings.
+         * @param protocolDetection Specify whether to detect protocols from the initial bytes of client traffic.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sandbox Sandbox settings.
+         * @param sandbox Specify whether to enable the sandbox.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sandbox Sandbox settings.
+         * @param sandbox Specify whether to enable the sandbox.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsDecrypt TLS interception settings.
+         * @param tlsDecrypt Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsDecrypt TLS interception settings.
+         * @param tlsDecrypt Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 

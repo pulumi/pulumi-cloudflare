@@ -55,6 +55,11 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetWorkerVersionsResultMigrationsResult Migrations;
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionsResultModuleResult> Modules;
         /// <summary>

@@ -174,6 +174,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Monitor;
         /// <summary>
+        /// The ID of the Monitor Group to use for checking the health of origins within this pool.
+        /// </summary>
+        public readonly string MonitorGroup;
+        /// <summary>
         /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         public readonly string Name;
@@ -229,6 +233,8 @@ namespace Pulumi.Cloudflare
 
             string monitor,
 
+            string monitorGroup,
+
             string name,
 
             ImmutableArray<string> networks,
@@ -257,6 +263,7 @@ namespace Pulumi.Cloudflare
             MinimumOrigins = minimumOrigins;
             ModifiedOn = modifiedOn;
             Monitor = monitor;
+            MonitorGroup = monitorGroup;
             Name = name;
             Networks = networks;
             NotificationEmail = notificationEmail;

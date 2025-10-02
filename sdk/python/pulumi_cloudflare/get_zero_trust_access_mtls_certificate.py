@@ -26,7 +26,7 @@ class GetZeroTrustAccessMtlsCertificateResult:
     """
     A collection of values returned by getZeroTrustAccessMtlsCertificate.
     """
-    def __init__(__self__, account_id=None, associated_hostnames=None, certificate_id=None, created_at=None, expires_on=None, fingerprint=None, id=None, name=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, associated_hostnames=None, certificate_id=None, expires_on=None, fingerprint=None, id=None, name=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -36,9 +36,6 @@ class GetZeroTrustAccessMtlsCertificateResult:
         if certificate_id and not isinstance(certificate_id, str):
             raise TypeError("Expected argument 'certificate_id' to be a str")
         pulumi.set(__self__, "certificate_id", certificate_id)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if expires_on and not isinstance(expires_on, str):
             raise TypeError("Expected argument 'expires_on' to be a str")
         pulumi.set(__self__, "expires_on", expires_on)
@@ -51,9 +48,6 @@ class GetZeroTrustAccessMtlsCertificateResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -81,11 +75,6 @@ class GetZeroTrustAccessMtlsCertificateResult:
         UUID.
         """
         return pulumi.get(self, "certificate_id")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="expiresOn")
@@ -117,11 +106,6 @@ class GetZeroTrustAccessMtlsCertificateResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
-    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[_builtins.str]:
         """
@@ -139,12 +123,10 @@ class AwaitableGetZeroTrustAccessMtlsCertificateResult(GetZeroTrustAccessMtlsCer
             account_id=self.account_id,
             associated_hostnames=self.associated_hostnames,
             certificate_id=self.certificate_id,
-            created_at=self.created_at,
             expires_on=self.expires_on,
             fingerprint=self.fingerprint,
             id=self.id,
             name=self.name,
-            updated_at=self.updated_at,
             zone_id=self.zone_id)
 
 
@@ -180,12 +162,10 @@ def get_zero_trust_access_mtls_certificate(account_id: Optional[_builtins.str] =
         account_id=pulumi.get(__ret__, 'account_id'),
         associated_hostnames=pulumi.get(__ret__, 'associated_hostnames'),
         certificate_id=pulumi.get(__ret__, 'certificate_id'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_mtls_certificate_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                   certificate_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -218,10 +198,8 @@ def get_zero_trust_access_mtls_certificate_output(account_id: Optional[pulumi.In
         account_id=pulumi.get(__response__, 'account_id'),
         associated_hostnames=pulumi.get(__response__, 'associated_hostnames'),
         certificate_id=pulumi.get(__response__, 'certificate_id'),
-        created_at=pulumi.get(__response__, 'created_at'),
         expires_on=pulumi.get(__response__, 'expires_on'),
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        updated_at=pulumi.get(__response__, 'updated_at'),
         zone_id=pulumi.get(__response__, 'zone_id')))

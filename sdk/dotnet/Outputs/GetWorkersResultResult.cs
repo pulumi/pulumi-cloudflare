@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier.
+        /// Immutable ID of the Worker.
         /// </summary>
         public readonly string Id;
         /// <summary>

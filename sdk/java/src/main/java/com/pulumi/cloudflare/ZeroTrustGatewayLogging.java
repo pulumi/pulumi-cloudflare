@@ -78,28 +78,28 @@ public class ZeroTrustGatewayLogging extends com.pulumi.resources.CustomResource
         return this.accountId;
     }
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      * 
      */
     @Export(name="redactPii", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> redactPii;
 
     /**
-     * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * @return Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      * 
      */
     public Output<Boolean> redactPii() {
         return this.redactPii;
     }
     /**
-     * Logging settings by rule type.
+     * Configure logging settings for each rule type.
      * 
      */
     @Export(name="settingsByRuleType", refs={ZeroTrustGatewayLoggingSettingsByRuleType.class}, tree="[0]")
     private Output<ZeroTrustGatewayLoggingSettingsByRuleType> settingsByRuleType;
 
     /**
-     * @return Logging settings by rule type.
+     * @return Configure logging settings for each rule type.
      * 
      */
     public Output<ZeroTrustGatewayLoggingSettingsByRuleType> settingsByRuleType() {

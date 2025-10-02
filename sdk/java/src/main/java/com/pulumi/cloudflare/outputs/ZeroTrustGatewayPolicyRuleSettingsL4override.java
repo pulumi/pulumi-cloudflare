@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsL4override {
     /**
-     * @return IPv4 or IPv6 address.
+     * @return Defines the IPv4 or IPv6 address.
      * 
      */
     private @Nullable String ip;
     /**
-     * @return A port number to use for TCP/UDP overrides.
+     * @return Defines a port number to use for TCP/UDP overrides.
      * 
      */
     private @Nullable Integer port;
 
     private ZeroTrustGatewayPolicyRuleSettingsL4override() {}
     /**
-     * @return IPv4 or IPv6 address.
+     * @return Defines the IPv4 or IPv6 address.
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return A port number to use for TCP/UDP overrides.
+     * @return Defines a port number to use for TCP/UDP overrides.
      * 
      */
     public Optional<Integer> port() {

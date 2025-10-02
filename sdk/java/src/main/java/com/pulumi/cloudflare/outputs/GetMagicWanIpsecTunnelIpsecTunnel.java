@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelBgp;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelBgpStatus;
+import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelHealthCheck;
 import com.pulumi.cloudflare.outputs.GetMagicWanIpsecTunnelIpsecTunnelPskMetadata;
 import com.pulumi.core.annotations.CustomType;
@@ -20,6 +21,11 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      * 
      */
     private Boolean allowNullCipher;
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    private Boolean automaticReturnRouting;
     private GetMagicWanIpsecTunnelIpsecTunnelBgp bgp;
     private GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus;
     /**
@@ -32,6 +38,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      * 
      */
     private String createdOn;
+    private GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities customRemoteIdentities;
     /**
      * @return The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      * 
@@ -87,6 +94,13 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
     public Boolean allowNullCipher() {
         return this.allowNullCipher;
     }
+    /**
+     * @return True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+     * 
+     */
+    public Boolean automaticReturnRouting() {
+        return this.automaticReturnRouting;
+    }
     public GetMagicWanIpsecTunnelIpsecTunnelBgp bgp() {
         return this.bgp;
     }
@@ -106,6 +120,9 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
      */
     public String createdOn() {
         return this.createdOn;
+    }
+    public GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities customRemoteIdentities() {
+        return this.customRemoteIdentities;
     }
     /**
      * @return The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -184,10 +201,12 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
     @CustomType.Builder
     public static final class Builder {
         private Boolean allowNullCipher;
+        private Boolean automaticReturnRouting;
         private GetMagicWanIpsecTunnelIpsecTunnelBgp bgp;
         private GetMagicWanIpsecTunnelIpsecTunnelBgpStatus bgpStatus;
         private String cloudflareEndpoint;
         private String createdOn;
+        private GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities customRemoteIdentities;
         private String customerEndpoint;
         private String description;
         private GetMagicWanIpsecTunnelIpsecTunnelHealthCheck healthCheck;
@@ -202,10 +221,12 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         public Builder(GetMagicWanIpsecTunnelIpsecTunnel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowNullCipher = defaults.allowNullCipher;
+    	      this.automaticReturnRouting = defaults.automaticReturnRouting;
     	      this.bgp = defaults.bgp;
     	      this.bgpStatus = defaults.bgpStatus;
     	      this.cloudflareEndpoint = defaults.cloudflareEndpoint;
     	      this.createdOn = defaults.createdOn;
+    	      this.customRemoteIdentities = defaults.customRemoteIdentities;
     	      this.customerEndpoint = defaults.customerEndpoint;
     	      this.description = defaults.description;
     	      this.healthCheck = defaults.healthCheck;
@@ -224,6 +245,14 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
               throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "allowNullCipher");
             }
             this.allowNullCipher = allowNullCipher;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder automaticReturnRouting(Boolean automaticReturnRouting) {
+            if (automaticReturnRouting == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "automaticReturnRouting");
+            }
+            this.automaticReturnRouting = automaticReturnRouting;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +285,14 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
               throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "createdOn");
             }
             this.createdOn = createdOn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customRemoteIdentities(GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities customRemoteIdentities) {
+            if (customRemoteIdentities == null) {
+              throw new MissingRequiredPropertyException("GetMagicWanIpsecTunnelIpsecTunnel", "customRemoteIdentities");
+            }
+            this.customRemoteIdentities = customRemoteIdentities;
             return this;
         }
         @CustomType.Setter
@@ -341,10 +378,12 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         public GetMagicWanIpsecTunnelIpsecTunnel build() {
             final var _resultValue = new GetMagicWanIpsecTunnelIpsecTunnel();
             _resultValue.allowNullCipher = allowNullCipher;
+            _resultValue.automaticReturnRouting = automaticReturnRouting;
             _resultValue.bgp = bgp;
             _resultValue.bgpStatus = bgpStatus;
             _resultValue.cloudflareEndpoint = cloudflareEndpoint;
             _resultValue.createdOn = createdOn;
+            _resultValue.customRemoteIdentities = customRemoteIdentities;
             _resultValue.customerEndpoint = customerEndpoint;
             _resultValue.description = description;
             _resultValue.healthCheck = healthCheck;

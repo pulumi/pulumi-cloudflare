@@ -86,6 +86,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     declare public readonly monitor: pulumi.Output<string | undefined>;
     /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     */
+    declare public readonly monitorGroup: pulumi.Output<string | undefined>;
+    /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["minimumOrigins"] = state?.minimumOrigins;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["monitor"] = state?.monitor;
+            resourceInputs["monitorGroup"] = state?.monitorGroup;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
             resourceInputs["notificationEmail"] = state?.notificationEmail;
@@ -161,6 +166,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             resourceInputs["longitude"] = args?.longitude;
             resourceInputs["minimumOrigins"] = args?.minimumOrigins;
             resourceInputs["monitor"] = args?.monitor;
+            resourceInputs["monitorGroup"] = args?.monitorGroup;
             resourceInputs["name"] = args?.name;
             resourceInputs["notificationEmail"] = args?.notificationEmail;
             resourceInputs["notificationFilter"] = args?.notificationFilter;
@@ -222,6 +228,10 @@ export interface LoadBalancerPoolState {
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
     monitor?: pulumi.Input<string>;
+    /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     */
+    monitorGroup?: pulumi.Input<string>;
     /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
@@ -288,6 +298,10 @@ export interface LoadBalancerPoolArgs {
      * The ID of the Monitor to use for checking the health of origins within this pool.
      */
     monitor?: pulumi.Input<string>;
+    /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     */
+    monitorGroup?: pulumi.Input<string>;
     /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */

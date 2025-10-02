@@ -111,11 +111,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         /// </summary>
         public readonly bool RedactPii;
         /// <summary>
-        /// Logging settings by rule type.
+        /// Configure logging settings for each rule type.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeResult SettingsByRuleType;
 

@@ -13,38 +13,38 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDnsLocationEndpointsDoh {
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the DOH endpoint is enabled for this location.
      * 
      */
     private Boolean enabled;
     /**
-     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     private List<GetZeroTrustDnsLocationEndpointsDohNetwork> networks;
     /**
-     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * @return Specify whether the DOH endpoint requires user identity authentication.
      * 
      */
     private Boolean requireToken;
 
     private GetZeroTrustDnsLocationEndpointsDoh() {}
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the DOH endpoint is enabled for this location.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     public List<GetZeroTrustDnsLocationEndpointsDohNetwork> networks() {
         return this.networks;
     }
     /**
-     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * @return Specify whether the DOH endpoint requires user identity authentication.
      * 
      */
     public Boolean requireToken() {

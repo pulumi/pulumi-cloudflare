@@ -19,38 +19,38 @@ public final class GetZeroTrustListResult {
     private String accountId;
     private String createdAt;
     /**
-     * @return The description of the list.
+     * @return Provide the list description.
      * 
      */
     private String description;
     private @Nullable GetZeroTrustListFilter filter;
     /**
-     * @return API Resource UUID tag.
+     * @return Identify the API resource with a UUID.
      * 
      */
     private String id;
     /**
-     * @return The items in the list.
+     * @return Provide the list items.
      * 
      */
     private List<GetZeroTrustListItem> items;
     /**
-     * @return The number of items in the list.
+     * @return Indicate the number of items in the list.
      * 
      */
     private Double listCount;
     /**
-     * @return API Resource UUID tag.
+     * @return Identify the API resource with a UUID.
      * 
      */
     private @Nullable String listId;
     /**
-     * @return The name of the list.
+     * @return Specify the list name.
      * 
      */
     private String name;
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -65,7 +65,7 @@ public final class GetZeroTrustListResult {
         return this.createdAt;
     }
     /**
-     * @return The description of the list.
+     * @return Provide the list description.
      * 
      */
     public String description() {
@@ -75,42 +75,42 @@ public final class GetZeroTrustListResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return API Resource UUID tag.
+     * @return Identify the API resource with a UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The items in the list.
+     * @return Provide the list items.
      * 
      */
     public List<GetZeroTrustListItem> items() {
         return this.items;
     }
     /**
-     * @return The number of items in the list.
+     * @return Indicate the number of items in the list.
      * 
      */
     public Double listCount() {
         return this.listCount;
     }
     /**
-     * @return API Resource UUID tag.
+     * @return Identify the API resource with a UUID.
      * 
      */
     public Optional<String> listId() {
         return Optional.ofNullable(this.listId);
     }
     /**
-     * @return The name of the list.
+     * @return Specify the list name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */

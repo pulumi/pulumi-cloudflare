@@ -25,8 +25,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         WorkerId = "worker_id",
+        ///         VersionId = "version_id",
         ///         Include = "modules",
         ///     });
         /// 
@@ -50,8 +50,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         WorkerId = "worker_id",
+        ///         VersionId = "version_id",
         ///         Include = "modules",
         ///     });
         /// 
@@ -75,8 +75,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersion = Cloudflare.GetWorkerVersion.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         VersionId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        ///         WorkerId = "worker_id",
+        ///         VersionId = "version_id",
         ///         Include = "modules",
         ///     });
         /// 
@@ -97,16 +97,20 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         [Input("include")]
         public string? Include { get; set; }
 
+        /// <summary>
+        /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+        /// </summary>
         [Input("versionId")]
         public string? VersionId { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId", required: true)]
         public string WorkerId { get; set; } = null!;
@@ -126,16 +130,20 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         [Input("include")]
         public Input<string>? Include { get; set; }
 
+        /// <summary>
+        /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+        /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId", required: true)]
         public Input<string> WorkerId { get; set; } = null!;
@@ -162,66 +170,30 @@ namespace Pulumi.Cloudflare
         /// Configuration for assets within a Worker.
         /// </summary>
         public readonly Outputs.GetWorkerVersionAssetsResult Assets;
-        /// <summary>
-        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionBindingResult> Bindings;
-        /// <summary>
-        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-        /// </summary>
         public readonly string CompatibilityDate;
-        /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-        /// </summary>
         public readonly ImmutableArray<string> CompatibilityFlags;
-        /// <summary>
-        /// When the version was created.
-        /// </summary>
         public readonly string CreatedOn;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         public readonly string? Include;
-        /// <summary>
-        /// Resource limits enforced at runtime.
-        /// </summary>
         public readonly Outputs.GetWorkerVersionLimitsResult Limits;
-        /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-        /// </summary>
         public readonly string MainModule;
-        /// <summary>
-        /// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-        /// </summary>
         public readonly Outputs.GetWorkerVersionMigrationsResult Migrations;
-        /// <summary>
-        /// Code, sourcemaps, and other content used at runtime.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionModuleResult> Modules;
-        /// <summary>
-        /// The integer version number, starting from one.
-        /// </summary>
         public readonly int Number;
-        /// <summary>
-        /// Placement settings for the version.
-        /// </summary>
         public readonly Outputs.GetWorkerVersionPlacementResult Placement;
-        /// <summary>
-        /// The client used to create the version.
-        /// </summary>
         public readonly string Source;
-        /// <summary>
-        /// Usage model for the version.
-        /// Available values: "standard", "bundled", "unbound".
-        /// </summary>
         public readonly string UsageModel;
+        /// <summary>
+        /// Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+        /// </summary>
         public readonly string? VersionId;
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         public readonly string WorkerId;
 

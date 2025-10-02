@@ -16,14 +16,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs extends com.pu
     public static final ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs();
 
     /**
-     * Enable to turn on SSH command logging.
+     * Enable SSH command logging.
      * 
      */
     @Import(name="commandLogging")
     private @Nullable Output<Boolean> commandLogging;
 
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     public Optional<Output<Boolean>> commandLogging() {
@@ -55,7 +55,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs extends com.pu
         }
 
         /**
-         * @param commandLogging Enable to turn on SSH command logging.
+         * @param commandLogging Enable SSH command logging.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs extends com.pu
         }
 
         /**
-         * @param commandLogging Enable to turn on SSH command logging.
+         * @param commandLogging Enable SSH command logging.
          * 
          * @return builder
          * 

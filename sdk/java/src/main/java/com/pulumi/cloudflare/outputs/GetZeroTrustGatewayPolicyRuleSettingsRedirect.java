@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     private Boolean includeContext;
     /**
-     * @return If true, the path and query parameters from the original request will be appended to target_uri.
+     * @return Specify whether to append the path and query parameters from the original request to target_uri.
      * 
      */
     private Boolean preservePathAndQuery;
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     private String targetUri;
 
     private GetZeroTrustGatewayPolicyRuleSettingsRedirect() {}
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     public Boolean includeContext() {
         return this.includeContext;
     }
     /**
-     * @return If true, the path and query parameters from the original request will be appended to target_uri.
+     * @return Specify whether to append the path and query parameters from the original request to target_uri.
      * 
      */
     public Boolean preservePathAndQuery() {
         return this.preservePathAndQuery;
     }
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     public String targetUri() {

@@ -12,7 +12,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -44,7 +43,7 @@ import javax.annotation.Nullable;
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .scriptName("this-is_my_script-01")
  *             .enabled(true)
- *             .previewsEnabled(true)
+ *             .previewsEnabled(false)
  *             .build());
  * 
  *     }
@@ -88,14 +87,14 @@ public class WorkersScriptSubdomain extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="previewsEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> previewsEnabled;
+    private Output<Boolean> previewsEnabled;
 
     /**
      * @return Whether the Worker&#39;s Preview URLs should be available on the workers.dev subdomain.
      * 
      */
-    public Output<Optional<Boolean>> previewsEnabled() {
-        return Codegen.optional(this.previewsEnabled);
+    public Output<Boolean> previewsEnabled() {
+        return this.previewsEnabled;
     }
     /**
      * Name of the script, used in URLs and route configuration.

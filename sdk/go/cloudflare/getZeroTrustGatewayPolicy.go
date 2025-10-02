@@ -50,43 +50,51 @@ func LookupZeroTrustGatewayPolicy(ctx *pulumi.Context, args *LookupZeroTrustGate
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// The API resource UUID.
+	// Identify the API resource with a UUID.
 	RuleId *string `pulumi:"ruleId"`
 }
 
 // A collection of values returned by getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyResult struct {
 	AccountId string `pulumi:"accountId"`
-	// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+	// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    string `pulumi:"action"`
 	CreatedAt string `pulumi:"createdAt"`
-	// Date of deletion, if any.
+	// Indicate the date of deletion, if any.
 	DeletedAt string `pulumi:"deletedAt"`
-	// The description of the rule.
+	// Specify the rule description.
 	Description   string `pulumi:"description"`
 	DevicePosture string `pulumi:"devicePosture"`
-	// True if the rule is enabled.
+	// Specify whether the rule is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The expiration time stamp and default duration of a DNS policy. Takes
-	// precedence over the policy's `schedule` configuration, if any.
-	Expiration  GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
-	Filters     []string                            `pulumi:"filters"`
-	Id          string                              `pulumi:"id"`
-	Identity    string                              `pulumi:"identity"`
-	Name        string                              `pulumi:"name"`
-	NotSharable bool                                `pulumi:"notSharable"`
-	Precedence  int                                 `pulumi:"precedence"`
-	ReadOnly    bool                                `pulumi:"readOnly"`
-	// The API resource UUID.
-	RuleId        *string                               `pulumi:"ruleId"`
-	RuleSettings  GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
-	Schedule      GetZeroTrustGatewayPolicySchedule     `pulumi:"schedule"`
-	SourceAccount string                                `pulumi:"sourceAccount"`
-	Traffic       string                                `pulumi:"traffic"`
-	UpdatedAt     string                                `pulumi:"updatedAt"`
-	Version       int                                   `pulumi:"version"`
-	WarningStatus string                                `pulumi:"warningStatus"`
+	// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+	Expiration GetZeroTrustGatewayPolicyExpiration `pulumi:"expiration"`
+	// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+	Filters []string `pulumi:"filters"`
+	// Identify the API resource with a UUID.
+	Id       string `pulumi:"id"`
+	Identity string `pulumi:"identity"`
+	// Specify the rule name.
+	Name       string `pulumi:"name"`
+	Precedence int    `pulumi:"precedence"`
+	// Indicate that this rule is shared via the Orgs API and read only.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Identify the API resource with a UUID.
+	RuleId       *string                               `pulumi:"ruleId"`
+	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
+	// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
+	Schedule GetZeroTrustGatewayPolicySchedule `pulumi:"schedule"`
+	// Indicate that this rule is sharable via the Orgs API.
+	Sharable bool `pulumi:"sharable"`
+	// Provide the account tag of the account that created the rule.
+	SourceAccount string `pulumi:"sourceAccount"`
+	Traffic       string `pulumi:"traffic"`
+	UpdatedAt     string `pulumi:"updatedAt"`
+	// Indicate the version number of the rule(read-only).
+	Version int `pulumi:"version"`
+	// Indicate a warning for a misconfigured rule, if any.
+	WarningStatus string `pulumi:"warningStatus"`
 }
 
 func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPolicyResultOutput {
@@ -101,7 +109,7 @@ func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrus
 // A collection of arguments for invoking getZeroTrustGatewayPolicy.
 type LookupZeroTrustGatewayPolicyOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The API resource UUID.
+	// Identify the API resource with a UUID.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
 }
 
@@ -128,7 +136,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
 // Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o LookupZeroTrustGatewayPolicyResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Action }).(pulumi.StringOutput)
@@ -138,12 +146,12 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) CreatedAt() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Date of deletion, if any.
+// Indicate the date of deletion, if any.
 func (o LookupZeroTrustGatewayPolicyResultOutput) DeletedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.DeletedAt }).(pulumi.StringOutput)
 }
 
-// The description of the rule.
+// Specify the rule description.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -152,21 +160,22 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) DevicePosture() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.DevicePosture }).(pulumi.StringOutput)
 }
 
-// True if the rule is enabled.
+// Specify whether the rule is enabled.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The expiration time stamp and default duration of a DNS policy. Takes
-// precedence over the policy's `schedule` configuration, if any.
+// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Expiration() GetZeroTrustGatewayPolicyExpirationOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicyExpiration { return v.Expiration }).(GetZeroTrustGatewayPolicyExpirationOutput)
 }
 
+// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Filters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) []string { return v.Filters }).(pulumi.StringArrayOutput)
 }
 
+// Identify the API resource with a UUID.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -175,23 +184,21 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) Identity() pulumi.StringOutput
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Identity }).(pulumi.StringOutput)
 }
 
+// Specify the rule name.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o LookupZeroTrustGatewayPolicyResultOutput) NotSharable() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.NotSharable }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustGatewayPolicyResultOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Precedence }).(pulumi.IntOutput)
 }
 
+// Indicate that this rule is shared via the Orgs API and read only.
 func (o LookupZeroTrustGatewayPolicyResultOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-// The API resource UUID.
+// Identify the API resource with a UUID.
 func (o LookupZeroTrustGatewayPolicyResultOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
@@ -202,10 +209,17 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) RuleSettings() GetZeroTrustGat
 	}).(GetZeroTrustGatewayPolicyRuleSettingsOutput)
 }
 
+// Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
 func (o LookupZeroTrustGatewayPolicyResultOutput) Schedule() GetZeroTrustGatewayPolicyScheduleOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) GetZeroTrustGatewayPolicySchedule { return v.Schedule }).(GetZeroTrustGatewayPolicyScheduleOutput)
 }
 
+// Indicate that this rule is sharable via the Orgs API.
+func (o LookupZeroTrustGatewayPolicyResultOutput) Sharable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) bool { return v.Sharable }).(pulumi.BoolOutput)
+}
+
+// Provide the account tag of the account that created the rule.
 func (o LookupZeroTrustGatewayPolicyResultOutput) SourceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.SourceAccount }).(pulumi.StringOutput)
 }
@@ -218,10 +232,12 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) UpdatedAt() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// Indicate the version number of the rule(read-only).
 func (o LookupZeroTrustGatewayPolicyResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Version }).(pulumi.IntOutput)
 }
 
+// Indicate a warning for a misconfigured rule, if any.
 func (o LookupZeroTrustGatewayPolicyResultOutput) WarningStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.WarningStatus }).(pulumi.StringOutput)
 }

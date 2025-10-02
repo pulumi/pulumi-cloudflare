@@ -18,14 +18,14 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
     public static final ZeroTrustDnsLocationEndpointsDohArgs Empty = new ZeroTrustDnsLocationEndpointsDohArgs();
 
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the DOH endpoint is enabled for this location.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the DOH endpoint is enabled for this location.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
     }
 
     /**
-     * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<ZeroTrustDnsLocationEndpointsDohNetworkArgs>> networks;
 
     /**
-     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     public Optional<Output<List<ZeroTrustDnsLocationEndpointsDohNetworkArgs>>> networks() {
@@ -48,14 +48,14 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
     }
 
     /**
-     * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * Specify whether the DOH endpoint requires user identity authentication.
      * 
      */
     @Import(name="requireToken")
     private @Nullable Output<Boolean> requireToken;
 
     /**
-     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * @return Specify whether the DOH endpoint requires user identity authentication.
      * 
      */
     public Optional<Output<Boolean>> requireToken() {
@@ -89,7 +89,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the DOH endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the DOH endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networks A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+         * @param networks Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requireToken True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+         * @param requireToken Specify whether the DOH endpoint requires user identity authentication.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ZeroTrustDnsLocationEndpointsDohArgs extends com.pulumi.resou
         }
 
         /**
-         * @param requireToken True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+         * @param requireToken Specify whether the DOH endpoint requires user identity authentication.
          * 
          * @return builder
          * 

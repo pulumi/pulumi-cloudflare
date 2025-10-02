@@ -52,40 +52,44 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     }
 
     declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly activate: pulumi.Output<boolean | undefined>;
     /**
-     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     declare public /*out*/ readonly bindingStatus: pulumi.Output<string>;
     /**
-     * The CA certificate(read only).
+     * Provide the CA certificate (read-only).
      */
     declare public /*out*/ readonly certificate: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public /*out*/ readonly expiresOn: pulumi.Output<string>;
     /**
-     * The SHA256 fingerprint of the certificate(read only).
+     * Provide the SHA256 fingerprint of the certificate (read-only).
      */
     declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
-     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+     * Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      */
     declare public /*out*/ readonly inUse: pulumi.Output<boolean>;
     /**
-     * The organization that issued the certificate(read only).
+     * Indicate the organization that issued the certificate (read-only).
      */
     declare public /*out*/ readonly issuerOrg: pulumi.Output<string>;
     /**
-     * The entire issuer field of the certificate(read only).
+     * Provide the entire issuer field of the certificate (read-only).
      */
     declare public /*out*/ readonly issuerRaw: pulumi.Output<string>;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+     * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     declare public /*out*/ readonly uploadedOn: pulumi.Output<string>;
+    /**
+     * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+     */
     declare public readonly validityPeriodDays: pulumi.Output<number | undefined>;
 
     /**
@@ -102,6 +106,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewayCertificateState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["activate"] = state?.activate;
             resourceInputs["bindingStatus"] = state?.bindingStatus;
             resourceInputs["certificate"] = state?.certificate;
             resourceInputs["createdAt"] = state?.createdAt;
@@ -120,6 +125,7 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["activate"] = args?.activate;
             resourceInputs["validityPeriodDays"] = args?.validityPeriodDays;
             resourceInputs["bindingStatus"] = undefined /*out*/;
             resourceInputs["certificate"] = undefined /*out*/;
@@ -143,40 +149,44 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
  */
 export interface ZeroTrustGatewayCertificateState {
     accountId?: pulumi.Input<string>;
+    activate?: pulumi.Input<boolean>;
     /**
-     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     bindingStatus?: pulumi.Input<string>;
     /**
-     * The CA certificate(read only).
+     * Provide the CA certificate (read-only).
      */
     certificate?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     expiresOn?: pulumi.Input<string>;
     /**
-     * The SHA256 fingerprint of the certificate(read only).
+     * Provide the SHA256 fingerprint of the certificate (read-only).
      */
     fingerprint?: pulumi.Input<string>;
     /**
-     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+     * Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      */
     inUse?: pulumi.Input<boolean>;
     /**
-     * The organization that issued the certificate(read only).
+     * Indicate the organization that issued the certificate (read-only).
      */
     issuerOrg?: pulumi.Input<string>;
     /**
-     * The entire issuer field of the certificate(read only).
+     * Provide the entire issuer field of the certificate (read-only).
      */
     issuerRaw?: pulumi.Input<string>;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+     * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     uploadedOn?: pulumi.Input<string>;
+    /**
+     * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+     */
     validityPeriodDays?: pulumi.Input<number>;
 }
 
@@ -185,5 +195,9 @@ export interface ZeroTrustGatewayCertificateState {
  */
 export interface ZeroTrustGatewayCertificateArgs {
     accountId: pulumi.Input<string>;
+    activate?: pulumi.Input<boolean>;
+    /**
+     * Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+     */
     validityPeriodDays?: pulumi.Input<number>;
 }

@@ -13,8 +13,415 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ZeroTrustGatewaySettingsSettingsBlockPage struct {
+	// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
+	BackgroundColor *string `pulumi:"backgroundColor"`
+	// Specify whether to enable the custom block page.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the block page footer text when the mode is customized*block*page.
+	FooterText *string `pulumi:"footerText"`
+	// Specify the block page header text when the mode is customized*block*page.
+	HeaderText *string `pulumi:"headerText"`
+	// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
+	IncludeContext *bool `pulumi:"includeContext"`
+	// Specify the full URL to the logo file when the mode is customized*block*page.
+	LogoPath *string `pulumi:"logoPath"`
+	// Specify the admin email for users to contact when the mode is customized*block*page.
+	MailtoAddress *string `pulumi:"mailtoAddress"`
+	// Specify the subject line for emails created from the block page when the mode is customized*block*page.
+	MailtoSubject *string `pulumi:"mailtoSubject"`
+	// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+	// Available values: "", "customized*block*page", "redirectUri".
+	Mode *string `pulumi:"mode"`
+	// Specify the block page title when the mode is customized*block*page.
+	Name *string `pulumi:"name"`
+	// Indicate that this setting was shared via the Orgs API and read only for the current account.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Indicate the account tag of the account that shared this setting.
+	SourceAccount *string `pulumi:"sourceAccount"`
+	// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
+	SuppressFooter *bool `pulumi:"suppressFooter"`
+	// Specify the URI to redirect users to when the mode is redirect_uri.
+	TargetUri *string `pulumi:"targetUri"`
+	// Indicate the version number of the setting.
+	Version *int `pulumi:"version"`
+}
+
+// ZeroTrustGatewaySettingsSettingsBlockPageInput is an input type that accepts ZeroTrustGatewaySettingsSettingsBlockPageArgs and ZeroTrustGatewaySettingsSettingsBlockPageOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsSettingsBlockPageInput` via:
+//
+//	ZeroTrustGatewaySettingsSettingsBlockPageArgs{...}
+type ZeroTrustGatewaySettingsSettingsBlockPageInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsSettingsBlockPageOutput() ZeroTrustGatewaySettingsSettingsBlockPageOutput
+	ToZeroTrustGatewaySettingsSettingsBlockPageOutputWithContext(context.Context) ZeroTrustGatewaySettingsSettingsBlockPageOutput
+}
+
+type ZeroTrustGatewaySettingsSettingsBlockPageArgs struct {
+	// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
+	BackgroundColor pulumi.StringPtrInput `pulumi:"backgroundColor"`
+	// Specify whether to enable the custom block page.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the block page footer text when the mode is customized*block*page.
+	FooterText pulumi.StringPtrInput `pulumi:"footerText"`
+	// Specify the block page header text when the mode is customized*block*page.
+	HeaderText pulumi.StringPtrInput `pulumi:"headerText"`
+	// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
+	IncludeContext pulumi.BoolPtrInput `pulumi:"includeContext"`
+	// Specify the full URL to the logo file when the mode is customized*block*page.
+	LogoPath pulumi.StringPtrInput `pulumi:"logoPath"`
+	// Specify the admin email for users to contact when the mode is customized*block*page.
+	MailtoAddress pulumi.StringPtrInput `pulumi:"mailtoAddress"`
+	// Specify the subject line for emails created from the block page when the mode is customized*block*page.
+	MailtoSubject pulumi.StringPtrInput `pulumi:"mailtoSubject"`
+	// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+	// Available values: "", "customized*block*page", "redirectUri".
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Specify the block page title when the mode is customized*block*page.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Indicate that this setting was shared via the Orgs API and read only for the current account.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Indicate the account tag of the account that shared this setting.
+	SourceAccount pulumi.StringPtrInput `pulumi:"sourceAccount"`
+	// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
+	SuppressFooter pulumi.BoolPtrInput `pulumi:"suppressFooter"`
+	// Specify the URI to redirect users to when the mode is redirect_uri.
+	TargetUri pulumi.StringPtrInput `pulumi:"targetUri"`
+	// Indicate the version number of the setting.
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (ZeroTrustGatewaySettingsSettingsBlockPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBlockPage)(nil)).Elem()
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBlockPageArgs) ToZeroTrustGatewaySettingsSettingsBlockPageOutput() ZeroTrustGatewaySettingsSettingsBlockPageOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBlockPageOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBlockPageArgs) ToZeroTrustGatewaySettingsSettingsBlockPageOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBlockPageOutput)
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBlockPageArgs) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutput() ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (i ZeroTrustGatewaySettingsSettingsBlockPageArgs) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBlockPageOutput).ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(ctx)
+}
+
+// ZeroTrustGatewaySettingsSettingsBlockPagePtrInput is an input type that accepts ZeroTrustGatewaySettingsSettingsBlockPageArgs, ZeroTrustGatewaySettingsSettingsBlockPagePtr and ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput values.
+// You can construct a concrete instance of `ZeroTrustGatewaySettingsSettingsBlockPagePtrInput` via:
+//
+//	        ZeroTrustGatewaySettingsSettingsBlockPageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZeroTrustGatewaySettingsSettingsBlockPagePtrInput interface {
+	pulumi.Input
+
+	ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutput() ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput
+	ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(context.Context) ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput
+}
+
+type zeroTrustGatewaySettingsSettingsBlockPagePtrType ZeroTrustGatewaySettingsSettingsBlockPageArgs
+
+func ZeroTrustGatewaySettingsSettingsBlockPagePtr(v *ZeroTrustGatewaySettingsSettingsBlockPageArgs) ZeroTrustGatewaySettingsSettingsBlockPagePtrInput {
+	return (*zeroTrustGatewaySettingsSettingsBlockPagePtrType)(v)
+}
+
+func (*zeroTrustGatewaySettingsSettingsBlockPagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsSettingsBlockPage)(nil)).Elem()
+}
+
+func (i *zeroTrustGatewaySettingsSettingsBlockPagePtrType) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutput() ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return i.ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (i *zeroTrustGatewaySettingsSettingsBlockPagePtrType) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput)
+}
+
+type ZeroTrustGatewaySettingsSettingsBlockPageOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsSettingsBlockPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBlockPage)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) ToZeroTrustGatewaySettingsSettingsBlockPageOutput() ZeroTrustGatewaySettingsSettingsBlockPageOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) ToZeroTrustGatewaySettingsSettingsBlockPageOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPageOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutput() ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return o.ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZeroTrustGatewaySettingsSettingsBlockPage) *ZeroTrustGatewaySettingsSettingsBlockPage {
+		return &v
+	}).(ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput)
+}
+
+// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.BackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to enable the custom block page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the block page footer text when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) FooterText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.FooterText }).(pulumi.StringPtrOutput)
+}
+
+// Specify the block page header text when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) HeaderText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.HeaderText }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) IncludeContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *bool { return v.IncludeContext }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the full URL to the logo file when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) LogoPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.LogoPath }).(pulumi.StringPtrOutput)
+}
+
+// Specify the admin email for users to contact when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) MailtoAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.MailtoAddress }).(pulumi.StringPtrOutput)
+}
+
+// Specify the subject line for emails created from the block page when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) MailtoSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.MailtoSubject }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+// Available values: "", "customized*block*page", "redirectUri".
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Specify the block page title when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Indicate that this setting was shared via the Orgs API and read only for the current account.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Indicate the account tag of the account that shared this setting.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.SourceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) SuppressFooter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *bool { return v.SuppressFooter }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the URI to redirect users to when the mode is redirect_uri.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) TargetUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *string { return v.TargetUri }).(pulumi.StringPtrOutput)
+}
+
+// Indicate the version number of the setting.
+func (o ZeroTrustGatewaySettingsSettingsBlockPageOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBlockPage) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput struct{ *pulumi.OutputState }
+
+func (ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZeroTrustGatewaySettingsSettingsBlockPage)(nil)).Elem()
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutput() ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) ToZeroTrustGatewaySettingsSettingsBlockPagePtrOutputWithContext(ctx context.Context) ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput {
+	return o
+}
+
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) Elem() ZeroTrustGatewaySettingsSettingsBlockPageOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) ZeroTrustGatewaySettingsSettingsBlockPage {
+		if v != nil {
+			return *v
+		}
+		var ret ZeroTrustGatewaySettingsSettingsBlockPage
+		return ret
+	}).(ZeroTrustGatewaySettingsSettingsBlockPageOutput)
+}
+
+// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackgroundColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to enable the custom block page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the block page footer text when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) FooterText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FooterText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the block page header text when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) HeaderText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) IncludeContext() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeContext
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the full URL to the logo file when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) LogoPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the admin email for users to contact when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) MailtoAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MailtoAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the subject line for emails created from the block page when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) MailtoSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MailtoSubject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+// Available values: "", "customized*block*page", "redirectUri".
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the block page title when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicate that this setting was shared via the Orgs API and read only for the current account.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicate the account tag of the account that shared this setting.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) SourceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) SuppressFooter() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SuppressFooter
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the URI to redirect users to when the mode is redirect_uri.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) TargetUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicate the version number of the setting.
+func (o ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBlockPage) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.IntPtrOutput)
+}
+
 type ZeroTrustGatewaySettingsSettingsBodyScanning struct {
-	// Set the inspection mode to either `deep` or `shallow`.
+	// Specify the inspection mode as either `deep` or `shallow`.
 	// Available values: "deep", "shallow".
 	InspectionMode *string `pulumi:"inspectionMode"`
 }
@@ -31,7 +438,7 @@ type ZeroTrustGatewaySettingsSettingsBodyScanningInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsBodyScanningArgs struct {
-	// Set the inspection mode to either `deep` or `shallow`.
+	// Specify the inspection mode as either `deep` or `shallow`.
 	// Available values: "deep", "shallow".
 	InspectionMode pulumi.StringPtrInput `pulumi:"inspectionMode"`
 }
@@ -113,7 +520,7 @@ func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) ToZeroTrustGatewaySe
 	}).(ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput)
 }
 
-// Set the inspection mode to either `deep` or `shallow`.
+// Specify the inspection mode as either `deep` or `shallow`.
 // Available values: "deep", "shallow".
 func (o ZeroTrustGatewaySettingsSettingsBodyScanningOutput) InspectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBodyScanning) *string { return v.InspectionMode }).(pulumi.StringPtrOutput)
@@ -143,7 +550,7 @@ func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) Elem() ZeroTrustG
 	}).(ZeroTrustGatewaySettingsSettingsBodyScanningOutput)
 }
 
-// Set the inspection mode to either `deep` or `shallow`.
+// Specify the inspection mode as either `deep` or `shallow`.
 // Available values: "deep", "shallow".
 func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBodyScanning) *string {
@@ -155,9 +562,9 @@ func (o ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput) InspectionMode() 
 }
 
 type ZeroTrustGatewaySettingsSettingsBrowserIsolation struct {
-	// Enable non-identity onramp support for Browser Isolation.
+	// Specify whether to enable non-identity onramp support for Browser Isolation.
 	NonIdentityEnabled *bool `pulumi:"nonIdentityEnabled"`
-	// Enable Clientless Browser Isolation.
+	// Specify whether to enable Clientless Browser Isolation.
 	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
 }
 
@@ -173,9 +580,9 @@ type ZeroTrustGatewaySettingsSettingsBrowserIsolationInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs struct {
-	// Enable non-identity onramp support for Browser Isolation.
+	// Specify whether to enable non-identity onramp support for Browser Isolation.
 	NonIdentityEnabled pulumi.BoolPtrInput `pulumi:"nonIdentityEnabled"`
-	// Enable Clientless Browser Isolation.
+	// Specify whether to enable Clientless Browser Isolation.
 	UrlBrowserIsolationEnabled pulumi.BoolPtrInput `pulumi:"urlBrowserIsolationEnabled"`
 }
 
@@ -256,12 +663,12 @@ func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput) ToZeroTrustGatew
 	}).(ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput)
 }
 
-// Enable non-identity onramp support for Browser Isolation.
+// Specify whether to enable non-identity onramp support for Browser Isolation.
 func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput) NonIdentityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBrowserIsolation) *bool { return v.NonIdentityEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Enable Clientless Browser Isolation.
+// Specify whether to enable Clientless Browser Isolation.
 func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsBrowserIsolation) *bool { return v.UrlBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -290,7 +697,7 @@ func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput) Elem() ZeroTr
 	}).(ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput)
 }
 
-// Enable non-identity onramp support for Browser Isolation.
+// Specify whether to enable non-identity onramp support for Browser Isolation.
 func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput) NonIdentityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBrowserIsolation) *bool {
 		if v == nil {
@@ -300,7 +707,7 @@ func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput) NonIdentityEn
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable Clientless Browser Isolation.
+// Specify whether to enable Clientless Browser Isolation.
 func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsBrowserIsolation) *bool {
 		if v == nil {
@@ -311,7 +718,7 @@ func (o ZeroTrustGatewaySettingsSettingsBrowserIsolationPtrOutput) UrlBrowserIso
 }
 
 type ZeroTrustGatewaySettingsSettingsCertificate struct {
-	// UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+	// Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
 	Id string `pulumi:"id"`
 }
 
@@ -327,7 +734,7 @@ type ZeroTrustGatewaySettingsSettingsCertificateInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsCertificateArgs struct {
-	// UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+	// Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -408,7 +815,7 @@ func (o ZeroTrustGatewaySettingsSettingsCertificateOutput) ToZeroTrustGatewaySet
 	}).(ZeroTrustGatewaySettingsSettingsCertificatePtrOutput)
 }
 
-// UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+// Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
 func (o ZeroTrustGatewaySettingsSettingsCertificateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -437,7 +844,7 @@ func (o ZeroTrustGatewaySettingsSettingsCertificatePtrOutput) Elem() ZeroTrustGa
 	}).(ZeroTrustGatewaySettingsSettingsCertificateOutput)
 }
 
-// UUID of certificate to be used for interception. Certificate must be available (previously called 'active') on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+// Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called 'active'). A nil UUID directs Cloudflare to use the Root CA.
 func (o ZeroTrustGatewaySettingsSettingsCertificatePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsCertificate) *string {
 		if v == nil {
@@ -448,11 +855,11 @@ func (o ZeroTrustGatewaySettingsSettingsCertificatePtrOutput) Id() pulumi.String
 }
 
 type ZeroTrustGatewaySettingsSettingsCustomCertificate struct {
-	// Certificate status (internal).
+	// Indicate the internal certificate status.
 	BindingStatus *string `pulumi:"bindingStatus"`
-	// Enable use of custom certificate authority for signing Gateway. traffic.
+	// Specify whether to enable a custom certificate authority for signing Gateway traffic.
 	Enabled bool `pulumi:"enabled"`
-	// UUID of certificate (ID from MTLS certificate store).
+	// Specify the UUID of the certificate (ID from MTLS certificate store).
 	Id        *string `pulumi:"id"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
@@ -469,11 +876,11 @@ type ZeroTrustGatewaySettingsSettingsCustomCertificateInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsCustomCertificateArgs struct {
-	// Certificate status (internal).
+	// Indicate the internal certificate status.
 	BindingStatus pulumi.StringPtrInput `pulumi:"bindingStatus"`
-	// Enable use of custom certificate authority for signing Gateway. traffic.
+	// Specify whether to enable a custom certificate authority for signing Gateway traffic.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// UUID of certificate (ID from MTLS certificate store).
+	// Specify the UUID of the certificate (ID from MTLS certificate store).
 	Id        pulumi.StringPtrInput `pulumi:"id"`
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
@@ -555,17 +962,17 @@ func (o ZeroTrustGatewaySettingsSettingsCustomCertificateOutput) ToZeroTrustGate
 	}).(ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput)
 }
 
-// Certificate status (internal).
+// Indicate the internal certificate status.
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificateOutput) BindingStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsCustomCertificate) *string { return v.BindingStatus }).(pulumi.StringPtrOutput)
 }
 
-// Enable use of custom certificate authority for signing Gateway. traffic.
+// Specify whether to enable a custom certificate authority for signing Gateway traffic.
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificateOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsCustomCertificate) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// UUID of certificate (ID from MTLS certificate store).
+// Specify the UUID of the certificate (ID from MTLS certificate store).
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificateOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsCustomCertificate) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -598,7 +1005,7 @@ func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) Elem() ZeroT
 	}).(ZeroTrustGatewaySettingsSettingsCustomCertificateOutput)
 }
 
-// Certificate status (internal).
+// Indicate the internal certificate status.
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) BindingStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsCustomCertificate) *string {
 		if v == nil {
@@ -608,7 +1015,7 @@ func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) BindingStatu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable use of custom certificate authority for signing Gateway. traffic.
+// Specify whether to enable a custom certificate authority for signing Gateway traffic.
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsCustomCertificate) *bool {
 		if v == nil {
@@ -618,7 +1025,7 @@ func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) Enabled() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// UUID of certificate (ID from MTLS certificate store).
+// Specify the UUID of the certificate (ID from MTLS certificate store).
 func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsCustomCertificate) *string {
 		if v == nil {
@@ -638,13 +1045,13 @@ func (o ZeroTrustGatewaySettingsSettingsCustomCertificatePtrOutput) UpdatedAt() 
 }
 
 type ZeroTrustGatewaySettingsSettingsExtendedEmailMatching struct {
-	// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+	// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
 	Enabled *bool `pulumi:"enabled"`
-	// This setting was shared via the Orgs API and cannot be edited by the current account.
+	// Indicate that this setting was shared via the Orgs API and read only for the current account.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// Account tag of account that shared this setting.
+	// Indicate the account tag of the account that shared this setting.
 	SourceAccount *string `pulumi:"sourceAccount"`
-	// Version number of the setting.
+	// Indicate the version number of the setting.
 	Version *int `pulumi:"version"`
 }
 
@@ -660,13 +1067,13 @@ type ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs struct {
-	// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+	// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// This setting was shared via the Orgs API and cannot be edited by the current account.
+	// Indicate that this setting was shared via the Orgs API and read only for the current account.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// Account tag of account that shared this setting.
+	// Indicate the account tag of the account that shared this setting.
 	SourceAccount pulumi.StringPtrInput `pulumi:"sourceAccount"`
-	// Version number of the setting.
+	// Indicate the version number of the setting.
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
@@ -747,22 +1154,22 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput) ToZeroTrust
 	}).(ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput)
 }
 
-// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// This setting was shared via the Orgs API and cannot be edited by the current account.
+// Indicate that this setting was shared via the Orgs API and read only for the current account.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Account tag of account that shared this setting.
+// Indicate the account tag of the account that shared this setting.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput) SourceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *string { return v.SourceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Version number of the setting.
+// Indicate the version number of the setting.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
@@ -791,7 +1198,7 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) Elem() Z
 	}).(ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingOutput)
 }
 
-// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *bool {
 		if v == nil {
@@ -801,7 +1208,7 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) Enabled(
 	}).(pulumi.BoolPtrOutput)
 }
 
-// This setting was shared via the Orgs API and cannot be edited by the current account.
+// Indicate that this setting was shared via the Orgs API and read only for the current account.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *bool {
 		if v == nil {
@@ -811,7 +1218,7 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) ReadOnly
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Account tag of account that shared this setting.
+// Indicate the account tag of the account that shared this setting.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) SourceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *string {
 		if v == nil {
@@ -821,7 +1228,7 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) SourceAc
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version number of the setting.
+// Indicate the version number of the setting.
 func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsExtendedEmailMatching) *int {
 		if v == nil {
@@ -832,7 +1239,7 @@ func (o ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingPtrOutput) Version(
 }
 
 type ZeroTrustGatewaySettingsSettingsFips struct {
-	// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+	// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
 	Tls *bool `pulumi:"tls"`
 }
 
@@ -848,7 +1255,7 @@ type ZeroTrustGatewaySettingsSettingsFipsInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsFipsArgs struct {
-	// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+	// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
 	Tls pulumi.BoolPtrInput `pulumi:"tls"`
 }
 
@@ -929,7 +1336,7 @@ func (o ZeroTrustGatewaySettingsSettingsFipsOutput) ToZeroTrustGatewaySettingsSe
 	}).(ZeroTrustGatewaySettingsSettingsFipsPtrOutput)
 }
 
-// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
 func (o ZeroTrustGatewaySettingsSettingsFipsOutput) Tls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsFips) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
 }
@@ -958,7 +1365,7 @@ func (o ZeroTrustGatewaySettingsSettingsFipsPtrOutput) Elem() ZeroTrustGatewaySe
 	}).(ZeroTrustGatewaySettingsSettingsFipsOutput)
 }
 
-// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
 func (o ZeroTrustGatewaySettingsSettingsFipsPtrOutput) Tls() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsFips) *bool {
 		if v == nil {
@@ -969,7 +1376,7 @@ func (o ZeroTrustGatewaySettingsSettingsFipsPtrOutput) Tls() pulumi.BoolPtrOutpu
 }
 
 type ZeroTrustGatewaySettingsSettingsHostSelector struct {
-	// Enable filtering via hosts for egress policies.
+	// Specify whether to enable filtering via hosts for egress policies.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -985,7 +1392,7 @@ type ZeroTrustGatewaySettingsSettingsHostSelectorInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsHostSelectorArgs struct {
-	// Enable filtering via hosts for egress policies.
+	// Specify whether to enable filtering via hosts for egress policies.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1066,7 +1473,7 @@ func (o ZeroTrustGatewaySettingsSettingsHostSelectorOutput) ToZeroTrustGatewaySe
 	}).(ZeroTrustGatewaySettingsSettingsHostSelectorPtrOutput)
 }
 
-// Enable filtering via hosts for egress policies.
+// Specify whether to enable filtering via hosts for egress policies.
 func (o ZeroTrustGatewaySettingsSettingsHostSelectorOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsHostSelector) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1095,7 +1502,7 @@ func (o ZeroTrustGatewaySettingsSettingsHostSelectorPtrOutput) Elem() ZeroTrustG
 	}).(ZeroTrustGatewaySettingsSettingsHostSelectorOutput)
 }
 
-// Enable filtering via hosts for egress policies.
+// Specify whether to enable filtering via hosts for egress policies.
 func (o ZeroTrustGatewaySettingsSettingsHostSelectorPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsHostSelector) *bool {
 		if v == nil {
@@ -1106,10 +1513,8 @@ func (o ZeroTrustGatewaySettingsSettingsHostSelectorPtrOutput) Enabled() pulumi.
 }
 
 type ZeroTrustGatewaySettingsSettingsInspection struct {
-	// Defines the mode of inspection the proxy will use.
-	// - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-	// - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-	//   Available values: "static", "dynamic".
+	// Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+	// Available values: "static", "dynamic".
 	Mode *string `pulumi:"mode"`
 }
 
@@ -1125,10 +1530,8 @@ type ZeroTrustGatewaySettingsSettingsInspectionInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsInspectionArgs struct {
-	// Defines the mode of inspection the proxy will use.
-	// - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-	// - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-	//   Available values: "static", "dynamic".
+	// Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+	// Available values: "static", "dynamic".
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -1209,10 +1612,8 @@ func (o ZeroTrustGatewaySettingsSettingsInspectionOutput) ToZeroTrustGatewaySett
 	}).(ZeroTrustGatewaySettingsSettingsInspectionPtrOutput)
 }
 
-// Defines the mode of inspection the proxy will use.
-//   - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-//   - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-//     Available values: "static", "dynamic".
+// Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+// Available values: "static", "dynamic".
 func (o ZeroTrustGatewaySettingsSettingsInspectionOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsInspection) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -1241,10 +1642,8 @@ func (o ZeroTrustGatewaySettingsSettingsInspectionPtrOutput) Elem() ZeroTrustGat
 	}).(ZeroTrustGatewaySettingsSettingsInspectionOutput)
 }
 
-// Defines the mode of inspection the proxy will use.
-//   - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) & UDP(443).
-//   - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-//     Available values: "static", "dynamic".
+// Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+// Available values: "static", "dynamic".
 func (o ZeroTrustGatewaySettingsSettingsInspectionPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsInspection) *string {
 		if v == nil {
@@ -1255,7 +1654,7 @@ func (o ZeroTrustGatewaySettingsSettingsInspectionPtrOutput) Mode() pulumi.Strin
 }
 
 type ZeroTrustGatewaySettingsSettingsProtocolDetection struct {
-	// Enable detecting protocol on initial bytes of client traffic.
+	// Specify whether to detect protocols from the initial bytes of client traffic.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1271,7 +1670,7 @@ type ZeroTrustGatewaySettingsSettingsProtocolDetectionInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs struct {
-	// Enable detecting protocol on initial bytes of client traffic.
+	// Specify whether to detect protocols from the initial bytes of client traffic.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1352,7 +1751,7 @@ func (o ZeroTrustGatewaySettingsSettingsProtocolDetectionOutput) ToZeroTrustGate
 	}).(ZeroTrustGatewaySettingsSettingsProtocolDetectionPtrOutput)
 }
 
-// Enable detecting protocol on initial bytes of client traffic.
+// Specify whether to detect protocols from the initial bytes of client traffic.
 func (o ZeroTrustGatewaySettingsSettingsProtocolDetectionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsProtocolDetection) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1381,7 +1780,7 @@ func (o ZeroTrustGatewaySettingsSettingsProtocolDetectionPtrOutput) Elem() ZeroT
 	}).(ZeroTrustGatewaySettingsSettingsProtocolDetectionOutput)
 }
 
-// Enable detecting protocol on initial bytes of client traffic.
+// Specify whether to detect protocols from the initial bytes of client traffic.
 func (o ZeroTrustGatewaySettingsSettingsProtocolDetectionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsProtocolDetection) *bool {
 		if v == nil {
@@ -1392,9 +1791,9 @@ func (o ZeroTrustGatewaySettingsSettingsProtocolDetectionPtrOutput) Enabled() pu
 }
 
 type ZeroTrustGatewaySettingsSettingsSandbox struct {
-	// Enable sandbox.
+	// Specify whether to enable the sandbox.
 	Enabled *bool `pulumi:"enabled"`
-	// Action to take when the file cannot be scanned.
+	// Specify the action to take when the system cannot scan the file.
 	// Available values: "allow", "block".
 	FallbackAction *string `pulumi:"fallbackAction"`
 }
@@ -1411,9 +1810,9 @@ type ZeroTrustGatewaySettingsSettingsSandboxInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsSandboxArgs struct {
-	// Enable sandbox.
+	// Specify whether to enable the sandbox.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Action to take when the file cannot be scanned.
+	// Specify the action to take when the system cannot scan the file.
 	// Available values: "allow", "block".
 	FallbackAction pulumi.StringPtrInput `pulumi:"fallbackAction"`
 }
@@ -1495,12 +1894,12 @@ func (o ZeroTrustGatewaySettingsSettingsSandboxOutput) ToZeroTrustGatewaySetting
 	}).(ZeroTrustGatewaySettingsSettingsSandboxPtrOutput)
 }
 
-// Enable sandbox.
+// Specify whether to enable the sandbox.
 func (o ZeroTrustGatewaySettingsSettingsSandboxOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsSandbox) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Action to take when the file cannot be scanned.
+// Specify the action to take when the system cannot scan the file.
 // Available values: "allow", "block".
 func (o ZeroTrustGatewaySettingsSettingsSandboxOutput) FallbackAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsSandbox) *string { return v.FallbackAction }).(pulumi.StringPtrOutput)
@@ -1530,7 +1929,7 @@ func (o ZeroTrustGatewaySettingsSettingsSandboxPtrOutput) Elem() ZeroTrustGatewa
 	}).(ZeroTrustGatewaySettingsSettingsSandboxOutput)
 }
 
-// Enable sandbox.
+// Specify whether to enable the sandbox.
 func (o ZeroTrustGatewaySettingsSettingsSandboxPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsSandbox) *bool {
 		if v == nil {
@@ -1540,7 +1939,7 @@ func (o ZeroTrustGatewaySettingsSettingsSandboxPtrOutput) Enabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Action to take when the file cannot be scanned.
+// Specify the action to take when the system cannot scan the file.
 // Available values: "allow", "block".
 func (o ZeroTrustGatewaySettingsSettingsSandboxPtrOutput) FallbackAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsSandbox) *string {
@@ -1552,7 +1951,7 @@ func (o ZeroTrustGatewaySettingsSettingsSandboxPtrOutput) FallbackAction() pulum
 }
 
 type ZeroTrustGatewaySettingsSettingsTlsDecrypt struct {
-	// Enable inspecting encrypted HTTP traffic.
+	// Specify whether to inspect encrypted HTTP traffic.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1568,7 +1967,7 @@ type ZeroTrustGatewaySettingsSettingsTlsDecryptInput interface {
 }
 
 type ZeroTrustGatewaySettingsSettingsTlsDecryptArgs struct {
-	// Enable inspecting encrypted HTTP traffic.
+	// Specify whether to inspect encrypted HTTP traffic.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1649,7 +2048,7 @@ func (o ZeroTrustGatewaySettingsSettingsTlsDecryptOutput) ToZeroTrustGatewaySett
 	}).(ZeroTrustGatewaySettingsSettingsTlsDecryptPtrOutput)
 }
 
-// Enable inspecting encrypted HTTP traffic.
+// Specify whether to inspect encrypted HTTP traffic.
 func (o ZeroTrustGatewaySettingsSettingsTlsDecryptOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZeroTrustGatewaySettingsSettingsTlsDecrypt) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1678,7 +2077,7 @@ func (o ZeroTrustGatewaySettingsSettingsTlsDecryptPtrOutput) Elem() ZeroTrustGat
 	}).(ZeroTrustGatewaySettingsSettingsTlsDecryptOutput)
 }
 
-// Enable inspecting encrypted HTTP traffic.
+// Specify whether to inspect encrypted HTTP traffic.
 func (o ZeroTrustGatewaySettingsSettingsTlsDecryptPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettingsSettingsTlsDecrypt) *bool {
 		if v == nil {
@@ -1689,9 +2088,9 @@ func (o ZeroTrustGatewaySettingsSettingsTlsDecryptPtrOutput) Enabled() pulumi.Bo
 }
 
 type ZeroTrustListItem struct {
-	// The description of the list item, if present.
+	// Provide the list item description (optional).
 	Description *string `pulumi:"description"`
-	// The value of the item in a list.
+	// Specify the item value.
 	Value *string `pulumi:"value"`
 }
 
@@ -1707,9 +2106,9 @@ type ZeroTrustListItemInput interface {
 }
 
 type ZeroTrustListItemArgs struct {
-	// The description of the list item, if present.
+	// Provide the list item description (optional).
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The value of the item in a list.
+	// Specify the item value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1764,12 +2163,12 @@ func (o ZeroTrustListItemOutput) ToZeroTrustListItemOutputWithContext(ctx contex
 	return o
 }
 
-// The description of the list item, if present.
+// Provide the list item description (optional).
 func (o ZeroTrustListItemOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustListItem) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The value of the item in a list.
+// Specify the item value.
 func (o ZeroTrustListItemOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZeroTrustListItem) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -4863,7 +5262,7 @@ type ZoneDnsSettingsNameservers struct {
 	NsSet *int `pulumi:"nsSet"`
 	// Nameserver type
 	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // ZoneDnsSettingsNameserversInput is an input type that accepts ZoneDnsSettingsNameserversArgs and ZoneDnsSettingsNameserversOutput values.
@@ -4882,7 +5281,7 @@ type ZoneDnsSettingsNameserversArgs struct {
 	NsSet pulumi.IntPtrInput `pulumi:"nsSet"`
 	// Nameserver type
 	// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ZoneDnsSettingsNameserversArgs) ElementType() reflect.Type {
@@ -4969,8 +5368,8 @@ func (o ZoneDnsSettingsNameserversOutput) NsSet() pulumi.IntPtrOutput {
 
 // Nameserver type
 // Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
-func (o ZoneDnsSettingsNameserversOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneDnsSettingsNameservers) string { return v.Type }).(pulumi.StringOutput)
+func (o ZoneDnsSettingsNameserversOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsNameservers) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type ZoneDnsSettingsNameserversPtrOutput struct{ *pulumi.OutputState }
@@ -5014,25 +5413,25 @@ func (o ZoneDnsSettingsNameserversPtrOutput) Type() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneDnsSettingsSoa struct {
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-	Expire float64 `pulumi:"expire"`
+	Expire *float64 `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
-	MinTtl float64 `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
-	Mname string `pulumi:"mname"`
+	MinTtl *float64 `pulumi:"minTtl"`
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+	Mname *string `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-	Refresh float64 `pulumi:"refresh"`
+	Refresh *float64 `pulumi:"refresh"`
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-	Retry float64 `pulumi:"retry"`
+	Retry *float64 `pulumi:"retry"`
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
-	Rname string `pulumi:"rname"`
+	Rname *string `pulumi:"rname"`
 	// The time to live (TTL) of the SOA record itself.
-	Ttl float64 `pulumi:"ttl"`
+	Ttl *float64 `pulumi:"ttl"`
 }
 
 // ZoneDnsSettingsSoaInput is an input type that accepts ZoneDnsSettingsSoaArgs and ZoneDnsSettingsSoaOutput values.
@@ -5048,19 +5447,19 @@ type ZoneDnsSettingsSoaInput interface {
 
 type ZoneDnsSettingsSoaArgs struct {
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-	Expire pulumi.Float64Input `pulumi:"expire"`
+	Expire pulumi.Float64PtrInput `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
-	MinTtl pulumi.Float64Input `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
-	Mname pulumi.StringInput `pulumi:"mname"`
+	MinTtl pulumi.Float64PtrInput `pulumi:"minTtl"`
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+	Mname pulumi.StringPtrInput `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-	Refresh pulumi.Float64Input `pulumi:"refresh"`
+	Refresh pulumi.Float64PtrInput `pulumi:"refresh"`
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-	Retry pulumi.Float64Input `pulumi:"retry"`
+	Retry pulumi.Float64PtrInput `pulumi:"retry"`
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
-	Rname pulumi.StringInput `pulumi:"rname"`
+	Rname pulumi.StringPtrInput `pulumi:"rname"`
 	// The time to live (TTL) of the SOA record itself.
-	Ttl pulumi.Float64Input `pulumi:"ttl"`
+	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
 }
 
 func (ZoneDnsSettingsSoaArgs) ElementType() reflect.Type {
@@ -5141,38 +5540,38 @@ func (o ZoneDnsSettingsSoaOutput) ToZoneDnsSettingsSoaPtrOutputWithContext(ctx c
 }
 
 // Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-func (o ZoneDnsSettingsSoaOutput) Expire() pulumi.Float64Output {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) float64 { return v.Expire }).(pulumi.Float64Output)
+func (o ZoneDnsSettingsSoaOutput) Expire() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *float64 { return v.Expire }).(pulumi.Float64PtrOutput)
 }
 
 // The time to live (TTL) for negative caching of records within the zone.
-func (o ZoneDnsSettingsSoaOutput) MinTtl() pulumi.Float64Output {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) float64 { return v.MinTtl }).(pulumi.Float64Output)
+func (o ZoneDnsSettingsSoaOutput) MinTtl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *float64 { return v.MinTtl }).(pulumi.Float64PtrOutput)
 }
 
-// The primary nameserver, which may be used for outbound zone transfers.
-func (o ZoneDnsSettingsSoaOutput) Mname() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) string { return v.Mname }).(pulumi.StringOutput)
+// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+func (o ZoneDnsSettingsSoaOutput) Mname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *string { return v.Mname }).(pulumi.StringPtrOutput)
 }
 
 // Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-func (o ZoneDnsSettingsSoaOutput) Refresh() pulumi.Float64Output {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) float64 { return v.Refresh }).(pulumi.Float64Output)
+func (o ZoneDnsSettingsSoaOutput) Refresh() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *float64 { return v.Refresh }).(pulumi.Float64PtrOutput)
 }
 
 // Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-func (o ZoneDnsSettingsSoaOutput) Retry() pulumi.Float64Output {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) float64 { return v.Retry }).(pulumi.Float64Output)
+func (o ZoneDnsSettingsSoaOutput) Retry() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *float64 { return v.Retry }).(pulumi.Float64PtrOutput)
 }
 
 // The email address of the zone administrator, with the first label representing the local part of the email address.
-func (o ZoneDnsSettingsSoaOutput) Rname() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) string { return v.Rname }).(pulumi.StringOutput)
+func (o ZoneDnsSettingsSoaOutput) Rname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *string { return v.Rname }).(pulumi.StringPtrOutput)
 }
 
 // The time to live (TTL) of the SOA record itself.
-func (o ZoneDnsSettingsSoaOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func(v ZoneDnsSettingsSoa) float64 { return v.Ttl }).(pulumi.Float64Output)
+func (o ZoneDnsSettingsSoaOutput) Ttl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ZoneDnsSettingsSoa) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
 }
 
 type ZoneDnsSettingsSoaPtrOutput struct{ *pulumi.OutputState }
@@ -5205,7 +5604,7 @@ func (o ZoneDnsSettingsSoaPtrOutput) Expire() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Expire
+		return v.Expire
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -5215,17 +5614,17 @@ func (o ZoneDnsSettingsSoaPtrOutput) MinTtl() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.MinTtl
+		return v.MinTtl
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The primary nameserver, which may be used for outbound zone transfers.
+// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 func (o ZoneDnsSettingsSoaPtrOutput) Mname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneDnsSettingsSoa) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Mname
+		return v.Mname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5235,7 +5634,7 @@ func (o ZoneDnsSettingsSoaPtrOutput) Refresh() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Refresh
+		return v.Refresh
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -5245,7 +5644,7 @@ func (o ZoneDnsSettingsSoaPtrOutput) Retry() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Retry
+		return v.Retry
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -5255,7 +5654,7 @@ func (o ZoneDnsSettingsSoaPtrOutput) Rname() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Rname
+		return v.Rname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5265,7 +5664,7 @@ func (o ZoneDnsSettingsSoaPtrOutput) Ttl() pulumi.Float64PtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Ttl
+		return v.Ttl
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -8790,7 +9189,7 @@ type GetAccountDnsSettingsZoneDefaultsSoa struct {
 	Expire float64 `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
 	MinTtl float64 `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 	Mname string `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
 	Refresh float64 `pulumi:"refresh"`
@@ -8818,7 +9217,7 @@ type GetAccountDnsSettingsZoneDefaultsSoaArgs struct {
 	Expire pulumi.Float64Input `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
 	MinTtl pulumi.Float64Input `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 	Mname pulumi.StringInput `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
 	Refresh pulumi.Float64Input `pulumi:"refresh"`
@@ -8866,7 +9265,7 @@ func (o GetAccountDnsSettingsZoneDefaultsSoaOutput) MinTtl() pulumi.Float64Outpu
 	return o.ApplyT(func(v GetAccountDnsSettingsZoneDefaultsSoa) float64 { return v.MinTtl }).(pulumi.Float64Output)
 }
 
-// The primary nameserver, which may be used for outbound zone transfers.
+// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 func (o GetAccountDnsSettingsZoneDefaultsSoaOutput) Mname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountDnsSettingsZoneDefaultsSoa) string { return v.Mname }).(pulumi.StringOutput)
 }
@@ -20850,8 +21249,12 @@ type GetByoIpPrefixesResult struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	Advertised bool `pulumi:"advertised"`
 	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	AdvertisedModifiedAt string `pulumi:"advertisedModifiedAt"`
 	// Approval state of the prefix (P = pending, V = active).
 	Approved string `pulumi:"approved"`
@@ -20868,8 +21271,12 @@ type GetByoIpPrefixesResult struct {
 	LoaDocumentId string `pulumi:"loaDocumentId"`
 	ModifiedAt    string `pulumi:"modifiedAt"`
 	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandEnabled bool `pulumi:"onDemandEnabled"`
 	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked bool `pulumi:"onDemandLocked"`
 }
 
@@ -20888,8 +21295,12 @@ type GetByoIpPrefixesResultArgs struct {
 	// Identifier of a Cloudflare account.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	Advertised pulumi.BoolInput `pulumi:"advertised"`
 	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	AdvertisedModifiedAt pulumi.StringInput `pulumi:"advertisedModifiedAt"`
 	// Approval state of the prefix (P = pending, V = active).
 	Approved pulumi.StringInput `pulumi:"approved"`
@@ -20906,8 +21317,12 @@ type GetByoIpPrefixesResultArgs struct {
 	LoaDocumentId pulumi.StringInput `pulumi:"loaDocumentId"`
 	ModifiedAt    pulumi.StringInput `pulumi:"modifiedAt"`
 	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandEnabled pulumi.BoolInput `pulumi:"onDemandEnabled"`
 	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked pulumi.BoolInput `pulumi:"onDemandLocked"`
 }
 
@@ -20968,11 +21383,15 @@ func (o GetByoIpPrefixesResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o GetByoIpPrefixesResultOutput) Advertised() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) bool { return v.Advertised }).(pulumi.BoolOutput)
 }
 
 // Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o GetByoIpPrefixesResultOutput) AdvertisedModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) string { return v.AdvertisedModifiedAt }).(pulumi.StringOutput)
 }
@@ -21016,11 +21435,15 @@ func (o GetByoIpPrefixesResultOutput) ModifiedAt() pulumi.StringOutput {
 }
 
 // Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o GetByoIpPrefixesResultOutput) OnDemandEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) bool { return v.OnDemandEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o GetByoIpPrefixesResultOutput) OnDemandLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetByoIpPrefixesResult) bool { return v.OnDemandLocked }).(pulumi.BoolOutput)
 }
@@ -25389,15 +25812,35 @@ type GetDnsFirewallsResult struct {
 	EcsFallback bool `pulumi:"ecsFallback"`
 	// Identifier.
 	Id string `pulumi:"id"`
-	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+	// By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
 	MaximumCacheTtl float64 `pulumi:"maximumCacheTtl"`
-	// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+	// By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets a lower bound on this duration. For caching purposes, lower TTLs
+	// will be increased to the minimum value defined by this setting.
+	//
+	// This setting does not affect the TTL value in the DNS response
+	// Cloudflare returns to clients. Cloudflare will always forward the TTL
+	// value received from upstream nameservers.
+	//
+	// Note that, even with this setting, there is no guarantee that a
+	// response will be cached for at least the specified duration. Cached
+	// responses may be removed earlier for capacity or other operational
+	// reasons.
 	MinimumCacheTtl float64 `pulumi:"minimumCacheTtl"`
 	// Last modification of DNS Firewall cluster
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// DNS Firewall cluster name
 	Name string `pulumi:"name"`
-	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+	// This setting controls how long DNS Firewall should cache negative
+	// responses (e.g., NXDOMAIN) from the upstream servers.
+	//
+	// This setting does not affect the TTL value in the DNS response
+	// Cloudflare returns to clients. Cloudflare will always forward the TTL
+	// value received from upstream nameservers.
 	NegativeCacheTtl float64 `pulumi:"negativeCacheTtl"`
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	Ratelimit float64 `pulumi:"ratelimit"`
@@ -25427,15 +25870,35 @@ type GetDnsFirewallsResultArgs struct {
 	EcsFallback pulumi.BoolInput `pulumi:"ecsFallback"`
 	// Identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+	// By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets an upper bound on this duration. For caching purposes, higher TTLs
+	// will be decreased to the maximum value defined by this setting.
 	MaximumCacheTtl pulumi.Float64Input `pulumi:"maximumCacheTtl"`
-	// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+	// By default, Cloudflare attempts to cache responses for as long as
+	// indicated by the TTL received from upstream nameservers. This setting
+	// sets a lower bound on this duration. For caching purposes, lower TTLs
+	// will be increased to the minimum value defined by this setting.
+	//
+	// This setting does not affect the TTL value in the DNS response
+	// Cloudflare returns to clients. Cloudflare will always forward the TTL
+	// value received from upstream nameservers.
+	//
+	// Note that, even with this setting, there is no guarantee that a
+	// response will be cached for at least the specified duration. Cached
+	// responses may be removed earlier for capacity or other operational
+	// reasons.
 	MinimumCacheTtl pulumi.Float64Input `pulumi:"minimumCacheTtl"`
 	// Last modification of DNS Firewall cluster
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
 	// DNS Firewall cluster name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+	// This setting controls how long DNS Firewall should cache negative
+	// responses (e.g., NXDOMAIN) from the upstream servers.
+	//
+	// This setting does not affect the TTL value in the DNS response
+	// Cloudflare returns to clients. Cloudflare will always forward the TTL
+	// value received from upstream nameservers.
 	NegativeCacheTtl pulumi.Float64Input `pulumi:"negativeCacheTtl"`
 	// Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
 	Ratelimit pulumi.Float64Input `pulumi:"ratelimit"`
@@ -25519,12 +25982,27 @@ func (o GetDnsFirewallsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsFirewallsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+// By default, Cloudflare attempts to cache responses for as long as
+// indicated by the TTL received from upstream nameservers. This setting
+// sets an upper bound on this duration. For caching purposes, higher TTLs
+// will be decreased to the maximum value defined by this setting.
 func (o GetDnsFirewallsResultOutput) MaximumCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsFirewallsResult) float64 { return v.MaximumCacheTtl }).(pulumi.Float64Output)
 }
 
-// Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
+// By default, Cloudflare attempts to cache responses for as long as
+// indicated by the TTL received from upstream nameservers. This setting
+// sets a lower bound on this duration. For caching purposes, lower TTLs
+// will be increased to the minimum value defined by this setting.
+//
+// This setting does not affect the TTL value in the DNS response
+// Cloudflare returns to clients. Cloudflare will always forward the TTL
+// value received from upstream nameservers.
+//
+// Note that, even with this setting, there is no guarantee that a
+// response will be cached for at least the specified duration. Cached
+// responses may be removed earlier for capacity or other operational
+// reasons.
 func (o GetDnsFirewallsResultOutput) MinimumCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsFirewallsResult) float64 { return v.MinimumCacheTtl }).(pulumi.Float64Output)
 }
@@ -25539,7 +26017,12 @@ func (o GetDnsFirewallsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsFirewallsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
+// This setting controls how long DNS Firewall should cache negative
+// responses (e.g., NXDOMAIN) from the upstream servers.
+//
+// This setting does not affect the TTL value in the DNS response
+// Cloudflare returns to clients. Cloudflare will always forward the TTL
+// value received from upstream nameservers.
 func (o GetDnsFirewallsResultOutput) NegativeCacheTtl() pulumi.Float64Output {
 	return o.ApplyT(func(v GetDnsFirewallsResult) float64 { return v.NegativeCacheTtl }).(pulumi.Float64Output)
 }
@@ -36899,6 +37382,8 @@ type GetLoadBalancerPoolsResult struct {
 	ModifiedOn     string `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor string `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup string `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
@@ -36946,6 +37431,8 @@ type GetLoadBalancerPoolsResultArgs struct {
 	ModifiedOn     pulumi.StringInput `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringInput `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup pulumi.StringInput `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringInput `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
@@ -37066,6 +37553,11 @@ func (o GetLoadBalancerPoolsResultOutput) ModifiedOn() pulumi.StringOutput {
 // The ID of the Monitor to use for checking the health of origins within this pool.
 func (o GetLoadBalancerPoolsResultOutput) Monitor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerPoolsResult) string { return v.Monitor }).(pulumi.StringOutput)
+}
+
+// The ID of the Monitor Group to use for checking the health of origins within this pool.
+func (o GetLoadBalancerPoolsResultOutput) MonitorGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsResult) string { return v.MonitorGroup }).(pulumi.StringOutput)
 }
 
 // A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
@@ -43295,8 +43787,10 @@ func (o GetMagicTransitSitesResultLocationOutput) Lon() pulumi.StringOutput {
 }
 
 type GetMagicWanGreTunnelGreTunnel struct {
-	Bgp       GetMagicWanGreTunnelGreTunnelBgp       `pulumi:"bgp"`
-	BgpStatus GetMagicWanGreTunnelGreTunnelBgpStatus `pulumi:"bgpStatus"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting bool                                   `pulumi:"automaticReturnRouting"`
+	Bgp                    GetMagicWanGreTunnelGreTunnelBgp       `pulumi:"bgp"`
+	BgpStatus              GetMagicWanGreTunnelGreTunnelBgpStatus `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint string `pulumi:"cloudflareGreEndpoint"`
 	// The date and time the tunnel was created.
@@ -43334,8 +43828,10 @@ type GetMagicWanGreTunnelGreTunnelInput interface {
 }
 
 type GetMagicWanGreTunnelGreTunnelArgs struct {
-	Bgp       GetMagicWanGreTunnelGreTunnelBgpInput       `pulumi:"bgp"`
-	BgpStatus GetMagicWanGreTunnelGreTunnelBgpStatusInput `pulumi:"bgpStatus"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolInput                            `pulumi:"automaticReturnRouting"`
+	Bgp                    GetMagicWanGreTunnelGreTunnelBgpInput       `pulumi:"bgp"`
+	BgpStatus              GetMagicWanGreTunnelGreTunnelBgpStatusInput `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringInput `pulumi:"cloudflareGreEndpoint"`
 	// The date and time the tunnel was created.
@@ -43385,6 +43881,11 @@ func (o GetMagicWanGreTunnelGreTunnelOutput) ToGetMagicWanGreTunnelGreTunnelOutp
 
 func (o GetMagicWanGreTunnelGreTunnelOutput) ToGetMagicWanGreTunnelGreTunnelOutputWithContext(ctx context.Context) GetMagicWanGreTunnelGreTunnelOutput {
 	return o
+}
+
+// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+func (o GetMagicWanGreTunnelGreTunnelOutput) AutomaticReturnRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMagicWanGreTunnelGreTunnel) bool { return v.AutomaticReturnRouting }).(pulumi.BoolOutput)
 }
 
 func (o GetMagicWanGreTunnelGreTunnelOutput) Bgp() GetMagicWanGreTunnelGreTunnelBgpOutput {
@@ -43780,13 +44281,16 @@ func (o GetMagicWanGreTunnelGreTunnelHealthCheckTargetOutput) Saved() pulumi.Str
 
 type GetMagicWanIpsecTunnelIpsecTunnel struct {
 	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher bool                                       `pulumi:"allowNullCipher"`
-	Bgp             GetMagicWanIpsecTunnelIpsecTunnelBgp       `pulumi:"bgp"`
-	BgpStatus       GetMagicWanIpsecTunnelIpsecTunnelBgpStatus `pulumi:"bgpStatus"`
+	AllowNullCipher bool `pulumi:"allowNullCipher"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting bool                                       `pulumi:"automaticReturnRouting"`
+	Bgp                    GetMagicWanIpsecTunnelIpsecTunnelBgp       `pulumi:"bgp"`
+	BgpStatus              GetMagicWanIpsecTunnelIpsecTunnelBgpStatus `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint string `pulumi:"cloudflareEndpoint"`
 	// The date and time the tunnel was created.
-	CreatedOn string `pulumi:"createdOn"`
+	CreatedOn              string                                                  `pulumi:"createdOn"`
+	CustomRemoteIdentities GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities `pulumi:"customRemoteIdentities"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint string `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
@@ -43821,13 +44325,16 @@ type GetMagicWanIpsecTunnelIpsecTunnelInput interface {
 
 type GetMagicWanIpsecTunnelIpsecTunnelArgs struct {
 	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
-	AllowNullCipher pulumi.BoolInput                                `pulumi:"allowNullCipher"`
-	Bgp             GetMagicWanIpsecTunnelIpsecTunnelBgpInput       `pulumi:"bgp"`
-	BgpStatus       GetMagicWanIpsecTunnelIpsecTunnelBgpStatusInput `pulumi:"bgpStatus"`
+	AllowNullCipher pulumi.BoolInput `pulumi:"allowNullCipher"`
+	// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+	AutomaticReturnRouting pulumi.BoolInput                                `pulumi:"automaticReturnRouting"`
+	Bgp                    GetMagicWanIpsecTunnelIpsecTunnelBgpInput       `pulumi:"bgp"`
+	BgpStatus              GetMagicWanIpsecTunnelIpsecTunnelBgpStatusInput `pulumi:"bgpStatus"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringInput `pulumi:"cloudflareEndpoint"`
 	// The date and time the tunnel was created.
-	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	CreatedOn              pulumi.StringInput                                           `pulumi:"createdOn"`
+	CustomRemoteIdentities GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesInput `pulumi:"customRemoteIdentities"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringInput `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
@@ -43880,6 +44387,11 @@ func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) AllowNullCipher() pulumi.BoolOu
 	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) bool { return v.AllowNullCipher }).(pulumi.BoolOutput)
 }
 
+// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) AutomaticReturnRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) bool { return v.AutomaticReturnRouting }).(pulumi.BoolOutput)
+}
+
 func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) Bgp() GetMagicWanIpsecTunnelIpsecTunnelBgpOutput {
 	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) GetMagicWanIpsecTunnelIpsecTunnelBgp { return v.Bgp }).(GetMagicWanIpsecTunnelIpsecTunnelBgpOutput)
 }
@@ -43898,6 +44410,12 @@ func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) CloudflareEndpoint() pulumi.Str
 // The date and time the tunnel was created.
 func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o GetMagicWanIpsecTunnelIpsecTunnelOutput) CustomRemoteIdentities() GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnel) GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities {
+		return v.CustomRemoteIdentities
+	}).(GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput)
 }
 
 // The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -44115,6 +44633,61 @@ func (o GetMagicWanIpsecTunnelIpsecTunnelBgpStatusOutput) TcpEstablished() pulum
 
 func (o GetMagicWanIpsecTunnelIpsecTunnelBgpStatusOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnelBgpStatus) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities struct {
+	// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+	// generated IKE IDs can still be used even if this custom value is specified.
+	FqdnId string `pulumi:"fqdnId"`
+}
+
+// GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesInput is an input type that accepts GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs and GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput values.
+// You can construct a concrete instance of `GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesInput` via:
+//
+//	GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs{...}
+type GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesInput interface {
+	pulumi.Input
+
+	ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput() GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput
+	ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutputWithContext(context.Context) GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput
+}
+
+type GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs struct {
+	// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+	// generated IKE IDs can still be used even if this custom value is specified.
+	FqdnId pulumi.StringInput `pulumi:"fqdnId"`
+}
+
+func (GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (i GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs) ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput() GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput {
+	return i.ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutputWithContext(context.Background())
+}
+
+func (i GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs) ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutputWithContext(ctx context.Context) GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput)
+}
+
+type GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput struct{ *pulumi.OutputState }
+
+func (GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities)(nil)).Elem()
+}
+
+func (o GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput) ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput() GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o
+}
+
+func (o GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput) ToGetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutputWithContext(ctx context.Context) GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput {
+	return o
+}
+
+// A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The
+// generated IKE IDs can still be used even if this custom value is specified.
+func (o GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput) FqdnId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentities) string { return v.FqdnId }).(pulumi.StringOutput)
 }
 
 type GetMagicWanIpsecTunnelIpsecTunnelHealthCheck struct {
@@ -56201,209 +56774,9 @@ func (o GetR2BucketEventNotificationRuleArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetR2BucketEventNotificationRuleOutput)
 }
 
-type GetR2BucketLifecycleRule struct {
-	// Transition to abort ongoing multipart uploads.
-	AbortMultipartUploadsTransition GetR2BucketLifecycleRuleAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule.
-	Conditions GetR2BucketLifecycleRuleConditions `pulumi:"conditions"`
-	// Transition to delete objects.
-	DeleteObjectsTransition GetR2BucketLifecycleRuleDeleteObjectsTransition `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect.
-	Enabled bool `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id string `pulumi:"id"`
-	// Transitions to change the storage class of objects.
-	StorageClassTransitions []GetR2BucketLifecycleRuleStorageClassTransition `pulumi:"storageClassTransitions"`
-}
-
-// GetR2BucketLifecycleRuleInput is an input type that accepts GetR2BucketLifecycleRuleArgs and GetR2BucketLifecycleRuleOutput values.
-// You can construct a concrete instance of `GetR2BucketLifecycleRuleInput` via:
-//
-//	GetR2BucketLifecycleRuleArgs{...}
-type GetR2BucketLifecycleRuleInput interface {
-	pulumi.Input
-
-	ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput
-	ToGetR2BucketLifecycleRuleOutputWithContext(context.Context) GetR2BucketLifecycleRuleOutput
-}
-
-type GetR2BucketLifecycleRuleArgs struct {
-	// Transition to abort ongoing multipart uploads.
-	AbortMultipartUploadsTransition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule.
-	Conditions GetR2BucketLifecycleRuleConditionsInput `pulumi:"conditions"`
-	// Transition to delete objects.
-	DeleteObjectsTransition GetR2BucketLifecycleRuleDeleteObjectsTransitionInput `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Unique identifier for this rule.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Transitions to change the storage class of objects.
-	StorageClassTransitions GetR2BucketLifecycleRuleStorageClassTransitionArrayInput `pulumi:"storageClassTransitions"`
-}
-
-func (GetR2BucketLifecycleRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (i GetR2BucketLifecycleRuleArgs) ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput {
-	return i.ToGetR2BucketLifecycleRuleOutputWithContext(context.Background())
-}
-
-func (i GetR2BucketLifecycleRuleArgs) ToGetR2BucketLifecycleRuleOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleOutput)
-}
-
-// GetR2BucketLifecycleRuleArrayInput is an input type that accepts GetR2BucketLifecycleRuleArray and GetR2BucketLifecycleRuleArrayOutput values.
-// You can construct a concrete instance of `GetR2BucketLifecycleRuleArrayInput` via:
-//
-//	GetR2BucketLifecycleRuleArray{ GetR2BucketLifecycleRuleArgs{...} }
-type GetR2BucketLifecycleRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput
-	ToGetR2BucketLifecycleRuleArrayOutputWithContext(context.Context) GetR2BucketLifecycleRuleArrayOutput
-}
-
-type GetR2BucketLifecycleRuleArray []GetR2BucketLifecycleRuleInput
-
-func (GetR2BucketLifecycleRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetR2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (i GetR2BucketLifecycleRuleArray) ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput {
-	return i.ToGetR2BucketLifecycleRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetR2BucketLifecycleRuleArray) ToGetR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleArrayOutput)
-}
-
-type GetR2BucketLifecycleRuleOutput struct{ *pulumi.OutputState }
-
-func (GetR2BucketLifecycleRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (o GetR2BucketLifecycleRuleOutput) ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleOutput) ToGetR2BucketLifecycleRuleOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleOutput {
-	return o
-}
-
-// Transition to abort ongoing multipart uploads.
-func (o GetR2BucketLifecycleRuleOutput) AbortMultipartUploadsTransition() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleAbortMultipartUploadsTransition {
-		return v.AbortMultipartUploadsTransition
-	}).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
-}
-
-// Conditions that apply to all transitions of this rule.
-func (o GetR2BucketLifecycleRuleOutput) Conditions() GetR2BucketLifecycleRuleConditionsOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleConditions { return v.Conditions }).(GetR2BucketLifecycleRuleConditionsOutput)
-}
-
-// Transition to delete objects.
-func (o GetR2BucketLifecycleRuleOutput) DeleteObjectsTransition() GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleDeleteObjectsTransition {
-		return v.DeleteObjectsTransition
-	}).(GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput)
-}
-
-// Whether or not this rule is in effect.
-func (o GetR2BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Unique identifier for this rule.
-func (o GetR2BucketLifecycleRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Transitions to change the storage class of objects.
-func (o GetR2BucketLifecycleRuleOutput) StorageClassTransitions() GetR2BucketLifecycleRuleStorageClassTransitionArrayOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRule) []GetR2BucketLifecycleRuleStorageClassTransition {
-		return v.StorageClassTransitions
-	}).(GetR2BucketLifecycleRuleStorageClassTransitionArrayOutput)
-}
-
-type GetR2BucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetR2BucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetR2BucketLifecycleRule)(nil)).Elem()
-}
-
-func (o GetR2BucketLifecycleRuleArrayOutput) ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleArrayOutput) ToGetR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleArrayOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetR2BucketLifecycleRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetR2BucketLifecycleRule {
-		return vs[0].([]GetR2BucketLifecycleRule)[vs[1].(int)]
-	}).(GetR2BucketLifecycleRuleOutput)
-}
-
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition `pulumi:"condition"`
-}
-
-// GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput is an input type that accepts GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs and GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput values.
-// You can construct a concrete instance of `GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput` via:
-//
-//	GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{...}
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput interface {
-	pulumi.Input
-
-	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
-	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
-}
-
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-	Condition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput `pulumi:"condition"`
-}
-
-func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return i.ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Background())
-}
-
-func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
-}
-
-type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput struct{ *pulumi.OutputState }
-
-func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
-}
-
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o
-}
-
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
-	return o
-}
-
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) Condition() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
-	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransition) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
-		return v.Condition
-	}).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBlockPageInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBlockPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBlockPagePtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanningInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBodyScanningPtrInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZeroTrustGatewaySettingsSettingsBrowserIsolationInput)(nil)).Elem(), ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs{})
@@ -56965,6 +57338,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelBgpInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelBgpStatusInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelBgpStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelHealthCheckInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMagicWanIpsecTunnelIpsecTunnelPskMetadataInput)(nil)).Elem(), GetMagicWanIpsecTunnelIpsecTunnelPskMetadataArgs{})
@@ -57132,9 +57506,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketCorsRuleAllowedInput)(nil)).Elem(), GetR2BucketCorsRuleAllowedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketEventNotificationRuleInput)(nil)).Elem(), GetR2BucketEventNotificationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketEventNotificationRuleArrayInput)(nil)).Elem(), GetR2BucketEventNotificationRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleInput)(nil)).Elem(), GetR2BucketLifecycleRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleArrayInput)(nil)).Elem(), GetR2BucketLifecycleRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBlockPageOutput{})
+	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBodyScanningOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBodyScanningPtrOutput{})
 	pulumi.RegisterOutputType(ZeroTrustGatewaySettingsSettingsBrowserIsolationOutput{})
@@ -57696,6 +58069,7 @@ func init() {
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelOutput{})
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelBgpOutput{})
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelBgpStatusOutput{})
+	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelCustomRemoteIdentitiesOutput{})
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput{})
 	pulumi.RegisterOutputType(GetMagicWanIpsecTunnelIpsecTunnelPskMetadataOutput{})
@@ -57863,7 +58237,4 @@ func init() {
 	pulumi.RegisterOutputType(GetR2BucketCorsRuleAllowedOutput{})
 	pulumi.RegisterOutputType(GetR2BucketEventNotificationRuleOutput{})
 	pulumi.RegisterOutputType(GetR2BucketEventNotificationRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleOutput{})
-	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput{})
 }

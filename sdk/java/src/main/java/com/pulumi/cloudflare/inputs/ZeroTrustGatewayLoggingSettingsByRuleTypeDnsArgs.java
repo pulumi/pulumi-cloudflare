@@ -16,14 +16,14 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
     public static final ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs Empty = new ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs();
 
     /**
-     * Log all requests to this service.
+     * Specify whether to log all requests to this service.
      * 
      */
     @Import(name="logAll")
     private @Nullable Output<Boolean> logAll;
 
     /**
-     * @return Log all requests to this service.
+     * @return Specify whether to log all requests to this service.
      * 
      */
     public Optional<Output<Boolean>> logAll() {
@@ -31,14 +31,14 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
     }
 
     /**
-     * Log only blocking requests to this service.
+     * Specify whether to log only blocking requests to this service.
      * 
      */
     @Import(name="logBlocks")
     private @Nullable Output<Boolean> logBlocks;
 
     /**
-     * @return Log only blocking requests to this service.
+     * @return Specify whether to log only blocking requests to this service.
      * 
      */
     public Optional<Output<Boolean>> logBlocks() {
@@ -71,7 +71,7 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
         }
 
         /**
-         * @param logAll Log all requests to this service.
+         * @param logAll Specify whether to log all requests to this service.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
         }
 
         /**
-         * @param logAll Log all requests to this service.
+         * @param logAll Specify whether to log all requests to this service.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
         }
 
         /**
-         * @param logBlocks Log only blocking requests to this service.
+         * @param logBlocks Specify whether to log only blocking requests to this service.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs extends com.
         }
 
         /**
-         * @param logBlocks Log only blocking requests to this service.
+         * @param logBlocks Specify whether to log only blocking requests to this service.
          * 
          * @return builder
          * 

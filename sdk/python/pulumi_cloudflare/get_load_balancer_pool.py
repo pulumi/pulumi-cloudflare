@@ -28,7 +28,7 @@ class GetLoadBalancerPoolResult:
     """
     A collection of values returned by getLoadBalancerPool.
     """
-    def __init__(__self__, account_id=None, check_regions=None, created_on=None, description=None, disabled_at=None, enabled=None, filter=None, id=None, latitude=None, load_shedding=None, longitude=None, minimum_origins=None, modified_on=None, monitor=None, name=None, networks=None, notification_email=None, notification_filter=None, origin_steering=None, origins=None, pool_id=None):
+    def __init__(__self__, account_id=None, check_regions=None, created_on=None, description=None, disabled_at=None, enabled=None, filter=None, id=None, latitude=None, load_shedding=None, longitude=None, minimum_origins=None, modified_on=None, monitor=None, monitor_group=None, name=None, networks=None, notification_email=None, notification_filter=None, origin_steering=None, origins=None, pool_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -71,6 +71,9 @@ class GetLoadBalancerPoolResult:
         if monitor and not isinstance(monitor, str):
             raise TypeError("Expected argument 'monitor' to be a str")
         pulumi.set(__self__, "monitor", monitor)
+        if monitor_group and not isinstance(monitor_group, str):
+            raise TypeError("Expected argument 'monitor_group' to be a str")
+        pulumi.set(__self__, "monitor_group", monitor_group)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -197,6 +200,14 @@ class GetLoadBalancerPoolResult:
         return pulumi.get(self, "monitor")
 
     @_builtins.property
+    @pulumi.getter(name="monitorGroup")
+    def monitor_group(self) -> _builtins.str:
+        """
+        The ID of the Monitor Group to use for checking the health of origins within this pool.
+        """
+        return pulumi.get(self, "monitor_group")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -270,6 +281,7 @@ class AwaitableGetLoadBalancerPoolResult(GetLoadBalancerPoolResult):
             minimum_origins=self.minimum_origins,
             modified_on=self.modified_on,
             monitor=self.monitor,
+            monitor_group=self.monitor_group,
             name=self.name,
             networks=self.networks,
             notification_email=self.notification_email,
@@ -319,6 +331,7 @@ def get_load_balancer_pool(account_id: Optional[_builtins.str] = None,
         minimum_origins=pulumi.get(__ret__, 'minimum_origins'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         monitor=pulumi.get(__ret__, 'monitor'),
+        monitor_group=pulumi.get(__ret__, 'monitor_group'),
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
         notification_email=pulumi.get(__ret__, 'notification_email'),
@@ -365,6 +378,7 @@ def get_load_balancer_pool_output(account_id: Optional[pulumi.Input[_builtins.st
         minimum_origins=pulumi.get(__response__, 'minimum_origins'),
         modified_on=pulumi.get(__response__, 'modified_on'),
         monitor=pulumi.get(__response__, 'monitor'),
+        monitor_group=pulumi.get(__response__, 'monitor_group'),
         name=pulumi.get(__response__, 'name'),
         networks=pulumi.get(__response__, 'networks'),
         notification_email=pulumi.get(__response__, 'notification_email'),

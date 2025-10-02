@@ -11,19 +11,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsCheckSession {
+    /**
+     * @return Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     private String duration;
     /**
-     * @return Set to true to enable session enforcement.
+     * @return Enable session enforcement.
      * 
      */
     private Boolean enforce;
 
     private GetZeroTrustGatewayPolicyRuleSettingsCheckSession() {}
+    /**
+     * @return Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     public String duration() {
         return this.duration;
     }
     /**
-     * @return Set to true to enable session enforcement.
+     * @return Enable session enforcement.
      * 
      */
     public Boolean enforce() {

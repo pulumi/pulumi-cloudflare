@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The id of the DEX rule
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
         /// The name of the DEX rule
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         private ZeroTrustDexTestTargetPolicy(
             bool? @default,
 
-            string? id,
+            string id,
 
             string? name)
         {

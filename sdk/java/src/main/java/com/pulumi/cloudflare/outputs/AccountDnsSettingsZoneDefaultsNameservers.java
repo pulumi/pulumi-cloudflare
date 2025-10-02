@@ -4,9 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountDnsSettingsZoneDefaultsNameservers {
@@ -15,7 +16,7 @@ public final class AccountDnsSettingsZoneDefaultsNameservers {
      * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private AccountDnsSettingsZoneDefaultsNameservers() {}
     /**
@@ -23,8 +24,8 @@ public final class AccountDnsSettingsZoneDefaultsNameservers {
      * Available values: &#34;cloudflare.standard&#34;, &#34;cloudflare.standard.random&#34;, &#34;custom.account&#34;, &#34;custom.tenant&#34;.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -36,7 +37,7 @@ public final class AccountDnsSettingsZoneDefaultsNameservers {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String type;
+        private @Nullable String type;
         public Builder() {}
         public Builder(AccountDnsSettingsZoneDefaultsNameservers defaults) {
     	      Objects.requireNonNull(defaults);
@@ -44,10 +45,8 @@ public final class AccountDnsSettingsZoneDefaultsNameservers {
         }
 
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("AccountDnsSettingsZoneDefaultsNameservers", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

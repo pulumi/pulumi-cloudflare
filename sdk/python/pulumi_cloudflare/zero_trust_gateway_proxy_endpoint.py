@@ -24,8 +24,8 @@ class ZeroTrustGatewayProxyEndpointArgs:
                  name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustGatewayProxyEndpoint resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: A list of CIDRs to restrict ingress connections.
-        :param pulumi.Input[_builtins.str] name: The name of the proxy endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ips", ips)
@@ -44,7 +44,7 @@ class ZeroTrustGatewayProxyEndpointArgs:
     @pulumi.getter
     def ips(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        A list of CIDRs to restrict ingress connections.
+        Specify the list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -56,7 +56,7 @@ class ZeroTrustGatewayProxyEndpointArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the proxy endpoint.
+        Specify the name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -76,9 +76,9 @@ class _ZeroTrustGatewayProxyEndpointState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayProxyEndpoint resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: A list of CIDRs to restrict ingress connections.
-        :param pulumi.Input[_builtins.str] name: The name of the proxy endpoint.
-        :param pulumi.Input[_builtins.str] subdomain: The subdomain to be used as the destination in the proxy client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
+        :param pulumi.Input[_builtins.str] subdomain: Specify the subdomain to use as the destination in the proxy client.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -115,7 +115,7 @@ class _ZeroTrustGatewayProxyEndpointState:
     @pulumi.getter
     def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of CIDRs to restrict ingress connections.
+        Specify the list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -127,7 +127,7 @@ class _ZeroTrustGatewayProxyEndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the proxy endpoint.
+        Specify the name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -139,7 +139,7 @@ class _ZeroTrustGatewayProxyEndpointState:
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The subdomain to be used as the destination in the proxy client.
+        Specify the subdomain to use as the destination in the proxy client.
         """
         return pulumi.get(self, "subdomain")
 
@@ -188,8 +188,8 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: A list of CIDRs to restrict ingress connections.
-        :param pulumi.Input[_builtins.str] name: The name of the proxy endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
         """
         ...
     @overload
@@ -280,9 +280,9 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: A list of CIDRs to restrict ingress connections.
-        :param pulumi.Input[_builtins.str] name: The name of the proxy endpoint.
-        :param pulumi.Input[_builtins.str] subdomain: The subdomain to be used as the destination in the proxy client.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips: Specify the list of CIDRs to restrict ingress connections.
+        :param pulumi.Input[_builtins.str] name: Specify the name of the proxy endpoint.
+        :param pulumi.Input[_builtins.str] subdomain: Specify the subdomain to use as the destination in the proxy client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -310,7 +310,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def ips(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of CIDRs to restrict ingress connections.
+        Specify the list of CIDRs to restrict ingress connections.
         """
         return pulumi.get(self, "ips")
 
@@ -318,7 +318,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the proxy endpoint.
+        Specify the name of the proxy endpoint.
         """
         return pulumi.get(self, "name")
 
@@ -326,7 +326,7 @@ class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def subdomain(self) -> pulumi.Output[_builtins.str]:
         """
-        The subdomain to be used as the destination in the proxy client.
+        Specify the subdomain to use as the destination in the proxy client.
         """
         return pulumi.get(self, "subdomain")
 

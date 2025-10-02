@@ -25,37 +25,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettings {
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     private @Nullable TeamsAccountSettingsActivityLog activityLog;
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     private @Nullable TeamsAccountSettingsAntivirus antivirus;
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     private @Nullable TeamsAccountSettingsBlockPage blockPage;
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     private @Nullable TeamsAccountSettingsBodyScanning bodyScanning;
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     private @Nullable TeamsAccountSettingsBrowserIsolation browserIsolation;
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     private @Nullable TeamsAccountSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -64,86 +64,86 @@ public final class TeamsAccountSettings {
     @Deprecated /* This attribute is deprecated. */
     private @Nullable TeamsAccountSettingsCustomCertificate customCertificate;
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     private @Nullable TeamsAccountSettingsExtendedEmailMatching extendedEmailMatching;
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     private @Nullable TeamsAccountSettingsFips fips;
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     private @Nullable TeamsAccountSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     private @Nullable TeamsAccountSettingsInspection inspection;
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private @Nullable TeamsAccountSettingsProtocolDetection protocolDetection;
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     private @Nullable TeamsAccountSettingsSandbox sandbox;
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private @Nullable TeamsAccountSettingsTlsDecrypt tlsDecrypt;
 
     private TeamsAccountSettings() {}
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     public Optional<TeamsAccountSettingsActivityLog> activityLog() {
         return Optional.ofNullable(this.activityLog);
     }
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     public Optional<TeamsAccountSettingsAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     public Optional<TeamsAccountSettingsBlockPage> blockPage() {
         return Optional.ofNullable(this.blockPage);
     }
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     public Optional<TeamsAccountSettingsBodyScanning> bodyScanning() {
         return Optional.ofNullable(this.bodyScanning);
     }
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     public Optional<TeamsAccountSettingsBrowserIsolation> browserIsolation() {
         return Optional.ofNullable(this.browserIsolation);
     }
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     public Optional<TeamsAccountSettingsCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -154,49 +154,49 @@ public final class TeamsAccountSettings {
         return Optional.ofNullable(this.customCertificate);
     }
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     public Optional<TeamsAccountSettingsExtendedEmailMatching> extendedEmailMatching() {
         return Optional.ofNullable(this.extendedEmailMatching);
     }
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     public Optional<TeamsAccountSettingsFips> fips() {
         return Optional.ofNullable(this.fips);
     }
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     public Optional<TeamsAccountSettingsHostSelector> hostSelector() {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     public Optional<TeamsAccountSettingsInspection> inspection() {
         return Optional.ofNullable(this.inspection);
     }
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<TeamsAccountSettingsProtocolDetection> protocolDetection() {
         return Optional.ofNullable(this.protocolDetection);
     }
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Optional<TeamsAccountSettingsSandbox> sandbox() {
         return Optional.ofNullable(this.sandbox);
     }
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<TeamsAccountSettingsTlsDecrypt> tlsDecrypt() {

@@ -15,27 +15,27 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string CreatedAt;
         /// <summary>
-        /// The description of the list.
+        /// Provide the list description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// API Resource UUID tag.
+        /// Identify the API resource with a UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The items in the list.
+        /// Provide the list items.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustListsResultItemResult> Items;
         /// <summary>
-        /// The number of items in the list.
+        /// Indicate the number of items in the list.
         /// </summary>
         public readonly double ListCount;
         /// <summary>
-        /// The name of the list.
+        /// Specify the list name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         public readonly string Type;

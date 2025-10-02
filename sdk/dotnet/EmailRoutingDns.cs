@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// Domain of your zone.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         [Output("result")]
         public Output<Outputs.EmailRoutingDnsResult> Result { get; private set; } = null!;
@@ -154,8 +154,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Domain of your zone.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Identifier.

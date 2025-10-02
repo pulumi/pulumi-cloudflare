@@ -31,7 +31,7 @@ export function getZeroTrustGatewayCertificate(args: GetZeroTrustGatewayCertific
 export interface GetZeroTrustGatewayCertificateArgs {
     accountId: string;
     /**
-     * Certificate UUID tag.
+     * Identify the certificate with a UUID.
      */
     certificateId?: string;
 }
@@ -42,42 +42,42 @@ export interface GetZeroTrustGatewayCertificateArgs {
 export interface GetZeroTrustGatewayCertificateResult {
     readonly accountId: string;
     /**
-     * The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
      * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     readonly bindingStatus: string;
     /**
-     * The CA certificate(read only).
+     * Provide the CA certificate (read-only).
      */
     readonly certificate: string;
     /**
-     * Certificate UUID tag.
+     * Identify the certificate with a UUID.
      */
     readonly certificateId?: string;
     readonly createdAt: string;
     readonly expiresOn: string;
     /**
-     * The SHA256 fingerprint of the certificate(read only).
+     * Provide the SHA256 fingerprint of the certificate (read-only).
      */
     readonly fingerprint: string;
     /**
-     * Certificate UUID tag.
+     * Identify the certificate with a UUID.
      */
     readonly id: string;
     /**
-     * Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+     * Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      */
     readonly inUse: boolean;
     /**
-     * The organization that issued the certificate(read only).
+     * Indicate the organization that issued the certificate (read-only).
      */
     readonly issuerOrg: string;
     /**
-     * The entire issuer field of the certificate(read only).
+     * Provide the entire issuer field of the certificate (read-only).
      */
     readonly issuerRaw: string;
     /**
-     * The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+     * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: "custom", "gatewayManaged".
      */
     readonly type: string;
@@ -111,7 +111,7 @@ export function getZeroTrustGatewayCertificateOutput(args: GetZeroTrustGatewayCe
 export interface GetZeroTrustGatewayCertificateOutputArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Certificate UUID tag.
+     * Identify the certificate with a UUID.
      */
     certificateId?: pulumi.Input<string>;
 }

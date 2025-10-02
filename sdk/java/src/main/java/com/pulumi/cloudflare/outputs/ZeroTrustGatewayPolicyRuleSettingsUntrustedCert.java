@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
     /**
-     * @return The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
@@ -20,7 +20,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
 
     private ZeroTrustGatewayPolicyRuleSettingsUntrustedCert() {}
     /**
-     * @return The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */

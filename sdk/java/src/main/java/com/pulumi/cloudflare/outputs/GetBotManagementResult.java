@@ -29,6 +29,12 @@ public final class GetBotManagementResult {
      */
     private Boolean bmCookieEnabled;
     /**
+     * @return Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    private String cfRobotsVariant;
+    /**
      * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
@@ -127,6 +133,14 @@ public final class GetBotManagementResult {
      */
     public Boolean bmCookieEnabled() {
         return this.bmCookieEnabled;
+    }
+    /**
+     * @return Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    public String cfRobotsVariant() {
+        return this.cfRobotsVariant;
     }
     /**
      * @return Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -245,6 +259,7 @@ public final class GetBotManagementResult {
         private String aiBotsProtection;
         private Boolean autoUpdateModel;
         private Boolean bmCookieEnabled;
+        private String cfRobotsVariant;
         private String crawlerProtection;
         private Boolean enableJs;
         private Boolean fightMode;
@@ -265,6 +280,7 @@ public final class GetBotManagementResult {
     	      this.aiBotsProtection = defaults.aiBotsProtection;
     	      this.autoUpdateModel = defaults.autoUpdateModel;
     	      this.bmCookieEnabled = defaults.bmCookieEnabled;
+    	      this.cfRobotsVariant = defaults.cfRobotsVariant;
     	      this.crawlerProtection = defaults.crawlerProtection;
     	      this.enableJs = defaults.enableJs;
     	      this.fightMode = defaults.fightMode;
@@ -303,6 +319,14 @@ public final class GetBotManagementResult {
               throw new MissingRequiredPropertyException("GetBotManagementResult", "bmCookieEnabled");
             }
             this.bmCookieEnabled = bmCookieEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cfRobotsVariant(String cfRobotsVariant) {
+            if (cfRobotsVariant == null) {
+              throw new MissingRequiredPropertyException("GetBotManagementResult", "cfRobotsVariant");
+            }
+            this.cfRobotsVariant = cfRobotsVariant;
             return this;
         }
         @CustomType.Setter
@@ -422,6 +446,7 @@ public final class GetBotManagementResult {
             _resultValue.aiBotsProtection = aiBotsProtection;
             _resultValue.autoUpdateModel = autoUpdateModel;
             _resultValue.bmCookieEnabled = bmCookieEnabled;
+            _resultValue.cfRobotsVariant = cfRobotsVariant;
             _resultValue.crawlerProtection = crawlerProtection;
             _resultValue.enableJs = enableJs;
             _resultValue.fightMode = fightMode;

@@ -104,7 +104,7 @@ class GetPageShieldCookiesListResult:
     @pulumi.getter
     def export(self) -> Optional[_builtins.str]:
         """
-        Export the list of cookies as a file.
+        Export the list of cookies as a file, limited to 50000 entries.
         Available values: "csv".
         """
         return pulumi.get(self, "export")
@@ -265,7 +265,7 @@ def get_page_shield_cookies_list(direction: Optional[_builtins.str] = None,
     :param _builtins.str direction: The direction used to sort returned cookies.'
            Available values: "asc", "desc".
     :param _builtins.str domain: Filters the returned cookies that match the specified domain attribute
-    :param _builtins.str export: Export the list of cookies as a file.
+    :param _builtins.str export: Export the list of cookies as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes cookies that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier
@@ -354,7 +354,7 @@ def get_page_shield_cookies_list_output(direction: Optional[pulumi.Input[Optiona
     :param _builtins.str direction: The direction used to sort returned cookies.'
            Available values: "asc", "desc".
     :param _builtins.str domain: Filters the returned cookies that match the specified domain attribute
-    :param _builtins.str export: Export the list of cookies as a file.
+    :param _builtins.str export: Export the list of cookies as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes cookies that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier

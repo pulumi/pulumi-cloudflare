@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustListItem
     {
         /// <summary>
-        /// The description of the list item, if present.
+        /// Provide the list item description (optional).
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The value of the item in a list.
+        /// Specify the item value.
         /// </summary>
         public readonly string? Value;
 

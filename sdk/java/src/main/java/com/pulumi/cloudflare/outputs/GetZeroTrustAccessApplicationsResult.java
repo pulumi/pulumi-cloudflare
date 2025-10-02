@@ -61,7 +61,6 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private String bgColor;
     private GetZeroTrustAccessApplicationsResultCorsHeaders corsHeaders;
-    private String createdAt;
     /**
      * @return The custom error message shown to a user when they are denied access to the application.
      * 
@@ -206,7 +205,6 @@ public final class GetZeroTrustAccessApplicationsResult {
      * 
      */
     private String type;
-    private String updatedAt;
 
     private GetZeroTrustAccessApplicationsResult() {}
     /**
@@ -267,9 +265,6 @@ public final class GetZeroTrustAccessApplicationsResult {
     }
     public GetZeroTrustAccessApplicationsResultCorsHeaders corsHeaders() {
         return this.corsHeaders;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     /**
      * @return The custom error message shown to a user when they are denied access to the application.
@@ -473,9 +468,6 @@ public final class GetZeroTrustAccessApplicationsResult {
     public String type() {
         return this.type;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -495,7 +487,6 @@ public final class GetZeroTrustAccessApplicationsResult {
         private Boolean autoRedirectToIdentity;
         private String bgColor;
         private GetZeroTrustAccessApplicationsResultCorsHeaders corsHeaders;
-        private String createdAt;
         private String customDenyMessage;
         private String customDenyUrl;
         private String customNonIdentityDenyUrl;
@@ -525,7 +516,6 @@ public final class GetZeroTrustAccessApplicationsResult {
         private List<String> tags;
         private List<GetZeroTrustAccessApplicationsResultTargetCriteria> targetCriterias;
         private String type;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -538,7 +528,6 @@ public final class GetZeroTrustAccessApplicationsResult {
     	      this.autoRedirectToIdentity = defaults.autoRedirectToIdentity;
     	      this.bgColor = defaults.bgColor;
     	      this.corsHeaders = defaults.corsHeaders;
-    	      this.createdAt = defaults.createdAt;
     	      this.customDenyMessage = defaults.customDenyMessage;
     	      this.customDenyUrl = defaults.customDenyUrl;
     	      this.customNonIdentityDenyUrl = defaults.customNonIdentityDenyUrl;
@@ -568,7 +557,6 @@ public final class GetZeroTrustAccessApplicationsResult {
     	      this.tags = defaults.tags;
     	      this.targetCriterias = defaults.targetCriterias;
     	      this.type = defaults.type;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -644,14 +632,6 @@ public final class GetZeroTrustAccessApplicationsResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "corsHeaders");
             }
             this.corsHeaders = corsHeaders;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -907,14 +887,6 @@ public final class GetZeroTrustAccessApplicationsResult {
             this.type = type;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessApplicationsResult build() {
             final var _resultValue = new GetZeroTrustAccessApplicationsResult();
             _resultValue.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
@@ -926,7 +898,6 @@ public final class GetZeroTrustAccessApplicationsResult {
             _resultValue.autoRedirectToIdentity = autoRedirectToIdentity;
             _resultValue.bgColor = bgColor;
             _resultValue.corsHeaders = corsHeaders;
-            _resultValue.createdAt = createdAt;
             _resultValue.customDenyMessage = customDenyMessage;
             _resultValue.customDenyUrl = customDenyUrl;
             _resultValue.customNonIdentityDenyUrl = customNonIdentityDenyUrl;
@@ -956,7 +927,6 @@ public final class GetZeroTrustAccessApplicationsResult {
             _resultValue.tags = tags;
             _resultValue.targetCriterias = targetCriterias;
             _resultValue.type = type;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

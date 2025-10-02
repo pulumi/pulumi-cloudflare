@@ -15,44 +15,44 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
         /// </summary>
-        [Input("expire", required: true)]
-        public Input<double> Expire { get; set; } = null!;
+        [Input("expire")]
+        public Input<double>? Expire { get; set; }
 
         /// <summary>
         /// The time to live (TTL) for negative caching of records within the zone.
         /// </summary>
-        [Input("minTtl", required: true)]
-        public Input<double> MinTtl { get; set; } = null!;
+        [Input("minTtl")]
+        public Input<double>? MinTtl { get; set; }
 
         /// <summary>
-        /// The primary nameserver, which may be used for outbound zone transfers.
+        /// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
         /// </summary>
-        [Input("mname", required: true)]
-        public Input<string> Mname { get; set; } = null!;
+        [Input("mname")]
+        public Input<string>? Mname { get; set; }
 
         /// <summary>
         /// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
         /// </summary>
-        [Input("refresh", required: true)]
-        public Input<double> Refresh { get; set; } = null!;
+        [Input("refresh")]
+        public Input<double>? Refresh { get; set; }
 
         /// <summary>
         /// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
         /// </summary>
-        [Input("retry", required: true)]
-        public Input<double> Retry { get; set; } = null!;
+        [Input("retry")]
+        public Input<double>? Retry { get; set; }
 
         /// <summary>
         /// The email address of the zone administrator, with the first label representing the local part of the email address.
         /// </summary>
-        [Input("rname", required: true)]
-        public Input<string> Rname { get; set; } = null!;
+        [Input("rname")]
+        public Input<string>? Rname { get; set; }
 
         /// <summary>
         /// The time to live (TTL) of the SOA record itself.
         /// </summary>
-        [Input("ttl", required: true)]
-        public Input<double> Ttl { get; set; } = null!;
+        [Input("ttl")]
+        public Input<double>? Ttl { get; set; }
 
         public ZoneDnsSettingsSoaArgs()
         {

@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     private String targetUri;
 
     private ZeroTrustGatewayPolicyRuleSettingsBlockPage() {}
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     public String targetUri() {

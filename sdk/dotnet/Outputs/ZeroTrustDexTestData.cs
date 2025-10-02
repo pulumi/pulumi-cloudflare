@@ -16,11 +16,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The desired endpoint to test.
         /// </summary>
-        public readonly string? Host;
+        public readonly string Host;
         /// <summary>
         /// The type of test.
         /// </summary>
-        public readonly string? Kind;
+        public readonly string Kind;
         /// <summary>
         /// The HTTP request method type.
         /// </summary>
@@ -28,9 +28,9 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ZeroTrustDexTestData(
-            string? host,
+            string host,
 
-            string? kind,
+            string kind,
 
             string? method)
         {

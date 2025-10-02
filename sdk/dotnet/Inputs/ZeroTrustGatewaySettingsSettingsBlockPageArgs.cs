@@ -13,92 +13,92 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsBlockPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If mode is customized_block_page: block page background color in #rrggbb format.
+        /// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
         /// </summary>
         [Input("backgroundColor")]
         public Input<string>? BackgroundColor { get; set; }
 
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+        /// Specify whether to enable the custom block page.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: block page footer text.
+        /// Specify the block page footer text when the mode is customized*block*page.
         /// </summary>
         [Input("footerText")]
         public Input<string>? FooterText { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: block page header text.
+        /// Specify the block page header text when the mode is customized*block*page.
         /// </summary>
         [Input("headerText")]
         public Input<string>? HeaderText { get; set; }
 
         /// <summary>
-        /// If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+        /// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: full URL to the logo file.
+        /// Specify the full URL to the logo file when the mode is customized*block*page.
         /// </summary>
         [Input("logoPath")]
         public Input<string>? LogoPath { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: admin email for users to contact.
+        /// Specify the admin email for users to contact when the mode is customized*block*page.
         /// </summary>
         [Input("mailtoAddress")]
         public Input<string>? MailtoAddress { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: subject line for emails created from block page.
+        /// Specify the subject line for emails created from the block page when the mode is customized*block*page.
         /// </summary>
         [Input("mailtoSubject")]
         public Input<string>? MailtoSubject { get; set; }
 
         /// <summary>
-        /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        /// Available values: "", "customized_block_page", "redirect_uri".
+        /// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+        /// Available values: "", "customized*block*page", "redirect_uri".
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: block page title.
+        /// Specify the block page title when the mode is customized*block*page.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this setting was shared via the Orgs API and read only for the current account.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// Account tag of account that shared this setting.
+        /// Indicate the account tag of the account that shared this setting.
         /// </summary>
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
 
         /// <summary>
-        /// If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+        /// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
         /// </summary>
         [Input("suppressFooter")]
         public Input<bool>? SuppressFooter { get; set; }
 
         /// <summary>
-        /// If mode is redirect_uri: URI to which the user should be redirected.
+        /// Specify the URI to redirect users to when the mode is redirect_uri.
         /// </summary>
         [Input("targetUri")]
         public Input<string>? TargetUri { get; set; }
 
         /// <summary>
-        /// Version number of the setting.
+        /// Indicate the version number of the setting.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,12 +17,6 @@ public final class GetZeroTrustAccessTagResult {
      * 
      */
     private String accountId;
-    /**
-     * @return The number of applications that have this tag
-     * 
-     */
-    private Integer appCount;
-    private String createdAt;
     /**
      * @return The name of the tag
      * 
@@ -39,7 +32,6 @@ public final class GetZeroTrustAccessTagResult {
      * 
      */
     private @Nullable String tagName;
-    private String updatedAt;
 
     private GetZeroTrustAccessTagResult() {}
     /**
@@ -48,16 +40,6 @@ public final class GetZeroTrustAccessTagResult {
      */
     public String accountId() {
         return this.accountId;
-    }
-    /**
-     * @return The number of applications that have this tag
-     * 
-     */
-    public Integer appCount() {
-        return this.appCount;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     /**
      * @return The name of the tag
@@ -80,9 +62,6 @@ public final class GetZeroTrustAccessTagResult {
     public Optional<String> tagName() {
         return Optional.ofNullable(this.tagName);
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -94,22 +73,16 @@ public final class GetZeroTrustAccessTagResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private Integer appCount;
-        private String createdAt;
         private String id;
         private String name;
         private @Nullable String tagName;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessTagResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.appCount = defaults.appCount;
-    	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.tagName = defaults.tagName;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -118,22 +91,6 @@ public final class GetZeroTrustAccessTagResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessTagResult", "accountId");
             }
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder appCount(Integer appCount) {
-            if (appCount == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessTagResult", "appCount");
-            }
-            this.appCount = appCount;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessTagResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -158,23 +115,12 @@ public final class GetZeroTrustAccessTagResult {
             this.tagName = tagName;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessTagResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessTagResult build() {
             final var _resultValue = new GetZeroTrustAccessTagResult();
             _resultValue.accountId = accountId;
-            _resultValue.appCount = appCount;
-            _resultValue.createdAt = createdAt;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.tagName = tagName;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

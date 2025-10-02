@@ -131,11 +131,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// The number of applications that have this tag
-        /// </summary>
-        public readonly int AppCount;
-        public readonly string CreatedAt;
-        /// <summary>
         /// The name of the tag
         /// </summary>
         public readonly string Id;
@@ -147,31 +142,21 @@ namespace Pulumi.Cloudflare
         /// The name of the tag
         /// </summary>
         public readonly string? TagName;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessTagResult(
             string accountId,
 
-            int appCount,
-
-            string createdAt,
-
             string id,
 
             string name,
 
-            string? tagName,
-
-            string updatedAt)
+            string? tagName)
         {
             AccountId = accountId;
-            AppCount = appCount;
-            CreatedAt = createdAt;
             Id = id;
             Name = name;
             TagName = tagName;
-            UpdatedAt = updatedAt;
         }
     }
 }

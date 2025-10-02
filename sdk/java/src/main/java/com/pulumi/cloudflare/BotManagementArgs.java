@@ -65,6 +65,23 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    @Import(name="cfRobotsVariant")
+    private @Nullable Output<String> cfRobotsVariant;
+
+    /**
+     * @return Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    public Optional<Output<String>> cfRobotsVariant() {
+        return Optional.ofNullable(this.cfRobotsVariant);
+    }
+
+    /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.
      * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
@@ -247,6 +264,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         this.aiBotsProtection = $.aiBotsProtection;
         this.autoUpdateModel = $.autoUpdateModel;
         this.bmCookieEnabled = $.bmCookieEnabled;
+        this.cfRobotsVariant = $.cfRobotsVariant;
         this.crawlerProtection = $.crawlerProtection;
         this.enableJs = $.enableJs;
         this.fightMode = $.fightMode;
@@ -341,6 +359,29 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bmCookieEnabled(Boolean bmCookieEnabled) {
             return bmCookieEnabled(Output.of(bmCookieEnabled));
+        }
+
+        /**
+         * @param cfRobotsVariant Specifies the Robots Access Control License variant to use.
+         * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cfRobotsVariant(@Nullable Output<String> cfRobotsVariant) {
+            $.cfRobotsVariant = cfRobotsVariant;
+            return this;
+        }
+
+        /**
+         * @param cfRobotsVariant Specifies the Robots Access Control License variant to use.
+         * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cfRobotsVariant(String cfRobotsVariant) {
+            return cfRobotsVariant(Output.of(cfRobotsVariant));
         }
 
         /**

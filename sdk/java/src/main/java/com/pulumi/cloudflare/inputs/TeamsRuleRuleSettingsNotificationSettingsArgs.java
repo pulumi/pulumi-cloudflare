@@ -17,14 +17,14 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
     public static final TeamsRuleRuleSettingsNotificationSettingsArgs Empty = new TeamsRuleRuleSettingsNotificationSettingsArgs();
 
     /**
-     * Set notification on.
+     * Enable notification.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Set notification on.
+     * @return Enable notification.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
     }
 
     /**
-     * If true, context information will be passed as query parameters.
+     * Indicates whether to pass the context information as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Indicates whether to pass the context information as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -62,14 +62,14 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
     }
 
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     @Import(name="supportUrl")
     private @Nullable Output<String> supportUrl;
 
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     public Optional<Output<String>> supportUrl() {
@@ -104,7 +104,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param enabled Set notification on.
+         * @param enabled Enable notification.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param enabled Set notification on.
+         * @param enabled Enable notification.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Indicates whether to pass the context information as query parameters.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Indicates whether to pass the context information as query parameters.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
+         * @param supportUrl Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
         }
 
         /**
-         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
+         * @param supportUrl Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
          * 
          * @return builder
          * 

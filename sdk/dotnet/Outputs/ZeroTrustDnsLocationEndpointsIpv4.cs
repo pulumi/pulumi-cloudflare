@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDnsLocationEndpointsIpv4
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the IPv4 endpoint is enabled for this location.
         /// </summary>
         public readonly bool? Enabled;
 

@@ -20,11 +20,15 @@ __all__ = ['ZeroTrustGatewayCertificateArgs', 'ZeroTrustGatewayCertificate']
 class ZeroTrustGatewayCertificateArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
+                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
+        :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         pulumi.set(__self__, "account_id", account_id)
+        if activate is not None:
+            pulumi.set(__self__, "activate", activate)
         if validity_period_days is not None:
             pulumi.set(__self__, "validity_period_days", validity_period_days)
 
@@ -38,8 +42,20 @@ class ZeroTrustGatewayCertificateArgs:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "activate")
+
+    @activate.setter
+    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "activate", value)
+
+    @_builtins.property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
@@ -51,6 +67,7 @@ class ZeroTrustGatewayCertificateArgs:
 class _ZeroTrustGatewayCertificateState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
                  binding_status: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -65,18 +82,21 @@ class _ZeroTrustGatewayCertificateState:
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
-        :param pulumi.Input[_builtins.str] binding_status: The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        :param pulumi.Input[_builtins.str] binding_status: Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
                Available values: "pending*deployment", "available", "pending*deletion", "inactive".
-        :param pulumi.Input[_builtins.str] certificate: The CA certificate(read only).
-        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate(read only).
-        :param pulumi.Input[_builtins.bool] in_use: Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
-        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate(read only).
-        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate(read only).
-        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        :param pulumi.Input[_builtins.str] certificate: Provide the CA certificate (read-only).
+        :param pulumi.Input[_builtins.str] fingerprint: Provide the SHA256 fingerprint of the certificate (read-only).
+        :param pulumi.Input[_builtins.bool] in_use: Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
+        :param pulumi.Input[_builtins.str] issuer_org: Indicate the organization that issued the certificate (read-only).
+        :param pulumi.Input[_builtins.str] issuer_raw: Provide the entire issuer field of the certificate (read-only).
+        :param pulumi.Input[_builtins.str] type: Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
+        :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if activate is not None:
+            pulumi.set(__self__, "activate", activate)
         if binding_status is not None:
             pulumi.set(__self__, "binding_status", binding_status)
         if certificate is not None:
@@ -112,10 +132,19 @@ class _ZeroTrustGatewayCertificateState:
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "activate")
+
+    @activate.setter
+    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "activate", value)
+
+    @_builtins.property
     @pulumi.getter(name="bindingStatus")
     def binding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
@@ -128,7 +157,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The CA certificate(read only).
+        Provide the CA certificate (read-only).
         """
         return pulumi.get(self, "certificate")
 
@@ -158,7 +187,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The SHA256 fingerprint of the certificate(read only).
+        Provide the SHA256 fingerprint of the certificate (read-only).
         """
         return pulumi.get(self, "fingerprint")
 
@@ -170,7 +199,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="inUse")
     def in_use(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         """
         return pulumi.get(self, "in_use")
 
@@ -182,7 +211,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="issuerOrg")
     def issuer_org(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The organization that issued the certificate(read only).
+        Indicate the organization that issued the certificate (read-only).
         """
         return pulumi.get(self, "issuer_org")
 
@@ -194,7 +223,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter(name="issuerRaw")
     def issuer_raw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The entire issuer field of the certificate(read only).
+        Provide the entire issuer field of the certificate (read-only).
         """
         return pulumi.get(self, "issuer_raw")
 
@@ -206,7 +235,7 @@ class _ZeroTrustGatewayCertificateState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
@@ -236,6 +265,9 @@ class _ZeroTrustGatewayCertificateState:
     @_builtins.property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
@@ -250,6 +282,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
@@ -272,6 +305,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         ...
     @overload
@@ -313,6 +347,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
                  validity_period_days: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -326,6 +361,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["activate"] = activate
             __props__.__dict__["validity_period_days"] = validity_period_days
             __props__.__dict__["binding_status"] = None
             __props__.__dict__["certificate"] = None
@@ -349,6 +385,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[_builtins.str]] = None,
+            activate: Optional[pulumi.Input[_builtins.bool]] = None,
             binding_status: Optional[pulumi.Input[_builtins.str]] = None,
             certificate: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -368,21 +405,23 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] binding_status: The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        :param pulumi.Input[_builtins.str] binding_status: Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
                Available values: "pending*deployment", "available", "pending*deletion", "inactive".
-        :param pulumi.Input[_builtins.str] certificate: The CA certificate(read only).
-        :param pulumi.Input[_builtins.str] fingerprint: The SHA256 fingerprint of the certificate(read only).
-        :param pulumi.Input[_builtins.bool] in_use: Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
-        :param pulumi.Input[_builtins.str] issuer_org: The organization that issued the certificate(read only).
-        :param pulumi.Input[_builtins.str] issuer_raw: The entire issuer field of the certificate(read only).
-        :param pulumi.Input[_builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        :param pulumi.Input[_builtins.str] certificate: Provide the CA certificate (read-only).
+        :param pulumi.Input[_builtins.str] fingerprint: Provide the SHA256 fingerprint of the certificate (read-only).
+        :param pulumi.Input[_builtins.bool] in_use: Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
+        :param pulumi.Input[_builtins.str] issuer_org: Indicate the organization that issued the certificate (read-only).
+        :param pulumi.Input[_builtins.str] issuer_raw: Provide the entire issuer field of the certificate (read-only).
+        :param pulumi.Input[_builtins.str] type: Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
+        :param pulumi.Input[_builtins.int] validity_period_days: Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ZeroTrustGatewayCertificateState.__new__(_ZeroTrustGatewayCertificateState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["activate"] = activate
         __props__.__dict__["binding_status"] = binding_status
         __props__.__dict__["certificate"] = certificate
         __props__.__dict__["created_at"] = created_at
@@ -403,10 +442,15 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @_builtins.property
+    @pulumi.getter
+    def activate(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "activate")
+
+    @_builtins.property
     @pulumi.getter(name="bindingStatus")
     def binding_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
@@ -415,7 +459,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:
         """
-        The CA certificate(read only).
+        Provide the CA certificate (read-only).
         """
         return pulumi.get(self, "certificate")
 
@@ -433,7 +477,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[_builtins.str]:
         """
-        The SHA256 fingerprint of the certificate(read only).
+        Provide the SHA256 fingerprint of the certificate (read-only).
         """
         return pulumi.get(self, "fingerprint")
 
@@ -441,7 +485,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="inUse")
     def in_use(self) -> pulumi.Output[_builtins.bool]:
         """
-        Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         """
         return pulumi.get(self, "in_use")
 
@@ -449,7 +493,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="issuerOrg")
     def issuer_org(self) -> pulumi.Output[_builtins.str]:
         """
-        The organization that issued the certificate(read only).
+        Indicate the organization that issued the certificate (read-only).
         """
         return pulumi.get(self, "issuer_org")
 
@@ -457,7 +501,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter(name="issuerRaw")
     def issuer_raw(self) -> pulumi.Output[_builtins.str]:
         """
-        The entire issuer field of the certificate(read only).
+        Provide the entire issuer field of the certificate (read-only).
         """
         return pulumi.get(self, "issuer_raw")
 
@@ -465,7 +509,7 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
@@ -483,5 +527,8 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        """
         return pulumi.get(self, "validity_period_days")
 

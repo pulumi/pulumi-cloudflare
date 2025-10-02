@@ -28,14 +28,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * True if the location is the default location.
+     * Indicate whether this location is the default location.
      * 
      */
     @Import(name="clientDefault")
     private @Nullable Output<Boolean> clientDefault;
 
     /**
-     * @return True if the location is the default location.
+     * @return Indicate whether this location is the default location.
      * 
      */
     public Optional<Output<Boolean>> clientDefault() {
@@ -43,14 +43,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+     * Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      * 
      */
     @Import(name="dnsDestinationIpsId")
     private @Nullable Output<String> dnsDestinationIpsId;
 
     /**
-     * @return The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+     * @return Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
      * 
      */
     public Optional<Output<String>> dnsDestinationIpsId() {
@@ -58,14 +58,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * True if the location needs to resolve EDNS queries.
+     * Indicate whether the location must resolve EDNS queries.
      * 
      */
     @Import(name="ecsSupport")
     private @Nullable Output<Boolean> ecsSupport;
 
     /**
-     * @return True if the location needs to resolve EDNS queries.
+     * @return Indicate whether the location must resolve EDNS queries.
      * 
      */
     public Optional<Output<Boolean>> ecsSupport() {
@@ -73,14 +73,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+     * Configure the destination endpoints for this location.
      * 
      */
     @Import(name="endpoints")
     private @Nullable Output<ZeroTrustDnsLocationEndpointsArgs> endpoints;
 
     /**
-     * @return The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+     * @return Configure the destination endpoints for this location.
      * 
      */
     public Optional<Output<ZeroTrustDnsLocationEndpointsArgs>> endpoints() {
@@ -88,14 +88,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the location.
+     * Specify the location name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the location.
+     * @return Specify the location name.
      * 
      */
     public Output<String> name() {
@@ -103,14 +103,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+     * Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<ZeroTrustDnsLocationNetworkArgs>> networks;
 
     /**
-     * @return A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+     * @return Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
      * 
      */
     public Optional<Output<List<ZeroTrustDnsLocationNetworkArgs>>> networks() {
@@ -157,7 +157,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientDefault True if the location is the default location.
+         * @param clientDefault Indicate whether this location is the default location.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientDefault True if the location is the default location.
+         * @param clientDefault Indicate whether this location is the default location.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsDestinationIpsId The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+         * @param dnsDestinationIpsId Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsDestinationIpsId The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+         * @param dnsDestinationIpsId Specify the identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set to null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if this field is absent or set to null, the pre-assigned pair remains unchanged.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsSupport True if the location needs to resolve EDNS queries.
+         * @param ecsSupport Indicate whether the location must resolve EDNS queries.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsSupport True if the location needs to resolve EDNS queries.
+         * @param ecsSupport Indicate whether the location must resolve EDNS queries.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoints The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+         * @param endpoints Configure the destination endpoints for this location.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoints The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+         * @param endpoints Configure the destination endpoints for this location.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the location.
+         * @param name Specify the location name.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The name of the location.
+         * @param name Specify the location name.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+         * @param networks Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+         * @param networks Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+         * @param networks Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 

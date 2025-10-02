@@ -21,7 +21,7 @@ public final class GetWorkersResult {
      */
     private String createdOn;
     /**
-     * @return Identifier.
+     * @return Immutable ID of the Worker.
      * 
      */
     private String id;
@@ -70,7 +70,7 @@ public final class GetWorkersResult {
         return this.createdOn;
     }
     /**
-     * @return Identifier.
+     * @return Immutable ID of the Worker.
      * 
      */
     public String id() {

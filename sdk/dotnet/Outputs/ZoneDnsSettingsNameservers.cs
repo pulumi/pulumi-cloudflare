@@ -21,13 +21,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// Nameserver type
         /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private ZoneDnsSettingsNameservers(
             int? nsSet,
 
-            string type)
+            string? type)
         {
             NsSet = nsSet;
             Type = type;

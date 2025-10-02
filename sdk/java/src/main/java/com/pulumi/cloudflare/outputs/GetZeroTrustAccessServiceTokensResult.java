@@ -15,7 +15,6 @@ public final class GetZeroTrustAccessServiceTokensResult {
      * 
      */
     private String clientId;
-    private String createdAt;
     /**
      * @return The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
@@ -27,13 +26,11 @@ public final class GetZeroTrustAccessServiceTokensResult {
      * 
      */
     private String id;
-    private String lastSeenAt;
     /**
      * @return The name of the service token.
      * 
      */
     private String name;
-    private String updatedAt;
 
     private GetZeroTrustAccessServiceTokensResult() {}
     /**
@@ -42,9 +39,6 @@ public final class GetZeroTrustAccessServiceTokensResult {
      */
     public String clientId() {
         return this.clientId;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     /**
      * @return The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
@@ -63,18 +57,12 @@ public final class GetZeroTrustAccessServiceTokensResult {
     public String id() {
         return this.id;
     }
-    public String lastSeenAt() {
-        return this.lastSeenAt;
-    }
     /**
      * @return The name of the service token.
      * 
      */
     public String name() {
         return this.name;
-    }
-    public String updatedAt() {
-        return this.updatedAt;
     }
 
     public static Builder builder() {
@@ -87,24 +75,18 @@ public final class GetZeroTrustAccessServiceTokensResult {
     @CustomType.Builder
     public static final class Builder {
         private String clientId;
-        private String createdAt;
         private String duration;
         private String expiresAt;
         private String id;
-        private String lastSeenAt;
         private String name;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessServiceTokensResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
-    	      this.createdAt = defaults.createdAt;
     	      this.duration = defaults.duration;
     	      this.expiresAt = defaults.expiresAt;
     	      this.id = defaults.id;
-    	      this.lastSeenAt = defaults.lastSeenAt;
     	      this.name = defaults.name;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -113,14 +95,6 @@ public final class GetZeroTrustAccessServiceTokensResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensResult", "clientId");
             }
             this.clientId = clientId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -148,14 +122,6 @@ public final class GetZeroTrustAccessServiceTokensResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lastSeenAt(String lastSeenAt) {
-            if (lastSeenAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensResult", "lastSeenAt");
-            }
-            this.lastSeenAt = lastSeenAt;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensResult", "name");
@@ -163,24 +129,13 @@ public final class GetZeroTrustAccessServiceTokensResult {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessServiceTokensResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessServiceTokensResult build() {
             final var _resultValue = new GetZeroTrustAccessServiceTokensResult();
             _resultValue.clientId = clientId;
-            _resultValue.createdAt = createdAt;
             _resultValue.duration = duration;
             _resultValue.expiresAt = expiresAt;
             _resultValue.id = id;
-            _resultValue.lastSeenAt = lastSeenAt;
             _resultValue.name = name;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

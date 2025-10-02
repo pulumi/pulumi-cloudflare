@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsHostSelector {
     /**
-     * @return Enable filtering via hosts for egress policies.
+     * @return Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustGatewaySettingsSettingsHostSelector() {}
     /**
-     * @return Enable filtering via hosts for egress policies.
+     * @return Specify whether to enable filtering via hosts for egress policies.
      * 
      */
     public Boolean enabled() {

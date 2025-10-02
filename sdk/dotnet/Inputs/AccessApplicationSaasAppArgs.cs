@@ -65,9 +65,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("consumerServiceUrl")]
         public Input<string>? ConsumerServiceUrl { get; set; }
 
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
         [Input("customAttributes")]
         private InputList<Inputs.AccessApplicationSaasAppCustomAttributeArgs>? _customAttributes;
         public InputList<Inputs.AccessApplicationSaasAppCustomAttributeArgs> CustomAttributes
@@ -180,9 +177,6 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("ssoEndpoint")]
         public Input<string>? SsoEndpoint { get; set; }
-
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public AccessApplicationSaasAppArgs()
         {

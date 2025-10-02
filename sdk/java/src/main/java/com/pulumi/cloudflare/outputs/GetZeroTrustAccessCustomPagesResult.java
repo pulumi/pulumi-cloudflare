@@ -5,18 +5,11 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessCustomPagesResult {
-    /**
-     * @return Number of apps the custom page is assigned to.
-     * 
-     */
-    private Integer appCount;
-    private String createdAt;
     /**
      * @return Custom page name.
      * 
@@ -33,19 +26,8 @@ public final class GetZeroTrustAccessCustomPagesResult {
      * 
      */
     private String uid;
-    private String updatedAt;
 
     private GetZeroTrustAccessCustomPagesResult() {}
-    /**
-     * @return Number of apps the custom page is assigned to.
-     * 
-     */
-    public Integer appCount() {
-        return this.appCount;
-    }
-    public String createdAt() {
-        return this.createdAt;
-    }
     /**
      * @return Custom page name.
      * 
@@ -68,9 +50,6 @@ public final class GetZeroTrustAccessCustomPagesResult {
     public String uid() {
         return this.uid;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -81,39 +60,17 @@ public final class GetZeroTrustAccessCustomPagesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer appCount;
-        private String createdAt;
         private String name;
         private String type;
         private String uid;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessCustomPagesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.appCount = defaults.appCount;
-    	      this.createdAt = defaults.createdAt;
     	      this.name = defaults.name;
     	      this.type = defaults.type;
     	      this.uid = defaults.uid;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
-        @CustomType.Setter
-        public Builder appCount(Integer appCount) {
-            if (appCount == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagesResult", "appCount");
-            }
-            this.appCount = appCount;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagesResult", "createdAt");
-            }
-            this.createdAt = createdAt;
-            return this;
-        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -138,22 +95,11 @@ public final class GetZeroTrustAccessCustomPagesResult {
             this.uid = uid;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessCustomPagesResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessCustomPagesResult build() {
             final var _resultValue = new GetZeroTrustAccessCustomPagesResult();
-            _resultValue.appCount = appCount;
-            _resultValue.createdAt = createdAt;
             _resultValue.name = name;
             _resultValue.type = type;
             _resultValue.uid = uid;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

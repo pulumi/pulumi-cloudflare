@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsSandboxResult
     {
         /// <summary>
-        /// Enable sandbox.
+        /// Specify whether to enable the sandbox.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Action to take when the file cannot be scanned.
+        /// Specify the action to take when the system cannot scan the file.
         /// Available values: "allow", "block".
         /// </summary>
         public readonly string FallbackAction;
