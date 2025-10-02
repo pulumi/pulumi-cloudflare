@@ -13,6 +13,208 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetR2BucketLifecycleRule struct {
+	// Transition to abort ongoing multipart uploads.
+	AbortMultipartUploadsTransition GetR2BucketLifecycleRuleAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
+	// Conditions that apply to all transitions of this rule.
+	Conditions GetR2BucketLifecycleRuleConditions `pulumi:"conditions"`
+	// Transition to delete objects.
+	DeleteObjectsTransition GetR2BucketLifecycleRuleDeleteObjectsTransition `pulumi:"deleteObjectsTransition"`
+	// Whether or not this rule is in effect.
+	Enabled bool `pulumi:"enabled"`
+	// Unique identifier for this rule.
+	Id string `pulumi:"id"`
+	// Transitions to change the storage class of objects.
+	StorageClassTransitions []GetR2BucketLifecycleRuleStorageClassTransition `pulumi:"storageClassTransitions"`
+}
+
+// GetR2BucketLifecycleRuleInput is an input type that accepts GetR2BucketLifecycleRuleArgs and GetR2BucketLifecycleRuleOutput values.
+// You can construct a concrete instance of `GetR2BucketLifecycleRuleInput` via:
+//
+//	GetR2BucketLifecycleRuleArgs{...}
+type GetR2BucketLifecycleRuleInput interface {
+	pulumi.Input
+
+	ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput
+	ToGetR2BucketLifecycleRuleOutputWithContext(context.Context) GetR2BucketLifecycleRuleOutput
+}
+
+type GetR2BucketLifecycleRuleArgs struct {
+	// Transition to abort ongoing multipart uploads.
+	AbortMultipartUploadsTransition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput `pulumi:"abortMultipartUploadsTransition"`
+	// Conditions that apply to all transitions of this rule.
+	Conditions GetR2BucketLifecycleRuleConditionsInput `pulumi:"conditions"`
+	// Transition to delete objects.
+	DeleteObjectsTransition GetR2BucketLifecycleRuleDeleteObjectsTransitionInput `pulumi:"deleteObjectsTransition"`
+	// Whether or not this rule is in effect.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Unique identifier for this rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Transitions to change the storage class of objects.
+	StorageClassTransitions GetR2BucketLifecycleRuleStorageClassTransitionArrayInput `pulumi:"storageClassTransitions"`
+}
+
+func (GetR2BucketLifecycleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRule)(nil)).Elem()
+}
+
+func (i GetR2BucketLifecycleRuleArgs) ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput {
+	return i.ToGetR2BucketLifecycleRuleOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketLifecycleRuleArgs) ToGetR2BucketLifecycleRuleOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleOutput)
+}
+
+// GetR2BucketLifecycleRuleArrayInput is an input type that accepts GetR2BucketLifecycleRuleArray and GetR2BucketLifecycleRuleArrayOutput values.
+// You can construct a concrete instance of `GetR2BucketLifecycleRuleArrayInput` via:
+//
+//	GetR2BucketLifecycleRuleArray{ GetR2BucketLifecycleRuleArgs{...} }
+type GetR2BucketLifecycleRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput
+	ToGetR2BucketLifecycleRuleArrayOutputWithContext(context.Context) GetR2BucketLifecycleRuleArrayOutput
+}
+
+type GetR2BucketLifecycleRuleArray []GetR2BucketLifecycleRuleInput
+
+func (GetR2BucketLifecycleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketLifecycleRule)(nil)).Elem()
+}
+
+func (i GetR2BucketLifecycleRuleArray) ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput {
+	return i.ToGetR2BucketLifecycleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketLifecycleRuleArray) ToGetR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleArrayOutput)
+}
+
+type GetR2BucketLifecycleRuleOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketLifecycleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRule)(nil)).Elem()
+}
+
+func (o GetR2BucketLifecycleRuleOutput) ToGetR2BucketLifecycleRuleOutput() GetR2BucketLifecycleRuleOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleOutput) ToGetR2BucketLifecycleRuleOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleOutput {
+	return o
+}
+
+// Transition to abort ongoing multipart uploads.
+func (o GetR2BucketLifecycleRuleOutput) AbortMultipartUploadsTransition() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleAbortMultipartUploadsTransition {
+		return v.AbortMultipartUploadsTransition
+	}).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
+}
+
+// Conditions that apply to all transitions of this rule.
+func (o GetR2BucketLifecycleRuleOutput) Conditions() GetR2BucketLifecycleRuleConditionsOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleConditions { return v.Conditions }).(GetR2BucketLifecycleRuleConditionsOutput)
+}
+
+// Transition to delete objects.
+func (o GetR2BucketLifecycleRuleOutput) DeleteObjectsTransition() GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) GetR2BucketLifecycleRuleDeleteObjectsTransition {
+		return v.DeleteObjectsTransition
+	}).(GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput)
+}
+
+// Whether or not this rule is in effect.
+func (o GetR2BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Unique identifier for this rule.
+func (o GetR2BucketLifecycleRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Transitions to change the storage class of objects.
+func (o GetR2BucketLifecycleRuleOutput) StorageClassTransitions() GetR2BucketLifecycleRuleStorageClassTransitionArrayOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRule) []GetR2BucketLifecycleRuleStorageClassTransition {
+		return v.StorageClassTransitions
+	}).(GetR2BucketLifecycleRuleStorageClassTransitionArrayOutput)
+}
+
+type GetR2BucketLifecycleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketLifecycleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketLifecycleRule)(nil)).Elem()
+}
+
+func (o GetR2BucketLifecycleRuleArrayOutput) ToGetR2BucketLifecycleRuleArrayOutput() GetR2BucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleArrayOutput) ToGetR2BucketLifecycleRuleArrayOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetR2BucketLifecycleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetR2BucketLifecycleRule {
+		return vs[0].([]GetR2BucketLifecycleRule)[vs[1].(int)]
+	}).(GetR2BucketLifecycleRuleOutput)
+}
+
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransition struct {
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+	Condition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition `pulumi:"condition"`
+}
+
+// GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput is an input type that accepts GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs and GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput values.
+// You can construct a concrete instance of `GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput` via:
+//
+//	GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{...}
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput interface {
+	pulumi.Input
+
+	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
+	ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput
+}
+
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs struct {
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+	Condition GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput `pulumi:"condition"`
+}
+
+func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
+}
+
+func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
+	return i.ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
+}
+
+type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransition)(nil)).Elem()
+}
+
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
+	return o
+}
+
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToGetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutputWithContext(ctx context.Context) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput {
+	return o
+}
+
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+func (o GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) Condition() GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput {
+	return o.ApplyT(func(v GetR2BucketLifecycleRuleAbortMultipartUploadsTransition) GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
+		return v.Condition
+	}).(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput)
+}
+
 type GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition struct {
 	MaxAge int `pulumi:"maxAge"`
 	// Available values: "Age".
@@ -13751,6 +13953,10 @@ func (o GetWorkerVersionAssetsConfigOutput) RunWorkerFirsts() pulumi.StringArray
 type GetWorkerVersionBinding struct {
 	// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 	Algorithm string `pulumi:"algorithm"`
+	// List of allowed destination addresses.
+	AllowedDestinationAddresses []string `pulumi:"allowedDestinationAddresses"`
+	// List of allowed sender addresses.
+	AllowedSenderAddresses []string `pulumi:"allowedSenderAddresses"`
 	// R2 bucket to bind to.
 	BucketName string `pulumi:"bucketName"`
 	// Identifier of the certificate to bind to.
@@ -13759,6 +13965,8 @@ type GetWorkerVersionBinding struct {
 	ClassName string `pulumi:"className"`
 	// The name of the dataset to bind to.
 	Dataset string `pulumi:"dataset"`
+	// Destination address for the email.
+	DestinationAddress string `pulumi:"destinationAddress"`
 	// The environment of the scriptName to bind to.
 	Environment string `pulumi:"environment"`
 	// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
@@ -13770,6 +13978,9 @@ type GetWorkerVersionBinding struct {
 	IndexName string `pulumi:"indexName"`
 	// JSON data to use.
 	Json string `pulumi:"json"`
+	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+	// Available values: "eu", "fedramp".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 string `pulumi:"keyBase64"`
 	// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
@@ -13780,8 +13991,12 @@ type GetWorkerVersionBinding struct {
 	Namespace string `pulumi:"namespace"`
 	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
+	// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+	OldName string `pulumi:"oldName"`
 	// Outbound worker.
 	Outbound GetWorkerVersionBindingOutbound `pulumi:"outbound"`
+	// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+	Part string `pulumi:"part"`
 	// Name of the Pipeline to bind to.
 	Pipeline string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
@@ -13797,10 +14012,12 @@ type GetWorkerVersionBinding struct {
 	// The text value to use.
 	Text string `pulumi:"text"`
 	// The kind of resource that the binding provides.
-	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 	Type string `pulumi:"type"`
 	// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 	Usages []string `pulumi:"usages"`
+	// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+	VersionId string `pulumi:"versionId"`
 	// Name of the Workflow to bind to.
 	WorkflowName string `pulumi:"workflowName"`
 }
@@ -13819,6 +14036,10 @@ type GetWorkerVersionBindingInput interface {
 type GetWorkerVersionBindingArgs struct {
 	// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// List of allowed destination addresses.
+	AllowedDestinationAddresses pulumi.StringArrayInput `pulumi:"allowedDestinationAddresses"`
+	// List of allowed sender addresses.
+	AllowedSenderAddresses pulumi.StringArrayInput `pulumi:"allowedSenderAddresses"`
 	// R2 bucket to bind to.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Identifier of the certificate to bind to.
@@ -13827,6 +14048,8 @@ type GetWorkerVersionBindingArgs struct {
 	ClassName pulumi.StringInput `pulumi:"className"`
 	// The name of the dataset to bind to.
 	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// Destination address for the email.
+	DestinationAddress pulumi.StringInput `pulumi:"destinationAddress"`
 	// The environment of the scriptName to bind to.
 	Environment pulumi.StringInput `pulumi:"environment"`
 	// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
@@ -13838,6 +14061,9 @@ type GetWorkerVersionBindingArgs struct {
 	IndexName pulumi.StringInput `pulumi:"indexName"`
 	// JSON data to use.
 	Json pulumi.StringInput `pulumi:"json"`
+	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+	// Available values: "eu", "fedramp".
+	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 pulumi.StringInput `pulumi:"keyBase64"`
 	// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
@@ -13848,8 +14074,12 @@ type GetWorkerVersionBindingArgs struct {
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+	OldName pulumi.StringInput `pulumi:"oldName"`
 	// Outbound worker.
 	Outbound GetWorkerVersionBindingOutboundInput `pulumi:"outbound"`
+	// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+	Part pulumi.StringInput `pulumi:"part"`
 	// Name of the Pipeline to bind to.
 	Pipeline pulumi.StringInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
@@ -13865,10 +14095,12 @@ type GetWorkerVersionBindingArgs struct {
 	// The text value to use.
 	Text pulumi.StringInput `pulumi:"text"`
 	// The kind of resource that the binding provides.
-	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 	Usages pulumi.StringArrayInput `pulumi:"usages"`
+	// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
 	// Name of the Workflow to bind to.
 	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
@@ -13929,6 +14161,16 @@ func (o GetWorkerVersionBindingOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// List of allowed destination addresses.
+func (o GetWorkerVersionBindingOutput) AllowedDestinationAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) []string { return v.AllowedDestinationAddresses }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed sender addresses.
+func (o GetWorkerVersionBindingOutput) AllowedSenderAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) []string { return v.AllowedSenderAddresses }).(pulumi.StringArrayOutput)
+}
+
 // R2 bucket to bind to.
 func (o GetWorkerVersionBindingOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.BucketName }).(pulumi.StringOutput)
@@ -13947,6 +14189,11 @@ func (o GetWorkerVersionBindingOutput) ClassName() pulumi.StringOutput {
 // The name of the dataset to bind to.
 func (o GetWorkerVersionBindingOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// Destination address for the email.
+func (o GetWorkerVersionBindingOutput) DestinationAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.DestinationAddress }).(pulumi.StringOutput)
 }
 
 // The environment of the scriptName to bind to.
@@ -13975,6 +14222,12 @@ func (o GetWorkerVersionBindingOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Json }).(pulumi.StringOutput)
 }
 
+// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+// Available values: "eu", "fedramp".
+func (o GetWorkerVersionBindingOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Jurisdiction }).(pulumi.StringOutput)
+}
+
 // Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 func (o GetWorkerVersionBindingOutput) KeyBase64() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.KeyBase64 }).(pulumi.StringOutput)
@@ -14000,9 +14253,19 @@ func (o GetWorkerVersionBindingOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
+// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+func (o GetWorkerVersionBindingOutput) OldName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.OldName }).(pulumi.StringOutput)
+}
+
 // Outbound worker.
 func (o GetWorkerVersionBindingOutput) Outbound() GetWorkerVersionBindingOutboundOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) GetWorkerVersionBindingOutbound { return v.Outbound }).(GetWorkerVersionBindingOutboundOutput)
+}
+
+// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+func (o GetWorkerVersionBindingOutput) Part() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Part }).(pulumi.StringOutput)
 }
 
 // Name of the Pipeline to bind to.
@@ -14041,7 +14304,7 @@ func (o GetWorkerVersionBindingOutput) Text() pulumi.StringOutput {
 }
 
 // The kind of resource that the binding provides.
-// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 func (o GetWorkerVersionBindingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -14049,6 +14312,11 @@ func (o GetWorkerVersionBindingOutput) Type() pulumi.StringOutput {
 // Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 func (o GetWorkerVersionBindingOutput) Usages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkerVersionBinding) []string { return v.Usages }).(pulumi.StringArrayOutput)
+}
+
+// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+func (o GetWorkerVersionBindingOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionBinding) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // Name of the Workflow to bind to.
@@ -15108,6 +15376,11 @@ type GetWorkerVersionsResult struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations GetWorkerVersionsResultMigrations `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules []GetWorkerVersionsResultModule `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number int `pulumi:"number"`
@@ -15155,6 +15428,11 @@ type GetWorkerVersionsResultArgs struct {
 	// Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
 	Migrations GetWorkerVersionsResultMigrationsInput `pulumi:"migrations"`
 	// Code, sourcemaps, and other content used at runtime.
+	//
+	// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+	// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+	// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+	// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 	Modules GetWorkerVersionsResultModuleArrayInput `pulumi:"modules"`
 	// The integer version number, starting from one.
 	Number pulumi.IntInput `pulumi:"number"`
@@ -15271,6 +15549,11 @@ func (o GetWorkerVersionsResultOutput) Migrations() GetWorkerVersionsResultMigra
 }
 
 // Code, sourcemaps, and other content used at runtime.
+//
+// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+// included as modules named `_headers` and `_redirects` with content type `text/plain`.
 func (o GetWorkerVersionsResultOutput) Modules() GetWorkerVersionsResultModuleArrayOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResult) []GetWorkerVersionsResultModule { return v.Modules }).(GetWorkerVersionsResultModuleArrayOutput)
 }
@@ -15528,6 +15811,10 @@ func (o GetWorkerVersionsResultAssetsConfigOutput) RunWorkerFirsts() pulumi.Stri
 type GetWorkerVersionsResultBinding struct {
 	// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 	Algorithm string `pulumi:"algorithm"`
+	// List of allowed destination addresses.
+	AllowedDestinationAddresses []string `pulumi:"allowedDestinationAddresses"`
+	// List of allowed sender addresses.
+	AllowedSenderAddresses []string `pulumi:"allowedSenderAddresses"`
 	// R2 bucket to bind to.
 	BucketName string `pulumi:"bucketName"`
 	// Identifier of the certificate to bind to.
@@ -15536,6 +15823,8 @@ type GetWorkerVersionsResultBinding struct {
 	ClassName string `pulumi:"className"`
 	// The name of the dataset to bind to.
 	Dataset string `pulumi:"dataset"`
+	// Destination address for the email.
+	DestinationAddress string `pulumi:"destinationAddress"`
 	// The environment of the scriptName to bind to.
 	Environment string `pulumi:"environment"`
 	// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
@@ -15547,6 +15836,9 @@ type GetWorkerVersionsResultBinding struct {
 	IndexName string `pulumi:"indexName"`
 	// JSON data to use.
 	Json string `pulumi:"json"`
+	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+	// Available values: "eu", "fedramp".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 string `pulumi:"keyBase64"`
 	// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
@@ -15557,8 +15849,12 @@ type GetWorkerVersionsResultBinding struct {
 	Namespace string `pulumi:"namespace"`
 	// Namespace identifier tag.
 	NamespaceId string `pulumi:"namespaceId"`
+	// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+	OldName string `pulumi:"oldName"`
 	// Outbound worker.
 	Outbound GetWorkerVersionsResultBindingOutbound `pulumi:"outbound"`
+	// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+	Part string `pulumi:"part"`
 	// Name of the Pipeline to bind to.
 	Pipeline string `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
@@ -15574,10 +15870,12 @@ type GetWorkerVersionsResultBinding struct {
 	// The text value to use.
 	Text string `pulumi:"text"`
 	// The kind of resource that the binding provides.
-	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 	Type string `pulumi:"type"`
 	// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 	Usages []string `pulumi:"usages"`
+	// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+	VersionId string `pulumi:"versionId"`
 	// Name of the Workflow to bind to.
 	WorkflowName string `pulumi:"workflowName"`
 }
@@ -15596,6 +15894,10 @@ type GetWorkerVersionsResultBindingInput interface {
 type GetWorkerVersionsResultBindingArgs struct {
 	// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// List of allowed destination addresses.
+	AllowedDestinationAddresses pulumi.StringArrayInput `pulumi:"allowedDestinationAddresses"`
+	// List of allowed sender addresses.
+	AllowedSenderAddresses pulumi.StringArrayInput `pulumi:"allowedSenderAddresses"`
 	// R2 bucket to bind to.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Identifier of the certificate to bind to.
@@ -15604,6 +15906,8 @@ type GetWorkerVersionsResultBindingArgs struct {
 	ClassName pulumi.StringInput `pulumi:"className"`
 	// The name of the dataset to bind to.
 	Dataset pulumi.StringInput `pulumi:"dataset"`
+	// Destination address for the email.
+	DestinationAddress pulumi.StringInput `pulumi:"destinationAddress"`
 	// The environment of the scriptName to bind to.
 	Environment pulumi.StringInput `pulumi:"environment"`
 	// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
@@ -15615,6 +15919,9 @@ type GetWorkerVersionsResultBindingArgs struct {
 	IndexName pulumi.StringInput `pulumi:"indexName"`
 	// JSON data to use.
 	Json pulumi.StringInput `pulumi:"json"`
+	// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+	// Available values: "eu", "fedramp".
+	Jurisdiction pulumi.StringInput `pulumi:"jurisdiction"`
 	// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 	KeyBase64 pulumi.StringInput `pulumi:"keyBase64"`
 	// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
@@ -15625,8 +15932,12 @@ type GetWorkerVersionsResultBindingArgs struct {
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// Namespace identifier tag.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
+	// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+	OldName pulumi.StringInput `pulumi:"oldName"`
 	// Outbound worker.
 	Outbound GetWorkerVersionsResultBindingOutboundInput `pulumi:"outbound"`
+	// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+	Part pulumi.StringInput `pulumi:"part"`
 	// Name of the Pipeline to bind to.
 	Pipeline pulumi.StringInput `pulumi:"pipeline"`
 	// Name of the Queue to bind to.
@@ -15642,10 +15953,12 @@ type GetWorkerVersionsResultBindingArgs struct {
 	// The text value to use.
 	Text pulumi.StringInput `pulumi:"text"`
 	// The kind of resource that the binding provides.
-	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+	// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 	Usages pulumi.StringArrayInput `pulumi:"usages"`
+	// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+	VersionId pulumi.StringInput `pulumi:"versionId"`
 	// Name of the Workflow to bind to.
 	WorkflowName pulumi.StringInput `pulumi:"workflowName"`
 }
@@ -15706,6 +16019,16 @@ func (o GetWorkerVersionsResultBindingOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// List of allowed destination addresses.
+func (o GetWorkerVersionsResultBindingOutput) AllowedDestinationAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) []string { return v.AllowedDestinationAddresses }).(pulumi.StringArrayOutput)
+}
+
+// List of allowed sender addresses.
+func (o GetWorkerVersionsResultBindingOutput) AllowedSenderAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) []string { return v.AllowedSenderAddresses }).(pulumi.StringArrayOutput)
+}
+
 // R2 bucket to bind to.
 func (o GetWorkerVersionsResultBindingOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.BucketName }).(pulumi.StringOutput)
@@ -15724,6 +16047,11 @@ func (o GetWorkerVersionsResultBindingOutput) ClassName() pulumi.StringOutput {
 // The name of the dataset to bind to.
 func (o GetWorkerVersionsResultBindingOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// Destination address for the email.
+func (o GetWorkerVersionsResultBindingOutput) DestinationAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.DestinationAddress }).(pulumi.StringOutput)
 }
 
 // The environment of the scriptName to bind to.
@@ -15752,6 +16080,12 @@ func (o GetWorkerVersionsResultBindingOutput) Json() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Json }).(pulumi.StringOutput)
 }
 
+// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+// Available values: "eu", "fedramp".
+func (o GetWorkerVersionsResultBindingOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Jurisdiction }).(pulumi.StringOutput)
+}
+
 // Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
 func (o GetWorkerVersionsResultBindingOutput) KeyBase64() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.KeyBase64 }).(pulumi.StringOutput)
@@ -15777,9 +16111,19 @@ func (o GetWorkerVersionsResultBindingOutput) NamespaceId() pulumi.StringOutput 
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
+// The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
+func (o GetWorkerVersionsResultBindingOutput) OldName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.OldName }).(pulumi.StringOutput)
+}
+
 // Outbound worker.
 func (o GetWorkerVersionsResultBindingOutput) Outbound() GetWorkerVersionsResultBindingOutboundOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) GetWorkerVersionsResultBindingOutbound { return v.Outbound }).(GetWorkerVersionsResultBindingOutboundOutput)
+}
+
+// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+func (o GetWorkerVersionsResultBindingOutput) Part() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Part }).(pulumi.StringOutput)
 }
 
 // Name of the Pipeline to bind to.
@@ -15818,7 +16162,7 @@ func (o GetWorkerVersionsResultBindingOutput) Text() pulumi.StringOutput {
 }
 
 // The kind of resource that the binding provides.
-// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
 func (o GetWorkerVersionsResultBindingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15826,6 +16170,11 @@ func (o GetWorkerVersionsResultBindingOutput) Type() pulumi.StringOutput {
 // Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
 func (o GetWorkerVersionsResultBindingOutput) Usages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkerVersionsResultBinding) []string { return v.Usages }).(pulumi.StringArrayOutput)
+}
+
+// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+func (o GetWorkerVersionsResultBindingOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkerVersionsResultBinding) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // Name of the Workflow to bind to.
@@ -17931,7 +18280,7 @@ func (o GetWorkersKvNamespacesResultArrayOutput) Index(i pulumi.IntInput) GetWor
 type GetWorkersResult struct {
 	// When the Worker was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Identifier.
+	// Immutable ID of the Worker.
 	Id string `pulumi:"id"`
 	// Whether logpush is enabled for the Worker.
 	Logpush bool `pulumi:"logpush"`
@@ -17963,7 +18312,7 @@ type GetWorkersResultInput interface {
 type GetWorkersResultArgs struct {
 	// When the Worker was created.
 	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// Identifier.
+	// Immutable ID of the Worker.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether logpush is enabled for the Worker.
 	Logpush pulumi.BoolInput `pulumi:"logpush"`
@@ -18037,7 +18386,7 @@ func (o GetWorkersResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier.
+// Immutable ID of the Worker.
 func (o GetWorkersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -19076,6 +19425,461 @@ func (o GetWorkersScriptsResultTailConsumerArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersScriptsResultTailConsumer {
 		return vs[0].([]GetWorkersScriptsResultTailConsumer)[vs[1].(int)]
 	}).(GetWorkersScriptsResultTailConsumerOutput)
+}
+
+type GetWorkflowFilter struct {
+	// Allows filtering workflows` name.
+	Search *string `pulumi:"search"`
+}
+
+// GetWorkflowFilterInput is an input type that accepts GetWorkflowFilterArgs and GetWorkflowFilterOutput values.
+// You can construct a concrete instance of `GetWorkflowFilterInput` via:
+//
+//	GetWorkflowFilterArgs{...}
+type GetWorkflowFilterInput interface {
+	pulumi.Input
+
+	ToGetWorkflowFilterOutput() GetWorkflowFilterOutput
+	ToGetWorkflowFilterOutputWithContext(context.Context) GetWorkflowFilterOutput
+}
+
+type GetWorkflowFilterArgs struct {
+	// Allows filtering workflows` name.
+	Search pulumi.StringPtrInput `pulumi:"search"`
+}
+
+func (GetWorkflowFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowFilter)(nil)).Elem()
+}
+
+func (i GetWorkflowFilterArgs) ToGetWorkflowFilterOutput() GetWorkflowFilterOutput {
+	return i.ToGetWorkflowFilterOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowFilterArgs) ToGetWorkflowFilterOutputWithContext(ctx context.Context) GetWorkflowFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowFilterOutput)
+}
+
+func (i GetWorkflowFilterArgs) ToGetWorkflowFilterPtrOutput() GetWorkflowFilterPtrOutput {
+	return i.ToGetWorkflowFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowFilterArgs) ToGetWorkflowFilterPtrOutputWithContext(ctx context.Context) GetWorkflowFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowFilterOutput).ToGetWorkflowFilterPtrOutputWithContext(ctx)
+}
+
+// GetWorkflowFilterPtrInput is an input type that accepts GetWorkflowFilterArgs, GetWorkflowFilterPtr and GetWorkflowFilterPtrOutput values.
+// You can construct a concrete instance of `GetWorkflowFilterPtrInput` via:
+//
+//	        GetWorkflowFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetWorkflowFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetWorkflowFilterPtrOutput() GetWorkflowFilterPtrOutput
+	ToGetWorkflowFilterPtrOutputWithContext(context.Context) GetWorkflowFilterPtrOutput
+}
+
+type getWorkflowFilterPtrType GetWorkflowFilterArgs
+
+func GetWorkflowFilterPtr(v *GetWorkflowFilterArgs) GetWorkflowFilterPtrInput {
+	return (*getWorkflowFilterPtrType)(v)
+}
+
+func (*getWorkflowFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkflowFilter)(nil)).Elem()
+}
+
+func (i *getWorkflowFilterPtrType) ToGetWorkflowFilterPtrOutput() GetWorkflowFilterPtrOutput {
+	return i.ToGetWorkflowFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getWorkflowFilterPtrType) ToGetWorkflowFilterPtrOutputWithContext(ctx context.Context) GetWorkflowFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowFilterPtrOutput)
+}
+
+type GetWorkflowFilterOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowFilter)(nil)).Elem()
+}
+
+func (o GetWorkflowFilterOutput) ToGetWorkflowFilterOutput() GetWorkflowFilterOutput {
+	return o
+}
+
+func (o GetWorkflowFilterOutput) ToGetWorkflowFilterOutputWithContext(ctx context.Context) GetWorkflowFilterOutput {
+	return o
+}
+
+func (o GetWorkflowFilterOutput) ToGetWorkflowFilterPtrOutput() GetWorkflowFilterPtrOutput {
+	return o.ToGetWorkflowFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetWorkflowFilterOutput) ToGetWorkflowFilterPtrOutputWithContext(ctx context.Context) GetWorkflowFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWorkflowFilter) *GetWorkflowFilter {
+		return &v
+	}).(GetWorkflowFilterPtrOutput)
+}
+
+// Allows filtering workflows` name.
+func (o GetWorkflowFilterOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowFilter) *string { return v.Search }).(pulumi.StringPtrOutput)
+}
+
+type GetWorkflowFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWorkflowFilter)(nil)).Elem()
+}
+
+func (o GetWorkflowFilterPtrOutput) ToGetWorkflowFilterPtrOutput() GetWorkflowFilterPtrOutput {
+	return o
+}
+
+func (o GetWorkflowFilterPtrOutput) ToGetWorkflowFilterPtrOutputWithContext(ctx context.Context) GetWorkflowFilterPtrOutput {
+	return o
+}
+
+func (o GetWorkflowFilterPtrOutput) Elem() GetWorkflowFilterOutput {
+	return o.ApplyT(func(v *GetWorkflowFilter) GetWorkflowFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetWorkflowFilter
+		return ret
+	}).(GetWorkflowFilterOutput)
+}
+
+// Allows filtering workflows` name.
+func (o GetWorkflowFilterPtrOutput) Search() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWorkflowFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Search
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetWorkflowInstances struct {
+	Complete        float64 `pulumi:"complete"`
+	Errored         float64 `pulumi:"errored"`
+	Paused          float64 `pulumi:"paused"`
+	Queued          float64 `pulumi:"queued"`
+	Running         float64 `pulumi:"running"`
+	Terminated      float64 `pulumi:"terminated"`
+	Waiting         float64 `pulumi:"waiting"`
+	WaitingForPause float64 `pulumi:"waitingForPause"`
+}
+
+// GetWorkflowInstancesInput is an input type that accepts GetWorkflowInstancesArgs and GetWorkflowInstancesOutput values.
+// You can construct a concrete instance of `GetWorkflowInstancesInput` via:
+//
+//	GetWorkflowInstancesArgs{...}
+type GetWorkflowInstancesInput interface {
+	pulumi.Input
+
+	ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput
+	ToGetWorkflowInstancesOutputWithContext(context.Context) GetWorkflowInstancesOutput
+}
+
+type GetWorkflowInstancesArgs struct {
+	Complete        pulumi.Float64Input `pulumi:"complete"`
+	Errored         pulumi.Float64Input `pulumi:"errored"`
+	Paused          pulumi.Float64Input `pulumi:"paused"`
+	Queued          pulumi.Float64Input `pulumi:"queued"`
+	Running         pulumi.Float64Input `pulumi:"running"`
+	Terminated      pulumi.Float64Input `pulumi:"terminated"`
+	Waiting         pulumi.Float64Input `pulumi:"waiting"`
+	WaitingForPause pulumi.Float64Input `pulumi:"waitingForPause"`
+}
+
+func (GetWorkflowInstancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowInstances)(nil)).Elem()
+}
+
+func (i GetWorkflowInstancesArgs) ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput {
+	return i.ToGetWorkflowInstancesOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowInstancesArgs) ToGetWorkflowInstancesOutputWithContext(ctx context.Context) GetWorkflowInstancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowInstancesOutput)
+}
+
+type GetWorkflowInstancesOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowInstancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowInstances)(nil)).Elem()
+}
+
+func (o GetWorkflowInstancesOutput) ToGetWorkflowInstancesOutput() GetWorkflowInstancesOutput {
+	return o
+}
+
+func (o GetWorkflowInstancesOutput) ToGetWorkflowInstancesOutputWithContext(ctx context.Context) GetWorkflowInstancesOutput {
+	return o
+}
+
+func (o GetWorkflowInstancesOutput) Complete() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Complete }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Errored() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Errored }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Paused() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Paused }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Queued() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Queued }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Running() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Running }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Terminated() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Terminated }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) Waiting() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.Waiting }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowInstancesOutput) WaitingForPause() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowInstances) float64 { return v.WaitingForPause }).(pulumi.Float64Output)
+}
+
+type GetWorkflowsResult struct {
+	ClassName   string                      `pulumi:"className"`
+	CreatedOn   string                      `pulumi:"createdOn"`
+	Id          string                      `pulumi:"id"`
+	Instances   GetWorkflowsResultInstances `pulumi:"instances"`
+	ModifiedOn  string                      `pulumi:"modifiedOn"`
+	Name        string                      `pulumi:"name"`
+	ScriptName  string                      `pulumi:"scriptName"`
+	TriggeredOn string                      `pulumi:"triggeredOn"`
+}
+
+// GetWorkflowsResultInput is an input type that accepts GetWorkflowsResultArgs and GetWorkflowsResultOutput values.
+// You can construct a concrete instance of `GetWorkflowsResultInput` via:
+//
+//	GetWorkflowsResultArgs{...}
+type GetWorkflowsResultInput interface {
+	pulumi.Input
+
+	ToGetWorkflowsResultOutput() GetWorkflowsResultOutput
+	ToGetWorkflowsResultOutputWithContext(context.Context) GetWorkflowsResultOutput
+}
+
+type GetWorkflowsResultArgs struct {
+	ClassName   pulumi.StringInput               `pulumi:"className"`
+	CreatedOn   pulumi.StringInput               `pulumi:"createdOn"`
+	Id          pulumi.StringInput               `pulumi:"id"`
+	Instances   GetWorkflowsResultInstancesInput `pulumi:"instances"`
+	ModifiedOn  pulumi.StringInput               `pulumi:"modifiedOn"`
+	Name        pulumi.StringInput               `pulumi:"name"`
+	ScriptName  pulumi.StringInput               `pulumi:"scriptName"`
+	TriggeredOn pulumi.StringInput               `pulumi:"triggeredOn"`
+}
+
+func (GetWorkflowsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowsResult)(nil)).Elem()
+}
+
+func (i GetWorkflowsResultArgs) ToGetWorkflowsResultOutput() GetWorkflowsResultOutput {
+	return i.ToGetWorkflowsResultOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowsResultArgs) ToGetWorkflowsResultOutputWithContext(ctx context.Context) GetWorkflowsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowsResultOutput)
+}
+
+// GetWorkflowsResultArrayInput is an input type that accepts GetWorkflowsResultArray and GetWorkflowsResultArrayOutput values.
+// You can construct a concrete instance of `GetWorkflowsResultArrayInput` via:
+//
+//	GetWorkflowsResultArray{ GetWorkflowsResultArgs{...} }
+type GetWorkflowsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkflowsResultArrayOutput() GetWorkflowsResultArrayOutput
+	ToGetWorkflowsResultArrayOutputWithContext(context.Context) GetWorkflowsResultArrayOutput
+}
+
+type GetWorkflowsResultArray []GetWorkflowsResultInput
+
+func (GetWorkflowsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowsResult)(nil)).Elem()
+}
+
+func (i GetWorkflowsResultArray) ToGetWorkflowsResultArrayOutput() GetWorkflowsResultArrayOutput {
+	return i.ToGetWorkflowsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowsResultArray) ToGetWorkflowsResultArrayOutputWithContext(ctx context.Context) GetWorkflowsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowsResultArrayOutput)
+}
+
+type GetWorkflowsResultOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowsResult)(nil)).Elem()
+}
+
+func (o GetWorkflowsResultOutput) ToGetWorkflowsResultOutput() GetWorkflowsResultOutput {
+	return o
+}
+
+func (o GetWorkflowsResultOutput) ToGetWorkflowsResultOutputWithContext(ctx context.Context) GetWorkflowsResultOutput {
+	return o
+}
+
+func (o GetWorkflowsResultOutput) ClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.ClassName }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) Instances() GetWorkflowsResultInstancesOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) GetWorkflowsResultInstances { return v.Instances }).(GetWorkflowsResultInstancesOutput)
+}
+
+func (o GetWorkflowsResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o GetWorkflowsResultOutput) TriggeredOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkflowsResult) string { return v.TriggeredOn }).(pulumi.StringOutput)
+}
+
+type GetWorkflowsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowsResult)(nil)).Elem()
+}
+
+func (o GetWorkflowsResultArrayOutput) ToGetWorkflowsResultArrayOutput() GetWorkflowsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkflowsResultArrayOutput) ToGetWorkflowsResultArrayOutputWithContext(ctx context.Context) GetWorkflowsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkflowsResultArrayOutput) Index(i pulumi.IntInput) GetWorkflowsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkflowsResult {
+		return vs[0].([]GetWorkflowsResult)[vs[1].(int)]
+	}).(GetWorkflowsResultOutput)
+}
+
+type GetWorkflowsResultInstances struct {
+	Complete        float64 `pulumi:"complete"`
+	Errored         float64 `pulumi:"errored"`
+	Paused          float64 `pulumi:"paused"`
+	Queued          float64 `pulumi:"queued"`
+	Running         float64 `pulumi:"running"`
+	Terminated      float64 `pulumi:"terminated"`
+	Waiting         float64 `pulumi:"waiting"`
+	WaitingForPause float64 `pulumi:"waitingForPause"`
+}
+
+// GetWorkflowsResultInstancesInput is an input type that accepts GetWorkflowsResultInstancesArgs and GetWorkflowsResultInstancesOutput values.
+// You can construct a concrete instance of `GetWorkflowsResultInstancesInput` via:
+//
+//	GetWorkflowsResultInstancesArgs{...}
+type GetWorkflowsResultInstancesInput interface {
+	pulumi.Input
+
+	ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput
+	ToGetWorkflowsResultInstancesOutputWithContext(context.Context) GetWorkflowsResultInstancesOutput
+}
+
+type GetWorkflowsResultInstancesArgs struct {
+	Complete        pulumi.Float64Input `pulumi:"complete"`
+	Errored         pulumi.Float64Input `pulumi:"errored"`
+	Paused          pulumi.Float64Input `pulumi:"paused"`
+	Queued          pulumi.Float64Input `pulumi:"queued"`
+	Running         pulumi.Float64Input `pulumi:"running"`
+	Terminated      pulumi.Float64Input `pulumi:"terminated"`
+	Waiting         pulumi.Float64Input `pulumi:"waiting"`
+	WaitingForPause pulumi.Float64Input `pulumi:"waitingForPause"`
+}
+
+func (GetWorkflowsResultInstancesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowsResultInstances)(nil)).Elem()
+}
+
+func (i GetWorkflowsResultInstancesArgs) ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput {
+	return i.ToGetWorkflowsResultInstancesOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowsResultInstancesArgs) ToGetWorkflowsResultInstancesOutputWithContext(ctx context.Context) GetWorkflowsResultInstancesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowsResultInstancesOutput)
+}
+
+type GetWorkflowsResultInstancesOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowsResultInstancesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowsResultInstances)(nil)).Elem()
+}
+
+func (o GetWorkflowsResultInstancesOutput) ToGetWorkflowsResultInstancesOutput() GetWorkflowsResultInstancesOutput {
+	return o
+}
+
+func (o GetWorkflowsResultInstancesOutput) ToGetWorkflowsResultInstancesOutputWithContext(ctx context.Context) GetWorkflowsResultInstancesOutput {
+	return o
+}
+
+func (o GetWorkflowsResultInstancesOutput) Complete() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Complete }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Errored() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Errored }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Paused() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Paused }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Queued() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Queued }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Running() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Running }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Terminated() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Terminated }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) Waiting() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.Waiting }).(pulumi.Float64Output)
+}
+
+func (o GetWorkflowsResultInstancesOutput) WaitingForPause() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWorkflowsResultInstances) float64 { return v.WaitingForPause }).(pulumi.Float64Output)
 }
 
 type GetZeroTrustAccessApplicationCorsHeaders struct {
@@ -25090,7 +25894,6 @@ type GetZeroTrustAccessApplicationSaasApp struct {
 	ClientSecret string `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl string                                                `pulumi:"consumerServiceUrl"`
-	CreatedAt          string                                                `pulumi:"createdAt"`
 	CustomAttributes   []GetZeroTrustAccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
 	CustomClaims       []GetZeroTrustAccessApplicationSaasAppCustomClaim     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -25120,7 +25923,6 @@ type GetZeroTrustAccessApplicationSaasApp struct {
 	SpEntityId string `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint string `pulumi:"ssoEndpoint"`
-	UpdatedAt   string `pulumi:"updatedAt"`
 }
 
 // GetZeroTrustAccessApplicationSaasAppInput is an input type that accepts GetZeroTrustAccessApplicationSaasAppArgs and GetZeroTrustAccessApplicationSaasAppOutput values.
@@ -25150,7 +25952,6 @@ type GetZeroTrustAccessApplicationSaasAppArgs struct {
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl pulumi.StringInput                                            `pulumi:"consumerServiceUrl"`
-	CreatedAt          pulumi.StringInput                                            `pulumi:"createdAt"`
 	CustomAttributes   GetZeroTrustAccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	CustomClaims       GetZeroTrustAccessApplicationSaasAppCustomClaimArrayInput     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -25180,7 +25981,6 @@ type GetZeroTrustAccessApplicationSaasAppArgs struct {
 	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint pulumi.StringInput `pulumi:"ssoEndpoint"`
-	UpdatedAt   pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetZeroTrustAccessApplicationSaasAppArgs) ElementType() reflect.Type {
@@ -25243,10 +26043,6 @@ func (o GetZeroTrustAccessApplicationSaasAppOutput) ClientSecret() pulumi.String
 // The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 func (o GetZeroTrustAccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationSaasApp) string { return v.ConsumerServiceUrl }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessApplicationSaasAppOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationSaasApp) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetZeroTrustAccessApplicationSaasAppOutput) CustomAttributes() GetZeroTrustAccessApplicationSaasAppCustomAttributeArrayOutput {
@@ -25332,10 +26128,6 @@ func (o GetZeroTrustAccessApplicationSaasAppOutput) SpEntityId() pulumi.StringOu
 // The endpoint where your SaaS application will send login requests.
 func (o GetZeroTrustAccessApplicationSaasAppOutput) SsoEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationSaasApp) string { return v.SsoEndpoint }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessApplicationSaasAppOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationSaasApp) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustAccessApplicationSaasAppCustomAttribute struct {
@@ -26527,7 +27319,6 @@ type GetZeroTrustAccessApplicationsResult struct {
 	// The background color of the App Launcher page.
 	BgColor     string                                          `pulumi:"bgColor"`
 	CorsHeaders GetZeroTrustAccessApplicationsResultCorsHeaders `pulumi:"corsHeaders"`
-	CreatedAt   string                                          `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage string `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -26591,8 +27382,7 @@ type GetZeroTrustAccessApplicationsResult struct {
 	TargetCriterias []GetZeroTrustAccessApplicationsResultTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	Type string `pulumi:"type"`
 }
 
 // GetZeroTrustAccessApplicationsResultInput is an input type that accepts GetZeroTrustAccessApplicationsResultArgs and GetZeroTrustAccessApplicationsResultOutput values.
@@ -26624,7 +27414,6 @@ type GetZeroTrustAccessApplicationsResultArgs struct {
 	// The background color of the App Launcher page.
 	BgColor     pulumi.StringInput                                   `pulumi:"bgColor"`
 	CorsHeaders GetZeroTrustAccessApplicationsResultCorsHeadersInput `pulumi:"corsHeaders"`
-	CreatedAt   pulumi.StringInput                                   `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringInput `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -26688,8 +27477,7 @@ type GetZeroTrustAccessApplicationsResultArgs struct {
 	TargetCriterias GetZeroTrustAccessApplicationsResultTargetCriteriaArrayInput `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      pulumi.StringInput `pulumi:"type"`
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetZeroTrustAccessApplicationsResultArgs) ElementType() reflect.Type {
@@ -26787,10 +27575,6 @@ func (o GetZeroTrustAccessApplicationsResultOutput) CorsHeaders() GetZeroTrustAc
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) GetZeroTrustAccessApplicationsResultCorsHeaders {
 		return v.CorsHeaders
 	}).(GetZeroTrustAccessApplicationsResultCorsHeadersOutput)
-}
-
-func (o GetZeroTrustAccessApplicationsResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The custom error message shown to a user when they are denied access to the application.
@@ -26956,10 +27740,6 @@ func (o GetZeroTrustAccessApplicationsResultOutput) TargetCriterias() GetZeroTru
 // Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
 func (o GetZeroTrustAccessApplicationsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessApplicationsResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustAccessApplicationsResultArrayOutput struct{ *pulumi.OutputState }
@@ -32793,7 +33573,6 @@ type GetZeroTrustAccessApplicationsResultSaasApp struct {
 	ClientSecret string `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl string                                                       `pulumi:"consumerServiceUrl"`
-	CreatedAt          string                                                       `pulumi:"createdAt"`
 	CustomAttributes   []GetZeroTrustAccessApplicationsResultSaasAppCustomAttribute `pulumi:"customAttributes"`
 	CustomClaims       []GetZeroTrustAccessApplicationsResultSaasAppCustomClaim     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -32823,7 +33602,6 @@ type GetZeroTrustAccessApplicationsResultSaasApp struct {
 	SpEntityId string `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint string `pulumi:"ssoEndpoint"`
-	UpdatedAt   string `pulumi:"updatedAt"`
 }
 
 // GetZeroTrustAccessApplicationsResultSaasAppInput is an input type that accepts GetZeroTrustAccessApplicationsResultSaasAppArgs and GetZeroTrustAccessApplicationsResultSaasAppOutput values.
@@ -32853,7 +33631,6 @@ type GetZeroTrustAccessApplicationsResultSaasAppArgs struct {
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl pulumi.StringInput                                                   `pulumi:"consumerServiceUrl"`
-	CreatedAt          pulumi.StringInput                                                   `pulumi:"createdAt"`
 	CustomAttributes   GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	CustomClaims       GetZeroTrustAccessApplicationsResultSaasAppCustomClaimArrayInput     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -32883,7 +33660,6 @@ type GetZeroTrustAccessApplicationsResultSaasAppArgs struct {
 	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint pulumi.StringInput `pulumi:"ssoEndpoint"`
-	UpdatedAt   pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetZeroTrustAccessApplicationsResultSaasAppArgs) ElementType() reflect.Type {
@@ -32946,10 +33722,6 @@ func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) ClientSecret() pulumi
 // The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) ConsumerServiceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultSaasApp) string { return v.ConsumerServiceUrl }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultSaasApp) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) CustomAttributes() GetZeroTrustAccessApplicationsResultSaasAppCustomAttributeArrayOutput {
@@ -33035,10 +33807,6 @@ func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) SpEntityId() pulumi.S
 // The endpoint where your SaaS application will send login requests.
 func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) SsoEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultSaasApp) string { return v.SsoEndpoint }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessApplicationsResultSaasAppOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResultSaasApp) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustAccessApplicationsResultSaasAppCustomAttribute struct {
@@ -34221,17 +34989,13 @@ func (o GetZeroTrustAccessApplicationsResultTargetCriteriaArrayOutput) Index(i p
 }
 
 type GetZeroTrustAccessCustomPagesResult struct {
-	// Number of apps the custom page is assigned to.
-	AppCount  int    `pulumi:"appCount"`
-	CreatedAt string `pulumi:"createdAt"`
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
 	// UUID.
-	Uid       string `pulumi:"uid"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	Uid string `pulumi:"uid"`
 }
 
 // GetZeroTrustAccessCustomPagesResultInput is an input type that accepts GetZeroTrustAccessCustomPagesResultArgs and GetZeroTrustAccessCustomPagesResultOutput values.
@@ -34246,17 +35010,13 @@ type GetZeroTrustAccessCustomPagesResultInput interface {
 }
 
 type GetZeroTrustAccessCustomPagesResultArgs struct {
-	// Number of apps the custom page is assigned to.
-	AppCount  pulumi.IntInput    `pulumi:"appCount"`
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Custom page name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringInput `pulumi:"type"`
 	// UUID.
-	Uid       pulumi.StringInput `pulumi:"uid"`
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	Uid pulumi.StringInput `pulumi:"uid"`
 }
 
 func (GetZeroTrustAccessCustomPagesResultArgs) ElementType() reflect.Type {
@@ -34310,15 +35070,6 @@ func (o GetZeroTrustAccessCustomPagesResultOutput) ToGetZeroTrustAccessCustomPag
 	return o
 }
 
-// Number of apps the custom page is assigned to.
-func (o GetZeroTrustAccessCustomPagesResultOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) int { return v.AppCount }).(pulumi.IntOutput)
-}
-
-func (o GetZeroTrustAccessCustomPagesResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Custom page name.
 func (o GetZeroTrustAccessCustomPagesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.Name }).(pulumi.StringOutput)
@@ -34333,10 +35084,6 @@ func (o GetZeroTrustAccessCustomPagesResultOutput) Type() pulumi.StringOutput {
 // UUID.
 func (o GetZeroTrustAccessCustomPagesResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.Uid }).(pulumi.StringOutput)
-}
-
-func (o GetZeroTrustAccessCustomPagesResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustAccessCustomPagesResultArrayOutput struct{ *pulumi.OutputState }
@@ -40844,7 +41591,6 @@ func (o GetZeroTrustAccessGroupRequireServiceTokenOutput) TokenId() pulumi.Strin
 }
 
 type GetZeroTrustAccessGroupsResult struct {
-	CreatedAt string `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes []GetZeroTrustAccessGroupsResultExclude `pulumi:"excludes"`
 	// UUID.
@@ -40856,8 +41602,7 @@ type GetZeroTrustAccessGroupsResult struct {
 	// The name of the Access group.
 	Name string `pulumi:"name"`
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  []GetZeroTrustAccessGroupsResultRequire `pulumi:"requires"`
-	UpdatedAt string                                  `pulumi:"updatedAt"`
+	Requires []GetZeroTrustAccessGroupsResultRequire `pulumi:"requires"`
 }
 
 // GetZeroTrustAccessGroupsResultInput is an input type that accepts GetZeroTrustAccessGroupsResultArgs and GetZeroTrustAccessGroupsResultOutput values.
@@ -40872,7 +41617,6 @@ type GetZeroTrustAccessGroupsResultInput interface {
 }
 
 type GetZeroTrustAccessGroupsResultArgs struct {
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes GetZeroTrustAccessGroupsResultExcludeArrayInput `pulumi:"excludes"`
 	// UUID.
@@ -40884,8 +41628,7 @@ type GetZeroTrustAccessGroupsResultArgs struct {
 	// The name of the Access group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  GetZeroTrustAccessGroupsResultRequireArrayInput `pulumi:"requires"`
-	UpdatedAt pulumi.StringInput                              `pulumi:"updatedAt"`
+	Requires GetZeroTrustAccessGroupsResultRequireArrayInput `pulumi:"requires"`
 }
 
 func (GetZeroTrustAccessGroupsResultArgs) ElementType() reflect.Type {
@@ -40939,10 +41682,6 @@ func (o GetZeroTrustAccessGroupsResultOutput) ToGetZeroTrustAccessGroupsResultOu
 	return o
 }
 
-func (o GetZeroTrustAccessGroupsResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 func (o GetZeroTrustAccessGroupsResultOutput) Excludes() GetZeroTrustAccessGroupsResultExcludeArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) []GetZeroTrustAccessGroupsResultExclude { return v.Excludes }).(GetZeroTrustAccessGroupsResultExcludeArrayOutput)
@@ -40971,10 +41710,6 @@ func (o GetZeroTrustAccessGroupsResultOutput) Name() pulumi.StringOutput {
 // Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 func (o GetZeroTrustAccessGroupsResultOutput) Requires() GetZeroTrustAccessGroupsResultRequireArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) []GetZeroTrustAccessGroupsResultRequire { return v.Requires }).(GetZeroTrustAccessGroupsResultRequireArrayOutput)
-}
-
-func (o GetZeroTrustAccessGroupsResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type GetZeroTrustAccessGroupsResultArrayOutput struct{ *pulumi.OutputState }
@@ -42141,346 +42876,10 @@ func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) IdentityProviderId() 
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessGroupsResultExcludeIp struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip string `pulumi:"ip"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeIpInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeIpArgs and GetZeroTrustAccessGroupsResultExcludeIpOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeIpInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeIpArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeIpInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeIpOutput() GetZeroTrustAccessGroupsResultExcludeIpOutput
-	ToGetZeroTrustAccessGroupsResultExcludeIpOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeIpOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeIpArgs struct {
-	// An IPv4 or IPv6 CIDR block.
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIp)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeIpArgs) ToGetZeroTrustAccessGroupsResultExcludeIpOutput() GetZeroTrustAccessGroupsResultExcludeIpOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeIpOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeIpArgs) ToGetZeroTrustAccessGroupsResultExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeIpOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeIpOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIp)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeIpOutput) ToGetZeroTrustAccessGroupsResultExcludeIpOutput() GetZeroTrustAccessGroupsResultExcludeIpOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeIpOutput) ToGetZeroTrustAccessGroupsResultExcludeIpOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeIpOutput {
-	return o
-}
-
-// An IPv4 or IPv6 CIDR block.
-func (o GetZeroTrustAccessGroupsResultExcludeIpOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeIp) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeIpList struct {
-	// The ID of a previously created IP list.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeIpListInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeIpListArgs and GetZeroTrustAccessGroupsResultExcludeIpListOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeIpListInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeIpListArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeIpListInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeIpListOutput() GetZeroTrustAccessGroupsResultExcludeIpListOutput
-	ToGetZeroTrustAccessGroupsResultExcludeIpListOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeIpListOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeIpListArgs struct {
-	// The ID of a previously created IP list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeIpListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpList)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeIpListArgs) ToGetZeroTrustAccessGroupsResultExcludeIpListOutput() GetZeroTrustAccessGroupsResultExcludeIpListOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeIpListOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeIpListArgs) ToGetZeroTrustAccessGroupsResultExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeIpListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeIpListOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeIpListOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeIpListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpList)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeIpListOutput) ToGetZeroTrustAccessGroupsResultExcludeIpListOutput() GetZeroTrustAccessGroupsResultExcludeIpListOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeIpListOutput) ToGetZeroTrustAccessGroupsResultExcludeIpListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeIpListOutput {
-	return o
-}
-
-// The ID of a previously created IP list.
-func (o GetZeroTrustAccessGroupsResultExcludeIpListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeIpList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLinkedAppToken struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid string `pulumi:"appUid"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs and GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput() GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput
-	ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs struct {
-	// The ID of an Access OIDC SaaS application
-	AppUid pulumi.StringInput `pulumi:"appUid"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLinkedAppToken)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput() GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs) ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLinkedAppToken)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput() GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput) ToGetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput {
-	return o
-}
-
-// The ID of an Access OIDC SaaS application
-func (o GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput) AppUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeLinkedAppToken) string { return v.AppUid }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLoginMethod struct {
-	// The ID of an identity provider.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeLoginMethodInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs and GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeLoginMethodInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeLoginMethodInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutput() GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput
-	ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs struct {
-	// The ID of an identity provider.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLoginMethod)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs) ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutput() GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs) ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLoginMethod)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput) ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutput() GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput) ToGetZeroTrustAccessGroupsResultExcludeLoginMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput {
-	return o
-}
-
-// The ID of an identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeLoginMethod) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOidc struct {
-	// The name of the OIDC claim.
-	ClaimName string `pulumi:"claimName"`
-	// The OIDC claim value to look for.
-	ClaimValue string `pulumi:"claimValue"`
-	// The ID of your OIDC identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeOidcInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeOidcArgs and GetZeroTrustAccessGroupsResultExcludeOidcOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeOidcInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeOidcArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeOidcInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeOidcOutput() GetZeroTrustAccessGroupsResultExcludeOidcOutput
-	ToGetZeroTrustAccessGroupsResultExcludeOidcOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeOidcOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOidcArgs struct {
-	// The name of the OIDC claim.
-	ClaimName pulumi.StringInput `pulumi:"claimName"`
-	// The OIDC claim value to look for.
-	ClaimValue pulumi.StringInput `pulumi:"claimValue"`
-	// The ID of your OIDC identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeOidcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOidc)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeOidcArgs) ToGetZeroTrustAccessGroupsResultExcludeOidcOutput() GetZeroTrustAccessGroupsResultExcludeOidcOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeOidcOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeOidcArgs) ToGetZeroTrustAccessGroupsResultExcludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeOidcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeOidcOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOidcOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeOidcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOidc)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeOidcOutput) ToGetZeroTrustAccessGroupsResultExcludeOidcOutput() GetZeroTrustAccessGroupsResultExcludeOidcOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeOidcOutput) ToGetZeroTrustAccessGroupsResultExcludeOidcOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeOidcOutput {
-	return o
-}
-
-// The name of the OIDC claim.
-func (o GetZeroTrustAccessGroupsResultExcludeOidcOutput) ClaimName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOidc) string { return v.ClaimName }).(pulumi.StringOutput)
-}
-
-// The OIDC claim value to look for.
-func (o GetZeroTrustAccessGroupsResultExcludeOidcOutput) ClaimValue() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOidc) string { return v.ClaimValue }).(pulumi.StringOutput)
-}
-
-// The ID of your OIDC identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeOidcOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOidc) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOkta struct {
-	// The ID of your Okta identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-	// The name of the Okta group.
-	Name string `pulumi:"name"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeOktaInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeOktaArgs and GetZeroTrustAccessGroupsResultExcludeOktaOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeOktaInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeOktaArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeOktaInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeOktaOutput() GetZeroTrustAccessGroupsResultExcludeOktaOutput
-	ToGetZeroTrustAccessGroupsResultExcludeOktaOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeOktaOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOktaArgs struct {
-	// The ID of your Okta identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-	// The name of the Okta group.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeOktaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOkta)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeOktaArgs) ToGetZeroTrustAccessGroupsResultExcludeOktaOutput() GetZeroTrustAccessGroupsResultExcludeOktaOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeOktaOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeOktaArgs) ToGetZeroTrustAccessGroupsResultExcludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeOktaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeOktaOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeOktaOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeOktaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOkta)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeOktaOutput) ToGetZeroTrustAccessGroupsResultExcludeOktaOutput() GetZeroTrustAccessGroupsResultExcludeOktaOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeOktaOutput) ToGetZeroTrustAccessGroupsResultExcludeOktaOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeOktaOutput {
-	return o
-}
-
-// The ID of your Okta identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeOktaOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOkta) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-// The name of the Okta group.
-func (o GetZeroTrustAccessGroupsResultExcludeOktaOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeOkta) string { return v.Name }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleInput)(nil)).Elem(), GetR2BucketLifecycleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleArrayInput)(nil)).Elem(), GetR2BucketLifecycleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleConditionsInput)(nil)).Elem(), GetR2BucketLifecycleRuleConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleDeleteObjectsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleDeleteObjectsTransitionArgs{})
@@ -42740,6 +43139,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultPlacementInput)(nil)).Elem(), GetWorkersScriptsResultPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerArrayInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowFilterInput)(nil)).Elem(), GetWorkflowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowFilterPtrInput)(nil)).Elem(), GetWorkflowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowInstancesInput)(nil)).Elem(), GetWorkflowInstancesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultInput)(nil)).Elem(), GetWorkflowsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultArrayInput)(nil)).Elem(), GetWorkflowsResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowsResultInstancesInput)(nil)).Elem(), GetWorkflowsResultInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationCorsHeadersInput)(nil)).Elem(), GetZeroTrustAccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArray{})
@@ -43088,12 +43493,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroupInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGsuiteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpListInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeIpListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLoginMethodInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeLoginMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOidcInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeOidcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeOktaInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeOktaArgs{})
+	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleOutput{})
+	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleConditionsOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleDeleteObjectsTransitionOutput{})
@@ -43353,6 +43755,12 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersScriptsResultPlacementOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkflowFilterOutput{})
+	pulumi.RegisterOutputType(GetWorkflowFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetWorkflowInstancesOutput{})
+	pulumi.RegisterOutputType(GetWorkflowsResultOutput{})
+	pulumi.RegisterOutputType(GetWorkflowsResultArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkflowsResultInstancesOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationArrayOutput{})
@@ -43701,10 +44109,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGroupOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGsuiteOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeIpOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeIpListOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeLoginMethodOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeOidcOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeOktaOutput{})
 }

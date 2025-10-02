@@ -142,7 +142,6 @@ namespace Pulumi.Cloudflare
         /// When set to `true`, users skip the identity provider selection step during login.
         /// </summary>
         public readonly bool AutoRedirectToIdentity;
-        public readonly string CreatedAt;
         public readonly Outputs.GetZeroTrustOrganizationCustomPagesResult CustomPages;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -162,7 +161,6 @@ namespace Pulumi.Cloudflare
         /// A description of the reason why the UI read only field is being toggled.
         /// </summary>
         public readonly string UiReadOnlyToggleReason;
-        public readonly string UpdatedAt;
         /// <summary>
         /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
         /// </summary>
@@ -186,8 +184,6 @@ namespace Pulumi.Cloudflare
 
             bool autoRedirectToIdentity,
 
-            string createdAt,
-
             Outputs.GetZeroTrustOrganizationCustomPagesResult customPages,
 
             string id,
@@ -202,8 +198,6 @@ namespace Pulumi.Cloudflare
 
             string uiReadOnlyToggleReason,
 
-            string updatedAt,
-
             string userSeatExpirationInactiveTime,
 
             string warpAuthSessionDuration,
@@ -214,7 +208,6 @@ namespace Pulumi.Cloudflare
             AllowAuthenticateViaWarp = allowAuthenticateViaWarp;
             AuthDomain = authDomain;
             AutoRedirectToIdentity = autoRedirectToIdentity;
-            CreatedAt = createdAt;
             CustomPages = customPages;
             Id = id;
             IsUiReadOnly = isUiReadOnly;
@@ -222,7 +215,6 @@ namespace Pulumi.Cloudflare
             Name = name;
             SessionDuration = sessionDuration;
             UiReadOnlyToggleReason = uiReadOnlyToggleReason;
-            UpdatedAt = updatedAt;
             UserSeatExpirationInactiveTime = userSeatExpirationInactiveTime;
             WarpAuthSessionDuration = warpAuthSessionDuration;
             ZoneId = zoneId;

@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsAntivirusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable anti-virus scanning on downloads.
+        /// Specify whether to enable anti-virus scanning on downloads.
         /// </summary>
         [Input("enabledDownloadPhase")]
         public Input<bool>? EnabledDownloadPhase { get; set; }
 
         /// <summary>
-        /// Enable anti-virus scanning on uploads.
+        /// Specify whether to enable anti-virus scanning on uploads.
         /// </summary>
         [Input("enabledUploadPhase")]
         public Input<bool>? EnabledUploadPhase { get; set; }
 
         /// <summary>
-        /// Block requests for files that cannot be scanned.
+        /// Specify whether to block requests for unscannable files.
         /// </summary>
         [Input("failClosed")]
         public Input<bool>? FailClosed { get; set; }
 
         /// <summary>
-        /// Configure a message to display on the user's device when an antivirus search is performed.
+        /// Configure the message the user's device shows during an antivirus scan.
         /// </summary>
         [Input("notificationSettings")]
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs>? NotificationSettings { get; set; }

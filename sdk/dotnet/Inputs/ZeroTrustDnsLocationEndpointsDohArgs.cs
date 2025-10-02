@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDnsLocationEndpointsDohArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the DOH endpoint is enabled for this location.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.ZeroTrustDnsLocationEndpointsDohNetworkArgs>? _networks;
 
         /// <summary>
-        /// A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
         /// </summary>
         public InputList<Inputs.ZeroTrustDnsLocationEndpointsDohNetworkArgs> Networks
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+        /// Specify whether the DOH endpoint requires user identity authentication.
         /// </summary>
         [Input("requireToken")]
         public Input<bool>? RequireToken { get; set; }

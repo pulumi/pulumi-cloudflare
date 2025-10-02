@@ -12381,7 +12381,6 @@ type AccessApplicationSaasApp struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl *string                                   `pulumi:"consumerServiceUrl"`
-	CreatedAt          *string                                   `pulumi:"createdAt"`
 	CustomAttributes   []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
 	CustomClaims       []AccessApplicationSaasAppCustomClaim     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -12411,7 +12410,6 @@ type AccessApplicationSaasApp struct {
 	SpEntityId *string `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint *string `pulumi:"ssoEndpoint"`
-	UpdatedAt   *string `pulumi:"updatedAt"`
 }
 
 // AccessApplicationSaasAppInput is an input type that accepts AccessApplicationSaasAppArgs and AccessApplicationSaasAppOutput values.
@@ -12441,7 +12439,6 @@ type AccessApplicationSaasAppArgs struct {
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl pulumi.StringPtrInput                             `pulumi:"consumerServiceUrl"`
-	CreatedAt          pulumi.StringPtrInput                             `pulumi:"createdAt"`
 	CustomAttributes   AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	CustomClaims       AccessApplicationSaasAppCustomClaimArrayInput     `pulumi:"customClaims"`
 	// The URL that the user will be redirected to after a successful login for IDP initiated logins.
@@ -12471,7 +12468,6 @@ type AccessApplicationSaasAppArgs struct {
 	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
 	// The endpoint where your SaaS application will send login requests.
 	SsoEndpoint pulumi.StringPtrInput `pulumi:"ssoEndpoint"`
-	UpdatedAt   pulumi.StringPtrInput `pulumi:"updatedAt"`
 }
 
 func (AccessApplicationSaasAppArgs) ElementType() reflect.Type {
@@ -12587,10 +12583,6 @@ func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringPtrOut
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ConsumerServiceUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o AccessApplicationSaasAppOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaasAppCustomAttributeArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute { return v.CustomAttributes }).(AccessApplicationSaasAppCustomAttributeArrayOutput)
 }
@@ -12670,10 +12662,6 @@ func (o AccessApplicationSaasAppOutput) SpEntityId() pulumi.StringPtrOutput {
 // The endpoint where your SaaS application will send login requests.
 func (o AccessApplicationSaasAppOutput) SsoEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.SsoEndpoint }).(pulumi.StringPtrOutput)
-}
-
-func (o AccessApplicationSaasAppOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
 type AccessApplicationSaasAppPtrOutput struct{ *pulumi.OutputState }
@@ -12768,15 +12756,6 @@ func (o AccessApplicationSaasAppPtrOutput) ConsumerServiceUrl() pulumi.StringPtr
 			return nil
 		}
 		return v.ConsumerServiceUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AccessApplicationSaasAppPtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12934,15 +12913,6 @@ func (o AccessApplicationSaasAppPtrOutput) SsoEndpoint() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.SsoEndpoint
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o AccessApplicationSaasAppPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UpdatedAt
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39442,7 +39412,7 @@ func (o AccountDnsSettingsZoneDefaultsInternalDnsPtrOutput) ReferenceZoneId() pu
 type AccountDnsSettingsZoneDefaultsNameservers struct {
 	// Nameserver type
 	// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 }
 
 // AccountDnsSettingsZoneDefaultsNameserversInput is an input type that accepts AccountDnsSettingsZoneDefaultsNameserversArgs and AccountDnsSettingsZoneDefaultsNameserversOutput values.
@@ -39459,7 +39429,7 @@ type AccountDnsSettingsZoneDefaultsNameserversInput interface {
 type AccountDnsSettingsZoneDefaultsNameserversArgs struct {
 	// Nameserver type
 	// Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
-	Type pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (AccountDnsSettingsZoneDefaultsNameserversArgs) ElementType() reflect.Type {
@@ -39541,8 +39511,8 @@ func (o AccountDnsSettingsZoneDefaultsNameserversOutput) ToAccountDnsSettingsZon
 
 // Nameserver type
 // Available values: "cloudflare.standard", "cloudflare.standard.random", "custom.account", "custom.tenant".
-func (o AccountDnsSettingsZoneDefaultsNameserversOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsNameservers) string { return v.Type }).(pulumi.StringOutput)
+func (o AccountDnsSettingsZoneDefaultsNameserversOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsNameservers) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type AccountDnsSettingsZoneDefaultsNameserversPtrOutput struct{ *pulumi.OutputState }
@@ -39576,25 +39546,25 @@ func (o AccountDnsSettingsZoneDefaultsNameserversPtrOutput) Type() pulumi.String
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
 type AccountDnsSettingsZoneDefaultsSoa struct {
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-	Expire float64 `pulumi:"expire"`
+	Expire *float64 `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
-	MinTtl float64 `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
-	Mname string `pulumi:"mname"`
+	MinTtl *float64 `pulumi:"minTtl"`
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+	Mname *string `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-	Refresh float64 `pulumi:"refresh"`
+	Refresh *float64 `pulumi:"refresh"`
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-	Retry float64 `pulumi:"retry"`
+	Retry *float64 `pulumi:"retry"`
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
-	Rname string `pulumi:"rname"`
+	Rname *string `pulumi:"rname"`
 	// The time to live (TTL) of the SOA record itself.
-	Ttl float64 `pulumi:"ttl"`
+	Ttl *float64 `pulumi:"ttl"`
 }
 
 // AccountDnsSettingsZoneDefaultsSoaInput is an input type that accepts AccountDnsSettingsZoneDefaultsSoaArgs and AccountDnsSettingsZoneDefaultsSoaOutput values.
@@ -39610,19 +39580,19 @@ type AccountDnsSettingsZoneDefaultsSoaInput interface {
 
 type AccountDnsSettingsZoneDefaultsSoaArgs struct {
 	// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-	Expire pulumi.Float64Input `pulumi:"expire"`
+	Expire pulumi.Float64PtrInput `pulumi:"expire"`
 	// The time to live (TTL) for negative caching of records within the zone.
-	MinTtl pulumi.Float64Input `pulumi:"minTtl"`
-	// The primary nameserver, which may be used for outbound zone transfers.
-	Mname pulumi.StringInput `pulumi:"mname"`
+	MinTtl pulumi.Float64PtrInput `pulumi:"minTtl"`
+	// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+	Mname pulumi.StringPtrInput `pulumi:"mname"`
 	// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-	Refresh pulumi.Float64Input `pulumi:"refresh"`
+	Refresh pulumi.Float64PtrInput `pulumi:"refresh"`
 	// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-	Retry pulumi.Float64Input `pulumi:"retry"`
+	Retry pulumi.Float64PtrInput `pulumi:"retry"`
 	// The email address of the zone administrator, with the first label representing the local part of the email address.
-	Rname pulumi.StringInput `pulumi:"rname"`
+	Rname pulumi.StringPtrInput `pulumi:"rname"`
 	// The time to live (TTL) of the SOA record itself.
-	Ttl pulumi.Float64Input `pulumi:"ttl"`
+	Ttl pulumi.Float64PtrInput `pulumi:"ttl"`
 }
 
 func (AccountDnsSettingsZoneDefaultsSoaArgs) ElementType() reflect.Type {
@@ -39703,38 +39673,38 @@ func (o AccountDnsSettingsZoneDefaultsSoaOutput) ToAccountDnsSettingsZoneDefault
 }
 
 // Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Expire() pulumi.Float64Output {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) float64 { return v.Expire }).(pulumi.Float64Output)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Expire() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *float64 { return v.Expire }).(pulumi.Float64PtrOutput)
 }
 
 // The time to live (TTL) for negative caching of records within the zone.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) MinTtl() pulumi.Float64Output {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) float64 { return v.MinTtl }).(pulumi.Float64Output)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) MinTtl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *float64 { return v.MinTtl }).(pulumi.Float64PtrOutput)
 }
 
-// The primary nameserver, which may be used for outbound zone transfers.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Mname() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) string { return v.Mname }).(pulumi.StringOutput)
+// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Mname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *string { return v.Mname }).(pulumi.StringPtrOutput)
 }
 
 // Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Refresh() pulumi.Float64Output {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) float64 { return v.Refresh }).(pulumi.Float64Output)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Refresh() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *float64 { return v.Refresh }).(pulumi.Float64PtrOutput)
 }
 
 // Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Retry() pulumi.Float64Output {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) float64 { return v.Retry }).(pulumi.Float64Output)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Retry() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *float64 { return v.Retry }).(pulumi.Float64PtrOutput)
 }
 
 // The email address of the zone administrator, with the first label representing the local part of the email address.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Rname() pulumi.StringOutput {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) string { return v.Rname }).(pulumi.StringOutput)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Rname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *string { return v.Rname }).(pulumi.StringPtrOutput)
 }
 
 // The time to live (TTL) of the SOA record itself.
-func (o AccountDnsSettingsZoneDefaultsSoaOutput) Ttl() pulumi.Float64Output {
-	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) float64 { return v.Ttl }).(pulumi.Float64Output)
+func (o AccountDnsSettingsZoneDefaultsSoaOutput) Ttl() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AccountDnsSettingsZoneDefaultsSoa) *float64 { return v.Ttl }).(pulumi.Float64PtrOutput)
 }
 
 type AccountDnsSettingsZoneDefaultsSoaPtrOutput struct{ *pulumi.OutputState }
@@ -39767,7 +39737,7 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Expire() pulumi.Float64PtrOu
 		if v == nil {
 			return nil
 		}
-		return &v.Expire
+		return v.Expire
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -39777,17 +39747,17 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) MinTtl() pulumi.Float64PtrOu
 		if v == nil {
 			return nil
 		}
-		return &v.MinTtl
+		return v.MinTtl
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The primary nameserver, which may be used for outbound zone transfers.
+// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
 func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Mname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountDnsSettingsZoneDefaultsSoa) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Mname
+		return v.Mname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39797,7 +39767,7 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Refresh() pulumi.Float64PtrO
 		if v == nil {
 			return nil
 		}
-		return &v.Refresh
+		return v.Refresh
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -39807,7 +39777,7 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Retry() pulumi.Float64PtrOut
 		if v == nil {
 			return nil
 		}
-		return &v.Retry
+		return v.Retry
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -39817,7 +39787,7 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Rname() pulumi.StringPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.Rname
+		return v.Rname
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -39827,7 +39797,7 @@ func (o AccountDnsSettingsZoneDefaultsSoaPtrOutput) Ttl() pulumi.Float64PtrOutpu
 		if v == nil {
 			return nil
 		}
-		return &v.Ttl
+		return v.Ttl
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -41601,9 +41571,6 @@ func (o AccountUnitPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 type AddressMapMembership struct {
-	// Controls whether the membership can be deleted via the API or not.
-	CanDelete *bool   `pulumi:"canDelete"`
-	CreatedAt *string `pulumi:"createdAt"`
 	// The identifier for the membership (eg. a zone or account tag).
 	Identifier *string `pulumi:"identifier"`
 	// The type of the membership.
@@ -41623,9 +41590,6 @@ type AddressMapMembershipInput interface {
 }
 
 type AddressMapMembershipArgs struct {
-	// Controls whether the membership can be deleted via the API or not.
-	CanDelete pulumi.BoolPtrInput   `pulumi:"canDelete"`
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
 	// The identifier for the membership (eg. a zone or account tag).
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
 	// The type of the membership.
@@ -41682,15 +41646,6 @@ func (o AddressMapMembershipOutput) ToAddressMapMembershipOutput() AddressMapMem
 
 func (o AddressMapMembershipOutput) ToAddressMapMembershipOutputWithContext(ctx context.Context) AddressMapMembershipOutput {
 	return o
-}
-
-// Controls whether the membership can be deleted via the API or not.
-func (o AddressMapMembershipOutput) CanDelete() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AddressMapMembership) *bool { return v.CanDelete }).(pulumi.BoolPtrOutput)
-}
-
-func (o AddressMapMembershipOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AddressMapMembership) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
 // The identifier for the membership (eg. a zone or account tag).

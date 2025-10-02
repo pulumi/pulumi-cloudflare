@@ -14,47 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example_zero_trust_dex_test", &cloudflare.ZeroTrustDexTestArgs{
-//				AccountId: pulumi.String("01a7362d577a6c3019a474fd6f485823"),
-//				Data: &cloudflare.ZeroTrustDexTestDataArgs{
-//					Host:   pulumi.String("https://dash.cloudflare.com"),
-//					Kind:   pulumi.String("http"),
-//					Method: pulumi.String("GET"),
-//				},
-//				Enabled:     pulumi.Bool(true),
-//				Interval:    pulumi.String("30m"),
-//				Name:        pulumi.String("HTTP dash health check"),
-//				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
-//				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
-//					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
-//						Id:      pulumi.String("id"),
-//						Default: pulumi.Bool(true),
-//						Name:    pulumi.String("name"),
-//					},
-//				},
-//				Targeted: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -76,7 +35,7 @@ type ZeroTrustDexTest struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// DEX rules targeted by this test
 	TargetPolicies ZeroTrustDexTestTargetPolicyArrayOutput `pulumi:"targetPolicies"`
-	Targeted       pulumi.BoolPtrOutput                    `pulumi:"targeted"`
+	Targeted       pulumi.BoolOutput                       `pulumi:"targeted"`
 	// The unique identifier for the test.
 	TestId pulumi.StringOutput `pulumi:"testId"`
 }
@@ -181,7 +140,6 @@ type zeroTrustDexTestArgs struct {
 	Name string `pulumi:"name"`
 	// DEX rules targeted by this test
 	TargetPolicies []ZeroTrustDexTestTargetPolicy `pulumi:"targetPolicies"`
-	Targeted       *bool                          `pulumi:"targeted"`
 }
 
 // The set of arguments for constructing a ZeroTrustDexTest resource.
@@ -199,7 +157,6 @@ type ZeroTrustDexTestArgs struct {
 	Name pulumi.StringInput
 	// DEX rules targeted by this test
 	TargetPolicies ZeroTrustDexTestTargetPolicyArrayInput
-	Targeted       pulumi.BoolPtrInput
 }
 
 func (ZeroTrustDexTestArgs) ElementType() reflect.Type {
@@ -323,8 +280,8 @@ func (o ZeroTrustDexTestOutput) TargetPolicies() ZeroTrustDexTestTargetPolicyArr
 	return o.ApplyT(func(v *ZeroTrustDexTest) ZeroTrustDexTestTargetPolicyArrayOutput { return v.TargetPolicies }).(ZeroTrustDexTestTargetPolicyArrayOutput)
 }
 
-func (o ZeroTrustDexTestOutput) Targeted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.BoolPtrOutput { return v.Targeted }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDexTestOutput) Targeted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDexTest) pulumi.BoolOutput { return v.Targeted }).(pulumi.BoolOutput)
 }
 
 // The unique identifier for the test.

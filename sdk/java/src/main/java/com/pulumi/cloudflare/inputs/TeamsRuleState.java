@@ -29,7 +29,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -37,7 +37,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> action;
 
     /**
-     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -53,14 +53,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Date of deletion, if any.
+     * Indicate the date of deletion, if any.
      * 
      */
     @Import(name="deletedAt")
     private @Nullable Output<String> deletedAt;
 
     /**
-     * @return Date of deletion, if any.
+     * @return Indicate the date of deletion, if any.
      * 
      */
     public Optional<Output<String>> deletedAt() {
@@ -68,14 +68,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the rule.
+     * Specify the rule description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the rule.
+     * @return Specify the rule description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -90,14 +90,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True if the rule is enabled.
+     * @return Specify whether the rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -105,16 +105,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     @Import(name="expiration")
     private @Nullable Output<TeamsRuleExpirationArgs> expiration;
 
     /**
-     * @return The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * @return Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     public Optional<Output<TeamsRuleExpirationArgs>> expiration() {
@@ -122,14 +120,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -144,33 +142,18 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the rule.
+     * Specify the rule name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the rule.
+     * @return Specify the rule name.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * The rule cannot be shared via the Orgs API.
-     * 
-     */
-    @Import(name="notSharable")
-    private @Nullable Output<Boolean> notSharable;
-
-    /**
-     * @return The rule cannot be shared via the Orgs API.
-     * 
-     */
-    public Optional<Output<Boolean>> notSharable() {
-        return Optional.ofNullable(this.notSharable);
     }
 
     @Import(name="precedence")
@@ -181,44 +164,36 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
-    /**
-     * Additional settings that modify the rule&#39;s action.
-     * 
-     */
     @Import(name="ruleSettings")
     private @Nullable Output<TeamsRuleRuleSettingsArgs> ruleSettings;
 
-    /**
-     * @return Additional settings that modify the rule&#39;s action.
-     * 
-     */
     public Optional<Output<TeamsRuleRuleSettingsArgs>> ruleSettings() {
         return Optional.ofNullable(this.ruleSettings);
     }
 
     /**
-     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<TeamsRuleScheduleArgs> schedule;
 
     /**
-     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public Optional<Output<TeamsRuleScheduleArgs>> schedule() {
@@ -226,14 +201,29 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * account tag of account that created the rule.
+     * Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    @Import(name="sharable")
+    private @Nullable Output<Boolean> sharable;
+
+    /**
+     * @return Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    public Optional<Output<Boolean>> sharable() {
+        return Optional.ofNullable(this.sharable);
+    }
+
+    /**
+     * Provide the account tag of the account that created the rule.
      * 
      */
     @Import(name="sourceAccount")
     private @Nullable Output<String> sourceAccount;
 
     /**
-     * @return account tag of account that created the rule.
+     * @return Provide the account tag of the account that created the rule.
      * 
      */
     public Optional<Output<String>> sourceAccount() {
@@ -255,14 +245,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * version number of the rule.
+     * Indicate the version number of the rule(read-only).
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return version number of the rule.
+     * @return Indicate the version number of the rule(read-only).
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -270,14 +260,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Warning for a misconfigured rule, if any.
+     * Indicate a warning for a misconfigured rule, if any.
      * 
      */
     @Import(name="warningStatus")
     private @Nullable Output<String> warningStatus;
 
     /**
-     * @return Warning for a misconfigured rule, if any.
+     * @return Indicate a warning for a misconfigured rule, if any.
      * 
      */
     public Optional<Output<String>> warningStatus() {
@@ -298,11 +288,11 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         this.filters = $.filters;
         this.identity = $.identity;
         this.name = $.name;
-        this.notSharable = $.notSharable;
         this.precedence = $.precedence;
         this.readOnly = $.readOnly;
         this.ruleSettings = $.ruleSettings;
         this.schedule = $.schedule;
+        this.sharable = $.sharable;
         this.sourceAccount = $.sourceAccount;
         this.traffic = $.traffic;
         this.updatedAt = $.updatedAt;
@@ -338,7 +328,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -350,7 +340,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * @param action Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
          * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
@@ -370,7 +360,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletedAt Date of deletion, if any.
+         * @param deletedAt Indicate the date of deletion, if any.
          * 
          * @return builder
          * 
@@ -381,7 +371,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletedAt Date of deletion, if any.
+         * @param deletedAt Indicate the date of deletion, if any.
          * 
          * @return builder
          * 
@@ -391,7 +381,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the rule.
+         * @param description Specify the rule description.
          * 
          * @return builder
          * 
@@ -402,7 +392,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the rule.
+         * @param description Specify the rule description.
          * 
          * @return builder
          * 
@@ -421,7 +411,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled True if the rule is enabled.
+         * @param enabled Specify whether the rule is enabled.
          * 
          * @return builder
          * 
@@ -432,7 +422,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled True if the rule is enabled.
+         * @param enabled Specify whether the rule is enabled.
          * 
          * @return builder
          * 
@@ -442,8 +432,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
-         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * @param expiration Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
          * 
          * @return builder
          * 
@@ -454,8 +443,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
-         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * @param expiration Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
          * 
          * @return builder
          * 
@@ -465,7 +453,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -476,7 +464,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -486,7 +474,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+         * @param filters Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -505,7 +493,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the rule.
+         * @param name Specify the rule name.
          * 
          * @return builder
          * 
@@ -516,34 +504,13 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the rule.
+         * @param name Specify the rule name.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param notSharable The rule cannot be shared via the Orgs API.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notSharable(@Nullable Output<Boolean> notSharable) {
-            $.notSharable = notSharable;
-            return this;
-        }
-
-        /**
-         * @param notSharable The rule cannot be shared via the Orgs API.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder notSharable(Boolean notSharable) {
-            return notSharable(Output.of(notSharable));
         }
 
         public Builder precedence(@Nullable Output<Integer> precedence) {
@@ -556,7 +523,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this rule is shared via the Orgs API and read only.
          * 
          * @return builder
          * 
@@ -567,7 +534,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly The rule was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this rule is shared via the Orgs API and read only.
          * 
          * @return builder
          * 
@@ -576,29 +543,17 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
             return readOnly(Output.of(readOnly));
         }
 
-        /**
-         * @param ruleSettings Additional settings that modify the rule&#39;s action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ruleSettings(@Nullable Output<TeamsRuleRuleSettingsArgs> ruleSettings) {
             $.ruleSettings = ruleSettings;
             return this;
         }
 
-        /**
-         * @param ruleSettings Additional settings that modify the rule&#39;s action.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ruleSettings(TeamsRuleRuleSettingsArgs ruleSettings) {
             return ruleSettings(Output.of(ruleSettings));
         }
 
         /**
-         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
          * 
          * @return builder
          * 
@@ -609,7 +564,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
          * 
          * @return builder
          * 
@@ -619,7 +574,28 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceAccount account tag of account that created the rule.
+         * @param sharable Indicate that this rule is sharable via the Orgs API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharable(@Nullable Output<Boolean> sharable) {
+            $.sharable = sharable;
+            return this;
+        }
+
+        /**
+         * @param sharable Indicate that this rule is sharable via the Orgs API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sharable(Boolean sharable) {
+            return sharable(Output.of(sharable));
+        }
+
+        /**
+         * @param sourceAccount Provide the account tag of the account that created the rule.
          * 
          * @return builder
          * 
@@ -630,7 +606,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceAccount account tag of account that created the rule.
+         * @param sourceAccount Provide the account tag of the account that created the rule.
          * 
          * @return builder
          * 
@@ -658,7 +634,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version version number of the rule.
+         * @param version Indicate the version number of the rule(read-only).
          * 
          * @return builder
          * 
@@ -669,7 +645,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version version number of the rule.
+         * @param version Indicate the version number of the rule(read-only).
          * 
          * @return builder
          * 
@@ -679,7 +655,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warningStatus Warning for a misconfigured rule, if any.
+         * @param warningStatus Indicate a warning for a misconfigured rule, if any.
          * 
          * @return builder
          * 
@@ -690,7 +666,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warningStatus Warning for a misconfigured rule, if any.
+         * @param warningStatus Indicate a warning for a misconfigured rule, if any.
          * 
          * @return builder
          * 

@@ -187,6 +187,20 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitor);
     }
     /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    @Export(name="monitorGroup", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> monitorGroup;
+
+    /**
+     * @return The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    public Output<Optional<String>> monitorGroup() {
+        return Codegen.optional(this.monitorGroup);
+    }
+    /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */

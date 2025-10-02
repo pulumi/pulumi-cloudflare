@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsExtendedEmailMatching
     {
         /// <summary>
-        /// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        /// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this setting was shared via the Orgs API and read only for the current account.
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>
-        /// Account tag of account that shared this setting.
+        /// Indicate the account tag of the account that shared this setting.
         /// </summary>
         public readonly string? SourceAccount;
         /// <summary>
-        /// Version number of the setting.
+        /// Indicate the version number of the setting.
         /// </summary>
         public readonly int? Version;
 

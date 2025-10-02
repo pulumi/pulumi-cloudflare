@@ -16,22 +16,30 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
 
     public static final TeamsRuleRuleSettingsCheckSessionArgs Empty = new TeamsRuleRuleSettingsCheckSessionArgs();
 
+    /**
+     * Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
+    /**
+     * @return Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
     /**
-     * Set to true to enable session enforcement.
+     * Enable session enforcement.
      * 
      */
     @Import(name="enforce")
     private @Nullable Output<Boolean> enforce;
 
     /**
-     * @return Set to true to enable session enforcement.
+     * @return Enable session enforcement.
      * 
      */
     public Optional<Output<Boolean>> enforce() {
@@ -63,17 +71,29 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
             $ = new TeamsRuleRuleSettingsCheckSessionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param duration Sets the required session freshness threshold. The API returns a normalized version of this value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration Sets the required session freshness threshold. The API returns a normalized version of this value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(String duration) {
             return duration(Output.of(duration));
         }
 
         /**
-         * @param enforce Set to true to enable session enforcement.
+         * @param enforce Enable session enforcement.
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param enforce Set to true to enable session enforcement.
+         * @param enforce Enable session enforcement.
          * 
          * @return builder
          * 

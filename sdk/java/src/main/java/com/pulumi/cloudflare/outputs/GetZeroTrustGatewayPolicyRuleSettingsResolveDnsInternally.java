@@ -11,20 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
     /**
-     * @return The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * @return Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
      * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
     private String fallback;
     /**
-     * @return The internal DNS view identifier that&#39;s passed to the internal DNS service.
+     * @return Specify the internal DNS view identifier to pass to the internal DNS service.
      * 
      */
     private String viewId;
 
     private GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally() {}
     /**
-     * @return The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * @return Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
      * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
@@ -32,7 +32,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
         return this.fallback;
     }
     /**
-     * @return The internal DNS view identifier that&#39;s passed to the internal DNS service.
+     * @return Specify the internal DNS view identifier to pass to the internal DNS service.
      * 
      */
     public String viewId() {

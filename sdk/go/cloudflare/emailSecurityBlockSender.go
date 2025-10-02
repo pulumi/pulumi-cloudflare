@@ -28,10 +28,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewEmailSecurityBlockSender(ctx, "example_email_security_block_sender", &cloudflare.EmailSecurityBlockSenderArgs{
 //				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				IsRegex:     pulumi.Bool(true),
-//				Pattern:     pulumi.String("x"),
+//				IsRegex:     pulumi.Bool(false),
+//				Pattern:     pulumi.String("test@example.com"),
 //				PatternType: pulumi.String("EMAIL"),
-//				Comments:    pulumi.String("comments"),
+//				Comments:    pulumi.String("block sender with email test@example.com"),
 //			})
 //			if err != nil {
 //				return err

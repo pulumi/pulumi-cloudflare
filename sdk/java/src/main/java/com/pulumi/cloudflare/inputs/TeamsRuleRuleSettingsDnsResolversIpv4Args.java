@@ -19,14 +19,14 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
     public static final TeamsRuleRuleSettingsDnsResolversIpv4Args Empty = new TeamsRuleRuleSettingsDnsResolversIpv4Args();
 
     /**
-     * IPv4 address of upstream resolver.
+     * Specify the IPv4 address of the upstream resolver.
      * 
      */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
     /**
-     * @return IPv4 address of upstream resolver.
+     * @return Specify the IPv4 address of the upstream resolver.
      * 
      */
     public Output<String> ip() {
@@ -34,14 +34,14 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
     }
 
     /**
-     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * @return Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -49,14 +49,14 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
     }
 
     /**
-     * Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+     * Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
      * 
      */
     @Import(name="routeThroughPrivateNetwork")
     private @Nullable Output<Boolean> routeThroughPrivateNetwork;
 
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+     * @return Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
      * 
      */
     public Optional<Output<Boolean>> routeThroughPrivateNetwork() {
@@ -64,14 +64,14 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
     }
 
     /**
-     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     @Import(name="vnetId")
     private @Nullable Output<String> vnetId;
 
     /**
-     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     public Optional<Output<String>> vnetId() {
@@ -106,7 +106,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param ip IPv4 address of upstream resolver.
+         * @param ip Specify the IPv4 address of the upstream resolver.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param ip IPv4 address of upstream resolver.
+         * @param ip Specify the IPv4 address of the upstream resolver.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param port A port number to use for upstream resolver. Defaults to 53 if unspecified.
+         * @param port Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param port A port number to use for upstream resolver. Defaults to 53 if unspecified.
+         * @param port Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+         * @param routeThroughPrivateNetwork Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+         * @param routeThroughPrivateNetwork Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param vnetId Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+         * @param vnetId Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4Args extends com.pulumi.
         }
 
         /**
-         * @param vnetId Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+         * @param vnetId Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
          * 
          * @return builder
          * 

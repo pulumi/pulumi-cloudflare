@@ -77,7 +77,7 @@ class GetZeroTrustListResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the list.
+        Provide the list description.
         """
         return pulumi.get(self, "description")
 
@@ -90,7 +90,7 @@ class GetZeroTrustListResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        API Resource UUID tag.
+        Identify the API resource with a UUID.
         """
         return pulumi.get(self, "id")
 
@@ -98,7 +98,7 @@ class GetZeroTrustListResult:
     @pulumi.getter
     def items(self) -> Sequence['outputs.GetZeroTrustListItemResult']:
         """
-        The items in the list.
+        Provide the list items.
         """
         return pulumi.get(self, "items")
 
@@ -106,7 +106,7 @@ class GetZeroTrustListResult:
     @pulumi.getter(name="listCount")
     def list_count(self) -> _builtins.float:
         """
-        The number of items in the list.
+        Indicate the number of items in the list.
         """
         return pulumi.get(self, "list_count")
 
@@ -114,7 +114,7 @@ class GetZeroTrustListResult:
     @pulumi.getter(name="listId")
     def list_id(self) -> Optional[_builtins.str]:
         """
-        API Resource UUID tag.
+        Identify the API resource with a UUID.
         """
         return pulumi.get(self, "list_id")
 
@@ -122,7 +122,7 @@ class GetZeroTrustListResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the list.
+        Specify the list name.
         """
         return pulumi.get(self, "name")
 
@@ -130,7 +130,7 @@ class GetZeroTrustListResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of list.
+        Specify the list type.
         Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         return pulumi.get(self, "type")
@@ -176,7 +176,7 @@ def get_zero_trust_list(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str list_id: API Resource UUID tag.
+    :param _builtins.str list_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -213,7 +213,7 @@ def get_zero_trust_list_output(account_id: Optional[pulumi.Input[_builtins.str]]
     ```
 
 
-    :param _builtins.str list_id: API Resource UUID tag.
+    :param _builtins.str list_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -13,37 +13,16 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustGatewayPolicySchedule
     {
-        /// <summary>
-        /// The time intervals when the rule will be active on Fridays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Fridays.
-        /// </summary>
         public readonly string? Fri;
-        /// <summary>
-        /// The time intervals when the rule will be active on Mondays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Mondays.
-        /// </summary>
         public readonly string? Mon;
-        /// <summary>
-        /// The time intervals when the rule will be active on Saturdays, in increasing order from 00:00-24:00.  If this parameter is omitted, the rule will be deactivated on Saturdays.
-        /// </summary>
         public readonly string? Sat;
-        /// <summary>
-        /// The time intervals when the rule will be active on Sundays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Sundays.
-        /// </summary>
         public readonly string? Sun;
-        /// <summary>
-        /// The time intervals when the rule will be active on Thursdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Thursdays.
-        /// </summary>
         public readonly string? Thu;
         /// <summary>
-        /// The time zone the rule will be evaluated against. If a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway will always use the current time at that time zone. If this parameter is omitted, then Gateway will use the time zone inferred from the user's source IP to evaluate the rule. If Gateway cannot determine the time zone from the IP, we will fall back to the time zone of the user's connected data center.
+        /// Specify the time zone for rule evaluation. When a [valid time zone city name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) is provided, Gateway always uses the current time for that time zone. When this parameter is omitted, Gateway uses the time zone determined from the user's IP address. Colo time zone is used when the user's IP address does not resolve to a location.
         /// </summary>
         public readonly string? TimeZone;
-        /// <summary>
-        /// The time intervals when the rule will be active on Tuesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Tuesdays.
-        /// </summary>
         public readonly string? Tue;
-        /// <summary>
-        /// The time intervals when the rule will be active on Wednesdays, in increasing order from 00:00-24:00. If this parameter is omitted, the rule will be deactivated on Wednesdays.
-        /// </summary>
         public readonly string? Wed;
 
         [OutputConstructor]

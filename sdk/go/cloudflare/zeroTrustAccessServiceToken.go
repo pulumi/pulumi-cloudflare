@@ -27,9 +27,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustAccessServiceToken(ctx, "example_zero_trust_access_service_token", &cloudflare.ZeroTrustAccessServiceTokenArgs{
-//				Name:     pulumi.String("CI/CD token"),
-//				ZoneId:   pulumi.String("zone_id"),
-//				Duration: pulumi.String("60m"),
+//				Name:                          pulumi.String("CI/CD token"),
+//				ZoneId:                        pulumi.String("zone_id"),
+//				ClientSecretVersion:           pulumi.Float64(0),
+//				Duration:                      pulumi.String("60m"),
+//				PreviousClientSecretExpiresAt: pulumi.String("2014-01-01T05:20:00.12345Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,11 +56,15 @@ type ZeroTrustAccessServiceToken struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	ClientSecretVersion pulumi.Float64Output `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  pulumi.StringOutput `pulumi:"duration"`
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The name of the service token.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	PreviousClientSecretExpiresAt pulumi.StringPtrOutput `pulumi:"previousClientSecretExpiresAt"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
@@ -112,11 +118,15 @@ type zeroTrustAccessServiceTokenState struct {
 	ClientId *string `pulumi:"clientId"`
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  *string `pulumi:"duration"`
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// The name of the service token.
 	Name *string `pulumi:"name"`
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	PreviousClientSecretExpiresAt *string `pulumi:"previousClientSecretExpiresAt"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -128,11 +138,15 @@ type ZeroTrustAccessServiceTokenState struct {
 	ClientId pulumi.StringPtrInput
 	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringPtrInput
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration  pulumi.StringPtrInput
 	ExpiresAt pulumi.StringPtrInput
 	// The name of the service token.
 	Name pulumi.StringPtrInput
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	PreviousClientSecretExpiresAt pulumi.StringPtrInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -144,10 +158,14 @@ func (ZeroTrustAccessServiceTokenState) ElementType() reflect.Type {
 type zeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	ClientSecretVersion *float64 `pulumi:"clientSecretVersion"`
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration *string `pulumi:"duration"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	PreviousClientSecretExpiresAt *string `pulumi:"previousClientSecretExpiresAt"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -156,10 +174,14 @@ type zeroTrustAccessServiceTokenArgs struct {
 type ZeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
+	// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+	ClientSecretVersion pulumi.Float64PtrInput
 	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 	Duration pulumi.StringPtrInput
 	// The name of the service token.
 	Name pulumi.StringInput
+	// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+	PreviousClientSecretExpiresAt pulumi.StringPtrInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
@@ -266,6 +288,11 @@ func (o ZeroTrustAccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+// A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
+func (o ZeroTrustAccessServiceTokenOutput) ClientSecretVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.Float64Output { return v.ClientSecretVersion }).(pulumi.Float64Output)
+}
+
 // The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o ZeroTrustAccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
@@ -278,6 +305,11 @@ func (o ZeroTrustAccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 // The name of the service token.
 func (o ZeroTrustAccessServiceTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+func (o ZeroTrustAccessServiceTokenOutput) PreviousClientSecretExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessServiceToken) pulumi.StringPtrOutput { return v.PreviousClientSecretExpiresAt }).(pulumi.StringPtrOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

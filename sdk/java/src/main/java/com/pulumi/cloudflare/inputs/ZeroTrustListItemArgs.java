@@ -16,14 +16,14 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
     public static final ZeroTrustListItemArgs Empty = new ZeroTrustListItemArgs();
 
     /**
-     * The description of the list item, if present.
+     * Provide the list item description (optional).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the list item, if present.
+     * @return Provide the list item description (optional).
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The value of the item in a list.
+     * Specify the item value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the item in a list.
+     * @return Specify the item value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the list item, if present.
+         * @param description Provide the list item description (optional).
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description The description of the list item, if present.
+         * @param description Provide the list item description (optional).
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value The value of the item in a list.
+         * @param value Specify the item value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustListItemArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value The value of the item in a list.
+         * @param value Specify the item value.
          * 
          * @return builder
          * 

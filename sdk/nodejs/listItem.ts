@@ -25,6 +25,10 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
  * ```
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/listItem:ListItem example '<account_id>/<list_id>/<item_id>'
+ * ```
  */
 export class ListItem extends pulumi.CustomResource {
     /**

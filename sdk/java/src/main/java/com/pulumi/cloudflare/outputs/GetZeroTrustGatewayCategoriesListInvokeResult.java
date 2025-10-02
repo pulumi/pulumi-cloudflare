@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustGatewayCategoriesListInvokeResult {
     /**
-     * @return Identifier.
+     * @return Provide the identifier string.
      * 
      */
     private String accountId;
@@ -38,7 +38,7 @@ public final class GetZeroTrustGatewayCategoriesListInvokeResult {
 
     private GetZeroTrustGatewayCategoriesListInvokeResult() {}
     /**
-     * @return Identifier.
+     * @return Provide the identifier string.
      * 
      */
     public String accountId() {

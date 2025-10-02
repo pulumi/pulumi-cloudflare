@@ -60,8 +60,12 @@ type LookupByoIpPrefixResult struct {
 	// Identifier of a Cloudflare account.
 	AccountId string `pulumi:"accountId"`
 	// Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	Advertised bool `pulumi:"advertised"`
 	// Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	AdvertisedModifiedAt string `pulumi:"advertisedModifiedAt"`
 	// Approval state of the prefix (P = pending, V = active).
 	Approved string `pulumi:"approved"`
@@ -78,8 +82,12 @@ type LookupByoIpPrefixResult struct {
 	LoaDocumentId string `pulumi:"loaDocumentId"`
 	ModifiedAt    string `pulumi:"modifiedAt"`
 	// Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandEnabled bool `pulumi:"onDemandEnabled"`
 	// Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+	//
+	// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 	OnDemandLocked bool `pulumi:"onDemandLocked"`
 	// Identifier of an IP Prefix.
 	PrefixId *string `pulumi:"prefixId"`
@@ -127,11 +135,15 @@ func (o LookupByoIpPrefixResultOutput) AccountId() pulumi.StringOutput {
 }
 
 // Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o LookupByoIpPrefixResultOutput) Advertised() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) bool { return v.Advertised }).(pulumi.BoolOutput)
 }
 
 // Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o LookupByoIpPrefixResultOutput) AdvertisedModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) string { return v.AdvertisedModifiedAt }).(pulumi.StringOutput)
 }
@@ -175,11 +187,15 @@ func (o LookupByoIpPrefixResultOutput) ModifiedAt() pulumi.StringOutput {
 }
 
 // Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o LookupByoIpPrefixResultOutput) OnDemandEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) bool { return v.OnDemandEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+//
+// Deprecated: Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
 func (o LookupByoIpPrefixResultOutput) OnDemandLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupByoIpPrefixResult) bool { return v.OnDemandLocked }).(pulumi.BoolOutput)
 }

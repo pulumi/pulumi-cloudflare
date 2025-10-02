@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Log all requests to this service.
+        /// Specify whether to log all requests to this service.
         /// </summary>
         [Input("logAll")]
         public Input<bool>? LogAll { get; set; }
 
         /// <summary>
-        /// Log only blocking requests to this service.
+        /// Specify whether to log only blocking requests to this service.
         /// </summary>
         [Input("logBlocks")]
         public Input<bool>? LogBlocks { get; set; }

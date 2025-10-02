@@ -82,6 +82,8 @@ type LookupLoadBalancerPoolResult struct {
 	ModifiedOn     string `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor string `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup string `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
@@ -198,6 +200,11 @@ func (o LookupLoadBalancerPoolResultOutput) ModifiedOn() pulumi.StringOutput {
 // The ID of the Monitor to use for checking the health of origins within this pool.
 func (o LookupLoadBalancerPoolResultOutput) Monitor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerPoolResult) string { return v.Monitor }).(pulumi.StringOutput)
+}
+
+// The ID of the Monitor Group to use for checking the health of origins within this pool.
+func (o LookupLoadBalancerPoolResultOutput) MonitorGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerPoolResult) string { return v.MonitorGroup }).(pulumi.StringOutput)
 }
 
 // A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.

@@ -26,16 +26,10 @@ class GetZeroTrustAccessCustomPageResult:
     """
     A collection of values returned by getZeroTrustAccessCustomPage.
     """
-    def __init__(__self__, account_id=None, app_count=None, created_at=None, custom_html=None, custom_page_id=None, id=None, name=None, type=None, uid=None, updated_at=None):
+    def __init__(__self__, account_id=None, custom_html=None, custom_page_id=None, id=None, name=None, type=None, uid=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if app_count and not isinstance(app_count, int):
-            raise TypeError("Expected argument 'app_count' to be a int")
-        pulumi.set(__self__, "app_count", app_count)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if custom_html and not isinstance(custom_html, str):
             raise TypeError("Expected argument 'custom_html' to be a str")
         pulumi.set(__self__, "custom_html", custom_html)
@@ -54,9 +48,6 @@ class GetZeroTrustAccessCustomPageResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -65,19 +56,6 @@ class GetZeroTrustAccessCustomPageResult:
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> _builtins.int:
-        """
-        Number of apps the custom page is assigned to.
-        """
-        return pulumi.get(self, "app_count")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customHtml")
@@ -128,11 +106,6 @@ class GetZeroTrustAccessCustomPageResult:
         """
         return pulumi.get(self, "uid")
 
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
 
 class AwaitableGetZeroTrustAccessCustomPageResult(GetZeroTrustAccessCustomPageResult):
     # pylint: disable=using-constant-test
@@ -141,15 +114,12 @@ class AwaitableGetZeroTrustAccessCustomPageResult(GetZeroTrustAccessCustomPageRe
             yield self
         return GetZeroTrustAccessCustomPageResult(
             account_id=self.account_id,
-            app_count=self.app_count,
-            created_at=self.created_at,
             custom_html=self.custom_html,
             custom_page_id=self.custom_page_id,
             id=self.id,
             name=self.name,
             type=self.type,
-            uid=self.uid,
-            updated_at=self.updated_at)
+            uid=self.uid)
 
 
 def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None,
@@ -178,15 +148,12 @@ def get_zero_trust_access_custom_page(account_id: Optional[_builtins.str] = None
 
     return AwaitableGetZeroTrustAccessCustomPageResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        app_count=pulumi.get(__ret__, 'app_count'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         custom_html=pulumi.get(__ret__, 'custom_html'),
         custom_page_id=pulumi.get(__ret__, 'custom_page_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'),
-        uid=pulumi.get(__ret__, 'uid'),
-        updated_at=pulumi.get(__ret__, 'updated_at'))
+        uid=pulumi.get(__ret__, 'uid'))
 def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                              custom_page_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessCustomPageResult]:
@@ -212,12 +179,9 @@ def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[_
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessCustomPage:getZeroTrustAccessCustomPage', __args__, opts=opts, typ=GetZeroTrustAccessCustomPageResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessCustomPageResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        app_count=pulumi.get(__response__, 'app_count'),
-        created_at=pulumi.get(__response__, 'created_at'),
         custom_html=pulumi.get(__response__, 'custom_html'),
         custom_page_id=pulumi.get(__response__, 'custom_page_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         type=pulumi.get(__response__, 'type'),
-        uid=pulumi.get(__response__, 'uid'),
-        updated_at=pulumi.get(__response__, 'updated_at')))
+        uid=pulumi.get(__response__, 'uid')))

@@ -59,15 +59,15 @@ type TeamsList struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The description of the list.
+	// Provide the list description.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// items to add to the list.
+	// Add items to the list.
 	Items TeamsListItemArrayOutput `pulumi:"items"`
-	// The number of items in the list.
+	// Indicate the number of items in the list.
 	ListCount pulumi.Float64Output `pulumi:"listCount"`
-	// The name of the list.
+	// Specify the list name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of list.
+	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      pulumi.StringOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -120,15 +120,15 @@ func GetTeamsList(ctx *pulumi.Context,
 type teamsListState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	// The description of the list.
+	// Provide the list description.
 	Description *string `pulumi:"description"`
-	// items to add to the list.
+	// Add items to the list.
 	Items []TeamsListItem `pulumi:"items"`
-	// The number of items in the list.
+	// Indicate the number of items in the list.
 	ListCount *float64 `pulumi:"listCount"`
-	// The name of the list.
+	// Specify the list name.
 	Name *string `pulumi:"name"`
-	// The type of list.
+	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -137,15 +137,15 @@ type teamsListState struct {
 type TeamsListState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// The description of the list.
+	// Provide the list description.
 	Description pulumi.StringPtrInput
-	// items to add to the list.
+	// Add items to the list.
 	Items TeamsListItemArrayInput
-	// The number of items in the list.
+	// Indicate the number of items in the list.
 	ListCount pulumi.Float64PtrInput
-	// The name of the list.
+	// Specify the list name.
 	Name pulumi.StringPtrInput
-	// The type of list.
+	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
@@ -157,13 +157,13 @@ func (TeamsListState) ElementType() reflect.Type {
 
 type teamsListArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// The description of the list.
+	// Provide the list description.
 	Description *string `pulumi:"description"`
-	// items to add to the list.
+	// Add items to the list.
 	Items []TeamsListItem `pulumi:"items"`
-	// The name of the list.
+	// Specify the list name.
 	Name string `pulumi:"name"`
-	// The type of list.
+	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type string `pulumi:"type"`
 }
@@ -171,13 +171,13 @@ type teamsListArgs struct {
 // The set of arguments for constructing a TeamsList resource.
 type TeamsListArgs struct {
 	AccountId pulumi.StringInput
-	// The description of the list.
+	// Provide the list description.
 	Description pulumi.StringPtrInput
-	// items to add to the list.
+	// Add items to the list.
 	Items TeamsListItemArrayInput
-	// The name of the list.
+	// Specify the list name.
 	Name pulumi.StringInput
-	// The type of list.
+	// Specify the list type.
 	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type pulumi.StringInput
 }
@@ -277,27 +277,27 @@ func (o TeamsListOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The description of the list.
+// Provide the list description.
 func (o TeamsListOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// items to add to the list.
+// Add items to the list.
 func (o TeamsListOutput) Items() TeamsListItemArrayOutput {
 	return o.ApplyT(func(v *TeamsList) TeamsListItemArrayOutput { return v.Items }).(TeamsListItemArrayOutput)
 }
 
-// The number of items in the list.
+// Indicate the number of items in the list.
 func (o TeamsListOutput) ListCount() pulumi.Float64Output {
 	return o.ApplyT(func(v *TeamsList) pulumi.Float64Output { return v.ListCount }).(pulumi.Float64Output)
 }
 
-// The name of the list.
+// Specify the list name.
 func (o TeamsListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of list.
+// Specify the list type.
 // Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 func (o TeamsListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)

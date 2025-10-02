@@ -61,6 +61,9 @@ type LookupBotManagementResult struct {
 	AutoUpdateModel bool `pulumi:"autoUpdateModel"`
 	// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 	BmCookieEnabled bool `pulumi:"bmCookieEnabled"`
+	// Specifies the Robots Access Control License variant to use.
+	// Available values: "off", "policyOnly".
+	CfRobotsVariant string `pulumi:"cfRobotsVariant"`
 	// Enable rule to punish AI Scrapers and Crawlers via a link maze.
 	// Available values: "enabled", "disabled".
 	CrawlerProtection string `pulumi:"crawlerProtection"`
@@ -145,6 +148,12 @@ func (o LookupBotManagementResultOutput) AutoUpdateModel() pulumi.BoolOutput {
 // Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
 func (o LookupBotManagementResultOutput) BmCookieEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.BmCookieEnabled }).(pulumi.BoolOutput)
+}
+
+// Specifies the Robots Access Control License variant to use.
+// Available values: "off", "policyOnly".
+func (o LookupBotManagementResultOutput) CfRobotsVariant() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBotManagementResult) string { return v.CfRobotsVariant }).(pulumi.StringOutput)
 }
 
 // Enable rule to punish AI Scrapers and Crawlers via a link maze.

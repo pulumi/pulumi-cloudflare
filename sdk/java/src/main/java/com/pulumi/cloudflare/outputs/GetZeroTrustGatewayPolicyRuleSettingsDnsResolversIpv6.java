@@ -13,50 +13,50 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6 {
     /**
-     * @return IPv6 address of upstream resolver.
+     * @return Specify the IPv6 address of the upstream resolver.
      * 
      */
     private String ip;
     /**
-     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * @return Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     private Integer port;
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+     * @return Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
      * 
      */
     private Boolean routeThroughPrivateNetwork;
     /**
-     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     private String vnetId;
 
     private GetZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6() {}
     /**
-     * @return IPv6 address of upstream resolver.
+     * @return Specify the IPv6 address of the upstream resolver.
      * 
      */
     public String ip() {
         return this.ip;
     }
     /**
-     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
+     * @return Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+     * @return Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
      * 
      */
     public Boolean routeThroughPrivateNetwork() {
         return this.routeThroughPrivateNetwork;
     }
     /**
-     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     public String vnetId() {

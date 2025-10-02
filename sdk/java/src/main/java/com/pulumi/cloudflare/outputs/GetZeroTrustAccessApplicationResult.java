@@ -74,7 +74,6 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private String bgColor;
     private GetZeroTrustAccessApplicationCorsHeaders corsHeaders;
-    private String createdAt;
     /**
      * @return The custom error message shown to a user when they are denied access to the application.
      * 
@@ -220,7 +219,6 @@ public final class GetZeroTrustAccessApplicationResult {
      * 
      */
     private String type;
-    private String updatedAt;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -300,9 +298,6 @@ public final class GetZeroTrustAccessApplicationResult {
     }
     public GetZeroTrustAccessApplicationCorsHeaders corsHeaders() {
         return this.corsHeaders;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     /**
      * @return The custom error message shown to a user when they are denied access to the application.
@@ -509,9 +504,6 @@ public final class GetZeroTrustAccessApplicationResult {
     public String type() {
         return this.type;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -540,7 +532,6 @@ public final class GetZeroTrustAccessApplicationResult {
         private Boolean autoRedirectToIdentity;
         private String bgColor;
         private GetZeroTrustAccessApplicationCorsHeaders corsHeaders;
-        private String createdAt;
         private String customDenyMessage;
         private String customDenyUrl;
         private String customNonIdentityDenyUrl;
@@ -571,7 +562,6 @@ public final class GetZeroTrustAccessApplicationResult {
         private List<String> tags;
         private List<GetZeroTrustAccessApplicationTargetCriteria> targetCriterias;
         private String type;
-        private String updatedAt;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationResult defaults) {
@@ -587,7 +577,6 @@ public final class GetZeroTrustAccessApplicationResult {
     	      this.autoRedirectToIdentity = defaults.autoRedirectToIdentity;
     	      this.bgColor = defaults.bgColor;
     	      this.corsHeaders = defaults.corsHeaders;
-    	      this.createdAt = defaults.createdAt;
     	      this.customDenyMessage = defaults.customDenyMessage;
     	      this.customDenyUrl = defaults.customDenyUrl;
     	      this.customNonIdentityDenyUrl = defaults.customNonIdentityDenyUrl;
@@ -618,7 +607,6 @@ public final class GetZeroTrustAccessApplicationResult {
     	      this.tags = defaults.tags;
     	      this.targetCriterias = defaults.targetCriterias;
     	      this.type = defaults.type;
-    	      this.updatedAt = defaults.updatedAt;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -707,14 +695,6 @@ public final class GetZeroTrustAccessApplicationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "corsHeaders");
             }
             this.corsHeaders = corsHeaders;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -977,14 +957,6 @@ public final class GetZeroTrustAccessApplicationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -1003,7 +975,6 @@ public final class GetZeroTrustAccessApplicationResult {
             _resultValue.autoRedirectToIdentity = autoRedirectToIdentity;
             _resultValue.bgColor = bgColor;
             _resultValue.corsHeaders = corsHeaders;
-            _resultValue.createdAt = createdAt;
             _resultValue.customDenyMessage = customDenyMessage;
             _resultValue.customDenyUrl = customDenyUrl;
             _resultValue.customNonIdentityDenyUrl = customNonIdentityDenyUrl;
@@ -1034,7 +1005,6 @@ public final class GetZeroTrustAccessApplicationResult {
             _resultValue.tags = tags;
             _resultValue.targetCriterias = targetCriterias;
             _resultValue.type = type;
-            _resultValue.updatedAt = updatedAt;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

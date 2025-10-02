@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsSandbox {
     /**
-     * @return Enable sandbox.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Action to take when the file cannot be scanned.
+     * @return Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
@@ -25,14 +25,14 @@ public final class GetZeroTrustGatewaySettingsSettingsSandbox {
 
     private GetZeroTrustGatewaySettingsSettingsSandbox() {}
     /**
-     * @return Enable sandbox.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Action to take when the file cannot be scanned.
+     * @return Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */

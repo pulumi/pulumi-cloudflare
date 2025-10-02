@@ -177,12 +177,22 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     /**
      * Code, sourcemaps, and other content used at runtime.
      * 
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
+     * 
      */
     @Import(name="modules")
     private @Nullable Output<List<WorkerVersionModuleArgs>> modules;
 
     /**
      * @return Code, sourcemaps, and other content used at runtime.
+     * 
+     * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+     * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+     * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+     * included as modules named `_headers` and `_redirects` with content type `text/plain`.
      * 
      */
     public Optional<Output<List<WorkerVersionModuleArgs>>> modules() {
@@ -260,14 +270,14 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Import(name="workerId")
     private @Nullable Output<String> workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public Optional<Output<String>> workerId() {
@@ -546,6 +556,11 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param modules Code, sourcemaps, and other content used at runtime.
          * 
+         * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+         * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+         * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+         * included as modules named `_headers` and `_redirects` with content type `text/plain`.
+         * 
          * @return builder
          * 
          */
@@ -557,6 +572,11 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param modules Code, sourcemaps, and other content used at runtime.
          * 
+         * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+         * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+         * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+         * included as modules named `_headers` and `_redirects` with content type `text/plain`.
+         * 
          * @return builder
          * 
          */
@@ -566,6 +586,11 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param modules Code, sourcemaps, and other content used at runtime.
+         * 
+         * This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+         * [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure
+         * [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be
+         * included as modules named `_headers` and `_redirects` with content type `text/plain`.
          * 
          * @return builder
          * 
@@ -669,7 +694,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 
@@ -680,7 +705,7 @@ public final class WorkerVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 

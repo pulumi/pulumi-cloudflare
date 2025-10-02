@@ -14,184 +14,184 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * @return If mode is customized_block_page: block page background color in #rrggbb format.
+     * @return Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      * 
      */
     private @Nullable String backgroundColor;
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Specify whether to enable the custom block page.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If mode is customized_block_page: block page footer text.
+     * @return Specify the block page footer text when the mode is customized*block*page.
      * 
      */
     private @Nullable String footerText;
     /**
-     * @return If mode is customized_block_page: block page header text.
+     * @return Specify the block page header text when the mode is customized*block*page.
      * 
      */
     private @Nullable String headerText;
     /**
-     * @return If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+     * @return Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return If mode is customized_block_page: full URL to the logo file.
+     * @return Specify the full URL to the logo file when the mode is customized*block*page.
      * 
      */
     private @Nullable String logoPath;
     /**
-     * @return If mode is customized_block_page: admin email for users to contact.
+     * @return Specify the admin email for users to contact when the mode is customized*block*page.
      * 
      */
     private @Nullable String mailtoAddress;
     /**
-     * @return If mode is customized_block_page: subject line for emails created from block page.
+     * @return Specify the subject line for emails created from the block page when the mode is customized*block*page.
      * 
      */
     private @Nullable String mailtoSubject;
     /**
-     * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     private @Nullable String mode;
     /**
-     * @return If mode is customized_block_page: block page title.
+     * @return Specify the block page title when the mode is customized*block*page.
      * 
      */
     private @Nullable String name;
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     private @Nullable Boolean readOnly;
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     private @Nullable String sourceAccount;
     /**
-     * @return If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * @return Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      * 
      */
     private @Nullable Boolean suppressFooter;
     /**
-     * @return If mode is redirect_uri: URI to which the user should be redirected.
+     * @return Specify the URI to redirect users to when the mode is redirect_uri.
      * 
      */
     private @Nullable String targetUri;
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     private @Nullable Integer version;
 
     private ZeroTrustGatewaySettingsSettingsBlockPage() {}
     /**
-     * @return If mode is customized_block_page: block page background color in #rrggbb format.
+     * @return Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      * 
      */
     public Optional<String> backgroundColor() {
         return Optional.ofNullable(this.backgroundColor);
     }
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Specify whether to enable the custom block page.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If mode is customized_block_page: block page footer text.
+     * @return Specify the block page footer text when the mode is customized*block*page.
      * 
      */
     public Optional<String> footerText() {
         return Optional.ofNullable(this.footerText);
     }
     /**
-     * @return If mode is customized_block_page: block page header text.
+     * @return Specify the block page header text when the mode is customized*block*page.
      * 
      */
     public Optional<String> headerText() {
         return Optional.ofNullable(this.headerText);
     }
     /**
-     * @return If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+     * @return Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return If mode is customized_block_page: full URL to the logo file.
+     * @return Specify the full URL to the logo file when the mode is customized*block*page.
      * 
      */
     public Optional<String> logoPath() {
         return Optional.ofNullable(this.logoPath);
     }
     /**
-     * @return If mode is customized_block_page: admin email for users to contact.
+     * @return Specify the admin email for users to contact when the mode is customized*block*page.
      * 
      */
     public Optional<String> mailtoAddress() {
         return Optional.ofNullable(this.mailtoAddress);
     }
     /**
-     * @return If mode is customized_block_page: subject line for emails created from block page.
+     * @return Specify the subject line for emails created from the block page when the mode is customized*block*page.
      * 
      */
     public Optional<String> mailtoSubject() {
         return Optional.ofNullable(this.mailtoSubject);
     }
     /**
-     * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return If mode is customized_block_page: block page title.
+     * @return Specify the block page title when the mode is customized*block*page.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     public Optional<String> sourceAccount() {
         return Optional.ofNullable(this.sourceAccount);
     }
     /**
-     * @return If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * @return Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      * 
      */
     public Optional<Boolean> suppressFooter() {
         return Optional.ofNullable(this.suppressFooter);
     }
     /**
-     * @return If mode is redirect_uri: URI to which the user should be redirected.
+     * @return Specify the URI to redirect users to when the mode is redirect_uri.
      * 
      */
     public Optional<String> targetUri() {
         return Optional.ofNullable(this.targetUri);
     }
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     public Optional<Integer> version() {

@@ -17,6 +17,21 @@ public final class WorkerScriptAssetsArgs extends com.pulumi.resources.ResourceA
     public static final WorkerScriptAssetsArgs Empty = new WorkerScriptAssetsArgs();
 
     /**
+     * The SHA-256 hash of the asset manifest of files to upload.
+     * 
+     */
+    @Import(name="assetManifestSha256")
+    private @Nullable Output<String> assetManifestSha256;
+
+    /**
+     * @return The SHA-256 hash of the asset manifest of files to upload.
+     * 
+     */
+    public Optional<Output<String>> assetManifestSha256() {
+        return Optional.ofNullable(this.assetManifestSha256);
+    }
+
+    /**
      * Configuration for assets within a Worker.
      * 
      */
@@ -29,6 +44,21 @@ public final class WorkerScriptAssetsArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<WorkerScriptAssetsConfigArgs>> config() {
         return Optional.ofNullable(this.config);
+    }
+
+    /**
+     * Path to the directory containing asset files to upload.
+     * 
+     */
+    @Import(name="directory")
+    private @Nullable Output<String> directory;
+
+    /**
+     * @return Path to the directory containing asset files to upload.
+     * 
+     */
+    public Optional<Output<String>> directory() {
+        return Optional.ofNullable(this.directory);
     }
 
     /**
@@ -49,7 +79,9 @@ public final class WorkerScriptAssetsArgs extends com.pulumi.resources.ResourceA
     private WorkerScriptAssetsArgs() {}
 
     private WorkerScriptAssetsArgs(WorkerScriptAssetsArgs $) {
+        this.assetManifestSha256 = $.assetManifestSha256;
         this.config = $.config;
+        this.directory = $.directory;
         this.jwt = $.jwt;
     }
 
@@ -72,6 +104,27 @@ public final class WorkerScriptAssetsArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param assetManifestSha256 The SHA-256 hash of the asset manifest of files to upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetManifestSha256(@Nullable Output<String> assetManifestSha256) {
+            $.assetManifestSha256 = assetManifestSha256;
+            return this;
+        }
+
+        /**
+         * @param assetManifestSha256 The SHA-256 hash of the asset manifest of files to upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assetManifestSha256(String assetManifestSha256) {
+            return assetManifestSha256(Output.of(assetManifestSha256));
+        }
+
+        /**
          * @param config Configuration for assets within a Worker.
          * 
          * @return builder
@@ -90,6 +143,27 @@ public final class WorkerScriptAssetsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder config(WorkerScriptAssetsConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param directory Path to the directory containing asset files to upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directory(@Nullable Output<String> directory) {
+            $.directory = directory;
+            return this;
+        }
+
+        /**
+         * @param directory Path to the directory containing asset files to upload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder directory(String directory) {
+            return directory(Output.of(directory));
         }
 
         /**

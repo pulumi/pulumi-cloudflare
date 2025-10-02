@@ -17,14 +17,14 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
     public static final TeamsAccountSettingsAntivirusArgs Empty = new TeamsAccountSettingsAntivirusArgs();
 
     /**
-     * Enable anti-virus scanning on downloads.
+     * Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     @Import(name="enabledDownloadPhase")
     private @Nullable Output<Boolean> enabledDownloadPhase;
 
     /**
-     * @return Enable anti-virus scanning on downloads.
+     * @return Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     public Optional<Output<Boolean>> enabledDownloadPhase() {
@@ -32,14 +32,14 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
     }
 
     /**
-     * Enable anti-virus scanning on uploads.
+     * Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     @Import(name="enabledUploadPhase")
     private @Nullable Output<Boolean> enabledUploadPhase;
 
     /**
-     * @return Enable anti-virus scanning on uploads.
+     * @return Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     public Optional<Output<Boolean>> enabledUploadPhase() {
@@ -47,14 +47,14 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
     }
 
     /**
-     * Block requests for files that cannot be scanned.
+     * Specify whether to block requests for unscannable files.
      * 
      */
     @Import(name="failClosed")
     private @Nullable Output<Boolean> failClosed;
 
     /**
-     * @return Block requests for files that cannot be scanned.
+     * @return Specify whether to block requests for unscannable files.
      * 
      */
     public Optional<Output<Boolean>> failClosed() {
@@ -62,14 +62,14 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
     }
 
     /**
-     * Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     @Import(name="notificationSettings")
     private @Nullable Output<TeamsAccountSettingsAntivirusNotificationSettingsArgs> notificationSettings;
 
     /**
-     * @return Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * @return Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     public Optional<Output<TeamsAccountSettingsAntivirusNotificationSettingsArgs>> notificationSettings() {
@@ -104,7 +104,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabledDownloadPhase Enable anti-virus scanning on downloads.
+         * @param enabledDownloadPhase Specify whether to enable anti-virus scanning on downloads.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabledDownloadPhase Enable anti-virus scanning on downloads.
+         * @param enabledDownloadPhase Specify whether to enable anti-virus scanning on downloads.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabledUploadPhase Enable anti-virus scanning on uploads.
+         * @param enabledUploadPhase Specify whether to enable anti-virus scanning on uploads.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabledUploadPhase Enable anti-virus scanning on uploads.
+         * @param enabledUploadPhase Specify whether to enable anti-virus scanning on uploads.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param failClosed Block requests for files that cannot be scanned.
+         * @param failClosed Specify whether to block requests for unscannable files.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param failClosed Block requests for files that cannot be scanned.
+         * @param failClosed Specify whether to block requests for unscannable files.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param notificationSettings Configure a message to display on the user&#39;s device when an antivirus search is performed.
+         * @param notificationSettings Configure the message the user&#39;s device shows during an antivirus scan.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TeamsAccountSettingsAntivirusArgs extends com.pulumi.resource
         }
 
         /**
-         * @param notificationSettings Configure a message to display on the user&#39;s device when an antivirus search is performed.
+         * @param notificationSettings Configure the message the user&#39;s device shows during an antivirus scan.
          * 
          * @return builder
          * 

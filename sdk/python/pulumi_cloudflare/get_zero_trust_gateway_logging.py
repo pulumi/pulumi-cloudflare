@@ -58,7 +58,7 @@ class GetZeroTrustGatewayLoggingResult:
     @pulumi.getter(name="redactPii")
     def redact_pii(self) -> _builtins.bool:
         """
-        Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+        Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
         """
         return pulumi.get(self, "redact_pii")
 
@@ -66,7 +66,7 @@ class GetZeroTrustGatewayLoggingResult:
     @pulumi.getter(name="settingsByRuleType")
     def settings_by_rule_type(self) -> 'outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeResult':
         """
-        Logging settings by rule type.
+        Configure logging settings for each rule type.
         """
         return pulumi.get(self, "settings_by_rule_type")
 

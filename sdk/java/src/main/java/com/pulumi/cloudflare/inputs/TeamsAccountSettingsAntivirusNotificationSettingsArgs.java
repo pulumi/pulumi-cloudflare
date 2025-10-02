@@ -17,14 +17,14 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
     public static final TeamsAccountSettingsAntivirusNotificationSettingsArgs Empty = new TeamsAccountSettingsAntivirusNotificationSettingsArgs();
 
     /**
-     * Set notification on.
+     * Specify whether to enable notifications.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Set notification on.
+     * @return Specify whether to enable notifications.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
     }
 
     /**
-     * If true, context information will be passed as query parameters.
+     * Specify whether to include context information as query parameters.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to include context information as query parameters.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -47,14 +47,14 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
     }
 
     /**
-     * Customize the message shown in the notification.
+     * Specify the message to show in the notification.
      * 
      */
     @Import(name="msg")
     private @Nullable Output<String> msg;
 
     /**
-     * @return Customize the message shown in the notification.
+     * @return Specify the message to show in the notification.
      * 
      */
     public Optional<Output<String>> msg() {
@@ -62,14 +62,14 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
     }
 
     /**
-     * Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     @Import(name="supportUrl")
     private @Nullable Output<String> supportUrl;
 
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     public Optional<Output<String>> supportUrl() {
@@ -104,7 +104,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param enabled Set notification on.
+         * @param enabled Specify whether to enable notifications.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param enabled Set notification on.
+         * @param enabled Specify whether to enable notifications.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Specify whether to include context information as query parameters.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param includeContext If true, context information will be passed as query parameters.
+         * @param includeContext Specify whether to include context information as query parameters.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param msg Customize the message shown in the notification.
+         * @param msg Specify the message to show in the notification.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param msg Customize the message shown in the notification.
+         * @param msg Specify the message to show in the notification.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
+         * @param supportUrl Specify a URL that directs users to more information. If unset, the notification opens a block page.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class TeamsAccountSettingsAntivirusNotificationSettingsArgs extends
         }
 
         /**
-         * @param supportUrl Optional URL to direct users to additional information. If not set, the notification will open a block page.
+         * @param supportUrl Specify a URL that directs users to more information. If unset, the notification opens a block page.
          * 
          * @return builder
          * 

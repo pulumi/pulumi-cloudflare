@@ -36,7 +36,7 @@ public final class GetWorkerVersionsInvokeResult {
      */
     private List<GetWorkerVersionsResult> results;
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     private String workerId;
@@ -71,7 +71,7 @@ public final class GetWorkerVersionsInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public String workerId() {

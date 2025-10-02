@@ -52,7 +52,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
      * 
      */
     private String consumerServiceUrl;
-    private String createdAt;
     private List<GetZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
     private List<GetZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
     /**
@@ -118,7 +117,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
      * 
      */
     private String ssoEndpoint;
-    private String updatedAt;
 
     private GetZeroTrustAccessApplicationSaasApp() {}
     /**
@@ -170,9 +168,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
      */
     public String consumerServiceUrl() {
         return this.consumerServiceUrl;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     public List<GetZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes() {
         return this.customAttributes;
@@ -271,9 +266,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     public String ssoEndpoint() {
         return this.ssoEndpoint;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -291,7 +283,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
         private String clientId;
         private String clientSecret;
         private String consumerServiceUrl;
-        private String createdAt;
         private List<GetZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
         private List<GetZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
         private String defaultRelayState;
@@ -308,7 +299,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
         private List<String> scopes;
         private String spEntityId;
         private String ssoEndpoint;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -319,7 +309,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
-    	      this.createdAt = defaults.createdAt;
     	      this.customAttributes = defaults.customAttributes;
     	      this.customClaims = defaults.customClaims;
     	      this.defaultRelayState = defaults.defaultRelayState;
@@ -336,7 +325,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
     	      this.scopes = defaults.scopes;
     	      this.spEntityId = defaults.spEntityId;
     	      this.ssoEndpoint = defaults.ssoEndpoint;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -393,14 +381,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationSaasApp", "consumerServiceUrl");
             }
             this.consumerServiceUrl = consumerServiceUrl;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationSaasApp", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -546,14 +526,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
             this.ssoEndpoint = ssoEndpoint;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationSaasApp", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessApplicationSaasApp build() {
             final var _resultValue = new GetZeroTrustAccessApplicationSaasApp();
             _resultValue.accessTokenLifetime = accessTokenLifetime;
@@ -563,7 +535,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
             _resultValue.consumerServiceUrl = consumerServiceUrl;
-            _resultValue.createdAt = createdAt;
             _resultValue.customAttributes = customAttributes;
             _resultValue.customClaims = customClaims;
             _resultValue.defaultRelayState = defaultRelayState;
@@ -580,7 +551,6 @@ public final class GetZeroTrustAccessApplicationSaasApp {
             _resultValue.scopes = scopes;
             _resultValue.spEntityId = spEntityId;
             _resultValue.ssoEndpoint = ssoEndpoint;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

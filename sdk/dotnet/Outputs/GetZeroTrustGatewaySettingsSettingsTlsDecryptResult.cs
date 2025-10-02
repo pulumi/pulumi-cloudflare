@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsTlsDecryptResult
     {
         /// <summary>
-        /// Enable inspecting encrypted HTTP traffic.
+        /// Specify whether to inspect encrypted HTTP traffic.
         /// </summary>
         public readonly bool Enabled;
 

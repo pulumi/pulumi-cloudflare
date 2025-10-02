@@ -29,10 +29,10 @@ import (
 //			_, err := cloudflare.NewEmailSecurityTrustedDomains(ctx, "example_email_security_trusted_domains", &cloudflare.EmailSecurityTrustedDomainsArgs{
 //				AccountId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				IsRecent:     pulumi.Bool(true),
-//				IsRegex:      pulumi.Bool(true),
-//				IsSimilarity: pulumi.Bool(true),
-//				Pattern:      pulumi.String("x"),
-//				Comments:     pulumi.String("comments"),
+//				IsRegex:      pulumi.Bool(false),
+//				IsSimilarity: pulumi.Bool(false),
+//				Pattern:      pulumi.String("example.com"),
+//				Comments:     nil,
 //			})
 //			if err != nil {
 //				return err

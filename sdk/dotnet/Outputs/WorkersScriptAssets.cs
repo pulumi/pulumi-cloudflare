@@ -14,9 +14,17 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptAssets
     {
         /// <summary>
+        /// The SHA-256 hash of the asset manifest of files to upload.
+        /// </summary>
+        public readonly string? AssetManifestSha256;
+        /// <summary>
         /// Configuration for assets within a Worker.
         /// </summary>
         public readonly Outputs.WorkersScriptAssetsConfig? Config;
+        /// <summary>
+        /// Path to the directory containing asset files to upload.
+        /// </summary>
+        public readonly string? Directory;
         /// <summary>
         /// Token provided upon successful upload of all files from a registered manifest.
         /// </summary>
@@ -24,11 +32,17 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkersScriptAssets(
+            string? assetManifestSha256,
+
             Outputs.WorkersScriptAssetsConfig? config,
+
+            string? directory,
 
             string? jwt)
         {
+            AssetManifestSha256 = assetManifestSha256;
             Config = config;
+            Directory = directory;
             Jwt = jwt;
         }
     }

@@ -12,30 +12,30 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayAppTypesListResult {
     /**
-     * @return The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.
+     * @return Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.
      * 
      */
     private Integer applicationTypeId;
     private String createdAt;
     /**
-     * @return A short summary of applications with this type.
+     * @return Provide a short summary of applications with this type.
      * 
      */
     private String description;
     /**
-     * @return The identifier for this application. There is only one application per ID.
+     * @return Identify this application. Only one application per ID.
      * 
      */
     private Integer id;
     /**
-     * @return The name of the application or application type.
+     * @return Specify the name of the application or application type.
      * 
      */
     private String name;
 
     private GetZeroTrustGatewayAppTypesListResult() {}
     /**
-     * @return The identifier for the type of this application. There can be many applications with the same type. This refers to the `id` of a returned application type.
+     * @return Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.
      * 
      */
     public Integer applicationTypeId() {
@@ -45,21 +45,21 @@ public final class GetZeroTrustGatewayAppTypesListResult {
         return this.createdAt;
     }
     /**
-     * @return A short summary of applications with this type.
+     * @return Provide a short summary of applications with this type.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The identifier for this application. There is only one application per ID.
+     * @return Identify this application. Only one application per ID.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return The name of the application or application type.
+     * @return Specify the name of the application or application type.
      * 
      */
     public String name() {

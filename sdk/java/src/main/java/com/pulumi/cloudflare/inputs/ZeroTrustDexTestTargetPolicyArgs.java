@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -35,15 +36,15 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
      * The id of the DEX rule
      * 
      */
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    @Import(name="id", required=true)
+    private Output<String> id;
 
     /**
      * @return The id of the DEX rule
      * 
      */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    public Output<String> id() {
+        return this.id;
     }
 
     /**
@@ -114,7 +115,7 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder id(@Nullable Output<String> id) {
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
@@ -151,6 +152,9 @@ public final class ZeroTrustDexTestTargetPolicyArgs extends com.pulumi.resources
         }
 
         public ZeroTrustDexTestTargetPolicyArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDexTestTargetPolicyArgs", "id");
+            }
             return $;
         }
     }

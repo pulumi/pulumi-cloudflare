@@ -67,7 +67,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
     }
 
     /**
-     * Export the list of connections as a file.
+     * Export the list of connections as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -75,7 +75,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
     private @Nullable Output<String> export;
 
     /**
-     * @return Export the list of connections as a file.
+     * @return Export the list of connections as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -272,7 +272,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
         }
 
         /**
-         * @param export Export the list of connections as a file.
+         * @param export Export the list of connections as a file, limited to 50000 entries.
          * Available values: &#34;csv&#34;.
          * 
          * @return builder
@@ -284,7 +284,7 @@ public final class GetPageShieldConnectionsListArgs extends com.pulumi.resources
         }
 
         /**
-         * @param export Export the list of connections as a file.
+         * @param export Export the list of connections as a file, limited to 50000 entries.
          * Available values: &#34;csv&#34;.
          * 
          * @return builder

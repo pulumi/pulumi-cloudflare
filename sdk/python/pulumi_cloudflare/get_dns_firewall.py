@@ -131,56 +131,41 @@ class GetDnsFirewallResult:
     @pulumi.getter(name="maximumCacheTtl")
     def maximum_cache_ttl(self) -> _builtins.float:
         """
-        Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
+        By default, Cloudflare attempts to cache responses for as long as
+        indicated by the TTL received from upstream nameservers. This setting
+        sets an upper bound on this duration. For caching purposes, higher TTLs
+        will be decreased to the maximum value defined by this setting.
         """
         return pulumi.get(self, "maximum_cache_ttl")
 
     @_builtins.property
     @pulumi.getter(name="minimumCacheTtl")
     def minimum_cache_ttl(self) -> _builtins.float:
-        """
-        Minimum DNS cache TTL This setting sets a lower bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Lower TTLs will be increased to the minimum defined here for caching purposes.
-        """
         return pulumi.get(self, "minimum_cache_ttl")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> _builtins.str:
-        """
-        Last modification of DNS Firewall cluster
-        """
         return pulumi.get(self, "modified_on")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        DNS Firewall cluster name
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="negativeCacheTtl")
     def negative_cache_ttl(self) -> _builtins.float:
-        """
-        Negative DNS cache TTL This setting controls how long DNS Firewall should cache negative responses (e.g., NXDOMAIN) from the upstream servers.
-        """
         return pulumi.get(self, "negative_cache_ttl")
 
     @_builtins.property
     @pulumi.getter
     def ratelimit(self) -> _builtins.float:
-        """
-        Ratelimit in queries per second per datacenter (applies to DNS queries sent to the upstream nameservers configured on the cluster)
-        """
         return pulumi.get(self, "ratelimit")
 
     @_builtins.property
     @pulumi.getter
     def retries(self) -> _builtins.float:
-        """
-        Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt)
-        """
         return pulumi.get(self, "retries")
 
     @_builtins.property

@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustListsResultResult> Results;
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         public readonly string? Type;

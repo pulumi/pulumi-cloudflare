@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine {
     /**
-     * @return Types of files to sandbox.
+     * @return Specify the types of files to sandbox.
      * 
      */
     private List<String> fileTypes;
 
     private GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine() {}
     /**
-     * @return Types of files to sandbox.
+     * @return Specify the types of files to sandbox.
      * 
      */
     public List<String> fileTypes() {

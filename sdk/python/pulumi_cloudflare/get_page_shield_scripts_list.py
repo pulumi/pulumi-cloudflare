@@ -119,7 +119,7 @@ class GetPageShieldScriptsListResult:
     @pulumi.getter
     def export(self) -> Optional[_builtins.str]:
         """
-        Export the list of scripts as a file.
+        Export the list of scripts as a file, limited to 50000 entries.
         Available values: "csv".
         """
         return pulumi.get(self, "export")
@@ -264,7 +264,7 @@ def get_page_shield_scripts_list(direction: Optional[_builtins.str] = None,
            content matches and they share the same url host and zone hostname. In such case, we return the most
            recent script for the URL host and zone hostname combination.
     :param _builtins.str exclude_urls: Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
-    :param _builtins.str export: Export the list of scripts as a file.
+    :param _builtins.str export: Export the list of scripts as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes scripts that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier
@@ -351,7 +351,7 @@ def get_page_shield_scripts_list_output(direction: Optional[pulumi.Input[Optiona
            content matches and they share the same url host and zone hostname. In such case, we return the most
            recent script for the URL host and zone hostname combination.
     :param _builtins.str exclude_urls: Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
-    :param _builtins.str export: Export the list of scripts as a file.
+    :param _builtins.str export: Export the list of scripts as a file, limited to 50000 entries.
            Available values: "csv".
     :param _builtins.str hosts: Includes scripts that match one or more URL-encoded hostnames separated by commas.
     :param _builtins.str zone_id: Identifier

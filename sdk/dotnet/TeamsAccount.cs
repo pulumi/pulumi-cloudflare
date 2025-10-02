@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Account settings.
+        /// Specify account settings.
         /// </summary>
         [Output("settings")]
         public Output<Outputs.TeamsAccountSettings?> Settings { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Account settings.
+        /// Specify account settings.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.TeamsAccountSettingsArgs>? Settings { get; set; }
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Account settings.
+        /// Specify account settings.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.TeamsAccountSettingsGetArgs>? Settings { get; set; }

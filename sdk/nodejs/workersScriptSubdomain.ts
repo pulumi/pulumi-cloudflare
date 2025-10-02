@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     scriptName: "this-is_my_script-01",
  *     enabled: true,
- *     previewsEnabled: true,
+ *     previewsEnabled: false,
  * });
  * ```
  */
@@ -58,7 +58,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
     /**
      * Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
      */
-    declare public readonly previewsEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly previewsEnabled: pulumi.Output<boolean>;
     /**
      * Name of the script, used in URLs and route configuration.
      */

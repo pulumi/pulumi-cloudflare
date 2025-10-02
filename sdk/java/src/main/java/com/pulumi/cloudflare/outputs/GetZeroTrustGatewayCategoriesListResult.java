@@ -15,47 +15,47 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayCategoriesListResult {
     /**
-     * @return True if the category is in beta and subject to change.
+     * @return Indicate whether the category is in beta and subject to change.
      * 
      */
     private Boolean beta;
     /**
-     * @return Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+     * @return Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.
      * Available values: &#34;free&#34;, &#34;premium&#34;, &#34;blocked&#34;, &#34;removalPending&#34;, &#34;noBlock&#34;.
      * 
      */
     private String class_;
     /**
-     * @return A short summary of domains in the category.
+     * @return Provide a short summary of domains in the category.
      * 
      */
     private String description;
     /**
-     * @return The identifier for this category. There is only one category per ID.
+     * @return Identify this category. Only one category per ID.
      * 
      */
     private Integer id;
     /**
-     * @return The name of the category.
+     * @return Specify the category name.
      * 
      */
     private String name;
     /**
-     * @return All subcategories for this category.
+     * @return Provide all subcategories for this category.
      * 
      */
     private List<GetZeroTrustGatewayCategoriesListResultSubcategory> subcategories;
 
     private GetZeroTrustGatewayCategoriesListResult() {}
     /**
-     * @return True if the category is in beta and subject to change.
+     * @return Indicate whether the category is in beta and subject to change.
      * 
      */
     public Boolean beta() {
         return this.beta;
     }
     /**
-     * @return Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+     * @return Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.
      * Available values: &#34;free&#34;, &#34;premium&#34;, &#34;blocked&#34;, &#34;removalPending&#34;, &#34;noBlock&#34;.
      * 
      */
@@ -63,28 +63,28 @@ public final class GetZeroTrustGatewayCategoriesListResult {
         return this.class_;
     }
     /**
-     * @return A short summary of domains in the category.
+     * @return Provide a short summary of domains in the category.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The identifier for this category. There is only one category per ID.
+     * @return Identify this category. Only one category per ID.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return The name of the category.
+     * @return Specify the category name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return All subcategories for this category.
+     * @return Provide all subcategories for this category.
      * 
      */
     public List<GetZeroTrustGatewayCategoriesListResultSubcategory> subcategories() {

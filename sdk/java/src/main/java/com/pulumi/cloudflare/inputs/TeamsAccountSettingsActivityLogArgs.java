@@ -16,14 +16,14 @@ public final class TeamsAccountSettingsActivityLogArgs extends com.pulumi.resour
     public static final TeamsAccountSettingsActivityLogArgs Empty = new TeamsAccountSettingsActivityLogArgs();
 
     /**
-     * Enable activity logging.
+     * Specify whether to log activity.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable activity logging.
+     * @return Specify whether to log activity.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class TeamsAccountSettingsActivityLogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable activity logging.
+         * @param enabled Specify whether to log activity.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TeamsAccountSettingsActivityLogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable activity logging.
+         * @param enabled Specify whether to log activity.
          * 
          * @return builder
          * 

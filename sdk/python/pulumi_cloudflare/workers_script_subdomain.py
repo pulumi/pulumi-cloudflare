@@ -179,7 +179,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             enabled=True,
-            previews_enabled=True)
+            previews_enabled=False)
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,7 +206,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             script_name="this-is_my_script-01",
             enabled=True,
-            previews_enabled=True)
+            previews_enabled=False)
         ```
 
         :param str resource_name: The name of the resource.
@@ -301,7 +301,7 @@ class WorkersScriptSubdomain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="previewsEnabled")
-    def previews_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def previews_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         """

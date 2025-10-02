@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsAntivirus {
     /**
-     * @return Enable anti-virus scanning on downloads.
+     * @return Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     private @Nullable Boolean enabledDownloadPhase;
     /**
-     * @return Enable anti-virus scanning on uploads.
+     * @return Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     private @Nullable Boolean enabledUploadPhase;
     /**
-     * @return Block requests for files that cannot be scanned.
+     * @return Specify whether to block requests for unscannable files.
      * 
      */
     private @Nullable Boolean failClosed;
     /**
-     * @return Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * @return Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings notificationSettings;
 
     private ZeroTrustGatewaySettingsSettingsAntivirus() {}
     /**
-     * @return Enable anti-virus scanning on downloads.
+     * @return Specify whether to enable anti-virus scanning on downloads.
      * 
      */
     public Optional<Boolean> enabledDownloadPhase() {
         return Optional.ofNullable(this.enabledDownloadPhase);
     }
     /**
-     * @return Enable anti-virus scanning on uploads.
+     * @return Specify whether to enable anti-virus scanning on uploads.
      * 
      */
     public Optional<Boolean> enabledUploadPhase() {
         return Optional.ofNullable(this.enabledUploadPhase);
     }
     /**
-     * @return Block requests for files that cannot be scanned.
+     * @return Specify whether to block requests for unscannable files.
      * 
      */
     public Optional<Boolean> failClosed() {
         return Optional.ofNullable(this.failClosed);
     }
     /**
-     * @return Configure a message to display on the user&#39;s device when an antivirus search is performed.
+     * @return Configure the message the user&#39;s device shows during an antivirus scan.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings> notificationSettings() {

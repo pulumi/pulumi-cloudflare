@@ -53,7 +53,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
      * 
      */
     private @Nullable String consumerServiceUrl;
-    private @Nullable String createdAt;
     private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
     private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
     /**
@@ -119,7 +118,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
      * 
      */
     private @Nullable String ssoEndpoint;
-    private @Nullable String updatedAt;
 
     private ZeroTrustAccessApplicationSaasApp() {}
     /**
@@ -171,9 +169,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
      */
     public Optional<String> consumerServiceUrl() {
         return Optional.ofNullable(this.consumerServiceUrl);
-    }
-    public Optional<String> createdAt() {
-        return Optional.ofNullable(this.createdAt);
     }
     public List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes() {
         return this.customAttributes == null ? List.of() : this.customAttributes;
@@ -272,9 +267,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
     public Optional<String> ssoEndpoint() {
         return Optional.ofNullable(this.ssoEndpoint);
     }
-    public Optional<String> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -292,7 +284,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String consumerServiceUrl;
-        private @Nullable String createdAt;
         private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes;
         private @Nullable List<ZeroTrustAccessApplicationSaasAppCustomClaim> customClaims;
         private @Nullable String defaultRelayState;
@@ -309,7 +300,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
         private @Nullable List<String> scopes;
         private @Nullable String spEntityId;
         private @Nullable String ssoEndpoint;
-        private @Nullable String updatedAt;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -320,7 +310,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
-    	      this.createdAt = defaults.createdAt;
     	      this.customAttributes = defaults.customAttributes;
     	      this.customClaims = defaults.customClaims;
     	      this.defaultRelayState = defaults.defaultRelayState;
@@ -337,7 +326,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
     	      this.scopes = defaults.scopes;
     	      this.spEntityId = defaults.spEntityId;
     	      this.ssoEndpoint = defaults.ssoEndpoint;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -380,12 +368,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
         public Builder consumerServiceUrl(@Nullable String consumerServiceUrl) {
 
             this.consumerServiceUrl = consumerServiceUrl;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(@Nullable String createdAt) {
-
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -499,12 +481,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
             this.ssoEndpoint = ssoEndpoint;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(@Nullable String updatedAt) {
-
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public ZeroTrustAccessApplicationSaasApp build() {
             final var _resultValue = new ZeroTrustAccessApplicationSaasApp();
             _resultValue.accessTokenLifetime = accessTokenLifetime;
@@ -514,7 +490,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
             _resultValue.consumerServiceUrl = consumerServiceUrl;
-            _resultValue.createdAt = createdAt;
             _resultValue.customAttributes = customAttributes;
             _resultValue.customClaims = customClaims;
             _resultValue.defaultRelayState = defaultRelayState;
@@ -531,7 +506,6 @@ public final class ZeroTrustAccessApplicationSaasApp {
             _resultValue.scopes = scopes;
             _resultValue.spEntityId = spEntityId;
             _resultValue.ssoEndpoint = ssoEndpoint;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

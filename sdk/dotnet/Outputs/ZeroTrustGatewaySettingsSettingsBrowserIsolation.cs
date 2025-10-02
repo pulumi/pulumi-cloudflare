@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsBrowserIsolation
     {
         /// <summary>
-        /// Enable non-identity onramp support for Browser Isolation.
+        /// Specify whether to enable non-identity onramp support for Browser Isolation.
         /// </summary>
         public readonly bool? NonIdentityEnabled;
         /// <summary>
-        /// Enable Clientless Browser Isolation.
+        /// Specify whether to enable Clientless Browser Isolation.
         /// </summary>
         public readonly bool? UrlBrowserIsolationEnabled;
 

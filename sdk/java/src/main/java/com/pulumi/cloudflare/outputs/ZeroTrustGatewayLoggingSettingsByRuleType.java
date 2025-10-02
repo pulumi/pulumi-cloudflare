@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayLoggingSettingsByRuleType {
+    /**
+     * @return Configure logging settings for DNS firewall.
+     * 
+     */
     private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+    /**
+     * @return Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+    /**
+     * @return Configure logging settings for Network firewall.
+     * 
+     */
     private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
 
     private ZeroTrustGatewayLoggingSettingsByRuleType() {}
+    /**
+     * @return Configure logging settings for DNS firewall.
+     * 
+     */
     public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeDns> dns() {
         return Optional.ofNullable(this.dns);
     }
+    /**
+     * @return Configure logging settings for HTTP/HTTPS firewall.
+     * 
+     */
     public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeHttp> http() {
         return Optional.ofNullable(this.http);
     }
+    /**
+     * @return Configure logging settings for Network firewall.
+     * 
+     */
     public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeL4> l4() {
         return Optional.ofNullable(this.l4);
     }

@@ -34,7 +34,7 @@ public final class GetPageShieldConnectionsListInvokeResult {
      */
     private @Nullable String excludeUrls;
     /**
-     * @return Export the list of connections as a file.
+     * @return Export the list of connections as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -88,7 +88,7 @@ public final class GetPageShieldConnectionsListInvokeResult {
         return Optional.ofNullable(this.excludeUrls);
     }
     /**
-     * @return Export the list of connections as a file.
+     * @return Export the list of connections as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */

@@ -55,31 +55,31 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the list.
+        /// Provide the list description.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// items to add to the list.
+        /// Add items to the list.
         /// </summary>
         [Output("items")]
         public Output<ImmutableArray<Outputs.ZeroTrustListItem>> Items { get; private set; } = null!;
 
         /// <summary>
-        /// The number of items in the list.
+        /// Indicate the number of items in the list.
         /// </summary>
         [Output("listCount")]
         public Output<double> ListCount { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the list.
+        /// Specify the list name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Output("type")]
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the list.
+        /// Provide the list description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustListItemArgs>? _items;
 
         /// <summary>
-        /// items to add to the list.
+        /// Add items to the list.
         /// </summary>
         public InputList<Inputs.ZeroTrustListItemArgs> Items
         {
@@ -160,13 +160,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name of the list.
+        /// Specify the list name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type", required: true)]
@@ -187,7 +187,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The description of the list.
+        /// Provide the list description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZeroTrustListItemGetArgs>? _items;
 
         /// <summary>
-        /// items to add to the list.
+        /// Add items to the list.
         /// </summary>
         public InputList<Inputs.ZeroTrustListItemGetArgs> Items
         {
@@ -205,19 +205,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The number of items in the list.
+        /// Indicate the number of items in the list.
         /// </summary>
         [Input("listCount")]
         public Input<double>? ListCount { get; set; }
 
         /// <summary>
-        /// The name of the list.
+        /// Specify the list name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The type of list.
+        /// Specify the list type.
         /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]

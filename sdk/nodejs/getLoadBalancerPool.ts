@@ -92,6 +92,10 @@ export interface GetLoadBalancerPoolResult {
      */
     readonly monitor: string;
     /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     */
+    readonly monitorGroup: string;
+    /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      */
     readonly name: string;

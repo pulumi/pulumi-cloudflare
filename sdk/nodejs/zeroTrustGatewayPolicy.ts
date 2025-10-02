@@ -45,67 +45,63 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     declare public readonly action: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Date of deletion, if any.
+     * Indicate the date of deletion, if any.
      */
     declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
-     * The description of the rule.
+     * Specify the rule description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly devicePosture: pulumi.Output<string>;
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy's `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      */
     declare public readonly expiration: pulumi.Output<outputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     declare public readonly filters: pulumi.Output<string[] | undefined>;
     declare public readonly identity: pulumi.Output<string>;
     /**
-     * The name of the rule.
+     * Specify the rule name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The rule cannot be shared via the Orgs API.
-     */
-    declare public /*out*/ readonly notSharable: pulumi.Output<boolean>;
     declare public readonly precedence: pulumi.Output<number>;
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this rule is shared via the Orgs API and read only.
      */
     declare public /*out*/ readonly readOnly: pulumi.Output<boolean>;
-    /**
-     * Additional settings that modify the rule's action.
-     */
     declare public readonly ruleSettings: pulumi.Output<outputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
-     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      */
     declare public readonly schedule: pulumi.Output<outputs.ZeroTrustGatewayPolicySchedule>;
     /**
-     * account tag of account that created the rule.
+     * Indicate that this rule is sharable via the Orgs API.
+     */
+    declare public /*out*/ readonly sharable: pulumi.Output<boolean>;
+    /**
+     * Provide the account tag of the account that created the rule.
      */
     declare public /*out*/ readonly sourceAccount: pulumi.Output<string>;
     declare public readonly traffic: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * version number of the rule.
+     * Indicate the version number of the rule(read-only).
      */
     declare public /*out*/ readonly version: pulumi.Output<number>;
     /**
-     * Warning for a misconfigured rule, if any.
+     * Indicate a warning for a misconfigured rule, if any.
      */
     declare public /*out*/ readonly warningStatus: pulumi.Output<string>;
 
@@ -133,11 +129,11 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["filters"] = state?.filters;
             resourceInputs["identity"] = state?.identity;
             resourceInputs["name"] = state?.name;
-            resourceInputs["notSharable"] = state?.notSharable;
             resourceInputs["precedence"] = state?.precedence;
             resourceInputs["readOnly"] = state?.readOnly;
             resourceInputs["ruleSettings"] = state?.ruleSettings;
             resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["sharable"] = state?.sharable;
             resourceInputs["sourceAccount"] = state?.sourceAccount;
             resourceInputs["traffic"] = state?.traffic;
             resourceInputs["updatedAt"] = state?.updatedAt;
@@ -169,8 +165,8 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["traffic"] = args?.traffic;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;
-            resourceInputs["notSharable"] = undefined /*out*/;
             resourceInputs["readOnly"] = undefined /*out*/;
+            resourceInputs["sharable"] = undefined /*out*/;
             resourceInputs["sourceAccount"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
@@ -189,67 +185,63 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
 export interface ZeroTrustGatewayPolicyState {
     accountId?: pulumi.Input<string>;
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * Date of deletion, if any.
+     * Indicate the date of deletion, if any.
      */
     deletedAt?: pulumi.Input<string>;
     /**
-     * The description of the rule.
+     * Specify the rule description.
      */
     description?: pulumi.Input<string>;
     devicePosture?: pulumi.Input<string>;
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy's `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      */
     expiration?: pulumi.Input<inputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;
     /**
-     * The name of the rule.
+     * Specify the rule name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The rule cannot be shared via the Orgs API.
-     */
-    notSharable?: pulumi.Input<boolean>;
     precedence?: pulumi.Input<number>;
     /**
-     * The rule was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this rule is shared via the Orgs API and read only.
      */
     readOnly?: pulumi.Input<boolean>;
-    /**
-     * Additional settings that modify the rule's action.
-     */
     ruleSettings?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
-     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
     /**
-     * account tag of account that created the rule.
+     * Indicate that this rule is sharable via the Orgs API.
+     */
+    sharable?: pulumi.Input<boolean>;
+    /**
+     * Provide the account tag of the account that created the rule.
      */
     sourceAccount?: pulumi.Input<string>;
     traffic?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     /**
-     * version number of the rule.
+     * Indicate the version number of the rule(read-only).
      */
     version?: pulumi.Input<number>;
     /**
-     * Warning for a misconfigured rule, if any.
+     * Indicate a warning for a misconfigured rule, if any.
      */
     warningStatus?: pulumi.Input<string>;
 }
@@ -260,40 +252,36 @@ export interface ZeroTrustGatewayPolicyState {
 export interface ZeroTrustGatewayPolicyArgs {
     accountId: pulumi.Input<string>;
     /**
-     * The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action: pulumi.Input<string>;
     /**
-     * The description of the rule.
+     * Specify the rule description.
      */
     description?: pulumi.Input<string>;
     devicePosture?: pulumi.Input<string>;
     /**
-     * True if the rule is enabled.
+     * Specify whether the rule is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy's `schedule` configuration, if any.
+     * Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      */
     expiration?: pulumi.Input<inputs.ZeroTrustGatewayPolicyExpiration>;
     /**
-     * The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     identity?: pulumi.Input<string>;
     /**
-     * The name of the rule.
+     * Specify the rule name.
      */
     name: pulumi.Input<string>;
     precedence?: pulumi.Input<number>;
-    /**
-     * Additional settings that modify the rule's action.
-     */
     ruleSettings?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettings>;
     /**
-     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      */
     schedule?: pulumi.Input<inputs.ZeroTrustGatewayPolicySchedule>;
     traffic?: pulumi.Input<string>;

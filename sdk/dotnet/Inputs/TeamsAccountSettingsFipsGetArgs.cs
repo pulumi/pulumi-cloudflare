@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsFipsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+        /// Enforce cipher suites and TLS versions compliant with FIPS 140-2.
         /// </summary>
         [Input("tls")]
         public Input<bool>? Tls { get; set; }

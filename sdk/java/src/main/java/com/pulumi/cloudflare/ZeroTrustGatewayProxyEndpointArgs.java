@@ -23,14 +23,14 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
     }
 
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     @Import(name="ips", required=true)
     private Output<List<String>> ips;
 
     /**
-     * @return A list of CIDRs to restrict ingress connections.
+     * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     public Output<List<String>> ips() {
@@ -38,14 +38,14 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
     }
 
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the proxy endpoint.
+     * @return Specify the name of the proxy endpoint.
      * 
      */
     public Output<String> name() {
@@ -88,7 +88,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param ips A list of CIDRs to restrict ingress connections.
+         * @param ips Specify the list of CIDRs to restrict ingress connections.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the proxy endpoint.
+         * @param name Specify the name of the proxy endpoint.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ZeroTrustGatewayProxyEndpointArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the proxy endpoint.
+         * @param name Specify the name of the proxy endpoint.
          * 
          * @return builder
          * 

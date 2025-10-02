@@ -12,11 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsCheckSessionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Sets the required session freshness threshold. The API returns a normalized version of this value.
+        /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Set to true to enable session enforcement.
+        /// Enable session enforcement.
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }

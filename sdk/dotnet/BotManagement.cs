@@ -24,10 +24,11 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         AiBotsProtection = "block",
+    ///         CfRobotsVariant = "policy_only",
     ///         CrawlerProtection = "enabled",
     ///         EnableJs = true,
     ///         FightMode = true,
-    ///         IsRobotsTxtManaged = true,
+    ///         IsRobotsTxtManaged = false,
     ///     });
     /// 
     /// });
@@ -60,6 +61,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bmCookieEnabled")]
         public Output<bool> BmCookieEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the Robots Access Control License variant to use.
+        /// Available values: "off", "policy_only".
+        /// </summary>
+        [Output("cfRobotsVariant")]
+        public Output<string> CfRobotsVariant { get; private set; } = null!;
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
@@ -211,6 +219,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? BmCookieEnabled { get; set; }
 
         /// <summary>
+        /// Specifies the Robots Access Control License variant to use.
+        /// Available values: "off", "policy_only".
+        /// </summary>
+        [Input("cfRobotsVariant")]
+        public Input<string>? CfRobotsVariant { get; set; }
+
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -308,6 +323,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bmCookieEnabled")]
         public Input<bool>? BmCookieEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies the Robots Access Control License variant to use.
+        /// Available values: "off", "policy_only".
+        /// </summary>
+        [Input("cfRobotsVariant")]
+        public Input<string>? CfRobotsVariant { get; set; }
 
         /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.

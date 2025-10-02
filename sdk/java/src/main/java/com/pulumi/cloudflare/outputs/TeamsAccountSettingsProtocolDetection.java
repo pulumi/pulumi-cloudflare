@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsProtocolDetection {
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private @Nullable Boolean enabled;
 
     private TeamsAccountSettingsProtocolDetection() {}
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<Boolean> enabled() {

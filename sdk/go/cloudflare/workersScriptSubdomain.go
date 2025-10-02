@@ -30,7 +30,7 @@ import (
 //				AccountId:       pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				ScriptName:      pulumi.String("this-is_my_script-01"),
 //				Enabled:         pulumi.Bool(true),
-//				PreviewsEnabled: pulumi.Bool(true),
+//				PreviewsEnabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -48,7 +48,7 @@ type WorkersScriptSubdomain struct {
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-	PreviewsEnabled pulumi.BoolPtrOutput `pulumi:"previewsEnabled"`
+	PreviewsEnabled pulumi.BoolOutput `pulumi:"previewsEnabled"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringOutput `pulumi:"scriptName"`
 }
@@ -238,8 +238,8 @@ func (o WorkersScriptSubdomainOutput) Enabled() pulumi.BoolOutput {
 }
 
 // Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-func (o WorkersScriptSubdomainOutput) PreviewsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.BoolPtrOutput { return v.PreviewsEnabled }).(pulumi.BoolPtrOutput)
+func (o WorkersScriptSubdomainOutput) PreviewsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.BoolOutput { return v.PreviewsEnabled }).(pulumi.BoolOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

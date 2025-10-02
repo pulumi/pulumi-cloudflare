@@ -17,14 +17,14 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
     public static final TeamsRuleRuleSettingsL4overrideArgs Empty = new TeamsRuleRuleSettingsL4overrideArgs();
 
     /**
-     * IPv4 or IPv6 address.
+     * Defines the IPv4 or IPv6 address.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return IPv4 or IPv6 address.
+     * @return Defines the IPv4 or IPv6 address.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -32,14 +32,14 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
     }
 
     /**
-     * A port number to use for TCP/UDP overrides.
+     * Defines a port number to use for TCP/UDP overrides.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return A port number to use for TCP/UDP overrides.
+     * @return Defines a port number to use for TCP/UDP overrides.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -72,7 +72,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ip IPv4 or IPv6 address.
+         * @param ip Defines the IPv4 or IPv6 address.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ip IPv4 or IPv6 address.
+         * @param ip Defines the IPv4 or IPv6 address.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port A port number to use for TCP/UDP overrides.
+         * @param port Defines a port number to use for TCP/UDP overrides.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port A port number to use for TCP/UDP overrides.
+         * @param port Defines a port number to use for TCP/UDP overrides.
          * 
          * @return builder
          * 

@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsCustomCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate status (internal).
+        /// Indicate the internal certificate status.
         /// </summary>
         [Input("bindingStatus")]
         public Input<string>? BindingStatus { get; set; }
 
         /// <summary>
-        /// Enable use of custom certificate authority for signing Gateway. traffic.
+        /// Specify whether to enable a custom certificate authority for signing Gateway traffic.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// UUID of certificate (ID from MTLS certificate store).
+        /// Specify the UUID of the certificate (ID from MTLS certificate store).
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

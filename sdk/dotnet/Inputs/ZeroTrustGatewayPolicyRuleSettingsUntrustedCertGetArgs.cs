@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+        /// Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
         /// Available values: "pass_through", "block", "error".
         /// </summary>
         [Input("action")]

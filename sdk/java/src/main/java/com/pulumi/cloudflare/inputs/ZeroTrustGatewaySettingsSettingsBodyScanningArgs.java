@@ -16,7 +16,7 @@ public final class ZeroTrustGatewaySettingsSettingsBodyScanningArgs extends com.
     public static final ZeroTrustGatewaySettingsSettingsBodyScanningArgs Empty = new ZeroTrustGatewaySettingsSettingsBodyScanningArgs();
 
     /**
-     * Set the inspection mode to either `deep` or `shallow`.
+     * Specify the inspection mode as either `deep` or `shallow`.
      * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class ZeroTrustGatewaySettingsSettingsBodyScanningArgs extends com.
     private @Nullable Output<String> inspectionMode;
 
     /**
-     * @return Set the inspection mode to either `deep` or `shallow`.
+     * @return Specify the inspection mode as either `deep` or `shallow`.
      * Available values: &#34;deep&#34;, &#34;shallow&#34;.
      * 
      */
@@ -57,7 +57,7 @@ public final class ZeroTrustGatewaySettingsSettingsBodyScanningArgs extends com.
         }
 
         /**
-         * @param inspectionMode Set the inspection mode to either `deep` or `shallow`.
+         * @param inspectionMode Specify the inspection mode as either `deep` or `shallow`.
          * Available values: &#34;deep&#34;, &#34;shallow&#34;.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ZeroTrustGatewaySettingsSettingsBodyScanningArgs extends com.
         }
 
         /**
-         * @param inspectionMode Set the inspection mode to either `deep` or `shallow`.
+         * @param inspectionMode Specify the inspection mode as either `deep` or `shallow`.
          * Available values: &#34;deep&#34;, &#34;shallow&#34;.
          * 
          * @return builder

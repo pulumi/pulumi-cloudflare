@@ -16,47 +16,47 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone.
         /// </summary>
-        public readonly double Expire;
+        public readonly double? Expire;
         /// <summary>
         /// The time to live (TTL) for negative caching of records within the zone.
         /// </summary>
-        public readonly double MinTtl;
+        public readonly double? MinTtl;
         /// <summary>
-        /// The primary nameserver, which may be used for outbound zone transfers.
+        /// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
         /// </summary>
-        public readonly string Mname;
+        public readonly string? Mname;
         /// <summary>
         /// Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated.
         /// </summary>
-        public readonly double Refresh;
+        public readonly double? Refresh;
         /// <summary>
         /// Time in seconds after which secondary servers should retry queries after the primary server was unresponsive.
         /// </summary>
-        public readonly double Retry;
+        public readonly double? Retry;
         /// <summary>
         /// The email address of the zone administrator, with the first label representing the local part of the email address.
         /// </summary>
-        public readonly string Rname;
+        public readonly string? Rname;
         /// <summary>
         /// The time to live (TTL) of the SOA record itself.
         /// </summary>
-        public readonly double Ttl;
+        public readonly double? Ttl;
 
         [OutputConstructor]
         private ZoneDnsSettingsSoa(
-            double expire,
+            double? expire,
 
-            double minTtl,
+            double? minTtl,
 
-            string mname,
+            string? mname,
 
-            double refresh,
+            double? refresh,
 
-            double retry,
+            double? retry,
 
-            string rname,
+            string? rname,
 
-            double ttl)
+            double? ttl)
         {
             Expire = expire;
             MinTtl = minTtl;

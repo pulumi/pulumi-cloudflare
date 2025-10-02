@@ -32,6 +32,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: &#34;modules&#34;.
      * 
      */
@@ -39,29 +40,38 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> include;
 
     /**
-     * @return Available values: &#34;modules&#34;.
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
      * 
      */
     public Optional<Output<String>> include() {
         return Optional.ofNullable(this.include);
     }
 
+    /**
+     * Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
+    /**
+     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     public Optional<Output<String>> versionId() {
         return Optional.ofNullable(this.versionId);
     }
 
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Import(name="workerId", required=true)
     private Output<String> workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public Output<String> workerId() {
@@ -117,7 +127,8 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param include Available values: &#34;modules&#34;.
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
          * 
          * @return builder
          * 
@@ -128,7 +139,8 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param include Available values: &#34;modules&#34;.
+         * @param include Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+         * Available values: &#34;modules&#34;.
          * 
          * @return builder
          * 
@@ -137,17 +149,29 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
             return include(Output.of(include));
         }
 
+        /**
+         * @param versionId Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionId(@Nullable Output<String> versionId) {
             $.versionId = versionId;
             return this;
         }
 
+        /**
+         * @param versionId Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder versionId(String versionId) {
             return versionId(Output.of(versionId));
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 
@@ -158,7 +182,7 @@ public final class GetWorkerVersionArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 

@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ZeroTrustGatewayLoggingSettingsByRuleType
     {
+        /// <summary>
+        /// Configure logging settings for DNS firewall.
+        /// </summary>
         public readonly Outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDns? Dns;
+        /// <summary>
+        /// Configure logging settings for HTTP/HTTPS firewall.
+        /// </summary>
         public readonly Outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttp? Http;
+        /// <summary>
+        /// Configure logging settings for Network firewall.
+        /// </summary>
         public readonly Outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4? L4;
 
         [OutputConstructor]

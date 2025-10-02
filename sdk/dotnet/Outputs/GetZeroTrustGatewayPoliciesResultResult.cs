@@ -14,71 +14,67 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPoliciesResultResult
     {
         /// <summary>
-        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         public readonly string Action;
         public readonly string CreatedAt;
         /// <summary>
-        /// Date of deletion, if any.
+        /// Indicate the date of deletion, if any.
         /// </summary>
         public readonly string DeletedAt;
         /// <summary>
-        /// The description of the rule.
+        /// Specify the rule description.
         /// </summary>
         public readonly string Description;
         public readonly string DevicePosture;
         /// <summary>
-        /// True if the rule is enabled.
+        /// Specify whether the rule is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The expiration time stamp and default duration of a DNS policy. Takes
-        /// precedence over the policy's `schedule` configuration, if any.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultExpirationResult Expiration;
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         public readonly ImmutableArray<string> Filters;
         /// <summary>
-        /// The API resource UUID.
+        /// Identify the API resource with a UUID.
         /// </summary>
         public readonly string Id;
         public readonly string Identity;
         /// <summary>
-        /// The name of the rule.
+        /// Specify the rule name.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The rule cannot be shared via the Orgs API.
-        /// </summary>
-        public readonly bool NotSharable;
         public readonly int Precedence;
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this rule is shared via the Orgs API and read only.
         /// </summary>
         public readonly bool ReadOnly;
-        /// <summary>
-        /// Additional settings that modify the rule's action.
-        /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResult RuleSettings;
         /// <summary>
-        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult Schedule;
         /// <summary>
-        /// account tag of account that created the rule.
+        /// Indicate that this rule is sharable via the Orgs API.
+        /// </summary>
+        public readonly bool Sharable;
+        /// <summary>
+        /// Provide the account tag of the account that created the rule.
         /// </summary>
         public readonly string SourceAccount;
         public readonly string Traffic;
         public readonly string UpdatedAt;
         /// <summary>
-        /// version number of the rule.
+        /// Indicate the version number of the rule(read-only).
         /// </summary>
         public readonly int Version;
         /// <summary>
-        /// Warning for a misconfigured rule, if any.
+        /// Indicate a warning for a misconfigured rule, if any.
         /// </summary>
         public readonly string WarningStatus;
 
@@ -106,8 +102,6 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
-            bool notSharable,
-
             int precedence,
 
             bool readOnly,
@@ -115,6 +109,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResult ruleSettings,
 
             Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult schedule,
+
+            bool sharable,
 
             string sourceAccount,
 
@@ -137,11 +133,11 @@ namespace Pulumi.Cloudflare.Outputs
             Id = id;
             Identity = identity;
             Name = name;
-            NotSharable = notSharable;
             Precedence = precedence;
             ReadOnly = readOnly;
             RuleSettings = ruleSettings;
             Schedule = schedule;
+            Sharable = sharable;
             SourceAccount = sourceAccount;
             Traffic = traffic;
             UpdatedAt = updatedAt;

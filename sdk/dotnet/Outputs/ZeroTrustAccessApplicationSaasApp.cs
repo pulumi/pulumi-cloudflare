@@ -42,7 +42,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         /// </summary>
         public readonly string? ConsumerServiceUrl;
-        public readonly string? CreatedAt;
         public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute> CustomAttributes;
         public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomClaim> CustomClaims;
         /// <summary>
@@ -96,7 +95,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The endpoint where your SaaS application will send login requests.
         /// </summary>
         public readonly string? SsoEndpoint;
-        public readonly string? UpdatedAt;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasApp(
@@ -113,8 +111,6 @@ namespace Pulumi.Cloudflare.Outputs
             string? clientSecret,
 
             string? consumerServiceUrl,
-
-            string? createdAt,
 
             ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute> customAttributes,
 
@@ -146,9 +142,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? spEntityId,
 
-            string? ssoEndpoint,
-
-            string? updatedAt)
+            string? ssoEndpoint)
         {
             AccessTokenLifetime = accessTokenLifetime;
             AllowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
@@ -157,7 +151,6 @@ namespace Pulumi.Cloudflare.Outputs
             ClientId = clientId;
             ClientSecret = clientSecret;
             ConsumerServiceUrl = consumerServiceUrl;
-            CreatedAt = createdAt;
             CustomAttributes = customAttributes;
             CustomClaims = customClaims;
             DefaultRelayState = defaultRelayState;
@@ -174,7 +167,6 @@ namespace Pulumi.Cloudflare.Outputs
             Scopes = scopes;
             SpEntityId = spEntityId;
             SsoEndpoint = ssoEndpoint;
-            UpdatedAt = updatedAt;
         }
     }
 }

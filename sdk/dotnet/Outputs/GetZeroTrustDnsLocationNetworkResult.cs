@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDnsLocationNetworkResult
     {
         /// <summary>
-        /// The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+        /// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
         /// </summary>
         public readonly string Network;
 

@@ -7,12 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkerScriptObservabilityLogs {
+    /**
+     * @return A list of destinations where logs will be exported to.
+     * 
+     */
+    private @Nullable List<String> destinations;
     /**
      * @return Whether logs are enabled for the Worker.
      * 
@@ -28,8 +35,20 @@ public final class WorkerScriptObservabilityLogs {
      * 
      */
     private Boolean invocationLogs;
+    /**
+     * @return Whether log persistence is enabled for the Worker.
+     * 
+     */
+    private @Nullable Boolean persist;
 
     private WorkerScriptObservabilityLogs() {}
+    /**
+     * @return A list of destinations where logs will be exported to.
+     * 
+     */
+    public List<String> destinations() {
+        return this.destinations == null ? List.of() : this.destinations;
+    }
     /**
      * @return Whether logs are enabled for the Worker.
      * 
@@ -51,6 +70,13 @@ public final class WorkerScriptObservabilityLogs {
     public Boolean invocationLogs() {
         return this.invocationLogs;
     }
+    /**
+     * @return Whether log persistence is enabled for the Worker.
+     * 
+     */
+    public Optional<Boolean> persist() {
+        return Optional.ofNullable(this.persist);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,17 +87,30 @@ public final class WorkerScriptObservabilityLogs {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> destinations;
         private Boolean enabled;
         private @Nullable Double headSamplingRate;
         private Boolean invocationLogs;
+        private @Nullable Boolean persist;
         public Builder() {}
         public Builder(WorkerScriptObservabilityLogs defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinations = defaults.destinations;
     	      this.enabled = defaults.enabled;
     	      this.headSamplingRate = defaults.headSamplingRate;
     	      this.invocationLogs = defaults.invocationLogs;
+    	      this.persist = defaults.persist;
         }
 
+        @CustomType.Setter
+        public Builder destinations(@Nullable List<String> destinations) {
+
+            this.destinations = destinations;
+            return this;
+        }
+        public Builder destinations(String... destinations) {
+            return destinations(List.of(destinations));
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -94,11 +133,19 @@ public final class WorkerScriptObservabilityLogs {
             this.invocationLogs = invocationLogs;
             return this;
         }
+        @CustomType.Setter
+        public Builder persist(@Nullable Boolean persist) {
+
+            this.persist = persist;
+            return this;
+        }
         public WorkerScriptObservabilityLogs build() {
             final var _resultValue = new WorkerScriptObservabilityLogs();
+            _resultValue.destinations = destinations;
             _resultValue.enabled = enabled;
             _resultValue.headSamplingRate = headSamplingRate;
             _resultValue.invocationLogs = invocationLogs;
+            _resultValue.persist = persist;
             return _resultValue;
         }
     }

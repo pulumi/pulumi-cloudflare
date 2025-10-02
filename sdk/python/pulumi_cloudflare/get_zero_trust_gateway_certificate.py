@@ -79,7 +79,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter(name="bindingStatus")
     def binding_status(self) -> _builtins.str:
         """
-        The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         """
         return pulumi.get(self, "binding_status")
@@ -88,7 +88,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter
     def certificate(self) -> _builtins.str:
         """
-        The CA certificate(read only).
+        Provide the CA certificate (read-only).
         """
         return pulumi.get(self, "certificate")
 
@@ -96,7 +96,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[_builtins.str]:
         """
-        Certificate UUID tag.
+        Identify the certificate with a UUID.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -114,7 +114,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter
     def fingerprint(self) -> _builtins.str:
         """
-        The SHA256 fingerprint of the certificate(read only).
+        Provide the SHA256 fingerprint of the certificate (read-only).
         """
         return pulumi.get(self, "fingerprint")
 
@@ -122,7 +122,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Certificate UUID tag.
+        Identify the certificate with a UUID.
         """
         return pulumi.get(self, "id")
 
@@ -130,7 +130,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter(name="inUse")
     def in_use(self) -> _builtins.bool:
         """
-        Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         """
         return pulumi.get(self, "in_use")
 
@@ -138,7 +138,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter(name="issuerOrg")
     def issuer_org(self) -> _builtins.str:
         """
-        The organization that issued the certificate(read only).
+        Indicate the organization that issued the certificate (read-only).
         """
         return pulumi.get(self, "issuer_org")
 
@@ -146,7 +146,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter(name="issuerRaw")
     def issuer_raw(self) -> _builtins.str:
         """
-        The entire issuer field of the certificate(read only).
+        Provide the entire issuer field of the certificate (read-only).
         """
         return pulumi.get(self, "issuer_raw")
 
@@ -154,7 +154,7 @@ class GetZeroTrustGatewayCertificateResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         Available values: "custom", "gateway_managed".
         """
         return pulumi.get(self, "type")
@@ -207,7 +207,7 @@ def get_zero_trust_gateway_certificate(account_id: Optional[_builtins.str] = Non
     ```
 
 
-    :param _builtins.str certificate_id: Certificate UUID tag.
+    :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -245,7 +245,7 @@ def get_zero_trust_gateway_certificate_output(account_id: Optional[pulumi.Input[
     ```
 
 
-    :param _builtins.str certificate_id: Certificate UUID tag.
+    :param _builtins.str certificate_id: Identify the certificate with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

@@ -316,6 +316,8 @@ from .get_workers_routes import *
 from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
+from .get_workflow import *
+from .get_workflows import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -378,6 +380,8 @@ from .get_zero_trust_gateway_proxy_endpoint import *
 from .get_zero_trust_gateway_settings import *
 from .get_zero_trust_list import *
 from .get_zero_trust_lists import *
+from .get_zero_trust_network_hostname_route import *
+from .get_zero_trust_network_hostname_routes import *
 from .get_zero_trust_organization import *
 from .get_zero_trust_risk_behavior import *
 from .get_zero_trust_risk_scoring_integration import *
@@ -512,6 +516,7 @@ from .workers_kv_namespace import *
 from .workers_route import *
 from .workers_script import *
 from .workers_script_subdomain import *
+from .workflow import *
 from .zero_trust_access_application import *
 from .zero_trust_access_custom_page import *
 from .zero_trust_access_group import *
@@ -549,6 +554,7 @@ from .zero_trust_gateway_proxy_endpoint import *
 from .zero_trust_gateway_settings import *
 from .zero_trust_list import *
 from .zero_trust_local_fallback_domain import *
+from .zero_trust_network_hostname_route import *
 from .zero_trust_organization import *
 from .zero_trust_risk_behavior import *
 from .zero_trust_risk_scoring_integration import *
@@ -1997,6 +2003,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/workflow",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workflow:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/zeroTrustAccessApplication",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2289,6 +2303,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain": "ZeroTrustLocalFallbackDomain"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustNetworkHostnameRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute": "ZeroTrustNetworkHostnameRoute"
   }
  },
  {

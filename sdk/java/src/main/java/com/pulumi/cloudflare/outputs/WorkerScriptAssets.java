@@ -13,10 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerScriptAssets {
     /**
+     * @return The SHA-256 hash of the asset manifest of files to upload.
+     * 
+     */
+    private @Nullable String assetManifestSha256;
+    /**
      * @return Configuration for assets within a Worker.
      * 
      */
     private @Nullable WorkerScriptAssetsConfig config;
+    /**
+     * @return Path to the directory containing asset files to upload.
+     * 
+     */
+    private @Nullable String directory;
     /**
      * @return Token provided upon successful upload of all files from a registered manifest.
      * 
@@ -25,11 +35,25 @@ public final class WorkerScriptAssets {
 
     private WorkerScriptAssets() {}
     /**
+     * @return The SHA-256 hash of the asset manifest of files to upload.
+     * 
+     */
+    public Optional<String> assetManifestSha256() {
+        return Optional.ofNullable(this.assetManifestSha256);
+    }
+    /**
      * @return Configuration for assets within a Worker.
      * 
      */
     public Optional<WorkerScriptAssetsConfig> config() {
         return Optional.ofNullable(this.config);
+    }
+    /**
+     * @return Path to the directory containing asset files to upload.
+     * 
+     */
+    public Optional<String> directory() {
+        return Optional.ofNullable(this.directory);
     }
     /**
      * @return Token provided upon successful upload of all files from a registered manifest.
@@ -48,19 +72,35 @@ public final class WorkerScriptAssets {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String assetManifestSha256;
         private @Nullable WorkerScriptAssetsConfig config;
+        private @Nullable String directory;
         private @Nullable String jwt;
         public Builder() {}
         public Builder(WorkerScriptAssets defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.assetManifestSha256 = defaults.assetManifestSha256;
     	      this.config = defaults.config;
+    	      this.directory = defaults.directory;
     	      this.jwt = defaults.jwt;
         }
 
         @CustomType.Setter
+        public Builder assetManifestSha256(@Nullable String assetManifestSha256) {
+
+            this.assetManifestSha256 = assetManifestSha256;
+            return this;
+        }
+        @CustomType.Setter
         public Builder config(@Nullable WorkerScriptAssetsConfig config) {
 
             this.config = config;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder directory(@Nullable String directory) {
+
+            this.directory = directory;
             return this;
         }
         @CustomType.Setter
@@ -71,7 +111,9 @@ public final class WorkerScriptAssets {
         }
         public WorkerScriptAssets build() {
             final var _resultValue = new WorkerScriptAssets();
+            _resultValue.assetManifestSha256 = assetManifestSha256;
             _resultValue.config = config;
+            _resultValue.directory = directory;
             _resultValue.jwt = jwt;
             return _resultValue;
         }

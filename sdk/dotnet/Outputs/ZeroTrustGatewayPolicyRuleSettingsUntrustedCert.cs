@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsUntrustedCert
     {
         /// <summary>
-        /// The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+        /// Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
         /// Available values: "pass_through", "block", "error".
         /// </summary>
         public readonly string? Action;

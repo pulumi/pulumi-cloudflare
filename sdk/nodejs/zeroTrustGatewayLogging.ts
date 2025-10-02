@@ -63,11 +63,11 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
 
     declare public readonly accountId: pulumi.Output<string>;
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
     declare public readonly redactPii: pulumi.Output<boolean>;
     /**
-     * Logging settings by rule type.
+     * Configure logging settings for each rule type.
      */
     declare public readonly settingsByRuleType: pulumi.Output<outputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
 
@@ -107,11 +107,11 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
 export interface ZeroTrustGatewayLoggingState {
     accountId?: pulumi.Input<string>;
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
     redactPii?: pulumi.Input<boolean>;
     /**
-     * Logging settings by rule type.
+     * Configure logging settings for each rule type.
      */
     settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
 }
@@ -122,11 +122,11 @@ export interface ZeroTrustGatewayLoggingState {
 export interface ZeroTrustGatewayLoggingArgs {
     accountId: pulumi.Input<string>;
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
     redactPii?: pulumi.Input<boolean>;
     /**
-     * Logging settings by rule type.
+     * Configure logging settings for each rule type.
      */
     settingsByRuleType?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleType>;
 }

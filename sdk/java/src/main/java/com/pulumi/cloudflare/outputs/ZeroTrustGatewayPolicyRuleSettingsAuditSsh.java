@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     private @Nullable Boolean commandLogging;
 
     private ZeroTrustGatewayPolicyRuleSettingsAuditSsh() {}
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     public Optional<Boolean> commandLogging() {

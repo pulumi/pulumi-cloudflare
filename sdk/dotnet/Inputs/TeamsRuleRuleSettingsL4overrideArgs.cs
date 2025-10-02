@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsL4overrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 or IPv6 address.
+        /// Defines the IPv4 or IPv6 address.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// A port number to use for TCP/UDP overrides.
+        /// Defines a port number to use for TCP/UDP overrides.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

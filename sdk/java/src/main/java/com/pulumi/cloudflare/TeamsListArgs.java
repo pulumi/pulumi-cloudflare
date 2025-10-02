@@ -26,14 +26,14 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the list.
+     * Provide the list description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the list.
+     * @return Provide the list description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -41,14 +41,14 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * items to add to the list.
+     * Add items to the list.
      * 
      */
     @Import(name="items")
     private @Nullable Output<List<TeamsListItemArgs>> items;
 
     /**
-     * @return items to add to the list.
+     * @return Add items to the list.
      * 
      */
     public Optional<Output<List<TeamsListItemArgs>>> items() {
@@ -56,14 +56,14 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the list.
+     * Specify the list name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return Specify the list name.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -79,7 +79,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> type;
 
     /**
-     * @return The type of list.
+     * @return Specify the list type.
      * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
      * 
      */
@@ -125,7 +125,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the list.
+         * @param description Provide the list description.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the list.
+         * @param description Provide the list description.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items items to add to the list.
+         * @param items Add items to the list.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items items to add to the list.
+         * @param items Add items to the list.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items items to add to the list.
+         * @param items Add items to the list.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name Specify the list name.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name Specify the list name.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of list.
+         * @param type Specify the list type.
          * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder
@@ -210,7 +210,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of list.
+         * @param type Specify the list type.
          * Available values: &#34;SERIAL&#34;, &#34;URL&#34;, &#34;DOMAIN&#34;, &#34;EMAIL&#34;, &#34;IP&#34;.
          * 
          * @return builder

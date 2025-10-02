@@ -15,14 +15,14 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
     public static final TeamsLocationNetworkArgs Empty = new TeamsLocationNetworkArgs();
 
     /**
-     * The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+     * @return Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
      * 
      */
     public Output<String> network() {
@@ -54,7 +54,7 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param network The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+         * @param network Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class TeamsLocationNetworkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param network The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+         * @param network Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     public static final ZeroTrustGatewaySettingsSettingsBlockPageArgs Empty = new ZeroTrustGatewaySettingsSettingsBlockPageArgs();
 
     /**
-     * If mode is customized_block_page: block page background color in #rrggbb format.
+     * Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      * 
      */
     @Import(name="backgroundColor")
     private @Nullable Output<String> backgroundColor;
 
     /**
-     * @return If mode is customized_block_page: block page background color in #rrggbb format.
+     * @return Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> backgroundColor() {
@@ -33,14 +33,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Specify whether to enable the custom block page.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Specify whether to enable the custom block page.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: block page footer text.
+     * Specify the block page footer text when the mode is customized*block*page.
      * 
      */
     @Import(name="footerText")
     private @Nullable Output<String> footerText;
 
     /**
-     * @return If mode is customized_block_page: block page footer text.
+     * @return Specify the block page footer text when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> footerText() {
@@ -63,14 +63,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: block page header text.
+     * Specify the block page header text when the mode is customized*block*page.
      * 
      */
     @Import(name="headerText")
     private @Nullable Output<String> headerText;
 
     /**
-     * @return If mode is customized_block_page: block page header text.
+     * @return Specify the block page header text when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> headerText() {
@@ -78,14 +78,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+     * Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      * 
      */
     @Import(name="includeContext")
     private @Nullable Output<Boolean> includeContext;
 
     /**
-     * @return If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+     * @return Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
      * 
      */
     public Optional<Output<Boolean>> includeContext() {
@@ -93,14 +93,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: full URL to the logo file.
+     * Specify the full URL to the logo file when the mode is customized*block*page.
      * 
      */
     @Import(name="logoPath")
     private @Nullable Output<String> logoPath;
 
     /**
-     * @return If mode is customized_block_page: full URL to the logo file.
+     * @return Specify the full URL to the logo file when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> logoPath() {
@@ -108,14 +108,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: admin email for users to contact.
+     * Specify the admin email for users to contact when the mode is customized*block*page.
      * 
      */
     @Import(name="mailtoAddress")
     private @Nullable Output<String> mailtoAddress;
 
     /**
-     * @return If mode is customized_block_page: admin email for users to contact.
+     * @return Specify the admin email for users to contact when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> mailtoAddress() {
@@ -123,14 +123,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: subject line for emails created from block page.
+     * Specify the subject line for emails created from the block page when the mode is customized*block*page.
      * 
      */
     @Import(name="mailtoSubject")
     private @Nullable Output<String> mailtoSubject;
 
     /**
-     * @return If mode is customized_block_page: subject line for emails created from block page.
+     * @return Specify the subject line for emails created from the block page when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> mailtoSubject() {
@@ -138,16 +138,16 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+     * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -155,14 +155,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: block page title.
+     * Specify the block page title when the mode is customized*block*page.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return If mode is customized_block_page: block page title.
+     * @return Specify the block page title when the mode is customized*block*page.
      * 
      */
     public Optional<Output<String>> name() {
@@ -170,14 +170,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * This setting was shared via the Orgs API and cannot be edited by the current account.
+     * Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return This setting was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this setting was shared via the Orgs API and read only for the current account.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -185,14 +185,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Account tag of account that shared this setting.
+     * Indicate the account tag of the account that shared this setting.
      * 
      */
     @Import(name="sourceAccount")
     private @Nullable Output<String> sourceAccount;
 
     /**
-     * @return Account tag of account that shared this setting.
+     * @return Indicate the account tag of the account that shared this setting.
      * 
      */
     public Optional<Output<String>> sourceAccount() {
@@ -200,14 +200,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      * 
      */
     @Import(name="suppressFooter")
     private @Nullable Output<Boolean> suppressFooter;
 
     /**
-     * @return If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+     * @return Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
      * 
      */
     public Optional<Output<Boolean>> suppressFooter() {
@@ -215,14 +215,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * If mode is redirect_uri: URI to which the user should be redirected.
+     * Specify the URI to redirect users to when the mode is redirect_uri.
      * 
      */
     @Import(name="targetUri")
     private @Nullable Output<String> targetUri;
 
     /**
-     * @return If mode is redirect_uri: URI to which the user should be redirected.
+     * @return Specify the URI to redirect users to when the mode is redirect_uri.
      * 
      */
     public Optional<Output<String>> targetUri() {
@@ -230,14 +230,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Version number of the setting.
+     * Indicate the version number of the setting.
      * 
      */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Version number of the setting.
+     * @return Indicate the version number of the setting.
      * 
      */
     public Optional<Output<Integer>> version() {
@@ -283,7 +283,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param backgroundColor If mode is customized_block_page: block page background color in #rrggbb format.
+         * @param backgroundColor Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param backgroundColor If mode is customized_block_page: block page background color in #rrggbb format.
+         * @param backgroundColor Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+         * @param enabled Specify whether to enable the custom block page.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param enabled Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+         * @param enabled Specify whether to enable the custom block page.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param footerText If mode is customized_block_page: block page footer text.
+         * @param footerText Specify the block page footer text when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param footerText If mode is customized_block_page: block page footer text.
+         * @param footerText Specify the block page footer text when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param headerText If mode is customized_block_page: block page header text.
+         * @param headerText Specify the block page header text when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param headerText If mode is customized_block_page: block page header text.
+         * @param headerText Specify the block page header text when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param includeContext If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+         * @param includeContext Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param includeContext If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+         * @param includeContext Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param logoPath If mode is customized_block_page: full URL to the logo file.
+         * @param logoPath Specify the full URL to the logo file when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param logoPath If mode is customized_block_page: full URL to the logo file.
+         * @param logoPath Specify the full URL to the logo file when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoAddress If mode is customized_block_page: admin email for users to contact.
+         * @param mailtoAddress Specify the admin email for users to contact when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoAddress If mode is customized_block_page: admin email for users to contact.
+         * @param mailtoAddress Specify the admin email for users to contact when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoSubject If mode is customized_block_page: subject line for emails created from block page.
+         * @param mailtoSubject Specify the subject line for emails created from the block page when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoSubject If mode is customized_block_page: subject line for emails created from block page.
+         * @param mailtoSubject Specify the subject line for emails created from the block page when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -451,8 +451,8 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-         * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+         * @param mode Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
          * 
          * @return builder
          * 
@@ -463,8 +463,8 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-         * Available values: &#34;&#34;, &#34;customized_block_page&#34;, &#34;redirect_uri&#34;.
+         * @param mode Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param name If mode is customized_block_page: block page title.
+         * @param name Specify the block page title when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param name If mode is customized_block_page: block page title.
+         * @param name Specify the block page title when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this setting was shared via the Orgs API and read only for the current account.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param readOnly This setting was shared via the Orgs API and cannot be edited by the current account.
+         * @param readOnly Indicate that this setting was shared via the Orgs API and read only for the current account.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting.
+         * @param sourceAccount Indicate the account tag of the account that shared this setting.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param sourceAccount Account tag of account that shared this setting.
+         * @param sourceAccount Indicate the account tag of the account that shared this setting.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param suppressFooter If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+         * @param suppressFooter Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param suppressFooter If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+         * @param suppressFooter Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param targetUri If mode is redirect_uri: URI to which the user should be redirected.
+         * @param targetUri Specify the URI to redirect users to when the mode is redirect_uri.
          * 
          * @return builder
          * 
@@ -569,7 +569,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param targetUri If mode is redirect_uri: URI to which the user should be redirected.
+         * @param targetUri Specify the URI to redirect users to when the mode is redirect_uri.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param version Version number of the setting.
+         * @param version Indicate the version number of the setting.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param version Version number of the setting.
+         * @param version Indicate the version number of the setting.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class TeamsLocationEndpointsIpv4Args extends com.pulumi.resources.R
     public static final TeamsLocationEndpointsIpv4Args Empty = new TeamsLocationEndpointsIpv4Args();
 
     /**
-     * True if the endpoint is enabled for this location.
+     * Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class TeamsLocationEndpointsIpv4Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the IPv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TeamsLocationEndpointsIpv4Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled True if the endpoint is enabled for this location.
+         * @param enabled Indicate whether the IPv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 

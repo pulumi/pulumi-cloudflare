@@ -62,23 +62,23 @@ export class ZeroTrustList extends pulumi.CustomResource {
     declare public readonly accountId: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The description of the list.
+     * Provide the list description.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * items to add to the list.
+     * Add items to the list.
      */
     declare public readonly items: pulumi.Output<outputs.ZeroTrustListItem[] | undefined>;
     /**
-     * The number of items in the list.
+     * Indicate the number of items in the list.
      */
     declare public /*out*/ readonly listCount: pulumi.Output<number>;
     /**
-     * The name of the list.
+     * Specify the list name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     declare public readonly type: pulumi.Output<string>;
@@ -139,23 +139,23 @@ export interface ZeroTrustListState {
     accountId?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     /**
-     * The description of the list.
+     * Provide the list description.
      */
     description?: pulumi.Input<string>;
     /**
-     * items to add to the list.
+     * Add items to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
     /**
-     * The number of items in the list.
+     * Indicate the number of items in the list.
      */
     listCount?: pulumi.Input<number>;
     /**
-     * The name of the list.
+     * Specify the list name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type?: pulumi.Input<string>;
@@ -168,19 +168,19 @@ export interface ZeroTrustListState {
 export interface ZeroTrustListArgs {
     accountId: pulumi.Input<string>;
     /**
-     * The description of the list.
+     * Provide the list description.
      */
     description?: pulumi.Input<string>;
     /**
-     * items to add to the list.
+     * Add items to the list.
      */
     items?: pulumi.Input<pulumi.Input<inputs.ZeroTrustListItem>[]>;
     /**
-     * The name of the list.
+     * Specify the list name.
      */
     name: pulumi.Input<string>;
     /**
-     * The type of list.
+     * Specify the list type.
      * Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
      */
     type: pulumi.Input<string>;

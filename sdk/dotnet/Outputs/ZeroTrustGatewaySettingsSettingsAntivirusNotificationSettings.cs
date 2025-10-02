@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
     {
         /// <summary>
-        /// Set notification on.
+        /// Specify whether to enable notifications.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// If true, context information will be passed as query parameters.
+        /// Specify whether to include context information as query parameters.
         /// </summary>
         public readonly bool? IncludeContext;
         /// <summary>
-        /// Customize the message shown in the notification.
+        /// Specify the message to show in the notification.
         /// </summary>
         public readonly string? Msg;
         /// <summary>
-        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        /// Specify a URL that directs users to more information. If unset, the notification opens a block page.
         /// </summary>
         public readonly string? SupportUrl;
 

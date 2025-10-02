@@ -63,7 +63,6 @@ type LookupZeroTrustAccessGroupArgs struct {
 type LookupZeroTrustAccessGroupResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	CreatedAt string  `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes []GetZeroTrustAccessGroupExclude `pulumi:"excludes"`
 	Filter   *GetZeroTrustAccessGroupFilter   `pulumi:"filter"`
@@ -78,8 +77,7 @@ type LookupZeroTrustAccessGroupResult struct {
 	// The name of the Access group.
 	Name string `pulumi:"name"`
 	// Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
-	Requires  []GetZeroTrustAccessGroupRequire `pulumi:"requires"`
-	UpdatedAt string                           `pulumi:"updatedAt"`
+	Requires []GetZeroTrustAccessGroupRequire `pulumi:"requires"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -128,10 +126,6 @@ func (o LookupZeroTrustAccessGroupResultOutput) AccountId() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupZeroTrustAccessGroupResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 func (o LookupZeroTrustAccessGroupResultOutput) Excludes() GetZeroTrustAccessGroupExcludeArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) []GetZeroTrustAccessGroupExclude { return v.Excludes }).(GetZeroTrustAccessGroupExcludeArrayOutput)
@@ -169,10 +163,6 @@ func (o LookupZeroTrustAccessGroupResultOutput) Name() pulumi.StringOutput {
 // Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
 func (o LookupZeroTrustAccessGroupResultOutput) Requires() GetZeroTrustAccessGroupRequireArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) []GetZeroTrustAccessGroupRequire { return v.Requires }).(GetZeroTrustAccessGroupRequireArrayOutput)
-}
-
-func (o LookupZeroTrustAccessGroupResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

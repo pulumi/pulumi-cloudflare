@@ -18,6 +18,30 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
+        [Input("allowedDestinationAddresses")]
+        private InputList<string>? _allowedDestinationAddresses;
+
+        /// <summary>
+        /// List of allowed destination addresses.
+        /// </summary>
+        public InputList<string> AllowedDestinationAddresses
+        {
+            get => _allowedDestinationAddresses ?? (_allowedDestinationAddresses = new InputList<string>());
+            set => _allowedDestinationAddresses = value;
+        }
+
+        [Input("allowedSenderAddresses")]
+        private InputList<string>? _allowedSenderAddresses;
+
+        /// <summary>
+        /// List of allowed sender addresses.
+        /// </summary>
+        public InputList<string> AllowedSenderAddresses
+        {
+            get => _allowedSenderAddresses ?? (_allowedSenderAddresses = new InputList<string>());
+            set => _allowedSenderAddresses = value;
+        }
+
         /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
@@ -41,6 +65,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
+
+        /// <summary>
+        /// Destination address for the email.
+        /// </summary>
+        [Input("destinationAddress")]
+        public Input<string>? DestinationAddress { get; set; }
 
         /// <summary>
         /// The environment of the script_name to bind to.
@@ -72,6 +102,13 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("json")]
         public Input<string>? Json { get; set; }
+
+        /// <summary>
+        /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+        /// Available values: "eu", "fedramp".
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         [Input("keyBase64")]
         private Input<string>? _keyBase64;
@@ -124,10 +161,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
+        /// The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+        /// </summary>
+        [Input("oldName")]
+        public Input<string>? OldName { get; set; }
+
+        /// <summary>
         /// Outbound worker.
         /// </summary>
         [Input("outbound")]
         public Input<Inputs.WorkerScriptBindingOutboundGetArgs>? Outbound { get; set; }
+
+        /// <summary>
+        /// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+        /// </summary>
+        [Input("part")]
+        public Input<string>? Part { get; set; }
 
         /// <summary>
         /// Name of the Pipeline to bind to.
@@ -183,7 +232,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -199,6 +248,12 @@ namespace Pulumi.Cloudflare.Inputs
             get => _usages ?? (_usages = new InputList<string>());
             set => _usages = value;
         }
+
+        /// <summary>
+        /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// Name of the Workflow to bind to.

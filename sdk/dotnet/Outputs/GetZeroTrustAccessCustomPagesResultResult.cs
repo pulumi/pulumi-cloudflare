@@ -14,11 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustAccessCustomPagesResultResult
     {
         /// <summary>
-        /// Number of apps the custom page is assigned to.
-        /// </summary>
-        public readonly int AppCount;
-        public readonly string CreatedAt;
-        /// <summary>
         /// Custom page name.
         /// </summary>
         public readonly string Name;
@@ -31,28 +26,18 @@ namespace Pulumi.Cloudflare.Outputs
         /// UUID.
         /// </summary>
         public readonly string Uid;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessCustomPagesResultResult(
-            int appCount,
-
-            string createdAt,
-
             string name,
 
             string type,
 
-            string uid,
-
-            string updatedAt)
+            string uid)
         {
-            AppCount = appCount;
-            CreatedAt = createdAt;
             Name = name;
             Type = type;
             Uid = uid;
-            UpdatedAt = updatedAt;
         }
     }
 }

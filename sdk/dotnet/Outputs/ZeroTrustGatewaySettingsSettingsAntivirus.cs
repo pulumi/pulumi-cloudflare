@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsAntivirus
     {
         /// <summary>
-        /// Enable anti-virus scanning on downloads.
+        /// Specify whether to enable anti-virus scanning on downloads.
         /// </summary>
         public readonly bool? EnabledDownloadPhase;
         /// <summary>
-        /// Enable anti-virus scanning on uploads.
+        /// Specify whether to enable anti-virus scanning on uploads.
         /// </summary>
         public readonly bool? EnabledUploadPhase;
         /// <summary>
-        /// Block requests for files that cannot be scanned.
+        /// Specify whether to block requests for unscannable files.
         /// </summary>
         public readonly bool? FailClosed;
         /// <summary>
-        /// Configure a message to display on the user's device when an antivirus search is performed.
+        /// Configure the message the user's device shows during an antivirus scan.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings? NotificationSettings;
 

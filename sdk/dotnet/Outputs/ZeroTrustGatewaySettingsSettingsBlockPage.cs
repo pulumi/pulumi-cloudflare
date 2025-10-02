@@ -14,64 +14,64 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsBlockPage
     {
         /// <summary>
-        /// If mode is customized_block_page: block page background color in #rrggbb format.
+        /// Specify the block page background color in `#rrggbb` format when the mode is customized*block*page.
         /// </summary>
         public readonly string? BackgroundColor;
         /// <summary>
-        /// Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+        /// Specify whether to enable the custom block page.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// If mode is customized_block_page: block page footer text.
+        /// Specify the block page footer text when the mode is customized*block*page.
         /// </summary>
         public readonly string? FooterText;
         /// <summary>
-        /// If mode is customized_block_page: block page header text.
+        /// Specify the block page header text when the mode is customized*block*page.
         /// </summary>
         public readonly string? HeaderText;
         /// <summary>
-        /// If mode is redirect_uri: when enabled, context will be appended to target_uri as query parameters.
+        /// Specify whether to append context to target*uri as query parameters. This applies only when the mode is redirect*uri.
         /// </summary>
         public readonly bool? IncludeContext;
         /// <summary>
-        /// If mode is customized_block_page: full URL to the logo file.
+        /// Specify the full URL to the logo file when the mode is customized*block*page.
         /// </summary>
         public readonly string? LogoPath;
         /// <summary>
-        /// If mode is customized_block_page: admin email for users to contact.
+        /// Specify the admin email for users to contact when the mode is customized*block*page.
         /// </summary>
         public readonly string? MailtoAddress;
         /// <summary>
-        /// If mode is customized_block_page: subject line for emails created from block page.
+        /// Specify the subject line for emails created from the block page when the mode is customized*block*page.
         /// </summary>
         public readonly string? MailtoSubject;
         /// <summary>
-        /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
-        /// Available values: "", "customized_block_page", "redirect_uri".
+        /// Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
+        /// Available values: "", "customized*block*page", "redirect_uri".
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// If mode is customized_block_page: block page title.
+        /// Specify the block page title when the mode is customized*block*page.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this setting was shared via the Orgs API and read only for the current account.
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>
-        /// Account tag of account that shared this setting.
+        /// Indicate the account tag of the account that shared this setting.
         /// </summary>
         public readonly string? SourceAccount;
         /// <summary>
-        /// If mode is customized_block_page: suppress detailed info at the bottom of the block page.
+        /// Specify whether to suppress detailed information at the bottom of the block page when the mode is customized*block*page.
         /// </summary>
         public readonly bool? SuppressFooter;
         /// <summary>
-        /// If mode is redirect_uri: URI to which the user should be redirected.
+        /// Specify the URI to redirect users to when the mode is redirect_uri.
         /// </summary>
         public readonly string? TargetUri;
         /// <summary>
-        /// Version number of the setting.
+        /// Indicate the version number of the setting.
         /// </summary>
         public readonly int? Version;
 

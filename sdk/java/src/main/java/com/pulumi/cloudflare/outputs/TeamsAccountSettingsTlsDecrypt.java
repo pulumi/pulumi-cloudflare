@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsTlsDecrypt {
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private @Nullable Boolean enabled;
 
     private TeamsAccountSettingsTlsDecrypt() {}
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<Boolean> enabled() {

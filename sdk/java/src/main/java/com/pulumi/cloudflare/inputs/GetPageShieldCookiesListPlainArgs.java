@@ -51,7 +51,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * Export the list of cookies as a file.
+     * Export the list of cookies as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -59,7 +59,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
     private @Nullable String export;
 
     /**
-     * @return Export the list of cookies as a file.
+     * @return Export the list of cookies as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -237,7 +237,7 @@ public final class GetPageShieldCookiesListPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param export Export the list of cookies as a file.
+         * @param export Export the list of cookies as a file, limited to 50000 entries.
          * Available values: &#34;csv&#34;.
          * 
          * @return builder

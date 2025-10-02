@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *
  * const exampleWorkerVersion = cloudflare.getWorkerVersion({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     workerId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     versionId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *     workerId: "worker_id",
+ *     versionId: "version_id",
  *     include: "modules",
  * });
  * ```
@@ -40,12 +40,16 @@ export interface GetWorkerVersionArgs {
      */
     accountId: string;
     /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
     include?: string;
+    /**
+     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     */
     versionId?: string;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId: string;
 }
@@ -66,68 +70,33 @@ export interface GetWorkerVersionResult {
      * Configuration for assets within a Worker.
      */
     readonly assets: outputs.GetWorkerVersionAssets;
-    /**
-     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-     */
     readonly bindings: outputs.GetWorkerVersionBinding[];
-    /**
-     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-     */
     readonly compatibilityDate: string;
-    /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
-     */
     readonly compatibilityFlags: string[];
-    /**
-     * When the version was created.
-     */
     readonly createdOn: string;
-    /**
-     * The ID of this resource.
-     */
     readonly id: string;
     /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
     readonly include?: string;
-    /**
-     * Resource limits enforced at runtime.
-     */
     readonly limits: outputs.GetWorkerVersionLimits;
-    /**
-     * The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-     */
     readonly mainModule: string;
-    /**
-     * Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-     */
     readonly migrations: outputs.GetWorkerVersionMigrations;
-    /**
-     * Code, sourcemaps, and other content used at runtime.
-     */
     readonly modules: outputs.GetWorkerVersionModule[];
-    /**
-     * The integer version number, starting from one.
-     */
     readonly number: number;
-    /**
-     * Placement settings for the version.
-     */
     readonly placement: outputs.GetWorkerVersionPlacement;
-    /**
-     * The client used to create the version.
-     */
     readonly source: string;
     /**
-     * Usage model for the version.
-     * Available values: "standard", "bundled", "unbound".
-     *
      * @deprecated This attribute is deprecated.
      */
     readonly usageModel: string;
+    /**
+     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     */
     readonly versionId?: string;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     readonly workerId: string;
 }
@@ -140,8 +109,8 @@ export interface GetWorkerVersionResult {
  *
  * const exampleWorkerVersion = cloudflare.getWorkerVersion({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     workerId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     versionId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *     workerId: "worker_id",
+ *     versionId: "version_id",
  *     include: "modules",
  * });
  * ```
@@ -165,12 +134,16 @@ export interface GetWorkerVersionOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
+     * Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
      * Available values: "modules".
      */
     include?: pulumi.Input<string>;
+    /**
+     * Identifier for the version, which can be ID or the literal "latest" to operate on the most recently created version.
+     */
     versionId?: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId: pulumi.Input<string>;
 }

@@ -28,15 +28,15 @@ type WorkersScript struct {
 	Assets WorkersScriptAssetsPtrOutput `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkersScriptBindingArrayOutput `pulumi:"bindings"`
-	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrOutput `pulumi:"bodyPart"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
-	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 	ContentFile pulumi.StringPtrOutput `pulumi:"contentFile"`
 	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
 	ContentSha256 pulumi.StringPtrOutput `pulumi:"contentSha256"`
@@ -62,7 +62,7 @@ type WorkersScript struct {
 	Limits WorkersScriptLimitsPtrOutput `pulumi:"limits"`
 	// Whether Logpush is turned on for the Worker.
 	Logpush pulumi.BoolOutput `pulumi:"logpush"`
-	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag pulumi.StringOutput `pulumi:"migrationTag"`
@@ -132,15 +132,15 @@ type workersScriptState struct {
 	Assets *WorkersScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkersScriptBinding `pulumi:"bindings"`
-	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 	Content *string `pulumi:"content"`
-	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 	ContentFile *string `pulumi:"contentFile"`
 	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
 	ContentSha256 *string `pulumi:"contentSha256"`
@@ -166,7 +166,7 @@ type workersScriptState struct {
 	Limits *WorkersScriptLimits `pulumi:"limits"`
 	// Whether Logpush is turned on for the Worker.
 	Logpush *bool `pulumi:"logpush"`
-	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag *string `pulumi:"migrationTag"`
@@ -195,15 +195,15 @@ type WorkersScriptState struct {
 	Assets WorkersScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkersScriptBindingArrayInput
-	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 	Content pulumi.StringPtrInput
-	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 	ContentFile pulumi.StringPtrInput
 	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
 	ContentSha256 pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type WorkersScriptState struct {
 	Limits WorkersScriptLimitsPtrInput
 	// Whether Logpush is turned on for the Worker.
 	Logpush pulumi.BoolPtrInput
-	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
 	// The tag of the Durable Object migration that was most recently applied for this Worker.
 	MigrationTag pulumi.StringPtrInput
@@ -262,15 +262,15 @@ type workersScriptArgs struct {
 	Assets *WorkersScriptAssets `pulumi:"assets"`
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings []WorkersScriptBinding `pulumi:"bindings"`
-	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart *string `pulumi:"bodyPart"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 	Content *string `pulumi:"content"`
-	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 	ContentFile *string `pulumi:"contentFile"`
 	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
 	ContentSha256 *string `pulumi:"contentSha256"`
@@ -284,7 +284,7 @@ type workersScriptArgs struct {
 	Limits *WorkersScriptLimits `pulumi:"limits"`
 	// Whether Logpush is turned on for the Worker.
 	Logpush *bool `pulumi:"logpush"`
-	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule *string `pulumi:"mainModule"`
 	// Observability settings for the Worker.
 	Observability *WorkersScriptObservability `pulumi:"observability"`
@@ -307,15 +307,15 @@ type WorkersScriptArgs struct {
 	Assets WorkersScriptAssetsPtrInput
 	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
 	Bindings WorkersScriptBindingArrayInput
-	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrInput
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+	// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 	Content pulumi.StringPtrInput
-	// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+	// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 	ContentFile pulumi.StringPtrInput
 	// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
 	ContentSha256 pulumi.StringPtrInput
@@ -329,7 +329,7 @@ type WorkersScriptArgs struct {
 	Limits WorkersScriptLimitsPtrInput
 	// Whether Logpush is turned on for the Worker.
 	Logpush pulumi.BoolPtrInput
-	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrInput
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrInput
@@ -446,7 +446,7 @@ func (o WorkersScriptOutput) Bindings() WorkersScriptBindingArrayOutput {
 	return o.ApplyT(func(v *WorkersScript) WorkersScriptBindingArrayOutput { return v.Bindings }).(WorkersScriptBindingArrayOutput)
 }
 
-// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 func (o WorkersScriptOutput) BodyPart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.BodyPart }).(pulumi.StringPtrOutput)
 }
@@ -461,12 +461,12 @@ func (o WorkersScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
-// Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+// Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
 func (o WorkersScriptOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
 func (o WorkersScriptOutput) ContentFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.ContentFile }).(pulumi.StringPtrOutput)
 }
@@ -531,7 +531,7 @@ func (o WorkersScriptOutput) Logpush() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.BoolOutput { return v.Logpush }).(pulumi.BoolOutput)
 }
 
-// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 func (o WorkersScriptOutput) MainModule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.MainModule }).(pulumi.StringPtrOutput)
 }

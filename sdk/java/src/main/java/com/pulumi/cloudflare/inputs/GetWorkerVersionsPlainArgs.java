@@ -47,14 +47,14 @@ public final class GetWorkerVersionsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      * 
      */
     @Import(name="workerId", required=true)
     private String workerId;
 
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public String workerId() {
@@ -110,7 +110,7 @@ public final class GetWorkerVersionsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param workerId Identifier.
+         * @param workerId Identifier for the Worker, which can be ID or name.
          * 
          * @return builder
          * 

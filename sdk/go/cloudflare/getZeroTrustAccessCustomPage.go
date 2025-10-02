@@ -59,9 +59,6 @@ type LookupZeroTrustAccessCustomPageArgs struct {
 type LookupZeroTrustAccessCustomPageResult struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Number of apps the custom page is assigned to.
-	AppCount  int    `pulumi:"appCount"`
-	CreatedAt string `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
 	// UUID.
@@ -74,8 +71,7 @@ type LookupZeroTrustAccessCustomPageResult struct {
 	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
 	// UUID.
-	Uid       string `pulumi:"uid"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	Uid string `pulumi:"uid"`
 }
 
 func LookupZeroTrustAccessCustomPageOutput(ctx *pulumi.Context, args LookupZeroTrustAccessCustomPageOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustAccessCustomPageResultOutput {
@@ -119,15 +115,6 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) AccountId() pulumi.StringOu
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Number of apps the custom page is assigned to.
-func (o LookupZeroTrustAccessCustomPageResultOutput) AppCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) int { return v.AppCount }).(pulumi.IntOutput)
-}
-
-func (o LookupZeroTrustAccessCustomPageResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
 // Custom page HTML.
 func (o LookupZeroTrustAccessCustomPageResultOutput) CustomHtml() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.CustomHtml }).(pulumi.StringOutput)
@@ -157,10 +144,6 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) Type() pulumi.StringOutput 
 // UUID.
 func (o LookupZeroTrustAccessCustomPageResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Uid }).(pulumi.StringOutput)
-}
-
-func (o LookupZeroTrustAccessCustomPageResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 func init() {

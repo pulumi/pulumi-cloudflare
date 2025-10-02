@@ -16,14 +16,14 @@ public final class ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs extends
     public static final ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs Empty = new ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs();
 
     /**
-     * Enable detecting protocol on initial bytes of client traffic.
+     * Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable detecting protocol on initial bytes of client traffic.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs extends
         }
 
         /**
-         * @param enabled Enable detecting protocol on initial bytes of client traffic.
+         * @param enabled Specify whether to detect protocols from the initial bytes of client traffic.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs extends
         }
 
         /**
-         * @param enabled Enable detecting protocol on initial bytes of client traffic.
+         * @param enabled Specify whether to detect protocols from the initial bytes of client traffic.
          * 
          * @return builder
          * 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsAuditSsh {
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     private @Nullable Boolean commandLogging;
 
     private TeamsRuleRuleSettingsAuditSsh() {}
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     public Optional<Boolean> commandLogging() {

@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkerVersions(ctx, &cloudflare.LookupWorkerVersionsArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				WorkerId:  "023e105f4ecef8ad9ca31a8372d0c353",
+//				WorkerId:  "worker_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +53,7 @@ type LookupWorkerVersionsArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
 
@@ -67,7 +67,7 @@ type LookupWorkerVersionsResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetWorkerVersionsResult `pulumi:"results"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId string `pulumi:"workerId"`
 }
 
@@ -86,7 +86,7 @@ type LookupWorkerVersionsOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier.
+	// Identifier for the Worker, which can be ID or name.
 	WorkerId pulumi.StringInput `pulumi:"workerId"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupWorkerVersionsResultOutput) Results() GetWorkerVersionsResultArray
 	return o.ApplyT(func(v LookupWorkerVersionsResult) []GetWorkerVersionsResult { return v.Results }).(GetWorkerVersionsResultArrayOutput)
 }
 
-// Identifier.
+// Identifier for the Worker, which can be ID or name.
 func (o LookupWorkerVersionsResultOutput) WorkerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkerVersionsResult) string { return v.WorkerId }).(pulumi.StringOutput)
 }

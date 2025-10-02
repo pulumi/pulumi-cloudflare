@@ -15,14 +15,14 @@ public final class TeamsLocationEndpointsIpv6NetworkArgs extends com.pulumi.reso
     public static final TeamsLocationEndpointsIpv6NetworkArgs Empty = new TeamsLocationEndpointsIpv6NetworkArgs();
 
     /**
-     * The IPv6 address or IPv6 CIDR.
+     * Specify the IPv6 address or IPv6 CIDR.
      * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
-     * @return The IPv6 address or IPv6 CIDR.
+     * @return Specify the IPv6 address or IPv6 CIDR.
      * 
      */
     public Output<String> network() {
@@ -54,7 +54,7 @@ public final class TeamsLocationEndpointsIpv6NetworkArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network The IPv6 address or IPv6 CIDR.
+         * @param network Specify the IPv6 address or IPv6 CIDR.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class TeamsLocationEndpointsIpv6NetworkArgs extends com.pulumi.reso
         }
 
         /**
-         * @param network The IPv6 address or IPv6 CIDR.
+         * @param network Specify the IPv6 address or IPv6 CIDR.
          * 
          * @return builder
          * 

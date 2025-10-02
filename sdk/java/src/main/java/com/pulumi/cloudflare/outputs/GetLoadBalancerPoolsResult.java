@@ -67,6 +67,11 @@ public final class GetLoadBalancerPoolsResult {
      */
     private String monitor;
     /**
+     * @return The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    private String monitorGroup;
+    /**
      * @return A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
@@ -171,6 +176,13 @@ public final class GetLoadBalancerPoolsResult {
         return this.monitor;
     }
     /**
+     * @return The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    public String monitorGroup() {
+        return this.monitorGroup;
+    }
+    /**
      * @return A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
@@ -234,6 +246,7 @@ public final class GetLoadBalancerPoolsResult {
         private Integer minimumOrigins;
         private String modifiedOn;
         private String monitor;
+        private String monitorGroup;
         private String name;
         private List<String> networks;
         private String notificationEmail;
@@ -255,6 +268,7 @@ public final class GetLoadBalancerPoolsResult {
     	      this.minimumOrigins = defaults.minimumOrigins;
     	      this.modifiedOn = defaults.modifiedOn;
     	      this.monitor = defaults.monitor;
+    	      this.monitorGroup = defaults.monitorGroup;
     	      this.name = defaults.name;
     	      this.networks = defaults.networks;
     	      this.notificationEmail = defaults.notificationEmail;
@@ -363,6 +377,14 @@ public final class GetLoadBalancerPoolsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder monitorGroup(String monitorGroup) {
+            if (monitorGroup == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResult", "monitorGroup");
+            }
+            this.monitorGroup = monitorGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResult", "name");
@@ -430,6 +452,7 @@ public final class GetLoadBalancerPoolsResult {
             _resultValue.minimumOrigins = minimumOrigins;
             _resultValue.modifiedOn = modifiedOn;
             _resultValue.monitor = monitor;
+            _resultValue.monitorGroup = monitorGroup;
             _resultValue.name = name;
             _resultValue.networks = networks;
             _resultValue.notificationEmail = notificationEmail;

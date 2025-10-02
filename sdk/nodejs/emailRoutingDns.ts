@@ -70,7 +70,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
     /**
      * Domain of your zone.
      */
-    declare public readonly name: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly result: pulumi.Output<outputs.EmailRoutingDnsResult>;
     declare public /*out*/ readonly resultInfo: pulumi.Output<outputs.EmailRoutingDnsResultInfo>;
     /**
@@ -125,9 +125,6 @@ export class EmailRoutingDns extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as EmailRoutingDnsArgs | undefined;
-            if (args?.name === undefined && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -206,7 +203,7 @@ export interface EmailRoutingDnsArgs {
     /**
      * Domain of your zone.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Identifier.
      */

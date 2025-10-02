@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleWorkerVersions = Cloudflare.GetWorkerVersions.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         WorkerId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         WorkerId = "worker_id",
         ///     });
         /// 
         /// });
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId", required: true)]
         public string WorkerId { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId", required: true)]
         public Input<string> WorkerId { get; set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetWorkerVersionsResultResult> Results;
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         public readonly string WorkerId;
 

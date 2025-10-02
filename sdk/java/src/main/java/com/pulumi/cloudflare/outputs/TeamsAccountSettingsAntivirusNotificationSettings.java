@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsAccountSettingsAntivirusNotificationSettings {
     /**
-     * @return Set notification on.
+     * @return Specify whether to enable notifications.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to include context information as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return Customize the message shown in the notification.
+     * @return Specify the message to show in the notification.
      * 
      */
     private @Nullable String msg;
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     private @Nullable String supportUrl;
 
     private TeamsAccountSettingsAntivirusNotificationSettings() {}
     /**
-     * @return Set notification on.
+     * @return Specify whether to enable notifications.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to include context information as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return Customize the message shown in the notification.
+     * @return Specify the message to show in the notification.
      * 
      */
     public Optional<String> msg() {
         return Optional.ofNullable(this.msg);
     }
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     public Optional<String> supportUrl() {

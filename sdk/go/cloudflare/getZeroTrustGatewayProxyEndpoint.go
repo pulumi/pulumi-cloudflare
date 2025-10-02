@@ -59,12 +59,12 @@ type LookupZeroTrustGatewayProxyEndpointResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of this resource.
 	Id string `pulumi:"id"`
-	// A list of CIDRs to restrict ingress connections.
+	// Specify the list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// The name of the proxy endpoint.
+	// Specify the name of the proxy endpoint.
 	Name            string `pulumi:"name"`
 	ProxyEndpointId string `pulumi:"proxyEndpointId"`
-	// The subdomain to be used as the destination in the proxy client.
+	// Specify the subdomain to use as the destination in the proxy client.
 	Subdomain string `pulumi:"subdomain"`
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -116,12 +116,12 @@ func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Id() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of CIDRs to restrict ingress connections.
+// Specify the list of CIDRs to restrict ingress connections.
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// The name of the proxy endpoint.
+// Specify the name of the proxy endpoint.
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -130,7 +130,7 @@ func (o LookupZeroTrustGatewayProxyEndpointResultOutput) ProxyEndpointId() pulum
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.ProxyEndpointId }).(pulumi.StringOutput)
 }
 
-// The subdomain to be used as the destination in the proxy client.
+// Specify the subdomain to use as the destination in the proxy client.
 func (o LookupZeroTrustGatewayProxyEndpointResultOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayProxyEndpointResult) string { return v.Subdomain }).(pulumi.StringOutput)
 }

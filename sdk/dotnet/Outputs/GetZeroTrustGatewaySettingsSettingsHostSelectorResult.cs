@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsHostSelectorResult
     {
         /// <summary>
-        /// Enable filtering via hosts for egress policies.
+        /// Specify whether to enable filtering via hosts for egress policies.
         /// </summary>
         public readonly bool Enabled;
 

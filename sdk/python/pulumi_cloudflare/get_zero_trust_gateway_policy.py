@@ -27,7 +27,7 @@ class GetZeroTrustGatewayPolicyResult:
     """
     A collection of values returned by getZeroTrustGatewayPolicy.
     """
-    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, not_sharable=None, precedence=None, read_only=None, rule_id=None, rule_settings=None, schedule=None, source_account=None, traffic=None, updated_at=None, version=None, warning_status=None):
+    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, precedence=None, read_only=None, rule_id=None, rule_settings=None, schedule=None, sharable=None, source_account=None, traffic=None, updated_at=None, version=None, warning_status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -64,9 +64,6 @@ class GetZeroTrustGatewayPolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if not_sharable and not isinstance(not_sharable, bool):
-            raise TypeError("Expected argument 'not_sharable' to be a bool")
-        pulumi.set(__self__, "not_sharable", not_sharable)
         if precedence and not isinstance(precedence, int):
             raise TypeError("Expected argument 'precedence' to be a int")
         pulumi.set(__self__, "precedence", precedence)
@@ -82,6 +79,9 @@ class GetZeroTrustGatewayPolicyResult:
         if schedule and not isinstance(schedule, dict):
             raise TypeError("Expected argument 'schedule' to be a dict")
         pulumi.set(__self__, "schedule", schedule)
+        if sharable and not isinstance(sharable, bool):
+            raise TypeError("Expected argument 'sharable' to be a bool")
+        pulumi.set(__self__, "sharable", sharable)
         if source_account and not isinstance(source_account, str):
             raise TypeError("Expected argument 'source_account' to be a str")
         pulumi.set(__self__, "source_account", source_account)
@@ -107,7 +107,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def action(self) -> _builtins.str:
         """
-        The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
@@ -121,7 +121,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter(name="deletedAt")
     def deleted_at(self) -> _builtins.str:
         """
-        Date of deletion, if any.
+        Indicate the date of deletion, if any.
         """
         return pulumi.get(self, "deleted_at")
 
@@ -129,7 +129,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the rule.
+        Specify the rule description.
         """
         return pulumi.get(self, "description")
 
@@ -142,7 +142,7 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        True if the rule is enabled.
+        Specify whether the rule is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -150,19 +150,24 @@ class GetZeroTrustGatewayPolicyResult:
     @pulumi.getter
     def expiration(self) -> 'outputs.GetZeroTrustGatewayPolicyExpirationResult':
         """
-        The expiration time stamp and default duration of a DNS policy. Takes
-        precedence over the policy's `schedule` configuration, if any.
+        Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         """
         return pulumi.get(self, "expiration")
 
     @_builtins.property
     @pulumi.getter
     def filters(self) -> Sequence[_builtins.str]:
+        """
+        Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
+        """
         return pulumi.get(self, "filters")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Identify the API resource with a UUID.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -173,12 +178,10 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Specify the rule name.
+        """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="notSharable")
-    def not_sharable(self) -> _builtins.bool:
-        return pulumi.get(self, "not_sharable")
 
     @_builtins.property
     @pulumi.getter
@@ -188,13 +191,16 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> _builtins.bool:
+        """
+        Indicate that this rule is shared via the Orgs API and read only.
+        """
         return pulumi.get(self, "read_only")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[_builtins.str]:
         """
-        The API resource UUID.
+        Identify the API resource with a UUID.
         """
         return pulumi.get(self, "rule_id")
 
@@ -206,11 +212,25 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def schedule(self) -> 'outputs.GetZeroTrustGatewayPolicyScheduleResult':
+        """
+        Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        """
         return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def sharable(self) -> _builtins.bool:
+        """
+        Indicate that this rule is sharable via the Orgs API.
+        """
+        return pulumi.get(self, "sharable")
 
     @_builtins.property
     @pulumi.getter(name="sourceAccount")
     def source_account(self) -> _builtins.str:
+        """
+        Provide the account tag of the account that created the rule.
+        """
         return pulumi.get(self, "source_account")
 
     @_builtins.property
@@ -226,11 +246,17 @@ class GetZeroTrustGatewayPolicyResult:
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.int:
+        """
+        Indicate the version number of the rule(read-only).
+        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="warningStatus")
     def warning_status(self) -> _builtins.str:
+        """
+        Indicate a warning for a misconfigured rule, if any.
+        """
         return pulumi.get(self, "warning_status")
 
 
@@ -252,12 +278,12 @@ class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
             id=self.id,
             identity=self.identity,
             name=self.name,
-            not_sharable=self.not_sharable,
             precedence=self.precedence,
             read_only=self.read_only,
             rule_id=self.rule_id,
             rule_settings=self.rule_settings,
             schedule=self.schedule,
+            sharable=self.sharable,
             source_account=self.source_account,
             traffic=self.traffic,
             updated_at=self.updated_at,
@@ -280,7 +306,7 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str rule_id: The API resource UUID.
+    :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -301,12 +327,12 @@ def get_zero_trust_gateway_policy(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         identity=pulumi.get(__ret__, 'identity'),
         name=pulumi.get(__ret__, 'name'),
-        not_sharable=pulumi.get(__ret__, 'not_sharable'),
         precedence=pulumi.get(__ret__, 'precedence'),
         read_only=pulumi.get(__ret__, 'read_only'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
         rule_settings=pulumi.get(__ret__, 'rule_settings'),
         schedule=pulumi.get(__ret__, 'schedule'),
+        sharable=pulumi.get(__ret__, 'sharable'),
         source_account=pulumi.get(__ret__, 'source_account'),
         traffic=pulumi.get(__ret__, 'traffic'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
@@ -327,7 +353,7 @@ def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[_buil
     ```
 
 
-    :param _builtins.str rule_id: The API resource UUID.
+    :param _builtins.str rule_id: Identify the API resource with a UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -347,12 +373,12 @@ def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[_buil
         id=pulumi.get(__response__, 'id'),
         identity=pulumi.get(__response__, 'identity'),
         name=pulumi.get(__response__, 'name'),
-        not_sharable=pulumi.get(__response__, 'not_sharable'),
         precedence=pulumi.get(__response__, 'precedence'),
         read_only=pulumi.get(__response__, 'read_only'),
         rule_id=pulumi.get(__response__, 'rule_id'),
         rule_settings=pulumi.get(__response__, 'rule_settings'),
         schedule=pulumi.get(__response__, 'schedule'),
+        sharable=pulumi.get(__response__, 'sharable'),
         source_account=pulumi.get(__response__, 'source_account'),
         traffic=pulumi.get(__response__, 'traffic'),
         updated_at=pulumi.get(__response__, 'updated_at'),

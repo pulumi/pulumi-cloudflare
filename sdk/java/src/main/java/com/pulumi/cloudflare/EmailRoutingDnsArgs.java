@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,15 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
      * Domain of your zone.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Domain of your zone.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -75,7 +77,7 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -112,9 +114,6 @@ public final class EmailRoutingDnsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public EmailRoutingDnsArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingDnsArgs", "name");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingDnsArgs", "zoneId");
             }

@@ -68,7 +68,7 @@ export interface GetPageShieldConnectionsListArgs {
      */
     excludeUrls?: string;
     /**
-     * Export the list of connections as a file.
+     * Export the list of connections as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: string;
@@ -108,7 +108,7 @@ export interface GetPageShieldConnectionsListResult {
      */
     readonly excludeUrls?: string;
     /**
-     * Export the list of connections as a file.
+     * Export the list of connections as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     readonly export?: string;
@@ -196,7 +196,7 @@ export interface GetPageShieldConnectionsListOutputArgs {
      */
     excludeUrls?: pulumi.Input<string>;
     /**
-     * Export the list of connections as a file.
+     * Export the list of connections as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: pulumi.Input<string>;

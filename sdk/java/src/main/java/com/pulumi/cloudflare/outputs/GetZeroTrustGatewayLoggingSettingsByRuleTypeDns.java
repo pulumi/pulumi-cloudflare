@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
-     * @return Log all requests to this service.
+     * @return Specify whether to log all requests to this service.
      * 
      */
     private Boolean logAll;
     /**
-     * @return Log only blocking requests to this service.
+     * @return Specify whether to log only blocking requests to this service.
      * 
      */
     private Boolean logBlocks;
 
     private GetZeroTrustGatewayLoggingSettingsByRuleTypeDns() {}
     /**
-     * @return Log all requests to this service.
+     * @return Specify whether to log all requests to this service.
      * 
      */
     public Boolean logAll() {
         return this.logAll;
     }
     /**
-     * @return Log only blocking requests to this service.
+     * @return Specify whether to log only blocking requests to this service.
      * 
      */
     public Boolean logBlocks() {

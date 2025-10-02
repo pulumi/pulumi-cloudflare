@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsActivityLog {
     /**
-     * @return Enable activity logging.
+     * @return Specify whether to log activity.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustGatewaySettingsSettingsActivityLog() {}
     /**
-     * @return Enable activity logging.
+     * @return Specify whether to log activity.
      * 
      */
     public Boolean enabled() {

@@ -20,6 +20,16 @@ public final class WorkerVersionBinding {
      */
     private @Nullable String algorithm;
     /**
+     * @return List of allowed destination addresses.
+     * 
+     */
+    private @Nullable List<String> allowedDestinationAddresses;
+    /**
+     * @return List of allowed sender addresses.
+     * 
+     */
+    private @Nullable List<String> allowedSenderAddresses;
+    /**
      * @return R2 bucket to bind to.
      * 
      */
@@ -39,6 +49,11 @@ public final class WorkerVersionBinding {
      * 
      */
     private @Nullable String dataset;
+    /**
+     * @return Destination address for the email.
+     * 
+     */
+    private @Nullable String destinationAddress;
     /**
      * @return The environment of the script_name to bind to.
      * 
@@ -66,6 +81,12 @@ public final class WorkerVersionBinding {
      */
     private @Nullable String json;
     /**
+     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    private @Nullable String jurisdiction;
+    /**
      * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
@@ -91,10 +112,20 @@ public final class WorkerVersionBinding {
      */
     private @Nullable String namespaceId;
     /**
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * 
+     */
+    private @Nullable String oldName;
+    /**
      * @return Outbound worker.
      * 
      */
     private @Nullable WorkerVersionBindingOutbound outbound;
+    /**
+     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     */
+    private @Nullable String part;
     /**
      * @return Name of the Pipeline to bind to.
      * 
@@ -132,7 +163,7 @@ public final class WorkerVersionBinding {
     private @Nullable String text;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
      * 
      */
     private String type;
@@ -141,6 +172,11 @@ public final class WorkerVersionBinding {
      * 
      */
     private @Nullable List<String> usages;
+    /**
+     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * 
+     */
+    private @Nullable String versionId;
     /**
      * @return Name of the Workflow to bind to.
      * 
@@ -154,6 +190,20 @@ public final class WorkerVersionBinding {
      */
     public Optional<String> algorithm() {
         return Optional.ofNullable(this.algorithm);
+    }
+    /**
+     * @return List of allowed destination addresses.
+     * 
+     */
+    public List<String> allowedDestinationAddresses() {
+        return this.allowedDestinationAddresses == null ? List.of() : this.allowedDestinationAddresses;
+    }
+    /**
+     * @return List of allowed sender addresses.
+     * 
+     */
+    public List<String> allowedSenderAddresses() {
+        return this.allowedSenderAddresses == null ? List.of() : this.allowedSenderAddresses;
     }
     /**
      * @return R2 bucket to bind to.
@@ -182,6 +232,13 @@ public final class WorkerVersionBinding {
      */
     public Optional<String> dataset() {
         return Optional.ofNullable(this.dataset);
+    }
+    /**
+     * @return Destination address for the email.
+     * 
+     */
+    public Optional<String> destinationAddress() {
+        return Optional.ofNullable(this.destinationAddress);
     }
     /**
      * @return The environment of the script_name to bind to.
@@ -220,6 +277,14 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.json);
     }
     /**
+     * @return The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+     * Available values: &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public Optional<String> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+    /**
      * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
      * 
      */
@@ -255,11 +320,25 @@ public final class WorkerVersionBinding {
         return Optional.ofNullable(this.namespaceId);
     }
     /**
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * 
+     */
+    public Optional<String> oldName() {
+        return Optional.ofNullable(this.oldName);
+    }
+    /**
      * @return Outbound worker.
      * 
      */
     public Optional<WorkerVersionBindingOutbound> outbound() {
         return Optional.ofNullable(this.outbound);
+    }
+    /**
+     * @return The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+     * 
+     */
+    public Optional<String> part() {
+        return Optional.ofNullable(this.part);
     }
     /**
      * @return Name of the Pipeline to bind to.
@@ -312,7 +391,7 @@ public final class WorkerVersionBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;.
+     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser&#34;, &#34;d1&#34;, &#34;data*blob&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;inherit&#34;, &#34;images&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;pipelines&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;send*email&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;text*blob&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;, &#34;secrets*store*secret&#34;, &#34;secret*key&#34;, &#34;workflow&#34;, &#34;wasm*module&#34;.
      * 
      */
     public String type() {
@@ -324,6 +403,13 @@ public final class WorkerVersionBinding {
      */
     public List<String> usages() {
         return this.usages == null ? List.of() : this.usages;
+    }
+    /**
+     * @return Identifier for the version to inherit the binding from, which can be the version ID or the literal &#34;latest&#34; to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+     * 
+     */
+    public Optional<String> versionId() {
+        return Optional.ofNullable(this.versionId);
     }
     /**
      * @return Name of the Workflow to bind to.
@@ -343,21 +429,27 @@ public final class WorkerVersionBinding {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String algorithm;
+        private @Nullable List<String> allowedDestinationAddresses;
+        private @Nullable List<String> allowedSenderAddresses;
         private @Nullable String bucketName;
         private @Nullable String certificateId;
         private @Nullable String className;
         private @Nullable String dataset;
+        private @Nullable String destinationAddress;
         private @Nullable String environment;
         private @Nullable String format;
         private @Nullable String id;
         private @Nullable String indexName;
         private @Nullable String json;
+        private @Nullable String jurisdiction;
         private @Nullable String keyBase64;
         private @Nullable String keyJwk;
         private String name;
         private @Nullable String namespace;
         private @Nullable String namespaceId;
+        private @Nullable String oldName;
         private @Nullable WorkerVersionBindingOutbound outbound;
+        private @Nullable String part;
         private @Nullable String pipeline;
         private @Nullable String queueName;
         private @Nullable String scriptName;
@@ -367,26 +459,33 @@ public final class WorkerVersionBinding {
         private @Nullable String text;
         private String type;
         private @Nullable List<String> usages;
+        private @Nullable String versionId;
         private @Nullable String workflowName;
         public Builder() {}
         public Builder(WorkerVersionBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
+    	      this.allowedDestinationAddresses = defaults.allowedDestinationAddresses;
+    	      this.allowedSenderAddresses = defaults.allowedSenderAddresses;
     	      this.bucketName = defaults.bucketName;
     	      this.certificateId = defaults.certificateId;
     	      this.className = defaults.className;
     	      this.dataset = defaults.dataset;
+    	      this.destinationAddress = defaults.destinationAddress;
     	      this.environment = defaults.environment;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.indexName = defaults.indexName;
     	      this.json = defaults.json;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.keyBase64 = defaults.keyBase64;
     	      this.keyJwk = defaults.keyJwk;
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
     	      this.namespaceId = defaults.namespaceId;
+    	      this.oldName = defaults.oldName;
     	      this.outbound = defaults.outbound;
+    	      this.part = defaults.part;
     	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
@@ -396,6 +495,7 @@ public final class WorkerVersionBinding {
     	      this.text = defaults.text;
     	      this.type = defaults.type;
     	      this.usages = defaults.usages;
+    	      this.versionId = defaults.versionId;
     	      this.workflowName = defaults.workflowName;
         }
 
@@ -404,6 +504,24 @@ public final class WorkerVersionBinding {
 
             this.algorithm = algorithm;
             return this;
+        }
+        @CustomType.Setter
+        public Builder allowedDestinationAddresses(@Nullable List<String> allowedDestinationAddresses) {
+
+            this.allowedDestinationAddresses = allowedDestinationAddresses;
+            return this;
+        }
+        public Builder allowedDestinationAddresses(String... allowedDestinationAddresses) {
+            return allowedDestinationAddresses(List.of(allowedDestinationAddresses));
+        }
+        @CustomType.Setter
+        public Builder allowedSenderAddresses(@Nullable List<String> allowedSenderAddresses) {
+
+            this.allowedSenderAddresses = allowedSenderAddresses;
+            return this;
+        }
+        public Builder allowedSenderAddresses(String... allowedSenderAddresses) {
+            return allowedSenderAddresses(List.of(allowedSenderAddresses));
         }
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
@@ -427,6 +545,12 @@ public final class WorkerVersionBinding {
         public Builder dataset(@Nullable String dataset) {
 
             this.dataset = dataset;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder destinationAddress(@Nullable String destinationAddress) {
+
+            this.destinationAddress = destinationAddress;
             return this;
         }
         @CustomType.Setter
@@ -457,6 +581,12 @@ public final class WorkerVersionBinding {
         public Builder json(@Nullable String json) {
 
             this.json = json;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jurisdiction(@Nullable String jurisdiction) {
+
+            this.jurisdiction = jurisdiction;
             return this;
         }
         @CustomType.Setter
@@ -492,9 +622,21 @@ public final class WorkerVersionBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder oldName(@Nullable String oldName) {
+
+            this.oldName = oldName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder outbound(@Nullable WorkerVersionBindingOutbound outbound) {
 
             this.outbound = outbound;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder part(@Nullable String part) {
+
+            this.part = part;
             return this;
         }
         @CustomType.Setter
@@ -557,6 +699,12 @@ public final class WorkerVersionBinding {
             return usages(List.of(usages));
         }
         @CustomType.Setter
+        public Builder versionId(@Nullable String versionId) {
+
+            this.versionId = versionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workflowName(@Nullable String workflowName) {
 
             this.workflowName = workflowName;
@@ -565,21 +713,27 @@ public final class WorkerVersionBinding {
         public WorkerVersionBinding build() {
             final var _resultValue = new WorkerVersionBinding();
             _resultValue.algorithm = algorithm;
+            _resultValue.allowedDestinationAddresses = allowedDestinationAddresses;
+            _resultValue.allowedSenderAddresses = allowedSenderAddresses;
             _resultValue.bucketName = bucketName;
             _resultValue.certificateId = certificateId;
             _resultValue.className = className;
             _resultValue.dataset = dataset;
+            _resultValue.destinationAddress = destinationAddress;
             _resultValue.environment = environment;
             _resultValue.format = format;
             _resultValue.id = id;
             _resultValue.indexName = indexName;
             _resultValue.json = json;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.keyBase64 = keyBase64;
             _resultValue.keyJwk = keyJwk;
             _resultValue.name = name;
             _resultValue.namespace = namespace;
             _resultValue.namespaceId = namespaceId;
+            _resultValue.oldName = oldName;
             _resultValue.outbound = outbound;
+            _resultValue.part = part;
             _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;
@@ -589,6 +743,7 @@ public final class WorkerVersionBinding {
             _resultValue.text = text;
             _resultValue.type = type;
             _resultValue.usages = usages;
+            _resultValue.versionId = versionId;
             _resultValue.workflowName = workflowName;
             return _resultValue;
         }

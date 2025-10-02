@@ -125,6 +125,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool BmCookieEnabled;
         /// <summary>
+        /// Specifies the Robots Access Control License variant to use.
+        /// Available values: "off", "policy_only".
+        /// </summary>
+        public readonly string CfRobotsVariant;
+        /// <summary>
         /// Enable rule to punish AI Scrapers and Crawlers via a link maze.
         /// Available values: "enabled", "disabled".
         /// </summary>
@@ -195,6 +200,8 @@ namespace Pulumi.Cloudflare
 
             bool bmCookieEnabled,
 
+            string cfRobotsVariant,
+
             string crawlerProtection,
 
             bool enableJs,
@@ -226,6 +233,7 @@ namespace Pulumi.Cloudflare
             AiBotsProtection = aiBotsProtection;
             AutoUpdateModel = autoUpdateModel;
             BmCookieEnabled = bmCookieEnabled;
+            CfRobotsVariant = cfRobotsVariant;
             CrawlerProtection = crawlerProtection;
             EnableJs = enableJs;
             FightMode = fightMode;

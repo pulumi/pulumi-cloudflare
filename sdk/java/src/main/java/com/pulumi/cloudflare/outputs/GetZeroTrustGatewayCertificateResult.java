@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 public final class GetZeroTrustGatewayCertificateResult {
     private String accountId;
     /**
-     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return Indicate the read-only deployment status of the certificate on Cloudflare&#39;s edge. Gateway TLS interception can use certificates in the &#39;available&#39; (previously called &#39;active&#39;) state.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
     private String bindingStatus;
     /**
-     * @return The CA certificate(read only).
+     * @return Provide the CA certificate (read-only).
      * 
      */
     private String certificate;
     /**
-     * @return Certificate UUID tag.
+     * @return Identify the certificate with a UUID.
      * 
      */
     private @Nullable String certificateId;
     private String createdAt;
     private String expiresOn;
     /**
-     * @return The SHA256 fingerprint of the certificate(read only).
+     * @return Provide the SHA256 fingerprint of the certificate (read-only).
      * 
      */
     private String fingerprint;
     /**
-     * @return Certificate UUID tag.
+     * @return Identify the certificate with a UUID.
      * 
      */
     private String id;
     /**
-     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+     * @return Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      * 
      */
     private Boolean inUse;
     /**
-     * @return The organization that issued the certificate(read only).
+     * @return Indicate the organization that issued the certificate (read-only).
      * 
      */
     private String issuerOrg;
     /**
-     * @return The entire issuer field of the certificate(read only).
+     * @return Provide the entire issuer field of the certificate (read-only).
      * 
      */
     private String issuerRaw;
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+     * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */
@@ -71,7 +71,7 @@ public final class GetZeroTrustGatewayCertificateResult {
         return this.accountId;
     }
     /**
-     * @return The read only deployment status of the certificate on Cloudflare&#39;s edge. Certificates in the &#39;available&#39; (previously called &#39;active&#39;) state may be used for Gateway TLS interception.
+     * @return Indicate the read-only deployment status of the certificate on Cloudflare&#39;s edge. Gateway TLS interception can use certificates in the &#39;available&#39; (previously called &#39;active&#39;) state.
      * Available values: &#34;pending*deployment&#34;, &#34;available&#34;, &#34;pending*deletion&#34;, &#34;inactive&#34;.
      * 
      */
@@ -79,14 +79,14 @@ public final class GetZeroTrustGatewayCertificateResult {
         return this.bindingStatus;
     }
     /**
-     * @return The CA certificate(read only).
+     * @return Provide the CA certificate (read-only).
      * 
      */
     public String certificate() {
         return this.certificate;
     }
     /**
-     * @return Certificate UUID tag.
+     * @return Identify the certificate with a UUID.
      * 
      */
     public Optional<String> certificateId() {
@@ -99,42 +99,42 @@ public final class GetZeroTrustGatewayCertificateResult {
         return this.expiresOn;
     }
     /**
-     * @return The SHA256 fingerprint of the certificate(read only).
+     * @return Provide the SHA256 fingerprint of the certificate (read-only).
      * 
      */
     public String fingerprint() {
         return this.fingerprint;
     }
     /**
-     * @return Certificate UUID tag.
+     * @return Identify the certificate with a UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+     * @return Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
      * 
      */
     public Boolean inUse() {
         return this.inUse;
     }
     /**
-     * @return The organization that issued the certificate(read only).
+     * @return Indicate the organization that issued the certificate (read-only).
      * 
      */
     public String issuerOrg() {
         return this.issuerOrg;
     }
     /**
-     * @return The entire issuer field of the certificate(read only).
+     * @return Provide the entire issuer field of the certificate (read-only).
      * 
      */
     public String issuerRaw() {
         return this.issuerRaw;
     }
     /**
-     * @return The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+     * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
      * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
      * 
      */

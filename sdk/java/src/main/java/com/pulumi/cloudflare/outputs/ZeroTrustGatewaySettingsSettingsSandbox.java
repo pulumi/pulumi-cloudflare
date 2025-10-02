@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsSandbox {
     /**
-     * @return Enable sandbox.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Action to take when the file cannot be scanned.
+     * @return Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
@@ -26,14 +26,14 @@ public final class ZeroTrustGatewaySettingsSettingsSandbox {
 
     private ZeroTrustGatewaySettingsSettingsSandbox() {}
     /**
-     * @return Enable sandbox.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Action to take when the file cannot be scanned.
+     * @return Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */

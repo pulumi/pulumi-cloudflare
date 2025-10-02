@@ -13,85 +13,85 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Activity log settings.
+        /// Specify activity log settings.
         /// </summary>
         [Input("activityLog")]
         public Input<Inputs.TeamsAccountSettingsActivityLogArgs>? ActivityLog { get; set; }
 
         /// <summary>
-        /// Anti-virus settings.
+        /// Specify anti-virus settings.
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.TeamsAccountSettingsAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
-        /// Block page layout settings.
+        /// Specify block page layout settings.
         /// </summary>
         [Input("blockPage")]
         public Input<Inputs.TeamsAccountSettingsBlockPageArgs>? BlockPage { get; set; }
 
         /// <summary>
-        /// DLP body scanning settings.
+        /// Specify the DLP inspection mode.
         /// </summary>
         [Input("bodyScanning")]
         public Input<Inputs.TeamsAccountSettingsBodyScanningArgs>? BodyScanning { get; set; }
 
         /// <summary>
-        /// Browser isolation settings.
+        /// Specify Clientless Browser Isolation settings.
         /// </summary>
         [Input("browserIsolation")]
         public Input<Inputs.TeamsAccountSettingsBrowserIsolationArgs>? BrowserIsolation { get; set; }
 
         /// <summary>
-        /// Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+        /// Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
         /// </summary>
         [Input("certificate")]
         public Input<Inputs.TeamsAccountSettingsCertificateArgs>? Certificate { get; set; }
 
         /// <summary>
-        /// Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+        /// Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.TeamsAccountSettingsCustomCertificateArgs>? CustomCertificate { get; set; }
 
         /// <summary>
-        /// Extended e-mail matching settings.
+        /// Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
         /// </summary>
         [Input("extendedEmailMatching")]
         public Input<Inputs.TeamsAccountSettingsExtendedEmailMatchingArgs>? ExtendedEmailMatching { get; set; }
 
         /// <summary>
-        /// FIPS settings.
+        /// Specify FIPS settings.
         /// </summary>
         [Input("fips")]
         public Input<Inputs.TeamsAccountSettingsFipsArgs>? Fips { get; set; }
 
         /// <summary>
-        /// Setting to enable host selector in egress policies.
+        /// Enable host selection in egress policies.
         /// </summary>
         [Input("hostSelector")]
         public Input<Inputs.TeamsAccountSettingsHostSelectorArgs>? HostSelector { get; set; }
 
         /// <summary>
-        /// Setting to define inspection settings.
+        /// Define the proxy inspection mode.
         /// </summary>
         [Input("inspection")]
         public Input<Inputs.TeamsAccountSettingsInspectionArgs>? Inspection { get; set; }
 
         /// <summary>
-        /// Protocol Detection settings.
+        /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         [Input("protocolDetection")]
         public Input<Inputs.TeamsAccountSettingsProtocolDetectionArgs>? ProtocolDetection { get; set; }
 
         /// <summary>
-        /// Sandbox settings.
+        /// Specify whether to enable the sandbox.
         /// </summary>
         [Input("sandbox")]
         public Input<Inputs.TeamsAccountSettingsSandboxArgs>? Sandbox { get; set; }
 
         /// <summary>
-        /// TLS interception settings.
+        /// Specify whether to inspect encrypted HTTP traffic.
         /// </summary>
         [Input("tlsDecrypt")]
         public Input<Inputs.TeamsAccountSettingsTlsDecryptArgs>? TlsDecrypt { get; set; }

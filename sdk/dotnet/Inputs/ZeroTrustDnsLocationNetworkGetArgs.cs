@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDnsLocationNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
+        /// Specify the IPv4 address or IPv4 CIDR. Limit IPv4 CIDRs to a maximum of /24.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

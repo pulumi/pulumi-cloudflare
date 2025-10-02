@@ -13,6 +13,10 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetMagicWanGreTunnelGreTunnelResult
     {
+        /// <summary>
+        /// True if automatic stateful return routing should be enabled for a tunnel, false otherwise.
+        /// </summary>
+        public readonly bool AutomaticReturnRouting;
         public readonly Outputs.GetMagicWanGreTunnelGreTunnelBgpResult Bgp;
         public readonly Outputs.GetMagicWanGreTunnelGreTunnelBgpStatusResult BgpStatus;
         /// <summary>
@@ -63,6 +67,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetMagicWanGreTunnelGreTunnelResult(
+            bool automaticReturnRouting,
+
             Outputs.GetMagicWanGreTunnelGreTunnelBgpResult bgp,
 
             Outputs.GetMagicWanGreTunnelGreTunnelBgpStatusResult bgpStatus,
@@ -91,6 +97,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             int ttl)
         {
+            AutomaticReturnRouting = automaticReturnRouting;
             Bgp = bgp;
             BgpStatus = bgpStatus;
             CloudflareGreEndpoint = cloudflareGreEndpoint;

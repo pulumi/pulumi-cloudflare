@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsCustomCertificate
     {
         /// <summary>
-        /// Certificate status (internal).
+        /// Indicate the internal certificate status.
         /// </summary>
         public readonly string? BindingStatus;
         /// <summary>
-        /// Enable use of custom certificate authority for signing Gateway. traffic.
+        /// Specify whether to enable a custom certificate authority for signing Gateway traffic.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// UUID of certificate (ID from MTLS certificate store).
+        /// Specify the UUID of the certificate (ID from MTLS certificate store).
         /// </summary>
         public readonly string? Id;
         public readonly string? UpdatedAt;

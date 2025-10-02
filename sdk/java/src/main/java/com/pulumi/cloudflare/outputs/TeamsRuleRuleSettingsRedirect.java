@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsRedirect {
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
     /**
-     * @return If true, the path and query parameters from the original request will be appended to target_uri.
+     * @return Specify whether to append the path and query parameters from the original request to target_uri.
      * 
      */
     private @Nullable Boolean preservePathAndQuery;
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     private String targetUri;
 
     private TeamsRuleRuleSettingsRedirect() {}
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to pass the context information as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
         return Optional.ofNullable(this.includeContext);
     }
     /**
-     * @return If true, the path and query parameters from the original request will be appended to target_uri.
+     * @return Specify whether to append the path and query parameters from the original request to target_uri.
      * 
      */
     public Optional<Boolean> preservePathAndQuery() {
         return Optional.ofNullable(this.preservePathAndQuery);
     }
     /**
-     * @return URI to which the user will be redirected.
+     * @return Specify the URI to which the user is redirected.
      * 
      */
     public String targetUri() {

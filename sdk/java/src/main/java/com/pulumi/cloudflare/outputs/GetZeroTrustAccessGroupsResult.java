@@ -15,7 +15,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustAccessGroupsResult {
-    private String createdAt;
     /**
      * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
@@ -46,12 +45,8 @@ public final class GetZeroTrustAccessGroupsResult {
      * 
      */
     private List<GetZeroTrustAccessGroupsResultRequire> requires;
-    private String updatedAt;
 
     private GetZeroTrustAccessGroupsResult() {}
-    public String createdAt() {
-        return this.createdAt;
-    }
     /**
      * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
@@ -94,9 +89,6 @@ public final class GetZeroTrustAccessGroupsResult {
     public List<GetZeroTrustAccessGroupsResultRequire> requires() {
         return this.requires;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -107,35 +99,23 @@ public final class GetZeroTrustAccessGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String createdAt;
         private List<GetZeroTrustAccessGroupsResultExclude> excludes;
         private String id;
         private List<GetZeroTrustAccessGroupsResultInclude> includes;
         private List<GetZeroTrustAccessGroupsResultIsDefault> isDefaults;
         private String name;
         private List<GetZeroTrustAccessGroupsResultRequire> requires;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.createdAt = defaults.createdAt;
     	      this.excludes = defaults.excludes;
     	      this.id = defaults.id;
     	      this.includes = defaults.includes;
     	      this.isDefaults = defaults.isDefaults;
     	      this.name = defaults.name;
     	      this.requires = defaults.requires;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResult", "createdAt");
-            }
-            this.createdAt = createdAt;
-            return this;
-        }
         @CustomType.Setter
         public Builder excludes(List<GetZeroTrustAccessGroupsResultExclude> excludes) {
             if (excludes == null) {
@@ -196,24 +176,14 @@ public final class GetZeroTrustAccessGroupsResult {
         public Builder requires(GetZeroTrustAccessGroupsResultRequire... requires) {
             return requires(List.of(requires));
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupsResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessGroupsResult build() {
             final var _resultValue = new GetZeroTrustAccessGroupsResult();
-            _resultValue.createdAt = createdAt;
             _resultValue.excludes = excludes;
             _resultValue.id = id;
             _resultValue.includes = includes;
             _resultValue.isDefaults = isDefaults;
             _resultValue.name = name;
             _resultValue.requires = requires;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

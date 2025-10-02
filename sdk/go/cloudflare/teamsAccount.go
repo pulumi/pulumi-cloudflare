@@ -26,7 +26,7 @@ type TeamsAccount struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Account settings.
+	// Specify account settings.
 	Settings  TeamsAccountSettingsPtrOutput `pulumi:"settings"`
 	UpdatedAt pulumi.StringOutput           `pulumi:"updatedAt"`
 }
@@ -72,7 +72,7 @@ func GetTeamsAccount(ctx *pulumi.Context,
 type teamsAccountState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	// Account settings.
+	// Specify account settings.
 	Settings  *TeamsAccountSettings `pulumi:"settings"`
 	UpdatedAt *string               `pulumi:"updatedAt"`
 }
@@ -80,7 +80,7 @@ type teamsAccountState struct {
 type TeamsAccountState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// Account settings.
+	// Specify account settings.
 	Settings  TeamsAccountSettingsPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -91,14 +91,14 @@ func (TeamsAccountState) ElementType() reflect.Type {
 
 type teamsAccountArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Account settings.
+	// Specify account settings.
 	Settings *TeamsAccountSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a TeamsAccount resource.
 type TeamsAccountArgs struct {
 	AccountId pulumi.StringInput
-	// Account settings.
+	// Specify account settings.
 	Settings TeamsAccountSettingsPtrInput
 }
 
@@ -197,7 +197,7 @@ func (o TeamsAccountOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Account settings.
+// Specify account settings.
 func (o TeamsAccountOutput) Settings() TeamsAccountSettingsPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSettingsPtrOutput { return v.Settings }).(TeamsAccountSettingsPtrOutput)
 }

@@ -14,11 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AddressMapMembership
     {
         /// <summary>
-        /// Controls whether the membership can be deleted via the API or not.
-        /// </summary>
-        public readonly bool? CanDelete;
-        public readonly string? CreatedAt;
-        /// <summary>
         /// The identifier for the membership (eg. a zone or account tag).
         /// </summary>
         public readonly string? Identifier;
@@ -30,16 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AddressMapMembership(
-            bool? canDelete,
-
-            string? createdAt,
-
             string? identifier,
 
             string? kind)
         {
-            CanDelete = canDelete;
-            CreatedAt = createdAt;
             Identifier = identifier;
             Kind = kind;
         }

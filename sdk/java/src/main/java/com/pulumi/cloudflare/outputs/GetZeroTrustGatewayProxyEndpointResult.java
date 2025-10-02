@@ -19,18 +19,18 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
      */
     private String id;
     /**
-     * @return A list of CIDRs to restrict ingress connections.
+     * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     private List<String> ips;
     /**
-     * @return The name of the proxy endpoint.
+     * @return Specify the name of the proxy endpoint.
      * 
      */
     private String name;
     private String proxyEndpointId;
     /**
-     * @return The subdomain to be used as the destination in the proxy client.
+     * @return Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     private String subdomain;
@@ -51,14 +51,14 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
         return this.id;
     }
     /**
-     * @return A list of CIDRs to restrict ingress connections.
+     * @return Specify the list of CIDRs to restrict ingress connections.
      * 
      */
     public List<String> ips() {
         return this.ips;
     }
     /**
-     * @return The name of the proxy endpoint.
+     * @return Specify the name of the proxy endpoint.
      * 
      */
     public String name() {
@@ -68,7 +68,7 @@ public final class GetZeroTrustGatewayProxyEndpointResult {
         return this.proxyEndpointId;
     }
     /**
-     * @return The subdomain to be used as the destination in the proxy client.
+     * @return Specify the subdomain to use as the destination in the proxy client.
      * 
      */
     public String subdomain() {

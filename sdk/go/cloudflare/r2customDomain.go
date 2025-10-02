@@ -29,9 +29,9 @@ import (
 //			_, err := cloudflare.NewR2CustomDomain(ctx, "example_r2_custom_domain", &cloudflare.R2CustomDomainArgs{
 //				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				BucketName: pulumi.String("example-bucket"),
-//				Domain:     pulumi.String("domain"),
+//				Domain:     pulumi.String("prefix.example-domain.com"),
 //				Enabled:    pulumi.Bool(true),
-//				ZoneId:     pulumi.String("zoneId"),
+//				ZoneId:     pulumi.String("36ca64a6d92827b8a6b90be344bb1bfd"),
 //				Ciphers: pulumi.StringArray{
 //					pulumi.String("string"),
 //				},

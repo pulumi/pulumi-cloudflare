@@ -13,9 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsCheckSessionResult
     {
+        /// <summary>
+        /// Sets the required session freshness threshold. The API returns a normalized version of this value.
+        /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// Set to true to enable session enforcement.
+        /// Enable session enforcement.
         /// </summary>
         public readonly bool Enforce;
 

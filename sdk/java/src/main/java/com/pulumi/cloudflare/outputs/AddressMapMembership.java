@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AddressMapMembership {
-    /**
-     * @return Controls whether the membership can be deleted via the API or not.
-     * 
-     */
-    private @Nullable Boolean canDelete;
-    private @Nullable String createdAt;
     /**
      * @return The identifier for the membership (eg. a zone or account tag).
      * 
@@ -31,16 +24,6 @@ public final class AddressMapMembership {
     private @Nullable String kind;
 
     private AddressMapMembership() {}
-    /**
-     * @return Controls whether the membership can be deleted via the API or not.
-     * 
-     */
-    public Optional<Boolean> canDelete() {
-        return Optional.ofNullable(this.canDelete);
-    }
-    public Optional<String> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
     /**
      * @return The identifier for the membership (eg. a zone or account tag).
      * 
@@ -66,31 +49,15 @@ public final class AddressMapMembership {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean canDelete;
-        private @Nullable String createdAt;
         private @Nullable String identifier;
         private @Nullable String kind;
         public Builder() {}
         public Builder(AddressMapMembership defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.canDelete = defaults.canDelete;
-    	      this.createdAt = defaults.createdAt;
     	      this.identifier = defaults.identifier;
     	      this.kind = defaults.kind;
         }
 
-        @CustomType.Setter
-        public Builder canDelete(@Nullable Boolean canDelete) {
-
-            this.canDelete = canDelete;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(@Nullable String createdAt) {
-
-            this.createdAt = createdAt;
-            return this;
-        }
         @CustomType.Setter
         public Builder identifier(@Nullable String identifier) {
 
@@ -105,8 +72,6 @@ public final class AddressMapMembership {
         }
         public AddressMapMembership build() {
             final var _resultValue = new AddressMapMembership();
-            _resultValue.canDelete = canDelete;
-            _resultValue.createdAt = createdAt;
             _resultValue.identifier = identifier;
             _resultValue.kind = kind;
             return _resultValue;

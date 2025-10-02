@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsProtocolDetectionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable detecting protocol on initial bytes of client traffic.
+        /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

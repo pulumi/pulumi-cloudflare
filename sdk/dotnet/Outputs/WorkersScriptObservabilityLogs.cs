@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptObservabilityLogs
     {
         /// <summary>
+        /// A list of destinations where logs will be exported to.
+        /// </summary>
+        public readonly ImmutableArray<string> Destinations;
+        /// <summary>
         /// Whether logs are enabled for the Worker.
         /// </summary>
         public readonly bool Enabled;
@@ -25,18 +29,28 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
         /// </summary>
         public readonly bool InvocationLogs;
+        /// <summary>
+        /// Whether log persistence is enabled for the Worker.
+        /// </summary>
+        public readonly bool? Persist;
 
         [OutputConstructor]
         private WorkersScriptObservabilityLogs(
+            ImmutableArray<string> destinations,
+
             bool enabled,
 
             double? headSamplingRate,
 
-            bool invocationLogs)
+            bool invocationLogs,
+
+            bool? persist)
         {
+            Destinations = destinations;
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
             InvocationLogs = invocationLogs;
+            Persist = persist;
         }
     }
 }

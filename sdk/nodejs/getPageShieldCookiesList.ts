@@ -68,7 +68,7 @@ export interface GetPageShieldCookiesListArgs {
      */
     domain?: string;
     /**
-     * Export the list of cookies as a file.
+     * Export the list of cookies as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: string;
@@ -107,7 +107,7 @@ export interface GetPageShieldCookiesListResult {
      */
     readonly domain?: string;
     /**
-     * Export the list of cookies as a file.
+     * Export the list of cookies as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     readonly export?: string;
@@ -198,7 +198,7 @@ export interface GetPageShieldCookiesListOutputArgs {
      */
     domain?: pulumi.Input<string>;
     /**
-     * Export the list of cookies as a file.
+     * Export the list of cookies as a file, limited to 50000 entries.
      * Available values: "csv".
      */
     export?: pulumi.Input<string>;

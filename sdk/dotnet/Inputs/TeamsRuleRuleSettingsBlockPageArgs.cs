@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsBlockPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, context information will be passed as query parameters.
+        /// Specify whether to pass the context information as query parameters.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }
 
         /// <summary>
-        /// URI to which the user will be redirected.
+        /// Specify the URI to which the user is redirected.
         /// </summary>
         [Input("targetUri", required: true)]
         public Input<string> TargetUri { get; set; } = null!;

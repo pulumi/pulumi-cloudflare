@@ -23,14 +23,14 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * The API resource UUID.
+     * Identify the API resource with a UUID.
      * 
      */
     @Import(name="ruleId")
     private @Nullable String ruleId;
 
     /**
-     * @return The API resource UUID.
+     * @return Identify the API resource with a UUID.
      * 
      */
     public Optional<String> ruleId() {
@@ -68,7 +68,7 @@ public final class GetZeroTrustGatewayPolicyPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ruleId The API resource UUID.
+         * @param ruleId Identify the API resource with a UUID.
          * 
          * @return builder
          * 

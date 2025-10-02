@@ -14,24 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayCategoriesListResultSubcategoryResult
     {
         /// <summary>
-        /// True if the category is in beta and subject to change.
+        /// Indicate whether the category is in beta and subject to change.
         /// </summary>
         public readonly bool Beta;
         /// <summary>
-        /// Which account types are allowed to create policies based on this category. `blocked` categories are blocked unconditionally for all accounts. `removalPending` categories can be removed from policies but not added. `noBlock` categories cannot be blocked.
+        /// Specify which account types can create policies for this category. `blocked` Blocks unconditionally for all accounts. `removalPending` Allows removal from policies but disables addition. `noBlock` Prevents blocking.
         /// Available values: "free", "premium", "blocked", "removalPending", "noBlock".
         /// </summary>
         public readonly string Class;
         /// <summary>
-        /// A short summary of domains in the category.
+        /// Provide a short summary of domains in the category.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The identifier for this category. There is only one category per ID.
+        /// Identify this category. Only one category per ID.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// The name of the category.
+        /// Specify the category name.
         /// </summary>
         public readonly string Name;
 

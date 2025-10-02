@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsActivityLog {
     /**
-     * @return Enable activity logging.
+     * @return Specify whether to log activity.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ZeroTrustGatewaySettingsSettingsActivityLog() {}
     /**
-     * @return Enable activity logging.
+     * @return Specify whether to log activity.
      * 
      */
     public Optional<Boolean> enabled() {

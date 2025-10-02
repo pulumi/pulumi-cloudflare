@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDnsLocationEndpointsIpv6Network
     {
         /// <summary>
-        /// The IPv6 address or IPv6 CIDR.
+        /// Specify the IPv6 address or IPv6 CIDR.
         /// </summary>
         public readonly string Network;
 

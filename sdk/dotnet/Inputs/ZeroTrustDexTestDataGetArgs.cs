@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The desired endpoint to test.
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
         /// <summary>
         /// The type of test.
         /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
         /// The HTTP request method type.

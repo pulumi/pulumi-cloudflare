@@ -70,7 +70,7 @@ type LookupPageShieldScriptsListArgs struct {
 	ExcludeDuplicates *bool `pulumi:"excludeDuplicates"`
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
-	// Export the list of scripts as a file.
+	// Export the list of scripts as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
@@ -100,7 +100,7 @@ type LookupPageShieldScriptsListResult struct {
 	ExcludeDuplicates bool `pulumi:"excludeDuplicates"`
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
-	// Export the list of scripts as a file.
+	// Export the list of scripts as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
@@ -142,7 +142,7 @@ type LookupPageShieldScriptsListOutputArgs struct {
 	ExcludeDuplicates pulumi.BoolPtrInput `pulumi:"excludeDuplicates"`
 	// Excludes scripts whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls pulumi.StringPtrInput `pulumi:"excludeUrls"`
-	// Export the list of scripts as a file.
+	// Export the list of scripts as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes scripts that match one or more URL-encoded hostnames separated by commas.
@@ -201,7 +201,7 @@ func (o LookupPageShieldScriptsListResultOutput) ExcludeUrls() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.ExcludeUrls }).(pulumi.StringPtrOutput)
 }
 
-// Export the list of scripts as a file.
+// Export the list of scripts as a file, limited to 50000 entries.
 // Available values: "csv".
 func (o LookupPageShieldScriptsListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldScriptsListResult) *string { return v.Export }).(pulumi.StringPtrOutput)

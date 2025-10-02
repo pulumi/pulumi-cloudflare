@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set notification on.
+        /// Specify whether to enable notifications.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// If true, context information will be passed as query parameters.
+        /// Specify whether to include context information as query parameters.
         /// </summary>
         [Input("includeContext")]
         public Input<bool>? IncludeContext { get; set; }
 
         /// <summary>
-        /// Customize the message shown in the notification.
+        /// Specify the message to show in the notification.
         /// </summary>
         [Input("msg")]
         public Input<string>? Msg { get; set; }
 
         /// <summary>
-        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        /// Specify a URL that directs users to more information. If unset, the notification opens a block page.
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }

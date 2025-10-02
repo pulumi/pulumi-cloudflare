@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +45,9 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustAccessServiceToken = new ZeroTrustAccessServiceToken("exampleZeroTrustAccessServiceToken", ZeroTrustAccessServiceTokenArgs.builder()
  *             .name("CI/CD token")
  *             .zoneId("zone_id")
+ *             .clientSecretVersion(0.0)
  *             .duration("60m")
+ *             .previousClientSecretExpiresAt("2014-01-01T05:20:00.12345Z")
  *             .build());
  * 
  *     }
@@ -108,6 +111,20 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return this.clientSecret;
     }
     /**
+     * A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * 
+     */
+    @Export(name="clientSecretVersion", refs={Double.class}, tree="[0]")
+    private Output<Double> clientSecretVersion;
+
+    /**
+     * @return A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * 
+     */
+    public Output<Double> clientSecretVersion() {
+        return this.clientSecretVersion;
+    }
+    /**
      * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
@@ -140,6 +157,20 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * 
+     */
+    @Export(name="previousClientSecretExpiresAt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> previousClientSecretExpiresAt;
+
+    /**
+     * @return The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * 
+     */
+    public Output<Optional<String>> previousClientSecretExpiresAt() {
+        return Codegen.optional(this.previousClientSecretExpiresAt);
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

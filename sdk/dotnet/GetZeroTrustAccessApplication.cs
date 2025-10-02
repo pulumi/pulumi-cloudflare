@@ -188,7 +188,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BgColor;
         public readonly Outputs.GetZeroTrustAccessApplicationCorsHeadersResult CorsHeaders;
-        public readonly string CreatedAt;
         /// <summary>
         /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
@@ -304,7 +303,6 @@ namespace Pulumi.Cloudflare
         /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         /// </summary>
         public readonly string Type;
-        public readonly string UpdatedAt;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -333,8 +331,6 @@ namespace Pulumi.Cloudflare
             string bgColor,
 
             Outputs.GetZeroTrustAccessApplicationCorsHeadersResult corsHeaders,
-
-            string createdAt,
 
             string customDenyMessage,
 
@@ -396,8 +392,6 @@ namespace Pulumi.Cloudflare
 
             string type,
 
-            string updatedAt,
-
             string? zoneId)
         {
             AccountId = accountId;
@@ -411,7 +405,6 @@ namespace Pulumi.Cloudflare
             AutoRedirectToIdentity = autoRedirectToIdentity;
             BgColor = bgColor;
             CorsHeaders = corsHeaders;
-            CreatedAt = createdAt;
             CustomDenyMessage = customDenyMessage;
             CustomDenyUrl = customDenyUrl;
             CustomNonIdentityDenyUrl = customNonIdentityDenyUrl;
@@ -442,7 +435,6 @@ namespace Pulumi.Cloudflare
             Tags = tags;
             TargetCriterias = targetCriterias;
             Type = type;
-            UpdatedAt = updatedAt;
             ZoneId = zoneId;
         }
     }

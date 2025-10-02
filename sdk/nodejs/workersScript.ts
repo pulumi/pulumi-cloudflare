@@ -56,7 +56,7 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public readonly bindings: pulumi.Output<outputs.WorkersScriptBinding[]>;
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     declare public readonly bodyPart: pulumi.Output<string | undefined>;
     /**
@@ -68,11 +68,11 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public readonly compatibilityFlags: pulumi.Output<string[]>;
     /**
-     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+     * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      */
     declare public readonly content: pulumi.Output<string | undefined>;
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      */
     declare public readonly contentFile: pulumi.Output<string | undefined>;
     /**
@@ -124,7 +124,7 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public readonly logpush: pulumi.Output<boolean>;
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     declare public readonly mainModule: pulumi.Output<string | undefined>;
     /**
@@ -268,7 +268,7 @@ export interface WorkersScriptState {
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     bodyPart?: pulumi.Input<string>;
     /**
@@ -280,11 +280,11 @@ export interface WorkersScriptState {
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+     * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      */
     content?: pulumi.Input<string>;
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      */
     contentFile?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface WorkersScriptState {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
     /**
@@ -392,7 +392,7 @@ export interface WorkersScriptArgs {
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
     /**
-     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
     bodyPart?: pulumi.Input<string>;
     /**
@@ -404,11 +404,11 @@ export interface WorkersScriptArgs {
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified.
+     * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      */
     content?: pulumi.Input<string>;
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Exactly one of `content` or `contentFile` must be specified. Must be paired with `contentSha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      */
     contentFile?: pulumi.Input<string>;
     /**
@@ -436,7 +436,7 @@ export interface WorkersScriptArgs {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
     /**

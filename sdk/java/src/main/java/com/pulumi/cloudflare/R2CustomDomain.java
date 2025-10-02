@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
  *         var exampleR2CustomDomain = new R2CustomDomain("exampleR2CustomDomain", R2CustomDomainArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .bucketName("example-bucket")
- *             .domain("domain")
+ *             .domain("prefix.example-domain.com")
  *             .enabled(true)
- *             .zoneId("zoneId")
+ *             .zoneId("36ca64a6d92827b8a6b90be344bb1bfd")
  *             .ciphers("string")
  *             .minTls("1.0")
  *             .build());

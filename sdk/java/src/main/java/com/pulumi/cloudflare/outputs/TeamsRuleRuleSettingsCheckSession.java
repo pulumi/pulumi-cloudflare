@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleRuleSettingsCheckSession {
+    /**
+     * @return Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     private @Nullable String duration;
     /**
-     * @return Set to true to enable session enforcement.
+     * @return Enable session enforcement.
      * 
      */
     private @Nullable Boolean enforce;
 
     private TeamsRuleRuleSettingsCheckSession() {}
+    /**
+     * @return Sets the required session freshness threshold. The API returns a normalized version of this value.
+     * 
+     */
     public Optional<String> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return Set to true to enable session enforcement.
+     * @return Enable session enforcement.
      * 
      */
     public Optional<Boolean> enforce() {

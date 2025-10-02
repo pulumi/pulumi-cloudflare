@@ -88,6 +88,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> Monitor { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Monitor Group to use for checking the health of origins within this pool.
+        /// </summary>
+        [Output("monitorGroup")]
+        public Output<string?> MonitorGroup { get; private set; } = null!;
+
+        /// <summary>
         /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         [Output("name")]
@@ -230,6 +236,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
+        /// The ID of the Monitor Group to use for checking the health of origins within this pool.
+        /// </summary>
+        [Input("monitorGroup")]
+        public Input<string>? MonitorGroup { get; set; }
+
+        /// <summary>
         /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
         /// </summary>
         [Input("name", required: true)]
@@ -344,6 +356,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("monitor")]
         public Input<string>? Monitor { get; set; }
+
+        /// <summary>
+        /// The ID of the Monitor Group to use for checking the health of origins within this pool.
+        /// </summary>
+        [Input("monitorGroup")]
+        public Input<string>? MonitorGroup { get; set; }
 
         /// <summary>
         /// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.

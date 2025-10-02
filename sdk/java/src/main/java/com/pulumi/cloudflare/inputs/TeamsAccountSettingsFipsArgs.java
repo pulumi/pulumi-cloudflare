@@ -16,14 +16,14 @@ public final class TeamsAccountSettingsFipsArgs extends com.pulumi.resources.Res
     public static final TeamsAccountSettingsFipsArgs Empty = new TeamsAccountSettingsFipsArgs();
 
     /**
-     * Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      * 
      */
     @Import(name="tls")
     private @Nullable Output<Boolean> tls;
 
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      * 
      */
     public Optional<Output<Boolean>> tls() {
@@ -55,7 +55,7 @@ public final class TeamsAccountSettingsFipsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tls Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+         * @param tls Enforce cipher suites and TLS versions compliant with FIPS 140-2.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TeamsAccountSettingsFipsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param tls Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+         * @param tls Enforce cipher suites and TLS versions compliant with FIPS 140-2.
          * 
          * @return builder
          * 

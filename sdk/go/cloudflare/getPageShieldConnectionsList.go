@@ -67,7 +67,7 @@ type LookupPageShieldConnectionsListArgs struct {
 	ExcludeCdnCgi *bool `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
-	// Export the list of connections as a file.
+	// Export the list of connections as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
@@ -93,7 +93,7 @@ type LookupPageShieldConnectionsListResult struct {
 	ExcludeCdnCgi *bool `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls *string `pulumi:"excludeUrls"`
-	// Export the list of connections as a file.
+	// Export the list of connections as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export *string `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
@@ -131,7 +131,7 @@ type LookupPageShieldConnectionsListOutputArgs struct {
 	ExcludeCdnCgi pulumi.BoolPtrInput `pulumi:"excludeCdnCgi"`
 	// Excludes connections whose URL contains one of the URL-encoded URLs separated by commas.
 	ExcludeUrls pulumi.StringPtrInput `pulumi:"excludeUrls"`
-	// Export the list of connections as a file.
+	// Export the list of connections as a file, limited to 50000 entries.
 	// Available values: "csv".
 	Export pulumi.StringPtrInput `pulumi:"export"`
 	// Includes connections that match one or more URL-encoded hostnames separated by commas.
@@ -183,7 +183,7 @@ func (o LookupPageShieldConnectionsListResultOutput) ExcludeUrls() pulumi.String
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.ExcludeUrls }).(pulumi.StringPtrOutput)
 }
 
-// Export the list of connections as a file.
+// Export the list of connections as a file, limited to 50000 entries.
 // Available values: "csv".
 func (o LookupPageShieldConnectionsListResultOutput) Export() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPageShieldConnectionsListResult) *string { return v.Export }).(pulumi.StringPtrOutput)

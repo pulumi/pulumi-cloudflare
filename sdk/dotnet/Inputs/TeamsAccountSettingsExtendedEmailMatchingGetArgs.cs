@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsExtendedEmailMatchingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
+        /// Specify whether to match all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// This setting was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this setting was shared via the Orgs API and read only for the current account.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// Account tag of account that shared this setting.
+        /// Indicate the account tag of the account that shared this setting.
         /// </summary>
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
 
         /// <summary>
-        /// Version number of the setting.
+        /// Indicate the version number of the setting.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

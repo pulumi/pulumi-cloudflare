@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDnsLocationEndpointsIpv4 {
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     private Boolean enabled;
 
     private GetZeroTrustDnsLocationEndpointsIpv4() {}
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the IPv4 endpoint is enabled for this location.
      * 
      */
     public Boolean enabled() {

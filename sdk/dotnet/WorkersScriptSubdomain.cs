@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         ScriptName = "this-is_my_script-01",
     ///         Enabled = true,
-    ///         PreviewsEnabled = true,
+    ///         PreviewsEnabled = false,
     ///     });
     /// 
     /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
         /// </summary>
         [Output("previewsEnabled")]
-        public Output<bool?> PreviewsEnabled { get; private set; } = null!;
+        public Output<bool> PreviewsEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.

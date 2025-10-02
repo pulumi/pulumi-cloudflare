@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsQuarantine
     {
         /// <summary>
-        /// Types of files to sandbox.
+        /// Specify the types of files to sandbox.
         /// </summary>
         public readonly ImmutableArray<string> FileTypes;
 

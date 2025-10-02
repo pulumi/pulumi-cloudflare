@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustGatewayLoggingSettingsByRuleTypeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure logging settings for DNS firewall.
+        /// </summary>
         [Input("dns")]
         public Input<Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsGetArgs>? Dns { get; set; }
 
+        /// <summary>
+        /// Configure logging settings for HTTP/HTTPS firewall.
+        /// </summary>
         [Input("http")]
         public Input<Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpGetArgs>? Http { get; set; }
 
+        /// <summary>
+        /// Configure logging settings for Network firewall.
+        /// </summary>
         [Input("l4")]
         public Input<Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4GetArgs>? L4 { get; set; }
 

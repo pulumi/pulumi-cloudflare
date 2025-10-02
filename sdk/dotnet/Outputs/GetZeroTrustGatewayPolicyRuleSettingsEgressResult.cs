@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsEgressResult
     {
         /// <summary>
-        /// The IPv4 address to be used for egress.
+        /// Specify the IPv4 address to use for egress.
         /// </summary>
         public readonly string Ipv4;
         /// <summary>
-        /// The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egress via WARP IPs.
+        /// Specify the fallback IPv4 address to use for egress when the primary IPv4 fails. Set '0.0.0.0' to indicate local egress via WARP IPs.
         /// </summary>
         public readonly string Ipv4Fallback;
         /// <summary>
-        /// The IPv6 range to be used for egress.
+        /// Specify the IPv6 range to use for egress.
         /// </summary>
         public readonly string Ipv6;
 

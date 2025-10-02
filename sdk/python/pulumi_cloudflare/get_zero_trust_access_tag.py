@@ -26,16 +26,10 @@ class GetZeroTrustAccessTagResult:
     """
     A collection of values returned by getZeroTrustAccessTag.
     """
-    def __init__(__self__, account_id=None, app_count=None, created_at=None, id=None, name=None, tag_name=None, updated_at=None):
+    def __init__(__self__, account_id=None, id=None, name=None, tag_name=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if app_count and not isinstance(app_count, int):
-            raise TypeError("Expected argument 'app_count' to be a int")
-        pulumi.set(__self__, "app_count", app_count)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,9 +39,6 @@ class GetZeroTrustAccessTagResult:
         if tag_name and not isinstance(tag_name, str):
             raise TypeError("Expected argument 'tag_name' to be a str")
         pulumi.set(__self__, "tag_name", tag_name)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -56,19 +47,6 @@ class GetZeroTrustAccessTagResult:
         Identifier.
         """
         return pulumi.get(self, "account_id")
-
-    @_builtins.property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> _builtins.int:
-        """
-        The number of applications that have this tag
-        """
-        return pulumi.get(self, "app_count")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
@@ -94,11 +72,6 @@ class GetZeroTrustAccessTagResult:
         """
         return pulumi.get(self, "tag_name")
 
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
-
 
 class AwaitableGetZeroTrustAccessTagResult(GetZeroTrustAccessTagResult):
     # pylint: disable=using-constant-test
@@ -107,12 +80,9 @@ class AwaitableGetZeroTrustAccessTagResult(GetZeroTrustAccessTagResult):
             yield self
         return GetZeroTrustAccessTagResult(
             account_id=self.account_id,
-            app_count=self.app_count,
-            created_at=self.created_at,
             id=self.id,
             name=self.name,
-            tag_name=self.tag_name,
-            updated_at=self.updated_at)
+            tag_name=self.tag_name)
 
 
 def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
@@ -141,12 +111,9 @@ def get_zero_trust_access_tag(account_id: Optional[_builtins.str] = None,
 
     return AwaitableGetZeroTrustAccessTagResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        app_count=pulumi.get(__ret__, 'app_count'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        tag_name=pulumi.get(__ret__, 'tag_name'),
-        updated_at=pulumi.get(__ret__, 'updated_at'))
+        tag_name=pulumi.get(__ret__, 'tag_name'))
 def get_zero_trust_access_tag_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
                                      tag_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustAccessTagResult]:
@@ -172,9 +139,6 @@ def get_zero_trust_access_tag_output(account_id: Optional[pulumi.Input[_builtins
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustAccessTag:getZeroTrustAccessTag', __args__, opts=opts, typ=GetZeroTrustAccessTagResult)
     return __ret__.apply(lambda __response__: GetZeroTrustAccessTagResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        app_count=pulumi.get(__response__, 'app_count'),
-        created_at=pulumi.get(__response__, 'created_at'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        tag_name=pulumi.get(__response__, 'tag_name'),
-        updated_at=pulumi.get(__response__, 'updated_at')))
+        tag_name=pulumi.get(__response__, 'tag_name')))

@@ -29,7 +29,7 @@ public final class GetPageShieldCookiesListInvokeResult {
      */
     private @Nullable String domain;
     /**
-     * @return Export the list of cookies as a file.
+     * @return Export the list of cookies as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -79,7 +79,7 @@ public final class GetPageShieldCookiesListInvokeResult {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return Export the list of cookies as a file.
+     * @return Export the list of cookies as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */

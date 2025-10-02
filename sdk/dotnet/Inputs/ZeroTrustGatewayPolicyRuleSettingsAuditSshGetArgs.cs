@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsAuditSshGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable to turn on SSH command logging.
+        /// Enable SSH command logging.
         /// </summary>
         [Input("commandLogging")]
         public Input<bool>? CommandLogging { get; set; }

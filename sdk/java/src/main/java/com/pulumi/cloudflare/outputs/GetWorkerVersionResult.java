@@ -36,84 +36,38 @@ public final class GetWorkerVersionResult {
      * 
      */
     private GetWorkerVersionAssets assets;
-    /**
-     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-     * 
-     */
     private List<GetWorkerVersionBinding> bindings;
-    /**
-     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-     * 
-     */
     private String compatibilityDate;
-    /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-     * 
-     */
     private List<String> compatibilityFlags;
-    /**
-     * @return When the version was created.
-     * 
-     */
     private String createdOn;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private String id;
     /**
-     * @return Available values: &#34;modules&#34;.
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
      * 
      */
     private @Nullable String include;
-    /**
-     * @return Resource limits enforced at runtime.
-     * 
-     */
     private GetWorkerVersionLimits limits;
-    /**
-     * @return The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-     * 
-     */
     private String mainModule;
-    /**
-     * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-     * 
-     */
     private GetWorkerVersionMigrations migrations;
-    /**
-     * @return Code, sourcemaps, and other content used at runtime.
-     * 
-     */
     private List<GetWorkerVersionModule> modules;
-    /**
-     * @return The integer version number, starting from one.
-     * 
-     */
     private Integer number;
-    /**
-     * @return Placement settings for the version.
-     * 
-     */
     private GetWorkerVersionPlacement placement;
-    /**
-     * @return The client used to create the version.
-     * 
-     */
     private String source;
     /**
-     * @return Usage model for the version.
-     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
-     * 
      * @deprecated
      * This attribute is deprecated.
      * 
      */
     @Deprecated /* This attribute is deprecated. */
     private String usageModel;
+    /**
+     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     private @Nullable String versionId;
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     private String workerId;
@@ -140,101 +94,51 @@ public final class GetWorkerVersionResult {
     public GetWorkerVersionAssets assets() {
         return this.assets;
     }
-    /**
-     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
-     * 
-     */
     public List<GetWorkerVersionBinding> bindings() {
         return this.bindings;
     }
-    /**
-     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-     * 
-     */
     public String compatibilityDate() {
         return this.compatibilityDate;
     }
-    /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
-     * 
-     */
     public List<String> compatibilityFlags() {
         return this.compatibilityFlags;
     }
-    /**
-     * @return When the version was created.
-     * 
-     */
     public String createdOn() {
         return this.createdOn;
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
     /**
-     * @return Available values: &#34;modules&#34;.
+     * @return Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+     * Available values: &#34;modules&#34;.
      * 
      */
     public Optional<String> include() {
         return Optional.ofNullable(this.include);
     }
-    /**
-     * @return Resource limits enforced at runtime.
-     * 
-     */
     public GetWorkerVersionLimits limits() {
         return this.limits;
     }
-    /**
-     * @return The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
-     * 
-     */
     public String mainModule() {
         return this.mainModule;
     }
-    /**
-     * @return Migrations for Durable Objects associated with the version. Migrations are applied when the version is deployed.
-     * 
-     */
     public GetWorkerVersionMigrations migrations() {
         return this.migrations;
     }
-    /**
-     * @return Code, sourcemaps, and other content used at runtime.
-     * 
-     */
     public List<GetWorkerVersionModule> modules() {
         return this.modules;
     }
-    /**
-     * @return The integer version number, starting from one.
-     * 
-     */
     public Integer number() {
         return this.number;
     }
-    /**
-     * @return Placement settings for the version.
-     * 
-     */
     public GetWorkerVersionPlacement placement() {
         return this.placement;
     }
-    /**
-     * @return The client used to create the version.
-     * 
-     */
     public String source() {
         return this.source;
     }
     /**
-     * @return Usage model for the version.
-     * Available values: &#34;standard&#34;, &#34;bundled&#34;, &#34;unbound&#34;.
-     * 
      * @deprecated
      * This attribute is deprecated.
      * 
@@ -243,11 +147,15 @@ public final class GetWorkerVersionResult {
     public String usageModel() {
         return this.usageModel;
     }
+    /**
+     * @return Identifier for the version, which can be ID or the literal &#34;latest&#34; to operate on the most recently created version.
+     * 
+     */
     public Optional<String> versionId() {
         return Optional.ofNullable(this.versionId);
     }
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public String workerId() {

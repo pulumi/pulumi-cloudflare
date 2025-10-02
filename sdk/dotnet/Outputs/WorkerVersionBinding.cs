@@ -18,6 +18,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
+        /// List of allowed destination addresses.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedDestinationAddresses;
+        /// <summary>
+        /// List of allowed sender addresses.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedSenderAddresses;
+        /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
         public readonly string? BucketName;
@@ -33,6 +41,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the dataset to bind to.
         /// </summary>
         public readonly string? Dataset;
+        /// <summary>
+        /// Destination address for the email.
+        /// </summary>
+        public readonly string? DestinationAddress;
         /// <summary>
         /// The environment of the script_name to bind to.
         /// </summary>
@@ -55,6 +67,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Json;
         /// <summary>
+        /// The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket.
+        /// Available values: "eu", "fedramp".
+        /// </summary>
+        public readonly string? Jurisdiction;
+        /// <summary>
         /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
         /// </summary>
         public readonly string? KeyBase64;
@@ -75,9 +92,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NamespaceId;
         /// <summary>
+        /// The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+        /// </summary>
+        public readonly string? OldName;
+        /// <summary>
         /// Outbound worker.
         /// </summary>
         public readonly Outputs.WorkerVersionBindingOutbound? Outbound;
+        /// <summary>
+        /// The name of the file containing the data content. Only accepted for `service worker syntax` Workers.
+        /// </summary>
+        public readonly string? Part;
         /// <summary>
         /// Name of the Pipeline to bind to.
         /// </summary>
@@ -108,13 +133,17 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "data*blob", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "inherit", "images", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "send*email", "service", "tail*consumer", "text*blob", "vectorize", "version*metadata", "secrets*store*secret", "secret*key", "workflow", "wasm*module".
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         /// </summary>
         public readonly ImmutableArray<string> Usages;
+        /// <summary>
+        /// Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version.
+        /// </summary>
+        public readonly string? VersionId;
         /// <summary>
         /// Name of the Workflow to bind to.
         /// </summary>
@@ -124,6 +153,10 @@ namespace Pulumi.Cloudflare.Outputs
         private WorkerVersionBinding(
             string? algorithm,
 
+            ImmutableArray<string> allowedDestinationAddresses,
+
+            ImmutableArray<string> allowedSenderAddresses,
+
             string? bucketName,
 
             string? certificateId,
@@ -131,6 +164,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? className,
 
             string? dataset,
+
+            string? destinationAddress,
 
             string? environment,
 
@@ -142,6 +177,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? json,
 
+            string? jurisdiction,
+
             string? keyBase64,
 
             string? keyJwk,
@@ -152,7 +189,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? namespaceId,
 
+            string? oldName,
+
             Outputs.WorkerVersionBindingOutbound? outbound,
+
+            string? part,
 
             string? pipeline,
 
@@ -172,24 +213,32 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> usages,
 
+            string? versionId,
+
             string? workflowName)
         {
             Algorithm = algorithm;
+            AllowedDestinationAddresses = allowedDestinationAddresses;
+            AllowedSenderAddresses = allowedSenderAddresses;
             BucketName = bucketName;
             CertificateId = certificateId;
             ClassName = className;
             Dataset = dataset;
+            DestinationAddress = destinationAddress;
             Environment = environment;
             Format = format;
             Id = id;
             IndexName = indexName;
             Json = json;
+            Jurisdiction = jurisdiction;
             KeyBase64 = keyBase64;
             KeyJwk = keyJwk;
             Name = name;
             Namespace = @namespace;
             NamespaceId = namespaceId;
+            OldName = oldName;
             Outbound = outbound;
+            Part = part;
             Pipeline = pipeline;
             QueueName = queueName;
             ScriptName = scriptName;
@@ -199,6 +248,7 @@ namespace Pulumi.Cloudflare.Outputs
             Text = text;
             Type = type;
             Usages = usages;
+            VersionId = versionId;
             WorkflowName = workflowName;
         }
     }

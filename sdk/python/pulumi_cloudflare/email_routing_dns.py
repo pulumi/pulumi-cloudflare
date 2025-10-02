@@ -21,27 +21,16 @@ __all__ = ['EmailRoutingDnsArgs', 'EmailRoutingDns']
 @pulumi.input_type
 class EmailRoutingDnsArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[_builtins.str],
-                 zone_id: pulumi.Input[_builtins.str]):
+                 zone_id: pulumi.Input[_builtins.str],
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EmailRoutingDns resource.
-        :param pulumi.Input[_builtins.str] name: Domain of your zone.
         :param pulumi.Input[_builtins.str] zone_id: Identifier.
+        :param pulumi.Input[_builtins.str] name: Domain of your zone.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Domain of your zone.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "name", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -54,6 +43,18 @@ class EmailRoutingDnsArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Domain of your zone.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -344,8 +345,6 @@ class EmailRoutingDns(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = EmailRoutingDnsArgs.__new__(EmailRoutingDnsArgs)
 
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -457,7 +456,7 @@ class EmailRoutingDns(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> pulumi.Output[_builtins.str]:
+    def name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Domain of your zone.
         """

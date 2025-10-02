@@ -28,7 +28,7 @@ public final class GetWorkerResult {
      */
     private String createdOn;
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     private String id;
@@ -68,7 +68,7 @@ public final class GetWorkerResult {
      */
     private String updatedOn;
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     private @Nullable String workerId;
@@ -89,7 +89,7 @@ public final class GetWorkerResult {
         return this.createdOn;
     }
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public String id() {
@@ -145,7 +145,7 @@ public final class GetWorkerResult {
         return this.updatedOn;
     }
     /**
-     * @return Identifier.
+     * @return Identifier for the Worker, which can be ID or name.
      * 
      */
     public Optional<String> workerId() {

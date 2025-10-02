@@ -16,7 +16,7 @@ public final class TeamsRuleRuleSettingsUntrustedCertArgs extends com.pulumi.res
     public static final TeamsRuleRuleSettingsUntrustedCertArgs Empty = new TeamsRuleRuleSettingsUntrustedCertArgs();
 
     /**
-     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class TeamsRuleRuleSettingsUntrustedCertArgs extends com.pulumi.res
     private @Nullable Output<String> action;
 
     /**
-     * @return The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
      * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
@@ -57,7 +57,7 @@ public final class TeamsRuleRuleSettingsUntrustedCertArgs extends com.pulumi.res
         }
 
         /**
-         * @param action The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+         * @param action Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
          * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class TeamsRuleRuleSettingsUntrustedCertArgs extends com.pulumi.res
         }
 
         /**
-         * @param action The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+         * @param action Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
          * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
          * 
          * @return builder

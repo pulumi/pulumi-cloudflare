@@ -44,16 +44,16 @@ export interface GetZeroTrustGatewayProxyEndpointResult {
      */
     readonly id: string;
     /**
-     * A list of CIDRs to restrict ingress connections.
+     * Specify the list of CIDRs to restrict ingress connections.
      */
     readonly ips: string[];
     /**
-     * The name of the proxy endpoint.
+     * Specify the name of the proxy endpoint.
      */
     readonly name: string;
     readonly proxyEndpointId: string;
     /**
-     * The subdomain to be used as the destination in the proxy client.
+     * Specify the subdomain to use as the destination in the proxy client.
      */
     readonly subdomain: string;
     readonly updatedAt: string;

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh {
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     private Boolean commandLogging;
 
     private GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSsh() {}
     /**
-     * @return Enable to turn on SSH command logging.
+     * @return Enable SSH command logging.
      * 
      */
     public Boolean commandLogging() {

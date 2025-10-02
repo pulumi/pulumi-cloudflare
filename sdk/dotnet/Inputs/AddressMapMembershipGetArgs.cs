@@ -13,15 +13,6 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AddressMapMembershipGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls whether the membership can be deleted via the API or not.
-        /// </summary>
-        [Input("canDelete")]
-        public Input<bool>? CanDelete { get; set; }
-
-        [Input("createdAt")]
-        public Input<string>? CreatedAt { get; set; }
-
-        /// <summary>
         /// The identifier for the membership (eg. a zone or account tag).
         /// </summary>
         [Input("identifier")]

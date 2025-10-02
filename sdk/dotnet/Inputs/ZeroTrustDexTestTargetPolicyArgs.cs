@@ -21,8 +21,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The id of the DEX rule
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// The name of the DEX rule

@@ -25,37 +25,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettings {
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsActivityLog activityLog;
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus;
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsBlockPage blockPage;
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -64,86 +64,86 @@ public final class ZeroTrustGatewaySettingsSettings {
     @Deprecated /* This attribute is deprecated. */
     private @Nullable ZeroTrustGatewaySettingsSettingsCustomCertificate customCertificate;
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching;
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsFips fips;
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsInspection inspection;
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsSandbox sandbox;
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
 
     private ZeroTrustGatewaySettingsSettings() {}
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsActivityLog> activityLog() {
         return Optional.ofNullable(this.activityLog);
     }
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
     }
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsBlockPage> blockPage() {
         return Optional.ofNullable(this.blockPage);
     }
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsBodyScanning> bodyScanning() {
         return Optional.ofNullable(this.bodyScanning);
     }
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsBrowserIsolation> browserIsolation() {
         return Optional.ofNullable(this.browserIsolation);
     }
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsCertificate> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -154,49 +154,49 @@ public final class ZeroTrustGatewaySettingsSettings {
         return Optional.ofNullable(this.customCertificate);
     }
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsExtendedEmailMatching> extendedEmailMatching() {
         return Optional.ofNullable(this.extendedEmailMatching);
     }
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsFips> fips() {
         return Optional.ofNullable(this.fips);
     }
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsHostSelector> hostSelector() {
         return Optional.ofNullable(this.hostSelector);
     }
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsInspection> inspection() {
         return Optional.ofNullable(this.inspection);
     }
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsProtocolDetection> protocolDetection() {
         return Optional.ofNullable(this.protocolDetection);
     }
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsSandbox> sandbox() {
         return Optional.ofNullable(this.sandbox);
     }
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<ZeroTrustGatewaySettingsSettingsTlsDecrypt> tlsDecrypt() {

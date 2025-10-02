@@ -24,7 +24,7 @@ type ZeroTrustGatewaySettings struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Account settings.
+	// Specify account settings.
 	Settings  ZeroTrustGatewaySettingsSettingsPtrOutput `pulumi:"settings"`
 	UpdatedAt pulumi.StringOutput                       `pulumi:"updatedAt"`
 }
@@ -70,7 +70,7 @@ func GetZeroTrustGatewaySettings(ctx *pulumi.Context,
 type zeroTrustGatewaySettingsState struct {
 	AccountId *string `pulumi:"accountId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	// Account settings.
+	// Specify account settings.
 	Settings  *ZeroTrustGatewaySettingsSettings `pulumi:"settings"`
 	UpdatedAt *string                           `pulumi:"updatedAt"`
 }
@@ -78,7 +78,7 @@ type zeroTrustGatewaySettingsState struct {
 type ZeroTrustGatewaySettingsState struct {
 	AccountId pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
-	// Account settings.
+	// Specify account settings.
 	Settings  ZeroTrustGatewaySettingsSettingsPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -89,14 +89,14 @@ func (ZeroTrustGatewaySettingsState) ElementType() reflect.Type {
 
 type zeroTrustGatewaySettingsArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Account settings.
+	// Specify account settings.
 	Settings *ZeroTrustGatewaySettingsSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewaySettings resource.
 type ZeroTrustGatewaySettingsArgs struct {
 	AccountId pulumi.StringInput
-	// Account settings.
+	// Specify account settings.
 	Settings ZeroTrustGatewaySettingsSettingsPtrInput
 }
 
@@ -195,7 +195,7 @@ func (o ZeroTrustGatewaySettingsOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Account settings.
+// Specify account settings.
 func (o ZeroTrustGatewaySettingsOutput) Settings() ZeroTrustGatewaySettingsSettingsPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewaySettings) ZeroTrustGatewaySettingsSettingsPtrOutput { return v.Settings }).(ZeroTrustGatewaySettingsSettingsPtrOutput)
 }

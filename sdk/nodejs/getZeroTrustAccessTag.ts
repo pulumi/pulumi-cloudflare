@@ -48,11 +48,6 @@ export interface GetZeroTrustAccessTagResult {
      */
     readonly accountId: string;
     /**
-     * The number of applications that have this tag
-     */
-    readonly appCount: number;
-    readonly createdAt: string;
-    /**
      * The name of the tag
      */
     readonly id: string;
@@ -64,7 +59,6 @@ export interface GetZeroTrustAccessTagResult {
      * The name of the tag
      */
     readonly tagName?: string;
-    readonly updatedAt: string;
 }
 /**
  * ## Example Usage

@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsLocationEndpointsDot {
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the DOT endpoint is enabled for this location.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     private @Nullable List<TeamsLocationEndpointsDotNetwork> networks;
 
     private TeamsLocationEndpointsDot() {}
     /**
-     * @return True if the endpoint is enabled for this location.
+     * @return Indicate whether the DOT endpoint is enabled for this location.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * @return Specify the list of allowed source IP network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
      * 
      */
     public List<TeamsLocationEndpointsDotNetwork> networks() {

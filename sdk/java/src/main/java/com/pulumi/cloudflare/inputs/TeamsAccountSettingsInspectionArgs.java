@@ -16,20 +16,16 @@ public final class TeamsAccountSettingsInspectionArgs extends com.pulumi.resourc
     public static final TeamsAccountSettingsInspectionArgs Empty = new TeamsAccountSettingsInspectionArgs();
 
     /**
-     * Defines the mode of inspection the proxy will use.
-     * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) &amp; UDP(443).
-     * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-     *   Available values: &#34;static&#34;, &#34;dynamic&#34;.
+     * Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+     * Available values: &#34;static&#34;, &#34;dynamic&#34;.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Defines the mode of inspection the proxy will use.
-     * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) &amp; UDP(443).
-     * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-     *   Available values: &#34;static&#34;, &#34;dynamic&#34;.
+     * @return Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+     * Available values: &#34;static&#34;, &#34;dynamic&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -61,10 +57,8 @@ public final class TeamsAccountSettingsInspectionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param mode Defines the mode of inspection the proxy will use.
-         * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) &amp; UDP(443).
-         * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-         *   Available values: &#34;static&#34;, &#34;dynamic&#34;.
+         * @param mode Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+         * Available values: &#34;static&#34;, &#34;dynamic&#34;.
          * 
          * @return builder
          * 
@@ -75,10 +69,8 @@ public final class TeamsAccountSettingsInspectionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param mode Defines the mode of inspection the proxy will use.
-         * - static: Gateway will use static inspection to inspect HTTP on TCP(80). If TLS decryption is on, Gateway will inspect HTTPS traffic on TCP(443) &amp; UDP(443).
-         * - dynamic: Gateway will use protocol detection to dynamically inspect HTTP and HTTPS traffic on any port. TLS decryption must be on to inspect HTTPS traffic.
-         *   Available values: &#34;static&#34;, &#34;dynamic&#34;.
+         * @param mode Define the proxy inspection mode.   1. static: Gateway applies static inspection to HTTP on TCP(80). With TLS decryption on, Gateway inspects HTTPS traffic on TCP(443) and UDP(443).   2. dynamic: Gateway applies protocol detection to inspect HTTP and HTTPS traffic on any port. TLS decryption must remain on to inspect HTTPS traffic.
+         * Available values: &#34;static&#34;, &#34;dynamic&#34;.
          * 
          * @return builder
          * 

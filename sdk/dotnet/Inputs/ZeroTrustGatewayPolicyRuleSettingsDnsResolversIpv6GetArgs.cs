@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv6 address of upstream resolver.
+        /// Specify the IPv6 address of the upstream resolver.
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// A port number to use for upstream resolver. Defaults to 53 if unspecified.
+        /// Specify a port number to use for the upstream resolver. Defaults to 53 if unspecified.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
+        /// Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
         /// </summary>
         [Input("routeThroughPrivateNetwork")]
         public Input<bool>? RouteThroughPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        /// Specify an optional virtual network for this resolver. Uses default virtual network id if omitted.
         /// </summary>
         [Input("vnetId")]
         public Input<string>? VnetId { get; set; }

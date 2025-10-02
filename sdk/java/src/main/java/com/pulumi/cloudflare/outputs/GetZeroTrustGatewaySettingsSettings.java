@@ -24,37 +24,37 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettings {
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsActivityLog activityLog;
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsAntivirus antivirus;
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsBlockPage blockPage;
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsCertificate certificate;
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -63,86 +63,86 @@ public final class GetZeroTrustGatewaySettingsSettings {
     @Deprecated /* This attribute is deprecated. */
     private GetZeroTrustGatewaySettingsSettingsCustomCertificate customCertificate;
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching;
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsFips fips;
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector;
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsInspection inspection;
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection;
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsSandbox sandbox;
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt;
 
     private GetZeroTrustGatewaySettingsSettings() {}
     /**
-     * @return Activity log settings.
+     * @return Specify activity log settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsActivityLog activityLog() {
         return this.activityLog;
     }
     /**
-     * @return Anti-virus settings.
+     * @return Specify anti-virus settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsAntivirus antivirus() {
         return this.antivirus;
     }
     /**
-     * @return Block page layout settings.
+     * @return Specify block page layout settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsBlockPage blockPage() {
         return this.blockPage;
     }
     /**
-     * @return DLP body scanning settings.
+     * @return Specify the DLP inspection mode.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning() {
         return this.bodyScanning;
     }
     /**
-     * @return Browser isolation settings.
+     * @return Specify Clientless Browser Isolation settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation() {
         return this.browserIsolation;
     }
     /**
-     * @return Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
+     * @return Specify certificate settings for Gateway TLS interception. If unset, the Cloudflare Root CA handles interception.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsCertificate certificate() {
         return this.certificate;
     }
     /**
-     * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`).
+     * @return Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -153,49 +153,49 @@ public final class GetZeroTrustGatewaySettingsSettings {
         return this.customCertificate;
     }
     /**
-     * @return Extended e-mail matching settings.
+     * @return Specify user email settings for the firewall policies. When this is enabled, we standardize the email addresses in the identity part of the rule, so that they match the extended email variants in the firewall policies. When this setting is turned off, the email addresses in the identity part of the rule will be matched exactly as provided. If your email has `.` or `+` modifiers, you should enable this setting.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsExtendedEmailMatching extendedEmailMatching() {
         return this.extendedEmailMatching;
     }
     /**
-     * @return FIPS settings.
+     * @return Specify FIPS settings.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsFips fips() {
         return this.fips;
     }
     /**
-     * @return Setting to enable host selector in egress policies.
+     * @return Enable host selection in egress policies.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsHostSelector hostSelector() {
         return this.hostSelector;
     }
     /**
-     * @return Setting to define inspection settings.
+     * @return Define the proxy inspection mode.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsInspection inspection() {
         return this.inspection;
     }
     /**
-     * @return Protocol Detection settings.
+     * @return Specify whether to detect protocols from the initial bytes of client traffic.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsProtocolDetection protocolDetection() {
         return this.protocolDetection;
     }
     /**
-     * @return Sandbox settings.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsSandbox sandbox() {
         return this.sandbox;
     }
     /**
-     * @return TLS interception settings.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public GetZeroTrustGatewaySettingsSettingsTlsDecrypt tlsDecrypt() {

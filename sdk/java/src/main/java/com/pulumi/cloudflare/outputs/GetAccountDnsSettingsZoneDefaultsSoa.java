@@ -22,7 +22,7 @@ public final class GetAccountDnsSettingsZoneDefaultsSoa {
      */
     private Double minTtl;
     /**
-     * @return The primary nameserver, which may be used for outbound zone transfers.
+     * @return The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
     private String mname;
@@ -63,7 +63,7 @@ public final class GetAccountDnsSettingsZoneDefaultsSoa {
         return this.minTtl;
     }
     /**
-     * @return The primary nameserver, which may be used for outbound zone transfers.
+     * @return The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
      * 
      */
     public String mname() {

@@ -24,9 +24,9 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         BucketName = "example-bucket",
-    ///         Domain = "domain",
+    ///         Domain = "prefix.example-domain.com",
     ///         Enabled = true,
-    ///         ZoneId = "zoneId",
+    ///         ZoneId = "36ca64a6d92827b8a6b90be344bb1bfd",
     ///         Ciphers = new[]
     ///         {
     ///             "string",

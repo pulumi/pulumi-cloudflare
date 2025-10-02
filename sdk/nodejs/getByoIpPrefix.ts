@@ -49,10 +49,14 @@ export interface GetByoIpPrefixResult {
     readonly accountId: string;
     /**
      * Prefix advertisement status to the Internet. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     readonly advertised: boolean;
     /**
      * Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     readonly advertisedModifiedAt: string;
     /**
@@ -83,10 +87,14 @@ export interface GetByoIpPrefixResult {
     readonly modifiedAt: string;
     /**
      * Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     readonly onDemandEnabled: boolean;
     /**
      * Whether advertisement status of the prefix is locked, meaning it cannot be changed.
+     *
+     * @deprecated Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
      */
     readonly onDemandLocked: boolean;
     /**

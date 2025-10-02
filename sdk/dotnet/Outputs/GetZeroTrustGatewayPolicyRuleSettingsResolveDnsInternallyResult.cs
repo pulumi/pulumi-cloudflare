@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyResult
     {
         /// <summary>
-        /// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        /// Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.
         /// Available values: "none", "public_dns".
         /// </summary>
         public readonly string Fallback;
         /// <summary>
-        /// The internal DNS view identifier that's passed to the internal DNS service.
+        /// Specify the internal DNS view identifier to pass to the internal DNS service.
         /// </summary>
         public readonly string ViewId;
 

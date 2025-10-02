@@ -43,10 +43,11 @@ import javax.annotation.Nullable;
  *         var exampleBotManagement = new BotManagement("exampleBotManagement", BotManagementArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .aiBotsProtection("block")
+ *             .cfRobotsVariant("policy_only")
  *             .crawlerProtection("enabled")
  *             .enableJs(true)
  *             .fightMode(true)
- *             .isRobotsTxtManaged(true)
+ *             .isRobotsTxtManaged(false)
  *             .build());
  * 
  *     }
@@ -106,6 +107,22 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> bmCookieEnabled() {
         return this.bmCookieEnabled;
+    }
+    /**
+     * Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    @Export(name="cfRobotsVariant", refs={String.class}, tree="[0]")
+    private Output<String> cfRobotsVariant;
+
+    /**
+     * @return Specifies the Robots Access Control License variant to use.
+     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * 
+     */
+    public Output<String> cfRobotsVariant() {
+        return this.cfRobotsVariant;
     }
     /**
      * Enable rule to punish AI Scrapers and Crawlers via a link maze.

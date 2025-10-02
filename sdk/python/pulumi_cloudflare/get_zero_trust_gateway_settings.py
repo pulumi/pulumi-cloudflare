@@ -65,6 +65,9 @@ class GetZeroTrustGatewaySettingsResult:
     @_builtins.property
     @pulumi.getter
     def settings(self) -> 'outputs.GetZeroTrustGatewaySettingsSettingsResult':
+        """
+        Specify account settings.
+        """
         return pulumi.get(self, "settings")
 
     @_builtins.property

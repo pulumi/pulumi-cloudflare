@@ -128,13 +128,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         return Optional.ofNullable(this.consumerServiceUrl);
     }
 
-    @Import(name="createdAt")
-    private @Nullable Output<String> createdAt;
-
-    public Optional<Output<String>> createdAt() {
-        return Optional.ofNullable(this.createdAt);
-    }
-
     @Import(name="customAttributes")
     private @Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs>> customAttributes;
 
@@ -345,13 +338,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         return Optional.ofNullable(this.ssoEndpoint);
     }
 
-    @Import(name="updatedAt")
-    private @Nullable Output<String> updatedAt;
-
-    public Optional<Output<String>> updatedAt() {
-        return Optional.ofNullable(this.updatedAt);
-    }
-
     private ZeroTrustAccessApplicationSaasAppArgs() {}
 
     private ZeroTrustAccessApplicationSaasAppArgs(ZeroTrustAccessApplicationSaasAppArgs $) {
@@ -362,7 +348,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.consumerServiceUrl = $.consumerServiceUrl;
-        this.createdAt = $.createdAt;
         this.customAttributes = $.customAttributes;
         this.customClaims = $.customClaims;
         this.defaultRelayState = $.defaultRelayState;
@@ -379,7 +364,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         this.scopes = $.scopes;
         this.spEntityId = $.spEntityId;
         this.ssoEndpoint = $.ssoEndpoint;
-        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -547,15 +531,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
          */
         public Builder consumerServiceUrl(String consumerServiceUrl) {
             return consumerServiceUrl(Output.of(consumerServiceUrl));
-        }
-
-        public Builder createdAt(@Nullable Output<String> createdAt) {
-            $.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder createdAt(String createdAt) {
-            return createdAt(Output.of(createdAt));
         }
 
         public Builder customAttributes(@Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs>> customAttributes) {
@@ -884,15 +859,6 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
          */
         public Builder ssoEndpoint(String ssoEndpoint) {
             return ssoEndpoint(Output.of(ssoEndpoint));
-        }
-
-        public Builder updatedAt(@Nullable Output<String> updatedAt) {
-            $.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Builder updatedAt(String updatedAt) {
-            return updatedAt(Output.of(updatedAt));
         }
 
         public ZeroTrustAccessApplicationSaasAppArgs build() {

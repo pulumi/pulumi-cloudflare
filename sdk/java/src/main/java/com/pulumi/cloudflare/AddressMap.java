@@ -169,14 +169,14 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="memberships", refs={List.class,AddressMapMembership.class}, tree="[0,1]")
-    private Output<List<AddressMapMembership>> memberships;
+    private Output</* @Nullable */ List<AddressMapMembership>> memberships;
 
     /**
      * @return Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership.
      * 
      */
-    public Output<List<AddressMapMembership>> memberships() {
-        return this.memberships;
+    public Output<Optional<List<AddressMapMembership>>> memberships() {
+        return Codegen.optional(this.memberships);
     }
     @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;

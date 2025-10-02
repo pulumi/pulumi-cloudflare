@@ -46,7 +46,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string BgColor;
         public readonly Outputs.GetZeroTrustAccessApplicationsResultCorsHeadersResult CorsHeaders;
-        public readonly string CreatedAt;
         /// <summary>
         /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
@@ -161,7 +160,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         /// </summary>
         public readonly string Type;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessApplicationsResultResult(
@@ -182,8 +180,6 @@ namespace Pulumi.Cloudflare.Outputs
             string bgColor,
 
             Outputs.GetZeroTrustAccessApplicationsResultCorsHeadersResult corsHeaders,
-
-            string createdAt,
 
             string customDenyMessage,
 
@@ -241,9 +237,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaResult> targetCriterias,
 
-            string type,
-
-            string updatedAt)
+            string type)
         {
             AllowAuthenticateViaWarp = allowAuthenticateViaWarp;
             AllowIframe = allowIframe;
@@ -254,7 +248,6 @@ namespace Pulumi.Cloudflare.Outputs
             AutoRedirectToIdentity = autoRedirectToIdentity;
             BgColor = bgColor;
             CorsHeaders = corsHeaders;
-            CreatedAt = createdAt;
             CustomDenyMessage = customDenyMessage;
             CustomDenyUrl = customDenyUrl;
             CustomNonIdentityDenyUrl = customNonIdentityDenyUrl;
@@ -284,7 +277,6 @@ namespace Pulumi.Cloudflare.Outputs
             Tags = tags;
             TargetCriterias = targetCriterias;
             Type = type;
-            UpdatedAt = updatedAt;
         }
     }
 }

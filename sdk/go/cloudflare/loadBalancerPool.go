@@ -44,6 +44,8 @@ type LoadBalancerPool struct {
 	ModifiedOn     pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrOutput `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup pulumi.StringPtrOutput `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
@@ -119,6 +121,8 @@ type loadBalancerPoolState struct {
 	ModifiedOn     *string `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor *string `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup *string `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name *string `pulumi:"name"`
 	// List of networks where Load Balancer or Pool is enabled.
@@ -156,6 +160,8 @@ type LoadBalancerPoolState struct {
 	ModifiedOn     pulumi.StringPtrInput
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrInput
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup pulumi.StringPtrInput
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringPtrInput
 	// List of networks where Load Balancer or Pool is enabled.
@@ -193,6 +199,8 @@ type loadBalancerPoolArgs struct {
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor *string `pulumi:"monitor"`
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup *string `pulumi:"monitorGroup"`
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name string `pulumi:"name"`
 	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
@@ -225,6 +233,8 @@ type LoadBalancerPoolArgs struct {
 	MinimumOrigins pulumi.IntPtrInput
 	// The ID of the Monitor to use for checking the health of origins within this pool.
 	Monitor pulumi.StringPtrInput
+	// The ID of the Monitor Group to use for checking the health of origins within this pool.
+	MonitorGroup pulumi.StringPtrInput
 	// A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
 	Name pulumi.StringInput
 	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
@@ -380,6 +390,11 @@ func (o LoadBalancerPoolOutput) ModifiedOn() pulumi.StringOutput {
 // The ID of the Monitor to use for checking the health of origins within this pool.
 func (o LoadBalancerPoolOutput) Monitor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Monitor }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Monitor Group to use for checking the health of origins within this pool.
+func (o LoadBalancerPoolOutput) MonitorGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.MonitorGroup }).(pulumi.StringPtrOutput)
 }
 
 // A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.

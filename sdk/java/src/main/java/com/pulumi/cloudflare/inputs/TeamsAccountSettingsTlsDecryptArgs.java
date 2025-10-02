@@ -16,14 +16,14 @@ public final class TeamsAccountSettingsTlsDecryptArgs extends com.pulumi.resourc
     public static final TeamsAccountSettingsTlsDecryptArgs Empty = new TeamsAccountSettingsTlsDecryptArgs();
 
     /**
-     * Enable inspecting encrypted HTTP traffic.
+     * Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable inspecting encrypted HTTP traffic.
+     * @return Specify whether to inspect encrypted HTTP traffic.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class TeamsAccountSettingsTlsDecryptArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable inspecting encrypted HTTP traffic.
+         * @param enabled Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TeamsAccountSettingsTlsDecryptArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable inspecting encrypted HTTP traffic.
+         * @param enabled Specify whether to inspect encrypted HTTP traffic.
          * 
          * @return builder
          * 

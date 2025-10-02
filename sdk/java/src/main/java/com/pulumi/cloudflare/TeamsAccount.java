@@ -46,14 +46,14 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Account settings.
+     * Specify account settings.
      * 
      */
     @Export(name="settings", refs={TeamsAccountSettings.class}, tree="[0]")
     private Output</* @Nullable */ TeamsAccountSettings> settings;
 
     /**
-     * @return Account settings.
+     * @return Specify account settings.
      * 
      */
     public Output<Optional<TeamsAccountSettings>> settings() {

@@ -83,6 +83,11 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         [Output("modules")]
         public Output<ImmutableArray<Outputs.WorkerVersionModule>> Modules { get; private set; } = null!;
@@ -113,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UsageModel { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Output("workerId")]
         public Output<string> WorkerId { get; private set; } = null!;
@@ -235,6 +240,11 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public InputList<Inputs.WorkerVersionModuleArgs> Modules
         {
@@ -256,7 +266,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UsageModel { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId", required: true)]
         public Input<string> WorkerId { get; set; } = null!;
@@ -346,6 +356,11 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Code, sourcemaps, and other content used at runtime.
+        /// 
+        /// This includes [`_headers`](https://developers.cloudflare.com/workers/static-assets/headers/#custom-headers) and
+        /// [`_redirects`](https://developers.cloudflare.com/workers/static-assets/redirects/) files used to configure 
+        /// [Static Assets](https://developers.cloudflare.com/workers/static-assets/). `_headers` and `_redirects` files should be 
+        /// included as modules named `_headers` and `_redirects` with content type `text/plain`.
         /// </summary>
         public InputList<Inputs.WorkerVersionModuleGetArgs> Modules
         {
@@ -379,7 +394,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UsageModel { get; set; }
 
         /// <summary>
-        /// Identifier.
+        /// Identifier for the Worker, which can be ID or name.
         /// </summary>
         [Input("workerId")]
         public Input<string>? WorkerId { get; set; }

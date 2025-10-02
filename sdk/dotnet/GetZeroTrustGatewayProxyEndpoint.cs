@@ -121,16 +121,16 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of CIDRs to restrict ingress connections.
+        /// Specify the list of CIDRs to restrict ingress connections.
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// The name of the proxy endpoint.
+        /// Specify the name of the proxy endpoint.
         /// </summary>
         public readonly string Name;
         public readonly string ProxyEndpointId;
         /// <summary>
-        /// The subdomain to be used as the destination in the proxy client.
+        /// Specify the subdomain to use as the destination in the proxy client.
         /// </summary>
         public readonly string Subdomain;
         public readonly string UpdatedAt;

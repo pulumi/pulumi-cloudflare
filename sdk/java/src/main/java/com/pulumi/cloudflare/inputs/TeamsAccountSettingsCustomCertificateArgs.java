@@ -18,14 +18,14 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
     public static final TeamsAccountSettingsCustomCertificateArgs Empty = new TeamsAccountSettingsCustomCertificateArgs();
 
     /**
-     * Certificate status (internal).
+     * Indicate the internal certificate status.
      * 
      */
     @Import(name="bindingStatus")
     private @Nullable Output<String> bindingStatus;
 
     /**
-     * @return Certificate status (internal).
+     * @return Indicate the internal certificate status.
      * 
      */
     public Optional<Output<String>> bindingStatus() {
@@ -33,14 +33,14 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
     }
 
     /**
-     * Enable use of custom certificate authority for signing Gateway. traffic.
+     * Specify whether to enable a custom certificate authority for signing Gateway traffic.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable use of custom certificate authority for signing Gateway. traffic.
+     * @return Specify whether to enable a custom certificate authority for signing Gateway traffic.
      * 
      */
     public Output<Boolean> enabled() {
@@ -48,14 +48,14 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
     }
 
     /**
-     * UUID of certificate (ID from MTLS certificate store).
+     * Specify the UUID of the certificate (ID from MTLS certificate store).
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return UUID of certificate (ID from MTLS certificate store).
+     * @return Specify the UUID of the certificate (ID from MTLS certificate store).
      * 
      */
     public Optional<Output<String>> id() {
@@ -97,7 +97,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param bindingStatus Certificate status (internal).
+         * @param bindingStatus Indicate the internal certificate status.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param bindingStatus Certificate status (internal).
+         * @param bindingStatus Indicate the internal certificate status.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable use of custom certificate authority for signing Gateway. traffic.
+         * @param enabled Specify whether to enable a custom certificate authority for signing Gateway traffic.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Enable use of custom certificate authority for signing Gateway. traffic.
+         * @param enabled Specify whether to enable a custom certificate authority for signing Gateway traffic.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param id UUID of certificate (ID from MTLS certificate store).
+         * @param id Specify the UUID of the certificate (ID from MTLS certificate store).
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         /**
-         * @param id UUID of certificate (ID from MTLS certificate store).
+         * @param id Specify the UUID of the certificate (ID from MTLS certificate store).
          * 
          * @return builder
          * 

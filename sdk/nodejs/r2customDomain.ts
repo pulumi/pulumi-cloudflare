@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * const exampleR2CustomDomain = new cloudflare.R2CustomDomain("example_r2_custom_domain", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
- *     domain: "domain",
+ *     domain: "prefix.example-domain.com",
  *     enabled: true,
- *     zoneId: "zoneId",
+ *     zoneId: "36ca64a6d92827b8a6b90be344bb1bfd",
  *     ciphers: ["string"],
  *     minTls: "1.0",
  * });

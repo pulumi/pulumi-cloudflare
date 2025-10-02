@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to true to enable DLP payload logging for this rule.
+        /// Enable DLP payload logging for this rule.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

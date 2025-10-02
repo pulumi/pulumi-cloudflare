@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleWorker = cloudflare.getWorker({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     workerId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     workerId: "worker_id",
  * });
  * ```
  */
@@ -36,7 +36,7 @@ export interface GetWorkerArgs {
      */
     accountId: string;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId?: string;
 }
@@ -54,7 +54,7 @@ export interface GetWorkerResult {
      */
     readonly createdOn: string;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     readonly id: string;
     /**
@@ -86,7 +86,7 @@ export interface GetWorkerResult {
      */
     readonly updatedOn: string;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     readonly workerId?: string;
 }
@@ -99,7 +99,7 @@ export interface GetWorkerResult {
  *
  * const exampleWorker = cloudflare.getWorker({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     workerId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     workerId: "worker_id",
  * });
  * ```
  */
@@ -120,7 +120,7 @@ export interface GetWorkerOutputArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Identifier for the Worker, which can be ID or name.
      */
     workerId?: pulumi.Input<string>;
 }

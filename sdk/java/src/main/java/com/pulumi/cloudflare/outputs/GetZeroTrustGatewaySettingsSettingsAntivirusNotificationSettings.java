@@ -12,50 +12,50 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
-     * @return Set notification on.
+     * @return Specify whether to enable notifications.
      * 
      */
     private Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to include context information as query parameters.
      * 
      */
     private Boolean includeContext;
     /**
-     * @return Customize the message shown in the notification.
+     * @return Specify the message to show in the notification.
      * 
      */
     private String msg;
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     private String supportUrl;
 
     private GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings() {}
     /**
-     * @return Set notification on.
+     * @return Specify whether to enable notifications.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Specify whether to include context information as query parameters.
      * 
      */
     public Boolean includeContext() {
         return this.includeContext;
     }
     /**
-     * @return Customize the message shown in the notification.
+     * @return Specify the message to show in the notification.
      * 
      */
     public String msg() {
         return this.msg;
     }
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Specify a URL that directs users to more information. If unset, the notification opens a block page.
      * 
      */
     public String supportUrl() {

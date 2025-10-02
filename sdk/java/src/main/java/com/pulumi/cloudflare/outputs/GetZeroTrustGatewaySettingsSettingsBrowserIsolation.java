@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewaySettingsSettingsBrowserIsolation {
     /**
-     * @return Enable non-identity onramp support for Browser Isolation.
+     * @return Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     private Boolean nonIdentityEnabled;
     /**
-     * @return Enable Clientless Browser Isolation.
+     * @return Specify whether to enable Clientless Browser Isolation.
      * 
      */
     private Boolean urlBrowserIsolationEnabled;
 
     private GetZeroTrustGatewaySettingsSettingsBrowserIsolation() {}
     /**
-     * @return Enable non-identity onramp support for Browser Isolation.
+     * @return Specify whether to enable non-identity onramp support for Browser Isolation.
      * 
      */
     public Boolean nonIdentityEnabled() {
         return this.nonIdentityEnabled;
     }
     /**
-     * @return Enable Clientless Browser Isolation.
+     * @return Specify whether to enable Clientless Browser Isolation.
      * 
      */
     public Boolean urlBrowserIsolationEnabled() {

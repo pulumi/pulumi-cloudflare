@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
     /**
-     * @return Set to true to enable DLP payload logging for this rule.
+     * @return Enable DLP payload logging for this rule.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ZeroTrustGatewayPolicyRuleSettingsPayloadLog() {}
     /**
-     * @return Set to true to enable DLP payload logging for this rule.
+     * @return Enable DLP payload logging for this rule.
      * 
      */
     public Optional<Boolean> enabled() {

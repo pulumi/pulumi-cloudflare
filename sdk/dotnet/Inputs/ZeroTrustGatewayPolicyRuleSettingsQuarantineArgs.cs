@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _fileTypes;
 
         /// <summary>
-        /// Types of files to sandbox.
+        /// Specify the types of files to sandbox.
         /// </summary>
         public InputList<string> FileTypes
         {

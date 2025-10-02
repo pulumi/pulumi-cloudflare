@@ -41,15 +41,18 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        [Output("activate")]
+        public Output<bool?> Activate { get; private set; } = null!;
+
         /// <summary>
-        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Output("bindingStatus")]
         public Output<string> BindingStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The CA certificate(read only).
+        /// Provide the CA certificate (read-only).
         /// </summary>
         [Output("certificate")]
         public Output<string> Certificate { get; private set; } = null!;
@@ -61,31 +64,31 @@ namespace Pulumi.Cloudflare
         public Output<string> ExpiresOn { get; private set; } = null!;
 
         /// <summary>
-        /// The SHA256 fingerprint of the certificate(read only).
+        /// Provide the SHA256 fingerprint of the certificate (read-only).
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         /// </summary>
         [Output("inUse")]
         public Output<bool> InUse { get; private set; } = null!;
 
         /// <summary>
-        /// The organization that issued the certificate(read only).
+        /// Indicate the organization that issued the certificate (read-only).
         /// </summary>
         [Output("issuerOrg")]
         public Output<string> IssuerOrg { get; private set; } = null!;
 
         /// <summary>
-        /// The entire issuer field of the certificate(read only).
+        /// Provide the entire issuer field of the certificate (read-only).
         /// </summary>
         [Output("issuerRaw")]
         public Output<string> IssuerRaw { get; private set; } = null!;
 
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Output("type")]
@@ -97,6 +100,9 @@ namespace Pulumi.Cloudflare
         [Output("uploadedOn")]
         public Output<string> UploadedOn { get; private set; } = null!;
 
+        /// <summary>
+        /// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        /// </summary>
         [Output("validityPeriodDays")]
         public Output<int?> ValidityPeriodDays { get; private set; } = null!;
 
@@ -149,6 +155,12 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        [Input("activate")]
+        public Input<bool>? Activate { get; set; }
+
+        /// <summary>
+        /// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }
 
@@ -163,15 +175,18 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("activate")]
+        public Input<bool>? Activate { get; set; }
+
         /// <summary>
-        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         [Input("bindingStatus")]
         public Input<string>? BindingStatus { get; set; }
 
         /// <summary>
-        /// The CA certificate(read only).
+        /// Provide the CA certificate (read-only).
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
@@ -183,31 +198,31 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExpiresOn { get; set; }
 
         /// <summary>
-        /// The SHA256 fingerprint of the certificate(read only).
+        /// Provide the SHA256 fingerprint of the certificate (read-only).
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         /// </summary>
         [Input("inUse")]
         public Input<bool>? InUse { get; set; }
 
         /// <summary>
-        /// The organization that issued the certificate(read only).
+        /// Indicate the organization that issued the certificate (read-only).
         /// </summary>
         [Input("issuerOrg")]
         public Input<string>? IssuerOrg { get; set; }
 
         /// <summary>
-        /// The entire issuer field of the certificate(read only).
+        /// Provide the entire issuer field of the certificate (read-only).
         /// </summary>
         [Input("issuerRaw")]
         public Input<string>? IssuerRaw { get; set; }
 
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         [Input("type")]
@@ -219,6 +234,9 @@ namespace Pulumi.Cloudflare
         [Input("uploadedOn")]
         public Input<string>? UploadedOn { get; set; }
 
+        /// <summary>
+        /// Sets the certificate validity period in days (range: 1-10,950 days / ~30 years). Defaults to 1,825 days (5 years). **Important**: This field is only settable during the certificate creation.  Certificates becomes immutable after creation - use the `/activate` and `/deactivate` endpoints to manage certificate lifecycle.
+        /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }
 

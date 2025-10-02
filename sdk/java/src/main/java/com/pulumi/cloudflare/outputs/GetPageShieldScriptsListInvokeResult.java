@@ -41,7 +41,7 @@ public final class GetPageShieldScriptsListInvokeResult {
      */
     private @Nullable String excludeUrls;
     /**
-     * @return Export the list of scripts as a file.
+     * @return Export the list of scripts as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */
@@ -104,7 +104,7 @@ public final class GetPageShieldScriptsListInvokeResult {
         return Optional.ofNullable(this.excludeUrls);
     }
     /**
-     * @return Export the list of scripts as a file.
+     * @return Export the list of scripts as a file, limited to 50000 entries.
      * Available values: &#34;csv&#34;.
      * 
      */

@@ -27,7 +27,7 @@ class GetBotManagementResult:
     """
     A collection of values returned by getBotManagement.
     """
-    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
+    def __init__(__self__, ai_bots_protection=None, auto_update_model=None, bm_cookie_enabled=None, cf_robots_variant=None, crawler_protection=None, enable_js=None, fight_mode=None, id=None, is_robots_txt_managed=None, optimize_wordpress=None, sbfm_definitely_automated=None, sbfm_likely_automated=None, sbfm_static_resource_protection=None, sbfm_verified_bots=None, stale_zone_configuration=None, suppress_session_score=None, using_latest_model=None, zone_id=None):
         if ai_bots_protection and not isinstance(ai_bots_protection, str):
             raise TypeError("Expected argument 'ai_bots_protection' to be a str")
         pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
@@ -37,6 +37,9 @@ class GetBotManagementResult:
         if bm_cookie_enabled and not isinstance(bm_cookie_enabled, bool):
             raise TypeError("Expected argument 'bm_cookie_enabled' to be a bool")
         pulumi.set(__self__, "bm_cookie_enabled", bm_cookie_enabled)
+        if cf_robots_variant and not isinstance(cf_robots_variant, str):
+            raise TypeError("Expected argument 'cf_robots_variant' to be a str")
+        pulumi.set(__self__, "cf_robots_variant", cf_robots_variant)
         if crawler_protection and not isinstance(crawler_protection, str):
             raise TypeError("Expected argument 'crawler_protection' to be a str")
         pulumi.set(__self__, "crawler_protection", crawler_protection)
@@ -104,6 +107,15 @@ class GetBotManagementResult:
         Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
         """
         return pulumi.get(self, "bm_cookie_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="cfRobotsVariant")
+    def cf_robots_variant(self) -> _builtins.str:
+        """
+        Specifies the Robots Access Control License variant to use.
+        Available values: "off", "policy_only".
+        """
+        return pulumi.get(self, "cf_robots_variant")
 
     @_builtins.property
     @pulumi.getter(name="crawlerProtection")
@@ -233,6 +245,7 @@ class AwaitableGetBotManagementResult(GetBotManagementResult):
             ai_bots_protection=self.ai_bots_protection,
             auto_update_model=self.auto_update_model,
             bm_cookie_enabled=self.bm_cookie_enabled,
+            cf_robots_variant=self.cf_robots_variant,
             crawler_protection=self.crawler_protection,
             enable_js=self.enable_js,
             fight_mode=self.fight_mode,
@@ -273,6 +286,7 @@ def get_bot_management(zone_id: Optional[_builtins.str] = None,
         ai_bots_protection=pulumi.get(__ret__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__ret__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__ret__, 'bm_cookie_enabled'),
+        cf_robots_variant=pulumi.get(__ret__, 'cf_robots_variant'),
         crawler_protection=pulumi.get(__ret__, 'crawler_protection'),
         enable_js=pulumi.get(__ret__, 'enable_js'),
         fight_mode=pulumi.get(__ret__, 'fight_mode'),
@@ -310,6 +324,7 @@ def get_bot_management_output(zone_id: Optional[pulumi.Input[_builtins.str]] = N
         ai_bots_protection=pulumi.get(__response__, 'ai_bots_protection'),
         auto_update_model=pulumi.get(__response__, 'auto_update_model'),
         bm_cookie_enabled=pulumi.get(__response__, 'bm_cookie_enabled'),
+        cf_robots_variant=pulumi.get(__response__, 'cf_robots_variant'),
         crawler_protection=pulumi.get(__response__, 'crawler_protection'),
         enable_js=pulumi.get(__response__, 'enable_js'),
         fight_mode=pulumi.get(__response__, 'fight_mode'),

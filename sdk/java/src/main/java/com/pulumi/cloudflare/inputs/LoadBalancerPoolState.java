@@ -188,6 +188,21 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    @Import(name="monitorGroup")
+    private @Nullable Output<String> monitorGroup;
+
+    /**
+     * @return The ID of the Monitor Group to use for checking the health of origins within this pool.
+     * 
+     */
+    public Optional<Output<String>> monitorGroup() {
+        return Optional.ofNullable(this.monitorGroup);
+    }
+
+    /**
      * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
@@ -292,6 +307,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         this.minimumOrigins = $.minimumOrigins;
         this.modifiedOn = $.modifiedOn;
         this.monitor = $.monitor;
+        this.monitorGroup = $.monitorGroup;
         this.name = $.name;
         this.networks = $.networks;
         this.notificationEmail = $.notificationEmail;
@@ -554,6 +570,27 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
          */
         public Builder monitor(String monitor) {
             return monitor(Output.of(monitor));
+        }
+
+        /**
+         * @param monitorGroup The ID of the Monitor Group to use for checking the health of origins within this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorGroup(@Nullable Output<String> monitorGroup) {
+            $.monitorGroup = monitorGroup;
+            return this;
+        }
+
+        /**
+         * @param monitorGroup The ID of the Monitor Group to use for checking the health of origins within this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitorGroup(String monitorGroup) {
+            return monitorGroup(Output.of(monitorGroup));
         }
 
         /**

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsActivityLog
     {
         /// <summary>
-        /// Enable activity logging.
+        /// Specify whether to log activity.
         /// </summary>
         public readonly bool? Enabled;
 

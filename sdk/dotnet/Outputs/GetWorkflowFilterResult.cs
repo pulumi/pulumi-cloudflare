@@ -11,14 +11,17 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-    public sealed class GetZeroTrustTunnelCloudflaredConfigConfigWarpRoutingResult
+    public sealed class GetWorkflowFilterResult
     {
-        public readonly bool Enabled;
+        /// <summary>
+        /// Allows filtering workflows` name.
+        /// </summary>
+        public readonly string? Search;
 
         [OutputConstructor]
-        private GetZeroTrustTunnelCloudflaredConfigConfigWarpRoutingResult(bool enabled)
+        private GetWorkflowFilterResult(string? search)
         {
-            Enabled = enabled;
+            Search = search;
         }
     }
 }

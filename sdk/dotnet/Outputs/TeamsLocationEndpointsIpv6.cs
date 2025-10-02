@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsLocationEndpointsIpv6
     {
         /// <summary>
-        /// True if the endpoint is enabled for this location.
+        /// Indicate whether the IPV6 endpoint is enabled for this location.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// Specify the list of allowed source IPv6 network ranges for this endpoint. When the list is empty, the endpoint allows all source IPs. The list takes effect only if the endpoint is enabled for this location.
         /// </summary>
         public readonly ImmutableArray<Outputs.TeamsLocationEndpointsIpv6Network> Networks;
 

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewaySettingsSettingsProtocolDetectionResult
     {
         /// <summary>
-        /// Enable detecting protocol on initial bytes of client traffic.
+        /// Specify whether to detect protocols from the initial bytes of client traffic.
         /// </summary>
         public readonly bool Enabled;
 

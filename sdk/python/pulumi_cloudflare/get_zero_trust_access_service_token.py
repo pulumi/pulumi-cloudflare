@@ -28,16 +28,13 @@ class GetZeroTrustAccessServiceTokenResult:
     """
     A collection of values returned by getZeroTrustAccessServiceToken.
     """
-    def __init__(__self__, account_id=None, client_id=None, created_at=None, duration=None, expires_at=None, filter=None, id=None, last_seen_at=None, name=None, service_token_id=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, client_id=None, duration=None, expires_at=None, filter=None, id=None, name=None, service_token_id=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if client_id and not isinstance(client_id, str):
             raise TypeError("Expected argument 'client_id' to be a str")
         pulumi.set(__self__, "client_id", client_id)
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
         if duration and not isinstance(duration, str):
             raise TypeError("Expected argument 'duration' to be a str")
         pulumi.set(__self__, "duration", duration)
@@ -50,18 +47,12 @@ class GetZeroTrustAccessServiceTokenResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if last_seen_at and not isinstance(last_seen_at, str):
-            raise TypeError("Expected argument 'last_seen_at' to be a str")
-        pulumi.set(__self__, "last_seen_at", last_seen_at)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if service_token_id and not isinstance(service_token_id, str):
             raise TypeError("Expected argument 'service_token_id' to be a str")
         pulumi.set(__self__, "service_token_id", service_token_id)
-        if updated_at and not isinstance(updated_at, str):
-            raise TypeError("Expected argument 'updated_at' to be a str")
-        pulumi.set(__self__, "updated_at", updated_at)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -81,11 +72,6 @@ class GetZeroTrustAccessServiceTokenResult:
         The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         """
         return pulumi.get(self, "client_id")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
@@ -114,11 +100,6 @@ class GetZeroTrustAccessServiceTokenResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter(name="lastSeenAt")
-    def last_seen_at(self) -> _builtins.str:
-        return pulumi.get(self, "last_seen_at")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -133,11 +114,6 @@ class GetZeroTrustAccessServiceTokenResult:
         UUID.
         """
         return pulumi.get(self, "service_token_id")
-
-    @_builtins.property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> _builtins.str:
-        return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
@@ -156,15 +132,12 @@ class AwaitableGetZeroTrustAccessServiceTokenResult(GetZeroTrustAccessServiceTok
         return GetZeroTrustAccessServiceTokenResult(
             account_id=self.account_id,
             client_id=self.client_id,
-            created_at=self.created_at,
             duration=self.duration,
             expires_at=self.expires_at,
             filter=self.filter,
             id=self.id,
-            last_seen_at=self.last_seen_at,
             name=self.name,
             service_token_id=self.service_token_id,
-            updated_at=self.updated_at,
             zone_id=self.zone_id)
 
 
@@ -201,15 +174,12 @@ def get_zero_trust_access_service_token(account_id: Optional[_builtins.str] = No
     return AwaitableGetZeroTrustAccessServiceTokenResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         client_id=pulumi.get(__ret__, 'client_id'),
-        created_at=pulumi.get(__ret__, 'created_at'),
         duration=pulumi.get(__ret__, 'duration'),
         expires_at=pulumi.get(__ret__, 'expires_at'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
-        last_seen_at=pulumi.get(__ret__, 'last_seen_at'),
         name=pulumi.get(__ret__, 'name'),
         service_token_id=pulumi.get(__ret__, 'service_token_id'),
-        updated_at=pulumi.get(__ret__, 'updated_at'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zero_trust_access_service_token_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                filter: Optional[pulumi.Input[Optional[Union['GetZeroTrustAccessServiceTokenFilterArgs', 'GetZeroTrustAccessServiceTokenFilterArgsDict']]]] = None,
@@ -243,13 +213,10 @@ def get_zero_trust_access_service_token_output(account_id: Optional[pulumi.Input
     return __ret__.apply(lambda __response__: GetZeroTrustAccessServiceTokenResult(
         account_id=pulumi.get(__response__, 'account_id'),
         client_id=pulumi.get(__response__, 'client_id'),
-        created_at=pulumi.get(__response__, 'created_at'),
         duration=pulumi.get(__response__, 'duration'),
         expires_at=pulumi.get(__response__, 'expires_at'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
-        last_seen_at=pulumi.get(__response__, 'last_seen_at'),
         name=pulumi.get(__response__, 'name'),
         service_token_id=pulumi.get(__response__, 'service_token_id'),
-        updated_at=pulumi.get(__response__, 'updated_at'),
         zone_id=pulumi.get(__response__, 'zone_id')))

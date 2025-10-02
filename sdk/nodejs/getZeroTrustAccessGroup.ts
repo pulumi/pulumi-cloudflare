@@ -58,7 +58,6 @@ export interface GetZeroTrustAccessGroupResult {
      * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     readonly accountId?: string;
-    readonly createdAt: string;
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
@@ -88,7 +87,6 @@ export interface GetZeroTrustAccessGroupResult {
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
     readonly requires: outputs.GetZeroTrustAccessGroupRequire[];
-    readonly updatedAt: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

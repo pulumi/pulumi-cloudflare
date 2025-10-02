@@ -16,7 +16,6 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
      * 
      */
     private List<String> associatedHostnames;
-    private String createdAt;
     private String expiresOn;
     /**
      * @return The MD5 fingerprint of the certificate.
@@ -33,7 +32,6 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
      * 
      */
     private String name;
-    private String updatedAt;
 
     private GetZeroTrustAccessMtlsCertificatesResult() {}
     /**
@@ -42,9 +40,6 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
      */
     public List<String> associatedHostnames() {
         return this.associatedHostnames;
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     public String expiresOn() {
         return this.expiresOn;
@@ -70,9 +65,6 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
     public String name() {
         return this.name;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -84,22 +76,18 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> associatedHostnames;
-        private String createdAt;
         private String expiresOn;
         private String fingerprint;
         private String id;
         private String name;
-        private String updatedAt;
         public Builder() {}
         public Builder(GetZeroTrustAccessMtlsCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associatedHostnames = defaults.associatedHostnames;
-    	      this.createdAt = defaults.createdAt;
     	      this.expiresOn = defaults.expiresOn;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
-    	      this.updatedAt = defaults.updatedAt;
         }
 
         @CustomType.Setter
@@ -112,14 +100,6 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
         }
         public Builder associatedHostnames(String... associatedHostnames) {
             return associatedHostnames(List.of(associatedHostnames));
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificatesResult", "createdAt");
-            }
-            this.createdAt = createdAt;
-            return this;
         }
         @CustomType.Setter
         public Builder expiresOn(String expiresOn) {
@@ -153,23 +133,13 @@ public final class GetZeroTrustAccessMtlsCertificatesResult {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessMtlsCertificatesResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
         public GetZeroTrustAccessMtlsCertificatesResult build() {
             final var _resultValue = new GetZeroTrustAccessMtlsCertificatesResult();
             _resultValue.associatedHostnames = associatedHostnames;
-            _resultValue.createdAt = createdAt;
             _resultValue.expiresOn = expiresOn;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
             _resultValue.name = name;
-            _resultValue.updatedAt = updatedAt;
             return _resultValue;
         }
     }

@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double MinTtl;
         /// <summary>
-        /// The primary nameserver, which may be used for outbound zone transfers.
+        /// The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used.
         /// </summary>
         public readonly string Mname;
         /// <summary>

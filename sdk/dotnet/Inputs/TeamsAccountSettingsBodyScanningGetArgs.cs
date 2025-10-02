@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsAccountSettingsBodyScanningGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set the inspection mode to either `deep` or `shallow`.
+        /// Specify the inspection mode as either `deep` or `shallow`.
         /// Available values: "deep", "shallow".
         /// </summary>
         [Input("inspectionMode")]

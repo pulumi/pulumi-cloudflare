@@ -17,7 +17,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         /// </summary>
         public readonly string ClientId;
-        public readonly string CreatedAt;
         /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
@@ -27,18 +26,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// The ID of the service token.
         /// </summary>
         public readonly string Id;
-        public readonly string LastSeenAt;
         /// <summary>
         /// The name of the service token.
         /// </summary>
         public readonly string Name;
-        public readonly string UpdatedAt;
 
         [OutputConstructor]
         private GetZeroTrustAccessServiceTokensResultResult(
             string clientId,
-
-            string createdAt,
 
             string duration,
 
@@ -46,20 +41,13 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
-            string lastSeenAt,
-
-            string name,
-
-            string updatedAt)
+            string name)
         {
             ClientId = clientId;
-            CreatedAt = createdAt;
             Duration = duration;
             ExpiresAt = expiresAt;
             Id = id;
-            LastSeenAt = lastSeenAt;
             Name = name;
-            UpdatedAt = updatedAt;
         }
     }
 }

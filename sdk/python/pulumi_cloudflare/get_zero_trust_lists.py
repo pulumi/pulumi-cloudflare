@@ -77,7 +77,7 @@ class GetZeroTrustListsResult:
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The type of list.
+        Specify the list type.
         Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         """
         return pulumi.get(self, "type")
@@ -113,7 +113,7 @@ def get_zero_trust_lists(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str type: The type of list.
+    :param _builtins.str type: Specify the list type.
            Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
     """
     __args__ = dict()
@@ -146,7 +146,7 @@ def get_zero_trust_lists_output(account_id: Optional[pulumi.Input[_builtins.str]
 
 
     :param _builtins.int max_items: Max items to fetch, default: 1000
-    :param _builtins.str type: The type of list.
+    :param _builtins.str type: Specify the list type.
            Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
     """
     __args__ = dict()

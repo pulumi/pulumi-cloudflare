@@ -17,14 +17,14 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
     public static final TeamsAccountSettingsSandboxArgs Empty = new TeamsAccountSettingsSandboxArgs();
 
     /**
-     * Enable sandbox.
+     * Specify whether to enable the sandbox.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable sandbox.
+     * @return Specify whether to enable the sandbox.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,7 +32,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
     }
 
     /**
-     * Action to take when the file cannot be scanned.
+     * Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
@@ -40,7 +40,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
     private @Nullable Output<String> fallbackAction;
 
     /**
-     * @return Action to take when the file cannot be scanned.
+     * @return Specify the action to take when the system cannot scan the file.
      * Available values: &#34;allow&#34;, &#34;block&#34;.
      * 
      */
@@ -74,7 +74,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable sandbox.
+         * @param enabled Specify whether to enable the sandbox.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable sandbox.
+         * @param enabled Specify whether to enable the sandbox.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fallbackAction Action to take when the file cannot be scanned.
+         * @param fallbackAction Specify the action to take when the system cannot scan the file.
          * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class TeamsAccountSettingsSandboxArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param fallbackAction Action to take when the file cannot be scanned.
+         * @param fallbackAction Specify the action to take when the system cannot scan the file.
          * Available values: &#34;allow&#34;, &#34;block&#34;.
          * 
          * @return builder

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewaySettingsSettingsFips {
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      * 
      */
     private @Nullable Boolean tls;
 
     private ZeroTrustGatewaySettingsSettingsFips() {}
     /**
-     * @return Enable only cipher suites and TLS versions compliant with FIPS. 140-2.
+     * @return Enforce cipher suites and TLS versions compliant with FIPS 140-2.
      * 
      */
     public Optional<Boolean> tls() {

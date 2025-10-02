@@ -48,11 +48,6 @@ export interface GetZeroTrustAccessCustomPageResult {
      */
     readonly accountId: string;
     /**
-     * Number of apps the custom page is assigned to.
-     */
-    readonly appCount: number;
-    readonly createdAt: string;
-    /**
      * Custom page HTML.
      */
     readonly customHtml: string;
@@ -77,7 +72,6 @@ export interface GetZeroTrustAccessCustomPageResult {
      * UUID.
      */
     readonly uid: string;
-    readonly updatedAt: string;
 }
 /**
  * ## Example Usage

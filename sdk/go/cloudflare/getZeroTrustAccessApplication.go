@@ -82,7 +82,6 @@ type LookupZeroTrustAccessApplicationResult struct {
 	// The background color of the App Launcher page.
 	BgColor     string                                   `pulumi:"bgColor"`
 	CorsHeaders GetZeroTrustAccessApplicationCorsHeaders `pulumi:"corsHeaders"`
-	CreatedAt   string                                   `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage string `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -147,8 +146,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	TargetCriterias []GetZeroTrustAccessApplicationTargetCriteria `pulumi:"targetCriterias"`
 	// The application type.
 	// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
-	Type      string `pulumi:"type"`
-	UpdatedAt string `pulumi:"updatedAt"`
+	Type string `pulumi:"type"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -246,10 +244,6 @@ func (o LookupZeroTrustAccessApplicationResultOutput) CorsHeaders() GetZeroTrust
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationCorsHeaders {
 		return v.CorsHeaders
 	}).(GetZeroTrustAccessApplicationCorsHeadersOutput)
-}
-
-func (o LookupZeroTrustAccessApplicationResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The custom error message shown to a user when they are denied access to the application.
@@ -417,10 +411,6 @@ func (o LookupZeroTrustAccessApplicationResultOutput) TargetCriterias() GetZeroT
 // Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
 func (o LookupZeroTrustAccessApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-func (o LookupZeroTrustAccessApplicationResultOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 // The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

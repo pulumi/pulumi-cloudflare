@@ -15,40 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyExpiration {
     /**
-     * @return The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+     * @return Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
      * 
      */
     private @Nullable Integer duration;
     /**
-     * @return Whether the policy has expired.
+     * @return Indicates whether the policy is expired.
      * 
      */
     private @Nullable Boolean expired;
     /**
-     * @return The time stamp at which the policy will expire and cease to be
-     * applied.
+     * @return Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
      * 
      */
     private String expiresAt;
 
     private ZeroTrustGatewayPolicyExpiration() {}
     /**
-     * @return The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+     * @return Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
      * 
      */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return Whether the policy has expired.
+     * @return Indicates whether the policy is expired.
      * 
      */
     public Optional<Boolean> expired() {
         return Optional.ofNullable(this.expired);
     }
     /**
-     * @return The time stamp at which the policy will expire and cease to be
-     * applied.
+     * @return Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
      * 
      */
     public String expiresAt() {

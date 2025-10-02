@@ -13,20 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleExpirationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The default duration a policy will be active in minutes. Must be set in order to use the `reset_expiration` endpoint on this rule.
+        /// Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// Whether the policy has expired.
+        /// Indicates whether the policy is expired.
         /// </summary>
         [Input("expired")]
         public Input<bool>? Expired { get; set; }
 
         /// <summary>
-        /// The time stamp at which the policy will expire and cease to be
-        /// applied.
+        /// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
         /// </summary>
         [Input("expiresAt", required: true)]
         public Input<string> ExpiresAt { get; set; } = null!;

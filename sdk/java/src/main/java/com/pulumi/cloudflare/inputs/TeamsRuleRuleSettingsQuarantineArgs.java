@@ -17,14 +17,14 @@ public final class TeamsRuleRuleSettingsQuarantineArgs extends com.pulumi.resour
     public static final TeamsRuleRuleSettingsQuarantineArgs Empty = new TeamsRuleRuleSettingsQuarantineArgs();
 
     /**
-     * Types of files to sandbox.
+     * Specify the types of files to sandbox.
      * 
      */
     @Import(name="fileTypes")
     private @Nullable Output<List<String>> fileTypes;
 
     /**
-     * @return Types of files to sandbox.
+     * @return Specify the types of files to sandbox.
      * 
      */
     public Optional<Output<List<String>>> fileTypes() {
@@ -56,7 +56,7 @@ public final class TeamsRuleRuleSettingsQuarantineArgs extends com.pulumi.resour
         }
 
         /**
-         * @param fileTypes Types of files to sandbox.
+         * @param fileTypes Specify the types of files to sandbox.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class TeamsRuleRuleSettingsQuarantineArgs extends com.pulumi.resour
         }
 
         /**
-         * @param fileTypes Types of files to sandbox.
+         * @param fileTypes Specify the types of files to sandbox.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class TeamsRuleRuleSettingsQuarantineArgs extends com.pulumi.resour
         }
 
         /**
-         * @param fileTypes Types of files to sandbox.
+         * @param fileTypes Specify the types of files to sandbox.
          * 
          * @return builder
          * 

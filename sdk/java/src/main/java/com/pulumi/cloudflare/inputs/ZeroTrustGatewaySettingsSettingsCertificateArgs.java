@@ -15,14 +15,14 @@ public final class ZeroTrustGatewaySettingsSettingsCertificateArgs extends com.p
     public static final ZeroTrustGatewaySettingsSettingsCertificateArgs Empty = new ZeroTrustGatewaySettingsSettingsCertificateArgs();
 
     /**
-     * UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+     * @return Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
      * 
      */
     public Output<String> id() {
@@ -54,7 +54,7 @@ public final class ZeroTrustGatewaySettingsSettingsCertificateArgs extends com.p
         }
 
         /**
-         * @param id UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+         * @param id Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ZeroTrustGatewaySettingsSettingsCertificateArgs extends com.p
         }
 
         /**
-         * @param id UUID of certificate to be used for interception. Certificate must be available (previously called &#39;active&#39;) on the edge. A nil UUID will indicate the Cloudflare Root CA should be used.
+         * @param id Specify the UUID of the certificate used for interception. Ensure the certificate is available at the edge(previously called &#39;active&#39;). A nil UUID directs Cloudflare to use the Root CA.
          * 
          * @return builder
          * 

@@ -17,92 +17,87 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustGatewayPoliciesResult {
     /**
-     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     private String action;
     private String createdAt;
     /**
-     * @return Date of deletion, if any.
+     * @return Indicate the date of deletion, if any.
      * 
      */
     private String deletedAt;
     /**
-     * @return The description of the rule.
+     * @return Specify the rule description.
      * 
      */
     private String description;
     private String devicePosture;
     /**
-     * @return True if the rule is enabled.
+     * @return Specify whether the rule is enabled.
      * 
      */
     private Boolean enabled;
     /**
-     * @return The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * @return Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     private GetZeroTrustGatewayPoliciesResultExpiration expiration;
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     private List<String> filters;
     /**
-     * @return The API resource UUID.
+     * @return Identify the API resource with a UUID.
      * 
      */
     private String id;
     private String identity;
     /**
-     * @return The name of the rule.
+     * @return Specify the rule name.
      * 
      */
     private String name;
-    /**
-     * @return The rule cannot be shared via the Orgs API.
-     * 
-     */
-    private Boolean notSharable;
     private Integer precedence;
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     private Boolean readOnly;
-    /**
-     * @return Additional settings that modify the rule&#39;s action.
-     * 
-     */
     private GetZeroTrustGatewayPoliciesResultRuleSettings ruleSettings;
     /**
-     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     private GetZeroTrustGatewayPoliciesResultSchedule schedule;
     /**
-     * @return account tag of account that created the rule.
+     * @return Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    private Boolean sharable;
+    /**
+     * @return Provide the account tag of the account that created the rule.
      * 
      */
     private String sourceAccount;
     private String traffic;
     private String updatedAt;
     /**
-     * @return version number of the rule.
+     * @return Indicate the version number of the rule(read-only).
      * 
      */
     private Integer version;
     /**
-     * @return Warning for a misconfigured rule, if any.
+     * @return Indicate a warning for a misconfigured rule, if any.
      * 
      */
     private String warningStatus;
 
     private GetZeroTrustGatewayPoliciesResult() {}
     /**
-     * @return The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
      * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
@@ -113,14 +108,14 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.createdAt;
     }
     /**
-     * @return Date of deletion, if any.
+     * @return Indicate the date of deletion, if any.
      * 
      */
     public String deletedAt() {
         return this.deletedAt;
     }
     /**
-     * @return The description of the rule.
+     * @return Specify the rule description.
      * 
      */
     public String description() {
@@ -130,29 +125,28 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.devicePosture;
     }
     /**
-     * @return True if the rule is enabled.
+     * @return Specify whether the rule is enabled.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The expiration time stamp and default duration of a DNS policy. Takes
-     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * @return Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy&#39;s `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
      * 
      */
     public GetZeroTrustGatewayPoliciesResultExpiration expiration() {
         return this.expiration;
     }
     /**
-     * @return The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+     * @return Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public List<String> filters() {
         return this.filters;
     }
     /**
-     * @return The API resource UUID.
+     * @return Identify the API resource with a UUID.
      * 
      */
     public String id() {
@@ -162,45 +156,41 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.identity;
     }
     /**
-     * @return The name of the rule.
+     * @return Specify the rule name.
      * 
      */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The rule cannot be shared via the Orgs API.
-     * 
-     */
-    public Boolean notSharable() {
-        return this.notSharable;
-    }
     public Integer precedence() {
         return this.precedence;
     }
     /**
-     * @return The rule was shared via the Orgs API and cannot be edited by the current account.
+     * @return Indicate that this rule is shared via the Orgs API and read only.
      * 
      */
     public Boolean readOnly() {
         return this.readOnly;
     }
-    /**
-     * @return Additional settings that modify the rule&#39;s action.
-     * 
-     */
     public GetZeroTrustGatewayPoliciesResultRuleSettings ruleSettings() {
         return this.ruleSettings;
     }
     /**
-     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
      * 
      */
     public GetZeroTrustGatewayPoliciesResultSchedule schedule() {
         return this.schedule;
     }
     /**
-     * @return account tag of account that created the rule.
+     * @return Indicate that this rule is sharable via the Orgs API.
+     * 
+     */
+    public Boolean sharable() {
+        return this.sharable;
+    }
+    /**
+     * @return Provide the account tag of the account that created the rule.
      * 
      */
     public String sourceAccount() {
@@ -213,14 +203,14 @@ public final class GetZeroTrustGatewayPoliciesResult {
         return this.updatedAt;
     }
     /**
-     * @return version number of the rule.
+     * @return Indicate the version number of the rule(read-only).
      * 
      */
     public Integer version() {
         return this.version;
     }
     /**
-     * @return Warning for a misconfigured rule, if any.
+     * @return Indicate a warning for a misconfigured rule, if any.
      * 
      */
     public String warningStatus() {
@@ -247,11 +237,11 @@ public final class GetZeroTrustGatewayPoliciesResult {
         private String id;
         private String identity;
         private String name;
-        private Boolean notSharable;
         private Integer precedence;
         private Boolean readOnly;
         private GetZeroTrustGatewayPoliciesResultRuleSettings ruleSettings;
         private GetZeroTrustGatewayPoliciesResultSchedule schedule;
+        private Boolean sharable;
         private String sourceAccount;
         private String traffic;
         private String updatedAt;
@@ -271,11 +261,11 @@ public final class GetZeroTrustGatewayPoliciesResult {
     	      this.id = defaults.id;
     	      this.identity = defaults.identity;
     	      this.name = defaults.name;
-    	      this.notSharable = defaults.notSharable;
     	      this.precedence = defaults.precedence;
     	      this.readOnly = defaults.readOnly;
     	      this.ruleSettings = defaults.ruleSettings;
     	      this.schedule = defaults.schedule;
+    	      this.sharable = defaults.sharable;
     	      this.sourceAccount = defaults.sourceAccount;
     	      this.traffic = defaults.traffic;
     	      this.updatedAt = defaults.updatedAt;
@@ -375,14 +365,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder notSharable(Boolean notSharable) {
-            if (notSharable == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResult", "notSharable");
-            }
-            this.notSharable = notSharable;
-            return this;
-        }
-        @CustomType.Setter
         public Builder precedence(Integer precedence) {
             if (precedence == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResult", "precedence");
@@ -412,6 +394,14 @@ public final class GetZeroTrustGatewayPoliciesResult {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResult", "schedule");
             }
             this.schedule = schedule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sharable(Boolean sharable) {
+            if (sharable == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResult", "sharable");
+            }
+            this.sharable = sharable;
             return this;
         }
         @CustomType.Setter
@@ -467,11 +457,11 @@ public final class GetZeroTrustGatewayPoliciesResult {
             _resultValue.id = id;
             _resultValue.identity = identity;
             _resultValue.name = name;
-            _resultValue.notSharable = notSharable;
             _resultValue.precedence = precedence;
             _resultValue.readOnly = readOnly;
             _resultValue.ruleSettings = ruleSettings;
             _resultValue.schedule = schedule;
+            _resultValue.sharable = sharable;
             _resultValue.sourceAccount = sourceAccount;
             _resultValue.traffic = traffic;
             _resultValue.updatedAt = updatedAt;

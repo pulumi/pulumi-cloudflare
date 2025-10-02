@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Certificate UUID tag.
+        /// Identify the certificate with a UUID.
         /// </summary>
         [Input("certificateId")]
         public string? CertificateId { get; set; }
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Certificate UUID tag.
+        /// Identify the certificate with a UUID.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -122,42 +122,42 @@ namespace Pulumi.Cloudflare
     {
         public readonly string AccountId;
         /// <summary>
-        /// The read only deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+        /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
         /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
         /// </summary>
         public readonly string BindingStatus;
         /// <summary>
-        /// The CA certificate(read only).
+        /// Provide the CA certificate (read-only).
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Certificate UUID tag.
+        /// Identify the certificate with a UUID.
         /// </summary>
         public readonly string? CertificateId;
         public readonly string CreatedAt;
         public readonly string ExpiresOn;
         /// <summary>
-        /// The SHA256 fingerprint of the certificate(read only).
+        /// Provide the SHA256 fingerprint of the certificate (read-only).
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// Certificate UUID tag.
+        /// Identify the certificate with a UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Read-only field that shows whether Gateway TLS interception is using this certificate. This value cannot be set directly. To configure the certificate for interception, use the Gateway configuration setting named certificate.
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
         /// </summary>
         public readonly bool InUse;
         /// <summary>
-        /// The organization that issued the certificate(read only).
+        /// Indicate the organization that issued the certificate (read-only).
         /// </summary>
         public readonly string IssuerOrg;
         /// <summary>
-        /// The entire issuer field of the certificate(read only).
+        /// Provide the entire issuer field of the certificate (read-only).
         /// </summary>
         public readonly string IssuerRaw;
         /// <summary>
-        /// The type of certificate, either BYO-PKI (custom) or Gateway-managed(read only).
+        /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
         /// Available values: "custom", "gateway_managed".
         /// </summary>
         public readonly string Type;

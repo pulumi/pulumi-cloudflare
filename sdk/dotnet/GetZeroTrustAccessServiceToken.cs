@@ -155,7 +155,6 @@ namespace Pulumi.Cloudflare
         /// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         /// </summary>
         public readonly string ClientId;
-        public readonly string CreatedAt;
         /// <summary>
         /// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         /// </summary>
@@ -166,7 +165,6 @@ namespace Pulumi.Cloudflare
         /// UUID.
         /// </summary>
         public readonly string Id;
-        public readonly string LastSeenAt;
         /// <summary>
         /// The name of the service token.
         /// </summary>
@@ -175,7 +173,6 @@ namespace Pulumi.Cloudflare
         /// UUID.
         /// </summary>
         public readonly string? ServiceTokenId;
-        public readonly string UpdatedAt;
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
@@ -187,8 +184,6 @@ namespace Pulumi.Cloudflare
 
             string clientId,
 
-            string createdAt,
-
             string duration,
 
             string expiresAt,
@@ -197,27 +192,20 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            string lastSeenAt,
-
             string name,
 
             string? serviceTokenId,
-
-            string updatedAt,
 
             string? zoneId)
         {
             AccountId = accountId;
             ClientId = clientId;
-            CreatedAt = createdAt;
             Duration = duration;
             ExpiresAt = expiresAt;
             Filter = filter;
             Id = id;
-            LastSeenAt = lastSeenAt;
             Name = name;
             ServiceTokenId = serviceTokenId;
-            UpdatedAt = updatedAt;
             ZoneId = zoneId;
         }
     }

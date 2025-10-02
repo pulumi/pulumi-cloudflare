@@ -42,11 +42,11 @@ export interface GetZeroTrustGatewayLoggingResult {
      */
     readonly id: string;
     /**
-     * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
+     * Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
      */
     readonly redactPii: boolean;
     /**
-     * Logging settings by rule type.
+     * Configure logging settings for each rule type.
      */
     readonly settingsByRuleType: outputs.GetZeroTrustGatewayLoggingSettingsByRuleType;
 }

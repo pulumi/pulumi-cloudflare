@@ -20,12 +20,20 @@ public final class GetByoIpPrefixesResult {
     /**
      * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     private Boolean advertised;
     /**
      * @return Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     private String advertisedModifiedAt;
     /**
      * @return Approval state of the prefix (P = pending, V = active).
@@ -62,12 +70,20 @@ public final class GetByoIpPrefixesResult {
     /**
      * @return Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     private Boolean onDemandEnabled;
     /**
      * @return Whether advertisement status of the prefix is locked, meaning it cannot be changed.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     private Boolean onDemandLocked;
 
     private GetByoIpPrefixesResult() {}
@@ -81,14 +97,22 @@ public final class GetByoIpPrefixesResult {
     /**
      * @return Prefix advertisement status to the Internet. This field is only not &#39;null&#39; if on demand is enabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     public Boolean advertised() {
         return this.advertised;
     }
     /**
      * @return Last time the advertisement status was changed. This field is only not &#39;null&#39; if on demand is enabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     public String advertisedModifiedAt() {
         return this.advertisedModifiedAt;
     }
@@ -143,14 +167,22 @@ public final class GetByoIpPrefixesResult {
     /**
      * @return Whether advertisement of the prefix to the Internet may be dynamically enabled or disabled.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     public Boolean onDemandEnabled() {
         return this.onDemandEnabled;
     }
     /**
      * @return Whether advertisement status of the prefix is locked, meaning it cannot be changed.
      * 
+     * @deprecated
+     * Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix.
+     * 
      */
+    @Deprecated /* Prefer the [BGP Prefixes API](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/) instead, which allows for advertising multiple BGP routes within a single IP Prefix. */
     public Boolean onDemandLocked() {
         return this.onDemandLocked;
     }

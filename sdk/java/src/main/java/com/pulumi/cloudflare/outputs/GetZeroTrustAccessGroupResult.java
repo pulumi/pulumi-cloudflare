@@ -23,7 +23,6 @@ public final class GetZeroTrustAccessGroupResult {
      * 
      */
     private @Nullable String accountId;
-    private String createdAt;
     /**
      * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
@@ -60,7 +59,6 @@ public final class GetZeroTrustAccessGroupResult {
      * 
      */
     private List<GetZeroTrustAccessGroupRequire> requires;
-    private String updatedAt;
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -74,9 +72,6 @@ public final class GetZeroTrustAccessGroupResult {
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
-    }
-    public String createdAt() {
-        return this.createdAt;
     }
     /**
      * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
@@ -130,9 +125,6 @@ public final class GetZeroTrustAccessGroupResult {
     public List<GetZeroTrustAccessGroupRequire> requires() {
         return this.requires;
     }
-    public String updatedAt() {
-        return this.updatedAt;
-    }
     /**
      * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
@@ -151,7 +143,6 @@ public final class GetZeroTrustAccessGroupResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
-        private String createdAt;
         private List<GetZeroTrustAccessGroupExclude> excludes;
         private @Nullable GetZeroTrustAccessGroupFilter filter;
         private @Nullable String groupId;
@@ -160,13 +151,11 @@ public final class GetZeroTrustAccessGroupResult {
         private List<GetZeroTrustAccessGroupIsDefault> isDefaults;
         private String name;
         private List<GetZeroTrustAccessGroupRequire> requires;
-        private String updatedAt;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
-    	      this.createdAt = defaults.createdAt;
     	      this.excludes = defaults.excludes;
     	      this.filter = defaults.filter;
     	      this.groupId = defaults.groupId;
@@ -175,7 +164,6 @@ public final class GetZeroTrustAccessGroupResult {
     	      this.isDefaults = defaults.isDefaults;
     	      this.name = defaults.name;
     	      this.requires = defaults.requires;
-    	      this.updatedAt = defaults.updatedAt;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -183,14 +171,6 @@ public final class GetZeroTrustAccessGroupResult {
         public Builder accountId(@Nullable String accountId) {
 
             this.accountId = accountId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupResult", "createdAt");
-            }
-            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
@@ -266,14 +246,6 @@ public final class GetZeroTrustAccessGroupResult {
             return requires(List.of(requires));
         }
         @CustomType.Setter
-        public Builder updatedAt(String updatedAt) {
-            if (updatedAt == null) {
-              throw new MissingRequiredPropertyException("GetZeroTrustAccessGroupResult", "updatedAt");
-            }
-            this.updatedAt = updatedAt;
-            return this;
-        }
-        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
 
             this.zoneId = zoneId;
@@ -282,7 +254,6 @@ public final class GetZeroTrustAccessGroupResult {
         public GetZeroTrustAccessGroupResult build() {
             final var _resultValue = new GetZeroTrustAccessGroupResult();
             _resultValue.accountId = accountId;
-            _resultValue.createdAt = createdAt;
             _resultValue.excludes = excludes;
             _resultValue.filter = filter;
             _resultValue.groupId = groupId;
@@ -291,7 +262,6 @@ public final class GetZeroTrustAccessGroupResult {
             _resultValue.isDefaults = isDefaults;
             _resultValue.name = name;
             _resultValue.requires = requires;
-            _resultValue.updatedAt = updatedAt;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

@@ -31,7 +31,7 @@ export function getZeroTrustGatewayCategoriesList(args: GetZeroTrustGatewayCateg
  */
 export interface GetZeroTrustGatewayCategoriesListArgs {
     /**
-     * Identifier.
+     * Provide the identifier string.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetZeroTrustGatewayCategoriesListArgs {
  */
 export interface GetZeroTrustGatewayCategoriesListResult {
     /**
-     * Identifier.
+     * Provide the identifier string.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getZeroTrustGatewayCategoriesListOutput(args: GetZeroTrustGatewa
  */
 export interface GetZeroTrustGatewayCategoriesListOutputArgs {
     /**
-     * Identifier.
+     * Provide the identifier string.
      */
     accountId: pulumi.Input<string>;
     /**

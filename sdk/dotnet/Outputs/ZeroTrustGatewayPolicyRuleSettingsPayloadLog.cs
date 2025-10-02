@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsPayloadLog
     {
         /// <summary>
-        /// Set to true to enable DLP payload logging for this rule.
+        /// Enable DLP payload logging for this rule.
         /// </summary>
         public readonly bool? Enabled;
 

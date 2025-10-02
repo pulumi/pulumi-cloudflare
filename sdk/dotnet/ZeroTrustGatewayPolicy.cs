@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Output("action")]
@@ -35,13 +35,13 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Date of deletion, if any.
+        /// Indicate the date of deletion, if any.
         /// </summary>
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the rule.
+        /// Specify the rule description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -50,20 +50,19 @@ namespace Pulumi.Cloudflare
         public Output<string> DevicePosture { get; private set; } = null!;
 
         /// <summary>
-        /// True if the rule is enabled.
+        /// Specify whether the rule is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration time stamp and default duration of a DNS policy. Takes
-        /// precedence over the policy's `schedule` configuration, if any.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         /// </summary>
         [Output("expiration")]
         public Output<Outputs.ZeroTrustGatewayPolicyExpiration> Expiration { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<string>> Filters { get; private set; } = null!;
@@ -72,40 +71,37 @@ namespace Pulumi.Cloudflare
         public Output<string> Identity { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the rule.
+        /// Specify the rule name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
-
-        /// <summary>
-        /// The rule cannot be shared via the Orgs API.
-        /// </summary>
-        [Output("notSharable")]
-        public Output<bool> NotSharable { get; private set; } = null!;
 
         [Output("precedence")]
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this rule is shared via the Orgs API and read only.
         /// </summary>
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
-        /// <summary>
-        /// Additional settings that modify the rule's action.
-        /// </summary>
         [Output("ruleSettings")]
         public Output<Outputs.ZeroTrustGatewayPolicyRuleSettings> RuleSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.ZeroTrustGatewayPolicySchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// account tag of account that created the rule.
+        /// Indicate that this rule is sharable via the Orgs API.
+        /// </summary>
+        [Output("sharable")]
+        public Output<bool> Sharable { get; private set; } = null!;
+
+        /// <summary>
+        /// Provide the account tag of the account that created the rule.
         /// </summary>
         [Output("sourceAccount")]
         public Output<string> SourceAccount { get; private set; } = null!;
@@ -117,13 +113,13 @@ namespace Pulumi.Cloudflare
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// version number of the rule.
+        /// Indicate the version number of the rule(read-only).
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
         /// <summary>
-        /// Warning for a misconfigured rule, if any.
+        /// Indicate a warning for a misconfigured rule, if any.
         /// </summary>
         [Output("warningStatus")]
         public Output<string> WarningStatus { get; private set; } = null!;
@@ -182,14 +178,14 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// The description of the rule.
+        /// Specify the rule description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -198,14 +194,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// True if the rule is enabled.
+        /// Specify whether the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The expiration time stamp and default duration of a DNS policy. Takes
-        /// precedence over the policy's `schedule` configuration, if any.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.ZeroTrustGatewayPolicyExpirationArgs>? Expiration { get; set; }
@@ -214,7 +209,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -226,7 +221,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Identity { get; set; }
 
         /// <summary>
-        /// The name of the rule.
+        /// Specify the rule name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -234,14 +229,11 @@ namespace Pulumi.Cloudflare
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
-        /// <summary>
-        /// Additional settings that modify the rule's action.
-        /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ZeroTrustGatewayPolicyScheduleArgs>? Schedule { get; set; }
@@ -261,7 +253,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The action to perform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
         /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action")]
@@ -271,13 +263,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Date of deletion, if any.
+        /// Indicate the date of deletion, if any.
         /// </summary>
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }
 
         /// <summary>
-        /// The description of the rule.
+        /// Specify the rule description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -286,14 +278,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// True if the rule is enabled.
+        /// Specify whether the rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The expiration time stamp and default duration of a DNS policy. Takes
-        /// precedence over the policy's `schedule` configuration, if any.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.ZeroTrustGatewayPolicyExpirationGetArgs>? Expiration { get; set; }
@@ -302,7 +293,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _filters;
 
         /// <summary>
-        /// The protocol or layer to evaluate the traffic, identity, and device. posture expressions.
+        /// Specify the protocol or layer to evaluate the traffic, identity, and device posture expressions.
         /// </summary>
         public InputList<string> Filters
         {
@@ -314,40 +305,37 @@ namespace Pulumi.Cloudflare
         public Input<string>? Identity { get; set; }
 
         /// <summary>
-        /// The name of the rule.
+        /// Specify the rule name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// The rule cannot be shared via the Orgs API.
-        /// </summary>
-        [Input("notSharable")]
-        public Input<bool>? NotSharable { get; set; }
 
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// The rule was shared via the Orgs API and cannot be edited by the current account.
+        /// Indicate that this rule is shared via the Orgs API and read only.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        /// <summary>
-        /// Additional settings that modify the rule's action.
-        /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsGetArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ZeroTrustGatewayPolicyScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// account tag of account that created the rule.
+        /// Indicate that this rule is sharable via the Orgs API.
+        /// </summary>
+        [Input("sharable")]
+        public Input<bool>? Sharable { get; set; }
+
+        /// <summary>
+        /// Provide the account tag of the account that created the rule.
         /// </summary>
         [Input("sourceAccount")]
         public Input<string>? SourceAccount { get; set; }
@@ -359,13 +347,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// version number of the rule.
+        /// Indicate the version number of the rule(read-only).
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
 
         /// <summary>
-        /// Warning for a misconfigured rule, if any.
+        /// Indicate a warning for a misconfigured rule, if any.
         /// </summary>
         [Input("warningStatus")]
         public Input<string>? WarningStatus { get; set; }

@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
-     * @return Set notification on.
+     * @return Enable notification.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Indicates whether to pass the context information as query parameters.
      * 
      */
     private @Nullable Boolean includeContext;
@@ -28,21 +28,21 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
      */
     private @Nullable String msg;
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     private @Nullable String supportUrl;
 
     private ZeroTrustGatewayPolicyRuleSettingsNotificationSettings() {}
     /**
-     * @return Set notification on.
+     * @return Enable notification.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return If true, context information will be passed as query parameters.
+     * @return Indicates whether to pass the context information as query parameters.
      * 
      */
     public Optional<Boolean> includeContext() {
@@ -56,7 +56,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
         return Optional.ofNullable(this.msg);
     }
     /**
-     * @return Optional URL to direct users to additional information. If not set, the notification will open a block page.
+     * @return Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
      * 
      */
     public Optional<String> supportUrl() {

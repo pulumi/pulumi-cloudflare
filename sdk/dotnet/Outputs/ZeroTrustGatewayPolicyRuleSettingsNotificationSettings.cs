@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsNotificationSettings
     {
         /// <summary>
-        /// Set notification on.
+        /// Enable notification.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// If true, context information will be passed as query parameters.
+        /// Indicates whether to pass the context information as query parameters.
         /// </summary>
         public readonly bool? IncludeContext;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Msg;
         /// <summary>
-        /// Optional URL to direct users to additional information. If not set, the notification will open a block page.
+        /// Defines an optional URL to direct users to additional information. If unset, the notification opens a block page.
         /// </summary>
         public readonly string? SupportUrl;
 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsQuarantine {
     /**
-     * @return Types of files to sandbox.
+     * @return Specify the types of files to sandbox.
      * 
      */
     private @Nullable List<String> fileTypes;
 
     private ZeroTrustGatewayPolicyRuleSettingsQuarantine() {}
     /**
-     * @return Types of files to sandbox.
+     * @return Specify the types of files to sandbox.
      * 
      */
     public List<String> fileTypes() {
