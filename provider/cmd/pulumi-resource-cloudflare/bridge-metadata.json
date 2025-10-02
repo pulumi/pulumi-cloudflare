@@ -1712,6 +1712,12 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "allowed_destination_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_sender_addresses": {
+                                    "maxItemsOne": false
+                                },
                                 "outbound": {
                                     "fields": {
                                         "params": {
@@ -1848,6 +1854,12 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "allowed_destination_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_sender_addresses": {
+                                    "maxItemsOne": false
+                                },
                                 "outbound": {
                                     "fields": {
                                         "params": {
@@ -1921,6 +1933,17 @@
                             }
                         }
                     },
+                    "observability": {
+                        "fields": {
+                            "logs": {
+                                "fields": {
+                                    "destinations": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "tail_consumers": {
                         "maxItemsOne": false
                     }
@@ -1928,6 +1951,10 @@
             },
             "cloudflare_workers_script_subdomain": {
                 "current": "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain",
+                "majorVersion": 6
+            },
+            "cloudflare_workflow": {
+                "current": "cloudflare:index/workflow:Workflow",
                 "majorVersion": 6
             },
             "cloudflare_zero_trust_access_application": {
@@ -2612,6 +2639,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_zero_trust_network_hostname_route": {
+                "current": "cloudflare:index/zeroTrustNetworkHostnameRoute:ZeroTrustNetworkHostnameRoute",
+                "majorVersion": 6
             },
             "cloudflare_zero_trust_organization": {
                 "current": "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization",
@@ -6101,6 +6132,12 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "allowed_destination_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_sender_addresses": {
+                                    "maxItemsOne": false
+                                },
                                 "outbound": {
                                     "fields": {
                                         "params": {
@@ -6186,6 +6223,12 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "allowed_destination_addresses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "allowed_sender_addresses": {
+                                                "maxItemsOne": false
+                                            },
                                             "outbound": {
                                                 "fields": {
                                                     "params": {
@@ -6381,6 +6424,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "cloudflare_workflow": {
+                "current": "cloudflare:index/getWorkflow:getWorkflow",
+                "majorVersion": 6
+            },
+            "cloudflare_workflows": {
+                "current": "cloudflare:index/getWorkflows:getWorkflows",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -7487,6 +7543,19 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "cloudflare_zero_trust_network_hostname_route": {
+                "current": "cloudflare:index/getZeroTrustNetworkHostnameRoute:getZeroTrustNetworkHostnameRoute",
+                "majorVersion": 6
+            },
+            "cloudflare_zero_trust_network_hostname_routes": {
+                "current": "cloudflare:index/getZeroTrustNetworkHostnameRoutes:getZeroTrustNetworkHostnameRoutes",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
                     }
                 }
             },
