@@ -61,12 +61,12 @@ public final class GetLogpushJobsResult {
      */
     private String lastComplete;
     /**
-     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
      * 
      */
     private String lastError;
     /**
-     * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * @return This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -95,7 +95,7 @@ public final class GetLogpushJobsResult {
      */
     private String name;
     /**
-     * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * @return The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     private GetLogpushJobsResultOutputOptions outputOptions;
@@ -165,14 +165,14 @@ public final class GetLogpushJobsResult {
         return this.lastComplete;
     }
     /**
-     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
      * 
      */
     public String lastError() {
         return this.lastError;
     }
     /**
-     * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * @return This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -211,7 +211,7 @@ public final class GetLogpushJobsResult {
         return this.name;
     }
     /**
-     * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * @return The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     public GetLogpushJobsResultOutputOptions outputOptions() {

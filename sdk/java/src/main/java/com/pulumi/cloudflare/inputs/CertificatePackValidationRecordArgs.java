@@ -32,14 +32,14 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
     }
 
     /**
-     * The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+     * The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
      * 
      */
     @Import(name="httpBody")
     private @Nullable Output<String> httpBody;
 
     /**
-     * @return The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+     * @return The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
      * 
      */
     public Optional<Output<String>> httpBody() {
@@ -151,7 +151,7 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
         }
 
         /**
-         * @param httpBody The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+         * @param httpBody The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class CertificatePackValidationRecordArgs extends com.pulumi.resour
         }
 
         /**
-         * @param httpBody The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+         * @param httpBody The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
          * 
          * @return builder
          * 

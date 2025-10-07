@@ -12,6 +12,176 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustGatewayPolicy = new Cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Action = "allow",
+    ///         Name = "block bad websites",
+    ///         Description = "Block bad websites based on their host name.",
+    ///         DevicePosture = "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+    ///         Enabled = true,
+    ///         Expiration = new Cloudflare.Inputs.ZeroTrustGatewayPolicyExpirationArgs
+    ///         {
+    ///             Expires_at = "2014-01-01T05:20:20Z",
+    ///             Duration = 10,
+    ///         },
+    ///         Filters = new[]
+    ///         {
+    ///             "http",
+    ///         },
+    ///         Identity = "any(identity.groups.name[*] in {\"finance\"})",
+    ///         Precedence = 0,
+    ///         RuleSettings = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsArgs
+    ///         {
+    ///             Add_headers = 
+    ///             {
+    ///                 { "my-Next-Header", new[]
+    ///                 {
+    ///                     "foo",
+    ///                     "bar",
+    ///                 } },
+    ///                 { "x-Custom-Header-Name", new[]
+    ///                 {
+    ///                     "somecustomvalue",
+    ///                 } },
+    ///             },
+    ///             Allow_child_bypass = false,
+    ///             Audit_ssh = 
+    ///             {
+    ///                 { "commandLogging", false },
+    ///             },
+    ///             Biso_admin_controls = 
+    ///             {
+    ///                 { "copy", "remote_only" },
+    ///                 { "dcp", true },
+    ///                 { "dd", true },
+    ///                 { "dk", true },
+    ///                 { "download", "enabled" },
+    ///                 { "dp", false },
+    ///                 { "du", true },
+    ///                 { "keyboard", "enabled" },
+    ///                 { "paste", "enabled" },
+    ///                 { "printing", "enabled" },
+    ///                 { "upload", "enabled" },
+    ///                 { "version", "v1" },
+    ///             },
+    ///             Block_page = 
+    ///             {
+    ///                 { "targetUri", "https://example.com" },
+    ///                 { "includeContext", true },
+    ///             },
+    ///             Block_page_enabled = true,
+    ///             Block_reason = "This website is a security risk",
+    ///             Bypass_parent_rule = false,
+    ///             Check_session = 
+    ///             {
+    ///                 { "duration", "300s" },
+    ///                 { "enforce", true },
+    ///             },
+    ///             Dns_resolvers = 
+    ///             {
+    ///                 { "ipv4", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "ip", "2.2.2.2" },
+    ///                         { "port", 5053 },
+    ///                         { "routeThroughPrivateNetwork", true },
+    ///                         { "vnetId", "f174e90a-fafe-4643-bbbc-4a0ed4fc8415" },
+    ///                     },
+    ///                 } },
+    ///                 { "ipv6", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "ip", "2001:DB8::" },
+    ///                         { "port", 5053 },
+    ///                         { "routeThroughPrivateNetwork", true },
+    ///                         { "vnetId", "f174e90a-fafe-4643-bbbc-4a0ed4fc8415" },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///             Egress = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs
+    ///             {
+    ///                 Ipv4 = "192.0.2.2",
+    ///                 Ipv4Fallback = "192.0.2.3",
+    ///                 Ipv6 = "2001:DB8::/64",
+    ///             },
+    ///             Ignore_cname_category_matches = true,
+    ///             Insecure_disable_dnssec_validation = false,
+    ///             Ip_categories = true,
+    ///             Ip_indicator_feeds = true,
+    ///             L4override = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs
+    ///             {
+    ///                 Ip = "1.1.1.1",
+    ///                 Port = 0,
+    ///             },
+    ///             Notification_settings = 
+    ///             {
+    ///                 { "enabled", true },
+    ///                 { "includeContext", true },
+    ///                 { "msg", "msg" },
+    ///                 { "supportUrl", "support_url" },
+    ///             },
+    ///             Override_host = "example.com",
+    ///             Override_ips = new[]
+    ///             {
+    ///                 "1.1.1.1",
+    ///                 "2.2.2.2",
+    ///             },
+    ///             Payload_log = 
+    ///             {
+    ///                 { "enabled", true },
+    ///             },
+    ///             Quarantine = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs
+    ///             {
+    ///                 FileTypes = new[]
+    ///                 {
+    ///                     "exe",
+    ///                 },
+    ///             },
+    ///             Redirect = new Cloudflare.Inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs
+    ///             {
+    ///                 TargetUri = "https://example.com",
+    ///                 IncludeContext = true,
+    ///                 PreservePathAndQuery = true,
+    ///             },
+    ///             Resolve_dns_internally = 
+    ///             {
+    ///                 { "fallback", "none" },
+    ///                 { "viewId", "view_id" },
+    ///             },
+    ///             Resolve_dns_through_cloudflare = true,
+    ///             Untrusted_cert = 
+    ///             {
+    ///                 { "action", "error" },
+    ///             },
+    ///         },
+    ///         Schedule = new Cloudflare.Inputs.ZeroTrustGatewayPolicyScheduleArgs
+    ///         {
+    ///             Fri = "08:00-12:30,13:30-17:00",
+    ///             Mon = "08:00-12:30,13:30-17:00",
+    ///             Sat = "08:00-12:30,13:30-17:00",
+    ///             Sun = "08:00-12:30,13:30-17:00",
+    ///             Thu = "08:00-12:30,13:30-17:00",
+    ///             Time_zone = "America/New York",
+    ///             Tue = "08:00-12:30,13:30-17:00",
+    ///             Wed = "08:00-12:30,13:30-17:00",
+    ///         },
+    ///         Traffic = "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -26,8 +196,8 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -57,7 +227,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Output("expiration")]
         public Output<Outputs.TeamsRuleExpiration> Expiration { get; private set; } = null!;
@@ -90,7 +260,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsRuleRuleSettings> RuleSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
@@ -179,8 +349,8 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -201,7 +371,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.TeamsRuleExpirationArgs>? Expiration { get; set; }
@@ -234,7 +404,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleArgs>? Schedule { get; set; }
@@ -254,8 +424,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -285,7 +455,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.TeamsRuleExpirationGetArgs>? Expiration { get; set; }
@@ -324,7 +494,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleGetArgs>? Schedule { get; set; }

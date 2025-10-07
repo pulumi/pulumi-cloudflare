@@ -14,6 +14,180 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewNotificationPolicy(ctx, "example_notification_policy", &cloudflare.NotificationPolicyArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				AlertType: pulumi.String("universal_ssl_event_type"),
+//				Enabled:   pulumi.Bool(true),
+//				Mechanisms: &cloudflare.NotificationPolicyMechanismsArgs{
+//					Email: []map[string]interface{}{
+//						map[string]interface{}{
+//							"id": "test@example.com",
+//						},
+//					},
+//					Pagerduty: []map[string]interface{}{
+//						map[string]interface{}{
+//							"id": "e8133a15-00a4-4d69-aec1-32f70c51f6e5",
+//						},
+//					},
+//					Webhooks: cloudflare.NotificationPolicyMechanismsWebhookArray{
+//						&cloudflare.NotificationPolicyMechanismsWebhookArgs{
+//							Id: pulumi.String("14cc1190-5d2b-4b98-a696-c424cb2ad05f"),
+//						},
+//					},
+//				},
+//				Name:          pulumi.String("SSL Notification Event Policy"),
+//				AlertInterval: pulumi.String("30m"),
+//				Description:   pulumi.String("Something describing the policy."),
+//				Filters: &cloudflare.NotificationPolicyFiltersArgs{
+//					Actions: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					Affected_asns: []string{
+//						"string",
+//					},
+//					Affected_components: []string{
+//						"string",
+//					},
+//					Affected_locations: []string{
+//						"string",
+//					},
+//					Airport_code: []string{
+//						"string",
+//					},
+//					Alert_trigger_preferences: []string{
+//						"string",
+//					},
+//					Alert_trigger_preferences_value: []string{
+//						"string",
+//					},
+//					Enabled: []string{
+//						"string",
+//					},
+//					Environment: []string{
+//						"string",
+//					},
+//					Event: []string{
+//						"string",
+//					},
+//					Event_source: []string{
+//						"string",
+//					},
+//					Event_type: []string{
+//						"string",
+//					},
+//					Group_by: []string{
+//						"string",
+//					},
+//					Health_check_id: []string{
+//						"string",
+//					},
+//					Incident_impact: []string{
+//						"INCIDENT_IMPACT_NONE",
+//					},
+//					Input_id: []string{
+//						"string",
+//					},
+//					Insight_class: []string{
+//						"string",
+//					},
+//					Limit: []string{
+//						"string",
+//					},
+//					Logo_tag: []string{
+//						"string",
+//					},
+//					Megabits_per_second: []string{
+//						"string",
+//					},
+//					New_health: []string{
+//						"string",
+//					},
+//					New_status: []string{
+//						"string",
+//					},
+//					Packets_per_second: []string{
+//						"string",
+//					},
+//					Pool_id: []string{
+//						"string",
+//					},
+//					Pop_names: []string{
+//						"string",
+//					},
+//					Product: []string{
+//						"string",
+//					},
+//					Project_id: []string{
+//						"string",
+//					},
+//					Protocol: []string{
+//						"string",
+//					},
+//					Query_tag: []string{
+//						"string",
+//					},
+//					Requests_per_second: []string{
+//						"string",
+//					},
+//					Selectors: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					Services: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//					Slo: []string{
+//						"99.9",
+//					},
+//					Status: []string{
+//						"string",
+//					},
+//					Target_hostname: []string{
+//						"string",
+//					},
+//					Target_ip: []string{
+//						"string",
+//					},
+//					Target_zone_name: []string{
+//						"string",
+//					},
+//					Traffic_exclusions: []string{
+//						"security_events",
+//					},
+//					Tunnel_id: []string{
+//						"string",
+//					},
+//					Tunnel_name: []string{
+//						"string",
+//					},
+//					Where: []string{
+//						"string",
+//					},
+//					Zones: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

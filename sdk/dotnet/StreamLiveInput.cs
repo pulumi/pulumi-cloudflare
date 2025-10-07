@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> DefaultCreator { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion.
         /// </summary>
         [Output("deleteRecordingAfterDays")]
         public Output<double?> DeleteRecordingAfterDays { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DefaultCreator { get; set; }
 
         /// <summary>
-        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion.
         /// </summary>
         [Input("deleteRecordingAfterDays")]
         public Input<double>? DeleteRecordingAfterDays { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DefaultCreator { get; set; }
 
         /// <summary>
-        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
+        /// Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion.
         /// </summary>
         [Input("deleteRecordingAfterDays")]
         public Input<double>? DeleteRecordingAfterDays { get; set; }

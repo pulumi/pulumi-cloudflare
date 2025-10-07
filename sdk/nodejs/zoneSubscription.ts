@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZoneSubscription = new cloudflare.ZoneSubscription("example_zone_subscription", {
+ *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     frequency: "monthly",
+ *     ratePlan: {
+ *         id: "free",
+ *         currency: "USD",
+ *         externally_managed: false,
+ *         is_contract: false,
+ *         public_name: "Business Plan",
+ *         scope: "zone",
+ *         sets: ["string"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

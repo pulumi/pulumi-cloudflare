@@ -25,6 +25,170 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LoadBalancer;
+ * import com.pulumi.cloudflare.LoadBalancerArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerLocationStrategyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRandomSteeringArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesLocationStrategyArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesRandomSteeringArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs;
+ * import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleLoadBalancer = new LoadBalancer("exampleLoadBalancer", LoadBalancerArgs.builder()
+ *             .zoneId("699d98642c564d2e855e9661899b7252")
+ *             .defaultPools(            
+ *                 "17b5962d775c646f3f9725cbc7a53df4",
+ *                 "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                 "00920f38ce07c2e2f4df50b1f61d4194")
+ *             .fallbackPool("fallback_pool")
+ *             .name("www.example.com")
+ *             .adaptiveRouting(LoadBalancerAdaptiveRoutingArgs.builder()
+ *                 .failover_across_pools(true)
+ *                 .build())
+ *             .countryPools(Map.ofEntries(
+ *                 Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
+ *                 Map.entry("US",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "00920f38ce07c2e2f4df50b1f61d4194")
+ *             ))
+ *             .description("Load Balancer for www.example.com")
+ *             .locationStrategy(LoadBalancerLocationStrategyArgs.builder()
+ *                 .mode("resolver_ip")
+ *                 .prefer_ecs("always")
+ *                 .build())
+ *             .networks("string")
+ *             .popPools(Map.ofEntries(
+ *                 Map.entry("LAX",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196"),
+ *                 Map.entry("LHR",                 
+ *                     "abd90f38ced07c2e2f4df50b1f61d4194",
+ *                     "f9138c5d07c2e2f4df57b1f61d4196"),
+ *                 Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *             ))
+ *             .proxied(true)
+ *             .randomSteering(LoadBalancerRandomSteeringArgs.builder()
+ *                 .default_weight(0.2)
+ *                 .pool_weights(Map.ofEntries(
+ *                     Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                     Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                 ))
+ *                 .build())
+ *             .regionPools(Map.ofEntries(
+ *                 Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
+ *                 Map.entry("WNAM",                 
+ *                     "de90f38ced07c2e2f4df50b1f61d4194",
+ *                     "9290f38c5d07c2e2f4df57b1f61d4196")
+ *             ))
+ *             .rules(LoadBalancerRuleArgs.builder()
+ *                 .condition("http.request.uri.path contains \"/testing\"")
+ *                 .disabled(true)
+ *                 .fixed_response(Map.ofEntries(
+ *                     Map.entry("contentType", "application/json"),
+ *                     Map.entry("location", "www.example.com"),
+ *                     Map.entry("messageBody", "Testing Hello"),
+ *                     Map.entry("statusCode", 0)
+ *                 ))
+ *                 .name("route the path /testing to testing datacenter.")
+ *                 .overrides(LoadBalancerRuleOverridesArgs.builder()
+ *                     .adaptiveRouting(LoadBalancerRuleOverridesAdaptiveRoutingArgs.builder()
+ *                         .failoverAcrossPools(true)
+ *                         .build())
+ *                     .countryPools(Map.ofEntries(
+ *                         Map.entry("GB", "abd90f38ced07c2e2f4df50b1f61d4194"),
+ *                         Map.entry("US",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     ))
+ *                     .defaultPools(                    
+ *                         "17b5962d775c646f3f9725cbc7a53df4",
+ *                         "9290f38c5d07c2e2f4df57b1f61d4196",
+ *                         "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     .fallbackPool("fallback_pool")
+ *                     .locationStrategy(LoadBalancerRuleOverridesLocationStrategyArgs.builder()
+ *                         .mode("resolver_ip")
+ *                         .preferEcs("always")
+ *                         .build())
+ *                     .popPools(Map.ofEntries(
+ *                         Map.entry("LAX",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196"),
+ *                         Map.entry("LHR",                         
+ *                             "abd90f38ced07c2e2f4df50b1f61d4194",
+ *                             "f9138c5d07c2e2f4df57b1f61d4196"),
+ *                         Map.entry("SJC", "00920f38ce07c2e2f4df50b1f61d4194")
+ *                     ))
+ *                     .randomSteering(LoadBalancerRuleOverridesRandomSteeringArgs.builder()
+ *                         .defaultWeight(0.2)
+ *                         .poolWeights(Map.ofEntries(
+ *                             Map.entry("9290f38c5d07c2e2f4df57b1f61d4196", 0.5),
+ *                             Map.entry("de90f38ced07c2e2f4df50b1f61d4194", 0.3)
+ *                         ))
+ *                         .build())
+ *                     .regionPools(Map.ofEntries(
+ *                         Map.entry("ENAM", "00920f38ce07c2e2f4df50b1f61d4194"),
+ *                         Map.entry("WNAM",                         
+ *                             "de90f38ced07c2e2f4df50b1f61d4194",
+ *                             "9290f38c5d07c2e2f4df57b1f61d4196")
+ *                     ))
+ *                     .sessionAffinity("cookie")
+ *                     .sessionAffinityAttributes(LoadBalancerRuleOverridesSessionAffinityAttributesArgs.builder()
+ *                         .drainDuration(100.0)
+ *                         .headers("x")
+ *                         .requireAllHeaders(true)
+ *                         .samesite("Auto")
+ *                         .secure("Auto")
+ *                         .zeroDowntimeFailover("sticky")
+ *                         .build())
+ *                     .sessionAffinityTtl(1800.0)
+ *                     .steeringPolicy("dynamic_latency")
+ *                     .ttl(30.0)
+ *                     .build())
+ *                 .priority(0)
+ *                 .terminates(true)
+ *                 .build())
+ *             .sessionAffinity("cookie")
+ *             .sessionAffinityAttributes(LoadBalancerSessionAffinityAttributesArgs.builder()
+ *                 .drain_duration(100)
+ *                 .headers("x")
+ *                 .require_all_headers(true)
+ *                 .samesite("Auto")
+ *                 .secure("Auto")
+ *                 .zero_downtime_failover("sticky")
+ *                 .build())
+ *             .sessionAffinityTtl(1800.0)
+ *             .steeringPolicy("dynamic_latency")
+ *             .ttl(30.0)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -69,14 +233,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+     * A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      * 
      */
     @Export(name="defaultPools", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> defaultPools;
 
     /**
-     * @return A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+     * @return A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
      * 
      */
     public Output<List<String>> defaultPools() {
@@ -125,14 +289,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.fallbackPool;
     }
     /**
-     * Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+     * Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      * 
      */
     @Export(name="locationStrategy", refs={LoadBalancerLocationStrategy.class}, tree="[0]")
     private Output<LoadBalancerLocationStrategy> locationStrategy;
 
     /**
-     * @return Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+     * @return Controls location-based steering for non-proxied requests. See `steeringPolicy` to learn how steering is affected.
      * 
      */
     public Output<LoadBalancerLocationStrategy> locationStrategy() {
@@ -243,16 +407,16 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are: - `&#34;cookie&#34;`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `&#34;ip_cookie&#34;`: Behaves the same as `&#34;cookie&#34;` except the initial origin selection is stable and based on the client&#39;s ip address. - `&#34;header&#34;`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-     * Available values: &#34;none&#34;, &#34;cookie&#34;, &#34;ip_cookie&#34;, &#34;header&#34;.
+     * Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are: - `&#34;cookie&#34;`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `&#34;ipCookie&#34;`: Behaves the same as `&#34;cookie&#34;` except the initial origin selection is stable and based on the client&#39;s ip address. - `&#34;header&#34;`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+     * Available values: &#34;none&#34;, &#34;cookie&#34;, &#34;ipCookie&#34;, &#34;header&#34;.
      * 
      */
     @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
     private Output<String> sessionAffinity;
 
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are: - `&#34;cookie&#34;`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `&#34;ip_cookie&#34;`: Behaves the same as `&#34;cookie&#34;` except the initial origin selection is stable and based on the client&#39;s ip address. - `&#34;header&#34;`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-     * Available values: &#34;none&#34;, &#34;cookie&#34;, &#34;ip_cookie&#34;, &#34;header&#34;.
+     * @return Specifies the type of session affinity the load balancer should use unless specified as `&#34;none&#34;`. The supported types are: - `&#34;cookie&#34;`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `&#34;ipCookie&#34;`: Behaves the same as `&#34;cookie&#34;` except the initial origin selection is stable and based on the client&#39;s ip address. - `&#34;header&#34;`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `sessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `sessionAffinityAttributes` for additional required configuration.
+     * Available values: &#34;none&#34;, &#34;cookie&#34;, &#34;ipCookie&#34;, &#34;header&#34;.
      * 
      */
     public Output<String> sessionAffinity() {
@@ -273,14 +437,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.sessionAffinityAttributes;
     }
     /**
-     * Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `&#34;cookie&#34;` / `&#34;ip_cookie&#34;`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `&#34;header&#34;`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven&#39;t been used for the number of seconds specified.
+     * Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `&#34;cookie&#34;` / `&#34;ipCookie&#34;`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `&#34;header&#34;`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven&#39;t been used for the number of seconds specified.
      * 
      */
     @Export(name="sessionAffinityTtl", refs={Double.class}, tree="[0]")
     private Output<Double> sessionAffinityTtl;
 
     /**
-     * @return Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `&#34;cookie&#34;` / `&#34;ip_cookie&#34;`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `&#34;header&#34;`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven&#39;t been used for the number of seconds specified.
+     * @return Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are: - `&#34;cookie&#34;` / `&#34;ipCookie&#34;`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `&#34;header&#34;`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven&#39;t been used for the number of seconds specified.
      * 
      */
     public Output<Double> sessionAffinityTtl() {

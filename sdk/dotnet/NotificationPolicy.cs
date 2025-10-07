@@ -12,6 +12,222 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNotificationPolicy = new Cloudflare.NotificationPolicy("example_notification_policy", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AlertType = "universal_ssl_event_type",
+    ///         Enabled = true,
+    ///         Mechanisms = new Cloudflare.Inputs.NotificationPolicyMechanismsArgs
+    ///         {
+    ///             Email = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "id", "test@example.com" },
+    ///                 },
+    ///             },
+    ///             Pagerduty = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "id", "e8133a15-00a4-4d69-aec1-32f70c51f6e5" },
+    ///                 },
+    ///             },
+    ///             Webhooks = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.NotificationPolicyMechanismsWebhookArgs
+    ///                 {
+    ///                     Id = "14cc1190-5d2b-4b98-a696-c424cb2ad05f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "SSL Notification Event Policy",
+    ///         AlertInterval = "30m",
+    ///         Description = "Something describing the policy.",
+    ///         Filters = new Cloudflare.Inputs.NotificationPolicyFiltersArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Affected_asns = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Affected_components = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Affected_locations = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Airport_code = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Alert_trigger_preferences = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Alert_trigger_preferences_value = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Enabled = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Environment = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Event = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Event_source = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Event_type = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Group_by = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Health_check_id = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Incident_impact = new[]
+    ///             {
+    ///                 "INCIDENT_IMPACT_NONE",
+    ///             },
+    ///             Input_id = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Insight_class = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Limit = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Logo_tag = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Megabits_per_second = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             New_health = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             New_status = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Packets_per_second = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Pool_id = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Pop_names = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Product = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Project_id = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Protocol = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Query_tag = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Requests_per_second = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Selectors = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Services = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Slo = new[]
+    ///             {
+    ///                 "99.9",
+    ///             },
+    ///             Status = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Target_hostname = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Target_ip = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Target_zone_name = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Traffic_exclusions = new[]
+    ///             {
+    ///                 "security_events",
+    ///             },
+    ///             Tunnel_id = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Tunnel_name = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Where = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             Zones = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

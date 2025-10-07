@@ -332,6 +332,51 @@ class AccountToken(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_account_token = cloudflare.AccountToken("example_account_token",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="readonly token",
+            policies=[{
+                "effect": "allow",
+                "permission_groups": [
+                    {
+                        "id": "c8fed203ed3043cba015a93ad1616f1f",
+                        "meta": {
+                            "key": "key",
+                            "value": "value",
+                        },
+                    },
+                    {
+                        "id": "82e64a83756745bbbb1c9c2701bf816b",
+                        "meta": {
+                            "key": "key",
+                            "value": "value",
+                        },
+                    },
+                ],
+                "resources": {
+                    "foo": "string",
+                },
+            }],
+            condition={
+                "request_ip": {
+                    "in": [
+                        "123.123.123.0/24",
+                        "2606:4700::/32",
+                    ],
+                    "notIn": [
+                        "123.123.123.100/24",
+                        "2606:4700:4700::/48",
+                    ],
+                },
+            },
+            expires_on="2020-01-01T00:00:00Z",
+            not_before="2018-07-01T05:20:00Z")
+        ```
+
         ## Import
 
         ```sh
@@ -356,6 +401,51 @@ class AccountToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_account_token = cloudflare.AccountToken("example_account_token",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="readonly token",
+            policies=[{
+                "effect": "allow",
+                "permission_groups": [
+                    {
+                        "id": "c8fed203ed3043cba015a93ad1616f1f",
+                        "meta": {
+                            "key": "key",
+                            "value": "value",
+                        },
+                    },
+                    {
+                        "id": "82e64a83756745bbbb1c9c2701bf816b",
+                        "meta": {
+                            "key": "key",
+                            "value": "value",
+                        },
+                    },
+                ],
+                "resources": {
+                    "foo": "string",
+                },
+            }],
+            condition={
+                "request_ip": {
+                    "in": [
+                        "123.123.123.0/24",
+                        "2606:4700::/32",
+                    ],
+                    "notIn": [
+                        "123.123.123.100/24",
+                        "2606:4700:4700::/48",
+                    ],
+                },
+            },
+            expires_on="2020-01-01T00:00:00Z",
+            not_before="2018-07-01T05:20:00Z")
+        ```
 
         ## Import
 

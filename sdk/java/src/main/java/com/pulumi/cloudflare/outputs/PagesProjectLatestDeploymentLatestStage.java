@@ -18,7 +18,7 @@ public final class PagesProjectLatestDeploymentLatestStage {
     private @Nullable String endedOn;
     /**
      * @return The current build stage.
-     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     private @Nullable String name;
@@ -44,7 +44,7 @@ public final class PagesProjectLatestDeploymentLatestStage {
     }
     /**
      * @return The current build stage.
-     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     public Optional<String> name() {

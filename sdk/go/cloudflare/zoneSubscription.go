@@ -14,6 +14,42 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneSubscription(ctx, "example_zone_subscription", &cloudflare.ZoneSubscriptionArgs{
+//				ZoneId:    pulumi.String("506e3185e9c882d175a2d0cb0093d9f2"),
+//				Frequency: pulumi.String("monthly"),
+//				RatePlan: &cloudflare.ZoneSubscriptionRatePlanArgs{
+//					Id:                 pulumi.String("free"),
+//					Currency:           pulumi.String("USD"),
+//					Externally_managed: false,
+//					Is_contract:        false,
+//					Public_name:        "Business Plan",
+//					Scope:              pulumi.String("zone"),
+//					Sets: pulumi.StringArray{
+//						pulumi.String("string"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

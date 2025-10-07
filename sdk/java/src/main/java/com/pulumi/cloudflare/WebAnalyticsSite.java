@@ -99,14 +99,14 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * Enables or disables RUM. This option can be used only when autoInstall is set to true.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * @return Enables or disables RUM. This option can be used only when autoInstall is set to true.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

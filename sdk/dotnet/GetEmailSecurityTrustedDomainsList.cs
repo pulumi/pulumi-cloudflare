@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
-        /// Available values: "pattern", "created_at".
+        /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The field to sort by.
-        /// Available values: "pattern", "created_at".
+        /// Available values: "pattern", "CreatedAt".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// The field to sort by.
-        /// Available values: "pattern", "created_at".
+        /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
         public readonly string? Pattern;

@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Cve202144228;
         /// <summary>
-        /// String to join fields. This field be ignored when `record_template` is set.
+        /// String to join fields. This field be ignored when `RecordTemplate` is set.
         /// </summary>
         public readonly string? FieldDelimiter;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FieldNames;
         /// <summary>
-        /// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        /// Specifies the output type, such as `Ndjson` or `Csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
         /// Available values: "ndjson", "csv".
         /// </summary>
         public readonly string? OutputType;
@@ -51,15 +51,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? RecordSuffix;
         /// <summary>
-        /// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        /// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `FieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
         /// </summary>
         public readonly string? RecordTemplate;
         /// <summary>
-        /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+        /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `SampleInterval` of the data.
         /// </summary>
         public readonly double? SampleRate;
         /// <summary>
-        /// String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        /// String to specify the format for timestamps, such as `Unixnano`, `Unix`, or `Rfc3339`.
         /// Available values: "unixnano", "unix", "rfc3339".
         /// </summary>
         public readonly string? TimestampFormat;

@@ -40,7 +40,7 @@ public final class GetWorkerVersionsResult {
      */
     private String compatibilityDate;
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     private List<String> compatibilityFlags;
@@ -135,7 +135,7 @@ public final class GetWorkerVersionsResult {
         return this.compatibilityDate;
     }
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     public List<String> compatibilityFlags() {

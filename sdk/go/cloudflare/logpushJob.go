@@ -14,6 +14,60 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewLogpushJob(ctx, "example_logpush_job", &cloudflare.LogpushJobArgs{
+//				DestinationConf:          pulumi.String("s3://mybucket/logs?region=us-west-2"),
+//				ZoneId:                   pulumi.String("zone_id"),
+//				Dataset:                  pulumi.String("gateway_dns"),
+//				Enabled:                  pulumi.Bool(false),
+//				Filter:                   pulumi.String("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}"),
+//				Frequency:                pulumi.String("high"),
+//				Kind:                     pulumi.String(""),
+//				LogpullOptions:           pulumi.String("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"),
+//				MaxUploadBytes:           pulumi.Int(5000000),
+//				MaxUploadIntervalSeconds: pulumi.Int(30),
+//				MaxUploadRecords:         pulumi.Int(1000),
+//				Name:                     pulumi.String("example.com"),
+//				OutputOptions: &cloudflare.LogpushJobOutputOptionsArgs{
+//					Batch_prefix:    "",
+//					Batch_suffix:    "",
+//					Cve_2021_44228:  false,
+//					Field_delimiter: ",",
+//					Field_names: []string{
+//						"Datetime",
+//						"DstIP",
+//						"SrcIP",
+//					},
+//					Output_type:      "ndjson",
+//					Record_delimiter: "",
+//					Record_prefix:    "{",
+//					Record_suffix:    "    }\n\n",
+//					Record_template:  "record_template",
+//					Sample_rate:      1,
+//					Timestamp_format: "unixnano",
+//				},
+//				OwnershipChallenge: pulumi.String("00000000000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

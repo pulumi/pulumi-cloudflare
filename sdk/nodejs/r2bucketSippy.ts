@@ -8,6 +8,28 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleR2BucketSippy = new cloudflare.R2BucketSippy("example_r2_bucket_sippy", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     bucketName: "example-bucket",
+ *     destination: {
+ *         access_key_id: "accessKeyId",
+ *         provider: "r2",
+ *         secret_access_key: "secretAccessKey",
+ *     },
+ *     source: {
+ *         access_key_id: "accessKeyId",
+ *         bucket: "bucket",
+ *         provider: "aws",
+ *         region: "region",
+ *         secret_access_key: "secretAccessKey",
+ *     },
+ * });
+ * ```
  */
 export class R2BucketSippy extends pulumi.CustomResource {
     /**

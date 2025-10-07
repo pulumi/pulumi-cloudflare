@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "identity_denied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "identity_denied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Custom page type.
-        /// Available values: "identity_denied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

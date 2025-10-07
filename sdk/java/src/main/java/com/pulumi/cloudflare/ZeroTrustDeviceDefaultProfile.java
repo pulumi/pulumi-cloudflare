@@ -185,14 +185,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
         return this.default_;
     }
     /**
-     * If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     @Export(name="disableAutoFallback", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAutoFallback;
 
     /**
-     * @return If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * @return If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     public Output<Boolean> disableAutoFallback() {

@@ -22,6 +22,62 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneDnsSettings;
+ * import com.pulumi.cloudflare.ZoneDnsSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsInternalDnsArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsNameserversArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneDnsSettingsSoaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZoneDnsSettings = new ZoneDnsSettings("exampleZoneDnsSettings", ZoneDnsSettingsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .flattenAllCnames(false)
+ *             .foundationDns(false)
+ *             .internalDns(ZoneDnsSettingsInternalDnsArgs.builder()
+ *                 .reference_zone_id("reference_zone_id")
+ *                 .build())
+ *             .multiProvider(false)
+ *             .nameservers(ZoneDnsSettingsNameserversArgs.builder()
+ *                 .ns_set(1)
+ *                 .type("cloudflare.standard")
+ *                 .build())
+ *             .nsTtl(86400.0)
+ *             .secondaryOverrides(false)
+ *             .soa(ZoneDnsSettingsSoaArgs.builder()
+ *                 .expire(604800.0)
+ *                 .min_ttl(1800)
+ *                 .mname("kristina.ns.cloudflare.com")
+ *                 .refresh(10000.0)
+ *                 .retry(2400.0)
+ *                 .rname("admin.example.com")
+ *                 .ttl(3600.0)
+ *                 .build())
+ *             .zoneMode("dns_only")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/zoneDnsSettings:ZoneDnsSettings")
 public class ZoneDnsSettings extends com.pulumi.resources.CustomResource {

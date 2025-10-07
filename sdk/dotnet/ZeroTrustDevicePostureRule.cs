@@ -12,6 +12,42 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDevicePostureRule = new Cloudflare.ZeroTrustDevicePostureRule("example_zero_trust_device_posture_rule", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Name = "Admin Serial Numbers",
+    ///         Type = "file",
+    ///         Description = "The rule for admin serial numbers",
+    ///         Expiration = "1h",
+    ///         Input = new Cloudflare.Inputs.ZeroTrustDevicePostureRuleInputArgs
+    ///         {
+    ///             Operating_system = "linux",
+    ///             Path = "/bin/cat",
+    ///             Exists = true,
+    ///             Sha256 = "https://api.us-2.crowdstrike.com",
+    ///             Thumbprint = "0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e",
+    ///         },
+    ///         Matches = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDevicePostureRuleMatchArgs
+    ///             {
+    ///                 Platform = "windows",
+    ///             },
+    ///         },
+    ///         Schedule = "1h",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -116,13 +116,13 @@ namespace Pulumi.Cloudflare
         public Output<string> ReadyToStreamAt { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
+        /// Indicates whether the video can be a accessed using the UID. When set to `True`, a signed token must be generated with a signing key to view the video.
         /// </summary>
         [Output("requireSignedUrls")]
         public Output<bool> RequireSignedUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
+        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         /// </summary>
         [Output("scheduledDeletion")]
         public Output<string?> ScheduledDeletion { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.Cloudflare
         public Output<double> Size { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
+        /// Specifies a detailed status for a video. If the `State` is `Inprogress` or `Error`, the `Step` field returns `Encoding` or `Manifest`. If the `State` is `Inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `State` is `Error`, `errorReasonCode` and `errorReasonText` provide additional details.
         /// </summary>
         [Output("status")]
         public Output<Outputs.StreamStatus> Status { get; private set; } = null!;
@@ -261,13 +261,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Meta { get; set; }
 
         /// <summary>
-        /// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
+        /// Indicates whether the video can be a accessed using the UID. When set to `True`, a signed token must be generated with a signing key to view the video.
         /// </summary>
         [Input("requireSignedUrls")]
         public Input<bool>? RequireSignedUrls { get; set; }
 
         /// <summary>
-        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
+        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         /// </summary>
         [Input("scheduledDeletion")]
         public Input<string>? ScheduledDeletion { get; set; }
@@ -383,13 +383,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? ReadyToStreamAt { get; set; }
 
         /// <summary>
-        /// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
+        /// Indicates whether the video can be a accessed using the UID. When set to `True`, a signed token must be generated with a signing key to view the video.
         /// </summary>
         [Input("requireSignedUrls")]
         public Input<bool>? RequireSignedUrls { get; set; }
 
         /// <summary>
-        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
+        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         /// </summary>
         [Input("scheduledDeletion")]
         public Input<string>? ScheduledDeletion { get; set; }
@@ -401,7 +401,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Size { get; set; }
 
         /// <summary>
-        /// Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
+        /// Specifies a detailed status for a video. If the `State` is `Inprogress` or `Error`, the `Step` field returns `Encoding` or `Manifest`. If the `State` is `Inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `State` is `Error`, `errorReasonCode` and `errorReasonText` provide additional details.
         /// </summary>
         [Input("status")]
         public Input<Inputs.StreamStatusGetArgs>? Status { get; set; }

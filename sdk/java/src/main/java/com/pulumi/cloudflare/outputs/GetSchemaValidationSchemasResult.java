@@ -23,7 +23,7 @@ public final class GetSchemaValidationSchemasResult {
     private String id;
     /**
      * @return The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     private String kind;
@@ -74,7 +74,7 @@ public final class GetSchemaValidationSchemasResult {
     }
     /**
      * @return The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public String kind() {

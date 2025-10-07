@@ -12,6 +12,72 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApiToken = new Cloudflare.ApiToken("example_api_token", new()
+    ///     {
+    ///         Name = "readonly token",
+    ///         Policies = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ApiTokenPolicyArgs
+    ///             {
+    ///                 Effect = "allow",
+    ///                 Permission_groups = new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "id", "c8fed203ed3043cba015a93ad1616f1f" },
+    ///                         { "meta", 
+    ///                         {
+    ///                             { "key", "key" },
+    ///                             { "value", "value" },
+    ///                         } },
+    ///                     },
+    ///                     
+    ///                     {
+    ///                         { "id", "82e64a83756745bbbb1c9c2701bf816b" },
+    ///                         { "meta", 
+    ///                         {
+    ///                             { "key", "key" },
+    ///                             { "value", "value" },
+    ///                         } },
+    ///                     },
+    ///                 },
+    ///                 Resources = 
+    ///                 {
+    ///                     { "foo", "string" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Condition = new Cloudflare.Inputs.ApiTokenConditionArgs
+    ///         {
+    ///             Request_ip = 
+    ///             {
+    ///                 { "in", new[]
+    ///                 {
+    ///                     "123.123.123.0/24",
+    ///                     "2606:4700::/32",
+    ///                 } },
+    ///                 { "notIn", new[]
+    ///                 {
+    ///                     "123.123.123.100/24",
+    ///                     "2606:4700:4700::/48",
+    ///                 } },
+    ///             },
+    ///         },
+    ///         ExpiresOn = "2020-01-01T00:00:00Z",
+    ///         NotBefore = "2018-07-01T05:20:00Z",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -285,6 +285,25 @@ class QueueConsumer(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_queue_consumer = cloudflare.QueueConsumer("example_queue_consumer",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+            dead_letter_queue="example-queue",
+            script_name="my-consumer-worker",
+            settings={
+                "batch_size": 50,
+                "max_concurrency": 10,
+                "max_retries": 3,
+                "max_wait_time_ms": 5000,
+                "retry_delay": 10,
+            },
+            type="worker")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: A Resource identifier.
@@ -301,6 +320,25 @@ class QueueConsumer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_queue_consumer = cloudflare.QueueConsumer("example_queue_consumer",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            queue_id="023e105f4ecef8ad9ca31a8372d0c353",
+            dead_letter_queue="example-queue",
+            script_name="my-consumer-worker",
+            settings={
+                "batch_size": 50,
+                "max_concurrency": 10,
+                "max_retries": 3,
+                "max_wait_time_ms": 5000,
+                "retry_delay": 10,
+            },
+            type="worker")
+        ```
 
         :param str resource_name: The name of the resource.
         :param QueueConsumerInitArgs args: The arguments to use to populate this resource's properties.

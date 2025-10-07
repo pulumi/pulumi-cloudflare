@@ -804,7 +804,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * The SSL level to configure.
-     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
      * 
      */
     @Import(name="ssl")
@@ -812,7 +812,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return The SSL level to configure.
-     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
      * 
      */
     public Optional<Output<String>> ssl() {
@@ -2113,7 +2113,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ssl The SSL level to configure.
-         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
          * 
          * @return builder
          * 
@@ -2125,7 +2125,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param ssl The SSL level to configure.
-         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+         * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
          * 
          * @return builder
          * 

@@ -185,11 +185,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string LastComplete;
         /// <summary>
-        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the ErrorMessage field.
         /// </summary>
         public readonly string LastError;
         /// <summary>
-        /// This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        /// This field is deprecated. Use `OutputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         /// </summary>
         public readonly string LogpullOptions;
         /// <summary>
@@ -209,7 +209,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        /// The structured replacement for `LogpullOptions`. When including this field, the `LogpullOption` field will be ignored.
         /// </summary>
         public readonly Outputs.GetLogpushJobOutputOptionsResult OutputOptions;
         /// <summary>

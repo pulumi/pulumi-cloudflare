@@ -12,6 +12,107 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleWorkerVersion = new Cloudflare.WorkerVersion("example_worker_version", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         WorkerId = "worker_id",
+    ///         Annotations = new Cloudflare.Inputs.WorkerVersionAnnotationsArgs
+    ///         {
+    ///             Workers_message = "Fixed bug.",
+    ///             Workers_tag = "v1.0.1",
+    ///         },
+    ///         Assets = new Cloudflare.Inputs.WorkerVersionAssetsArgs
+    ///         {
+    ///             Config = new Cloudflare.Inputs.WorkerVersionAssetsConfigArgs
+    ///             {
+    ///                 HtmlHandling = "auto-trailing-slash",
+    ///                 NotFoundHandling = "404-page",
+    ///                 RunWorkerFirst = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///             },
+    ///             Jwt = "jwt",
+    ///         },
+    ///         Bindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionBindingArgs
+    ///             {
+    ///                 Name = "MY_ENV_VAR",
+    ///                 Text = "my_data",
+    ///                 Type = "plain_text",
+    ///             },
+    ///         },
+    ///         CompatibilityDate = "2021-01-01",
+    ///         CompatibilityFlags = new[]
+    ///         {
+    ///             "nodejs_compat",
+    ///         },
+    ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
+    ///         {
+    ///             Cpu_ms = 50,
+    ///         },
+    ///         MainModule = "index.js",
+    ///         Migrations = new Cloudflare.Inputs.WorkerVersionMigrationsArgs
+    ///         {
+    ///             Deleted_classes = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             New_classes = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             New_sqlite_classes = new[]
+    ///             {
+    ///                 "string",
+    ///             },
+    ///             New_tag = "v2",
+    ///             Old_tag = "v1",
+    ///             Renamed_classes = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "from", "from" },
+    ///                     { "to", "to" },
+    ///                 },
+    ///             },
+    ///             Transferred_classes = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "from", "from" },
+    ///                     { "fromScript", "from_script" },
+    ///                     { "to", "to" },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Modules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerVersionModuleArgs
+    ///             {
+    ///                 Content_file = "dist/index.js",
+    ///                 Content_type = "application/javascript+module",
+    ///                 Name = "index.js",
+    ///             },
+    ///         },
+    ///         Placement = new Cloudflare.Inputs.WorkerVersionPlacementArgs
+    ///         {
+    ///             Mode = "smart",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -52,7 +153,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
@@ -70,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.WorkerVersionLimits> Limits { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Output("mainModule")]
         public Output<string?> MainModule { get; private set; } = null!;
@@ -209,7 +310,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -224,7 +325,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerVersionLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
@@ -319,7 +420,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -340,7 +441,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerVersionLimitsGetArgs>? Limits { get; set; }
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }

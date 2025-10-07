@@ -14,6 +14,39 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPageRule(ctx, "example_page_rule", &cloudflare.PageRuleArgs{
+//				ZoneId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Target:   pulumi.String("example.com/*"),
+//				Priority: pulumi.Int(1),
+//				Status:   pulumi.String("active"),
+//				Actions: &cloudflare.PageRuleActionsArgs{
+//					Forwarding_url: map[string]interface{}{
+//						"url":        "https://example.com/foo",
+//						"statusCode": 301,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

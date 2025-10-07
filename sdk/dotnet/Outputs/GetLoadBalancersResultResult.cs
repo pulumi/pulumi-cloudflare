@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableDictionary<string, ImmutableArray<string>> CountryPools;
         public readonly string CreatedOn;
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when RegionPools are not configured for a given region.
         /// </summary>
         public readonly ImmutableArray<string> DefaultPools;
         /// <summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string FallbackPool;
         public readonly string Id;
         /// <summary>
-        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+        /// Controls location-based steering for non-proxied requests. See `SteeringPolicy` to learn how steering is affected.
         /// </summary>
         public readonly Outputs.GetLoadBalancersResultLocationStrategyResult LocationStrategy;
         public readonly string ModifiedOn;
@@ -73,8 +73,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancersResultRuleResult> Rules;
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-        /// Available values: "none", "cookie", "ip_cookie", "header".
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"IpCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `SessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `Headers` in `SessionAffinityAttributes` for additional required configuration.
+        /// Available values: "none", "cookie", "IpCookie", "header".
         /// </summary>
         public readonly string SessionAffinity;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetLoadBalancersResultSessionAffinityAttributesResult SessionAffinityAttributes;
         /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `SessionAffinity` policy are: - `"cookie"` / `"IpCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         /// </summary>
         public readonly double SessionAffinityTtl;
         /// <summary>

@@ -53,7 +53,7 @@ public final class GetWorkerVersionBinding {
      */
     private String destinationAddress;
     /**
-     * @return The environment of the script_name to bind to.
+     * @return The environment of the scriptName to bind to.
      * 
      */
     private String environment;
@@ -110,7 +110,7 @@ public final class GetWorkerVersionBinding {
      */
     private String namespaceId;
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     private String oldName;
@@ -239,7 +239,7 @@ public final class GetWorkerVersionBinding {
         return this.destinationAddress;
     }
     /**
-     * @return The environment of the script_name to bind to.
+     * @return The environment of the scriptName to bind to.
      * 
      */
     public String environment() {
@@ -318,7 +318,7 @@ public final class GetWorkerVersionBinding {
         return this.namespaceId;
     }
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     public String oldName() {

@@ -80,10 +80,10 @@ public final class ZeroTrustTunnelCloudflaredVirtualNetworkState extends com.pul
      * If `true`, this virtual network is the default for the account.
      * 
      * @deprecated
-     * Use the is_default_network property instead.
+     * Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the is_default_network property instead. */
+    @Deprecated /* Use the isDefaultNetwork property instead. */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
@@ -91,10 +91,10 @@ public final class ZeroTrustTunnelCloudflaredVirtualNetworkState extends com.pul
      * @return If `true`, this virtual network is the default for the account.
      * 
      * @deprecated
-     * Use the is_default_network property instead.
+     * Use the isDefaultNetwork property instead.
      * 
      */
-    @Deprecated /* Use the is_default_network property instead. */
+    @Deprecated /* Use the isDefaultNetwork property instead. */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
@@ -249,10 +249,10 @@ public final class ZeroTrustTunnelCloudflaredVirtualNetworkState extends com.pul
          * @return builder
          * 
          * @deprecated
-         * Use the is_default_network property instead.
+         * Use the isDefaultNetwork property instead.
          * 
          */
-        @Deprecated /* Use the is_default_network property instead. */
+        @Deprecated /* Use the isDefaultNetwork property instead. */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
@@ -264,10 +264,10 @@ public final class ZeroTrustTunnelCloudflaredVirtualNetworkState extends com.pul
          * @return builder
          * 
          * @deprecated
-         * Use the is_default_network property instead.
+         * Use the isDefaultNetwork property instead.
          * 
          */
-        @Deprecated /* Use the is_default_network property instead. */
+        @Deprecated /* Use the isDefaultNetwork property instead. */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }

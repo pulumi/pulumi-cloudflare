@@ -165,9 +165,9 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
     }
     /**
      * If true, enables the use of NSEC3 together with DNSSEC on the zone.
-     * Combined with setting dnssec_presigned to true, this enables the use of
+     * Combined with setting dnssecPresigned to true, this enables the use of
      * NSEC3 records when transferring in from an external provider.
-     * If dnssec_presigned is instead set to false (default), NSEC3 records will be
+     * If dnssecPresigned is instead set to false (default), NSEC3 records will be
      * generated and signed at request time.
      * 
      * See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
@@ -178,9 +178,9 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If true, enables the use of NSEC3 together with DNSSEC on the zone.
-     * Combined with setting dnssec_presigned to true, this enables the use of
+     * Combined with setting dnssecPresigned to true, this enables the use of
      * NSEC3 records when transferring in from an external provider.
-     * If dnssec_presigned is instead set to false (default), NSEC3 records will be
+     * If dnssecPresigned is instead set to false (default), NSEC3 records will be
      * generated and signed at request time.
      * 
      * See [DNSSEC with NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.

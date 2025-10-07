@@ -62,7 +62,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
     /**
      * Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     @Import(name="type")
@@ -70,7 +70,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -185,7 +185,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class AccessCustomPageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 

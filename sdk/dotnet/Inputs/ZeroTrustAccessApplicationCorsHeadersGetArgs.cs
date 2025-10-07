@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? AllowAllOrigins { get; set; }
 
         /// <summary>
-        /// When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+        /// When set to `True`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }

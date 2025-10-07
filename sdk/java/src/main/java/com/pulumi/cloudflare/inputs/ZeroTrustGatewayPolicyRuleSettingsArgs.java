@@ -62,14 +62,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+     * Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      * 
      */
     @Import(name="auditSsh")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs> auditSsh;
 
     /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs>> auditSsh() {
@@ -167,14 +167,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     @Import(name="dnsResolvers")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs> dnsResolvers;
 
     /**
-     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs>> dnsResolvers() {
@@ -197,14 +197,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+     * Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Import(name="ignoreCnameCategoryMatches")
     private @Nullable Output<Boolean> ignoreCnameCategoryMatches;
 
     /**
-     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Output<Boolean>> ignoreCnameCategoryMatches() {
@@ -227,14 +227,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+     * Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Import(name="ipCategories")
     private @Nullable Output<Boolean> ipCategories;
 
     /**
-     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Output<Boolean>> ipCategories() {
@@ -242,14 +242,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+     * Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Import(name="ipIndicatorFeeds")
     private @Nullable Output<Boolean> ipIndicatorFeeds;
 
     /**
-     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Output<Boolean>> ipIndicatorFeeds() {
@@ -257,14 +257,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+     * Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      * 
      */
     @Import(name="l4override")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs> l4override;
 
     /**
-     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs>> l4override() {
@@ -362,14 +362,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     @Import(name="resolveDnsInternally")
     private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs> resolveDnsInternally;
 
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs>> resolveDnsInternally() {
@@ -377,14 +377,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
-     * Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     @Import(name="resolveDnsThroughCloudflare")
     private @Nullable Output<Boolean> resolveDnsThroughCloudflare;
 
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<Output<Boolean>> resolveDnsThroughCloudflare() {
@@ -497,7 +497,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
          * 
          * @return builder
          * 
@@ -508,7 +508,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+         * @param auditSsh Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param dnsResolvers Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param dnsResolvers Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param dnsResolvers Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param dnsResolvers Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -686,7 +686,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ignoreCnameCategoryMatches Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+         * @param ignoreCnameCategoryMatches Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ignoreCnameCategoryMatches Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+         * @param ignoreCnameCategoryMatches Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -728,7 +728,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipCategories Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+         * @param ipCategories Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -739,7 +739,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipCategories Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+         * @param ipCategories Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -749,7 +749,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipIndicatorFeeds Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+         * @param ipIndicatorFeeds Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -760,7 +760,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipIndicatorFeeds Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+         * @param ipIndicatorFeeds Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -770,7 +770,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param l4override Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+         * @param l4override Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
          * 
          * @return builder
          * 
@@ -781,7 +781,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param l4override Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+         * @param l4override Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
          * 
          * @return builder
          * 
@@ -927,7 +927,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -938,7 +938,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param resolveDnsInternally Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -948,7 +948,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -959,7 +959,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         }
 
         /**
-         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+         * @param resolveDnsThroughCloudflare Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
          * 
          * @return builder
          * 

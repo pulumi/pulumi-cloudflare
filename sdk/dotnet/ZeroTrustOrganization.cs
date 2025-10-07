@@ -11,6 +11,44 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustOrganization = new Cloudflare.ZeroTrustOrganization("example_zero_trust_organization", new()
+    ///     {
+    ///         ZoneId = "zone_id",
+    ///         AllowAuthenticateViaWarp = true,
+    ///         AuthDomain = "test.cloudflareaccess.com",
+    ///         AutoRedirectToIdentity = true,
+    ///         CustomPages = new Cloudflare.Inputs.ZeroTrustOrganizationCustomPagesArgs
+    ///         {
+    ///             Forbidden = "699d98642c564d2e855e9661899b7252",
+    ///             Identity_denied = "699d98642c564d2e855e9661899b7252",
+    ///         },
+    ///         IsUiReadOnly = true,
+    ///         LoginDesign = new Cloudflare.Inputs.ZeroTrustOrganizationLoginDesignArgs
+    ///         {
+    ///             Background_color = "#c5ed1b",
+    ///             Footer_text = "This is an example description.",
+    ///             Header_text = "This is an example description.",
+    ///             Logo_path = "https://example.com/logo.png",
+    ///             Text_color = "#c5ed1b",
+    ///         },
+    ///         Name = "Widget Corps Internal Applications",
+    ///         SessionDuration = "24h",
+    ///         UiReadOnlyToggleReason = "Temporarily turn off the UI read only lock to make a change via the UI",
+    ///         UserSeatExpirationInactiveTime = "730h",
+    ///         WarpAuthSessionDuration = "24h",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")]
     public partial class ZeroTrustOrganization : global::Pulumi.CustomResource
@@ -34,7 +72,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AuthDomain { get; private set; } = null!;
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login.
+        /// When set to `True`, users skip the identity provider selection step during login.
         /// </summary>
         [Output("autoRedirectToIdentity")]
         public Output<bool> AutoRedirectToIdentity { get; private set; } = null!;
@@ -67,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> UiReadOnlyToggleReason { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
         /// </summary>
         [Output("userSeatExpirationInactiveTime")]
         public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
@@ -153,7 +191,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login.
+        /// When set to `True`, users skip the identity provider selection step during login.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -186,7 +224,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UiReadOnlyToggleReason { get; set; }
 
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
@@ -230,7 +268,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AuthDomain { get; set; }
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login.
+        /// When set to `True`, users skip the identity provider selection step during login.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -263,7 +301,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UiReadOnlyToggleReason { get; set; }
 
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }

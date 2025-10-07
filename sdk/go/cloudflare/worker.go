@@ -14,6 +14,54 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewWorker(ctx, "example_worker", &cloudflare.WorkerArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("my-worker"),
+//				Logpush:   pulumi.Bool(true),
+//				Observability: &cloudflare.WorkerObservabilityArgs{
+//					Enabled:            pulumi.Bool(true),
+//					Head_sampling_rate: 1,
+//					Logs: &cloudflare.WorkerObservabilityLogsArgs{
+//						Enabled:          pulumi.Bool(true),
+//						HeadSamplingRate: pulumi.Float64(1),
+//						InvocationLogs:   pulumi.Bool(true),
+//					},
+//				},
+//				Subdomain: &cloudflare.WorkerSubdomainArgs{
+//					Enabled:          pulumi.Bool(true),
+//					Previews_enabled: true,
+//				},
+//				Tags: pulumi.StringArray{
+//					pulumi.String("my-team"),
+//					pulumi.String("my-public-api"),
+//				},
+//				TailConsumers: cloudflare.WorkerTailConsumerArray{
+//					&cloudflare.WorkerTailConsumerArgs{
+//						Name: pulumi.String("my-tail-consumer"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

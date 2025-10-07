@@ -134,7 +134,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? IntegrationId;
         /// <summary>
-        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        /// The interval between each posture check with the third-party API. Use `M` for minutes (e.g. `5m`) and `H` for hours (e.g. `12h`).
         /// </summary>
         public readonly string Interval;
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "CustomS2s".
         /// </summary>
         public readonly string Type;
 

@@ -13,6 +13,38 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewSnippetRules(ctx, "example_snippet_rules", &cloudflare.SnippetRulesArgs{
+//				ZoneId: pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
+//				Rules: cloudflare.SnippetRulesRuleArray{
+//					&cloudflare.SnippetRulesRuleArgs{
+//						Expression:   pulumi.String("ip.src eq 1.1.1.1"),
+//						Snippet_name: "my_snippet",
+//						Description:  pulumi.String("Execute my_snippet when IP address is 1.1.1.1."),
+//						Enabled:      pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type SnippetRules struct {
 	pulumi.CustomResourceState
 

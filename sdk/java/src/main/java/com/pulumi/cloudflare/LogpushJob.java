@@ -21,6 +21,70 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.LogpushJob;
+ * import com.pulumi.cloudflare.LogpushJobArgs;
+ * import com.pulumi.cloudflare.inputs.LogpushJobOutputOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleLogpushJob = new LogpushJob("exampleLogpushJob", LogpushJobArgs.builder()
+ *             .destinationConf("s3://mybucket/logs?region=us-west-2")
+ *             .zoneId("zone_id")
+ *             .dataset("gateway_dns")
+ *             .enabled(false)
+ *             .filter("{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"contains\",\"value\":\"/static\"},{\"key\":\"ClientRequestHost\",\"operator\":\"eq\",\"value\":\"example.com\"}]}}")
+ *             .frequency("high")
+ *             .kind("")
+ *             .logpullOptions("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339")
+ *             .maxUploadBytes(5000000)
+ *             .maxUploadIntervalSeconds(30)
+ *             .maxUploadRecords(1000)
+ *             .name("example.com")
+ *             .outputOptions(LogpushJobOutputOptionsArgs.builder()
+ *                 .batch_prefix("")
+ *                 .batch_suffix("")
+ *                 .cve_2021_44228(false)
+ *                 .field_delimiter(",")
+ *                 .field_names(List.of(                
+ *                     "Datetime",
+ *                     "DstIP",
+ *                     "SrcIP"))
+ *                 .output_type("ndjson")
+ *                 .record_delimiter("")
+ *                 .record_prefix("{")
+ *                 .record_suffix("""
+ *     }
+ * 
+ *                 """)
+ *                 .record_template("record_template")
+ *                 .sample_rate(1)
+ *                 .timestamp_format("unixnano")
+ *                 .build())
+ *             .ownershipChallenge("00000000000000000000")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -167,21 +231,21 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return this.lastComplete;
     }
     /**
-     * Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
      * 
      */
     @Export(name="lastError", refs={String.class}, tree="[0]")
     private Output<String> lastError;
 
     /**
-     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+     * @return Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
      * 
      */
     public Output<String> lastError() {
         return this.lastError;
     }
     /**
-     * This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -192,7 +256,7 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> logpullOptions;
 
     /**
-     * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * @return This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      */
     public Output<Optional<String>> logpullOptions() {
@@ -255,14 +319,14 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
-     * The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     @Export(name="outputOptions", refs={LogpushJobOutputOptions.class}, tree="[0]")
     private Output</* @Nullable */ LogpushJobOutputOptions> outputOptions;
 
     /**
-     * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * @return The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     public Output<Optional<LogpushJobOutputOptions>> outputOptions() {

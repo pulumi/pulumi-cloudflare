@@ -12,6 +12,214 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("example_load_balancer", new()
+    ///     {
+    ///         ZoneId = "699d98642c564d2e855e9661899b7252",
+    ///         DefaultPools = new[]
+    ///         {
+    ///             "17b5962d775c646f3f9725cbc7a53df4",
+    ///             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///         },
+    ///         FallbackPool = "fallback_pool",
+    ///         Name = "www.example.com",
+    ///         AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerAdaptiveRoutingArgs
+    ///         {
+    ///             Failover_across_pools = true,
+    ///         },
+    ///         CountryPools = 
+    ///         {
+    ///             { "GB", new[]
+    ///             {
+    ///                 "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///             { "US", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///         },
+    ///         Description = "Load Balancer for www.example.com",
+    ///         LocationStrategy = new Cloudflare.Inputs.LoadBalancerLocationStrategyArgs
+    ///         {
+    ///             Mode = "resolver_ip",
+    ///             Prefer_ecs = "always",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             "string",
+    ///         },
+    ///         PopPools = 
+    ///         {
+    ///             { "LAX", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///             { "LHR", new[]
+    ///             {
+    ///                 "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "f9138c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///             { "SJC", new[]
+    ///             {
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///         },
+    ///         Proxied = true,
+    ///         RandomSteering = new Cloudflare.Inputs.LoadBalancerRandomSteeringArgs
+    ///         {
+    ///             Default_weight = 0.2,
+    ///             Pool_weights = 
+    ///             {
+    ///                 { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                 { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///             },
+    ///         },
+    ///         RegionPools = 
+    ///         {
+    ///             { "ENAM", new[]
+    ///             {
+    ///                 "00920f38ce07c2e2f4df50b1f61d4194",
+    ///             } },
+    ///             { "WNAM", new[]
+    ///             {
+    ///                 "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                 "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///             } },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerRuleArgs
+    ///             {
+    ///                 Condition = "http.request.uri.path contains \"/testing\"",
+    ///                 Disabled = true,
+    ///                 Fixed_response = 
+    ///                 {
+    ///                     { "contentType", "application/json" },
+    ///                     { "location", "www.example.com" },
+    ///                     { "messageBody", "Testing Hello" },
+    ///                     { "statusCode", 0 },
+    ///                 },
+    ///                 Name = "route the path /testing to testing datacenter.",
+    ///                 Overrides = new Cloudflare.Inputs.LoadBalancerRuleOverridesArgs
+    ///                 {
+    ///                     AdaptiveRouting = new Cloudflare.Inputs.LoadBalancerRuleOverridesAdaptiveRoutingArgs
+    ///                     {
+    ///                         FailoverAcrossPools = true,
+    ///                     },
+    ///                     CountryPools = 
+    ///                     {
+    ///                         { "GB", new[]
+    ///                         {
+    ///                             "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                         { "US", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                     },
+    ///                     DefaultPools = new[]
+    ///                     {
+    ///                         "17b5962d775c646f3f9725cbc7a53df4",
+    ///                         "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                     },
+    ///                     FallbackPool = "fallback_pool",
+    ///                     LocationStrategy = new Cloudflare.Inputs.LoadBalancerRuleOverridesLocationStrategyArgs
+    ///                     {
+    ///                         Mode = "resolver_ip",
+    ///                         PreferEcs = "always",
+    ///                     },
+    ///                     PopPools = 
+    ///                     {
+    ///                         { "LAX", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                         { "LHR", new[]
+    ///                         {
+    ///                             "abd90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "f9138c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                         { "SJC", new[]
+    ///                         {
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                     },
+    ///                     RandomSteering = new Cloudflare.Inputs.LoadBalancerRuleOverridesRandomSteeringArgs
+    ///                     {
+    ///                         DefaultWeight = 0.2,
+    ///                         PoolWeights = 
+    ///                         {
+    ///                             { "9290f38c5d07c2e2f4df57b1f61d4196", 0.5 },
+    ///                             { "de90f38ced07c2e2f4df50b1f61d4194", 0.3 },
+    ///                         },
+    ///                     },
+    ///                     RegionPools = 
+    ///                     {
+    ///                         { "ENAM", new[]
+    ///                         {
+    ///                             "00920f38ce07c2e2f4df50b1f61d4194",
+    ///                         } },
+    ///                         { "WNAM", new[]
+    ///                         {
+    ///                             "de90f38ced07c2e2f4df50b1f61d4194",
+    ///                             "9290f38c5d07c2e2f4df57b1f61d4196",
+    ///                         } },
+    ///                     },
+    ///                     SessionAffinity = "cookie",
+    ///                     SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerRuleOverridesSessionAffinityAttributesArgs
+    ///                     {
+    ///                         DrainDuration = 100,
+    ///                         Headers = new[]
+    ///                         {
+    ///                             "x",
+    ///                         },
+    ///                         RequireAllHeaders = true,
+    ///                         Samesite = "Auto",
+    ///                         Secure = "Auto",
+    ///                         ZeroDowntimeFailover = "sticky",
+    ///                     },
+    ///                     SessionAffinityTtl = 1800,
+    ///                     SteeringPolicy = "dynamic_latency",
+    ///                     Ttl = 30,
+    ///                 },
+    ///                 Priority = 0,
+    ///                 Terminates = true,
+    ///             },
+    ///         },
+    ///         SessionAffinity = "cookie",
+    ///         SessionAffinityAttributes = new Cloudflare.Inputs.LoadBalancerSessionAffinityAttributesArgs
+    ///         {
+    ///             Drain_duration = 100,
+    ///             Headers = new[]
+    ///             {
+    ///                 "x",
+    ///             },
+    ///             Require_all_headers = true,
+    ///             Samesite = "Auto",
+    ///             Secure = "Auto",
+    ///             Zero_downtime_failover = "sticky",
+    ///         },
+    ///         SessionAffinityTtl = 1800,
+    ///         SteeringPolicy = "dynamic_latency",
+    ///         Ttl = 30,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -37,7 +245,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when RegionPools are not configured for a given region.
         /// </summary>
         [Output("defaultPools")]
         public Output<ImmutableArray<string>> DefaultPools { get; private set; } = null!;
@@ -61,7 +269,7 @@ namespace Pulumi.Cloudflare
         public Output<string> FallbackPool { get; private set; } = null!;
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+        /// Controls location-based steering for non-proxied requests. See `SteeringPolicy` to learn how steering is affected.
         /// </summary>
         [Output("locationStrategy")]
         public Output<Outputs.LoadBalancerLocationStrategy> LocationStrategy { get; private set; } = null!;
@@ -112,8 +320,8 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.LoadBalancerRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-        /// Available values: "none", "cookie", "ip_cookie", "header".
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"IpCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `SessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `Headers` in `SessionAffinityAttributes` for additional required configuration.
+        /// Available values: "none", "cookie", "IpCookie", "header".
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
@@ -125,7 +333,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.LoadBalancerSessionAffinityAttributes> SessionAffinityAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `SessionAffinity` policy are: - `"cookie"` / `"IpCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         /// </summary>
         [Output("sessionAffinityTtl")]
         public Output<double> SessionAffinityTtl { get; private set; } = null!;
@@ -216,7 +424,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _defaultPools;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when RegionPools are not configured for a given region.
         /// </summary>
         public InputList<string> DefaultPools
         {
@@ -243,7 +451,7 @@ namespace Pulumi.Cloudflare
         public Input<string> FallbackPool { get; set; } = null!;
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+        /// Controls location-based steering for non-proxied requests. See `SteeringPolicy` to learn how steering is affected.
         /// </summary>
         [Input("locationStrategy")]
         public Input<Inputs.LoadBalancerLocationStrategyArgs>? LocationStrategy { get; set; }
@@ -315,8 +523,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-        /// Available values: "none", "cookie", "ip_cookie", "header".
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"IpCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `SessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `Headers` in `SessionAffinityAttributes` for additional required configuration.
+        /// Available values: "none", "cookie", "IpCookie", "header".
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -328,7 +536,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.LoadBalancerSessionAffinityAttributesArgs>? SessionAffinityAttributes { get; set; }
 
         /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `SessionAffinity` policy are: - `"cookie"` / `"IpCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         /// </summary>
         [Input("sessionAffinityTtl")]
         public Input<double>? SessionAffinityTtl { get; set; }
@@ -381,7 +589,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _defaultPools;
 
         /// <summary>
-        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.
+        /// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when RegionPools are not configured for a given region.
         /// </summary>
         public InputList<string> DefaultPools
         {
@@ -408,7 +616,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? FallbackPool { get; set; }
 
         /// <summary>
-        /// Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected.
+        /// Controls location-based steering for non-proxied requests. See `SteeringPolicy` to learn how steering is affected.
         /// </summary>
         [Input("locationStrategy")]
         public Input<Inputs.LoadBalancerLocationStrategyGetArgs>? LocationStrategy { get; set; }
@@ -483,8 +691,8 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration.
-        /// Available values: "none", "cookie", "ip_cookie", "header".
+        /// Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"IpCookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `SessionAffinityTtl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `Headers` in `SessionAffinityAttributes` for additional required configuration.
+        /// Available values: "none", "cookie", "IpCookie", "header".
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -496,7 +704,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.LoadBalancerSessionAffinityAttributesGetArgs>? SessionAffinityAttributes { get; set; }
 
         /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
+        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `SessionAffinity` policy are: - `"cookie"` / `"IpCookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified.
         /// </summary>
         [Input("sessionAffinityTtl")]
         public Input<double>? SessionAffinityTtl { get; set; }

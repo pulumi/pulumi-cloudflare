@@ -312,6 +312,34 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_transit_site_acl = cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            site_id="023e105f4ecef8ad9ca31a8372d0c353",
+            lan1={
+                "lan_id": "lan_id",
+                "lan_name": "lan_name",
+                "port_ranges": ["8080-9000"],
+                "ports": [1],
+                "subnets": ["192.0.2.1"],
+            },
+            lan2={
+                "lan_id": "lan_id",
+                "lan_name": "lan_name",
+                "port_ranges": ["8080-9000"],
+                "ports": [1],
+                "subnets": ["192.0.2.1"],
+            },
+            name="PIN Pad - Cash Register",
+            description="Allows local traffic between PIN pads and cash register.",
+            forward_locally=True,
+            protocols=["tcp"],
+            unidirectional=True)
+        ```
+
         ## Import
 
         ```sh
@@ -335,6 +363,34 @@ class MagicTransitSiteAcl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_magic_transit_site_acl = cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            site_id="023e105f4ecef8ad9ca31a8372d0c353",
+            lan1={
+                "lan_id": "lan_id",
+                "lan_name": "lan_name",
+                "port_ranges": ["8080-9000"],
+                "ports": [1],
+                "subnets": ["192.0.2.1"],
+            },
+            lan2={
+                "lan_id": "lan_id",
+                "lan_name": "lan_name",
+                "port_ranges": ["8080-9000"],
+                "ports": [1],
+                "subnets": ["192.0.2.1"],
+            },
+            name="PIN Pad - Cash Register",
+            description="Allows local traffic between PIN pads and cash register.",
+            forward_locally=True,
+            protocols=["tcp"],
+            unidirectional=True)
+        ```
 
         ## Import
 

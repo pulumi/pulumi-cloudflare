@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ExistedAt;
         /// <summary>
-        /// If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
+        /// If `True`, only include deleted routes. If `False`, exclude deleted routes. If empty, all routes will be included.
         /// </summary>
         public readonly bool? IsDeleted;
         /// <summary>

@@ -17,7 +17,7 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
 
     /**
      * The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     @Import(name="kind", required=true)
@@ -25,7 +25,7 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public Output<String> kind() {
@@ -122,7 +122,7 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
 
         /**
          * @param kind The kind of the schema
-         * Available values: &#34;openapi_v3&#34;.
+         * Available values: &#34;openapiV3&#34;.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class SchemaValidationSchemasArgs extends com.pulumi.resources.Reso
 
         /**
          * @param kind The kind of the schema
-         * Available values: &#34;openapi_v3&#34;.
+         * Available values: &#34;openapiV3&#34;.
          * 
          * @return builder
          * 

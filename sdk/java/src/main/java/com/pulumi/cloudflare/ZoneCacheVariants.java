@@ -18,6 +18,73 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneCacheVariants;
+ * import com.pulumi.cloudflare.ZoneCacheVariantsArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneCacheVariantsValueArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZoneCacheVariants = new ZoneCacheVariants("exampleZoneCacheVariants", ZoneCacheVariantsArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .value(ZoneCacheVariantsValueArgs.builder()
+ *                 .avif(List.of(                
+ *                     "image/webp",
+ *                     "image/jpeg"))
+ *                 .bmp(List.of(                
+ *                     "image/webp",
+ *                     "image/jpeg"))
+ *                 .gif(List.of(                
+ *                     "image/webp",
+ *                     "image/jpeg"))
+ *                 .jp2(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .jpeg(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .jpg(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .jpg2(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .png(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .tif(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .tiff(List.of(                
+ *                     "image/webp",
+ *                     "image/avif"))
+ *                 .webp(List.of(                
+ *                     "image/jpeg",
+ *                     "image/avif"))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

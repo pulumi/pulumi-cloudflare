@@ -82,7 +82,7 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private List<String> customPages;
     /**
-     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     private List<GetZeroTrustAccessApplicationsResultDestination> destinations;
@@ -132,7 +132,7 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private String name;
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     private Boolean optionsPreflightBypass;
@@ -165,7 +165,7 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private GetZeroTrustAccessApplicationsResultScimConfig scimConfig;
     /**
-     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -201,7 +201,7 @@ public final class GetZeroTrustAccessApplicationsResult {
     private List<GetZeroTrustAccessApplicationsResultTargetCriteria> targetCriterias;
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     private String type;
@@ -295,7 +295,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         return this.customPages;
     }
     /**
-     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     public List<GetZeroTrustAccessApplicationsResultDestination> destinations() {
@@ -365,7 +365,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         return this.name;
     }
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     public Boolean optionsPreflightBypass() {
@@ -412,7 +412,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         return this.scimConfig;
     }
     /**
-     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -462,7 +462,7 @@ public final class GetZeroTrustAccessApplicationsResult {
     }
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public String type() {

@@ -8,6 +8,21 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleSnippetRules = new cloudflare.SnippetRules("example_snippet_rules", {
+ *     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+ *     rules: [{
+ *         expression: "ip.src eq 1.1.1.1",
+ *         snippet_name: "my_snippet",
+ *         description: "Execute my_snippet when IP address is 1.1.1.1.",
+ *         enabled: true,
+ *     }],
+ * });
+ * ```
  */
 export class SnippetRules extends pulumi.CustomResource {
     /**

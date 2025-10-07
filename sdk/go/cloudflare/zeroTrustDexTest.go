@@ -14,6 +14,47 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustDexTest(ctx, "example_zero_trust_dex_test", &cloudflare.ZeroTrustDexTestArgs{
+//				AccountId: pulumi.String("01a7362d577a6c3019a474fd6f485823"),
+//				Data: &cloudflare.ZeroTrustDexTestDataArgs{
+//					Host:   pulumi.String("https://dash.cloudflare.com"),
+//					Kind:   pulumi.String("http"),
+//					Method: pulumi.String("GET"),
+//				},
+//				Enabled:     pulumi.Bool(true),
+//				Interval:    pulumi.String("30m"),
+//				Name:        pulumi.String("HTTP dash health check"),
+//				Description: pulumi.String("Checks the dash endpoint every 30 minutes"),
+//				TargetPolicies: cloudflare.ZeroTrustDexTestTargetPolicyArray{
+//					&cloudflare.ZeroTrustDexTestTargetPolicyArgs{
+//						Id:      pulumi.String("id"),
+//						Default: pulumi.Bool(true),
+//						Name:    pulumi.String("name"),
+//					},
+//				},
+//				Targeted: true,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

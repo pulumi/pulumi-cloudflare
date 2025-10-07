@@ -9,6 +9,37 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWorker = new cloudflare.Worker("example_worker", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "my-worker",
+ *     logpush: true,
+ *     observability: {
+ *         enabled: true,
+ *         head_sampling_rate: 1,
+ *         logs: {
+ *             enabled: true,
+ *             headSamplingRate: 1,
+ *             invocationLogs: true,
+ *         },
+ *     },
+ *     subdomain: {
+ *         enabled: true,
+ *         previews_enabled: true,
+ *     },
+ *     tags: [
+ *         "my-team",
+ *         "my-public-api",
+ *     ],
+ *     tailConsumers: [{
+ *         name: "my-tail-consumer",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

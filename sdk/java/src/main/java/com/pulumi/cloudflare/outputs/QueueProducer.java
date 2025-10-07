@@ -14,7 +14,7 @@ public final class QueueProducer {
     private @Nullable String bucketName;
     private @Nullable String script;
     /**
-     * @return Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;r2Bucket&#34;.
      * 
      */
     private @Nullable String type;
@@ -27,7 +27,7 @@ public final class QueueProducer {
         return Optional.ofNullable(this.script);
     }
     /**
-     * @return Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;r2Bucket&#34;.
      * 
      */
     public Optional<String> type() {

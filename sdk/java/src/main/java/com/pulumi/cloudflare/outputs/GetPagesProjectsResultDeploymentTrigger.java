@@ -18,7 +18,7 @@ public final class GetPagesProjectsResultDeploymentTrigger {
     private GetPagesProjectsResultDeploymentTriggerMetadata metadata;
     /**
      * @return What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
+     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
      * 
      */
     private String type;
@@ -33,7 +33,7 @@ public final class GetPagesProjectsResultDeploymentTrigger {
     }
     /**
      * @return What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
+     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
      * 
      */
     public String type() {

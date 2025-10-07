@@ -20,6 +20,86 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfig;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredConfigArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustTunnelCloudflaredConfig = new ZeroTrustTunnelCloudflaredConfig("exampleZeroTrustTunnelCloudflaredConfig", ZeroTrustTunnelCloudflaredConfigArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+ *             .config(ZeroTrustTunnelCloudflaredConfigConfigArgs.builder()
+ *                 .ingress(List.of(Map.ofEntries(
+ *                     Map.entry("hostname", "tunnel.example.com"),
+ *                     Map.entry("service", "https://localhost:8001"),
+ *                     Map.entry("originRequest", Map.ofEntries(
+ *                         Map.entry("access", Map.ofEntries(
+ *                             Map.entry("audTag", List.of("string")),
+ *                             Map.entry("teamName", "zero-trust-organization-name"),
+ *                             Map.entry("required", false)
+ *                         )),
+ *                         Map.entry("caPool", "caPool"),
+ *                         Map.entry("connectTimeout", 10),
+ *                         Map.entry("disableChunkedEncoding", true),
+ *                         Map.entry("http2Origin", true),
+ *                         Map.entry("httpHostHeader", "httpHostHeader"),
+ *                         Map.entry("keepAliveConnections", 100),
+ *                         Map.entry("keepAliveTimeout", 90),
+ *                         Map.entry("noHappyEyeballs", false),
+ *                         Map.entry("noTlsVerify", false),
+ *                         Map.entry("originServerName", "originServerName"),
+ *                         Map.entry("proxyType", "proxyType"),
+ *                         Map.entry("tcpKeepAlive", 30),
+ *                         Map.entry("tlsTimeout", 10)
+ *                     )),
+ *                     Map.entry("path", "subpath")
+ *                 )))
+ *                 .origin_request(Map.ofEntries(
+ *                     Map.entry("access", Map.ofEntries(
+ *                         Map.entry("audTag", List.of("string")),
+ *                         Map.entry("teamName", "zero-trust-organization-name"),
+ *                         Map.entry("required", false)
+ *                     )),
+ *                     Map.entry("caPool", "caPool"),
+ *                     Map.entry("connectTimeout", 10),
+ *                     Map.entry("disableChunkedEncoding", true),
+ *                     Map.entry("http2Origin", true),
+ *                     Map.entry("httpHostHeader", "httpHostHeader"),
+ *                     Map.entry("keepAliveConnections", 100),
+ *                     Map.entry("keepAliveTimeout", 90),
+ *                     Map.entry("noHappyEyeballs", false),
+ *                     Map.entry("noTlsVerify", false),
+ *                     Map.entry("originServerName", "originServerName"),
+ *                     Map.entry("proxyType", "proxyType"),
+ *                     Map.entry("tcpKeepAlive", 30),
+ *                     Map.entry("tlsTimeout", 10)
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

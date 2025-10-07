@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountTag { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Output("configSrc")]
@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustTunnelCloudflaredConnection>> Connections { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `Null`, the tunnel is inactive.
         /// </summary>
         [Output("connsActiveAt")]
         public Output<string> ConnsActiveAt { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `Null`, the tunnel is active.
         /// </summary>
         [Output("connsInactiveAt")]
         public Output<string> ConnsInactiveAt { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
@@ -102,13 +102,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
         /// </summary>
         [Output("remoteConfig")]
         public Output<bool> RemoteConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Output("status")]
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of tunnel.
-        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
         /// </summary>
         [Output("tunType")]
         public Output<string> TunType { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("configSrc")]
@@ -237,7 +237,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountTag { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("configSrc")]
@@ -257,13 +257,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `Null`, the tunnel is inactive.
         /// </summary>
         [Input("connsActiveAt")]
         public Input<string>? ConnsActiveAt { get; set; }
 
         /// <summary>
-        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `Null`, the tunnel is active.
         /// </summary>
         [Input("connsInactiveAt")]
         public Input<string>? ConnsInactiveAt { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }
@@ -293,13 +293,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
         /// </summary>
         [Input("remoteConfig")]
         public Input<bool>? RemoteConfig { get; set; }
 
         /// <summary>
-        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Input("status")]
@@ -307,7 +307,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of tunnel.
-        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
         /// </summary>
         [Input("tunType")]
         public Input<string>? TunType { get; set; }

@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+        /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
         /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
@@ -226,7 +226,7 @@ namespace Pulumi.Cloudflare
         public bool? Proxied { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `Match` setting. For automated searches, please use the other available parameters.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -235,7 +235,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetDnsRecordsTagArgs? Tag { get; set; }
 
         /// <summary>
-        /// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+        /// Whether to match all tag search requirements or at least one (any). If set to `All`, acts like a logical AND between tag filters. If set to `Any`, acts like a logical OR instead. Note that the regular `Match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
         /// Available values: "any", "all".
         /// </summary>
         [Input("tagMatch")]
@@ -276,7 +276,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+        /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
         /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
@@ -305,7 +305,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Proxied { get; set; }
 
         /// <summary>
-        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `Match` setting. For automated searches, please use the other available parameters.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetDnsRecordsTagInputArgs>? Tag { get; set; }
 
         /// <summary>
-        /// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+        /// Whether to match all tag search requirements or at least one (any). If set to `All`, acts like a logical AND between tag filters. If set to `Any`, acts like a logical OR instead. Note that the regular `Match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
         /// Available values: "any", "all".
         /// </summary>
         [Input("tagMatch")]
@@ -355,7 +355,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
+        /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
         /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
@@ -378,12 +378,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDnsRecordsResultResult> Results;
         /// <summary>
-        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+        /// Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `Match` setting. For automated searches, please use the other available parameters.
         /// </summary>
         public readonly string? Search;
         public readonly Outputs.GetDnsRecordsTagResult? Tag;
         /// <summary>
-        /// Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
+        /// Whether to match all tag search requirements or at least one (any). If set to `All`, acts like a logical AND between tag filters. If set to `Any`, acts like a logical OR instead. Note that the regular `Match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.
         /// Available values: "any", "all".
         /// </summary>
         public readonly string TagMatch;

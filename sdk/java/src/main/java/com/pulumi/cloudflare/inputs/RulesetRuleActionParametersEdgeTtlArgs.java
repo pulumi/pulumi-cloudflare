@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
     /**
-     * The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
     /**
-     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     public Optional<Output<Integer>> default_() {
@@ -93,7 +93,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+         * @param default_ The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+         * @param default_ The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
          * 
          * @return builder
          * 

@@ -135,14 +135,14 @@ public class ZeroTrustDlpCustomEntry extends com.pulumi.resources.CustomResource
         return this.secret;
     }
     /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public Output<String> type() {

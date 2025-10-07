@@ -13,6 +13,61 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewR2BucketLifecycle(ctx, "example_r2_bucket_lifecycle", &cloudflare.R2BucketLifecycleArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				BucketName: pulumi.String("example-bucket"),
+//				Rules: cloudflare.R2BucketLifecycleRuleArray{
+//					&cloudflare.R2BucketLifecycleRuleArgs{
+//						Id: pulumi.String("Expire all objects older than 24 hours"),
+//						Conditions: &cloudflare.R2BucketLifecycleRuleConditionsArgs{
+//							Prefix: pulumi.String("prefix"),
+//						},
+//						Enabled: pulumi.Bool(true),
+//						Abort_multipart_uploads_transition: map[string]interface{}{
+//							"condition": map[string]interface{}{
+//								"maxAge": 0,
+//								"type":   "Age",
+//							},
+//						},
+//						Delete_objects_transition: map[string]interface{}{
+//							"condition": map[string]interface{}{
+//								"maxAge": 0,
+//								"type":   "Age",
+//							},
+//						},
+//						Storage_class_transitions: []map[string]interface{}{
+//							map[string]interface{}{
+//								"condition": map[string]interface{}{
+//									"maxAge": 0,
+//									"type":   "Age",
+//								},
+//								"storageClass": "InfrequentAccess",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 

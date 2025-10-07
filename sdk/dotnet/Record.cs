@@ -12,6 +12,37 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDnsRecord = new Cloudflare.DnsRecord("example_dns_record", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "example.com",
+    ///         Ttl = 3600,
+    ///         Type = "A",
+    ///         Comment = "Domain verification record",
+    ///         Content = "198.51.100.4",
+    ///         Proxied = true,
+    ///         Settings = new Cloudflare.Inputs.DnsRecordSettingsArgs
+    ///         {
+    ///             Ipv4_only = true,
+    ///             Ipv6_only = true,
+    ///         },
+    ///         Tags = new[]
+    ///         {
+    ///             "owner:dns-team",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

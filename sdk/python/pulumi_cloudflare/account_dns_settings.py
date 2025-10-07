@@ -101,6 +101,37 @@ class AccountDnsSettings(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            zone_defaults={
+                "flatten_all_cnames": False,
+                "foundation_dns": False,
+                "internal_dns": {
+                    "referenceZoneId": "reference_zone_id",
+                },
+                "multi_provider": False,
+                "nameservers": {
+                    "type": "cloudflare.standard",
+                },
+                "ns_ttl": 86400,
+                "secondary_overrides": False,
+                "soa": {
+                    "expire": 604800,
+                    "min_ttl": 1800,
+                    "mname": "kristina.ns.cloudflare.com",
+                    "refresh": 10000,
+                    "retry": 2400,
+                    "rname": "admin.example.com",
+                    "ttl": 3600,
+                },
+                "zone_mode": "dns_only",
+            })
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Identifier.
@@ -113,6 +144,37 @@ class AccountDnsSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_account_dns_settings = cloudflare.AccountDnsSettings("example_account_dns_settings",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            zone_defaults={
+                "flatten_all_cnames": False,
+                "foundation_dns": False,
+                "internal_dns": {
+                    "referenceZoneId": "reference_zone_id",
+                },
+                "multi_provider": False,
+                "nameservers": {
+                    "type": "cloudflare.standard",
+                },
+                "ns_ttl": 86400,
+                "secondary_overrides": False,
+                "soa": {
+                    "expire": 604800,
+                    "min_ttl": 1800,
+                    "mname": "kristina.ns.cloudflare.com",
+                    "refresh": 10000,
+                    "retry": 2400,
+                    "rname": "admin.example.com",
+                    "ttl": 3600,
+                },
+                "zone_mode": "dns_only",
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountDnsSettingsArgs args: The arguments to use to populate this resource's properties.

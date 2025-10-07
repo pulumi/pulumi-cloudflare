@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing for this application.
-        /// Notes: Only available for TCP applications with traffic_type set to "direct".
+        /// Notes: Only available for TCP applications with TrafficType set to "direct".
         /// </summary>
         [Output("argoSmartRouting")]
         public Output<bool> ArgoSmartRouting { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Tls { get; private set; } = null!;
 
         /// <summary>
-        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         /// Available values: "direct", "http", "https".
         /// </summary>
         [Output("trafficType")]
@@ -202,7 +202,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing for this application.
-        /// Notes: Only available for TCP applications with traffic_type set to "direct".
+        /// Notes: Only available for TCP applications with TrafficType set to "direct".
         /// </summary>
         [Input("argoSmartRouting")]
         public Input<bool>? ArgoSmartRouting { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         /// Available values: "direct", "http", "https".
         /// </summary>
         [Input("trafficType")]
@@ -294,7 +294,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Enables Argo Smart Routing for this application.
-        /// Notes: Only available for TCP applications with traffic_type set to "direct".
+        /// Notes: Only available for TCP applications with TrafficType set to "direct".
         /// </summary>
         [Input("argoSmartRouting")]
         public Input<bool>? ArgoSmartRouting { get; set; }
@@ -376,7 +376,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         /// Available values: "direct", "http", "https".
         /// </summary>
         [Input("trafficType")]

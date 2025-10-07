@@ -172,7 +172,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     }
     /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -180,7 +180,7 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
 
     /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     public Output<String> type() {

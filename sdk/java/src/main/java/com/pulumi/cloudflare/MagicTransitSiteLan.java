@@ -23,6 +23,72 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicTransitSiteLan;
+ * import com.pulumi.cloudflare.MagicTransitSiteLanArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanNatArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanRoutedSubnetNatArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteLanStaticAddressingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicTransitSiteLan = new MagicTransitSiteLan("exampleMagicTransitSiteLan", MagicTransitSiteLanArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .physport(1)
+ *             .haLink(true)
+ *             .name("name")
+ *             .nat(MagicTransitSiteLanNatArgs.builder()
+ *                 .static_prefix("192.0.2.0/24")
+ *                 .build())
+ *             .routedSubnets(MagicTransitSiteLanRoutedSubnetArgs.builder()
+ *                 .next_hop("192.0.2.1")
+ *                 .prefix("192.0.2.0/24")
+ *                 .nat(MagicTransitSiteLanRoutedSubnetNatArgs.builder()
+ *                     .staticPrefix("192.0.2.0/24")
+ *                     .build())
+ *                 .build())
+ *             .staticAddressing(MagicTransitSiteLanStaticAddressingArgs.builder()
+ *                 .address("192.0.2.0/24")
+ *                 .dhcp_relay(Map.of("serverAddresses", List.of("192.0.2.1")))
+ *                 .dhcp_server(Map.ofEntries(
+ *                     Map.entry("dhcpPoolEnd", "192.0.2.1"),
+ *                     Map.entry("dhcpPoolStart", "192.0.2.1"),
+ *                     Map.entry("dnsServer", "192.0.2.1"),
+ *                     Map.entry("dnsServers", List.of("192.0.2.1")),
+ *                     Map.entry("reservations", Map.ofEntries(
+ *                         Map.entry("00:11:22:33:44:55", "192.0.2.100"),
+ *                         Map.entry("AA:BB:CC:DD:EE:FF", "192.168.1.101")
+ *                     ))
+ *                 ))
+ *                 .secondary_address("192.0.2.0/24")
+ *                 .virtual_address("192.0.2.0/24")
+ *                 .build())
+ *             .vlanTag(42)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

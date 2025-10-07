@@ -24,6 +24,154 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayPolicy;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyExpirationArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustGatewayPolicy = new ZeroTrustGatewayPolicy("exampleZeroTrustGatewayPolicy", ZeroTrustGatewayPolicyArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .action("allow")
+ *             .name("block bad websites")
+ *             .description("Block bad websites based on their host name.")
+ *             .devicePosture("any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})")
+ *             .enabled(true)
+ *             .expiration(ZeroTrustGatewayPolicyExpirationArgs.builder()
+ *                 .expires_at("2014-01-01T05:20:20Z")
+ *                 .duration(10)
+ *                 .build())
+ *             .filters("http")
+ *             .identity("any(identity.groups.name[*] in {\"finance\"})")
+ *             .precedence(0)
+ *             .ruleSettings(ZeroTrustGatewayPolicyRuleSettingsArgs.builder()
+ *                 .add_headers(Map.ofEntries(
+ *                     Map.entry("my-Next-Header", List.of(                    
+ *                         "foo",
+ *                         "bar")),
+ *                     Map.entry("x-Custom-Header-Name", List.of("somecustomvalue"))
+ *                 ))
+ *                 .allow_child_bypass(false)
+ *                 .audit_ssh(Map.of("commandLogging", false))
+ *                 .biso_admin_controls(Map.ofEntries(
+ *                     Map.entry("copy", "remote_only"),
+ *                     Map.entry("dcp", true),
+ *                     Map.entry("dd", true),
+ *                     Map.entry("dk", true),
+ *                     Map.entry("download", "enabled"),
+ *                     Map.entry("dp", false),
+ *                     Map.entry("du", true),
+ *                     Map.entry("keyboard", "enabled"),
+ *                     Map.entry("paste", "enabled"),
+ *                     Map.entry("printing", "enabled"),
+ *                     Map.entry("upload", "enabled"),
+ *                     Map.entry("version", "v1")
+ *                 ))
+ *                 .block_page(Map.ofEntries(
+ *                     Map.entry("targetUri", "https://example.com"),
+ *                     Map.entry("includeContext", true)
+ *                 ))
+ *                 .block_page_enabled(true)
+ *                 .block_reason("This website is a security risk")
+ *                 .bypass_parent_rule(false)
+ *                 .check_session(Map.ofEntries(
+ *                     Map.entry("duration", "300s"),
+ *                     Map.entry("enforce", true)
+ *                 ))
+ *                 .dns_resolvers(Map.ofEntries(
+ *                     Map.entry("ipv4", List.of(Map.ofEntries(
+ *                         Map.entry("ip", "2.2.2.2"),
+ *                         Map.entry("port", 5053),
+ *                         Map.entry("routeThroughPrivateNetwork", true),
+ *                         Map.entry("vnetId", "f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                     ))),
+ *                     Map.entry("ipv6", List.of(Map.ofEntries(
+ *                         Map.entry("ip", "2001:DB8::"),
+ *                         Map.entry("port", 5053),
+ *                         Map.entry("routeThroughPrivateNetwork", true),
+ *                         Map.entry("vnetId", "f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *                     )))
+ *                 ))
+ *                 .egress(ZeroTrustGatewayPolicyRuleSettingsEgressArgs.builder()
+ *                     .ipv4("192.0.2.2")
+ *                     .ipv4Fallback("192.0.2.3")
+ *                     .ipv6("2001:DB8::/64")
+ *                     .build())
+ *                 .ignore_cname_category_matches(true)
+ *                 .insecure_disable_dnssec_validation(false)
+ *                 .ip_categories(true)
+ *                 .ip_indicator_feeds(true)
+ *                 .l4override(ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs.builder()
+ *                     .ip("1.1.1.1")
+ *                     .port(0)
+ *                     .build())
+ *                 .notification_settings(Map.ofEntries(
+ *                     Map.entry("enabled", true),
+ *                     Map.entry("includeContext", true),
+ *                     Map.entry("msg", "msg"),
+ *                     Map.entry("supportUrl", "support_url")
+ *                 ))
+ *                 .override_host("example.com")
+ *                 .override_ips(List.of(                
+ *                     "1.1.1.1",
+ *                     "2.2.2.2"))
+ *                 .payload_log(Map.of("enabled", true))
+ *                 .quarantine(ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs.builder()
+ *                     .fileTypes("exe")
+ *                     .build())
+ *                 .redirect(ZeroTrustGatewayPolicyRuleSettingsRedirectArgs.builder()
+ *                     .targetUri("https://example.com")
+ *                     .includeContext(true)
+ *                     .preservePathAndQuery(true)
+ *                     .build())
+ *                 .resolve_dns_internally(Map.ofEntries(
+ *                     Map.entry("fallback", "none"),
+ *                     Map.entry("viewId", "view_id")
+ *                 ))
+ *                 .resolve_dns_through_cloudflare(true)
+ *                 .untrusted_cert(Map.of("action", "error"))
+ *                 .build())
+ *             .schedule(ZeroTrustGatewayPolicyScheduleArgs.builder()
+ *                 .fri("08:00-12:30,13:30-17:00")
+ *                 .mon("08:00-12:30,13:30-17:00")
+ *                 .sat("08:00-12:30,13:30-17:00")
+ *                 .sun("08:00-12:30,13:30-17:00")
+ *                 .thu("08:00-12:30,13:30-17:00")
+ *                 .time_zone("America/New York")
+ *                 .tue("08:00-12:30,13:30-17:00")
+ *                 .wed("08:00-12:30,13:30-17:00")
+ *                 .build())
+ *             .traffic("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -41,7 +189,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     }
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -49,7 +197,7 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
 
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     public Output<String> action() {
@@ -184,14 +332,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
         return this.ruleSettings;
     }
     /**
-     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Export(name="schedule", refs={ZeroTrustGatewayPolicySchedule.class}, tree="[0]")
     private Output<ZeroTrustGatewayPolicySchedule> schedule;
 
     /**
-     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Output<ZeroTrustGatewayPolicySchedule> schedule() {

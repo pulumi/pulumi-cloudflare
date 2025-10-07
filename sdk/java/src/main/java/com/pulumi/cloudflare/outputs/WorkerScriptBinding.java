@@ -55,7 +55,7 @@ public final class WorkerScriptBinding {
      */
     private @Nullable String destinationAddress;
     /**
-     * @return The environment of the script_name to bind to.
+     * @return The environment of the scriptName to bind to.
      * 
      */
     private @Nullable String environment;
@@ -112,7 +112,7 @@ public final class WorkerScriptBinding {
      */
     private @Nullable String namespaceId;
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     private @Nullable String oldName;
@@ -241,7 +241,7 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.destinationAddress);
     }
     /**
-     * @return The environment of the script_name to bind to.
+     * @return The environment of the scriptName to bind to.
      * 
      */
     public Optional<String> environment() {
@@ -320,7 +320,7 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.namespaceId);
     }
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     public Optional<String> oldName() {

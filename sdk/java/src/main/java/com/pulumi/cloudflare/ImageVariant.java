@@ -19,6 +19,46 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ImageVariant;
+ * import com.pulumi.cloudflare.ImageVariantArgs;
+ * import com.pulumi.cloudflare.inputs.ImageVariantOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleImageVariant = new ImageVariant("exampleImageVariant", ImageVariantArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .id("hero")
+ *             .options(ImageVariantOptionsArgs.builder()
+ *                 .fit("scale-down")
+ *                 .height(768.0)
+ *                 .metadata("none")
+ *                 .width(1366.0)
+ *                 .build())
+ *             .neverRequireSignedUrls(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

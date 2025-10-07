@@ -213,14 +213,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     @Import(name="destinations")
     private @Nullable Output<List<AccessApplicationDestinationArgs>> destinations;
 
     /**
-     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     public Optional<Output<List<AccessApplicationDestinationArgs>>> destinations() {
@@ -348,14 +348,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     @Import(name="optionsPreflightBypass")
     private @Nullable Output<Boolean> optionsPreflightBypass;
 
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     public Optional<Output<Boolean>> optionsPreflightBypass() {
@@ -457,7 +457,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -468,7 +468,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<String>> selfHostedDomains;
 
     /**
-     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -563,7 +563,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Import(name="type")
@@ -571,7 +571,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -936,7 +936,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param destinations List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param destinations List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -957,7 +957,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param destinations List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param destinations List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -1145,7 +1145,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
          * 
          * @return builder
          * 
@@ -1156,7 +1156,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -1317,7 +1317,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -1331,7 +1331,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+         * @param selfHostedDomains List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
          * 
          * @return builder
          * 
@@ -1474,7 +1474,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The application type.
-         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 
@@ -1486,7 +1486,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The application type.
-         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+         * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
          * 
          * @return builder
          * 

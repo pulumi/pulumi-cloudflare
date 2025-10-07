@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersEdgeTtl {
     /**
-     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     private Integer default_;
@@ -32,7 +32,7 @@ public final class GetRulesetRuleActionParametersEdgeTtl {
 
     private GetRulesetRuleActionParametersEdgeTtl() {}
     /**
-     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     public Integer default_() {

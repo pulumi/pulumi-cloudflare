@@ -28,6 +28,122 @@ import javax.annotation.Nullable;
 /**
  * !&gt; This resource is no longer recommended. Please use the `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersScript;
+ * import com.pulumi.cloudflare.WorkersScriptArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptAssetsConfigArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.WorkersScriptTailConsumerArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filesha256Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleWorkersScript = new WorkersScript("exampleWorkersScript", WorkersScriptArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .scriptName("this-is_my_script-01")
+ *             .assets(WorkersScriptAssetsArgs.builder()
+ *                 .config(WorkersScriptAssetsConfigArgs.builder()
+ *                     .headers("""
+ *         /dashboard/*
+ *         X-Frame-Options: DENY
+ * 
+ *         /static/*
+ *         Access-Control-Allow-Origin: *
+ *                     """)
+ *                     .redirects("""
+ *         /foo /bar 301
+ *         /news/* /blog/:splat
+ *                     """)
+ *                     .htmlHandling("auto-trailing-slash")
+ *                     .notFoundHandling("none")
+ *                     .runWorkerFirst(false)
+ *                     .build())
+ *                 .jwt("jwt")
+ *                 .build())
+ *             .bindings(WorkersScriptBindingArgs.builder()
+ *                 .name("MY_ENV_VAR")
+ *                 .text("my_data")
+ *                 .type("plain_text")
+ *                 .build())
+ *             .compatibilityDate("2021-01-01")
+ *             .compatibilityFlags("nodejs_compat")
+ *             .contentFile("worker.js")
+ *             .contentSha256(StdFunctions.filesha256(Filesha256Args.builder()
+ *                 .input("worker.js")
+ *                 .build()).result())
+ *             .keepAssets(false)
+ *             .keepBindings("kv_namespace")
+ *             .limits(WorkersScriptLimitsArgs.builder()
+ *                 .cpu_ms(50)
+ *                 .build())
+ *             .logpush(false)
+ *             .mainModule("worker.js")
+ *             .migrations(Map.ofEntries(
+ *                 Map.entry("deleted_classes", List.of("string")),
+ *                 Map.entry("new_classes", List.of("string")),
+ *                 Map.entry("new_sqlite_classes", List.of("string")),
+ *                 Map.entry("new_tag", "v2"),
+ *                 Map.entry("old_tag", "v1"),
+ *                 Map.entry("renamed_classes", List.of(Map.ofEntries(
+ *                     Map.entry("from", "from"),
+ *                     Map.entry("to", "to")
+ *                 ))),
+ *                 Map.entry("transferred_classes", List.of(Map.ofEntries(
+ *                     Map.entry("from", "from"),
+ *                     Map.entry("fromScript", "from_script"),
+ *                     Map.entry("to", "to")
+ *                 )))
+ *             ))
+ *             .observability(WorkersScriptObservabilityArgs.builder()
+ *                 .enabled(true)
+ *                 .head_sampling_rate(0.1)
+ *                 .logs(WorkersScriptObservabilityLogsArgs.builder()
+ *                     .enabled(true)
+ *                     .invocationLogs(true)
+ *                     .destinations("cloudflare")
+ *                     .headSamplingRate(0.1)
+ *                     .persist(true)
+ *                     .build())
+ *                 .build())
+ *             .placement(WorkersScriptPlacementArgs.builder()
+ *                 .mode("smart")
+ *                 .build())
+ *             .tailConsumers(WorkersScriptTailConsumerArgs.builder()
+ *                 .service("my-log-consumer")
+ *                 .environment("production")
+ *                 .namespace("my-namespace")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -112,56 +228,56 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return this.compatibilityDate;
     }
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     public Output<List<String>> compatibilityFlags() {
         return this.compatibilityFlags;
     }
     /**
-     * Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+     * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+     * @return Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      * 
      */
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      * 
      */
     @Export(name="contentFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentFile;
 
     /**
-     * @return Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      * 
      */
     public Output<Optional<String>> contentFile() {
         return Codegen.optional(this.contentFile);
     }
     /**
-     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      * 
      */
     @Export(name="contentSha256", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentSha256;
 
     /**
-     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      * 
      */
     public Output<Optional<String>> contentSha256() {

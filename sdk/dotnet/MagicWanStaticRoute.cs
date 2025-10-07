@@ -12,6 +12,38 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicWanStaticRoute = new Cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Nexthop = "203.0.113.1",
+    ///         Prefix = "192.0.2.0/24",
+    ///         Priority = 0,
+    ///         Description = "New route for new prefix 203.0.113.1",
+    ///         Scope = new Cloudflare.Inputs.MagicWanStaticRouteScopeArgs
+    ///         {
+    ///             Colo_names = new[]
+    ///             {
+    ///                 "den01",
+    ///             },
+    ///             Colo_regions = new[]
+    ///             {
+    ///                 "APAC",
+    ///             },
+    ///         },
+    ///         Weight = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

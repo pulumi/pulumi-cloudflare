@@ -20,6 +20,95 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.NotificationPolicy;
+ * import com.pulumi.cloudflare.NotificationPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyMechanismsArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyFiltersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleNotificationPolicy = new NotificationPolicy("exampleNotificationPolicy", NotificationPolicyArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .alertType("universal_ssl_event_type")
+ *             .enabled(true)
+ *             .mechanisms(NotificationPolicyMechanismsArgs.builder()
+ *                 .email(List.of(Map.of("id", "test}{@literal @}{@code example.com")))
+ *                 .pagerduty(List.of(Map.of("id", "e8133a15-00a4-4d69-aec1-32f70c51f6e5")))
+ *                 .webhooks(NotificationPolicyMechanismsWebhookArgs.builder()
+ *                     .id("14cc1190-5d2b-4b98-a696-c424cb2ad05f")
+ *                     .build())
+ *                 .build())
+ *             .name("SSL Notification Event Policy")
+ *             .alertInterval("30m")
+ *             .description("Something describing the policy.")
+ *             .filters(NotificationPolicyFiltersArgs.builder()
+ *                 .actions("string")
+ *                 .affected_asns(List.of("string"))
+ *                 .affected_components(List.of("string"))
+ *                 .affected_locations(List.of("string"))
+ *                 .airport_code(List.of("string"))
+ *                 .alert_trigger_preferences(List.of("string"))
+ *                 .alert_trigger_preferences_value(List.of("string"))
+ *                 .enabled(List.of("string"))
+ *                 .environment(List.of("string"))
+ *                 .event(List.of("string"))
+ *                 .event_source(List.of("string"))
+ *                 .event_type(List.of("string"))
+ *                 .group_by(List.of("string"))
+ *                 .health_check_id(List.of("string"))
+ *                 .incident_impact(List.of("INCIDENT_IMPACT_NONE"))
+ *                 .input_id(List.of("string"))
+ *                 .insight_class(List.of("string"))
+ *                 .limit(List.of("string"))
+ *                 .logo_tag(List.of("string"))
+ *                 .megabits_per_second(List.of("string"))
+ *                 .new_health(List.of("string"))
+ *                 .new_status(List.of("string"))
+ *                 .packets_per_second(List.of("string"))
+ *                 .pool_id(List.of("string"))
+ *                 .pop_names(List.of("string"))
+ *                 .product(List.of("string"))
+ *                 .project_id(List.of("string"))
+ *                 .protocol(List.of("string"))
+ *                 .query_tag(List.of("string"))
+ *                 .requests_per_second(List.of("string"))
+ *                 .selectors("string")
+ *                 .services("string")
+ *                 .slo(List.of("99.9"))
+ *                 .status(List.of("string"))
+ *                 .target_hostname(List.of("string"))
+ *                 .target_ip(List.of("string"))
+ *                 .target_zone_name(List.of("string"))
+ *                 .traffic_exclusions(List.of("security_events"))
+ *                 .tunnel_id(List.of("string"))
+ *                 .tunnel_name(List.of("string"))
+ *                 .where(List.of("string"))
+ *                 .zones("string")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

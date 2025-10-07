@@ -228,6 +228,24 @@ class ZoneSubscription(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
+            zone_id="506e3185e9c882d175a2d0cb0093d9f2",
+            frequency="monthly",
+            rate_plan={
+                "id": "free",
+                "currency": "USD",
+                "externally_managed": False,
+                "is_contract": False,
+                "public_name": "Business Plan",
+                "scope": "zone",
+                "sets": ["string"],
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -249,6 +267,24 @@ class ZoneSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_subscription = cloudflare.ZoneSubscription("example_zone_subscription",
+            zone_id="506e3185e9c882d175a2d0cb0093d9f2",
+            frequency="monthly",
+            rate_plan={
+                "id": "free",
+                "currency": "USD",
+                "externally_managed": False,
+                "is_contract": False,
+                "public_name": "Business Plan",
+                "scope": "zone",
+                "sets": ["string"],
+            })
+        ```
 
         ## Import
 

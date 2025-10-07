@@ -12,6 +12,104 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustGatewaySettings = new Cloudflare.ZeroTrustGatewaySettings("example_zero_trust_gateway_settings", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Settings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsArgs
+    ///         {
+    ///             Activity_log = 
+    ///             {
+    ///                 { "enabled", true },
+    ///             },
+    ///             Antivirus = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs
+    ///             {
+    ///                 EnabledDownloadPhase = false,
+    ///                 EnabledUploadPhase = false,
+    ///                 FailClosed = false,
+    ///                 NotificationSettings = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     IncludeContext = true,
+    ///                     Msg = "msg",
+    ///                     SupportUrl = "support_url",
+    ///                 },
+    ///             },
+    ///             Block_page = 
+    ///             {
+    ///                 { "backgroundColor", "background_color" },
+    ///                 { "enabled", true },
+    ///                 { "footerText", "--footer--" },
+    ///                 { "headerText", "--header--" },
+    ///                 { "includeContext", true },
+    ///                 { "logoPath", "https://logos.com/a.png" },
+    ///                 { "mailtoAddress", "admin@example.com" },
+    ///                 { "mailtoSubject", "Blocked User Inquiry" },
+    ///                 { "mode", "" },
+    ///                 { "name", "Cloudflare" },
+    ///                 { "suppressFooter", false },
+    ///                 { "targetUri", "https://example.com" },
+    ///             },
+    ///             Body_scanning = 
+    ///             {
+    ///                 { "inspectionMode", "deep" },
+    ///             },
+    ///             Browser_isolation = 
+    ///             {
+    ///                 { "nonIdentityEnabled", true },
+    ///                 { "urlBrowserIsolationEnabled", true },
+    ///             },
+    ///             Certificate = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs
+    ///             {
+    ///                 Id = "d1b364c5-1311-466e-a194-f0e943e0799f",
+    ///             },
+    ///             Custom_certificate = 
+    ///             {
+    ///                 { "enabled", true },
+    ///                 { "id", "d1b364c5-1311-466e-a194-f0e943e0799f" },
+    ///             },
+    ///             Extended_email_matching = 
+    ///             {
+    ///                 { "enabled", true },
+    ///             },
+    ///             Fips = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsFipsArgs
+    ///             {
+    ///                 Tls = true,
+    ///             },
+    ///             Host_selector = 
+    ///             {
+    ///                 { "enabled", false },
+    ///             },
+    ///             Inspection = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs
+    ///             {
+    ///                 Mode = "static",
+    ///             },
+    ///             Protocol_detection = 
+    ///             {
+    ///                 { "enabled", true },
+    ///             },
+    ///             Sandbox = new Cloudflare.Inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 FallbackAction = "allow",
+    ///             },
+    ///             Tls_decrypt = 
+    ///             {
+    ///                 { "enabled", true },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

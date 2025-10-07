@@ -12,6 +12,33 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicTransitSiteWan = new Cloudflare.MagicTransitSiteWan("example_magic_transit_site_wan", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Physport = 1,
+    ///         Name = "name",
+    ///         Priority = 0,
+    ///         StaticAddressing = new Cloudflare.Inputs.MagicTransitSiteWanStaticAddressingArgs
+    ///         {
+    ///             Address = "192.0.2.0/24",
+    ///             Gateway_address = "192.0.2.1",
+    ///             Secondary_address = "192.0.2.0/24",
+    ///         },
+    ///         VlanTag = 42,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -28,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         [Output("healthCheckRate")]
@@ -155,7 +182,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         [Input("healthCheckRate")]

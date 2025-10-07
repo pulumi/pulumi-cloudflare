@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPagesDomainsResult {
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     private String certificateAuthority;
@@ -32,7 +32,7 @@ public final class GetPagesDomainsResult {
 
     private GetPagesDomainsResult() {}
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     public String certificateAuthority() {

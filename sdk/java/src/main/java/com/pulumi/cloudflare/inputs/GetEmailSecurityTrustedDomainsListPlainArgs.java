@@ -80,7 +80,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     @Import(name="order")
@@ -88,7 +88,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
     /**
      * @return The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
@@ -200,7 +200,7 @@ public final class GetEmailSecurityTrustedDomainsListPlainArgs extends com.pulum
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 

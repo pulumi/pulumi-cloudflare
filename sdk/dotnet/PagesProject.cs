@@ -10,9 +10,279 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; If you are using a `source` block configuration, you must first have a
+    /// &gt; If you are using a `Source` block configuration, you must first have a
     ///    connected GitHub or GitLab account connected to Cloudflare. See the
     ///    [Getting Started with Pages] documentation on how to link your accounts.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePagesProject = new Cloudflare.PagesProject("example_pages_project", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         BuildConfig = new Cloudflare.Inputs.PagesProjectBuildConfigArgs
+    ///         {
+    ///             Build_caching = true,
+    ///             Build_command = "npm run build",
+    ///             Destination_dir = "build",
+    ///             Root_dir = "/",
+    ///             Web_analytics_tag = "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+    ///             Web_analytics_token = "021e1057c18547eca7b79f2516f06o7x",
+    ///         },
+    ///         DeploymentConfigs = new Cloudflare.Inputs.PagesProjectDeploymentConfigsArgs
+    ///         {
+    ///             Preview = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewArgs
+    ///             {
+    ///                 AiBindings = 
+    ///                 {
+    ///                     { "AI_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewAiBindingsArgs
+    ///                     {
+    ///                         ProjectId = "some-project-id",
+    ///                     } },
+    ///                 },
+    ///                 AnalyticsEngineDatasets = 
+    ///                 {
+    ///                     { "ANALYTICS_ENGINE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs
+    ///                     {
+    ///                         Dataset = "api_analytics",
+    ///                     } },
+    ///                 },
+    ///                 Browsers = 
+    ///                 {
+    ///                     { "BROWSER", null },
+    ///                 },
+    ///                 CompatibilityDate = "2022-01-01",
+    ///                 CompatibilityFlags = new[]
+    ///                 {
+    ///                     "url_standard",
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewD1DatabasesArgs
+    ///                     {
+    ///                         Id = "445e2955-951a-43f8-a35b-a4d0c8138f63",
+    ///                     } },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 EnvVars = 
+    ///                 {
+    ///                     { "foo", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewEnvVarsArgs
+    ///                     {
+    ///                         Type = "plain_text",
+    ///                         Value = "hello world",
+    ///                     } },
+    ///                 },
+    ///                 HyperdriveBindings = 
+    ///                 {
+    ///                     { "HYPERDRIVE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs
+    ///                     {
+    ///                         Id = "a76a99bc342644deb02c38d66082262a",
+    ///                     } },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 MtlsCertificates = 
+    ///                 {
+    ///                     { "MTLS", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs
+    ///                     {
+    ///                         CertificateId = "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+    ///                     } },
+    ///                 },
+    ///                 Placement = new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs
+    ///                 {
+    ///                     Mode = "smart",
+    ///                 },
+    ///                 QueueProducers = 
+    ///                 {
+    ///                     { "QUEUE_PRODUCER_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewQueueProducersArgs
+    ///                     {
+    ///                         Name = "some-queue",
+    ///                     } },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewR2BucketsArgs
+    ///                     {
+    ///                         Jurisdiction = "eu",
+    ///                         Name = "some-bucket",
+    ///                     } },
+    ///                 },
+    ///                 Services = 
+    ///                 {
+    ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewServicesArgs
+    ///                     {
+    ///                         Entrypoint = "MyHandler",
+    ///                         Environment = "production",
+    ///                         Service = "example-worker",
+    ///                     } },
+    ///                 },
+    ///                 VectorizeBindings = 
+    ///                 {
+    ///                     { "VECTORIZE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs
+    ///                     {
+    ///                         IndexName = "my_index",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///             Production = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionArgs
+    ///             {
+    ///                 AiBindings = 
+    ///                 {
+    ///                     { "AI_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionAiBindingsArgs
+    ///                     {
+    ///                         ProjectId = "some-project-id",
+    ///                     } },
+    ///                 },
+    ///                 AnalyticsEngineDatasets = 
+    ///                 {
+    ///                     { "ANALYTICS_ENGINE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs
+    ///                     {
+    ///                         Dataset = "api_analytics",
+    ///                     } },
+    ///                 },
+    ///                 Browsers = 
+    ///                 {
+    ///                     { "BROWSER", null },
+    ///                 },
+    ///                 CompatibilityDate = "2022-01-01",
+    ///                 CompatibilityFlags = new[]
+    ///                 {
+    ///                     "url_standard",
+    ///                 },
+    ///                 D1Databases = 
+    ///                 {
+    ///                     { "D1_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionD1DatabasesArgs
+    ///                     {
+    ///                         Id = "445e2955-951a-43f8-a35b-a4d0c8138f63",
+    ///                     } },
+    ///                 },
+    ///                 DurableObjectNamespaces = 
+    ///                 {
+    ///                     { "DO_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 EnvVars = 
+    ///                 {
+    ///                     { "foo", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionEnvVarsArgs
+    ///                     {
+    ///                         Type = "plain_text",
+    ///                         Value = "hello world",
+    ///                     } },
+    ///                 },
+    ///                 HyperdriveBindings = 
+    ///                 {
+    ///                     { "HYPERDRIVE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs
+    ///                     {
+    ///                         Id = "a76a99bc342644deb02c38d66082262a",
+    ///                     } },
+    ///                 },
+    ///                 KvNamespaces = 
+    ///                 {
+    ///                     { "KV_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionKvNamespacesArgs
+    ///                     {
+    ///                         NamespaceId = "5eb63bbbe01eeed093cb22bb8f5acdc3",
+    ///                     } },
+    ///                 },
+    ///                 MtlsCertificates = 
+    ///                 {
+    ///                     { "MTLS", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs
+    ///                     {
+    ///                         CertificateId = "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+    ///                     } },
+    ///                 },
+    ///                 Placement = new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionPlacementArgs
+    ///                 {
+    ///                     Mode = "smart",
+    ///                 },
+    ///                 QueueProducers = 
+    ///                 {
+    ///                     { "QUEUE_PRODUCER_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionQueueProducersArgs
+    ///                     {
+    ///                         Name = "some-queue",
+    ///                     } },
+    ///                 },
+    ///                 R2Buckets = 
+    ///                 {
+    ///                     { "R2_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionR2BucketsArgs
+    ///                     {
+    ///                         Jurisdiction = "eu",
+    ///                         Name = "some-bucket",
+    ///                     } },
+    ///                 },
+    ///                 Services = 
+    ///                 {
+    ///                     { "SERVICE_BINDING", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionServicesArgs
+    ///                     {
+    ///                         Entrypoint = "MyHandler",
+    ///                         Environment = "production",
+    ///                         Service = "example-worker",
+    ///                     } },
+    ///                 },
+    ///                 VectorizeBindings = 
+    ///                 {
+    ///                     { "VECTORIZE", new Cloudflare.Inputs.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs
+    ///                     {
+    ///                         IndexName = "my_index",
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "NextJS Blog",
+    ///         ProductionBranch = "main",
+    ///         Source = new Cloudflare.Inputs.PagesProjectSourceArgs
+    ///         {
+    ///             Config = new Cloudflare.Inputs.PagesProjectSourceConfigArgs
+    ///             {
+    ///                 DeploymentsEnabled = true,
+    ///                 Owner = "owner",
+    ///                 PathExcludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PathIncludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PrCommentsEnabled = true,
+    ///                 PreviewBranchExcludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PreviewBranchIncludes = new[]
+    ///                 {
+    ///                     "string",
+    ///                 },
+    ///                 PreviewDeploymentSetting = "all",
+    ///                 ProductionBranch = "production_branch",
+    ///                 ProductionDeploymentsEnabled = true,
+    ///                 RepoName = "repo_name",
+    ///             },
+    ///             Type = "type",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

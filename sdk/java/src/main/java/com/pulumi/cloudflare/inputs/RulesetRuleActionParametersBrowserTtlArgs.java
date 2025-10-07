@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
     public static final RulesetRuleActionParametersBrowserTtlArgs Empty = new RulesetRuleActionParametersBrowserTtlArgs();
 
     /**
-     * The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
     /**
-     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     public Optional<Output<Integer>> default_() {
@@ -75,7 +75,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param default_ The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+         * @param default_ The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
         }
 
         /**
-         * @param default_ The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+         * @param default_ The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
          * 
          * @return builder
          * 

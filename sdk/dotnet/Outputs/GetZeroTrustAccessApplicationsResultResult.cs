@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Aud;
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        /// When set to `True`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         public readonly bool AutoRedirectToIdentity;
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CustomPages;
         /// <summary>
-        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of destinations secured by Access. This supersedes `SelfHostedDomains` to allow for more flexibility in defining different types of domains. If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultDestinationResult> Destinations;
         /// <summary>
@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         public readonly bool OptionsPreflightBypass;
         /// <summary>
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustAccessApplicationsResultScimConfigResult ScimConfig;
         /// <summary>
-        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `Destinations` and will be supported until **November 21, 2025.** If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         public readonly ImmutableArray<string> SelfHostedDomains;
         /// <summary>
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaResult> TargetCriterias;
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "DashSso", "infrastructure", "rdp".
         /// </summary>
         public readonly string Type;
 

@@ -49,14 +49,14 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
-     * The authorization_endpoint URL of your IdP
+     * The authorizationEndpoint URL of your IdP
      * 
      */
     @Import(name="authUrl")
     private @Nullable Output<String> authUrl;
 
     /**
-     * @return The authorization_endpoint URL of your IdP
+     * @return The authorizationEndpoint URL of your IdP
      * 
      */
     public Optional<Output<String>> authUrl() {
@@ -109,14 +109,14 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
-     * The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+     * The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
      * 
      */
     @Import(name="certsUrl")
     private @Nullable Output<String> certsUrl;
 
     /**
-     * @return The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+     * @return The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
      * 
      */
     public Optional<Output<String>> certsUrl() {
@@ -214,14 +214,14 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
-     * The claim name for email in the id_token response.
+     * The claim name for email in the idToken response.
      * 
      */
     @Import(name="emailClaimName")
     private @Nullable Output<String> emailClaimName;
 
     /**
-     * @return The claim name for email in the id_token response.
+     * @return The claim name for email in the idToken response.
      * 
      */
     public Optional<Output<String>> emailClaimName() {
@@ -335,7 +335,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
     /**
      * Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
     @Import(name="prompt")
@@ -343,7 +343,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
     /**
      * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+     * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
      * 
      */
     public Optional<Output<String>> prompt() {
@@ -418,14 +418,14 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
     }
 
     /**
-     * The token_endpoint URL of your IdP
+     * The tokenEndpoint URL of your IdP
      * 
      */
     @Import(name="tokenUrl")
     private @Nullable Output<String> tokenUrl;
 
     /**
-     * @return The token_endpoint URL of your IdP
+     * @return The tokenEndpoint URL of your IdP
      * 
      */
     public Optional<Output<String>> tokenUrl() {
@@ -536,7 +536,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authUrl The authorization_endpoint URL of your IdP
+         * @param authUrl The authorizationEndpoint URL of your IdP
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param authUrl The authorization_endpoint URL of your IdP
+         * @param authUrl The authorizationEndpoint URL of your IdP
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param certsUrl The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+         * @param certsUrl The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param certsUrl The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+         * @param certsUrl The jwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
          * 
          * @return builder
          * 
@@ -777,7 +777,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param emailClaimName The claim name for email in the id_token response.
+         * @param emailClaimName The claim name for email in the idToken response.
          * 
          * @return builder
          * 
@@ -788,7 +788,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param emailClaimName The claim name for email in the id_token response.
+         * @param emailClaimName The claim name for email in the idToken response.
          * 
          * @return builder
          * 
@@ -966,7 +966,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-         * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -978,7 +978,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
 
         /**
          * @param prompt Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-         * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+         * Available values: &#34;login&#34;, &#34;selectAccount&#34;, &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -1091,7 +1091,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param tokenUrl The token_endpoint URL of your IdP
+         * @param tokenUrl The tokenEndpoint URL of your IdP
          * 
          * @return builder
          * 
@@ -1102,7 +1102,7 @@ public final class ZeroTrustAccessIdentityProviderConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param tokenUrl The token_endpoint URL of your IdP
+         * @param tokenUrl The tokenEndpoint URL of your IdP
          * 
          * @return builder
          * 

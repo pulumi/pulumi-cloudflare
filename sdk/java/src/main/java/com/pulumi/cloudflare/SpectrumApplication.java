@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**
      * Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     @Export(name="argoSmartRouting", refs={Boolean.class}, tree="[0]")
@@ -97,7 +97,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     public Output<Boolean> argoSmartRouting() {

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// Custom page type.
-        /// Available values: "identity_denied", "forbidden".
+        /// Available values: "IdentityDenied", "forbidden".
         /// </summary>
         public readonly string Type;
         /// <summary>

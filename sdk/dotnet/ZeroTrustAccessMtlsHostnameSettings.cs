@@ -11,6 +11,31 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessMtlsHostnameSettings = new Cloudflare.ZeroTrustAccessMtlsHostnameSettings("example_zero_trust_access_mtls_hostname_settings", new()
+    ///     {
+    ///         Settings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs
+    ///             {
+    ///                 China_network = false,
+    ///                 Client_certificate_forwarding = true,
+    ///                 Hostname = "admin.example.com",
+    ///             },
+    ///         },
+    ///         ZoneId = "zone_id",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")]
     public partial class ZeroTrustAccessMtlsHostnameSettings : global::Pulumi.CustomResource

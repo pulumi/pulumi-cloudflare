@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
     /**
-     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     private @Nullable Integer default_;
@@ -34,7 +34,7 @@ public final class RulesetRuleActionParametersEdgeTtl {
 
     private RulesetRuleActionParametersEdgeTtl() {}
     /**
-     * @return The edge TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The edge TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     public Optional<Integer> default_() {

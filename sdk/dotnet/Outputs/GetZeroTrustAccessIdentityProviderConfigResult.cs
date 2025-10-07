@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
         /// <summary>
-        /// The authorization_endpoint URL of your IdP
+        /// The AuthorizationEndpoint URL of your IdP
         /// </summary>
         public readonly string AuthUrl;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CentrifyAppId;
         /// <summary>
-        /// The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+        /// The JwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
         /// </summary>
         public readonly string CertsUrl;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string EmailAttributeName;
         /// <summary>
-        /// The claim name for email in the id_token response.
+        /// The claim name for email in the IdToken response.
         /// </summary>
         public readonly string EmailClaimName;
         /// <summary>
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool PkceEnabled;
         /// <summary>
         /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        /// Available values: "login", "select_account", "none".
+        /// Available values: "login", "SelectAccount", "none".
         /// </summary>
         public readonly string Prompt;
         public readonly string RedirectUrl;
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool SupportGroups;
         /// <summary>
-        /// The token_endpoint URL of your IdP
+        /// The TokenEndpoint URL of your IdP
         /// </summary>
         public readonly string TokenUrl;
 

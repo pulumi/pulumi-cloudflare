@@ -28,7 +28,7 @@ public final class GetWaitingRoomResult {
      */
     private GetWaitingRoomCookieAttributes cookieAttributes;
     /**
-     * @return Appends a &#39;_&#39; + a custom suffix to the end of Cloudflare Waiting Room&#39;s cookie name(_*cf*waitingroom). If `cookie_suffix` is &#34;abcd&#34;, the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
+     * @return Appends a &#39;_&#39; + a custom suffix to the end of Cloudflare Waiting Room&#39;s cookie name(_*cf*waitingroom). If `cookieSuffix` is &#34;abcd&#34;, the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      * 
      */
     private String cookieSuffix;
@@ -82,7 +82,7 @@ public final class GetWaitingRoomResult {
         return this.cookieAttributes;
     }
     /**
-     * @return Appends a &#39;_&#39; + a custom suffix to the end of Cloudflare Waiting Room&#39;s cookie name(_*cf*waitingroom). If `cookie_suffix` is &#34;abcd&#34;, the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
+     * @return Appends a &#39;_&#39; + a custom suffix to the end of Cloudflare Waiting Room&#39;s cookie name(_*cf*waitingroom). If `cookieSuffix` is &#34;abcd&#34;, the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additionalRoutes`.
      * 
      */
     public String cookieSuffix() {

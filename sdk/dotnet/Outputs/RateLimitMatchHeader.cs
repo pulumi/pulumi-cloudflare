@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
+        /// The operator used when matching: `Eq` means "equal" and `Ne` means "not equal".
         /// Available values: "eq", "ne".
         /// </summary>
         public readonly string? Op;

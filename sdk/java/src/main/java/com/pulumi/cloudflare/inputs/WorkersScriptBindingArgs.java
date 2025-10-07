@@ -139,14 +139,14 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The environment of the script_name to bind to.
+     * The environment of the scriptName to bind to.
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return The environment of the script_name to bind to.
+     * @return The environment of the scriptName to bind to.
      * 
      */
     public Optional<Output<String>> environment() {
@@ -308,14 +308,14 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     @Import(name="oldName")
     private @Nullable Output<String> oldName;
 
     /**
-     * @return The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+     * @return The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
      * 
      */
     public Optional<Output<String>> oldName() {
@@ -764,7 +764,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param environment The environment of the script_name to bind to.
+         * @param environment The environment of the scriptName to bind to.
          * 
          * @return builder
          * 
@@ -775,7 +775,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param environment The environment of the script_name to bind to.
+         * @param environment The environment of the scriptName to bind to.
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
          * 
          * @return builder
          * 
@@ -1010,7 +1010,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+         * @param oldName The old name of the inherited binding. If set, the binding will be renamed from `oldName` to `name` in the new version. If not set, the binding will keep the same name between versions.
          * 
          * @return builder
          * 

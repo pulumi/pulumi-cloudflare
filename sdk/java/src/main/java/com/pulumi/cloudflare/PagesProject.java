@@ -25,6 +25,173 @@ import javax.annotation.Nullable;
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages] documentation on how to link your accounts.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.PagesProject;
+ * import com.pulumi.cloudflare.PagesProjectArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsPreviewPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsProductionPlacementArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
+ * import com.pulumi.cloudflare.inputs.PagesProjectSourceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePagesProject = new PagesProject("examplePagesProject", PagesProjectArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .buildConfig(PagesProjectBuildConfigArgs.builder()
+ *                 .build_caching(true)
+ *                 .build_command("npm run build")
+ *                 .destination_dir("build")
+ *                 .root_dir("/")
+ *                 .web_analytics_tag("cee1c73f6e4743d0b5e6bb1a0bcaabcc")
+ *                 .web_analytics_token("021e1057c18547eca7b79f2516f06o7x")
+ *                 .build())
+ *             .deploymentConfigs(PagesProjectDeploymentConfigsArgs.builder()
+ *                 .preview(PagesProjectDeploymentConfigsPreviewArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", PagesProjectDeploymentConfigsPreviewAiBindingsArgs.builder()
+ *                         .projectId("some-project-id")
+ *                         .build()))
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs.builder()
+ *                         .dataset("api_analytics")
+ *                         .build()))
+ *                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsPreviewBrowsersArgs.builder()
+ *                         .build()))
+ *                     .compatibilityDate("2022-01-01")
+ *                     .compatibilityFlags("url_standard")
+ *                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsPreviewD1DatabasesArgs.builder()
+ *                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
+ *                         .build()))
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs.builder()
+ *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
+ *                         .build()))
+ *                     .envVars(Map.of("foo", PagesProjectDeploymentConfigsPreviewEnvVarsArgs.builder()
+ *                         .type("plain_text")
+ *                         .value("hello world")
+ *                         .build()))
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs.builder()
+ *                         .id("a76a99bc342644deb02c38d66082262a")
+ *                         .build()))
+ *                     .kvNamespaces(Map.of("KV_BINDING", PagesProjectDeploymentConfigsPreviewKvNamespacesArgs.builder()
+ *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
+ *                         .build()))
+ *                     .mtlsCertificates(Map.of("MTLS", PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs.builder()
+ *                         .certificateId("d7cdd17c-916f-4cb7-aabe-585eb382ec4e")
+ *                         .build()))
+ *                     .placement(PagesProjectDeploymentConfigsPreviewPlacementArgs.builder()
+ *                         .mode("smart")
+ *                         .build())
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", PagesProjectDeploymentConfigsPreviewQueueProducersArgs.builder()
+ *                         .name("some-queue")
+ *                         .build()))
+ *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsPreviewR2BucketsArgs.builder()
+ *                         .jurisdiction("eu")
+ *                         .name("some-bucket")
+ *                         .build()))
+ *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsPreviewServicesArgs.builder()
+ *                         .entrypoint("MyHandler")
+ *                         .environment("production")
+ *                         .service("example-worker")
+ *                         .build()))
+ *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs.builder()
+ *                         .indexName("my_index")
+ *                         .build()))
+ *                     .build())
+ *                 .production(PagesProjectDeploymentConfigsProductionArgs.builder()
+ *                     .aiBindings(Map.of("AI_BINDING", PagesProjectDeploymentConfigsProductionAiBindingsArgs.builder()
+ *                         .projectId("some-project-id")
+ *                         .build()))
+ *                     .analyticsEngineDatasets(Map.of("ANALYTICS_ENGINE_BINDING", PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs.builder()
+ *                         .dataset("api_analytics")
+ *                         .build()))
+ *                     .browsers(Map.of("BROWSER", PagesProjectDeploymentConfigsProductionBrowsersArgs.builder()
+ *                         .build()))
+ *                     .compatibilityDate("2022-01-01")
+ *                     .compatibilityFlags("url_standard")
+ *                     .d1Databases(Map.of("D1_BINDING", PagesProjectDeploymentConfigsProductionD1DatabasesArgs.builder()
+ *                         .id("445e2955-951a-43f8-a35b-a4d0c8138f63")
+ *                         .build()))
+ *                     .durableObjectNamespaces(Map.of("DO_BINDING", PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs.builder()
+ *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
+ *                         .build()))
+ *                     .envVars(Map.of("foo", PagesProjectDeploymentConfigsProductionEnvVarsArgs.builder()
+ *                         .type("plain_text")
+ *                         .value("hello world")
+ *                         .build()))
+ *                     .hyperdriveBindings(Map.of("HYPERDRIVE", PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs.builder()
+ *                         .id("a76a99bc342644deb02c38d66082262a")
+ *                         .build()))
+ *                     .kvNamespaces(Map.of("KV_BINDING", PagesProjectDeploymentConfigsProductionKvNamespacesArgs.builder()
+ *                         .namespaceId("5eb63bbbe01eeed093cb22bb8f5acdc3")
+ *                         .build()))
+ *                     .mtlsCertificates(Map.of("MTLS", PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs.builder()
+ *                         .certificateId("d7cdd17c-916f-4cb7-aabe-585eb382ec4e")
+ *                         .build()))
+ *                     .placement(PagesProjectDeploymentConfigsProductionPlacementArgs.builder()
+ *                         .mode("smart")
+ *                         .build())
+ *                     .queueProducers(Map.of("QUEUE_PRODUCER_BINDING", PagesProjectDeploymentConfigsProductionQueueProducersArgs.builder()
+ *                         .name("some-queue")
+ *                         .build()))
+ *                     .r2Buckets(Map.of("R2_BINDING", PagesProjectDeploymentConfigsProductionR2BucketsArgs.builder()
+ *                         .jurisdiction("eu")
+ *                         .name("some-bucket")
+ *                         .build()))
+ *                     .services(Map.of("SERVICE_BINDING", PagesProjectDeploymentConfigsProductionServicesArgs.builder()
+ *                         .entrypoint("MyHandler")
+ *                         .environment("production")
+ *                         .service("example-worker")
+ *                         .build()))
+ *                     .vectorizeBindings(Map.of("VECTORIZE", PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs.builder()
+ *                         .indexName("my_index")
+ *                         .build()))
+ *                     .build())
+ *                 .build())
+ *             .name("NextJS Blog")
+ *             .productionBranch("main")
+ *             .source(PagesProjectSourceArgs.builder()
+ *                 .config(PagesProjectSourceConfigArgs.builder()
+ *                     .deploymentsEnabled(true)
+ *                     .owner("owner")
+ *                     .pathExcludes("string")
+ *                     .pathIncludes("string")
+ *                     .prCommentsEnabled(true)
+ *                     .previewBranchExcludes("string")
+ *                     .previewBranchIncludes("string")
+ *                     .previewDeploymentSetting("all")
+ *                     .productionBranch("production_branch")
+ *                     .productionDeploymentsEnabled(true)
+ *                     .repoName("repo_name")
+ *                     .build())
+ *                 .type("type")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * !&gt; It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
