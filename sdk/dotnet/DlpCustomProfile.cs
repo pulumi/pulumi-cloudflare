@@ -12,6 +12,45 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDlpCustomProfile = new Cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", new()
+    ///     {
+    ///         AccountId = "account_id",
+    ///         Name = "name",
+    ///         AiContextEnabled = true,
+    ///         AllowedMatchCount = 5,
+    ///         ConfidenceThreshold = "confidence_threshold",
+    ///         ContextAwareness = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs
+    ///             {
+    ///                 Files = true,
+    ///             },
+    ///         },
+    ///         Description = "description",
+    ///         OcrEnabled = true,
+    ///         SharedEntries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Entry_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 Entry_type = "custom",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -214,10 +214,10 @@ public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResou
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      * @deprecated
-     * Use the config_src field instead.
+     * Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the config_src field instead. */
+    @Deprecated /* Use the configSrc field instead. */
     @Export(name="remoteConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteConfig;
 
@@ -246,7 +246,7 @@ public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResou
     }
     /**
      * The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     @Export(name="tunType", refs={String.class}, tree="[0]")
@@ -254,7 +254,7 @@ public class ZeroTrustTunnelCloudflared extends com.pulumi.resources.CustomResou
 
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     public Output<String> tunType() {

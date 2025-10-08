@@ -14,6 +14,158 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustGatewayPolicy(ctx, "example_zero_trust_gateway_policy", &cloudflare.ZeroTrustGatewayPolicyArgs{
+//				AccountId:     pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Action:        pulumi.String("allow"),
+//				Name:          pulumi.String("block bad websites"),
+//				Description:   pulumi.String("Block bad websites based on their host name."),
+//				DevicePosture: pulumi.String("any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})"),
+//				Enabled:       pulumi.Bool(true),
+//				Expiration: &cloudflare.ZeroTrustGatewayPolicyExpirationArgs{
+//					Expires_at: "2014-01-01T05:20:20Z",
+//					Duration:   pulumi.Int(10),
+//				},
+//				Filters: pulumi.StringArray{
+//					pulumi.String("http"),
+//				},
+//				Identity:   pulumi.String("any(identity.groups.name[*] in {\"finance\"})"),
+//				Precedence: pulumi.Int(0),
+//				RuleSettings: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsArgs{
+//					Add_headers: map[string]interface{}{
+//						"my-Next-Header": []string{
+//							"foo",
+//							"bar",
+//						},
+//						"x-Custom-Header-Name": []string{
+//							"somecustomvalue",
+//						},
+//					},
+//					Allow_child_bypass: false,
+//					Audit_ssh: map[string]interface{}{
+//						"commandLogging": false,
+//					},
+//					Biso_admin_controls: map[string]interface{}{
+//						"copy":     "remote_only",
+//						"dcp":      true,
+//						"dd":       true,
+//						"dk":       true,
+//						"download": "enabled",
+//						"dp":       false,
+//						"du":       true,
+//						"keyboard": "enabled",
+//						"paste":    "enabled",
+//						"printing": "enabled",
+//						"upload":   "enabled",
+//						"version":  "v1",
+//					},
+//					Block_page: map[string]interface{}{
+//						"targetUri":      "https://example.com",
+//						"includeContext": true,
+//					},
+//					Block_page_enabled: true,
+//					Block_reason:       "This website is a security risk",
+//					Bypass_parent_rule: false,
+//					Check_session: map[string]interface{}{
+//						"duration": "300s",
+//						"enforce":  true,
+//					},
+//					Dns_resolvers: map[string]interface{}{
+//						"ipv4": []map[string]interface{}{
+//							map[string]interface{}{
+//								"ip":                         "2.2.2.2",
+//								"port":                       5053,
+//								"routeThroughPrivateNetwork": true,
+//								"vnetId":                     "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//							},
+//						},
+//						"ipv6": []map[string]interface{}{
+//							map[string]interface{}{
+//								"ip":                         "2001:DB8::",
+//								"port":                       5053,
+//								"routeThroughPrivateNetwork": true,
+//								"vnetId":                     "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//							},
+//						},
+//					},
+//					Egress: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsEgressArgs{
+//						Ipv4:         pulumi.String("192.0.2.2"),
+//						Ipv4Fallback: pulumi.String("192.0.2.3"),
+//						Ipv6:         pulumi.String("2001:DB8::/64"),
+//					},
+//					Ignore_cname_category_matches:      true,
+//					Insecure_disable_dnssec_validation: false,
+//					Ip_categories:                      true,
+//					Ip_indicator_feeds:                 true,
+//					L4override: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsL4overrideArgs{
+//						Ip:   pulumi.String("1.1.1.1"),
+//						Port: pulumi.Int(0),
+//					},
+//					Notification_settings: map[string]interface{}{
+//						"enabled":        true,
+//						"includeContext": true,
+//						"msg":            "msg",
+//						"supportUrl":     "support_url",
+//					},
+//					Override_host: "example.com",
+//					Override_ips: []string{
+//						"1.1.1.1",
+//						"2.2.2.2",
+//					},
+//					Payload_log: map[string]interface{}{
+//						"enabled": true,
+//					},
+//					Quarantine: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs{
+//						FileTypes: pulumi.StringArray{
+//							pulumi.String("exe"),
+//						},
+//					},
+//					Redirect: &cloudflare.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs{
+//						TargetUri:            pulumi.String("https://example.com"),
+//						IncludeContext:       pulumi.Bool(true),
+//						PreservePathAndQuery: pulumi.Bool(true),
+//					},
+//					Resolve_dns_internally: map[string]interface{}{
+//						"fallback": "none",
+//						"viewId":   "view_id",
+//					},
+//					Resolve_dns_through_cloudflare: true,
+//					Untrusted_cert: map[string]interface{}{
+//						"action": "error",
+//					},
+//				},
+//				Schedule: &cloudflare.ZeroTrustGatewayPolicyScheduleArgs{
+//					Fri:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Mon:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Sat:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Sun:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Thu:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Time_zone: "America/New York",
+//					Tue:       pulumi.String("08:00-12:30,13:30-17:00"),
+//					Wed:       pulumi.String("08:00-12:30,13:30-17:00"),
+//				},
+//				Traffic: pulumi.String("http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

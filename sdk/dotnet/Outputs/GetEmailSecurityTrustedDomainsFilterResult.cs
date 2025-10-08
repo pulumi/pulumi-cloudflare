@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? IsSimilarity;
         /// <summary>
         /// The field to sort by.
-        /// Available values: "pattern", "created_at".
+        /// Available values: "pattern", "CreatedAt".
         /// </summary>
         public readonly string? Order;
         public readonly string? Pattern;

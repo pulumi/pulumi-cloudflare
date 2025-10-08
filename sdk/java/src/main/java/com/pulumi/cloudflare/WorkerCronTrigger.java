@@ -19,6 +19,39 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersCronTrigger;
+ * import com.pulumi.cloudflare.WorkersCronTriggerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleWorkersCronTrigger = new WorkersCronTrigger("exampleWorkersCronTrigger", WorkersCronTriggerArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .scriptName("this-is_my_script-01")
+ *             .body(List.of(Map.of("cron", "*}&#47;{@code 30 * * * *")))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

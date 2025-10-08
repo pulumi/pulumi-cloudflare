@@ -8,6 +8,42 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleR2BucketLifecycle = new cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     bucketName: "example-bucket",
+ *     rules: [{
+ *         id: "Expire all objects older than 24 hours",
+ *         conditions: {
+ *             prefix: "prefix",
+ *         },
+ *         enabled: true,
+ *         abort_multipart_uploads_transition: {
+ *             condition: {
+ *                 maxAge: 0,
+ *                 type: "Age",
+ *             },
+ *         },
+ *         delete_objects_transition: {
+ *             condition: {
+ *                 maxAge: 0,
+ *                 type: "Age",
+ *             },
+ *         },
+ *         storage_class_transitions: [{
+ *             condition: {
+ *                 maxAge: 0,
+ *                 type: "Age",
+ *             },
+ *             storageClass: "InfrequentAccess",
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export class R2BucketLifecycle extends pulumi.CustomResource {
     /**

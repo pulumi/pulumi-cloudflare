@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-        /// Available values: "allow", "deny", "non_identity", "bypass".
+        /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
-        /// Available values: "pass_through", "block", "error".
+        /// Available values: "PassThrough", "block", "error".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

@@ -17,6 +17,220 @@ import (
 //	connected GitHub or GitLab account connected to Cloudflare. See the
 //	[Getting Started with Pages] documentation on how to link your accounts.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPagesProject(ctx, "example_pages_project", &cloudflare.PagesProjectArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
+//					Build_caching:       true,
+//					Build_command:       "npm run build",
+//					Destination_dir:     "build",
+//					Root_dir:            "/",
+//					Web_analytics_tag:   "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+//					Web_analytics_token: "021e1057c18547eca7b79f2516f06o7x",
+//				},
+//				DeploymentConfigs: &cloudflare.PagesProjectDeploymentConfigsArgs{
+//					Preview: &cloudflare.PagesProjectDeploymentConfigsPreviewArgs{
+//						AiBindings: cloudflare.PagesProjectDeploymentConfigsPreviewAiBindingsMap{
+//							"AI_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewAiBindingsArgs{
+//								ProjectId: pulumi.String("some-project-id"),
+//							},
+//						},
+//						AnalyticsEngineDatasets: cloudflare.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsMap{
+//							"ANALYTICS_ENGINE_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasetsArgs{
+//								Dataset: pulumi.String("api_analytics"),
+//							},
+//						},
+//						Browsers: cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersMap{
+//							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsPreviewBrowsersArgs{},
+//						},
+//						CompatibilityDate: pulumi.String("2022-01-01"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("url_standard"),
+//						},
+//						D1Databases: cloudflare.PagesProjectDeploymentConfigsPreviewD1DatabasesMap{
+//							"D1_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewD1DatabasesArgs{
+//								Id: pulumi.String("445e2955-951a-43f8-a35b-a4d0c8138f63"),
+//							},
+//						},
+//						DurableObjectNamespaces: cloudflare.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMap{
+//							"DO_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						EnvVars: cloudflare.PagesProjectDeploymentConfigsPreviewEnvVarsMap{
+//							"foo": &cloudflare.PagesProjectDeploymentConfigsPreviewEnvVarsArgs{
+//								Type:  pulumi.String("plain_text"),
+//								Value: pulumi.String("hello world"),
+//							},
+//						},
+//						HyperdriveBindings: cloudflare.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsMap{
+//							"HYPERDRIVE": &cloudflare.PagesProjectDeploymentConfigsPreviewHyperdriveBindingsArgs{
+//								Id: pulumi.String("a76a99bc342644deb02c38d66082262a"),
+//							},
+//						},
+//						KvNamespaces: cloudflare.PagesProjectDeploymentConfigsPreviewKvNamespacesMap{
+//							"KV_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewKvNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						MtlsCertificates: cloudflare.PagesProjectDeploymentConfigsPreviewMtlsCertificatesMap{
+//							"MTLS": &cloudflare.PagesProjectDeploymentConfigsPreviewMtlsCertificatesArgs{
+//								CertificateId: pulumi.String("d7cdd17c-916f-4cb7-aabe-585eb382ec4e"),
+//							},
+//						},
+//						Placement: &cloudflare.PagesProjectDeploymentConfigsPreviewPlacementArgs{
+//							Mode: pulumi.String("smart"),
+//						},
+//						QueueProducers: cloudflare.PagesProjectDeploymentConfigsPreviewQueueProducersMap{
+//							"QUEUE_PRODUCER_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewQueueProducersArgs{
+//								Name: pulumi.String("some-queue"),
+//							},
+//						},
+//						R2Buckets: cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsMap{
+//							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewR2BucketsArgs{
+//								Jurisdiction: pulumi.String("eu"),
+//								Name:         pulumi.String("some-bucket"),
+//							},
+//						},
+//						Services: cloudflare.PagesProjectDeploymentConfigsPreviewServicesMap{
+//							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsPreviewServicesArgs{
+//								Entrypoint:  pulumi.String("MyHandler"),
+//								Environment: pulumi.String("production"),
+//								Service:     pulumi.String("example-worker"),
+//							},
+//						},
+//						VectorizeBindings: cloudflare.PagesProjectDeploymentConfigsPreviewVectorizeBindingsMap{
+//							"VECTORIZE": &cloudflare.PagesProjectDeploymentConfigsPreviewVectorizeBindingsArgs{
+//								IndexName: pulumi.String("my_index"),
+//							},
+//						},
+//					},
+//					Production: &cloudflare.PagesProjectDeploymentConfigsProductionArgs{
+//						AiBindings: cloudflare.PagesProjectDeploymentConfigsProductionAiBindingsMap{
+//							"AI_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionAiBindingsArgs{
+//								ProjectId: pulumi.String("some-project-id"),
+//							},
+//						},
+//						AnalyticsEngineDatasets: cloudflare.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsMap{
+//							"ANALYTICS_ENGINE_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasetsArgs{
+//								Dataset: pulumi.String("api_analytics"),
+//							},
+//						},
+//						Browsers: cloudflare.PagesProjectDeploymentConfigsProductionBrowsersMap{
+//							"BROWSER": &cloudflare.PagesProjectDeploymentConfigsProductionBrowsersArgs{},
+//						},
+//						CompatibilityDate: pulumi.String("2022-01-01"),
+//						CompatibilityFlags: pulumi.StringArray{
+//							pulumi.String("url_standard"),
+//						},
+//						D1Databases: cloudflare.PagesProjectDeploymentConfigsProductionD1DatabasesMap{
+//							"D1_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionD1DatabasesArgs{
+//								Id: pulumi.String("445e2955-951a-43f8-a35b-a4d0c8138f63"),
+//							},
+//						},
+//						DurableObjectNamespaces: cloudflare.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesMap{
+//							"DO_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionDurableObjectNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						EnvVars: cloudflare.PagesProjectDeploymentConfigsProductionEnvVarsMap{
+//							"foo": &cloudflare.PagesProjectDeploymentConfigsProductionEnvVarsArgs{
+//								Type:  pulumi.String("plain_text"),
+//								Value: pulumi.String("hello world"),
+//							},
+//						},
+//						HyperdriveBindings: cloudflare.PagesProjectDeploymentConfigsProductionHyperdriveBindingsMap{
+//							"HYPERDRIVE": &cloudflare.PagesProjectDeploymentConfigsProductionHyperdriveBindingsArgs{
+//								Id: pulumi.String("a76a99bc342644deb02c38d66082262a"),
+//							},
+//						},
+//						KvNamespaces: cloudflare.PagesProjectDeploymentConfigsProductionKvNamespacesMap{
+//							"KV_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionKvNamespacesArgs{
+//								NamespaceId: pulumi.String("5eb63bbbe01eeed093cb22bb8f5acdc3"),
+//							},
+//						},
+//						MtlsCertificates: cloudflare.PagesProjectDeploymentConfigsProductionMtlsCertificatesMap{
+//							"MTLS": &cloudflare.PagesProjectDeploymentConfigsProductionMtlsCertificatesArgs{
+//								CertificateId: pulumi.String("d7cdd17c-916f-4cb7-aabe-585eb382ec4e"),
+//							},
+//						},
+//						Placement: &cloudflare.PagesProjectDeploymentConfigsProductionPlacementArgs{
+//							Mode: pulumi.String("smart"),
+//						},
+//						QueueProducers: cloudflare.PagesProjectDeploymentConfigsProductionQueueProducersMap{
+//							"QUEUE_PRODUCER_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionQueueProducersArgs{
+//								Name: pulumi.String("some-queue"),
+//							},
+//						},
+//						R2Buckets: cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsMap{
+//							"R2_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionR2BucketsArgs{
+//								Jurisdiction: pulumi.String("eu"),
+//								Name:         pulumi.String("some-bucket"),
+//							},
+//						},
+//						Services: cloudflare.PagesProjectDeploymentConfigsProductionServicesMap{
+//							"SERVICE_BINDING": &cloudflare.PagesProjectDeploymentConfigsProductionServicesArgs{
+//								Entrypoint:  pulumi.String("MyHandler"),
+//								Environment: pulumi.String("production"),
+//								Service:     pulumi.String("example-worker"),
+//							},
+//						},
+//						VectorizeBindings: cloudflare.PagesProjectDeploymentConfigsProductionVectorizeBindingsMap{
+//							"VECTORIZE": &cloudflare.PagesProjectDeploymentConfigsProductionVectorizeBindingsArgs{
+//								IndexName: pulumi.String("my_index"),
+//							},
+//						},
+//					},
+//				},
+//				Name:             pulumi.String("NextJS Blog"),
+//				ProductionBranch: pulumi.String("main"),
+//				Source: &cloudflare.PagesProjectSourceArgs{
+//					Config: &cloudflare.PagesProjectSourceConfigArgs{
+//						DeploymentsEnabled: pulumi.Bool(true),
+//						Owner:              pulumi.String("owner"),
+//						PathExcludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PathIncludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PrCommentsEnabled: pulumi.Bool(true),
+//						PreviewBranchExcludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PreviewBranchIncludes: pulumi.StringArray{
+//							pulumi.String("string"),
+//						},
+//						PreviewDeploymentSetting:     pulumi.String("all"),
+//						ProductionBranch:             pulumi.String("production_branch"),
+//						ProductionDeploymentsEnabled: pulumi.Bool(true),
+//						RepoName:                     pulumi.String("repo_name"),
+//					},
+//					Type: pulumi.String("type"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.

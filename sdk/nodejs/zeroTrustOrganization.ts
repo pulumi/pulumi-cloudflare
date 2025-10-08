@@ -8,6 +8,35 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustOrganization = new cloudflare.ZeroTrustOrganization("example_zero_trust_organization", {
+ *     zoneId: "zone_id",
+ *     allowAuthenticateViaWarp: true,
+ *     authDomain: "test.cloudflareaccess.com",
+ *     autoRedirectToIdentity: true,
+ *     customPages: {
+ *         forbidden: "699d98642c564d2e855e9661899b7252",
+ *         identity_denied: "699d98642c564d2e855e9661899b7252",
+ *     },
+ *     isUiReadOnly: true,
+ *     loginDesign: {
+ *         background_color: "#c5ed1b",
+ *         footer_text: "This is an example description.",
+ *         header_text: "This is an example description.",
+ *         logo_path: "https://example.com/logo.png",
+ *         text_color: "#c5ed1b",
+ *     },
+ *     name: "Widget Corps Internal Applications",
+ *     sessionDuration: "24h",
+ *     uiReadOnlyToggleReason: "Temporarily turn off the UI read only lock to make a change via the UI",
+ *     userSeatExpirationInactiveTime: "730h",
+ *     warpAuthSessionDuration: "24h",
+ * });
+ * ```
  */
 export class ZeroTrustOrganization extends pulumi.CustomResource {
     /**

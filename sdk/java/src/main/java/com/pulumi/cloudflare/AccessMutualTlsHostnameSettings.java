@@ -21,6 +21,43 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessMtlsHostnameSettings;
+ * import com.pulumi.cloudflare.ZeroTrustAccessMtlsHostnameSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustAccessMtlsHostnameSettings = new ZeroTrustAccessMtlsHostnameSettings("exampleZeroTrustAccessMtlsHostnameSettings", ZeroTrustAccessMtlsHostnameSettingsArgs.builder()
+ *             .settings(ZeroTrustAccessMtlsHostnameSettingsSettingArgs.builder()
+ *                 .china_network(false)
+ *                 .client_certificate_forwarding(true)
+ *                 .hostname("admin.example.com")
+ *                 .build())
+ *             .zoneId("zone_id")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * @deprecated
  * cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings
  * 

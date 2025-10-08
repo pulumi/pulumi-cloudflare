@@ -24,6 +24,81 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustAccessPolicy;
+ * import com.pulumi.cloudflare.ZeroTrustAccessPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyIncludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyApprovalGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyExcludeGroupArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustAccessPolicyRequireGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleZeroTrustAccessPolicy = new ZeroTrustAccessPolicy("exampleZeroTrustAccessPolicy", ZeroTrustAccessPolicyArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .decision("allow")
+ *             .includes(ZeroTrustAccessPolicyIncludeArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyIncludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .name("Allow devs")
+ *             .approvalGroups(            
+ *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                     .approvals_needed(1)
+ *                     .email_addresses(List.of(                    
+ *                         "test1}{@literal @}{@code cloudflare.com",
+ *                         "test2}{@literal @}{@code cloudflare.com"))
+ *                     .email_list_uuid("email_list_uuid")
+ *                     .build(),
+ *                 ZeroTrustAccessPolicyApprovalGroupArgs.builder()
+ *                     .approvals_needed(3)
+ *                     .email_addresses(List.of(                    
+ *                         "test}{@literal @}{@code cloudflare.com",
+ *                         "test2}{@literal @}{@code cloudflare.com"))
+ *                     .email_list_uuid("597147a1-976b-4ef2-9af0-81d5d007fc34")
+ *                     .build())
+ *             .approvalRequired(true)
+ *             .excludes(ZeroTrustAccessPolicyExcludeArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyExcludeGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .isolationRequired(false)
+ *             .purposeJustificationPrompt("Please enter a justification for entering this protected domain.")
+ *             .purposeJustificationRequired(true)
+ *             .requires(ZeroTrustAccessPolicyRequireArgs.builder()
+ *                 .group(ZeroTrustAccessPolicyRequireGroupArgs.builder()
+ *                     .id("aa0a4aab-672b-4bdb-bc33-a59f1130a11f")
+ *                     .build())
+ *                 .build())
+ *             .sessionDuration("24h")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -81,7 +156,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     @Export(name="decision", refs={String.class}, tree="[0]")
@@ -89,7 +164,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {

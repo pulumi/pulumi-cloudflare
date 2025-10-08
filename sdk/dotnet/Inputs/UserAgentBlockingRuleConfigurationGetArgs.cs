@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class UserAgentBlockingRuleConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+        /// The configuration target. You must set the target to `Ua` when specifying a user agent in the rule.
         /// Available values: "ua".
         /// </summary>
         [Input("target")]

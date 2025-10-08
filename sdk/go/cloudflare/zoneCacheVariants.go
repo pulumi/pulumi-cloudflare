@@ -14,6 +14,76 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneCacheVariants(ctx, "example_zone_cache_variants", &cloudflare.ZoneCacheVariantsArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Value: &cloudflare.ZoneCacheVariantsValueArgs{
+//					Avif: []string{
+//						"image/webp",
+//						"image/jpeg",
+//					},
+//					Bmp: []string{
+//						"image/webp",
+//						"image/jpeg",
+//					},
+//					Gif: []string{
+//						"image/webp",
+//						"image/jpeg",
+//					},
+//					Jp2: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Jpeg: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Jpg: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Jpg2: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Png: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Tif: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Tiff: []string{
+//						"image/webp",
+//						"image/avif",
+//					},
+//					Webp: []string{
+//						"image/jpeg",
+//						"image/avif",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

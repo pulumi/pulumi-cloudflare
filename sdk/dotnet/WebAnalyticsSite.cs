@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// Enables or disables RUM. This option can be used only when AutoInstall is set to true.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AutoInstall { get; set; }
 
         /// <summary>
-        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// Enables or disables RUM. This option can be used only when AutoInstall is set to true.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Enables or disables RUM. This option can be used only when auto_install is set to true.
+        /// Enables or disables RUM. This option can be used only when AutoInstall is set to true.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

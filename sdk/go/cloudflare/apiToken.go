@@ -14,6 +14,68 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewApiToken(ctx, "example_api_token", &cloudflare.ApiTokenArgs{
+//				Name: pulumi.String("readonly token"),
+//				Policies: cloudflare.ApiTokenPolicyArray{
+//					&cloudflare.ApiTokenPolicyArgs{
+//						Effect: pulumi.String("allow"),
+//						Permission_groups: []map[string]interface{}{
+//							map[string]interface{}{
+//								"id": "c8fed203ed3043cba015a93ad1616f1f",
+//								"meta": map[string]interface{}{
+//									"key":   "key",
+//									"value": "value",
+//								},
+//							},
+//							map[string]interface{}{
+//								"id": "82e64a83756745bbbb1c9c2701bf816b",
+//								"meta": map[string]interface{}{
+//									"key":   "key",
+//									"value": "value",
+//								},
+//							},
+//						},
+//						Resources: pulumi.StringMap{
+//							"foo": pulumi.String("string"),
+//						},
+//					},
+//				},
+//				Condition: &cloudflare.ApiTokenConditionArgs{
+//					Request_ip: map[string]interface{}{
+//						"in": []string{
+//							"123.123.123.0/24",
+//							"2606:4700::/32",
+//						},
+//						"notIn": []string{
+//							"123.123.123.100/24",
+//							"2606:4700:4700::/48",
+//						},
+//					},
+//				},
+//				ExpiresOn: pulumi.String("2020-01-01T00:00:00Z"),
+//				NotBefore: pulumi.String("2018-07-01T05:20:00Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

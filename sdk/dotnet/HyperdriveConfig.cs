@@ -12,6 +12,43 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleHyperdriveConfig = new Cloudflare.HyperdriveConfig("example_hyperdrive_config", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "example-hyperdrive",
+    ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
+    ///         {
+    ///             Database = "postgres",
+    ///             Host = "database.example.com",
+    ///             Password = "password",
+    ///             Port = 5432,
+    ///             Scheme = "postgres",
+    ///             User = "postgres",
+    ///         },
+    ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
+    ///         {
+    ///             Disabled = true,
+    ///         },
+    ///         Mtls = new Cloudflare.Inputs.HyperdriveConfigMtlsArgs
+    ///         {
+    ///             Ca_certificate_id = "00000000-0000-0000-0000-0000000000",
+    ///             Mtls_certificate_id = "00000000-0000-0000-0000-0000000000",
+    ///             Sslmode = "verify-full",
+    ///         },
+    ///         OriginConnectionLimit = 60,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

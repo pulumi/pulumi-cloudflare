@@ -19,12 +19,12 @@ public final class GetLoadBalancersResultRuleOverridesSessionAffinityAttributes 
      */
     private Double drainDuration;
     /**
-     * @return Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `&#34;cookie:&lt;cookie-name-1&gt;,&lt;cookie-name-2&gt;&#34;` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `&#34;cookie&#34;` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
+     * @return Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `&#34;cookie:&lt;cookie-name-1&gt;,&lt;cookie-name-2&gt;&#34;` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `&#34;cookie&#34;` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
      * 
      */
     private List<String> headers;
     /**
-     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
+     * @return When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
      * 
      */
     private Boolean requireAllHeaders;
@@ -56,14 +56,14 @@ public final class GetLoadBalancersResultRuleOverridesSessionAffinityAttributes 
         return this.drainDuration;
     }
     /**
-     * @return Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `&#34;cookie:&lt;cookie-name-1&gt;,&lt;cookie-name-2&gt;&#34;` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `&#34;cookie&#34;` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
+     * @return Configures the names of HTTP headers to base session affinity on when header `sessionAffinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `&#34;cookie:&lt;cookie-name-1&gt;,&lt;cookie-name-2&gt;&#34;` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `&#34;cookie&#34;` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans.
      * 
      */
     public List<String> headers() {
         return this.headers;
     }
     /**
-     * @return When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
+     * @return When header `sessionAffinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `&#34;true&#34;`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created. - `&#34;false&#34;`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren&#39;t created.
      * 
      */
     public Boolean requireAllHeaders() {

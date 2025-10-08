@@ -41,7 +41,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
@@ -98,7 +98,7 @@ public final class GetEmailSecurityTrustedDomainsListInvokeResult {
     }
     /**
      * @return The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {

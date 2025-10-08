@@ -295,7 +295,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -303,7 +303,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
      * 
      */
     public Output<String> type() {

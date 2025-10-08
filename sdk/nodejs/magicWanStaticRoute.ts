@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicWanStaticRoute = new cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     nexthop: "203.0.113.1",
+ *     prefix: "192.0.2.0/24",
+ *     priority: 0,
+ *     description: "New route for new prefix 203.0.113.1",
+ *     scope: {
+ *         colo_names: ["den01"],
+ *         colo_regions: ["APAC"],
+ *     },
+ *     weight: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

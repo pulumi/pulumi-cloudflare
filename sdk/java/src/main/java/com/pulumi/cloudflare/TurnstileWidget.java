@@ -102,7 +102,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
-     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+     * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     @Export(name="clearanceLevel", refs={String.class}, tree="[0]")
@@ -111,7 +111,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
-     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+     * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     public Output<String> clearanceLevel() {

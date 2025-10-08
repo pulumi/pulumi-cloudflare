@@ -12,6 +12,29 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustDeviceManagedNetworks = new Cloudflare.ZeroTrustDeviceManagedNetworks("example_zero_trust_device_managed_networks", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Config = new Cloudflare.Inputs.ZeroTrustDeviceManagedNetworksConfigArgs
+    ///         {
+    ///             Tls_sockaddr = "foo.bar:1234",
+    ///             Sha256 = "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+    ///         },
+    ///         Name = "managed-network-1",
+    ///         Type = "tls",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

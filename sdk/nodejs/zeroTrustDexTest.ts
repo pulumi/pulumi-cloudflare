@@ -9,6 +9,30 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDexTest = new cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test", {
+ *     accountId: "01a7362d577a6c3019a474fd6f485823",
+ *     data: {
+ *         host: "https://dash.cloudflare.com",
+ *         kind: "http",
+ *         method: "GET",
+ *     },
+ *     enabled: true,
+ *     interval: "30m",
+ *     name: "HTTP dash health check",
+ *     description: "Checks the dash endpoint every 30 minutes",
+ *     targetPolicies: [{
+ *         id: "id",
+ *         "default": true,
+ *         name: "name",
+ *     }],
+ *     targeted: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

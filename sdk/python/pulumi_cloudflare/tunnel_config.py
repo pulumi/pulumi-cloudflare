@@ -211,6 +211,62 @@ class TunnelConfig(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_tunnel_cloudflared_config = cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+            config={
+                "ingress": [{
+                    "hostname": "tunnel.example.com",
+                    "service": "https://localhost:8001",
+                    "originRequest": {
+                        "access": {
+                            "audTag": ["string"],
+                            "teamName": "zero-trust-organization-name",
+                            "required": False,
+                        },
+                        "caPool": "caPool",
+                        "connectTimeout": 10,
+                        "disableChunkedEncoding": True,
+                        "http2Origin": True,
+                        "httpHostHeader": "httpHostHeader",
+                        "keepAliveConnections": 100,
+                        "keepAliveTimeout": 90,
+                        "noHappyEyeballs": False,
+                        "noTlsVerify": False,
+                        "originServerName": "originServerName",
+                        "proxyType": "proxyType",
+                        "tcpKeepAlive": 30,
+                        "tlsTimeout": 10,
+                    },
+                    "path": "subpath",
+                }],
+                "origin_request": {
+                    "access": {
+                        "audTag": ["string"],
+                        "teamName": "zero-trust-organization-name",
+                        "required": False,
+                    },
+                    "caPool": "caPool",
+                    "connectTimeout": 10,
+                    "disableChunkedEncoding": True,
+                    "http2Origin": True,
+                    "httpHostHeader": "httpHostHeader",
+                    "keepAliveConnections": 100,
+                    "keepAliveTimeout": 90,
+                    "noHappyEyeballs": False,
+                    "noTlsVerify": False,
+                    "originServerName": "originServerName",
+                    "proxyType": "proxyType",
+                    "tcpKeepAlive": 30,
+                    "tlsTimeout": 10,
+                },
+            })
+        ```
+
         ## Import
 
         ```sh
@@ -233,6 +289,62 @@ class TunnelConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_tunnel_cloudflared_config = cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+            config={
+                "ingress": [{
+                    "hostname": "tunnel.example.com",
+                    "service": "https://localhost:8001",
+                    "originRequest": {
+                        "access": {
+                            "audTag": ["string"],
+                            "teamName": "zero-trust-organization-name",
+                            "required": False,
+                        },
+                        "caPool": "caPool",
+                        "connectTimeout": 10,
+                        "disableChunkedEncoding": True,
+                        "http2Origin": True,
+                        "httpHostHeader": "httpHostHeader",
+                        "keepAliveConnections": 100,
+                        "keepAliveTimeout": 90,
+                        "noHappyEyeballs": False,
+                        "noTlsVerify": False,
+                        "originServerName": "originServerName",
+                        "proxyType": "proxyType",
+                        "tcpKeepAlive": 30,
+                        "tlsTimeout": 10,
+                    },
+                    "path": "subpath",
+                }],
+                "origin_request": {
+                    "access": {
+                        "audTag": ["string"],
+                        "teamName": "zero-trust-organization-name",
+                        "required": False,
+                    },
+                    "caPool": "caPool",
+                    "connectTimeout": 10,
+                    "disableChunkedEncoding": True,
+                    "http2Origin": True,
+                    "httpHostHeader": "httpHostHeader",
+                    "keepAliveConnections": 100,
+                    "keepAliveTimeout": 90,
+                    "noHappyEyeballs": False,
+                    "noTlsVerify": False,
+                    "originServerName": "originServerName",
+                    "proxyType": "proxyType",
+                    "tcpKeepAlive": 30,
+                    "tlsTimeout": 10,
+                },
+            })
+        ```
 
         ## Import
 

@@ -20,6 +20,98 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustGatewaySettings;
+ * import com.pulumi.cloudflare.ZeroTrustGatewaySettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCertificateArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsInspectionArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleZeroTrustGatewaySettings = new ZeroTrustGatewaySettings("exampleZeroTrustGatewaySettings", ZeroTrustGatewaySettingsArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .settings(ZeroTrustGatewaySettingsSettingsArgs.builder()
+ *                 .activity_log(Map.of("enabled", true))
+ *                 .antivirus(ZeroTrustGatewaySettingsSettingsAntivirusArgs.builder()
+ *                     .enabledDownloadPhase(false)
+ *                     .enabledUploadPhase(false)
+ *                     .failClosed(false)
+ *                     .notificationSettings(ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs.builder()
+ *                         .enabled(true)
+ *                         .includeContext(true)
+ *                         .msg("msg")
+ *                         .supportUrl("support_url")
+ *                         .build())
+ *                     .build())
+ *                 .block_page(Map.ofEntries(
+ *                     Map.entry("backgroundColor", "background_color"),
+ *                     Map.entry("enabled", true),
+ *                     Map.entry("footerText", "--footer--"),
+ *                     Map.entry("headerText", "--header--"),
+ *                     Map.entry("includeContext", true),
+ *                     Map.entry("logoPath", "https://logos.com/a.png"),
+ *                     Map.entry("mailtoAddress", "admin}{@literal @}{@code example.com"),
+ *                     Map.entry("mailtoSubject", "Blocked User Inquiry"),
+ *                     Map.entry("mode", ""),
+ *                     Map.entry("name", "Cloudflare"),
+ *                     Map.entry("suppressFooter", false),
+ *                     Map.entry("targetUri", "https://example.com")
+ *                 ))
+ *                 .body_scanning(Map.of("inspectionMode", "deep"))
+ *                 .browser_isolation(Map.ofEntries(
+ *                     Map.entry("nonIdentityEnabled", true),
+ *                     Map.entry("urlBrowserIsolationEnabled", true)
+ *                 ))
+ *                 .certificate(ZeroTrustGatewaySettingsSettingsCertificateArgs.builder()
+ *                     .id("d1b364c5-1311-466e-a194-f0e943e0799f")
+ *                     .build())
+ *                 .custom_certificate(Map.ofEntries(
+ *                     Map.entry("enabled", true),
+ *                     Map.entry("id", "d1b364c5-1311-466e-a194-f0e943e0799f")
+ *                 ))
+ *                 .extended_email_matching(Map.of("enabled", true))
+ *                 .fips(ZeroTrustGatewaySettingsSettingsFipsArgs.builder()
+ *                     .tls(true)
+ *                     .build())
+ *                 .host_selector(Map.of("enabled", false))
+ *                 .inspection(ZeroTrustGatewaySettingsSettingsInspectionArgs.builder()
+ *                     .mode("static")
+ *                     .build())
+ *                 .protocol_detection(Map.of("enabled", true))
+ *                 .sandbox(ZeroTrustGatewaySettingsSettingsSandboxArgs.builder()
+ *                     .enabled(true)
+ *                     .fallbackAction("allow")
+ *                     .build())
+ *                 .tls_decrypt(Map.of("enabled", true))
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

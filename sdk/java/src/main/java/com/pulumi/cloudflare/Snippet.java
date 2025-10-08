@@ -19,6 +19,53 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.Snippet;
+ * import com.pulumi.cloudflare.SnippetArgs;
+ * import com.pulumi.cloudflare.inputs.SnippetFileArgs;
+ * import com.pulumi.cloudflare.inputs.SnippetMetadataArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleSnippet = new Snippet("exampleSnippet", SnippetArgs.builder()
+ *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+ *             .snippetName("my_snippet")
+ *             .files(SnippetFileArgs.builder()
+ *                 .name("main.js")
+ *                 .content("""
+ * export default {
+ *   async fetch(request) {
+ *     return new Response('Hello, World!');
+ *   }
+ * }
+ *                 """)
+ *                 .build())
+ *             .metadata(SnippetMetadataArgs.builder()
+ *                 .main_module("main.js")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/snippet:Snippet")
 public class Snippet extends com.pulumi.resources.CustomResource {

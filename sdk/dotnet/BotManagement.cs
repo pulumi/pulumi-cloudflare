@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
     public partial class BotManagement : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Output("aiBotsProtection")]
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the Robots Access Control License variant to use.
-        /// Available values: "off", "policy_only".
+        /// Available values: "off", "PolicyOnly".
         /// </summary>
         [Output("cfRobotsVariant")]
         public Output<string> CfRobotsVariant { get; private set; } = null!;
@@ -102,14 +102,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Output("sbfmDefinitelyAutomated")]
         public Output<string> SbfmDefinitelyAutomated { get; private set; } = null!;
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Output("sbfmLikelyAutomated")]
         public Output<string> SbfmLikelyAutomated { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
@@ -220,7 +220,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the Robots Access Control License variant to use.
-        /// Available values: "off", "policy_only".
+        /// Available values: "off", "PolicyOnly".
         /// </summary>
         [Input("cfRobotsVariant")]
         public Input<string>? CfRobotsVariant { get; set; }
@@ -258,14 +258,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Input("sbfmDefinitelyAutomated")]
         public Input<string>? SbfmDefinitelyAutomated { get; set; }
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Input("sbfmLikelyAutomated")]
         public Input<string>? SbfmLikelyAutomated { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Cloudflare
     public sealed class BotManagementState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+        /// Enable rule to block AI Scrapers and Crawlers. Please note the value `OnlyOnAdPages` is currently not available for Enterprise customers.
         /// Available values: "block", "disabled", "only*on*ad_pages".
         /// </summary>
         [Input("aiBotsProtection")]
@@ -326,7 +326,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Specifies the Robots Access Control License variant to use.
-        /// Available values: "off", "policy_only".
+        /// Available values: "off", "PolicyOnly".
         /// </summary>
         [Input("cfRobotsVariant")]
         public Input<string>? CfRobotsVariant { get; set; }
@@ -364,14 +364,14 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Input("sbfmDefinitelyAutomated")]
         public Input<string>? SbfmDefinitelyAutomated { get; set; }
 
         /// <summary>
         /// Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-        /// Available values: "allow", "block", "managed_challenge".
+        /// Available values: "allow", "block", "ManagedChallenge".
         /// </summary>
         [Input("sbfmLikelyAutomated")]
         public Input<string>? SbfmLikelyAutomated { get; set; }

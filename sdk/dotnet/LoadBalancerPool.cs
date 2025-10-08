@@ -12,6 +12,74 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("example_load_balancer_pool", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "primary-dc-1",
+    ///         Origins = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///             {
+    ///                 Address = "0.0.0.0",
+    ///                 Enabled = true,
+    ///                 Header = new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                 {
+    ///                     Host = new[]
+    ///                     {
+    ///                         "example.com",
+    ///                     },
+    ///                 },
+    ///                 Name = "app-server-1",
+    ///                 Port = 0,
+    ///                 Virtual_network_id = "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
+    ///                 Weight = 0.6,
+    ///             },
+    ///         },
+    ///         Description = "Primary data center - Provider XYZ",
+    ///         Enabled = false,
+    ///         Latitude = 0,
+    ///         LoadShedding = new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
+    ///         {
+    ///             Default_percent = 0,
+    ///             Default_policy = "random",
+    ///             Session_percent = 0,
+    ///             Session_policy = "hash",
+    ///         },
+    ///         Longitude = 0,
+    ///         MinimumOrigins = 0,
+    ///         Monitor = "monitor",
+    ///         MonitorGroup = "monitor_group",
+    ///         NotificationEmail = "someone@example.com,sometwo@example.com",
+    ///         NotificationFilter = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterArgs
+    ///         {
+    ///             Origin = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterOriginArgs
+    ///             {
+    ///                 Disable = true,
+    ///                 Healthy = true,
+    ///             },
+    ///             Pool = new Cloudflare.Inputs.LoadBalancerPoolNotificationFilterPoolArgs
+    ///             {
+    ///                 Disable = true,
+    ///                 Healthy = false,
+    ///             },
+    ///         },
+    ///         OriginSteering = new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
+    ///         {
+    ///             Policy = "random",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

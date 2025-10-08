@@ -13,6 +13,47 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewSnippet(ctx, "example_snippet", &cloudflare.SnippetArgs{
+//				ZoneId:      pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
+//				SnippetName: pulumi.String("my_snippet"),
+//				Files: cloudflare.SnippetFileArray{
+//					&cloudflare.SnippetFileArgs{
+//						Name: pulumi.String("main.js"),
+//						Content: pulumi.String(`export default {
+//	  async fetch(request) {
+//	    return new Response('Hello, World!');
+//	  }
+//	}
+//
+// `),
+//
+//					},
+//				},
+//				Metadata: &cloudflare.SnippetMetadataArgs{
+//					Main_module: "main.js",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Snippet struct {
 	pulumi.CustomResourceState
 

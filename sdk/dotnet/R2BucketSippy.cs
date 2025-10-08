@@ -11,6 +11,37 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleR2BucketSippy = new Cloudflare.R2BucketSippy("example_r2_bucket_sippy", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         BucketName = "example-bucket",
+    ///         Destination = new Cloudflare.Inputs.R2BucketSippyDestinationArgs
+    ///         {
+    ///             Access_key_id = "accessKeyId",
+    ///             Provider = "r2",
+    ///             Secret_access_key = "secretAccessKey",
+    ///         },
+    ///         Source = new Cloudflare.Inputs.R2BucketSippySourceArgs
+    ///         {
+    ///             Access_key_id = "accessKeyId",
+    ///             Bucket = "bucket",
+    ///             Provider = "aws",
+    ///             Region = "region",
+    ///             Secret_access_key = "secretAccessKey",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketSippy:R2BucketSippy")]
     public partial class R2BucketSippy : global::Pulumi.CustomResource

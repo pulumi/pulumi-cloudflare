@@ -11,7 +11,7 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// &gt; A DNS record for the domain is not automatically created. You need to create
-    ///    a `cloudflare_record` resource for the domain you want to use.
+    ///    a `CloudflareRecord` resource for the domain you want to use.
     /// 
     /// ## Example Usage
     /// 
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "google", "lets_encrypt".
+        /// Available values: "google", "LetsEncrypt".
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Available values: "google", "lets_encrypt".
+        /// Available values: "google", "LetsEncrypt".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }

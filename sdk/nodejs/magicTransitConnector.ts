@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleMagicTransitConnector = new cloudflare.MagicTransitConnector("example_magic_transit_connector", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     device: {
+ *         id: "id",
+ *         serial_number: "serial_number",
+ *     },
+ *     activated: true,
+ *     interruptWindowDurationHours: 0,
+ *     interruptWindowHourOfDay: 0,
+ *     notes: "notes",
+ *     timezone: "timezone",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

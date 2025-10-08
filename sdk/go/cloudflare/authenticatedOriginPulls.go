@@ -13,6 +13,37 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "example_authenticated_origin_pulls", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Configs: cloudflare.AuthenticatedOriginPullsConfigArray{
+//					&cloudflare.AuthenticatedOriginPullsConfigArgs{
+//						Cert_id:  "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
+//						Enabled:  pulumi.Bool(true),
+//						Hostname: pulumi.String("app.example.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 

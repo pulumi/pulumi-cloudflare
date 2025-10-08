@@ -25,13 +25,13 @@ public final class GetCustomHostnameFilter {
      */
     private @Nullable String hostname;
     /**
-     * @return Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
      * 
      */
     private @Nullable String id;
     /**
      * @return Field to order hostnames by.
-     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+     * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
      * 
      */
     private String order;
@@ -59,7 +59,7 @@ public final class GetCustomHostnameFilter {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
      * 
      */
     public Optional<String> id() {
@@ -67,7 +67,7 @@ public final class GetCustomHostnameFilter {
     }
     /**
      * @return Field to order hostnames by.
-     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+     * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
      * 
      */
     public String order() {

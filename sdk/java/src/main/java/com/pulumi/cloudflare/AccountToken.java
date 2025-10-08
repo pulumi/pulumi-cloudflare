@@ -20,6 +20,71 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.AccountToken;
+ * import com.pulumi.cloudflare.AccountTokenArgs;
+ * import com.pulumi.cloudflare.inputs.AccountTokenPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.AccountTokenConditionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleAccountToken = new AccountToken("exampleAccountToken", AccountTokenArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .name("readonly token")
+ *             .policies(AccountTokenPolicyArgs.builder()
+ *                 .effect("allow")
+ *                 .permission_groups(List.of(                
+ *                     Map.ofEntries(
+ *                         Map.entry("id", "c8fed203ed3043cba015a93ad1616f1f"),
+ *                         Map.entry("meta", Map.ofEntries(
+ *                             Map.entry("key", "key"),
+ *                             Map.entry("value", "value")
+ *                         ))
+ *                     ),
+ *                     Map.ofEntries(
+ *                         Map.entry("id", "82e64a83756745bbbb1c9c2701bf816b"),
+ *                         Map.entry("meta", Map.ofEntries(
+ *                             Map.entry("key", "key"),
+ *                             Map.entry("value", "value")
+ *                         ))
+ *                     )))
+ *                 .resources(Map.of("foo", "string"))
+ *                 .build())
+ *             .condition(AccountTokenConditionArgs.builder()
+ *                 .request_ip(Map.ofEntries(
+ *                     Map.entry("in", List.of(                    
+ *                         "123.123.123.0/24",
+ *                         "2606:4700::/32")),
+ *                     Map.entry("notIn", List.of(                    
+ *                         "123.123.123.100/24",
+ *                         "2606:4700:4700::/48"))
+ *                 ))
+ *                 .build())
+ *             .expiresOn("2020-01-01T00:00:00Z")
+ *             .notBefore("2018-07-01T05:20:00Z")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

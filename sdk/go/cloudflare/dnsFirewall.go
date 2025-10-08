@@ -14,6 +14,47 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewDnsFirewall(ctx, "example_dns_firewall", &cloudflare.DnsFirewallArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Name:      pulumi.String("My Awesome DNS Firewall cluster"),
+//				UpstreamIps: pulumi.StringArray{
+//					pulumi.String("192.0.2.1"),
+//					pulumi.String("198.51.100.1"),
+//					pulumi.String("2001:DB8:100::CF"),
+//				},
+//				AttackMitigation: &cloudflare.DnsFirewallAttackMitigationArgs{
+//					Enabled:                      pulumi.Bool(true),
+//					Only_when_upstream_unhealthy: false,
+//				},
+//				DeprecateAnyRequests: pulumi.Bool(true),
+//				EcsFallback:          pulumi.Bool(false),
+//				MaximumCacheTtl:      pulumi.Float64(900),
+//				MinimumCacheTtl:      pulumi.Float64(60),
+//				NegativeCacheTtl:     pulumi.Float64(900),
+//				Ratelimit:            pulumi.Float64(600),
+//				Retries:              pulumi.Float64(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

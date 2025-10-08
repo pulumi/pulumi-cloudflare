@@ -12,6 +12,47 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessIdentityProvider = new Cloudflare.ZeroTrustAccessIdentityProvider("example_zero_trust_access_identity_provider", new()
+    ///     {
+    ///         Config = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderConfigArgs
+    ///         {
+    ///             Claims = new[]
+    ///             {
+    ///                 "email_verified",
+    ///                 "preferred_username",
+    ///                 "custom_claim_name",
+    ///             },
+    ///             Client_id = "&lt;your client id&gt;",
+    ///             Client_secret = "&lt;your client secret&gt;",
+    ///             Conditional_access_enabled = true,
+    ///             Directory_id = "&lt;your azure directory uuid&gt;",
+    ///             Email_claim_name = "custom_claim_name",
+    ///             Prompt = "login",
+    ///             Support_groups = true,
+    ///         },
+    ///         Name = "Widget Corps IDP",
+    ///         Type = "onetimepin",
+    ///         ZoneId = "zone_id",
+    ///         ScimConfig = new Cloudflare.Inputs.ZeroTrustAccessIdentityProviderScimConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Identity_update_behavior = "automatic",
+    ///             Seat_deprovision = true,
+    ///             User_deprovision = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -182,10 +182,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
      * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      * @deprecated
-     * Use the config_src field instead.
+     * Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the config_src field instead. */
+    @Deprecated /* Use the configSrc field instead. */
     @Import(name="remoteConfig")
     private @Nullable Output<Boolean> remoteConfig;
 
@@ -193,10 +193,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      * @deprecated
-     * Use the config_src field instead.
+     * Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the config_src field instead. */
+    @Deprecated /* Use the configSrc field instead. */
     public Optional<Output<Boolean>> remoteConfig() {
         return Optional.ofNullable(this.remoteConfig);
     }
@@ -220,7 +220,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
 
     /**
      * The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     @Import(name="tunType")
@@ -228,7 +228,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
 
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     public Optional<Output<String>> tunType() {
@@ -527,10 +527,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * @return builder
          * 
          * @deprecated
-         * Use the config_src field instead.
+         * Use the configSrc field instead.
          * 
          */
-        @Deprecated /* Use the config_src field instead. */
+        @Deprecated /* Use the configSrc field instead. */
         public Builder remoteConfig(@Nullable Output<Boolean> remoteConfig) {
             $.remoteConfig = remoteConfig;
             return this;
@@ -542,10 +542,10 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
          * @return builder
          * 
          * @deprecated
-         * Use the config_src field instead.
+         * Use the configSrc field instead.
          * 
          */
-        @Deprecated /* Use the config_src field instead. */
+        @Deprecated /* Use the configSrc field instead. */
         public Builder remoteConfig(Boolean remoteConfig) {
             return remoteConfig(Output.of(remoteConfig));
         }
@@ -575,7 +575,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
 
         /**
          * @param tunType The type of tunnel.
-         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class ZeroTrustTunnelWarpConnectorState extends com.pulumi.resource
 
         /**
          * @param tunType The type of tunnel.
-         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+         * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
          * 
          * @return builder
          * 

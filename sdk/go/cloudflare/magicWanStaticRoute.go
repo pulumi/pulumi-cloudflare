@@ -14,6 +14,43 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicWanStaticRoute(ctx, "example_magic_wan_static_route", &cloudflare.MagicWanStaticRouteArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Nexthop:     pulumi.String("203.0.113.1"),
+//				Prefix:      pulumi.String("192.0.2.0/24"),
+//				Priority:    pulumi.Int(0),
+//				Description: pulumi.String("New route for new prefix 203.0.113.1"),
+//				Scope: &cloudflare.MagicWanStaticRouteScopeArgs{
+//					Colo_names: []string{
+//						"den01",
+//					},
+//					Colo_regions: []string{
+//						"APAC",
+//					},
+//				},
+//				Weight: pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

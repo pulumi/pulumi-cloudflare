@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewayPolicyExpirationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines the default duration a policy active in minutes. Must set in order to use the `reset_expiration` endpoint on this rule.
+        /// Defines the default duration a policy active in minutes. Must set in order to use the `ResetExpiration` endpoint on this rule.
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Expired { get; set; }
 
         /// <summary>
-        /// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified expires_at time.
+        /// Show the timestamp when the policy expires and stops applying.  The value must follow RFC 3339 and include a UTC offset.  The system accepts non-zero offsets but converts them to the equivalent UTC+00:00  value and returns timestamps with a trailing Z. Expiration policies ignore client  timezones and expire globally at the specified ExpiresAt time.
         /// </summary>
         [Input("expiresAt", required: true)]
         public Input<string> ExpiresAt { get; set; } = null!;

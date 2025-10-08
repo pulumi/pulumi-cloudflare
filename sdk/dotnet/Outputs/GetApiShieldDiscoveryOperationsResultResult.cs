@@ -38,9 +38,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Origins;
         /// <summary>
         /// State of operation in API Discovery
-        ///   * `review` - Operation is not saved into API Shield Endpoint Management
-        ///   * `saved` - Operation is saved into API Shield Endpoint Management
-        ///   * `ignored` - Operation is marked as ignored
+        ///   * `Review` - Operation is not saved into API Shield Endpoint Management
+        ///   * `Saved` - Operation is saved into API Shield Endpoint Management
+        ///   * `Ignored` - Operation is marked as ignored
         /// Available values: "review", "saved", "ignored".
         /// </summary>
         public readonly string State;

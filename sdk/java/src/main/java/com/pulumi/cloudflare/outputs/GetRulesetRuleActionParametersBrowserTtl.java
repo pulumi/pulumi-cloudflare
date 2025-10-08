@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersBrowserTtl {
     /**
-     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     private Integer default_;
@@ -25,7 +25,7 @@ public final class GetRulesetRuleActionParametersBrowserTtl {
 
     private GetRulesetRuleActionParametersBrowserTtl() {}
     /**
-     * @return The browser TTL (in seconds) if you choose the &#34;override_origin&#34; mode.
+     * @return The browser TTL (in seconds) if you choose the &#34;overrideOrigin&#34; mode.
      * 
      */
     public Integer default_() {

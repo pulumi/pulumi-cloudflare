@@ -305,6 +305,36 @@ class Worker(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_worker = cloudflare.Worker("example_worker",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-worker",
+            logpush=True,
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 1,
+                "logs": {
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "invocation_logs": True,
+                },
+            },
+            subdomain={
+                "enabled": True,
+                "previews_enabled": True,
+            },
+            tags=[
+                "my-team",
+                "my-public-api",
+            ],
+            tail_consumers=[{
+                "name": "my-tail-consumer",
+            }])
+        ```
+
         ## Import
 
         ```sh
@@ -329,6 +359,36 @@ class Worker(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_worker = cloudflare.Worker("example_worker",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="my-worker",
+            logpush=True,
+            observability={
+                "enabled": True,
+                "head_sampling_rate": 1,
+                "logs": {
+                    "enabled": True,
+                    "head_sampling_rate": 1,
+                    "invocation_logs": True,
+                },
+            },
+            subdomain={
+                "enabled": True,
+                "previews_enabled": True,
+            },
+            tags=[
+                "my-team",
+                "my-public-api",
+            ],
+            tail_consumers=[{
+                "name": "my-tail-consumer",
+            }])
+        ```
 
         ## Import
 

@@ -19,6 +19,62 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.R2BucketLifecycle;
+ * import com.pulumi.cloudflare.R2BucketLifecycleArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleArgs;
+ * import com.pulumi.cloudflare.inputs.R2BucketLifecycleRuleConditionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleR2BucketLifecycle = new R2BucketLifecycle("exampleR2BucketLifecycle", R2BucketLifecycleArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .bucketName("example-bucket")
+ *             .rules(R2BucketLifecycleRuleArgs.builder()
+ *                 .id("Expire all objects older than 24 hours")
+ *                 .conditions(R2BucketLifecycleRuleConditionsArgs.builder()
+ *                     .prefix("prefix")
+ *                     .build())
+ *                 .enabled(true)
+ *                 .abort_multipart_uploads_transition(Map.of("condition", Map.ofEntries(
+ *                     Map.entry("maxAge", 0),
+ *                     Map.entry("type", "Age")
+ *                 )))
+ *                 .delete_objects_transition(Map.of("condition", Map.ofEntries(
+ *                     Map.entry("maxAge", 0),
+ *                     Map.entry("type", "Age")
+ *                 )))
+ *                 .storage_class_transitions(List.of(Map.ofEntries(
+ *                     Map.entry("condition", Map.ofEntries(
+ *                         Map.entry("maxAge", 0),
+ *                         Map.entry("type", "Age")
+ *                     )),
+ *                     Map.entry("storageClass", "InfrequentAccess")
+ *                 )))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {

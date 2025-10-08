@@ -14,6 +14,39 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustDevicePostureIntegration(ctx, "example_zero_trust_device_posture_integration", &cloudflare.ZeroTrustDevicePostureIntegrationArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Config: &cloudflare.ZeroTrustDevicePostureIntegrationConfigArgs{
+//					Api_url:       "https://as123.awmdm.com/API",
+//					Auth_url:      "https://na.uemauth.vmwservices.com/connect/token",
+//					Client_id:     "example client id",
+//					Client_secret: "example client secret",
+//				},
+//				Interval: pulumi.String("10m"),
+//				Name:     pulumi.String("My Workspace One Integration"),
+//				Type:     pulumi.String("workspace_one"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

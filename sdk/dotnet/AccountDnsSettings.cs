@@ -11,6 +11,49 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleAccountDnsSettings = new Cloudflare.AccountDnsSettings("example_account_dns_settings", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         ZoneDefaults = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsArgs
+    ///         {
+    ///             Flatten_all_cnames = false,
+    ///             Foundation_dns = false,
+    ///             Internal_dns = 
+    ///             {
+    ///                 { "referenceZoneId", "reference_zone_id" },
+    ///             },
+    ///             Multi_provider = false,
+    ///             Nameservers = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsNameserversArgs
+    ///             {
+    ///                 Type = "cloudflare.standard",
+    ///             },
+    ///             Ns_ttl = 86400,
+    ///             Secondary_overrides = false,
+    ///             Soa = new Cloudflare.Inputs.AccountDnsSettingsZoneDefaultsSoaArgs
+    ///             {
+    ///                 Expire = 604800,
+    ///                 MinTtl = 1800,
+    ///                 Mname = "kristina.ns.cloudflare.com",
+    ///                 Refresh = 10000,
+    ///                 Retry = 2400,
+    ///                 Rname = "admin.example.com",
+    ///                 Ttl = 3600,
+    ///             },
+    ///             Zone_mode = "dns_only",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountDnsSettings:AccountDnsSettings")]
     public partial class AccountDnsSettings : global::Pulumi.CustomResource

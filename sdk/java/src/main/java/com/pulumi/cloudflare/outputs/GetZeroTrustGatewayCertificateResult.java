@@ -59,7 +59,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     private String issuerRaw;
     /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     private String type;
@@ -135,7 +135,7 @@ public final class GetZeroTrustGatewayCertificateResult {
     }
     /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     public String type() {

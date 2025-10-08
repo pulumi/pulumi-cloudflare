@@ -11,6 +11,193 @@ import * as utilities from "./utilities";
  *    connected GitHub or GitLab account connected to Cloudflare. See the
  *    [Getting Started with Pages] documentation on how to link your accounts.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const examplePagesProject = new cloudflare.PagesProject("example_pages_project", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     buildConfig: {
+ *         build_caching: true,
+ *         build_command: "npm run build",
+ *         destination_dir: "build",
+ *         root_dir: "/",
+ *         web_analytics_tag: "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
+ *         web_analytics_token: "021e1057c18547eca7b79f2516f06o7x",
+ *     },
+ *     deploymentConfigs: {
+ *         preview: {
+ *             aiBindings: {
+ *                 AI_BINDING: {
+ *                     projectId: "some-project-id",
+ *                 },
+ *             },
+ *             analyticsEngineDatasets: {
+ *                 ANALYTICS_ENGINE_BINDING: {
+ *                     dataset: "api_analytics",
+ *                 },
+ *             },
+ *             browsers: {
+ *                 BROWSER: {},
+ *             },
+ *             compatibilityDate: "2022-01-01",
+ *             compatibilityFlags: ["url_standard"],
+ *             d1Databases: {
+ *                 D1_BINDING: {
+ *                     id: "445e2955-951a-43f8-a35b-a4d0c8138f63",
+ *                 },
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             envVars: {
+ *                 foo: {
+ *                     type: "plain_text",
+ *                     value: "hello world",
+ *                 },
+ *             },
+ *             hyperdriveBindings: {
+ *                 HYPERDRIVE: {
+ *                     id: "a76a99bc342644deb02c38d66082262a",
+ *                 },
+ *             },
+ *             kvNamespaces: {
+ *                 KV_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             mtlsCertificates: {
+ *                 MTLS: {
+ *                     certificateId: "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+ *                 },
+ *             },
+ *             placement: {
+ *                 mode: "smart",
+ *             },
+ *             queueProducers: {
+ *                 QUEUE_PRODUCER_BINDING: {
+ *                     name: "some-queue",
+ *                 },
+ *             },
+ *             r2Buckets: {
+ *                 R2_BINDING: {
+ *                     jurisdiction: "eu",
+ *                     name: "some-bucket",
+ *                 },
+ *             },
+ *             services: {
+ *                 SERVICE_BINDING: {
+ *                     entrypoint: "MyHandler",
+ *                     environment: "production",
+ *                     service: "example-worker",
+ *                 },
+ *             },
+ *             vectorizeBindings: {
+ *                 VECTORIZE: {
+ *                     indexName: "my_index",
+ *                 },
+ *             },
+ *         },
+ *         production: {
+ *             aiBindings: {
+ *                 AI_BINDING: {
+ *                     projectId: "some-project-id",
+ *                 },
+ *             },
+ *             analyticsEngineDatasets: {
+ *                 ANALYTICS_ENGINE_BINDING: {
+ *                     dataset: "api_analytics",
+ *                 },
+ *             },
+ *             browsers: {
+ *                 BROWSER: {},
+ *             },
+ *             compatibilityDate: "2022-01-01",
+ *             compatibilityFlags: ["url_standard"],
+ *             d1Databases: {
+ *                 D1_BINDING: {
+ *                     id: "445e2955-951a-43f8-a35b-a4d0c8138f63",
+ *                 },
+ *             },
+ *             durableObjectNamespaces: {
+ *                 DO_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             envVars: {
+ *                 foo: {
+ *                     type: "plain_text",
+ *                     value: "hello world",
+ *                 },
+ *             },
+ *             hyperdriveBindings: {
+ *                 HYPERDRIVE: {
+ *                     id: "a76a99bc342644deb02c38d66082262a",
+ *                 },
+ *             },
+ *             kvNamespaces: {
+ *                 KV_BINDING: {
+ *                     namespaceId: "5eb63bbbe01eeed093cb22bb8f5acdc3",
+ *                 },
+ *             },
+ *             mtlsCertificates: {
+ *                 MTLS: {
+ *                     certificateId: "d7cdd17c-916f-4cb7-aabe-585eb382ec4e",
+ *                 },
+ *             },
+ *             placement: {
+ *                 mode: "smart",
+ *             },
+ *             queueProducers: {
+ *                 QUEUE_PRODUCER_BINDING: {
+ *                     name: "some-queue",
+ *                 },
+ *             },
+ *             r2Buckets: {
+ *                 R2_BINDING: {
+ *                     jurisdiction: "eu",
+ *                     name: "some-bucket",
+ *                 },
+ *             },
+ *             services: {
+ *                 SERVICE_BINDING: {
+ *                     entrypoint: "MyHandler",
+ *                     environment: "production",
+ *                     service: "example-worker",
+ *                 },
+ *             },
+ *             vectorizeBindings: {
+ *                 VECTORIZE: {
+ *                     indexName: "my_index",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     name: "NextJS Blog",
+ *     productionBranch: "main",
+ *     source: {
+ *         config: {
+ *             deploymentsEnabled: true,
+ *             owner: "owner",
+ *             pathExcludes: ["string"],
+ *             pathIncludes: ["string"],
+ *             prCommentsEnabled: true,
+ *             previewBranchExcludes: ["string"],
+ *             previewBranchIncludes: ["string"],
+ *             previewDeploymentSetting: "all",
+ *             productionBranch: "production_branch",
+ *             productionDeploymentsEnabled: true,
+ *             repoName: "repo_name",
+ *         },
+ *         type: "type",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.

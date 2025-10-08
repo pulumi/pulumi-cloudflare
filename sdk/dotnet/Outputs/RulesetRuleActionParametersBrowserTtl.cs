@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersBrowserTtl
     {
         /// <summary>
-        /// The browser TTL (in seconds) if you choose the "override_origin" mode.
+        /// The browser TTL (in seconds) if you choose the "OverrideOrigin" mode.
         /// </summary>
         public readonly int? Default;
         /// <summary>

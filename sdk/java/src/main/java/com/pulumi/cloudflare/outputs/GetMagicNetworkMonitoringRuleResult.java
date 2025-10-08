@@ -48,7 +48,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
      */
     private Double packetThreshold;
     /**
-     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -61,7 +61,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
     private @Nullable String ruleId;
     /**
      * @return MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     private String type;
@@ -126,7 +126,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
         return this.packetThreshold;
     }
     /**
-     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -145,7 +145,7 @@ public final class GetMagicNetworkMonitoringRuleResult {
     }
     /**
      * @return MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     public String type() {

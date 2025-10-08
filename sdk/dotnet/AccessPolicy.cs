@@ -12,6 +12,82 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessPolicy = new Cloudflare.ZeroTrustAccessPolicy("example_zero_trust_access_policy", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Decision = "allow",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyIncludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "Allow devs",
+    ///         ApprovalGroups = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             {
+    ///                 Approvals_needed = 1,
+    ///                 Email_addresses = new[]
+    ///                 {
+    ///                     "test1@cloudflare.com",
+    ///                     "test2@cloudflare.com",
+    ///                 },
+    ///                 Email_list_uuid = "email_list_uuid",
+    ///             },
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
+    ///             {
+    ///                 Approvals_needed = 3,
+    ///                 Email_addresses = new[]
+    ///                 {
+    ///                     "test@cloudflare.com",
+    ///                     "test2@cloudflare.com",
+    ///                 },
+    ///                 Email_list_uuid = "597147a1-976b-4ef2-9af0-81d5d007fc34",
+    ///             },
+    ///         },
+    ///         ApprovalRequired = true,
+    ///         Excludes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyExcludeGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         IsolationRequired = false,
+    ///         PurposeJustificationPrompt = "Please enter a justification for entering this protected domain.",
+    ///         PurposeJustificationRequired = true,
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireArgs
+    ///             {
+    ///                 Group = new Cloudflare.Inputs.ZeroTrustAccessPolicyRequireGroupArgs
+    ///                 {
+    ///                     Id = "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SessionDuration = "24h",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -42,7 +118,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-        /// Available values: "allow", "deny", "non_identity", "bypass".
+        /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
@@ -171,7 +247,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-        /// Available values: "allow", "deny", "non_identity", "bypass".
+        /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -276,7 +352,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-        /// Available values: "allow", "deny", "non_identity", "bypass".
+        /// Available values: "allow", "deny", "NonIdentity", "bypass".
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }

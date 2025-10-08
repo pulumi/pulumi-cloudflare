@@ -9,6 +9,133 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustGatewayPolicy = new cloudflare.ZeroTrustGatewayPolicy("example_zero_trust_gateway_policy", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     action: "allow",
+ *     name: "block bad websites",
+ *     description: "Block bad websites based on their host name.",
+ *     devicePosture: "any(device_posture.checks.passed[*] in {\"1308749e-fcfb-4ebc-b051-fe022b632644\"})",
+ *     enabled: true,
+ *     expiration: {
+ *         expires_at: "2014-01-01T05:20:20Z",
+ *         duration: 10,
+ *     },
+ *     filters: ["http"],
+ *     identity: "any(identity.groups.name[*] in {\"finance\"})",
+ *     precedence: 0,
+ *     ruleSettings: {
+ *         add_headers: {
+ *             "my-Next-Header": [
+ *                 "foo",
+ *                 "bar",
+ *             ],
+ *             "x-Custom-Header-Name": ["somecustomvalue"],
+ *         },
+ *         allow_child_bypass: false,
+ *         audit_ssh: {
+ *             commandLogging: false,
+ *         },
+ *         biso_admin_controls: {
+ *             copy: "remote_only",
+ *             dcp: true,
+ *             dd: true,
+ *             dk: true,
+ *             download: "enabled",
+ *             dp: false,
+ *             du: true,
+ *             keyboard: "enabled",
+ *             paste: "enabled",
+ *             printing: "enabled",
+ *             upload: "enabled",
+ *             version: "v1",
+ *         },
+ *         block_page: {
+ *             targetUri: "https://example.com",
+ *             includeContext: true,
+ *         },
+ *         block_page_enabled: true,
+ *         block_reason: "This website is a security risk",
+ *         bypass_parent_rule: false,
+ *         check_session: {
+ *             duration: "300s",
+ *             enforce: true,
+ *         },
+ *         dns_resolvers: {
+ *             ipv4: [{
+ *                 ip: "2.2.2.2",
+ *                 port: 5053,
+ *                 routeThroughPrivateNetwork: true,
+ *                 vnetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *             }],
+ *             ipv6: [{
+ *                 ip: "2001:DB8::",
+ *                 port: 5053,
+ *                 routeThroughPrivateNetwork: true,
+ *                 vnetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *             }],
+ *         },
+ *         egress: {
+ *             ipv4: "192.0.2.2",
+ *             ipv4Fallback: "192.0.2.3",
+ *             ipv6: "2001:DB8::/64",
+ *         },
+ *         ignore_cname_category_matches: true,
+ *         insecure_disable_dnssec_validation: false,
+ *         ip_categories: true,
+ *         ip_indicator_feeds: true,
+ *         l4override: {
+ *             ip: "1.1.1.1",
+ *             port: 0,
+ *         },
+ *         notification_settings: {
+ *             enabled: true,
+ *             includeContext: true,
+ *             msg: "msg",
+ *             supportUrl: "support_url",
+ *         },
+ *         override_host: "example.com",
+ *         override_ips: [
+ *             "1.1.1.1",
+ *             "2.2.2.2",
+ *         ],
+ *         payload_log: {
+ *             enabled: true,
+ *         },
+ *         quarantine: {
+ *             fileTypes: ["exe"],
+ *         },
+ *         redirect: {
+ *             targetUri: "https://example.com",
+ *             includeContext: true,
+ *             preservePathAndQuery: true,
+ *         },
+ *         resolve_dns_internally: {
+ *             fallback: "none",
+ *             viewId: "view_id",
+ *         },
+ *         resolve_dns_through_cloudflare: true,
+ *         untrusted_cert: {
+ *             action: "error",
+ *         },
+ *     },
+ *     schedule: {
+ *         fri: "08:00-12:30,13:30-17:00",
+ *         mon: "08:00-12:30,13:30-17:00",
+ *         sat: "08:00-12:30,13:30-17:00",
+ *         sun: "08:00-12:30,13:30-17:00",
+ *         thu: "08:00-12:30,13:30-17:00",
+ *         time_zone: "America/New York",
+ *         tue: "08:00-12:30,13:30-17:00",
+ *         wed: "08:00-12:30,13:30-17:00",
+ *     },
+ *     traffic: "http.request.uri matches \".*a/partial/uri.*\" and http.request.host in $01302951-49f9-47c9-a400-0297e60b6a10",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

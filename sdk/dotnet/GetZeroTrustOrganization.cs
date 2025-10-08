@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AuthDomain;
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login.
+        /// When set to `True`, users skip the identity provider selection step during login.
         /// </summary>
         public readonly bool AutoRedirectToIdentity;
         public readonly Outputs.GetZeroTrustOrganizationCustomPagesResult CustomPages;
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string UiReadOnlyToggleReason;
         /// <summary>
-        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
+        /// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `Ns`, `Us` (or `µs`), `Ms`, `S`, `M`, `H`.
         /// </summary>
         public readonly string UserSeatExpirationInactiveTime;
         /// <summary>

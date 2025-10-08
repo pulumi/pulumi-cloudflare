@@ -60,19 +60,19 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Output("isDefaultNetwork")]
         public Output<bool> IsDefaultNetwork { get; private set; } = null!;
@@ -146,13 +146,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }
@@ -190,19 +190,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
 
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }

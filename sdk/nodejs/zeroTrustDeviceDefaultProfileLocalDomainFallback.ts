@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDeviceDefaultProfileLocalDomainFallback = new cloudflare.ZeroTrustDeviceDefaultProfileLocalDomainFallback("example_zero_trust_device_default_profile_local_domain_fallback", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     domains: [{
+ *         suffix: "example.com",
+ *         description: "Domain bypass for local development",
+ *         dns_server: ["1.1.1.1"],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

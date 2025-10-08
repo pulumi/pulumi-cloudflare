@@ -12,6 +12,45 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleEmailRoutingRule = new Cloudflare.EmailRoutingRule("example_email_routing_rule", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Actions = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.EmailRoutingRuleActionArgs
+    ///             {
+    ///                 Type = "forward",
+    ///                 Value = new[]
+    ///                 {
+    ///                     "destinationaddress@example.net",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Matchers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.EmailRoutingRuleMatcherArgs
+    ///             {
+    ///                 Type = "literal",
+    ///                 Field = "to",
+    ///                 Value = "test@example.com",
+    ///             },
+    ///         },
+    ///         Enabled = true,
+    ///         Name = "Send to user@example.net rule.",
+    ///         Priority = 0,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

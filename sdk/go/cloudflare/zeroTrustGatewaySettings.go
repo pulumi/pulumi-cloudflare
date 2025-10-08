@@ -14,6 +14,96 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustGatewaySettings(ctx, "example_zero_trust_gateway_settings", &cloudflare.ZeroTrustGatewaySettingsArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Settings: &cloudflare.ZeroTrustGatewaySettingsSettingsArgs{
+//					Activity_log: map[string]interface{}{
+//						"enabled": true,
+//					},
+//					Antivirus: &cloudflare.ZeroTrustGatewaySettingsSettingsAntivirusArgs{
+//						EnabledDownloadPhase: pulumi.Bool(false),
+//						EnabledUploadPhase:   pulumi.Bool(false),
+//						FailClosed:           pulumi.Bool(false),
+//						NotificationSettings: &cloudflare.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs{
+//							Enabled:        pulumi.Bool(true),
+//							IncludeContext: pulumi.Bool(true),
+//							Msg:            pulumi.String("msg"),
+//							SupportUrl:     pulumi.String("support_url"),
+//						},
+//					},
+//					Block_page: map[string]interface{}{
+//						"backgroundColor": "background_color",
+//						"enabled":         true,
+//						"footerText":      "--footer--",
+//						"headerText":      "--header--",
+//						"includeContext":  true,
+//						"logoPath":        "https://logos.com/a.png",
+//						"mailtoAddress":   "admin@example.com",
+//						"mailtoSubject":   "Blocked User Inquiry",
+//						"mode":            "",
+//						"name":            "Cloudflare",
+//						"suppressFooter":  false,
+//						"targetUri":       "https://example.com",
+//					},
+//					Body_scanning: map[string]interface{}{
+//						"inspectionMode": "deep",
+//					},
+//					Browser_isolation: map[string]interface{}{
+//						"nonIdentityEnabled":         true,
+//						"urlBrowserIsolationEnabled": true,
+//					},
+//					Certificate: &cloudflare.ZeroTrustGatewaySettingsSettingsCertificateArgs{
+//						Id: pulumi.String("d1b364c5-1311-466e-a194-f0e943e0799f"),
+//					},
+//					Custom_certificate: map[string]interface{}{
+//						"enabled": true,
+//						"id":      "d1b364c5-1311-466e-a194-f0e943e0799f",
+//					},
+//					Extended_email_matching: map[string]interface{}{
+//						"enabled": true,
+//					},
+//					Fips: &cloudflare.ZeroTrustGatewaySettingsSettingsFipsArgs{
+//						Tls: pulumi.Bool(true),
+//					},
+//					Host_selector: map[string]interface{}{
+//						"enabled": false,
+//					},
+//					Inspection: &cloudflare.ZeroTrustGatewaySettingsSettingsInspectionArgs{
+//						Mode: pulumi.String("static"),
+//					},
+//					Protocol_detection: map[string]interface{}{
+//						"enabled": true,
+//					},
+//					Sandbox: &cloudflare.ZeroTrustGatewaySettingsSettingsSandboxArgs{
+//						Enabled:        pulumi.Bool(true),
+//						FallbackAction: pulumi.String("allow"),
+//					},
+//					Tls_decrypt: map[string]interface{}{
+//						"enabled": true,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

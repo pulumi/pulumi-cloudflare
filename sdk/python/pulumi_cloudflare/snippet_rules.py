@@ -108,6 +108,20 @@ class SnippetRules(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_snippet_rules = cloudflare.SnippetRules("example_snippet_rules",
+            zone_id="9f1839b6152d298aca64c4e906b6d074",
+            rules=[{
+                "expression": "ip.src eq 1.1.1.1",
+                "snippet_name": "my_snippet",
+                "description": "Execute my_snippet when IP address is 1.1.1.1.",
+                "enabled": True,
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SnippetRulesRuleArgs', 'SnippetRulesRuleArgsDict']]]] rules: A list of snippet rules.
@@ -121,6 +135,20 @@ class SnippetRules(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_snippet_rules = cloudflare.SnippetRules("example_snippet_rules",
+            zone_id="9f1839b6152d298aca64c4e906b6d074",
+            rules=[{
+                "expression": "ip.src eq 1.1.1.1",
+                "snippet_name": "my_snippet",
+                "description": "Execute my_snippet when IP address is 1.1.1.1.",
+                "enabled": True,
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param SnippetRulesArgs args: The arguments to use to populate this resource's properties.

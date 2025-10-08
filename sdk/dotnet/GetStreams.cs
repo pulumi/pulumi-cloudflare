@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
+        /// Provides a partial word match of the `Name` key in the `Meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         [Input("search")]
         public string? Search { get; set; }
@@ -158,13 +158,13 @@ namespace Pulumi.Cloudflare
         public string? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether the video is `vod` or `live`.
+        /// Specifies whether the video is `Vod` or `Live`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// Provides a fast, exact string match on the `Name` key in the `Meta` field.
         /// </summary>
         [Input("videoName")]
         public string? VideoName { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
+        /// Provides a partial word match of the `Name` key in the `Meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         [Input("search")]
         public Input<string>? Search { get; set; }
@@ -233,13 +233,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Specifies whether the video is `vod` or `live`.
+        /// Specifies whether the video is `Vod` or `Live`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// Provides a fast, exact string match on the `Name` key in the `Meta` field.
         /// </summary>
         [Input("videoName")]
         public Input<string>? VideoName { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStreamsResultResult> Results;
         /// <summary>
-        /// Provides a partial word match of the `name` key in the `meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
+        /// Provides a partial word match of the `Name` key in the `Meta` field. Slow for medium to large video libraries. May be unavailable for very large libraries.
         /// </summary>
         public readonly string? Search;
         /// <summary>
@@ -300,11 +300,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// Specifies whether the video is `vod` or `live`.
+        /// Specifies whether the video is `Vod` or `Live`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Provides a fast, exact string match on the `name` key in the `meta` field.
+        /// Provides a fast, exact string match on the `Name` key in the `Meta` field.
         /// </summary>
         public readonly string? VideoName;
 

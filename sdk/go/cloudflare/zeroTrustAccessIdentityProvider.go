@@ -14,6 +14,52 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessIdentityProvider(ctx, "example_zero_trust_access_identity_provider", &cloudflare.ZeroTrustAccessIdentityProviderArgs{
+//				Config: &cloudflare.ZeroTrustAccessIdentityProviderConfigArgs{
+//					Claims: pulumi.StringArray{
+//						pulumi.String("email_verified"),
+//						pulumi.String("preferred_username"),
+//						pulumi.String("custom_claim_name"),
+//					},
+//					Client_id:                  "<your client id>",
+//					Client_secret:              "<your client secret>",
+//					Conditional_access_enabled: true,
+//					Directory_id:               "<your azure directory uuid>",
+//					Email_claim_name:           "custom_claim_name",
+//					Prompt:                     pulumi.String("login"),
+//					Support_groups:             true,
+//				},
+//				Name:   pulumi.String("Widget Corps IDP"),
+//				Type:   pulumi.String("onetimepin"),
+//				ZoneId: pulumi.String("zone_id"),
+//				ScimConfig: &cloudflare.ZeroTrustAccessIdentityProviderScimConfigArgs{
+//					Enabled:                  pulumi.Bool(true),
+//					Identity_update_behavior: "automatic",
+//					Seat_deprovision:         true,
+//					User_deprovision:         true,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

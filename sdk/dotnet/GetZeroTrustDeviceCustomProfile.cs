@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        /// If the `DnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `True`.
         /// </summary>
         public readonly bool DisableAutoFallback;
         /// <summary>

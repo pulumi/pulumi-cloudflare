@@ -13,6 +13,51 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewR2BucketCors(ctx, "example_r2_bucket_cors", &cloudflare.R2BucketCorsArgs{
+//				AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				BucketName: pulumi.String("example-bucket"),
+//				Rules: cloudflare.R2BucketCorsRuleArray{
+//					&cloudflare.R2BucketCorsRuleArgs{
+//						Allowed: &cloudflare.R2BucketCorsRuleAllowedArgs{
+//							Methods: pulumi.StringArray{
+//								pulumi.String("GET"),
+//							},
+//							Origins: pulumi.StringArray{
+//								pulumi.String("http://localhost:3000"),
+//							},
+//							Headers: pulumi.StringArray{
+//								pulumi.String("x-requested-by"),
+//							},
+//						},
+//						Id: pulumi.String("Allow Local Development"),
+//						Expose_headers: []string{
+//							"Content-Encoding",
+//						},
+//						Max_age_seconds: 3600,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type R2BucketCors struct {
 	pulumi.CustomResourceState
 

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? BatchSize { get; set; }
 
         /// <summary>
-        /// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+        /// Maximum number of concurrent consumers that may consume from this Queue. Set to `Null` to automatically opt in to the platform's maximum (recommended).
         /// </summary>
         [Input("maxConcurrency")]
         public Input<double>? MaxConcurrency { get; set; }

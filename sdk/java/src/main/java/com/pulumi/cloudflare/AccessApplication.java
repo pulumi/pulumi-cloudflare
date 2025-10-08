@@ -230,14 +230,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customPages);
     }
     /**
-     * List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     @Export(name="destinations", refs={List.class,AccessApplicationDestination.class}, tree="[0,1]")
     private Output<List<AccessApplicationDestination>> destinations;
 
     /**
-     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     public Output<List<AccessApplicationDestination>> destinations() {
@@ -356,14 +356,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     @Export(name="optionsPreflightBypass", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> optionsPreflightBypass;
 
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set.
      * 
      */
     public Output<Optional<Boolean>> optionsPreflightBypass() {
@@ -458,7 +458,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scimConfig);
     }
     /**
-     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -469,7 +469,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     private Output<List<String>> selfHostedDomains;
 
     /**
-     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      * 
      */
     public Output<List<String>> selfHostedDomains() {
@@ -553,7 +553,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     }
     /**
      * The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -561,7 +561,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The application type.
-     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dashSso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Output<Optional<String>> type() {

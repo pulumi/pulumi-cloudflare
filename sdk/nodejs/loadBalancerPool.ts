@@ -9,6 +9,54 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleLoadBalancerPool = new cloudflare.LoadBalancerPool("example_load_balancer_pool", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "primary-dc-1",
+ *     origins: [{
+ *         address: "0.0.0.0",
+ *         enabled: true,
+ *         header: {
+ *             host: ["example.com"],
+ *         },
+ *         name: "app-server-1",
+ *         port: 0,
+ *         virtual_network_id: "a5624d4e-044a-4ff0-b3e1-e2465353d4b4",
+ *         weight: 0.6,
+ *     }],
+ *     description: "Primary data center - Provider XYZ",
+ *     enabled: false,
+ *     latitude: 0,
+ *     loadShedding: {
+ *         default_percent: 0,
+ *         default_policy: "random",
+ *         session_percent: 0,
+ *         session_policy: "hash",
+ *     },
+ *     longitude: 0,
+ *     minimumOrigins: 0,
+ *     monitor: "monitor",
+ *     monitorGroup: "monitor_group",
+ *     notificationEmail: "someone@example.com,sometwo@example.com",
+ *     notificationFilter: {
+ *         origin: {
+ *             disable: true,
+ *             healthy: true,
+ *         },
+ *         pool: {
+ *             disable: true,
+ *             healthy: false,
+ *         },
+ *     },
+ *     originSteering: {
+ *         policy: "random",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

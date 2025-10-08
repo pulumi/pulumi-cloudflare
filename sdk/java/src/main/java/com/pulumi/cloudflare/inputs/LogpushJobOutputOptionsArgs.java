@@ -64,14 +64,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to join fields. This field be ignored when `record_template` is set.
+     * String to join fields. This field be ignored when `recordTemplate` is set.
      * 
      */
     @Import(name="fieldDelimiter")
     private @Nullable Output<String> fieldDelimiter;
 
     /**
-     * @return String to join fields. This field be ignored when `record_template` is set.
+     * @return String to join fields. This field be ignored when `recordTemplate` is set.
      * 
      */
     public Optional<Output<String>> fieldDelimiter() {
@@ -156,14 +156,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     @Import(name="recordTemplate")
     private @Nullable Output<String> recordTemplate;
 
     /**
-     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     public Optional<Output<String>> recordTemplate() {
@@ -171,14 +171,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     @Import(name="sampleRate")
     private @Nullable Output<Double> sampleRate;
 
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     public Optional<Output<Double>> sampleRate() {
@@ -301,7 +301,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldDelimiter String to join fields. This field be ignored when `record_template` is set.
+         * @param fieldDelimiter String to join fields. This field be ignored when `recordTemplate` is set.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldDelimiter String to join fields. This field be ignored when `record_template` is set.
+         * @param fieldDelimiter String to join fields. This field be ignored when `recordTemplate` is set.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordTemplate String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+         * @param recordTemplate String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordTemplate String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+         * @param recordTemplate String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
          * 
          * @return builder
          * 

@@ -421,6 +421,31 @@ class DlpCustomProfile(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+            account_id="account_id",
+            name="name",
+            ai_context_enabled=True,
+            allowed_match_count=5,
+            confidence_threshold="confidence_threshold",
+            context_awareness={
+                "enabled": True,
+                "skip": {
+                    "files": True,
+                },
+            },
+            description="description",
+            ocr_enabled=True,
+            shared_entries=[{
+                "enabled": True,
+                "entry_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "entry_type": "custom",
+            }])
+        ```
+
         ## Import
 
         ```sh
@@ -444,6 +469,31 @@ class DlpCustomProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_dlp_custom_profile = cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile",
+            account_id="account_id",
+            name="name",
+            ai_context_enabled=True,
+            allowed_match_count=5,
+            confidence_threshold="confidence_threshold",
+            context_awareness={
+                "enabled": True,
+                "skip": {
+                    "files": True,
+                },
+            },
+            description="description",
+            ocr_enabled=True,
+            shared_entries=[{
+                "enabled": True,
+                "entry_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                "entry_type": "custom",
+            }])
+        ```
 
         ## Import
 

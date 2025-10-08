@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerRule {
     /**
-     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixedResponse in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     private @Nullable String condition;
@@ -53,7 +53,7 @@ public final class LoadBalancerRule {
 
     private LoadBalancerRule() {}
     /**
-     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixedResponse in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     public Optional<String> condition() {

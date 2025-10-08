@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
     /**
      * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
-     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
+     * Available values: &#34;passThrough&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     private String action;
@@ -20,7 +20,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert {
     private GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert() {}
     /**
      * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
-     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
+     * Available values: &#34;passThrough&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     public String action() {

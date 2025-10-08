@@ -105,7 +105,7 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
     }
     /**
      * Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -113,7 +113,7 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     public Output<String> type() {

@@ -11,6 +11,50 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleR2BucketCors = new Cloudflare.R2BucketCors("example_r2_bucket_cors", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         BucketName = "example-bucket",
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.R2BucketCorsRuleArgs
+    ///             {
+    ///                 Allowed = new Cloudflare.Inputs.R2BucketCorsRuleAllowedArgs
+    ///                 {
+    ///                     Methods = new[]
+    ///                     {
+    ///                         "GET",
+    ///                     },
+    ///                     Origins = new[]
+    ///                     {
+    ///                         "http://localhost:3000",
+    ///                     },
+    ///                     Headers = new[]
+    ///                     {
+    ///                         "x-requested-by",
+    ///                     },
+    ///                 },
+    ///                 Id = "Allow Local Development",
+    ///                 Expose_headers = new[]
+    ///                 {
+    ///                     "Content-Encoding",
+    ///                 },
+    ///                 Max_age_seconds = 3600,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2BucketCors:R2BucketCors")]
     public partial class R2BucketCors : global::Pulumi.CustomResource

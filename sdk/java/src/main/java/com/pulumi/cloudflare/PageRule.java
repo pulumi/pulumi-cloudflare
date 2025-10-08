@@ -18,6 +18,47 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.PageRule;
+ * import com.pulumi.cloudflare.PageRuleArgs;
+ * import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var examplePageRule = new PageRule("examplePageRule", PageRuleArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .target("example.com/*")
+ *             .priority(1)
+ *             .status("active")
+ *             .actions(PageRuleActionsArgs.builder()
+ *                 .forwarding_url(Map.ofEntries(
+ *                     Map.entry("url", "https://example.com/foo"),
+ *                     Map.entry("statusCode", 301)
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

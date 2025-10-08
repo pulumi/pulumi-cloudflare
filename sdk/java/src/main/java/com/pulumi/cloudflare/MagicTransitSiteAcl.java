@@ -21,6 +21,59 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.MagicTransitSiteAcl;
+ * import com.pulumi.cloudflare.MagicTransitSiteAclArgs;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteAclLan1Args;
+ * import com.pulumi.cloudflare.inputs.MagicTransitSiteAclLan2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleMagicTransitSiteAcl = new MagicTransitSiteAcl("exampleMagicTransitSiteAcl", MagicTransitSiteAclArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .siteId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .lan1(MagicTransitSiteAclLan1Args.builder()
+ *                 .lan_id("lan_id")
+ *                 .lan_name("lan_name")
+ *                 .port_ranges(List.of("8080-9000"))
+ *                 .ports(1)
+ *                 .subnets("192.0.2.1")
+ *                 .build())
+ *             .lan2(MagicTransitSiteAclLan2Args.builder()
+ *                 .lan_id("lan_id")
+ *                 .lan_name("lan_name")
+ *                 .port_ranges(List.of("8080-9000"))
+ *                 .ports(1)
+ *                 .subnets("192.0.2.1")
+ *                 .build())
+ *             .name("PIN Pad - Cash Register")
+ *             .description("Allows local traffic between PIN pads and cash register.")
+ *             .forwardLocally(true)
+ *             .protocols("tcp")
+ *             .unidirectional(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

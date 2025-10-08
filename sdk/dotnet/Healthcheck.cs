@@ -12,6 +12,67 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleHealthcheck = new Cloudflare.Healthcheck("example_healthcheck", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Address = "www.example.com",
+    ///         Name = "server-1",
+    ///         CheckRegions = new[]
+    ///         {
+    ///             "WEU",
+    ///             "ENAM",
+    ///         },
+    ///         ConsecutiveFails = 0,
+    ///         ConsecutiveSuccesses = 0,
+    ///         Description = "Health check for www.example.com",
+    ///         HttpConfig = new Cloudflare.Inputs.HealthcheckHttpConfigArgs
+    ///         {
+    ///             Allow_insecure = true,
+    ///             Expected_body = "success",
+    ///             Expected_codes = new[]
+    ///             {
+    ///                 "2xx",
+    ///                 "302",
+    ///             },
+    ///             Follow_redirects = true,
+    ///             Header = 
+    ///             {
+    ///                 { "host", new[]
+    ///                 {
+    ///                     "example.com",
+    ///                 } },
+    ///                 { "x-App-ID", new[]
+    ///                 {
+    ///                     "abc123",
+    ///                 } },
+    ///             },
+    ///             Method = "GET",
+    ///             Path = "/health",
+    ///             Port = 0,
+    ///         },
+    ///         Interval = 0,
+    ///         Retries = 0,
+    ///         Suspended = true,
+    ///         TcpConfig = new Cloudflare.Inputs.HealthcheckTcpConfigArgs
+    ///         {
+    ///             Method = "connection_established",
+    ///             Port = 0,
+    ///         },
+    ///         Timeout = 0,
+    ///         Type = "HTTPS",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

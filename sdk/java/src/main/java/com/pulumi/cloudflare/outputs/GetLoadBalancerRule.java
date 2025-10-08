@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancerRule {
     /**
-     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixedResponse in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     private String condition;
@@ -52,7 +52,7 @@ public final class GetLoadBalancerRule {
 
     private GetLoadBalancerRule() {}
     /**
-     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixedResponse in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     public String condition() {

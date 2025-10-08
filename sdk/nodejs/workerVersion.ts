@@ -9,6 +9,63 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleWorkerVersion = new cloudflare.WorkerVersion("example_worker_version", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     workerId: "worker_id",
+ *     annotations: {
+ *         workers_message: "Fixed bug.",
+ *         workers_tag: "v1.0.1",
+ *     },
+ *     assets: {
+ *         config: {
+ *             htmlHandling: "auto-trailing-slash",
+ *             notFoundHandling: "404-page",
+ *             runWorkerFirst: ["string"],
+ *         },
+ *         jwt: "jwt",
+ *     },
+ *     bindings: [{
+ *         name: "MY_ENV_VAR",
+ *         text: "my_data",
+ *         type: "plain_text",
+ *     }],
+ *     compatibilityDate: "2021-01-01",
+ *     compatibilityFlags: ["nodejs_compat"],
+ *     limits: {
+ *         cpu_ms: 50,
+ *     },
+ *     mainModule: "index.js",
+ *     migrations: {
+ *         deleted_classes: ["string"],
+ *         new_classes: ["string"],
+ *         new_sqlite_classes: ["string"],
+ *         new_tag: "v2",
+ *         old_tag: "v1",
+ *         renamed_classes: [{
+ *             from: "from",
+ *             to: "to",
+ *         }],
+ *         transferred_classes: [{
+ *             from: "from",
+ *             fromScript: "from_script",
+ *             to: "to",
+ *         }],
+ *     },
+ *     modules: [{
+ *         content_file: "dist/index.js",
+ *         content_type: "application/javascript+module",
+ *         name: "index.js",
+ *     }],
+ *     placement: {
+ *         mode: "smart",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

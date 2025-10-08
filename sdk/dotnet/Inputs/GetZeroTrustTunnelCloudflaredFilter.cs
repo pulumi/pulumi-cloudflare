@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? IncludePrefix { get; set; }
 
         /// <summary>
-        /// If `true`, only include deleted tunnels. If `false`, exclude deleted tunnels. If empty, all tunnels will be included.
+        /// If `True`, only include deleted tunnels. If `False`, exclude deleted tunnels. If empty, all tunnels will be included.
         /// </summary>
         [Input("isDeleted")]
         public bool? IsDeleted { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Name { get; set; }
 
         /// <summary>
-        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         [Input("status")]

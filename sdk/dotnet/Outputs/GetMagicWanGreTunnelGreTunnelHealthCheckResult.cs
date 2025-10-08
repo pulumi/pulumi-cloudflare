@@ -23,16 +23,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// How frequent the health check is run. The default value is `mid`.
+        /// How frequent the health check is run. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         public readonly string Rate;
         /// <summary>
-        /// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
+        /// The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `CustomerGreEndpoint address`. This field is ignored for bidirectional healthchecks as the interface*address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false.
         /// </summary>
         public readonly Outputs.GetMagicWanGreTunnelGreTunnelHealthCheckTargetResult Target;
         /// <summary>
-        /// The type of healthcheck to run, reply or request. The default value is `reply`.
+        /// The type of healthcheck to run, reply or request. The default value is `Reply`.
         /// Available values: "reply", "request".
         /// </summary>
         public readonly string Type;

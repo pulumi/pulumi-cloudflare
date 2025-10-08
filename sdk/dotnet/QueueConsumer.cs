@@ -11,6 +11,34 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleQueueConsumer = new Cloudflare.QueueConsumer("example_queue_consumer", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         QueueId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         DeadLetterQueue = "example-queue",
+    ///         ScriptName = "my-consumer-worker",
+    ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
+    ///         {
+    ///             Batch_size = 50,
+    ///             Max_concurrency = 10,
+    ///             Max_retries = 3,
+    ///             Max_wait_time_ms = 5000,
+    ///             Retry_delay = 10,
+    ///         },
+    ///         Type = "worker",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/queueConsumer:QueueConsumer")]
     public partial class QueueConsumer : global::Pulumi.CustomResource
@@ -55,7 +83,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.QueueConsumerSettings?> Settings { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -137,7 +165,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.QueueConsumerSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -190,7 +218,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.QueueConsumerSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

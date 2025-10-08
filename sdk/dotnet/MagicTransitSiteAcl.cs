@@ -12,6 +12,65 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleMagicTransitSiteAcl = new Cloudflare.MagicTransitSiteAcl("example_magic_transit_site_acl", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SiteId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Lan1 = new Cloudflare.Inputs.MagicTransitSiteAclLan1Args
+    ///         {
+    ///             Lan_id = "lan_id",
+    ///             Lan_name = "lan_name",
+    ///             Port_ranges = new[]
+    ///             {
+    ///                 "8080-9000",
+    ///             },
+    ///             Ports = new[]
+    ///             {
+    ///                 1,
+    ///             },
+    ///             Subnets = new[]
+    ///             {
+    ///                 "192.0.2.1",
+    ///             },
+    ///         },
+    ///         Lan2 = new Cloudflare.Inputs.MagicTransitSiteAclLan2Args
+    ///         {
+    ///             Lan_id = "lan_id",
+    ///             Lan_name = "lan_name",
+    ///             Port_ranges = new[]
+    ///             {
+    ///                 "8080-9000",
+    ///             },
+    ///             Ports = new[]
+    ///             {
+    ///                 1,
+    ///             },
+    ///             Subnets = new[]
+    ///             {
+    ///                 "192.0.2.1",
+    ///             },
+    ///         },
+    ///         Name = "PIN Pad - Cash Register",
+    ///         Description = "Allows local traffic between PIN pads and cash register.",
+    ///         ForwardLocally = true,
+    ///         Protocols = new[]
+    ///         {
+    ///             "tcp",
+    ///         },
+    ///         Unidirectional = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

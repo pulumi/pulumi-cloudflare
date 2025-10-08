@@ -118,7 +118,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
     }
 
     /**
-     * Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -126,7 +126,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
     private @Nullable Output<String> prefixMatch;
 
     /**
-     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -143,7 +143,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
 
     /**
      * MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     @Import(name="type")
@@ -151,7 +151,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
 
     /**
      * @return MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -365,7 +365,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
          * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
          * 
          * @return builder
@@ -377,7 +377,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
         }
 
         /**
-         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+         * @param prefixMatch Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
          * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
          * 
          * @return builder
@@ -402,7 +402,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
 
         /**
          * @param type MNM rule type.
-         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class MagicNetworkMonitoringRuleState extends com.pulumi.resources.
 
         /**
          * @param type MNM rule type.
-         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+         * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
          * 
          * @return builder
          * 

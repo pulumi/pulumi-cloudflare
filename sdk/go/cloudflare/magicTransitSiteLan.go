@@ -14,6 +14,69 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewMagicTransitSiteLan(ctx, "example_magic_transit_site_lan", &cloudflare.MagicTransitSiteLanArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SiteId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Physport:  pulumi.Int(1),
+//				HaLink:    pulumi.Bool(true),
+//				Name:      pulumi.String("name"),
+//				Nat: &cloudflare.MagicTransitSiteLanNatArgs{
+//					Static_prefix: "192.0.2.0/24",
+//				},
+//				RoutedSubnets: cloudflare.MagicTransitSiteLanRoutedSubnetArray{
+//					&cloudflare.MagicTransitSiteLanRoutedSubnetArgs{
+//						Next_hop: "192.0.2.1",
+//						Prefix:   pulumi.String("192.0.2.0/24"),
+//						Nat: &cloudflare.MagicTransitSiteLanRoutedSubnetNatArgs{
+//							StaticPrefix: pulumi.String("192.0.2.0/24"),
+//						},
+//					},
+//				},
+//				StaticAddressing: &cloudflare.MagicTransitSiteLanStaticAddressingArgs{
+//					Address: pulumi.String("192.0.2.0/24"),
+//					Dhcp_relay: map[string]interface{}{
+//						"serverAddresses": []string{
+//							"192.0.2.1",
+//						},
+//					},
+//					Dhcp_server: map[string]interface{}{
+//						"dhcpPoolEnd":   "192.0.2.1",
+//						"dhcpPoolStart": "192.0.2.1",
+//						"dnsServer":     "192.0.2.1",
+//						"dnsServers": []string{
+//							"192.0.2.1",
+//						},
+//						"reservations": map[string]interface{}{
+//							"00:11:22:33:44:55": "192.0.2.100",
+//							"AA:BB:CC:DD:EE:FF": "192.168.1.101",
+//						},
+//					},
+//					Secondary_address: "192.0.2.0/24",
+//					Virtual_address:   "192.0.2.0/24",
+//				},
+//				VlanTag: pulumi.Int(42),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

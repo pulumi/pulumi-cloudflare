@@ -454,6 +454,34 @@ class AccessOrganization(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+            zone_id="zone_id",
+            allow_authenticate_via_warp=True,
+            auth_domain="test.cloudflareaccess.com",
+            auto_redirect_to_identity=True,
+            custom_pages={
+                "forbidden": "699d98642c564d2e855e9661899b7252",
+                "identity_denied": "699d98642c564d2e855e9661899b7252",
+            },
+            is_ui_read_only=True,
+            login_design={
+                "background_color": "#c5ed1b",
+                "footer_text": "This is an example description.",
+                "header_text": "This is an example description.",
+                "logo_path": "https://example.com/logo.png",
+                "text_color": "#c5ed1b",
+            },
+            name="Widget Corps Internal Applications",
+            session_duration="24h",
+            ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
+            user_seat_expiration_inactive_time="730h",
+            warp_auth_session_duration="24h")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -475,6 +503,34 @@ class AccessOrganization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_organization = cloudflare.ZeroTrustOrganization("example_zero_trust_organization",
+            zone_id="zone_id",
+            allow_authenticate_via_warp=True,
+            auth_domain="test.cloudflareaccess.com",
+            auto_redirect_to_identity=True,
+            custom_pages={
+                "forbidden": "699d98642c564d2e855e9661899b7252",
+                "identity_denied": "699d98642c564d2e855e9661899b7252",
+            },
+            is_ui_read_only=True,
+            login_design={
+                "background_color": "#c5ed1b",
+                "footer_text": "This is an example description.",
+                "header_text": "This is an example description.",
+                "logo_path": "https://example.com/logo.png",
+                "text_color": "#c5ed1b",
+            },
+            name="Widget Corps Internal Applications",
+            session_duration="24h",
+            ui_read_only_toggle_reason="Temporarily turn off the UI read only lock to make a change via the UI",
+            user_seat_expiration_inactive_time="730h",
+            warp_auth_session_duration="24h")
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessOrganizationArgs args: The arguments to use to populate this resource's properties.

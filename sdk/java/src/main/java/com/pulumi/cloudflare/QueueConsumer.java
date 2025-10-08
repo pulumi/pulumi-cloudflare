@@ -18,6 +18,49 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.QueueConsumer;
+ * import com.pulumi.cloudflare.QueueConsumerArgs;
+ * import com.pulumi.cloudflare.inputs.QueueConsumerSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleQueueConsumer = new QueueConsumer("exampleQueueConsumer", QueueConsumerArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .queueId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .deadLetterQueue("example-queue")
+ *             .scriptName("my-consumer-worker")
+ *             .settings(QueueConsumerSettingsArgs.builder()
+ *                 .batch_size(50)
+ *                 .max_concurrency(10)
+ *                 .max_retries(3)
+ *                 .max_wait_time_ms(5000)
+ *                 .retry_delay(10)
+ *                 .build())
+ *             .type("worker")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  */
 @ResourceType(type="cloudflare:index/queueConsumer:QueueConsumer")
 public class QueueConsumer extends com.pulumi.resources.CustomResource {
@@ -110,14 +153,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.settings);
     }
     /**
-     * Available values: &#34;worker&#34;, &#34;http_pull&#34;.
+     * Available values: &#34;worker&#34;, &#34;httpPull&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Available values: &#34;worker&#34;, &#34;http_pull&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;httpPull&#34;.
      * 
      */
     public Output<Optional<String>> type() {

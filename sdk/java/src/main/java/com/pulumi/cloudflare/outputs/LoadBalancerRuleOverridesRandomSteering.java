@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerRuleOverridesRandomSteering {
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     private @Nullable Double defaultWeight;
@@ -26,7 +26,7 @@ public final class LoadBalancerRuleOverridesRandomSteering {
 
     private LoadBalancerRuleOverridesRandomSteering() {}
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     public Optional<Double> defaultWeight() {

@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDlpCustomProfile = new cloudflare.ZeroTrustDlpCustomProfile("example_zero_trust_dlp_custom_profile", {
+ *     accountId: "account_id",
+ *     name: "name",
+ *     aiContextEnabled: true,
+ *     allowedMatchCount: 5,
+ *     confidenceThreshold: "confidence_threshold",
+ *     contextAwareness: {
+ *         enabled: true,
+ *         skip: {
+ *             files: true,
+ *         },
+ *     },
+ *     description: "description",
+ *     ocrEnabled: true,
+ *     sharedEntries: [{
+ *         enabled: true,
+ *         entry_id: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+ *         entry_type: "custom",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

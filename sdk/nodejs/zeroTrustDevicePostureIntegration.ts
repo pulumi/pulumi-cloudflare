@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustDevicePostureIntegration = new cloudflare.ZeroTrustDevicePostureIntegration("example_zero_trust_device_posture_integration", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     config: {
+ *         api_url: "https://as123.awmdm.com/API",
+ *         auth_url: "https://na.uemauth.vmwservices.com/connect/token",
+ *         client_id: "example client id",
+ *         client_secret: "example client secret",
+ *     },
+ *     interval: "10m",
+ *     name: "My Workspace One Integration",
+ *     type: "workspace_one",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

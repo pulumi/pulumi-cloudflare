@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `Certificate` (read-only).
         /// </summary>
         [Output("inUse")]
         public Output<bool> InUse { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-        /// Available values: "custom", "gateway_managed".
+        /// Available values: "custom", "GatewayManaged".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `Certificate` (read-only).
         /// </summary>
         [Input("inUse")]
         public Input<bool>? InUse { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-        /// Available values: "custom", "gateway_managed".
+        /// Available values: "custom", "GatewayManaged".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

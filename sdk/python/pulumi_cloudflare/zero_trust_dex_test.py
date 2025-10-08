@@ -290,6 +290,29 @@ class ZeroTrustDexTest(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_dex_test = cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test",
+            account_id="01a7362d577a6c3019a474fd6f485823",
+            data={
+                "host": "https://dash.cloudflare.com",
+                "kind": "http",
+                "method": "GET",
+            },
+            enabled=True,
+            interval="30m",
+            name="HTTP dash health check",
+            description="Checks the dash endpoint every 30 minutes",
+            target_policies=[{
+                "id": "id",
+                "default": True,
+                "name": "name",
+            }],
+            targeted=True)
+        ```
+
         ## Import
 
         ```sh
@@ -313,6 +336,29 @@ class ZeroTrustDexTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_dex_test = cloudflare.ZeroTrustDexTest("example_zero_trust_dex_test",
+            account_id="01a7362d577a6c3019a474fd6f485823",
+            data={
+                "host": "https://dash.cloudflare.com",
+                "kind": "http",
+                "method": "GET",
+            },
+            enabled=True,
+            interval="30m",
+            name="HTTP dash health check",
+            description="Checks the dash endpoint every 30 minutes",
+            target_policies=[{
+                "id": "id",
+                "default": True,
+                "name": "name",
+            }],
+            targeted=True)
+        ```
 
         ## Import
 

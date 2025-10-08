@@ -11,6 +11,47 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZoneDnsSettings = new Cloudflare.ZoneDnsSettings("example_zone_dns_settings", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         FlattenAllCnames = false,
+    ///         FoundationDns = false,
+    ///         InternalDns = new Cloudflare.Inputs.ZoneDnsSettingsInternalDnsArgs
+    ///         {
+    ///             Reference_zone_id = "reference_zone_id",
+    ///         },
+    ///         MultiProvider = false,
+    ///         Nameservers = new Cloudflare.Inputs.ZoneDnsSettingsNameserversArgs
+    ///         {
+    ///             Ns_set = 1,
+    ///             Type = "cloudflare.standard",
+    ///         },
+    ///         NsTtl = 86400,
+    ///         SecondaryOverrides = false,
+    ///         Soa = new Cloudflare.Inputs.ZoneDnsSettingsSoaArgs
+    ///         {
+    ///             Expire = 604800,
+    ///             Min_ttl = 1800,
+    ///             Mname = "kristina.ns.cloudflare.com",
+    ///             Refresh = 10000,
+    ///             Retry = 2400,
+    ///             Rname = "admin.example.com",
+    ///             Ttl = 3600,
+    ///         },
+    ///         ZoneMode = "dns_only",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneDnsSettings:ZoneDnsSettings")]
     public partial class ZoneDnsSettings : global::Pulumi.CustomResource

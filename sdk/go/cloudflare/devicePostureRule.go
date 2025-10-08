@@ -14,6 +14,47 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustDevicePostureRule(ctx, "example_zero_trust_device_posture_rule", &cloudflare.ZeroTrustDevicePostureRuleArgs{
+//				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:        pulumi.String("Admin Serial Numbers"),
+//				Type:        pulumi.String("file"),
+//				Description: pulumi.String("The rule for admin serial numbers"),
+//				Expiration:  pulumi.String("1h"),
+//				Input: &cloudflare.ZeroTrustDevicePostureRuleInputTypeArgs{
+//					Operating_system: "linux",
+//					Path:             pulumi.String("/bin/cat"),
+//					Exists:           pulumi.Bool(true),
+//					Sha256:           pulumi.String("https://api.us-2.crowdstrike.com"),
+//					Thumbprint:       pulumi.String("0aabab210bdb998e9cf45da2c9ce352977ab531c681b74cf1e487be1bbe9fe6e"),
+//				},
+//				Matches: cloudflare.ZeroTrustDevicePostureRuleMatchArray{
+//					&cloudflare.ZeroTrustDevicePostureRuleMatchArgs{
+//						Platform: pulumi.String("windows"),
+//					},
+//				},
+//				Schedule: pulumi.String("1h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

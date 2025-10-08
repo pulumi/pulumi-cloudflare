@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetCustomHostnamesResultSslResult Ssl;
         /// <summary>
         /// Status of the hostname's activation.
-        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
+        /// Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "TestFailed", "provisioned", "blocked".
         /// </summary>
         public readonly string Status;
         /// <summary>

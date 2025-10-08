@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         public readonly string AppId;
         /// <summary>
         /// Enables Argo Smart Routing for this application.
-        /// Notes: Only available for TCP applications with traffic_type set to "direct".
+        /// Notes: Only available for TCP applications with TrafficType set to "direct".
         /// </summary>
         public readonly bool ArgoSmartRouting;
         /// <summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Tls;
         /// <summary>
-        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+        /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `Protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
         /// Available values: "direct", "http", "https".
         /// </summary>
         public readonly string TrafficType;

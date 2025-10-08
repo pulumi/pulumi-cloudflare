@@ -82,14 +82,14 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
+     * If set, the event will override the waiting room&#39;s `customPageHtml` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="customPageHtml", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customPageHtml;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `custom_page_html` property while it is active. If null, the event will inherit it.
+     * @return If set, the event will override the waiting room&#39;s `customPageHtml` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<String>> customPageHtml() {
@@ -110,14 +110,14 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
+     * If set, the event will override the waiting room&#39;s `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="disableSessionRenewal", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSessionRenewal;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `disable_session_renewal` property while it is active. If null, the event will inherit it.
+     * @return If set, the event will override the waiting room&#39;s `disableSessionRenewal` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<Boolean>> disableSessionRenewal() {
@@ -138,14 +138,14 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.eventEndTime;
     }
     /**
-     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
+     * An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `eventEndTime`.
      * 
      */
     @Export(name="eventStartTime", refs={String.class}, tree="[0]")
     private Output<String> eventStartTime;
 
     /**
-     * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `event_end_time`.
+     * @return An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event&#39;s configuration. The start time must be at least one minute before `eventEndTime`.
      * 
      */
     public Output<String> eventStartTime() {
@@ -172,70 +172,70 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
+     * If set, the event will override the waiting room&#39;s `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `totalActiveUsers` property is also set.
      * 
      */
     @Export(name="newUsersPerMinute", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> newUsersPerMinute;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `total_active_users` property is also set.
+     * @return If set, the event will override the waiting room&#39;s `newUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `totalActiveUsers` property is also set.
      * 
      */
     public Output<Optional<Integer>> newUsersPerMinute() {
         return Codegen.optional(this.newUsersPerMinute);
     }
     /**
-     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+     * An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      * 
      */
     @Export(name="prequeueStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prequeueStartTime;
 
     /**
-     * @return An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+     * @return An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `eventStartTime`.
      * 
      */
     public Output<Optional<String>> prequeueStartTime() {
         return Codegen.optional(this.prequeueStartTime);
     }
     /**
-     * If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
+     * If set, the event will override the waiting room&#39;s `queueingMethod` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="queueingMethod", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueingMethod;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `queueing_method` property while it is active. If null, the event will inherit it.
+     * @return If set, the event will override the waiting room&#39;s `queueingMethod` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<String>> queueingMethod() {
         return Codegen.optional(this.queueingMethod);
     }
     /**
-     * If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
+     * If set, the event will override the waiting room&#39;s `sessionDuration` property while it is active. If null, the event will inherit it.
      * 
      */
     @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionDuration;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `session_duration` property while it is active. If null, the event will inherit it.
+     * @return If set, the event will override the waiting room&#39;s `sessionDuration` property while it is active. If null, the event will inherit it.
      * 
      */
     public Output<Optional<Integer>> sessionDuration() {
         return Codegen.optional(this.sessionDuration);
     }
     /**
-     * If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+     * If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
     @Export(name="shuffleAtEventStart", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shuffleAtEventStart;
 
     /**
-     * @return If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+     * @return If enabled, users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
      * 
      */
     public Output<Boolean> shuffleAtEventStart() {
@@ -256,46 +256,46 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
         return this.suspended;
     }
     /**
-     * If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
+     * If set, the event will override the waiting room&#39;s `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `newUsersPerMinute` property is also set.
      * 
      */
     @Export(name="totalActiveUsers", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> totalActiveUsers;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `new_users_per_minute` property is also set.
+     * @return If set, the event will override the waiting room&#39;s `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event&#39;s `newUsersPerMinute` property is also set.
      * 
      */
     public Output<Optional<Integer>> totalActiveUsers() {
         return Codegen.optional(this.totalActiveUsers);
     }
     /**
-     * If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
-     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * If set, the event will override the waiting room&#39;s `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infiniteQueue&#34;.
      * 
      */
     @Export(name="turnstileAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> turnstileAction;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
-     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * @return If set, the event will override the waiting room&#39;s `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infiniteQueue&#34;.
      * 
      */
     public Output<Optional<String>> turnstileAction() {
         return Codegen.optional(this.turnstileAction);
     }
     /**
-     * If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
-     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * If set, the event will override the waiting room&#39;s `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visibleManaged&#34;.
      * 
      */
     @Export(name="turnstileMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> turnstileMode;
 
     /**
-     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
-     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * @return If set, the event will override the waiting room&#39;s `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visibleManaged&#34;.
      * 
      */
     public Output<Optional<String>> turnstileMode() {

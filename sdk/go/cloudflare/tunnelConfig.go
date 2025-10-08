@@ -14,6 +14,84 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustTunnelCloudflaredConfig(ctx, "example_zero_trust_tunnel_cloudflared_config", &cloudflare.ZeroTrustTunnelCloudflaredConfigArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				TunnelId:  pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//				Config: &cloudflare.ZeroTrustTunnelCloudflaredConfigConfigArgs{
+//					Ingress: []map[string]interface{}{
+//						map[string]interface{}{
+//							"hostname": "tunnel.example.com",
+//							"service":  "https://localhost:8001",
+//							"originRequest": map[string]interface{}{
+//								"access": map[string]interface{}{
+//									"audTag": []string{
+//										"string",
+//									},
+//									"teamName": "zero-trust-organization-name",
+//									"required": false,
+//								},
+//								"caPool":                 "caPool",
+//								"connectTimeout":         10,
+//								"disableChunkedEncoding": true,
+//								"http2Origin":            true,
+//								"httpHostHeader":         "httpHostHeader",
+//								"keepAliveConnections":   100,
+//								"keepAliveTimeout":       90,
+//								"noHappyEyeballs":        false,
+//								"noTlsVerify":            false,
+//								"originServerName":       "originServerName",
+//								"proxyType":              "proxyType",
+//								"tcpKeepAlive":           30,
+//								"tlsTimeout":             10,
+//							},
+//							"path": "subpath",
+//						},
+//					},
+//					Origin_request: map[string]interface{}{
+//						"access": map[string]interface{}{
+//							"audTag": []string{
+//								"string",
+//							},
+//							"teamName": "zero-trust-organization-name",
+//							"required": false,
+//						},
+//						"caPool":                 "caPool",
+//						"connectTimeout":         10,
+//						"disableChunkedEncoding": true,
+//						"http2Origin":            true,
+//						"httpHostHeader":         "httpHostHeader",
+//						"keepAliveConnections":   100,
+//						"keepAliveTimeout":       90,
+//						"noHappyEyeballs":        false,
+//						"noTlsVerify":            false,
+//						"originServerName":       "originServerName",
+//						"proxyType":              "proxyType",
+//						"tcpKeepAlive":           30,
+//						"tlsTimeout":             10,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

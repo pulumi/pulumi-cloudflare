@@ -166,6 +166,41 @@ class R2BucketLifecycle(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_lifecycle = cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            rules=[{
+                "id": "Expire all objects older than 24 hours",
+                "conditions": {
+                    "prefix": "prefix",
+                },
+                "enabled": True,
+                "abort_multipart_uploads_transition": {
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                },
+                "delete_objects_transition": {
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                },
+                "storage_class_transitions": [{
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                    "storageClass": "InfrequentAccess",
+                }],
+            }])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account ID.
@@ -180,6 +215,41 @@ class R2BucketLifecycle(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_r2_bucket_lifecycle = cloudflare.R2BucketLifecycle("example_r2_bucket_lifecycle",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            bucket_name="example-bucket",
+            rules=[{
+                "id": "Expire all objects older than 24 hours",
+                "conditions": {
+                    "prefix": "prefix",
+                },
+                "enabled": True,
+                "abort_multipart_uploads_transition": {
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                },
+                "delete_objects_transition": {
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                },
+                "storage_class_transitions": [{
+                    "condition": {
+                        "maxAge": 0,
+                        "type": "Age",
+                    },
+                    "storageClass": "InfrequentAccess",
+                }],
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param R2BucketLifecycleArgs args: The arguments to use to populate this resource's properties.

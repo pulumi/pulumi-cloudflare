@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? Padding { get; set; }
 
         /// <summary>
-        /// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
+        /// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `Center`. Note that `Center` ignores the `Padding` parameter.
         /// </summary>
         [Input("position")]
         public Input<string>? Position { get; set; }

@@ -12,6 +12,85 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustTunnelCloudflaredConfig = new Cloudflare.ZeroTrustTunnelCloudflaredConfig("example_zero_trust_tunnel_cloudflared_config", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///         Config = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs
+    ///         {
+    ///             Ingress = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "hostname", "tunnel.example.com" },
+    ///                     { "service", "https://localhost:8001" },
+    ///                     { "originRequest", 
+    ///                     {
+    ///                         { "access", 
+    ///                         {
+    ///                             { "audTag", new[]
+    ///                             {
+    ///                                 "string",
+    ///                             } },
+    ///                             { "teamName", "zero-trust-organization-name" },
+    ///                             { "required", false },
+    ///                         } },
+    ///                         { "caPool", "caPool" },
+    ///                         { "connectTimeout", 10 },
+    ///                         { "disableChunkedEncoding", true },
+    ///                         { "http2Origin", true },
+    ///                         { "httpHostHeader", "httpHostHeader" },
+    ///                         { "keepAliveConnections", 100 },
+    ///                         { "keepAliveTimeout", 90 },
+    ///                         { "noHappyEyeballs", false },
+    ///                         { "noTlsVerify", false },
+    ///                         { "originServerName", "originServerName" },
+    ///                         { "proxyType", "proxyType" },
+    ///                         { "tcpKeepAlive", 30 },
+    ///                         { "tlsTimeout", 10 },
+    ///                     } },
+    ///                     { "path", "subpath" },
+    ///                 },
+    ///             },
+    ///             Origin_request = 
+    ///             {
+    ///                 { "access", 
+    ///                 {
+    ///                     { "audTag", new[]
+    ///                     {
+    ///                         "string",
+    ///                     } },
+    ///                     { "teamName", "zero-trust-organization-name" },
+    ///                     { "required", false },
+    ///                 } },
+    ///                 { "caPool", "caPool" },
+    ///                 { "connectTimeout", 10 },
+    ///                 { "disableChunkedEncoding", true },
+    ///                 { "http2Origin", true },
+    ///                 { "httpHostHeader", "httpHostHeader" },
+    ///                 { "keepAliveConnections", 100 },
+    ///                 { "keepAliveTimeout", 90 },
+    ///                 { "noHappyEyeballs", false },
+    ///                 { "noTlsVerify", false },
+    ///                 { "originServerName", "originServerName" },
+    ///                 { "proxyType", "proxyType" },
+    ///                 { "tcpKeepAlive", 30 },
+    ///                 { "tlsTimeout", 10 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -37,7 +116,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Output("source")]
@@ -118,7 +197,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]
@@ -154,7 +233,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]

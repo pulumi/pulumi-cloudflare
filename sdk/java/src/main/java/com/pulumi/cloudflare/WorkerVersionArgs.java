@@ -100,14 +100,14 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     @Import(name="compatibilityFlags")
     private @Nullable Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     public Optional<Output<List<String>>> compatibilityFlags() {
@@ -391,7 +391,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class WorkerVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+         * @param compatibilityFlags Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
          * 
          * @return builder
          * 

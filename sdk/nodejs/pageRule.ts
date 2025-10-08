@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const examplePageRule = new cloudflare.PageRule("example_page_rule", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     target: "example.com/*",
+ *     priority: 1,
+ *     status: "active",
+ *     actions: {
+ *         forwarding_url: {
+ *             url: "https://example.com/foo",
+ *             statusCode: 301,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

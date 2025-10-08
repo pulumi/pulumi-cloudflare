@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         public readonly string DeletedAt;
         public readonly Outputs.GetZeroTrustTunnelCloudflaredVirtualNetworkFilterResult? Filter;
@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// If `true`, this virtual network is the default for the account.
+        /// If `True`, this virtual network is the default for the account.
         /// </summary>
         public readonly bool IsDefaultNetwork;
         /// <summary>

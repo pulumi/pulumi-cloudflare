@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string Direction { get; set; } = null!;
 
         /// <summary>
-        /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+        /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead.
         /// Available values: "any", "all".
         /// </summary>
         [Input("match", required: true)]

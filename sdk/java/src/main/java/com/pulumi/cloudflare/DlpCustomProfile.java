@@ -24,6 +24,57 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfile;
+ * import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessSkipArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustDlpCustomProfile = new ZeroTrustDlpCustomProfile("exampleZeroTrustDlpCustomProfile", ZeroTrustDlpCustomProfileArgs.builder()
+ *             .accountId("account_id")
+ *             .name("name")
+ *             .aiContextEnabled(true)
+ *             .allowedMatchCount(5)
+ *             .confidenceThreshold("confidence_threshold")
+ *             .contextAwareness(ZeroTrustDlpCustomProfileContextAwarenessArgs.builder()
+ *                 .enabled(true)
+ *                 .skip(ZeroTrustDlpCustomProfileContextAwarenessSkipArgs.builder()
+ *                     .files(true)
+ *                     .build())
+ *                 .build())
+ *             .description("description")
+ *             .ocrEnabled(true)
+ *             .sharedEntries(ZeroTrustDlpCustomProfileSharedEntryArgs.builder()
+ *                 .enabled(true)
+ *                 .entry_id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .entry_type("custom")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

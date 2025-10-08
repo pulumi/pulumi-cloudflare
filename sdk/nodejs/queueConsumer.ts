@@ -8,6 +8,26 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleQueueConsumer = new cloudflare.QueueConsumer("example_queue_consumer", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     queueId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     deadLetterQueue: "example-queue",
+ *     scriptName: "my-consumer-worker",
+ *     settings: {
+ *         batch_size: 50,
+ *         max_concurrency: 10,
+ *         max_retries: 3,
+ *         max_wait_time_ms: 5000,
+ *         retry_delay: 10,
+ *     },
+ *     type: "worker",
+ * });
+ * ```
  */
 export class QueueConsumer extends pulumi.CustomResource {
     /**
