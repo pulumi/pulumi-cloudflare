@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The authorization_endpoint URL of your IdP
+        /// The AuthorizationEndpoint URL of your IdP
         /// </summary>
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CentrifyAppId { get; set; }
 
         /// <summary>
-        /// The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+        /// The JwksUri endpoint of your IdP to allow the IdP keys to sign the tokens
         /// </summary>
         [Input("certsUrl")]
         public Input<string>? CertsUrl { get; set; }
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? EmailAttributeName { get; set; }
 
         /// <summary>
-        /// The claim name for email in the id_token response.
+        /// The claim name for email in the IdToken response.
         /// </summary>
         [Input("emailClaimName")]
         public Input<string>? EmailClaimName { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn't presented with any interactive prompt. If the request can't be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
-        /// Available values: "login", "select_account", "none".
+        /// Available values: "login", "SelectAccount", "none".
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? SupportGroups { get; set; }
 
         /// <summary>
-        /// The token_endpoint URL of your IdP
+        /// The TokenEndpoint URL of your IdP
         /// </summary>
         [Input("tokenUrl")]
         public Input<string>? TokenUrl { get; set; }

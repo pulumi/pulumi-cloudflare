@@ -13,8 +13,8 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneLockdownConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-        /// Available values: "ip", "ip_range".
+        /// The configuration target. You must set the target to `Ip` when specifying an IP address in the Zone Lockdown rule.
+        /// Available values: "ip", "IpRange".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The edge TTL (in seconds) if you choose the "override_origin" mode.
+        /// The edge TTL (in seconds) if you choose the "OverrideOrigin" mode.
         /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }

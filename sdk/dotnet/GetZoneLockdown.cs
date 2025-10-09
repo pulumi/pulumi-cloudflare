@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneLockdownResult
     {
         /// <summary>
-        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `Ip` or `IpRange` configurations.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZoneLockdownConfigurationResult> Configurations;
         /// <summary>

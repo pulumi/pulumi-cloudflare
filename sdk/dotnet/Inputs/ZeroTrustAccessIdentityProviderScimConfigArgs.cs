@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ScimBaseUrl { get; set; }
 
         /// <summary>
-        /// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+        /// A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless UserDeprovision is also enabled.
         /// </summary>
         [Input("seatDeprovision")]
         public Input<bool>? SeatDeprovision { get; set; }

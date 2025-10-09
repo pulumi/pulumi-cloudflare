@@ -23,7 +23,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
      */
     private Integer allowedMatchCount;
     /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;very_high&#34;.
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;veryHigh&#34;.
      * 
      */
     private String confidenceThreshold;
@@ -90,7 +90,7 @@ public final class GetZeroTrustDlpPredefinedProfileResult {
         return this.allowedMatchCount;
     }
     /**
-     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;very_high&#34;.
+     * @return Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;veryHigh&#34;.
      * 
      */
     public String confidenceThreshold() {

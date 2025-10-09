@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public readonly string SameSiteAttribute;
         public readonly bool SecureAttribute;
         /// <summary>
-        /// Available values: "first_party", "unknown".
+        /// Available values: "FirstParty", "unknown".
         /// </summary>
         public readonly string Type;
         /// <summary>

@@ -221,7 +221,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.RulesetRuleActionParametersSni? Sni;
         /// <summary>
         /// The SSL level to configure.
-        /// Available values: "off", "flexible", "full", "strict", "origin_pull".
+        /// Available values: "off", "flexible", "full", "strict", "OriginPull".
         /// </summary>
         public readonly string? Ssl;
         /// <summary>

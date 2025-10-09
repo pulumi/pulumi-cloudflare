@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// If bot*fight*mode is set to `True`, Cloudflare issues computationally
         /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Output("botFightMode")]
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         /// this setting can determine the clearance level to be set
-        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        /// Available values: "NoClearance", "jschallenge", "managed", "interactive".
         /// </summary>
         [Output("clearanceLevel")]
         public Output<string> ClearanceLevel { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// If bot*fight*mode is set to `True`, Cloudflare issues computationally
         /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Input("botFightMode")]
@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         /// this setting can determine the clearance level to be set
-        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        /// Available values: "NoClearance", "jschallenge", "managed", "interactive".
         /// </summary>
         [Input("clearanceLevel")]
         public Input<string>? ClearanceLevel { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+        /// If bot*fight*mode is set to `True`, Cloudflare issues computationally
         /// expensive challenges in response to malicious bots (ENT only).
         /// </summary>
         [Input("botFightMode")]
@@ -269,7 +269,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         /// this setting can determine the clearance level to be set
-        /// Available values: "no_clearance", "jschallenge", "managed", "interactive".
+        /// Available values: "NoClearance", "jschallenge", "managed", "interactive".
         /// </summary>
         [Input("clearanceLevel")]
         public Input<string>? ClearanceLevel { get; set; }

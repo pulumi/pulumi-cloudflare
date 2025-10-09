@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Padding;
         /// <summary>
-        /// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter.
+        /// The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `Center`. Note that `Center` ignores the `Padding` parameter.
         /// </summary>
         public readonly string Position;
         /// <summary>

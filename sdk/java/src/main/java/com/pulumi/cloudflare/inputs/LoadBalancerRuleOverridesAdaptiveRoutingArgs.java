@@ -16,14 +16,14 @@ public final class LoadBalancerRuleOverridesAdaptiveRoutingArgs extends com.pulu
     public static final LoadBalancerRuleOverridesAdaptiveRoutingArgs Empty = new LoadBalancerRuleOverridesAdaptiveRoutingArgs();
 
     /**
-     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `sessionAffinityAttributes` for control over when sessions are broken or reassigned.
      * 
      */
     @Import(name="failoverAcrossPools")
     private @Nullable Output<Boolean> failoverAcrossPools;
 
     /**
-     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
+     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `sessionAffinityAttributes` for control over when sessions are broken or reassigned.
      * 
      */
     public Optional<Output<Boolean>> failoverAcrossPools() {
@@ -55,7 +55,7 @@ public final class LoadBalancerRuleOverridesAdaptiveRoutingArgs extends com.pulu
         }
 
         /**
-         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
+         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `sessionAffinityAttributes` for control over when sessions are broken or reassigned.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class LoadBalancerRuleOverridesAdaptiveRoutingArgs extends com.pulu
         }
 
         /**
-         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned.
+         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `sessionAffinityAttributes` for control over when sessions are broken or reassigned.
          * 
          * @return builder
          * 

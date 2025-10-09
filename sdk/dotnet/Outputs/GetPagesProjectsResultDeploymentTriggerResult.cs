@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetPagesProjectsResultDeploymentTriggerMetadataResult Metadata;
         /// <summary>
         /// What caused the deployment.
-        /// Available values: "push", "ad_hoc".
+        /// Available values: "push", "AdHoc".
         /// </summary>
         public readonly string Type;
 

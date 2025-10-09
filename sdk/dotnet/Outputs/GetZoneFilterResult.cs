@@ -26,14 +26,14 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Match;
         /// <summary>
         /// A domain name. Optional filter operators can be provided to extend refine the search:
-        ///   * `equal` (default)
-        ///   * `not_equal`
-        ///   * `starts_with`
-        ///   * `ends_with`
-        ///   * `contains`
-        ///   * `starts_with_case_sensitive`
-        ///   * `ends_with_case_sensitive`
-        ///   * `contains_case_sensitive`
+        ///   * `Equal` (default)
+        ///   * `NotEqual`
+        ///   * `StartsWith`
+        ///   * `EndsWith`
+        ///   * `Contains`
+        ///   * `StartsWithCaseSensitive`
+        ///   * `EndsWithCaseSensitive`
+        ///   * `ContainsCaseSensitive`
         /// </summary>
         public readonly string? Name;
         /// <summary>

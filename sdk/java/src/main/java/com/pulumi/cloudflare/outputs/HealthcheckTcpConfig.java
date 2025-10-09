@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class HealthcheckTcpConfig {
     /**
      * @return The TCP connection method to use for the health check.
-     * Available values: &#34;connection_established&#34;.
+     * Available values: &#34;connectionEstablished&#34;.
      * 
      */
     private @Nullable String method;
@@ -27,7 +27,7 @@ public final class HealthcheckTcpConfig {
     private HealthcheckTcpConfig() {}
     /**
      * @return The TCP connection method to use for the health check.
-     * Available values: &#34;connection_established&#34;.
+     * Available values: &#34;connectionEstablished&#34;.
      * 
      */
     public Optional<String> method() {

@@ -17,7 +17,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Kind of schema
-        /// Available values: "openapi_v3".
+        /// Available values: "OpenapiV3".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

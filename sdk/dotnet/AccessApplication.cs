@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Aud { get; private set; } = null!;
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        /// When set to `True`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Output("autoRedirectToIdentity")]
         public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> CustomPages { get; private set; } = null!;
 
         /// <summary>
-        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of destinations secured by Access. This supersedes `SelfHostedDomains` to allow for more flexibility in defining different types of domains. If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         [Output("destinations")]
         public Output<ImmutableArray<Outputs.AccessApplicationDestination>> Destinations { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         [Output("optionsPreflightBypass")]
         public Output<bool?> OptionsPreflightBypass { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
 
         /// <summary>
-        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `Destinations` and will be supported until **November 21, 2025.** If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         [Output("selfHostedDomains")]
         public Output<ImmutableArray<string>> SelfHostedDomains { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "DashSso", "infrastructure", "rdp".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AppLauncherVisible { get; set; }
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        /// When set to `True`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -395,7 +395,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationDestinationArgs>? _destinations;
 
         /// <summary>
-        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of destinations secured by Access. This supersedes `SelfHostedDomains` to allow for more flexibility in defining different types of domains. If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         public InputList<Inputs.AccessApplicationDestinationArgs> Destinations
         {
@@ -458,7 +458,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
@@ -512,7 +512,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `Destinations` and will be supported until **November 21, 2025.** If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> SelfHostedDomains
@@ -567,7 +567,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "DashSso", "infrastructure", "rdp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -635,7 +635,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Aud { get; set; }
 
         /// <summary>
-        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
+        /// When set to `True`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
@@ -683,7 +683,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationDestinationGetArgs>? _destinations;
 
         /// <summary>
-        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of destinations secured by Access. This supersedes `SelfHostedDomains` to allow for more flexibility in defining different types of domains. If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         public InputList<Inputs.AccessApplicationDestinationGetArgs> Destinations
         {
@@ -746,7 +746,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if CorsHeaders is set.
         /// </summary>
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
@@ -800,7 +800,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `Destinations` and will be supported until **November 21, 2025.** If `Destinations` are provided, then `SelfHostedDomains` will be ignored.
         /// </summary>
         [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> SelfHostedDomains
@@ -855,7 +855,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type.
-        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "DashSso", "infrastructure", "rdp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

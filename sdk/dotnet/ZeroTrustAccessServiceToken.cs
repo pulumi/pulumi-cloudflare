@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
         /// </summary>
         [Output("clientSecretVersion")]
         public Output<double> ClientSecretVersion { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         /// </summary>
         [Output("previousClientSecretExpiresAt")]
         public Output<string?> PreviousClientSecretExpiresAt { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
         /// </summary>
         [Input("clientSecretVersion")]
         public Input<double>? ClientSecretVersion { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         /// </summary>
         [Input("previousClientSecretExpiresAt")]
         public Input<string>? PreviousClientSecretExpiresAt { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+        /// A version number identifying the current `ClientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `PreviousClientSecretExpiresAt`.
         /// </summary>
         [Input("clientSecretVersion")]
         public Input<double>? ClientSecretVersion { get; set; }
@@ -240,7 +240,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+        /// The expiration of the previous `ClientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
         /// </summary>
         [Input("previousClientSecretExpiresAt")]
         public Input<string>? PreviousClientSecretExpiresAt { get; set; }

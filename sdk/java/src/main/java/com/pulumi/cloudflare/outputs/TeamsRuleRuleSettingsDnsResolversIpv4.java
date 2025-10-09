@@ -25,7 +25,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4 {
      */
     private @Nullable Integer port;
     /**
-     * @return Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
+     * @return Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      * 
      */
     private @Nullable Boolean routeThroughPrivateNetwork;
@@ -51,7 +51,7 @@ public final class TeamsRuleRuleSettingsDnsResolversIpv4 {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
+     * @return Indicate whether to connect to this resolver over a private network. Must set when vnetId set.
      * 
      */
     public Optional<Boolean> routeThroughPrivateNetwork() {

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPoliciesResultRuleSettingsResult
     {
         /// <summary>
-        /// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `http` rules with the action set to `allow`.
+        /// Add custom headers to allowed requests as key-value pairs. Use header names as keys that map to arrays of header values. Settable only for `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>> AddHeaders;
         /// <summary>
@@ -22,23 +22,23 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool AllowChildBypass;
         /// <summary>
-        /// Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+        /// Define the settings for the Audit SSH action. Settable only for `L4` rules with `AuditSsh` action.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsAuditSshResult AuditSsh;
         /// <summary>
-        /// Configure browser isolation behavior. Settable only for `http` rules with the action set to `isolate`.
+        /// Configure browser isolation behavior. Settable only for `Http` rules with the action set to `Isolate`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControlsResult BisoAdminControls;
         /// <summary>
-        /// Configure custom block page settings. If missing or null, use the account settings. Settable only for `http` rules with the action set to `block`.
+        /// Configure custom block page settings. If missing or null, use the account settings. Settable only for `Http` rules with the action set to `Block`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPageResult BlockPage;
         /// <summary>
-        /// Enable the custom block page. Settable only for `dns` rules with action `block`.
+        /// Enable the custom block page. Settable only for `Dns` rules with action `Block`.
         /// </summary>
         public readonly bool BlockPageEnabled;
         /// <summary>
-        /// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `dns`, `l4`, and `http` rules when the action set to `block`.
+        /// Explain why the rule blocks the request. The custom block page shows this text (if enabled). Settable only for `Dns`, `L4`, and `Http` rules when the action set to `Block`.
         /// </summary>
         public readonly string BlockReason;
         /// <summary>
@@ -46,71 +46,71 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool BypassParentRule;
         /// <summary>
-        /// Configure session check behavior. Settable only for `l4` and `http` rules with the action set to `allow`.
+        /// Configure session check behavior. Settable only for `L4` and `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSessionResult CheckSession;
         /// <summary>
-        /// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
+        /// Configure custom resolvers to route queries that match the resolver policy. Unused with 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' settings. DNS queries get routed to the address closest to their origin. Only valid when a rule's action set to 'resolve'. Settable only for `DnsResolver` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsDnsResolversResult DnsResolvers;
         /// <summary>
-        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `egress` rules.
+        /// Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs. Settable only for `Egress` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsEgressResult Egress;
         /// <summary>
-        /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+        /// Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         public readonly bool IgnoreCnameCategoryMatches;
         /// <summary>
-        /// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `dns` rules.
+        /// Specify whether to disable DNSSEC validation (for Allow actions) [INSECURE]. Settable only for `Dns` rules.
         /// </summary>
         public readonly bool InsecureDisableDnssecValidation;
         /// <summary>
-        /// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+        /// Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         public readonly bool IpCategories;
         /// <summary>
-        /// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+        /// Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         public readonly bool IpIndicatorFeeds;
         /// <summary>
-        /// Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+        /// Send matching traffic to the supplied destination IP address and port. Settable only for `L4` rules with the action set to `L4Override`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsL4overrideResult L4override;
         /// <summary>
-        /// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `block`.
+        /// Configure a notification to display on the user's device when this rule matched. Settable for all types of rules with the action set to `Block`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsNotificationSettingsResult NotificationSettings;
         /// <summary>
-        /// Defines a hostname for override, for the matching DNS queries. Settable only for `dns` rules with the action set to `override`.
+        /// Defines a hostname for override, for the matching DNS queries. Settable only for `Dns` rules with the action set to `Override`.
         /// </summary>
         public readonly string OverrideHost;
         /// <summary>
-        /// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `dns` rules with the action set to `override`.
+        /// Defines a an IP or set of IPs for overriding matched DNS queries. Settable only for `Dns` rules with the action set to `Override`.
         /// </summary>
         public readonly ImmutableArray<string> OverrideIps;
         /// <summary>
-        /// Configure DLP payload logging. Settable only for `http` rules.
+        /// Configure DLP payload logging. Settable only for `Http` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsPayloadLogResult PayloadLog;
         /// <summary>
-        /// Configure settings that apply to quarantine rules. Settable only for `http` rules.
+        /// Configure settings that apply to quarantine rules. Settable only for `Http` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantineResult Quarantine;
         /// <summary>
-        /// Apply settings to redirect rules. Settable only for `http` rules with the action set to `redirect`.
+        /// Apply settings to redirect rules. Settable only for `Http` rules with the action set to `Redirect`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsRedirectResult Redirect;
         /// <summary>
-        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
+        /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Not used when 'dns*resolvers' is specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action set to 'resolve'. Settable only for `DnsResolver` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResolveDnsInternallyResult ResolveDnsInternally;
         /// <summary>
-        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `dns_resolver` rules.
+        /// Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot set when 'dns*resolvers' specified or 'resolve*dns_internally' is set. Only valid when a rule's action set to 'resolve'. Settable only for `DnsResolver` rules.
         /// </summary>
         public readonly bool ResolveDnsThroughCloudflare;
         /// <summary>
-        /// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `http` rules with the action set to `allow`.
+        /// Configure behavior when an upstream certificate is invalid or an SSL error occurs. Settable only for `Http` rules with the action set to `Allow`.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsUntrustedCertResult UntrustedCert;
 

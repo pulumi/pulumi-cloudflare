@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? BatchSize;
         /// <summary>
-        /// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+        /// Maximum number of concurrent consumers that may consume from this Queue. Set to `Null` to automatically opt in to the platform's maximum (recommended).
         /// </summary>
         public readonly double? MaxConcurrency;
         /// <summary>

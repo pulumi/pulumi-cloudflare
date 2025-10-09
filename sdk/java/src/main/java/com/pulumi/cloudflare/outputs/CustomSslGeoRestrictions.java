@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CustomSslGeoRestrictions {
     /**
-     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highestSecurity&#34;.
      * 
      */
     private @Nullable String label;
 
     private CustomSslGeoRestrictions() {}
     /**
-     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highest_security&#34;.
+     * @return Available values: &#34;us&#34;, &#34;eu&#34;, &#34;highestSecurity&#34;.
      * 
      */
     public Optional<String> label() {

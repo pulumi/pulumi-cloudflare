@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? EndedOn;
         /// <summary>
         /// The current build stage.
-        /// Available values: "queued", "initialize", "clone_repo", "build", "deploy".
+        /// Available values: "queued", "initialize", "CloneRepo", "build", "deploy".
         /// </summary>
         public readonly string? Name;
         /// <summary>

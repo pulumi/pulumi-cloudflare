@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.WorkerVersionLimits> Limits { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Output("mainModule")]
         public Output<string?> MainModule { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -224,7 +224,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerVersionLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -340,7 +340,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.WorkerVersionLimitsGetArgs>? Limits { get; set; }
 
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }

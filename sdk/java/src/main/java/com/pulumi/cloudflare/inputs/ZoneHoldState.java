@@ -24,9 +24,9 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
-     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      * 
@@ -35,9 +35,9 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> holdAfter;
 
     /**
-     * @return If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * @return If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
-     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      * 
@@ -119,9 +119,9 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param holdAfter If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+         * @param holdAfter If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
          * then automatically re-enabled by the system at the time specified
-         * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+         * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
          * no effect on an existing, enabled hold. Providing an empty string will set its value
          * to the current time.
          * 
@@ -134,9 +134,9 @@ public final class ZoneHoldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param holdAfter If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+         * @param holdAfter If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
          * then automatically re-enabled by the system at the time specified
-         * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+         * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
          * no effect on an existing, enabled hold. Providing an empty string will set its value
          * to the current time.
          * 

@@ -19,7 +19,7 @@ public final class PagesProjectLatestDeploymentDeploymentTrigger {
     private @Nullable PagesProjectLatestDeploymentDeploymentTriggerMetadata metadata;
     /**
      * @return What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
+     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
      * 
      */
     private @Nullable String type;
@@ -34,7 +34,7 @@ public final class PagesProjectLatestDeploymentDeploymentTrigger {
     }
     /**
      * @return What caused the deployment.
-     * Available values: &#34;push&#34;, &#34;ad_hoc&#34;.
+     * Available values: &#34;push&#34;, &#34;adHoc&#34;.
      * 
      */
     public Optional<String> type() {

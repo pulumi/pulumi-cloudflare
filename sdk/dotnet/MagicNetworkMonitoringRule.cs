@@ -87,7 +87,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> PacketThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Prefix match type to be applied for a prefix auto advertisement when using an AdvancedDdos rule.
         /// Available values: "exact", "subnet", "supernet".
         /// </summary>
         [Output("prefixMatch")]
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// MNM rule type.
-        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// Available values: "threshold", "zscore", "AdvancedDdos".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? PacketThreshold { get; set; }
 
         /// <summary>
-        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Prefix match type to be applied for a prefix auto advertisement when using an AdvancedDdos rule.
         /// Available values: "exact", "subnet", "supernet".
         /// </summary>
         [Input("prefixMatch")]
@@ -270,7 +270,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// MNM rule type.
-        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// Available values: "threshold", "zscore", "AdvancedDdos".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

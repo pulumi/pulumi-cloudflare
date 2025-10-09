@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// The identifier of the caching setting.
-        /// Available values: "cache_reserve".
+        /// Available values: "CacheReserve".
         /// </summary>
         public readonly string Id;
         /// <summary>

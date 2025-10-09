@@ -66,7 +66,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
     /**
      * The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     @Import(name="order")
@@ -74,7 +74,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
     /**
      * @return The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -221,7 +221,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GetEmailSecurityBlockSendersArgs extends com.pulumi.resources
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 

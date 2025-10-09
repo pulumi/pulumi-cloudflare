@@ -14,6 +14,8 @@ import (
 
 // !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 //
+// ## Example Usage
+//
 // ## Import
 //
 // ```sh

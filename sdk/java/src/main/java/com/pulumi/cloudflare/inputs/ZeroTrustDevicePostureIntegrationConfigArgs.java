@@ -16,14 +16,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     public static final ZeroTrustDevicePostureIntegrationConfigArgs Empty = new ZeroTrustDevicePostureIntegrationConfigArgs();
 
     /**
-     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
      * 
      */
     @Import(name="accessClientId")
     private @Nullable Output<String> accessClientId;
 
     /**
-     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
      * 
      */
     public Optional<Output<String>> accessClientId() {
@@ -31,14 +31,14 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
     }
 
     /**
-     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
      */
     @Import(name="accessClientSecret")
     private @Nullable Output<String> accessClientSecret;
 
     /**
-     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      * 
      */
     public Optional<Output<String>> accessClientSecret() {
@@ -167,7 +167,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
+         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
+         * @param accessClientId If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
+         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ZeroTrustDevicePostureIntegrationConfigArgs extends com.pulum
         }
 
         /**
-         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
+         * @param accessClientSecret If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
          * 
          * @return builder
          * 

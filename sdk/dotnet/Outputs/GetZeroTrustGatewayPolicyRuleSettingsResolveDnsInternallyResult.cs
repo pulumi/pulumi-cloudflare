@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Specify the fallback behavior to apply when the internal DNS response code differs from 'NOERROR' or when the response data contains only CNAME records for 'A' or 'AAAA' queries.
-        /// Available values: "none", "public_dns".
+        /// Available values: "none", "PublicDns".
         /// </summary>
         public readonly string Fallback;
         /// <summary>

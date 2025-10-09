@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Emails;
         /// <summary>
-        /// The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+        /// The content that the certificate authority (CA) will expect to find at the HttpUrl during the domain validation.
         /// </summary>
         public readonly string? HttpBody;
         /// <summary>

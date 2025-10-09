@@ -29,7 +29,7 @@ public final class GetLogpushJobsResultOutputOptions {
      */
     private Boolean cve202144228;
     /**
-     * @return String to join fields. This field be ignored when `record_template` is set.
+     * @return String to join fields. This field be ignored when `recordTemplate` is set.
      * 
      */
     private String fieldDelimiter;
@@ -60,12 +60,12 @@ public final class GetLogpushJobsResultOutputOptions {
      */
     private String recordSuffix;
     /**
-     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     private String recordTemplate;
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     private Double sampleRate;
@@ -99,7 +99,7 @@ public final class GetLogpushJobsResultOutputOptions {
         return this.cve202144228;
     }
     /**
-     * @return String to join fields. This field be ignored when `record_template` is set.
+     * @return String to join fields. This field be ignored when `recordTemplate` is set.
      * 
      */
     public String fieldDelimiter() {
@@ -142,14 +142,14 @@ public final class GetLogpushJobsResultOutputOptions {
         return this.recordSuffix;
     }
     /**
-     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * @return String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     public String recordTemplate() {
         return this.recordTemplate;
     }
     /**
-     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      * 
      */
     public Double sampleRate() {

@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class StreamStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies why the video failed to encode. This field is empty if the video is not in an `error` state. Preferred for programmatic use.
+        /// Specifies why the video failed to encode. This field is empty if the video is not in an `Error` state. Preferred for programmatic use.
         /// </summary>
         [Input("errorReasonCode")]
         public Input<string>? ErrorReasonCode { get; set; }
 
         /// <summary>
-        /// Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `error` state.
+        /// Specifies why the video failed to encode using a human readable error message in English. This field is empty if the video is not in an `Error` state.
         /// </summary>
         [Input("errorReasonText")]
         public Input<string>? ErrorReasonText { get; set; }

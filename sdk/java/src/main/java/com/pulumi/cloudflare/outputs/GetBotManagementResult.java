@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetBotManagementResult {
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -30,7 +30,7 @@ public final class GetBotManagementResult {
     private Boolean bmCookieEnabled;
     /**
      * @return Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     private String cfRobotsVariant;
@@ -67,13 +67,13 @@ public final class GetBotManagementResult {
     private Boolean optimizeWordpress;
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     private String sbfmDefinitelyAutomated;
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     private String sbfmLikelyAutomated;
@@ -113,7 +113,7 @@ public final class GetBotManagementResult {
 
     private GetBotManagementResult() {}
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -136,7 +136,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     public String cfRobotsVariant() {
@@ -187,7 +187,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public String sbfmDefinitelyAutomated() {
@@ -195,7 +195,7 @@ public final class GetBotManagementResult {
     }
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public String sbfmLikelyAutomated() {

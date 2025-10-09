@@ -18,7 +18,7 @@ public final class HealthcheckTcpConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * The TCP connection method to use for the health check.
-     * Available values: &#34;connection_established&#34;.
+     * Available values: &#34;connectionEstablished&#34;.
      * 
      */
     @Import(name="method")
@@ -26,7 +26,7 @@ public final class HealthcheckTcpConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The TCP connection method to use for the health check.
-     * Available values: &#34;connection_established&#34;.
+     * Available values: &#34;connectionEstablished&#34;.
      * 
      */
     public Optional<Output<String>> method() {
@@ -75,7 +75,7 @@ public final class HealthcheckTcpConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param method The TCP connection method to use for the health check.
-         * Available values: &#34;connection_established&#34;.
+         * Available values: &#34;connectionEstablished&#34;.
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class HealthcheckTcpConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param method The TCP connection method to use for the health check.
-         * Available values: &#34;connection_established&#34;.
+         * Available values: &#34;connectionEstablished&#34;.
          * 
          * @return builder
          * 

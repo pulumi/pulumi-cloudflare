@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema for this operation
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
-        ///   - `null` - clears any mitigation action
+        ///   - `Null` - clears any mitigation action
         /// Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema for this operation
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
-        ///   - `null` - clears any mitigation action
+        ///   - `Null` - clears any mitigation action
         /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction", required: true)]
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         ///   - `"log"` - log request when request does not conform to schema for this operation
         ///   - `"block"` - deny access to the site when request does not conform to schema for this operation
         ///   - `"none"` - will skip mitigation for this operation
-        ///   - `null` - clears any mitigation action
+        ///   - `Null` - clears any mitigation action
         /// Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]

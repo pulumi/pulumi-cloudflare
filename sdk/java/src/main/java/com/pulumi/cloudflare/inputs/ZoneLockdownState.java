@@ -20,14 +20,14 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     public static final ZoneLockdownState Empty = new ZoneLockdownState();
 
     /**
-     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     @Import(name="configurations")
     private @Nullable Output<List<ZoneLockdownConfigurationArgs>> configurations;
 
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     public Optional<Output<List<ZoneLockdownConfigurationArgs>>> configurations() {
@@ -171,7 +171,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+         * @param configurations A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
          * 
          * @return builder
          * 

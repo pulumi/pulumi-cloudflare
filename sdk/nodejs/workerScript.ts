@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * !> This resource is no longer recommended. Please use the `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * ```sh

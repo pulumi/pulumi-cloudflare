@@ -26,8 +26,8 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Output("expiration")]
         public Output<Outputs.TeamsRuleExpiration> Expiration { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsRuleRuleSettings> RuleSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
@@ -179,8 +179,8 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.TeamsRuleExpirationArgs>? Expiration { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleArgs>? Schedule { get; set; }
@@ -254,8 +254,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         [Input("expiration")]
         public Input<Inputs.TeamsRuleExpirationGetArgs>? Expiration { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }
 
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TeamsRuleScheduleGetArgs>? Schedule { get; set; }

@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
-        /// Cannot be set to false if `secret` is true or undefined
+        /// Cannot be set to false if `Secret` is true or undefined
         /// </summary>
         [Output("caseSensitive")]
         public Output<bool?> CaseSensitive { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
-        /// Cannot be set to false if `secret` is true or undefined
+        /// Cannot be set to false if `Secret` is true or undefined
         /// </summary>
         [Input("caseSensitive")]
         public Input<bool>? CaseSensitive { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Only applies to custom word lists.
         /// Determines if the words should be matched in a case-sensitive manner
-        /// Cannot be set to false if `secret` is true or undefined
+        /// Cannot be set to false if `Secret` is true or undefined
         /// </summary>
         [Input("caseSensitive")]
         public Input<bool>? CaseSensitive { get; set; }

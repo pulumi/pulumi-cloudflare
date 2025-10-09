@@ -15,7 +15,7 @@ public final class ApiShieldSchemaSchema {
     private @Nullable String createdAt;
     /**
      * @return Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     private @Nullable String kind;
@@ -46,7 +46,7 @@ public final class ApiShieldSchemaSchema {
     }
     /**
      * @return Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public Optional<String> kind() {

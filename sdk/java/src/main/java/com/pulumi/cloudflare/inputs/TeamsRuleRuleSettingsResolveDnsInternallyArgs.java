@@ -17,7 +17,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
     /**
      * Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
-     * Available values: &#34;none&#34;, &#34;public_dns&#34;.
+     * Available values: &#34;none&#34;, &#34;publicDns&#34;.
      * 
      */
     @Import(name="fallback")
@@ -25,7 +25,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
     /**
      * @return Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
-     * Available values: &#34;none&#34;, &#34;public_dns&#34;.
+     * Available values: &#34;none&#34;, &#34;publicDns&#34;.
      * 
      */
     public Optional<Output<String>> fallback() {
@@ -74,7 +74,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
         /**
          * @param fallback Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
-         * Available values: &#34;none&#34;, &#34;public_dns&#34;.
+         * Available values: &#34;none&#34;, &#34;publicDns&#34;.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
         /**
          * @param fallback Specify the fallback behavior to apply when the internal DNS response code differs from &#39;NOERROR&#39; or when the response data contains only CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
-         * Available values: &#34;none&#34;, &#34;public_dns&#34;.
+         * Available values: &#34;none&#34;, &#34;publicDns&#34;.
          * 
          * @return builder
          * 

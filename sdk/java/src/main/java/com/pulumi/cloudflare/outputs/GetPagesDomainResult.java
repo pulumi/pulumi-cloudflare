@@ -20,7 +20,7 @@ public final class GetPagesDomainResult {
      */
     private String accountId;
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     private String certificateAuthority;
@@ -60,7 +60,7 @@ public final class GetPagesDomainResult {
         return this.accountId;
     }
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     public String certificateAuthority() {

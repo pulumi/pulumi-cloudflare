@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The kind of the schema
-        /// Available values: "openapi_v3".
+        /// Available values: "OpenapiV3".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The kind of the schema
-        /// Available values: "openapi_v3".
+        /// Available values: "OpenapiV3".
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The kind of the schema
-        /// Available values: "openapi_v3".
+        /// Available values: "OpenapiV3".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

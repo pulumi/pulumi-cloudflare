@@ -18,7 +18,7 @@ public final class GetRegionalTieredCacheResult {
     private Boolean editable;
     /**
      * @return The identifier of the caching setting.
-     * Available values: &#34;tc_regional&#34;.
+     * Available values: &#34;tcRegional&#34;.
      * 
      */
     private String id;
@@ -49,7 +49,7 @@ public final class GetRegionalTieredCacheResult {
     }
     /**
      * @return The identifier of the caching setting.
-     * Available values: &#34;tc_regional&#34;.
+     * Available values: &#34;tcRegional&#34;.
      * 
      */
     public String id() {
