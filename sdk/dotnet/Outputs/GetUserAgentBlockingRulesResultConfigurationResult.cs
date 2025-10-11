@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetUserAgentBlockingRulesResultConfigurationResult
     {
         /// <summary>
-        /// The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules.
+        /// The configuration target for this rule. You must set the target to `Ua` for User Agent Blocking rules.
         /// </summary>
         public readonly string Target;
         /// <summary>

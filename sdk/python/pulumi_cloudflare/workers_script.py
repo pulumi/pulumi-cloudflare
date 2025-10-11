@@ -862,6 +862,8 @@ class WorkersScript(pulumi.CustomResource):
         """
         !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
 
+        ## Example Usage
+
         ## Import
 
         ```sh
@@ -900,6 +902,8 @@ class WorkersScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         !> This resource is no longer recommended. Please use the `Worker`, `WorkerVersion`, and `WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
+
+        ## Example Usage
 
         ## Import
 

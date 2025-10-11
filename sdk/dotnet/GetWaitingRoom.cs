@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetWaitingRoomCookieAttributesResult CookieAttributes;
         /// <summary>
-        /// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
+        /// Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `CookieSuffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `AdditionalRoutes`.
         /// </summary>
         public readonly string CookieSuffix;
         public readonly string CreatedOn;

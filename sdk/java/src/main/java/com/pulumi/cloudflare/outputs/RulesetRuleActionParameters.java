@@ -294,7 +294,7 @@ public final class RulesetRuleActionParameters {
     private @Nullable RulesetRuleActionParametersSni sni;
     /**
      * @return The SSL level to configure.
-     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
      * 
      */
     private @Nullable String ssl;
@@ -678,7 +678,7 @@ public final class RulesetRuleActionParameters {
     }
     /**
      * @return The SSL level to configure.
-     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;origin_pull&#34;.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;, &#34;originPull&#34;.
      * 
      */
     public Optional<String> ssl() {

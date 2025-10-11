@@ -35,7 +35,7 @@ public final class GetPageShieldCookiesListResult {
     private String sameSiteAttribute;
     private Boolean secureAttribute;
     /**
-     * @return Available values: &#34;first_party&#34;, &#34;unknown&#34;.
+     * @return Available values: &#34;firstParty&#34;, &#34;unknown&#34;.
      * 
      */
     private String type;
@@ -89,7 +89,7 @@ public final class GetPageShieldCookiesListResult {
         return this.secureAttribute;
     }
     /**
-     * @return Available values: &#34;first_party&#34;, &#34;unknown&#34;.
+     * @return Available values: &#34;firstParty&#34;, &#34;unknown&#34;.
      * 
      */
     public String type() {

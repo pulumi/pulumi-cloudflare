@@ -18,7 +18,7 @@ public final class GetZoneCacheReserveResult {
     private Boolean editable;
     /**
      * @return The identifier of the caching setting.
-     * Available values: &#34;cache_reserve&#34;.
+     * Available values: &#34;cacheReserve&#34;.
      * 
      */
     private String id;
@@ -49,7 +49,7 @@ public final class GetZoneCacheReserveResult {
     }
     /**
      * @return The identifier of the caching setting.
-     * Available values: &#34;cache_reserve&#34;.
+     * Available values: &#34;cacheReserve&#34;.
      * 
      */
     public String id() {

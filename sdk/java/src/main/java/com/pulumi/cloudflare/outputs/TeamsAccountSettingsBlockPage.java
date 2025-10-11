@@ -55,7 +55,7 @@ public final class TeamsAccountSettingsBlockPage {
     private @Nullable String mailtoSubject;
     /**
      * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     private @Nullable String mode;
@@ -149,7 +149,7 @@ public final class TeamsAccountSettingsBlockPage {
     }
     /**
      * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     public Optional<String> mode() {

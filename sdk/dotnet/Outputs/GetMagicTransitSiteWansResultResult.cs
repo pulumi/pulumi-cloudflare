@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetMagicTransitSiteWansResultResult
     {
         /// <summary>
-        /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         public readonly string HealthCheckRate;

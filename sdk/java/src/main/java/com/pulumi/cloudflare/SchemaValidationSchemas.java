@@ -69,7 +69,7 @@ public class SchemaValidationSchemas extends com.pulumi.resources.CustomResource
     }
     /**
      * The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
@@ -77,7 +77,7 @@ public class SchemaValidationSchemas extends com.pulumi.resources.CustomResource
 
     /**
      * @return The kind of the schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public Output<String> kind() {

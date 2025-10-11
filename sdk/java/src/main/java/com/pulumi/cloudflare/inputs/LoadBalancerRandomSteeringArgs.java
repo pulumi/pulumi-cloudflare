@@ -18,14 +18,14 @@ public final class LoadBalancerRandomSteeringArgs extends com.pulumi.resources.R
     public static final LoadBalancerRandomSteeringArgs Empty = new LoadBalancerRandomSteeringArgs();
 
     /**
-     * The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     @Import(name="defaultWeight")
     private @Nullable Output<Double> defaultWeight;
 
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     public Optional<Output<Double>> defaultWeight() {
@@ -73,7 +73,7 @@ public final class LoadBalancerRandomSteeringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the pool_weights map.
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class LoadBalancerRandomSteeringArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the pool_weights map.
+         * @param defaultWeight The default weight for pools in the load balancer that are not specified in the poolWeights map.
          * 
          * @return builder
          * 

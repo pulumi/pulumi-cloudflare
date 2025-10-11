@@ -18,7 +18,7 @@ public final class CertificatePackValidationRecord {
      */
     private @Nullable List<String> emails;
     /**
-     * @return The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+     * @return The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
      * 
      */
     private @Nullable String httpBody;
@@ -47,7 +47,7 @@ public final class CertificatePackValidationRecord {
         return this.emails == null ? List.of() : this.emails;
     }
     /**
-     * @return The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+     * @return The content that the certificate authority (CA) will expect to find at the httpUrl during the domain validation.
      * 
      */
     public Optional<String> httpBody() {

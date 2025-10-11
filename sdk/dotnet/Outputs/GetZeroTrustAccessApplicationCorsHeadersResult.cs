@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool AllowAllOrigins;
         /// <summary>
-        /// When set to `true`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
+        /// When set to `True`, includes credentials (cookies, authorization headers, or TLS client certificates) with requests.
         /// </summary>
         public readonly bool AllowCredentials;
         /// <summary>

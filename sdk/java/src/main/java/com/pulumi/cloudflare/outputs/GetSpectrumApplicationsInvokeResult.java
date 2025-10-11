@@ -33,7 +33,7 @@ public final class GetSpectrumApplicationsInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return Application field by which results are ordered.
-     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modifiedOn&#34;, &#34;dns&#34;.
      * 
      */
     private String order;
@@ -73,7 +73,7 @@ public final class GetSpectrumApplicationsInvokeResult {
     }
     /**
      * @return Application field by which results are ordered.
-     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modifiedOn&#34;, &#34;dns&#34;.
      * 
      */
     public String order() {

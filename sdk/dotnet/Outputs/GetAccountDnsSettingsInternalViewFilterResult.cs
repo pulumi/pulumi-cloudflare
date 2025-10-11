@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
+        /// Whether to match all search requirements or at least one (any). If set to `All`, acts like a logical AND between filters. If set to `Any`, acts like a logical OR instead.
         /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;

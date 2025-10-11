@@ -36,8 +36,8 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
      *   - `none` will skip running schema validation entirely for the request
      *   - `null` indicates that no override is in place
      * 
-     * To clear any override, use the special value `disable_override` or `null`
-     * Available values: &#34;none&#34;, &#34;disable_override&#34;.
+     * To clear any override, use the special value `disableOverride` or `null`
+     * Available values: &#34;none&#34;, &#34;disableOverride&#34;.
      * 
      */
     @Import(name="validationOverrideMitigationAction")
@@ -49,8 +49,8 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
      *   - `none` will skip running schema validation entirely for the request
      *   - `null` indicates that no override is in place
      * 
-     * To clear any override, use the special value `disable_override` or `null`
-     * Available values: &#34;none&#34;, &#34;disable_override&#34;.
+     * To clear any override, use the special value `disableOverride` or `null`
+     * Available values: &#34;none&#34;, &#34;disableOverride&#34;.
      * 
      */
     public Optional<Output<String>> validationOverrideMitigationAction() {
@@ -125,8 +125,8 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
          *   - `none` will skip running schema validation entirely for the request
          *   - `null` indicates that no override is in place
          * 
-         * To clear any override, use the special value `disable_override` or `null`
-         * Available values: &#34;none&#34;, &#34;disable_override&#34;.
+         * To clear any override, use the special value `disableOverride` or `null`
+         * Available values: &#34;none&#34;, &#34;disableOverride&#34;.
          * 
          * @return builder
          * 
@@ -142,8 +142,8 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
          *   - `none` will skip running schema validation entirely for the request
          *   - `null` indicates that no override is in place
          * 
-         * To clear any override, use the special value `disable_override` or `null`
-         * Available values: &#34;none&#34;, &#34;disable_override&#34;.
+         * To clear any override, use the special value `disableOverride` or `null`
+         * Available values: &#34;none&#34;, &#34;disableOverride&#34;.
          * 
          * @return builder
          * 

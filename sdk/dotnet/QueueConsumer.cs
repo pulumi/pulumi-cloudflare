@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.QueueConsumerSettings?> Settings { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.QueueConsumerSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.QueueConsumerSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

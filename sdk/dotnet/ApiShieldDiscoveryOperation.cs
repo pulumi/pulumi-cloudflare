@@ -41,8 +41,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Mark state of operation in API Discovery
-        ///   * `review` - Mark operation as for review
-        ///   * `ignored` - Mark operation as ignored
+        ///   * `Review` - Mark operation as for review
+        ///   * `Ignored` - Mark operation as ignored
         /// Available values: "review", "ignored".
         /// </summary>
         [Output("state")]
@@ -108,8 +108,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Mark state of operation in API Discovery
-        ///   * `review` - Mark operation as for review
-        ///   * `ignored` - Mark operation as ignored
+        ///   * `Review` - Mark operation as for review
+        ///   * `Ignored` - Mark operation as ignored
         /// Available values: "review", "ignored".
         /// </summary>
         [Input("state")]
@@ -137,8 +137,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Mark state of operation in API Discovery
-        ///   * `review` - Mark operation as for review
-        ///   * `ignored` - Mark operation as ignored
+        ///   * `Review` - Mark operation as for review
+        ///   * `Ignored` - Mark operation as ignored
         /// Available values: "review", "ignored".
         /// </summary>
         [Input("state")]

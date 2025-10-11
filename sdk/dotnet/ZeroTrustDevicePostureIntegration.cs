@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.ZeroTrustDevicePostureIntegrationConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        /// The interval between each posture check with the third-party API. Use `M` for minutes (e.g. `5m`) and `H` for hours (e.g. `12h`).
         /// </summary>
         [Output("interval")]
         public Output<string> Interval { get; private set; } = null!;
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "CustomS2s".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustDevicePostureIntegrationConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
-        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        /// The interval between each posture check with the third-party API. Use `M` for minutes (e.g. `5m`) and `H` for hours (e.g. `12h`).
         /// </summary>
         [Input("interval", required: true)]
         public Input<string> Interval { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "CustomS2s".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustDevicePostureIntegrationConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        /// The interval between each posture check with the third-party API. Use `M` for minutes (e.g. `5m`) and `H` for hours (e.g. `12h`).
         /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "CustomS2s".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

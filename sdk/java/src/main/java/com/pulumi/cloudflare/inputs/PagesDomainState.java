@@ -33,14 +33,14 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -174,7 +174,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class PagesDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+         * @param certificateAuthority Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
          * 
          * @return builder
          * 

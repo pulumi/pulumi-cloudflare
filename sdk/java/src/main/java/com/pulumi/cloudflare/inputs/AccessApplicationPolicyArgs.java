@@ -38,7 +38,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
 
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     @Import(name="decision")
@@ -46,7 +46,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     public Optional<Output<String>> decision() {
@@ -197,7 +197,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
 
         /**
          * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class AccessApplicationPolicyArgs extends com.pulumi.resources.Reso
 
         /**
          * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 

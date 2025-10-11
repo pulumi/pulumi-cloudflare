@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayAppTypesListResultResult
     {
         /// <summary>
-        /// Identify the type of this application. Multiple applications can share the same type. Refers to the `id` of a returned application type.
+        /// Identify the type of this application. Multiple applications can share the same type. Refers to the `Id` of a returned application type.
         /// </summary>
         public readonly int ApplicationTypeId;
         public readonly string CreatedAt;

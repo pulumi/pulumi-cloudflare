@@ -139,7 +139,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -150,7 +150,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> logpullOptions;
 
     /**
-     * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     * @return This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
      * @deprecated
      * This attribute is deprecated.
@@ -222,14 +222,14 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     @Import(name="outputOptions")
     private @Nullable Output<LogpushJobOutputOptionsArgs> outputOptions;
 
     /**
-     * @return The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+     * @return The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
      * 
      */
     public Optional<Output<LogpushJobOutputOptionsArgs>> outputOptions() {
@@ -466,7 +466,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logpullOptions This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+         * @param logpullOptions This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logpullOptions This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+         * @param logpullOptions This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputOptions The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+         * @param outputOptions The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
          * 
          * @return builder
          * 
@@ -590,7 +590,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param outputOptions The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+         * @param outputOptions The structured replacement for `logpullOptions`. When including this field, the `logpullOption` field will be ignored.
          * 
          * @return builder
          * 

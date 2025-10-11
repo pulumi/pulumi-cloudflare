@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Application field by which results are ordered.
-        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
+        /// Available values: "protocol", "app*id", "created*on", "ModifiedOn", "dns".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Application field by which results are ordered.
-        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
+        /// Available values: "protocol", "app*id", "created*on", "ModifiedOn", "dns".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         public readonly int? MaxItems;
         /// <summary>
         /// Application field by which results are ordered.
-        /// Available values: "protocol", "app*id", "created*on", "modified_on", "dns".
+        /// Available values: "protocol", "app*id", "created*on", "ModifiedOn", "dns".
         /// </summary>
         public readonly string Order;
         /// <summary>

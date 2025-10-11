@@ -49,27 +49,27 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? IpV6;
         /// <summary>
         /// Filters for targets that have any of the following IP addresses. Specify
-        /// `ips` multiple times in query parameter to build list of candidates.
+        /// `Ips` multiple times in query parameter to build list of candidates.
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
         /// Defines an IPv4 filter range's ending value (inclusive). Requires
-        /// `ipv4_start` to be specified as well.
+        /// `Ipv4Start` to be specified as well.
         /// </summary>
         public readonly string? Ipv4End;
         /// <summary>
         /// Defines an IPv4 filter range's starting value (inclusive). Requires
-        /// `ipv4_end` to be specified as well.
+        /// `Ipv4End` to be specified as well.
         /// </summary>
         public readonly string? Ipv4Start;
         /// <summary>
         /// Defines an IPv6 filter range's ending value (inclusive). Requires
-        /// `ipv6_start` to be specified as well.
+        /// `Ipv6Start` to be specified as well.
         /// </summary>
         public readonly string? Ipv6End;
         /// <summary>
         /// Defines an IPv6 filter range's starting value (inclusive). Requires
-        /// `ipv6_end` to be specified as well.
+        /// `Ipv6End` to be specified as well.
         /// </summary>
         public readonly string? Ipv6Start;
         /// <summary>
@@ -82,12 +82,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? ModifiedBefore;
         /// <summary>
         /// The field to sort by.
-        /// Available values: "hostname", "created_at".
+        /// Available values: "hostname", "CreatedAt".
         /// </summary>
         public readonly string? Order;
         /// <summary>
         /// Filters for targets that have any of the following UUIDs. Specify
-        /// `target_ids` multiple times in query parameter to build list of
+        /// `TargetIds` multiple times in query parameter to build list of
         /// candidates.
         /// </summary>
         public readonly ImmutableArray<string> TargetIds;

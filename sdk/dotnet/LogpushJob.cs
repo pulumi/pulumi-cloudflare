@@ -79,13 +79,13 @@ namespace Pulumi.Cloudflare
         public Output<string> LastComplete { get; private set; } = null!;
 
         /// <summary>
-        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the ErrorMessage field.
         /// </summary>
         [Output("lastError")]
         public Output<string> LastError { get; private set; } = null!;
 
         /// <summary>
-        /// This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        /// This field is deprecated. Use `OutputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         /// </summary>
         [Output("logpullOptions")]
         public Output<string?> LogpullOptions { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        /// The structured replacement for `LogpullOptions`. When including this field, the `LogpullOption` field will be ignored.
         /// </summary>
         [Output("outputOptions")]
         public Output<Outputs.LogpushJobOutputOptions?> OutputOptions { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        /// This field is deprecated. Use `OutputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        /// The structured replacement for `LogpullOptions`. When including this field, the `LogpullOption` field will be ignored.
         /// </summary>
         [Input("outputOptions")]
         public Input<Inputs.LogpushJobOutputOptionsArgs>? OutputOptions { get; set; }
@@ -351,13 +351,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? LastComplete { get; set; }
 
         /// <summary>
-        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the error_message field.
+        /// Records the last time the job failed. If not null, the job is currently. failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the ErrorMessage field.
         /// </summary>
         [Input("lastError")]
         public Input<string>? LastError { get; set; }
 
         /// <summary>
-        /// This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+        /// This field is deprecated. Use `OutputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
@@ -387,7 +387,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored.
+        /// The structured replacement for `LogpullOptions`. When including this field, the `LogpullOption` field will be ignored.
         /// </summary>
         [Input("outputOptions")]
         public Input<Inputs.LogpushJobOutputOptionsGetArgs>? OutputOptions { get; set; }

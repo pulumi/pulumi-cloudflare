@@ -57,14 +57,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * Enables or disables RUM. This option can be used only when autoInstall is set to true.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * @return Enables or disables RUM. This option can be used only when autoInstall is set to true.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -270,7 +270,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Enables or disables RUM. This option can be used only when auto_install is set to true.
+         * @param enabled Enables or disables RUM. This option can be used only when autoInstall is set to true.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Enables or disables RUM. This option can be used only when auto_install is set to true.
+         * @param enabled Enables or disables RUM. This option can be used only when autoInstall is set to true.
          * 
          * @return builder
          * 

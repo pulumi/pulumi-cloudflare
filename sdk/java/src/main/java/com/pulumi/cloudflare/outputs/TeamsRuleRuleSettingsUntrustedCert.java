@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class TeamsRuleRuleSettingsUntrustedCert {
     /**
      * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
-     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
+     * Available values: &#34;passThrough&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     private @Nullable String action;
@@ -21,7 +21,7 @@ public final class TeamsRuleRuleSettingsUntrustedCert {
     private TeamsRuleRuleSettingsUntrustedCert() {}
     /**
      * @return Defines the action performed when an untrusted certificate seen. The default action an error with HTTP code 526.
-     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
+     * Available values: &#34;passThrough&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     public Optional<String> action() {

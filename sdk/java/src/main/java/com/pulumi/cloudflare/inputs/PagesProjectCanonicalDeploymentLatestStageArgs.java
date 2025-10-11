@@ -32,7 +32,7 @@ public final class PagesProjectCanonicalDeploymentLatestStageArgs extends com.pu
 
     /**
      * The current build stage.
-     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     @Import(name="name")
@@ -40,7 +40,7 @@ public final class PagesProjectCanonicalDeploymentLatestStageArgs extends com.pu
 
     /**
      * @return The current build stage.
-     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+     * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -129,7 +129,7 @@ public final class PagesProjectCanonicalDeploymentLatestStageArgs extends com.pu
 
         /**
          * @param name The current build stage.
-         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PagesProjectCanonicalDeploymentLatestStageArgs extends com.pu
 
         /**
          * @param name The current build stage.
-         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;clone_repo&#34;, &#34;build&#34;, &#34;deploy&#34;.
+         * Available values: &#34;queued&#34;, &#34;initialize&#34;, &#34;cloneRepo&#34;, &#34;build&#34;, &#34;deploy&#34;.
          * 
          * @return builder
          * 

@@ -50,7 +50,7 @@ public final class GetSpectrumApplicationsPlainArgs extends com.pulumi.resources
 
     /**
      * Application field by which results are ordered.
-     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modifiedOn&#34;, &#34;dns&#34;.
      * 
      */
     @Import(name="order")
@@ -58,7 +58,7 @@ public final class GetSpectrumApplicationsPlainArgs extends com.pulumi.resources
 
     /**
      * @return Application field by which results are ordered.
-     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
+     * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modifiedOn&#34;, &#34;dns&#34;.
      * 
      */
     public Optional<String> order() {
@@ -132,7 +132,7 @@ public final class GetSpectrumApplicationsPlainArgs extends com.pulumi.resources
 
         /**
          * @param order Application field by which results are ordered.
-         * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modified_on&#34;, &#34;dns&#34;.
+         * Available values: &#34;protocol&#34;, &#34;app*id&#34;, &#34;created*on&#34;, &#34;modifiedOn&#34;, &#34;dns&#34;.
          * 
          * @return builder
          * 

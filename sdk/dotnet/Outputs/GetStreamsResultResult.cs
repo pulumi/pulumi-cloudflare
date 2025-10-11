@@ -60,11 +60,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ReadyToStreamAt;
         /// <summary>
-        /// Indicates whether the video can be a accessed using the UID. When set to `true`, a signed token must be generated with a signing key to view the video.
+        /// Indicates whether the video can be a accessed using the UID. When set to `True`, a signed token must be generated with a signing key to view the video.
         /// </summary>
         public readonly bool RequireSignedUrls;
         /// <summary>
-        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
+        /// Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `Null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
         /// </summary>
         public readonly string ScheduledDeletion;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double Size;
         /// <summary>
-        /// Specifies a detailed status for a video. If the `state` is `inprogress` or `error`, the `step` field returns `encoding` or `manifest`. If the `state` is `inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `state` is `error`, `errorReasonCode` and `errorReasonText` provide additional details.
+        /// Specifies a detailed status for a video. If the `State` is `Inprogress` or `Error`, the `Step` field returns `Encoding` or `Manifest`. If the `State` is `Inprogress`, `pctComplete` returns a number between 0 and 100 to indicate the approximate percent of completion. If the `State` is `Error`, `errorReasonCode` and `errorReasonText` provide additional details.
         /// </summary>
         public readonly Outputs.GetStreamsResultStatusResult Status;
         /// <summary>

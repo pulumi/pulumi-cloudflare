@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancerRandomSteering {
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     private Double defaultWeight;
@@ -25,7 +25,7 @@ public final class GetLoadBalancerRandomSteering {
 
     private GetLoadBalancerRandomSteering() {}
     /**
-     * @return The default weight for pools in the load balancer that are not specified in the pool_weights map.
+     * @return The default weight for pools in the load balancer that are not specified in the poolWeights map.
      * 
      */
     public Double defaultWeight() {

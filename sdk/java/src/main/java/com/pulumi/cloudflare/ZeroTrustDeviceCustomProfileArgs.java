@@ -120,14 +120,14 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
     }
 
     /**
-     * If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     @Import(name="disableAutoFallback")
     private @Nullable Output<Boolean> disableAutoFallback;
 
     /**
-     * @return If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * @return If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     public Optional<Output<Boolean>> disableAutoFallback() {
@@ -533,7 +533,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param disableAutoFallback If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+         * @param disableAutoFallback If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param disableAutoFallback If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+         * @param disableAutoFallback If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
          * 
          * @return builder
          * 

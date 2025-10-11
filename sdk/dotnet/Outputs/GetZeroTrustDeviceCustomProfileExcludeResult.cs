@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDeviceCustomProfileExcludeResult
     {
         /// <summary>
-        /// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        /// The address in CIDR format to exclude from the tunnel. If `Address` is present, `Host` must not be present.
         /// </summary>
         public readonly string Address;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        /// The domain name to exclude from the tunnel. If `Host` is present, `Address` must not be present.
         /// </summary>
         public readonly string Host;
 

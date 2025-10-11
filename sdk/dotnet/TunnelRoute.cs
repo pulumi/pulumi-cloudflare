@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Output("deletedAt")]
         public Output<string> DeletedAt { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         [Input("deletedAt")]
         public Input<string>? DeletedAt { get; set; }

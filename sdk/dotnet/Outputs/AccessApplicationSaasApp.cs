@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NameIdFormat;
         /// <summary>
-        /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `NameIdFormat` setting.
         /// </summary>
         public readonly string? NameIdTransformJsonata;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? SamlAttributeTransformJsonata;
         /// <summary>
-        /// Define the user information shared with access, "offline_access" scope will be automatically enabled if refresh tokens are enabled
+        /// Define the user information shared with access, "OfflineAccess" scope will be automatically enabled if refresh tokens are enabled
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>

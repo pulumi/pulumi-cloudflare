@@ -14,8 +14,8 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustGatewayPoliciesResultResult
     {
         /// <summary>
-        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
+        /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `True`.
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "L4Override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         public readonly string Action;
         public readonly string CreatedAt;
@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `dns` rules.
+        /// Defines the expiration time stamp and default duration of a DNS policy. Takes precedence over the policy's `Schedule` configuration, if any. This  does not apply to HTTP or network policies. Settable only for `Dns` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultExpirationResult Expiration;
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool ReadOnly;
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsResult RuleSettings;
         /// <summary>
-        /// Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+        /// Defines the schedule for activating DNS policies. Settable only for `Dns` and `DnsResolver` rules.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPoliciesResultScheduleResult Schedule;
         /// <summary>

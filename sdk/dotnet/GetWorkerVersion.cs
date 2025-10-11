@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         [Input("include")]
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         [Input("include")]
@@ -176,7 +176,7 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedOn;
         public readonly string Id;
         /// <summary>
-        /// Whether to include the `modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
+        /// Whether to include the `Modules` property of the version in the response, which contains code and sourcemap content and may add several megabytes to the response size.
         /// Available values: "modules".
         /// </summary>
         public readonly string? Include;

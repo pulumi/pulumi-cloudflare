@@ -54,7 +54,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
     private String mailtoSubject;
     /**
      * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     private String mode;
@@ -148,7 +148,7 @@ public final class GetZeroTrustGatewaySettingsSettingsBlockPage {
     }
     /**
      * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     public String mode() {

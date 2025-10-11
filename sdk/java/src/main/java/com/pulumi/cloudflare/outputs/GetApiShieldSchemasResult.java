@@ -14,7 +14,7 @@ public final class GetApiShieldSchemasResult {
     private String createdAt;
     /**
      * @return Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     private String kind;
@@ -45,7 +45,7 @@ public final class GetApiShieldSchemasResult {
     }
     /**
      * @return Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public String kind() {

@@ -112,14 +112,14 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
     }
 
     /**
-     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -305,7 +305,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class ZeroTrustDlpPredefinedEntryState extends com.pulumi.resources
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;word_list&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact*data&#34;, &#34;document*fingerprint&#34;, &#34;wordList&#34;.
          * 
          * @return builder
          * 

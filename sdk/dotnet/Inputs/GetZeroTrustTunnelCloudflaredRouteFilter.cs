@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? ExistedAt { get; set; }
 
         /// <summary>
-        /// If `true`, only include deleted routes. If `false`, exclude deleted routes. If empty, all routes will be included.
+        /// If `True`, only include deleted routes. If `False`, exclude deleted routes. If empty, all routes will be included.
         /// </summary>
         [Input("isDeleted")]
         public bool? IsDeleted { get; set; }

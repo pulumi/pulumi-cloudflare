@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Indicate whether to connect to this resolver over a private network. Must set when vnet_id set.
+        /// Indicate whether to connect to this resolver over a private network. Must set when VnetId set.
         /// </summary>
         [Input("routeThroughPrivateNetwork")]
         public Input<bool>? RouteThroughPrivateNetwork { get; set; }

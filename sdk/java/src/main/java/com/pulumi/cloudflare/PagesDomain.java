@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 /**
  * &gt; A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflare_record` resource for the domain you want to use.
+ *    a `cloudflareRecord` resource for the domain you want to use.
  * 
  * ## Example Usage
  * 
@@ -78,14 +78,14 @@ public class PagesDomain extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output<String> certificateAuthority;
 
     /**
-     * @return Available values: &#34;google&#34;, &#34;lets_encrypt&#34;.
+     * @return Available values: &#34;google&#34;, &#34;letsEncrypt&#34;.
      * 
      */
     public Output<String> certificateAuthority() {

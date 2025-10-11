@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsAccountSettingsCertificateArgs>? Certificate { get; set; }
 
         /// <summary>
-        /// Specify custom certificate settings for BYO-PKI. This field is deprecated; use `certificate` instead.
+        /// Specify custom certificate settings for BYO-PKI. This field is deprecated; use `Certificate` instead.
         /// </summary>
         [Input("customCertificate")]
         public Input<Inputs.TeamsAccountSettingsCustomCertificateArgs>? CustomCertificate { get; set; }
