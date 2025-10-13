@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        /// When `True`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         /// </summary>
         [Output("allowNullCipher")]
         public Output<bool> AllowNullCipher { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.MagicWanIpsecTunnelPskMetadata> PskMetadata { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
+        /// If `True`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         /// </summary>
         [Output("replayProtection")]
         public Output<bool> ReplayProtection { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
+        /// If `True`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         /// </summary>
         [Input("replayProtection")]
         public Input<bool>? ReplayProtection { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        /// When `True`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         /// </summary>
         [Input("allowNullCipher")]
         public Input<bool>? AllowNullCipher { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.MagicWanIpsecTunnelPskMetadataGetArgs>? PskMetadata { get; set; }
 
         /// <summary>
-        /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
+        /// If `True`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         /// </summary>
         [Input("replayProtection")]
         public Input<bool>? ReplayProtection { get; set; }

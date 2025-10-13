@@ -48,11 +48,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
-        ///   - `none` will skip running schema validation entirely for the request
-        ///   - `null` indicates that no override is in place
+        ///   - `None` will skip running schema validation entirely for the request
+        ///   - `Null` indicates that no override is in place
         /// 
-        /// To clear any override, use the special value `disable_override` or `null`
-        /// Available values: "none", "disable_override".
+        /// To clear any override, use the special value `DisableOverride` or `Null`
+        /// Available values: "none", "DisableOverride".
         /// </summary>
         [Output("validationOverrideMitigationAction")]
         public Output<string?> ValidationOverrideMitigationAction { get; private set; } = null!;
@@ -118,11 +118,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
-        ///   - `none` will skip running schema validation entirely for the request
-        ///   - `null` indicates that no override is in place
+        ///   - `None` will skip running schema validation entirely for the request
+        ///   - `Null` indicates that no override is in place
         /// 
-        /// To clear any override, use the special value `disable_override` or `null`
-        /// Available values: "none", "disable_override".
+        /// To clear any override, use the special value `DisableOverride` or `Null`
+        /// Available values: "none", "DisableOverride".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }
@@ -150,11 +150,11 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
-        ///   - `none` will skip running schema validation entirely for the request
-        ///   - `null` indicates that no override is in place
+        ///   - `None` will skip running schema validation entirely for the request
+        ///   - `Null` indicates that no override is in place
         /// 
-        /// To clear any override, use the special value `disable_override` or `null`
-        /// Available values: "none", "disable_override".
+        /// To clear any override, use the special value `DisableOverride` or `Null`
+        /// Available values: "none", "DisableOverride".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
         public Input<string>? ValidationOverrideMitigationAction { get; set; }

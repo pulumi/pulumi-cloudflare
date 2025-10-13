@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZoneLockdownsResult {
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     private List<GetZoneLockdownsResultConfiguration> configurations;
@@ -51,7 +51,7 @@ public final class GetZoneLockdownsResult {
 
     private GetZoneLockdownsResult() {}
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     public List<GetZoneLockdownsResultConfiguration> configurations() {

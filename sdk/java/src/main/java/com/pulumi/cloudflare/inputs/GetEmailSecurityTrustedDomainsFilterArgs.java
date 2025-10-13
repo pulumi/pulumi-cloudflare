@@ -49,7 +49,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     @Import(name="order")
@@ -57,7 +57,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
     /**
      * @return The field to sort by.
-     * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+     * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -164,7 +164,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GetEmailSecurityTrustedDomainsFilterArgs extends com.pulumi.r
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;pattern&#34;, &#34;created_at&#34;.
+         * Available values: &#34;pattern&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 

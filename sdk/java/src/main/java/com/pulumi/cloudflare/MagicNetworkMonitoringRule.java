@@ -159,7 +159,7 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.packetThreshold);
     }
     /**
-     * Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -167,7 +167,7 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
     private Output<String> prefixMatch;
 
     /**
-     * @return Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+     * @return Prefix match type to be applied for a prefix auto advertisement when using an advancedDdos rule.
      * Available values: &#34;exact&#34;, &#34;subnet&#34;, &#34;supernet&#34;.
      * 
      */
@@ -182,7 +182,7 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
     }
     /**
      * MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -190,7 +190,7 @@ public class MagicNetworkMonitoringRule extends com.pulumi.resources.CustomResou
 
     /**
      * @return MNM rule type.
-     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advanced_ddos&#34;.
+     * Available values: &#34;threshold&#34;, &#34;zscore&#34;, &#34;advancedDdos&#34;.
      * 
      */
     public Output<String> type() {

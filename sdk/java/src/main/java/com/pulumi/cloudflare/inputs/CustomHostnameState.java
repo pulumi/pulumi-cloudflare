@@ -142,7 +142,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Status of the hostname&#39;s activation.
-     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     @Import(name="status")
@@ -150,7 +150,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Status of the hostname&#39;s activation.
-     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -391,7 +391,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param status Status of the hostname&#39;s activation.
-         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class CustomHostnameState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param status Status of the hostname&#39;s activation.
-         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;testFailed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
          * 
          * @return builder
          * 

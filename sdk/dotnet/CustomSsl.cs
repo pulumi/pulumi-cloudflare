@@ -173,7 +173,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
-        /// Available values: "legacy*custom", "sni_custom".
+        /// Available values: "legacy*custom", "SniCustom".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
-        /// Available values: "legacy*custom", "sni_custom".
+        /// Available values: "legacy*custom", "SniCustom".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
-        /// Available values: "legacy*custom", "sni_custom".
+        /// Available values: "legacy*custom", "SniCustom".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

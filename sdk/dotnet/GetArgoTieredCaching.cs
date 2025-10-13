@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// The identifier of the caching setting.
-        /// Available values: "tiered_caching".
+        /// Available values: "TieredCaching".
         /// </summary>
         public readonly string Id;
         /// <summary>

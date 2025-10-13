@@ -25,7 +25,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
 
     /**
      * Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     @Import(name="kind")
@@ -33,7 +33,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Kind of schema
-     * Available values: &#34;openapi_v3&#34;.
+     * Available values: &#34;openapiV3&#34;.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -140,7 +140,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
 
         /**
          * @param kind Kind of schema
-         * Available values: &#34;openapi_v3&#34;.
+         * Available values: &#34;openapiV3&#34;.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
 
         /**
          * @param kind Kind of schema
-         * Available values: &#34;openapi_v3&#34;.
+         * Available values: &#34;openapiV3&#34;.
          * 
          * @return builder
          * 

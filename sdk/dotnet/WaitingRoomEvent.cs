@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `CustomPageHtml` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Output("customPageHtml")]
         public Output<string?> CustomPageHtml { get; private set; } = null!;
@@ -69,7 +69,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `DisableSessionRenewal` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Output("disableSessionRenewal")]
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> EventEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `EventEndTime`.
         /// </summary>
         [Output("eventStartTime")]
         public Output<string> EventStartTime { get; private set; } = null!;
@@ -96,57 +96,57 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        /// If set, the event will override the waiting room's `NewUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `TotalActiveUsers` property is also set.
         /// </summary>
         [Output("newUsersPerMinute")]
         public Output<int?> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `EventStartTime`.
         /// </summary>
         [Output("prequeueStartTime")]
         public Output<string?> PrequeueStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `QueueingMethod` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Output("queueingMethod")]
         public Output<string?> QueueingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `SessionDuration` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Output("sessionDuration")]
         public Output<int?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        /// If enabled, users in the prequeue will be shuffled randomly at the `EventStartTime`. Requires that `PrequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `QueueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         /// </summary>
         [Output("shuffleAtEventStart")]
         public Output<bool> ShuffleAtEventStart { get; private set; } = null!;
 
         /// <summary>
-        /// Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        /// Suspends or allows an event. If set to `True`, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Output("suspended")]
         public Output<bool> Suspended { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        /// If set, the event will override the waiting room's `TotalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `NewUsersPerMinute` property is also set.
         /// </summary>
         [Output("totalActiveUsers")]
         public Output<int?> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
-        /// Available values: "log", "infinite_queue".
+        /// If set, the event will override the waiting room's `TurnstileAction` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "InfiniteQueue".
         /// </summary>
         [Output("turnstileAction")]
         public Output<string?> TurnstileAction { get; private set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
-        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// If set, the event will override the waiting room's `TurnstileMode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "VisibleManaged".
         /// </summary>
         [Output("turnstileMode")]
         public Output<string?> TurnstileMode { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomEventArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `CustomPageHtml` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `DisableSessionRenewal` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.Cloudflare
         public Input<string> EventEndTime { get; set; } = null!;
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `EventEndTime`.
         /// </summary>
         [Input("eventStartTime", required: true)]
         public Input<string> EventStartTime { get; set; } = null!;
@@ -243,57 +243,57 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        /// If set, the event will override the waiting room's `NewUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `TotalActiveUsers` property is also set.
         /// </summary>
         [Input("newUsersPerMinute")]
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `EventStartTime`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `QueueingMethod` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `SessionDuration` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        /// If enabled, users in the prequeue will be shuffled randomly at the `EventStartTime`. Requires that `PrequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `QueueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
 
         /// <summary>
-        /// Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        /// Suspends or allows an event. If set to `True`, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        /// If set, the event will override the waiting room's `TotalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `NewUsersPerMinute` property is also set.
         /// </summary>
         [Input("totalActiveUsers")]
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
-        /// Available values: "log", "infinite_queue".
+        /// If set, the event will override the waiting room's `TurnstileAction` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "InfiniteQueue".
         /// </summary>
         [Input("turnstileAction")]
         public Input<string>? TurnstileAction { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
-        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// If set, the event will override the waiting room's `TurnstileMode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "VisibleManaged".
         /// </summary>
         [Input("turnstileMode")]
         public Input<string>? TurnstileMode { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `CustomPageHtml` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `DisableSessionRenewal` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? EventEndTime { get; set; }
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        /// An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `EventEndTime`.
         /// </summary>
         [Input("eventStartTime")]
         public Input<string>? EventStartTime { get; set; }
@@ -358,57 +358,57 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        /// If set, the event will override the waiting room's `NewUsersPerMinute` property while it is active. If null, the event will inherit it. This can only be set if the event's `TotalActiveUsers` property is also set.
         /// </summary>
         [Input("newUsersPerMinute")]
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        /// An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `EventStartTime`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `QueueingMethod` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        /// If set, the event will override the waiting room's `SessionDuration` property while it is active. If null, the event will inherit it.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        /// If enabled, users in the prequeue will be shuffled randomly at the `EventStartTime`. Requires that `PrequeueStartTime` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `QueueingMethod` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
 
         /// <summary>
-        /// Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        /// Suspends or allows an event. If set to `True`, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        /// If set, the event will override the waiting room's `TotalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `NewUsersPerMinute` property is also set.
         /// </summary>
         [Input("totalActiveUsers")]
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
-        /// Available values: "log", "infinite_queue".
+        /// If set, the event will override the waiting room's `TurnstileAction` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "InfiniteQueue".
         /// </summary>
         [Input("turnstileAction")]
         public Input<string>? TurnstileAction { get; set; }
 
         /// <summary>
-        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
-        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// If set, the event will override the waiting room's `TurnstileMode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "VisibleManaged".
         /// </summary>
         [Input("turnstileMode")]
         public Input<string>? TurnstileMode { get; set; }

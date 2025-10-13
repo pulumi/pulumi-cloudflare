@@ -39,14 +39,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double PacketThreshold;
         /// <summary>
-        /// Prefix match type to be applied for a prefix auto advertisement when using an advanced_ddos rule.
+        /// Prefix match type to be applied for a prefix auto advertisement when using an AdvancedDdos rule.
         /// Available values: "exact", "subnet", "supernet".
         /// </summary>
         public readonly string PrefixMatch;
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>
         /// MNM rule type.
-        /// Available values: "threshold", "zscore", "advanced_ddos".
+        /// Available values: "threshold", "zscore", "AdvancedDdos".
         /// </summary>
         public readonly string Type;
         /// <summary>

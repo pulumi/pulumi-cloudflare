@@ -18,7 +18,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     public static final BotManagementArgs Empty = new BotManagementArgs();
 
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -26,7 +26,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -66,7 +66,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     @Import(name="cfRobotsVariant")
@@ -74,7 +74,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     public Optional<Output<String>> cfRobotsVariant() {
@@ -160,7 +160,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     @Import(name="sbfmDefinitelyAutomated")
@@ -168,7 +168,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public Optional<Output<String>> sbfmDefinitelyAutomated() {
@@ -177,7 +177,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     @Import(name="sbfmLikelyAutomated")
@@ -185,7 +185,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public Optional<Output<String>> sbfmLikelyAutomated() {
@@ -297,7 +297,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
          * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder
@@ -309,7 +309,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+         * @param aiBotsProtection Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
          * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
          * 
          * @return builder
@@ -363,7 +363,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cfRobotsVariant Specifies the Robots Access Control License variant to use.
-         * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+         * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cfRobotsVariant Specifies the Robots Access Control License variant to use.
-         * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+         * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sbfmDefinitelyAutomated Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sbfmDefinitelyAutomated Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sbfmLikelyAutomated Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class BotManagementArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sbfmLikelyAutomated Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+         * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
          * 
          * @return builder
          * 

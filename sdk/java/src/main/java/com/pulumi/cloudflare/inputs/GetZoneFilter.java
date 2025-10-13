@@ -60,13 +60,13 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
     /**
      * A domain name. Optional filter operators can be provided to extend refine the search:
      *   * `equal` (default)
-     *   * `not_equal`
-     *   * `starts_with`
-     *   * `ends_with`
+     *   * `notEqual`
+     *   * `startsWith`
+     *   * `endsWith`
      *   * `contains`
-     *   * `starts_with_case_sensitive`
-     *   * `ends_with_case_sensitive`
-     *   * `contains_case_sensitive`
+     *   * `startsWithCaseSensitive`
+     *   * `endsWithCaseSensitive`
+     *   * `containsCaseSensitive`
      * 
      */
     @Import(name="name")
@@ -75,13 +75,13 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
     /**
      * @return A domain name. Optional filter operators can be provided to extend refine the search:
      *   * `equal` (default)
-     *   * `not_equal`
-     *   * `starts_with`
-     *   * `ends_with`
+     *   * `notEqual`
+     *   * `startsWith`
+     *   * `endsWith`
      *   * `contains`
-     *   * `starts_with_case_sensitive`
-     *   * `ends_with_case_sensitive`
-     *   * `contains_case_sensitive`
+     *   * `startsWithCaseSensitive`
+     *   * `endsWithCaseSensitive`
+     *   * `containsCaseSensitive`
      * 
      */
     public Optional<String> name() {
@@ -183,13 +183,13 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name A domain name. Optional filter operators can be provided to extend refine the search:
          *   * `equal` (default)
-         *   * `not_equal`
-         *   * `starts_with`
-         *   * `ends_with`
+         *   * `notEqual`
+         *   * `startsWith`
+         *   * `endsWith`
          *   * `contains`
-         *   * `starts_with_case_sensitive`
-         *   * `ends_with_case_sensitive`
-         *   * `contains_case_sensitive`
+         *   * `startsWithCaseSensitive`
+         *   * `endsWithCaseSensitive`
+         *   * `containsCaseSensitive`
          * 
          * @return builder
          * 

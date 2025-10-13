@@ -55,7 +55,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private String description;
     /**
-     * @return If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * @return If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     private Boolean disableAutoFallback;
@@ -194,7 +194,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.description;
     }
     /**
-     * @return If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+     * @return If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
     public Boolean disableAutoFallback() {

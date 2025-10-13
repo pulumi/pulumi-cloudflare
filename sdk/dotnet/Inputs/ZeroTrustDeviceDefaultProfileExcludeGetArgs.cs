@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustDeviceDefaultProfileExcludeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        /// The address in CIDR format to exclude from the tunnel. If `Address` is present, `Host` must not be present.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        /// The domain name to exclude from the tunnel. If `Host` is present, `Address` must not be present.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

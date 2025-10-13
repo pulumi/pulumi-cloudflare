@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; If you are using a `source` block configuration, you must first have a
+    /// &gt; If you are using a `Source` block configuration, you must first have a
     ///    connected GitHub or GitLab account connected to Cloudflare. See the
     ///    [Getting Started with Pages] documentation on how to link your accounts.
+    /// 
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 

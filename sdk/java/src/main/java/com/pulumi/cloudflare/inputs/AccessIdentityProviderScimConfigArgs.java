@@ -64,14 +64,14 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      * 
      */
     @Import(name="seatDeprovision")
     private @Nullable Output<Boolean> seatDeprovision;
 
     /**
-     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      * 
      */
     public Optional<Output<Boolean>> seatDeprovision() {
@@ -203,7 +203,7 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AccessIdentityProviderScimConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+         * @param seatDeprovision A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
          * 
          * @return builder
          * 

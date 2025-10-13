@@ -82,7 +82,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
      */
     private String nameIdFormat;
     /**
-     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
      * 
      */
     private String nameIdTransformJsonata;
@@ -103,7 +103,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
      */
     private String samlAttributeTransformJsonata;
     /**
-     * @return Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
+     * @return Define the user information shared with access, &#34;offlineAccess&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     private List<String> scopes;
@@ -215,7 +215,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
         return this.nameIdFormat;
     }
     /**
-     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
      * 
      */
     public String nameIdTransformJsonata() {
@@ -246,7 +246,7 @@ public final class GetZeroTrustAccessApplicationSaasApp {
         return this.samlAttributeTransformJsonata;
     }
     /**
-     * @return Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
+     * @return Define the user information shared with access, &#34;offlineAccess&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     public List<String> scopes() {

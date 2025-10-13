@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// !&gt; This resource is no longer recommended. Please use the `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -41,7 +43,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Output("bodyPart")]
         public Output<string?> BodyPart { get; private set; } = null!;
@@ -53,25 +55,25 @@ namespace Pulumi.Cloudflare
         public Output<string> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+        /// Module or Service Worker contents of the Worker. Conflicts with `ContentFile`.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `Content`. Must be paired with `ContentSha256`.
         /// </summary>
         [Output("contentFile")]
         public Output<string?> ContentFile { get; private set; } = null!;
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `ContentFile` is specified.
         /// </summary>
         [Output("contentSha256")]
         public Output<string?> ContentSha256 { get; private set; } = null!;
@@ -143,7 +145,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `Fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Output("mainModule")]
         public Output<string?> MainModule { get; private set; } = null!;
@@ -275,7 +277,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
@@ -290,7 +292,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -299,19 +301,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+        /// Module or Service Worker contents of the Worker. Conflicts with `ContentFile`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `Content`. Must be paired with `ContentSha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `ContentFile` is specified.
         /// </summary>
         [Input("contentSha256")]
         public Input<string>? ContentSha256 { get; set; }
@@ -353,7 +355,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `Fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
@@ -428,7 +430,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// Name of the uploaded file that contains the script (e.g. the file adding a listener to the `Fetch` event). Indicates a `service worker syntax` Worker.
         /// </summary>
         [Input("bodyPart")]
         public Input<string>? BodyPart { get; set; }
@@ -443,7 +445,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -452,19 +454,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+        /// Module or Service Worker contents of the Worker. Conflicts with `ContentFile`.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+        /// Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `Content`. Must be paired with `ContentSha256`.
         /// </summary>
         [Input("contentFile")]
         public Input<string>? ContentFile { get; set; }
 
         /// <summary>
-        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+        /// SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `ContentFile` is specified.
         /// </summary>
         [Input("contentSha256")]
         public Input<string>? ContentSha256 { get; set; }
@@ -548,7 +550,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        /// Name of the uploaded file that contains the main module (e.g. the file exporting a `Fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }

@@ -139,7 +139,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
 
     /**
      * Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     @Import(name="mode")
@@ -147,7 +147,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
 
     /**
      * @return Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -452,7 +452,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
 
         /**
          * @param mode Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
 
         /**
          * @param mode Specify whether to redirect users to a Cloudflare-hosted block page or a customer-provided URI.
-         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+         * Available values: &#34;&#34;, &#34;customized*block*page&#34;, &#34;redirectUri&#34;.
          * 
          * @return builder
          * 

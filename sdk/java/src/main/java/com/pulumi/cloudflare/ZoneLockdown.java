@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zoneLockdown:ZoneLockdown")
 public class ZoneLockdown extends com.pulumi.resources.CustomResource {
     /**
-     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     @Export(name="configurations", refs={List.class,ZoneLockdownConfiguration.class}, tree="[0,1]")
     private Output<List<ZoneLockdownConfiguration>> configurations;
 
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     public Output<List<ZoneLockdownConfiguration>> configurations() {

@@ -21,7 +21,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The field to sort by.
-        /// Available values: "name", "email", "created_at".
+        /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

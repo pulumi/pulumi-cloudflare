@@ -19,19 +19,19 @@ namespace Pulumi.Cloudflare.Inputs
         public string? Id { get; set; }
 
         /// <summary>
-        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// If `True`, only include the default virtual network. If `False`, exclude the default virtual network. If empty, all virtual networks will be included.
         /// </summary>
         [Input("isDefault")]
         public bool? IsDefault { get; set; }
 
         /// <summary>
-        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// If `True`, only include the default virtual network. If `False`, exclude the default virtual network. If empty, all virtual networks will be included.
         /// </summary>
         [Input("isDefaultNetwork")]
         public bool? IsDefaultNetwork { get; set; }
 
         /// <summary>
-        /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
+        /// If `True`, only include deleted virtual networks. If `False`, exclude deleted virtual networks. If empty, all virtual networks will be included.
         /// </summary>
         [Input("isDeleted")]
         public bool? IsDeleted { get; set; }

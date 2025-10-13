@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+        /// If `True`, only return deleted hostname routes. If `False`, exclude deleted hostname routes.
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>

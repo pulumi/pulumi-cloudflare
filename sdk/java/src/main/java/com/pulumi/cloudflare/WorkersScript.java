@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
 /**
  * !&gt; This resource is no longer recommended. Please use the `cloudflare.Worker`, `cloudflare.WorkerVersion`, and `cloudflare.WorkersDeployment` resources instead. See how to use them in the [developer documentation](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/).
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * ```sh
@@ -108,56 +110,56 @@ public class WorkersScript extends com.pulumi.resources.CustomResource {
         return this.compatibilityDate;
     }
     /**
-     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> compatibilityFlags;
 
     /**
-     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      * 
      */
     public Output<List<String>> compatibilityFlags() {
         return this.compatibilityFlags;
     }
     /**
-     * Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+     * Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
-     * @return Module or Service Worker contents of the Worker. Conflicts with `content_file`.
+     * @return Module or Service Worker contents of the Worker. Conflicts with `contentFile`.
      * 
      */
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
     /**
-     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+     * Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      * 
      */
     @Export(name="contentFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentFile;
 
     /**
-     * @return Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `content_sha256`.
+     * @return Path to a file containing the Module or Service Worker contents of the Worker. Conflicts with `content`. Must be paired with `contentSha256`.
      * 
      */
     public Output<Optional<String>> contentFile() {
         return Codegen.optional(this.contentFile);
     }
     /**
-     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      * 
      */
     @Export(name="contentSha256", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentSha256;
 
     /**
-     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `content_file` is specified.
+     * @return SHA-256 hash of the Worker contents. Used to trigger updates when source code changes. Must be provided when `contentFile` is specified.
      * 
      */
     public Output<Optional<String>> contentSha256() {

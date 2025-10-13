@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The content that the certificate authority (CA) will expect to find at the http_url during the domain validation.
+        /// The content that the certificate authority (CA) will expect to find at the HttpUrl during the domain validation.
         /// </summary>
         [Input("httpBody")]
         public Input<string>? HttpBody { get; set; }

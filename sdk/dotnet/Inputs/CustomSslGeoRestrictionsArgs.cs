@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class CustomSslGeoRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Available values: "us", "eu", "highest_security".
+        /// Available values: "us", "eu", "HighestSecurity".
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }

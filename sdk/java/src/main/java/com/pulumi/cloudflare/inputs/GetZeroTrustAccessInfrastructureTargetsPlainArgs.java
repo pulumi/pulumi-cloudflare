@@ -175,7 +175,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
-     * `ipv4_start` to be specified as well.
+     * `ipv4Start` to be specified as well.
      * 
      */
     @Import(name="ipv4End")
@@ -183,7 +183,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
-     * `ipv4_start` to be specified as well.
+     * `ipv4Start` to be specified as well.
      * 
      */
     public Optional<String> ipv4End() {
@@ -192,7 +192,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
-     * `ipv4_end` to be specified as well.
+     * `ipv4End` to be specified as well.
      * 
      */
     @Import(name="ipv4Start")
@@ -200,7 +200,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
-     * `ipv4_end` to be specified as well.
+     * `ipv4End` to be specified as well.
      * 
      */
     public Optional<String> ipv4Start() {
@@ -209,7 +209,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
-     * `ipv6_start` to be specified as well.
+     * `ipv6Start` to be specified as well.
      * 
      */
     @Import(name="ipv6End")
@@ -217,7 +217,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
-     * `ipv6_start` to be specified as well.
+     * `ipv6Start` to be specified as well.
      * 
      */
     public Optional<String> ipv6End() {
@@ -226,7 +226,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
-     * `ipv6_end` to be specified as well.
+     * `ipv6End` to be specified as well.
      * 
      */
     @Import(name="ipv6Start")
@@ -234,7 +234,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
-     * `ipv6_end` to be specified as well.
+     * `ipv6End` to be specified as well.
      * 
      */
     public Optional<String> ipv6Start() {
@@ -288,7 +288,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * The field to sort by.
-     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
+     * Available values: &#34;hostname&#34;, &#34;createdAt&#34;.
      * 
      */
     @Import(name="order")
@@ -296,7 +296,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return The field to sort by.
-     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
+     * Available values: &#34;hostname&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
@@ -305,7 +305,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * Filters for targets that have any of the following UUIDs. Specify
-     * `target_ids` multiple times in query parameter to build list of
+     * `targetIds` multiple times in query parameter to build list of
      * candidates.
      * 
      */
@@ -314,7 +314,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
     /**
      * @return Filters for targets that have any of the following UUIDs. Specify
-     * `target_ids` multiple times in query parameter to build list of
+     * `targetIds` multiple times in query parameter to build list of
      * candidates.
      * 
      */
@@ -506,7 +506,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param ipv4End Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
-         * `ipv4_start` to be specified as well.
+         * `ipv4Start` to be specified as well.
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param ipv4Start Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
-         * `ipv4_end` to be specified as well.
+         * `ipv4End` to be specified as well.
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param ipv6End Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
-         * `ipv6_start` to be specified as well.
+         * `ipv6Start` to be specified as well.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param ipv6Start Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
-         * `ipv6_end` to be specified as well.
+         * `ipv6End` to be specified as well.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
+         * Available values: &#34;hostname&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param targetIds Filters for targets that have any of the following UUIDs. Specify
-         * `target_ids` multiple times in query parameter to build list of
+         * `targetIds` multiple times in query parameter to build list of
          * candidates.
          * 
          * @return builder
@@ -612,7 +612,7 @@ public final class GetZeroTrustAccessInfrastructureTargetsPlainArgs extends com.
 
         /**
          * @param targetIds Filters for targets that have any of the following UUIDs. Specify
-         * `target_ids` multiple times in query parameter to build list of
+         * `targetIds` multiple times in query parameter to build list of
          * candidates.
          * 
          * @return builder

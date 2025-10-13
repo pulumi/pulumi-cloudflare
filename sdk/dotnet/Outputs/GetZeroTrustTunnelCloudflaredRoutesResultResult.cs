@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         public readonly string DeletedAt;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Network;
         /// <summary>
         /// The type of tunnel.
-        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
         /// </summary>
         public readonly string TunType;
         /// <summary>

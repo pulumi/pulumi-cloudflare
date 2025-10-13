@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetMagicWanIpsecTunnelIpsecTunnelResult
     {
         /// <summary>
-        /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        /// When `True`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         /// </summary>
         public readonly bool AllowNullCipher;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetMagicWanIpsecTunnelIpsecTunnelPskMetadataResult PskMetadata;
         /// <summary>
-        /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
+        /// If `True`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         /// </summary>
         public readonly bool ReplayProtection;
 

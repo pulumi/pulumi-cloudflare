@@ -13,8 +13,8 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessRuleConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-        /// Available values: "ip", "ip6", "ip_range", "asn", "country".
+        /// The configuration target. You must set the target to `Ip` when specifying an IP address in the rule.
+        /// Available values: "ip", "ip6", "IpRange", "asn", "country".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

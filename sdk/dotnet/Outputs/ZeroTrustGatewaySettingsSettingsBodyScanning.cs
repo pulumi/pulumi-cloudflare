@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewaySettingsSettingsBodyScanning
     {
         /// <summary>
-        /// Specify the inspection mode as either `deep` or `shallow`.
+        /// Specify the inspection mode as either `Deep` or `Shallow`.
         /// Available values: "deep", "shallow".
         /// </summary>
         public readonly string? InspectionMode;

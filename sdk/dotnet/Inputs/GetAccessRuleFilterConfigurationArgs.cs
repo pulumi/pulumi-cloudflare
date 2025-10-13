@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// Defines the target to search in existing rules.
-        /// Available values: "ip", "ip_range", "asn", "country".
+        /// Available values: "ip", "IpRange", "asn", "country".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

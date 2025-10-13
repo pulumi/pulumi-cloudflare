@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Output("source")]
@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]
@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         [Input("source")]

@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
     public partial class ZoneLockdown : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `Ip` or `IpRange` configurations.
         /// </summary>
         [Output("configurations")]
         public Output<ImmutableArray<Outputs.ZoneLockdownConfiguration>> Configurations { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `Ip` or `IpRange` configurations.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationArgs> Configurations
         {
@@ -206,7 +206,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ZoneLockdownConfigurationGetArgs>? _configurations;
 
         /// <summary>
-        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+        /// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `Ip` or `IpRange` configurations.
         /// </summary>
         public InputList<Inputs.ZoneLockdownConfigurationGetArgs> Configurations
         {

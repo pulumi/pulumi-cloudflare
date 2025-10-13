@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         [Output("healthCheckRate")]
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Magic WAN health check rate for tunnels created on this link. The default value is `mid`.
+        /// Magic WAN health check rate for tunnels created on this link. The default value is `Mid`.
         /// Available values: "low", "mid", "high".
         /// </summary>
         [Input("healthCheckRate")]

@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+        /// If `True`, only return deleted hostname routes. If `False`, exclude deleted hostname routes.
         /// </summary>
         [Input("isDeleted", required: true)]
         public Input<bool> IsDeleted { get; set; } = null!;

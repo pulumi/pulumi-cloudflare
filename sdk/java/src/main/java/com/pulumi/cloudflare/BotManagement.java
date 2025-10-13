@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/botManagement:BotManagement")
 public class BotManagement extends com.pulumi.resources.CustomResource {
     /**
-     * Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -73,7 +73,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     private Output<String> aiBotsProtection;
 
     /**
-     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `only_on_ad_pages` is currently not available for Enterprise customers.
+     * @return Enable rule to block AI Scrapers and Crawlers. Please note the value `onlyOnAdPages` is currently not available for Enterprise customers.
      * Available values: &#34;block&#34;, &#34;disabled&#34;, &#34;only*on*ad_pages&#34;.
      * 
      */
@@ -110,7 +110,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     @Export(name="cfRobotsVariant", refs={String.class}, tree="[0]")
@@ -118,7 +118,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the Robots Access Control License variant to use.
-     * Available values: &#34;off&#34;, &#34;policy_only&#34;.
+     * Available values: &#34;off&#34;, &#34;policyOnly&#34;.
      * 
      */
     public Output<String> cfRobotsVariant() {
@@ -198,7 +198,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     @Export(name="sbfmDefinitelyAutomated", refs={String.class}, tree="[0]")
@@ -206,7 +206,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public Output<String> sbfmDefinitelyAutomated() {
@@ -214,7 +214,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
     }
     /**
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     @Export(name="sbfmLikelyAutomated", refs={String.class}, tree="[0]")
@@ -222,7 +222,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Super Bot Fight Mode (SBFM) action to take on likely automated requests.
-     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managed_challenge&#34;.
+     * Available values: &#34;allow&#34;, &#34;block&#34;, &#34;managedChallenge&#34;.
      * 
      */
     public Output<String> sbfmLikelyAutomated() {

@@ -38,7 +38,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable Boolean allowChildBypass;
     /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
@@ -73,7 +73,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsCheckSession checkSession;
     /**
-     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsDnsResolvers dnsResolvers;
@@ -83,7 +83,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsEgress egress;
     /**
-     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     private @Nullable Boolean ignoreCnameCategoryMatches;
@@ -93,17 +93,17 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable Boolean insecureDisableDnssecValidation;
     /**
-     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     private @Nullable Boolean ipCategories;
     /**
-     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     private @Nullable Boolean ipIndicatorFeeds;
     /**
-     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsL4override l4override;
@@ -138,12 +138,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     private @Nullable Boolean resolveDnsThroughCloudflare;
@@ -169,7 +169,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.allowChildBypass);
     }
     /**
-     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `audit_ssh` action.
+     * @return Define the settings for the Audit SSH action. Settable only for `l4` rules with `auditSsh` action.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsAuditSsh> auditSsh() {
@@ -218,7 +218,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.checkSession);
     }
     /**
-     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure custom resolvers to route queries that match the resolver policy. Unused with &#39;resolve*dns*through*cloudflare&#39; or &#39;resolve*dns*internally&#39; settings. DNS queries get routed to the address closest to their origin. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsDnsResolvers> dnsResolvers() {
@@ -232,7 +232,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.egress);
     }
     /**
-     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dns_resolver` rules.
+     * @return Ignore category matches at CNAME domains in a response. When off, evaluate categories in this rule against all CNAME domain categories in the response. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Boolean> ignoreCnameCategoryMatches() {
@@ -246,21 +246,21 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.insecureDisableDnssecValidation);
     }
     /**
-     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dns_resolver` rules.
+     * @return Enable IPs in DNS resolver category blocks. The system blocks only domain name categories unless you enable this setting. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Boolean> ipCategories() {
         return Optional.ofNullable(this.ipCategories);
     }
     /**
-     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dns_resolver` rules.
+     * @return Indicates whether to include IPs in DNS resolver indicator feed blocks. Default, indicator feeds block only domain names. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Boolean> ipIndicatorFeeds() {
         return Optional.ofNullable(this.ipIndicatorFeeds);
     }
     /**
-     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4_override`.
+     * @return Send matching traffic to the supplied destination IP address and port. Settable only for `l4` rules with the action set to `l4Override`.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsL4override> l4override() {
@@ -309,14 +309,14 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         return Optional.ofNullable(this.redirect);
     }
     /**
-     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Not used when &#39;dns*resolvers&#39; is specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally> resolveDnsInternally() {
         return Optional.ofNullable(this.resolveDnsInternally);
     }
     /**
-     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dns_resolver` rules.
+     * @return Enable to send queries that match the policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot set when &#39;dns*resolvers&#39; specified or &#39;resolve*dns_internally&#39; is set. Only valid when a rule&#39;s action set to &#39;resolve&#39;. Settable only for `dnsResolver` rules.
      * 
      */
     public Optional<Boolean> resolveDnsThroughCloudflare() {

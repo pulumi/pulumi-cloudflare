@@ -81,7 +81,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     @Export(name="decision", refs={String.class}, tree="[0]")
@@ -89,7 +89,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
-     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;nonIdentity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {

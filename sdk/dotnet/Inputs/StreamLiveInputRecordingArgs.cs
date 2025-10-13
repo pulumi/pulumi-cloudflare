@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Disables reporting the number of live viewers when this property is set to `true`.
+        /// Disables reporting the number of live viewers when this property is set to `True`.
         /// </summary>
         [Input("hideLiveViewerCount")]
         public Input<bool>? HideLiveViewerCount { get; set; }
 
         /// <summary>
-        /// Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
+        /// Specifies the recording behavior for the live input. Set this value to `Off` to prevent a recording. Set the value to `Automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input.
         /// Available values: "off", "automatic".
         /// </summary>
         [Input("mode")]
@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? RequireSignedUrls { get; set; }
 
         /// <summary>
-        /// Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.
+        /// Determines the amount of time a live input configured in `Automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used.
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.QueueConsumerSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "http_pull".
+        /// Available values: "worker", "HttpPull".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Direction;
         /// <summary>
         /// The field to sort by.
-        /// Available values: "name", "email", "created_at".
+        /// Available values: "name", "email", "CreatedAt".
         /// </summary>
         public readonly string? Order;
         /// <summary>

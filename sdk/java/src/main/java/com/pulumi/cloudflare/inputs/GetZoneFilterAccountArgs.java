@@ -33,13 +33,13 @@ public final class GetZoneFilterAccountArgs extends com.pulumi.resources.Resourc
     /**
      * An account Name. Optional filter operators can be provided to extend refine the search:
      *   * `equal` (default)
-     *   * `not_equal`
-     *   * `starts_with`
-     *   * `ends_with`
+     *   * `notEqual`
+     *   * `startsWith`
+     *   * `endsWith`
      *   * `contains`
-     *   * `starts_with_case_sensitive`
-     *   * `ends_with_case_sensitive`
-     *   * `contains_case_sensitive`
+     *   * `startsWithCaseSensitive`
+     *   * `endsWithCaseSensitive`
+     *   * `containsCaseSensitive`
      * 
      */
     @Import(name="name")
@@ -48,13 +48,13 @@ public final class GetZoneFilterAccountArgs extends com.pulumi.resources.Resourc
     /**
      * @return An account Name. Optional filter operators can be provided to extend refine the search:
      *   * `equal` (default)
-     *   * `not_equal`
-     *   * `starts_with`
-     *   * `ends_with`
+     *   * `notEqual`
+     *   * `startsWith`
+     *   * `endsWith`
      *   * `contains`
-     *   * `starts_with_case_sensitive`
-     *   * `ends_with_case_sensitive`
-     *   * `contains_case_sensitive`
+     *   * `startsWithCaseSensitive`
+     *   * `endsWithCaseSensitive`
+     *   * `containsCaseSensitive`
      * 
      */
     public Optional<Output<String>> name() {
@@ -110,13 +110,13 @@ public final class GetZoneFilterAccountArgs extends com.pulumi.resources.Resourc
         /**
          * @param name An account Name. Optional filter operators can be provided to extend refine the search:
          *   * `equal` (default)
-         *   * `not_equal`
-         *   * `starts_with`
-         *   * `ends_with`
+         *   * `notEqual`
+         *   * `startsWith`
+         *   * `endsWith`
          *   * `contains`
-         *   * `starts_with_case_sensitive`
-         *   * `ends_with_case_sensitive`
-         *   * `contains_case_sensitive`
+         *   * `startsWithCaseSensitive`
+         *   * `endsWithCaseSensitive`
+         *   * `containsCaseSensitive`
          * 
          * @return builder
          * 
@@ -129,13 +129,13 @@ public final class GetZoneFilterAccountArgs extends com.pulumi.resources.Resourc
         /**
          * @param name An account Name. Optional filter operators can be provided to extend refine the search:
          *   * `equal` (default)
-         *   * `not_equal`
-         *   * `starts_with`
-         *   * `ends_with`
+         *   * `notEqual`
+         *   * `startsWith`
+         *   * `endsWith`
          *   * `contains`
-         *   * `starts_with_case_sensitive`
-         *   * `ends_with_case_sensitive`
-         *   * `contains_case_sensitive`
+         *   * `startsWithCaseSensitive`
+         *   * `endsWithCaseSensitive`
+         *   * `containsCaseSensitive`
          * 
          * @return builder
          * 

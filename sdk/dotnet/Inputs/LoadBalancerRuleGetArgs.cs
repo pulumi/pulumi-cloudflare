@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
+        /// The condition expressions to evaluate. If the condition evaluates to true, the overrides or FixedResponse in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }

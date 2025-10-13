@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         public Output<double> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
         [Output("threshold")]
         public Output<double> Threshold { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
         public Input<double> Period { get; set; } = null!;
 
         /// <summary>
-        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
         [Input("threshold", required: true)]
         public Input<double> Threshold { get; set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Period { get; set; }
 
         /// <summary>
-        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
         [Input("threshold")]
         public Input<double>? Threshold { get; set; }

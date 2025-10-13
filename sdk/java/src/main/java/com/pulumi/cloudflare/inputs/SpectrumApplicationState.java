@@ -23,7 +23,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
 
     /**
      * Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     @Import(name="argoSmartRouting")
@@ -31,7 +31,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
 
     /**
      * @return Enables Argo Smart Routing for this application.
-     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+     * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
      * 
      */
     public Optional<Output<Boolean>> argoSmartRouting() {
@@ -282,7 +282,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
 
         /**
          * @param argoSmartRouting Enables Argo Smart Routing for this application.
-         * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+         * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class SpectrumApplicationState extends com.pulumi.resources.Resourc
 
         /**
          * @param argoSmartRouting Enables Argo Smart Routing for this application.
-         * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
+         * Notes: Only available for TCP applications with trafficType set to &#34;direct&#34;.
          * 
          * @return builder
          * 

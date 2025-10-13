@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int AllowedMatchCount;
         /// <summary>
-        /// Available values: "low", "medium", "high", "very_high".
+        /// Available values: "low", "medium", "high", "VeryHigh".
         /// </summary>
         public readonly string ConfidenceThreshold;
         /// <summary>

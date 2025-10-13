@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `certificate` (read-only).
+        /// Indicate whether Gateway TLS interception uses this certificate (read-only). You cannot set this value directly. To configure interception, use the Gateway configuration setting named `Certificate` (read-only).
         /// </summary>
         public readonly bool InUse;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string IssuerRaw;
         /// <summary>
         /// Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-        /// Available values: "custom", "gateway_managed".
+        /// Available values: "custom", "GatewayManaged".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

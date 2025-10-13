@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+    /// &gt; If using the `SslRecommender` zone setting, use the `Enabled` attribute instead of `Value`.
     /// 
     /// ## Example Usage
     /// 

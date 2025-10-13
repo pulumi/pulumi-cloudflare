@@ -28,7 +28,7 @@ public final class GetZeroTrustAccessIdentityProvidersResultScimConfig {
      */
     private String scimBaseUrl;
     /**
-     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      * 
      */
     private Boolean seatDeprovision;
@@ -67,7 +67,7 @@ public final class GetZeroTrustAccessIdentityProvidersResultScimConfig {
         return this.scimBaseUrl;
     }
     /**
-     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless user_deprovision is also enabled.
+     * @return A flag to remove a user&#39;s seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      * 
      */
     public Boolean seatDeprovision() {

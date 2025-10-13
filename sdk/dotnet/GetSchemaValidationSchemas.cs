@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public readonly string Id;
         /// <summary>
         /// The kind of the schema
-        /// Available values: "openapi_v3".
+        /// Available values: "OpenapiV3".
         /// </summary>
         public readonly string Kind;
         /// <summary>

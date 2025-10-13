@@ -38,7 +38,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     private @Nullable Integer maxItems;
     /**
      * @return The field to sort by.
-     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
@@ -93,7 +93,7 @@ public final class GetEmailSecurityImpersonationRegistriesInvokeResult {
     }
     /**
      * @return The field to sort by.
-     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {

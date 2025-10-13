@@ -11,35 +11,35 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("cloudflare");
 /**
- * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+ * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  * 
  */
     public Optional<String> apiKey() {
         return Codegen.stringProp("apiKey").config(config).get();
     }
 /**
- * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+ * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  * 
  */
     public Optional<String> apiToken() {
         return Codegen.stringProp("apiToken").config(config).get();
     }
 /**
- * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+ * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `apiKey`, `apiToken`, `apiUserServiceKey`.
  * 
  */
     public Optional<String> apiUserServiceKey() {
         return Codegen.stringProp("apiUserServiceKey").config(config).get();
     }
 /**
- * Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
+ * Value to override the default HTTP client base URL. Alternatively, can be configured using the `baseUrl` environment variable.
  * 
  */
     public Optional<String> baseUrl() {
         return Codegen.stringProp("baseUrl").config(config).get();
     }
 /**
- * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
+ * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `apiKey`. Conflicts with `apiToken`.
  * 
  */
     public Optional<String> email() {
