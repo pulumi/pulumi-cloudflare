@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerRandomSteering
     {
         /// <summary>
-        /// The default weight for pools in the load balancer that are not specified in the pool_weights map.
+        /// The default weight for pools in the load balancer that are not specified in the PoolWeights map.
         /// </summary>
         public readonly double? DefaultWeight;
         /// <summary>

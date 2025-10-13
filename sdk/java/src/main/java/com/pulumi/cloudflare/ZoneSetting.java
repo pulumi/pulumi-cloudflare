@@ -17,7 +17,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+ * &gt; If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
  * 
  * ## Example Usage
  * 

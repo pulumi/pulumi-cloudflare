@@ -204,7 +204,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
      * 
      */
     @Import(name="type")
@@ -212,7 +212,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-     * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+     * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -547,7 +547,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+         * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class CustomSslState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type &#39;legacy*custom&#39; enables support for legacy clients which do not include SNI in the TLS handshake.
-         * Available values: &#34;legacy*custom&#34;, &#34;sni_custom&#34;.
+         * Available values: &#34;legacy*custom&#34;, &#34;sniCustom&#34;.
          * 
          * @return builder
          * 

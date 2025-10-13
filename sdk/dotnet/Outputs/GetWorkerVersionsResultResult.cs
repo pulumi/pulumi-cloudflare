@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CompatibilityDate;
         /// <summary>
-        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `CompatibilityDate`.
         /// </summary>
         public readonly ImmutableArray<string> CompatibilityFlags;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetWorkerVersionsResultLimitsResult Limits;
         /// <summary>
-        /// The name of the main module in the `modules` array (e.g. the name of the module that exports a `fetch` handler).
+        /// The name of the main module in the `Modules` array (e.g. the name of the module that exports a `Fetch` handler).
         /// </summary>
         public readonly string MainModule;
         /// <summary>

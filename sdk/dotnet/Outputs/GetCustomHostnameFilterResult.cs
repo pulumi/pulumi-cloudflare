@@ -23,12 +23,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the 'hostname' parameter.
+        /// Hostname ID to match against. This ID was generated and returned during the initial CustomHostname creation. This parameter cannot be used with the 'hostname' parameter.
         /// </summary>
         public readonly string? Id;
         /// <summary>
         /// Field to order hostnames by.
-        /// Available values: "ssl", "ssl_status".
+        /// Available values: "ssl", "SslStatus".
         /// </summary>
         public readonly string Order;
         /// <summary>

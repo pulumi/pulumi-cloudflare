@@ -78,7 +78,7 @@ public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.Cust
     }
     /**
      * The type of device posture integration.
-     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;customS2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -86,7 +86,7 @@ public class ZeroTrustDevicePostureIntegration extends com.pulumi.resources.Cust
 
     /**
      * @return The type of device posture integration.
-     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;customS2s&#34;.
      * 
      */
     public Output<String> type() {

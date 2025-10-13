@@ -73,7 +73,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? DestinationAddress { get; set; }
 
         /// <summary>
-        /// The environment of the script_name to bind to.
+        /// The environment of the ScriptName to bind to.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _keyBase64;
 
         /// <summary>
-        /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        /// Base64-encoded key data. Required if `Format` is "raw", "pkcs8", or "spki".
         /// </summary>
         public Input<string>? KeyBase64
         {
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _keyJwk;
 
         /// <summary>
-        /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+        /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `Format` is "jwk".
         /// </summary>
         public Input<string>? KeyJwk
         {
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions.
+        /// The old name of the inherited binding. If set, the binding will be renamed from `OldName` to `Name` in the new version. If not set, the binding will keep the same name between versions.
         /// </summary>
         [Input("oldName")]
         public Input<string>? OldName { get; set; }

@@ -19,31 +19,31 @@ namespace Pulumi.Cloudflare
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         [Output("apiKey")]
         public Output<string?> ApiKey { get; private set; } = null!;
 
         /// <summary>
-        /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         [Output("apiToken")]
         public Output<string?> ApiToken { get; private set; } = null!;
 
         /// <summary>
-        /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         [Output("apiUserServiceKey")]
         public Output<string?> ApiUserServiceKey { get; private set; } = null!;
 
         /// <summary>
-        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
+        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `BaseUrl` environment variable.
         /// </summary>
         [Output("baseUrl")]
         public Output<string?> BaseUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
+        /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `ApiKey`. Conflicts with `ApiToken`.
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _apiKey;
 
         /// <summary>
-        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are [now considered legacy by Cloudflare](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#limitations), API tokens should be used instead. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         public Input<string>? ApiKey
         {
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _apiToken;
 
         /// <summary>
-        /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         public Input<string>? ApiToken
         {
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _apiUserServiceKey;
 
         /// <summary>
-        /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `api_key`, `api_token`, `api_user_service_key`.
+        /// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `ApiKey`, `ApiToken`, `ApiUserServiceKey`.
         /// </summary>
         public Input<string>? ApiUserServiceKey
         {
@@ -140,13 +140,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `base_url` environment variable.
+        /// Value to override the default HTTP client base URL. Alternatively, can be configured using the `BaseUrl` environment variable.
         /// </summary>
         [Input("baseUrl")]
         public Input<string>? BaseUrl { get; set; }
 
         /// <summary>
-        /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `api_key`. Conflicts with `api_token`.
+        /// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `ApiKey`. Conflicts with `ApiToken`.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Available values: "google", "lets_encrypt".
+        /// Available values: "google", "LetsEncrypt".
         /// </summary>
         public readonly string CertificateAuthority;
         public readonly string CreatedOn;

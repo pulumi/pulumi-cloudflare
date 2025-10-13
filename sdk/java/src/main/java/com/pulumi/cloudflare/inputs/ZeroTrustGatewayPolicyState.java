@@ -30,7 +30,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
 
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     @Import(name="action")
@@ -38,7 +38,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
 
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -186,14 +186,14 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<ZeroTrustGatewayPolicyScheduleArgs> schedule;
 
     /**
-     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Optional<Output<ZeroTrustGatewayPolicyScheduleArgs>> schedule() {
@@ -329,7 +329,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
 
         /**
          * @param action Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
 
         /**
          * @param action Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class ZeroTrustGatewayPolicyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+         * @param schedule Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
          * 
          * @return builder
          * 

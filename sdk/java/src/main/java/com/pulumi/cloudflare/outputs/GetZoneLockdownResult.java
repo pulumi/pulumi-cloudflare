@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZoneLockdownResult {
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     private List<GetZoneLockdownConfiguration> configurations;
@@ -65,7 +65,7 @@ public final class GetZoneLockdownResult {
 
     private GetZoneLockdownResult() {}
     /**
-     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.
+     * @return A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      * 
      */
     public List<GetZoneLockdownConfiguration> configurations() {

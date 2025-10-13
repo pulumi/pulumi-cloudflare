@@ -37,7 +37,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesResult {
     private String network;
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     private String tunType;
@@ -100,7 +100,7 @@ public final class GetZeroTrustTunnelCloudflaredRoutesResult {
     }
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     public String tunType() {

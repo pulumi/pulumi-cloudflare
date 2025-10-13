@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetIpRangesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// Specified as `Jdcloud` to list IPs used by JD Cloud data centers.
         /// </summary>
         [Input("networks")]
         public string? Networks { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetIpRangesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// Specified as `Jdcloud` to list IPs used by JD Cloud data centers.
         /// </summary>
         [Input("networks")]
         public Input<string>? Networks { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> JdcloudCidrs;
         /// <summary>
-        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// Specified as `Jdcloud` to list IPs used by JD Cloud data centers.
         /// </summary>
         public readonly string? Networks;
 

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string AccountTag;
         /// <summary>
-        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard.
+        /// Indicates if this is a locally or remotely configured tunnel. If `Local`, manage the tunnel using a YAML file on the origin machine. If `Cloudflare`, manage the tunnel on the Zero Trust dashboard.
         /// Available values: "local", "cloudflare".
         /// </summary>
         public readonly string ConfigSrc;
@@ -27,11 +27,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustTunnelCloudflaredsResultConnectionResult> Connections;
         /// <summary>
-        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+        /// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `Null`, the tunnel is inactive.
         /// </summary>
         public readonly string ConnsActiveAt;
         /// <summary>
-        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+        /// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `Null`, the tunnel is active.
         /// </summary>
         public readonly string ConnsInactiveAt;
         /// <summary>
@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// Timestamp of when the resource was deleted. If `Null`, the resource has not been deleted.
         /// </summary>
         public readonly string DeletedAt;
         /// <summary>
@@ -55,17 +55,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
+        /// If `True`, the tunnel can be configured remotely from the Zero Trust dashboard. If `False`, the tunnel must be configured locally on the origin machine.
         /// </summary>
         public readonly bool RemoteConfig;
         /// <summary>
-        /// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+        /// The status of the tunnel. Valid values are `Inactive` (tunnel has never been run), `Degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `Healthy` (tunnel is active and able to serve traffic), or `Down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
         /// Available values: "inactive", "degraded", "healthy", "down".
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// The type of tunnel.
-        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ip_sec", "gre", "cni".
+        /// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "IpSec", "gre", "cni".
         /// </summary>
         public readonly string TunType;
 

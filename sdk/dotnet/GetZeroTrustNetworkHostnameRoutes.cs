@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
         public string? Id { get; set; }
 
         /// <summary>
-        /// If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+        /// If `True`, only return deleted hostname routes. If `False`, exclude deleted hostname routes.
         /// </summary>
         [Input("isDeleted")]
         public bool? IsDeleted { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+        /// If `True`, only return deleted hostname routes. If `False`, exclude deleted hostname routes.
         /// </summary>
         [Input("isDeleted")]
         public Input<bool>? IsDeleted { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// If `true`, only return deleted hostname routes. If `false`, exclude deleted hostname routes.
+        /// If `True`, only return deleted hostname routes. If `False`, exclude deleted hostname routes.
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>

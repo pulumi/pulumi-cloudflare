@@ -61,7 +61,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
 
     /**
      * Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -69,7 +69,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
 
     /**
      * @return Custom page type.
-     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+     * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
      * 
      */
     public Output<String> type() {
@@ -168,7 +168,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ZeroTrustAccessCustomPageArgs extends com.pulumi.resources.Re
 
         /**
          * @param type Custom page type.
-         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
+         * Available values: &#34;identityDenied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 

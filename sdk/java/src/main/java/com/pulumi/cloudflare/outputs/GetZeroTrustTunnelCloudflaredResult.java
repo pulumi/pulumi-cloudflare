@@ -81,10 +81,10 @@ public final class GetZeroTrustTunnelCloudflaredResult {
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      * @deprecated
-     * Use the config_src field instead.
+     * Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the config_src field instead. */
+    @Deprecated /* Use the configSrc field instead. */
     private Boolean remoteConfig;
     /**
      * @return The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
@@ -94,7 +94,7 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     private String status;
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     private String tunType;
@@ -194,10 +194,10 @@ public final class GetZeroTrustTunnelCloudflaredResult {
      * @return If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      * 
      * @deprecated
-     * Use the config_src field instead.
+     * Use the configSrc field instead.
      * 
      */
-    @Deprecated /* Use the config_src field instead. */
+    @Deprecated /* Use the configSrc field instead. */
     public Boolean remoteConfig() {
         return this.remoteConfig;
     }
@@ -211,7 +211,7 @@ public final class GetZeroTrustTunnelCloudflaredResult {
     }
     /**
      * @return The type of tunnel.
-     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ip_sec&#34;, &#34;gre&#34;, &#34;cni&#34;.
+     * Available values: &#34;cfd*tunnel&#34;, &#34;warp*connector&#34;, &#34;warp&#34;, &#34;magic&#34;, &#34;ipSec&#34;, &#34;gre&#34;, &#34;cni&#34;.
      * 
      */
     public String tunType() {

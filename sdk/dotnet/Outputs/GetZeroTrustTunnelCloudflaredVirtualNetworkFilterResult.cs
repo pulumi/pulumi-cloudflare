@@ -18,15 +18,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// If `True`, only include the default virtual network. If `False`, exclude the default virtual network. If empty, all virtual networks will be included.
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>
-        /// If `true`, only include the default virtual network. If `false`, exclude the default virtual network. If empty, all virtual networks will be included.
+        /// If `True`, only include the default virtual network. If `False`, exclude the default virtual network. If empty, all virtual networks will be included.
         /// </summary>
         public readonly bool? IsDefaultNetwork;
         /// <summary>
-        /// If `true`, only include deleted virtual networks. If `false`, exclude deleted virtual networks. If empty, all virtual networks will be included.
+        /// If `True`, only include deleted virtual networks. If `False`, exclude deleted virtual networks. If empty, all virtual networks will be included.
         /// </summary>
         public readonly bool? IsDeleted;
         /// <summary>

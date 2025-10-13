@@ -33,14 +33,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
      * 
      */
     @Import(name="clientSecretVersion")
     private @Nullable Output<Double> clientSecretVersion;
 
     /**
-     * @return A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+     * @return A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
      * 
      */
     public Optional<Output<Double>> clientSecretVersion() {
@@ -78,14 +78,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
      * 
      */
     @Import(name="previousClientSecretExpiresAt")
     private @Nullable Output<String> previousClientSecretExpiresAt;
 
     /**
-     * @return The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+     * @return The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
      * 
      */
     public Optional<Output<String>> previousClientSecretExpiresAt() {
@@ -158,7 +158,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param clientSecretVersion A version number identifying the current `client_secret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previous_client_secret_expires_at`.
+         * @param clientSecretVersion A version number identifying the current `clientSecret` associated with the service token. Incrementing it triggers a rotation; the previous secret will still be accepted until the time indicated by `previousClientSecretExpiresAt`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param previousClientSecretExpiresAt The expiration of the previous `client_secret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
+         * @param previousClientSecretExpiresAt The expiration of the previous `clientSecret`. This can be modified at any point after a rotation. For example, you may extend it further into the future if you need more time to update services with the new secret; or move it into the past to immediately invalidate the previous token in case of compromise.
          * 
          * @return builder
          * 

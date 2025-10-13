@@ -62,25 +62,25 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     private @Nullable List<String> ips;
     /**
      * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
-     * `ipv4_start` to be specified as well.
+     * `ipv4Start` to be specified as well.
      * 
      */
     private @Nullable String ipv4End;
     /**
      * @return Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
-     * `ipv4_end` to be specified as well.
+     * `ipv4End` to be specified as well.
      * 
      */
     private @Nullable String ipv4Start;
     /**
      * @return Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
-     * `ipv6_start` to be specified as well.
+     * `ipv6Start` to be specified as well.
      * 
      */
     private @Nullable String ipv6End;
     /**
      * @return Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
-     * `ipv6_end` to be specified as well.
+     * `ipv6End` to be specified as well.
      * 
      */
     private @Nullable String ipv6Start;
@@ -96,13 +96,13 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     private @Nullable String modifiedBefore;
     /**
      * @return The field to sort by.
-     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
+     * Available values: &#34;hostname&#34;, &#34;createdAt&#34;.
      * 
      */
     private @Nullable String order;
     /**
      * @return Filters for targets that have any of the following UUIDs. Specify
-     * `target_ids` multiple times in query parameter to build list of
+     * `targetIds` multiple times in query parameter to build list of
      * candidates.
      * 
      */
@@ -182,7 +182,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return Defines an IPv4 filter range&#39;s ending value (inclusive). Requires
-     * `ipv4_start` to be specified as well.
+     * `ipv4Start` to be specified as well.
      * 
      */
     public Optional<String> ipv4End() {
@@ -190,7 +190,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return Defines an IPv4 filter range&#39;s starting value (inclusive). Requires
-     * `ipv4_end` to be specified as well.
+     * `ipv4End` to be specified as well.
      * 
      */
     public Optional<String> ipv4Start() {
@@ -198,7 +198,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return Defines an IPv6 filter range&#39;s ending value (inclusive). Requires
-     * `ipv6_start` to be specified as well.
+     * `ipv6Start` to be specified as well.
      * 
      */
     public Optional<String> ipv6End() {
@@ -206,7 +206,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return Defines an IPv6 filter range&#39;s starting value (inclusive). Requires
-     * `ipv6_end` to be specified as well.
+     * `ipv6End` to be specified as well.
      * 
      */
     public Optional<String> ipv6Start() {
@@ -228,7 +228,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return The field to sort by.
-     * Available values: &#34;hostname&#34;, &#34;created_at&#34;.
+     * Available values: &#34;hostname&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
@@ -236,7 +236,7 @@ public final class GetZeroTrustAccessInfrastructureTargetFilter {
     }
     /**
      * @return Filters for targets that have any of the following UUIDs. Specify
-     * `target_ids` multiple times in query parameter to build list of
+     * `targetIds` multiple times in query parameter to build list of
      * candidates.
      * 
      */

@@ -64,9 +64,9 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
         return this.hold;
     }
     /**
-     * If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
-     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      * 
@@ -75,9 +75,9 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
     private Output<String> holdAfter;
 
     /**
-     * @return If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
+     * @return If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
      * then automatically re-enabled by the system at the time specified
-     * in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
+     * in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
      * no effect on an existing, enabled hold. Providing an empty string will set its value
      * to the current time.
      * 

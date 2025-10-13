@@ -45,7 +45,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
@@ -53,7 +53,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
-     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4Override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;, &#34;redirect&#34;.
      * 
      */
     public Output<String> action() {
@@ -188,14 +188,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.ruleSettings;
     }
     /**
-     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     @Export(name="schedule", refs={TeamsRuleSchedule.class}, tree="[0]")
     private Output<TeamsRuleSchedule> schedule;
 
     /**
-     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dns_resolver` rules.
+     * @return Defines the schedule for activating DNS policies. Settable only for `dns` and `dnsResolver` rules.
      * 
      */
     public Output<TeamsRuleSchedule> schedule() {

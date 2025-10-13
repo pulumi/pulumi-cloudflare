@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Script { get; set; }
 
         /// <summary>
-        /// Available values: "worker", "r2_bucket".
+        /// Available values: "worker", "R2Bucket".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

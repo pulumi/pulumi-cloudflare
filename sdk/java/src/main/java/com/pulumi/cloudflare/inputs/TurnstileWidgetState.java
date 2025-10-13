@@ -52,7 +52,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     /**
      * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
-     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+     * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     @Import(name="clearanceLevel")
@@ -61,7 +61,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
      * this setting can determine the clearance level to be set
-     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+     * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
     public Optional<Output<String>> clearanceLevel() {
@@ -301,7 +301,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         /**
          * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
          * this setting can determine the clearance level to be set
-         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+         * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         /**
          * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
          * this setting can determine the clearance level to be set
-         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+         * Available values: &#34;noClearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
          * 
          * @return builder
          * 

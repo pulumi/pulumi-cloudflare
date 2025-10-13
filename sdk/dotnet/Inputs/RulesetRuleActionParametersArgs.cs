@@ -386,7 +386,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The SSL level to configure.
-        /// Available values: "off", "flexible", "full", "strict", "origin_pull".
+        /// Available values: "off", "flexible", "full", "strict", "OriginPull".
         /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }

@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double Period;
         /// <summary>
-        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+        /// The threshold that will trigger the configured mitigation action. Configure this value along with the `Period` property to establish a threshold per period.
         /// </summary>
         public readonly double Threshold;
 

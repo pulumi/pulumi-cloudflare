@@ -51,14 +51,14 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+     * @return Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
      * 
      */
     public Optional<Output<String>> id() {
@@ -82,7 +82,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * Field to order hostnames by.
-     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+     * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
      * 
      */
     @Import(name="order")
@@ -90,7 +90,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
 
     /**
      * @return Field to order hostnames by.
-     * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+     * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
      * 
      */
     public Optional<Output<String>> order() {
@@ -204,7 +204,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param id Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+         * @param id Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param id Hostname ID to match against. This ID was generated and returned during the initial custom_hostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
+         * @param id Hostname ID to match against. This ID was generated and returned during the initial customHostname creation. This parameter cannot be used with the &#39;hostname&#39; parameter.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param order Field to order hostnames by.
-         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+         * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GetCustomHostnamesArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param order Field to order hostnames by.
-         * Available values: &#34;ssl&#34;, &#34;ssl_status&#34;.
+         * Available values: &#34;ssl&#34;, &#34;sslStatus&#34;.
          * 
          * @return builder
          * 

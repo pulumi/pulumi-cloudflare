@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
-        ///   - `null` - clears any existing override
+        ///   - `Null` - clears any existing override
         /// Available values: "none".
         /// </summary>
         [Output("validationOverrideMitigationAction")]
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
-        ///   - `null` - clears any existing override
+        ///   - `Null` - clears any existing override
         /// Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]
@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
         /// When set, this overrides both zone level and operation level mitigation actions.
         /// 
         ///   - `"none"` - skip running schema validation entirely for the request
-        ///   - `null` - clears any existing override
+        ///   - `Null` - clears any existing override
         /// Available values: "none".
         /// </summary>
         [Input("validationOverrideMitigationAction")]

@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        /// If the `DnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `True`.
         /// </summary>
         [Output("disableAutoFallback")]
         public Output<bool> DisableAutoFallback { get; private set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        /// If the `DnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `True`.
         /// </summary>
         [Input("disableAutoFallback")]
         public Input<bool>? DisableAutoFallback { get; set; }
@@ -476,7 +476,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
+        /// If the `DnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `True`.
         /// </summary>
         [Input("disableAutoFallback")]
         public Input<bool>? DisableAutoFallback { get; set; }

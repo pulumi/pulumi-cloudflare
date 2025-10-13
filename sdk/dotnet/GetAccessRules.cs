@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Defines the search requirements. When set to `All`, all the search requirements must match. When set to `Any`, only one of the search requirements has to match.
         /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
@@ -192,7 +192,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Defines the search requirements. When set to `All`, all the search requirements must match. When set to `Any`, only one of the search requirements has to match.
         /// Available values: "any", "all".
         /// </summary>
         [Input("match")]
@@ -256,7 +256,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Defines the search requirements. When set to `All`, all the search requirements must match. When set to `Any`, only one of the search requirements has to match.
         /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;

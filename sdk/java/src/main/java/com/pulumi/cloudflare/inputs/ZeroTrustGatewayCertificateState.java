@@ -139,7 +139,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     @Import(name="type")
@@ -147,7 +147,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
     /**
      * @return Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-     * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+     * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -386,7 +386,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param type Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-         * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+         * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
 
         /**
          * @param type Indicate the read-only certificate type, BYO-PKI (custom) or Gateway-managed.
-         * Available values: &#34;custom&#34;, &#34;gateway_managed&#34;.
+         * Available values: &#34;custom&#34;, &#34;gatewayManaged&#34;.
          * 
          * @return builder
          * 

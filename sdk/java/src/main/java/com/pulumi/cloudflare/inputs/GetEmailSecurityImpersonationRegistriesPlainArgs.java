@@ -65,7 +65,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
 
     /**
      * The field to sort by.
-     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
     @Import(name="order")
@@ -73,7 +73,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
 
     /**
      * @return The field to sort by.
-     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
+     * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
      * 
      */
     public Optional<String> order() {
@@ -181,7 +181,7 @@ public final class GetEmailSecurityImpersonationRegistriesPlainArgs extends com.
 
         /**
          * @param order The field to sort by.
-         * Available values: &#34;name&#34;, &#34;email&#34;, &#34;created_at&#34;.
+         * Available values: &#34;name&#34;, &#34;email&#34;, &#34;createdAt&#34;.
          * 
          * @return builder
          * 

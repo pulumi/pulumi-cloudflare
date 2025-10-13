@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ProfileId;
         public readonly bool Secret;
         /// <summary>
-        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "word_list".
+        /// Available values: "custom", "predefined", "integration", "exact*data", "document*fingerprint", "WordList".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

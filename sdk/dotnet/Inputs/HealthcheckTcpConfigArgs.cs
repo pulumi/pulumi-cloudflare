@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The TCP connection method to use for the health check.
-        /// Available values: "connection_established".
+        /// Available values: "ConnectionEstablished".
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }

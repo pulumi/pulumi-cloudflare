@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public readonly bool Editable;
         /// <summary>
         /// The identifier of the caching setting.
-        /// Available values: "tc_regional".
+        /// Available values: "TcRegional".
         /// </summary>
         public readonly string Id;
         /// <summary>
