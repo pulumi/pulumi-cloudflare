@@ -37,6 +37,7 @@ class WorkersScriptArgs:
                  limits: Optional[pulumi.Input['WorkersScriptLimitsArgs']] = None,
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
+                 migrations: Optional[pulumi.Input['WorkersScriptMigrationsArgs']] = None,
                  observability: Optional[pulumi.Input['WorkersScriptObservabilityArgs']] = None,
                  placement: Optional[pulumi.Input['WorkersScriptPlacementArgs']] = None,
                  tail_consumers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]]] = None,
@@ -59,6 +60,8 @@ class WorkersScriptArgs:
         :param pulumi.Input['WorkersScriptLimitsArgs'] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input['WorkersScriptMigrationsArgs'] migrations: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
         :param pulumi.Input['WorkersScriptPlacementArgs'] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptTailConsumerArgs']]] tail_consumers: List of Workers that will consume logs from the attached Worker.
@@ -95,6 +98,8 @@ class WorkersScriptArgs:
             pulumi.set(__self__, "logpush", logpush)
         if main_module is not None:
             pulumi.set(__self__, "main_module", main_module)
+        if migrations is not None:
+            pulumi.set(__self__, "migrations", migrations)
         if observability is not None:
             pulumi.set(__self__, "observability", observability)
         if placement is not None:
@@ -298,6 +303,19 @@ class WorkersScriptArgs:
 
     @_builtins.property
     @pulumi.getter
+    def migrations(self) -> Optional[pulumi.Input['WorkersScriptMigrationsArgs']]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply for Durable Objects associated with this Worker.
+        """
+        return pulumi.get(self, "migrations")
+
+    @migrations.setter
+    def migrations(self, value: Optional[pulumi.Input['WorkersScriptMigrationsArgs']]):
+        pulumi.set(self, "migrations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def observability(self) -> Optional[pulumi.Input['WorkersScriptObservabilityArgs']]:
         """
         Observability settings for the Worker.
@@ -371,6 +389,7 @@ class _WorkersScriptState:
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
                  migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 migrations: Optional[pulumi.Input['WorkersScriptMigrationsArgs']] = None,
                  modified_on: Optional[pulumi.Input[_builtins.str]] = None,
                  named_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptNamedHandlerArgs']]]] = None,
                  observability: Optional[pulumi.Input['WorkersScriptObservabilityArgs']] = None,
@@ -403,6 +422,8 @@ class _WorkersScriptState:
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[_builtins.str] migration_tag: The tag of the Durable Object migration that was most recently applied for this Worker.
+        :param pulumi.Input['WorkersScriptMigrationsArgs'] migrations: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptNamedHandlerArgs']]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input['WorkersScriptObservabilityArgs'] observability: Observability settings for the Worker.
@@ -456,6 +477,8 @@ class _WorkersScriptState:
             pulumi.set(__self__, "main_module", main_module)
         if migration_tag is not None:
             pulumi.set(__self__, "migration_tag", migration_tag)
+        if migrations is not None:
+            pulumi.set(__self__, "migrations", migrations)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if named_handlers is not None:
@@ -738,6 +761,19 @@ class _WorkersScriptState:
         pulumi.set(self, "migration_tag", value)
 
     @_builtins.property
+    @pulumi.getter
+    def migrations(self) -> Optional[pulumi.Input['WorkersScriptMigrationsArgs']]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply for Durable Objects associated with this Worker.
+        """
+        return pulumi.get(self, "migrations")
+
+    @migrations.setter
+    def migrations(self, value: Optional[pulumi.Input['WorkersScriptMigrationsArgs']]):
+        pulumi.set(self, "migrations", value)
+
+    @_builtins.property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -853,6 +889,7 @@ class WorkersScript(pulumi.CustomResource):
                  limits: Optional[pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']]] = None,
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
+                 migrations: Optional[pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: Optional[pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
                  placement: Optional[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -887,6 +924,8 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']] limits: Limits to apply for this Worker.
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+        :param pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']] migrations: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
         :param pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']] placement: Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[_builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -941,6 +980,7 @@ class WorkersScript(pulumi.CustomResource):
                  limits: Optional[pulumi.Input[Union['WorkersScriptLimitsArgs', 'WorkersScriptLimitsArgsDict']]] = None,
                  logpush: Optional[pulumi.Input[_builtins.bool]] = None,
                  main_module: Optional[pulumi.Input[_builtins.str]] = None,
+                 migrations: Optional[pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
                  observability: Optional[pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
                  placement: Optional[pulumi.Input[Union['WorkersScriptPlacementArgs', 'WorkersScriptPlacementArgsDict']]] = None,
                  script_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -972,6 +1012,7 @@ class WorkersScript(pulumi.CustomResource):
             __props__.__dict__["limits"] = limits
             __props__.__dict__["logpush"] = logpush
             __props__.__dict__["main_module"] = main_module
+            __props__.__dict__["migrations"] = None if migrations is None else pulumi.Output.secret(migrations)
             __props__.__dict__["observability"] = observability
             __props__.__dict__["placement"] = placement
             if script_name is None and not opts.urn:
@@ -991,6 +1032,8 @@ class WorkersScript(pulumi.CustomResource):
             __props__.__dict__["startup_time_ms"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerScript:WorkerScript")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["migrations"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WorkersScript, __self__).__init__(
             'cloudflare:index/workersScript:WorkersScript',
             resource_name,
@@ -1023,6 +1066,7 @@ class WorkersScript(pulumi.CustomResource):
             logpush: Optional[pulumi.Input[_builtins.bool]] = None,
             main_module: Optional[pulumi.Input[_builtins.str]] = None,
             migration_tag: Optional[pulumi.Input[_builtins.str]] = None,
+            migrations: Optional[pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[_builtins.str]] = None,
             named_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict']]]]] = None,
             observability: Optional[pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']]] = None,
@@ -1060,6 +1104,8 @@ class WorkersScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] logpush: Whether Logpush is turned on for the Worker.
         :param pulumi.Input[_builtins.str] main_module: Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         :param pulumi.Input[_builtins.str] migration_tag: The tag of the Durable Object migration that was most recently applied for this Worker.
+        :param pulumi.Input[Union['WorkersScriptMigrationsArgs', 'WorkersScriptMigrationsArgsDict']] migrations: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply for Durable Objects associated with this Worker.
         :param pulumi.Input[_builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkersScriptNamedHandlerArgs', 'WorkersScriptNamedHandlerArgsDict']]]] named_handlers: Named exports, such as Durable Object class implementations and named entrypoints.
         :param pulumi.Input[Union['WorkersScriptObservabilityArgs', 'WorkersScriptObservabilityArgsDict']] observability: Observability settings for the Worker.
@@ -1095,6 +1141,7 @@ class WorkersScript(pulumi.CustomResource):
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["main_module"] = main_module
         __props__.__dict__["migration_tag"] = migration_tag
+        __props__.__dict__["migrations"] = migrations
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["named_handlers"] = named_handlers
         __props__.__dict__["observability"] = observability
@@ -1280,6 +1327,15 @@ class WorkersScript(pulumi.CustomResource):
         The tag of the Durable Object migration that was most recently applied for this Worker.
         """
         return pulumi.get(self, "migration_tag")
+
+    @_builtins.property
+    @pulumi.getter
+    def migrations(self) -> pulumi.Output[Optional['outputs.WorkersScriptMigrations']]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply for Durable Objects associated with this Worker.
+        """
+        return pulumi.get(self, "migrations")
 
     @_builtins.property
     @pulumi.getter(name="modifiedOn")

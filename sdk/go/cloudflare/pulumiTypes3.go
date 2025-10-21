@@ -13,6 +13,1326 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetQueueConsumersResult struct {
+	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
+	CreatedOn  string `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId string `pulumi:"queueId"`
+	// Name of a Worker
+	Script string `pulumi:"script"`
+	// Name of a Worker
+	ScriptName string                          `pulumi:"scriptName"`
+	Settings   GetQueueConsumersResultSettings `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type string `pulumi:"type"`
+}
+
+// GetQueueConsumersResultInput is an input type that accepts GetQueueConsumersResultArgs and GetQueueConsumersResultOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultInput` via:
+//
+//	GetQueueConsumersResultArgs{...}
+type GetQueueConsumersResultInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput
+	ToGetQueueConsumersResultOutputWithContext(context.Context) GetQueueConsumersResultOutput
+}
+
+type GetQueueConsumersResultArgs struct {
+	// A Resource identifier.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
+	CreatedOn  pulumi.StringInput `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId pulumi.StringInput `pulumi:"queueId"`
+	// Name of a Worker
+	Script pulumi.StringInput `pulumi:"script"`
+	// Name of a Worker
+	ScriptName pulumi.StringInput                   `pulumi:"scriptName"`
+	Settings   GetQueueConsumersResultSettingsInput `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetQueueConsumersResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
+	return i.ToGetQueueConsumersResultOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultArgs) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultOutput)
+}
+
+// GetQueueConsumersResultArrayInput is an input type that accepts GetQueueConsumersResultArray and GetQueueConsumersResultArrayOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultArrayInput` via:
+//
+//	GetQueueConsumersResultArray{ GetQueueConsumersResultArgs{...} }
+type GetQueueConsumersResultArrayInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput
+	ToGetQueueConsumersResultArrayOutputWithContext(context.Context) GetQueueConsumersResultArrayOutput
+}
+
+type GetQueueConsumersResultArray []GetQueueConsumersResultInput
+
+func (GetQueueConsumersResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
+	return i.ToGetQueueConsumersResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultArray) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultArrayOutput)
+}
+
+type GetQueueConsumersResultOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutput() GetQueueConsumersResultOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultOutput) ToGetQueueConsumersResultOutputWithContext(ctx context.Context) GetQueueConsumersResultOutput {
+	return o
+}
+
+// A Resource identifier.
+func (o GetQueueConsumersResultOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+func (o GetQueueConsumersResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// A Resource identifier.
+func (o GetQueueConsumersResultOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueueConsumersResultOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueueConsumersResultOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o GetQueueConsumersResultOutput) Settings() GetQueueConsumersResultSettingsOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) GetQueueConsumersResultSettings { return v.Settings }).(GetQueueConsumersResultSettingsOutput)
+}
+
+// Available values: "worker", "httpPull".
+func (o GetQueueConsumersResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueConsumersResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetQueueConsumersResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueConsumersResult)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutput() GetQueueConsumersResultArrayOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultArrayOutput) ToGetQueueConsumersResultArrayOutputWithContext(ctx context.Context) GetQueueConsumersResultArrayOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultArrayOutput) Index(i pulumi.IntInput) GetQueueConsumersResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueueConsumersResult {
+		return vs[0].([]GetQueueConsumersResult)[vs[1].(int)]
+	}).(GetQueueConsumersResultOutput)
+}
+
+type GetQueueConsumersResultSettings struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize float64 `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency float64 `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries float64 `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs float64 `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay float64 `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs float64 `pulumi:"visibilityTimeoutMs"`
+}
+
+// GetQueueConsumersResultSettingsInput is an input type that accepts GetQueueConsumersResultSettingsArgs and GetQueueConsumersResultSettingsOutput values.
+// You can construct a concrete instance of `GetQueueConsumersResultSettingsInput` via:
+//
+//	GetQueueConsumersResultSettingsArgs{...}
+type GetQueueConsumersResultSettingsInput interface {
+	pulumi.Input
+
+	ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput
+	ToGetQueueConsumersResultSettingsOutputWithContext(context.Context) GetQueueConsumersResultSettingsOutput
+}
+
+type GetQueueConsumersResultSettingsArgs struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize pulumi.Float64Input `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency pulumi.Float64Input `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries pulumi.Float64Input `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs pulumi.Float64Input `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay pulumi.Float64Input `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs pulumi.Float64Input `pulumi:"visibilityTimeoutMs"`
+}
+
+func (GetQueueConsumersResultSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
+}
+
+func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
+	return i.ToGetQueueConsumersResultSettingsOutputWithContext(context.Background())
+}
+
+func (i GetQueueConsumersResultSettingsArgs) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueConsumersResultSettingsOutput)
+}
+
+type GetQueueConsumersResultSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetQueueConsumersResultSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueConsumersResultSettings)(nil)).Elem()
+}
+
+func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutput() GetQueueConsumersResultSettingsOutput {
+	return o
+}
+
+func (o GetQueueConsumersResultSettingsOutput) ToGetQueueConsumersResultSettingsOutputWithContext(ctx context.Context) GetQueueConsumersResultSettingsOutput {
+	return o
+}
+
+// The maximum number of messages to include in a batch.
+func (o GetQueueConsumersResultSettingsOutput) BatchSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.BatchSize }).(pulumi.Float64Output)
+}
+
+// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+func (o GetQueueConsumersResultSettingsOutput) MaxConcurrency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxConcurrency }).(pulumi.Float64Output)
+}
+
+// The maximum number of retries
+func (o GetQueueConsumersResultSettingsOutput) MaxRetries() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxRetries }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+func (o GetQueueConsumersResultSettingsOutput) MaxWaitTimeMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.MaxWaitTimeMs }).(pulumi.Float64Output)
+}
+
+// The number of seconds to delay before making the message available for another attempt.
+func (o GetQueueConsumersResultSettingsOutput) RetryDelay() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.RetryDelay }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+func (o GetQueueConsumersResultSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueConsumersResultSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
+}
+
+type GetQueueProducer struct {
+	BucketName string `pulumi:"bucketName"`
+	Script     string `pulumi:"script"`
+	// Available values: "worker", "r2Bucket".
+	Type string `pulumi:"type"`
+}
+
+// GetQueueProducerInput is an input type that accepts GetQueueProducerArgs and GetQueueProducerOutput values.
+// You can construct a concrete instance of `GetQueueProducerInput` via:
+//
+//	GetQueueProducerArgs{...}
+type GetQueueProducerInput interface {
+	pulumi.Input
+
+	ToGetQueueProducerOutput() GetQueueProducerOutput
+	ToGetQueueProducerOutputWithContext(context.Context) GetQueueProducerOutput
+}
+
+type GetQueueProducerArgs struct {
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	Script     pulumi.StringInput `pulumi:"script"`
+	// Available values: "worker", "r2Bucket".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetQueueProducerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueProducer)(nil)).Elem()
+}
+
+func (i GetQueueProducerArgs) ToGetQueueProducerOutput() GetQueueProducerOutput {
+	return i.ToGetQueueProducerOutputWithContext(context.Background())
+}
+
+func (i GetQueueProducerArgs) ToGetQueueProducerOutputWithContext(ctx context.Context) GetQueueProducerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueProducerOutput)
+}
+
+// GetQueueProducerArrayInput is an input type that accepts GetQueueProducerArray and GetQueueProducerArrayOutput values.
+// You can construct a concrete instance of `GetQueueProducerArrayInput` via:
+//
+//	GetQueueProducerArray{ GetQueueProducerArgs{...} }
+type GetQueueProducerArrayInput interface {
+	pulumi.Input
+
+	ToGetQueueProducerArrayOutput() GetQueueProducerArrayOutput
+	ToGetQueueProducerArrayOutputWithContext(context.Context) GetQueueProducerArrayOutput
+}
+
+type GetQueueProducerArray []GetQueueProducerInput
+
+func (GetQueueProducerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueProducer)(nil)).Elem()
+}
+
+func (i GetQueueProducerArray) ToGetQueueProducerArrayOutput() GetQueueProducerArrayOutput {
+	return i.ToGetQueueProducerArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueueProducerArray) ToGetQueueProducerArrayOutputWithContext(ctx context.Context) GetQueueProducerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueProducerArrayOutput)
+}
+
+type GetQueueProducerOutput struct{ *pulumi.OutputState }
+
+func (GetQueueProducerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueProducer)(nil)).Elem()
+}
+
+func (o GetQueueProducerOutput) ToGetQueueProducerOutput() GetQueueProducerOutput {
+	return o
+}
+
+func (o GetQueueProducerOutput) ToGetQueueProducerOutputWithContext(ctx context.Context) GetQueueProducerOutput {
+	return o
+}
+
+func (o GetQueueProducerOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueProducer) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+func (o GetQueueProducerOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueProducer) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Available values: "worker", "r2Bucket".
+func (o GetQueueProducerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueueProducer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetQueueProducerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueueProducerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueueProducer)(nil)).Elem()
+}
+
+func (o GetQueueProducerArrayOutput) ToGetQueueProducerArrayOutput() GetQueueProducerArrayOutput {
+	return o
+}
+
+func (o GetQueueProducerArrayOutput) ToGetQueueProducerArrayOutputWithContext(ctx context.Context) GetQueueProducerArrayOutput {
+	return o
+}
+
+func (o GetQueueProducerArrayOutput) Index(i pulumi.IntInput) GetQueueProducerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueueProducer {
+		return vs[0].([]GetQueueProducer)[vs[1].(int)]
+	}).(GetQueueProducerOutput)
+}
+
+type GetQueueSettings struct {
+	// Number of seconds to delay delivery of all messages to consumers.
+	DeliveryDelay float64 `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused bool `pulumi:"deliveryPaused"`
+	// Number of seconds after which an unconsumed message will be delayed.
+	MessageRetentionPeriod float64 `pulumi:"messageRetentionPeriod"`
+}
+
+// GetQueueSettingsInput is an input type that accepts GetQueueSettingsArgs and GetQueueSettingsOutput values.
+// You can construct a concrete instance of `GetQueueSettingsInput` via:
+//
+//	GetQueueSettingsArgs{...}
+type GetQueueSettingsInput interface {
+	pulumi.Input
+
+	ToGetQueueSettingsOutput() GetQueueSettingsOutput
+	ToGetQueueSettingsOutputWithContext(context.Context) GetQueueSettingsOutput
+}
+
+type GetQueueSettingsArgs struct {
+	// Number of seconds to delay delivery of all messages to consumers.
+	DeliveryDelay pulumi.Float64Input `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused pulumi.BoolInput `pulumi:"deliveryPaused"`
+	// Number of seconds after which an unconsumed message will be delayed.
+	MessageRetentionPeriod pulumi.Float64Input `pulumi:"messageRetentionPeriod"`
+}
+
+func (GetQueueSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueSettings)(nil)).Elem()
+}
+
+func (i GetQueueSettingsArgs) ToGetQueueSettingsOutput() GetQueueSettingsOutput {
+	return i.ToGetQueueSettingsOutputWithContext(context.Background())
+}
+
+func (i GetQueueSettingsArgs) ToGetQueueSettingsOutputWithContext(ctx context.Context) GetQueueSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueueSettingsOutput)
+}
+
+type GetQueueSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetQueueSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueueSettings)(nil)).Elem()
+}
+
+func (o GetQueueSettingsOutput) ToGetQueueSettingsOutput() GetQueueSettingsOutput {
+	return o
+}
+
+func (o GetQueueSettingsOutput) ToGetQueueSettingsOutputWithContext(ctx context.Context) GetQueueSettingsOutput {
+	return o
+}
+
+// Number of seconds to delay delivery of all messages to consumers.
+func (o GetQueueSettingsOutput) DeliveryDelay() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueSettings) float64 { return v.DeliveryDelay }).(pulumi.Float64Output)
+}
+
+// Indicates if message delivery to consumers is currently paused.
+func (o GetQueueSettingsOutput) DeliveryPaused() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueueSettings) bool { return v.DeliveryPaused }).(pulumi.BoolOutput)
+}
+
+// Number of seconds after which an unconsumed message will be delayed.
+func (o GetQueueSettingsOutput) MessageRetentionPeriod() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueueSettings) float64 { return v.MessageRetentionPeriod }).(pulumi.Float64Output)
+}
+
+type GetQueuesResult struct {
+	Consumers           []GetQueuesResultConsumer `pulumi:"consumers"`
+	ConsumersTotalCount float64                   `pulumi:"consumersTotalCount"`
+	CreatedOn           string                    `pulumi:"createdOn"`
+	ModifiedOn          string                    `pulumi:"modifiedOn"`
+	Producers           []GetQueuesResultProducer `pulumi:"producers"`
+	ProducersTotalCount float64                   `pulumi:"producersTotalCount"`
+	QueueId             string                    `pulumi:"queueId"`
+	QueueName           string                    `pulumi:"queueName"`
+	Settings            GetQueuesResultSettings   `pulumi:"settings"`
+}
+
+// GetQueuesResultInput is an input type that accepts GetQueuesResultArgs and GetQueuesResultOutput values.
+// You can construct a concrete instance of `GetQueuesResultInput` via:
+//
+//	GetQueuesResultArgs{...}
+type GetQueuesResultInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultOutput() GetQueuesResultOutput
+	ToGetQueuesResultOutputWithContext(context.Context) GetQueuesResultOutput
+}
+
+type GetQueuesResultArgs struct {
+	Consumers           GetQueuesResultConsumerArrayInput `pulumi:"consumers"`
+	ConsumersTotalCount pulumi.Float64Input               `pulumi:"consumersTotalCount"`
+	CreatedOn           pulumi.StringInput                `pulumi:"createdOn"`
+	ModifiedOn          pulumi.StringInput                `pulumi:"modifiedOn"`
+	Producers           GetQueuesResultProducerArrayInput `pulumi:"producers"`
+	ProducersTotalCount pulumi.Float64Input               `pulumi:"producersTotalCount"`
+	QueueId             pulumi.StringInput                `pulumi:"queueId"`
+	QueueName           pulumi.StringInput                `pulumi:"queueName"`
+	Settings            GetQueuesResultSettingsInput      `pulumi:"settings"`
+}
+
+func (GetQueuesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResult)(nil)).Elem()
+}
+
+func (i GetQueuesResultArgs) ToGetQueuesResultOutput() GetQueuesResultOutput {
+	return i.ToGetQueuesResultOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultArgs) ToGetQueuesResultOutputWithContext(ctx context.Context) GetQueuesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultOutput)
+}
+
+// GetQueuesResultArrayInput is an input type that accepts GetQueuesResultArray and GetQueuesResultArrayOutput values.
+// You can construct a concrete instance of `GetQueuesResultArrayInput` via:
+//
+//	GetQueuesResultArray{ GetQueuesResultArgs{...} }
+type GetQueuesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultArrayOutput() GetQueuesResultArrayOutput
+	ToGetQueuesResultArrayOutputWithContext(context.Context) GetQueuesResultArrayOutput
+}
+
+type GetQueuesResultArray []GetQueuesResultInput
+
+func (GetQueuesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResult)(nil)).Elem()
+}
+
+func (i GetQueuesResultArray) ToGetQueuesResultArrayOutput() GetQueuesResultArrayOutput {
+	return i.ToGetQueuesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultArray) ToGetQueuesResultArrayOutputWithContext(ctx context.Context) GetQueuesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultArrayOutput)
+}
+
+type GetQueuesResultOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResult)(nil)).Elem()
+}
+
+func (o GetQueuesResultOutput) ToGetQueuesResultOutput() GetQueuesResultOutput {
+	return o
+}
+
+func (o GetQueuesResultOutput) ToGetQueuesResultOutputWithContext(ctx context.Context) GetQueuesResultOutput {
+	return o
+}
+
+func (o GetQueuesResultOutput) Consumers() GetQueuesResultConsumerArrayOutput {
+	return o.ApplyT(func(v GetQueuesResult) []GetQueuesResultConsumer { return v.Consumers }).(GetQueuesResultConsumerArrayOutput)
+}
+
+func (o GetQueuesResultOutput) ConsumersTotalCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResult) float64 { return v.ConsumersTotalCount }).(pulumi.Float64Output)
+}
+
+func (o GetQueuesResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) Producers() GetQueuesResultProducerArrayOutput {
+	return o.ApplyT(func(v GetQueuesResult) []GetQueuesResultProducer { return v.Producers }).(GetQueuesResultProducerArrayOutput)
+}
+
+func (o GetQueuesResultOutput) ProducersTotalCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResult) float64 { return v.ProducersTotalCount }).(pulumi.Float64Output)
+}
+
+func (o GetQueuesResultOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResult) string { return v.QueueName }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultOutput) Settings() GetQueuesResultSettingsOutput {
+	return o.ApplyT(func(v GetQueuesResult) GetQueuesResultSettings { return v.Settings }).(GetQueuesResultSettingsOutput)
+}
+
+type GetQueuesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResult)(nil)).Elem()
+}
+
+func (o GetQueuesResultArrayOutput) ToGetQueuesResultArrayOutput() GetQueuesResultArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultArrayOutput) ToGetQueuesResultArrayOutputWithContext(ctx context.Context) GetQueuesResultArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultArrayOutput) Index(i pulumi.IntInput) GetQueuesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueuesResult {
+		return vs[0].([]GetQueuesResult)[vs[1].(int)]
+	}).(GetQueuesResultOutput)
+}
+
+type GetQueuesResultConsumer struct {
+	// A Resource identifier.
+	ConsumerId string `pulumi:"consumerId"`
+	CreatedOn  string `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId string `pulumi:"queueId"`
+	// Name of a Worker
+	Script string `pulumi:"script"`
+	// Name of a Worker
+	ScriptName string                          `pulumi:"scriptName"`
+	Settings   GetQueuesResultConsumerSettings `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type string `pulumi:"type"`
+}
+
+// GetQueuesResultConsumerInput is an input type that accepts GetQueuesResultConsumerArgs and GetQueuesResultConsumerOutput values.
+// You can construct a concrete instance of `GetQueuesResultConsumerInput` via:
+//
+//	GetQueuesResultConsumerArgs{...}
+type GetQueuesResultConsumerInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultConsumerOutput() GetQueuesResultConsumerOutput
+	ToGetQueuesResultConsumerOutputWithContext(context.Context) GetQueuesResultConsumerOutput
+}
+
+type GetQueuesResultConsumerArgs struct {
+	// A Resource identifier.
+	ConsumerId pulumi.StringInput `pulumi:"consumerId"`
+	CreatedOn  pulumi.StringInput `pulumi:"createdOn"`
+	// A Resource identifier.
+	QueueId pulumi.StringInput `pulumi:"queueId"`
+	// Name of a Worker
+	Script pulumi.StringInput `pulumi:"script"`
+	// Name of a Worker
+	ScriptName pulumi.StringInput                   `pulumi:"scriptName"`
+	Settings   GetQueuesResultConsumerSettingsInput `pulumi:"settings"`
+	// Available values: "worker", "httpPull".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetQueuesResultConsumerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultConsumer)(nil)).Elem()
+}
+
+func (i GetQueuesResultConsumerArgs) ToGetQueuesResultConsumerOutput() GetQueuesResultConsumerOutput {
+	return i.ToGetQueuesResultConsumerOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultConsumerArgs) ToGetQueuesResultConsumerOutputWithContext(ctx context.Context) GetQueuesResultConsumerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultConsumerOutput)
+}
+
+// GetQueuesResultConsumerArrayInput is an input type that accepts GetQueuesResultConsumerArray and GetQueuesResultConsumerArrayOutput values.
+// You can construct a concrete instance of `GetQueuesResultConsumerArrayInput` via:
+//
+//	GetQueuesResultConsumerArray{ GetQueuesResultConsumerArgs{...} }
+type GetQueuesResultConsumerArrayInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultConsumerArrayOutput() GetQueuesResultConsumerArrayOutput
+	ToGetQueuesResultConsumerArrayOutputWithContext(context.Context) GetQueuesResultConsumerArrayOutput
+}
+
+type GetQueuesResultConsumerArray []GetQueuesResultConsumerInput
+
+func (GetQueuesResultConsumerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResultConsumer)(nil)).Elem()
+}
+
+func (i GetQueuesResultConsumerArray) ToGetQueuesResultConsumerArrayOutput() GetQueuesResultConsumerArrayOutput {
+	return i.ToGetQueuesResultConsumerArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultConsumerArray) ToGetQueuesResultConsumerArrayOutputWithContext(ctx context.Context) GetQueuesResultConsumerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultConsumerArrayOutput)
+}
+
+type GetQueuesResultConsumerOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultConsumerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultConsumer)(nil)).Elem()
+}
+
+func (o GetQueuesResultConsumerOutput) ToGetQueuesResultConsumerOutput() GetQueuesResultConsumerOutput {
+	return o
+}
+
+func (o GetQueuesResultConsumerOutput) ToGetQueuesResultConsumerOutputWithContext(ctx context.Context) GetQueuesResultConsumerOutput {
+	return o
+}
+
+// A Resource identifier.
+func (o GetQueuesResultConsumerOutput) ConsumerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.ConsumerId }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultConsumerOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// A Resource identifier.
+func (o GetQueuesResultConsumerOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueuesResultConsumerOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Name of a Worker
+func (o GetQueuesResultConsumerOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.ScriptName }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultConsumerOutput) Settings() GetQueuesResultConsumerSettingsOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) GetQueuesResultConsumerSettings { return v.Settings }).(GetQueuesResultConsumerSettingsOutput)
+}
+
+// Available values: "worker", "httpPull".
+func (o GetQueuesResultConsumerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultConsumer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetQueuesResultConsumerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultConsumerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResultConsumer)(nil)).Elem()
+}
+
+func (o GetQueuesResultConsumerArrayOutput) ToGetQueuesResultConsumerArrayOutput() GetQueuesResultConsumerArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultConsumerArrayOutput) ToGetQueuesResultConsumerArrayOutputWithContext(ctx context.Context) GetQueuesResultConsumerArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultConsumerArrayOutput) Index(i pulumi.IntInput) GetQueuesResultConsumerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueuesResultConsumer {
+		return vs[0].([]GetQueuesResultConsumer)[vs[1].(int)]
+	}).(GetQueuesResultConsumerOutput)
+}
+
+type GetQueuesResultConsumerSettings struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize float64 `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency float64 `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries float64 `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs float64 `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay float64 `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs float64 `pulumi:"visibilityTimeoutMs"`
+}
+
+// GetQueuesResultConsumerSettingsInput is an input type that accepts GetQueuesResultConsumerSettingsArgs and GetQueuesResultConsumerSettingsOutput values.
+// You can construct a concrete instance of `GetQueuesResultConsumerSettingsInput` via:
+//
+//	GetQueuesResultConsumerSettingsArgs{...}
+type GetQueuesResultConsumerSettingsInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultConsumerSettingsOutput() GetQueuesResultConsumerSettingsOutput
+	ToGetQueuesResultConsumerSettingsOutputWithContext(context.Context) GetQueuesResultConsumerSettingsOutput
+}
+
+type GetQueuesResultConsumerSettingsArgs struct {
+	// The maximum number of messages to include in a batch.
+	BatchSize pulumi.Float64Input `pulumi:"batchSize"`
+	// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+	MaxConcurrency pulumi.Float64Input `pulumi:"maxConcurrency"`
+	// The maximum number of retries
+	MaxRetries pulumi.Float64Input `pulumi:"maxRetries"`
+	// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+	MaxWaitTimeMs pulumi.Float64Input `pulumi:"maxWaitTimeMs"`
+	// The number of seconds to delay before making the message available for another attempt.
+	RetryDelay pulumi.Float64Input `pulumi:"retryDelay"`
+	// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+	VisibilityTimeoutMs pulumi.Float64Input `pulumi:"visibilityTimeoutMs"`
+}
+
+func (GetQueuesResultConsumerSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultConsumerSettings)(nil)).Elem()
+}
+
+func (i GetQueuesResultConsumerSettingsArgs) ToGetQueuesResultConsumerSettingsOutput() GetQueuesResultConsumerSettingsOutput {
+	return i.ToGetQueuesResultConsumerSettingsOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultConsumerSettingsArgs) ToGetQueuesResultConsumerSettingsOutputWithContext(ctx context.Context) GetQueuesResultConsumerSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultConsumerSettingsOutput)
+}
+
+type GetQueuesResultConsumerSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultConsumerSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultConsumerSettings)(nil)).Elem()
+}
+
+func (o GetQueuesResultConsumerSettingsOutput) ToGetQueuesResultConsumerSettingsOutput() GetQueuesResultConsumerSettingsOutput {
+	return o
+}
+
+func (o GetQueuesResultConsumerSettingsOutput) ToGetQueuesResultConsumerSettingsOutputWithContext(ctx context.Context) GetQueuesResultConsumerSettingsOutput {
+	return o
+}
+
+// The maximum number of messages to include in a batch.
+func (o GetQueuesResultConsumerSettingsOutput) BatchSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.BatchSize }).(pulumi.Float64Output)
+}
+
+// Maximum number of concurrent consumers that may consume from this Queue. Set to `null` to automatically opt in to the platform's maximum (recommended).
+func (o GetQueuesResultConsumerSettingsOutput) MaxConcurrency() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.MaxConcurrency }).(pulumi.Float64Output)
+}
+
+// The maximum number of retries
+func (o GetQueuesResultConsumerSettingsOutput) MaxRetries() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.MaxRetries }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds to wait for a batch to fill up before attempting to deliver it
+func (o GetQueuesResultConsumerSettingsOutput) MaxWaitTimeMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.MaxWaitTimeMs }).(pulumi.Float64Output)
+}
+
+// The number of seconds to delay before making the message available for another attempt.
+func (o GetQueuesResultConsumerSettingsOutput) RetryDelay() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.RetryDelay }).(pulumi.Float64Output)
+}
+
+// The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt.
+func (o GetQueuesResultConsumerSettingsOutput) VisibilityTimeoutMs() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultConsumerSettings) float64 { return v.VisibilityTimeoutMs }).(pulumi.Float64Output)
+}
+
+type GetQueuesResultProducer struct {
+	BucketName string `pulumi:"bucketName"`
+	Script     string `pulumi:"script"`
+	// Available values: "worker", "r2Bucket".
+	Type string `pulumi:"type"`
+}
+
+// GetQueuesResultProducerInput is an input type that accepts GetQueuesResultProducerArgs and GetQueuesResultProducerOutput values.
+// You can construct a concrete instance of `GetQueuesResultProducerInput` via:
+//
+//	GetQueuesResultProducerArgs{...}
+type GetQueuesResultProducerInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultProducerOutput() GetQueuesResultProducerOutput
+	ToGetQueuesResultProducerOutputWithContext(context.Context) GetQueuesResultProducerOutput
+}
+
+type GetQueuesResultProducerArgs struct {
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	Script     pulumi.StringInput `pulumi:"script"`
+	// Available values: "worker", "r2Bucket".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetQueuesResultProducerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultProducer)(nil)).Elem()
+}
+
+func (i GetQueuesResultProducerArgs) ToGetQueuesResultProducerOutput() GetQueuesResultProducerOutput {
+	return i.ToGetQueuesResultProducerOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultProducerArgs) ToGetQueuesResultProducerOutputWithContext(ctx context.Context) GetQueuesResultProducerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultProducerOutput)
+}
+
+// GetQueuesResultProducerArrayInput is an input type that accepts GetQueuesResultProducerArray and GetQueuesResultProducerArrayOutput values.
+// You can construct a concrete instance of `GetQueuesResultProducerArrayInput` via:
+//
+//	GetQueuesResultProducerArray{ GetQueuesResultProducerArgs{...} }
+type GetQueuesResultProducerArrayInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultProducerArrayOutput() GetQueuesResultProducerArrayOutput
+	ToGetQueuesResultProducerArrayOutputWithContext(context.Context) GetQueuesResultProducerArrayOutput
+}
+
+type GetQueuesResultProducerArray []GetQueuesResultProducerInput
+
+func (GetQueuesResultProducerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResultProducer)(nil)).Elem()
+}
+
+func (i GetQueuesResultProducerArray) ToGetQueuesResultProducerArrayOutput() GetQueuesResultProducerArrayOutput {
+	return i.ToGetQueuesResultProducerArrayOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultProducerArray) ToGetQueuesResultProducerArrayOutputWithContext(ctx context.Context) GetQueuesResultProducerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultProducerArrayOutput)
+}
+
+type GetQueuesResultProducerOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultProducerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultProducer)(nil)).Elem()
+}
+
+func (o GetQueuesResultProducerOutput) ToGetQueuesResultProducerOutput() GetQueuesResultProducerOutput {
+	return o
+}
+
+func (o GetQueuesResultProducerOutput) ToGetQueuesResultProducerOutputWithContext(ctx context.Context) GetQueuesResultProducerOutput {
+	return o
+}
+
+func (o GetQueuesResultProducerOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultProducer) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+func (o GetQueuesResultProducerOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultProducer) string { return v.Script }).(pulumi.StringOutput)
+}
+
+// Available values: "worker", "r2Bucket".
+func (o GetQueuesResultProducerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQueuesResultProducer) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetQueuesResultProducerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultProducerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQueuesResultProducer)(nil)).Elem()
+}
+
+func (o GetQueuesResultProducerArrayOutput) ToGetQueuesResultProducerArrayOutput() GetQueuesResultProducerArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultProducerArrayOutput) ToGetQueuesResultProducerArrayOutputWithContext(ctx context.Context) GetQueuesResultProducerArrayOutput {
+	return o
+}
+
+func (o GetQueuesResultProducerArrayOutput) Index(i pulumi.IntInput) GetQueuesResultProducerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQueuesResultProducer {
+		return vs[0].([]GetQueuesResultProducer)[vs[1].(int)]
+	}).(GetQueuesResultProducerOutput)
+}
+
+type GetQueuesResultSettings struct {
+	// Number of seconds to delay delivery of all messages to consumers.
+	DeliveryDelay float64 `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused bool `pulumi:"deliveryPaused"`
+	// Number of seconds after which an unconsumed message will be delayed.
+	MessageRetentionPeriod float64 `pulumi:"messageRetentionPeriod"`
+}
+
+// GetQueuesResultSettingsInput is an input type that accepts GetQueuesResultSettingsArgs and GetQueuesResultSettingsOutput values.
+// You can construct a concrete instance of `GetQueuesResultSettingsInput` via:
+//
+//	GetQueuesResultSettingsArgs{...}
+type GetQueuesResultSettingsInput interface {
+	pulumi.Input
+
+	ToGetQueuesResultSettingsOutput() GetQueuesResultSettingsOutput
+	ToGetQueuesResultSettingsOutputWithContext(context.Context) GetQueuesResultSettingsOutput
+}
+
+type GetQueuesResultSettingsArgs struct {
+	// Number of seconds to delay delivery of all messages to consumers.
+	DeliveryDelay pulumi.Float64Input `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused pulumi.BoolInput `pulumi:"deliveryPaused"`
+	// Number of seconds after which an unconsumed message will be delayed.
+	MessageRetentionPeriod pulumi.Float64Input `pulumi:"messageRetentionPeriod"`
+}
+
+func (GetQueuesResultSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultSettings)(nil)).Elem()
+}
+
+func (i GetQueuesResultSettingsArgs) ToGetQueuesResultSettingsOutput() GetQueuesResultSettingsOutput {
+	return i.ToGetQueuesResultSettingsOutputWithContext(context.Background())
+}
+
+func (i GetQueuesResultSettingsArgs) ToGetQueuesResultSettingsOutputWithContext(ctx context.Context) GetQueuesResultSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQueuesResultSettingsOutput)
+}
+
+type GetQueuesResultSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetQueuesResultSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQueuesResultSettings)(nil)).Elem()
+}
+
+func (o GetQueuesResultSettingsOutput) ToGetQueuesResultSettingsOutput() GetQueuesResultSettingsOutput {
+	return o
+}
+
+func (o GetQueuesResultSettingsOutput) ToGetQueuesResultSettingsOutputWithContext(ctx context.Context) GetQueuesResultSettingsOutput {
+	return o
+}
+
+// Number of seconds to delay delivery of all messages to consumers.
+func (o GetQueuesResultSettingsOutput) DeliveryDelay() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultSettings) float64 { return v.DeliveryDelay }).(pulumi.Float64Output)
+}
+
+// Indicates if message delivery to consumers is currently paused.
+func (o GetQueuesResultSettingsOutput) DeliveryPaused() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueuesResultSettings) bool { return v.DeliveryPaused }).(pulumi.BoolOutput)
+}
+
+// Number of seconds after which an unconsumed message will be delayed.
+func (o GetQueuesResultSettingsOutput) MessageRetentionPeriod() pulumi.Float64Output {
+	return o.ApplyT(func(v GetQueuesResultSettings) float64 { return v.MessageRetentionPeriod }).(pulumi.Float64Output)
+}
+
+type GetR2BucketCorsRule struct {
+	// Object specifying allowed origins, methods and headers for this CORS rule.
+	Allowed GetR2BucketCorsRuleAllowed `pulumi:"allowed"`
+	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Identifier for this rule.
+	Id string `pulumi:"id"`
+	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+	MaxAgeSeconds float64 `pulumi:"maxAgeSeconds"`
+}
+
+// GetR2BucketCorsRuleInput is an input type that accepts GetR2BucketCorsRuleArgs and GetR2BucketCorsRuleOutput values.
+// You can construct a concrete instance of `GetR2BucketCorsRuleInput` via:
+//
+//	GetR2BucketCorsRuleArgs{...}
+type GetR2BucketCorsRuleInput interface {
+	pulumi.Input
+
+	ToGetR2BucketCorsRuleOutput() GetR2BucketCorsRuleOutput
+	ToGetR2BucketCorsRuleOutputWithContext(context.Context) GetR2BucketCorsRuleOutput
+}
+
+type GetR2BucketCorsRuleArgs struct {
+	// Object specifying allowed origins, methods and headers for this CORS rule.
+	Allowed GetR2BucketCorsRuleAllowedInput `pulumi:"allowed"`
+	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Identifier for this rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+	MaxAgeSeconds pulumi.Float64Input `pulumi:"maxAgeSeconds"`
+}
+
+func (GetR2BucketCorsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketCorsRule)(nil)).Elem()
+}
+
+func (i GetR2BucketCorsRuleArgs) ToGetR2BucketCorsRuleOutput() GetR2BucketCorsRuleOutput {
+	return i.ToGetR2BucketCorsRuleOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketCorsRuleArgs) ToGetR2BucketCorsRuleOutputWithContext(ctx context.Context) GetR2BucketCorsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketCorsRuleOutput)
+}
+
+// GetR2BucketCorsRuleArrayInput is an input type that accepts GetR2BucketCorsRuleArray and GetR2BucketCorsRuleArrayOutput values.
+// You can construct a concrete instance of `GetR2BucketCorsRuleArrayInput` via:
+//
+//	GetR2BucketCorsRuleArray{ GetR2BucketCorsRuleArgs{...} }
+type GetR2BucketCorsRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetR2BucketCorsRuleArrayOutput() GetR2BucketCorsRuleArrayOutput
+	ToGetR2BucketCorsRuleArrayOutputWithContext(context.Context) GetR2BucketCorsRuleArrayOutput
+}
+
+type GetR2BucketCorsRuleArray []GetR2BucketCorsRuleInput
+
+func (GetR2BucketCorsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketCorsRule)(nil)).Elem()
+}
+
+func (i GetR2BucketCorsRuleArray) ToGetR2BucketCorsRuleArrayOutput() GetR2BucketCorsRuleArrayOutput {
+	return i.ToGetR2BucketCorsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketCorsRuleArray) ToGetR2BucketCorsRuleArrayOutputWithContext(ctx context.Context) GetR2BucketCorsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketCorsRuleArrayOutput)
+}
+
+type GetR2BucketCorsRuleOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketCorsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketCorsRule)(nil)).Elem()
+}
+
+func (o GetR2BucketCorsRuleOutput) ToGetR2BucketCorsRuleOutput() GetR2BucketCorsRuleOutput {
+	return o
+}
+
+func (o GetR2BucketCorsRuleOutput) ToGetR2BucketCorsRuleOutputWithContext(ctx context.Context) GetR2BucketCorsRuleOutput {
+	return o
+}
+
+// Object specifying allowed origins, methods and headers for this CORS rule.
+func (o GetR2BucketCorsRuleOutput) Allowed() GetR2BucketCorsRuleAllowedOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRule) GetR2BucketCorsRuleAllowed { return v.Allowed }).(GetR2BucketCorsRuleAllowedOutput)
+}
+
+// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
+func (o GetR2BucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Identifier for this rule.
+func (o GetR2BucketCorsRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
+func (o GetR2BucketCorsRuleOutput) MaxAgeSeconds() pulumi.Float64Output {
+	return o.ApplyT(func(v GetR2BucketCorsRule) float64 { return v.MaxAgeSeconds }).(pulumi.Float64Output)
+}
+
+type GetR2BucketCorsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketCorsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketCorsRule)(nil)).Elem()
+}
+
+func (o GetR2BucketCorsRuleArrayOutput) ToGetR2BucketCorsRuleArrayOutput() GetR2BucketCorsRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketCorsRuleArrayOutput) ToGetR2BucketCorsRuleArrayOutputWithContext(ctx context.Context) GetR2BucketCorsRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) GetR2BucketCorsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetR2BucketCorsRule {
+		return vs[0].([]GetR2BucketCorsRule)[vs[1].(int)]
+	}).(GetR2BucketCorsRuleOutput)
+}
+
+type GetR2BucketCorsRuleAllowed struct {
+	// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+	Headers []string `pulumi:"headers"`
+	// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+	Methods []string `pulumi:"methods"`
+	// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+	Origins []string `pulumi:"origins"`
+}
+
+// GetR2BucketCorsRuleAllowedInput is an input type that accepts GetR2BucketCorsRuleAllowedArgs and GetR2BucketCorsRuleAllowedOutput values.
+// You can construct a concrete instance of `GetR2BucketCorsRuleAllowedInput` via:
+//
+//	GetR2BucketCorsRuleAllowedArgs{...}
+type GetR2BucketCorsRuleAllowedInput interface {
+	pulumi.Input
+
+	ToGetR2BucketCorsRuleAllowedOutput() GetR2BucketCorsRuleAllowedOutput
+	ToGetR2BucketCorsRuleAllowedOutputWithContext(context.Context) GetR2BucketCorsRuleAllowedOutput
+}
+
+type GetR2BucketCorsRuleAllowedArgs struct {
+	// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+	Headers pulumi.StringArrayInput `pulumi:"headers"`
+	// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+	Origins pulumi.StringArrayInput `pulumi:"origins"`
+}
+
+func (GetR2BucketCorsRuleAllowedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketCorsRuleAllowed)(nil)).Elem()
+}
+
+func (i GetR2BucketCorsRuleAllowedArgs) ToGetR2BucketCorsRuleAllowedOutput() GetR2BucketCorsRuleAllowedOutput {
+	return i.ToGetR2BucketCorsRuleAllowedOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketCorsRuleAllowedArgs) ToGetR2BucketCorsRuleAllowedOutputWithContext(ctx context.Context) GetR2BucketCorsRuleAllowedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketCorsRuleAllowedOutput)
+}
+
+type GetR2BucketCorsRuleAllowedOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketCorsRuleAllowedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketCorsRuleAllowed)(nil)).Elem()
+}
+
+func (o GetR2BucketCorsRuleAllowedOutput) ToGetR2BucketCorsRuleAllowedOutput() GetR2BucketCorsRuleAllowedOutput {
+	return o
+}
+
+func (o GetR2BucketCorsRuleAllowedOutput) ToGetR2BucketCorsRuleAllowedOutputWithContext(ctx context.Context) GetR2BucketCorsRuleAllowedOutput {
+	return o
+}
+
+// Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser. Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.
+func (o GetR2BucketCorsRuleAllowedOutput) Headers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRuleAllowed) []string { return v.Headers }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.
+func (o GetR2BucketCorsRuleAllowedOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRuleAllowed) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.
+func (o GetR2BucketCorsRuleAllowedOutput) Origins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetR2BucketCorsRuleAllowed) []string { return v.Origins }).(pulumi.StringArrayOutput)
+}
+
+type GetR2BucketEventNotificationRule struct {
+	// Array of R2 object actions that will trigger notifications.
+	Actions []string `pulumi:"actions"`
+	// Timestamp when the rule was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// A description that can be used to identify the event notification rule after creation.
+	Description string `pulumi:"description"`
+	// Notifications will be sent only for objects with this prefix.
+	Prefix string `pulumi:"prefix"`
+	// Rule ID.
+	RuleId string `pulumi:"ruleId"`
+	// Notifications will be sent only for objects with this suffix.
+	Suffix string `pulumi:"suffix"`
+}
+
+// GetR2BucketEventNotificationRuleInput is an input type that accepts GetR2BucketEventNotificationRuleArgs and GetR2BucketEventNotificationRuleOutput values.
+// You can construct a concrete instance of `GetR2BucketEventNotificationRuleInput` via:
+//
+//	GetR2BucketEventNotificationRuleArgs{...}
+type GetR2BucketEventNotificationRuleInput interface {
+	pulumi.Input
+
+	ToGetR2BucketEventNotificationRuleOutput() GetR2BucketEventNotificationRuleOutput
+	ToGetR2BucketEventNotificationRuleOutputWithContext(context.Context) GetR2BucketEventNotificationRuleOutput
+}
+
+type GetR2BucketEventNotificationRuleArgs struct {
+	// Array of R2 object actions that will trigger notifications.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Timestamp when the rule was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// A description that can be used to identify the event notification rule after creation.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Notifications will be sent only for objects with this prefix.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Rule ID.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// Notifications will be sent only for objects with this suffix.
+	Suffix pulumi.StringInput `pulumi:"suffix"`
+}
+
+func (GetR2BucketEventNotificationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketEventNotificationRule)(nil)).Elem()
+}
+
+func (i GetR2BucketEventNotificationRuleArgs) ToGetR2BucketEventNotificationRuleOutput() GetR2BucketEventNotificationRuleOutput {
+	return i.ToGetR2BucketEventNotificationRuleOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketEventNotificationRuleArgs) ToGetR2BucketEventNotificationRuleOutputWithContext(ctx context.Context) GetR2BucketEventNotificationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketEventNotificationRuleOutput)
+}
+
+// GetR2BucketEventNotificationRuleArrayInput is an input type that accepts GetR2BucketEventNotificationRuleArray and GetR2BucketEventNotificationRuleArrayOutput values.
+// You can construct a concrete instance of `GetR2BucketEventNotificationRuleArrayInput` via:
+//
+//	GetR2BucketEventNotificationRuleArray{ GetR2BucketEventNotificationRuleArgs{...} }
+type GetR2BucketEventNotificationRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetR2BucketEventNotificationRuleArrayOutput() GetR2BucketEventNotificationRuleArrayOutput
+	ToGetR2BucketEventNotificationRuleArrayOutputWithContext(context.Context) GetR2BucketEventNotificationRuleArrayOutput
+}
+
+type GetR2BucketEventNotificationRuleArray []GetR2BucketEventNotificationRuleInput
+
+func (GetR2BucketEventNotificationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketEventNotificationRule)(nil)).Elem()
+}
+
+func (i GetR2BucketEventNotificationRuleArray) ToGetR2BucketEventNotificationRuleArrayOutput() GetR2BucketEventNotificationRuleArrayOutput {
+	return i.ToGetR2BucketEventNotificationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetR2BucketEventNotificationRuleArray) ToGetR2BucketEventNotificationRuleArrayOutputWithContext(ctx context.Context) GetR2BucketEventNotificationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetR2BucketEventNotificationRuleArrayOutput)
+}
+
+type GetR2BucketEventNotificationRuleOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketEventNotificationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetR2BucketEventNotificationRule)(nil)).Elem()
+}
+
+func (o GetR2BucketEventNotificationRuleOutput) ToGetR2BucketEventNotificationRuleOutput() GetR2BucketEventNotificationRuleOutput {
+	return o
+}
+
+func (o GetR2BucketEventNotificationRuleOutput) ToGetR2BucketEventNotificationRuleOutputWithContext(ctx context.Context) GetR2BucketEventNotificationRuleOutput {
+	return o
+}
+
+// Array of R2 object actions that will trigger notifications.
+func (o GetR2BucketEventNotificationRuleOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the rule was created.
+func (o GetR2BucketEventNotificationRuleOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A description that can be used to identify the event notification rule after creation.
+func (o GetR2BucketEventNotificationRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Notifications will be sent only for objects with this prefix.
+func (o GetR2BucketEventNotificationRuleOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Rule ID.
+func (o GetR2BucketEventNotificationRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// Notifications will be sent only for objects with this suffix.
+func (o GetR2BucketEventNotificationRuleOutput) Suffix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetR2BucketEventNotificationRule) string { return v.Suffix }).(pulumi.StringOutput)
+}
+
+type GetR2BucketEventNotificationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetR2BucketEventNotificationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetR2BucketEventNotificationRule)(nil)).Elem()
+}
+
+func (o GetR2BucketEventNotificationRuleArrayOutput) ToGetR2BucketEventNotificationRuleArrayOutput() GetR2BucketEventNotificationRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketEventNotificationRuleArrayOutput) ToGetR2BucketEventNotificationRuleArrayOutputWithContext(ctx context.Context) GetR2BucketEventNotificationRuleArrayOutput {
+	return o
+}
+
+func (o GetR2BucketEventNotificationRuleArrayOutput) Index(i pulumi.IntInput) GetR2BucketEventNotificationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetR2BucketEventNotificationRule {
+		return vs[0].([]GetR2BucketEventNotificationRule)[vs[1].(int)]
+	}).(GetR2BucketEventNotificationRuleOutput)
+}
+
 type GetR2BucketLifecycleRule struct {
 	// Transition to abort ongoing multipart uploads.
 	AbortMultipartUploadsTransition GetR2BucketLifecycleRuleAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
@@ -42234,649 +43554,26 @@ func (o GetZeroTrustAccessGroupsResultExcludeAzureAdOutput) IdentityProviderId()
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessGroupsResultExcludeCertificate struct {
-}
-
-// GetZeroTrustAccessGroupsResultExcludeCertificateInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeCertificateArgs and GetZeroTrustAccessGroupsResultExcludeCertificateOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeCertificateInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeCertificateArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeCertificateInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput
-	ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeCertificateArgs struct {
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificate)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeCertificateOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeCertificateOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificate)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
-	return o
-}
-
-type GetZeroTrustAccessGroupsResultExcludeCommonName struct {
-	// The common name to match.
-	CommonName string `pulumi:"commonName"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeCommonNameInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeCommonNameArgs and GetZeroTrustAccessGroupsResultExcludeCommonNameOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeCommonNameInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeCommonNameArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeCommonNameInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput
-	ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeCommonNameArgs struct {
-	// The common name to match.
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonName)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeCommonNameOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeCommonNameOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonName)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
-	return o
-}
-
-// The common name to match.
-func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeDevicePosture struct {
-	// The ID of a device posture integration.
-	IntegrationUid string `pulumi:"integrationUid"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeDevicePostureInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs and GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeDevicePostureInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeDevicePostureInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput
-	ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs struct {
-	// The ID of a device posture integration.
-	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePosture)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePosture)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
-	return o
-}
-
-// The ID of a device posture integration.
-func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmail struct {
-	// The email of the user.
-	Email string `pulumi:"email"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeEmailInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailArgs and GetZeroTrustAccessGroupsResultExcludeEmailOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeEmailArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeEmailInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput
-	ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailArgs struct {
-	// The email of the user.
-	Email pulumi.StringInput `pulumi:"email"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmail)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmail)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput {
-	return o
-}
-
-// The email of the user.
-func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmail) string { return v.Email }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailDomain struct {
-	// The email domain to match.
-	Domain string `pulumi:"domain"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeEmailDomainInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs and GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailDomainInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeEmailDomainInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput
-	ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs struct {
-	// The email domain to match.
-	Domain pulumi.StringInput `pulumi:"domain"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomain)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomain)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
-	return o
-}
-
-// The email domain to match.
-func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailList struct {
-	// The ID of a previously created email list.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeEmailListInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailListArgs and GetZeroTrustAccessGroupsResultExcludeEmailListOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailListInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeEmailListArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeEmailListInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput
-	ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailListArgs struct {
-	// The ID of a previously created email list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailList)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailListOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEmailListOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailList)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
-	return o
-}
-
-// The ID of a previously created email list.
-func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmailList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEveryone struct {
-}
-
-// GetZeroTrustAccessGroupsResultExcludeEveryoneInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEveryoneArgs and GetZeroTrustAccessGroupsResultExcludeEveryoneOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEveryoneInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeEveryoneArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeEveryoneInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput
-	ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEveryoneArgs struct {
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryone)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEveryoneOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeEveryoneOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryone)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
-	return o
-}
-
-type GetZeroTrustAccessGroupsResultExcludeExternalEvaluation struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl string `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl string `pulumi:"keysUrl"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs and GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput
-	ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs struct {
-	// The API endpoint containing your business logic.
-	EvaluateUrl pulumi.StringInput `pulumi:"evaluateUrl"`
-	// The API endpoint containing the key that Access uses to verify that the response came from your API.
-	KeysUrl pulumi.StringInput `pulumi:"keysUrl"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluation)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluation)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
-	return o
-}
-
-// The API endpoint containing your business logic.
-func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeExternalEvaluation) string { return v.EvaluateUrl }).(pulumi.StringOutput)
-}
-
-// The API endpoint containing the key that Access uses to verify that the response came from your API.
-func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeExternalEvaluation) string { return v.KeysUrl }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGeo struct {
-	// The country code that should be matched.
-	CountryCode string `pulumi:"countryCode"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeGeoInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGeoArgs and GetZeroTrustAccessGroupsResultExcludeGeoOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGeoInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeGeoArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeGeoInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput
-	ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGeoArgs struct {
-	// The country code that should be matched.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeGeoArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeo)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGeoArgs) ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGeoArgs) ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGeoOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGeoOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeGeoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeo)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput {
-	return o
-}
-
-// The country code that should be matched.
-func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGeo) string { return v.CountryCode }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGithubOrganization struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name string `pulumi:"name"`
-	// The name of the team
-	Team string `pulumi:"team"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs and GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput
-	ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs struct {
-	// The ID of your Github identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-	// The name of the organization.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the team
-	Team pulumi.StringInput `pulumi:"team"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganization)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganization)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
-	return o
-}
-
-// The ID of your Github identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
-// The name of the organization.
-func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The name of the team
-func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) Team() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.Team }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGroup struct {
-	// The ID of a previously created Access group.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeGroupInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGroupArgs and GetZeroTrustAccessGroupsResultExcludeGroupOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGroupInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeGroupArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeGroupInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput
-	ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGroupArgs struct {
-	// The ID of a previously created Access group.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeGroupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroup)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGroupArgs) ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGroupArgs) ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGroupOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGroupOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroup)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput {
-	return o
-}
-
-// The ID of a previously created Access group.
-func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGroup) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGsuite struct {
-	// The email of the Google Workspace group.
-	Email string `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessGroupsResultExcludeGsuiteInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGsuiteArgs and GetZeroTrustAccessGroupsResultExcludeGsuiteOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGsuiteInput` via:
-//
-//	GetZeroTrustAccessGroupsResultExcludeGsuiteArgs{...}
-type GetZeroTrustAccessGroupsResultExcludeGsuiteInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput
-	ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGsuiteArgs struct {
-	// The email of the Google Workspace group.
-	Email pulumi.StringInput `pulumi:"email"`
-	// The ID of your Google Workspace identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuite)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
-	return i.ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGsuiteOutput)
-}
-
-type GetZeroTrustAccessGroupsResultExcludeGsuiteOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuite)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
-	return o
-}
-
-// The email of the Google Workspace group.
-func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGsuite) string { return v.Email }).(pulumi.StringOutput)
-}
-
-// The ID of your Google Workspace identity provider.
-func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultInput)(nil)).Elem(), GetQueueConsumersResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultArrayInput)(nil)).Elem(), GetQueueConsumersResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueConsumersResultSettingsInput)(nil)).Elem(), GetQueueConsumersResultSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueProducerInput)(nil)).Elem(), GetQueueProducerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueProducerArrayInput)(nil)).Elem(), GetQueueProducerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueueSettingsInput)(nil)).Elem(), GetQueueSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultInput)(nil)).Elem(), GetQueuesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultArrayInput)(nil)).Elem(), GetQueuesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultConsumerInput)(nil)).Elem(), GetQueuesResultConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultConsumerArrayInput)(nil)).Elem(), GetQueuesResultConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultConsumerSettingsInput)(nil)).Elem(), GetQueuesResultConsumerSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultProducerInput)(nil)).Elem(), GetQueuesResultProducerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultProducerArrayInput)(nil)).Elem(), GetQueuesResultProducerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQueuesResultSettingsInput)(nil)).Elem(), GetQueuesResultSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketCorsRuleInput)(nil)).Elem(), GetR2BucketCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketCorsRuleArrayInput)(nil)).Elem(), GetR2BucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketCorsRuleAllowedInput)(nil)).Elem(), GetR2BucketCorsRuleAllowedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketEventNotificationRuleInput)(nil)).Elem(), GetR2BucketEventNotificationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketEventNotificationRuleArrayInput)(nil)).Elem(), GetR2BucketEventNotificationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleInput)(nil)).Elem(), GetR2BucketLifecycleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleArrayInput)(nil)).Elem(), GetR2BucketLifecycleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionInput)(nil)).Elem(), GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs{})
@@ -43481,18 +44178,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeAuthContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeAuthMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeAzureAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeCommonNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomainInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailListInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryoneInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEveryoneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeoInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGeoArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroupInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGsuiteArgs{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultOutput{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultArrayOutput{})
+	pulumi.RegisterOutputType(GetQueueConsumersResultSettingsOutput{})
+	pulumi.RegisterOutputType(GetQueueProducerOutput{})
+	pulumi.RegisterOutputType(GetQueueProducerArrayOutput{})
+	pulumi.RegisterOutputType(GetQueueSettingsOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultConsumerOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultConsumerArrayOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultConsumerSettingsOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultProducerOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultProducerArrayOutput{})
+	pulumi.RegisterOutputType(GetQueuesResultSettingsOutput{})
+	pulumi.RegisterOutputType(GetR2BucketCorsRuleOutput{})
+	pulumi.RegisterOutputType(GetR2BucketCorsRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetR2BucketCorsRuleAllowedOutput{})
+	pulumi.RegisterOutputType(GetR2BucketEventNotificationRuleOutput{})
+	pulumi.RegisterOutputType(GetR2BucketEventNotificationRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput{})
@@ -44097,16 +44801,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeAuthContextOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeAuthMethodOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeAzureAdOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeCertificateOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeCommonNameOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailListOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEveryoneOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGeoOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGroupOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGsuiteOutput{})
 }

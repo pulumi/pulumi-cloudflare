@@ -134,6 +134,11 @@ export class WorkersScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly migrationTag: pulumi.Output<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply for Durable Objects associated with this Worker.
+     */
+    declare public readonly migrations: pulumi.Output<outputs.WorkersScriptMigrations | undefined>;
+    /**
      * When the script was last modified.
      */
     declare public /*out*/ readonly modifiedOn: pulumi.Output<string>;
@@ -199,6 +204,7 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["logpush"] = state?.logpush;
             resourceInputs["mainModule"] = state?.mainModule;
             resourceInputs["migrationTag"] = state?.migrationTag;
+            resourceInputs["migrations"] = state?.migrations;
             resourceInputs["modifiedOn"] = state?.modifiedOn;
             resourceInputs["namedHandlers"] = state?.namedHandlers;
             resourceInputs["observability"] = state?.observability;
@@ -230,6 +236,7 @@ export class WorkersScript extends pulumi.CustomResource {
             resourceInputs["limits"] = args?.limits;
             resourceInputs["logpush"] = args?.logpush;
             resourceInputs["mainModule"] = args?.mainModule;
+            resourceInputs["migrations"] = args?.migrations ? pulumi.secret(args.migrations) : undefined;
             resourceInputs["observability"] = args?.observability;
             resourceInputs["placement"] = args?.placement;
             resourceInputs["scriptName"] = args?.scriptName;
@@ -249,6 +256,8 @@ export class WorkersScript extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/workerScript:WorkerScript" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
+        const secretOpts = { additionalSecretOutputs: ["migrations"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkersScript.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -346,6 +355,11 @@ export interface WorkersScriptState {
      */
     migrationTag?: pulumi.Input<string>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply for Durable Objects associated with this Worker.
+     */
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
+    /**
      * When the script was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
@@ -441,6 +455,11 @@ export interface WorkersScriptArgs {
      * Name of the uploaded file that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
     mainModule?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply for Durable Objects associated with this Worker.
+     */
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
     /**
      * Observability settings for the Worker.
      */

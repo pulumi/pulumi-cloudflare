@@ -33009,6 +33009,129 @@ export interface WorkerScriptLimits {
     cpuMs?: number;
 }
 
+export interface WorkerScriptMigrations {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerScriptMigrationsRenamedClass[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply in order.
+     */
+    steps?: outputs.WorkerScriptMigrationsStep[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerScriptMigrationsTransferredClass[];
+}
+
+export interface WorkerScriptMigrationsRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsStep {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkerScriptMigrationsStepRenamedClass[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkerScriptMigrationsStepTransferredClass[];
+}
+
+export interface WorkerScriptMigrationsStepRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsStepTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkerScriptMigrationsTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
 export interface WorkerScriptNamedHandler {
     /**
      * The names of handlers exported as part of the named export.
@@ -33670,6 +33793,129 @@ export interface WorkersScriptLimits {
      * The amount of CPU time this Worker can use in milliseconds.
      */
     cpuMs?: number;
+}
+
+export interface WorkersScriptMigrations {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkersScriptMigrationsRenamedClass[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply in order.
+     */
+    steps?: outputs.WorkersScriptMigrationsStep[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkersScriptMigrationsTransferredClass[];
+}
+
+export interface WorkersScriptMigrationsRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkersScriptMigrationsStep {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: string[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: outputs.WorkersScriptMigrationsStepRenamedClass[];
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: outputs.WorkersScriptMigrationsStepTransferredClass[];
+}
+
+export interface WorkersScriptMigrationsStepRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkersScriptMigrationsStepTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
+}
+
+export interface WorkersScriptMigrationsTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: string;
 }
 
 export interface WorkersScriptNamedHandler {

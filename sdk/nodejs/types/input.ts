@@ -11833,6 +11833,129 @@ export interface WorkerScriptLimits {
     cpuMs?: pulumi.Input<number>;
 }
 
+export interface WorkerScriptMigrations {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsRenamedClass>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply in order.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStep>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsTransferredClass>[]>;
+}
+
+export interface WorkerScriptMigrationsRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsStep {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepRenamedClass>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkerScriptMigrationsStepTransferredClass>[]>;
+}
+
+export interface WorkerScriptMigrationsStepRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsStepTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkerScriptMigrationsTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
 export interface WorkerScriptNamedHandler {
     /**
      * The names of handlers exported as part of the named export.
@@ -12494,6 +12617,129 @@ export interface WorkersScriptLimits {
      * The amount of CPU time this Worker can use in milliseconds.
      */
     cpuMs?: pulumi.Input<number>;
+}
+
+export interface WorkersScriptMigrations {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag to set as the latest migration tag.
+     */
+    newTag?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+     */
+    oldTag?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsRenamedClass>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply in order.
+     */
+    steps?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStep>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsTransferredClass>[]>;
+}
+
+export interface WorkersScriptMigrationsRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptMigrationsStep {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to delete Durable Object namespaces from.
+     */
+    deletedClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces from.
+     */
+    newClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes to create Durable Object namespaces with SQLite from.
+     */
+    newSqliteClasses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of classes with Durable Object namespaces that were renamed.
+     */
+    renamedClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStepRenamedClass>[]>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+     */
+    transferredClasses?: pulumi.Input<pulumi.Input<inputs.WorkersScriptMigrationsStepTransferredClass>[]>;
+}
+
+export interface WorkersScriptMigrationsStepRenamedClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptMigrationsStepTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
+}
+
+export interface WorkersScriptMigrationsTransferredClass {
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    from?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    fromScript?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     */
+    to?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptNamedHandler {

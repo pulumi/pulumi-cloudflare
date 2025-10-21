@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.WorkersScriptAssetsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptLimitsArgs;
+import com.pulumi.cloudflare.inputs.WorkersScriptMigrationsArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptNamedHandlerArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityArgs;
 import com.pulumi.cloudflare.inputs.WorkersScriptPlacementArgs;
@@ -356,6 +357,23 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply for Durable Objects associated with this Worker.
+     * 
+     */
+    @Import(name="migrations")
+    private @Nullable Output<WorkersScriptMigrationsArgs> migrations;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Migrations to apply for Durable Objects associated with this Worker.
+     * 
+     */
+    public Optional<Output<WorkersScriptMigrationsArgs>> migrations() {
+        return Optional.ofNullable(this.migrations);
+    }
+
+    /**
      * When the script was last modified.
      * 
      */
@@ -494,6 +512,7 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
         this.logpush = $.logpush;
         this.mainModule = $.mainModule;
         this.migrationTag = $.migrationTag;
+        this.migrations = $.migrations;
         this.modifiedOn = $.modifiedOn;
         this.namedHandlers = $.namedHandlers;
         this.observability = $.observability;
@@ -1022,6 +1041,29 @@ public final class WorkersScriptState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder migrationTag(String migrationTag) {
             return migrationTag(Output.of(migrationTag));
+        }
+
+        /**
+         * @param migrations **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Migrations to apply for Durable Objects associated with this Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(@Nullable Output<WorkersScriptMigrationsArgs> migrations) {
+            $.migrations = migrations;
+            return this;
+        }
+
+        /**
+         * @param migrations **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Migrations to apply for Durable Objects associated with this Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrations(WorkersScriptMigrationsArgs migrations) {
+            return migrations(Output.of(migrations));
         }
 
         /**
