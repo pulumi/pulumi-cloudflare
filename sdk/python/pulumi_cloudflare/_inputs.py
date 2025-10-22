@@ -1279,6 +1279,18 @@ __all__ = [
     'WorkerScriptBindingOutboundWorkerArgsDict',
     'WorkerScriptLimitsArgs',
     'WorkerScriptLimitsArgsDict',
+    'WorkerScriptMigrationsArgs',
+    'WorkerScriptMigrationsArgsDict',
+    'WorkerScriptMigrationsRenamedClassArgs',
+    'WorkerScriptMigrationsRenamedClassArgsDict',
+    'WorkerScriptMigrationsStepArgs',
+    'WorkerScriptMigrationsStepArgsDict',
+    'WorkerScriptMigrationsStepRenamedClassArgs',
+    'WorkerScriptMigrationsStepRenamedClassArgsDict',
+    'WorkerScriptMigrationsStepTransferredClassArgs',
+    'WorkerScriptMigrationsStepTransferredClassArgsDict',
+    'WorkerScriptMigrationsTransferredClassArgs',
+    'WorkerScriptMigrationsTransferredClassArgsDict',
     'WorkerScriptNamedHandlerArgs',
     'WorkerScriptNamedHandlerArgsDict',
     'WorkerScriptObservabilityArgs',
@@ -1341,6 +1353,18 @@ __all__ = [
     'WorkersScriptBindingOutboundWorkerArgsDict',
     'WorkersScriptLimitsArgs',
     'WorkersScriptLimitsArgsDict',
+    'WorkersScriptMigrationsArgs',
+    'WorkersScriptMigrationsArgsDict',
+    'WorkersScriptMigrationsRenamedClassArgs',
+    'WorkersScriptMigrationsRenamedClassArgsDict',
+    'WorkersScriptMigrationsStepArgs',
+    'WorkersScriptMigrationsStepArgsDict',
+    'WorkersScriptMigrationsStepRenamedClassArgs',
+    'WorkersScriptMigrationsStepRenamedClassArgsDict',
+    'WorkersScriptMigrationsStepTransferredClassArgs',
+    'WorkersScriptMigrationsStepTransferredClassArgsDict',
+    'WorkersScriptMigrationsTransferredClassArgs',
+    'WorkersScriptMigrationsTransferredClassArgsDict',
     'WorkersScriptNamedHandlerArgs',
     'WorkersScriptNamedHandlerArgsDict',
     'WorkersScriptObservabilityArgs',
@@ -50504,6 +50528,577 @@ class WorkerScriptLimitsArgs:
 
 
 if not MYPY:
+    class WorkerScriptMigrationsArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        new_tag: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag to set as the latest migration tag.
+        """
+        old_tag: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply in order.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkerScriptMigrationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 old_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[_builtins.str] new_tag: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Tag to set as the latest migration tag.
+        :param pulumi.Input[_builtins.str] old_tag: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]] renamed_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]] steps: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply in order.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]] transferred_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if new_tag is not None:
+            pulumi.set(__self__, "new_tag", new_tag)
+        if old_tag is not None:
+            pulumi.set(__self__, "old_tag", old_tag)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newTag")
+    def new_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag to set as the latest migration tag.
+        """
+        return pulumi.get(self, "new_tag")
+
+    @new_tag.setter
+    def new_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "new_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oldTag")
+    def old_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        return pulumi.get(self, "old_tag")
+
+    @old_tag.setter
+    def old_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "old_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply in order.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkerScriptMigrationsRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkerScriptMigrationsStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]] renamed_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]] transferred_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptMigrationsStepTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkerScriptMigrationsStepRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsStepTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        from_script: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkerScriptMigrationsStepTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsStepTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] from_script: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_script", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkerScriptMigrationsTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        from_script: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkerScriptMigrationsTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerScriptMigrationsTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] from_script: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_script", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
     class WorkerScriptNamedHandlerArgsDict(TypedDict):
         handlers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -53783,6 +54378,577 @@ class WorkersScriptLimitsArgs:
     @cpu_ms.setter
     def cpu_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "cpu_ms", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        new_tag: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag to set as the latest migration tag.
+        """
+        old_tag: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        steps: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply in order.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkersScriptMigrationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 old_tag: Optional[pulumi.Input[_builtins.str]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[_builtins.str] new_tag: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Tag to set as the latest migration tag.
+        :param pulumi.Input[_builtins.str] old_tag: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]] renamed_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]] steps: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Migrations to apply in order.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]] transferred_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if new_tag is not None:
+            pulumi.set(__self__, "new_tag", new_tag)
+        if old_tag is not None:
+            pulumi.set(__self__, "old_tag", old_tag)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newTag")
+    def new_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag to set as the latest migration tag.
+        """
+        return pulumi.get(self, "new_tag")
+
+    @new_tag.setter
+    def new_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "new_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oldTag")
+    def old_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Tag used to verify against the latest migration tag for this Worker. If they don't match, the upload is rejected.
+        """
+        return pulumi.get(self, "old_tag")
+
+    @old_tag.setter
+    def old_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "old_tag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Migrations to apply in order.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkersScriptMigrationsRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsStepArgsDict(TypedDict):
+        deleted_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        new_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        new_sqlite_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        renamed_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        transferred_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgsDict']]]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+elif False:
+    WorkersScriptMigrationsStepArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsStepArgs:
+    def __init__(__self__, *,
+                 deleted_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 new_sqlite_classes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 renamed_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]] = None,
+                 transferred_classes: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] deleted_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to delete Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] new_sqlite_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes to create Durable Object namespaces with SQLite from.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]] renamed_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of classes with Durable Object namespaces that were renamed.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]] transferred_classes: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        if deleted_classes is not None:
+            pulumi.set(__self__, "deleted_classes", deleted_classes)
+        if new_classes is not None:
+            pulumi.set(__self__, "new_classes", new_classes)
+        if new_sqlite_classes is not None:
+            pulumi.set(__self__, "new_sqlite_classes", new_sqlite_classes)
+        if renamed_classes is not None:
+            pulumi.set(__self__, "renamed_classes", renamed_classes)
+        if transferred_classes is not None:
+            pulumi.set(__self__, "transferred_classes", transferred_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedClasses")
+    def deleted_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to delete Durable Object namespaces from.
+        """
+        return pulumi.get(self, "deleted_classes")
+
+    @deleted_classes.setter
+    def deleted_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "deleted_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newClasses")
+    def new_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces from.
+        """
+        return pulumi.get(self, "new_classes")
+
+    @new_classes.setter
+    def new_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="newSqliteClasses")
+    def new_sqlite_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes to create Durable Object namespaces with SQLite from.
+        """
+        return pulumi.get(self, "new_sqlite_classes")
+
+    @new_sqlite_classes.setter
+    def new_sqlite_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "new_sqlite_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="renamedClasses")
+    def renamed_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of classes with Durable Object namespaces that were renamed.
+        """
+        return pulumi.get(self, "renamed_classes")
+
+    @renamed_classes.setter
+    def renamed_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepRenamedClassArgs']]]]):
+        pulumi.set(self, "renamed_classes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferredClasses")
+    def transferred_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker.
+        """
+        return pulumi.get(self, "transferred_classes")
+
+    @transferred_classes.setter
+    def transferred_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersScriptMigrationsStepTransferredClassArgs']]]]):
+        pulumi.set(self, "transferred_classes", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsStepRenamedClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkersScriptMigrationsStepRenamedClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsStepRenamedClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsStepTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        from_script: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkersScriptMigrationsStepTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsStepTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] from_script: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_script", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class WorkersScriptMigrationsTransferredClassArgsDict(TypedDict):
+        from_: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        from_script: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+elif False:
+    WorkersScriptMigrationsTransferredClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersScriptMigrationsTransferredClassArgs:
+    def __init__(__self__, *,
+                 from_: Optional[pulumi.Input[_builtins.str]] = None,
+                 from_script: Optional[pulumi.Input[_builtins.str]] = None,
+                 to: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] from_: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] from_script: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        :param pulumi.Input[_builtins.str] to: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        if from_ is not None:
+            pulumi.set(__self__, "from_", from_)
+        if from_script is not None:
+            pulumi.set(__self__, "from_script", from_script)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @_builtins.property
+    @pulumi.getter(name="from")
+    def from_(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fromScript")
+    def from_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "from_script")
+
+    @from_script.setter
+    def from_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "from_script", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "to", value)
 
 
 if not MYPY:
