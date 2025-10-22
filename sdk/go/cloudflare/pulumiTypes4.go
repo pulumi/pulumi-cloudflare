@@ -13,6 +13,648 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessGroupsResultExcludeCertificate struct {
+}
+
+// GetZeroTrustAccessGroupsResultExcludeCertificateInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeCertificateArgs and GetZeroTrustAccessGroupsResultExcludeCertificateOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeCertificateInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeCertificateArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeCertificateInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput
+	ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeCertificateArgs struct {
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificate)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeCertificateArgs) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeCertificateOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificate)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutput() GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeCertificateOutput) ToGetZeroTrustAccessGroupsResultExcludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCertificateOutput {
+	return o
+}
+
+type GetZeroTrustAccessGroupsResultExcludeCommonName struct {
+	// The common name to match.
+	CommonName string `pulumi:"commonName"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeCommonNameInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeCommonNameArgs and GetZeroTrustAccessGroupsResultExcludeCommonNameOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeCommonNameInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeCommonNameArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeCommonNameInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput
+	ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeCommonNameArgs struct {
+	// The common name to match.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonName)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeCommonNameArgs) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeCommonNameOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeCommonNameOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonName)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutput() GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) ToGetZeroTrustAccessGroupsResultExcludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeCommonNameOutput {
+	return o
+}
+
+// The common name to match.
+func (o GetZeroTrustAccessGroupsResultExcludeCommonNameOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeDevicePosture struct {
+	// The ID of a device posture integration.
+	IntegrationUid string `pulumi:"integrationUid"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeDevicePostureInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs and GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeDevicePostureInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeDevicePostureInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput
+	ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs struct {
+	// The ID of a device posture integration.
+	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePosture)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePosture)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutput() GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) ToGetZeroTrustAccessGroupsResultExcludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput {
+	return o
+}
+
+// The ID of a device posture integration.
+func (o GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmail struct {
+	// The email of the user.
+	Email string `pulumi:"email"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeEmailInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailArgs and GetZeroTrustAccessGroupsResultExcludeEmailOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeEmailArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeEmailInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput
+	ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailArgs struct {
+	// The email of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmail)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmail)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailOutput() GetZeroTrustAccessGroupsResultExcludeEmailOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailOutput {
+	return o
+}
+
+// The email of the user.
+func (o GetZeroTrustAccessGroupsResultExcludeEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailDomain struct {
+	// The email domain to match.
+	Domain string `pulumi:"domain"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeEmailDomainInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs and GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailDomainInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeEmailDomainInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput
+	ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs struct {
+	// The email domain to match.
+	Domain pulumi.StringInput `pulumi:"domain"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomain)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomain)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutput() GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput {
+	return o
+}
+
+// The email domain to match.
+func (o GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailList struct {
+	// The ID of a previously created email list.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeEmailListInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEmailListArgs and GetZeroTrustAccessGroupsResultExcludeEmailListOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEmailListInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeEmailListArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeEmailListInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput
+	ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailListArgs struct {
+	// The ID of a previously created email list.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailList)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEmailListArgs) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEmailListOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEmailListOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailList)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutput() GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) ToGetZeroTrustAccessGroupsResultExcludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEmailListOutput {
+	return o
+}
+
+// The ID of a previously created email list.
+func (o GetZeroTrustAccessGroupsResultExcludeEmailListOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeEmailList) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEveryone struct {
+}
+
+// GetZeroTrustAccessGroupsResultExcludeEveryoneInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeEveryoneArgs and GetZeroTrustAccessGroupsResultExcludeEveryoneOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeEveryoneInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeEveryoneArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeEveryoneInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput
+	ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEveryoneArgs struct {
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryone)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeEveryoneArgs) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeEveryoneOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeEveryoneOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryone)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutput() GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeEveryoneOutput) ToGetZeroTrustAccessGroupsResultExcludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeEveryoneOutput {
+	return o
+}
+
+type GetZeroTrustAccessGroupsResultExcludeExternalEvaluation struct {
+	// The API endpoint containing your business logic.
+	EvaluateUrl string `pulumi:"evaluateUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl string `pulumi:"keysUrl"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs and GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput
+	ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs struct {
+	// The API endpoint containing your business logic.
+	EvaluateUrl pulumi.StringInput `pulumi:"evaluateUrl"`
+	// The API endpoint containing the key that Access uses to verify that the response came from your API.
+	KeysUrl pulumi.StringInput `pulumi:"keysUrl"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput() GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) ToGetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput {
+	return o
+}
+
+// The API endpoint containing your business logic.
+func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeExternalEvaluation) string { return v.EvaluateUrl }).(pulumi.StringOutput)
+}
+
+// The API endpoint containing the key that Access uses to verify that the response came from your API.
+func (o GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeExternalEvaluation) string { return v.KeysUrl }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGeo struct {
+	// The country code that should be matched.
+	CountryCode string `pulumi:"countryCode"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeGeoInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGeoArgs and GetZeroTrustAccessGroupsResultExcludeGeoOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGeoInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeGeoArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeGeoInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput
+	ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGeoArgs struct {
+	// The country code that should be matched.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeGeoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeo)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGeoArgs) ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGeoArgs) ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGeoOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGeoOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeGeoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeo)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) ToGetZeroTrustAccessGroupsResultExcludeGeoOutput() GetZeroTrustAccessGroupsResultExcludeGeoOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) ToGetZeroTrustAccessGroupsResultExcludeGeoOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGeoOutput {
+	return o
+}
+
+// The country code that should be matched.
+func (o GetZeroTrustAccessGroupsResultExcludeGeoOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGeo) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGithubOrganization struct {
+	// The ID of your Github identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name string `pulumi:"name"`
+	// The name of the team
+	Team string `pulumi:"team"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs and GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput
+	ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs struct {
+	// The ID of your Github identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+	// The name of the organization.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the team
+	Team pulumi.StringInput `pulumi:"team"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganization)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganization)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput() GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) ToGetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput {
+	return o
+}
+
+// The ID of your Github identity provider.
+func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+// The name of the organization.
+func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the team
+func (o GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput) Team() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGithubOrganization) string { return v.Team }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGroup struct {
+	// The ID of a previously created Access group.
+	Id string `pulumi:"id"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeGroupInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGroupArgs and GetZeroTrustAccessGroupsResultExcludeGroupOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGroupInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeGroupArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeGroupInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput
+	ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGroupArgs struct {
+	// The ID of a previously created Access group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroup)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGroupArgs) ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGroupArgs) ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGroupOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGroupOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroup)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) ToGetZeroTrustAccessGroupsResultExcludeGroupOutput() GetZeroTrustAccessGroupsResultExcludeGroupOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) ToGetZeroTrustAccessGroupsResultExcludeGroupOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGroupOutput {
+	return o
+}
+
+// The ID of a previously created Access group.
+func (o GetZeroTrustAccessGroupsResultExcludeGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGsuite struct {
+	// The email of the Google Workspace group.
+	Email string `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessGroupsResultExcludeGsuiteInput is an input type that accepts GetZeroTrustAccessGroupsResultExcludeGsuiteArgs and GetZeroTrustAccessGroupsResultExcludeGsuiteOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessGroupsResultExcludeGsuiteInput` via:
+//
+//	GetZeroTrustAccessGroupsResultExcludeGsuiteArgs{...}
+type GetZeroTrustAccessGroupsResultExcludeGsuiteInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput
+	ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGsuiteArgs struct {
+	// The email of the Google Workspace group.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The ID of your Google Workspace identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuite)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
+	return i.ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessGroupsResultExcludeGsuiteArgs) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessGroupsResultExcludeGsuiteOutput)
+}
+
+type GetZeroTrustAccessGroupsResultExcludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuite)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutput() GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) ToGetZeroTrustAccessGroupsResultExcludeGsuiteOutputWithContext(ctx context.Context) GetZeroTrustAccessGroupsResultExcludeGsuiteOutput {
+	return o
+}
+
+// The email of the Google Workspace group.
+func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGsuite) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The ID of your Google Workspace identity provider.
+func (o GetZeroTrustAccessGroupsResultExcludeGsuiteOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessGroupsResultExcludeGsuite) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustAccessGroupsResultExcludeIp struct {
 	// An IPv4 or IPv6 CIDR block.
 	Ip string `pulumi:"ip"`
@@ -41103,6 +41745,18 @@ func (o GetZonesResultTenantUnitOutput) Id() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeCommonNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeDevicePostureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailDomainInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEmailListInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEmailListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeEveryoneInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeEveryoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeExternalEvaluationInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGeoInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGeoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGithubOrganizationInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGithubOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGroupInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeGsuiteInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeGsuiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeIpListInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeIpListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenInput)(nil)).Elem(), GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenArgs{})
@@ -41672,6 +42326,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultPlanInput)(nil)).Elem(), GetZonesResultPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantInput)(nil)).Elem(), GetZonesResultTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultTenantUnitInput)(nil)).Elem(), GetZonesResultTenantUnitArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeCertificateOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeCommonNameOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeDevicePostureOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailDomainOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEmailListOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeEveryoneOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGeoOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGithubOrganizationOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGroupOutput{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeGsuiteOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeIpOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeIpListOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessGroupsResultExcludeLinkedAppTokenOutput{})

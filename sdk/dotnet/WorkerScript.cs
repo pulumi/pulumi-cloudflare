@@ -157,6 +157,13 @@ namespace Pulumi.Cloudflare
         public Output<string> MigrationTag { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Migrations to apply for Durable Objects associated with this Worker.
+        /// </summary>
+        [Output("migrations")]
+        public Output<Outputs.WorkerScriptMigrations?> Migrations { get; private set; } = null!;
+
+        /// <summary>
         /// When the script was last modified.
         /// </summary>
         [Output("modifiedOn")]
@@ -228,6 +235,10 @@ namespace Pulumi.Cloudflare
                 Aliases =
                 {
                     new global::Pulumi.Alias { Type = "cloudflare:index/workerScript:WorkerScript" },
+                },
+                AdditionalSecretOutputs =
+                {
+                    "migrations",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -359,6 +370,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("mainModule")]
         public Input<string>? MainModule { get; set; }
+
+        [Input("migrations")]
+        private Input<Inputs.WorkerScriptMigrationsArgs>? _migrations;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Migrations to apply for Durable Objects associated with this Worker.
+        /// </summary>
+        public Input<Inputs.WorkerScriptMigrationsArgs>? Migrations
+        {
+            get => _migrations;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _migrations = Output.Tuple<Input<Inputs.WorkerScriptMigrationsArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Observability settings for the Worker.
@@ -560,6 +588,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("migrationTag")]
         public Input<string>? MigrationTag { get; set; }
+
+        [Input("migrations")]
+        private Input<Inputs.WorkerScriptMigrationsGetArgs>? _migrations;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Migrations to apply for Durable Objects associated with this Worker.
+        /// </summary>
+        public Input<Inputs.WorkerScriptMigrationsGetArgs>? Migrations
+        {
+            get => _migrations;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _migrations = Output.Tuple<Input<Inputs.WorkerScriptMigrationsGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// When the script was last modified.
