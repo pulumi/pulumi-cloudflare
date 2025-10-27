@@ -4,16 +4,6 @@ makeTemplate: bridged
 runner:
     default: pulumi-ubuntu-8core
     prerequisites: pulumi-ubuntu-8core
-plugins:
-    - name: terraform
-      version: "1.0.16"
-      kind: converter
-    - name: std
-      version: "1.6.2"
-    - name: gcp
-      version: "5.0.0"
-    - name: tls
-      version: "4.0.0"
 esc:
     enabled: true
 env:
